@@ -1,0 +1,19 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 38.575 42.4442" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 2">
+<g id="Figma Cursor" filter="url(#filter0_d_0_16)">
+<path d="M12.9028 7.01284C12.8319 6.61701 13.195 6.30914 13.4958 6.51023L25.4791 14.5232C25.784 14.7271 25.7334 15.2572 25.3975 15.3778L19.5813 17.4652C19.4912 17.4976 19.4138 17.5658 19.3625 17.658L16.4516 22.8897C16.2564 23.2406 15.7949 23.14 15.7215 22.7305L12.9028 7.01284Z" fill="var(--fill-0, #06578D)"/>
+</g>
+<path id="Figma Cursor (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M13.8724 7.84246L16.3083 21.4258L18.6886 17.1476C18.8425 16.871 19.0749 16.6663 19.3451 16.5693L24.2765 14.7994L13.8724 7.84246ZM13.4958 6.51023C13.195 6.30914 12.8319 6.61701 12.9028 7.01284L15.7215 22.7305C15.7949 23.14 16.2564 23.2406 16.4516 22.8897L19.3625 17.658C19.4138 17.5658 19.4912 17.4976 19.5813 17.4652L25.3975 15.3778C25.7334 15.2572 25.784 14.7271 25.4791 14.5232L13.4958 6.51023Z" fill="var(--fill-0, white)"/>
+</g>
+<defs>
+<filter id="filter0_d_0_16" x="-4.76837e-07" y="0" width="38.575" height="42.4442" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="6.44692"/>
+<feGaussianBlur stdDeviation="6.44692"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_16"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_16" result="shape"/>
+</filter>
+</defs>
+</svg>

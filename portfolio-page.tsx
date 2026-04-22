@@ -270,8 +270,9 @@ export default function PortfolioPage() {
             </div>
 
             {/* Card 2 – Light */}
-            <div
-              className="flex-1 rounded-[20px] p-7 flex flex-col gap-4 overflow-hidden shadow-[0_8px_24px_#00000018]"
+            <a
+              href="/benefits"
+              className="flex-1 rounded-[20px] p-7 flex flex-col gap-4 overflow-hidden shadow-[0_8px_24px_#00000018] group cursor-pointer transition-transform hover:-translate-y-1 hover:shadow-[0_16px_40px_#00000025]"
               style={{ background: "radial-gradient(ellipse at 82% 50%, #b7daf1 11%, #e9f3fb 64%, #edf5fb 98%)" }}
             >
               <div className="flex items-start justify-between">
@@ -283,7 +284,7 @@ export default function PortfolioPage() {
                     Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%.
                   </p>
                 </div>
-                <span className="text-[12px] text-[#3c3e3f] shrink-0">See all improvements ↗</span>
+                <span className="text-[12px] text-[#3c3e3f] shrink-0 group-hover:text-[#1183D0] transition-colors">See all improvements ↗</span>
               </div>
               <div className="rounded-xl overflow-hidden flex items-center justify-center h-[264px]">
                 <img
@@ -292,7 +293,7 @@ export default function PortfolioPage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-            </div>
+            </a>
           </div>
 
           {/* Full portfolio CTA row */}
