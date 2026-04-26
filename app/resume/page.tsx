@@ -1,4 +1,5 @@
 import { Playfair_Display, Inter } from "next/font/google";
+import { withBasePath } from "../../lib/site";
 
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -107,12 +108,12 @@ export default function ResumePage() {
       {/* Nav */}
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-[#bcd2ff]/60 h-16 px-12 flex items-center justify-between">
         <div className="flex items-center gap-8">
-          <a href="/" className="font-playfair italic text-[#1183D0] text-xl font-medium">Logo</a>
+          <a href={withBasePath("/")} className="font-playfair italic text-[#1183D0] text-xl font-medium">Logo</a>
           <ul className="flex items-center gap-1">
             {["Projects", "Resume", "Contact"].map((link) => (
               <li key={link}>
                 <a
-                  href={`/${link.toLowerCase()}`}
+                  href={withBasePath(`/${link.toLowerCase()}`)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${link === "Resume" ? "bg-[#1183D0]/10 text-[#1183D0]" : "text-[#1183D0] hover:bg-[#003d66]/5"}`}
                 >
                   {link}
@@ -122,7 +123,7 @@ export default function ResumePage() {
           </ul>
         </div>
         <a
-          href="/contact"
+          href={withBasePath("/contact")}
           className="px-5 py-2 rounded-full bg-[#1183D0] text-white text-sm font-medium hover:bg-[#0e6fad] transition-colors"
         >
           Get in touch
@@ -131,7 +132,7 @@ export default function ResumePage() {
 
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-6 pt-16 pb-10">
-        <a href="/" className="inline-flex items-center gap-2 text-[#5c7792] text-sm hover:text-[#1183D0] transition-colors mb-8">
+        <a href={withBasePath("/")} className="inline-flex items-center gap-2 text-[#5c7792] text-sm hover:text-[#1183D0] transition-colors mb-8">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           Back to Home
         </a>
@@ -266,7 +267,7 @@ export default function ResumePage() {
           <span className="font-playfair italic text-white text-lg">Greddys Martínez</span>
           <div className="flex gap-6">
             {["Home", "Projects", "Resume", "Contact"].map((l) => (
-              <a key={l} href={l === "Home" ? "/" : `/${l.toLowerCase()}`} className="hover:text-white transition-colors">{l}</a>
+              <a key={l} href={l === "Home" ? withBasePath("/") : withBasePath(`/${l.toLowerCase()}`)} className="hover:text-white transition-colors">{l}</a>
             ))}
           </div>
           <p>© 2025 · All rights reserved</p>

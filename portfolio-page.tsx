@@ -1,5 +1,6 @@
 import { Playfair_Display, Inter } from "next/font/google";
 import Image from "next/image";
+import { withBasePath } from "./lib/site";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -96,7 +97,7 @@ export default function PortfolioPage() {
             {NAV_LINKS.map((link) => (
               <li key={link}>
                 <a
-                  href={`/${link.toLowerCase()}`}
+                  href={withBasePath(`/${link.toLowerCase()}`)}
                   className="px-4 py-2 rounded-full text-[#1183D0] text-sm font-medium hover:bg-[#003d66]/5 transition-colors"
                 >
                   {link}
@@ -221,7 +222,7 @@ export default function PortfolioPage() {
           <div className="flex gap-6 justify-center">
             {/* Card 1 – Benefits (Light) */}
             <a
-              href="/benefits"
+              href={withBasePath("/benefits")}
               className="w-[400px] rounded-[20px] p-7 flex flex-col gap-4 overflow-hidden shadow-[0_8px_24px_#00000018] group cursor-pointer transition-transform hover:-translate-y-1 hover:shadow-[0_16px_40px_#00000025]"
               style={{
                 background:

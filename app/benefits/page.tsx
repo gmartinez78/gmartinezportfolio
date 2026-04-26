@@ -1,5 +1,6 @@
 import { Playfair_Display, Inter } from "next/font/google";
 import Image from "next/image";
+import { withBasePath } from "../../lib/site";
 
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -323,9 +324,9 @@ export default function BenefitsPage() {
       {/* ── Nav ── */}
       <nav className="sticky top-0 z-50 bg-[#1183D0]/90 backdrop-blur border-b border-white/10 h-16 px-12 flex items-center justify-between">
         <div className="flex items-center gap-3 text-sm font-inter">
-          <a href="/" className="text-white/60 hover:text-white transition-colors">Home</a>
+          <a href={withBasePath("/")} className="text-white/60 hover:text-white transition-colors">Home</a>
           <span className="text-white/30">›</span>
-          <a href="/projects" className="text-white/60 hover:text-white transition-colors">Projects</a>
+          <a href={withBasePath("/projects")} className="text-white/60 hover:text-white transition-colors">Projects</a>
           <span className="text-white/30">›</span>
           <span className="text-white font-semibold">Enhancing Benefits Enrollment</span>
         </div>
@@ -680,10 +681,10 @@ export default function BenefitsPage() {
         </span>
         <div className="flex items-center gap-6">
           {["Home", "Projects", "Resume", "Contact"].map((l) => (
-            <a key={l} href={l === "Home" ? "/" : `/${l.toLowerCase()}`} className="text-white/40 hover:text-white/80 text-[13px] font-inter transition-colors">{l}</a>
+            <a key={l} href={l === "Home" ? withBasePath("/") : withBasePath(`/${l.toLowerCase()}`)} className="text-white/40 hover:text-white/80 text-[13px] font-inter transition-colors">{l}</a>
           ))}
         </div>
-        <a href="/" className="font-inter text-[#1183D0] text-[13px] font-medium bg-white px-5 py-2 rounded-full hover:bg-white/90 transition-colors">
+        <a href={withBasePath("/")} className="font-inter text-[#1183D0] text-[13px] font-medium bg-white px-5 py-2 rounded-full hover:bg-white/90 transition-colors">
           Back to Portfolio
         </a>
       </footer>
