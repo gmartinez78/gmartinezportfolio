@@ -322,13 +322,17 @@ export default function BenefitsPage() {
     >
       {/* ── Nav ── */}
       <nav className="sticky top-0 z-50 bg-[#1183D0]/90 backdrop-blur border-b border-white/10 h-16 px-12 flex items-center justify-between">
-        <a href="/" className="font-playfair italic text-white text-xl font-medium">
-          ← Back
-        </a>
-        <div className="flex items-center gap-2">
-          <span className="text-white/60 text-sm font-inter">Case Study</span>
-          <span className="text-white/30 mx-1">·</span>
-          <span className="text-white text-sm font-semibold font-inter">Benefits Enrollment</span>
+        <div className="flex items-center gap-3 text-sm font-inter">
+          <a href="/" className="text-white/60 hover:text-white transition-colors">Home</a>
+          <span className="text-white/30">›</span>
+          <a href="/projects" className="text-white/60 hover:text-white transition-colors">Projects</a>
+          <span className="text-white/30">›</span>
+          <span className="text-white font-semibold">Enhancing Benefits Enrollment</span>
+        </div>
+        <div className="flex items-center gap-3">
+          {["HR/Payroll SaaS", "UX Research", "IA", "Interaction Design", "Design Systems"].map((tag) => (
+            <span key={tag} className="text-xs text-white/70 bg-white/10 px-3 py-1 rounded-full hidden lg:inline">{tag}</span>
+          ))}
         </div>
       </nav>
 
@@ -645,11 +649,40 @@ export default function BenefitsPage() {
         </div>
       </section>
 
+      {/* ── Other Projects ── */}
+      <section className="px-20 py-16 max-w-[1440px] mx-auto">
+        <p className="font-inter text-white/50 text-[13px] uppercase tracking-[2px] mb-2">More work</p>
+        <h2 className="font-playfair italic text-white text-[32px] mb-8">Other Projects</h2>
+        <div className="grid grid-cols-3 gap-5">
+          {[
+            { title: "AI-Powered Benefits Advisor", company: "Nayya", tag: "AI/ML Product", bg: "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)", stat: "4.8★" },
+            { title: "Accessible Service Portal", company: "Easterseals", tag: "Accessibility", bg: "radial-gradient(ellipse at 80% 20%, #c8f0e0 0%, #edf5fb 70%)", stat: "40%" },
+            { title: "Ride Coordination App", company: "Transport for Troops", tag: "Mobile", bg: "radial-gradient(ellipse at 50% 80%, #ffe8c0 0%, #edf5fb 70%)", stat: "60%" },
+          ].map((p) => (
+            <a key={p.title} href="#" className="group bg-white/10 hover:bg-white/15 border border-white/10 rounded-[28px] overflow-hidden transition-all hover:-translate-y-0.5">
+              <div className="h-36 flex items-center justify-center" style={{ background: p.bg }}>
+                <span className="font-playfair italic font-bold text-[#1183D0] text-3xl">{p.stat}</span>
+              </div>
+              <div className="p-6">
+                <p className="text-white/50 text-xs mb-1">{p.company}</p>
+                <h3 className="font-inter font-semibold text-white text-[15px] leading-snug mb-2">{p.title}</h3>
+                <span className="text-xs text-white/40 bg-white/10 px-3 py-1 rounded-full">{p.tag}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
       {/* ── Footer ── */}
       <footer className="border-t border-white/15 px-20 py-8 flex items-center justify-between max-w-[1440px] mx-auto">
         <span className="font-inter text-white/40 text-[13px]">
-          © 2026 Greddys Martinez. All rights reserved.
+          © 2025 Greddys Martinez. All rights reserved.
         </span>
+        <div className="flex items-center gap-6">
+          {["Home", "Projects", "Resume", "Contact"].map((l) => (
+            <a key={l} href={l === "Home" ? "/" : `/${l.toLowerCase()}`} className="text-white/40 hover:text-white/80 text-[13px] font-inter transition-colors">{l}</a>
+          ))}
+        </div>
         <a href="/" className="font-inter text-[#1183D0] text-[13px] font-medium bg-white px-5 py-2 rounded-full hover:bg-white/90 transition-colors">
           Back to Portfolio
         </a>
