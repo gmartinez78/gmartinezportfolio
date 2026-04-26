@@ -280,66 +280,21 @@ const EDUCATION = [
 ];
 
 const TOOLS = [
-  {
-    label: "Figma",
-    icon: "F",
-    color: "#1183D0",
-  },
-  {
-    label: "Jira",
-    icon: "J",
-    color: "#2563eb",
-  },
-  {
-    label: "Miro",
-    icon: "M",
-    color: "#f59e0b",
-  },
-  {
-    label: "Copilot",
-    icon: "C",
-    color: "#8b5cf6",
-  },
-  {
-    label: "Webex",
-    icon: "W",
-    color: "#06b6d4",
-  },
-  {
-    label: "ClickUp",
-    icon: "CU",
-    color: "#ec4899",
-  },
-  {
-    label: "Confluence",
-    icon: "CF",
-    color: "#0f766e",
-  },
-  {
-    label: "Maze",
-    icon: "Z",
-    color: "#475569",
-  },
-  {
-    label: "Notion",
-    icon: "N",
-    color: "#111827",
-  },
-  {
-    label: "Slack",
-    icon: "S",
-    color: "#22c55e",
-  },
-  {
-    label: "HTML/CSS",
-    icon: "H",
-    color: "#f97316",
-  },
-  {
-    label: "React",
-    icon: "R",
-    color: "#0891b2",
-  },
+  { label: "Figma",      src: "https://cdn.simpleicons.org/figma" },
+  { label: "Jira",       src: "https://cdn.simpleicons.org/jira" },
+  { label: "Miro",       src: "https://cdn.simpleicons.org/miro" },
+  { label: "Copilot",    src: "https://cdn.simpleicons.org/githubcopilot" },
+  { label: "Webex",      src: "https://cdn.simpleicons.org/webex" },
+  { label: "ClickUp",    src: "https://cdn.simpleicons.org/clickup" },
+  { label: "Confluence", src: "https://cdn.simpleicons.org/confluence" },
+  { label: "Maze",       src: "https://cdn.simpleicons.org/maze" },
+  { label: "Notion",     src: "https://cdn.simpleicons.org/notion" },
+  { label: "Slack",      src: "https://cdn.simpleicons.org/slack" },
+  { label: "HTML/CSS",   src: "https://cdn.simpleicons.org/html5" },
+  { label: "React",      src: "https://cdn.simpleicons.org/react/087EA4" },
+  { label: "Claude",     src: "https://cdn.simpleicons.org/anthropic" },
+  { label: "VS Code",    src: "https://cdn.simpleicons.org/visualstudiocode" },
+  { label: "ChatGPT",    src: "https://cdn.simpleicons.org/openai" },
 ];
 
 const CERTIFICATION_ITEMS = [
@@ -645,13 +600,8 @@ export default function ResumePage() {
                 <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-4">
                   {TOOLS.map((tool) => (
                     <div key={tool.label} className="flex flex-col items-center text-center">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#bfd7f4] bg-[#dfeefd] shadow-sm">
-                        <span
-                          className="text-sm font-semibold"
-                          style={{ color: tool.color }}
-                        >
-                          {tool.icon}
-                        </span>
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#e2e8f0] bg-white shadow-sm">
+                        <img src={tool.src} alt={tool.label} width={26} height={26} />
                       </div>
                       <span className="mt-2 text-xs font-medium text-[#3c3e3f]">
                         {tool.label}
