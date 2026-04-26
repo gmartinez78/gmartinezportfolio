@@ -49,7 +49,7 @@ const INFO_CARDS = [
     ),
     label: "UpWork",
     value: "Available for freelance",
-    href: "#",
+    href: "https://www.upwork.com/freelancers/greddysmartinez",
   },
   {
     icon: (

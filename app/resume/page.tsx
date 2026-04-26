@@ -391,6 +391,7 @@ const FEATURED_CREDENTIALS = [
     image: withBasePath("/images/iNSrn.png"),
     alt: "Upwork Skill Certification",
     title: "Upwork Skill Certification",
+    href: "https://www.upwork.com/freelancers/greddysmartinez",
     subtitle: "User Interface Design",
     description:
       "Verified professional certification for UI Design skills on the Upwork platform, demonstrating expertise in creating intuitive and visually appealing interfaces.",
@@ -502,7 +503,12 @@ export default function ResumePage() {
               Senior Product Designer with 10+ years of experience certified in User Experience with recognition in interaction design by the NN/Group. Designing enterprise B2B experiences across FinTech, HR, and HealthTech. Strong focus on bridging strategy and execution, leading research, aligning cross-functional teams, and shipping high-impact solutions in Agile environments.
             </p>
             <div className="mt-10 flex flex-wrap items-start justify-center gap-10 sm:gap-14">
-              <div className="flex max-w-[180px] flex-col items-center text-center">
+              <a
+                href="https://www.upwork.com/freelancers/greddysmartinez"
+                target="_blank"
+                rel="noreferrer"
+                className="flex max-w-[180px] flex-col items-center text-center hover:opacity-80 transition-opacity"
+              >
                 <img
                   src={withBasePath("/images/iNSrn.png")}
                   alt="Upwork Skill Certification"
@@ -516,7 +522,7 @@ export default function ResumePage() {
                 <p className="mt-1 text-[15px] font-medium leading-snug text-[#1f2f3d]">
                   User Interface Design
                 </p>
-              </div>
+              </a>
               <div className="flex max-w-[180px] flex-col items-center text-center">
                 <img
                   src={withBasePath("/images/OiSjn.png")}
@@ -697,11 +703,28 @@ export default function ResumePage() {
           </div>
 
           <div className="flex flex-col gap-6 lg:pt-[92px]">
-            {FEATURED_CREDENTIALS.map((credential) => (
-              <div
-                key={credential.title}
-                className="rounded-[26px] border border-[#d6e8fb] bg-[#f7fbff] px-8 py-8 text-center shadow-sm"
-              >
+            {FEATURED_CREDENTIALS.map((credential) => {
+              const CardWrapper = ({ children }: { children: React.ReactNode }) =>
+                "href" in credential ? (
+                  <a
+                    href={(credential as { href: string }).href}
+                    target="_blank"
+                    rel="noreferrer"
+                    key={credential.title}
+                    className="block rounded-[26px] border border-[#d6e8fb] bg-[#f7fbff] px-8 py-8 text-center shadow-sm hover:opacity-80 transition-opacity"
+                  >
+                    {children}
+                  </a>
+                ) : (
+                  <div
+                    key={credential.title}
+                    className="rounded-[26px] border border-[#d6e8fb] bg-[#f7fbff] px-8 py-8 text-center shadow-sm"
+                  >
+                    {children}
+                  </div>
+                );
+              return (
+              <CardWrapper key={credential.title}>
                 {credential.type === "image" ? (
                   <img
                     src={credential.image}
@@ -733,8 +756,9 @@ export default function ResumePage() {
                 <span className="mt-6 inline-flex rounded-full bg-[#e7f1fd] px-4 py-1 text-sm font-semibold text-[#1183D0]">
                   {credential.year}
                 </span>
-              </div>
-            ))}
+              </CardWrapper>
+              );
+            })}
           </div>
         </div>
       </section>

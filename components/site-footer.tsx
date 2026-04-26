@@ -10,7 +10,7 @@ const FOOTER_LINKS = [
 const FOOTER_SOCIAL = [
   { label: "LinkedIn", href: "https://linkedin.com/in/greddysmartinez" },
   { label: "Behance", href: "https://www.behance.net/greddysmartinez" },
-  { label: "UpWork", href: "#" },
+  { label: "UpWork", href: "https://www.upwork.com/freelancers/greddysmartinez" },
 ];
 
 export function SiteFooter() {
@@ -110,8 +110,10 @@ export function SiteFooter() {
             Bē
           </a>
           <a
-            href="#"
-            aria-label="Work"
+            href="https://www.upwork.com/freelancers/greddysmartinez"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Upwork"
             className="transition-opacity hover:opacity-70"
           >
             <svg

@@ -136,13 +136,15 @@ export default function PortfolioPage() {
           <div className="absolute right-12 top-10 flex flex-col items-center gap-2">
             <span className="text-[12px] text-[#5c7792]">Certified by</span>
             <div className="flex items-center gap-4">
-              <Image
-                src="/images/iNSrn.png"
-                alt="Upwork Certification"
-                width={80}
-                height={80}
-                className="rounded-lg"
-              />
+              <a href="https://www.upwork.com/freelancers/greddysmartinez" target="_blank" rel="noreferrer" className="hover:opacity-80 transition-opacity">
+                <Image
+                  src="/images/iNSrn.png"
+                  alt="Upwork Certification"
+                  width={80}
+                  height={80}
+                  className="rounded-lg"
+                />
+              </a>
               <Image
                 src="/images/OiSjn.png"
                 alt="NN/g UX Certification"
