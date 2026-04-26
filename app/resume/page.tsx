@@ -1,65 +1,269 @@
 import { Playfair_Display, Inter } from "next/font/google";
-import Image from "next/image";
 import { SiteFooter } from "../../components/site-footer";
 import { withBasePath } from "../../lib/site";
 
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-const EXPERIENCE = [
+type ExperienceBullet = string | { heading: string; items: string[] };
+type ExperienceEntry = {
+  role: string;
+  company: string;
+  period: string;
+  bullets: ExperienceBullet[];
+  tags: string[];
+};
+
+const EXPERIENCE: ExperienceEntry[] = [
   {
-    role: "UX UI Designer / Manager",
-    company: "Independence Blue Cross (IBX) · Philadelphia, PA",
-    period: "2022 – Present",
+    role: "Sr. Product Designer",
+    company: "ITX Corp | Client: Paychex (Nayya, Flock, E-Verify, Indeed)",
+    period: "Mar. 2021 – Present | Malaga, Spain (Remote)",
     bullets: [
-      "Led end-to-end UX for enterprise benefits enrollment platform used by 500k+ members.",
-      "Managed a team of 3 designers, ran weekly critiques, and established a shared design system.",
-      "Partnered with Product and Engineering to ship 4 major releases, including a self-service admin portal that reduced support tickets by 72%.",
-      "Ran generative and evaluative research (interviews, usability tests, card sorts) to inform strategy.",
+      "Shipping complex B2C SaaS workflows across Payroll, HR, Hiring, benefits, insurance, and retirement platforms (Fintech).",
+      "Redesigning form flows based on research findings from user interviews, usability tests, and assisted testing, reducing completion time by 35%.",
+      "Reducing support tickets by 500+ and support call volume by 9,000+ calls per year through redesigned HR and hiring flows.",
+      "Designing and launching AI-powered features that improve user decision-making during enrollment.",
+      "Crafting product briefs, user-centric SWOTs, problem statements, competitor benchmarks, mood boards, and rapid prototypes that set criteria for the next product stage.",
+      "Contributing to exceeding the annual enrollment goal by 5,500 users by simplifying workflows.",
+      "Applying accessibility and usability standards in non-design-led environments for data visualization.",
+      "Making end-to-end design decisions for an enterprise HR platform with 2.3 million users, actively prioritizing in cross-functional reviews.",
+      "Building design systems using React.js components, ensuring consistency on mobile and desktop.",
+      "Partnering with Product and Engineering to align UX strategy and delivery using Miro as a dashboard.",
+      "Using AI tools like Copilot, Lovable, Claude, and ChatGPT throughout the workflow to synthesize research, generate early concepts, and prototype quickly.",
+      "Designing for operational users in fast-moving, high-stakes environments with a focus on reducing cognitive load and driving engagement.",
+      "Taking ownership of design decisions, presenting work regularly to senior stakeholders with clear rationale, handling feedback constructively, and pushing back when needed.",
+      "Acting as Staff Designer by producing wireframes, design mockups, and interactive prototypes, while defining design strategy, vision, and roadmap for major ambiguous products.",
     ],
-    tags: ["UX Strategy", "Design Systems", "Leadership", "Research"],
+    tags: ["B2C SaaS", "AI Features", "Design Systems", "Research", "React.js"],
   },
   {
-    role: "UX Designer",
-    company: "Nayya · New York, NY (Remote)",
-    period: "2020 – 2022",
+    role: "UX/UI Designer",
+    company: "Alquilando S.A. | PropTech Marketplace",
+    period: "Mar. 2019 – May. 2021 | Buenos Aires, Argentina (Remote)",
     bullets: [
-      "Designed AI-powered benefits recommendation flows for HR SaaS platform.",
-      "Built and maintained a component library in Figma used across 2 product squads.",
-      "Conducted 30+ user interviews to define MVP for a new employee onboarding experience.",
-      "Collaborated closely with engineers to ensure pixel-accurate implementation.",
+      "Designing and shipping end-to-end UX/UI solutions for a PropTech startup building a large-scale real estate platform serving the LATAM market — B2C.",
+      "Established the company's user-centric foundation through Alan Cooper-inspired personas, leading research and definition with the marketing team to place the customer at the heart of the work.",
+      "Led the end-to-end product design process for a B2C proptech, from user research and information architecture to mobile-first UI and design system development.",
+      "Built a component system from scratch based on Google Material Design standards, establishing visual consistency and scalability across the platform.",
+      "Collaborated with stakeholders to translate product goals into user-centered solutions, validating through usability testing and iteration.",
+      "Created wireframes and prototypes to deliver final design solutions to the team and client prior to development.",
+      "Delivered high-fidelity UI designs and interactive prototypes for innovative product features, reducing implementation ambiguity and accelerating developer handoffs.",
+      "Built HTML and CSS email templates for compatibility and consistent brand presentation across campaigns.",
     ],
-    tags: ["Product Design", "Figma", "User Research", "Prototyping"],
+    tags: ["PropTech", "B2C", "Material Design", "UI Systems", "Email HTML/CSS"],
   },
   {
-    role: "UX / UI Designer",
-    company: "Easterseals · Chicago, IL (Remote)",
-    period: "2018 – 2020",
+    role: "Freelance UX / UI Designer",
+    company: "Studio Hakuna | Client: Paramount App LATAM",
+    period: "Dec. 2019 – May. 2020 | Buenos Aires, Argentina (Remote)",
     bullets: [
-      "Redesigned the nonprofit's public-facing website and internal staff portal.",
-      "Created accessible design solutions (WCAG 2.1 AA) for users with disabilities.",
-      "Reduced task completion time for key donor flows by 40% through iterative testing.",
+      "Conducted UX research to understand audience needs and behaviors, translating insights into intuitive layouts and optimized user flows for the Paramount App LATAM.",
+      "Redesigned existing platform features, improving usability and overall user engagement across the streaming experience.",
+      "Collaborated with cross-functional teams to ensure effective communication, alignment, and on-time project execution.",
+      "Developed wireframes, prototypes, and high-fidelity UI designs that balanced user needs with business and content strategy goals.",
+      "Stayed current with industry trends and streaming UX patterns to inform design decisions and maintain a competitive product experience.",
     ],
-    tags: ["Accessibility", "Web Design", "Nonprofit"],
+    tags: ["Streaming", "LATAM", "UX Research", "Prototyping", "UI Design"],
   },
   {
-    role: "Head of Design",
-    company: "Transport for Troops · Remote",
-    period: "2016 – 2018",
+    role: "UX/UI Designer",
+    company: "Elevation | Web Solutions for Nonprofits",
+    period: "Jan. 2017 – Feb. 2019 | Buenos Aires, Argentina (Hybrid)",
     bullets: [
-      "Established design practice from scratch for a veteran-focused logistics startup.",
-      "Designed mobile app for ride coordination, reducing manual dispatcher workload by 60%.",
-      "Created brand identity system including logo, typography, and marketing collateral.",
+      "Delivered end-to-end UX/UI design across multiple nonprofit clients (B2B and B2C) simultaneously, managing competing priorities and deadlines in a fast-paced agency environment.",
+      "Developed wireframes, prototypes, and optimized interface designs that improved usability and digital accessibility for mission-driven organizations.",
+      "Designed and optimized e-commerce experiences for nonprofit fundraising platforms, contributing to improved donor conversion and online giving flows.",
+      "Created engaging email newsletters and marketing materials that supported client communication strategies and audience retention.",
+      "Collaborated cross-functionally with developers and strategists to ensure design solutions aligned with user needs and nonprofit business goals.",
+      "Created marketing assets, including HTML/CSS emails, brochures, and campaign materials, tailored to each client's needs.",
     ],
-    tags: ["Brand Design", "Mobile", "Startup"],
+    tags: ["Nonprofits", "B2B", "B2C", "Accessibility", "Fundraising"],
+  },
+  {
+    role: "Freelance UX / UI Designer / Graphic Designer",
+    company: "Multiple clients | Web and social media",
+    period: "Feb. 2014 – Feb. 2017 | LATAM, Spain, USA (Remote)",
+    bullets: [
+      {
+        heading: "Resoluto C.A. - Notable Projects: Social media campaigning — UX/UI design for Tech / Full-service Tech company, Venezuela market — B2C product ecosystem",
+        items: [
+          "Developed engaging social media campaigns that enhanced brand visibility.",
+          "Created wireframes and prototypes for innovative projects, ensuring user-centric design.",
+          "Redesigned outdated websites to improve user experience and modernize aesthetics.",
+          "Designed a variety of marketing materials, including logos, business cards, and brochures.",
+        ],
+      },
+      {
+        heading: "Ultimate Design Solutions - Notable Projects: Multi-client branding & digital design — UX/UI / Graphic Design for Full-service Design Agency — USA market — B2C product ecosystem",
+        items: [
+          "Designed wireframes and mockups for various projects, enhancing user experience and visual appeal.",
+          "Developed new logos and branding materials, including business cards, banners, and posters, to strengthen brand identity.",
+          "Improved social media posts and campaigns, increasing engagement and visibility for clients.",
+        ],
+      },
+      {
+        heading: "Belua Vzla — UX/UI / Graphic Design for Fashion / Lifestyle brand — Venezuela & Spain market — B2C product ecosystem",
+        items: [
+          "Designed wireframes and mockups for new projects, enhancing user experience and visual appeal.",
+          "Improved social media posts and campaigns, increasing brand visibility and audience engagement.",
+          "Developed new logos and branding materials to strengthen brand identity and market positioning.",
+          "Created business cards, banners, and posters to support marketing and promotional efforts.",
+          "Updated e-commerce design to improve the online shopping experience and drive conversions.",
+          "Designed large-format advertising materials (tarpaulins/ads) to boost offline brand visibility.",
+        ],
+      },
+      {
+        heading: "La Bodega — UX/UI / Graphic Design for Retail — Ecuador market — B2C product ecosystem",
+        items: [
+          "Edited and optimized product visuals for e-commerce, ensuring compelling and consistent presentation.",
+          "Updated website banners to reflect current promotions and maintain brand consistency.",
+          "Improved social media posts and campaigns, increasing brand visibility and customer engagement.",
+          "Created ads using Google Ads to drive traffic and boost online sales.",
+          "Coded HTML/CSS for websites and digital projects independently.",
+        ],
+      },
+      {
+        heading: "Delicious Frozen — UX/UI / Graphic Design for Restaurant / Food chain — Colombia market — B2C product ecosystem",
+        items: [
+          "Built the new brand from scratch, establishing a strong and recognizable visual identity.",
+          "Researched brands within the industry niche to inform strategic design decisions.",
+          "Created a brand logo & tagline, including logo sizing and placement, color palette, typography, iconography, and photography/image style.",
+          "Formed the brand voice to ensure consistent and authentic communication across all touchpoints.",
+        ],
+      },
+      {
+        heading: "Sportive — UX/UI / Graphic Design for Sports / E-commerce brand — Spain market — B2C product ecosystem",
+        items: [
+          "Updated website banners to support campaigns and maintain a fresh, engaging digital storefront.",
+          "Improved social media posts and campaigns to boost brand visibility and community engagement.",
+          "Designed social media strategy to align content with brand goals and audience growth.",
+          "Edited and optimized product visuals for e-commerce, ensuring a consistent and compelling shopping experience.",
+        ],
+      },
+      {
+        heading: "Shoptana — UX/UI / Graphic Design for Online Marketplace — Ecuador market — B2C product ecosystem",
+        items: [
+          "Updated website banners to reflect current offers and maintain a cohesive visual identity.",
+          "Improved social media posts and campaigns, increasing platform visibility and user engagement.",
+          "Edited and optimized product listings and visuals to enhance the online shopping experience.",
+        ],
+      },
+      {
+        heading: "Tivia Store — Web / UX Design for Artisanal E-commerce platform — Venezuela market — B2C product ecosystem",
+        items: [
+          "Built the new brand from scratch, defining a visual identity that reflected the artisanal and local essence of the business.",
+          "Researched brands within the industry niche to inform strategic and differentiated design decisions.",
+          "Created a brand logo & tagline, including logo sizing and placement, color palette, typography, iconography, and photography/image style.",
+          "Formed the brand voice to ensure authentic and consistent communication across all touchpoints.",
+          "Developed wireframes and prototypes to guide the design of the new website.",
+          "Designed the new website to deliver an intuitive and visually engaging user experience.",
+        ],
+      },
+      {
+        heading: "Pro Ideas Web - Notable Projects: Multi-client digital projects — UX/UI / Graphic Design for Full-service Digital Agency — Mexico market — B2B product ecosystem",
+        items: [
+          "Updated website banners to support ongoing client campaigns and ensure visual consistency.",
+          "Improved social media posts and campaigns, driving engagement and increasing brand awareness for clients.",
+          "Designed new social media strategies aligned with each client's business goals and target audience.",
+          "Edited and optimized product visuals for e-commerce to enhance online performance and conversion.",
+        ],
+      },
+    ],
+    tags: ["Freelance", "Branding", "E-commerce", "Social Media", "HTML/CSS"],
   },
 ];
 
 const SKILLS = [
-  { category: "Design", items: ["UX Research", "Interaction Design", "Information Architecture", "Usability Testing", "Design Systems", "Prototyping", "Wireframing"] },
-  { category: "Tools", items: ["Figma", "Framer", "Miro", "Jira", "Notion", "Zeplin", "Maze"] },
-  { category: "Code", items: ["HTML / CSS", "Tailwind CSS", "React (basics)", "TypeScript (basics)"] },
-  { category: "Soft Skills", items: ["Cross-functional collaboration", "Stakeholder communication", "Design critique", "Mentoring", "Agile / Scrum"] },
+  {
+    category: "Design",
+    items: [
+      "Scalable design systems",
+      "Component adoption",
+      "Pattern definition",
+      "Design tokens",
+      "Figma libraries",
+      "Digital Experience",
+      "Storyboards",
+      "Accessibility Standards",
+      "Mapping Design Thinking",
+      "AI Product Design",
+      "Enterprise UX",
+      "B2B & B2C Products",
+    ],
+  },
+  {
+    category: "Data-Heavy Interfaces",
+    items: [
+      "Complex workflow design",
+      "Tables",
+      "Filters",
+      "Role-based experiences",
+      "Multi-step flows",
+      "Interconnected entities",
+      "State-aware design",
+    ],
+  },
+  {
+    category: "Research",
+    items: [
+      "Competitive Analysis",
+      "Qualitative & Quantitative Research",
+      "User Research",
+      "Usability Testing",
+      "Surveys",
+      "Heuristic Evaluation",
+      "User Interviews",
+      "Information Architecture",
+      "Personas",
+      "Affinity Mapping",
+    ],
+  },
+  {
+    category: "Collaboration & Delivery",
+    items: [
+      "Async-friendly handoff",
+      "Figma annotations",
+      "Design-to-build alignment",
+      "HTML",
+      "CSS",
+      "Cross-functional Collaboration",
+      "Stakeholder Management",
+      "Agile / Scrum",
+      "UX Advocacy",
+      "Workshop Facilitation",
+    ],
+  },
+  {
+    category: "AI in Design",
+    items: [
+      "Copilot",
+      "OOUX with AI",
+      "Research synthesis",
+      "Rapid prototyping",
+      "Design-frontend workflow automation",
+      "LLM",
+    ],
+  },
+  {
+    category: "Soft",
+    items: [
+      "Friendly",
+      "Flexibility",
+      "Team Player",
+      "Communication",
+      "Strategic",
+      "Leadership",
+      "Time Management",
+      "Engaging",
+      "Empathy",
+      "Attention to Detail",
+      "Problem Solving",
+      "Prioritization",
+      "Accountability",
+      "Conflict Resolution",
+    ],
+  },
 ];
 
 const EDUCATION = [
@@ -75,24 +279,140 @@ const EDUCATION = [
   },
 ];
 
-const CERTIFICATIONS = [
+const TOOLS = [
   {
-    name: "UX Certification – Interaction Design",
-    issuer: "Nielsen Norman Group",
-    year: "2023",
+    label: "Figma",
+    icon: "F",
     color: "#1183D0",
   },
   {
-    name: "Accessibility Specialist (WAS)",
-    issuer: "IAAP",
-    year: "2022",
-    color: "#0e2951",
+    label: "Jira",
+    icon: "J",
+    color: "#2563eb",
   },
   {
-    name: "Google UX Design Professional Certificate",
-    issuer: "Google / Coursera",
+    label: "Miro",
+    icon: "M",
+    color: "#f59e0b",
+  },
+  {
+    label: "Copilot",
+    icon: "C",
+    color: "#8b5cf6",
+  },
+  {
+    label: "Webex",
+    icon: "W",
+    color: "#06b6d4",
+  },
+  {
+    label: "ClickUp",
+    icon: "CU",
+    color: "#ec4899",
+  },
+  {
+    label: "Confluence",
+    icon: "CF",
+    color: "#0f766e",
+  },
+  {
+    label: "Maze",
+    icon: "Z",
+    color: "#475569",
+  },
+  {
+    label: "Notion",
+    icon: "N",
+    color: "#111827",
+  },
+  {
+    label: "Slack",
+    icon: "S",
+    color: "#22c55e",
+  },
+  {
+    label: "HTML/CSS",
+    icon: "H",
+    color: "#f97316",
+  },
+  {
+    label: "React",
+    icon: "R",
+    color: "#0891b2",
+  },
+];
+
+const CERTIFICATION_ITEMS = [
+  {
+    year: "2023",
+    title: "Interaction Design Specialty",
+    description: "Advanced patterns for complex interactive systems and enterprise workflows",
+  },
+  {
+    year: "2023",
+    title: "UX Management: Strategy & Tactics",
+    description: "Leading design teams, stakeholder alignment, and design ops",
+  },
+  {
+    year: "2022",
+    title: "Measuring UX & ROI",
+    description: "Quantifying design impact through analytics, A/B testing, and KPIs",
+  },
+  {
+    year: "2022",
+    title: "Journey Mapping",
+    description: "Mapping end-to-end user experiences across touchpoints and channels",
+  },
+  {
+    year: "2021",
+    title: "Information Architecture",
+    description: "Organizing and structuring content for findability and clarity",
+  },
+  {
+    year: "2021",
+    title: "Usability Testing",
+    description: "Planning, conducting, and analyzing usability studies",
+  },
+  {
     year: "2020",
-    color: "#34a853",
+    title: "User Interface Design Guidelines",
+    description: "Applying evidence-based UI patterns and accessibility standards",
+  },
+  {
+    year: "2020",
+    title: "Human-Computer Interaction",
+    description: "Foundational principles of cognitive science applied to design",
+  },
+];
+
+const FEATURED_CREDENTIALS = [
+  {
+    type: "image" as const,
+    image: withBasePath("/images/iNSrn.png"),
+    alt: "Upwork Skill Certification",
+    title: "Upwork Skill Certification",
+    subtitle: "User Interface Design",
+    description:
+      "Verified professional certification for UI Design skills on the Upwork platform, demonstrating expertise in creating intuitive and visually appealing interfaces.",
+    year: "2024",
+  },
+  {
+    type: "icon" as const,
+    icon: "cap",
+    title: "User Interface Design",
+    subtitle: "University of Minnesota - COURSERA",
+    description:
+      "Comprehensive course covering user interface design principles, visual hierarchy, typography, and responsive design patterns.",
+    year: "2018",
+  },
+  {
+    type: "icon" as const,
+    icon: "code",
+    title: "UX / UI Course",
+    subtitle: "Coderhouse",
+    description:
+      "Intensive program covering UX research methodologies, wireframing, prototyping, and end-to-end design workflow.",
+    year: "2017",
   },
 ];
 
@@ -106,7 +426,7 @@ function Tag({ label }: { label: string }) {
 
 export default function ResumePage() {
   return (
-    <main className={`${playfair.variable} ${inter.variable} bg-[#F0F7FF] font-inter text-[#3c3e3f] overflow-x-hidden min-h-screen`}>
+    <main className={`${playfair.variable} ${inter.variable} bg-white font-inter text-[#3c3e3f] overflow-x-hidden min-h-screen`}>
       {/* Nav */}
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-[#bcd2ff]/60 h-16 px-12 flex items-center justify-between">
         <div className="flex items-center gap-8">
@@ -159,38 +479,6 @@ export default function ResumePage() {
             <p className="mt-5 text-xl font-medium text-[#1f2f3d] sm:text-2xl">
               Senior Product Designer | AI-Driven UX | Enterprise SaaS
             </p>
-            <div className="mt-8 flex flex-wrap items-start justify-center gap-10 sm:gap-14">
-              <div className="flex max-w-[180px] flex-col items-center text-center">
-                <Image
-                  src="/images/iNSrn.png"
-                  alt="Upwork Skill Certification"
-                  width={110}
-                  height={110}
-                  className="h-auto w-[92px] sm:w-[110px]"
-                />
-                <p className="mt-3 text-[15px] font-medium leading-snug text-[#1f2f3d]">
-                  Upwork Certified
-                </p>
-                <p className="mt-1 text-[15px] font-medium leading-snug text-[#1f2f3d]">
-                  User Interface Design
-                </p>
-              </div>
-              <div className="flex max-w-[180px] flex-col items-center text-center">
-                <Image
-                  src="/images/OiSjn.png"
-                  alt="NN Group UX Certified Interaction Design"
-                  width={110}
-                  height={154}
-                  className="h-auto w-[92px] sm:w-[110px]"
-                />
-                <p className="mt-3 text-[15px] font-medium leading-snug text-[#1f2f3d]">
-                  NN/Group Certified
-                </p>
-                <p className="mt-1 text-[15px] font-medium leading-snug text-[#1f2f3d]">
-                  Interaction Design
-                </p>
-              </div>
-            </div>
             <div className="mt-8 flex w-full max-w-[980px] flex-col items-center gap-4 text-sm text-[#24425d] sm:text-base lg:flex-row lg:flex-nowrap lg:justify-center lg:gap-6">
               <span className="inline-flex items-center gap-2 whitespace-nowrap">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
@@ -213,6 +501,38 @@ export default function ResumePage() {
             <p className="mt-8 max-w-4xl text-lg leading-relaxed text-[#243746]">
               Senior Product Designer with 10+ years of experience certified in User Experience with recognition in interaction design by the NN/Group. Designing enterprise B2B experiences across FinTech, HR, and HealthTech. Strong focus on bridging strategy and execution, leading research, aligning cross-functional teams, and shipping high-impact solutions in Agile environments.
             </p>
+            <div className="mt-10 flex flex-wrap items-start justify-center gap-10 sm:gap-14">
+              <div className="flex max-w-[180px] flex-col items-center text-center">
+                <img
+                  src={withBasePath("/images/iNSrn.png")}
+                  alt="Upwork Skill Certification"
+                  width={110}
+                  height={110}
+                  className="h-auto w-[92px] sm:w-[110px]"
+                />
+                <p className="mt-3 text-[15px] font-medium leading-snug text-[#1f2f3d]">
+                  Upwork Certified
+                </p>
+                <p className="mt-1 text-[15px] font-medium leading-snug text-[#1f2f3d]">
+                  User Interface Design
+                </p>
+              </div>
+              <div className="flex max-w-[180px] flex-col items-center text-center">
+                <img
+                  src={withBasePath("/images/OiSjn.png")}
+                  alt="NN Group UX Certified Interaction Design"
+                  width={110}
+                  height={154}
+                  className="h-auto w-[92px] sm:w-[110px]"
+                />
+                <p className="mt-3 text-[15px] font-medium leading-snug text-[#1f2f3d]">
+                  NN/Group Certified
+                </p>
+                <p className="mt-1 text-[15px] font-medium leading-snug text-[#1f2f3d]">
+                  Interaction Design
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -232,10 +552,29 @@ export default function ResumePage() {
               </div>
               <ul className="mt-4 space-y-2">
                 {job.bullets.map((b) => (
-                  <li key={b} className="text-sm text-[#3c3e3f] leading-relaxed flex gap-2">
-                    <span className="text-[#1183D0] mt-1 shrink-0">›</span>
-                    {b}
-                  </li>
+                  typeof b === "string" ? (
+                    <li key={b} className="text-sm text-[#3c3e3f] leading-relaxed flex gap-2">
+                      <span className="text-[#1183D0] mt-1 shrink-0">›</span>
+                      {b}
+                    </li>
+                  ) : (
+                    <li key={b.heading} className="text-sm text-[#3c3e3f] leading-relaxed">
+                      <div className="flex gap-2">
+                        <span className="text-[#1183D0] mt-1 shrink-0">›</span>
+                        <span className="font-playfair italic font-semibold text-[#0e2951]">
+                          {b.heading}
+                        </span>
+                      </div>
+                      <ul className="mt-2 space-y-2 pl-5">
+                        {b.items.map((item) => (
+                          <li key={item} className="flex gap-2 text-sm text-[#3c3e3f] leading-relaxed">
+                            <span className="text-[#1183D0] mt-1 shrink-0">•</span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  )
                 ))}
               </ul>
               <div className="flex flex-wrap gap-2 mt-4">
@@ -248,51 +587,154 @@ export default function ResumePage() {
 
       {/* Skills & Education */}
       <section className="max-w-[1200px] mx-auto px-6 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Skills */}
-          <div>
-            <h2 className="text-2xl font-playfair italic text-[#0e2951] mb-6">Skills</h2>
-            <div className="flex flex-col gap-4">
-              {SKILLS.map((group) => (
-                <div key={group.category} className="bg-white rounded-2xl p-5 shadow-sm border border-[#bcd2ff]/30">
-                  <h3 className="text-xs font-semibold text-[#5c7792] uppercase tracking-wider mb-3">{group.category}</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {group.items.map((item) => (
-                      <span key={item} className="px-3 py-1 rounded-full text-sm bg-[#F0F7FF] text-[#3c3e3f]">{item}</span>
-                    ))}
+        <div className="rounded-[32px] border border-[#d6e8fb] bg-[#eef5ff] px-6 py-10 shadow-sm sm:px-8 lg:px-12 lg:py-12">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+            <div>
+              <h2 className="font-playfair text-4xl italic text-[#0e2951]">Skills</h2>
+              <div className="mt-6 h-1 w-12 rounded-full bg-[#1183D0]" />
+              <div className="mt-8 flex flex-col gap-8">
+                {SKILLS.map((group) => (
+                  <div key={group.category}>
+                    <h3 className="text-[15px] font-semibold text-[#1f2f3d]">
+                      {group.category}
+                    </h3>
+                    <div className="mt-4 flex flex-wrap gap-3">
+                      {group.items.map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full bg-[#e7f1fd] px-4 py-2 text-sm font-medium text-[#1183D0]"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h2 className="font-playfair text-4xl italic text-[#0e2951]">Education</h2>
+              <div className="mt-6 h-1 w-12 rounded-full bg-[#1183D0]" />
+              <div className="mt-8 flex flex-col gap-5">
+                {EDUCATION.map((edu) => (
+                  <div
+                    key={edu.degree}
+                    className="rounded-[24px] border border-[#d6e8fb] bg-white px-6 py-6 shadow-sm"
+                  >
+                    <span className="inline-flex rounded-full bg-[#eef5ff] px-4 py-1 text-sm font-semibold text-[#1183D0]">
+                      {edu.year}
+                    </span>
+                    <h3 className="mt-4 text-[18px] font-semibold text-[#111827]">
+                      {edu.degree}
+                    </h3>
+                    <p className="mt-2 text-base text-[#3c3e3f]">{edu.school}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-10">
+                <h2 className="font-playfair text-4xl italic text-[#0e2951]">Tools</h2>
+                <div className="mt-6 h-1 w-12 rounded-full bg-[#1183D0]" />
+                <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-4">
+                  {TOOLS.map((tool) => (
+                    <div key={tool.label} className="flex flex-col items-center text-center">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#bfd7f4] bg-[#dfeefd] shadow-sm">
+                        <span
+                          className="text-sm font-semibold"
+                          style={{ color: tool.color }}
+                        >
+                          {tool.icon}
+                        </span>
+                      </div>
+                      <span className="mt-2 text-xs font-medium text-[#3c3e3f]">
+                        {tool.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications */}
+      <section className="max-w-[1200px] mx-auto px-6 py-10">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+          <div>
+            <h2 className="font-playfair text-4xl italic text-[#0e2951]">Certifications</h2>
+            <div className="mt-8 flex items-center gap-5">
+              <img
+                src={withBasePath("/images/OiSjn.png")}
+                alt="NN Group UX Certified Interaction Design"
+                width={38}
+                height={54}
+                className="h-auto w-[30px] sm:w-[38px]"
+              />
+              <div>
+                <h3 className="text-[18px] font-semibold text-[#0e2951] sm:text-[20px]">
+                  NN/Group UX Certification — Interaction Design
+                </h3>
+                <p className="mt-1 text-base text-[#5c7792]">UX Certified Professional</p>
+              </div>
+            </div>
+
+            <div className="mt-8 flex flex-col gap-5">
+              {CERTIFICATION_ITEMS.map((item) => (
+                <div
+                  key={`${item.year}-${item.title}`}
+                  className="rounded-[22px] border border-[#d6e8fb] bg-[#f7fbff] px-5 py-5 shadow-sm"
+                >
+                  <span className="inline-flex rounded-full bg-[#e7f1fd] px-4 py-1 text-sm font-semibold text-[#1183D0]">
+                    {item.year}
+                  </span>
+                  <h3 className="mt-4 text-[18px] font-semibold text-[#0e2951]">{item.title}</h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-[#5c7792]">{item.description}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Education + Certs */}
-          <div>
-            <h2 className="text-2xl font-playfair italic text-[#0e2951] mb-6">Education</h2>
-            <div className="flex flex-col gap-4 mb-6">
-              {EDUCATION.map((edu) => (
-                <div key={edu.degree} className="bg-white rounded-2xl p-5 shadow-sm border border-[#bcd2ff]/30">
-                  <h3 className="font-semibold text-[#0e2951]">{edu.degree}</h3>
-                  <p className="text-sm text-[#5c7792] mt-1">{edu.school}</p>
-                  <p className="text-xs text-[#5c7792] mt-1">{edu.year}</p>
-                </div>
-              ))}
-            </div>
-
-            <h2 className="text-2xl font-playfair italic text-[#0e2951] mb-4">Certifications</h2>
-            <div className="flex flex-col gap-3">
-              {CERTIFICATIONS.map((cert) => (
-                <div key={cert.name} className="bg-white rounded-2xl p-5 shadow-sm border border-[#bcd2ff]/30 flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl shrink-0 flex items-center justify-center text-white text-xs font-bold" style={{ background: cert.color }}>
-                    {cert.issuer.slice(0, 2)}
+          <div className="flex flex-col gap-6 lg:pt-[92px]">
+            {FEATURED_CREDENTIALS.map((credential) => (
+              <div
+                key={credential.title}
+                className="rounded-[26px] border border-[#d6e8fb] bg-[#f7fbff] px-8 py-8 text-center shadow-sm"
+              >
+                {credential.type === "image" ? (
+                  <img
+                    src={credential.image}
+                    alt={credential.alt}
+                    width={92}
+                    height={92}
+                    className="mx-auto h-auto w-[72px] sm:w-[92px]"
+                  />
+                ) : (
+                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#e7f1fd]">
+                    {credential.icon === "cap" ? (
+                      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="1.8" aria-hidden="true">
+                        <path d="m2 9 10-5 10 5-10 5Z" />
+                        <path d="M6 11.5v4.2c0 1.2 2.7 2.8 6 2.8s6-1.6 6-2.8v-4.2" />
+                      </svg>
+                    ) : (
+                      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="1.8" aria-hidden="true">
+                        <path d="m8 8-4 4 4 4" />
+                        <path d="m16 8 4 4-4 4" />
+                      </svg>
+                    )}
                   </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-[#0e2951]">{cert.name}</h3>
-                    <p className="text-xs text-[#5c7792] mt-0.5">{cert.issuer} · {cert.year}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+                )}
+                <h3 className="mt-6 text-[18px] font-semibold text-[#0e2951]">{credential.title}</h3>
+                <p className="mt-3 text-[15px] font-semibold text-[#1183D0]">{credential.subtitle}</p>
+                <p className="mx-auto mt-4 max-w-[430px] text-[15px] leading-relaxed text-[#5c7792]">
+                  {credential.description}
+                </p>
+                <span className="mt-6 inline-flex rounded-full bg-[#e7f1fd] px-4 py-1 text-sm font-semibold text-[#1183D0]">
+                  {credential.year}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
