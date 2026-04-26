@@ -1,4 +1,5 @@
 import { Playfair_Display, Inter } from "next/font/google";
+import { SiteFooter } from "../../components/site-footer";
 import { withBasePath } from "../../lib/site";
 
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
@@ -92,7 +93,7 @@ export default function ContactPage() {
       </nav>
 
       {/* Hero */}
-      <section className="max-w-5xl mx-auto px-6 pt-16 pb-10 text-center">
+      <section className="max-w-[1200px] mx-auto px-6 pt-16 pb-10 text-center">
         <p className="text-[#1183D0] text-sm font-medium mb-3 tracking-wide uppercase">Let's talk</p>
         <h1 className="text-5xl font-playfair italic text-[#0e2951] leading-tight mb-4">Get in Touch</h1>
         <p className="text-[#5c7792] text-lg max-w-xl mx-auto leading-relaxed">
@@ -101,7 +102,7 @@ export default function ContactPage() {
       </section>
 
       {/* 2-col: Form + Info */}
-      <section className="max-w-5xl mx-auto px-6 pb-20">
+      <section className="max-w-[1200px] mx-auto px-6 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Form */}
           <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#bcd2ff]/30">
@@ -178,18 +179,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-[#0e2951] text-white/70 text-sm py-10">
-        <div className="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="font-playfair italic text-white text-lg">Greddys Martínez</span>
-          <div className="flex gap-6">
-            {["Home", "Projects", "Resume", "Contact"].map((l) => (
-              <a key={l} href={l === "Home" ? withBasePath("/") : withBasePath(`/${l.toLowerCase()}`)} className="hover:text-white transition-colors">{l}</a>
-            ))}
-          </div>
-          <p>© 2025 · All rights reserved</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

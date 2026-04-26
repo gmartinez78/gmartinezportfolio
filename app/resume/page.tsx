@@ -1,4 +1,6 @@
 import { Playfair_Display, Inter } from "next/font/google";
+import Image from "next/image";
+import { SiteFooter } from "../../components/site-footer";
 import { withBasePath } from "../../lib/site";
 
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
@@ -131,19 +133,21 @@ export default function ResumePage() {
       </nav>
 
       {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 pt-16 pb-10">
-        <a href={withBasePath("/")} className="inline-flex items-center gap-2 text-[#5c7792] text-sm hover:text-[#1183D0] transition-colors mb-8">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          Back to Home
-        </a>
-        <div className="relative overflow-hidden px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
+      <section className="max-w-[1200px] mx-auto px-6 pt-[10px] pb-10">
+        <div className="flex items-center justify-between gap-4 mb-6">
+          <a href={withBasePath("/")} className="inline-flex items-center gap-2 text-[#5c7792] text-sm hover:text-[#1183D0] transition-colors">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back to Home
+          </a>
           <a
             href="#"
-            className="absolute right-6 top-6 inline-flex shrink-0 items-center gap-2 rounded-full border border-[#1183D0] bg-white/90 px-5 py-2.5 text-sm font-medium text-[#1183D0] shadow-sm transition-colors hover:bg-[#1183D0] hover:text-white sm:right-10 sm:top-10"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[#1183D0] bg-white/90 px-5 py-2.5 text-sm font-medium text-[#1183D0] shadow-sm transition-colors hover:bg-[#1183D0] hover:text-white"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Download PDF
           </a>
+        </div>
+        <div className="relative overflow-hidden px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
           <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
             <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#0e2951]">Resume</span>
             <div className="mt-8 flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-[#1183D0] to-[#0e2951] text-4xl font-playfair italic font-bold text-white shadow-[0_18px_45px_rgba(17,131,208,0.22)] ring-8 ring-white/70">
@@ -155,20 +159,52 @@ export default function ResumePage() {
             <p className="mt-5 text-xl font-medium text-[#1f2f3d] sm:text-2xl">
               Senior Product Designer | AI-Driven UX | Enterprise SaaS
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-[#24425d] sm:text-base">
-              <span className="inline-flex items-center gap-2">
+            <div className="mt-8 flex flex-wrap items-start justify-center gap-10 sm:gap-14">
+              <div className="flex max-w-[180px] flex-col items-center text-center">
+                <Image
+                  src="/images/iNSrn.png"
+                  alt="Upwork Skill Certification"
+                  width={110}
+                  height={110}
+                  className="h-auto w-[92px] sm:w-[110px]"
+                />
+                <p className="mt-3 text-[15px] font-medium leading-snug text-[#1f2f3d]">
+                  Upwork Certified
+                </p>
+                <p className="mt-1 text-[15px] font-medium leading-snug text-[#1f2f3d]">
+                  User Interface Design
+                </p>
+              </div>
+              <div className="flex max-w-[180px] flex-col items-center text-center">
+                <Image
+                  src="/images/OiSjn.png"
+                  alt="NN Group UX Certified Interaction Design"
+                  width={110}
+                  height={154}
+                  className="h-auto w-[92px] sm:w-[110px]"
+                />
+                <p className="mt-3 text-[15px] font-medium leading-snug text-[#1f2f3d]">
+                  NN/Group Certified
+                </p>
+                <p className="mt-1 text-[15px] font-medium leading-snug text-[#1f2f3d]">
+                  Interaction Design
+                </p>
+              </div>
+            </div>
+            <div className="mt-8 flex w-full max-w-[980px] flex-col items-center gap-4 text-sm text-[#24425d] sm:text-base lg:flex-row lg:flex-nowrap lg:justify-center lg:gap-6">
+              <span className="inline-flex items-center gap-2 whitespace-nowrap">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
                 greddysmartinez5@gmail.com
               </span>
-              <span className="inline-flex items-center gap-2">
+              <span className="inline-flex items-center gap-2 whitespace-nowrap">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="2" aria-hidden="true"><path d="M12 21s-6-4.35-6-10a6 6 0 1 1 12 0c0 5.65-6 10-6 10Z"/><circle cx="12" cy="11" r="2.5"/></svg>
                 Malaga, Spain
               </span>
-              <span className="inline-flex items-center gap-2">
+              <span className="inline-flex items-center gap-2 whitespace-nowrap">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1-4-9 15.3 15.3 0 0 1 4-9Z"/></svg>
                 www.be.net/greddysmartinez
               </span>
-              <span className="inline-flex items-center gap-2">
+              <span className="inline-flex items-center gap-2 whitespace-nowrap">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                 linkedin.com/in/greddysmartinez
               </span>
@@ -182,7 +218,7 @@ export default function ResumePage() {
       </section>
 
       {/* Experience */}
-      <section className="max-w-4xl mx-auto px-6 py-10">
+      <section className="max-w-[1200px] mx-auto px-6 py-10">
         <h2 className="text-2xl font-playfair italic text-[#0e2951] mb-6">Experience</h2>
         <div className="flex flex-col gap-5">
           {EXPERIENCE.map((job) => (
@@ -211,7 +247,7 @@ export default function ResumePage() {
       </section>
 
       {/* Skills & Education */}
-      <section className="max-w-4xl mx-auto px-6 py-10">
+      <section className="max-w-[1200px] mx-auto px-6 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Skills */}
           <div>
@@ -261,18 +297,9 @@ export default function ResumePage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-[#0e2951] text-white/70 text-sm py-10 mt-10">
-        <div className="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="font-playfair italic text-white text-lg">Greddys Martínez</span>
-          <div className="flex gap-6">
-            {["Home", "Projects", "Resume", "Contact"].map((l) => (
-              <a key={l} href={l === "Home" ? withBasePath("/") : withBasePath(`/${l.toLowerCase()}`)} className="hover:text-white transition-colors">{l}</a>
-            ))}
-          </div>
-          <p>© 2025 · All rights reserved</p>
-        </div>
-      </footer>
+      <div className="mt-10">
+        <SiteFooter />
+      </div>
     </main>
   );
 }

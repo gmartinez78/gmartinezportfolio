@@ -1,5 +1,6 @@
 import { Playfair_Display, Inter } from "next/font/google";
 import Image from "next/image";
+import { SiteFooter } from "./components/site-footer";
 import { withBasePath } from "./lib/site";
 
 const playfair = Playfair_Display({
@@ -52,9 +53,6 @@ const TOOLS_RIGHT = [
   { label: "GPT", x: "right-[250px]", y: "top-[160px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
   { label: "GCP", x: "right-[270px]", y: "top-[340px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
 ];
-
-const FOOTER_LINKS = ["Home", "Projects", "Resume", "Contact"];
-const FOOTER_SOCIAL = ["LinkedIn", "Behance", "UpWork"];
 
 function ToolBadge({
   label,
@@ -133,7 +131,7 @@ export default function PortfolioPage() {
           background: "linear-gradient(135deg, #D6ECFA 0%, #FFFFFF 100%)",
         }}
       >
-        <div className="max-w-[1440px] mx-auto px-20 pt-16 pb-10 flex flex-col items-center gap-8 relative">
+        <div className="max-w-[1200px] mx-auto px-20 pt-16 pb-10 flex flex-col items-center gap-8 relative">
           {/* Certification badges */}
           <div className="absolute right-12 top-10 flex flex-col items-center gap-2">
             <span className="text-[12px] text-[#5c7792]">Certified by</span>
@@ -189,7 +187,7 @@ export default function PortfolioPage() {
 
         {/* Social Proof Bar */}
         <div className="border-t border-[#bcd2ff]/50 mx-0">
-          <div className="max-w-[1440px] mx-auto px-20 h-[94px] flex items-center">
+          <div className="max-w-[1200px] mx-auto px-20 h-[94px] flex items-center">
             <div className="w-[280px] shrink-0 flex items-center border-r border-[#00006e]/25 pr-10 h-full">
               <span className="text-[13px] font-semibold text-[#3c3e3f]">
                 Trusted by industry leaders
@@ -213,7 +211,7 @@ export default function PortfolioPage() {
 
       {/* ── Recent Work ── */}
       <section id="projects" className="bg-white py-12 px-20">
-        <div className="max-w-[1440px] mx-auto flex flex-col items-center gap-12">
+        <div className="max-w-[1200px] mx-auto flex flex-col items-center gap-12">
           <h2 className="font-playfair italic text-[36px] leading-[1.2] text-[#1183D0]">
             Recent Work
           </h2>
@@ -395,115 +393,7 @@ export default function PortfolioPage() {
         </a>
       </section>
 
-      {/* ── Footer ── */}
-      <footer className="bg-[#F0F7FF]">
-        <div className="border-t border-[#C4DCF0]" />
-        <div className="px-20 py-12 grid grid-cols-4 gap-15">
-          <div className="flex flex-col gap-3">
-            <span className="font-playfair italic text-[22px] text-[#1183D0]">
-              Greddys Martinez
-            </span>
-            <p className="text-[14px] leading-[1.6] text-[#3c3e3f] max-w-[280px]">
-              Senior Product Designer crafting thoughtful digital experiences
-              that make a difference.
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-3.5">
-            <span className="text-[14px] font-semibold text-[#1183D0]">
-              Site Map
-            </span>
-            {FOOTER_LINKS.map((link) => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                className="text-[14px] text-[#3c3e3f] hover:text-[#1183D0] transition-colors"
-              >
-                {link}
-              </a>
-            ))}
-          </div>
-
-          <div className="flex flex-col gap-3.5">
-            <span className="text-[14px] font-semibold text-[#1183D0]">
-              Connect
-            </span>
-            {FOOTER_SOCIAL.map((link) => (
-              <a
-                key={link}
-                href="#"
-                className="text-[14px] text-[#3c3e3f] hover:text-[#1183D0] transition-colors"
-              >
-                {link}
-              </a>
-            ))}
-          </div>
-
-          <div className="flex flex-col gap-3.5">
-            <span className="text-[14px] font-semibold text-[#1183D0]">
-              Let&apos;s Work Together
-            </span>
-            <p className="text-[14px] leading-[1.6] text-[#3c3e3f]">
-              I&apos;m always open to new opportunities and collaborations.
-            </p>
-            <a
-              href="#contact"
-              className="text-[14px] font-medium text-[#1183D0] hover:text-[#0e284b] transition-colors"
-            >
-              Get in touch →
-            </a>
-          </div>
-        </div>
-
-        <div className="border-t border-[#C4DCF0]" />
-
-        <div className="px-20 py-5 flex items-center justify-between">
-          <span className="text-[13px] text-[#7A98B5]">
-            © 2026 Greddys Martinez. All rights reserved.
-          </span>
-          <div className="flex items-center gap-4 text-[#1183D0]">
-            <a
-              href="#"
-              aria-label="LinkedIn"
-              className="hover:opacity-70 transition-opacity"
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                <rect x="2" y="9" width="4" height="12" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
-            </a>
-            <a
-              href="#"
-              className="font-bold text-sm hover:opacity-70 transition-opacity"
-            >
-              Bē
-            </a>
-            <a
-              href="#"
-              aria-label="Work"
-              className="hover:opacity-70 transition-opacity"
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

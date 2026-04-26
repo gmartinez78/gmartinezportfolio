@@ -1,5 +1,6 @@
 import { Playfair_Display, Inter } from "next/font/google";
 import Image from "next/image";
+import { SiteFooter } from "../../components/site-footer";
 import { withBasePath } from "../../lib/site";
 
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
@@ -338,7 +339,7 @@ export default function BenefitsPage() {
       </nav>
 
       {/* ── Hero ── */}
-      <section className="relative px-20 pt-16 pb-0 max-w-[1440px] mx-auto">
+      <section className="relative px-20 pt-16 pb-0 max-w-[1200px] mx-auto">
         {/* Company logos */}
         <div className="flex items-center gap-6 mb-10">
           <Image src={ASSETS.paychex} alt="Paychex" width={120} height={32} className="object-contain opacity-80 brightness-0 invert" />
@@ -377,7 +378,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Overview ── */}
-      <section className="bg-[#1183D0] px-20 py-20 max-w-[1440px] mx-auto">
+      <section className="bg-[#1183D0] px-20 py-20 max-w-[1200px] mx-auto">
         <div className="mb-6">
           <SectionLabel>Overview</SectionLabel>
           <div className="relative inline-block">
@@ -443,7 +444,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Pain Points ── */}
-      <section className="px-20 py-20 max-w-[1440px] mx-auto">
+      <section className="px-20 py-20 max-w-[1200px] mx-auto">
         <div className="grid grid-cols-2 gap-20">
           {/* Admin Pain Points – left */}
           <div>
@@ -476,7 +477,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── 72% Big Number ── */}
-      <section className="px-20 py-8 max-w-[1440px] mx-auto flex items-center justify-center">
+      <section className="px-20 py-8 max-w-[1200px] mx-auto flex items-center justify-center">
         <div className="text-center">
           <p className="font-inter font-bold text-white/8 select-none leading-none"
             style={{ fontSize: "clamp(120px, 18vw, 280px)" }}>
@@ -489,7 +490,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Constraints ── */}
-      <section className="px-20 py-20 max-w-[1440px] mx-auto">
+      <section className="px-20 py-20 max-w-[1200px] mx-auto">
         <div className="text-center mb-12">
           <div className="relative inline-block">
             <SectionTitle>Constraints</SectionTitle>
@@ -517,7 +518,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Design Thinking Process ── */}
-      <section className="px-20 py-20 max-w-[1440px] mx-auto">
+      <section className="px-20 py-20 max-w-[1200px] mx-auto">
         <div className="mb-12">
           <SectionLabel>Methodology</SectionLabel>
           <SectionTitle>Design Thinking</SectionTitle>
@@ -550,7 +551,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Design Strategy ── */}
-      <section className="px-20 py-20 max-w-[1440px] mx-auto">
+      <section className="px-20 py-20 max-w-[1200px] mx-auto">
         <div className="grid grid-cols-2 gap-16 items-center">
           {/* Left text */}
           <div>
@@ -576,7 +577,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Results ── */}
-      <section className="px-20 py-20 max-w-[1440px] mx-auto">
+      <section className="px-20 py-20 max-w-[1200px] mx-auto">
         <div className="mb-12">
           <SectionLabel>Impact</SectionLabel>
           <SectionTitle>Results</SectionTitle>
@@ -611,7 +612,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Product Deep Dive ── */}
-      <section className="px-20 py-20 max-w-[1440px] mx-auto">
+      <section className="px-20 py-20 max-w-[1200px] mx-auto">
         <div className="mb-10">
           <SectionLabel>Solution</SectionLabel>
           <SectionTitle>The Platform</SectionTitle>
@@ -620,7 +621,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Reflections ── */}
-      <section className="px-20 py-20 max-w-[1440px] mx-auto">
+      <section className="px-20 py-20 max-w-[1200px] mx-auto">
         <div className="mb-12">
           <div className="relative inline-block">
             <SectionTitle>Reflections</SectionTitle>
@@ -642,7 +643,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── NDA Notice ── */}
-      <section className="px-20 py-10 max-w-[1440px] mx-auto">
+      <section className="px-20 py-10 max-w-[1200px] mx-auto">
         <div className="border-t border-white/15 pt-8">
           <p className="font-inter text-white/40 text-[13px] leading-[1.7] max-w-[900px]">
             <strong className="font-semibold text-white/50">NDA notice:</strong> Parts of this presentation — including some screens and project details — have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy.
@@ -651,7 +652,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Other Projects ── */}
-      <section className="px-20 py-16 max-w-[1440px] mx-auto">
+      <section className="px-20 py-16 max-w-[1200px] mx-auto">
         <p className="font-inter text-white/50 text-[13px] uppercase tracking-[2px] mb-2">More work</p>
         <h2 className="font-playfair italic text-white text-[32px] mb-8">Other Projects</h2>
         <div className="grid grid-cols-3 gap-5">
@@ -674,20 +675,7 @@ export default function BenefitsPage() {
         </div>
       </section>
 
-      {/* ── Footer ── */}
-      <footer className="border-t border-white/15 px-20 py-8 flex items-center justify-between max-w-[1440px] mx-auto">
-        <span className="font-inter text-white/40 text-[13px]">
-          © 2025 Greddys Martinez. All rights reserved.
-        </span>
-        <div className="flex items-center gap-6">
-          {["Home", "Projects", "Resume", "Contact"].map((l) => (
-            <a key={l} href={l === "Home" ? withBasePath("/") : withBasePath(`/${l.toLowerCase()}`)} className="text-white/40 hover:text-white/80 text-[13px] font-inter transition-colors">{l}</a>
-          ))}
-        </div>
-        <a href={withBasePath("/")} className="font-inter text-[#1183D0] text-[13px] font-medium bg-white px-5 py-2 rounded-full hover:bg-white/90 transition-colors">
-          Back to Portfolio
-        </a>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

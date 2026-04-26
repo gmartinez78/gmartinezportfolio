@@ -1,5 +1,6 @@
 import { Playfair_Display, Inter } from "next/font/google";
 import Image from "next/image";
+import { SiteFooter } from "../../components/site-footer";
 import { withBasePath } from "../../lib/site";
 
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
@@ -98,7 +99,7 @@ export default function ProjectsPage() {
       </nav>
 
       {/* Hero */}
-      <section className="max-w-5xl mx-auto px-6 pt-16 pb-10">
+      <section className="max-w-[1200px] mx-auto px-6 pt-16 pb-10">
         <p className="text-[#1183D0] text-sm font-medium mb-3 tracking-wide uppercase">Selected Work</p>
         <h1 className="text-5xl font-playfair italic text-[#0e2951] leading-tight mb-4">Projects</h1>
         <p className="text-[#5c7792] text-lg max-w-xl leading-relaxed">
@@ -123,7 +124,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* Project Grid */}
-      <section className="max-w-5xl mx-auto px-6 pb-20 flex flex-col gap-6">
+      <section className="max-w-[1200px] mx-auto px-6 pb-20 flex flex-col gap-6">
         {PROJECTS.map((project, i) => (
           <a
             key={project.title}
@@ -177,18 +178,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-[#0e2951] text-white/70 text-sm py-10">
-        <div className="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="font-playfair italic text-white text-lg">Greddys Martínez</span>
-          <div className="flex gap-6">
-            {["Home", "Projects", "Resume", "Contact"].map((l) => (
-              <a key={l} href={l === "Home" ? withBasePath("/") : withBasePath(`/${l.toLowerCase()}`)} className="hover:text-white transition-colors">{l}</a>
-            ))}
-          </div>
-          <p>© 2025 · All rights reserved</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
