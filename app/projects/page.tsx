@@ -1,10 +1,10 @@
-import { Playfair_Display, Inter } from "next/font/google";
-import Image from "next/image";
 import { SiteFooter } from "../../components/site-footer";
+import { SiteHeader } from "../../components/site-header";
+import { Badge } from "../../components/ui/badge";
+import { Button } from "../../components/ui/button";
+import { Card, CardContent } from "../../components/ui/card";
 import { withBasePath } from "../../lib/site";
 
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const FILTER_PILLS = [
   { label: "All", active: true },
@@ -75,33 +75,13 @@ const SOCIAL_LOGOS = [
 
 export default function ProjectsPage() {
   return (
-    <main className={`${playfair.variable} ${inter.variable} bg-[#F0F7FF] font-inter text-[#3c3e3f] overflow-x-hidden min-h-screen`}>
-      {/* Nav */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-[#bcd2ff]/60 h-16 px-12 flex items-center justify-between">
-        <div className="flex items-center gap-8">
-          <a href={withBasePath("/")} className="font-playfair italic text-[#1183D0] text-xl font-medium">Logo</a>
-          <ul className="flex items-center gap-1">
-            {["Projects", "Resume", "Contact"].map((link) => (
-              <li key={link}>
-                <a
-                  href={withBasePath(`/${link.toLowerCase()}`)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${link === "Projects" ? "bg-[#1183D0]/10 text-[#1183D0]" : "text-[#1183D0] hover:bg-[#003d66]/5"}`}
-                >
-                  {link}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <a href={withBasePath("/contact")} className="px-5 py-2 rounded-full bg-[#1183D0] text-white text-sm font-medium hover:bg-[#0e6fad] transition-colors">
-          Get in touch
-        </a>
-      </nav>
+    <main className="bg-[#F0F7FF] font-inter text-[#3c3e3f] overflow-x-hidden min-h-screen">
+      <SiteHeader active="Projects" />
 
       {/* Hero */}
       <section className="max-w-[1200px] mx-auto px-6 pt-16 pb-10">
         <p className="text-[#1183D0] text-sm font-medium mb-3 tracking-wide uppercase">Selected Work</p>
-        <h1 className="text-5xl font-playfair italic text-[#0e2951] leading-tight mb-4">Projects</h1>
+        <h1 className="text-5xl font-serif-display italic text-[#0e2951] leading-tight mb-4">Projects</h1>
         <p className="text-[#5c7792] text-lg max-w-xl leading-relaxed">
           Case studies and highlights from 10+ years designing enterprise SaaS, healthtech, and nonprofit digital experiences.
         </p>
@@ -109,16 +89,16 @@ export default function ProjectsPage() {
         {/* Filter Pills */}
         <div className="flex flex-wrap gap-2 mt-8">
           {FILTER_PILLS.map((pill) => (
-            <button
+            <Button
               key={pill.label}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`h-auto rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 pill.active
                   ? "bg-[#1183D0] text-white"
                   : "bg-white text-[#5c7792] border border-[#bcd2ff]/60 hover:border-[#1183D0] hover:text-[#1183D0]"
               }`}
             >
               {pill.label}
-            </button>
+            </Button>
           ))}
         </div>
       </section>
@@ -129,41 +109,43 @@ export default function ProjectsPage() {
           <a
             key={project.title}
             href={project.slug === "#" ? "#" : withBasePath(`/${project.slug}`)}
-            className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-[#bcd2ff]/30 hover:shadow-[0_12px_40px_#00000018] hover:-translate-y-0.5 transition-all flex flex-col md:flex-row"
+            className="group block transition-all hover:-translate-y-0.5"
           >
+            <Card className="flex overflow-hidden rounded-3xl border-[#bcd2ff]/30 bg-white p-0 py-0 shadow-sm transition-shadow hover:shadow-[0_12px_40px_#00000018] md:flex-row">
             {/* Preview */}
             <div
               className={`w-full md:w-80 shrink-0 h-60 md:h-auto flex items-center justify-center relative overflow-hidden ${i % 2 === 1 ? "md:order-2" : ""}`}
               style={{ background: project.bg }}
             >
               <div className="text-center">
-                <div className="text-5xl font-playfair italic font-bold text-[#1183D0]">{project.stat}</div>
+                <div className="text-5xl font-serif-display italic font-bold text-[#1183D0]">{project.stat}</div>
                 <div className="text-xs text-[#5c7792] mt-1 max-w-[120px] mx-auto leading-tight">{project.statLabel}</div>
               </div>
             </div>
 
             {/* Content */}
-            <div className="flex-1 p-8 flex flex-col justify-between">
+            <CardContent className="flex flex-1 flex-col justify-between p-8">
               <div>
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-xs text-[#5c7792] font-medium">{project.company}</span>
                   <span className="text-[#bcd2ff]">·</span>
                   <span className="text-xs text-[#5c7792]">{project.year}</span>
                 </div>
-                <h2 className="text-2xl font-playfair italic text-[#0e2951] leading-snug mb-3">{project.title}</h2>
+                <h2 className="text-2xl font-serif-display italic text-[#0e2951] leading-snug mb-3">{project.title}</h2>
                 <p className="text-[#5c7792] text-sm leading-relaxed">{project.description}</p>
               </div>
               <div className="flex items-end justify-between mt-6 flex-wrap gap-4">
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-[#E0EEFB] text-[#1183D0]">{tag}</span>
+                    <Badge key={tag} className="h-auto rounded-full border-0 bg-[#E0EEFB] px-3 py-1 text-xs font-medium text-[#1183D0] hover:bg-[#E0EEFB]">{tag}</Badge>
                   ))}
                 </div>
                 <span className="text-sm text-[#1183D0] font-medium group-hover:underline">
                   {project.slug === "#" ? "Coming soon" : "View case study ↗"}
                 </span>
               </div>
-            </div>
+            </CardContent>
+            </Card>
           </a>
         ))}
       </section>

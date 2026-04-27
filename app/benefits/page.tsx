@@ -1,10 +1,9 @@
-import { Playfair_Display, Inter } from "next/font/google";
 import Image from "next/image";
 import { SiteFooter } from "../../components/site-footer";
+import { SiteHeader } from "../../components/site-header";
+import { Badge } from "../../components/ui/badge";
+import { Card, CardContent } from "../../components/ui/card";
 import { withBasePath } from "../../lib/site";
-
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 // ── Assets from Figma ─────────────────────────────────────────────────────────
 const ASSETS = {
@@ -17,9 +16,9 @@ const ASSETS = {
   sigPenYellow: "/images/benefits/sig-pen-yellow.png",
   sigPenTeal: "/images/benefits/sig-pen-teal.png",
   miscSticker: "/images/benefits/misc-sticker.png",
-  paychex: "/images/paychex.png",
-  nayya: "/images/nayya.png",
-  ibx: "/images/ibx.png",
+  paychex: "/images/c54fy.png",
+  nayya: "/images/bBw3A.png",
+  ibx: "/images/SNUZw.png",
 };
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -144,7 +143,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="font-playfair italic text-[#1183D0] text-[45px] leading-tight font-normal">
+    <h2 className="font-serif-display italic text-[#1183D0] text-[45px] leading-tight font-normal">
       {children}
     </h2>
   );
@@ -319,24 +318,16 @@ function KanbanIllustration() {
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function BenefitsPage() {
   return (
-    <main
-      className={`${playfair.variable} ${inter.variable} bg-[#1183D0] font-inter text-[#06578d] overflow-x-hidden`}
-    >
-      {/* ── Nav ── */}
-      <nav className="sticky top-0 z-50 bg-[#1183D0]/90 backdrop-blur border-b border-white/10 h-16 px-12 flex items-center justify-between">
-        <div className="flex items-center gap-3 text-sm font-inter">
-          <a href={withBasePath("/")} className="text-white/60 hover:text-white transition-colors">Home</a>
-          <span className="text-white/30">›</span>
-          <a href={withBasePath("/projects")} className="text-white/60 hover:text-white transition-colors">Projects</a>
-          <span className="text-white/30">›</span>
-          <span className="text-white font-semibold">Enhancing Benefits Enrollment</span>
-        </div>
-        <div className="flex items-center gap-3">
-          {["HR/Payroll SaaS", "UX Research", "IA", "Interaction Design", "Design Systems"].map((tag) => (
-            <span key={tag} className="text-xs text-white/70 bg-white/10 px-3 py-1 rounded-full hidden lg:inline">{tag}</span>
-          ))}
-        </div>
-      </nav>
+    <main className="bg-[#1183D0] font-inter text-[#06578d] overflow-x-hidden">
+      <SiteHeader active="Projects" />
+
+      <div className="mx-auto flex max-w-[1200px] items-center gap-3 px-6 pt-6 text-sm font-inter lg:px-20">
+        <a href={withBasePath("/")} className="text-white/65 transition-colors hover:text-white">Home</a>
+        <span className="text-white/30">›</span>
+        <a href={withBasePath("/projects")} className="text-white/65 transition-colors hover:text-white">Projects</a>
+        <span className="text-white/30">›</span>
+        <span className="font-semibold text-white">Enhancing Benefits Enrollment</span>
+      </div>
 
       {/* ── Hero ── */}
       <section className="relative px-20 pt-16 pb-0 max-w-[1200px] mx-auto">
@@ -355,7 +346,7 @@ export default function BenefitsPage() {
             </p>
             <h1 className="font-inter font-bold text-white text-[44px] leading-[1.15] mb-5">
               Enhancing{" "}
-              <span className="font-playfair italic font-normal">Benefits Enrollment</span>
+              <span className="font-serif-display italic font-normal">Benefits Enrollment</span>
             </h1>
             <p className="text-white/80 text-[18px] leading-[1.7] font-inter">
               Replaced a manual workflow with a centralized, self-managed platform;{" "}
@@ -500,19 +491,21 @@ export default function BenefitsPage() {
 
         <div className="grid grid-cols-2 gap-6">
           {CONSTRAINTS.map((c, i) => (
-            <div key={i} className="bg-white rounded-[32px] p-8 relative shadow-sm">
+            <Card key={i} className="relative rounded-[32px] border-0 bg-white p-0 py-0 shadow-sm">
+              <CardContent className="p-8">
               <div className="flex items-start justify-between mb-4">
                 <Image src={c.icon} alt={c.alt} width={30} height={30} className="object-contain opacity-70" />
-                <span className="bg-[rgba(174,211,237,0.29)] text-[#1183D0] text-[13px] font-medium font-inter px-4 py-1 rounded-full">
+                <Badge className="h-auto rounded-full border-0 bg-[rgba(174,211,237,0.29)] px-4 py-1 font-inter text-[13px] font-medium text-[#1183D0] hover:bg-[rgba(174,211,237,0.29)]">
                   {c.label}
-                </span>
+                </Badge>
               </div>
               <p className="text-[#06578d] text-[22px] font-inter leading-[1.85] mt-4">
                 {c.title && <span>{c.title}</span>}
                 <strong className="font-semibold">{c.bold}</strong>
                 {c.after && <span>{c.after}</span>}
               </p>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>
@@ -557,7 +550,7 @@ export default function BenefitsPage() {
           <div>
             <h2 className="font-inter font-normal text-[#06578d] text-[45px] leading-tight mb-8">
               Design{" "}
-              <span className="font-playfair italic text-[#2496e2]">Strategy</span>
+              <span className="font-serif-display italic text-[#2496e2]">Strategy</span>
             </h2>
             <div className="flex flex-col gap-8">
               {STRATEGY_POINTS.map((p, i) => (
@@ -585,7 +578,8 @@ export default function BenefitsPage() {
 
         <div className="grid grid-cols-2 gap-6">
           {/* Bar chart card */}
-          <div className="bg-white rounded-[32px] p-8 shadow-sm">
+          <Card className="rounded-[32px] border-0 bg-white p-0 py-0 shadow-sm">
+            <CardContent className="p-8">
             <p className="font-inter font-bold text-[#06578d] text-[20px] mb-1">Processing Time</p>
             <p className="font-inter text-[#4d87ae] text-[14px] mb-4">Before vs. After</p>
             <BarChart />
@@ -593,19 +587,22 @@ export default function BenefitsPage() {
               <p className="font-inter text-[#4d87ae] text-[13px]">Payroll cycle avg. duration</p>
               <p className="font-inter font-bold text-[#1183D0] text-[13px]">72% faster</p>
             </div>
-          </div>
+            </CardContent>
+          </Card>
 
           {/* Stat cards column */}
           <div className="flex flex-col gap-6">
             {RESULTS.map((r) => (
-              <div key={r.label} className="bg-white rounded-[32px] p-8 shadow-sm flex-1 flex items-center gap-6">
+              <Card key={r.label} className="flex-1 rounded-[32px] border-0 bg-white p-0 py-0 shadow-sm">
+                <CardContent className="flex items-center gap-6 p-8">
                 <span className="font-inter font-bold text-[#1183D0] text-[52px] leading-none shrink-0">
                   {r.value}
                 </span>
                 <p className="font-inter text-[#06578d] text-[18px] leading-[1.5]">
                   {r.label}
                 </p>
-              </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
@@ -654,7 +651,7 @@ export default function BenefitsPage() {
       {/* ── Other Projects ── */}
       <section className="px-20 py-16 max-w-[1200px] mx-auto">
         <p className="font-inter text-white/50 text-[13px] uppercase tracking-[2px] mb-2">More work</p>
-        <h2 className="font-playfair italic text-white text-[32px] mb-8">Other Projects</h2>
+        <h2 className="font-serif-display italic text-white text-[32px] mb-8">Other Projects</h2>
         <div className="grid grid-cols-3 gap-5">
           {[
             { title: "AI-Powered Benefits Advisor", company: "Nayya", tag: "AI/ML Product", bg: "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)", stat: "4.8★" },
@@ -663,12 +660,12 @@ export default function BenefitsPage() {
           ].map((p) => (
             <a key={p.title} href="#" className="group bg-white/10 hover:bg-white/15 border border-white/10 rounded-[28px] overflow-hidden transition-all hover:-translate-y-0.5">
               <div className="h-36 flex items-center justify-center" style={{ background: p.bg }}>
-                <span className="font-playfair italic font-bold text-[#1183D0] text-3xl">{p.stat}</span>
+                <span className="font-serif-display italic font-bold text-[#1183D0] text-3xl">{p.stat}</span>
               </div>
               <div className="p-6">
                 <p className="text-white/50 text-xs mb-1">{p.company}</p>
                 <h3 className="font-inter font-semibold text-white text-[15px] leading-snug mb-2">{p.title}</h3>
-                <span className="text-xs text-white/40 bg-white/10 px-3 py-1 rounded-full">{p.tag}</span>
+                <Badge className="h-auto rounded-full border-0 bg-white/10 px-3 py-1 text-xs font-normal text-white/40 hover:bg-white/10">{p.tag}</Badge>
               </div>
             </a>
           ))}

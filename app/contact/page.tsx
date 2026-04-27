@@ -1,9 +1,11 @@
-import { Playfair_Display, Inter } from "next/font/google";
 import { SiteFooter } from "../../components/site-footer";
-import { withBasePath } from "../../lib/site";
+import { SiteHeader } from "../../components/site-header";
+import { Button } from "../../components/ui/button";
+import { Card, CardContent } from "../../components/ui/card";
+import { Input } from "../../components/ui/input";
+import { Label } from "../../components/ui/label";
+import { Textarea } from "../../components/ui/textarea";
 
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const INFO_CARDS = [
   {
@@ -66,36 +68,13 @@ const INFO_CARDS = [
 
 export default function ContactPage() {
   return (
-    <main className={`${playfair.variable} ${inter.variable} bg-[#F0F7FF] font-inter text-[#3c3e3f] overflow-x-hidden min-h-screen`}>
-      {/* Nav */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-[#bcd2ff]/60 h-16 px-12 flex items-center justify-between">
-        <div className="flex items-center gap-8">
-          <a href={withBasePath("/")} className="font-playfair italic text-[#1183D0] text-xl font-medium">Logo</a>
-          <ul className="flex items-center gap-1">
-            {["Projects", "Resume", "Contact"].map((link) => (
-              <li key={link}>
-                <a
-                  href={withBasePath(`/${link.toLowerCase()}`)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${link === "Contact" ? "bg-[#1183D0]/10 text-[#1183D0]" : "text-[#1183D0] hover:bg-[#003d66]/5"}`}
-                >
-                  {link}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <a
-          href={withBasePath("/contact")}
-          className="px-5 py-2 rounded-full bg-[#1183D0] text-white text-sm font-medium hover:bg-[#0e6fad] transition-colors"
-        >
-          Get in touch
-        </a>
-      </nav>
+    <main className="bg-[#F0F7FF] font-inter text-[#3c3e3f] overflow-x-hidden min-h-screen">
+      <SiteHeader active="Contact" />
 
       {/* Hero */}
       <section className="max-w-[1200px] mx-auto px-6 pt-16 pb-10 text-center">
         <p className="text-[#1183D0] text-sm font-medium mb-3 tracking-wide uppercase">Let's talk</p>
-        <h1 className="text-5xl font-playfair italic text-[#0e2951] leading-tight mb-4">Get in Touch</h1>
+        <h1 className="text-5xl font-serif-display italic text-[#0e2951] leading-tight mb-4">Get in Touch</h1>
         <p className="text-[#5c7792] text-lg max-w-xl mx-auto leading-relaxed">
           Whether you have a project in mind, a question, or just want to say hello — I'd love to hear from you.
         </p>
@@ -105,55 +84,57 @@ export default function ContactPage() {
       <section className="max-w-[1200px] mx-auto px-6 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Form */}
-          <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#bcd2ff]/30">
+          <Card className="rounded-3xl border-[#bcd2ff]/30 bg-white p-0 py-0 shadow-sm">
+            <CardContent className="p-8">
             <h2 className="text-xl font-semibold text-[#0e2951] mb-6">Send a message</h2>
             <form className="flex flex-col gap-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-medium text-[#5c7792] uppercase tracking-wide">Name</label>
-                  <input
+                  <Label className="text-xs font-medium text-[#5c7792] uppercase tracking-wide">Name</Label>
+                  <Input
                     type="text"
                     placeholder="Your name"
-                    className="px-4 py-3 rounded-xl border border-[#bcd2ff]/60 bg-[#F0F7FF] text-[#3c3e3f] text-sm outline-none focus:border-[#1183D0] transition-colors"
+                    className="h-auto rounded-xl border-[#bcd2ff]/60 bg-[#F0F7FF] px-4 py-3 text-sm text-[#3c3e3f] focus-visible:border-[#1183D0] focus-visible:ring-0"
                   />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-medium text-[#5c7792] uppercase tracking-wide">Email</label>
-                  <input
+                  <Label className="text-xs font-medium text-[#5c7792] uppercase tracking-wide">Email</Label>
+                  <Input
                     type="email"
                     placeholder="your@email.com"
-                    className="px-4 py-3 rounded-xl border border-[#bcd2ff]/60 bg-[#F0F7FF] text-[#3c3e3f] text-sm outline-none focus:border-[#1183D0] transition-colors"
+                    className="h-auto rounded-xl border-[#bcd2ff]/60 bg-[#F0F7FF] px-4 py-3 text-sm text-[#3c3e3f] focus-visible:border-[#1183D0] focus-visible:ring-0"
                   />
                 </div>
               </div>
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-medium text-[#5c7792] uppercase tracking-wide">Subject</label>
-                <input
+                <Label className="text-xs font-medium text-[#5c7792] uppercase tracking-wide">Subject</Label>
+                <Input
                   type="text"
                   placeholder="What's this about?"
-                  className="px-4 py-3 rounded-xl border border-[#bcd2ff]/60 bg-[#F0F7FF] text-[#3c3e3f] text-sm outline-none focus:border-[#1183D0] transition-colors"
+                  className="h-auto rounded-xl border-[#bcd2ff]/60 bg-[#F0F7FF] px-4 py-3 text-sm text-[#3c3e3f] focus-visible:border-[#1183D0] focus-visible:ring-0"
                 />
               </div>
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-medium text-[#5c7792] uppercase tracking-wide">Message</label>
-                <textarea
+                <Label className="text-xs font-medium text-[#5c7792] uppercase tracking-wide">Message</Label>
+                <Textarea
                   rows={6}
                   placeholder="Tell me about your project..."
-                  className="px-4 py-3 rounded-xl border border-[#bcd2ff]/60 bg-[#F0F7FF] text-[#3c3e3f] text-sm outline-none focus:border-[#1183D0] transition-colors resize-none"
+                  className="resize-none rounded-xl border-[#bcd2ff]/60 bg-[#F0F7FF] px-4 py-3 text-sm text-[#3c3e3f] focus-visible:border-[#1183D0] focus-visible:ring-0"
                 />
               </div>
-              <button
+              <Button
                 type="submit"
-                className="mt-2 px-6 py-3 rounded-full bg-[#1183D0] text-white font-medium text-sm hover:bg-[#0e6fad] transition-colors flex items-center justify-center gap-2"
+                className="mt-2 h-auto rounded-full bg-[#1183D0] px-6 py-3 text-sm font-medium text-white hover:bg-[#0e6fad]"
               >
                 Send Message
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <line x1="22" y1="2" x2="11" y2="13"/>
                   <polygon points="22 2 15 22 11 13 2 9 22 2"/>
                 </svg>
-              </button>
+              </Button>
             </form>
-          </div>
+            </CardContent>
+          </Card>
 
           {/* Info Cards */}
           <div className="flex flex-col gap-4">
@@ -161,7 +142,8 @@ export default function ContactPage() {
               I'm currently based in Málaga, Spain and available for remote opportunities worldwide. Response time is usually within 24 hours.
             </p>
             {INFO_CARDS.map((card) => (
-              <div key={card.label} className="bg-white rounded-2xl p-5 shadow-sm border border-[#bcd2ff]/30 flex items-center gap-4">
+              <Card key={card.label} className="rounded-2xl border-[#bcd2ff]/30 bg-white p-0 py-0 shadow-sm">
+                <CardContent className="flex items-center gap-4 p-5">
                 <div className="w-10 h-10 rounded-xl bg-[#E0EEFB] text-[#1183D0] flex items-center justify-center shrink-0">
                   {card.icon}
                 </div>
@@ -173,7 +155,8 @@ export default function ContactPage() {
                     <p className="text-sm text-[#0e2951] font-medium">{card.value}</p>
                   )}
                 </div>
-              </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>

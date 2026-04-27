@@ -1,9 +1,9 @@
-import { Playfair_Display, Inter } from "next/font/google";
 import { SiteFooter } from "../../components/site-footer";
+import { SiteHeader } from "../../components/site-header";
+import { Badge } from "../../components/ui/badge";
+import { Button } from "../../components/ui/button";
+import { Card, CardContent } from "../../components/ui/card";
 import { withBasePath } from "../../lib/site";
-
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 type ExperienceBullet = string | { heading: string; items: string[] };
 type ExperienceEntry = {
@@ -385,39 +385,16 @@ const FEATURED_CREDENTIALS = [
 
 function Tag({ label }: { label: string }) {
   return (
-    <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[#E0EEFB] text-[#1183D0]">
+    <Badge className="h-auto rounded-full border-0 bg-[#E0EEFB] px-3 py-1 text-xs font-medium text-[#1183D0] hover:bg-[#E0EEFB]">
       {label}
-    </span>
+    </Badge>
   );
 }
 
 export default function ResumePage() {
   return (
-    <main className={`${playfair.variable} ${inter.variable} bg-white font-inter text-[#3c3e3f] overflow-x-hidden min-h-screen`}>
-      {/* Nav */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-[#bcd2ff]/60 h-16 px-12 flex items-center justify-between">
-        <div className="flex items-center gap-8">
-          <a href={withBasePath("/")} className="font-playfair italic text-[#1183D0] text-xl font-medium">Logo</a>
-          <ul className="flex items-center gap-1">
-            {["Projects", "Resume", "Contact"].map((link) => (
-              <li key={link}>
-                <a
-                  href={withBasePath(`/${link.toLowerCase()}`)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${link === "Resume" ? "bg-[#1183D0]/10 text-[#1183D0]" : "text-[#1183D0] hover:bg-[#003d66]/5"}`}
-                >
-                  {link}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <a
-          href={withBasePath("/contact")}
-          className="px-5 py-2 rounded-full bg-[#1183D0] text-white text-sm font-medium hover:bg-[#0e6fad] transition-colors"
-        >
-          Get in touch
-        </a>
-      </nav>
+    <main className="bg-white font-inter text-[#3c3e3f] overflow-x-hidden min-h-screen">
+      <SiteHeader active="Resume" />
 
       {/* Hero */}
       <section className="max-w-[1200px] mx-auto px-6 pt-[10px] pb-10">
@@ -426,21 +403,24 @@ export default function ResumePage() {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
             Back to Home
           </a>
-          <a
-            href="#"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[#1183D0] bg-white/90 px-5 py-2.5 text-sm font-medium text-[#1183D0] shadow-sm transition-colors hover:bg-[#1183D0] hover:text-white"
+          <Button
+            asChild
+            variant="outline"
+            className="h-auto shrink-0 rounded-full border-[#1183D0] bg-white/90 px-5 py-2.5 text-sm font-medium text-[#1183D0] shadow-sm hover:bg-[#1183D0] hover:text-white"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Download PDF
-          </a>
+            <a href="#">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download PDF
+            </a>
+          </Button>
         </div>
         <div className="relative overflow-hidden px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
           <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
             <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#0e2951]">Resume</span>
-            <div className="mt-8 flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-[#1183D0] to-[#0e2951] text-4xl font-playfair italic font-bold text-white shadow-[0_18px_45px_rgba(17,131,208,0.22)] ring-8 ring-white/70">
+            <div className="mt-8 flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-[#1183D0] to-[#0e2951] text-4xl font-serif-display italic font-bold text-white shadow-[0_18px_45px_rgba(17,131,208,0.22)] ring-8 ring-white/70">
               G
             </div>
-            <h1 className="mt-8 text-5xl font-playfair italic leading-[0.95] text-[#0e2951] sm:text-6xl lg:text-7xl">
+            <h1 className="mt-8 text-5xl font-serif-display italic leading-[0.95] text-[#0e2951] sm:text-6xl lg:text-7xl">
               Greddys Martínez
             </h1>
             <p className="mt-5 text-xl font-medium text-[#1f2f3d] sm:text-2xl">
@@ -511,18 +491,19 @@ export default function ResumePage() {
 
       {/* Experience */}
       <section className="max-w-[1200px] mx-auto px-6 py-10">
-        <h2 className="text-2xl font-playfair italic text-[#0e2951] mb-6">Experience</h2>
+        <h2 className="text-2xl font-serif-display italic text-[#0e2951] mb-6">Experience</h2>
         <div className="flex flex-col gap-5">
           {EXPERIENCE.map((job) => (
-            <div key={job.role} className="bg-white rounded-2xl p-7 shadow-sm border border-[#bcd2ff]/30">
+            <Card key={job.role} className="rounded-2xl border-[#bcd2ff]/30 bg-white p-0 py-0 shadow-sm">
+              <CardContent className="p-7">
               <div className="flex items-start justify-between gap-4 flex-wrap">
                 <div>
                   <h3 className="text-lg font-semibold text-[#0e2951]">{job.role}</h3>
                   <p className="text-sm text-[#5c7792] mt-0.5">{job.company}</p>
                 </div>
                 <div className="flex flex-wrap gap-2 shrink-0">
-                  <span className="text-sm text-[#5c7792] bg-[#F0F7FF] px-3 py-1 rounded-full">{job.period}</span>
-                  <span className="text-sm text-[#5c7792] bg-[#F0F7FF] px-3 py-1 rounded-full">{job.location}</span>
+                  <Badge className="h-auto rounded-full border-0 bg-[#F0F7FF] px-3 py-1 text-sm font-normal text-[#5c7792] hover:bg-[#F0F7FF]">{job.period}</Badge>
+                  <Badge className="h-auto rounded-full border-0 bg-[#F0F7FF] px-3 py-1 text-sm font-normal text-[#5c7792] hover:bg-[#F0F7FF]">{job.location}</Badge>
                 </div>
               </div>
               <ul className="mt-4 space-y-2">
@@ -536,7 +517,7 @@ export default function ResumePage() {
                     <li key={b.heading} className="text-sm text-[#3c3e3f] leading-relaxed">
                       <div className="flex gap-2">
                         <span className="text-[#1183D0] mt-1 shrink-0">›</span>
-                        <span className="font-playfair italic font-semibold text-[#0e2951]">
+                        <span className="font-serif-display italic font-semibold text-[#0e2951]">
                           {b.heading}
                         </span>
                       </div>
@@ -555,17 +536,19 @@ export default function ResumePage() {
               <div className="flex flex-wrap gap-2 mt-4">
                 {job.tags.map((t) => <Tag key={t} label={t} />)}
               </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>
 
       {/* Skills & Education */}
       <section className="max-w-[1200px] mx-auto px-6 py-10">
-        <div className="rounded-[32px] border border-[#d6e8fb] bg-[#eef5ff] px-6 py-10 shadow-sm sm:px-8 lg:px-12 lg:py-12">
+        <Card className="rounded-[32px] border-[#d6e8fb] bg-[#eef5ff] p-0 py-0 shadow-sm">
+          <CardContent className="px-6 py-10 sm:px-8 lg:px-12 lg:py-12">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
-              <h2 className="font-playfair text-4xl italic text-[#0e2951]">Skills</h2>
+              <h2 className="font-serif-display text-4xl italic text-[#0e2951]">Skills</h2>
               <div className="mt-6 h-1 w-12 rounded-full bg-[#1183D0]" />
               <div className="mt-8 flex flex-col gap-8">
                 {SKILLS.map((group) => (
@@ -575,12 +558,12 @@ export default function ResumePage() {
                     </h3>
                     <div className="mt-4 flex flex-wrap gap-3">
                       {group.items.map((item) => (
-                        <span
+                        <Badge
                           key={item}
-                          className="rounded-full bg-[#e7f1fd] px-4 py-2 text-sm font-medium text-[#1183D0]"
+                          className="h-auto rounded-full border-0 bg-[#e7f1fd] px-4 py-2 text-sm font-medium text-[#1183D0] hover:bg-[#e7f1fd]"
                         >
                           {item}
-                        </span>
+                        </Badge>
                       ))}
                     </div>
                   </div>
@@ -589,27 +572,29 @@ export default function ResumePage() {
             </div>
 
             <div>
-              <h2 className="font-playfair text-4xl italic text-[#0e2951]">Education</h2>
+              <h2 className="font-serif-display text-4xl italic text-[#0e2951]">Education</h2>
               <div className="mt-6 h-1 w-12 rounded-full bg-[#1183D0]" />
               <div className="mt-8 flex flex-col gap-5">
                 {EDUCATION.map((edu) => (
-                  <div
+                  <Card
                     key={edu.degree}
-                    className="rounded-[24px] border border-[#d6e8fb] bg-white px-6 py-6 shadow-sm"
+                    className="rounded-[24px] border-[#d6e8fb] bg-white p-0 py-0 shadow-sm"
                   >
-                    <span className="inline-flex rounded-full bg-[#eef5ff] px-4 py-1 text-sm font-semibold text-[#1183D0]">
+                    <CardContent className="px-6 py-6">
+                    <Badge className="h-auto rounded-full border-0 bg-[#eef5ff] px-4 py-1 text-sm font-semibold text-[#1183D0] hover:bg-[#eef5ff]">
                       {edu.year}
-                    </span>
+                    </Badge>
                     <h3 className="mt-4 text-[18px] font-semibold text-[#111827]">
                       {edu.degree}
                     </h3>
                     <p className="mt-2 text-base text-[#3c3e3f]">{edu.school}</p>
-                  </div>
+                    </CardContent>
+                  </Card>
                 ))}
               </div>
 
               <div className="mt-10">
-                <h2 className="font-playfair text-4xl italic text-[#0e2951]">Tools</h2>
+                <h2 className="font-serif-display text-4xl italic text-[#0e2951]">Tools</h2>
                 <div className="mt-6 h-1 w-12 rounded-full bg-[#1183D0]" />
                 <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-4">
                   {TOOLS.map((tool) => (
@@ -626,14 +611,15 @@ export default function ResumePage() {
               </div>
             </div>
           </div>
-        </div>
+          </CardContent>
+        </Card>
       </section>
 
       {/* Certifications */}
       <section className="max-w-[1200px] mx-auto px-6 py-10">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
-            <h2 className="font-playfair text-4xl italic text-[#0e2951]">Certifications</h2>
+            <h2 className="font-serif-display text-4xl italic text-[#0e2951]">Certifications</h2>
             <div className="mt-8 flex items-center gap-5">
               <img
                 src={withBasePath("/images/OiSjn.png")}
@@ -652,16 +638,18 @@ export default function ResumePage() {
 
             <div className="mt-8 flex flex-col gap-5">
               {CERTIFICATION_ITEMS.map((item) => (
-                <div
+                <Card
                   key={`${item.year}-${item.title}`}
-                  className="rounded-[22px] border border-[#d6e8fb] bg-[#f7fbff] px-5 py-5 shadow-sm"
+                  className="rounded-[22px] border-[#d6e8fb] bg-[#f7fbff] p-0 py-0 shadow-sm"
                 >
-                  <span className="inline-flex rounded-full bg-[#e7f1fd] px-4 py-1 text-sm font-semibold text-[#1183D0]">
+                  <CardContent className="px-5 py-5">
+                  <Badge className="h-auto rounded-full border-0 bg-[#e7f1fd] px-4 py-1 text-sm font-semibold text-[#1183D0] hover:bg-[#e7f1fd]">
                     {item.year}
-                  </span>
+                  </Badge>
                   <h3 className="mt-4 text-[18px] font-semibold text-[#0e2951]">{item.title}</h3>
                   <p className="mt-2 text-[15px] leading-relaxed text-[#5c7792]">{item.description}</p>
-                </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
@@ -675,17 +663,17 @@ export default function ResumePage() {
                     target="_blank"
                     rel="noreferrer"
                     key={credential.title}
-                    className="block rounded-[26px] border border-[#d6e8fb] bg-[#f7fbff] px-8 py-8 text-center shadow-sm hover:opacity-80 transition-opacity"
+                    className="block rounded-[26px] border border-[#d6e8fb] bg-[#f7fbff] text-center shadow-sm transition-opacity hover:opacity-80"
                   >
-                    {children}
+                    <CardContent className="px-8 py-8">{children}</CardContent>
                   </a>
                 ) : (
-                  <div
+                  <Card
                     key={credential.title}
-                    className="rounded-[26px] border border-[#d6e8fb] bg-[#f7fbff] px-8 py-8 text-center shadow-sm"
+                    className="rounded-[26px] border-[#d6e8fb] bg-[#f7fbff] p-0 py-0 text-center shadow-sm"
                   >
-                    {children}
-                  </div>
+                    <CardContent className="px-8 py-8">{children}</CardContent>
+                  </Card>
                 );
               return (
               <CardWrapper key={credential.title}>
@@ -717,9 +705,9 @@ export default function ResumePage() {
                 <p className="mx-auto mt-4 max-w-[430px] text-[15px] leading-relaxed text-[#5c7792]">
                   {credential.description}
                 </p>
-                <span className="mt-6 inline-flex rounded-full bg-[#e7f1fd] px-4 py-1 text-sm font-semibold text-[#1183D0]">
+                <Badge className="mt-6 h-auto rounded-full border-0 bg-[#e7f1fd] px-4 py-1 text-sm font-semibold text-[#1183D0] hover:bg-[#e7f1fd]">
                   {credential.year}
-                </span>
+                </Badge>
               </CardWrapper>
               );
             })}

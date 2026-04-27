@@ -1,4 +1,5 @@
 import { withBasePath } from "../lib/site";
+import { LogoMark } from "./site-header";
 
 const FOOTER_LINKS = [
   { label: "Home", href: withBasePath("/") },
@@ -19,9 +20,12 @@ export function SiteFooter() {
       <div className="border-t border-[#C4DCF0]" />
       <div className="max-w-[1200px] mx-auto px-6 py-12 md:px-10 lg:px-20 grid gap-10 md:grid-cols-2 xl:grid-cols-4">
         <div className="flex flex-col gap-3">
-          <span className="font-playfair italic text-[22px] text-[#1183D0]">
-            Greddys Martinez
-          </span>
+          <a href={withBasePath("/")} className="flex items-center gap-3">
+            <LogoMark className="h-12 w-auto" />
+            <span className="text-[18px] font-semibold leading-tight text-[#0e2951]">
+              Greddys Martinez
+            </span>
+          </a>
           <p className="max-w-[280px] text-[14px] leading-[1.6] text-[#3c3e3f]">
             Senior Product Designer crafting thoughtful digital experiences
             that make a difference.

@@ -1,15 +1,9 @@
-import { Playfair_Display, Inter } from "next/font/google";
 import Image from "next/image";
 import { SiteFooter } from "./components/site-footer";
+import { SiteHeader } from "./components/site-header";
+import { Badge } from "./components/ui/badge";
+import { Button } from "./components/ui/button";
 import { withBasePath } from "./lib/site";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-});
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-
-const NAV_LINKS = ["Projects", "Resume", "Contact"];
 
 const SOCIAL_PROOF_LOGOS = [
   { src: "/images/SNUZw.png", alt: "IBX", h: 41, w: 57 },
@@ -17,6 +11,10 @@ const SOCIAL_PROOF_LOGOS = [
   { src: "/images/bBw3A.png", alt: "Nayya", h: 48, w: 127 },
   { src: "/images/c54fy.png", alt: "Paychex", h: 51, w: 142 },
 ];
+
+const LOGO_CAROUSEL = [...SOCIAL_PROOF_LOGOS, ...SOCIAL_PROOF_LOGOS];
+
+const HERO_TAGS = ["AI product design", "UX research", "Enterprise SaaS", "Design systems"];
 
 const PROJECTS = [
   {
@@ -46,14 +44,6 @@ const PROJECTS = [
     tags: ["Enterprise", "SaaS", "Hiring", "Research"],
     cta: "See improvements",
   },
-];
-
-const FILTER_PILLS = [
-  { label: "Classic", active: true },
-  { label: "Agile based", active: false },
-  { label: "Product Prototype", active: false },
-  { label: "Digital Prototype", active: false },
-  { label: "Expert Reviews", active: false },
 ];
 
 const TOOLS_LEFT = [
@@ -112,130 +102,115 @@ function ToolBadge({
 
 export default function PortfolioPage() {
   return (
-    <main
-      className={`${playfair.variable} ${inter.variable} bg-[#F0F7FF] font-inter text-[#3c3e3f] overflow-x-hidden`}
-    >
-      {/* ── Nav ── */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-[#bcd2ff]/60 h-16 px-12 flex items-center justify-between">
-        <div className="flex items-center gap-8">
-          <span className="font-playfair italic text-[#1183D0] text-xl font-medium">
-            Logo
-          </span>
-          <ul className="flex items-center gap-1">
-            {NAV_LINKS.map((link) => (
-              <li key={link}>
-                <a
-                  href={withBasePath(`/${link.toLowerCase()}`)}
-                  className="px-4 py-2 rounded-full text-[#1183D0] text-sm font-medium hover:bg-[#003d66]/5 transition-colors"
-                >
-                  {link}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="flex items-center gap-4 text-[#1183D0]">
-          <a href="#" aria-label="LinkedIn" className="hover:opacity-70 transition-opacity">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-              <rect x="2" y="9" width="4" height="12" />
-              <circle cx="4" cy="4" r="2" />
-            </svg>
-          </a>
-          <a href="#" className="font-bold text-sm hover:opacity-70 transition-opacity">
-            Bē
-          </a>
-          <a href="#" aria-label="Work" className="hover:opacity-70 transition-opacity">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-            </svg>
-          </a>
-        </div>
-      </nav>
+    <main className="bg-[#F0F7FF] font-inter text-[#3c3e3f] overflow-x-hidden">
+      <SiteHeader />
 
       {/* ── Hero ── */}
-      <section
-        className="relative overflow-hidden"
-        style={{
-          background: "linear-gradient(135deg, #D6ECFA 0%, #FFFFFF 100%)",
-        }}
-      >
-        <div className="max-w-[1200px] mx-auto px-20 pt-16 pb-10 flex flex-col items-center gap-8 relative">
-          {/* Certification badges */}
-          <div className="absolute right-12 top-10 flex flex-col items-center gap-2">
-            <span className="text-[12px] text-[#5c7792]">Certified by</span>
-            <div className="flex items-center gap-4">
-              <a href="https://www.upwork.com/freelancers/greddysmartinez" target="_blank" rel="noreferrer" className="hover:opacity-80 transition-opacity">
-                <Image
-                  src="/images/iNSrn.png"
-                  alt="Upwork Certification"
-                  width={80}
-                  height={80}
-                  className="rounded-lg"
-                />
-              </a>
-              <Image
-                src="/images/OiSjn.png"
-                alt="NN/g UX Certification"
-                width={80}
-                height={80}
-                className="rounded-lg"
-              />
+      <section className="bg-white px-4 py-5 sm:px-6 lg:px-10">
+        <div className="relative mx-auto min-h-[560px] max-w-[1440px] overflow-hidden rounded-[28px] bg-[#102944] px-6 py-10 shadow-[0_24px_80px_rgba(14,41,81,0.18)] sm:px-10 lg:px-16 lg:py-16">
+          <Image
+            src="/images/k58t4.png"
+            alt=""
+            fill
+            priority
+            className="object-cover opacity-35 blur-[1px] scale-110"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,20,35,0.92)_0%,rgba(8,20,35,0.72)_48%,rgba(8,20,35,0.3)_100%)]" />
+          <div className="relative grid min-h-[440px] gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
+            <div className="flex max-w-[760px] flex-col justify-center">
+              <p className="mb-5 text-sm font-semibold uppercase tracking-[0.32em] text-[#7CB8E8]">
+                Product Designer
+              </p>
+              <h1 className="text-[44px] font-semibold leading-[1.05] text-white sm:text-[64px] lg:text-[82px]">
+                I am Greddys Martinez
+              </h1>
+              <p className="mt-8 max-w-[660px] text-xl font-semibold leading-[1.35] text-white sm:text-2xl">
+                Senior Product Designer focused on AI-assisted UX, enterprise SaaS, and design systems that help teams ship clearer product experiences.
+              </p>
+              <div className="mt-10 flex flex-wrap gap-3">
+                {HERO_TAGS.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-white/70 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-10 flex flex-wrap gap-3">
+                <Button
+                  asChild
+                  className="h-12 rounded-full bg-white px-7 text-sm font-semibold text-[#102944] hover:bg-[#E0EEFB]"
+                >
+                  <a href={withBasePath("/projects")}>View selected work</a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="h-12 rounded-full border-white/80 bg-transparent px-7 text-sm font-semibold text-white hover:bg-white/10 hover:text-white"
+                >
+                  <a href={withBasePath("/contact")}>Let&apos;s work together</a>
+                </Button>
+              </div>
             </div>
-          </div>
 
-          {/* Headline */}
-          <div className="flex flex-col items-center gap-0">
-            <span className="text-[52px] font-bold leading-[1.15] text-[#4a4a4a] font-inter">
-              I am{" "}
-            </span>
-            <span className="text-[52px] font-semibold italic leading-[1.15] text-[#4a4a4a] font-playfair text-center">
-              Greddys Martinez
-            </span>
-          </div>
-
-          {/* Subtitle */}
-          <p className="text-[17px] text-[#3c3e3f] leading-[1.6] text-center max-w-[681px]">
-            a designer in AI Research &amp; UX / UI.
-          </p>
-
-          {/* Filter pills */}
-          <div className="flex items-center gap-2">
-            {FILTER_PILLS.map((pill) => (
-              <span
-                key={pill.label}
-                className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-colors ${
-                  pill.active
-                    ? "bg-[#1183D0] text-white"
-                    : "bg-[#EBF5FF] text-[#1183D0] hover:bg-[#D6ECFA]"
-                }`}
-              >
-                {pill.label}
+            <aside className="flex flex-col items-start gap-4 rounded-[22px] border border-white/20 bg-white/12 p-5 text-white backdrop-blur-md lg:ml-auto lg:w-[260px]">
+              <span className="text-xs font-semibold uppercase tracking-[0.28em] text-white/70">
+                Certified by
               </span>
-            ))}
+              <div className="flex items-center gap-4">
+                <a
+                  href="https://www.upwork.com/freelancers/greddysmartinez"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-2xl bg-white/95 p-2 transition-opacity hover:opacity-85"
+                >
+                  <Image
+                    src="/images/iNSrn.png"
+                    alt="Upwork Skill Certification"
+                    width={86}
+                    height={86}
+                    className="h-[72px] w-[72px] object-contain sm:h-[86px] sm:w-[86px]"
+                  />
+                </a>
+                <div className="rounded-2xl bg-white/95 p-2">
+                  <Image
+                    src="/images/OiSjn.png"
+                    alt="NN Group UX Certification"
+                    width={86}
+                    height={86}
+                    className="h-[72px] w-[72px] object-contain sm:h-[86px] sm:w-[86px]"
+                  />
+                </div>
+              </div>
+            </aside>
           </div>
         </div>
 
         {/* Social Proof Bar */}
-        <div className="border-t border-[#bcd2ff]/50 mx-0">
-          <div className="max-w-[1200px] mx-auto px-20 h-[94px] flex items-center">
-            <div className="w-[280px] shrink-0 flex items-center border-r border-[#00006e]/25 pr-10 h-full">
+        <div className="-mx-4 border-y border-[#bcd2ff]/50 bg-[#F0F7FF] sm:-mx-6 lg:-mx-10">
+          <div className="flex min-h-[104px] flex-col items-start gap-5 px-6 py-6 md:flex-row md:items-center md:px-10 lg:px-20">
+            <div className="flex shrink-0 items-center md:h-full md:w-[280px] md:border-r md:border-[#00006e]/25 md:pr-10">
               <span className="text-[13px] font-semibold text-[#3c3e3f]">
                 Trusted by industry leaders
               </span>
             </div>
-            <div className="flex items-center justify-between flex-1 px-10">
-              {SOCIAL_PROOF_LOGOS.map((logo) => (
-                <Image
-                  key={logo.alt}
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={logo.w}
-                  height={logo.h}
-                  className="object-contain opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
-                />
-              ))}
+            <div className="relative w-full flex-1 overflow-hidden md:py-2">
+              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[#F0F7FF] to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[#F0F7FF] to-transparent" />
+              <div className="flex w-max animate-[logo-marquee_22s_linear_infinite] items-center gap-14 pr-14 hover:[animation-play-state:paused]">
+                {LOGO_CAROUSEL.map((logo, index) => (
+                  <Image
+                    key={`${logo.alt}-${index}`}
+                    src={logo.src}
+                    alt={index < SOCIAL_PROOF_LOGOS.length ? logo.alt : ""}
+                    width={logo.w}
+                    height={logo.h}
+                    aria-hidden={index >= SOCIAL_PROOF_LOGOS.length}
+                    className="max-h-[58px] w-auto shrink-0 object-contain opacity-80 grayscale transition-all hover:grayscale-0 hover:opacity-100"
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -244,62 +219,66 @@ export default function PortfolioPage() {
       {/* ── Recent Work ── */}
       <section id="projects" className="bg-white py-12 px-20">
         <div className="max-w-[1200px] mx-auto flex flex-col items-center gap-12">
-          <h2 className="font-playfair italic text-[36px] leading-[1.2] text-[#1183D0]">
+          <h2 className="font-serif-display italic text-[36px] leading-[1.2] text-[#1183D0]">
             Recent Work
           </h2>
 
           {/* Project cards */}
-          <div className="grid grid-cols-3 gap-8 w-full">
+          <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3">
             {PROJECTS.map((project) => (
               <a
                 key={project.title}
                 href={project.href}
-                className="group flex flex-col gap-4 cursor-pointer"
+                className="group flex cursor-pointer flex-col gap-5 outline-none"
               >
                 {/* Image */}
-                <div className="relative overflow-hidden rounded-[20px] h-[230px] bg-[#e9f3fb] shadow-[0_4px_18px_#00000014] transition-shadow duration-300 group-hover:shadow-[0_12px_36px_#00000022]">
+                <div className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] shadow-[0_18px_52px_rgba(14,41,81,0.12)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(14,41,81,0.22)] group-focus-visible:-translate-y-1 group-focus-visible:shadow-[0_28px_70px_rgba(14,41,81,0.22)] sm:h-[300px] xl:h-[230px]">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.04] group-focus-visible:scale-[1.04]"
                   />
                 </div>
 
                 {/* Tags – always visible */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-3">
                   {project.tags.map((tag) => (
-                    <span
+                    <Badge
                       key={tag}
-                      className="text-[12px] font-medium px-3 py-1 rounded-full bg-[#E0EEFB] text-[#1183D0]"
+                      className="h-auto rounded-full border-0 bg-[#E0EEFB] px-5 py-2 text-[14px] font-semibold text-[#1183D0] hover:bg-[#E0EEFB]"
                     >
                       {tag}
-                    </span>
+                    </Badge>
                   ))}
                 </div>
 
                 {/* Title */}
-                <h3 className="font-playfair italic text-[20px] leading-snug text-[#0e2951] group-hover:text-[#1183D0] transition-colors duration-200">
+                <h3 className="font-serif-display italic text-[30px] leading-snug text-[#1183D0] transition-colors duration-200 group-hover:text-[#0e2951] group-focus-visible:text-[#0e2951]">
                   {project.title}
                 </h3>
 
-                {/* Description */}
-                <p className="text-[14px] leading-relaxed text-[#5c7792] -mt-1">
-                  {project.description}
-                </p>
+                <div className="-mt-2 grid grid-rows-[0fr] opacity-0 transition-all duration-300 group-hover:grid-rows-[1fr] group-hover:opacity-100 group-focus-visible:grid-rows-[1fr] group-focus-visible:opacity-100">
+                  <div className="overflow-hidden">
+                    {/* Description */}
+                    <p className="text-[14px] leading-relaxed text-[#5c7792]">
+                      {project.description}
+                    </p>
 
-                {/* CTA */}
-                <span className="text-[14px] font-medium text-[#1183D0] group-hover:underline underline-offset-2">
-                  {project.cta} →
-                </span>
+                    {/* CTA */}
+                    <span className="mt-4 inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline group-focus-visible:underline">
+                      {project.cta} →
+                    </span>
+                  </div>
+                </div>
               </a>
             ))}
           </div>
 
           {/* View all work CTA */}
-          <button className="h-9 px-5 rounded-full bg-[#d60060] text-white text-[13px] font-medium hover:bg-[#b5004e] transition-colors">
+          <Button className="h-9 rounded-full bg-[#d60060] px-5 text-[13px] font-medium text-white hover:bg-[#b5004e]">
             View all work
-          </button>
+          </Button>
         </div>
       </section>
 
@@ -327,7 +306,7 @@ export default function PortfolioPage() {
           <span className="text-[13px] font-medium tracking-[3px] text-[#0a1729] uppercase">
             Experience &amp; Skills
           </span>
-          <h2 className="font-playfair italic text-[48px] leading-[1.15] text-[#1183D0] w-full text-center">
+          <h2 className="font-serif-display italic text-[48px] leading-[1.15] text-[#1183D0] w-full text-center">
             Tools I Love
             <br />
             &amp; Work With
@@ -336,12 +315,12 @@ export default function PortfolioPage() {
             I integrate seamlessly with the tools your team already uses,
             creating workflows that feel natural and efficient.
           </p>
-          <a
-            href="#resume"
-            className="h-11 px-7 rounded-full bg-[#d60060] text-white text-[14px] font-medium flex items-center gap-2 hover:bg-[#b5004e] transition-colors"
+          <Button
+            asChild
+            className="h-11 rounded-full bg-[#d60060] px-7 text-[14px] font-medium text-white hover:bg-[#b5004e]"
           >
-            View My Resume <span>→</span>
-          </a>
+            <a href="#resume">View My Resume <span>→</span></a>
+          </Button>
         </div>
 
         {TOOLS_RIGHT.map((t) => (
@@ -360,15 +339,15 @@ export default function PortfolioPage() {
         <p className="text-[28px] leading-[1.5] text-[#A8C8E8] max-w-[800px]">
           Last quarter, my clients saw a 47% average increase in conversions.
         </p>
-        <h2 className="font-playfair font-bold text-[40px] text-white">
+        <h2 className="font-serif-display font-bold text-[40px] text-white">
           Your product deserves that too.
         </h2>
-        <a
-          href="#contact"
-          className="h-13 px-9 rounded-full bg-white text-[#0b182c] text-[15px] font-medium flex items-center gap-2 hover:bg-gray-100 transition-colors"
+        <Button
+          asChild
+          className="h-13 rounded-full bg-white px-9 text-[15px] font-medium text-[#0b182c] hover:bg-gray-100"
         >
-          Let&apos;s work together <span>→</span>
-        </a>
+          <a href="#contact">Let&apos;s work together <span>→</span></a>
+        </Button>
       </section>
 
       <SiteFooter />
