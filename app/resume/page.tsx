@@ -10,6 +10,7 @@ type ExperienceEntry = {
   role: string;
   company: string;
   period: string;
+  location: string;
   bullets: ExperienceBullet[];
   tags: string[];
 };
@@ -18,7 +19,8 @@ const EXPERIENCE: ExperienceEntry[] = [
   {
     role: "Sr. Product Designer",
     company: "ITX Corp | Client: Paychex (Nayya, Flock, E-Verify, Indeed)",
-    period: "Mar. 2021 – Present | Malaga, Spain (Remote)",
+    period: "Mar. 2021 – Present",
+    location: "Malaga, Spain (Remote)",
     bullets: [
       "Shipping complex B2C SaaS workflows across Payroll, HR, Hiring, benefits, insurance, and retirement platforms (Fintech).",
       "Redesigning form flows based on research findings from user interviews, usability tests, and assisted testing, reducing completion time by 35%.",
@@ -40,7 +42,8 @@ const EXPERIENCE: ExperienceEntry[] = [
   {
     role: "UX/UI Designer",
     company: "Alquilando S.A. | PropTech Marketplace",
-    period: "Mar. 2019 – May. 2021 | Buenos Aires, Argentina (Remote)",
+    period: "Mar. 2019 – May. 2021",
+    location: "Buenos Aires, Argentina (Remote)",
     bullets: [
       "Designing and shipping end-to-end UX/UI solutions for a PropTech startup building a large-scale real estate platform serving the LATAM market — B2C.",
       "Established the company's user-centric foundation through Alan Cooper-inspired personas, leading research and definition with the marketing team to place the customer at the heart of the work.",
@@ -56,7 +59,8 @@ const EXPERIENCE: ExperienceEntry[] = [
   {
     role: "Freelance UX / UI Designer",
     company: "Studio Hakuna | Client: Paramount App LATAM",
-    period: "Dec. 2019 – May. 2020 | Buenos Aires, Argentina (Remote)",
+    period: "Dec. 2019 – May. 2020",
+    location: "Buenos Aires, Argentina (Remote)",
     bullets: [
       "Conducted UX research to understand audience needs and behaviors, translating insights into intuitive layouts and optimized user flows for the Paramount App LATAM.",
       "Redesigned existing platform features, improving usability and overall user engagement across the streaming experience.",
@@ -69,7 +73,8 @@ const EXPERIENCE: ExperienceEntry[] = [
   {
     role: "UX/UI Designer",
     company: "Elevation | Web Solutions for Nonprofits",
-    period: "Jan. 2017 – Feb. 2019 | Buenos Aires, Argentina (Hybrid)",
+    period: "Jan. 2017 – Feb. 2019",
+    location: "Buenos Aires, Argentina (Hybrid)",
     bullets: [
       "Delivered end-to-end UX/UI design across multiple nonprofit clients (B2B and B2C) simultaneously, managing competing priorities and deadlines in a fast-paced agency environment.",
       "Developed wireframes, prototypes, and optimized interface designs that improved usability and digital accessibility for mission-driven organizations.",
@@ -83,7 +88,8 @@ const EXPERIENCE: ExperienceEntry[] = [
   {
     role: "Freelance UX / UI Designer / Graphic Designer",
     company: "Multiple clients | Web and social media",
-    period: "Feb. 2014 – Feb. 2017 | LATAM, Spain, USA (Remote)",
+    period: "Feb. 2014 – Feb. 2017",
+    location: "LATAM, Spain, USA (Remote)",
     bullets: [
       {
         heading: "Resoluto C.A. - Notable Projects: Social media campaigning — UX/UI design for Tech / Full-service Tech company, Venezuela market — B2C product ecosystem",
@@ -509,7 +515,10 @@ export default function ResumePage() {
                   <h3 className="text-lg font-semibold text-[#0e2951]">{job.role}</h3>
                   <p className="text-sm text-[#5c7792] mt-0.5">{job.company}</p>
                 </div>
-                <span className="text-sm text-[#5c7792] shrink-0 bg-[#F0F7FF] px-3 py-1 rounded-full">{job.period}</span>
+                <div className="flex flex-wrap gap-2 shrink-0">
+                  <span className="text-sm text-[#5c7792] bg-[#F0F7FF] px-3 py-1 rounded-full">{job.period}</span>
+                  <span className="text-sm text-[#5c7792] bg-[#F0F7FF] px-3 py-1 rounded-full">{job.location}</span>
+                </div>
               </div>
               <ul className="mt-4 space-y-2">
                 {job.bullets.map((b) => (
