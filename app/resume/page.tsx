@@ -291,21 +291,21 @@ const EDUCATION = [
 ];
 
 const TOOLS = [
-  { label: "Figma",      src: "https://cdn.simpleicons.org/figma" },
-  { label: "Jira",       src: "https://cdn.simpleicons.org/jira" },
-  { label: "Miro",       src: "https://cdn.simpleicons.org/miro" },
-  { label: "Copilot",    src: "https://cdn.simpleicons.org/githubcopilot" },
-  { label: "Webex",      src: "https://cdn.simpleicons.org/webex" },
-  { label: "ClickUp",    src: "https://cdn.simpleicons.org/clickup" },
-  { label: "Confluence", src: "https://cdn.simpleicons.org/confluence" },
-  { label: "Maze",       src: "https://cdn.simpleicons.org/maze" },
-  { label: "Notion",     src: "https://cdn.simpleicons.org/notion" },
-  { label: "Slack",      src: "https://cdn.simpleicons.org/slack" },
-  { label: "HTML/CSS",   src: "https://cdn.simpleicons.org/html5" },
-  { label: "React",      src: "https://cdn.simpleicons.org/react/087EA4" },
-  { label: "Claude",     src: "https://cdn.simpleicons.org/anthropic" },
-  { label: "VS Code",    src: "https://cdn.simpleicons.org/visualstudiocode" },
-  { label: "ChatGPT",    src: "https://cdn.simpleicons.org/openai" },
+  { label: "Figma",      src: withBasePath("/images/tools/figma.svg") },
+  { label: "Jira",       src: withBasePath("/images/tools/jira.svg") },
+  { label: "Miro",       src: withBasePath("/images/tools/miro.svg") },
+  { label: "Copilot",    src: withBasePath("/images/tools/githubcopilot.svg") },
+  { label: "Webex",      src: withBasePath("/images/tools/webex.svg") },
+  { label: "ClickUp",    src: withBasePath("/images/tools/clickup.svg") },
+  { label: "Confluence", src: withBasePath("/images/tools/confluence.svg") },
+  { label: "Maze",       src: withBasePath("/images/tools/maze.svg") },
+  { label: "Notion",     src: withBasePath("/images/tools/notion.svg") },
+  { label: "Slack",      src: withBasePath("/images/tools/slack.svg") },
+  { label: "HTML/CSS",   src: withBasePath("/images/tools/html5.svg") },
+  { label: "React",      src: withBasePath("/images/tools/react.svg") },
+  { label: "Claude",     src: withBasePath("/images/tools/anthropic.svg") },
+  { label: "VS Code",    src: withBasePath("/images/tools/visualstudiocode.svg") },
+  { label: "ChatGPT",    src: withBasePath("/images/tools/openai.svg") },
 ];
 
 const CERTIFICATION_ITEMS = [
