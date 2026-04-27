@@ -18,6 +18,36 @@ const SOCIAL_PROOF_LOGOS = [
   { src: "/images/c54fy.png", alt: "Paychex", h: 51, w: 142 },
 ];
 
+const PROJECTS = [
+  {
+    title: "Enhancing Benefits Enrollment",
+    description:
+      "Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%.",
+    image: "/images/AxnrM.png",
+    href: withBasePath("/benefits"),
+    tags: ["Enterprise", "SaaS", "HR Tech", "B2C"],
+    cta: "See case study",
+  },
+  {
+    title: "Nayya AI Integration",
+    description:
+      "AI-powered benefits navigation across desktop and mobile, simplifying enrollment decisions for 2.3M+ users.",
+    image: "/images/k58t4.png",
+    href: "#",
+    tags: ["SaaS", "AI Features", "FinTech", "B2C"],
+    cta: "See improvements",
+  },
+  {
+    title: "Paychex HR Platform",
+    description:
+      "End-to-end redesign of hiring and onboarding flows, reducing support calls by 9,000+ per year.",
+    image: "/images/AxnrM.png",
+    href: "#",
+    tags: ["Enterprise", "SaaS", "Hiring", "Research"],
+    cta: "See improvements",
+  },
+];
+
 const FILTER_PILLS = [
   { label: "Classic", active: true },
   { label: "Agile based", active: false },
@@ -218,106 +248,52 @@ export default function PortfolioPage() {
             Recent Work
           </h2>
 
-          {/* Three case study cards */}
-          <div className="flex gap-6 justify-center">
-            {/* Card 1 – Benefits (Light) */}
-            <a
-              href={withBasePath("/benefits")}
-              className="w-[400px] rounded-[20px] p-7 flex flex-col gap-4 overflow-hidden shadow-[0_8px_24px_#00000018] group cursor-pointer transition-transform hover:-translate-y-1 hover:shadow-[0_16px_40px_#00000025]"
-              style={{
-                background:
-                  "radial-gradient(ellipse at 82% 50%, #b7daf1 11%, #e9f3fb 64%, #edf5fb 98%)",
-              }}
-            >
-              <div className="flex items-start justify-between">
-                <div className="flex flex-col gap-1 flex-1">
-                  <h3 className="font-playfair italic font-medium text-[18px] text-[#1183D0] max-w-[154px]">
-                    Enhancing Benefits Enrollment
-                  </h3>
-                  <p className="text-[14px] leading-[1.3] text-[#3c3e3f] max-w-[352px]">
-                    Replaced a manual workflow with a centralized, self-managed
-                    platform; cutting processing time by 72%.
-                  </p>
+          {/* Project cards */}
+          <div className="grid grid-cols-3 gap-8 w-full">
+            {PROJECTS.map((project) => (
+              <a
+                key={project.title}
+                href={project.href}
+                className="group flex flex-col gap-4 cursor-pointer"
+              >
+                {/* Image */}
+                <div className="relative overflow-hidden rounded-[20px] h-[230px] bg-[#e9f3fb] shadow-[0_4px_18px_#00000014] transition-shadow duration-300 group-hover:shadow-[0_12px_36px_#00000022]">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
                 </div>
-                <span className="text-[14px] text-[#3c3e3f] shrink-0 group-hover:text-[#1183D0] transition-colors">
-                  See improvements →
-                </span>
-              </div>
-              <div className="rounded-xl overflow-hidden flex items-center justify-center h-[172px]">
-                <Image
-                  src="/images/AxnrM.png"
-                  alt="Benefits Enrollment"
-                  width={402}
-                  height={199}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </a>
 
-            {/* Card 2 – Nayya (Dark) */}
-            <div
-              className="w-[400px] rounded-[20px] p-7 flex flex-col gap-4 overflow-hidden shadow-[0_8px_24px_#00000018]"
-              style={{
-                background:
-                  "linear-gradient(145deg, #091220 0%, #142840 50%, #1a3a5c 100%)",
-              }}
-            >
-              <div className="flex items-start justify-between">
-                <div className="flex flex-col gap-1 flex-1">
-                  <h3 className="font-playfair italic font-medium text-[18px] text-white">
-                    Nayya Integration
-                  </h3>
-                  <p className="text-[14px] leading-[1.3] text-white/90 whitespace-pre-line">
-                    {`- Desktop / Mobile / UX Design\n- AI integration\n- X improvement`}
-                  </p>
+                {/* Tags – always visible */}
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[12px] font-medium px-3 py-1 rounded-full bg-[#E0EEFB] text-[#1183D0]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
-                <span className="text-[14px] text-white/80 shrink-0">
-                  See improvements →
-                </span>
-              </div>
-              <div className="rounded-xl overflow-hidden flex items-center justify-center h-[187px]">
-                <Image
-                  src="/images/k58t4.png"
-                  alt="Nayya Integration"
-                  width={349}
-                  height={173}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
 
-            {/* Card 3 – Benefits copy (Light) */}
-            <div
-              className="w-[400px] rounded-[20px] p-7 flex flex-col gap-4 overflow-hidden shadow-[0_8px_24px_#00000018]"
-              style={{
-                background:
-                  "radial-gradient(ellipse at 82% 50%, #b7daf1 11%, #e9f3fb 64%, #edf5fb 98%)",
-              }}
-            >
-              <div className="flex items-start justify-between">
-                <div className="flex flex-col gap-1 flex-1">
-                  <h3 className="font-playfair italic font-medium text-[18px] text-[#1183D0] max-w-[154px]">
-                    Enhancing Benefits Enrollment
-                  </h3>
-                  <p className="text-[14px] leading-[1.3] text-[#3c3e3f] max-w-[352px]">
-                    Replaced a manual workflow with a centralized, self-managed
-                    platform; cutting processing time by 72%.
-                  </p>
-                </div>
-                <span className="text-[14px] text-[#3c3e3f] shrink-0">
-                  See improvements →
+                {/* Title */}
+                <h3 className="font-playfair italic text-[20px] leading-snug text-[#0e2951] group-hover:text-[#1183D0] transition-colors duration-200">
+                  {project.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-[14px] leading-relaxed text-[#5c7792] -mt-1">
+                  {project.description}
+                </p>
+
+                {/* CTA */}
+                <span className="text-[14px] font-medium text-[#1183D0] group-hover:underline underline-offset-2">
+                  {project.cta} →
                 </span>
-              </div>
-              <div className="rounded-xl overflow-hidden flex items-center justify-center h-[172px]">
-                <Image
-                  src="/images/AxnrM.png"
-                  alt="Benefits Enrollment"
-                  width={402}
-                  height={199}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
+              </a>
+            ))}
           </div>
 
           {/* View all work CTA */}
