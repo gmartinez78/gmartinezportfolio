@@ -274,14 +274,19 @@ const SKILLS = [
 
 const EDUCATION = [
   {
-    degree: "B.F.A. Graphic Design",
-    school: "Universidad de las Artes · Guayaquil, Ecuador",
-    year: "2013",
+    degree: "UX Design / Graphic Design",
+    school: "Coderhouse",
+    year: "2017",
   },
   {
-    degree: "UX Design Certificate",
-    school: "Google / Coursera",
-    year: "2020",
+    degree: "Diploma in Web Media Design",
+    school: "Universidad Rafael Belloso Chacín",
+    year: "2014–2015",
+  },
+  {
+    degree: "Bachelor's in Graphic Design",
+    school: "URBE",
+    year: "2012–2015",
   },
 ];
 
