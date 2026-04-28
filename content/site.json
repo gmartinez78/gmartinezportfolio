@@ -1,0 +1,166 @@
+{
+  "nav": {
+    "logo_text": "Greddys Martinez",
+    "links": [
+      { "label": "Projects", "href": "/projects" },
+      { "label": "Resume", "href": "/resume" },
+      { "label": "Contact", "href": "/contact" }
+    ],
+    "cta_label": "Get in touch",
+    "cta_href": "/contact"
+  },
+  "home": {
+    "hero": {
+      "greeting": "I am Greddys Martinez",
+      "tagline": "a designer in AI Research & UX / UI",
+      "photo": "/images/hero-photo.jpg",
+      "methodology_chips": [
+        "Classic",
+        "Agile based",
+        "Product Prototype",
+        "Digital Prototype",
+        "Expert Reviews"
+      ]
+    },
+    "trusted_by": {
+      "label": "Trusted by industry leaders",
+      "clients": [
+        { "name": "IBX", "logo": "/images/logos/ibx.png" },
+        { "name": "Skill", "logo": "/images/logos/skill.png" },
+        { "name": "Nayya", "logo": "/images/logos/nayya.png" },
+        { "name": "Paychex", "logo": "/images/logos/paychex.png" }
+      ]
+    },
+    "certifications": [
+      { "name": "Upwork Certification", "logo": "/images/certs/upwork-cert.png" },
+      { "name": "NN/g UX Certification", "logo": "/images/certs/nng-cert.png" }
+    ],
+    "stat_banner": {
+      "text": "Last quarter, my clients saw a",
+      "value": "47%",
+      "value_label": "average increase in conversions.",
+      "cta_headline": "Your product deserves that too.",
+      "cta_label": "Let's work together →",
+      "cta_href": "#contact"
+    },
+    "tools_section": {
+      "headline": "Tools I Love & Work With",
+      "description": "I integrate seamlessly with the tools your team already uses, creating workflows that feel natural and efficient.",
+      "cta_label": "View My Resume →",
+      "cta_href": "/resume",
+      "row_1": ["Figma", "Framer", "Miro", "React", "Node", "Python", "Swift", "TS", "Vue", "Go", "SQL"],
+      "row_2": ["GitHub", "Slack", "AWS", "Vercel", "Docker", "Tailwind", "Next.js", "Rust", "Redis", "GPT", "GCP"]
+    }
+  },
+  "footer": {
+    "tagline": "Senior Product Designer crafting thoughtful digital experiences that make a difference.",
+    "cta_headline": "Let's Work Together",
+    "cta_body": "I'm always open to new opportunities and collaborations.",
+    "cta_label": "Get in touch →",
+    "cta_href": "/contact",
+    "copyright": "© 2026 Greddys Martinez. All rights reserved.",
+    "social_links": [
+      { "label": "LinkedIn", "href": "https://linkedin.com/in/greddysmartinez" },
+      { "label": "Behance", "href": "https://www.behance.net/greddysmartinez" },
+      { "label": "UpWork", "href": "#" }
+    ]
+  },
+  "contact": {
+    "headline": "Get in Touch",
+    "subheadline": "Let's talk",
+    "intro": "Whether you have a project in mind, a question, or just want to say hello — I'd love to hear from you.",
+    "availability": "I'm currently based in Málaga, Spain and available for remote opportunities worldwide. Response time is usually within 24 hours.",
+    "details": [
+      { "label": "Email", "value": "greddysmartinez5@gmail.com", "href": "mailto:greddysmartinez5@gmail.com" },
+      { "label": "LinkedIn", "value": "linkedin.com/in/greddysmartinez", "href": "https://linkedin.com/in/greddysmartinez" },
+      { "label": "Behance", "value": "behance.net/greddysmartinez", "href": "https://www.behance.net/greddysmartinez" },
+      { "label": "UpWork", "value": "Available for freelance", "href": "#" },
+      { "label": "Location", "value": "Málaga, Spain · Open to remote", "href": null }
+    ]
+  },
+  "resume": {
+    "name": "Greddys Martínez",
+    "title": "Senior Product Designer | AI-Driven UX | Enterprise SaaS",
+    "email": "greddysmartinez5@gmail.com",
+    "location": "Malaga, Spain",
+    "website": "www.be.net/greddysmartinez",
+    "linkedin": "linkedin.com/in/greddysmartinez",
+    "bio": "Senior Product Designer with 10+ years of experience certified in User Experience with recognition in interaction design by the NN/Group. Designing enterprise B2B experiences across FinTech, HR, and HealthTech. Strong focus on bridging strategy and execution, leading research, aligning cross-functional teams, and shipping high-impact solutions in Agile environments.",
+    "pdf_link": "#",
+    "experience": [
+      {
+        "title": "Sr. Product Designer",
+        "company": "ITX Corp",
+        "client": "Paychex (Nayya, Flock, E-Verify, Indeed)",
+        "period": "Mar. 2021 – Present",
+        "location": "Malaga, Spain (Remote)",
+        "bullets": [
+          "Shipping complex B2C SaaS workflows across Payroll, HR, Hiring, benefits, insurance, and retirement platforms (Fintech).",
+          "Redesigning form flows based on research findings from user interviews, usability tests, and assisted testing, reducing completion time by 35%.",
+          "Reducing support tickets by 500+ and support call volume by 9,000+ calls per year through redesigned HR and hiring flows.",
+          "Designing and launching AI-powered features that improve user decision-making during enrollment.",
+          "Contributing to exceeding the annual enrollment goal by 5,500 users by simplifying workflows.",
+          "Making end-to-end design decisions for an enterprise HR platform with 2.3 million users.",
+          "Building design systems using React.js components, ensuring consistency on mobile and desktop.",
+          "Using AI tools like Copilot, Lovable, Claude, and ChatGPT throughout the workflow to synthesize research, generate early concepts, and prototype quickly."
+        ],
+        "tags": ["B2C SaaS", "AI Features", "Design Systems", "Research", "React.js"]
+      },
+      {
+        "title": "UX/UI Designer",
+        "company": "Alquilando S.A.",
+        "client": "PropTech Marketplace",
+        "period": "Mar. 2019 – May. 2021",
+        "location": "Buenos Aires, Argentina (Remote)",
+        "bullets": [
+          "Designing and shipping end-to-end UX/UI solutions for a PropTech startup building a large-scale real estate platform serving the LATAM market.",
+          "Established the company's user-centric foundation through Alan Cooper-inspired personas.",
+          "Built a component system from scratch based on Google Material Design standards.",
+          "Delivered high-fidelity UI designs and interactive prototypes, reducing implementation ambiguity and accelerating developer handoffs."
+        ],
+        "tags": ["PropTech", "B2C", "Material Design", "UI Systems", "Email HTML/CSS"]
+      },
+      {
+        "title": "Freelance UX / UI Designer",
+        "company": "Studio Hakuna",
+        "client": "Paramount App LATAM",
+        "period": "Dec. 2019 – May. 2020",
+        "location": "Buenos Aires, Argentina (Remote)",
+        "bullets": [
+          "Conducted UX research to understand audience needs and behaviors for the Paramount App LATAM.",
+          "Redesigned existing platform features, improving usability and overall user engagement.",
+          "Developed wireframes, prototypes, and high-fidelity UI designs balancing user needs with business goals."
+        ],
+        "tags": ["Streaming", "LATAM", "UX Research", "Prototyping", "UI Design"]
+      },
+      {
+        "title": "UX/UI Designer",
+        "company": "Elevation",
+        "client": "Web Solutions for Nonprofits",
+        "period": "Jan. 2017 – Feb. 2019",
+        "location": "Buenos Aires, Argentina (Hybrid)",
+        "bullets": [
+          "Delivered end-to-end UX/UI design across multiple nonprofit clients simultaneously.",
+          "Designed and optimized e-commerce experiences for nonprofit fundraising platforms.",
+          "Created marketing assets including HTML/CSS emails, brochures, and campaign materials."
+        ],
+        "tags": ["Nonprofits", "B2B", "B2C", "Accessibility", "Fundraising"]
+      }
+    ],
+    "skills": {
+      "Design": ["Scalable design systems", "Component adoption", "Pattern definition", "Design tokens", "Figma libraries", "Accessibility Standards", "AI Product Design", "Enterprise UX", "B2B & B2C Products"],
+      "Research": ["Competitive Analysis", "Qualitative & Quantitative Research", "User Research", "Usability Testing", "Surveys", "Heuristic Evaluation", "User Interviews", "Information Architecture", "Personas"],
+      "Collaboration & Delivery": ["Async-friendly handoff", "Figma annotations", "Design-to-build alignment", "HTML", "CSS", "Cross-functional Collaboration", "Stakeholder Management", "Agile / Scrum"],
+      "AI in Design": ["Copilot", "OOUX with AI", "Research synthesis", "Rapid prototyping", "Design-frontend workflow automation", "LLM"]
+    },
+    "tools": ["Figma", "Jira", "Miro", "Copilot", "Webex", "ClickUp", "Confluence", "Maze", "Notion", "Slack", "HTML/CSS", "React"],
+    "education": [
+      { "year": "2013", "degree": "B.F.A. Graphic Design", "institution": "Universidad de las Artes · Guayaquil, Ecuador" },
+      { "year": "2020", "degree": "UX Design Certificate", "institution": "Google / Coursera" }
+    ],
+    "certifications": [
+      { "name": "NN/Group UX Certification — Interaction Design", "level": "UX Certified Professional", "year": "2023", "logo": "/images/certs/nng-cert.png" },
+      { "name": "Upwork Skill Certification — User Interface Design", "level": "Verified professional certification", "year": "2024", "logo": "/images/certs/upwork-cert.png" }
+    ]
+  }
+}

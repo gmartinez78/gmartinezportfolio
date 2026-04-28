@@ -1,0 +1,293 @@
+insert into public.site_content (key, title, payload)
+values (
+  'site',
+  'Primary site content',
+  $json$
+{
+  "nav": {
+    "logo_text": "Greddys Martinez",
+    "links": [
+      { "label": "Projects", "href": "/projects" },
+      { "label": "Resume", "href": "/resume" },
+      { "label": "Contact", "href": "/contact" }
+    ],
+    "cta_label": "Get in touch",
+    "cta_href": "/contact"
+  },
+  "home": {
+    "hero": {
+      "greeting": "I am Greddys Martinez",
+      "tagline": "a designer in AI Research & UX / UI",
+      "photo": "/images/hero-photo.jpg",
+      "methodology_chips": [
+        "Classic",
+        "Agile based",
+        "Product Prototype",
+        "Digital Prototype",
+        "Expert Reviews"
+      ]
+    },
+    "trusted_by": {
+      "label": "Trusted by industry leaders",
+      "clients": [
+        { "name": "IBX", "logo": "/images/logos/ibx.png" },
+        { "name": "Skill", "logo": "/images/logos/skill.png" },
+        { "name": "Nayya", "logo": "/images/logos/nayya.png" },
+        { "name": "Paychex", "logo": "/images/logos/paychex.png" }
+      ]
+    },
+    "certifications": [
+      { "name": "Upwork Certification", "logo": "/images/certs/upwork-cert.png" },
+      { "name": "NN/g UX Certification", "logo": "/images/certs/nng-cert.png" }
+    ],
+    "stat_banner": {
+      "text": "Last quarter, my clients saw a",
+      "value": "47%",
+      "value_label": "average increase in conversions.",
+      "cta_headline": "Your product deserves that too.",
+      "cta_label": "Let's work together →",
+      "cta_href": "#contact"
+    },
+    "tools_section": {
+      "headline": "Tools I Love & Work With",
+      "description": "I integrate seamlessly with the tools your team already uses, creating workflows that feel natural and efficient.",
+      "cta_label": "View My Resume →",
+      "cta_href": "/resume",
+      "row_1": ["Figma", "Framer", "Miro", "React", "Node", "Python", "Swift", "TS", "Vue", "Go", "SQL"],
+      "row_2": ["GitHub", "Slack", "AWS", "Vercel", "Docker", "Tailwind", "Next.js", "Rust", "Redis", "GPT", "GCP"]
+    }
+  },
+  "footer": {
+    "tagline": "Senior Product Designer crafting thoughtful digital experiences that make a difference.",
+    "cta_headline": "Let's Work Together",
+    "cta_body": "I'm always open to new opportunities and collaborations.",
+    "cta_label": "Get in touch →",
+    "cta_href": "/contact",
+    "copyright": "© 2026 Greddys Martinez. All rights reserved.",
+    "social_links": [
+      { "label": "LinkedIn", "href": "https://linkedin.com/in/greddysmartinez" },
+      { "label": "Behance", "href": "https://www.behance.net/greddysmartinez" },
+      { "label": "UpWork", "href": "#" }
+    ]
+  },
+  "contact": {
+    "headline": "Get in Touch",
+    "subheadline": "Let's talk",
+    "intro": "Whether you have a project in mind, a question, or just want to say hello — I'd love to hear from you.",
+    "availability": "I'm currently based in Málaga, Spain and available for remote opportunities worldwide. Response time is usually within 24 hours.",
+    "details": [
+      { "label": "Email", "value": "greddysmartinez5@gmail.com", "href": "mailto:greddysmartinez5@gmail.com" },
+      { "label": "LinkedIn", "value": "linkedin.com/in/greddysmartinez", "href": "https://linkedin.com/in/greddysmartinez" },
+      { "label": "Behance", "value": "behance.net/greddysmartinez", "href": "https://www.behance.net/greddysmartinez" },
+      { "label": "UpWork", "value": "Available for freelance", "href": "#" },
+      { "label": "Location", "value": "Málaga, Spain · Open to remote", "href": null }
+    ]
+  },
+  "resume": {
+    "name": "Greddys Martínez",
+    "title": "Senior Product Designer | AI-Driven UX | Enterprise SaaS",
+    "email": "greddysmartinez5@gmail.com",
+    "location": "Malaga, Spain",
+    "website": "www.be.net/greddysmartinez",
+    "linkedin": "linkedin.com/in/greddysmartinez",
+    "bio": "Senior Product Designer with 10+ years of experience certified in User Experience with recognition in interaction design by the NN/Group. Designing enterprise B2B experiences across FinTech, HR, and HealthTech. Strong focus on bridging strategy and execution, leading research, aligning cross-functional teams, and shipping high-impact solutions in Agile environments.",
+    "pdf_link": "#",
+    "experience": [],
+    "skills": {},
+    "tools": [],
+    "education": [],
+    "certifications": []
+  }
+}
+$json$::jsonb
+)
+on conflict (key) do update
+set title = excluded.title,
+    payload = excluded.payload;
+
+insert into public.case_studies (
+  slug,
+  status,
+  featured,
+  "order",
+  title,
+  company,
+  client_context,
+  role,
+  year,
+  duration,
+  industry,
+  tagline,
+  tags,
+  filters,
+  tools,
+  images,
+  client_logos,
+  metrics,
+  team,
+  my_role,
+  problem,
+  constraints,
+  methodology,
+  design_strategy,
+  reflections,
+  content_blocks,
+  nda_notice,
+  password,
+  external_link
+)
+values
+(
+  'benefits-enrollment',
+  'published',
+  true,
+  1,
+  'Enhancing Benefits Enrollment',
+  'Independence Blue Cross',
+  'Paychex via ITX Corp',
+  'Sr. Product Designer',
+  2024,
+  '3 months',
+  'HR/Payroll SaaS',
+  'Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%.',
+  array['HR/Payroll SaaS','UX Research','IA','Interaction Design','Design Systems'],
+  array['UX Research','Product Design','Design Systems'],
+  array['Figma','Jira','Miro','Webex','Outlook','Copilot'],
+  '{"cover":"/images/projects/benefits-cover.png","hero":"/images/projects/benefits-hero.png","gallery":["/images/projects/benefits/figma-logo.png","/images/projects/benefits/jira-logo.png","/images/projects/benefits/miro-logo.png"]}'::jsonb,
+  '[{"name":"Paychex","logo":"/images/logos/paychex.png"},{"name":"Nayya","logo":"/images/logos/nayya.png"},{"name":"IBX","logo":"/images/logos/ibx.png"}]'::jsonb,
+  '[{"value":"72%","label":"Reduction in processing time","context":"benefits processing"},{"value":"500+","label":"Employees self-managed","context":"without IT tickets"},{"value":"3 mo","label":"End-to-end design & delivery","context":"timeline"}]'::jsonb,
+  array['Product Owner','Program manager','Business analyst','Researcher','Dev team (12)','UX manager','UX Lead','UX/UI designer','Service architect','Scrum master'],
+  array['User Research','UX/UI Design','Product Thinking','Narrative'],
+  '{"admin_pain_points":["Benefits changes required running multiple payroll cycles and manual reconciliation.","Admins had no easy way to aggregate employee data across departments in one place.","When enrollment spikes occurred, there was no clear escalation or alert workflow."],"user_pain_points":["Adding new employees required support tickets and manual development effort.","Data needed to be collected, validated and sent across teams. Changes were tracked through emails.","No centralized governance or clear permission structure."]}'::jsonb,
+  array['An aggressive timeline.','Balancing the product''s existing patterns with user needs without disrupting the experience.'],
+  '{"name":"Design Thinking","steps":[{"step":1,"label":"Empathize","description":"User interviews & stakeholder sessions"},{"step":2,"label":"Define","description":"Problem framing & pain point mapping"},{"step":3,"label":"Ideate","description":"Flows, architecture & wireframing"},{"step":4,"label":"Prototype","description":"Hi-fi screens & interactive prototypes"},{"step":5,"label":"Test","description":"Usability testing & dev collaboration"}]}'::jsonb,
+  array['Define the underlying architecture and logic before changing the UI.','Find what parts of the system work well and build around those.','With no design system, collaboration with the development team ensured the forward-facing UI remained cohesive throughout.'],
+  '[{"title":"Architecture before UI.","body":"Investing time in mapping the permission model before designing screens prevented costly rework. The logic had to be airtight before any pixel moved."},{"title":"Trust through constraints.","body":"Working without a design system forced tight collaboration with engineers. Constant syncs kept the UI cohesive and the handoff smooth even under timeline pressure."}]'::jsonb,
+  '[{"id":"overview","type":"overview","title":"Overview"},{"id":"metrics","type":"results","title":"Key Metrics"},{"id":"pain-points","type":"pain_points","title":"Pain Points"},{"id":"constraints","type":"constraints","title":"Constraints"},{"id":"methodology","type":"methodology","title":"Methodology"},{"id":"strategy","type":"strategy","title":"Design Strategy"},{"id":"reflections","type":"reflection","title":"Reflections"}]'::jsonb,
+  'Parts of this presentation — including some screens and project details — have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy.',
+  null,
+  null
+),
+(
+  'nayya-ai-benefits',
+  'published',
+  true,
+  2,
+  'AI-Powered Benefits Advisor',
+  'Nayya',
+  'Paychex via ITX Corp',
+  'Sr. AI Product Designer',
+  2022,
+  '6 months',
+  'AI/ML Product',
+  'Designed the conversational UX for an AI-driven benefits recommendation engine that helped employees understand and select the right coverage for their life stage.',
+  array['AI/ML Product','UX Research','Prototyping'],
+  array['UX Research','Product Design'],
+  array['Figma','Miro','Maze','Copilot'],
+  '{"cover":"/images/projects/nayya-cover.png","hero":"/images/projects/nayya-hero.png","gallery":[]}'::jsonb,
+  '[{"name":"Nayya","logo":"/images/logos/nayya.png"},{"name":"Paychex","logo":"/images/logos/paychex.png"}]'::jsonb,
+  '[{"value":"4.8★","label":"Average user satisfaction","context":"post-launch survey"},{"value":"67%","label":"Recommendation-to-enrollment","context":"conversion rate"},{"value":"~115K","label":"Enrollments influenced","context":"projected annual"}]'::jsonb,
+  array['Product Owner','UX Lead','UX/UI designer','AI/ML Engineer','Dev team'],
+  array['Conversational UX Design','AI interaction design','Prototyping','User Research'],
+  '{"admin_pain_points":["Employees were overwhelmed by complex benefits options with no guidance.","Low enrollment rates due to lack of personalized recommendations."],"user_pain_points":["Benefits terminology was confusing and inaccessible for most employees.","No way to understand which plan fit their specific life stage or family situation.","Drop-off was highest between recommendation and final enrollment."]}'::jsonb,
+  array['AI recommendations had to feel trustworthy without being prescriptive.','Design had to work within Paychex''s existing platform architecture.'],
+  '{"name":"Design Thinking","steps":[{"step":1,"label":"Empathize","description":"User interviews & benefits expert sessions"},{"step":2,"label":"Define","description":"Journey mapping & drop-off analysis"},{"step":3,"label":"Ideate","description":"Conversational flows & AI interaction patterns"},{"step":4,"label":"Prototype","description":"4 rounds of interactive prototype iteration"},{"step":5,"label":"Test","description":"5–8 participants per round, moderated sessions"}]}'::jsonb,
+  array['Lead with empathy — show the user their situation, not a product catalog.','Use progressive disclosure to reduce cognitive overload during enrollment.','Design AI transparency: show why the recommendation is being made.'],
+  '[{"title":"AI needs a human voice.","body":"The biggest challenge was making AI recommendations feel personal without feeling intrusive. Tone and pacing in the conversational flow mattered as much as the UI."},{"title":"Stabilize before you scale.","body":"Mapping the recommendation logic before designing screens ensured the AI outputs were actually usable — not just technically correct."}]'::jsonb,
+  '[{"id":"overview","type":"overview","title":"Overview"},{"id":"metrics","type":"results","title":"Key Metrics"},{"id":"pain-points","type":"pain_points","title":"Pain Points"},{"id":"constraints","type":"constraints","title":"Constraints"},{"id":"methodology","type":"methodology","title":"Methodology"},{"id":"strategy","type":"strategy","title":"Design Strategy"},{"id":"reflections","type":"reflection","title":"Reflections"}]'::jsonb,
+  'Some screens and data from this project are under NDA. The work shown is representative of the design approach.',
+  null,
+  null
+),
+(
+  'easterseals-portal',
+  'published',
+  false,
+  3,
+  'Accessible Service Portal',
+  'Easterseals',
+  'Elevation Agency',
+  'UX/UI Designer',
+  2020,
+  '4 months',
+  'Accessibility / Nonprofit',
+  'Redesigned the public-facing portal for a nonprofit serving people with disabilities, achieving WCAG 2.1 AA compliance and reducing task completion time by 40%.',
+  array['Accessibility','Web Design','Nonprofit'],
+  array['Product Design','Accessibility'],
+  array['Figma','Miro'],
+  '{"cover":"/images/projects/easterseals-cover.png","hero":"","gallery":[]}'::jsonb,
+  '[]'::jsonb,
+  '[{"value":"40%","label":"Faster task completion","context":"post-redesign"},{"value":"WCAG 2.1 AA","label":"Accessibility compliance","context":"achieved at launch"}]'::jsonb,
+  array['UX Designer','Developer','Nonprofit stakeholders'],
+  array['UX Research','Accessibility Audit','UI Design','Prototyping'],
+  '{"admin_pain_points":["Outdated CMS made content updates difficult for non-technical staff.","No accessibility standards enforced across the platform."],"user_pain_points":["Users with disabilities couldn''t navigate the portal independently.","Task completion rates were extremely low due to confusing information architecture."]}'::jsonb,
+  array['Strict accessibility compliance requirements (WCAG 2.1 AA).','Limited budget and nonprofit timeline.'],
+  '{"name":"Design Thinking","steps":[{"step":1,"label":"Empathize","description":"Accessibility audit & user interviews"},{"step":2,"label":"Define","description":"IA restructuring & pain point mapping"},{"step":3,"label":"Ideate","description":"Accessible component design"},{"step":4,"label":"Prototype","description":"Screen reader-tested prototypes"},{"step":5,"label":"Test","description":"Usability testing with target users"}]}'::jsonb,
+  array['Accessibility as a design constraint from day one, not a retrofit.','Simplify IA before redesigning any UI — users couldn''t find what they needed.','Work within existing brand to reduce stakeholder friction.'],
+  '[{"title":"Accessibility is UX.","body":"Designing for users with disabilities improved the experience for everyone. Every constraint pushed us toward clearer, simpler, more intentional decisions."}]'::jsonb,
+  '[{"id":"overview","type":"overview","title":"Overview"},{"id":"metrics","type":"results","title":"Key Metrics"},{"id":"pain-points","type":"pain_points","title":"Pain Points"},{"id":"constraints","type":"constraints","title":"Constraints"},{"id":"methodology","type":"methodology","title":"Methodology"},{"id":"strategy","type":"strategy","title":"Design Strategy"},{"id":"reflections","type":"reflection","title":"Reflections"}]'::jsonb,
+  null,
+  null,
+  null
+),
+(
+  'transport-for-troops',
+  'published',
+  false,
+  4,
+  'Ride Coordination Mobile App',
+  'Transport for Troops',
+  'Freelance',
+  'UX/UI Designer',
+  2018,
+  '5 months',
+  'Mobile / Nonprofit',
+  'Built a mobile app from zero to launch for a veteran-focused logistics nonprofit, enabling ride coordination for 200+ volunteers and reducing dispatcher workload by 60%.',
+  array['Mobile','Brand Design','Startup'],
+  array['Product Design','Mobile'],
+  array['Figma','Miro'],
+  '{"cover":"/images/projects/transport-cover.png","hero":"","gallery":[]}'::jsonb,
+  '[]'::jsonb,
+  '[{"value":"60%","label":"Less dispatcher workload","context":"post-launch"},{"value":"200+","label":"Volunteers coordinated","context":"active users"}]'::jsonb,
+  array['UX Designer','Mobile Developer','Nonprofit Director'],
+  array['Product Design','Brand Design','Mobile UX','Prototyping'],
+  '{"admin_pain_points":["All ride coordination was done manually via phone calls and spreadsheets.","Dispatchers were overwhelmed managing 200+ volunteer schedules."],"user_pain_points":["Volunteers had no central place to see available rides or confirm assignments.","Veterans couldn''t track their ride status in real time."]}'::jsonb,
+  array['Zero budget — nonprofit with no design tools or brand guidelines.','Needed to work on low-end Android devices used by volunteers.'],
+  '{"name":"Design Thinking","steps":[{"step":1,"label":"Empathize","description":"Dispatcher shadowing & volunteer interviews"},{"step":2,"label":"Define","description":"Core workflow mapping"},{"step":3,"label":"Ideate","description":"Mobile-first flow design from zero"},{"step":4,"label":"Prototype","description":"Android-targeted prototype"},{"step":5,"label":"Test","description":"Field testing with real volunteers"}]}'::jsonb,
+  array['Start with the dispatcher — fix the bottleneck first, then design for volunteers.','Mobile-first, data-light: the app had to work on spotty rural connections.','Build the brand from scratch to give the nonprofit credibility.'],
+  '[{"title":"Zero to launch.","body":"Building a product with no existing design language forced rapid brand and UX decisions in parallel. Speed and quality had to coexist."}]'::jsonb,
+  '[{"id":"overview","type":"overview","title":"Overview"},{"id":"metrics","type":"results","title":"Key Metrics"},{"id":"pain-points","type":"pain_points","title":"Pain Points"},{"id":"constraints","type":"constraints","title":"Constraints"},{"id":"methodology","type":"methodology","title":"Methodology"},{"id":"strategy","type":"strategy","title":"Design Strategy"},{"id":"reflections","type":"reflection","title":"Reflections"}]'::jsonb,
+  null,
+  null,
+  null
+)
+on conflict (slug) do update
+set
+  status = excluded.status,
+  featured = excluded.featured,
+  "order" = excluded."order",
+  title = excluded.title,
+  company = excluded.company,
+  client_context = excluded.client_context,
+  role = excluded.role,
+  year = excluded.year,
+  duration = excluded.duration,
+  industry = excluded.industry,
+  tagline = excluded.tagline,
+  tags = excluded.tags,
+  filters = excluded.filters,
+  tools = excluded.tools,
+  images = excluded.images,
+  client_logos = excluded.client_logos,
+  metrics = excluded.metrics,
+  team = excluded.team,
+  my_role = excluded.my_role,
+  problem = excluded.problem,
+  constraints = excluded.constraints,
+  methodology = excluded.methodology,
+  design_strategy = excluded.design_strategy,
+  reflections = excluded.reflections,
+  content_blocks = excluded.content_blocks,
+  nda_notice = excluded.nda_notice,
+  password = excluded.password,
+  external_link = excluded.external_link;
