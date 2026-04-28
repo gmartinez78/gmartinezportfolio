@@ -267,15 +267,15 @@ export default function PortfolioPage() {
                   {project.title}
                 </h3>
 
-                <div className="-mt-2 min-h-[116px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-                  <div>
+                <div className="-mt-2 h-[116px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                  <div className="flex h-full flex-col justify-between">
                     {/* Description */}
                     <p className="text-[14px] leading-relaxed text-[#5c7792]">
                       {project.description}
                     </p>
 
                     {/* CTA */}
-                    <span className="mt-4 inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline group-focus-visible:underline">
+                    <span className="inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline group-focus-visible:underline">
                       {project.cta} →
                     </span>
                   </div>
