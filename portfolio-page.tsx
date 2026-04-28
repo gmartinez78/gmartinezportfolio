@@ -7,10 +7,10 @@ import { SectionHeading } from "./components/ui/section-heading";
 import { withBasePath } from "./lib/site";
 
 const SOCIAL_PROOF_LOGOS = [
-  { src: "/images/SNUZw.png", alt: "IBX", h: 41, w: 57 },
-  { src: "/images/IbuV3.png", alt: "Skill", h: 59, w: 107 },
-  { src: "/images/bBw3A.png", alt: "Nayya", h: 48, w: 127 },
-  { src: "/images/c54fy.png", alt: "Paychex", h: 51, w: 142 },
+  { src: withBasePath("/images/SNUZw.png"), alt: "IBX", h: 41, w: 57 },
+  { src: withBasePath("/images/IbuV3.png"), alt: "Skill", h: 59, w: 107 },
+  { src: withBasePath("/images/bBw3A.png"), alt: "Nayya", h: 48, w: 127 },
+  { src: withBasePath("/images/c54fy.png"), alt: "Paychex", h: 51, w: 142 },
 ];
 
 const LOGO_CAROUSEL = [...SOCIAL_PROOF_LOGOS, ...SOCIAL_PROOF_LOGOS];
@@ -22,7 +22,7 @@ const PROJECTS = [
     title: "Enhancing Benefits Enrollment",
     description:
       "Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%.",
-    image: "/images/AxnrM.png",
+    image: withBasePath("/images/AxnrM.png"),
     href: withBasePath("/benefits"),
     tags: ["Enterprise", "SaaS", "HR Tech", "B2C"],
     cta: "See case study",
@@ -31,7 +31,7 @@ const PROJECTS = [
     title: "Nayya AI Integration",
     description:
       "AI-powered benefits navigation across desktop and mobile, simplifying enrollment decisions for 2.3M+ users.",
-    image: "/images/k58t4.png",
+    image: withBasePath("/images/k58t4.png"),
     href: "#",
     tags: ["SaaS", "AI Features", "FinTech", "B2C"],
     cta: "See improvements",
@@ -40,7 +40,7 @@ const PROJECTS = [
     title: "Paychex HR Platform",
     description:
       "End-to-end redesign of hiring and onboarding flows, reducing support calls by 9,000+ per year.",
-    image: "/images/AxnrM.png",
+    image: withBasePath("/images/AxnrM.png"),
     href: "#",
     tags: ["Enterprise", "SaaS", "Hiring", "Research"],
     cta: "See improvements",
@@ -48,29 +48,29 @@ const PROJECTS = [
 ];
 
 const TOOLS_LEFT = [
-  { label: "Figma", src: "/images/tools/figma.svg", x: "left-[78px]", y: "top-[72px]", size: "lg" as const, tone: "white" as const },
-  { label: "Angular", src: "/images/tools/Angular_gradient_logo.png", x: "left-[235px]", y: "top-[36px]", size: "lg" as const, tone: "white" as const },
-  { label: "Miro", src: "/images/tools/miro.svg", x: "left-[405px]", y: "top-[18px]", size: "lg" as const, tone: "white" as const },
-  { label: "React", src: "/images/tools/react.svg", x: "left-[130px]", y: "top-[230px]", size: "sm" as const, tone: "white" as const },
-  { label: "HTML5", src: "/images/tools/html5.svg", x: "left-[78px]", y: "top-[340px]", size: "sm" as const, tone: "white" as const },
-  { label: "Jira", src: "/images/tools/jira.svg", x: "left-[305px]", y: "top-[124px]", size: "sm" as const, tone: "white" as const },
-  { label: "Confluence", src: "/images/tools/confluence.svg", x: "left-[488px]", y: "top-[110px]", size: "sm" as const, tone: "white" as const },
-  { label: "Maze", src: "/images/tools/maze.svg", x: "left-[395px]", y: "top-[252px]", size: "sm" as const, tone: "white" as const },
-  { label: "Notion", src: "/images/tools/notion.svg", x: "left-[260px]", y: "top-[354px]", size: "sm" as const, tone: "white" as const },
-  { label: "Webex", src: "/images/tools/webex.svg", x: "left-[550px]", y: "top-[385px]", size: "sm" as const, tone: "white" as const },
+  { label: "Figma", src: withBasePath("/images/tools/figma.svg"), x: "left-[78px]", y: "top-[72px]", size: "lg" as const, tone: "white" as const },
+  { label: "Angular", src: withBasePath("/images/tools/Angular_gradient_logo.png"), x: "left-[235px]", y: "top-[36px]", size: "lg" as const, tone: "white" as const },
+  { label: "Miro", src: withBasePath("/images/tools/miro.svg"), x: "left-[405px]", y: "top-[18px]", size: "lg" as const, tone: "white" as const },
+  { label: "React", src: withBasePath("/images/tools/react.svg"), x: "left-[130px]", y: "top-[230px]", size: "sm" as const, tone: "white" as const },
+  { label: "HTML5", src: withBasePath("/images/tools/html5.svg"), x: "left-[78px]", y: "top-[340px]", size: "sm" as const, tone: "white" as const },
+  { label: "Jira", src: withBasePath("/images/tools/jira.svg"), x: "left-[305px]", y: "top-[124px]", size: "sm" as const, tone: "white" as const },
+  { label: "Confluence", src: withBasePath("/images/tools/confluence.svg"), x: "left-[488px]", y: "top-[110px]", size: "sm" as const, tone: "white" as const },
+  { label: "Maze", src: withBasePath("/images/tools/maze.svg"), x: "left-[395px]", y: "top-[252px]", size: "sm" as const, tone: "white" as const },
+  { label: "Notion", src: withBasePath("/images/tools/notion.svg"), x: "left-[260px]", y: "top-[354px]", size: "sm" as const, tone: "white" as const },
+  { label: "Webex", src: withBasePath("/images/tools/webex.svg"), x: "left-[550px]", y: "top-[385px]", size: "sm" as const, tone: "white" as const },
 ];
 
 const TOOLS_RIGHT = [
-  { label: "Copilot", src: "/images/tools/githubcopilot.svg", x: "right-[410px]", y: "top-[18px]", size: "sm" as const, tone: "white" as const },
-  { label: "Slack", src: "/images/tools/slack.svg", x: "right-[250px]", y: "top-[52px]", size: "sm" as const, tone: "white" as const },
-  { label: "Claude", src: "/images/tools/anthropic.svg", x: "right-[92px]", y: "top-[92px]", size: "sm" as const, tone: "white" as const },
-  { label: "ChatGPT", src: "/images/tools/openai.svg", x: "right-[345px]", y: "top-[170px]", size: "sm" as const, tone: "white" as const },
-  { label: "VS Code", src: "/images/tools/visualstudiocode.svg", x: "right-[62px]", y: "top-[232px]", size: "sm" as const, tone: "white" as const },
-  { label: "Figma", src: "/images/tools/figma.svg", x: "right-[210px]", y: "top-[365px]", size: "sm" as const, tone: "white" as const },
-  { label: "React", src: "/images/tools/react.svg", x: "right-[460px]", y: "top-[382px]", size: "sm" as const, tone: "white" as const },
-  { label: "Jira", src: "/images/tools/jira.svg", x: "right-[500px]", y: "top-[118px]", size: "sm" as const, tone: "white" as const },
-  { label: "Miro", src: "/images/tools/miro.svg", x: "right-[205px]", y: "top-[268px]", size: "sm" as const, tone: "white" as const },
-  { label: "Notion", src: "/images/tools/notion.svg", x: "right-[380px]", y: "top-[350px]", size: "sm" as const, tone: "white" as const },
+  { label: "Copilot", src: withBasePath("/images/tools/githubcopilot.svg"), x: "right-[410px]", y: "top-[18px]", size: "sm" as const, tone: "white" as const },
+  { label: "Slack", src: withBasePath("/images/tools/slack.svg"), x: "right-[250px]", y: "top-[52px]", size: "sm" as const, tone: "white" as const },
+  { label: "Claude", src: withBasePath("/images/tools/anthropic.svg"), x: "right-[92px]", y: "top-[92px]", size: "sm" as const, tone: "white" as const },
+  { label: "ChatGPT", src: withBasePath("/images/tools/openai.svg"), x: "right-[345px]", y: "top-[170px]", size: "sm" as const, tone: "white" as const },
+  { label: "VS Code", src: withBasePath("/images/tools/visualstudiocode.svg"), x: "right-[62px]", y: "top-[232px]", size: "sm" as const, tone: "white" as const },
+  { label: "Figma", src: withBasePath("/images/tools/figma.svg"), x: "right-[210px]", y: "top-[365px]", size: "sm" as const, tone: "white" as const },
+  { label: "React", src: withBasePath("/images/tools/react.svg"), x: "right-[460px]", y: "top-[382px]", size: "sm" as const, tone: "white" as const },
+  { label: "Jira", src: withBasePath("/images/tools/jira.svg"), x: "right-[500px]", y: "top-[118px]", size: "sm" as const, tone: "white" as const },
+  { label: "Miro", src: withBasePath("/images/tools/miro.svg"), x: "right-[205px]", y: "top-[268px]", size: "sm" as const, tone: "white" as const },
+  { label: "Notion", src: withBasePath("/images/tools/notion.svg"), x: "right-[380px]", y: "top-[350px]", size: "sm" as const, tone: "white" as const },
 ];
 
 function ToolBadge({
@@ -122,7 +122,7 @@ export default function PortfolioPage() {
       <section className="bg-white px-4 py-5 sm:px-6 lg:px-10">
         <div className="relative mx-auto min-h-[560px] max-w-[1440px] overflow-hidden rounded-[28px] bg-[#102944] px-6 py-10 shadow-[0_24px_80px_rgba(14,41,81,0.18)] sm:px-10 lg:px-16 lg:py-16">
           <Image
-            src="/images/k58t4.png"
+            src={withBasePath("/images/k58t4.png")}
             alt=""
             fill
             priority
@@ -180,7 +180,7 @@ export default function PortfolioPage() {
                   className="rounded-2xl bg-white/95 p-2 transition-opacity hover:opacity-85"
                 >
                   <Image
-                    src="/images/iNSrn.png"
+                    src={withBasePath("/images/iNSrn.png")}
                     alt="Upwork Skill Certification"
                     width={86}
                     height={86}
@@ -189,7 +189,7 @@ export default function PortfolioPage() {
                 </a>
                 <div className="rounded-2xl bg-white/95 p-2">
                   <Image
-                    src="/images/OiSjn.png"
+                    src={withBasePath("/images/OiSjn.png")}
                     alt="NN Group UX Certification"
                     width={86}
                     height={86}

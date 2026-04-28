@@ -7,18 +7,18 @@ import { withBasePath } from "../../lib/site";
 
 // ── Assets from Figma ─────────────────────────────────────────────────────────
 const ASSETS = {
-  figmaLogo: "/images/benefits/figma-logo.png",
-  jiraLogo: "/images/benefits/jira-logo.png",
-  miroLogo: "/images/benefits/miro-logo.png",
-  userIcon: "/images/benefits/user-icon.png",
-  clockIcon: "/images/benefits/clock-icon.png",
-  arrowVector: "/images/benefits/arrow-vector.png",
-  sigPenYellow: "/images/benefits/sig-pen-yellow.png",
-  sigPenTeal: "/images/benefits/sig-pen-teal.png",
-  miscSticker: "/images/benefits/misc-sticker.png",
-  paychex: "/images/c54fy.png",
-  nayya: "/images/bBw3A.png",
-  ibx: "/images/SNUZw.png",
+  figmaLogo: withBasePath("/images/benefits/figma-logo.png"),
+  jiraLogo: withBasePath("/images/benefits/jira-logo.png"),
+  miroLogo: withBasePath("/images/benefits/miro-logo.png"),
+  userIcon: withBasePath("/images/benefits/user-icon.png"),
+  clockIcon: withBasePath("/images/benefits/clock-icon.png"),
+  arrowVector: withBasePath("/images/benefits/arrow-vector.png"),
+  sigPenYellow: withBasePath("/images/benefits/sig-pen-yellow.png"),
+  sigPenTeal: withBasePath("/images/benefits/sig-pen-teal.png"),
+  miscSticker: withBasePath("/images/benefits/misc-sticker.png"),
+  paychex: withBasePath("/images/c54fy.png"),
+  nayya: withBasePath("/images/bBw3A.png"),
+  ibx: withBasePath("/images/SNUZw.png"),
 };
 
 // ── Data ──────────────────────────────────────────────────────────────────────
