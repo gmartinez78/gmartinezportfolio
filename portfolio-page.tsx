@@ -48,41 +48,43 @@ const PROJECTS = [
 ];
 
 const TOOLS_LEFT = [
-  { label: "Figma", x: "left-[60px]", y: "top-[80px]", size: "lg" as const, bg: "bg-white" },
-  { label: "Framer", x: "left-[170px]", y: "top-[40px]", size: "lg" as const, bg: "bg-white" },
-  { label: "Miro", x: "left-[290px]", y: "top-[20px]", size: "lg" as const, bg: "bg-white" },
-  { label: "React", x: "left-[100px]", y: "top-[230px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Node", x: "left-[60px]", y: "top-[332px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Python", x: "left-[190px]", y: "top-[346px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Swift", x: "left-[394px]", y: "top-[372px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "TS", x: "left-[220px]", y: "top-[130px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Vue", x: "left-[350px]", y: "top-[120px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Go", x: "left-[282px]", y: "top-[234px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
-  { label: "SQL", x: "left-[320px]", y: "top-[320px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
+  { label: "Figma", src: "/images/tools/figma.svg", x: "left-[60px]", y: "top-[80px]", size: "lg" as const, bg: "bg-white" },
+  { label: "Jira", src: "/images/tools/jira.svg", x: "left-[170px]", y: "top-[40px]", size: "lg" as const, bg: "bg-white" },
+  { label: "Miro", src: "/images/tools/miro.svg", x: "left-[290px]", y: "top-[20px]", size: "lg" as const, bg: "bg-white" },
+  { label: "React", src: "/images/tools/react.svg", x: "left-[100px]", y: "top-[230px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
+  { label: "HTML5", src: "/images/tools/html5.svg", x: "left-[60px]", y: "top-[332px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
+  { label: "Angular", src: "/images/tools/Angular_gradient_logo.png", x: "left-[190px]", y: "top-[346px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
+  { label: "ClickUp", src: "/images/tools/clickup.svg", x: "left-[394px]", y: "top-[372px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
+  { label: "Confluence", src: "/images/tools/confluence.svg", x: "left-[220px]", y: "top-[130px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
+  { label: "Maze", src: "/images/tools/maze.svg", x: "left-[350px]", y: "top-[120px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
+  { label: "Notion", src: "/images/tools/notion.svg", x: "left-[282px]", y: "top-[234px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
+  { label: "Webex", src: "/images/tools/webex.svg", x: "left-[320px]", y: "top-[320px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
 ];
 
 const TOOLS_RIGHT = [
-  { label: "GitHub", x: "right-[300px]", y: "top-[20px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Slack", x: "right-[180px]", y: "top-[40px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "AWS", x: "right-[70px]", y: "top-[80px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Vercel", x: "right-[50px]", y: "top-[230px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Docker", x: "right-[76px]", y: "top-[336px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Tailwind", x: "right-[194px]", y: "top-[372px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Next.js", x: "right-[386px]", y: "top-[384px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Rust", x: "right-[360px]", y: "top-[120px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Redis", x: "right-[168px]", y: "top-[256px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
-  { label: "GPT", x: "right-[250px]", y: "top-[160px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
-  { label: "GCP", x: "right-[270px]", y: "top-[340px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
+  { label: "Copilot", src: "/images/tools/githubcopilot.svg", x: "right-[300px]", y: "top-[20px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
+  { label: "Slack", src: "/images/tools/slack.svg", x: "right-[180px]", y: "top-[40px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
+  { label: "Claude", src: "/images/tools/anthropic.svg", x: "right-[70px]", y: "top-[80px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
+  { label: "ChatGPT", src: "/images/tools/openai.svg", x: "right-[50px]", y: "top-[230px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
+  { label: "VS Code", src: "/images/tools/visualstudiocode.svg", x: "right-[76px]", y: "top-[336px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
+  { label: "Figma", src: "/images/tools/figma.svg", x: "right-[194px]", y: "top-[372px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
+  { label: "React", src: "/images/tools/react.svg", x: "right-[386px]", y: "top-[384px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
+  { label: "Jira", src: "/images/tools/jira.svg", x: "right-[360px]", y: "top-[120px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
+  { label: "Miro", src: "/images/tools/miro.svg", x: "right-[168px]", y: "top-[256px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
+  { label: "Notion", src: "/images/tools/notion.svg", x: "right-[250px]", y: "top-[160px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
+  { label: "Confluence", src: "/images/tools/confluence.svg", x: "right-[270px]", y: "top-[340px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
 ];
 
 function ToolBadge({
   label,
+  src,
   x,
   y,
   size,
   bg,
 }: {
   label: string;
+  src: string;
   x: string;
   y: string;
   size: "lg" | "sm";
@@ -94,9 +96,16 @@ function ToolBadge({
       : "w-11 h-11 rounded-[10px] opacity-70 text-[9px]";
   return (
     <div
-      className={`absolute ${x} ${y} ${base} ${bg} flex items-center justify-center shadow-sm text-[#3c3e3f] font-medium font-inter`}
+      className={`absolute ${x} ${y} ${base} ${bg} flex items-center justify-center shadow-sm`}
+      title={label}
     >
-      {label}
+      <Image
+        src={src}
+        alt={label}
+        width={size === "lg" ? 30 : 24}
+        height={size === "lg" ? 30 : 24}
+        className="h-[62%] w-[62%] object-contain"
+      />
     </div>
   );
 }
