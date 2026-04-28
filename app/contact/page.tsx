@@ -69,7 +69,7 @@ const INFO_CARDS = [
 
 export default function ContactPage() {
   return (
-    <main className="bg-[#F0F7FF] font-inter text-[#3c3e3f] overflow-x-hidden min-h-screen">
+    <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden min-h-screen">
       <SiteHeader active="Contact" />
 
       {/* Hero */}
@@ -90,30 +90,34 @@ export default function ContactPage() {
             <form className="flex flex-col gap-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1.5">
-                  <Label>Name</Label>
+                  <Label htmlFor="contact-name">Name</Label>
                   <Input
+                    id="contact-name"
                     type="text"
                     placeholder="Your name"
                   />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <Label>Email</Label>
+                  <Label htmlFor="contact-email">Email</Label>
                   <Input
+                    id="contact-email"
                     type="email"
                     placeholder="your@email.com"
                   />
                 </div>
               </div>
               <div className="flex flex-col gap-1.5">
-                <Label>Subject</Label>
+                <Label htmlFor="contact-subject">Subject</Label>
                 <Input
+                  id="contact-subject"
                   type="text"
                   placeholder="What's this about?"
                 />
               </div>
               <div className="flex flex-col gap-1.5">
-                <Label>Message</Label>
+                <Label htmlFor="contact-message">Message</Label>
                 <Textarea
+                  id="contact-message"
                   rows={6}
                   placeholder="Tell me about your project..."
                   className="resize-none"

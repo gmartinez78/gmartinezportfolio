@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
@@ -88,7 +89,7 @@ export default function ProjectsPage() {
       : PROJECTS.filter((project) => project.filters.includes(activeFilter));
 
   return (
-    <main className="bg-[#F0F7FF] font-inter text-[#3c3e3f] overflow-x-hidden min-h-screen">
+    <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden min-h-screen">
       <SiteHeader active="Projects" />
 
       {/* Hero */}
@@ -168,10 +169,10 @@ export default function ProjectsPage() {
 
       {/* Social proof */}
       <section className="border-t border-[#bcd2ff]/40 py-10">
-        <p className="text-center text-xs text-[#5c7792] uppercase tracking-widest mb-6">Companies I've worked with</p>
+        <p className="text-center text-[13px] font-semibold text-[#1183D0] uppercase tracking-[0.45em] mb-6">Companies I've worked with</p>
         <div className="flex items-center justify-center gap-10 flex-wrap px-6">
           {SOCIAL_LOGOS.map((logo) => (
-            <img
+            <Image
               key={logo.alt}
               src={logo.src}
               alt={logo.alt}

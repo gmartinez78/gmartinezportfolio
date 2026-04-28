@@ -3,6 +3,7 @@ import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
 import { Card, CardContent } from "../../components/ui/card";
+import { SectionHeading } from "../../components/ui/section-heading";
 import { withBasePath } from "../../lib/site";
 
 // ── Assets from Figma ─────────────────────────────────────────────────────────
@@ -133,22 +134,6 @@ const REFLECTIONS = [
 ];
 
 // ── Sub-components ────────────────────────────────────────────────────────────
-
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="font-inter text-[13px] font-semibold uppercase leading-normal tracking-[0.45em] text-[#1183D0]">
-      {children}
-    </p>
-  );
-}
-
-function SectionTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="font-serif-display italic text-[#0e2951] text-[45px] leading-tight font-normal">
-      {children}
-    </h2>
-  );
-}
 
 function Divider() {
   return (
@@ -319,10 +304,10 @@ function KanbanIllustration() {
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function BenefitsPage() {
   return (
-    <main className="bg-[#F3F7FA] font-inter text-[#3c3e3f] overflow-x-hidden">
+    <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
       <SiteHeader active="Projects" />
 
-      <div className="mx-auto flex max-w-[1200px] items-center gap-3 px-6 pt-6 text-sm font-inter lg:px-20">
+      <div className="mx-auto flex max-w-[1200px] items-center gap-3 px-6 pt-6 text-sm lg:px-20">
         <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
         <span className="text-[#b8cce0]">›</span>
         <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</a>
@@ -331,7 +316,7 @@ export default function BenefitsPage() {
       </div>
 
       {/* ── Hero ── */}
-      <section className="relative px-20 pt-16 pb-0 max-w-[1200px] mx-auto">
+      <section className="relative px-6 pt-16 pb-0 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         {/* Company logos */}
         <div className="flex items-center gap-6 mb-10">
           <Image src={ASSETS.paychex} alt="Paychex" width={120} height={32} className="object-contain opacity-80" />
@@ -370,14 +355,8 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Overview ── */}
-      <section className="bg-[#F3F7FA] px-20 py-20 max-w-[1200px] mx-auto">
-        <div className="mb-6">
-          <SectionLabel>Overview</SectionLabel>
-          <div className="relative inline-block">
-            <SectionTitle>Structure</SectionTitle>
-            <div className="absolute bottom-2 left-0 w-28 h-3 bg-[#afd4ed]/30 rounded-full" />
-          </div>
-        </div>
+      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+        <SectionHeading eyebrow="Overview" title="Structure" className="mb-6" />
 
         <div className="mt-8 grid grid-cols-4 gap-0 border-t border-[#4d87ae]/30 pt-8">
           {/* Team */}
@@ -436,12 +415,11 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Pain Points ── */}
-      <section className="px-20 py-20 max-w-[1200px] mx-auto">
+      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <div className="flex flex-col gap-20">
           {/* Admin Pain Points */}
           <div className="max-w-[680px]">
-            <SectionLabel>Admins' Pain</SectionLabel>
-            <SectionTitle>Points</SectionTitle>
+            <SectionHeading eyebrow="Admins' Pain" title="Points" className="mb-8" />
             <div className="mt-8 flex flex-col gap-8">
               {ADMIN_PAIN_POINTS.map((p, i) => (
                 <div key={i}>
@@ -464,7 +442,7 @@ export default function BenefitsPage() {
               />
             </div>
             <div>
-              <h2 className="font-inter text-[45px] font-normal leading-tight text-[#0e2951]">
+              <h2 className="font-inter text-[44px] font-normal leading-tight text-[#0e2951]">
                 Users&apos; Pain{" "}
                 <span className="font-serif-display italic text-[#1183D0]">Points</span>
               </h2>
@@ -482,7 +460,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── 72% Big Number ── */}
-      <section className="px-20 py-8 max-w-[1200px] mx-auto flex items-center justify-center">
+      <section className="px-6 py-8 md:px-10 xl:px-20 max-w-[1200px] mx-auto flex items-center justify-center">
         <div className="text-center">
           <p className="font-inter font-bold text-[#1183D0]/10 select-none leading-none"
             style={{ fontSize: "clamp(120px, 18vw, 280px)" }}>
@@ -495,13 +473,8 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Constraints ── */}
-      <section className="px-20 py-20 max-w-[1200px] mx-auto">
-        <div className="text-center mb-12">
-          <div className="relative inline-block">
-            <SectionTitle>Constraints</SectionTitle>
-            <div className="absolute bottom-2 left-8 w-16 h-3 bg-[#bedef6]/30 rounded-full" />
-          </div>
-        </div>
+      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+        <SectionHeading title="Constraints" centered className="mb-12" />
 
         <div className="grid grid-cols-2 gap-6">
           {CONSTRAINTS.map((c, i) => (
@@ -525,11 +498,8 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Design Thinking Process ── */}
-      <section className="px-20 py-20 max-w-[1200px] mx-auto">
-        <div className="mb-12">
-          <SectionLabel>Methodology</SectionLabel>
-          <SectionTitle>Design Thinking</SectionTitle>
-        </div>
+      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+        <SectionHeading eyebrow="Methodology" title="Design Thinking" className="mb-12" />
         <div className="grid grid-cols-5 gap-4">
           {DESIGN_PROCESS.map((step, i) => (
             <div key={i} className="flex flex-col gap-4">
@@ -558,13 +528,13 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Design Strategy ── */}
-      <section className="px-20 py-20 max-w-[1200px] mx-auto">
+      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <div className="grid grid-cols-2 gap-16 items-center">
           {/* Left text */}
           <div>
-            <h2 className="font-inter font-normal text-[#0e2951] text-[45px] leading-tight mb-8">
+            <h2 className="font-inter font-normal text-[#0e2951] text-[44px] leading-tight mb-8">
               Design{" "}
-              <span className="font-serif-display italic text-[#2496e2]">Strategy</span>
+              <span className="font-serif-display italic text-[#1183D0]">Strategy</span>
             </h2>
             <div className="flex flex-col gap-8">
               {STRATEGY_POINTS.map((p, i) => (
@@ -584,11 +554,8 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Results ── */}
-      <section className="px-20 py-20 max-w-[1200px] mx-auto">
-        <div className="mb-12">
-          <SectionLabel>Impact</SectionLabel>
-          <SectionTitle>Results</SectionTitle>
-        </div>
+      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+        <SectionHeading eyebrow="Impact" title="Results" className="mb-12" />
 
         <div className="grid grid-cols-2 gap-6">
           {/* Bar chart card */}
@@ -623,22 +590,14 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Product Deep Dive ── */}
-      <section className="px-20 py-20 max-w-[1200px] mx-auto">
-        <div className="mb-10">
-          <SectionLabel>Solution</SectionLabel>
-          <SectionTitle>The Platform</SectionTitle>
-        </div>
+      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+        <SectionHeading eyebrow="Solution" title="The Platform" className="mb-10" />
         <ProductPreview />
       </section>
 
       {/* ── Reflections ── */}
-      <section className="px-20 py-20 max-w-[1200px] mx-auto">
-        <div className="mb-12">
-          <div className="relative inline-block">
-            <SectionTitle>Reflections</SectionTitle>
-            <div className="absolute bottom-2 left-4 w-32 h-4 bg-[#bedef6]/30 rounded-full" />
-          </div>
-        </div>
+      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+        <SectionHeading title="Reflections" className="mb-12" />
 
         <div className="flex flex-col gap-8">
           {REFLECTIONS.map((r, i) => (
@@ -654,7 +613,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── NDA Notice ── */}
-      <section className="px-20 py-10 max-w-[1200px] mx-auto">
+      <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <div className="border-t border-[#bcd2ff]/40 pt-8">
           <p className="font-inter text-[#5c7792] text-[13px] leading-[1.7] max-w-[900px]">
             <strong className="font-semibold text-[#5c7792]">NDA notice:</strong> Parts of this presentation — including some screens and project details — have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy.
@@ -663,8 +622,8 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Other Projects ── */}
-      <section className="px-20 py-16 max-w-[1200px] mx-auto">
-        <p className="font-inter text-[#5c7792] text-[13px] uppercase tracking-[2px] mb-2">More work</p>
+      <section className="px-6 py-16 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+        <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0] mb-2">More work</p>
         <h2 className="font-serif-display italic text-[#0e2951] text-[32px] mb-8">Other Projects</h2>
         <div className="grid grid-cols-3 gap-5">
           {[

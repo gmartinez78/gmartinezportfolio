@@ -115,7 +115,7 @@ function ToolBadge({
 
 export default function PortfolioPage() {
   return (
-    <main className="bg-[#F0F7FF] font-inter text-[#3c3e3f] overflow-x-hidden">
+    <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
       <SiteHeader />
 
       {/* ── Hero ── */}
@@ -229,7 +229,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ── Recent Work ── */}
-      <section id="projects" className="bg-white py-12 px-20">
+      <section id="projects" className="bg-white py-12 px-6 md:px-10 xl:px-20">
         <div className="max-w-[1200px] mx-auto flex flex-col items-center gap-12">
           <SectionHeading eyebrow="Portfolio" title="Recent Work" centered />
 
@@ -334,7 +334,7 @@ export default function PortfolioPage() {
 
       {/* ── CTA Section ── */}
       <section
-        className="flex flex-col items-center justify-center gap-7 px-30 py-[80px] text-center"
+        className="flex flex-col items-center justify-center gap-7 px-6 py-[80px] md:px-16 xl:px-30 text-center"
         style={{ background: "#0e2951" }}
       >
         <span className="text-[13px] font-medium tracking-[3px] text-[#7CB8E8] uppercase">
@@ -348,8 +348,7 @@ export default function PortfolioPage() {
         </h2>
         <Button
           asChild
-          size="lg"
-          className="text-sm"
+          size="sm"
         >
           <a href={withBasePath("/contact")}>Let&apos;s work together</a>
         </Button>

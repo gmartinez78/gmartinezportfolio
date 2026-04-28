@@ -21,7 +21,11 @@ const SOCIAL_LINKS = [
   {
     label: "Behance",
     href: "https://www.behance.net/greddysmartinez",
-    icon: <span className="text-sm font-bold leading-none">Bē</span>,
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.7zM15.971 13c-.17-1.883 1.269-2.354 2.758-2.354 1.486 0 2.93.771 2.789 2.354h-5.547zM8 11.979c.774.06 1.907-.044 2.86-.854.874-.739.938-1.804.938-1.867 0-2.63-2.154-3.258-3.76-3.258H1v14h7.648c2.041 0 4.126-1.169 4.126-4.035 0-2.521-2.246-3.871-4.774-3.986zM3.596 8.549h3.481c.743 0 2.08.186 2.08 1.508 0 1.326-1.053 1.508-2.082 1.508H3.596V8.549zm3.481 6.902H3.596v-3.014h3.481c.785 0 2.352.1 2.352 1.492 0 1.391-1.567 1.522-2.352 1.522z"/>
+      </svg>
+    ),
   },
   {
     label: "Upwork",
@@ -63,7 +67,7 @@ export function LogoMark({ className = "" }: { className?: string }) {
 export function SiteHeader({ active }: { active?: "Projects" | "Resume" | "Contact" }) {
   return (
     <header className="sticky top-0 z-50 border-b border-[#bcd2ff]/60 bg-white/85 backdrop-blur">
-      <nav className="mx-auto flex min-h-16 max-w-[1280px] items-center justify-between gap-4 px-5 py-3 sm:px-8 lg:px-12">
+      <nav className="mx-auto flex min-h-16 max-w-[1200px] items-center justify-between gap-4 px-5 py-3 sm:px-8 lg:px-12">
         <div className="flex min-w-0 items-center gap-5 lg:gap-8">
           <a href={withBasePath("/")} className="flex shrink-0 items-center gap-3" aria-label="Greddys Martinez home">
             <LogoMark className="h-10 w-auto" />

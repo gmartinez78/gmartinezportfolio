@@ -12,9 +12,14 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[logo-marquee_22s_linear_infinite\] {
+    animation: none;
+  }
+}
+
 @layer base {
   .theme {
-    --font-heading: var(--font-source-serif);
     --font-sans: var(--font-inter);
   }
   :root {

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
@@ -390,7 +391,7 @@ function Tag({ label }: { label: string }) {
 
 export default function ResumePage() {
   return (
-    <main className="bg-white font-inter text-[#3c3e3f] overflow-x-hidden min-h-screen">
+    <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden min-h-screen">
       <SiteHeader active="Resume" />
 
       {/* Hero */}
@@ -453,7 +454,7 @@ export default function ResumePage() {
                 rel="noreferrer"
                 className="flex max-w-[180px] flex-col items-center text-center hover:opacity-80 transition-opacity"
               >
-                <img
+                <Image
                   src={withBasePath("/images/iNSrn.png")}
                   alt="Upwork Skill Certification"
                   width={110}
@@ -468,7 +469,7 @@ export default function ResumePage() {
                 </p>
               </a>
               <div className="flex max-w-[180px] flex-col items-center text-center">
-                <img
+                <Image
                   src={withBasePath("/images/OiSjn.png")}
                   alt="NN Group UX Certified Interaction Design"
                   width={110}
@@ -493,7 +494,7 @@ export default function ResumePage() {
         <div className="flex flex-col gap-5">
           {EXPERIENCE.map((job) => (
             <Card key={job.role} className="p-0 py-0">
-              <CardContent className="p-7">
+              <CardContent className="p-6">
               <div className="flex items-start justify-between gap-4 flex-wrap">
                 <div>
                   <h3 className="text-lg font-semibold text-[#0e2951]">{job.role}</h3>
@@ -542,7 +543,7 @@ export default function ResumePage() {
 
       {/* Skills & Education */}
       <section className="max-w-[1200px] mx-auto px-6 py-10">
-        <Card className="bg-[#eef5ff] p-0 py-0">
+        <Card className="bg-[#F0F7FF] p-0 py-0">
           <CardContent className="px-6 py-10 sm:px-8 lg:px-12 lg:py-12">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
@@ -589,7 +590,7 @@ export default function ResumePage() {
                   {TOOLS.map((tool) => (
                     <div key={tool.label} className="flex flex-col items-center text-center">
                       <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#e2e8f0] bg-white shadow-sm">
-                        <img src={tool.src} alt={tool.label} width={26} height={26} />
+                        <Image src={tool.src} alt={tool.label} width={26} height={26} />
                       </div>
                       <span className="mt-2 text-xs font-medium text-[#3c3e3f]">
                         {tool.label}
@@ -610,7 +611,7 @@ export default function ResumePage() {
           <div>
             <SectionHeading eyebrow="Recognition" title="Certifications" />
             <div className="mt-8 flex items-center gap-5">
-              <img
+              <Image
                 src={withBasePath("/images/OiSjn.png")}
                 alt="NN Group UX Certified Interaction Design"
                 width={38}
@@ -628,7 +629,7 @@ export default function ResumePage() {
             <div className="mt-8 flex flex-col gap-5">
               {CERTIFICATION_ITEMS.map((item) => (
                 <Card key={`${item.year}-${item.title}`} className="bg-[#f7fbff] p-0 py-0">
-                  <CardContent className="px-5 py-5">
+                  <CardContent className="p-6">
                   <Badge size="lg">
                     {item.year}
                   </Badge>
@@ -664,9 +665,9 @@ export default function ResumePage() {
               return (
               <CardWrapper key={credential.title}>
                 {credential.type === "image" ? (
-                  <img
-                    src={credential.image}
-                    alt={credential.alt}
+                  <Image
+                    src={credential.image!}
+                    alt={credential.alt!}
                     width={92}
                     height={92}
                     className="mx-auto h-auto w-[72px] sm:w-[92px]"
