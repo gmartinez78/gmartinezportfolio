@@ -245,7 +245,7 @@ export default function PortfolioPage() {
                 {/* Tags – always visible */}
                 <div className="flex flex-wrap gap-3">
                   {project.tags.map((tag) => (
-                    <Badge key={tag} size="lg">
+                    <Badge key={tag} size="tag">
                       {tag}
                     </Badge>
                   ))}

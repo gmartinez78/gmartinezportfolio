@@ -134,7 +134,7 @@ export default function ProjectsPage() {
               <div className="flex items-end justify-between mt-6 flex-wrap gap-4">
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
-                    <Badge key={tag} size="sm">{tag}</Badge>
+                    <Badge key={tag} size="tag">{tag}</Badge>
                   ))}
                 </div>
                 <span className="text-sm text-[#1183D0] font-medium group-hover:underline">

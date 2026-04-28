@@ -665,7 +665,7 @@ export default function BenefitsPage() {
               <div className="p-6">
                 <p className="text-white/50 text-xs mb-1">{p.company}</p>
                 <h3 className="font-inter font-semibold text-white text-[15px] leading-snug mb-2">{p.title}</h3>
-                <Badge variant="outline" size="sm" className="border-white/10 bg-white/10 text-white/55 hover:bg-white/15">{p.tag}</Badge>
+                <Badge variant="outline" size="tag" className="border-white/10 bg-white/10 text-white/55 hover:bg-white/15">{p.tag}</Badge>
               </div>
             </a>
           ))}

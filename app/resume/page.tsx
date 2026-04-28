@@ -385,7 +385,7 @@ const FEATURED_CREDENTIALS = [
 ];
 
 function Tag({ label }: { label: string }) {
-  return <Badge size="sm">{label}</Badge>;
+  return <Badge size="tag">{label}</Badge>;
 }
 
 export default function ResumePage() {
