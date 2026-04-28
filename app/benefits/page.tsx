@@ -13,6 +13,7 @@ const ASSETS = {
   userIcon: withBasePath("/images/benefits/user-icon.png"),
   clockIcon: withBasePath("/images/benefits/clock-icon.png"),
   arrowVector: withBasePath("/images/benefits/arrow-vector.png"),
+  userPainIllustration: withBasePath("/images/benefits/illustration.svg"),
   sigPenYellow: withBasePath("/images/benefits/sig-pen-yellow.png"),
   sigPenTeal: withBasePath("/images/benefits/sig-pen-teal.png"),
   miscSticker: withBasePath("/images/benefits/misc-sticker.png"),
@@ -135,7 +136,7 @@ const REFLECTIONS = [
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="font-inter text-[13px] font-semibold uppercase leading-normal tracking-[0.45em] text-white/60">
+    <p className="font-inter text-[13px] font-semibold uppercase leading-normal tracking-[0.45em] text-[#1183D0]">
       {children}
     </p>
   );
@@ -143,7 +144,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="font-serif-display italic text-white text-[45px] leading-tight font-normal">
+    <h2 className="font-serif-display italic text-[#0e2951] text-[45px] leading-tight font-normal">
       {children}
     </h2>
   );
@@ -160,7 +161,7 @@ function Divider() {
 
 function PainPoint({ before, bold, after }: { before: string; bold: string; after: string }) {
   return (
-    <p className="font-inter text-[#06578d] text-[22px] leading-[1.9] font-normal">
+    <p className="font-inter text-[#3c3e3f] text-[22px] leading-[1.9] font-normal">
       {before}
       <strong className="font-semibold">{bold}</strong>
       {after}
@@ -182,7 +183,7 @@ function ProductPreview() {
     <div className="rounded-[24px] overflow-hidden border-2 border-[#1183D0]/20 shadow-[0_24px_64px_rgba(17,131,208,0.18)]">
       {/* App chrome */}
       <div className="bg-[#f1f3f5] px-5 py-2.5 flex items-center gap-4 border-b border-[#e0e0e0]">
-        <div className="bg-[#1183D0] h-3.5 w-10 rounded" />
+        <div className="bg-[#F3F7FA] h-3.5 w-10 rounded" />
         {["Clients", "Users", "Reports", "Forms", "Billing"].map((t) => (
           <span key={t} className="text-[#7f868f] text-[10px] font-inter">{t}</span>
         ))}
@@ -202,7 +203,7 @@ function ProductPreview() {
           <div className="border border-[#d8d8d8] rounded px-3 py-1.5 text-[11px] text-[#303030] font-inter w-64">
             Search by name, role, or branch
           </div>
-          <div className="bg-[#46b275] text-white text-[11px] px-4 py-1.5 rounded font-inter">Add User</div>
+          <div className="bg-[#46b275] text-[#0e2951] text-[11px] px-4 py-1.5 rounded font-inter">Add User</div>
         </div>
         <table className="w-full text-left text-[11px] font-inter">
           <thead>
@@ -255,7 +256,7 @@ function BarChart() {
             style={{ height: b.h, backgroundColor: b.color, transition: "height 0.6s ease" }}
           />
           {b.label && (
-            <span className="text-[10px] text-[#4d87ae] font-inter mt-1">{b.label}</span>
+            <span className="text-[10px] text-[#5c7792] font-inter mt-1">{b.label}</span>
           )}
         </div>
       ))}
@@ -318,45 +319,45 @@ function KanbanIllustration() {
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function BenefitsPage() {
   return (
-    <main className="bg-[#1183D0] font-inter text-[#06578d] overflow-x-hidden">
+    <main className="bg-[#F3F7FA] font-inter text-[#3c3e3f] overflow-x-hidden">
       <SiteHeader active="Projects" />
 
       <div className="mx-auto flex max-w-[1200px] items-center gap-3 px-6 pt-6 text-sm font-inter lg:px-20">
-        <a href={withBasePath("/")} className="text-white/65 transition-colors hover:text-white">Home</a>
-        <span className="text-white/30">›</span>
-        <a href={withBasePath("/projects")} className="text-white/65 transition-colors hover:text-white">Projects</a>
-        <span className="text-white/30">›</span>
-        <span className="font-semibold text-white">Enhancing Benefits Enrollment</span>
+        <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
+        <span className="text-[#b8cce0]">›</span>
+        <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</a>
+        <span className="text-[#b8cce0]">›</span>
+        <span className="font-semibold text-[#0e2951]">Enhancing Benefits Enrollment</span>
       </div>
 
       {/* ── Hero ── */}
       <section className="relative px-20 pt-16 pb-0 max-w-[1200px] mx-auto">
         {/* Company logos */}
         <div className="flex items-center gap-6 mb-10">
-          <Image src={ASSETS.paychex} alt="Paychex" width={120} height={32} className="object-contain opacity-80 brightness-0 invert" />
-          <Image src={ASSETS.nayya} alt="Nayya" width={80} height={32} className="object-contain opacity-80 brightness-0 invert" />
-          <Image src={ASSETS.ibx} alt="IBX" width={60} height={32} className="object-contain opacity-80 brightness-0 invert" />
+          <Image src={ASSETS.paychex} alt="Paychex" width={120} height={32} className="object-contain opacity-80" />
+          <Image src={ASSETS.nayya} alt="Nayya" width={80} height={32} className="object-contain opacity-80" />
+          <Image src={ASSETS.ibx} alt="IBX" width={60} height={32} className="object-contain opacity-80" />
         </div>
 
         <div className="flex items-end justify-between gap-12 mb-6">
           {/* Left: text */}
           <div className="max-w-[520px]">
-            <p className="text-white/60 text-[13px] uppercase tracking-[3px] font-inter mb-3">
+            <p className="text-[#5c7792] text-[13px] uppercase tracking-[3px] font-inter mb-3">
               Case Study Redesign 2025
             </p>
-            <h1 className="font-inter font-bold text-white text-[44px] leading-[1.15] mb-5">
+            <h1 className="font-inter font-bold text-[#0e2951] text-[44px] leading-[1.15] mb-5">
               Enhancing{" "}
               <span className="font-serif-display italic font-normal">Benefits Enrollment</span>
             </h1>
-            <p className="text-white/80 text-[18px] leading-[1.7] font-inter">
+            <p className="text-[#5c7792] text-[18px] leading-[1.7] font-inter">
               Replaced a manual workflow with a centralized, self-managed platform;{" "}
-              <strong className="text-white font-semibold">cutting processing time by 72%.</strong>
+              <strong className="text-[#0e2951] font-semibold">cutting processing time by 72%.</strong>
             </p>
           </div>
 
           {/* Right: 72% stat */}
           <div className="shrink-0 text-right">
-            <div className="font-inter font-bold text-white/10 text-[180px] leading-none select-none">
+            <div className="font-inter font-bold text-[#1183D0]/10 text-[180px] leading-none select-none">
               72%
             </div>
           </div>
@@ -369,7 +370,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Overview ── */}
-      <section className="bg-[#1183D0] px-20 py-20 max-w-[1200px] mx-auto">
+      <section className="bg-[#F3F7FA] px-20 py-20 max-w-[1200px] mx-auto">
         <div className="mb-6">
           <SectionLabel>Overview</SectionLabel>
           <div className="relative inline-block">
@@ -381,39 +382,39 @@ export default function BenefitsPage() {
         <div className="mt-8 grid grid-cols-4 gap-0 border-t border-[#4d87ae]/30 pt-8">
           {/* Team */}
           <div className="pr-8 border-r border-[#4d87ae]/20">
-            <p className="text-[#4d87ae] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter">
+            <p className="text-[#5c7792] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter">
               Team Members
             </p>
             <div className="h-[3px] w-full bg-[#4d87ae]/20 rounded-full mb-5" />
             <ul className="space-y-1">
               {TEAM_MEMBERS.map((m) => (
-                <li key={m} className="text-[#4d87ae] text-[16px] font-inter capitalize leading-[1.75]">{m}</li>
+                <li key={m} className="text-[#5c7792] text-[16px] font-inter capitalize leading-[1.75]">{m}</li>
               ))}
             </ul>
           </div>
 
           {/* Role */}
           <div className="px-8 border-r border-[#4d87ae]/20">
-            <p className="text-[#06578d] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter font-medium">
+            <p className="text-[#3c3e3f] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter font-medium">
               My Role
             </p>
             <div className="h-[3px] w-full bg-[#1183D0] rounded-full mb-5" />
             <ul className="space-y-1">
               {MY_ROLE.map((r) => (
-                <li key={r} className="text-[#06578d] text-[16px] font-inter capitalize leading-[1.75] font-medium">{r}</li>
+                <li key={r} className="text-[#3c3e3f] text-[16px] font-inter capitalize leading-[1.75] font-medium">{r}</li>
               ))}
             </ul>
           </div>
 
           {/* Tools */}
           <div className="px-8 border-r border-[#4d87ae]/20">
-            <p className="text-[#4d87ae] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter">
+            <p className="text-[#5c7792] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter">
               Tools Used
             </p>
             <div className="h-[3px] w-full bg-[#4d87ae]/20 rounded-full mb-5" />
             <ul className="space-y-1 mb-6">
               {TOOLS.map((t) => (
-                <li key={t} className="text-[#4d87ae] text-[16px] font-inter capitalize leading-[1.75]">{t}</li>
+                <li key={t} className="text-[#5c7792] text-[16px] font-inter capitalize leading-[1.75]">{t}</li>
               ))}
             </ul>
             <div className="flex items-center gap-3">
@@ -425,20 +426,20 @@ export default function BenefitsPage() {
 
           {/* Timeline */}
           <div className="pl-8">
-            <p className="text-[#4d87ae] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter">
+            <p className="text-[#5c7792] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter">
               Timeline
             </p>
             <div className="h-[3px] w-full bg-[#4d87ae]/20 rounded-full mb-5" />
-            <p className="text-[#4d87ae] text-[16px] font-inter capitalize leading-[1.75]">3 months</p>
+            <p className="text-[#5c7792] text-[16px] font-inter capitalize leading-[1.75]">3 months</p>
           </div>
         </div>
       </section>
 
       {/* ── Pain Points ── */}
       <section className="px-20 py-20 max-w-[1200px] mx-auto">
-        <div className="grid grid-cols-2 gap-20">
-          {/* Admin Pain Points – left */}
-          <div>
+        <div className="flex flex-col gap-20">
+          {/* Admin Pain Points */}
+          <div className="max-w-[680px]">
             <SectionLabel>Admins' Pain</SectionLabel>
             <SectionTitle>Points</SectionTitle>
             <div className="mt-8 flex flex-col gap-8">
@@ -451,17 +452,30 @@ export default function BenefitsPage() {
             </div>
           </div>
 
-          {/* User Pain Points – right */}
-          <div>
-            <SectionLabel>Users&apos; Pain</SectionLabel>
-            <SectionTitle>Points</SectionTitle>
-            <div className="mt-8 flex flex-col gap-8">
-              {USER_PAIN_POINTS.map((p, i) => (
-                <div key={i}>
-                  <PainPoint {...p} />
-                  {i < USER_PAIN_POINTS.length - 1 && <Divider />}
-                </div>
-              ))}
+          {/* User Pain Points */}
+          <div className="grid items-center gap-16 lg:grid-cols-[0.95fr_1.05fr]">
+            <div className="relative">
+              <Image
+                src={ASSETS.userPainIllustration}
+                alt=""
+                width={520}
+                height={420}
+                className="h-auto w-full object-contain"
+              />
+            </div>
+            <div>
+              <h2 className="font-inter text-[45px] font-normal leading-tight text-[#0e2951]">
+                Users&apos; Pain{" "}
+                <span className="font-serif-display italic text-[#1183D0]">Points</span>
+              </h2>
+              <div className="mt-10 flex flex-col">
+                {USER_PAIN_POINTS.map((p, i) => (
+                  <div key={i} className="py-8 first:pt-0 last:pb-0">
+                    <PainPoint {...p} />
+                    {i < USER_PAIN_POINTS.length - 1 && <div className="mt-8"><Divider /></div>}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -470,11 +484,11 @@ export default function BenefitsPage() {
       {/* ── 72% Big Number ── */}
       <section className="px-20 py-8 max-w-[1200px] mx-auto flex items-center justify-center">
         <div className="text-center">
-          <p className="font-inter font-bold text-white/8 select-none leading-none"
+          <p className="font-inter font-bold text-[#1183D0]/10 select-none leading-none"
             style={{ fontSize: "clamp(120px, 18vw, 280px)" }}>
             72%
           </p>
-          <p className="font-inter text-white/50 text-[18px] tracking-wide -mt-10">
+          <p className="font-inter text-[#5c7792] text-[18px] tracking-wide -mt-10">
             reduction in benefits processing time
           </p>
         </div>
@@ -499,7 +513,7 @@ export default function BenefitsPage() {
                   {c.label}
                 </Badge>
               </div>
-              <p className="text-[#06578d] text-[22px] font-inter leading-[1.85] mt-4">
+              <p className="text-[#3c3e3f] text-[22px] font-inter leading-[1.85] mt-4">
                 {c.title && <span>{c.title}</span>}
                 <strong className="font-semibold">{c.bold}</strong>
                 {c.after && <span>{c.after}</span>}
@@ -531,10 +545,10 @@ export default function BenefitsPage() {
                   className="rounded-xl w-full"
                   style={{ height: 80, backgroundColor: step.color }}
                 />
-                <p className="text-[#06578d] font-inter font-semibold text-[15px] mt-2">
+                <p className="text-[#3c3e3f] font-inter font-semibold text-[15px] mt-2">
                   {i + 1}. {step.label}
                 </p>
-                <p className="text-[#4d87ae] font-inter text-[13px] leading-[1.5]">
+                <p className="text-[#5c7792] font-inter text-[13px] leading-[1.5]">
                   {step.desc}
                 </p>
               </div>
@@ -548,7 +562,7 @@ export default function BenefitsPage() {
         <div className="grid grid-cols-2 gap-16 items-center">
           {/* Left text */}
           <div>
-            <h2 className="font-inter font-normal text-[#06578d] text-[45px] leading-tight mb-8">
+            <h2 className="font-inter font-normal text-[#0e2951] text-[45px] leading-tight mb-8">
               Design{" "}
               <span className="font-serif-display italic text-[#2496e2]">Strategy</span>
             </h2>
@@ -580,11 +594,11 @@ export default function BenefitsPage() {
           {/* Bar chart card */}
           <Card className="p-0 py-0">
             <CardContent className="p-8">
-            <p className="font-inter font-bold text-[#06578d] text-[20px] mb-1">Processing Time</p>
-            <p className="font-inter text-[#4d87ae] text-[14px] mb-4">Before vs. After</p>
+            <p className="font-inter font-bold text-[#3c3e3f] text-[20px] mb-1">Processing Time</p>
+            <p className="font-inter text-[#5c7792] text-[14px] mb-4">Before vs. After</p>
             <BarChart />
             <div className="border-t border-[#dbdde0] mt-4 pt-4 flex justify-between">
-              <p className="font-inter text-[#4d87ae] text-[13px]">Payroll cycle avg. duration</p>
+              <p className="font-inter text-[#5c7792] text-[13px]">Payroll cycle avg. duration</p>
               <p className="font-inter font-bold text-[#1183D0] text-[13px]">72% faster</p>
             </div>
             </CardContent>
@@ -598,7 +612,7 @@ export default function BenefitsPage() {
                 <span className="font-inter font-bold text-[#1183D0] text-[52px] leading-none shrink-0">
                   {r.value}
                 </span>
-                <p className="font-inter text-[#06578d] text-[18px] leading-[1.5]">
+                <p className="font-inter text-[#3c3e3f] text-[18px] leading-[1.5]">
                   {r.label}
                 </p>
                 </CardContent>
@@ -629,7 +643,7 @@ export default function BenefitsPage() {
         <div className="flex flex-col gap-8">
           {REFLECTIONS.map((r, i) => (
             <div key={i}>
-              <p className="font-inter text-[#06578d] text-[22px] leading-[1.9]">
+              <p className="font-inter text-[#3c3e3f] text-[22px] leading-[1.9]">
                 <strong className="font-semibold">{r.title}. </strong>
                 {r.body}
               </p>
@@ -641,31 +655,31 @@ export default function BenefitsPage() {
 
       {/* ── NDA Notice ── */}
       <section className="px-20 py-10 max-w-[1200px] mx-auto">
-        <div className="border-t border-white/15 pt-8">
-          <p className="font-inter text-white/40 text-[13px] leading-[1.7] max-w-[900px]">
-            <strong className="font-semibold text-white/50">NDA notice:</strong> Parts of this presentation — including some screens and project details — have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy.
+        <div className="border-t border-[#bcd2ff]/40 pt-8">
+          <p className="font-inter text-[#5c7792] text-[13px] leading-[1.7] max-w-[900px]">
+            <strong className="font-semibold text-[#5c7792]">NDA notice:</strong> Parts of this presentation — including some screens and project details — have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy.
           </p>
         </div>
       </section>
 
       {/* ── Other Projects ── */}
       <section className="px-20 py-16 max-w-[1200px] mx-auto">
-        <p className="font-inter text-white/50 text-[13px] uppercase tracking-[2px] mb-2">More work</p>
-        <h2 className="font-serif-display italic text-white text-[32px] mb-8">Other Projects</h2>
+        <p className="font-inter text-[#5c7792] text-[13px] uppercase tracking-[2px] mb-2">More work</p>
+        <h2 className="font-serif-display italic text-[#0e2951] text-[32px] mb-8">Other Projects</h2>
         <div className="grid grid-cols-3 gap-5">
           {[
             { title: "AI-Powered Benefits Advisor", company: "Nayya", tag: "AI/ML Product", bg: "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)", stat: "4.8★" },
             { title: "Accessible Service Portal", company: "Easterseals", tag: "Accessibility", bg: "radial-gradient(ellipse at 80% 20%, #c8f0e0 0%, #edf5fb 70%)", stat: "40%" },
             { title: "Ride Coordination App", company: "Transport for Troops", tag: "Mobile", bg: "radial-gradient(ellipse at 50% 80%, #ffe8c0 0%, #edf5fb 70%)", stat: "60%" },
           ].map((p) => (
-            <a key={p.title} href="#" className="group bg-white/10 hover:bg-white/15 border border-white/10 rounded-[28px] overflow-hidden transition-all hover:-translate-y-0.5">
+            <a key={p.title} href="#" className="group bg-white hover:bg-white border border-[#CFE5F8] rounded-[28px] overflow-hidden transition-all hover:-translate-y-0.5">
               <div className="h-36 flex items-center justify-center" style={{ background: p.bg }}>
                 <span className="font-serif-display italic font-bold text-[#1183D0] text-3xl">{p.stat}</span>
               </div>
               <div className="p-6">
-                <p className="text-white/50 text-xs mb-1">{p.company}</p>
-                <h3 className="font-inter font-semibold text-white text-[15px] leading-snug mb-2">{p.title}</h3>
-                <Badge variant="outline" size="tag" className="border-white/10 bg-white/10 text-white/55 hover:bg-white/15">{p.tag}</Badge>
+                <p className="text-[#5c7792] text-xs mb-1">{p.company}</p>
+                <h3 className="font-inter font-semibold text-[#0e2951] text-[15px] leading-snug mb-2">{p.title}</h3>
+                <Badge variant="outline" size="tag">{p.tag}</Badge>
               </div>
             </a>
           ))}

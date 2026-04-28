@@ -1,19 +1,21 @@
+"use client";
+
+import { useState } from "react";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
-import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { SectionHeading } from "../../components/ui/section-heading";
 import { withBasePath } from "../../lib/site";
 
 
 const FILTER_PILLS = [
-  { label: "All", active: true },
-  { label: "UX Research", active: false },
-  { label: "Product Design", active: false },
-  { label: "Design Systems", active: false },
-  { label: "Mobile", active: false },
-  { label: "Accessibility", active: false },
+  "All",
+  "UX Research",
+  "Product Design",
+  "Design Systems",
+  "Mobile",
+  "Accessibility",
 ];
 
 const PROJECTS = [
@@ -22,6 +24,7 @@ const PROJECTS = [
     title: "Enhancing Benefits Enrollment",
     company: "Independence Blue Cross",
     tags: ["HR/Payroll SaaS", "UX Research", "Interaction Design", "Design Systems"],
+    filters: ["UX Research", "Product Design", "Design Systems"],
     description:
       "Redesigned the employee benefits enrollment experience for a Fortune 500 insurer, reducing support tickets by 72% and cutting enrollment time from 47 to 13 minutes.",
     stat: "72%",
@@ -34,6 +37,7 @@ const PROJECTS = [
     title: "AI-Powered Benefits Advisor",
     company: "Nayya",
     tags: ["AI/ML Product", "UX Research", "Prototyping"],
+    filters: ["UX Research", "Product Design"],
     description:
       "Designed the conversational UX for an AI-driven benefits recommendation engine that helped employees understand and select the right coverage for their life stage.",
     stat: "4.8★",
@@ -46,6 +50,7 @@ const PROJECTS = [
     title: "Accessible Service Portal",
     company: "Easterseals",
     tags: ["Accessibility", "Web Design", "Nonprofit"],
+    filters: ["Product Design", "Accessibility"],
     description:
       "Redesigned the public-facing portal for a nonprofit serving people with disabilities, achieving WCAG 2.1 AA compliance and reducing task completion time by 40%.",
     stat: "40%",
@@ -58,6 +63,7 @@ const PROJECTS = [
     title: "Ride Coordination Mobile App",
     company: "Transport for Troops",
     tags: ["Mobile", "Brand Design", "Startup"],
+    filters: ["Product Design", "Mobile"],
     description:
       "Built a mobile app from zero to launch for a veteran-focused logistics nonprofit, enabling ride coordination for 200+ volunteers and reducing dispatcher workload by 60%.",
     stat: "60%",
@@ -68,13 +74,19 @@ const PROJECTS = [
 ];
 
 const SOCIAL_LOGOS = [
-  { label: "IBX", color: "#0e2951" },
-  { label: "Nayya", color: "#1183D0" },
-  { label: "Paychex", color: "#e05c1a" },
-  { label: "Easterseals", color: "#e02020" },
+  { src: withBasePath("/images/SNUZw.png"), alt: "IBX", h: 41, w: 57 },
+  { src: withBasePath("/images/IbuV3.png"), alt: "Skill", h: 59, w: 107 },
+  { src: withBasePath("/images/bBw3A.png"), alt: "Nayya", h: 48, w: 127 },
+  { src: withBasePath("/images/c54fy.png"), alt: "Paychex", h: 51, w: 142 },
 ];
 
 export default function ProjectsPage() {
+  const [activeFilter, setActiveFilter] = useState("All");
+  const filteredProjects =
+    activeFilter === "All"
+      ? PROJECTS
+      : PROJECTS.filter((project) => project.filters.includes(activeFilter));
+
   return (
     <main className="bg-[#F0F7FF] font-inter text-[#3c3e3f] overflow-x-hidden min-h-screen">
       <SiteHeader active="Projects" />
@@ -88,21 +100,28 @@ export default function ProjectsPage() {
 
         {/* Filter Pills */}
         <div className="flex flex-wrap gap-2 mt-8">
-          {FILTER_PILLS.map((pill) => (
-            <Button
-              key={pill.label}
-              variant={pill.active ? "default" : "outline"}
-              size="sm"
+          {FILTER_PILLS.map((filter) => (
+            <Badge
+              key={filter}
+              asChild
+              variant={activeFilter === filter ? "default" : "outline"}
+              size="tag"
             >
-              {pill.label}
-            </Button>
+              <button
+                type="button"
+                aria-pressed={activeFilter === filter}
+                onClick={() => setActiveFilter(filter)}
+              >
+                {filter}
+              </button>
+            </Badge>
           ))}
         </div>
       </section>
 
       {/* Project Grid */}
       <section className="max-w-[1200px] mx-auto px-6 pb-20 flex flex-col gap-6">
-        {PROJECTS.map((project, i) => (
+        {filteredProjects.map((project, i) => (
           <a
             key={project.title}
             href={project.slug === "#" ? "#" : withBasePath(`/${project.slug}`)}
@@ -152,7 +171,14 @@ export default function ProjectsPage() {
         <p className="text-center text-xs text-[#5c7792] uppercase tracking-widest mb-6">Companies I've worked with</p>
         <div className="flex items-center justify-center gap-10 flex-wrap px-6">
           {SOCIAL_LOGOS.map((logo) => (
-            <span key={logo.label} className="font-bold text-xl" style={{ color: logo.color }}>{logo.label}</span>
+            <img
+              key={logo.alt}
+              src={logo.src}
+              alt={logo.alt}
+              width={logo.w}
+              height={logo.h}
+              className="max-h-[58px] w-auto object-contain opacity-80 grayscale transition-all hover:grayscale-0 hover:opacity-100"
+            />
           ))}
         </div>
       </section>
