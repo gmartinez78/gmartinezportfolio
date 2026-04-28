@@ -76,10 +76,10 @@ export function SiteHeader({ active }: { active?: "Projects" | "Resume" | "Conta
               <li key={link.label}>
                 <a
                   href={withBasePath(link.href)}
-                  className={`rounded-full px-3 py-2 text-sm font-medium transition-colors sm:px-4 ${
+                  className={`rounded-[28px] px-3 py-2 text-sm font-semibold transition-colors sm:px-4 ${
                     active === link.label
-                      ? "bg-[#1183D0]/10 text-[#1183D0]"
-                      : "text-[#24425d] hover:bg-[#003d66]/5 hover:text-[#1183D0]"
+                      ? "bg-[#E0EEFB] text-[#1183D0]"
+                      : "text-[#5c7792] hover:bg-[#E0EEFB] hover:text-[#1183D0]"
                   }`}
                 >
                   {link.label}
@@ -96,7 +96,7 @@ export function SiteHeader({ active }: { active?: "Projects" | "Resume" | "Conta
               target="_blank"
               rel="noreferrer"
               aria-label={link.label}
-              className="flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:bg-[#1183D0]/10"
+              className="flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:bg-[#E0EEFB]"
             >
               {link.icon}
             </a>

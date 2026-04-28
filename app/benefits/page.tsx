@@ -135,7 +135,7 @@ const REFLECTIONS = [
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="font-inter text-[#06578d] text-[19px] leading-normal tracking-wide">
+    <p className="font-inter text-[13px] font-semibold uppercase leading-normal tracking-[0.45em] text-white/60">
       {children}
     </p>
   );
@@ -143,7 +143,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="font-serif-display italic text-[#1183D0] text-[45px] leading-tight font-normal">
+    <h2 className="font-serif-display italic text-white text-[45px] leading-tight font-normal">
       {children}
     </h2>
   );
@@ -491,11 +491,11 @@ export default function BenefitsPage() {
 
         <div className="grid grid-cols-2 gap-6">
           {CONSTRAINTS.map((c, i) => (
-            <Card key={i} className="relative rounded-[32px] border-0 bg-white p-0 py-0 shadow-sm">
+            <Card key={i} className="relative p-0 py-0">
               <CardContent className="p-8">
               <div className="flex items-start justify-between mb-4">
                 <Image src={c.icon} alt={c.alt} width={30} height={30} className="object-contain opacity-70" />
-                <Badge className="h-auto rounded-full border-0 bg-[rgba(174,211,237,0.29)] px-4 py-1 font-inter text-[13px] font-medium text-[#1183D0] hover:bg-[rgba(174,211,237,0.29)]">
+                <Badge>
                   {c.label}
                 </Badge>
               </div>
@@ -578,7 +578,7 @@ export default function BenefitsPage() {
 
         <div className="grid grid-cols-2 gap-6">
           {/* Bar chart card */}
-          <Card className="rounded-[32px] border-0 bg-white p-0 py-0 shadow-sm">
+          <Card className="p-0 py-0">
             <CardContent className="p-8">
             <p className="font-inter font-bold text-[#06578d] text-[20px] mb-1">Processing Time</p>
             <p className="font-inter text-[#4d87ae] text-[14px] mb-4">Before vs. After</p>
@@ -593,7 +593,7 @@ export default function BenefitsPage() {
           {/* Stat cards column */}
           <div className="flex flex-col gap-6">
             {RESULTS.map((r) => (
-              <Card key={r.label} className="flex-1 rounded-[32px] border-0 bg-white p-0 py-0 shadow-sm">
+              <Card key={r.label} className="flex-1 p-0 py-0">
                 <CardContent className="flex items-center gap-6 p-8">
                 <span className="font-inter font-bold text-[#1183D0] text-[52px] leading-none shrink-0">
                   {r.value}
@@ -665,7 +665,7 @@ export default function BenefitsPage() {
               <div className="p-6">
                 <p className="text-white/50 text-xs mb-1">{p.company}</p>
                 <h3 className="font-inter font-semibold text-white text-[15px] leading-snug mb-2">{p.title}</h3>
-                <Badge className="h-auto rounded-full border-0 bg-white/10 px-3 py-1 text-xs font-normal text-white/40 hover:bg-white/10">{p.tag}</Badge>
+                <Badge variant="outline" size="sm" className="border-white/10 bg-white/10 text-white/55 hover:bg-white/15">{p.tag}</Badge>
               </div>
             </a>
           ))}

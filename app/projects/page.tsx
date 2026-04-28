@@ -3,6 +3,7 @@ import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
+import { SectionHeading } from "../../components/ui/section-heading";
 import { withBasePath } from "../../lib/site";
 
 
@@ -80,8 +81,7 @@ export default function ProjectsPage() {
 
       {/* Hero */}
       <section className="max-w-[1200px] mx-auto px-6 pt-16 pb-10">
-        <p className="text-[#1183D0] text-sm font-medium mb-3 tracking-wide uppercase">Selected Work</p>
-        <h1 className="text-5xl font-serif-display italic text-[#0e2951] leading-tight mb-4">Projects</h1>
+        <SectionHeading eyebrow="Selected Work" title="Projects" />
         <p className="text-[#5c7792] text-lg max-w-xl leading-relaxed">
           Case studies and highlights from 10+ years designing enterprise SaaS, healthtech, and nonprofit digital experiences.
         </p>
@@ -91,11 +91,8 @@ export default function ProjectsPage() {
           {FILTER_PILLS.map((pill) => (
             <Button
               key={pill.label}
-              className={`h-auto rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                pill.active
-                  ? "bg-[#1183D0] text-white"
-                  : "bg-white text-[#5c7792] border border-[#bcd2ff]/60 hover:border-[#1183D0] hover:text-[#1183D0]"
-              }`}
+              variant={pill.active ? "default" : "outline"}
+              size="sm"
             >
               {pill.label}
             </Button>
@@ -111,7 +108,7 @@ export default function ProjectsPage() {
             href={project.slug === "#" ? "#" : withBasePath(`/${project.slug}`)}
             className="group block transition-all hover:-translate-y-0.5"
           >
-            <Card className="flex overflow-hidden rounded-3xl border-[#bcd2ff]/30 bg-white p-0 py-0 shadow-sm transition-shadow hover:shadow-[0_12px_40px_#00000018] md:flex-row">
+            <Card className="flex p-0 py-0 transition-shadow hover:shadow-[0_12px_40px_#00000018] md:flex-row">
             {/* Preview */}
             <div
               className={`w-full md:w-80 shrink-0 h-60 md:h-auto flex items-center justify-center relative overflow-hidden ${i % 2 === 1 ? "md:order-2" : ""}`}
@@ -137,7 +134,7 @@ export default function ProjectsPage() {
               <div className="flex items-end justify-between mt-6 flex-wrap gap-4">
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
-                    <Badge key={tag} className="h-auto rounded-full border-0 bg-[#E0EEFB] px-3 py-1 text-xs font-medium text-[#1183D0] hover:bg-[#E0EEFB]">{tag}</Badge>
+                    <Badge key={tag} size="sm">{tag}</Badge>
                   ))}
                 </div>
                 <span className="text-sm text-[#1183D0] font-medium group-hover:underline">

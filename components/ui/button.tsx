@@ -5,31 +5,33 @@ import { Slot } from "radix-ui"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-transparent bg-clip-padding text-sm font-medium outline-none transition-all focus-visible:ring-2 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  "inline-flex shrink-0 items-center justify-center gap-3 whitespace-nowrap border border-transparent bg-clip-padding font-semibold outline-none transition-all focus-visible:ring-2 focus-visible:ring-[#1183D0]/30 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/80",
+        default:
+          "rounded-[28px] bg-[#1183D0] text-white shadow-none hover:bg-[#0e6fad]",
         outline:
-          "border-border bg-background hover:bg-muted hover:text-foreground",
+          "rounded-[28px] border-[#CFE5F8] bg-white text-[#1183D0] shadow-none hover:border-[#1183D0] hover:bg-white hover:text-[#1183D0]",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+          "rounded-[28px] bg-[#E0EEFB] text-[#1183D0] shadow-none hover:bg-[#d4e9fb]",
         ghost:
-          "hover:bg-muted hover:text-foreground",
+          "rounded-[28px] bg-transparent text-[#5c7792] shadow-none hover:bg-[#E0EEFB] hover:text-[#1183D0]",
         destructive:
-          "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:ring-destructive/20",
-        link: "text-primary underline-offset-4 hover:underline",
+          "rounded-[28px] bg-[#d60060] text-white shadow-none hover:bg-[#b5004e]",
+        link:
+          "rounded-none bg-transparent px-0 text-[#5c7792] shadow-none underline-offset-4 hover:bg-transparent hover:text-[#1183D0] hover:underline",
       },
       size: {
-        default:
-          "h-8 px-2.5",
-        xs: "h-6 rounded-lg px-2 text-xs",
-        sm: "h-7 rounded-lg px-2.5 text-[0.8rem]",
-        lg: "h-9 px-2.5",
-        icon: "h-8 w-8",
-        "icon-xs": "h-6 w-6 rounded-lg",
-        "icon-sm": "h-7 w-7 rounded-lg",
-        "icon-lg": "h-9 w-9",
+        default: "h-12 px-8 text-base",
+        xs: "h-8 px-4 text-xs",
+        sm: "h-10 px-5 text-sm",
+        lg: "h-14 px-10 text-xl",
+        xl: "h-[68px] px-14 text-2xl",
+        icon: "h-10 w-10 rounded-full",
+        "icon-xs": "h-7 w-7 rounded-full",
+        "icon-sm": "h-9 w-9 rounded-full",
+        "icon-lg": "h-12 w-12 rounded-full",
       },
     },
     defaultVariants: {

@@ -3,6 +3,7 @@ import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { Badge } from "./components/ui/badge";
 import { Button } from "./components/ui/button";
+import { SectionHeading } from "./components/ui/section-heading";
 import { withBasePath } from "./lib/site";
 
 const SOCIAL_PROOF_LOGOS = [
@@ -129,25 +130,27 @@ export default function PortfolioPage() {
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
                 {HERO_TAGS.map((tag) => (
-                  <span
+                  <Badge
                     key={tag}
-                    className="rounded-full border border-white/70 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur"
+                    variant="outline"
+                    className="border-white/70 bg-white/10 text-white backdrop-blur hover:bg-white/10 hover:text-white"
                   >
                     {tag}
-                  </span>
+                  </Badge>
                 ))}
               </div>
               <div className="mt-10 flex flex-wrap gap-3">
                 <Button
                   asChild
-                  className="h-12 rounded-full bg-white px-7 text-sm font-semibold text-[#102944] hover:bg-[#E0EEFB]"
+                  size="sm"
                 >
                   <a href={withBasePath("/projects")}>View selected work</a>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
-                  className="h-12 rounded-full border-white/80 bg-transparent px-7 text-sm font-semibold text-white hover:bg-white/10 hover:text-white"
+                  size="sm"
+                  className="border-white/80 bg-transparent text-white hover:bg-white/10 hover:text-white"
                 >
                   <a href={withBasePath("/contact")}>Let&apos;s work together</a>
                 </Button>
@@ -219,9 +222,7 @@ export default function PortfolioPage() {
       {/* ── Recent Work ── */}
       <section id="projects" className="bg-white py-12 px-20">
         <div className="max-w-[1200px] mx-auto flex flex-col items-center gap-12">
-          <h2 className="font-serif-display italic text-[36px] leading-[1.2] text-[#1183D0]">
-            Recent Work
-          </h2>
+          <SectionHeading eyebrow="Portfolio" title="Recent Work" centered />
 
           {/* Project cards */}
           <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3">
@@ -244,10 +245,7 @@ export default function PortfolioPage() {
                 {/* Tags – always visible */}
                 <div className="flex flex-wrap gap-3">
                   {project.tags.map((tag) => (
-                    <Badge
-                      key={tag}
-                      className="h-auto rounded-full border-0 bg-[#E0EEFB] px-5 py-2 text-[14px] font-semibold text-[#1183D0] hover:bg-[#E0EEFB]"
-                    >
+                    <Badge key={tag} size="lg">
                       {tag}
                     </Badge>
                   ))}
@@ -276,8 +274,8 @@ export default function PortfolioPage() {
           </div>
 
           {/* View all work CTA */}
-          <Button className="h-9 rounded-full bg-[#d60060] px-5 text-[13px] font-medium text-white hover:bg-[#b5004e]">
-            View all work
+          <Button asChild size="sm">
+            <a href={withBasePath("/projects")}>View all work</a>
           </Button>
         </div>
       </section>
@@ -317,9 +315,9 @@ export default function PortfolioPage() {
           </p>
           <Button
             asChild
-            className="h-11 rounded-full bg-[#d60060] px-7 text-[14px] font-medium text-white hover:bg-[#b5004e]"
+            size="sm"
           >
-            <a href="#resume">View My Resume <span>→</span></a>
+            <a href={withBasePath("/resume")}>View My Resume <span>→</span></a>
           </Button>
         </div>
 
@@ -344,9 +342,10 @@ export default function PortfolioPage() {
         </h2>
         <Button
           asChild
-          className="h-13 rounded-full bg-white px-9 text-[15px] font-medium text-[#0b182c] hover:bg-gray-100"
+          size="lg"
+          className="bg-white text-[#0b182c] hover:bg-gray-100"
         >
-          <a href="#contact">Let&apos;s work together <span>→</span></a>
+          <a href={withBasePath("/contact")}>Let&apos;s work together <span>→</span></a>
         </Button>
       </section>
 

@@ -5,24 +5,30 @@ import { Slot } from "radix-ui"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-all focus-visible:ring-2 focus-visible:ring-ring/50 [&>svg]:pointer-events-none",
+  "inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent whitespace-nowrap font-semibold transition-all focus-visible:ring-2 focus-visible:ring-[#1183D0]/30 [&>svg]:pointer-events-none",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/80",
+        default: "bg-[#E0EEFB] text-[#1183D0] hover:bg-[#d4e9fb]",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+          "bg-[#F0F7FF] text-[#5c7792] hover:bg-[#E0EEFB]",
         destructive:
           "bg-destructive/10 text-destructive focus-visible:ring-destructive/20 hover:bg-destructive/20",
         outline:
-          "border-border text-foreground hover:bg-muted hover:text-muted-foreground",
+          "border-[#CFE5F8] bg-white text-[#1183D0] hover:bg-[#F0F7FF]",
         ghost:
-          "hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50",
+          "bg-transparent text-[#5c7792] hover:bg-[#E0EEFB] hover:text-[#1183D0]",
         link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        default: "min-h-8 px-4 py-1 text-sm",
+        sm: "min-h-6 px-3 py-0.5 text-xs",
+        lg: "min-h-11 px-6 py-2 text-lg",
       },
     },
     defaultVariants: {
       variant: "default",
+      size: "default",
     },
   }
 )
@@ -30,6 +36,7 @@ const badgeVariants = cva(
 function Badge({
   className,
   variant = "default",
+  size = "default",
   asChild = false,
   ...props
 }: React.ComponentProps<"span"> &
@@ -40,7 +47,7 @@ function Badge({
     <Comp
       data-slot="badge"
       data-variant={variant}
-      className={cn(badgeVariants({ variant }), className)}
+      className={cn(badgeVariants({ variant, size }), className)}
       {...props}
     />
   )

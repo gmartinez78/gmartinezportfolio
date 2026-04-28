@@ -4,6 +4,7 @@ import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
+import { SectionHeading } from "../../components/ui/section-heading";
 import { Textarea } from "../../components/ui/textarea";
 
 
@@ -73,8 +74,7 @@ export default function ContactPage() {
 
       {/* Hero */}
       <section className="max-w-[1200px] mx-auto px-6 pt-16 pb-10 text-center">
-        <p className="text-[#1183D0] text-sm font-medium mb-3 tracking-wide uppercase">Let's talk</p>
-        <h1 className="text-5xl font-serif-display italic text-[#0e2951] leading-tight mb-4">Get in Touch</h1>
+        <SectionHeading eyebrow="Let's talk" title="Get in Touch" centered className="items-center" />
         <p className="text-[#5c7792] text-lg max-w-xl mx-auto leading-relaxed">
           Whether you have a project in mind, a question, or just want to say hello — I'd love to hear from you.
         </p>
@@ -84,47 +84,44 @@ export default function ContactPage() {
       <section className="max-w-[1200px] mx-auto px-6 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Form */}
-          <Card className="rounded-3xl border-[#bcd2ff]/30 bg-white p-0 py-0 shadow-sm">
+          <Card className="p-0 py-0">
             <CardContent className="p-8">
             <h2 className="text-xl font-semibold text-[#0e2951] mb-6">Send a message</h2>
             <form className="flex flex-col gap-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1.5">
-                  <Label className="text-xs font-medium text-[#5c7792] uppercase tracking-wide">Name</Label>
+                  <Label>Name</Label>
                   <Input
                     type="text"
                     placeholder="Your name"
-                    className="h-auto rounded-xl border-[#bcd2ff]/60 bg-[#F0F7FF] px-4 py-3 text-sm text-[#3c3e3f] focus-visible:border-[#1183D0] focus-visible:ring-0"
                   />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <Label className="text-xs font-medium text-[#5c7792] uppercase tracking-wide">Email</Label>
+                  <Label>Email</Label>
                   <Input
                     type="email"
                     placeholder="your@email.com"
-                    className="h-auto rounded-xl border-[#bcd2ff]/60 bg-[#F0F7FF] px-4 py-3 text-sm text-[#3c3e3f] focus-visible:border-[#1183D0] focus-visible:ring-0"
                   />
                 </div>
               </div>
               <div className="flex flex-col gap-1.5">
-                <Label className="text-xs font-medium text-[#5c7792] uppercase tracking-wide">Subject</Label>
+                <Label>Subject</Label>
                 <Input
                   type="text"
                   placeholder="What's this about?"
-                  className="h-auto rounded-xl border-[#bcd2ff]/60 bg-[#F0F7FF] px-4 py-3 text-sm text-[#3c3e3f] focus-visible:border-[#1183D0] focus-visible:ring-0"
                 />
               </div>
               <div className="flex flex-col gap-1.5">
-                <Label className="text-xs font-medium text-[#5c7792] uppercase tracking-wide">Message</Label>
+                <Label>Message</Label>
                 <Textarea
                   rows={6}
                   placeholder="Tell me about your project..."
-                  className="resize-none rounded-xl border-[#bcd2ff]/60 bg-[#F0F7FF] px-4 py-3 text-sm text-[#3c3e3f] focus-visible:border-[#1183D0] focus-visible:ring-0"
+                  className="resize-none"
                 />
               </div>
               <Button
                 type="submit"
-                className="mt-2 h-auto rounded-full bg-[#1183D0] px-6 py-3 text-sm font-medium text-white hover:bg-[#0e6fad]"
+                className="mt-2"
               >
                 Send Message
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -142,13 +139,13 @@ export default function ContactPage() {
               I'm currently based in Málaga, Spain and available for remote opportunities worldwide. Response time is usually within 24 hours.
             </p>
             {INFO_CARDS.map((card) => (
-              <Card key={card.label} className="rounded-2xl border-[#bcd2ff]/30 bg-white p-0 py-0 shadow-sm">
-                <CardContent className="flex items-center gap-4 p-5">
-                <div className="w-10 h-10 rounded-xl bg-[#E0EEFB] text-[#1183D0] flex items-center justify-center shrink-0">
+              <Card key={card.label} className="p-0 py-0">
+                <CardContent className="flex items-center gap-6 p-6">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#E0EEFB] text-black">
                   {card.icon}
                 </div>
                 <div>
-                  <p className="text-xs text-[#5c7792] font-medium uppercase tracking-wide">{card.label}</p>
+                  <p className="text-base font-semibold text-[#3c3e3f]">{card.label}</p>
                   {card.href ? (
                     <a href={card.href} className="text-sm text-[#0e2951] font-medium hover:text-[#1183D0] transition-colors">{card.value}</a>
                   ) : (

@@ -3,6 +3,7 @@ import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
+import { SectionHeading } from "../../components/ui/section-heading";
 import { withBasePath } from "../../lib/site";
 
 type ExperienceBullet = string | { heading: string; items: string[] };
@@ -384,11 +385,7 @@ const FEATURED_CREDENTIALS = [
 ];
 
 function Tag({ label }: { label: string }) {
-  return (
-    <Badge className="h-auto rounded-full border-0 bg-[#E0EEFB] px-3 py-1 text-xs font-medium text-[#1183D0] hover:bg-[#E0EEFB]">
-      {label}
-    </Badge>
-  );
+  return <Badge size="sm">{label}</Badge>;
 }
 
 export default function ResumePage() {
@@ -406,7 +403,8 @@ export default function ResumePage() {
           <Button
             asChild
             variant="outline"
-            className="h-auto shrink-0 rounded-full border-[#1183D0] bg-white/90 px-5 py-2.5 text-sm font-medium text-[#1183D0] shadow-sm hover:bg-[#1183D0] hover:text-white"
+            size="sm"
+            className="shrink-0"
           >
             <a href="#">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -491,10 +489,10 @@ export default function ResumePage() {
 
       {/* Experience */}
       <section className="max-w-[1200px] mx-auto px-6 py-10">
-        <h2 className="text-2xl font-serif-display italic text-[#0e2951] mb-6">Experience</h2>
+        <SectionHeading eyebrow="Career" title="Experience" className="mb-8" />
         <div className="flex flex-col gap-5">
           {EXPERIENCE.map((job) => (
-            <Card key={job.role} className="rounded-2xl border-[#bcd2ff]/30 bg-white p-0 py-0 shadow-sm">
+            <Card key={job.role} className="p-0 py-0">
               <CardContent className="p-7">
               <div className="flex items-start justify-between gap-4 flex-wrap">
                 <div>
@@ -502,8 +500,8 @@ export default function ResumePage() {
                   <p className="text-sm text-[#5c7792] mt-0.5">{job.company}</p>
                 </div>
                 <div className="flex flex-wrap gap-2 shrink-0">
-                  <Badge className="h-auto rounded-full border-0 bg-[#F0F7FF] px-3 py-1 text-sm font-normal text-[#5c7792] hover:bg-[#F0F7FF]">{job.period}</Badge>
-                  <Badge className="h-auto rounded-full border-0 bg-[#F0F7FF] px-3 py-1 text-sm font-normal text-[#5c7792] hover:bg-[#F0F7FF]">{job.location}</Badge>
+                  <Badge variant="secondary" size="sm">{job.period}</Badge>
+                  <Badge variant="secondary" size="sm">{job.location}</Badge>
                 </div>
               </div>
               <ul className="mt-4 space-y-2">
@@ -544,12 +542,11 @@ export default function ResumePage() {
 
       {/* Skills & Education */}
       <section className="max-w-[1200px] mx-auto px-6 py-10">
-        <Card className="rounded-[32px] border-[#d6e8fb] bg-[#eef5ff] p-0 py-0 shadow-sm">
+        <Card className="bg-[#eef5ff] p-0 py-0">
           <CardContent className="px-6 py-10 sm:px-8 lg:px-12 lg:py-12">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
-              <h2 className="font-serif-display text-4xl italic text-[#0e2951]">Skills</h2>
-              <div className="mt-6 h-1 w-12 rounded-full bg-[#1183D0]" />
+              <SectionHeading eyebrow="Capabilities" title="Skills" />
               <div className="mt-8 flex flex-col gap-8">
                 {SKILLS.map((group) => (
                   <div key={group.category}>
@@ -558,10 +555,7 @@ export default function ResumePage() {
                     </h3>
                     <div className="mt-4 flex flex-wrap gap-3">
                       {group.items.map((item) => (
-                        <Badge
-                          key={item}
-                          className="h-auto rounded-full border-0 bg-[#e7f1fd] px-4 py-2 text-sm font-medium text-[#1183D0] hover:bg-[#e7f1fd]"
-                        >
+                        <Badge key={item} size="lg">
                           {item}
                         </Badge>
                       ))}
@@ -572,16 +566,12 @@ export default function ResumePage() {
             </div>
 
             <div>
-              <h2 className="font-serif-display text-4xl italic text-[#0e2951]">Education</h2>
-              <div className="mt-6 h-1 w-12 rounded-full bg-[#1183D0]" />
+              <SectionHeading eyebrow="Training" title="Education" />
               <div className="mt-8 flex flex-col gap-5">
                 {EDUCATION.map((edu) => (
-                  <Card
-                    key={edu.degree}
-                    className="rounded-[24px] border-[#d6e8fb] bg-white p-0 py-0 shadow-sm"
-                  >
+                  <Card key={edu.degree} className="p-0 py-0">
                     <CardContent className="px-6 py-6">
-                    <Badge className="h-auto rounded-full border-0 bg-[#eef5ff] px-4 py-1 text-sm font-semibold text-[#1183D0] hover:bg-[#eef5ff]">
+                    <Badge size="lg">
                       {edu.year}
                     </Badge>
                     <h3 className="mt-4 text-[18px] font-semibold text-[#111827]">
@@ -594,8 +584,7 @@ export default function ResumePage() {
               </div>
 
               <div className="mt-10">
-                <h2 className="font-serif-display text-4xl italic text-[#0e2951]">Tools</h2>
-                <div className="mt-6 h-1 w-12 rounded-full bg-[#1183D0]" />
+                <SectionHeading eyebrow="Stack" title="Tools" />
                 <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-4">
                   {TOOLS.map((tool) => (
                     <div key={tool.label} className="flex flex-col items-center text-center">
@@ -619,7 +608,7 @@ export default function ResumePage() {
       <section className="max-w-[1200px] mx-auto px-6 py-10">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
-            <h2 className="font-serif-display text-4xl italic text-[#0e2951]">Certifications</h2>
+            <SectionHeading eyebrow="Recognition" title="Certifications" />
             <div className="mt-8 flex items-center gap-5">
               <img
                 src={withBasePath("/images/OiSjn.png")}
@@ -638,12 +627,9 @@ export default function ResumePage() {
 
             <div className="mt-8 flex flex-col gap-5">
               {CERTIFICATION_ITEMS.map((item) => (
-                <Card
-                  key={`${item.year}-${item.title}`}
-                  className="rounded-[22px] border-[#d6e8fb] bg-[#f7fbff] p-0 py-0 shadow-sm"
-                >
+                <Card key={`${item.year}-${item.title}`} className="bg-[#f7fbff] p-0 py-0">
                   <CardContent className="px-5 py-5">
-                  <Badge className="h-auto rounded-full border-0 bg-[#e7f1fd] px-4 py-1 text-sm font-semibold text-[#1183D0] hover:bg-[#e7f1fd]">
+                  <Badge size="lg">
                     {item.year}
                   </Badge>
                   <h3 className="mt-4 text-[18px] font-semibold text-[#0e2951]">{item.title}</h3>
@@ -663,14 +649,14 @@ export default function ResumePage() {
                     target="_blank"
                     rel="noreferrer"
                     key={credential.title}
-                    className="block rounded-[26px] border border-[#d6e8fb] bg-[#f7fbff] text-center shadow-sm transition-opacity hover:opacity-80"
+                    className="block rounded-[28px] border-2 border-[#CFE5F8] bg-[#f7fbff] text-center shadow-sm transition-opacity hover:opacity-80"
                   >
                     <CardContent className="px-8 py-8">{children}</CardContent>
                   </a>
                 ) : (
                   <Card
                     key={credential.title}
-                    className="rounded-[26px] border-[#d6e8fb] bg-[#f7fbff] p-0 py-0 text-center shadow-sm"
+                    className="bg-[#f7fbff] p-0 py-0 text-center"
                   >
                     <CardContent className="px-8 py-8">{children}</CardContent>
                   </Card>
@@ -705,7 +691,7 @@ export default function ResumePage() {
                 <p className="mx-auto mt-4 max-w-[430px] text-[15px] leading-relaxed text-[#5c7792]">
                   {credential.description}
                 </p>
-                <Badge className="mt-6 h-auto rounded-full border-0 bg-[#e7f1fd] px-4 py-1 text-sm font-semibold text-[#1183D0] hover:bg-[#e7f1fd]">
+                <Badge className="mt-6" size="lg">
                   {credential.year}
                 </Badge>
               </CardWrapper>
