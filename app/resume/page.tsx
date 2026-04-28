@@ -555,7 +555,7 @@ export default function ResumePage() {
                     </h3>
                     <div className="mt-4 flex flex-wrap gap-3">
                       {group.items.map((item) => (
-                        <Badge key={item} size="lg">
+                        <Badge key={item} size="tag">
                           {item}
                         </Badge>
                       ))}
