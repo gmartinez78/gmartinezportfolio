@@ -48,31 +48,29 @@ const PROJECTS = [
 ];
 
 const TOOLS_LEFT = [
-  { label: "Figma", src: "/images/tools/figma.svg", x: "left-[60px]", y: "top-[80px]", size: "lg" as const, bg: "bg-white" },
-  { label: "Jira", src: "/images/tools/jira.svg", x: "left-[170px]", y: "top-[40px]", size: "lg" as const, bg: "bg-white" },
-  { label: "Miro", src: "/images/tools/miro.svg", x: "left-[290px]", y: "top-[20px]", size: "lg" as const, bg: "bg-white" },
-  { label: "React", src: "/images/tools/react.svg", x: "left-[100px]", y: "top-[230px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "HTML5", src: "/images/tools/html5.svg", x: "left-[60px]", y: "top-[332px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Angular", src: "/images/tools/Angular_gradient_logo.png", x: "left-[190px]", y: "top-[346px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "ClickUp", src: "/images/tools/clickup.svg", x: "left-[394px]", y: "top-[372px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Confluence", src: "/images/tools/confluence.svg", x: "left-[220px]", y: "top-[130px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Maze", src: "/images/tools/maze.svg", x: "left-[350px]", y: "top-[120px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Notion", src: "/images/tools/notion.svg", x: "left-[282px]", y: "top-[234px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Webex", src: "/images/tools/webex.svg", x: "left-[320px]", y: "top-[320px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
+  { label: "Figma", src: "/images/tools/figma.svg", x: "left-[78px]", y: "top-[72px]", size: "lg" as const, tone: "white" as const },
+  { label: "Angular", src: "/images/tools/Angular_gradient_logo.png", x: "left-[235px]", y: "top-[36px]", size: "lg" as const, tone: "white" as const },
+  { label: "Miro", src: "/images/tools/miro.svg", x: "left-[405px]", y: "top-[18px]", size: "lg" as const, tone: "white" as const },
+  { label: "React", src: "/images/tools/react.svg", x: "left-[130px]", y: "top-[230px]", size: "sm" as const, tone: "white" as const },
+  { label: "HTML5", src: "/images/tools/html5.svg", x: "left-[78px]", y: "top-[340px]", size: "sm" as const, tone: "white" as const },
+  { label: "Jira", src: "/images/tools/jira.svg", x: "left-[305px]", y: "top-[124px]", size: "sm" as const, tone: "white" as const },
+  { label: "Confluence", src: "/images/tools/confluence.svg", x: "left-[488px]", y: "top-[110px]", size: "sm" as const, tone: "white" as const },
+  { label: "Maze", src: "/images/tools/maze.svg", x: "left-[395px]", y: "top-[252px]", size: "sm" as const, tone: "white" as const },
+  { label: "Notion", src: "/images/tools/notion.svg", x: "left-[260px]", y: "top-[354px]", size: "sm" as const, tone: "white" as const },
+  { label: "Webex", src: "/images/tools/webex.svg", x: "left-[550px]", y: "top-[385px]", size: "sm" as const, tone: "white" as const },
 ];
 
 const TOOLS_RIGHT = [
-  { label: "Copilot", src: "/images/tools/githubcopilot.svg", x: "right-[300px]", y: "top-[20px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Slack", src: "/images/tools/slack.svg", x: "right-[180px]", y: "top-[40px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Claude", src: "/images/tools/anthropic.svg", x: "right-[70px]", y: "top-[80px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "ChatGPT", src: "/images/tools/openai.svg", x: "right-[50px]", y: "top-[230px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "VS Code", src: "/images/tools/visualstudiocode.svg", x: "right-[76px]", y: "top-[336px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Figma", src: "/images/tools/figma.svg", x: "right-[194px]", y: "top-[372px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "React", src: "/images/tools/react.svg", x: "right-[386px]", y: "top-[384px]", size: "lg" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Jira", src: "/images/tools/jira.svg", x: "right-[360px]", y: "top-[120px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Miro", src: "/images/tools/miro.svg", x: "right-[168px]", y: "top-[256px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Notion", src: "/images/tools/notion.svg", x: "right-[250px]", y: "top-[160px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
-  { label: "Confluence", src: "/images/tools/confluence.svg", x: "right-[270px]", y: "top-[340px]", size: "sm" as const, bg: "bg-[#E0EEFB]" },
+  { label: "Copilot", src: "/images/tools/githubcopilot.svg", x: "right-[410px]", y: "top-[18px]", size: "sm" as const, tone: "white" as const },
+  { label: "Slack", src: "/images/tools/slack.svg", x: "right-[250px]", y: "top-[52px]", size: "sm" as const, tone: "white" as const },
+  { label: "Claude", src: "/images/tools/anthropic.svg", x: "right-[92px]", y: "top-[92px]", size: "sm" as const, tone: "white" as const },
+  { label: "ChatGPT", src: "/images/tools/openai.svg", x: "right-[345px]", y: "top-[170px]", size: "sm" as const, tone: "white" as const },
+  { label: "VS Code", src: "/images/tools/visualstudiocode.svg", x: "right-[62px]", y: "top-[232px]", size: "sm" as const, tone: "white" as const },
+  { label: "Figma", src: "/images/tools/figma.svg", x: "right-[210px]", y: "top-[365px]", size: "sm" as const, tone: "white" as const },
+  { label: "React", src: "/images/tools/react.svg", x: "right-[460px]", y: "top-[382px]", size: "sm" as const, tone: "white" as const },
+  { label: "Jira", src: "/images/tools/jira.svg", x: "right-[500px]", y: "top-[118px]", size: "sm" as const, tone: "white" as const },
+  { label: "Miro", src: "/images/tools/miro.svg", x: "right-[205px]", y: "top-[268px]", size: "sm" as const, tone: "white" as const },
+  { label: "Notion", src: "/images/tools/notion.svg", x: "right-[380px]", y: "top-[350px]", size: "sm" as const, tone: "white" as const },
 ];
 
 function ToolBadge({
@@ -81,30 +79,35 @@ function ToolBadge({
   x,
   y,
   size,
-  bg,
+  tone,
 }: {
   label: string;
   src: string;
   x: string;
   y: string;
   size: "lg" | "sm";
-  bg: string;
+  tone: "white" | "blue";
 }) {
-  const base =
+  const sizeClass =
     size === "lg"
-      ? "w-13 h-13 rounded-xl text-[9px]"
-      : "w-11 h-11 rounded-[10px] opacity-70 text-[9px]";
+      ? "h-[74px] w-[74px] rounded-[16px]"
+      : "h-16 w-16 rounded-[15px]";
+  const toneClass =
+    tone === "white"
+      ? "bg-white shadow-[0_18px_42px_rgba(14,41,81,0.10)]"
+      : "bg-white shadow-[0_18px_42px_rgba(14,41,81,0.10)]";
+
   return (
     <div
-      className={`absolute ${x} ${y} ${base} ${bg} flex items-center justify-center shadow-sm`}
+      className={`absolute ${x} ${y} ${sizeClass} ${toneClass} flex items-center justify-center`}
       title={label}
     >
       <Image
         src={src}
         alt={label}
-        width={size === "lg" ? 30 : 24}
-        height={size === "lg" ? 30 : 24}
-        className="h-[62%] w-[62%] object-contain"
+        width={size === "lg" ? 42 : 32}
+        height={size === "lg" ? 42 : 32}
+        className="h-[64%] w-[64%] object-contain"
       />
     </div>
   );
@@ -159,7 +162,6 @@ export default function PortfolioPage() {
                   asChild
                   variant="outline"
                   size="sm"
-                  className="border-white/80 bg-transparent text-white hover:bg-white/10 hover:text-white"
                 >
                   <a href={withBasePath("/contact")}>Let&apos;s work together</a>
                 </Button>
@@ -265,8 +267,8 @@ export default function PortfolioPage() {
                   {project.title}
                 </h3>
 
-                <div className="-mt-2 grid grid-rows-[0fr] opacity-0 transition-all duration-300 group-hover:grid-rows-[1fr] group-hover:opacity-100 group-focus-visible:grid-rows-[1fr] group-focus-visible:opacity-100">
-                  <div className="overflow-hidden">
+                <div className="-mt-2 min-h-[116px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                  <div>
                     {/* Description */}
                     <p className="text-[14px] leading-relaxed text-[#5c7792]">
                       {project.description}
@@ -283,7 +285,7 @@ export default function PortfolioPage() {
           </div>
 
           {/* View all work CTA */}
-          <Button asChild size="sm">
+          <Button asChild size="sm" className="mb-8 mt-8">
             <a href={withBasePath("/projects")}>View all work</a>
           </Button>
         </div>
@@ -293,8 +295,8 @@ export default function PortfolioPage() {
       <section
         className="relative overflow-hidden"
         style={{
-          background: "linear-gradient(180deg, #F0F7FF 0%, #DCEEFB 100%)",
-          height: 453,
+          background: "linear-gradient(180deg, #EEF7FF 0%, #DFF0FC 100%)",
+          height: 520,
         }}
       >
         {TOOLS_LEFT.map((t) => (
@@ -306,7 +308,7 @@ export default function PortfolioPage() {
           style={{
             left: "50%",
             transform: "translateX(-50%)",
-            top: 80,
+            top: 112,
             width: 500,
           }}
         >
@@ -324,9 +326,10 @@ export default function PortfolioPage() {
           </p>
           <Button
             asChild
-            size="sm"
+            variant="link"
+            className="mt-7 h-auto gap-4 px-0 text-sm font-normal leading-none text-[#1183D0] hover:no-underline"
           >
-            <a href={withBasePath("/resume")}>View My Resume <span>→</span></a>
+            <a href={withBasePath("/resume")}>View My Resume <span className="text-[22px] leading-none">→</span></a>
           </Button>
         </div>
 
@@ -337,7 +340,7 @@ export default function PortfolioPage() {
 
       {/* ── CTA Section ── */}
       <section
-        className="flex flex-col items-center justify-center gap-7 text-center px-30 py-25"
+        className="flex flex-col items-center justify-center gap-7 px-30 py-[80px] text-center"
         style={{ background: "#0e2951" }}
       >
         <span className="text-[13px] font-medium tracking-[3px] text-[#7CB8E8] uppercase">
@@ -352,7 +355,7 @@ export default function PortfolioPage() {
         <Button
           asChild
           size="lg"
-          className="bg-white text-[#0b182c] hover:bg-gray-100"
+          className="text-sm"
         >
           <a href={withBasePath("/contact")}>Let&apos;s work together <span>→</span></a>
         </Button>
