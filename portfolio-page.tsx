@@ -210,8 +210,6 @@ export default function PortfolioPage() {
               </span>
             </div>
             <div className="relative w-full flex-1 overflow-hidden md:py-2">
-              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[#F0F7FF] to-transparent" />
-              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[#F0F7FF] to-transparent" />
               <div className="flex w-max animate-[logo-marquee_22s_linear_infinite] items-center gap-14 pr-14 hover:[animation-play-state:paused]">
                 {LOGO_CAROUSEL.map((logo, index) => (
                   <Image
@@ -284,10 +282,6 @@ export default function PortfolioPage() {
             ))}
           </div>
 
-          {/* View all work CTA */}
-          <Button asChild size="sm" className="mb-8 mt-8">
-            <a href={withBasePath("/projects")}>View all work</a>
-          </Button>
         </div>
       </section>
 
@@ -357,7 +351,7 @@ export default function PortfolioPage() {
           size="lg"
           className="text-sm"
         >
-          <a href={withBasePath("/contact")}>Let&apos;s work together <span>→</span></a>
+          <a href={withBasePath("/contact")}>Let&apos;s work together</a>
         </Button>
       </section>
 
