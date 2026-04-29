@@ -429,26 +429,30 @@ export default function BenefitsPage() {
                 />
               ))}
             </div>
-            <div className="mt-10 space-y-6 border-t border-[#d7e8f7] pt-6">
-              <div>
-                <p className="text-[11px] uppercase tracking-[0.28em] text-[#8ca9c3]">Year</p>
-                <p className="mt-2 text-[17px] font-medium text-[#0e2951]">{caseStudy?.year ?? 2024}</p>
-              </div>
-              <div>
-                <p className="text-[11px] uppercase tracking-[0.28em] text-[#8ca9c3]">Role</p>
-                <p className="mt-2 text-[17px] font-medium text-[#0e2951]">{caseStudy?.role ?? "Sr Product Designer"}</p>
-              </div>
-              <div>
-                <p className="text-[11px] uppercase tracking-[0.28em] text-[#8ca9c3]">Client</p>
-                <p className="mt-2 text-[17px] font-medium text-[#0e2951]">
-                  {caseStudy?.client_context ?? "Paychex / Flock"}
-                </p>
-              </div>
-            </div>
           </div>
         </div>
 
-        <div className="mt-12 grid gap-6 border-t border-[#d7e8f7] pt-6 text-center md:grid-cols-3">
+        <div className="mt-12 flex flex-col items-center gap-10 pt-10">
+          <div className="grid w-full gap-8 text-center md:grid-cols-[1fr_2fr_1fr] md:items-center">
+            <div>
+              <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Year</p>
+              <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy?.year ?? 2024}</p>
+            </div>
+            <div>
+              <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Role</p>
+              <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy?.role ?? "Sr Product Designer"}</p>
+            </div>
+            <div>
+              <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Client</p>
+              <p className="mt-1 text-[14px] font-medium text-[#0e2951]">
+                {caseStudy?.client_context ?? "Paychex / Flock"}
+              </p>
+            </div>
+          </div>
+          <div className="h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
+        </div>
+
+        <div className="mt-12 grid gap-6 text-center md:grid-cols-3">
           {results.slice(0, 3).map((metric, index) => (
             <div
               key={metric.label}
