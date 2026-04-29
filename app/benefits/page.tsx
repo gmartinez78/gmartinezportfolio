@@ -168,7 +168,7 @@ function ProductPreview() {
     { name: "Thai, Mary", email: "thaymary@mail.com", role: "Form", status: "Active" },
   ];
   return (
-    <div className="rounded-[24px] overflow-hidden border-2 border-[#1183D0]/20 shadow-[0_24px_64px_rgba(17,131,208,0.18)]">
+    <div className="w-full rounded-[24px] overflow-hidden border-2 border-[#1183D0]/20 shadow-[0_24px_64px_rgba(17,131,208,0.18)]">
       {/* App chrome */}
       <div className="bg-[#f1f3f5] px-5 py-2.5 flex items-center gap-4 border-b border-[#e0e0e0]">
         <div className="bg-[#F3F7FA] h-3.5 w-10 rounded" />
@@ -366,27 +366,13 @@ export default function BenefitsPage() {
       </div>
 
       {/* ── Hero ── */}
-      <section className="relative px-6 pt-16 pb-0 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        {/* Company logos */}
-        <div className="flex items-center gap-6 mb-10">
-          {(caseStudy?.client_logos.length
-            ? caseStudy.client_logos.map((logo) => ({
-                src: resolveTrustedLogo(logo.name, logo.logo),
-                alt: logo.name,
-                width: logo.name === "Paychex" ? 120 : logo.name === "Nayya" ? 80 : 60,
-              }))
-            : [
-                { src: ASSETS.paychex, alt: "Paychex", width: 120 },
-                { src: ASSETS.nayya, alt: "Nayya", width: 80 },
-                { src: ASSETS.ibx, alt: "IBX", width: 60 },
-              ]).map((logo) => (
-            <Image key={logo.alt} src={logo.src} alt={logo.alt} width={logo.width} height={32} className="object-contain opacity-80" />
-          ))}
-        </div>
+      <section className="relative mx-auto max-w-[1200px] px-6 pt-16 pb-0 md:px-10 xl:px-20">
+        <div className="grid items-center gap-10 xl:grid-cols-[minmax(0,720px)_minmax(340px,420px)] xl:justify-between">
+          <div className="-mx-4 xl:mx-0 xl:w-[720px]">
+            <ProductPreview />
+          </div>
 
-        <div className="flex items-end justify-between gap-12 mb-6">
-          {/* Left: text */}
-          <div className="max-w-[520px]">
+          <div className="max-w-[420px] xl:justify-self-end">
             <p className="text-[#5c7792] text-[13px] uppercase tracking-[3px] font-inter mb-3">
               {caseStudy?.industry ?? "Case Study Redesign 2025"}
             </p>
@@ -396,19 +382,46 @@ export default function BenefitsPage() {
             <p className="text-[#5c7792] text-[18px] leading-[1.7] font-inter">
               {caseStudy?.tagline ?? "Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%."}
             </p>
-          </div>
-
-          {/* Right: 72% stat */}
-          <div className="shrink-0 text-right">
-            <div className="font-inter font-bold text-[#1183D0]/10 text-[180px] leading-none select-none">
-              {caseStudy?.metrics[0]?.value ?? "72%"}
+            <div className="mt-8 flex items-center gap-6">
+              {(caseStudy?.client_logos.length
+                ? caseStudy.client_logos.map((logo) => ({
+                    src: resolveTrustedLogo(logo.name, logo.logo),
+                    alt: logo.name,
+                    width: logo.name === "Paychex" ? 120 : logo.name === "Nayya" ? 80 : 60,
+                  }))
+                : [
+                    { src: ASSETS.paychex, alt: "Paychex", width: 120 },
+                    { src: ASSETS.nayya, alt: "Nayya", width: 80 },
+                    { src: ASSETS.ibx, alt: "IBX", width: 60 },
+                  ]).map((logo) => (
+                <Image
+                  key={logo.alt}
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={logo.width}
+                  height={32}
+                  className="object-contain opacity-80"
+                />
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Product Screenshot */}
-        <div className="mt-4 -mx-4">
-          <ProductPreview />
+        <div className="mt-12 grid gap-8 border-t border-[#d7e8f7] pt-6 text-center md:grid-cols-3 md:text-left">
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.28em] text-[#8ca9c3]">Year</p>
+            <p className="mt-2 text-[17px] font-medium text-[#0e2951]">{caseStudy?.year ?? 2024}</p>
+          </div>
+          <div className="md:text-center">
+            <p className="text-[11px] uppercase tracking-[0.28em] text-[#8ca9c3]">Role</p>
+            <p className="mt-2 text-[17px] font-medium text-[#0e2951]">{caseStudy?.role ?? "Sr Product Designer"}</p>
+          </div>
+          <div className="md:text-right">
+            <p className="text-[11px] uppercase tracking-[0.28em] text-[#8ca9c3]">Client</p>
+            <p className="mt-2 text-[17px] font-medium text-[#0e2951]">
+              {caseStudy?.client_context ?? "Paychex / Flock"}
+            </p>
+          </div>
         </div>
       </section>
 
