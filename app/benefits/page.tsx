@@ -547,16 +547,17 @@ export default function BenefitsPage() {
                 </p>
               ))}
             </div>
+
+            <h3 className="mt-12 text-[15px] uppercase tracking-[0.24em] text-[#5c7792]">
+              Task
+            </h3>
+            <p className="mt-8 max-w-[720px] text-[16px] leading-[1.625em] text-[#3c3e3f]">
+              {TASK_SUMMARY}
+            </p>
           </div>
 
           <Card className="overflow-hidden">
             <CardContent className="p-0">
-              <div className="border-b border-[#d7e8f7] px-7 py-7">
-                <p className="text-[16px] leading-[1.625em] uppercase tracking-[0.24em] text-[#5c7792]">Task</p>
-                <p className="mt-4 text-[16px] leading-[1.625em] text-[#0e2951]">
-                  {TASK_SUMMARY}
-                </p>
-              </div>
               {CHALLENGE_METRICS.map((metric, index) => (
                 <div
                   key={metric.label}
