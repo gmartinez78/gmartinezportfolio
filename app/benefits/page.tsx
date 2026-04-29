@@ -17,9 +17,6 @@ const ASSETS = {
   userIcon: withBasePath("/images/benefits/user-icon.png"),
   clockIcon: withBasePath("/images/benefits/clock-icon.png"),
   arrowVector: withBasePath("/images/benefits/arrow-vector.png"),
-  userPainIllustration: withBasePath("/images/benefits/illustration.svg"),
-  sigPenYellow: withBasePath("/images/benefits/sig-pen-yellow.png"),
-  sigPenTeal: withBasePath("/images/benefits/sig-pen-teal.png"),
   miscSticker: withBasePath("/images/benefits/misc-sticker.png"),
   paychex: withBasePath("/images/c54fy.png"),
   nayya: withBasePath("/images/bBw3A.png"),
@@ -51,24 +48,6 @@ const USER_PAIN_POINTS = [
     bold: "No centralized governance",
     before: "",
     after: " or clear permission structure.",
-  },
-];
-
-const ADMIN_PAIN_POINTS = [
-  {
-    bold: "multiple payroll cycles",
-    before: "Benefits changes required running ",
-    after: " and manual reconciliation.",
-  },
-  {
-    bold: "aggregate employee data",
-    before: "Admins had no easy way to ",
-    after: " across departments in one place.",
-  },
-  {
-    bold: "enrollment spikes",
-    before: "When ",
-    after: " occurred, there was no clear escalation or alert workflow.",
   },
 ];
 
@@ -136,6 +115,54 @@ const REFLECTIONS = [
   },
 ];
 
+const CHALLENGE_POINTS = [
+  "Manual workarounds wasted users' time and increased the risk of costly errors.",
+  "Internal user couldn't change users' roles and permissions on their own, which increased support tickets and development work.",
+  "Each unsupported enrollment request took 5-7 business days and was multiplied across hundreds of clients.",
+];
+
+const CHALLENGE_METRICS = [
+  { value: "85%", label: "of HR teams reported enrollment errors" },
+  { value: "3 weeks", label: "average time to complete enrollment cycle" },
+  { value: "40%", label: "of employees confused by their benefits" },
+];
+
+const TASK_SUMMARY =
+  "Design a self-service enrollment experience that reduced support dependency, clarified permissions, and fit the product's existing operational model.";
+
+const RESEARCH_DISCOVERY_ITEMS = [
+  {
+    title: "User Research",
+    body: "Interviewed 50+ HR administrators and employees to understand pain points, workflows, and unmet needs across the enrollment journey.",
+    icon: ASSETS.userIcon,
+  },
+  {
+    title: "System Architecture",
+    body: "Built a modular component system that scales across multiple employer sizes, from startups to enterprise organizations with 10,000+ employees.",
+    icon: ASSETS.miscSticker,
+  },
+  {
+    title: "Iterative Testing",
+    body: "Conducted 5 rounds of usability testing with real users, refining the experience at every stage to ensure clarity and efficiency.",
+    icon: ASSETS.arrowVector,
+  },
+  {
+    title: "Role Mapping",
+    body: "Mapped internal roles, governance rules, and permission boundaries before UI implementation so the system would support real operational needs.",
+    icon: ASSETS.userIcon,
+  },
+  {
+    title: "Flow Validation",
+    body: "Validated the enrollment lifecycle against exceptions, support scenarios, and admin edge cases before moving deeper into delivery.",
+    icon: ASSETS.miscSticker,
+  },
+  {
+    title: "Cross-Team Review",
+    body: "Worked closely with product and engineering to keep the experience coherent while aligning with system constraints and delivery pressure.",
+    icon: ASSETS.arrowVector,
+  },
+];
+
 // ── Sub-components ────────────────────────────────────────────────────────────
 
 function Divider() {
@@ -147,16 +174,6 @@ function Divider() {
   );
 }
 
-function PainPoint({ before, bold, after }: { before: string; bold: string; after: string }) {
-  return (
-    <p className="font-inter text-[#3c3e3f] text-[22px] leading-[1.9] font-normal">
-      {before}
-      <strong className="font-semibold">{bold}</strong>
-      {after}
-    </p>
-  );
-}
-
 // ── User Management Table Preview ─────────────────────────────────────────────
 function ProductPreview() {
   const rows = [
@@ -164,8 +181,6 @@ function ProductPreview() {
     { name: "Pons, Tamara", email: "tamaraponss@mail.com", role: "Reporting & Form Admin", status: "Invitation pending" },
     { name: "Laczko, Billie", email: "laczkobillie@mail.com", role: "Billing", status: "Active" },
     { name: "Davila, Ryan", email: "davilaryan@mail.com", role: "Billing", status: "Active" },
-    { name: "Sulivan, Gretchen", email: "sulivang@mail.com", role: "Reporting & Form Admin", status: "Invitation pending" },
-    { name: "Thai, Mary", email: "thaymary@mail.com", role: "Form", status: "Active" },
   ];
   return (
     <div className="w-full rounded-[24px] overflow-hidden border-2 border-[#1183D0]/20 shadow-[0_24px_64px_rgba(17,131,208,0.18)]">
@@ -173,50 +188,50 @@ function ProductPreview() {
       <div className="bg-[#f1f3f5] px-5 py-2.5 flex items-center gap-4 border-b border-[#e0e0e0]">
         <div className="bg-[#F3F7FA] h-3.5 w-10 rounded" />
         {["Clients", "Users", "Reports", "Forms", "Billing"].map((t) => (
-          <span key={t} className="text-[#7f868f] text-[10px] font-inter">{t}</span>
+          <span key={t} className="text-[#7f868f] text-[9px] font-inter">{t}</span>
         ))}
       </div>
       {/* Tab bar */}
       <div className="bg-white px-10 pt-3 flex gap-6 border-b border-[#ccc]">
         {["UserAccounts", "Roles and Permissions", "Settings"].map((t, i) => (
           <div key={t} className="flex flex-col gap-1.5 pb-0">
-            <span className={`text-[11px] font-inter ${i === 0 ? "text-black font-semibold" : "text-[#7f868f]"}`}>{t}</span>
+            <span className={`text-[10px] font-inter ${i === 0 ? "text-black font-semibold" : "text-[#7f868f]"}`}>{t}</span>
             <div className={`h-[2px] rounded ${i === 0 ? "bg-[#148ce6]" : "bg-transparent"}`} />
           </div>
         ))}
       </div>
       {/* Table */}
-      <div className="bg-white px-8 py-5">
-        <div className="flex items-center justify-between mb-4">
-          <div className="border border-[#d8d8d8] rounded px-3 py-1.5 text-[11px] text-[#303030] font-inter w-64">
+      <div className="bg-white px-6 py-4">
+        <div className="mb-3 flex items-center justify-between">
+          <div className="border border-[#d8d8d8] rounded px-3 py-1.5 text-[10px] text-[#303030] font-inter w-64">
             Search by name, role, or branch
           </div>
-          <div className="bg-[#46b275] text-[#0e2951] text-[11px] px-4 py-1.5 rounded font-inter">Add User</div>
+          <div className="bg-[#46b275] text-[#0e2951] text-[10px] px-4 py-1.5 rounded font-inter">Add User</div>
         </div>
-        <table className="w-full text-left text-[11px] font-inter">
+        <table className="w-full text-left text-[10px] font-inter">
           <thead>
-            <tr className="bg-[#f7f9fb] text-[#000] uppercase text-[10px] font-semibold tracking-wide">
+            <tr className="bg-[#f7f9fb] text-[#000] uppercase text-[9px] font-semibold tracking-wide">
               {["Name", "Role", "Branch Location", "Sign In", "Status", "Actions"].map((h) => (
-                <th key={h} className="px-3 py-2.5">{h}</th>
+                <th key={h} className="px-3 py-2">{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {rows.map((r, i) => (
               <tr key={i} className="border-t border-[#dbdde0]">
-                <td className="px-3 py-2.5">
+                <td className="px-3 py-2">
                   <p className="font-bold text-[#262a2d]">{r.name}</p>
                   <p className="text-[#7f868f]">{r.email}</p>
                 </td>
-                <td className="px-3 py-2.5 text-[#262a2d]">{r.role}</td>
-                <td className="px-3 py-2.5 text-[#262a2d]">Company</td>
-                <td className="px-3 py-2.5 text-[#262a2d]">Sep 12, 2022</td>
-                <td className="px-3 py-2.5">
-                  <span className={`text-[10px] px-2 py-0.5 rounded-full ${r.status === "Active" ? "bg-[#e6f7ee] text-[#46b275]" : "bg-[#fff3e0] text-[#e67e00]"}`}>
+                <td className="px-3 py-2 text-[#262a2d]">{r.role}</td>
+                <td className="px-3 py-2 text-[#262a2d]">Company</td>
+                <td className="px-3 py-2 text-[#262a2d]">Sep 12, 2022</td>
+                <td className="px-3 py-2">
+                  <span className={`text-[9px] px-2 py-0.5 rounded-full ${r.status === "Active" ? "bg-[#e6f7ee] text-[#46b275]" : "bg-[#fff3e0] text-[#e67e00]"}`}>
                     {r.status}
                   </span>
                 </td>
-                <td className="px-3 py-2.5 text-[#7f868f]">···</td>
+                <td className="px-3 py-2 text-[#7f868f]">···</td>
               </tr>
             ))}
           </tbody>
@@ -309,7 +324,6 @@ export default function BenefitsPage() {
   const { caseStudy } = usePublicCaseStudy("benefits-enrollment");
   const { caseStudies } = usePublicCaseStudies();
   const isLiveCaseStudy = Boolean(caseStudy && caseStudy.status === "published");
-  const adminPainPoints = caseStudy?.problem.admin_pain_points ?? ADMIN_PAIN_POINTS.map((item) => `${item.before}${item.bold}${item.after}`);
   const userPainPoints = caseStudy?.problem.user_pain_points ?? USER_PAIN_POINTS.map((item) => `${item.before}${item.bold}${item.after}`);
   const constraints = caseStudy?.constraints ?? CONSTRAINTS.map((item) => `${item.title ?? ""}${item.bold}${item.after ?? ""}`);
   const strategyPoints = caseStudy?.design_strategy ?? STRATEGY_POINTS.map((item) => `${item.before}${item.bold}${item.after}`);
@@ -357,18 +371,21 @@ export default function BenefitsPage() {
         </>
       ) : (
         <>
-      <div className="mx-auto flex max-w-[1200px] items-center gap-3 px-6 pt-6 text-sm lg:px-20">
-        <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
-        <span className="text-[#b8cce0]">›</span>
-        <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</a>
-        <span className="text-[#b8cce0]">›</span>
-        <span className="font-semibold text-[#0e2951]">{caseStudy?.title ?? "Enhancing Benefits Enrollment"}</span>
+      <div className="mx-auto max-w-[1200px] px-6 pt-6 lg:px-20">
+        <div className="flex items-center gap-3 text-sm">
+          <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
+          <span className="text-[#b8cce0]">›</span>
+          <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</a>
+          <span className="text-[#b8cce0]">›</span>
+          <span className="font-semibold text-[#0e2951]">{caseStudy?.title ?? "Enhancing Benefits Enrollment"}</span>
+        </div>
+        <div className="mt-5 h-px w-full bg-[#d7e8f7]" />
       </div>
 
       {/* ── Hero ── */}
       <section className="relative mx-auto max-w-[1200px] px-6 pt-16 pb-0 md:px-10 xl:px-20">
-        <div className="grid items-center gap-10 xl:grid-cols-[minmax(0,720px)_minmax(340px,420px)] xl:justify-between">
-          <div className="-mx-4 xl:mx-0 xl:w-[720px]">
+        <div className="grid items-center gap-10 xl:grid-cols-[minmax(0,460px)_minmax(340px,420px)] xl:justify-between">
+          <div className="-mx-2 xl:mx-0 xl:w-[460px]">
             <ProductPreview />
           </div>
 
@@ -404,24 +421,35 @@ export default function BenefitsPage() {
                 />
               ))}
             </div>
+            <div className="mt-10 space-y-6 border-t border-[#d7e8f7] pt-6">
+              <div>
+                <p className="text-[11px] uppercase tracking-[0.28em] text-[#8ca9c3]">Year</p>
+                <p className="mt-2 text-[17px] font-medium text-[#0e2951]">{caseStudy?.year ?? 2024}</p>
+              </div>
+              <div>
+                <p className="text-[11px] uppercase tracking-[0.28em] text-[#8ca9c3]">Role</p>
+                <p className="mt-2 text-[17px] font-medium text-[#0e2951]">{caseStudy?.role ?? "Sr Product Designer"}</p>
+              </div>
+              <div>
+                <p className="text-[11px] uppercase tracking-[0.28em] text-[#8ca9c3]">Client</p>
+                <p className="mt-2 text-[17px] font-medium text-[#0e2951]">
+                  {caseStudy?.client_context ?? "Paychex / Flock"}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 grid gap-8 border-t border-[#d7e8f7] pt-6 text-center md:grid-cols-3 md:text-left">
-          <div>
-            <p className="text-[11px] uppercase tracking-[0.28em] text-[#8ca9c3]">Year</p>
-            <p className="mt-2 text-[17px] font-medium text-[#0e2951]">{caseStudy?.year ?? 2024}</p>
-          </div>
-          <div className="md:text-center">
-            <p className="text-[11px] uppercase tracking-[0.28em] text-[#8ca9c3]">Role</p>
-            <p className="mt-2 text-[17px] font-medium text-[#0e2951]">{caseStudy?.role ?? "Sr Product Designer"}</p>
-          </div>
-          <div className="md:text-right">
-            <p className="text-[11px] uppercase tracking-[0.28em] text-[#8ca9c3]">Client</p>
-            <p className="mt-2 text-[17px] font-medium text-[#0e2951]">
-              {caseStudy?.client_context ?? "Paychex / Flock"}
-            </p>
-          </div>
+        <div className="mt-12 grid gap-6 border-t border-[#d7e8f7] pt-6 text-center md:grid-cols-3">
+          {results.slice(0, 3).map((metric, index) => (
+            <div
+              key={metric.label}
+              className={index < 2 ? "md:border-r md:border-[#d7e8f7]" : ""}
+            >
+              <p className="text-[46px] font-bold leading-none text-[#1183D0]">{metric.value}</p>
+              <p className="mt-3 text-[13px] text-[#5c7792]">{metric.label}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -429,9 +457,9 @@ export default function BenefitsPage() {
       <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <SectionHeading eyebrow="Overview" title="Structure" className="mb-6" />
 
-        <div className="mt-8 grid grid-cols-4 gap-0 border-t border-[#4d87ae]/30 pt-8">
+        <div className="mt-8 grid gap-8 pt-8 md:grid-cols-2 xl:grid-cols-4 xl:gap-0">
           {/* Team */}
-          <div className="pr-8 border-r border-[#4d87ae]/20">
+          <div className="xl:pr-8">
             <p className="text-[#5c7792] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter">
               Team Members
             </p>
@@ -444,7 +472,7 @@ export default function BenefitsPage() {
           </div>
 
           {/* Role */}
-          <div className="px-8 border-r border-[#4d87ae]/20">
+          <div className="xl:px-8">
             <p className="text-[#3c3e3f] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter font-medium">
               My Role
             </p>
@@ -457,7 +485,7 @@ export default function BenefitsPage() {
           </div>
 
           {/* Tools */}
-          <div className="px-8 border-r border-[#4d87ae]/20">
+          <div className="xl:px-8">
             <p className="text-[#5c7792] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter">
               Tools Used
             </p>
@@ -475,7 +503,7 @@ export default function BenefitsPage() {
           </div>
 
           {/* Timeline */}
-          <div className="pl-8">
+          <div className="xl:pl-8">
             <p className="text-[#5c7792] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter">
               Timeline
             </p>
@@ -485,61 +513,76 @@ export default function BenefitsPage() {
         </div>
       </section>
 
-      {/* ── Pain Points ── */}
-      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <div className="flex flex-col gap-20">
-          {/* Admin Pain Points */}
-          <div className="max-w-[680px]">
-            <SectionHeading eyebrow="Admins' Pain" title="Points" className="mb-8" />
-            <div className="mt-8 flex flex-col gap-8">
-              {adminPainPoints.map((p, i) => (
-                <div key={i}>
-                  <p className="font-inter text-[#3c3e3f] text-[22px] leading-[1.9] font-normal">{p}</p>
-                  {i < adminPainPoints.length - 1 && <Divider />}
-                </div>
+      <section className="mx-auto max-w-[1200px] px-6 pb-20 md:px-10 xl:px-20">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+          <div>
+            <SectionHeading eyebrow="STAR" title="Situation" className="mb-8" />
+            <div className="mt-8 space-y-6">
+              {CHALLENGE_POINTS.map((point) => (
+                <p key={point} className="max-w-[720px] text-[18px] leading-[1.65] text-[#3c3e3f]">
+                  {point}
+                </p>
+              ))}
+            </div>
+
+            <h3 className="mt-12 text-[15px] uppercase tracking-[0.24em] text-[#5c7792]">
+              Supporting signals
+            </h3>
+            <div className="mt-8 space-y-6">
+              {userPainPoints.map((point) => (
+                <p key={point} className="max-w-[720px] text-[18px] leading-[1.65] text-[#3c3e3f]">
+                  {point}
+                </p>
               ))}
             </div>
           </div>
 
-          {/* User Pain Points */}
-          <div className="grid items-center gap-16 lg:grid-cols-[0.95fr_1.05fr]">
-            <div className="relative">
-              <Image
-                src={ASSETS.userPainIllustration}
-                alt=""
-                width={520}
-                height={420}
-                className="h-auto w-full object-contain"
-              />
-            </div>
-            <div>
-              <h2 className="font-inter text-[44px] font-normal leading-tight text-[#0e2951]">
-                Users&apos; Pain{" "}
-                <span className="font-serif-display italic text-[#1183D0]">Points</span>
-              </h2>
-              <div className="mt-10 flex flex-col">
-                {userPainPoints.map((p, i) => (
-                  <div key={i} className="py-8 first:pt-0 last:pb-0">
-                    <p className="font-inter text-[#3c3e3f] text-[22px] leading-[1.9] font-normal">{p}</p>
-                    {i < userPainPoints.length - 1 && <div className="mt-8"><Divider /></div>}
-                  </div>
-                ))}
+          <Card className="overflow-hidden">
+            <CardContent className="p-0">
+              <div className="border-b border-[#d7e8f7] px-7 py-7">
+                <p className="text-[15px] uppercase tracking-[0.24em] text-[#5c7792]">Task</p>
+                <p className="mt-4 text-[18px] leading-[1.65] text-[#0e2951]">
+                  {TASK_SUMMARY}
+                </p>
               </div>
-            </div>
-          </div>
+              {CHALLENGE_METRICS.map((metric, index) => (
+                <div
+                  key={metric.label}
+                  className={`px-7 py-7 ${index < CHALLENGE_METRICS.length - 1 ? "border-b border-[#d7e8f7]" : ""}`}
+                >
+                  <p className="text-[30px] font-bold leading-none text-[#0e2951]">{metric.value}</p>
+                  <p className="mt-3 max-w-[220px] text-[16px] leading-[1.45] text-[#1183D0]">
+                    {metric.label}
+                  </p>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
         </div>
       </section>
 
-      {/* ── 72% Big Number ── */}
-      <section className="px-6 py-8 md:px-10 xl:px-20 max-w-[1200px] mx-auto flex items-center justify-center">
-        <div className="text-center">
-          <p className="font-inter font-bold text-[#1183D0]/10 select-none leading-none"
-            style={{ fontSize: "clamp(120px, 18vw, 280px)" }}>
-            {primaryMetric.value}
-          </p>
-          <p className="font-inter text-[#5c7792] text-[18px] tracking-wide -mt-10">
-            {primaryMetric.label}
-          </p>
+      {/* ── Action ── */}
+      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+        <SectionHeading eyebrow="STAR" title="Action" centered className="mb-14" />
+        <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
+          {RESEARCH_DISCOVERY_ITEMS.map((item, index) => (
+            <Card
+              key={item.title}
+              className={index === 4 ? "bg-white/75" : "border-transparent bg-transparent shadow-none"}
+            >
+              <CardContent className="p-0">
+                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-[14px] bg-[#eaf4fd] shadow-[0_10px_24px_rgba(17,131,208,0.08)]">
+                  <Image src={item.icon} alt="" width={20} height={20} className="h-5 w-5 object-contain opacity-85" />
+                </div>
+                <h3 className="text-[28px] font-normal leading-none text-[#1183D0]">
+                  {item.title}
+                </h3>
+                <p className="mt-5 max-w-[320px] text-[18px] leading-[1.65] text-[#3c3e3f]">
+                  {item.body}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </section>
 
@@ -547,7 +590,7 @@ export default function BenefitsPage() {
       <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <SectionHeading title="Constraints" centered className="mb-12" />
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid gap-6 md:grid-cols-2">
           {constraints.map((constraint, i) => (
             <Card key={i} className="relative p-0 py-0">
               <CardContent className="p-8">
@@ -566,8 +609,8 @@ export default function BenefitsPage() {
 
       {/* ── Design Thinking Process ── */}
       <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading eyebrow="Methodology" title="Design Thinking" className="mb-12" />
-        <div className="grid grid-cols-5 gap-4">
+        <SectionHeading eyebrow="Action" title="Methodology" className="mb-12" />
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
           {methodologySteps.map((step, i) => (
             <div key={i} className="flex flex-col gap-4">
               <div
@@ -596,13 +639,10 @@ export default function BenefitsPage() {
 
       {/* ── Design Strategy ── */}
       <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <div className="grid grid-cols-2 gap-16 items-center">
+        <div className="grid items-center gap-16 lg:grid-cols-2">
           {/* Left text */}
           <div>
-            <h2 className="font-inter font-normal text-[#0e2951] text-[44px] leading-tight mb-8">
-              Design{" "}
-              <span className="font-serif-display italic text-[#1183D0]">Strategy</span>
-            </h2>
+            <SectionHeading title={<>Design <span className="text-[#1183D0]">Strategy</span></>} className="mb-8" />
             <div className="flex flex-col gap-8">
               {strategyPoints.map((p, i) => (
                 <div key={i}>
@@ -622,9 +662,9 @@ export default function BenefitsPage() {
 
       {/* ── Results ── */}
       <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading eyebrow="Impact" title="Results" className="mb-12" />
+        <SectionHeading eyebrow="STAR" title="Result" className="mb-12" />
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid gap-6 lg:grid-cols-2">
           {/* Bar chart card */}
           <Card className="p-0 py-0">
             <CardContent className="p-8">
@@ -646,7 +686,7 @@ export default function BenefitsPage() {
                 <span className="font-inter font-bold text-[#1183D0] text-[52px] leading-none shrink-0">
                   {r.value}
                 </span>
-                <p className="font-inter text-[#3c3e3f] text-[18px] leading-[1.5]">
+                <p className="font-inter text-[#3c3e3f] text-[17px] leading-[1.5]">
                   {r.label}
                 </p>
                 </CardContent>
@@ -664,16 +704,20 @@ export default function BenefitsPage() {
 
       {/* ── Reflections ── */}
       <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading title="Reflections" className="mb-12" />
+        <SectionHeading title="Reflections" centered className="mb-14" />
 
-        <div className="flex flex-col gap-8">
+        <div className="border-t border-[#d7e8f7]">
           {reflections.map((r, i) => (
-            <div key={i}>
-              <p className="font-inter text-[#3c3e3f] text-[22px] leading-[1.9]">
-                <strong className="font-semibold">{r.title}. </strong>
+            <div
+              key={i}
+              className={`py-10 text-center ${i < reflections.length - 1 ? "border-b border-[#d7e8f7]" : ""}`}
+            >
+              <h3 className="text-[28px] font-semibold leading-none text-[#1183D0]">
+                {r.title}
+              </h3>
+              <p className="mx-auto mt-5 max-w-[760px] text-[22px] leading-[1.85] text-[#3c3e3f]">
                 {r.body}
               </p>
-              {i < reflections.length - 1 && <Divider />}
             </div>
           ))}
         </div>
@@ -692,7 +736,7 @@ export default function BenefitsPage() {
       <section className="px-6 py-16 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0] mb-2">More work</p>
         <h2 className="font-serif-display italic text-[#0e2951] text-[32px] mb-8">Other Projects</h2>
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {otherProjects.map((p) => (
             <a key={p.title} href={resolveProjectHref(p)} className="group bg-white hover:bg-white border border-[#CFE5F8] rounded-[28px] overflow-hidden transition-all hover:-translate-y-0.5">
               <div className="h-36 flex items-center justify-center" style={{ background: "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)" }}>
