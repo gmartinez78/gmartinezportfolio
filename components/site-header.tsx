@@ -1,10 +1,7 @@
-import { withBasePath } from "../lib/site";
+ "use client";
 
-const NAV_LINKS = [
-  { label: "Projects", href: "/projects" },
-  { label: "Resume", href: "/resume" },
-  { label: "Contact", href: "/contact" },
-];
+import { withBasePath } from "../lib/site";
+import { usePublicSiteContent } from "../lib/cms/public";
 
 const SOCIAL_LINKS = [
   {
@@ -65,6 +62,9 @@ export function LogoMark({ className = "" }: { className?: string }) {
 }
 
 export function SiteHeader({ active }: { active?: "Projects" | "Resume" | "Contact" }) {
+  const { siteContent } = usePublicSiteContent();
+  const navLinks = siteContent.nav.links;
+
   return (
     <header className="sticky top-0 z-50 border-b border-[#bcd2ff]/60 bg-white/85 backdrop-blur">
       <nav className="mx-auto flex min-h-16 max-w-[1200px] items-center justify-between gap-4 px-5 py-3 sm:px-8 lg:px-12">
@@ -72,11 +72,11 @@ export function SiteHeader({ active }: { active?: "Projects" | "Resume" | "Conta
           <a href={withBasePath("/")} className="flex shrink-0 items-center gap-3" aria-label="Greddys Martinez home">
             <LogoMark className="h-10 w-auto" />
             <span className="hidden text-[15px] font-semibold leading-tight text-[#0e2951] sm:block">
-              Greddys Martinez
+              {siteContent.nav.logo_text}
             </span>
           </a>
           <ul className="flex items-center gap-1">
-            {NAV_LINKS.map((link) => (
+            {navLinks.map((link) => (
               <li key={link.label}>
                 <a
                   href={withBasePath(link.href)}

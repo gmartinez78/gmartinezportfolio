@@ -1,3 +1,5 @@
+"use client";
+
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Button } from "../../components/ui/button";
@@ -6,6 +8,7 @@ import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { SectionHeading } from "../../components/ui/section-heading";
 import { Textarea } from "../../components/ui/textarea";
+import { usePublicSiteContent } from "../../lib/cms/public";
 
 
 const INFO_CARDS = [
@@ -68,15 +71,28 @@ const INFO_CARDS = [
 ];
 
 export default function ContactPage() {
+  const { siteContent } = usePublicSiteContent();
+  const infoCards: Array<{ icon: (typeof INFO_CARDS)[number]["icon"]; label: string; value: string; href?: string | null }> =
+    siteContent.contact.details.map((detail) => {
+      const baseCard = INFO_CARDS.find((card) => card.label.toLowerCase() === detail.label.toLowerCase()) ?? INFO_CARDS[0];
+
+      return {
+        icon: baseCard.icon,
+        label: detail.label,
+        value: detail.value,
+        href: detail.href,
+      };
+    });
+
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden min-h-screen">
       <SiteHeader active="Contact" />
 
       {/* Hero */}
       <section className="max-w-[1200px] mx-auto px-6 pt-16 pb-10 text-center">
-        <SectionHeading eyebrow="Let's talk" title="Get in Touch" centered className="items-center" />
+        <SectionHeading eyebrow={siteContent.contact.subheadline} title={siteContent.contact.headline} centered className="items-center" />
         <p className="text-[#5c7792] text-lg max-w-xl mx-auto leading-relaxed">
-          Whether you have a project in mind, a question, or just want to say hello — I'd love to hear from you.
+          {siteContent.contact.intro}
         </p>
       </section>
 
@@ -140,9 +156,9 @@ export default function ContactPage() {
           {/* Info Cards */}
           <div className="flex flex-col gap-4">
             <p className="text-[#5c7792] text-sm leading-relaxed">
-              I'm currently based in Málaga, Spain and available for remote opportunities worldwide. Response time is usually within 24 hours.
+              {siteContent.contact.availability}
             </p>
-            {INFO_CARDS.map((card) => (
+            {infoCards.map((card) => (
               <Card key={card.label} className="p-0 py-0">
                 <CardContent className="flex items-center gap-6 p-6">
                 <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#E0EEFB] text-black">

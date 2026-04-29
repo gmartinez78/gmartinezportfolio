@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
 import { Card, CardContent } from "../../components/ui/card";
 import { SectionHeading } from "../../components/ui/section-heading";
+import { resolveProjectHref, resolveTrustedLogo, usePublicCaseStudies, usePublicCaseStudy } from "../../lib/cms/public";
 import { withBasePath } from "../../lib/site";
 
 // ── Assets from Figma ─────────────────────────────────────────────────────────
@@ -303,47 +306,102 @@ function KanbanIllustration() {
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function BenefitsPage() {
+  const { caseStudy } = usePublicCaseStudy("benefits-enrollment");
+  const { caseStudies } = usePublicCaseStudies();
+  const isLiveCaseStudy = Boolean(caseStudy && caseStudy.status === "published");
+  const adminPainPoints = caseStudy?.problem.admin_pain_points ?? ADMIN_PAIN_POINTS.map((item) => `${item.before}${item.bold}${item.after}`);
+  const userPainPoints = caseStudy?.problem.user_pain_points ?? USER_PAIN_POINTS.map((item) => `${item.before}${item.bold}${item.after}`);
+  const constraints = caseStudy?.constraints ?? CONSTRAINTS.map((item) => `${item.title ?? ""}${item.bold}${item.after ?? ""}`);
+  const strategyPoints = caseStudy?.design_strategy ?? STRATEGY_POINTS.map((item) => `${item.before}${item.bold}${item.after}`);
+  const teamMembers = caseStudy?.team ?? TEAM_MEMBERS;
+  const myRole = caseStudy?.my_role ?? MY_ROLE;
+  const toolsUsed = caseStudy?.tools ?? TOOLS;
+  const methodologySteps =
+    caseStudy?.methodology.steps.map((step, index) => ({
+      label: step.label,
+      color: DESIGN_PROCESS[index]?.color ?? "#87d4ac",
+      desc: step.description,
+    })) ?? DESIGN_PROCESS;
+  const results = caseStudy?.metrics.length
+    ? caseStudy.metrics.map((metric) => ({ value: metric.value, label: metric.label }))
+    : RESULTS;
+  const primaryMetric = results[0] ?? RESULTS[0];
+  const reflections = caseStudy?.reflections ?? REFLECTIONS;
+  const otherProjects = caseStudies.filter((project) => project.slug !== "benefits-enrollment").slice(0, 3);
+
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
       <SiteHeader active="Projects" />
 
+      {!isLiveCaseStudy ? (
+        <>
+          <section className="mx-auto flex min-h-[60vh] max-w-[1200px] flex-col items-center justify-center px-6 py-20 text-center">
+            <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">
+              Case Study Unavailable
+            </p>
+            <h1 className="mt-6 font-serif-display text-[44px] italic leading-[1.05] text-[#0e2951]">
+              This case study is no longer published
+            </h1>
+            <p className="mt-5 max-w-[620px] text-base leading-7 text-[#5c7792]">
+              The CMS entry for this page was deleted or unpublished. It will reappear here once a
+              published record with the slug <span className="font-semibold text-[#0e2951]">benefits-enrollment</span> exists again.
+            </p>
+            <a
+              href={withBasePath("/projects")}
+              className="mt-8 inline-flex rounded-[24px] bg-[#1183D0] px-7 py-3 text-base font-semibold text-white transition-colors hover:bg-[#0e75b8]"
+            >
+              Back to Projects
+            </a>
+          </section>
+          <SiteFooter />
+        </>
+      ) : (
+        <>
       <div className="mx-auto flex max-w-[1200px] items-center gap-3 px-6 pt-6 text-sm lg:px-20">
         <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
         <span className="text-[#b8cce0]">›</span>
         <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</a>
         <span className="text-[#b8cce0]">›</span>
-        <span className="font-semibold text-[#0e2951]">Enhancing Benefits Enrollment</span>
+        <span className="font-semibold text-[#0e2951]">{caseStudy?.title ?? "Enhancing Benefits Enrollment"}</span>
       </div>
 
       {/* ── Hero ── */}
       <section className="relative px-6 pt-16 pb-0 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         {/* Company logos */}
         <div className="flex items-center gap-6 mb-10">
-          <Image src={ASSETS.paychex} alt="Paychex" width={120} height={32} className="object-contain opacity-80" />
-          <Image src={ASSETS.nayya} alt="Nayya" width={80} height={32} className="object-contain opacity-80" />
-          <Image src={ASSETS.ibx} alt="IBX" width={60} height={32} className="object-contain opacity-80" />
+          {(caseStudy?.client_logos.length
+            ? caseStudy.client_logos.map((logo) => ({
+                src: resolveTrustedLogo(logo.name, logo.logo),
+                alt: logo.name,
+                width: logo.name === "Paychex" ? 120 : logo.name === "Nayya" ? 80 : 60,
+              }))
+            : [
+                { src: ASSETS.paychex, alt: "Paychex", width: 120 },
+                { src: ASSETS.nayya, alt: "Nayya", width: 80 },
+                { src: ASSETS.ibx, alt: "IBX", width: 60 },
+              ]).map((logo) => (
+            <Image key={logo.alt} src={logo.src} alt={logo.alt} width={logo.width} height={32} className="object-contain opacity-80" />
+          ))}
         </div>
 
         <div className="flex items-end justify-between gap-12 mb-6">
           {/* Left: text */}
           <div className="max-w-[520px]">
             <p className="text-[#5c7792] text-[13px] uppercase tracking-[3px] font-inter mb-3">
-              Case Study Redesign 2025
+              {caseStudy?.industry ?? "Case Study Redesign 2025"}
             </p>
             <h1 className="font-inter font-bold text-[#0e2951] text-[44px] leading-[1.15] mb-5">
-              Enhancing{" "}
-              <span className="font-serif-display italic font-normal">Benefits Enrollment</span>
+              {caseStudy?.title ?? "Enhancing Benefits Enrollment"}
             </h1>
             <p className="text-[#5c7792] text-[18px] leading-[1.7] font-inter">
-              Replaced a manual workflow with a centralized, self-managed platform;{" "}
-              <strong className="text-[#0e2951] font-semibold">cutting processing time by 72%.</strong>
+              {caseStudy?.tagline ?? "Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%."}
             </p>
           </div>
 
           {/* Right: 72% stat */}
           <div className="shrink-0 text-right">
             <div className="font-inter font-bold text-[#1183D0]/10 text-[180px] leading-none select-none">
-              72%
+              {caseStudy?.metrics[0]?.value ?? "72%"}
             </div>
           </div>
         </div>
@@ -366,7 +424,7 @@ export default function BenefitsPage() {
             </p>
             <div className="h-[3px] w-full bg-[#4d87ae]/20 rounded-full mb-5" />
             <ul className="space-y-1">
-              {TEAM_MEMBERS.map((m) => (
+              {teamMembers.map((m) => (
                 <li key={m} className="text-[#5c7792] text-[16px] font-inter capitalize leading-[1.75]">{m}</li>
               ))}
             </ul>
@@ -379,7 +437,7 @@ export default function BenefitsPage() {
             </p>
             <div className="h-[3px] w-full bg-[#1183D0] rounded-full mb-5" />
             <ul className="space-y-1">
-              {MY_ROLE.map((r) => (
+              {myRole.map((r) => (
                 <li key={r} className="text-[#3c3e3f] text-[16px] font-inter capitalize leading-[1.75] font-medium">{r}</li>
               ))}
             </ul>
@@ -392,7 +450,7 @@ export default function BenefitsPage() {
             </p>
             <div className="h-[3px] w-full bg-[#4d87ae]/20 rounded-full mb-5" />
             <ul className="space-y-1 mb-6">
-              {TOOLS.map((t) => (
+              {toolsUsed.map((t) => (
                 <li key={t} className="text-[#5c7792] text-[16px] font-inter capitalize leading-[1.75]">{t}</li>
               ))}
             </ul>
@@ -409,7 +467,7 @@ export default function BenefitsPage() {
               Timeline
             </p>
             <div className="h-[3px] w-full bg-[#4d87ae]/20 rounded-full mb-5" />
-            <p className="text-[#5c7792] text-[16px] font-inter capitalize leading-[1.75]">3 months</p>
+            <p className="text-[#5c7792] text-[16px] font-inter capitalize leading-[1.75]">{caseStudy?.duration ?? "3 months"}</p>
           </div>
         </div>
       </section>
@@ -421,10 +479,10 @@ export default function BenefitsPage() {
           <div className="max-w-[680px]">
             <SectionHeading eyebrow="Admins' Pain" title="Points" className="mb-8" />
             <div className="mt-8 flex flex-col gap-8">
-              {ADMIN_PAIN_POINTS.map((p, i) => (
+              {adminPainPoints.map((p, i) => (
                 <div key={i}>
-                  <PainPoint {...p} />
-                  {i < ADMIN_PAIN_POINTS.length - 1 && <Divider />}
+                  <p className="font-inter text-[#3c3e3f] text-[22px] leading-[1.9] font-normal">{p}</p>
+                  {i < adminPainPoints.length - 1 && <Divider />}
                 </div>
               ))}
             </div>
@@ -447,10 +505,10 @@ export default function BenefitsPage() {
                 <span className="font-serif-display italic text-[#1183D0]">Points</span>
               </h2>
               <div className="mt-10 flex flex-col">
-                {USER_PAIN_POINTS.map((p, i) => (
+                {userPainPoints.map((p, i) => (
                   <div key={i} className="py-8 first:pt-0 last:pb-0">
-                    <PainPoint {...p} />
-                    {i < USER_PAIN_POINTS.length - 1 && <div className="mt-8"><Divider /></div>}
+                    <p className="font-inter text-[#3c3e3f] text-[22px] leading-[1.9] font-normal">{p}</p>
+                    {i < userPainPoints.length - 1 && <div className="mt-8"><Divider /></div>}
                   </div>
                 ))}
               </div>
@@ -464,10 +522,10 @@ export default function BenefitsPage() {
         <div className="text-center">
           <p className="font-inter font-bold text-[#1183D0]/10 select-none leading-none"
             style={{ fontSize: "clamp(120px, 18vw, 280px)" }}>
-            72%
+            {primaryMetric.value}
           </p>
           <p className="font-inter text-[#5c7792] text-[18px] tracking-wide -mt-10">
-            reduction in benefits processing time
+            {primaryMetric.label}
           </p>
         </div>
       </section>
@@ -477,20 +535,16 @@ export default function BenefitsPage() {
         <SectionHeading title="Constraints" centered className="mb-12" />
 
         <div className="grid grid-cols-2 gap-6">
-          {CONSTRAINTS.map((c, i) => (
+          {constraints.map((constraint, i) => (
             <Card key={i} className="relative p-0 py-0">
               <CardContent className="p-8">
               <div className="flex items-start justify-between mb-4">
-                <Image src={c.icon} alt={c.alt} width={30} height={30} className="object-contain opacity-70" />
+                <Image src={i === 0 ? ASSETS.clockIcon : ASSETS.userIcon} alt={i === 0 ? "Clock" : "User"} width={30} height={30} className="object-contain opacity-70" />
                 <Badge>
-                  {c.label}
+                  Constraints
                 </Badge>
               </div>
-              <p className="text-[#3c3e3f] text-[22px] font-inter leading-[1.85] mt-4">
-                {c.title && <span>{c.title}</span>}
-                <strong className="font-semibold">{c.bold}</strong>
-                {c.after && <span>{c.after}</span>}
-              </p>
+              <p className="text-[#3c3e3f] text-[22px] font-inter leading-[1.85] mt-4">{constraint}</p>
               </CardContent>
             </Card>
           ))}
@@ -501,7 +555,7 @@ export default function BenefitsPage() {
       <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <SectionHeading eyebrow="Methodology" title="Design Thinking" className="mb-12" />
         <div className="grid grid-cols-5 gap-4">
-          {DESIGN_PROCESS.map((step, i) => (
+          {methodologySteps.map((step, i) => (
             <div key={i} className="flex flex-col gap-4">
               <div
                 className="h-2 rounded-full"
@@ -537,10 +591,10 @@ export default function BenefitsPage() {
               <span className="font-serif-display italic text-[#1183D0]">Strategy</span>
             </h2>
             <div className="flex flex-col gap-8">
-              {STRATEGY_POINTS.map((p, i) => (
+              {strategyPoints.map((p, i) => (
                 <div key={i}>
-                  <PainPoint before={p.before} bold={p.bold} after={p.after} />
-                  {i < STRATEGY_POINTS.length - 1 && <Divider />}
+                  <p className="font-inter text-[#3c3e3f] text-[22px] leading-[1.9] font-normal">{p}</p>
+                  {i < strategyPoints.length - 1 && <Divider />}
                 </div>
               ))}
             </div>
@@ -565,15 +619,15 @@ export default function BenefitsPage() {
             <p className="font-inter text-[#5c7792] text-[14px] mb-4">Before vs. After</p>
             <BarChart />
             <div className="border-t border-[#dbdde0] mt-4 pt-4 flex justify-between">
-              <p className="font-inter text-[#5c7792] text-[13px]">Payroll cycle avg. duration</p>
-              <p className="font-inter font-bold text-[#1183D0] text-[13px]">72% faster</p>
+              <p className="font-inter text-[#5c7792] text-[13px]">{primaryMetric.label}</p>
+              <p className="font-inter font-bold text-[#1183D0] text-[13px]">{primaryMetric.value}</p>
             </div>
             </CardContent>
           </Card>
 
           {/* Stat cards column */}
           <div className="flex flex-col gap-6">
-            {RESULTS.map((r) => (
+            {results.map((r) => (
               <Card key={r.label} className="flex-1 p-0 py-0">
                 <CardContent className="flex items-center gap-6 p-8">
                 <span className="font-inter font-bold text-[#1183D0] text-[52px] leading-none shrink-0">
@@ -600,13 +654,13 @@ export default function BenefitsPage() {
         <SectionHeading title="Reflections" className="mb-12" />
 
         <div className="flex flex-col gap-8">
-          {REFLECTIONS.map((r, i) => (
+          {reflections.map((r, i) => (
             <div key={i}>
               <p className="font-inter text-[#3c3e3f] text-[22px] leading-[1.9]">
                 <strong className="font-semibold">{r.title}. </strong>
                 {r.body}
               </p>
-              {i < REFLECTIONS.length - 1 && <Divider />}
+              {i < reflections.length - 1 && <Divider />}
             </div>
           ))}
         </div>
@@ -616,7 +670,7 @@ export default function BenefitsPage() {
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <div className="border-t border-[#bcd2ff]/40 pt-8">
           <p className="font-inter text-[#5c7792] text-[13px] leading-[1.7] max-w-[900px]">
-            <strong className="font-semibold text-[#5c7792]">NDA notice:</strong> Parts of this presentation — including some screens and project details — have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy.
+            <strong className="font-semibold text-[#5c7792]">NDA notice:</strong> {caseStudy?.nda_notice ?? "Parts of this presentation — including some screens and project details — have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy."}
           </p>
         </div>
       </section>
@@ -626,19 +680,15 @@ export default function BenefitsPage() {
         <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0] mb-2">More work</p>
         <h2 className="font-serif-display italic text-[#0e2951] text-[32px] mb-8">Other Projects</h2>
         <div className="grid grid-cols-3 gap-5">
-          {[
-            { title: "AI-Powered Benefits Advisor", company: "Nayya", tag: "AI/ML Product", bg: "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)", stat: "4.8★" },
-            { title: "Accessible Service Portal", company: "Easterseals", tag: "Accessibility", bg: "radial-gradient(ellipse at 80% 20%, #c8f0e0 0%, #edf5fb 70%)", stat: "40%" },
-            { title: "Ride Coordination App", company: "Transport for Troops", tag: "Mobile", bg: "radial-gradient(ellipse at 50% 80%, #ffe8c0 0%, #edf5fb 70%)", stat: "60%" },
-          ].map((p) => (
-            <a key={p.title} href="#" className="group bg-white hover:bg-white border border-[#CFE5F8] rounded-[28px] overflow-hidden transition-all hover:-translate-y-0.5">
-              <div className="h-36 flex items-center justify-center" style={{ background: p.bg }}>
-                <span className="font-serif-display italic font-bold text-[#1183D0] text-3xl">{p.stat}</span>
+          {otherProjects.map((p) => (
+            <a key={p.title} href={resolveProjectHref(p)} className="group bg-white hover:bg-white border border-[#CFE5F8] rounded-[28px] overflow-hidden transition-all hover:-translate-y-0.5">
+              <div className="h-36 flex items-center justify-center" style={{ background: "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)" }}>
+                <span className="font-serif-display italic font-bold text-[#1183D0] text-3xl">{p.metrics[0]?.value ?? p.year}</span>
               </div>
               <div className="p-6">
                 <p className="text-[#5c7792] text-xs mb-1">{p.company}</p>
                 <h3 className="font-inter font-semibold text-[#0e2951] text-[15px] leading-snug mb-2">{p.title}</h3>
-                <Badge variant="outline" size="tag">{p.tag}</Badge>
+                <Badge variant="outline" size="tag">{p.tags[0]}</Badge>
               </div>
             </a>
           ))}
@@ -646,6 +696,8 @@ export default function BenefitsPage() {
       </section>
 
       <SiteFooter />
+        </>
+      )}
     </main>
   );
 }

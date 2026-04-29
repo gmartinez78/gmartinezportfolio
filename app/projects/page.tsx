@@ -7,86 +7,42 @@ import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
 import { Card, CardContent } from "../../components/ui/card";
 import { SectionHeading } from "../../components/ui/section-heading";
-import { withBasePath } from "../../lib/site";
+import {
+  resolveProjectHref,
+  resolveTrustedLogo,
+  usePublicCaseStudies,
+  usePublicSiteContent,
+} from "../../lib/cms/public";
 
-
-const FILTER_PILLS = [
-  "All",
-  "UX Research",
-  "Product Design",
-  "Design Systems",
-  "Mobile",
-  "Accessibility",
-];
-
-const PROJECTS = [
-  {
-    slug: "benefits",
-    title: "Enhancing Benefits Enrollment",
-    company: "Independence Blue Cross",
-    tags: ["HR/Payroll SaaS", "UX Research", "Interaction Design", "Design Systems"],
-    filters: ["UX Research", "Product Design", "Design Systems"],
-    description:
-      "Redesigned the employee benefits enrollment experience for a Fortune 500 insurer, reducing support tickets by 72% and cutting enrollment time from 47 to 13 minutes.",
-    stat: "72%",
-    statLabel: "reduction in support tickets",
-    bg: "radial-gradient(ellipse at 82% 50%, #b7daf1 11%, #e9f3fb 64%, #edf5fb 98%)",
-    year: "2024",
-  },
-  {
-    slug: "#",
-    title: "AI-Powered Benefits Advisor",
-    company: "Nayya",
-    tags: ["AI/ML Product", "UX Research", "Prototyping"],
-    filters: ["UX Research", "Product Design"],
-    description:
-      "Designed the conversational UX for an AI-driven benefits recommendation engine that helped employees understand and select the right coverage for their life stage.",
-    stat: "4.8★",
-    statLabel: "average user satisfaction",
-    bg: "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
-    year: "2022",
-  },
-  {
-    slug: "#",
-    title: "Accessible Service Portal",
-    company: "Easterseals",
-    tags: ["Accessibility", "Web Design", "Nonprofit"],
-    filters: ["Product Design", "Accessibility"],
-    description:
-      "Redesigned the public-facing portal for a nonprofit serving people with disabilities, achieving WCAG 2.1 AA compliance and reducing task completion time by 40%.",
-    stat: "40%",
-    statLabel: "faster task completion",
-    bg: "radial-gradient(ellipse at 80% 20%, #c8f0e0 0%, #edf5fb 70%)",
-    year: "2020",
-  },
-  {
-    slug: "#",
-    title: "Ride Coordination Mobile App",
-    company: "Transport for Troops",
-    tags: ["Mobile", "Brand Design", "Startup"],
-    filters: ["Product Design", "Mobile"],
-    description:
-      "Built a mobile app from zero to launch for a veteran-focused logistics nonprofit, enabling ride coordination for 200+ volunteers and reducing dispatcher workload by 60%.",
-    stat: "60%",
-    statLabel: "less dispatcher workload",
-    bg: "radial-gradient(ellipse at 50% 80%, #ffe8c0 0%, #edf5fb 70%)",
-    year: "2018",
-  },
-];
-
-const SOCIAL_LOGOS = [
-  { src: withBasePath("/images/SNUZw.png"), alt: "IBX", h: 41, w: 57 },
-  { src: withBasePath("/images/IbuV3.png"), alt: "Skill", h: 59, w: 107 },
-  { src: withBasePath("/images/bBw3A.png"), alt: "Nayya", h: 48, w: 127 },
-  { src: withBasePath("/images/c54fy.png"), alt: "Paychex", h: 51, w: 142 },
-];
+const FILTER_PILLS = ["All", "UX Research", "Product Design", "Design Systems", "Mobile", "Accessibility"];
+const PROJECT_BACKGROUNDS: Record<string, string> = {
+  "benefits-enrollment": "radial-gradient(ellipse at 82% 50%, #b7daf1 11%, #e9f3fb 64%, #edf5fb 98%)",
+  "nayya-ai-benefits": "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
+  "easterseals-portal": "radial-gradient(ellipse at 80% 20%, #c8f0e0 0%, #edf5fb 70%)",
+  "transport-for-troops": "radial-gradient(ellipse at 50% 80%, #ffe8c0 0%, #edf5fb 70%)",
+};
 
 export default function ProjectsPage() {
+  const { caseStudies } = usePublicCaseStudies();
+  const { siteContent } = usePublicSiteContent();
   const [activeFilter, setActiveFilter] = useState("All");
+  const projects = caseStudies.map((project) => ({
+    ...project,
+    filters: project.filters?.length ? project.filters : project.tags,
+    stat: project.metrics[0]?.value ?? `${project.year ?? ""}`,
+    statLabel: project.metrics[0]?.label ?? project.industry ?? "",
+    bg: PROJECT_BACKGROUNDS[project.slug] ?? "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
+  }));
   const filteredProjects =
     activeFilter === "All"
-      ? PROJECTS
-      : PROJECTS.filter((project) => project.filters.includes(activeFilter));
+      ? projects
+      : projects.filter((project) => (project.filters ?? []).includes(activeFilter));
+  const socialLogos = siteContent.home.trusted_by.clients.map((client) => ({
+    src: resolveTrustedLogo(client.name, client.logo),
+    alt: client.name,
+    h: client.name === "Skill" ? 59 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : 41,
+    w: client.name === "Skill" ? 107 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : 57,
+  }));
 
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden min-h-screen">
@@ -125,7 +81,7 @@ export default function ProjectsPage() {
         {filteredProjects.map((project, i) => (
           <a
             key={project.title}
-            href={project.slug === "#" ? "#" : withBasePath(`/${project.slug}`)}
+            href={resolveProjectHref(project)}
             className="group block transition-all hover:-translate-y-0.5"
           >
             <Card className="flex p-0 py-0 transition-shadow hover:shadow-[0_12px_40px_#00000018] md:flex-row">
@@ -149,7 +105,7 @@ export default function ProjectsPage() {
                   <span className="text-xs text-[#5c7792]">{project.year}</span>
                 </div>
                 <h2 className="text-2xl font-serif-display italic text-[#0e2951] leading-snug mb-3">{project.title}</h2>
-                <p className="text-[#5c7792] text-sm leading-relaxed">{project.description}</p>
+                <p className="text-[#5c7792] text-sm leading-relaxed">{project.tagline}</p>
               </div>
               <div className="flex items-end justify-between mt-6 flex-wrap gap-4">
                 <div className="flex flex-wrap gap-2">
@@ -158,7 +114,7 @@ export default function ProjectsPage() {
                   ))}
                 </div>
                 <span className="text-sm text-[#1183D0] font-medium group-hover:underline">
-                  {project.slug === "#" ? "Coming soon" : "View case study ↗"}
+                  {resolveProjectHref(project) === "#" ? "Coming soon" : "View case study ↗"}
                 </span>
               </div>
             </CardContent>
@@ -171,7 +127,7 @@ export default function ProjectsPage() {
       <section className="border-t border-[#bcd2ff]/40 py-10">
         <p className="text-center text-[13px] font-semibold text-[#1183D0] uppercase tracking-[0.45em] mb-6">Companies I've worked with</p>
         <div className="flex items-center justify-center gap-10 flex-wrap px-6">
-          {SOCIAL_LOGOS.map((logo) => (
+          {socialLogos.map((logo) => (
             <Image
               key={logo.alt}
               src={logo.src}

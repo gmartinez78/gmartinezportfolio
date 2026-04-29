@@ -1,20 +1,14 @@
+"use client";
+
 import { withBasePath } from "../lib/site";
+import { usePublicSiteContent } from "../lib/cms/public";
 import { LogoMark } from "./site-header";
 
-const FOOTER_LINKS = [
-  { label: "Home", href: withBasePath("/") },
-  { label: "Projects", href: withBasePath("/projects") },
-  { label: "Resume", href: withBasePath("/resume") },
-  { label: "Contact", href: withBasePath("/contact") },
-];
-
-const FOOTER_SOCIAL = [
-  { label: "LinkedIn", href: "https://linkedin.com/in/greddysmartinez" },
-  { label: "Behance", href: "https://www.behance.net/greddysmartinez" },
-  { label: "UpWork", href: "https://www.upwork.com/freelancers/greddysmartinez" },
-];
-
 export function SiteFooter() {
+  const { siteContent } = usePublicSiteContent();
+  const footerLinks = [{ label: "Home", href: "/" }, ...siteContent.nav.links];
+  const footerSocial = siteContent.footer.social_links;
+
   return (
     <footer className="bg-[#F0F7FF]">
       <div className="border-t border-[#C4DCF0]" />
@@ -23,12 +17,11 @@ export function SiteFooter() {
           <a href={withBasePath("/")} className="flex items-center gap-3">
             <LogoMark className="h-12 w-auto" />
             <span className="text-[18px] font-semibold leading-tight text-[#0e2951]">
-              Greddys Martinez
+              {siteContent.nav.logo_text}
             </span>
           </a>
           <p className="max-w-[280px] text-[14px] leading-[1.6] text-[#3c3e3f]">
-            Senior Product Designer crafting thoughtful digital experiences
-            that make a difference.
+            {siteContent.footer.tagline}
           </p>
         </div>
 
@@ -36,10 +29,10 @@ export function SiteFooter() {
           <span className="text-[14px] font-semibold text-[#1183D0]">
             Site Map
           </span>
-          {FOOTER_LINKS.map((link) => (
+          {footerLinks.map((link) => (
             <a
               key={link.label}
-              href={link.href}
+              href={withBasePath(link.href)}
               className="text-[14px] text-[#3c3e3f] transition-colors hover:text-[#1183D0]"
             >
               {link.label}
@@ -51,7 +44,7 @@ export function SiteFooter() {
           <span className="text-[14px] font-semibold text-[#1183D0]">
             Connect
           </span>
-          {FOOTER_SOCIAL.map((link) => (
+          {footerSocial.map((link) => (
             <a
               key={link.label}
               href={link.href}
@@ -66,16 +59,16 @@ export function SiteFooter() {
 
         <div className="flex flex-col gap-3.5">
           <span className="text-[14px] font-semibold text-[#1183D0]">
-            Let&apos;s Work Together
+            {siteContent.footer.cta_headline}
           </span>
           <p className="text-[14px] leading-[1.6] text-[#3c3e3f]">
-            I&apos;m always open to new opportunities and collaborations.
+            {siteContent.footer.cta_body}
           </p>
           <a
-            href={withBasePath("/contact")}
+            href={withBasePath(siteContent.footer.cta_href)}
             className="text-[14px] font-medium text-[#1183D0] transition-colors hover:text-[#0e284b]"
           >
-            Get in touch →
+            {siteContent.footer.cta_label}
           </a>
         </div>
       </div>
@@ -84,11 +77,11 @@ export function SiteFooter() {
 
       <div className="max-w-[1200px] mx-auto px-6 py-5 md:px-10 lg:px-20 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <span className="text-[13px] text-[#7A98B5]">
-          © 2026 Greddys Martinez. All rights reserved.
+          {siteContent.footer.copyright}
         </span>
         <div className="flex items-center gap-4 text-[#1183D0]">
           <a
-            href="https://linkedin.com/in/greddysmartinez"
+            href={footerSocial[0]?.href ?? "#"}
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
@@ -106,7 +99,7 @@ export function SiteFooter() {
             </svg>
           </a>
           <a
-            href="https://www.behance.net/greddysmartinez"
+            href={footerSocial[1]?.href ?? "#"}
             target="_blank"
             rel="noreferrer"
             aria-label="Behance"
@@ -117,7 +110,7 @@ export function SiteFooter() {
             </svg>
           </a>
           <a
-            href="https://www.upwork.com/freelancers/greddysmartinez"
+            href={footerSocial[2]?.href ?? "#"}
             target="_blank"
             rel="noreferrer"
             aria-label="Upwork"

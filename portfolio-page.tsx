@@ -1,88 +1,56 @@
+"use client";
+
 import Image from "next/image";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { Badge } from "./components/ui/badge";
 import { Button } from "./components/ui/button";
 import { SectionHeading } from "./components/ui/section-heading";
+import {
+  resolveCertificationLogo,
+  resolveProjectHref,
+  resolveProjectImage,
+  resolveToolIcon,
+  resolveTrustedLogo,
+  usePublicCaseStudies,
+  usePublicSiteContent,
+} from "./lib/cms/public";
 import { withBasePath } from "./lib/site";
 
-const SOCIAL_PROOF_LOGOS = [
-  { src: withBasePath("/images/SNUZw.png"), alt: "IBX", h: 41, w: 57 },
-  { src: withBasePath("/images/IbuV3.png"), alt: "Skill", h: 59, w: 107 },
-  { src: withBasePath("/images/bBw3A.png"), alt: "Nayya", h: 48, w: 127 },
-  { src: withBasePath("/images/c54fy.png"), alt: "Paychex", h: 51, w: 142 },
-];
-
-const LOGO_CAROUSEL = [...SOCIAL_PROOF_LOGOS, ...SOCIAL_PROOF_LOGOS];
-
-const HERO_TAGS = ["AI product design", "UX research", "Enterprise SaaS", "Design systems"];
-
-const PROJECTS = [
-  {
-    title: "Enhancing Benefits Enrollment",
-    description:
-      "Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%.",
-    image: withBasePath("/images/AxnrM.png"),
-    href: withBasePath("/benefits"),
-    tags: ["Enterprise", "SaaS", "HR Tech", "B2C"],
-    cta: "See case study",
-  },
-  {
-    title: "Nayya AI Integration",
-    description:
-      "AI-powered benefits navigation across desktop and mobile, simplifying enrollment decisions for 2.3M+ users.",
-    image: withBasePath("/images/k58t4.png"),
-    href: "#",
-    tags: ["SaaS", "AI Features", "FinTech", "B2C"],
-    cta: "See improvements",
-  },
-  {
-    title: "Paychex HR Platform",
-    description:
-      "End-to-end redesign of hiring and onboarding flows, reducing support calls by 9,000+ per year.",
-    image: withBasePath("/images/AxnrM.png"),
-    href: "#",
-    tags: ["Enterprise", "SaaS", "Hiring", "Research"],
-    cta: "See improvements",
-  },
-];
-
 const TOOLS_LEFT = [
-  { label: "Figma", src: withBasePath("/images/tools/figma.svg"), x: "left-[78px]", y: "top-[72px]", size: "lg" as const, tone: "white" as const },
-  { label: "Angular", src: withBasePath("/images/tools/Angular_gradient_logo.png"), x: "left-[235px]", y: "top-[36px]", size: "lg" as const, tone: "white" as const },
-  { label: "Miro", src: withBasePath("/images/tools/miro.svg"), x: "left-[405px]", y: "top-[18px]", size: "lg" as const, tone: "white" as const },
-  { label: "React", src: withBasePath("/images/tools/react.svg"), x: "left-[130px]", y: "top-[230px]", size: "sm" as const, tone: "white" as const },
-  { label: "HTML5", src: withBasePath("/images/tools/html5.svg"), x: "left-[78px]", y: "top-[340px]", size: "sm" as const, tone: "white" as const },
-  { label: "Jira", src: withBasePath("/images/tools/jira.svg"), x: "left-[305px]", y: "top-[124px]", size: "sm" as const, tone: "white" as const },
-  { label: "Confluence", src: withBasePath("/images/tools/confluence.svg"), x: "left-[488px]", y: "top-[110px]", size: "sm" as const, tone: "white" as const },
-  { label: "Maze", src: withBasePath("/images/tools/maze.svg"), x: "left-[395px]", y: "top-[252px]", size: "sm" as const, tone: "white" as const },
-  { label: "Notion", src: withBasePath("/images/tools/notion.svg"), x: "left-[260px]", y: "top-[354px]", size: "sm" as const, tone: "white" as const },
-  { label: "Webex", src: withBasePath("/images/tools/webex.svg"), x: "left-[550px]", y: "top-[385px]", size: "sm" as const, tone: "white" as const },
+  { label: "Figma", x: "left-[78px]", y: "top-[72px]", size: "lg" as const, tone: "white" as const },
+  { label: "Angular", x: "left-[235px]", y: "top-[36px]", size: "lg" as const, tone: "white" as const },
+  { label: "Miro", x: "left-[405px]", y: "top-[18px]", size: "lg" as const, tone: "white" as const },
+  { label: "React", x: "left-[130px]", y: "top-[230px]", size: "sm" as const, tone: "white" as const },
+  { label: "HTML", x: "left-[78px]", y: "top-[340px]", size: "sm" as const, tone: "white" as const },
+  { label: "Jira", x: "left-[305px]", y: "top-[124px]", size: "sm" as const, tone: "white" as const },
+  { label: "Confluence", x: "left-[488px]", y: "top-[110px]", size: "sm" as const, tone: "white" as const },
+  { label: "Maze", x: "left-[395px]", y: "top-[252px]", size: "sm" as const, tone: "white" as const },
+  { label: "Notion", x: "left-[260px]", y: "top-[354px]", size: "sm" as const, tone: "white" as const },
+  { label: "Webex", x: "left-[550px]", y: "top-[385px]", size: "sm" as const, tone: "white" as const },
 ];
 
 const TOOLS_RIGHT = [
-  { label: "Copilot", src: withBasePath("/images/tools/githubcopilot.svg"), x: "right-[410px]", y: "top-[18px]", size: "sm" as const, tone: "white" as const },
-  { label: "Slack", src: withBasePath("/images/tools/slack.svg"), x: "right-[250px]", y: "top-[52px]", size: "sm" as const, tone: "white" as const },
-  { label: "Claude", src: withBasePath("/images/tools/anthropic.svg"), x: "right-[92px]", y: "top-[92px]", size: "sm" as const, tone: "white" as const },
-  { label: "ChatGPT", src: withBasePath("/images/tools/openai.svg"), x: "right-[345px]", y: "top-[170px]", size: "sm" as const, tone: "white" as const },
-  { label: "VS Code", src: withBasePath("/images/tools/visualstudiocode.svg"), x: "right-[62px]", y: "top-[232px]", size: "sm" as const, tone: "white" as const },
-  { label: "Figma", src: withBasePath("/images/tools/figma.svg"), x: "right-[210px]", y: "top-[365px]", size: "sm" as const, tone: "white" as const },
-  { label: "React", src: withBasePath("/images/tools/react.svg"), x: "right-[460px]", y: "top-[382px]", size: "sm" as const, tone: "white" as const },
-  { label: "Jira", src: withBasePath("/images/tools/jira.svg"), x: "right-[500px]", y: "top-[118px]", size: "sm" as const, tone: "white" as const },
-  { label: "Miro", src: withBasePath("/images/tools/miro.svg"), x: "right-[205px]", y: "top-[268px]", size: "sm" as const, tone: "white" as const },
-  { label: "Notion", src: withBasePath("/images/tools/notion.svg"), x: "right-[380px]", y: "top-[350px]", size: "sm" as const, tone: "white" as const },
+  { label: "Copilot", x: "right-[410px]", y: "top-[18px]", size: "sm" as const, tone: "white" as const },
+  { label: "Slack", x: "right-[250px]", y: "top-[52px]", size: "sm" as const, tone: "white" as const },
+  { label: "Claude", x: "right-[92px]", y: "top-[92px]", size: "sm" as const, tone: "white" as const },
+  { label: "ChatGPT", x: "right-[345px]", y: "top-[170px]", size: "sm" as const, tone: "white" as const },
+  { label: "VS Code", x: "right-[62px]", y: "top-[232px]", size: "sm" as const, tone: "white" as const },
+  { label: "Figma", x: "right-[210px]", y: "top-[365px]", size: "sm" as const, tone: "white" as const },
+  { label: "React", x: "right-[460px]", y: "top-[382px]", size: "sm" as const, tone: "white" as const },
+  { label: "Jira", x: "right-[500px]", y: "top-[118px]", size: "sm" as const, tone: "white" as const },
+  { label: "Miro", x: "right-[205px]", y: "top-[268px]", size: "sm" as const, tone: "white" as const },
+  { label: "Notion", x: "right-[380px]", y: "top-[350px]", size: "sm" as const, tone: "white" as const },
 ];
 
 function ToolBadge({
   label,
-  src,
   x,
   y,
   size,
   tone,
 }: {
   label: string;
-  src: string;
   x: string;
   y: string;
   size: "lg" | "sm";
@@ -103,7 +71,7 @@ function ToolBadge({
       title={label}
     >
       <Image
-        src={src}
+        src={resolveToolIcon(label)}
         alt={label}
         width={size === "lg" ? 42 : 32}
         height={size === "lg" ? 42 : 32}
@@ -114,6 +82,31 @@ function ToolBadge({
 }
 
 export default function PortfolioPage() {
+  const { siteContent } = usePublicSiteContent();
+  const { caseStudies } = usePublicCaseStudies();
+  const socialProofLogos = siteContent.home.trusted_by.clients.map((client) => ({
+    src: resolveTrustedLogo(client.name, client.logo),
+    alt: client.name,
+    h: client.name === "Skill" ? 59 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : 41,
+    w: client.name === "Skill" ? 107 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : 57,
+  }));
+  const logoCarousel = [...socialProofLogos, ...socialProofLogos];
+  const certifications = siteContent.home.certifications.map((item) => ({
+    ...item,
+    logo: resolveCertificationLogo(item.name, item.logo),
+  }));
+  const methodologyChips = siteContent.home.hero.methodology_chips.length
+    ? siteContent.home.hero.methodology_chips
+    : ["AI product design", "UX research", "Enterprise SaaS", "Design systems"];
+  const featuredProjects = caseStudies.slice(0, 3).map((study) => ({
+    title: study.title,
+    description: study.tagline ?? "",
+    image: resolveProjectImage(study.slug, study.images.cover),
+    href: resolveProjectHref(study),
+    tags: study.tags.slice(0, 4),
+    cta: study.slug === "benefits-enrollment" ? "See case study" : "See improvements",
+  }));
+
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
       <SiteHeader />
@@ -135,13 +128,13 @@ export default function PortfolioPage() {
                 Product Designer
               </p>
               <h1 className="text-[44px] font-semibold leading-[1.05] text-white sm:text-[64px] lg:text-[82px]">
-                I am Greddys Martinez
+                {siteContent.home.hero.greeting}
               </h1>
               <p className="mt-8 max-w-[660px] text-xl font-semibold leading-[1.35] text-white sm:text-2xl">
-                Senior Product Designer focused on AI-assisted UX, enterprise SaaS, and design systems that help teams ship clearer product experiences.
+                {siteContent.home.hero.tagline}
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
-                {HERO_TAGS.map((tag) => (
+                {methodologyChips.map((tag) => (
                   <Badge
                     key={tag}
                     variant="outline"
@@ -173,29 +166,17 @@ export default function PortfolioPage() {
                 Certified by
               </span>
               <div className="flex items-center gap-4">
-                <a
-                  href="https://www.upwork.com/freelancers/greddysmartinez"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-2xl bg-white/95 p-2 transition-opacity hover:opacity-85"
-                >
-                  <Image
-                    src={withBasePath("/images/iNSrn.png")}
-                    alt="Upwork Skill Certification"
-                    width={86}
-                    height={86}
-                    className="h-[72px] w-[72px] object-contain sm:h-[86px] sm:w-[86px]"
-                  />
-                </a>
-                <div className="rounded-2xl bg-white/95 p-2">
-                  <Image
-                    src={withBasePath("/images/OiSjn.png")}
-                    alt="NN Group UX Certification"
-                    width={86}
-                    height={86}
-                    className="h-[72px] w-[72px] object-contain sm:h-[86px] sm:w-[86px]"
-                  />
-                </div>
+                {certifications.slice(0, 2).map((item) => (
+                  <div key={item.name} className="rounded-2xl bg-white/95 p-2 transition-opacity hover:opacity-85">
+                    <Image
+                      src={item.logo}
+                      alt={item.name}
+                      width={86}
+                      height={86}
+                      className="h-[72px] w-[72px] object-contain sm:h-[86px] sm:w-[86px]"
+                    />
+                  </div>
+                ))}
               </div>
             </aside>
           </div>
@@ -206,19 +187,19 @@ export default function PortfolioPage() {
           <div className="flex min-h-[104px] flex-col items-start gap-5 px-6 py-6 md:flex-row md:items-center md:px-10 lg:px-20">
             <div className="flex shrink-0 items-center md:h-full md:w-[280px] md:border-r md:border-[#00006e]/25 md:pr-10">
               <span className="text-[13px] font-semibold text-[#3c3e3f]">
-                Trusted by industry leaders
+                {siteContent.home.trusted_by.label}
               </span>
             </div>
             <div className="relative w-full flex-1 overflow-hidden md:py-2">
               <div className="flex w-max animate-[logo-marquee_22s_linear_infinite] items-center gap-14 pr-14 hover:[animation-play-state:paused]">
-                {LOGO_CAROUSEL.map((logo, index) => (
+                {logoCarousel.map((logo, index) => (
                   <Image
                     key={`${logo.alt}-${index}`}
                     src={logo.src}
-                    alt={index < SOCIAL_PROOF_LOGOS.length ? logo.alt : ""}
+                    alt={index < socialProofLogos.length ? logo.alt : ""}
                     width={logo.w}
                     height={logo.h}
-                    aria-hidden={index >= SOCIAL_PROOF_LOGOS.length}
+                    aria-hidden={index >= socialProofLogos.length}
                     className="max-h-[58px] w-auto shrink-0 object-contain opacity-80 grayscale transition-all hover:grayscale-0 hover:opacity-100"
                   />
                 ))}
@@ -235,7 +216,7 @@ export default function PortfolioPage() {
 
           {/* Project cards */}
           <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3">
-            {PROJECTS.map((project) => (
+            {featuredProjects.map((project) => (
               <a
                 key={project.title}
                 href={project.href}
@@ -310,20 +291,22 @@ export default function PortfolioPage() {
             Experience &amp; Skills
           </span>
           <h2 className="font-serif-display italic text-[48px] leading-[1.15] text-[#1183D0] w-full text-center">
-            Tools I Love
-            <br />
-            &amp; Work With
+            {siteContent.home.tools_section.headline.split(" & ").map((part, index, parts) => (
+              <span key={part}>
+                {part}
+                {index < parts.length - 1 ? <><br />&amp; </> : null}
+              </span>
+            ))}
           </h2>
           <p className="text-[15px] leading-[1.6] text-[#3c3e3f] max-w-[409px]">
-            I integrate seamlessly with the tools your team already uses,
-            creating workflows that feel natural and efficient.
+            {siteContent.home.tools_section.description}
           </p>
           <Button
             asChild
             variant="link"
             className="mt-7 h-auto gap-4 px-0 text-sm font-normal leading-none text-[#1183D0] hover:no-underline"
           >
-            <a href={withBasePath("/resume")}>View My Resume <span className="text-[22px] leading-none">→</span></a>
+            <a href={withBasePath(siteContent.home.tools_section.cta_href)}>{siteContent.home.tools_section.cta_label.replace("→", "").trim()} <span className="text-[22px] leading-none">→</span></a>
           </Button>
         </div>
 
@@ -341,16 +324,18 @@ export default function PortfolioPage() {
           Ready to Level Up?
         </span>
         <p className="text-[28px] leading-[1.5] text-[#A8C8E8] max-w-[800px]">
-          Last quarter, my clients saw a 47% average increase in conversions.
+          {siteContent.home.stat_banner.text} {siteContent.home.stat_banner.value} {siteContent.home.stat_banner.value_label}
         </p>
         <h2 className="font-serif-display font-bold text-[40px] text-white">
-          Your product deserves that too.
+          {siteContent.home.stat_banner.cta_headline}
         </h2>
         <Button
           asChild
           size="sm"
         >
-          <a href={withBasePath("/contact")}>Let&apos;s work together</a>
+          <a href={withBasePath(siteContent.home.stat_banner.cta_href.replace("#contact", "/contact"))}>
+            {siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
+          </a>
         </Button>
       </section>
 

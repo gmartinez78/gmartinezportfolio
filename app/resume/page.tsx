@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
@@ -5,6 +7,7 @@ import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { SectionHeading } from "../../components/ui/section-heading";
+import { resolveCertificationLogo, resolveToolIcon, usePublicSiteContent } from "../../lib/cms/public";
 import { withBasePath } from "../../lib/site";
 
 type ExperienceBullet = string | { heading: string; items: string[] };
@@ -390,6 +393,47 @@ function Tag({ label }: { label: string }) {
 }
 
 export default function ResumePage() {
+  const { siteContent } = usePublicSiteContent();
+  const resume = siteContent.resume;
+  const experience = resume.experience.length
+    ? resume.experience.map((job) => ({
+        role: job.title,
+        company: job.client ? `${job.company} | Client: ${job.client}` : job.company,
+        period: job.period,
+        location: job.location,
+        bullets: job.bullets,
+        tags: job.tags,
+      }))
+    : EXPERIENCE;
+  const skills = Object.entries(resume.skills).length
+    ? Object.entries(resume.skills).map(([category, items]) => ({ category, items }))
+    : SKILLS;
+  const education = resume.education.length
+    ? resume.education.map((edu) => ({ degree: edu.degree, school: edu.institution, year: edu.year }))
+    : EDUCATION;
+  const tools = resume.tools.length
+    ? resume.tools.map((label) => ({ label, src: resolveToolIcon(label) }))
+    : TOOLS;
+  const certifications = resume.certifications.length
+    ? resume.certifications.map((item) => ({
+        year: item.year,
+        title: item.name,
+        description: item.level,
+      }))
+    : CERTIFICATION_ITEMS;
+  const featuredCredentials = resume.certifications.length
+    ? resume.certifications.slice(0, 3).map((item, index) => ({
+        type: "image" as const,
+        image: resolveCertificationLogo(item.name, item.logo),
+        alt: item.name,
+        title: item.name,
+        ...(index === 0 ? { href: "https://www.upwork.com/freelancers/greddysmartinez" } : {}),
+        subtitle: item.level,
+        description: item.level,
+        year: item.year,
+      }))
+    : FEATURED_CREDENTIALS;
+
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden min-h-screen">
       <SiteHeader active="Resume" />
@@ -420,32 +464,32 @@ export default function ResumePage() {
               G
             </div>
             <h1 className="mt-8 text-5xl font-serif-display italic leading-[0.95] text-[#0e2951] sm:text-6xl lg:text-7xl">
-              Greddys Martínez
+              {resume.name}
             </h1>
             <p className="mt-5 text-xl font-medium text-[#1f2f3d] sm:text-2xl">
-              Senior Product Designer | AI-Driven UX | Enterprise SaaS
+              {resume.title}
             </p>
             <div className="mt-8 flex w-full max-w-[980px] flex-col items-center gap-4 text-sm text-[#24425d] sm:text-base lg:flex-row lg:flex-nowrap lg:justify-center lg:gap-6">
               <span className="inline-flex items-center gap-2 whitespace-nowrap">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-                greddysmartinez5@gmail.com
+                {resume.email}
               </span>
               <span className="inline-flex items-center gap-2 whitespace-nowrap">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="2" aria-hidden="true"><path d="M12 21s-6-4.35-6-10a6 6 0 1 1 12 0c0 5.65-6 10-6 10Z"/><circle cx="12" cy="11" r="2.5"/></svg>
-                Malaga, Spain
+                {resume.location}
               </span>
               <span className="inline-flex items-center gap-2 whitespace-nowrap">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1-4-9 15.3 15.3 0 0 1 4-9Z"/></svg>
-                www.be.net/greddysmartinez
+                {resume.website}
               </span>
               <span className="inline-flex items-center gap-2 whitespace-nowrap">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                linkedin.com/in/greddysmartinez
+                {resume.linkedin}
               </span>
             </div>
             <div className="mt-8 h-1 w-20 rounded-full bg-[#1183D0]" />
             <p className="mt-8 max-w-4xl text-lg leading-relaxed text-[#243746]">
-              Senior Product Designer with 10+ years of experience certified in User Experience with recognition in interaction design by the NN/Group. Designing enterprise B2B experiences across FinTech, HR, and HealthTech. Strong focus on bridging strategy and execution, leading research, aligning cross-functional teams, and shipping high-impact solutions in Agile environments.
+              {resume.bio}
             </p>
             <div className="mt-10 flex flex-wrap items-start justify-center gap-10 sm:gap-14">
               <a
@@ -492,7 +536,7 @@ export default function ResumePage() {
       <section className="max-w-[1200px] mx-auto px-6 py-10">
         <SectionHeading eyebrow="Career" title="Experience" className="mb-8" />
         <div className="flex flex-col gap-5">
-          {EXPERIENCE.map((job) => (
+          {experience.map((job) => (
             <Card key={job.role} className="p-0 py-0">
               <CardContent className="p-6">
               <div className="flex items-start justify-between gap-4 flex-wrap">
@@ -549,7 +593,7 @@ export default function ResumePage() {
             <div>
               <SectionHeading eyebrow="Capabilities" title="Skills" />
               <div className="mt-8 flex flex-col gap-8">
-                {SKILLS.map((group) => (
+                {skills.map((group) => (
                   <div key={group.category}>
                     <h3 className="text-[15px] font-semibold text-[#1f2f3d]">
                       {group.category}
@@ -569,7 +613,7 @@ export default function ResumePage() {
             <div>
               <SectionHeading eyebrow="Training" title="Education" />
               <div className="mt-8 flex flex-col gap-5">
-                {EDUCATION.map((edu) => (
+                {education.map((edu) => (
                   <Card key={edu.degree} className="p-0 py-0">
                     <CardContent className="px-6 py-6">
                     <Badge size="lg">
@@ -587,7 +631,7 @@ export default function ResumePage() {
               <div className="mt-10">
                 <SectionHeading eyebrow="Stack" title="Tools" />
                 <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-4">
-                  {TOOLS.map((tool) => (
+                  {tools.map((tool) => (
                     <div key={tool.label} className="flex flex-col items-center text-center">
                       <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#e2e8f0] bg-white shadow-sm">
                         <Image src={tool.src} alt={tool.label} width={26} height={26} />
@@ -627,7 +671,7 @@ export default function ResumePage() {
             </div>
 
             <div className="mt-8 flex flex-col gap-5">
-              {CERTIFICATION_ITEMS.map((item) => (
+              {certifications.map((item) => (
                 <Card key={`${item.year}-${item.title}`} className="bg-[#f7fbff] p-0 py-0">
                   <CardContent className="p-6">
                   <Badge size="lg">
@@ -642,7 +686,7 @@ export default function ResumePage() {
           </div>
 
           <div className="flex flex-col gap-6 lg:pt-[92px]">
-            {FEATURED_CREDENTIALS.map((credential) => {
+            {featuredCredentials.map((credential) => {
               const CardWrapper = ({ children }: { children: React.ReactNode }) =>
                 "href" in credential ? (
                   <a

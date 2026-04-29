@@ -99,7 +99,7 @@ export function CmsCaseStudyEditorClient({ slug }: { slug: string }) {
       .eq("slug", slug)
       .maybeSingle()
       .then(({ data }) => {
-        setStudy((data as CaseStudyRecord | null) ?? fallbackStudy);
+        setStudy((data as CaseStudyRecord | null) ?? null);
         setLoading(false);
       });
   }, [fallbackStudy, isNew, slug]);
