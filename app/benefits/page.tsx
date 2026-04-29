@@ -11,6 +11,7 @@ import { withBasePath } from "../../lib/site";
 
 // ── Assets from Figma ─────────────────────────────────────────────────────────
 const ASSETS = {
+  heroBannerDashboard: withBasePath("/images/benefits/hero-banner-dashboard.svg"),
   figmaLogo: withBasePath("/images/benefits/figma-logo.png"),
   jiraLogo: withBasePath("/images/benefits/jira-logo.png"),
   miroLogo: withBasePath("/images/benefits/miro-logo.png"),
@@ -386,7 +387,14 @@ export default function BenefitsPage() {
       <section className="relative mx-auto max-w-[1200px] px-6 pt-16 pb-0 md:px-10 xl:px-20">
         <div className="grid items-center gap-10 xl:grid-cols-[minmax(0,460px)_minmax(340px,420px)] xl:justify-between">
           <div className="-mx-2 xl:mx-0 xl:w-[460px]">
-            <ProductPreview />
+            <Image
+              src={ASSETS.heroBannerDashboard}
+              alt="Benefits enrollment workflow and dashboard preview"
+              width={1100}
+              height={620}
+              className="h-auto w-full"
+              priority
+            />
           </div>
 
           <div className="max-w-[420px] xl:justify-self-end">
@@ -396,7 +404,7 @@ export default function BenefitsPage() {
             <h1 className="font-inter font-bold text-[#0e2951] text-[44px] leading-[1.15] mb-5">
               {caseStudy?.title ?? "Enhancing Benefits Enrollment"}
             </h1>
-            <p className="text-[#5c7792] text-[18px] leading-[1.7] font-inter">
+            <p className="text-[#5c7792] text-[16px] leading-[1.625em] font-inter">
               {caseStudy?.tagline ?? "Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%."}
             </p>
             <div className="mt-8 flex items-center gap-6">
@@ -447,7 +455,7 @@ export default function BenefitsPage() {
               className={index < 2 ? "md:border-r md:border-[#d7e8f7]" : ""}
             >
               <p className="text-[46px] font-bold leading-none text-[#1183D0]">{metric.value}</p>
-              <p className="mt-3 text-[13px] text-[#5c7792]">{metric.label}</p>
+              <p className="mt-3 text-[16px] leading-[1.625em] text-[#5c7792]">{metric.label}</p>
             </div>
           ))}
         </div>
@@ -519,7 +527,7 @@ export default function BenefitsPage() {
             <SectionHeading eyebrow="STAR" title="Situation" className="mb-8" />
             <div className="mt-8 space-y-6">
               {CHALLENGE_POINTS.map((point) => (
-                <p key={point} className="max-w-[720px] text-[18px] leading-[1.65] text-[#3c3e3f]">
+                <p key={point} className="max-w-[720px] text-[16px] leading-[1.625em] text-[#3c3e3f]">
                   {point}
                 </p>
               ))}
@@ -530,7 +538,7 @@ export default function BenefitsPage() {
             </h3>
             <div className="mt-8 space-y-6">
               {userPainPoints.map((point) => (
-                <p key={point} className="max-w-[720px] text-[18px] leading-[1.65] text-[#3c3e3f]">
+                <p key={point} className="max-w-[720px] text-[16px] leading-[1.625em] text-[#3c3e3f]">
                   {point}
                 </p>
               ))}
@@ -540,8 +548,8 @@ export default function BenefitsPage() {
           <Card className="overflow-hidden">
             <CardContent className="p-0">
               <div className="border-b border-[#d7e8f7] px-7 py-7">
-                <p className="text-[15px] uppercase tracking-[0.24em] text-[#5c7792]">Task</p>
-                <p className="mt-4 text-[18px] leading-[1.65] text-[#0e2951]">
+                <p className="text-[16px] leading-[1.625em] uppercase tracking-[0.24em] text-[#5c7792]">Task</p>
+                <p className="mt-4 text-[16px] leading-[1.625em] text-[#0e2951]">
                   {TASK_SUMMARY}
                 </p>
               </div>
@@ -551,7 +559,7 @@ export default function BenefitsPage() {
                   className={`px-7 py-7 ${index < CHALLENGE_METRICS.length - 1 ? "border-b border-[#d7e8f7]" : ""}`}
                 >
                   <p className="text-[30px] font-bold leading-none text-[#0e2951]">{metric.value}</p>
-                  <p className="mt-3 max-w-[220px] text-[16px] leading-[1.45] text-[#1183D0]">
+                  <p className="mt-3 max-w-[220px] text-[16px] leading-[1.625em] text-[#1183D0]">
                     {metric.label}
                   </p>
                 </div>
@@ -577,7 +585,7 @@ export default function BenefitsPage() {
                 <h3 className="text-[28px] font-normal leading-none text-[#1183D0]">
                   {item.title}
                 </h3>
-                <p className="mt-5 max-w-[320px] text-[18px] leading-[1.65] text-[#3c3e3f]">
+                <p className="mt-5 max-w-[320px] text-[16px] leading-[1.625em] text-[#3c3e3f]">
                   {item.body}
                 </p>
               </CardContent>
@@ -600,7 +608,7 @@ export default function BenefitsPage() {
                   Constraints
                 </Badge>
               </div>
-              <p className="text-[#3c3e3f] text-[22px] font-inter leading-[1.85] mt-4">{constraint}</p>
+              <p className="mt-4 font-inter text-[16px] leading-[1.625em] text-[#3c3e3f]">{constraint}</p>
               </CardContent>
             </Card>
           ))}
@@ -628,7 +636,7 @@ export default function BenefitsPage() {
                 <p className="text-[#3c3e3f] font-inter font-semibold text-[15px] mt-2">
                   {i + 1}. {step.label}
                 </p>
-                <p className="text-[#5c7792] font-inter text-[13px] leading-[1.5]">
+                <p className="font-inter text-[16px] leading-[1.625em] text-[#5c7792]">
                   {step.desc}
                 </p>
               </div>
@@ -646,7 +654,7 @@ export default function BenefitsPage() {
             <div className="flex flex-col gap-8">
               {strategyPoints.map((p, i) => (
                 <div key={i}>
-                  <p className="font-inter text-[#3c3e3f] text-[22px] leading-[1.9] font-normal">{p}</p>
+                  <p className="font-inter text-[16px] leading-[1.625em] font-normal text-[#3c3e3f]">{p}</p>
                   {i < strategyPoints.length - 1 && <Divider />}
                 </div>
               ))}
@@ -686,7 +694,7 @@ export default function BenefitsPage() {
                 <span className="font-inter font-bold text-[#1183D0] text-[52px] leading-none shrink-0">
                   {r.value}
                 </span>
-                <p className="font-inter text-[#3c3e3f] text-[17px] leading-[1.5]">
+                <p className="font-inter text-[16px] leading-[1.625em] text-[#3c3e3f]">
                   {r.label}
                 </p>
                 </CardContent>
@@ -715,7 +723,7 @@ export default function BenefitsPage() {
               <h3 className="text-[28px] font-semibold leading-none text-[#1183D0]">
                 {r.title}
               </h3>
-              <p className="mx-auto mt-5 max-w-[760px] text-[22px] leading-[1.85] text-[#3c3e3f]">
+              <p className="mx-auto mt-5 max-w-[760px] text-[16px] leading-[1.625em] text-[#3c3e3f]">
                 {r.body}
               </p>
             </div>
@@ -725,8 +733,15 @@ export default function BenefitsPage() {
 
       {/* ── NDA Notice ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+        <div className="mb-8 flex flex-wrap gap-3">
+          {(caseStudy?.tags?.length ? caseStudy.tags : ["HR/Payroll SaaS", "UX Research", "IA", "Interaction Design", "Design Systems"]).map((tag) => (
+            <Badge key={tag} size="tag">
+              {tag}
+            </Badge>
+          ))}
+        </div>
         <div className="border-t border-[#bcd2ff]/40 pt-8">
-          <p className="font-inter text-[#5c7792] text-[13px] leading-[1.7] max-w-[900px]">
+          <p className="max-w-[900px] font-inter text-[16px] leading-[1.625em] text-[#5c7792]">
             <strong className="font-semibold text-[#5c7792]">NDA notice:</strong> {caseStudy?.nda_notice ?? "Parts of this presentation — including some screens and project details — have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy."}
           </p>
         </div>
