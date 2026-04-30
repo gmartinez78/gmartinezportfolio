@@ -616,7 +616,7 @@ export default function BenefitsPage() {
 
       {/* ── Results ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading title="Result" className="mb-12" />
+        <SectionHeading title="Result" centered className="mb-12" />
 
         <div className="grid gap-6 lg:grid-cols-2">
           {/* Bar chart card */}
@@ -652,7 +652,7 @@ export default function BenefitsPage() {
 
       {/* ── Product Deep Dive ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading eyebrow="Solution" title="The Platform" className="mb-10" />
+        <SectionHeading eyebrow="Solution" title="The Platform" centered className="mb-10" />
         <ProductPreview />
       </section>
 
