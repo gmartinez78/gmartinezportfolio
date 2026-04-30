@@ -316,7 +316,26 @@ export default function BenefitsPage() {
   const results = caseStudy?.metrics.length
     ? caseStudy.metrics.map((metric) => ({ value: metric.value, label: metric.label }))
     : RESULTS;
-  const primaryMetric = results[0] ?? RESULTS[0];
+  const resultRows = [
+    {
+      metric: "Processing time",
+      before: "Manual, multi-step support workflow",
+      after: "Centralized self-service flow",
+      change: results[0]?.value ?? "72%",
+    },
+    {
+      metric: "Employee management",
+      before: "IT tickets required for user changes",
+      after: "500+ employees self-managed",
+      change: results[1]?.value ?? "500+",
+    },
+    {
+      metric: "Delivery timeline",
+      before: "Manual process and fragmented governance",
+      after: "Designed and delivered in 3 months",
+      change: results[2]?.value ?? "3 mo",
+    },
+  ];
   const reflections = caseStudy?.reflections ?? REFLECTIONS;
   const otherProjects = caseStudies.filter((project) => project.slug !== "benefits-enrollment").slice(0, 3);
   const clientLogos = caseStudy?.client_logos.length
@@ -618,35 +637,26 @@ export default function BenefitsPage() {
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <SectionHeading title="Result" centered className="mb-12" />
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          {/* Bar chart card */}
-          <Card className="p-0 py-0">
-            <CardContent className="p-8">
-            <p className="font-inter font-bold text-[#3c3e3f] text-[20px] mb-1">Processing Time</p>
-            <p className="font-inter text-[#5c7792] text-[14px] mb-4">Before vs. After</p>
-            <BarChart />
-            <div className="border-t border-[#dbdde0] mt-4 pt-4 flex justify-between">
-              <p className="font-inter text-[#5c7792] text-[13px]">{primaryMetric.label}</p>
-              <p className="font-inter font-bold text-[#1183D0] text-[13px]">{primaryMetric.value}</p>
-            </div>
-            </CardContent>
-          </Card>
-
-          {/* Stat cards column */}
-          <div className="flex flex-col gap-6">
-            {results.map((r) => (
-              <Card key={r.label} className="flex-1 p-0 py-0">
-                <CardContent className="flex items-center gap-6 p-8">
-                <span className="font-inter font-bold text-[#1183D0] text-[52px] leading-none shrink-0">
-                  {r.value}
-                </span>
-                <p className="font-inter text-[16px] leading-[1.625em] text-[#3c3e3f]">
-                  {r.label}
-                </p>
-                </CardContent>
-              </Card>
-            ))}
+        <div className="overflow-x-auto rounded-[24px] border border-[#d7e8f7] bg-white">
+          <div className="grid min-w-[820px] grid-cols-[1.2fr_1.4fr_1.4fr_0.8fr] bg-[#f7f9fb] text-[13px] font-bold uppercase tracking-[0.16em] text-[#0e2951]">
+            <div className="px-5 py-4">Métrica</div>
+            <div className="px-5 py-4">Antes</div>
+            <div className="px-5 py-4">Después</div>
+            <div className="px-5 py-4 text-right">Cambio</div>
           </div>
+          {resultRows.map((row) => (
+            <div
+              key={row.metric}
+              className="grid min-w-[820px] grid-cols-[1.2fr_1.4fr_1.4fr_0.8fr] border-t border-[#d7e8f7] text-[15px] leading-[1.6] text-[#3c3e3f]"
+            >
+              <div className="px-5 py-5 font-semibold text-[#0e2951]">{row.metric}</div>
+              <div className="px-5 py-5">{row.before}</div>
+              <div className="px-5 py-5">{row.after}</div>
+              <div className="px-5 py-5 text-right text-[24px] font-bold leading-none text-[#1183D0]">
+                {row.change}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
