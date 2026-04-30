@@ -52,24 +52,6 @@ const USER_PAIN_POINTS = [
   },
 ];
 
-const CONSTRAINTS = [
-  {
-    icon: ASSETS.clockIcon,
-    alt: "Clock",
-    title: "An aggressive ",
-    bold: "timeline.",
-    label: "Constraints",
-  },
-  {
-    icon: ASSETS.userIcon,
-    alt: "User",
-    title: "Balancing the ",
-    bold: "product's existing patterns",
-    after: " with user needs without disrupting the experience.",
-    label: "Constraints",
-  },
-];
-
 const STRATEGY_POINTS = [
   {
     before: "Define the ",
@@ -139,7 +121,7 @@ const RESEARCH_DISCOVERY_ITEMS = [
   },
   {
     title: "System Architecture",
-    body: "Built a modular component system that scales across multiple employer sizes, from startups to enterprise organizations with 10,000+ employees.",
+    body: "Balancing the product's existing patterns with user needs without disrupting the experience.",
     icon: ASSETS.arrowVector,
   },
   {
@@ -321,7 +303,6 @@ export default function BenefitsPage() {
   const { caseStudies } = usePublicCaseStudies();
   const isLiveCaseStudy = Boolean(caseStudy && caseStudy.status === "published");
   const userPainPoints = caseStudy?.problem.user_pain_points ?? USER_PAIN_POINTS.map((item) => `${item.before}${item.bold}${item.after}`);
-  const constraints = caseStudy?.constraints ?? CONSTRAINTS.map((item) => `${item.title ?? ""}${item.bold}${item.after ?? ""}`);
   const strategyPoints = caseStudy?.design_strategy ?? STRATEGY_POINTS.map((item) => `${item.before}${item.bold}${item.after}`);
   const teamMembers = caseStudy?.team ?? TEAM_MEMBERS;
   const myRole = caseStudy?.my_role ?? MY_ROLE;
@@ -578,27 +559,6 @@ export default function BenefitsPage() {
                 <p className="mt-5 max-w-[320px] text-[16px] leading-[1.625em] text-[#3c3e3f]">
                   {item.body}
                 </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Constraints ── */}
-      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading title="Constraints" centered className="mb-12" />
-
-        <div className="grid gap-6 md:grid-cols-2">
-          {constraints.map((constraint, i) => (
-            <Card key={i} className="relative p-0 py-0">
-              <CardContent className="p-8">
-              <div className="flex items-start justify-between mb-4">
-                <Image src={i === 0 ? ASSETS.clockIcon : ASSETS.userIcon} alt={i === 0 ? "Clock" : "User"} width={30} height={30} className="object-contain opacity-70" />
-                <Badge>
-                  Constraints
-                </Badge>
-              </div>
-              <p className="mt-4 font-inter text-[16px] leading-[1.625em] text-[#3c3e3f]">{constraint}</p>
               </CardContent>
             </Card>
           ))}
