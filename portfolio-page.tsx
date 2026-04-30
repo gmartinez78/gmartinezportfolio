@@ -324,7 +324,7 @@ export default function PortfolioPage() {
         <p className="text-[28px] leading-[1.5] text-[#A8C8E8] max-w-[800px]">
           {siteContent.home.stat_banner.text} {siteContent.home.stat_banner.value} {siteContent.home.stat_banner.value_label}
         </p>
-        <h2 className="font-serif-display font-bold text-[40px] text-white">
+        <h2 className="font-serif-display italic font-bold text-[40px] text-white">
           {siteContent.home.stat_banner.cta_headline}
         </h2>
         <Button

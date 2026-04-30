@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { inter, sourceSerif } from "../lib/fonts";
+import { inter, playfairDisplay } from "../lib/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,8 +13,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${sourceSerif.variable} ${inter.variable} font-sans`}>
-      <body className={`${sourceSerif.variable} ${inter.variable} font-inter`} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${playfairDisplay.variable} ${inter.variable} font-sans`}>
+      <body className={`${playfairDisplay.variable} ${inter.variable} font-inter`} suppressHydrationWarning>
         {children}
       </body>
     </html>
