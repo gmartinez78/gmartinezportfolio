@@ -563,7 +563,7 @@ export default function BenefitsPage() {
           {RESEARCH_DISCOVERY_ITEMS.map((item, index) => (
             <Card
               key={item.title}
-              className={index === 4 ? "bg-white/75" : "border-transparent bg-transparent shadow-none"}
+              className="border-transparent bg-transparent shadow-none"
             >
               <CardContent className="p-0">
                 <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-[14px] bg-[#eaf4fd] shadow-[0_10px_24px_rgba(17,131,208,0.08)]">
