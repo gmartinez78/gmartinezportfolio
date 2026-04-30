@@ -343,6 +343,17 @@ export default function BenefitsPage() {
   const primaryMetric = results[0] ?? RESULTS[0];
   const reflections = caseStudy?.reflections ?? REFLECTIONS;
   const otherProjects = caseStudies.filter((project) => project.slug !== "benefits-enrollment").slice(0, 3);
+  const clientLogos = caseStudy?.client_logos.length
+    ? caseStudy.client_logos.map((logo) => ({
+        src: resolveTrustedLogo(logo.name, logo.logo),
+        alt: logo.name,
+        width: logo.name === "Paychex" ? 120 : logo.name === "Nayya" ? 80 : 60,
+      }))
+    : [
+        { src: ASSETS.paychex, alt: "Paychex", width: 120 },
+        { src: ASSETS.nayya, alt: "Nayya", width: 80 },
+        { src: ASSETS.ibx, alt: "IBX", width: 60 },
+      ];
 
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
@@ -381,26 +392,6 @@ export default function BenefitsPage() {
           <span className="font-semibold text-[#0e2951]">{caseStudy?.title ?? "Enhancing Benefits Enrollment"}</span>
         </div>
         <div className="mt-5 h-px w-full bg-[#d7e8f7]" />
-
-        <div className="flex flex-col items-center gap-10 pt-10">
-          <div className="grid w-full gap-8 text-center md:grid-cols-[1fr_2fr_1fr] md:items-center">
-            <div>
-              <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Year</p>
-              <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy?.year ?? 2024}</p>
-            </div>
-            <div>
-              <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Role</p>
-              <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy?.role ?? "Sr Product Designer"}</p>
-            </div>
-            <div>
-              <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Client</p>
-              <p className="mt-1 text-[14px] font-medium text-[#0e2951]">
-                {caseStudy?.client_context ?? "Paychex / Flock"}
-              </p>
-            </div>
-          </div>
-          <div className="h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
-        </div>
       </div>
 
       {/* ── Hero ── */}
@@ -427,27 +418,24 @@ export default function BenefitsPage() {
             <p className="text-[#5c7792] text-[16px] leading-[1.625em] font-inter">
               {caseStudy?.tagline ?? "Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%."}
             </p>
-            <div className="mt-8 flex items-center gap-6">
-              {(caseStudy?.client_logos.length
-                ? caseStudy.client_logos.map((logo) => ({
-                    src: resolveTrustedLogo(logo.name, logo.logo),
-                    alt: logo.name,
-                    width: logo.name === "Paychex" ? 120 : logo.name === "Nayya" ? 80 : 60,
-                  }))
-                : [
-                    { src: ASSETS.paychex, alt: "Paychex", width: 120 },
-                    { src: ASSETS.nayya, alt: "Nayya", width: 80 },
-                    { src: ASSETS.ibx, alt: "IBX", width: 60 },
-                  ]).map((logo) => (
-                <Image
-                  key={logo.alt}
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={logo.width}
-                  height={32}
-                  className="object-contain opacity-80"
-                />
-              ))}
+            <div className="mt-8 flex flex-col items-center gap-10 pt-10">
+              <div className="grid w-full gap-8 text-center md:grid-cols-[1fr_2fr_1fr] md:items-center">
+                <div>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Year</p>
+                  <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy?.year ?? 2024}</p>
+                </div>
+                <div>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Role</p>
+                  <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy?.role ?? "Sr Product Designer"}</p>
+                </div>
+                <div>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Client</p>
+                  <p className="mt-1 text-[14px] font-medium text-[#0e2951]">
+                    {caseStudy?.client_context ?? "Paychex / Flock"}
+                  </p>
+                </div>
+              </div>
+              <div className="h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
             </div>
           </div>
         </div>
@@ -732,6 +720,21 @@ export default function BenefitsPage() {
                 {r.body}
               </p>
             </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="px-6 pb-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+        <div className="flex flex-wrap items-center justify-center gap-8 border-t border-[#d7e8f7] pt-10">
+          {clientLogos.map((logo) => (
+            <Image
+              key={logo.alt}
+              src={logo.src}
+              alt={logo.alt}
+              width={logo.width}
+              height={32}
+              className="object-contain opacity-80"
+            />
           ))}
         </div>
       </section>
