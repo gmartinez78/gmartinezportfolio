@@ -731,6 +731,18 @@ export default function BenefitsPage() {
             />
           ))}
         </div>
+        <div className="mt-10 flex flex-col items-center gap-5">
+          <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
+            Tools
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {toolsUsed.map((tool) => (
+              <Badge key={tool} size="tag">
+                {tool}
+              </Badge>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ── NDA Notice ── */}
