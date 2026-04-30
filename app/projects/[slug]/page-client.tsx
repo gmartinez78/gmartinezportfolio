@@ -6,7 +6,33 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { resolveProjectHref, resolveTrustedLogo, usePublicCaseStudies, usePublicCaseStudy } from "@/lib/cms/public";
+import type { CaseStudyContentBlock } from "@/lib/cms/types";
 import { withBasePath } from "@/lib/site";
+
+type PayloadRow = {
+  metric?: string;
+  value?: string;
+};
+
+function getPayloadList(payload: Record<string, unknown> | null | undefined, key: string) {
+  const value = payload?.[key];
+  return Array.isArray(value) ? value.filter((item): item is string => typeof item === "string") : [];
+}
+
+function getPayloadRows(payload: Record<string, unknown> | null | undefined, key: string) {
+  const value = payload?.[key];
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value.filter((item): item is PayloadRow => {
+    return Boolean(item && typeof item === "object" && ("metric" in item || "value" in item));
+  });
+}
+
+function isContentBlock(block: CaseStudyContentBlock | undefined): block is CaseStudyContentBlock {
+  return Boolean(block);
+}
 
 export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const { caseStudy, loading } = usePublicCaseStudy(slug);
@@ -47,6 +73,17 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const otherProjects = caseStudies
     .filter((project) => project.slug !== caseStudy.slug && project.status === "published")
     .slice(0, 3);
+  const findBlock = (id: string) => caseStudy.content_blocks?.find((block) => block.id === id);
+  const overviewBlock = findBlock("overview");
+  const storyBlocks = ["situation", "task", "research", "actions"]
+    .map((id) => findBlock(id))
+    .filter(isContentBlock);
+  const resultBlock = findBlock("impact");
+  const resultRows = getPayloadRows(resultBlock?.payload, "rows");
+  const resultInsights = getPayloadList(resultBlock?.payload, "insights");
+  const resultOpportunities = getPayloadList(resultBlock?.payload, "opportunities");
+  const projectedImprovements = getPayloadList(resultBlock?.payload, "projected");
+  const successMetrics = getPayloadList(resultBlock?.payload, "successMetrics");
 
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
@@ -93,6 +130,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 xl:px-20">
         <SectionHeading eyebrow="Overview" title="Structure" className="mb-6" />
+        {overviewBlock?.body ? (
+          <p className="mt-8 max-w-[860px] font-inter text-[18px] leading-[1.8] text-[#3c3e3f]">
+            {overviewBlock.body}
+          </p>
+        ) : null}
         <div className="mt-8 grid gap-0 border-t border-[#4d87ae]/30 pt-8 md:grid-cols-4">
           <div className="border-[#4d87ae]/20 pr-8 md:border-r">
             <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Team Members</p>
@@ -129,26 +171,59 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 xl:px-20">
-        <div className="grid gap-16 lg:grid-cols-2">
-          <div>
-            <SectionHeading eyebrow="Admins' Pain" title="Points" className="mb-8" />
-            <div className="space-y-8">
-              {caseStudy.problem.admin_pain_points.map((item) => (
-                <p key={item} className="font-inter text-[22px] leading-[1.9] text-[#3c3e3f]">{item}</p>
-              ))}
+      {storyBlocks.length ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 xl:px-20">
+          <SectionHeading eyebrow="Case Study" title="STAR Narrative" className="mb-12" />
+          <div className="grid gap-6 lg:grid-cols-2">
+            {storyBlocks.map((block) => {
+              const items = getPayloadList(block.payload, "items");
+
+              return (
+                <Card key={block.id} className="p-0 py-0">
+                  <CardContent className="p-8">
+                    <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">
+                      {block.title}
+                    </p>
+                    {block.body ? (
+                      <p className="font-inter text-[18px] leading-[1.8] text-[#3c3e3f]">{block.body}</p>
+                    ) : null}
+                    {items.length ? (
+                      <ul className="mt-5 space-y-3">
+                        {items.map((item) => (
+                          <li key={item} className="font-inter text-[16px] leading-[1.7] text-[#3c3e3f]">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </section>
+      ) : (
+        <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 xl:px-20">
+          <div className="grid gap-16 lg:grid-cols-2">
+            <div>
+              <SectionHeading eyebrow="Admins' Pain" title="Points" className="mb-8" />
+              <div className="space-y-8">
+                {caseStudy.problem.admin_pain_points.map((item) => (
+                  <p key={item} className="font-inter text-[22px] leading-[1.9] text-[#3c3e3f]">{item}</p>
+                ))}
+              </div>
+            </div>
+            <div>
+              <SectionHeading eyebrow="Users' Pain" title="Points" className="mb-8" />
+              <div className="space-y-8">
+                {caseStudy.problem.user_pain_points.map((item) => (
+                  <p key={item} className="font-inter text-[22px] leading-[1.9] text-[#3c3e3f]">{item}</p>
+                ))}
+              </div>
             </div>
           </div>
-          <div>
-            <SectionHeading eyebrow="Users' Pain" title="Points" className="mb-8" />
-            <div className="space-y-8">
-              {caseStudy.problem.user_pain_points.map((item) => (
-                <p key={item} className="font-inter text-[22px] leading-[1.9] text-[#3c3e3f]">{item}</p>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 xl:px-20">
         <SectionHeading title="Constraints" centered className="mb-12" />
@@ -188,7 +263,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       </section>
 
       <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 xl:px-20">
-        <SectionHeading eyebrow="Impact" title="Results" className="mb-12" />
+        <SectionHeading eyebrow="Impact" title={resultBlock?.title ?? "Results"} className="mb-12" />
+        {resultBlock?.body ? (
+          <p className="mb-10 max-w-[860px] font-inter text-[18px] leading-[1.8] text-[#3c3e3f]">
+            {resultBlock.body}
+          </p>
+        ) : null}
         <div className="grid gap-6 md:grid-cols-3">
           {caseStudy.metrics.map((metric) => (
             <Card key={metric.label} className="p-0 py-0">
@@ -200,6 +280,68 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </Card>
           ))}
         </div>
+        {resultRows.length ? (
+          <div className="mt-10 overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white">
+            {resultRows.map((row) => (
+              <div key={`${row.metric}-${row.value}`} className="grid gap-4 border-t border-[#d7e8f7] px-6 py-5 first:border-t-0 md:grid-cols-[1fr_auto] md:items-center">
+                <p className="font-inter text-[15px] font-semibold text-[#0e2951]">{row.metric}</p>
+                <p className="font-inter text-[28px] font-bold leading-none text-[#1183D0]">{row.value}</p>
+              </div>
+            ))}
+          </div>
+        ) : null}
+        {[resultInsights, resultOpportunities, projectedImprovements, successMetrics].some((items) => items.length) ? (
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {resultInsights.length ? (
+              <Card className="p-0 py-0">
+                <CardContent className="p-8">
+                  <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Enrollment Behavior Insights</p>
+                  <ul className="space-y-3">
+                    {resultInsights.map((item) => (
+                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#3c3e3f]">{item}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ) : null}
+            {resultOpportunities.length ? (
+              <Card className="p-0 py-0">
+                <CardContent className="p-8">
+                  <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Opportunities and Next Steps</p>
+                  <ul className="space-y-3">
+                    {resultOpportunities.map((item) => (
+                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#3c3e3f]">{item}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ) : null}
+            {projectedImprovements.length ? (
+              <Card className="p-0 py-0">
+                <CardContent className="p-8">
+                  <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Projected Improvements</p>
+                  <ul className="space-y-3">
+                    {projectedImprovements.map((item) => (
+                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#3c3e3f]">{item}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ) : null}
+            {successMetrics.length ? (
+              <Card className="p-0 py-0">
+                <CardContent className="p-8">
+                  <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Success Metrics</p>
+                  <ul className="space-y-3">
+                    {successMetrics.map((item) => (
+                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#3c3e3f]">{item}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ) : null}
+          </div>
+        ) : null}
       </section>
 
       <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 xl:px-20">

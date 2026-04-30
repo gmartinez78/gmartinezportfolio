@@ -14,12 +14,12 @@ import {
   usePublicSiteContent,
 } from "../../lib/cms/public";
 
-const FILTER_PILLS = ["All", "UX Research", "Product Design", "Design Systems", "Mobile", "Accessibility"];
+const FILTER_PILLS = ["All", "UX Research", "Product Design", "Design Systems", "AI Product", "Compliance", "Accessibility"];
 const PROJECT_BACKGROUNDS: Record<string, string> = {
   "benefits-enrollment": "radial-gradient(ellipse at 82% 50%, #b7daf1 11%, #e9f3fb 64%, #edf5fb 98%)",
-  "nayya-ai-benefits": "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
+  "nayya-ai-benefits": "radial-gradient(ellipse at 20% 50%, #cfe9f7 0%, #f0f7ff 72%)",
   "easterseals-portal": "radial-gradient(ellipse at 80% 20%, #c8f0e0 0%, #edf5fb 70%)",
-  "transport-for-troops": "radial-gradient(ellipse at 50% 80%, #ffe8c0 0%, #edf5fb 70%)",
+  "i9-everify-integration": "radial-gradient(ellipse at 50% 80%, #d9e7f5 0%, #f3f8fc 72%)",
 };
 
 export default function ProjectsPage() {

@@ -83,16 +83,17 @@
     "status": "published",
     "featured": true,
     "order": 2,
-    "title": "AI-Powered Benefits Advisor",
+    "title": "Nayya Choose Integration with Flex",
     "company": "Nayya",
     "client_context": "Paychex via ITX Corp",
-    "role": "Sr. AI Product Designer",
-    "year": 2022,
-    "duration": "6 months",
-    "industry": "AI/ML Product",
-    "tagline": "Designed the conversational UX for an AI-driven benefits recommendation engine that helped employees understand and select the right coverage for their life stage.",
-    "tags": ["AI/ML Product", "UX Research", "Prototyping"],
-    "tools": ["Figma", "Miro", "Maze", "Copilot"],
+    "role": "Sr. Product Designer",
+    "year": 2024,
+    "duration": "Aggressive timeline",
+    "industry": "AI Benefits / HR SaaS",
+    "tagline": "Defined the UX path for integrating Nayya Choose into Flex, helping employees receive benefits recommendations while preserving confidence during a cross-platform handoff.",
+    "tags": ["AI/ML Product", "UX Research", "Product Design", "Benefits"],
+    "filters": ["UX Research", "Product Design", "AI Product"],
+    "tools": ["Figma", "Miro", "Jira", "Webex", "Copilot"],
     "images": {
       "cover": "/images/projects/nayya-cover.png",
       "hero": "/images/projects/nayya-hero.png",
@@ -103,49 +104,111 @@
       { "name": "Paychex", "logo": "/images/logos/paychex.png" }
     ],
     "metrics": [
-      { "value": "4.8★", "label": "Average user satisfaction", "context": "post-launch survey" },
-      { "value": "67%", "label": "Recommendation-to-enrollment", "context": "conversion rate" },
-      { "value": "~115K", "label": "Enrollments influenced", "context": "projected annual" }
+      { "value": "2x", "label": "Benefits enrolled", "context": "Survey completers vs. users who skipped Nayya" },
+      { "value": "$6M", "label": "Full-year impact", "context": "Flex opportunity" },
+      { "value": "$10M", "label": "Full-year impact", "context": "All PEO opportunity" }
     ],
-    "team": ["Product Owner", "UX Lead", "UX/UI designer", "AI/ML Engineer", "Dev team"],
-    "my_role": ["Conversational UX Design", "AI interaction design", "Prototyping", "User Research"],
+    "team": ["UX Lead", "Content Designer", "Product Owner", "Business Analyst", "Solution Leads"],
+    "my_role": ["UX Strategy", "Integration UX", "User Research", "Product Thinking"],
     "problem": {
       "admin_pain_points": [
-        "Employees were overwhelmed by complex benefits options with no guidance.",
-        "Low enrollment rates due to lack of personalized recommendations."
+        "A seamless embedded integration between Flex and Nayya Choose was not feasible under the technical constraints.",
+        "The team needed to balance business value, technical limitations, and user confidence during a sensitive decision-making process."
       ],
       "user_pain_points": [
-        "Benefits terminology was confusing and inaccessible for most employees.",
-        "No way to understand which plan fit their specific life stage or family situation.",
-        "Drop-off was highest between recommendation and final enrollment."
+        "Employees needed more support when selecting benefits and choosing coverage that matched their needs.",
+        "Users would need to leave Flex and access Nayya Choose in a separate experience.",
+        "The transition needed clearer communication, stronger context, and visual cues that made the handoff feel intentional and trustworthy."
       ]
     },
     "constraints": [
-      "AI recommendations had to feel trustworthy without being prescriptive.",
-      "Design had to work within Paychex's existing platform architecture."
+      "A seamless embedded integration between Flex and Nayya Choose was not technically feasible.",
+      "The project moved on an aggressive timeline with significant technical limitations.",
+      "The experience had to protect user confidence during benefits decision-making."
     ],
     "methodology": {
       "name": "Design Thinking",
       "steps": [
-        { "step": 1, "label": "Empathize", "description": "User interviews & benefits expert sessions" },
-        { "step": 2, "label": "Define", "description": "Journey mapping & drop-off analysis" },
-        { "step": 3, "label": "Ideate", "description": "Conversational flows & AI interaction patterns" },
-        { "step": 4, "label": "Prototype", "description": "4 rounds of interactive prototype iteration" },
-        { "step": 5, "label": "Test", "description": "5–8 participants per round, moderated sessions" }
+        { "step": 1, "label": "Understand", "description": "Clarified the benefits selection journey and Nayya Choose's role in decision support." },
+        { "step": 2, "label": "Define", "description": "Identified the feasible integration path between Flex and the external Nayya experience." },
+        { "step": 3, "label": "Align", "description": "Worked with UX, content, product, business analysis, and solution leads." },
+        { "step": 4, "label": "Validate", "description": "Recommended user testing to understand concerns before finalizing the handoff." },
+        { "step": 5, "label": "Measure", "description": "Used enrollment behavior and revenue projections to evaluate impact." }
       ]
     },
     "design_strategy": [
-      "Lead with empathy — show the user their situation, not a product catalog.",
-      "Use progressive disclosure to reduce cognitive overload during enrollment.",
-      "Design AI transparency: show why the recommendation is being made."
+      "Define a realistic integration path instead of forcing an embedded experience that the platform could not support.",
+      "Use communication and visual cues to explain where users were going, why the transition mattered, and how Nayya Choose supported their benefits decisions.",
+      "Protect continuity between Flex and Nayya Choose by making the handoff feel intentional, trustworthy, and aligned with the broader enrollment journey."
     ],
     "reflections": [
-      { "title": "AI needs a human voice.", "body": "The biggest challenge was making AI recommendations feel personal without feeling intrusive. Tone and pacing in the conversational flow mattered as much as the UI." },
-      { "title": "Stabilize before you scale.", "body": "Mapping the recommendation logic before designing screens ensured the AI outputs were actually usable — not just technically correct." }
+      { "title": "The handoff is part of the product.", "body": "When a seamless integration is not possible, the transition becomes a key UX moment. Clear context, visual continuity, and plain language can protect trust even when users leave the platform." },
+      { "title": "Small completion gains can create large business impact.", "body": "Less than 7% of eligible employees completed a Nayya survey, but increasing completion to 10% could add 10,000+ plans and generate $2M-$7M in incremental PEO benefits revenue." }
     ],
     "nda_notice": "Some screens and data from this project are under NDA. The work shown is representative of the design approach.",
     "password": null,
-    "external_link": null
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "overview",
+        "type": "overview",
+        "title": "Project Overview",
+        "body": "The goal of this project was to support employees during the benefits selection process and help them choose coverage that best matched their needs. Nayya Choose is an AI-powered decision-support platform that asks employees a series of lifestyle-based questions and recommends benefit plans that fit their needs. My role was to identify the best path for integrating Nayya Choose into the Flex platform experience."
+      },
+      {
+        "id": "team-context",
+        "type": "custom",
+        "title": "Team",
+        "body": "I worked closely with the UX Lead and Content Designer to ensure consistency in both experience and messaging under a tight timeline. I also collaborated with the Product Owner, Business Analyst, and Solution Leads to align the proposed experience with business goals and technical realities."
+      },
+      {
+        "id": "situation",
+        "type": "custom",
+        "title": "Situation",
+        "body": "Employees needed more support when selecting benefits, and Nayya Choose offered a strong recommendation engine to guide them toward more relevant coverage. The project moved on an aggressive timeline and came with significant technical limitations. A seamless embedded integration between Flex and Nayya Choose was not feasible."
+      },
+      {
+        "id": "task",
+        "type": "custom",
+        "title": "Task",
+        "body": "I was responsible for helping define the best integration path between the two platforms while protecting the user experience as much as possible. This meant balancing business value, technical constraints, and user confidence during a sensitive decision-making process."
+      },
+      {
+        "id": "actions",
+        "type": "custom",
+        "title": "Actions",
+        "body": "Because a seamless integration was not possible, we identified that users would need to leave Flex and access Nayya Choose in a separate experience. To reduce friction, I helped recommend user testing to better understand concerns before finalizing the experience. The research showed users needed clearer communication about where they were going, why the transition mattered, and visual cues that made the handoff feel intentional and trustworthy."
+      },
+      {
+        "id": "impact",
+        "type": "results",
+        "title": "Impact",
+        "body": "The integration showed clear value for users who engaged with Nayya Choose. Participants who completed the survey enrolled in twice as many benefits as those who skipped it, and the work contributed to measurable growth across medical, ancillary, and PEO revenue.",
+        "payload": {
+          "rows": [
+            { "metric": "Annual growth target - Medical", "value": "2%" },
+            { "metric": "Annual growth target - Ancillary", "value": "8%" },
+            { "metric": "FY26 medical growth", "value": "$1M" },
+            { "metric": "FY26 ancillary growth", "value": "$2M" },
+            { "metric": "Full-year impact - Flex", "value": "$6M" },
+            { "metric": "Full-year impact - All PEO", "value": "$10M" }
+          ],
+          "insights": [
+            "Baseline average plans per participant (2023-2025): 4.46.",
+            "Participants who skipped Nayya: 2.57 plans per participant.",
+            "Participants who only started Nayya: 4.43 plans per participant.",
+            "Participants who received recommendations from Nayya: 5.44 plans per participant.",
+            "Participants who completed the Nayya survey enrolled in twice as many benefits as those who skipped it."
+          ],
+          "opportunities": [
+            "Less than 7% of eligible employees completed a Nayya survey, leaving strong room for growth.",
+            "Increasing completion to 10% could add 10,000+ plans and generate $2M-$7M in incremental PEO benefits revenue.",
+            "Further research opportunities include deeper analysis of Nayya survey behavior and year-over-year enrollment changes.",
+            "Potential product expansion areas include 401(k), FinFit, and PayActiv recommendations."
+          ]
+        }
+      }
+    ]
   },
   {
     "slug": "easterseals-portal",
@@ -211,66 +274,150 @@
     "external_link": null
   },
   {
-    "slug": "transport-for-troops",
+    "slug": "i9-everify-integration",
     "status": "published",
     "featured": false,
     "order": 4,
-    "title": "Ride Coordination Mobile App",
-    "company": "Transport for Troops",
-    "client_context": "Freelance",
-    "role": "UX/UI Designer",
-    "year": 2018,
-    "duration": "5 months",
-    "industry": "Mobile / Nonprofit",
-    "tagline": "Built a mobile app from zero to launch for a veteran-focused logistics nonprofit, enabling ride coordination for 200+ volunteers and reducing dispatcher workload by 60%.",
-    "tags": ["Mobile", "Brand Design", "Startup"],
-    "tools": ["Figma", "Miro"],
+    "title": "I-9 & E-Verify Integration for Flex",
+    "company": "Paychex Flex",
+    "client_context": "Paychex via ITX Corp",
+    "role": "Sr. Product Designer",
+    "year": 2024,
+    "duration": "Around 3 years",
+    "industry": "HR Compliance / Onboarding SaaS",
+    "tagline": "Integrated I-9 and E-Verify into Flex onboarding through UX research, workflow design, and third-party compliance handoffs with HIREtech.",
+    "tags": ["UX Research", "Product Design", "Workflow Design", "Compliance"],
+    "filters": ["UX Research", "Product Design", "Compliance"],
+    "tools": ["Figma", "Jira", "Miro", "Webex", "Outlook", "Copilot"],
     "images": {
-      "cover": "/images/projects/transport-cover.png",
+      "cover": "/images/projects/i9-everify-cover.png",
       "hero": "",
       "gallery": []
     },
-    "client_logos": [],
-    "metrics": [
-      { "value": "60%", "label": "Less dispatcher workload", "context": "post-launch" },
-      { "value": "200+", "label": "Volunteers coordinated", "context": "active users" }
+    "client_logos": [
+      { "name": "Paychex", "logo": "/images/logos/paychex.png" }
     ],
-    "team": ["UX Designer", "Mobile Developer", "Nonprofit Director"],
-    "my_role": ["Product Design", "Brand Design", "Mobile UX", "Prototyping"],
+    "metrics": [
+      { "value": "26", "label": "Rounds of design exploration and testing", "context": "employee and admin journeys" },
+      { "value": "2", "label": "Core workflows supported", "context": "employee Section 1 and admin Section 2" },
+      { "value": "7", "label": "Success metric areas defined", "context": "compliance, errors, time, automation, satisfaction, support, scalability" }
+    ],
+    "team": ["Product Owner", "Program Manager", "Business Analyst", "Researcher", "Dev Team (12)", "UX Manager", "UX Lead", "UX/UI Designer", "Service Architect", "Scrum Master"],
+    "my_role": ["User Research", "UX/UI Design", "Product Thinking", "Narrative"],
     "problem": {
       "admin_pain_points": [
-        "All ride coordination was done manually via phone calls and spreadsheets.",
-        "Dispatchers were overwhelmed managing 200+ volunteer schedules."
+        "Clients often relied on manual processes or custom off-platform solutions to manage I-9 and E-Verify requirements.",
+        "Admins needed clearer status tracking, document access, vendor handoff visibility, and transaction-based billing tied to onboarding.",
+        "The experience had to support multiple user roles, future scalability, and compliance-driven workflows."
       ],
       "user_pain_points": [
-        "Volunteers had no central place to see available rides or confirm assignments.",
-        "Veterans couldn't track their ride status in real time."
+        "New hires needed to complete Section 1 of Form I-9 as part of onboarding without feeling disconnected from the Flex experience.",
+        "Users needed stronger cues before leaving Flex for the external HIREtech experience.",
+        "Employees and admins needed clearer ownership, progress states, completion feedback, and follow-up actions."
       ]
     },
     "constraints": [
-      "Zero budget — nonprofit with no design tools or brand guidelines.",
-      "Needed to work on low-end Android devices used by volunteers."
+      "The workflow depended on HIREtech, a third-party vendor experience outside Flex.",
+      "The design had to account for employee and admin journeys, compliance constraints, vendor redirects, billing requirements, and status tracking.",
+      "The product needed to scale for shared workers, same-FEIN clients, white-label support, and migration of existing I-9 documents."
     ],
     "methodology": {
       "name": "Design Thinking",
       "steps": [
-        { "step": 1, "label": "Empathize", "description": "Dispatcher shadowing & volunteer interviews" },
-        { "step": 2, "label": "Define", "description": "Core workflow mapping" },
-        { "step": 3, "label": "Ideate", "description": "Mobile-first flow design from zero" },
-        { "step": 4, "label": "Prototype", "description": "Android-targeted prototype" },
-        { "step": 5, "label": "Test", "description": "Field testing with real volunteers" }
+        { "step": 1, "label": "Research", "description": "Conducted 26 rounds of design exploration and testing across employee and admin journeys." },
+        { "step": 2, "label": "Map", "description": "Mapped where the workflow should begin in Flex and where users would transition into HIREtech." },
+        { "step": 3, "label": "Align", "description": "Aligned I-9 with familiar onboarding task patterns like W-4 and direct deposit." },
+        { "step": 4, "label": "Clarify", "description": "Defined handoff moments, status visibility, task ownership, and completion feedback." },
+        { "step": 5, "label": "Scale", "description": "Considered future needs including shared workers, same-FEIN clients, white-label support, and document migration." }
       ]
     },
     "design_strategy": [
-      "Start with the dispatcher — fix the bottleneck first, then design for volunteers.",
-      "Mobile-first, data-light: the app had to work on spotty rural connections.",
-      "Build the brand from scratch to give the nonprofit credibility."
+      "Make I-9 feel like part of Flex onboarding rather than a disconnected compliance task.",
+      "Use clearer handoff messaging, progress states, and completion feedback to reduce confusion around the external HIREtech experience.",
+      "Keep completed documents, progress indicators, and follow-up actions visible after the vendor experience.",
+      "Design for compliance, billing, and scalability without overwhelming the employee or admin journeys."
     ],
     "reflections": [
-      { "title": "Zero to launch.", "body": "Building a product with no existing design language forced rapid brand and UX decisions in parallel. Speed and quality had to coexist." }
+      { "title": "Compliance can still feel understandable.", "body": "This project was not only about adding a new form. It was about designing a compliance-heavy workflow that could still feel clear, consistent, and manageable inside onboarding." },
+      { "title": "Vendor handoffs need UX strategy.", "body": "By combining workflow design with iterative research, testing, and handoff strategy, the experience created a stronger foundation for product usability and business growth." }
     ],
-    "nda_notice": null,
+    "nda_notice": "Some screens and implementation details from this compliance workflow are under NDA. The work shown focuses on the UX approach, workflow strategy, and measurable product direction.",
     "password": null,
-    "external_link": null
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "overview",
+        "type": "overview",
+        "title": "Project Overview",
+        "body": "The I-9 and E-Verify initiative focused on helping Flex clients manage employment verification and onboarding compliance more efficiently within the platform. The experience enabled new hires to complete Section 1 of Form I-9 and allowed administrators to complete Section 2 through an integration with HIREtech, a third-party vendor. The solution also supported Remote I-9 requests, onboarding task visibility, document access, and transaction-based billing tied directly to onboarding."
+      },
+      {
+        "id": "situation",
+        "type": "custom",
+        "title": "Situation",
+        "body": "Flex clients needed a more efficient way to manage I-9 and E-Verify requirements during onboarding. Without an integrated workflow, clients often relied on manual processes or custom off-platform solutions, creating friction, compliance risk, and operational inefficiencies. The work also had to account for multiple user roles, vendor handoffs, billing requirements, status tracking, and future scalability."
+      },
+      {
+        "id": "task",
+        "type": "custom",
+        "title": "Task",
+        "body": "My role was to help define a UX approach that integrated I-9 and E-Verify into Flex in a way that felt consistent with existing onboarding patterns while accommodating the technical and compliance constraints of a third-party experience. This meant designing for both the employee journey, where a new hire initiates Section 1, and the admin journey, where a client user configures access, tracks status, and completes Section 2."
+      },
+      {
+        "id": "research",
+        "type": "custom",
+        "title": "UX Research",
+        "body": "Research played a central role in shaping the workflow and reducing friction across employee and admin experiences.",
+        "payload": {
+          "items": [
+            "Conducted 26 rounds of design exploration and testing to refine the workflow across employee and admin journeys.",
+            "Used user testing to validate how participants understood task ownership, status visibility, and redirects to the external HIREtech experience.",
+            "Included survey-based testing to capture perception, confidence, and clarity across key onboarding and compliance moments.",
+            "Reviewed Hotjar research to identify friction points, hesitation patterns, and places where users needed stronger cues before leaving Flex.",
+            "Used findings to improve workflow clarity, handoff messaging, progress states, and the narrative around why users were being redirected."
+          ]
+        }
+      },
+      {
+        "id": "actions",
+        "type": "custom",
+        "title": "Actions",
+        "payload": {
+          "items": [
+            "Mapped both the employee and admin journeys to understand where the workflow should begin in Flex and where users would transition into HIREtech.",
+            "Aligned the experience with familiar onboarding task patterns already used for workflows like W-4 and direct deposit, so I-9 felt like part of the product rather than a disconnected compliance task.",
+            "Defined clearer handoff moments between Flex and HIREtech, including task initiation, status visibility, and completion feedback inside Flex.",
+            "Helped shape how completed documents, progress indicators, and follow-up actions should remain visible after the vendor experience.",
+            "Considered future scalability needs such as shared workers, same-FEIN clients, white-label support, and migration of existing I-9 documents."
+          ]
+        }
+      },
+      {
+        "id": "impact",
+        "type": "results",
+        "title": "Result",
+        "body": "The project established a scalable framework for bringing I-9 and E-Verify into Flex while reducing reliance on manual processes and supporting compliance-driven onboarding tasks more effectively. The work integrated I-9 initiation into the onboarding flow, improved visibility into status and follow-up actions, supported both employee and admin workflows, and created a stronger foundation for automation and transaction-based billing.",
+        "payload": {
+          "projected": [
+            "Higher compliance completion rates by making I-9 tasks visible inside onboarding and easier to track.",
+            "Lower error rates through clearer workflow guidance, validation, and status communication.",
+            "Reduced processing time by embedding task initiation directly into Flex and reducing manual coordination.",
+            "Improved user confidence by clarifying handoffs between Flex and HIREtech.",
+            "Lower support burden through clearer ownership, better progress visibility, and a more guided experience.",
+            "Stronger operational efficiency for admins managing onboarding tasks across multiple hires.",
+            "Better scalability for future onboarding, compliance, and billing-related growth."
+          ],
+          "successMetrics": [
+            "Compliance rate: percentage of I-9s and E-Verify checks completed accurately and within legal timeframes.",
+            "Error rate reduction: fewer discrepancies, missing fields, and verification issues.",
+            "Processing time: average time required to complete Section 1 and Section 2 workflows.",
+            "Automation impact: reduced manual intervention and stronger workflow efficiency.",
+            "User satisfaction: confidence and ease of use for HR teams, admins, and employees.",
+            "Training and support effectiveness: lower support requests and smoother rollout.",
+            "Scalability: readiness to support increased product volume and future compliance needs."
+          ]
+        }
+      }
+    ]
   }
 ]

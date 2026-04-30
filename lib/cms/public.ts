@@ -49,7 +49,7 @@ const projectImageMap: Record<string, string> = {
   "benefits-enrollment": withBasePath("/images/AxnrM.png"),
   "nayya-ai-benefits": withBasePath("/images/k58t4.png"),
   "easterseals-portal": withBasePath("/images/FC4No.png"),
-  "transport-for-troops": withBasePath("/images/1x9VC.png"),
+  "i9-everify-integration": withBasePath("/images/1x9VC.png"),
 };
 
 const projectHrefMap: Record<string, string> = {

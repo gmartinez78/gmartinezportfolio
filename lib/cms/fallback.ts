@@ -17,6 +17,8 @@ export const fallbackCaseStudies = (caseStudies as CaseStudyRecord[]).map((study
             "Design Systems",
             "Mobile",
             "Accessibility",
+            "AI Product",
+            "Compliance",
           ].includes(tag),
         ),
       ),
