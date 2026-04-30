@@ -516,7 +516,7 @@ export default function BenefitsPage() {
       <section className="mx-auto max-w-[1200px] px-6 pb-20 md:px-10 xl:px-20">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
           <div>
-            <SectionHeading eyebrow="STAR" title="Situation" className="mb-8" />
+            <SectionHeading title="Situation" className="mb-8" />
             <div className="mt-8 space-y-6">
               {CHALLENGE_POINTS.map((point) => (
                 <p key={point} className="max-w-[720px] text-[16px] leading-[1.625em] text-[#3c3e3f]">
@@ -564,7 +564,6 @@ export default function BenefitsPage() {
 
       {/* ── Action ── */}
       <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading eyebrow="STAR" title="Action" centered className="mb-14" />
         <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
           {RESEARCH_DISCOVERY_ITEMS.map((item, index) => (
             <Card
@@ -663,7 +662,7 @@ export default function BenefitsPage() {
 
       {/* ── Results ── */}
       <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading eyebrow="STAR" title="Result" className="mb-12" />
+        <SectionHeading title="Result" className="mb-12" />
 
         <div className="grid gap-6 lg:grid-cols-2">
           {/* Bar chart card */}
