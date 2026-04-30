@@ -143,11 +143,6 @@ const RESEARCH_DISCOVERY_ITEMS = [
     icon: ASSETS.miscSticker,
   },
   {
-    title: "Iterative Testing",
-    body: "Conducted 5 rounds of usability testing with real users, refining the experience at every stage to ensure clarity and efficiency.",
-    icon: ASSETS.arrowVector,
-  },
-  {
     title: "Role Mapping",
     body: "Mapped internal roles, governance rules, and permission boundaries before UI implementation so the system would support real operational needs.",
     icon: ASSETS.userIcon,
