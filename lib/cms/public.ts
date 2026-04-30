@@ -48,7 +48,7 @@ const toolIconMap: Record<string, string> = {
 const projectImageMap: Record<string, string> = {
   "benefits-enrollment": withBasePath("/images/AxnrM.png"),
   "nayya-ai-benefits": withBasePath("/images/k58t4.png"),
-  "easterseals-portal": withBasePath("/images/FC4No.png"),
+  "flock-accessibility-system": withBasePath("/images/FC4No.png"),
   "i9-everify-integration": withBasePath("/images/1x9VC.png"),
 };
 

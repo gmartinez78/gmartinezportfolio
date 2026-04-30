@@ -211,20 +211,21 @@
     ]
   },
   {
-    "slug": "easterseals-portal",
+    "slug": "flock-accessibility-system",
     "status": "published",
     "featured": false,
     "order": 3,
-    "title": "Accessible Service Portal",
-    "company": "Easterseals",
-    "client_context": "Elevation Agency",
-    "role": "UX/UI Designer",
-    "year": 2020,
-    "duration": "4 months",
-    "industry": "Accessibility / Nonprofit",
-    "tagline": "Redesigned the public-facing portal for a nonprofit serving people with disabilities, achieving WCAG 2.1 AA compliance and reducing task completion time by 40%.",
-    "tags": ["Accessibility", "Web Design", "Nonprofit"],
-    "tools": ["Figma", "Miro"],
+    "title": "Flock Accessibility Audit & Design System Unification",
+    "company": "Flock",
+    "client_context": "Paychex via ITX Corp",
+    "role": "Product Designer",
+    "year": 2024,
+    "duration": "6 months audit + 1 year build",
+    "industry": "Accessibility / Design Systems",
+    "tagline": "Led accessibility auditing and design system unification work to reduce compliance risk, improve component consistency, and strengthen design-to-development delivery.",
+    "tags": ["Accessibility", "Design Systems", "UX Research", "Product Design"],
+    "filters": ["Accessibility", "Design Systems", "Product Design"],
+    "tools": ["Figma", "Jira", "Miro"],
     "images": {
       "cover": "/images/projects/easterseals-cover.png",
       "hero": "",
@@ -232,46 +233,109 @@
     },
     "client_logos": [],
     "metrics": [
-      { "value": "40%", "label": "Faster task completion", "context": "post-redesign" },
-      { "value": "WCAG 2.1 AA", "label": "Accessibility compliance", "context": "achieved at launch" }
+      { "value": "6 mo", "label": "Audit and system work", "context": "initial phase" },
+      { "value": "1 yr", "label": "Build and delivery", "context": "follow-on implementation" },
+      { "value": "2 designers", "label": "Core design team", "context": "system unification effort" }
     ],
-    "team": ["UX Designer", "Developer", "Nonprofit stakeholders"],
-    "my_role": ["UX Research", "Accessibility Audit", "UI Design", "Prototyping"],
+    "team": ["2 designers", "UX Lead", "UX Manager", "Product Owner", "Business Analyst", "3 developers", "Dev Lead"],
+    "my_role": ["Accessibility Audit", "UX/UI Design", "Design Systems", "Developer Collaboration"],
     "problem": {
       "admin_pain_points": [
-        "Outdated CMS made content updates difficult for non-technical staff.",
-        "No accessibility standards enforced across the platform."
+        "The product had accessibility compliance issues and lacked a unified library system.",
+        "Existing pages used inconsistent components, creating friction between design and development.",
+        "The lack of reusable components weakened delivery quality and made it harder to scale patterns confidently."
       ],
       "user_pain_points": [
-        "Users with disabilities couldn't navigate the portal independently.",
-        "Task completion rates were extremely low due to confusing information architecture."
+        "Inconsistent components created a less predictable product experience across pages.",
+        "Accessibility gaps introduced usability risk for people relying on more inclusive interaction patterns.",
+        "Fragmented UI behavior made the product harder to improve consistently over time."
       ]
     },
     "constraints": [
-      "Strict accessibility compliance requirements (WCAG 2.1 AA).",
-      "Limited budget and nonprofit timeline."
+      "The product had to improve accessibility without a mature shared component library in place.",
+      "Existing pages and components were already fragmented across the product.",
+      "The system work needed to support real development delivery requirements, not just design cleanup."
     ],
     "methodology": {
       "name": "Design Thinking",
       "steps": [
-        { "step": 1, "label": "Empathize", "description": "Accessibility audit & user interviews" },
-        { "step": 2, "label": "Define", "description": "IA restructuring & pain point mapping" },
-        { "step": 3, "label": "Ideate", "description": "Accessible component design" },
-        { "step": 4, "label": "Prototype", "description": "Screen reader-tested prototypes" },
-        { "step": 5, "label": "Test", "description": "Usability testing with target users" }
+        { "step": 1, "label": "Audit", "description": "Reviewed accessibility standards, existing pages, and compliance gaps." },
+        { "step": 2, "label": "Inventory", "description": "Conducted a component audit to identify fragmented, duplicated, and non-reusable patterns." },
+        { "step": 3, "label": "Unify", "description": "Built a stronger shared library structure from scratch with another designer." },
+        { "step": 4, "label": "Align", "description": "Worked with developers to improve handoff quality and implementation clarity." },
+        { "step": 5, "label": "Standardize", "description": "Reviewed existing pages and helped normalize component usage and behavior over time." }
       ]
     },
     "design_strategy": [
-      "Accessibility as a design constraint from day one, not a retrofit.",
-      "Simplify IA before redesigning any UI — users couldn't find what they needed.",
-      "Work within existing brand to reduce stakeholder friction."
+      "Use accessibility auditing as a structural input to system design, not as a late-stage compliance check.",
+      "Reduce delivery friction by unifying component behavior and creating a stronger shared library foundation.",
+      "Tighten design-development alignment so the system supports real implementation needs."
     ],
     "reflections": [
-      { "title": "Accessibility is UX.", "body": "Designing for users with disabilities improved the experience for everyone. Every constraint pushed us toward clearer, simpler, more intentional decisions." }
+      { "title": "Systems create clarity.", "body": "A design system is not only about components. It creates a shared language that improves consistency, speeds delivery, and helps teams work from the same foundation." },
+      { "title": "Accessibility needs structure.", "body": "Auditing standards and unifying patterns created a stronger base for compliance and long-term product quality. The system work was as much about reducing risk as it was about improving the interface." }
     ],
     "nda_notice": null,
     "password": null,
-    "external_link": null
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "overview",
+        "type": "overview",
+        "title": "Overview",
+        "body": "Flock was facing accessibility compliance issues and inconsistent UI patterns across the product. I worked on an accessibility audit and design system unification effort to create a stronger shared foundation for both product consistency and design-to-development delivery."
+      },
+      {
+        "id": "team-context",
+        "type": "custom",
+        "title": "Team",
+        "body": "I worked alongside another designer to build the library, in collaboration with a UX Lead, UX Manager, Product Owner, Business Analyst, three developers, and a Dev Lead."
+      },
+      {
+        "id": "situation",
+        "type": "custom",
+        "title": "Situation",
+        "body": "The product had accessibility compliance issues and lacked a unified library system. Existing pages used inconsistent components, which created friction between design and development and made implementation less efficient. The lack of enough reusable components weakened delivery quality, introduced inconsistencies across the product, and made it harder to scale patterns confidently."
+      },
+      {
+        "id": "task",
+        "type": "custom",
+        "title": "Task",
+        "body": "Audit accessibility standards, review existing pages and components, and help create a unified system library that would improve consistency, strengthen compliance, and support better collaboration between design and development."
+      },
+      {
+        "id": "actions",
+        "type": "custom",
+        "title": "Actions",
+        "payload": {
+          "items": [
+            "Reviewed accessibility standards and audited existing pages to identify compliance gaps and inconsistent UI patterns across the product.",
+            "Conducted a component audit to understand where patterns were fragmented, duplicated, or not reusable.",
+            "Worked with another designer to help build a more unified library structure from scratch.",
+            "Collaborated with developers to improve handoff quality, clarify implementation expectations, and support real delivery needs.",
+            "Reviewed existing pages and helped standardize component usage and behavior so the experience could become more consistent over time."
+          ]
+        }
+      },
+      {
+        "id": "impact",
+        "type": "results",
+        "title": "Product/System Outcomes",
+        "body": "This project created a stronger foundation for accessibility, consistency, and cross-functional delivery. Because there are no confirmed performance metrics, the outcomes are framed as system and product improvements rather than quantified business results.",
+        "payload": {
+          "rows": [
+            { "metric": "Accessibility foundation", "value": "Reduced risk" },
+            { "metric": "Component consistency", "value": "More scalable" },
+            { "metric": "Design-development delivery", "value": "Improved collaboration" }
+          ],
+          "insights": [
+            "Before: Compliance issues across existing pages. After: Stronger accessibility review and a clearer standardization path.",
+            "Before: Fragmented and duplicated patterns. After: Unified shared library direction.",
+            "Before: Weak handoff and limited reusable components. After: Better alignment and clearer implementation support."
+          ]
+        }
+      }
+    ]
   },
   {
     "slug": "i9-everify-integration",

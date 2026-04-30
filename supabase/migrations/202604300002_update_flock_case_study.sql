@@ -1,0 +1,77 @@
+delete from public.case_studies
+where slug = 'easterseals-portal';
+
+insert into public.case_studies (
+  slug, status, featured, "order", title, company, client_context, role, year, duration,
+  industry, tagline, tags, filters, tools, images, client_logos, metrics, team, my_role,
+  problem, constraints, methodology, design_strategy, reflections, content_blocks,
+  nda_notice, password, external_link
+)
+values
+(
+  'flock-accessibility-system',
+  'published',
+  false,
+  3,
+  'Flock Accessibility Audit & Design System Unification',
+  'Flock',
+  'Paychex via ITX Corp',
+  'Product Designer',
+  2024,
+  '6 months audit + 1 year build',
+  'Accessibility / Design Systems',
+  'Led accessibility auditing and design system unification work to reduce compliance risk, improve component consistency, and strengthen design-to-development delivery.',
+  array['Accessibility','Design Systems','UX Research','Product Design'],
+  array['Accessibility','Design Systems','Product Design'],
+  array['Figma','Jira','Miro'],
+  '{"cover":"/images/projects/easterseals-cover.png","hero":"","gallery":[]}'::jsonb,
+  '[]'::jsonb,
+  '[{"value":"6 mo","label":"Audit and system work","context":"initial phase"},{"value":"1 yr","label":"Build and delivery","context":"follow-on implementation"},{"value":"2 designers","label":"Core design team","context":"system unification effort"}]'::jsonb,
+  array['2 designers','UX Lead','UX Manager','Product Owner','Business Analyst','3 developers','Dev Lead'],
+  array['Accessibility Audit','UX/UI Design','Design Systems','Developer Collaboration'],
+  '{"admin_pain_points":["The product had accessibility compliance issues and lacked a unified library system.","Existing pages used inconsistent components, creating friction between design and development.","The lack of reusable components weakened delivery quality and made it harder to scale patterns confidently."],"user_pain_points":["Inconsistent components created a less predictable product experience across pages.","Accessibility gaps introduced usability risk for people relying on more inclusive interaction patterns.","Fragmented UI behavior made the product harder to improve consistently over time."]}'::jsonb,
+  array['The product had to improve accessibility without a mature shared component library in place.','Existing pages and components were already fragmented across the product.','The system work needed to support real development delivery requirements, not just design cleanup.'],
+  '{"name":"Design Thinking","steps":[{"step":1,"label":"Audit","description":"Reviewed accessibility standards, existing pages, and compliance gaps."},{"step":2,"label":"Inventory","description":"Conducted a component audit to identify fragmented, duplicated, and non-reusable patterns."},{"step":3,"label":"Unify","description":"Built a stronger shared library structure from scratch with another designer."},{"step":4,"label":"Align","description":"Worked with developers to improve handoff quality and implementation clarity."},{"step":5,"label":"Standardize","description":"Reviewed existing pages and helped normalize component usage and behavior over time."}]}'::jsonb,
+  array['Use accessibility auditing as a structural input to system design, not as a late-stage compliance check.','Reduce delivery friction by unifying component behavior and creating a stronger shared library foundation.','Tighten design-development alignment so the system supports real implementation needs.'],
+  '[{"title":"Systems create clarity.","body":"A design system is not only about components. It creates a shared language that improves consistency, speeds delivery, and helps teams work from the same foundation."},{"title":"Accessibility needs structure.","body":"Auditing standards and unifying patterns created a stronger base for compliance and long-term product quality. The system work was as much about reducing risk as it was about improving the interface."}]'::jsonb,
+  $json$[
+    {"id":"overview","type":"overview","title":"Overview","body":"Flock was facing accessibility compliance issues and inconsistent UI patterns across the product. I worked on an accessibility audit and design system unification effort to create a stronger shared foundation for both product consistency and design-to-development delivery."},
+    {"id":"team-context","type":"custom","title":"Team","body":"I worked alongside another designer to build the library, in collaboration with a UX Lead, UX Manager, Product Owner, Business Analyst, three developers, and a Dev Lead."},
+    {"id":"situation","type":"custom","title":"Situation","body":"The product had accessibility compliance issues and lacked a unified library system. Existing pages used inconsistent components, which created friction between design and development and made implementation less efficient. The lack of enough reusable components weakened delivery quality, introduced inconsistencies across the product, and made it harder to scale patterns confidently."},
+    {"id":"task","type":"custom","title":"Task","body":"Audit accessibility standards, review existing pages and components, and help create a unified system library that would improve consistency, strengthen compliance, and support better collaboration between design and development."},
+    {"id":"actions","type":"custom","title":"Actions","payload":{"items":["Reviewed accessibility standards and audited existing pages to identify compliance gaps and inconsistent UI patterns across the product.","Conducted a component audit to understand where patterns were fragmented, duplicated, or not reusable.","Worked with another designer to help build a more unified library structure from scratch.","Collaborated with developers to improve handoff quality, clarify implementation expectations, and support real delivery needs.","Reviewed existing pages and helped standardize component usage and behavior so the experience could become more consistent over time."]}},
+    {"id":"impact","type":"results","title":"Product/System Outcomes","body":"This project created a stronger foundation for accessibility, consistency, and cross-functional delivery. Because there are no confirmed performance metrics, the outcomes are framed as system and product improvements rather than quantified business results.","payload":{"rows":[{"metric":"Accessibility foundation","value":"Reduced risk"},{"metric":"Component consistency","value":"More scalable"},{"metric":"Design-development delivery","value":"Improved collaboration"}],"insights":["Before: Compliance issues across existing pages. After: Stronger accessibility review and a clearer standardization path.","Before: Fragmented and duplicated patterns. After: Unified shared library direction.","Before: Weak handoff and limited reusable components. After: Better alignment and clearer implementation support."]}}
+  ]$json$::jsonb,
+  null,
+  null,
+  null
+)
+on conflict (slug) do update set
+  status = excluded.status,
+  featured = excluded.featured,
+  "order" = excluded."order",
+  title = excluded.title,
+  company = excluded.company,
+  client_context = excluded.client_context,
+  role = excluded.role,
+  year = excluded.year,
+  duration = excluded.duration,
+  industry = excluded.industry,
+  tagline = excluded.tagline,
+  tags = excluded.tags,
+  filters = excluded.filters,
+  tools = excluded.tools,
+  images = excluded.images,
+  client_logos = excluded.client_logos,
+  metrics = excluded.metrics,
+  team = excluded.team,
+  my_role = excluded.my_role,
+  problem = excluded.problem,
+  constraints = excluded.constraints,
+  methodology = excluded.methodology,
+  design_strategy = excluded.design_strategy,
+  reflections = excluded.reflections,
+  content_blocks = excluded.content_blocks,
+  nda_notice = excluded.nda_notice,
+  password = excluded.password,
+  external_link = excluded.external_link;
