@@ -391,7 +391,7 @@ export default function BenefitsPage() {
 
       {/* ── Hero ── */}
       <section className="relative mx-auto max-w-[1200px] px-6 pt-16 pb-0 md:px-10 xl:px-20">
-        <div className="mx-auto max-w-[760px]">
+        <div className="mx-auto w-full max-w-[80%]">
           <Image
             src={ASSETS.heroBannerDashboard}
             alt="Benefits enrollment workflow and dashboard preview"
