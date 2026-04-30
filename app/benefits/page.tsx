@@ -372,7 +372,7 @@ export default function BenefitsPage() {
       </div>
 
       {/* ── Hero ── */}
-      <section className="relative mx-auto max-w-[1200px] px-6 pt-8 pb-16 md:px-10 xl:px-20">
+      <section className="relative mx-auto max-w-[1200px] px-6 pt-8 pb-10 md:px-10 xl:px-20">
         <div className="relative mx-auto h-[150px] w-full max-w-[1040px] overflow-hidden rounded-[24px] shadow-[0_20px_64px_rgba(14,41,81,0.12)]">
           <Image
             src={ASSETS.heroBannerDashboard}
@@ -432,7 +432,7 @@ export default function BenefitsPage() {
       </div>
 
       {/* ── Overview ── */}
-      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+      <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <SectionHeading eyebrow="Overview" title="Structure" className="mb-6" />
 
         <div className="mt-8 grid gap-8 pt-8 md:grid-cols-2 xl:grid-cols-4 xl:gap-0">
@@ -491,7 +491,7 @@ export default function BenefitsPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1200px] px-6 pb-20 md:px-10 xl:px-20">
+      <section className="mx-auto max-w-[1200px] px-6 pb-10 md:px-10 xl:px-20">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
           <div>
             <SectionHeading title="Situation" className="mb-8" />
@@ -538,7 +538,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Action ── */}
-      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+      <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <SectionHeading title="Action" centered className="mb-14" />
         <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
           {RESEARCH_DISCOVERY_ITEMS.map((item, index) => (
@@ -563,7 +563,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Design Thinking Process ── */}
-      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+      <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <SectionHeading eyebrow="Action" title="Methodology" className="mb-12" />
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
           {methodologySteps.map((step, i) => (
@@ -593,7 +593,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Design Strategy ── */}
-      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+      <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           {/* Left text */}
           <div>
@@ -615,7 +615,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Results ── */}
-      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+      <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <SectionHeading title="Result" className="mb-12" />
 
         <div className="grid gap-6 lg:grid-cols-2">
@@ -651,13 +651,13 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Product Deep Dive ── */}
-      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+      <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <SectionHeading eyebrow="Solution" title="The Platform" className="mb-10" />
         <ProductPreview />
       </section>
 
       {/* ── Reflections ── */}
-      <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+      <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <SectionHeading title="Reflections" centered className="mb-14" />
 
         <div className="border-t border-[#d7e8f7]">
@@ -677,7 +677,7 @@ export default function BenefitsPage() {
         </div>
       </section>
 
-      <section className="px-6 pb-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+      <section className="px-6 pb-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <div className="flex flex-wrap items-center justify-center gap-8 border-t border-[#d7e8f7] pt-10">
           {clientLogos.map((logo) => (
             <Image
@@ -721,7 +721,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* ── Other Projects ── */}
-      <section className="px-6 py-16 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+      <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0] mb-2">More work</p>
         <h2 className="font-serif-display italic text-[#0e2951] text-[32px] mb-8">Other Projects</h2>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
