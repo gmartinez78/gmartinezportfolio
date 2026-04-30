@@ -140,7 +140,7 @@ const RESEARCH_DISCOVERY_ITEMS = [
   {
     title: "System Architecture",
     body: "Built a modular component system that scales across multiple employer sizes, from startups to enterprise organizations with 10,000+ employees.",
-    icon: ASSETS.miscSticker,
+    icon: ASSETS.arrowVector,
   },
   {
     title: "Role Mapping",
@@ -150,12 +150,12 @@ const RESEARCH_DISCOVERY_ITEMS = [
   {
     title: "Flow Validation",
     body: "Validated the enrollment lifecycle against exceptions, support scenarios, and admin edge cases before moving deeper into delivery.",
-    icon: ASSETS.miscSticker,
+    icon: ASSETS.clockIcon,
   },
   {
     title: "Cross-Team Review",
     body: "Worked closely with product and engineering to keep the experience coherent while aligning with system constraints and delivery pressure.",
-    icon: ASSETS.arrowVector,
+    icon: ASSETS.miscSticker,
   },
 ];
 
@@ -559,6 +559,7 @@ export default function BenefitsPage() {
 
       {/* ── Action ── */}
       <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+        <SectionHeading title="Action" centered className="mb-14" />
         <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
           {RESEARCH_DISCOVERY_ITEMS.map((item, index) => (
             <Card
