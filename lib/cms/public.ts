@@ -158,7 +158,7 @@ export function usePublicCaseStudy(slug: string) {
         .eq("slug", slug)
         .maybeSingle();
 
-      setCaseStudy((data as CaseStudyRecord | null) ?? null);
+      setCaseStudy((data as CaseStudyRecord | null) ?? fallbackStudy);
       setLoading(false);
     })();
   }, [fallbackStudy, slug, supabase]);

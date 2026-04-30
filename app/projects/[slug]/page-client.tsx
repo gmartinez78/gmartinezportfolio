@@ -271,7 +271,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         ) : null}
         <div className="grid gap-6 md:grid-cols-3">
           {caseStudy.metrics.map((metric) => (
-            <Card key={metric.label} className="p-0 py-0">
+            <Card key={`${metric.label}-${metric.value}`} className="p-0 py-0">
               <CardContent className="p-8">
                 <span className="font-inter text-[52px] font-bold leading-none text-[#1183D0]">{metric.value}</span>
                 <p className="mt-4 font-inter text-[18px] leading-[1.5] text-[#3c3e3f]">{metric.label}</p>

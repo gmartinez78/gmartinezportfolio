@@ -1,12 +1,13 @@
 import { fallbackCaseStudies } from "@/lib/cms/fallback";
 import { ProjectCaseStudyPageClient } from "./page-client";
 
-export default function ProjectCaseStudyPage({
+export default async function ProjectCaseStudyPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  return <ProjectCaseStudyPageClient slug={params.slug} />;
+  const { slug } = await params;
+  return <ProjectCaseStudyPageClient slug={slug} />;
 }
 
 export function generateStaticParams() {
