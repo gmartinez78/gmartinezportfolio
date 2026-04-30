@@ -67,7 +67,7 @@ function ToolBadge({
 
   return (
     <div
-      className={`absolute ${x} ${y} z-0 ${sizeClass} ${toneClass} flex items-center justify-center opacity-55`}
+      className={`absolute ${x} ${y} z-10 ${sizeClass} ${toneClass} flex items-center justify-center opacity-55`}
       title={label}
     >
       <Image
@@ -268,18 +268,16 @@ export default function PortfolioPage() {
 
       {/* ── Tools Section ── */}
       <section
-        className="relative isolate overflow-hidden"
-        style={{
-          background: "linear-gradient(180deg, #FFFFFF 0%, #F0F7FF 48%, rgba(17,131,208,0.28) 100%)",
-          height: 520,
-        }}
+        className="relative isolate h-[520px] overflow-hidden"
       >
+        <div className="absolute inset-0 z-0 bg-[linear-gradient(180deg,#FFFFFF_0%,#F0F7FF_48%,rgba(17,131,208,0.28)_100%)]" />
+
         {TOOLS_LEFT.map((t) => (
           <ToolBadge key={t.label} {...t} />
         ))}
 
         <div
-          className="absolute z-10 flex flex-col items-center gap-3.5 text-center"
+          className="absolute z-20 flex flex-col items-center gap-3.5 text-center"
           style={{
             left: "50%",
             transform: "translateX(-50%)",
