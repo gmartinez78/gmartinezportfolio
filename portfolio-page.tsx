@@ -67,7 +67,7 @@ function ToolBadge({
 
   return (
     <div
-      className={`absolute ${x} ${y} z-10 ${sizeClass} ${toneClass} flex items-center justify-center opacity-55`}
+      className={`absolute ${x} ${y} z-10 ${sizeClass} ${toneClass} flex items-center justify-center`}
       title={label}
     >
       <Image
