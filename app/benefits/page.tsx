@@ -120,7 +120,7 @@ const RESEARCH_DISCOVERY_ITEMS = [
     icon: ASSETS.userIcon,
   },
   {
-    title: "System Architecture",
+    title: "Pattern Alignment",
     body: "Balancing the product's existing patterns with user needs without disrupting the experience.",
     icon: ASSETS.arrowVector,
   },
