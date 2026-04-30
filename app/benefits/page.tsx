@@ -391,39 +391,7 @@ export default function BenefitsPage() {
 
       {/* ── Hero ── */}
       <section className="relative mx-auto max-w-[1200px] px-6 pt-16 pb-0 md:px-10 xl:px-20">
-        <div className="rounded-[28px] bg-[#0e2951] px-6 py-10 text-center shadow-[0_24px_80px_rgba(14,41,81,0.16)] md:px-12 lg:px-[120px]">
-          <div className="mx-auto max-w-[820px]">
-            <p className="mb-3 font-inter text-[13px] uppercase tracking-[3px] text-[#7CB8E8]">
-              {caseStudy?.industry ?? "Case Study Redesign 2025"}
-            </p>
-            <h1 className="font-inter text-[40px] font-bold leading-[1.15] text-white md:text-[48px]">
-              {caseStudy?.title ?? "Enhancing Benefits Enrollment"}
-            </h1>
-            <p className="mx-auto mt-5 max-w-[680px] font-inter text-[16px] leading-[1.625em] text-white/82">
-              {caseStudy?.tagline ?? "Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%."}
-            </p>
-            <div className="mt-10 flex flex-col items-center gap-8 border-t border-white/20 pt-8">
-              <div className="grid w-full gap-8 text-center md:grid-cols-[1fr_2fr_1fr] md:items-center">
-                <div>
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-white/55">Year</p>
-                  <p className="mt-1 text-[14px] font-medium text-white">{caseStudy?.year ?? 2024}</p>
-                </div>
-                <div>
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-white/55">Role</p>
-                  <p className="mt-1 text-[14px] font-medium text-white">{caseStudy?.role ?? "Sr. Product Designer"}</p>
-                </div>
-                <div>
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-white/55">Client</p>
-                  <p className="mt-1 text-[14px] font-medium text-white">
-                    {caseStudy?.client_context ?? "Paychex via ITX Corp"}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mx-auto mt-12 max-w-[760px]">
+        <div className="mx-auto max-w-[760px]">
           <Image
             src={ASSETS.heroBannerDashboard}
             alt="Benefits enrollment workflow and dashboard preview"
@@ -432,6 +400,38 @@ export default function BenefitsPage() {
             className="h-auto w-full"
             priority
           />
+        </div>
+
+        <div className="px-6 pt-12 text-center md:px-12 lg:px-[120px]">
+          <div className="mx-auto max-w-[820px]">
+            <p className="mb-3 font-inter text-[13px] uppercase tracking-[3px] text-[#5c7792]">
+              {caseStudy?.industry ?? "Case Study Redesign 2025"}
+            </p>
+            <h1 className="font-inter text-[40px] font-bold leading-[1.15] text-[#0e2951] md:text-[48px]">
+              {caseStudy?.title ?? "Enhancing Benefits Enrollment"}
+            </h1>
+            <p className="mx-auto mt-5 max-w-[680px] font-inter text-[16px] leading-[1.625em] text-[#5c7792]">
+              {caseStudy?.tagline ?? "Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%."}
+            </p>
+            <div className="mt-10 flex flex-col items-center gap-8 pt-8">
+              <div className="grid w-full gap-8 text-center md:grid-cols-[1fr_2fr_1fr] md:items-center">
+                <div>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Year</p>
+                  <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy?.year ?? 2024}</p>
+                </div>
+                <div>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Role</p>
+                  <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy?.role ?? "Sr. Product Designer"}</p>
+                </div>
+                <div>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Client</p>
+                  <p className="mt-1 text-[14px] font-medium text-[#0e2951]">
+                    {caseStudy?.client_context ?? "Paychex via ITX Corp"}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="mt-12 grid gap-6 text-center md:grid-cols-3">
