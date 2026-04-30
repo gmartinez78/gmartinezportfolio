@@ -582,17 +582,14 @@ export default function BenefitsPage() {
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
           {methodologySteps.map((step, i) => (
             <div key={i} className="flex flex-col gap-4">
-              <div
-                className="h-2 rounded-full"
-                style={{ backgroundColor: step.color }}
-              />
+          
               <div
                 className="rounded-2xl p-5 flex flex-col gap-2 flex-1"
                 style={{ backgroundColor: step.color + "33" }}
               >
                 <div
                   className="rounded-xl w-full"
-                  style={{ height: 80, backgroundColor: step.color }}
+                  style={{ height: 10, backgroundColor: step.color }}
                 />
                 <p className="text-[#3c3e3f] font-inter font-semibold text-[15px] mt-2">
                   {i + 1}. {step.label}
