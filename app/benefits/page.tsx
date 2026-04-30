@@ -382,7 +382,7 @@ export default function BenefitsPage() {
         </div>
         <div className="mt-5 h-px w-full bg-[#d7e8f7]" />
 
-        <div className="mt-12 flex flex-col items-center gap-10 pt-10">
+        <div className="flex flex-col items-center gap-10 pt-10">
           <div className="grid w-full gap-8 text-center md:grid-cols-[1fr_2fr_1fr] md:items-center">
             <div>
               <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Year</p>
