@@ -396,7 +396,7 @@ export default function BenefitsPage() {
 
       {/* ── Hero ── */}
       <section className="relative mx-auto max-w-[1200px] px-6 pt-16 pb-0 md:px-10 xl:px-20">
-        <div className="grid items-center gap-10 xl:grid-cols-[minmax(0,460px)_minmax(340px,420px)] xl:justify-between">
+        <div className="grid items-center gap-8 xl:grid-cols-[minmax(0,460px)_minmax(340px,420px)] xl:justify-center xl:gap-[128px]">
           <div className="-mx-2 xl:mx-0 xl:w-[460px]">
             <Image
               src={ASSETS.heroBannerDashboard}
