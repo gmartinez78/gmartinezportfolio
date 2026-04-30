@@ -351,7 +351,7 @@ export default function BenefitsPage() {
       ];
 
   return (
-    <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
+    <main className="bg-white text-[#3c3e3f] overflow-x-hidden">
       <SiteHeader active="Projects" />
 
       {!isLiveCaseStudy ? (
@@ -378,6 +378,7 @@ export default function BenefitsPage() {
         </>
       ) : (
         <>
+      <div className="bg-[#F0F7FF]">
       <div className="mx-auto max-w-[1200px] px-6 pt-6 lg:px-20">
         <div className="flex items-center gap-3 text-sm">
           <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
@@ -390,7 +391,7 @@ export default function BenefitsPage() {
       </div>
 
       {/* ── Hero ── */}
-      <section className="relative mx-auto max-w-[1200px] px-6 pt-16 pb-0 md:px-10 xl:px-20">
+      <section className="relative mx-auto max-w-[1200px] px-6 pt-16 pb-16 md:px-10 xl:px-20">
         <div className="mx-auto w-full max-w-[80%]">
           <Image
             src={ASSETS.heroBannerDashboard}
@@ -430,6 +431,7 @@ export default function BenefitsPage() {
                   </p>
                 </div>
               </div>
+              <div className="h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
             </div>
           </div>
         </div>
@@ -446,6 +448,7 @@ export default function BenefitsPage() {
           ))}
         </div>
       </section>
+      </div>
 
       {/* ── Overview ── */}
       <section className="px-6 py-20 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
