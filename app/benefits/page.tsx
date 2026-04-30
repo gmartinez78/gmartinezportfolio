@@ -487,16 +487,11 @@ export default function BenefitsPage() {
               Tools Used
             </p>
             <div className="h-[3px] w-full bg-[#4d87ae]/20 rounded-full mb-5" />
-            <ul className="space-y-1 mb-6">
+            <ul className="space-y-1">
               {toolsUsed.map((t) => (
                 <li key={t} className="text-[#5c7792] text-[16px] font-inter capitalize leading-[1.75]">{t}</li>
               ))}
             </ul>
-            <div className="flex items-center gap-3">
-              <Image src={ASSETS.figmaLogo} alt="Figma" width={20} height={30} className="object-contain" />
-              <Image src={ASSETS.jiraLogo} alt="Jira" width={30} height={30} className="object-contain rounded-md" />
-              <Image src={ASSETS.miroLogo} alt="Miro" width={30} height={30} className="object-contain rounded-md" />
-            </div>
           </div>
 
           {/* Timeline */}
