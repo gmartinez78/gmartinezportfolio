@@ -522,21 +522,18 @@ export default function BenefitsPage() {
             </p>
           </div>
 
-          <Card className="overflow-hidden">
-            <CardContent className="p-0">
-              {CHALLENGE_METRICS.map((metric, index) => (
-                <div
-                  key={metric.label}
-                  className={`px-7 py-7 ${index < CHALLENGE_METRICS.length - 1 ? "border-b border-[#d7e8f7]" : ""}`}
-                >
+          <div className="grid gap-4">
+            {CHALLENGE_METRICS.map((metric) => (
+              <Card key={metric.label} className="overflow-hidden">
+                <CardContent className="px-7 py-7">
                   <p className="text-[30px] font-bold leading-none text-[#0e2951]">{metric.value}</p>
-                  <p className="mt-3 max-w-[220px] text-[16px] leading-[1.625em] text-[#1183D0]">
+                  <p className="mt-3 max-w-[220px] text-[16px] leading-[1.625em] text-[#0e2951]">
                     {metric.label}
                   </p>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
