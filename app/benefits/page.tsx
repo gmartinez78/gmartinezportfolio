@@ -645,7 +645,6 @@ export default function BenefitsPage() {
               {strategyPoints.map((p, i) => (
                 <div key={i}>
                   <p className="font-inter text-[16px] leading-[1.625em] font-normal text-[#3c3e3f]">{p}</p>
-                  {i < strategyPoints.length - 1 && <Divider />}
                 </div>
               ))}
             </div>
