@@ -183,9 +183,9 @@ export default function PortfolioPage() {
         </div>
 
         {/* Social Proof Bar */}
-        <div className="-mx-4 border-y border-[#bcd2ff]/50 bg-[#F0F7FF] sm:-mx-6 lg:-mx-10">
+        <div className="-mx-4 sm:-mx-6 lg:-mx-10">
           <div className="flex min-h-[104px] flex-col items-start gap-5 px-6 py-6 md:flex-row md:items-center md:px-10 lg:px-20">
-            <div className="flex shrink-0 items-center md:h-full md:w-[280px] md:border-r md:border-[#00006e]/25 md:pr-10">
+            <div className="flex shrink-0 items-center md:h-full md:w-[280px] md:pr-10">
               <span className="text-[13px] font-semibold text-[#3c3e3f]">
                 {siteContent.home.trusted_by.label}
               </span>
