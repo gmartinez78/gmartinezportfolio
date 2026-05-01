@@ -741,7 +741,7 @@ export default function BenefitsPage() {
           </div>
         </div>
         <div className="border-t border-[#bcd2ff]/40 pt-8">
-          <p className="max-w-[900px] font-inter text-[16px] leading-[1.625em] text-[#5c7792]">
+          <p className="max-w-[900px] font-inter text-[14px] italic leading-[1.7] text-[#5c7792]">
             <strong className="font-semibold text-[#5c7792]">NDA notice:</strong> {caseStudy?.nda_notice ?? "Parts of this presentation — including some screens and project details — have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy."}
           </p>
         </div>
