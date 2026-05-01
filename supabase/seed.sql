@@ -33,7 +33,8 @@ values (
         { "name": "IBX", "logo": "/images/logos/ibx.png" },
         { "name": "Skill", "logo": "/images/logos/skill.png" },
         { "name": "Nayya", "logo": "/images/logos/nayya.png" },
-        { "name": "Paychex", "logo": "/images/logos/paychex.png" }
+        { "name": "Paychex", "logo": "/images/logos/paychex.png" },
+        { "name": "Paramount+", "logo": "/images/paramount-plus.svg" }
       ]
     },
     "certifications": [

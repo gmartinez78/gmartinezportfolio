@@ -113,12 +113,10 @@ const CHALLENGE_METRICS = [
 
 const ADDITIONAL_RESULT_SIGNALS = [
   { title: "Security incidents", value: "-35%", body: "Fewer unauthorized access incidents after centralizing role governance and access control." },
-  { title: "Access request processing time", value: "-78%", body: "Faster role assignment and access approvals compared with the previous support-heavy workflow." },
   { title: "User experience improvements", value: "4.6/5", body: "Positive internal feedback on ease of access, navigation, and role clarity inside the platform." },
   { title: "System performance impact", value: "<2%", body: "Negligible performance impact while expanding access control and user management capabilities." },
   { title: "Compliance and audit", value: "100%", body: "Audit-ready role structure and clearer permission ownership across supported user types." },
   { title: "Authentication success rate", value: "+18%", body: "Improved successful access outcomes after clarifying permissions and reducing friction in account setup." },
-  { title: "Authorization error rate", value: "-41%", body: "Lower rate of access-level mistakes, permission mismatches, and avoidable authorization issues." },
   { title: "Scalability and flexibility", value: "3x", body: "Greater support for additional users and role configurations without adding the same operational overhead." },
   { title: "Cost-benefit analysis", value: "-32%", body: "Lower support effort tied to manual account changes, access requests, and user administration tasks." },
   { title: "Security team feedback", value: "8.9/10", body: "Strong qualitative confidence from internal stakeholders in the updated access model and control patterns." },
@@ -299,7 +297,7 @@ function ProductPreview() {
                 : "Set up admin roles to determine what people can access and do in Flock."}
             </p>
           </div>
-          <div className="bg-[#46b275] text-[#0e2951] text-[10px] px-4 py-1.5 rounded font-inter">
+          <div className="bg-[#46b275] text-[#FFF] text-[10px] px-4 py-1.5 rounded font-inter">
             {activeTab === "user-accounts" ? "Add User" : "Create Role"}
           </div>
         </div>
@@ -875,38 +873,37 @@ export default function BenefitsPage() {
             />
           ))}
         </div>
-        <div className="mt-10 flex flex-col items-center gap-5">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
-            Tools
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {toolsUsed.map((tool) => (
-              <Badge key={tool} size="tag">
-                {tool}
-              </Badge>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── NDA Notice ── */}
-      <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <div className="mb-10 flex flex-col items-center gap-5">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
-            Tags
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {(caseStudy?.tags?.length ? caseStudy.tags : ["HR/Payroll SaaS", "UX Research", "IA", "Interaction Design", "Design Systems"]).map((tag) => (
-              <Badge key={tag} size="tag">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        </div>
-        <div className="border-t border-[#bcd2ff]/40 pt-8">
+        <div className="border-t border-[#bcd2ff]/40 pt-8 mt-10">
           <p className="mx-auto max-w-[900px] text-center font-inter text-[14px] italic leading-[1.7] text-[#5c7792]">
             <strong className="font-semibold text-[#5c7792]">NDA notice:</strong> {caseStudy?.nda_notice ?? "Parts of this presentation — including some screens and project details — have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy."}
           </p>
+        </div>
+        <div className="mt-10 grid gap-10 md:grid-cols-[1fr_auto_1fr] md:items-start">
+          <div className="flex flex-col items-center gap-5">
+            <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
+              Tools
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {toolsUsed.map((tool) => (
+                <Badge key={tool} size="tag">
+                  {tool}
+                </Badge>
+              ))}
+            </div>
+          </div>
+          <div className="hidden w-px self-stretch bg-[#d7e8f7] md:block" />
+          <div className="flex flex-col items-center gap-5">
+            <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
+              Tags
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {(caseStudy?.tags?.length ? caseStudy.tags : ["HR/Payroll SaaS", "UX Research", "IA", "Interaction Design", "Design Systems"]).map((tag) => (
+                <Badge key={tag} size="tag">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
