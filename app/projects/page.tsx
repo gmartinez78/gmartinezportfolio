@@ -88,12 +88,22 @@ export default function ProjectsPage() {
             {/* Preview */}
             <div
               className={`w-full md:w-80 shrink-0 h-60 md:h-auto flex items-center justify-center relative overflow-hidden ${i % 2 === 1 ? "md:order-2" : ""}`}
-              style={{ background: project.bg }}
+              style={project.slug !== "benefits-enrollment" ? { background: project.bg } : undefined}
             >
-              <div className="text-center">
-                <div className="text-5xl font-serif-display italic font-bold text-[#1183D0]">{project.stat}</div>
-                <div className="text-xs text-[#5c7792] mt-1 max-w-[120px] mx-auto leading-tight">{project.statLabel}</div>
-              </div>
+              {project.slug === "benefits-enrollment" ? (
+                <Image
+                  src="/images/benefits/enhancing-benefits-banner-v2.png"
+                  alt="Benefits enrollment preview"
+                  fill
+                  sizes="(min-width: 768px) 320px, 100vw"
+                  className="object-cover object-center"
+                />
+              ) : (
+                <div className="text-center">
+                  <div className="text-5xl font-serif-display italic font-bold text-[#1183D0]">{project.stat}</div>
+                  <div className="text-xs text-[#5c7792] mt-1 max-w-[120px] mx-auto leading-tight">{project.statLabel}</div>
+                </div>
+              )}
             </div>
 
             {/* Content */}
