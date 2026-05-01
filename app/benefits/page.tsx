@@ -33,7 +33,7 @@ const TEAM_MEMBERS = [
 ];
 
 const MY_ROLE = ["User Research", "UX/UI Design", "Product Thinking", "Narrative"];
-const TOOLS = ["Figma", "Jira", "Miro", "Webex", "Outlook", "Copilot"];
+const TOOLS = ["Figma", "Jira", "Miro", "Webex", "Outlook", "Copilot", "Hotjar"];
 
 const USER_PAIN_POINTS = [
   {
@@ -77,7 +77,7 @@ const DESIGN_PROCESS = [
   { label: "Define", color: "#f5e692", desc: "Problem framing & pain point mapping" },
   { label: "Ideate", color: "#d9b8ff", desc: "Flows, architecture & wireframing" },
   { label: "Prototype", color: "#68c7c1", desc: "Hi-fi screens & interactive prototypes" },
-  { label: "Test", color: "#d1f090", desc: "Testing & dev collaboration" },
+  { label: "Test", color: "#d1f090", desc: "Post-launch Hotjar analysis" },
 ];
 
 const RESULTS = [
@@ -117,7 +117,7 @@ const TASK_SUMMARY =
 const RESEARCH_DISCOVERY_ITEMS = [
   {
     title: "User Research",
-    body: "Interviewed 50+ HR administrators and employees to understand pain points, workflows, and unmet needs across the enrollment journey.",
+    body: "Spoke directly with the platform user to understand their pain points, day-to-day workflow, and where the experience was creating friction.",
     icon: ASSETS.userIcon,
   },
   {
@@ -150,6 +150,59 @@ function Divider() {
       className="w-full h-px"
       style={{ background: "linear-gradient(to right, rgba(17,131,208,0.4), rgba(9,67,106,0))" }}
     />
+  );
+}
+
+function ActionIcon({ title }: { title: string }) {
+  if (title === "User Research") {
+    return (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="1.9" aria-hidden="true">
+        <circle cx="9" cy="8" r="3.2" />
+        <path d="M4.5 18c.8-2.6 2.8-4 4.5-4s3.7 1.4 4.5 4" />
+        <path d="M16 10.5h4" />
+        <path d="M18 8.5v4" />
+      </svg>
+    );
+  }
+
+  if (title === "Pattern Alignment") {
+    return (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="1.9" aria-hidden="true">
+        <path d="M4 7h10" />
+        <path d="M10 17h10" />
+        <path d="m11 4 3 3-3 3" />
+        <path d="m13 14-3 3 3 3" />
+      </svg>
+    );
+  }
+
+  if (title === "Role Mapping") {
+    return (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="1.9" aria-hidden="true">
+        <rect x="3.5" y="4.5" width="7" height="6" rx="1.5" />
+        <rect x="13.5" y="4.5" width="7" height="6" rx="1.5" />
+        <rect x="8.5" y="13.5" width="7" height="6" rx="1.5" />
+        <path d="M7 10.5v2h10v-2" />
+      </svg>
+    );
+  }
+
+  if (title === "Flow Validation") {
+    return (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="1.9" aria-hidden="true">
+        <circle cx="12" cy="12" r="8" />
+        <path d="M12 7v5l3 2" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="1.9" aria-hidden="true">
+      <path d="M4 7h16" />
+      <path d="M4 12h10" />
+      <path d="M4 17h7" />
+      <circle cx="18" cy="12" r="2.5" />
+    </svg>
   );
 }
 
@@ -653,7 +706,7 @@ export default function BenefitsPage() {
             >
               <CardContent className="p-0">
                 <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-[14px] bg-[#eaf4fd] shadow-[0_10px_24px_rgba(17,131,208,0.08)]">
-                  <Image src={item.icon} alt="" width={20} height={20} className="h-5 w-5 object-contain opacity-85" />
+                  <ActionIcon title={item.title} />
                 </div>
                 <h3 className="text-[28px] font-normal leading-none text-[#1183D0]">
                   {item.title}
