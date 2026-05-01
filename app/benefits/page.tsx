@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
@@ -154,7 +155,8 @@ function Divider() {
 
 // ── User Management Table Preview ─────────────────────────────────────────────
 function ProductPreview() {
-  const rows = [
+  const [activeTab, setActiveTab] = useState<"user-accounts" | "roles-permissions">("user-accounts");
+  const userRows = [
     { name: "Hanks, Tom", email: "tomhanks@mail.com", role: "Benefits Admin", branch: "Company", signIn: "Sep 12, 2022", status: "Active" },
     { name: "Pons, Tamara", email: "tamarapons@mail.com", role: "Reporting & Form Admin", branch: "Company", signIn: "Invitation sent", status: "Invitation pending" },
     { name: "Laczko, Billie", email: "laczkobillie@mail.com", role: "Billing", branch: "Company", signIn: "Aug 24, 2022", status: "Active" },
@@ -163,6 +165,36 @@ function ProductPreview() {
     { name: "Chen, Mia", email: "miachen@mail.com", role: "Payroll Viewer", branch: "Company", signIn: "Jul 11, 2022", status: "Active" },
     { name: "Reyes, Mateo", email: "mateoreyes@mail.com", role: "Reporting Admin", branch: "Company", signIn: "Invitation sent", status: "Invitation pending" },
     { name: "Walker, Noa", email: "noawalker@mail.com", role: "Benefits Admin", branch: "Company", signIn: "Jun 30, 2022", status: "Active" },
+  ];
+  const roleRows = [
+    {
+      role: "Benefits Admin",
+      people: "15",
+      description: "Supports enrollment, benefits changes, reporting, and compliance testing.",
+      productOffering: "Vision",
+      serviceType: "Health",
+    },
+    {
+      role: "Billing",
+      people: "1",
+      description: "Prepares invoices, reviews billing details, and manages payment workflows.",
+      productOffering: "Dental",
+      serviceType: "Invoices",
+    },
+    {
+      role: "Reporting Admin",
+      people: "8",
+      description: "Creates reporting exports, reviews employee data, and monitors enrollment activity.",
+      productOffering: "Benefits",
+      serviceType: "Reports",
+    },
+    {
+      role: "Forms Manager",
+      people: "4",
+      description: "Manages forms, worker documents, and required enrollment submissions.",
+      productOffering: "Payroll",
+      serviceType: "Forms",
+    },
   ];
   return (
     <div className="w-full rounded-[24px] overflow-hidden border-2 border-[#1183D0]/20 shadow-[0_24px_64px_rgba(17,131,208,0.18)]">
@@ -175,56 +207,102 @@ function ProductPreview() {
       </div>
       {/* Tab bar */}
       <div className="bg-white px-10 pt-3 flex gap-6 border-b border-[#ccc]">
-        {["User Accounts", "Roles and Permissions", "Settings"].map((t, i) => (
-          <div key={t} className="flex flex-col gap-1.5 pb-0">
-            <span className={`text-[10px] font-inter ${i === 0 ? "text-black font-semibold" : "text-[#7f868f]"}`}>{t}</span>
-            <div className={`h-[2px] rounded ${i === 0 ? "bg-[#148ce6]" : "bg-transparent"}`} />
-          </div>
-        ))}
+        <button type="button" onClick={() => setActiveTab("user-accounts")} className="flex flex-col gap-1.5 pb-0 text-left">
+          <span className={`text-[10px] font-inter ${activeTab === "user-accounts" ? "font-semibold text-black" : "text-[#7f868f]"}`}>User Accounts</span>
+          <div className={`h-[2px] rounded ${activeTab === "user-accounts" ? "bg-[#148ce6]" : "bg-transparent"}`} />
+        </button>
+        <button type="button" onClick={() => setActiveTab("roles-permissions")} className="flex flex-col gap-1.5 pb-0 text-left">
+          <span className={`text-[10px] font-inter ${activeTab === "roles-permissions" ? "font-semibold text-black" : "text-[#7f868f]"}`}>Roles and Permissions</span>
+          <div className={`h-[2px] rounded ${activeTab === "roles-permissions" ? "bg-[#148ce6]" : "bg-transparent"}`} />
+        </button>
+        <div className="flex flex-col gap-1.5 pb-0">
+          <span className="text-[10px] font-inter text-[#7f868f]">Settings</span>
+          <div className="h-[2px] rounded bg-transparent" />
+        </div>
       </div>
       {/* Table */}
       <div className="bg-white px-6 py-4">
         <div className="mb-3 flex items-center justify-between">
           <div>
-            <h3 className="text-[16px] font-semibold text-[#262a2d]">User Accounts</h3>
+            <h3 className="text-[16px] font-semibold text-[#262a2d]">
+              {activeTab === "user-accounts" ? "User Accounts" : "Roles and Permissions"}
+            </h3>
             <p className="mt-1 text-[10px] text-[#303030] font-inter">
-              Manage platform access, account status, and assigned permission roles.
+              {activeTab === "user-accounts"
+                ? "Manage platform access, account status, and assigned permission roles."
+                : "Set up admin roles to determine what people can access and do in Flock."}
             </p>
           </div>
-          <div className="bg-[#46b275] text-[#0e2951] text-[10px] px-4 py-1.5 rounded font-inter">Add User</div>
+          <div className="bg-[#46b275] text-[#0e2951] text-[10px] px-4 py-1.5 rounded font-inter">
+            {activeTab === "user-accounts" ? "Add User" : "Create Role"}
+          </div>
         </div>
         <div className="mb-4 border border-[#d8d8d8] rounded px-3 py-1.5 text-[10px] text-[#303030] font-inter">
-          Search by name, role, or branch
+          {activeTab === "user-accounts" ? "Search by name, role, or branch" : "Search by role"}
         </div>
         <table className="w-full text-left text-[10px] font-inter">
-          <thead>
-            <tr className="bg-[#f7f9fb] text-[#000] uppercase text-[9px] font-semibold tracking-wide">
-              {["Name", "Role", "Branch Location", "Sign In", "Status", "Actions"].map((h) => (
-                <th key={h} className="px-3 py-2">{h}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((r, i) => (
-              <tr key={i} className="border-t border-[#dbdde0]">
-                <td className="px-3 py-2">
-                  <p className="font-bold text-[#262a2d]">{r.name}</p>
-                  <p className="text-[#7f868f]">{r.email}</p>
-                </td>
-                <td className="px-3 py-2 text-[#262a2d]">{r.role}</td>
-                <td className="px-3 py-2 text-[#262a2d]">{r.branch}</td>
-                <td className="px-3 py-2 text-[#262a2d]">{r.signIn}</td>
-                <td className="px-3 py-2">
-                  <span className={`rounded-full px-2 py-0.5 text-[9px] font-semibold ${
-                    r.status === "Active" ? "bg-[#e6f7ee] text-[#46b275]" : "bg-[#fff3e0] text-[#e67e00]"
-                  }`}>
-                    {r.status}
-                  </span>
-                </td>
-                <td className="px-3 py-2 text-[#7f868f]">···</td>
-              </tr>
-            ))}
-          </tbody>
+          {activeTab === "user-accounts" ? (
+            <>
+              <thead>
+                <tr className="bg-[#f7f9fb] text-[#000] uppercase text-[9px] font-semibold tracking-wide">
+                  {["Name", "Role", "Branch Location", "Sign In", "Status", "Actions"].map((h) => (
+                    <th key={h} className="px-3 py-2">{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {userRows.map((r, i) => (
+                  <tr key={i} className="border-t border-[#dbdde0]">
+                    <td className="px-3 py-2">
+                      <p className="font-bold text-[#262a2d]">{r.name}</p>
+                      <p className="text-[#7f868f]">{r.email}</p>
+                    </td>
+                    <td className="px-3 py-2 text-[#262a2d]">{r.role}</td>
+                    <td className="px-3 py-2 text-[#262a2d]">{r.branch}</td>
+                    <td className="px-3 py-2 text-[#262a2d]">{r.signIn}</td>
+                    <td className="px-3 py-2">
+                      <span className={`rounded-full px-2 py-0.5 text-[9px] font-semibold ${
+                        r.status === "Active" ? "bg-[#e6f7ee] text-[#46b275]" : "bg-[#fff3e0] text-[#e67e00]"
+                      }`}>
+                        {r.status}
+                      </span>
+                    </td>
+                    <td className="px-3 py-2 text-[#7f868f]">···</td>
+                  </tr>
+                ))}
+              </tbody>
+            </>
+          ) : (
+            <>
+              <thead>
+                <tr className="bg-[#f7f9fb] text-[#000] uppercase text-[9px] font-semibold tracking-wide">
+                  {["Roles", "People", "Description", "Product Offering", "Service Type", "Actions"].map((h) => (
+                    <th key={h} className="px-3 py-2">{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {roleRows.map((r, i) => (
+                  <tr key={i} className="border-t border-[#dbdde0]">
+                    <td className="px-3 py-2 font-bold text-[#148ce6] underline underline-offset-2">{r.role}</td>
+                    <td className="px-3 py-2 text-[#262a2d]">{r.people}</td>
+                    <td className="max-w-[220px] px-3 py-2 text-[#262a2d]">{r.description}</td>
+                    <td className="px-3 py-2">
+                      <span className="rounded bg-[#586072] px-2 py-0.5 text-[9px] font-semibold uppercase text-white">
+                        {r.productOffering}
+                      </span>
+                    </td>
+                    <td className="px-3 py-2">
+                      <span className="rounded bg-[#148ce6] px-2 py-0.5 text-[9px] font-semibold uppercase text-white">
+                        {r.serviceType}
+                      </span>
+                    </td>
+                    <td className="px-3 py-2 text-[#7f868f]">···</td>
+                  </tr>
+                ))}
+              </tbody>
+            </>
+          )}
         </table>
       </div>
     </div>
@@ -636,7 +714,7 @@ export default function BenefitsPage() {
             <div className="w-full overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.12)]">
               <iframe
                 title="Design Strategy Figma Embed"
-                src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FsCK6Jts4ID7bDc5dCmTgsY%2FAE---porft%3Fnode-id%3D40000160-40639%26m%3Ddev%26t%3DNP7TGuZDFhnLT48c-1"
+                src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FsCK6Jts4ID7bDc5dCmTgsY%2FAE---porft%3Fnode-id%3D223-1186%26m%3Ddev%26t%3DNP7TGuZDFhnLT48c-1"
                 className="h-[520px] w-full"
                 allowFullScreen
               />
@@ -741,7 +819,7 @@ export default function BenefitsPage() {
           </div>
         </div>
         <div className="border-t border-[#bcd2ff]/40 pt-8">
-          <p className="max-w-[900px] font-inter text-[14px] italic leading-[1.7] text-[#5c7792]">
+          <p className="mx-auto max-w-[900px] text-center font-inter text-[14px] italic leading-[1.7] text-[#5c7792]">
             <strong className="font-semibold text-[#5c7792]">NDA notice:</strong> {caseStudy?.nda_notice ?? "Parts of this presentation — including some screens and project details — have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy."}
           </p>
         </div>

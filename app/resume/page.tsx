@@ -463,7 +463,7 @@ export default function ResumePage() {
 
       {/* Experience */}
       <section className="max-w-[1200px] mx-auto px-6 py-10">
-        <SectionHeading eyebrow="Career" title="Experience" className="mb-8" />
+        <SectionHeading eyebrow="Career" title="Experience" centered className="mb-8" />
         <div className="flex flex-col gap-5">
           {experience.map((job) => (
             <Card key={job.role} className="p-0 py-0">
