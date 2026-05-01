@@ -100,8 +100,8 @@ const REFLECTIONS = [
 ];
 
 const CHALLENGE_POINTS = [
-  "Manual workarounds wasted users' time and increased the risk of costly errors.",
   "Internal user couldn't change users' roles and permissions on their own, which increased support tickets and development work.",
+  "Manual workarounds wasted users' time and increased the risk of costly errors.",
   "Each unsupported enrollment request took 5-7 business days and was multiplied across hundreds of clients.",
 ];
 
@@ -835,7 +835,10 @@ export default function BenefitsPage() {
 
       {/* ── Product Deep Dive ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading eyebrow="Solution" title="The Platform" centered className="mb-10" />
+        <SectionHeading eyebrow="Solution" title="The Platform" centered className="mb-4" />
+        <p className="text-center text-[14px] text-[#5c7792] italic mb-8">
+          The dashboard below is an interactive example — click the tabs to explore the User Accounts and Roles &amp; Permissions views.
+        </p>
         <ProductPreview />
       </section>
 
