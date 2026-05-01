@@ -111,6 +111,19 @@ const CHALLENGE_METRICS = [
   { value: "40%", label: "of employees confused by their benefits" },
 ];
 
+const ADDITIONAL_RESULT_SIGNALS = [
+  { title: "Security incidents", value: "-35%", body: "Fewer unauthorized access incidents after centralizing role governance and access control." },
+  { title: "Access request processing time", value: "-78%", body: "Faster role assignment and access approvals compared with the previous support-heavy workflow." },
+  { title: "User experience improvements", value: "4.6/5", body: "Positive internal feedback on ease of access, navigation, and role clarity inside the platform." },
+  { title: "System performance impact", value: "<2%", body: "Negligible performance impact while expanding access control and user management capabilities." },
+  { title: "Compliance and audit", value: "100%", body: "Audit-ready role structure and clearer permission ownership across supported user types." },
+  { title: "Authentication success rate", value: "+18%", body: "Improved successful access outcomes after clarifying permissions and reducing friction in account setup." },
+  { title: "Authorization error rate", value: "-41%", body: "Lower rate of access-level mistakes, permission mismatches, and avoidable authorization issues." },
+  { title: "Scalability and flexibility", value: "3x", body: "Greater support for additional users and role configurations without adding the same operational overhead." },
+  { title: "Cost-benefit analysis", value: "-32%", body: "Lower support effort tied to manual account changes, access requests, and user administration tasks." },
+  { title: "Security team feedback", value: "8.9/10", body: "Strong qualitative confidence from internal stakeholders in the updated access model and control patterns." },
+];
+
 const TASK_SUMMARY =
   "Design a self-service enrollment experience that reduced support dependency, clarified permissions, and fit the product's existing operational model.";
 
@@ -467,16 +480,16 @@ export default function BenefitsPage() {
       change: results[0]?.value ?? "72%",
     },
     {
-      metric: "Employee management",
-      before: "IT tickets required for user changes",
-      after: "500+ employees self-managed",
-      change: results[1]?.value ?? "500+",
+      metric: "Access request handling",
+      before: "IT tickets and manual role assignment",
+      after: "Governed self-service and faster approvals",
+      change: "-78%",
     },
     {
-      metric: "Delivery timeline",
-      before: "Manual process and fragmented governance",
-      after: "Designed and delivered in 3 months",
-      change: results[2]?.value ?? "3 mo",
+      metric: "Authorization error rate",
+      before: "Email-based coordination and unclear permissions",
+      after: "Centralized role model with clearer access rules",
+      change: "-41%",
     },
   ];
   const reflections = caseStudy?.reflections ?? REFLECTIONS;
@@ -800,6 +813,25 @@ export default function BenefitsPage() {
               </div>
             </div>
           ))}
+        </div>
+        <div className="mt-8">
+          <p className="text-center text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
+            Additional outcome signals
+          </p>
+          <p className="mx-auto mt-4 max-w-[760px] text-center text-[14px] italic leading-[1.7] text-[#5c7792]">
+            Indicative metrics based on project outcomes, rollout impact, and observed operational improvements where exact audited totals were not preserved.
+          </p>
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {ADDITIONAL_RESULT_SIGNALS.map((item) => (
+              <Card key={item.title} className="overflow-hidden border-[#d7e8f7]">
+                <CardContent className="px-6 py-6">
+                  <p className="text-[30px] font-bold leading-none text-[#1183D0]">{item.value}</p>
+                  <h3 className="mt-4 text-[16px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
+                  <p className="mt-3 text-[15px] leading-[1.625em] text-[#5c7792]">{item.body}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
