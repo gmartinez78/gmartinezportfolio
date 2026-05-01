@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
+import { TypewriterBanner } from "./components/typewriter-banner";
 import { Badge } from "./components/ui/badge";
 import { Button } from "./components/ui/button";
 import { SectionHeading } from "./components/ui/section-heading";
@@ -124,15 +125,7 @@ export default function PortfolioPage() {
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,20,35,0.92)_0%,rgba(8,20,35,0.72)_48%,rgba(8,20,35,0.3)_100%)]" />
           <div className="relative grid min-h-[440px] gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
             <div className="flex max-w-[760px] flex-col justify-center">
-              <p className="mb-5 text-sm font-semibold uppercase tracking-[0.32em] text-[#7CB8E8]">
-                Product Designer
-              </p>
-              <h1 className="text-[44px] font-semibold leading-[1.05] text-white sm:text-[64px] lg:text-[82px]">
-                {siteContent.home.hero.greeting}
-              </h1>
-              <p className="mt-8 max-w-[660px] text-xl font-semibold leading-[1.35] text-white sm:text-2xl">
-                {siteContent.home.hero.tagline}
-              </p>
+              <TypewriterBanner />
               <div className="mt-10 flex flex-wrap gap-3">
                 {methodologyChips.map((tag) => (
                   <Badge
@@ -161,13 +154,13 @@ export default function PortfolioPage() {
               </div>
             </div>
 
-            <aside className="flex flex-col items-start gap-4 rounded-[22px] border border-white/20 bg-white/12 p-5 text-white backdrop-blur-md lg:ml-auto lg:w-[260px]">
+            <aside className="flex flex-col items-start gap-4 p-5 text-white lg:ml-auto lg:w-[260px]">
               <span className="text-xs font-semibold uppercase tracking-[0.28em] text-white/70">
                 Certified by
               </span>
               <div className="flex items-center gap-4">
                 {certifications.slice(0, 2).map((item) => (
-                  <div key={item.name} className="rounded-2xl bg-white/95 p-2 transition-opacity hover:opacity-85">
+                  <div key={item.name} className="p-2 transition-opacity hover:opacity-85">
                     <Image
                       src={item.logo}
                       alt={item.name}

@@ -12,8 +12,23 @@
   }
 }
 
+@keyframes typewriter-cursor-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-\[logo-marquee_22s_linear_infinite\] {
+    animation: none;
+  }
+
+  .animate-\[typewriter-cursor-blink_0\.75s_step-end_infinite\] {
     animation: none;
   }
 }
