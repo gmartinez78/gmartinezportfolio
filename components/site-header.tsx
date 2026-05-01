@@ -38,26 +38,14 @@ const SOCIAL_LINKS = [
 
 export function LogoMark({ className = "" }: { className?: string }) {
   return (
-    <svg
+    <img
+      src={withBasePath("/images/logo-gj.svg")}
+      alt=""
+      aria-hidden="true"
       className={className}
       width="44"
       height="54"
-      viewBox="0 0 154 216"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M118 18c0-10 8-18 18-18s18 8 18 18v116c0 47-29 82-77 82-33 0-57-14-65-40-4-11 4-23 16-25 10-2 18 3 23 13 5 10 13 15 27 15 25 0 40-17 40-46V18Z"
-        fill="#0FB5BE"
-      />
-      <path
-        d="M66 122c36 0 65-29 65-65S102 0 66 0 0 29 0 65s30 57 66 57Zm0-37c-15 0-28-12-28-28s13-28 28-28 28 12 28 28-13 28-28 28Z"
-        fill="#F01978"
-      />
-      <path d="M118 14c-11 11-18 26-18 43v65h18c8 0 14-6 14-14V29c0-6-6-11-14-15Z" fill="#09236D" />
-      <rect x="76" y="186" width="62" height="30" rx="15" fill="#4B367E" />
-    </svg>
+    />
   );
 }
 

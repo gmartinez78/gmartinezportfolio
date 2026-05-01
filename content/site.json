@@ -23,7 +23,7 @@
       ]
     },
     "trusted_by": {
-      "label": "Trusted by industry leaders",
+      "label": "Collaborated with",
       "clients": [
         { "name": "IBX", "logo": "/images/logos/ibx.png" },
         { "name": "Skill", "logo": "/images/logos/skill.png" },
@@ -145,6 +145,21 @@
           "Created marketing assets including HTML/CSS emails, brochures, and campaign materials."
         ],
         "tags": ["Nonprofits", "B2B", "B2C", "Accessibility", "Fundraising"]
+      },
+      {
+        "title": "Freelance UX / UI Designer / Graphic Designer",
+        "company": "Multiple clients | Web and social media",
+        "client": "",
+        "period": "Feb. 2014 – Feb. 2017",
+        "location": "LATAM, Spain, USA (Remote)",
+        "bullets": [
+          "Delivered end-to-end UX/UI design for early-stage products, e-commerce platforms, and marketplaces across multiple industries.",
+          "Designed and launched brand identities and digital experiences from 0→1, including websites, product interfaces, and design systems.",
+          "Improved user engagement and conversion through optimized user flows, visual design, and marketing assets.",
+          "Contributed to growth initiatives, including social campaigns, landing pages, and paid acquisition assets (Google Ads, email, social media).",
+          "Designed and developed responsive interfaces using HTML/CSS, ensuring consistency across platforms."
+        ],
+        "tags": ["Freelance", "UX/UI Design", "Graphic Design", "E-commerce", "Social Media", "HTML/CSS"]
       }
     ],
     "skills": {

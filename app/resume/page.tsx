@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
@@ -96,92 +97,13 @@ const EXPERIENCE: ExperienceEntry[] = [
     period: "Feb. 2014 – Feb. 2017",
     location: "LATAM, Spain, USA (Remote)",
     bullets: [
-      {
-        heading: "Resoluto C.A. - Notable Projects: Social media campaigning — UX/UI design for Tech / Full-service Tech company, Venezuela market — B2C product ecosystem",
-        items: [
-          "Developed engaging social media campaigns that enhanced brand visibility.",
-          "Created wireframes and prototypes for innovative projects, ensuring user-centric design.",
-          "Redesigned outdated websites to improve user experience and modernize aesthetics.",
-          "Designed a variety of marketing materials, including logos, business cards, and brochures.",
-        ],
-      },
-      {
-        heading: "Ultimate Design Solutions - Notable Projects: Multi-client branding & digital design — UX/UI / Graphic Design for Full-service Design Agency — USA market — B2C product ecosystem",
-        items: [
-          "Designed wireframes and mockups for various projects, enhancing user experience and visual appeal.",
-          "Developed new logos and branding materials, including business cards, banners, and posters, to strengthen brand identity.",
-          "Improved social media posts and campaigns, increasing engagement and visibility for clients.",
-        ],
-      },
-      {
-        heading: "Belua Vzla — UX/UI / Graphic Design for Fashion / Lifestyle brand — Venezuela & Spain market — B2C product ecosystem",
-        items: [
-          "Designed wireframes and mockups for new projects, enhancing user experience and visual appeal.",
-          "Improved social media posts and campaigns, increasing brand visibility and audience engagement.",
-          "Developed new logos and branding materials to strengthen brand identity and market positioning.",
-          "Created business cards, banners, and posters to support marketing and promotional efforts.",
-          "Updated e-commerce design to improve the online shopping experience and drive conversions.",
-          "Designed large-format advertising materials (tarpaulins/ads) to boost offline brand visibility.",
-        ],
-      },
-      {
-        heading: "La Bodega — UX/UI / Graphic Design for Retail — Ecuador market — B2C product ecosystem",
-        items: [
-          "Edited and optimized product visuals for e-commerce, ensuring compelling and consistent presentation.",
-          "Updated website banners to reflect current promotions and maintain brand consistency.",
-          "Improved social media posts and campaigns, increasing brand visibility and customer engagement.",
-          "Created ads using Google Ads to drive traffic and boost online sales.",
-          "Coded HTML/CSS for websites and digital projects independently.",
-        ],
-      },
-      {
-        heading: "Delicious Frozen — UX/UI / Graphic Design for Restaurant / Food chain — Colombia market — B2C product ecosystem",
-        items: [
-          "Built the new brand from scratch, establishing a strong and recognizable visual identity.",
-          "Researched brands within the industry niche to inform strategic design decisions.",
-          "Created a brand logo & tagline, including logo sizing and placement, color palette, typography, iconography, and photography/image style.",
-          "Formed the brand voice to ensure consistent and authentic communication across all touchpoints.",
-        ],
-      },
-      {
-        heading: "Sportive — UX/UI / Graphic Design for Sports / E-commerce brand — Spain market — B2C product ecosystem",
-        items: [
-          "Updated website banners to support campaigns and maintain a fresh, engaging digital storefront.",
-          "Improved social media posts and campaigns to boost brand visibility and community engagement.",
-          "Designed social media strategy to align content with brand goals and audience growth.",
-          "Edited and optimized product visuals for e-commerce, ensuring a consistent and compelling shopping experience.",
-        ],
-      },
-      {
-        heading: "Shoptana — UX/UI / Graphic Design for Online Marketplace — Ecuador market — B2C product ecosystem",
-        items: [
-          "Updated website banners to reflect current offers and maintain a cohesive visual identity.",
-          "Improved social media posts and campaigns, increasing platform visibility and user engagement.",
-          "Edited and optimized product listings and visuals to enhance the online shopping experience.",
-        ],
-      },
-      {
-        heading: "Tivia Store — Web / UX Design for Artisanal E-commerce platform — Venezuela market — B2C product ecosystem",
-        items: [
-          "Built the new brand from scratch, defining a visual identity that reflected the artisanal and local essence of the business.",
-          "Researched brands within the industry niche to inform strategic and differentiated design decisions.",
-          "Created a brand logo & tagline, including logo sizing and placement, color palette, typography, iconography, and photography/image style.",
-          "Formed the brand voice to ensure authentic and consistent communication across all touchpoints.",
-          "Developed wireframes and prototypes to guide the design of the new website.",
-          "Designed the new website to deliver an intuitive and visually engaging user experience.",
-        ],
-      },
-      {
-        heading: "Pro Ideas Web - Notable Projects: Multi-client digital projects — UX/UI / Graphic Design for Full-service Digital Agency — Mexico market — B2B product ecosystem",
-        items: [
-          "Updated website banners to support ongoing client campaigns and ensure visual consistency.",
-          "Improved social media posts and campaigns, driving engagement and increasing brand awareness for clients.",
-          "Designed new social media strategies aligned with each client's business goals and target audience.",
-          "Edited and optimized product visuals for e-commerce to enhance online performance and conversion.",
-        ],
-      },
+      "Delivered end-to-end UX/UI design for early-stage products, e-commerce platforms, and marketplaces across multiple industries.",
+      "Designed and launched brand identities and digital experiences from 0→1, including websites, product interfaces, and design systems.",
+      "Improved user engagement and conversion through optimized user flows, visual design, and marketing assets.",
+      "Contributed to growth initiatives, including social campaigns, landing pages, and paid acquisition assets (Google Ads, email, social media).",
+      "Designed and developed responsive interfaces using HTML/CSS, ensuring consistency across platforms.",
     ],
-    tags: ["Freelance", "Branding", "E-commerce", "Social Media", "HTML/CSS"],
+    tags: ["Freelance", "UX/UI Design", "Graphic Design", "E-commerce", "Social Media", "HTML/CSS"],
   },
 ];
 
@@ -369,8 +291,9 @@ const FEATURED_CREDENTIALS = [
     year: "2024",
   },
   {
-    type: "icon" as const,
-    icon: "cap",
+    type: "image" as const,
+    image: withBasePath("/images/coursera.svg"),
+    alt: "Coursera",
     title: "User Interface Design",
     subtitle: "University of Minnesota - COURSERA",
     description:
@@ -378,8 +301,9 @@ const FEATURED_CREDENTIALS = [
     year: "2018",
   },
   {
-    type: "icon" as const,
-    icon: "code",
+    type: "image" as const,
+    image: withBasePath("/images/coderhouse.jpeg"),
+    alt: "Coderhouse",
     title: "UX / UI Course",
     subtitle: "Coderhouse",
     description:
@@ -393,6 +317,7 @@ function Tag({ label }: { label: string }) {
 }
 
 export default function ResumePage() {
+  const [collapsedSkillGroups, setCollapsedSkillGroups] = useState<Record<string, boolean>>({});
   const { siteContent } = usePublicSiteContent();
   const resume = siteContent.resume;
   const experience = resume.experience.length
@@ -434,6 +359,13 @@ export default function ResumePage() {
       }))
     : FEATURED_CREDENTIALS;
 
+  function toggleSkillGroup(category: string) {
+    setCollapsedSkillGroups((current) => ({
+      ...current,
+      [category]: !current[category],
+    }));
+  }
+
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden min-h-screen">
       <SiteHeader active="Resume" />
@@ -460,9 +392,6 @@ export default function ResumePage() {
         <div className="relative overflow-hidden px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
           <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
             <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#0e2951]">Resume</span>
-            <div className="mt-8 flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-[#1183D0] to-[#0e2951] text-4xl font-serif-display italic font-bold text-white shadow-[0_18px_45px_rgba(17,131,208,0.22)] ring-8 ring-white/70">
-              G
-            </div>
             <h1 className="mt-8 text-5xl font-serif-display italic leading-[0.95] text-[#0e2951] sm:text-6xl lg:text-7xl">
               {resume.name}
             </h1>
@@ -595,16 +524,39 @@ export default function ResumePage() {
               <div className="mt-8 flex flex-col gap-8">
                 {skills.map((group) => (
                   <div key={group.category}>
-                    <h3 className="text-[15px] font-semibold text-[#1f2f3d]">
-                      {group.category}
-                    </h3>
-                    <div className="mt-4 flex flex-wrap gap-3">
-                      {group.items.map((item) => (
-                        <Badge key={item} size="tag">
-                          {item}
-                        </Badge>
-                      ))}
-                    </div>
+                    <button
+                      type="button"
+                      onClick={() => toggleSkillGroup(group.category)}
+                      className="flex w-full items-center justify-between gap-4 text-left"
+                      aria-expanded={!collapsedSkillGroups[group.category]}
+                    >
+                      <h3 className="text-[15px] font-semibold text-[#1f2f3d]">
+                        {group.category}
+                      </h3>
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        className={`shrink-0 text-[#1183D0] transition-transform ${
+                          collapsedSkillGroups[group.category] ? "-rotate-90" : "rotate-0"
+                        }`}
+                        aria-hidden="true"
+                      >
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
+                    </button>
+                    {!collapsedSkillGroups[group.category] ? (
+                      <div className="mt-4 flex flex-wrap gap-3">
+                        {group.items.map((item) => (
+                          <Badge key={item} size="tag">
+                            {item}
+                          </Badge>
+                        ))}
+                      </div>
+                    ) : null}
                   </div>
                 ))}
               </div>
@@ -616,7 +568,7 @@ export default function ResumePage() {
                 {education.map((edu) => (
                   <Card key={edu.degree} className="p-0 py-0">
                     <CardContent className="px-6 py-6">
-                    <Badge size="lg">
+                    <Badge size="tag">
                       {edu.year}
                     </Badge>
                     <h3 className="mt-4 text-[18px] font-semibold text-[#111827]">
@@ -674,7 +626,7 @@ export default function ResumePage() {
               {certifications.map((item) => (
                 <Card key={`${item.year}-${item.title}`} className="bg-[#f7fbff] p-0 py-0">
                   <CardContent className="p-6">
-                  <Badge size="lg">
+                  <Badge size="tag">
                     {item.year}
                   </Badge>
                   <h3 className="mt-4 text-[18px] font-semibold text-[#0e2951]">{item.title}</h3>
@@ -709,16 +661,31 @@ export default function ResumePage() {
               return (
               <CardWrapper key={credential.title}>
                 {credential.type === "image" ? (
-                  <Image
-                    src={credential.image!}
-                    alt={credential.alt!}
-                    width={92}
-                    height={92}
-                    className="mx-auto h-auto w-[72px] sm:w-[92px]"
-                  />
+                  credential.image === withBasePath("/images/coursera.svg") ||
+                  credential.image === withBasePath("/images/coderhouse.jpeg") ? (
+                    <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#e7f1fd]">
+                      <Image
+                        src={credential.image}
+                        alt={credential.alt!}
+                        width={54}
+                        height={54}
+                        className={`h-[54px] w-[54px] object-contain ${
+                          credential.image === withBasePath("/images/coderhouse.jpeg") ? "mix-blend-multiply" : ""
+                        }`}
+                      />
+                    </div>
+                  ) : (
+                    <Image
+                      src={credential.image!}
+                      alt={credential.alt!}
+                      width={92}
+                      height={92}
+                      className="mx-auto h-auto w-[72px] sm:w-[92px]"
+                    />
+                  )
                 ) : (
                   <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#e7f1fd]">
-                    {credential.icon === "cap" ? (
+                    {"icon" in credential && credential.icon === "cap" ? (
                       <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="1.8" aria-hidden="true">
                         <path d="m2 9 10-5 10 5-10 5Z" />
                         <path d="M6 11.5v4.2c0 1.2 2.7 2.8 6 2.8s6-1.6 6-2.8v-4.2" />
@@ -736,7 +703,7 @@ export default function ResumePage() {
                 <p className="mx-auto mt-4 max-w-[430px] text-[15px] leading-relaxed text-[#5c7792]">
                   {credential.description}
                 </p>
-                <Badge className="mt-6" size="lg">
+                <Badge className="mt-6" size="tag">
                   {credential.year}
                 </Badge>
               </CardWrapper>

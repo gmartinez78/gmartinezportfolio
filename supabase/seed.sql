@@ -28,7 +28,7 @@ values (
       ]
     },
     "trusted_by": {
-      "label": "Trusted by industry leaders",
+      "label": "Collaborated with",
       "clients": [
         { "name": "IBX", "logo": "/images/logos/ibx.png" },
         { "name": "Skill", "logo": "/images/logos/skill.png" },

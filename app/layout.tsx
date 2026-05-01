@@ -5,6 +5,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Greddys Martinez – Portfolio",
   description: "Senior Product Designer crafting thoughtful digital experiences.",
+  icons: {
+    icon: "/images/logo-gj.svg",
+  },
 };
 
 export default function RootLayout({

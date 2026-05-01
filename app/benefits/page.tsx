@@ -72,11 +72,11 @@ const STRATEGY_POINTS = [
 ];
 
 const DESIGN_PROCESS = [
-  { label: "Empathize", color: "#87d4ac", desc: "User interviews & stakeholder sessions" },
+  { label: "Empathize", color: "#87d4ac", desc: "Stakeholder sessions" },
   { label: "Define", color: "#f5e692", desc: "Problem framing & pain point mapping" },
   { label: "Ideate", color: "#d9b8ff", desc: "Flows, architecture & wireframing" },
   { label: "Prototype", color: "#68c7c1", desc: "Hi-fi screens & interactive prototypes" },
-  { label: "Test", color: "#d1f090", desc: "Usability testing & dev collaboration" },
+  { label: "Test", color: "#d1f090", desc: "Testing & dev collaboration" },
 ];
 
 const RESULTS = [
@@ -155,10 +155,14 @@ function Divider() {
 // ── User Management Table Preview ─────────────────────────────────────────────
 function ProductPreview() {
   const rows = [
-    { name: "Hanks, Tom", email: "tomhanks@mail.com", role: "Billing", status: "Active" },
-    { name: "Pons, Tamara", email: "tamaraponss@mail.com", role: "Reporting & Form Admin", status: "Invitation pending" },
-    { name: "Laczko, Billie", email: "laczkobillie@mail.com", role: "Billing", status: "Active" },
-    { name: "Davila, Ryan", email: "davilaryan@mail.com", role: "Billing", status: "Active" },
+    { name: "Hanks, Tom", email: "tomhanks@mail.com", role: "Benefits Admin", branch: "Company", signIn: "Sep 12, 2022", status: "Active" },
+    { name: "Pons, Tamara", email: "tamarapons@mail.com", role: "Reporting & Form Admin", branch: "Company", signIn: "Invitation sent", status: "Invitation pending" },
+    { name: "Laczko, Billie", email: "laczkobillie@mail.com", role: "Billing", branch: "Company", signIn: "Aug 24, 2022", status: "Active" },
+    { name: "Davila, Ryan", email: "davilaryan@mail.com", role: "Benefits Admin", branch: "Company", signIn: "Aug 19, 2022", status: "Active" },
+    { name: "Smith, Ava", email: "avasmith@mail.com", role: "Forms Manager", branch: "Company", signIn: "Jul 28, 2022", status: "Active" },
+    { name: "Chen, Mia", email: "miachen@mail.com", role: "Payroll Viewer", branch: "Company", signIn: "Jul 11, 2022", status: "Active" },
+    { name: "Reyes, Mateo", email: "mateoreyes@mail.com", role: "Reporting Admin", branch: "Company", signIn: "Invitation sent", status: "Invitation pending" },
+    { name: "Walker, Noa", email: "noawalker@mail.com", role: "Benefits Admin", branch: "Company", signIn: "Jun 30, 2022", status: "Active" },
   ];
   return (
     <div className="w-full rounded-[24px] overflow-hidden border-2 border-[#1183D0]/20 shadow-[0_24px_64px_rgba(17,131,208,0.18)]">
@@ -171,7 +175,7 @@ function ProductPreview() {
       </div>
       {/* Tab bar */}
       <div className="bg-white px-10 pt-3 flex gap-6 border-b border-[#ccc]">
-        {["UserAccounts", "Roles and Permissions", "Settings"].map((t, i) => (
+        {["User Accounts", "Roles and Permissions", "Settings"].map((t, i) => (
           <div key={t} className="flex flex-col gap-1.5 pb-0">
             <span className={`text-[10px] font-inter ${i === 0 ? "text-black font-semibold" : "text-[#7f868f]"}`}>{t}</span>
             <div className={`h-[2px] rounded ${i === 0 ? "bg-[#148ce6]" : "bg-transparent"}`} />
@@ -181,10 +185,16 @@ function ProductPreview() {
       {/* Table */}
       <div className="bg-white px-6 py-4">
         <div className="mb-3 flex items-center justify-between">
-          <div className="border border-[#d8d8d8] rounded px-3 py-1.5 text-[10px] text-[#303030] font-inter w-64">
-            Search by name, role, or branch
+          <div>
+            <h3 className="text-[16px] font-semibold text-[#262a2d]">User Accounts</h3>
+            <p className="mt-1 text-[10px] text-[#303030] font-inter">
+              Manage platform access, account status, and assigned permission roles.
+            </p>
           </div>
           <div className="bg-[#46b275] text-[#0e2951] text-[10px] px-4 py-1.5 rounded font-inter">Add User</div>
+        </div>
+        <div className="mb-4 border border-[#d8d8d8] rounded px-3 py-1.5 text-[10px] text-[#303030] font-inter">
+          Search by name, role, or branch
         </div>
         <table className="w-full text-left text-[10px] font-inter">
           <thead>
@@ -202,10 +212,12 @@ function ProductPreview() {
                   <p className="text-[#7f868f]">{r.email}</p>
                 </td>
                 <td className="px-3 py-2 text-[#262a2d]">{r.role}</td>
-                <td className="px-3 py-2 text-[#262a2d]">Company</td>
-                <td className="px-3 py-2 text-[#262a2d]">Sep 12, 2022</td>
+                <td className="px-3 py-2 text-[#262a2d]">{r.branch}</td>
+                <td className="px-3 py-2 text-[#262a2d]">{r.signIn}</td>
                 <td className="px-3 py-2">
-                  <span className={`text-[9px] px-2 py-0.5 rounded-full ${r.status === "Active" ? "bg-[#e6f7ee] text-[#46b275]" : "bg-[#fff3e0] text-[#e67e00]"}`}>
+                  <span className={`rounded-full px-2 py-0.5 text-[9px] font-semibold ${
+                    r.status === "Active" ? "bg-[#e6f7ee] text-[#46b275]" : "bg-[#fff3e0] text-[#e67e00]"
+                  }`}>
                     {r.status}
                   </span>
                 </td>
@@ -391,19 +403,8 @@ export default function BenefitsPage() {
       </div>
 
       {/* ── Hero ── */}
-      <section className="relative mx-auto max-w-[1200px] px-6 pt-8 pb-10 md:px-10 xl:px-20">
-        <div className="relative mx-auto h-[150px] w-full max-w-[1040px] overflow-hidden rounded-[24px] shadow-[0_20px_64px_rgba(14,41,81,0.12)]">
-          <Image
-            src={ASSETS.heroBannerDashboard}
-            alt="Benefits enrollment workflow and dashboard preview"
-            fill
-            sizes="(min-width: 1200px) 1040px, calc(100vw - 48px)"
-            className="object-cover object-center"
-            priority
-          />
-        </div>
-
-        <div className="px-6 pt-12 text-center md:px-12 lg:px-[120px]">
+      <section className="relative mx-auto max-w-[1200px] px-6 pt-8 pb-0 md:px-10 xl:px-20">
+        <div className="px-6 pt-4 text-center md:px-12 lg:px-[120px]">
           <div className="mx-auto max-w-[820px]">
             <p className="mb-3 font-inter text-[13px] uppercase tracking-[3px] text-[#5c7792]">
               {caseStudy?.industry ?? "Case Study Redesign 2025"}
@@ -414,6 +415,16 @@ export default function BenefitsPage() {
             <p className="mx-auto mt-5 max-w-[680px] font-inter text-[16px] leading-[1.625em] text-[#5c7792]">
               {caseStudy?.tagline ?? "Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%."}
             </p>
+            <div className="relative mx-auto mt-10 h-[150px] w-full max-w-[1040px] overflow-hidden rounded-[24px] shadow-[0_20px_64px_rgba(14,41,81,0.12)]">
+              <Image
+                src={ASSETS.heroBannerDashboard}
+                alt="Benefits enrollment workflow and dashboard preview"
+                fill
+                sizes="(min-width: 1200px) 1040px, calc(100vw - 48px)"
+                className="object-cover object-center"
+                priority
+              />
+            </div>
             <div className="mt-10 flex flex-col items-center gap-8 pt-8">
               <div className="grid w-full gap-8 text-center md:grid-cols-[1fr_2fr_1fr] md:items-center">
                 <div>
@@ -435,8 +446,11 @@ export default function BenefitsPage() {
             </div>
           </div>
         </div>
+      </section>
+      </div>
 
-        <div className="mt-12 grid gap-6 text-center md:grid-cols-3">
+      <section className="mx-auto max-w-[1200px] px-6 pt-12 pb-10 md:px-10 xl:px-20">
+        <div className="grid gap-6 text-center md:grid-cols-3">
           {results.slice(0, 3).map((metric, index) => (
             <div
               key={metric.label}
@@ -448,7 +462,6 @@ export default function BenefitsPage() {
           ))}
         </div>
       </section>
-      </div>
 
       {/* ── Overview ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
@@ -618,23 +631,30 @@ export default function BenefitsPage() {
             </div>
           </div>
 
-          {/* Right illustration */}
+          {/* Right embed */}
           <div className="flex justify-end">
-            <KanbanIllustration />
+            <div className="w-full overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.12)]">
+              <iframe
+                title="Design Strategy Figma Embed"
+                src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FsCK6Jts4ID7bDc5dCmTgsY%2FAE---porft%3Fnode-id%3D40000160-40639%26m%3Ddev%26t%3DNP7TGuZDFhnLT48c-1"
+                className="h-[520px] w-full"
+                allowFullScreen
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── Results ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading title="Result" centered className="mb-12" />
+        <SectionHeading title="Results" centered className="mb-12" />
 
         <div className="overflow-x-auto rounded-[24px] border border-[#d7e8f7] bg-white">
           <div className="grid min-w-[820px] grid-cols-[1.2fr_1.4fr_1.4fr_0.8fr] bg-[#f7f9fb] text-[13px] font-bold uppercase tracking-[0.16em] text-[#0e2951]">
-            <div className="px-5 py-4">Métrica</div>
-            <div className="px-5 py-4">Antes</div>
-            <div className="px-5 py-4">Después</div>
-            <div className="px-5 py-4 text-right">Cambio</div>
+            <div className="px-5 py-4">Metric</div>
+            <div className="px-5 py-4">Before</div>
+            <div className="px-5 py-4">After</div>
+            <div className="px-5 py-4 text-right">Change</div>
           </div>
           {resultRows.map((row) => (
             <div
@@ -660,18 +680,18 @@ export default function BenefitsPage() {
 
       {/* ── Reflections ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading title="Reflections" centered className="mb-14" />
+        <SectionHeading title="Reflections" centered className="mb-12" />
 
-        <div className="border-t border-[#d7e8f7]">
+        <div className="mx-auto flex max-w-[820px] flex-col gap-10">
           {reflections.map((r, i) => (
             <div
               key={i}
-              className={`py-10 text-center ${i < reflections.length - 1 ? "border-b border-[#d7e8f7]" : ""}`}
+              className="text-center"
             >
-              <h3 className="text-[28px] font-semibold leading-none text-[#1183D0]">
+              <h3 className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
                 {r.title}
               </h3>
-              <p className="mx-auto mt-5 max-w-[760px] text-[16px] leading-[1.625em] text-[#3c3e3f]">
+              <p className="mx-auto mt-4 text-[16px] leading-[1.625em] text-[#3c3e3f]">
                 {r.body}
               </p>
             </div>
@@ -708,12 +728,17 @@ export default function BenefitsPage() {
 
       {/* ── NDA Notice ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <div className="mb-8 flex flex-wrap gap-3">
-          {(caseStudy?.tags?.length ? caseStudy.tags : ["HR/Payroll SaaS", "UX Research", "IA", "Interaction Design", "Design Systems"]).map((tag) => (
-            <Badge key={tag} size="tag">
-              {tag}
-            </Badge>
-          ))}
+        <div className="mb-10 flex flex-col items-center gap-5">
+          <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
+            Tags
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {(caseStudy?.tags?.length ? caseStudy.tags : ["HR/Payroll SaaS", "UX Research", "IA", "Interaction Design", "Design Systems"]).map((tag) => (
+              <Badge key={tag} size="tag">
+                {tag}
+              </Badge>
+            ))}
+          </div>
         </div>
         <div className="border-t border-[#bcd2ff]/40 pt-8">
           <p className="max-w-[900px] font-inter text-[16px] leading-[1.625em] text-[#5c7792]">
