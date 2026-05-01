@@ -12,7 +12,7 @@ import { withBasePath } from "../../lib/site";
 
 // ── Assets from Figma ─────────────────────────────────────────────────────────
 const ASSETS = {
-  heroBannerDashboard: withBasePath("/images/benefits/enhancing-benefits-banner.png"),
+  heroBannerDashboard: withBasePath("/images/benefits/enhancing-benefits-banner-v2.png"),
   figmaLogo: withBasePath("/images/benefits/figma-logo.png"),
   jiraLogo: withBasePath("/images/benefits/jira-logo.png"),
   miroLogo: withBasePath("/images/benefits/miro-logo.png"),
