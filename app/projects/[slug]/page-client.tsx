@@ -15,9 +15,9 @@ type PayloadRow = {
 };
 
 const NAYYA_PROBLEM_METRICS = [
-  { value: "<7%", label: "Eligible employees completed a Nayya survey", context: "Baseline adoption before optimization" },
-  { value: "2.57", label: "Plans per participant", context: "Employees who skipped Nayya" },
-  { value: "4.46", label: "Average plans per participant", context: "Baseline average from 2023-2025" },
+  { value: "<7%", label: "Eligible employees completed the Nayya survey", context: "Baseline completion before optimizing the experience" },
+  { value: "2.57", label: "Plans per participant before using Nayya", context: "Employees who skipped Nayya guidance enrolled in fewer plans" },
+  { value: "4.46", label: "Baseline average plans per participant", context: "Historical average across 2023-2025 before improving completion" },
 ];
 
 const NAYYA_PROCESS_ALTERNATIVES = [
@@ -75,6 +75,7 @@ const NAYYA_DESIGN_STRATEGY = [
 ];
 
 const NAYYA_PHONE_IMAGE = "/images/projects/nayya-phone.svg";
+const NAYYA_METHODOLOGY_NAME = "Research & Discovery";
 
 const METHODOLOGY_COLORS = ["#87d4ac", "#f5e692", "#d9b8ff", "#68c7c1", "#d1f090"];
 
@@ -150,6 +151,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const successMetrics = getPayloadList(resultBlock?.payload, "successMetrics");
   const problemMetrics = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_PROBLEM_METRICS : caseStudy.metrics.slice(0, 3);
   const designStrategy = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_DESIGN_STRATEGY : caseStudy.design_strategy;
+  const methodologyName = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_METHODOLOGY_NAME : caseStudy.methodology.name;
 
   return (
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden">
@@ -360,7 +362,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        <SectionHeading eyebrow="Methodology" title={caseStudy.methodology.name} className="mb-12" />
+        <SectionHeading eyebrow="Methodology" title={methodologyName} className="mb-12" />
         <div className="grid gap-4 md:grid-cols-5">
           {caseStudy.methodology.steps.map((step, index) => (
             caseStudy.slug === "nayya-ai-benefits" ? (
