@@ -98,19 +98,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       </div>
 
       <section className="mx-auto max-w-[1200px] px-6 pt-16 pb-0 md:px-10 xl:px-20">
-        <div className="mb-10 flex items-center gap-6">
-          {caseStudy.client_logos.map((logo) => (
-            <img
-              key={logo.name}
-              src={resolveTrustedLogo(logo.name, logo.logo)}
-              alt={logo.name}
-              className="h-8 w-auto object-contain opacity-80"
-            />
-          ))}
-        </div>
-
-        <div className="mb-6 flex items-end justify-between gap-12">
-          <div className="max-w-[620px]">
+        <div className="mb-6 text-center">
+          <div className="mx-auto max-w-[760px]">
             <p className="mb-3 font-inter text-[13px] uppercase tracking-[3px] text-[#5c7792]">
               {caseStudy.industry ?? "Case Study"}
             </p>
@@ -118,12 +107,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               {caseStudy.title}
             </h1>
             <p className="text-[18px] leading-[1.7] text-[#5c7792]">{caseStudy.tagline}</p>
-          </div>
-
-          <div className="shrink-0 text-right">
-            <div className="font-inter text-[180px] font-bold leading-none text-[#1183D0]/10 select-none">
-              {caseStudy.metrics[0]?.value ?? ""}
-            </div>
           </div>
         </div>
       </section>
@@ -358,8 +341,20 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.nda_notice ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          {caseStudy.client_logos.length ? (
+            <div className="mb-8 flex flex-wrap items-center justify-center gap-6">
+              {caseStudy.client_logos.map((logo) => (
+                <img
+                  key={logo.name}
+                  src={resolveTrustedLogo(logo.name, logo.logo)}
+                  alt={logo.name}
+                  className="h-8 w-auto object-contain opacity-80"
+                />
+              ))}
+            </div>
+          ) : null}
           <div className="border-t border-[#bcd2ff]/40 pt-8">
-            <p className="max-w-[900px] font-inter text-[13px] leading-[1.7] text-[#5c7792]">
+            <p className="mx-auto max-w-[900px] text-center font-inter text-[13px] leading-[1.7] text-[#5c7792]">
               <strong className="font-semibold text-[#5c7792]">NDA notice:</strong> {caseStudy.nda_notice}
             </p>
           </div>

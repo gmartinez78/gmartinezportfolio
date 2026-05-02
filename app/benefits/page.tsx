@@ -112,13 +112,13 @@ const CHALLENGE_METRICS = [
 ];
 
 const ADDITIONAL_RESULT_SIGNALS = [
-  { title: "Security incidents", value: "-35%", body: "Fewer unauthorized access incidents after centralizing role governance and access control." },
+  { title: "Security incidents", value: "35%", body: "Fewer unauthorized access incidents after centralizing role governance and access control." },
   { title: "User experience improvements", value: "4.6/5", body: "Positive internal feedback on ease of access, navigation, and role clarity inside the platform." },
   { title: "System performance impact", value: "<2%", body: "Negligible performance impact while expanding access control and user management capabilities." },
   { title: "Compliance and audit", value: "100%", body: "Audit-ready role structure and clearer permission ownership across supported user types." },
   { title: "Authentication success rate", value: "+18%", body: "Improved successful access outcomes after clarifying permissions and reducing friction in account setup." },
   { title: "Scalability and flexibility", value: "3x", body: "Greater support for additional users and role configurations without adding the same operational overhead." },
-  { title: "Cost-benefit analysis", value: "-32%", body: "Lower support effort tied to manual account changes, access requests, and user administration tasks." },
+  { title: "Cost-benefit analysis", value: "32%", body: "Lower support effort tied to manual account changes, access requests, and user administration tasks." },
   { title: "Security team feedback", value: "8.9/10", body: "Strong qualitative confidence from internal stakeholders in the updated access model and control patterns." },
 ];
 
@@ -496,11 +496,11 @@ export default function BenefitsPage() {
     ? caseStudy.client_logos.map((logo) => ({
         src: resolveTrustedLogo(logo.name, logo.logo),
         alt: logo.name,
-        width: logo.name === "Paychex" ? 120 : logo.name === "Nayya" ? 80 : 60,
+        width: logo.name === "Paychex" ? 120 : logo.name === "Flock" ? 120 : logo.name === "Nayya" ? 80 : 60,
       }))
     : [
         { src: ASSETS.paychex, alt: "Paychex", width: 120 },
-        { src: ASSETS.nayya, alt: "Nayya", width: 80 },
+        { src: withBasePath("/images/flock-logo.svg"), alt: "Flock", width: 120 },
         { src: ASSETS.ibx, alt: "IBX", width: 60 },
       ];
 
@@ -900,7 +900,7 @@ export default function BenefitsPage() {
               Tags
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              {(caseStudy?.tags?.length ? caseStudy.tags : ["HR/Payroll SaaS", "UX Research", "IA", "Interaction Design", "Design Systems"]).map((tag) => (
+              {(caseStudy?.tags?.length ? caseStudy.tags : ["BENEFITS / ENSURANCE SAAS", "UX Research", "IA", "Interaction Design", "Design Systems"]).map((tag) => (
                 <Badge key={tag} size="tag">
                   {tag}
                 </Badge>

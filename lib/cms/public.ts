@@ -12,6 +12,7 @@ const trustedLogoMap: Record<string, string> = {
   Nayya: withBasePath("/images/bBw3A.png"),
   Paychex: withBasePath("/images/c54fy.png"),
   "Paramount+": withBasePath("/images/paramount-plus.svg"),
+  Flock: withBasePath("/images/flock-logo.svg"),
 };
 
 const certificationLogoMap: Record<string, string> = {

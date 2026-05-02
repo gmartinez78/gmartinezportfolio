@@ -10,9 +10,9 @@
     "role": "Sr. Product Designer",
     "year": 2024,
     "duration": "3 months",
-    "industry": "Benefits / Retirement / Ensurance",
+    "industry": "BENEFITS / ENSURANCE SAAS",
     "tagline": "Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%.",
-    "tags": ["Benefits / Retirement / Ensurance", "UX Research", "IA", "Interaction Design", "Design Systems"],
+    "tags": ["BENEFITS / ENSURANCE SAAS", "UX Research", "IA", "Interaction Design", "Design Systems"],
     "tools": ["Figma", "Jira", "Miro", "Webex", "Outlook", "Copilot", "Hotjar"],
     "images": {
       "cover": "/images/projects/benefits-cover.png",
@@ -25,7 +25,7 @@
     },
     "client_logos": [
       { "name": "Paychex", "logo": "/images/logos/paychex.png" },
-      { "name": "Nayya", "logo": "/images/logos/nayya.png" },
+      { "name": "Flock", "logo": "/images/flock-logo.svg" },
       { "name": "IBX", "logo": "/images/logos/ibx.png" }
     ],
     "metrics": [
