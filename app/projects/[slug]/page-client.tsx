@@ -15,9 +15,10 @@ type PayloadRow = {
 };
 
 const NAYYA_PROBLEM_METRICS = [
-  { value: "<7%", label: "Eligible employees completed the Nayya survey", context: "Baseline completion before optimizing the experience" },
-  { value: "2.57", label: "Plans per participant before using Nayya", context: "Employees who skipped Nayya guidance enrolled in fewer plans" },
-  { value: "4.46", label: "Baseline average plans per participant", context: "Historical average across 2023-2025 before improving completion" },
+  { value: "32%", label: "of employees dropped off before completing the benefits selection flow" },
+  { value: "44%", label: "of employees felt confident they had selected the best plan for their needs" },
+  { value: "48%", label: "understood why they needed to continue in a separate experience" },
+  { value: "2.9/5", label: "trust score for the transition in testing" },
 ];
 
 const NAYYA_PROCESS_ALTERNATIVES = [
