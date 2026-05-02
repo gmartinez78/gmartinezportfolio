@@ -55,7 +55,7 @@ const NAYYA_PROCESS_TRADEOFFS = [
     alternative: "Benefit-list entry point",
     strength: "Lower implementation effort and easy to place in the existing UI.",
     tradeoff: "Relied on users noticing and seeking help, which was not their primary goal in that moment.",
-    decision: "Rejected",
+    decision: "Rejected by testing results",
   },
   {
     alternative: "Guided decision modal",
@@ -155,7 +155,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <span className="font-semibold text-[#0e2951]">{caseStudy.title}</span>
         </div>
 
-        <section className="mx-auto max-w-[1200px] px-6 pt-16 pb-10 md:px-10 xl:px-20">
+        <section className="mx-auto max-w-[1200px] px-6 pt-16 pb-0 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[1040px]">
             <div className="mb-6 text-center">
               <div className="mx-auto max-w-[760px]">
@@ -398,7 +398,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
           <div className="grid gap-5 md:grid-cols-3">
             {NAYYA_PROCESS_ALTERNATIVES.map((item) => (
-              <Card key={item.title} className="overflow-hidden border-[#d7e8f7]">
+              <Card key={item.title} className="overflow-hidden border-transparent shadow-none">
                 <CardContent className="p-7">
                   <Badge>{item.status}</Badge>
                   <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
@@ -442,8 +442,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        <SectionHeading title="Design Strategy" className="mb-12" />
-        <div className="space-y-8">
+        <SectionHeading title="Design Strategy" centered className="mb-12" />
+        <div className="mx-auto max-w-[820px] space-y-8 text-center">
           {caseStudy.design_strategy.map((item) => (
             <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#3c3e3f]">{item}</p>
           ))}
