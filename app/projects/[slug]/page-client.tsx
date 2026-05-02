@@ -86,30 +86,76 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const successMetrics = getPayloadList(resultBlock?.payload, "successMetrics");
 
   return (
-    <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
+    <main className="bg-white text-[#3c3e3f] overflow-x-hidden">
       <SiteHeader active="Projects" />
 
-      <div className="mx-auto flex max-w-[1200px] items-center gap-3 px-6 pt-6 text-sm lg:px-20">
-        <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
-        <span className="text-[#b8cce0]">›</span>
-        <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</a>
-        <span className="text-[#b8cce0]">›</span>
-        <span className="font-semibold text-[#0e2951]">{caseStudy.title}</span>
-      </div>
-
-      <section className="mx-auto max-w-[1200px] px-6 pt-16 pb-0 md:px-10 xl:px-20">
-        <div className="mb-6 text-center">
-          <div className="mx-auto max-w-[760px]">
-            <p className="mb-3 font-inter text-[13px] uppercase tracking-[3px] text-[#5c7792]">
-              {caseStudy.industry ?? "Case Study"}
-            </p>
-            <h1 className="mb-5 font-inter text-[44px] font-bold leading-[1.15] text-[#0e2951]">
-              {caseStudy.title}
-            </h1>
-            <p className="text-[18px] leading-[1.7] text-[#5c7792]">{caseStudy.tagline}</p>
-          </div>
+      <div className="bg-[#F0F7FF]">
+        <div className="mx-auto flex max-w-[1200px] items-center gap-3 px-6 pt-6 text-sm lg:px-20">
+          <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
+          <span className="text-[#b8cce0]">›</span>
+          <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</a>
+          <span className="text-[#b8cce0]">›</span>
+          <span className="font-semibold text-[#0e2951]">{caseStudy.title}</span>
         </div>
-      </section>
+
+        <section className="mx-auto max-w-[1200px] px-6 pt-16 pb-10 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-[1040px]">
+            <div className="mb-6 text-center">
+              <div className="mx-auto max-w-[760px]">
+                <p className="mb-3 font-inter text-[13px] uppercase tracking-[3px] text-[#5c7792]">
+                  {caseStudy.industry ?? "Case Study"}
+                </p>
+                <h1 className="mb-5 font-inter text-[44px] font-bold leading-[1.15] text-[#0e2951]">
+                  {caseStudy.title}
+                </h1>
+                <p className="text-[16px] leading-[1.7] text-[#5c7792]">{caseStudy.tagline}</p>
+              </div>
+            </div>
+
+            {caseStudy.images.hero ? (
+              <div className="relative mx-auto mb-10 h-[150px] w-full overflow-hidden rounded-[24px] shadow-[0_20px_64px_rgba(14,41,81,0.12)]">
+                <img
+                  src={withBasePath(caseStudy.images.hero)}
+                  alt={`${caseStudy.title} banner`}
+                  className="h-full w-full object-cover object-center"
+                />
+              </div>
+            ) : null}
+
+            <div className="mt-10 flex flex-col items-center gap-8 pt-8 text-center">
+              <div className="grid w-full gap-8 md:grid-cols-[1fr_2fr_1fr] md:items-center">
+                <div>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Year</p>
+                  <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy.year ?? ""}</p>
+                </div>
+                <div>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Role</p>
+                  <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy.role ?? ""}</p>
+                </div>
+                <div>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Client</p>
+                  <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy.client_context ?? caseStudy.company}</p>
+                </div>
+              </div>
+              <div className="h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
+            </div>
+
+            <div className="mt-12 grid gap-6 text-center md:grid-cols-3">
+              {caseStudy.metrics.slice(0, 3).map((metric, index) => (
+                <div
+                  key={`${metric.label}-${metric.value}`}
+                  className={index < 2 ? "md:border-r md:border-[#d7e8f7]" : ""}
+                >
+                  <p className="text-[46px] font-bold leading-none text-[#1183D0]">{metric.value}</p>
+                  <p className="mt-3 text-[16px] leading-[1.625em] text-[#5c7792]">{metric.label}</p>
+                  {metric.context ? <p className="mt-1 text-sm text-[#5c7792]">{metric.context}</p> : null}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+        <div className="mx-auto h-px max-w-[1040px] bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
+      </div>
 
       <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 xl:px-20">
         <SectionHeading eyebrow="Overview" title="Structure" className="mb-6" />
