@@ -68,6 +68,14 @@ const NAYYA_PROCESS_TRADEOFFS = [
 const NAYYA_IMPACT_FIGMA_EMBED =
   "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FYK1xcLLDokH5gNYAeDmNiP%2FNayya%3Fnode-id%3D20753-8778%26m%3Ddev%26t%3DNoMXsHgV2DmDrK0x-1";
 
+const NAYYA_DESIGN_STRATEGY = [
+  "Define a realistic integration path instead of forcing an embedded experience that the platform could not support.",
+  "Use communication and visual cues to explain where users were going, why the transition mattered, and how Nayya Choose supported their benefits decisions.",
+  "Protect continuity between Flex and Nayya Choose by making the handoff feel intentional, trustworthy, and aligned with the broader enrollment journey.",
+];
+
+const NAYYA_PHONE_IMAGE = "/images/projects/nayya-phone.svg";
+
 const METHODOLOGY_COLORS = ["#87d4ac", "#f5e692", "#d9b8ff", "#68c7c1", "#d1f090"];
 
 function getPayloadList(payload: Record<string, unknown> | null | undefined, key: string) {
@@ -141,6 +149,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const projectedImprovements = getPayloadList(resultBlock?.payload, "projected");
   const successMetrics = getPayloadList(resultBlock?.payload, "successMetrics");
   const problemMetrics = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_PROBLEM_METRICS : caseStudy.metrics.slice(0, 3);
+  const designStrategy = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_DESIGN_STRATEGY : caseStudy.design_strategy;
 
   return (
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden">
@@ -442,16 +451,33 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        <SectionHeading title="Design Strategy" centered className="mb-12" />
-        <div className="mx-auto max-w-[820px] space-y-8 text-center">
-          {caseStudy.design_strategy.map((item) => (
-            <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#3c3e3f]">{item}</p>
-          ))}
+        <div className={caseStudy.slug === "nayya-ai-benefits" ? "grid items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]" : ""}>
+          {caseStudy.slug === "nayya-ai-benefits" ? (
+            <div className="flex justify-center lg:justify-start">
+              <img
+                src={withBasePath(NAYYA_PHONE_IMAGE)}
+                alt="Nayya mobile recommendation concept"
+                className="h-auto w-full max-w-[420px]"
+              />
+            </div>
+          ) : null}
+          <div>
+            <SectionHeading
+              title="Design Strategy"
+              centered={caseStudy.slug !== "nayya-ai-benefits"}
+              className={caseStudy.slug === "nayya-ai-benefits" ? "mb-12 items-end text-right" : "mb-12"}
+            />
+            <div className={caseStudy.slug === "nayya-ai-benefits" ? "ml-auto max-w-[620px] space-y-8 text-right" : "mx-auto max-w-[820px] space-y-8 text-center"}>
+              {designStrategy.map((item) => (
+                <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#3c3e3f]">{item}</p>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        <SectionHeading eyebrow="Impact" title={resultBlock?.title ?? "Results"} centered className="mb-12" />
+        <SectionHeading title={resultBlock?.title ?? "Results"} centered className="mb-12" />
         {resultBlock?.body ? (
           <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#3c3e3f]">
             {resultBlock.body}
