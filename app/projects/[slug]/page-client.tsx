@@ -14,6 +14,62 @@ type PayloadRow = {
   value?: string;
 };
 
+const NAYYA_PROBLEM_METRICS = [
+  { value: "<7%", label: "Eligible employees completed a Nayya survey", context: "Baseline adoption before optimization" },
+  { value: "2.57", label: "Plans per participant", context: "Employees who skipped Nayya" },
+  { value: "4.46", label: "Average plans per participant", context: "Baseline average from 2023-2025" },
+];
+
+const NAYYA_PROCESS_ALTERNATIVES = [
+  {
+    title: "Embedded Nayya section",
+    status: "Rejected",
+    body:
+      "Add the Nayya form as its own step inside the enrollment process, keeping the assistance directly in the core flow.",
+    imageSrc: "/images/projects/nayya-embedded-section.jpg",
+  },
+  {
+    title: "Benefit-list entry point",
+    status: "Rejected",
+    body:
+      "Place a button in the benefits list so users could choose to use Nayya while reviewing available coverage options.",
+    imageSrc: "/images/projects/nayya-benefit-list-entry.jpg",
+  },
+  {
+    title: "Guided decision modal",
+    status: "Selected",
+    body:
+      "Show a modal after users entered their family information, when guidance felt timely and directly connected to choosing better benefits.",
+    imageSrc: "/images/projects/nayya-guided-decision-modal.jpg",
+  },
+];
+
+const NAYYA_PROCESS_TRADEOFFS = [
+  {
+    alternative: "Embedded Nayya section",
+    strength: "Most seamless and visible inside enrollment.",
+    tradeoff: "Required too much product and engineering work for the project scope.",
+    decision: "Rejected by Product",
+  },
+  {
+    alternative: "Benefit-list entry point",
+    strength: "Lower implementation effort and easy to place in the existing UI.",
+    tradeoff: "Relied on users noticing and seeking help, which was not their primary goal in that moment.",
+    decision: "Rejected",
+  },
+  {
+    alternative: "Guided decision modal",
+    strength: "Introduced help at a high-intent moment after family details were entered.",
+    tradeoff: "Less deeply integrated than a full embedded section, but clearer and more feasible.",
+    decision: "Selected",
+  },
+];
+
+const NAYYA_IMPACT_FIGMA_EMBED =
+  "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FYK1xcLLDokH5gNYAeDmNiP%2FNayya%3Fnode-id%3D20753-8778%26m%3Ddev%26t%3DNoMXsHgV2DmDrK0x-1";
+
+const METHODOLOGY_COLORS = ["#87d4ac", "#f5e692", "#d9b8ff", "#68c7c1", "#d1f090"];
+
 function getPayloadList(payload: Record<string, unknown> | null | undefined, key: string) {
   const value = payload?.[key];
   return Array.isArray(value) ? value.filter((item): item is string => typeof item === "string") : [];
@@ -84,6 +140,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const resultOpportunities = getPayloadList(resultBlock?.payload, "opportunities");
   const projectedImprovements = getPayloadList(resultBlock?.payload, "projected");
   const successMetrics = getPayloadList(resultBlock?.payload, "successMetrics");
+  const problemMetrics = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_PROBLEM_METRICS : caseStudy.metrics.slice(0, 3);
 
   return (
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden">
@@ -139,32 +196,35 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
               <div className="h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
             </div>
-
-            <div className="mt-12 grid gap-6 text-center md:grid-cols-3">
-              {caseStudy.metrics.slice(0, 3).map((metric, index) => (
-                <div
-                  key={`${metric.label}-${metric.value}`}
-                  className={index < 2 ? "md:border-r md:border-[#d7e8f7]" : ""}
-                >
-                  <p className="text-[46px] font-bold leading-none text-[#1183D0]">{metric.value}</p>
-                  <p className="mt-3 text-[16px] leading-[1.625em] text-[#5c7792]">{metric.label}</p>
-                  {metric.context ? <p className="mt-1 text-sm text-[#5c7792]">{metric.context}</p> : null}
-                </div>
-              ))}
-            </div>
           </div>
         </section>
-        <div className="mx-auto h-px max-w-[1040px] bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
       </div>
 
-      <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 xl:px-20">
+      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        <div className="mx-auto max-w-[1040px]">
+          <div className="grid gap-6 text-center md:grid-cols-3">
+            {caseStudy.metrics.slice(0, 3).map((metric, index) => (
+              <div
+                key={`${metric.label}-${metric.value}`}
+                className={index < 2 ? "md:border-r md:border-[#d7e8f7]" : ""}
+              >
+                <p className="text-[46px] font-bold leading-none text-[#1183D0]">{metric.value}</p>
+                <p className="mt-3 text-[16px] leading-[1.625em] text-[#5c7792]">{metric.label}</p>
+                {metric.context ? <p className="mt-1 text-sm text-[#5c7792]">{metric.context}</p> : null}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         <SectionHeading eyebrow="Overview" title="Structure" className="mb-6" />
         {overviewBlock?.body ? (
           <p className="mt-8 max-w-[860px] font-inter text-[18px] leading-[1.8] text-[#3c3e3f]">
             {overviewBlock.body}
           </p>
         ) : null}
-        <div className="mt-8 grid gap-0 border-t border-[#4d87ae]/30 pt-8 md:grid-cols-4">
+        <div className="mt-8 grid gap-0 md:grid-cols-4">
           <div className="border-[#4d87ae]/20 pr-8 md:border-r">
             <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Team Members</p>
             <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
@@ -201,38 +261,58 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       </section>
 
       {storyBlocks.length ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 xl:px-20">
-          <SectionHeading eyebrow="Case Study" title="STAR Narrative" className="mb-12" />
-          <div className="grid gap-6 lg:grid-cols-2">
-            {storyBlocks.map((block) => {
-              const items = getPayloadList(block.payload, "items");
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+            <div>
+              <SectionHeading eyebrow="Case Study" title="The problem" className="mb-12" />
+              <div className="space-y-10">
+                {storyBlocks.map((block) => {
+                  const items = getPayloadList(block.payload, "items");
 
-              return (
-                <Card key={block.id} className="p-0 py-0">
-                  <CardContent className="p-8">
-                    <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">
-                      {block.title}
+                  return (
+                    <div key={block.id}>
+                      {block.title !== "Situation" ? (
+                        <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">
+                          {block.title}
+                        </p>
+                      ) : null}
+                      {block.body ? (
+                        <p className="max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#3c3e3f]">{block.body}</p>
+                      ) : null}
+                      {items.length ? (
+                        <div className="mt-5 space-y-3">
+                          {items.map((item) => (
+                            <p key={item} className="max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#3c3e3f]">
+                              {item}
+                            </p>
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="grid gap-4">
+              {problemMetrics.map((metric) => (
+                <Card key={`${metric.label}-${metric.value}`} className="overflow-hidden">
+                  <CardContent className="px-7 py-7">
+                    <p className="text-[30px] font-bold leading-none text-[#0e2951]">{metric.value}</p>
+                    <p className="mt-3 text-[16px] leading-[1.625em] text-[#0e2951]">
+                      {metric.label}
                     </p>
-                    {block.body ? (
-                      <p className="font-inter text-[18px] leading-[1.8] text-[#3c3e3f]">{block.body}</p>
-                    ) : null}
-                    {items.length ? (
-                      <ul className="mt-5 space-y-3">
-                        {items.map((item) => (
-                          <li key={item} className="font-inter text-[16px] leading-[1.7] text-[#3c3e3f]">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
+                    {metric.context ? (
+                      <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{metric.context}</p>
                     ) : null}
                   </CardContent>
                 </Card>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </section>
       ) : (
-        <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 xl:px-20">
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="grid gap-16 lg:grid-cols-2">
             <div>
               <SectionHeading eyebrow="Admins' Pain" title="Points" className="mb-8" />
@@ -254,69 +334,163 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       )}
 
-      <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 xl:px-20">
-        <SectionHeading title="Constraints" centered className="mb-12" />
-        <div className="grid gap-6 md:grid-cols-2">
-          {caseStudy.constraints.map((item) => (
-            <Card key={item} className="p-0 py-0">
-              <CardContent className="p-8">
-                <Badge>Constraint</Badge>
-                <p className="mt-4 font-inter text-[22px] leading-[1.85] text-[#3c3e3f]">{item}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
+      {caseStudy.slug !== "nayya-ai-benefits" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading title="Constraints" centered className="mb-12" />
+          <div className="grid gap-6 md:grid-cols-2">
+            {caseStudy.constraints.map((item) => (
+              <Card key={item} className="p-0 py-0">
+                <CardContent className="p-8">
+                  <Badge>Constraint</Badge>
+                  <p className="mt-4 font-inter text-[22px] leading-[1.85] text-[#3c3e3f]">{item}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
-      <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 xl:px-20">
+      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         <SectionHeading eyebrow="Methodology" title={caseStudy.methodology.name} className="mb-12" />
         <div className="grid gap-4 md:grid-cols-5">
           {caseStudy.methodology.steps.map((step, index) => (
-            <Card key={step.step} className="p-0 py-0">
-              <CardContent className="p-6">
-                <p className="font-inter text-[15px] font-semibold text-[#3c3e3f]">{index + 1}. {step.label}</p>
-                <p className="mt-2 font-inter text-[13px] leading-[1.5] text-[#5c7792]">{step.description}</p>
-              </CardContent>
-            </Card>
+            caseStudy.slug === "nayya-ai-benefits" ? (
+              <div key={step.step} className="flex flex-col gap-4">
+                <div
+                  className="flex flex-1 flex-col gap-2 rounded-2xl p-5"
+                  style={{ backgroundColor: `${METHODOLOGY_COLORS[index] ?? "#87d4ac"}33` }}
+                >
+                  <div
+                    className="w-full rounded-xl"
+                    style={{ height: 10, backgroundColor: METHODOLOGY_COLORS[index] ?? "#87d4ac" }}
+                  />
+                  <p className="mt-2 font-inter text-[15px] font-semibold text-[#3c3e3f]">
+                    {index + 1}. {step.label}
+                  </p>
+                  <p className="font-inter text-[14px] leading-[1.625em] text-[#5c7792]">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <Card key={step.step} className="p-0 py-0">
+                <CardContent className="p-6">
+                  <p className="font-inter text-[15px] font-semibold text-[#3c3e3f]">{index + 1}. {step.label}</p>
+                  <p className="mt-2 font-inter text-[13px] leading-[1.5] text-[#5c7792]">{step.description}</p>
+                </CardContent>
+              </Card>
+            )
           ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 xl:px-20">
+      {caseStudy.slug === "nayya-ai-benefits" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <p className="mb-3 text-center text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">Process</p>
+          <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+            Alternatives explored
+          </h2>
+          <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+            I explored three ways to introduce Nayya during enrollment. The team evaluated each option
+            against user timing, product feasibility, and whether the guidance would feel relevant instead
+            of optional or disconnected.
+          </p>
+
+          <div className="grid gap-5 md:grid-cols-3">
+            {NAYYA_PROCESS_ALTERNATIVES.map((item) => (
+              <Card key={item.title} className="overflow-hidden border-[#d7e8f7]">
+                <CardContent className="p-7">
+                  <Badge>{item.status}</Badge>
+                  <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item.body}</p>
+                  {item.imageSrc ? (
+                    <div className="mt-6 overflow-hidden rounded-[18px] bg-white">
+                      <img
+                        src={withBasePath(item.imageSrc)}
+                        alt="Nayya recommendation step inside benefits enrollment"
+                        className="h-auto w-full"
+                      />
+                    </div>
+                  ) : null}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-10 overflow-x-auto rounded-[24px] border border-[#d7e8f7] bg-white">
+            <div className="grid min-w-[900px] grid-cols-[1fr_1.2fr_1.4fr_0.8fr] bg-[#f7f9fb] text-[13px] font-bold uppercase tracking-[0.16em] text-[#0e2951]">
+              <div className="px-5 py-4">Alternative</div>
+              <div className="px-5 py-4">Strength</div>
+              <div className="px-5 py-4">Tradeoff</div>
+              <div className="px-5 py-4">Decision</div>
+            </div>
+            {NAYYA_PROCESS_TRADEOFFS.map((row) => (
+              <div
+                key={row.alternative}
+                className="grid min-w-[900px] grid-cols-[1fr_1.2fr_1.4fr_0.8fr] border-t border-[#d7e8f7] text-[15px] leading-[1.6] text-[#3c3e3f]"
+              >
+                <div className="px-5 py-5 font-semibold text-[#0e2951]">{row.alternative}</div>
+                <div className="px-5 py-5">{row.strength}</div>
+                <div className="px-5 py-5">{row.tradeoff}</div>
+                <div className="px-5 py-5 font-semibold text-[#1183D0]">{row.decision}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         <SectionHeading title="Design Strategy" className="mb-12" />
         <div className="space-y-8">
           {caseStudy.design_strategy.map((item) => (
-            <p key={item} className="font-inter text-[22px] leading-[1.9] text-[#3c3e3f]">{item}</p>
+            <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#3c3e3f]">{item}</p>
           ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 xl:px-20">
-        <SectionHeading eyebrow="Impact" title={resultBlock?.title ?? "Results"} className="mb-12" />
+      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        <SectionHeading eyebrow="Impact" title={resultBlock?.title ?? "Results"} centered className="mb-12" />
         {resultBlock?.body ? (
-          <p className="mb-10 max-w-[860px] font-inter text-[18px] leading-[1.8] text-[#3c3e3f]">
+          <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#3c3e3f]">
             {resultBlock.body}
           </p>
         ) : null}
-        <div className="grid gap-6 md:grid-cols-3">
-          {caseStudy.metrics.map((metric) => (
-            <Card key={`${metric.label}-${metric.value}`} className="p-0 py-0">
-              <CardContent className="p-8">
-                <span className="font-inter text-[52px] font-bold leading-none text-[#1183D0]">{metric.value}</span>
-                <p className="mt-4 font-inter text-[18px] leading-[1.5] text-[#3c3e3f]">{metric.label}</p>
-                {metric.context ? <p className="mt-2 text-sm text-[#5c7792]">{metric.context}</p> : null}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        {resultRows.length ? (
-          <div className="mt-10 overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white">
-            {resultRows.map((row) => (
-              <div key={`${row.metric}-${row.value}`} className="grid gap-4 border-t border-[#d7e8f7] px-6 py-5 first:border-t-0 md:grid-cols-[1fr_auto] md:items-center">
-                <p className="font-inter text-[15px] font-semibold text-[#0e2951]">{row.metric}</p>
-                <p className="font-inter text-[28px] font-bold leading-none text-[#1183D0]">{row.value}</p>
-              </div>
+        {caseStudy.slug !== "nayya-ai-benefits" ? (
+          <div className="grid gap-6 md:grid-cols-3">
+            {caseStudy.metrics.map((metric) => (
+              <Card key={`${metric.label}-${metric.value}`} className="p-0 py-0">
+                <CardContent className="p-8">
+                  <span className="font-inter text-[52px] font-bold leading-none text-[#1183D0]">{metric.value}</span>
+                  <p className="mt-4 font-inter text-[18px] leading-[1.5] text-[#3c3e3f]">{metric.label}</p>
+                  {metric.context ? <p className="mt-2 text-sm text-[#5c7792]">{metric.context}</p> : null}
+                </CardContent>
+              </Card>
             ))}
+          </div>
+        ) : null}
+        {resultRows.length ? (
+          <div className={`${caseStudy.slug === "nayya-ai-benefits" ? "grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-stretch" : caseStudy.slug !== "nayya-ai-benefits" ? "mt-10" : ""}`}>
+            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white">
+              {resultRows.map((row) => (
+                <div key={`${row.metric}-${row.value}`} className="grid gap-4 border-t border-[#d7e8f7] px-6 py-5 first:border-t-0 md:grid-cols-[1fr_auto] md:items-center">
+                  <p className="font-inter text-[15px] font-semibold text-[#0e2951]">{row.metric}</p>
+                  <p className="font-inter text-[28px] font-bold leading-none text-[#1183D0]">{row.value}</p>
+                </div>
+              ))}
+            </div>
+
+            {caseStudy.slug === "nayya-ai-benefits" ? (
+              <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
+                <iframe
+                  title="Nayya impact frame from Figma"
+                  src={NAYYA_IMPACT_FIGMA_EMBED}
+                  className="h-[520px] w-full"
+                  allowFullScreen
+                />
+              </div>
+            ) : null}
           </div>
         ) : null}
         {[resultInsights, resultOpportunities, projectedImprovements, successMetrics].some((items) => items.length) ? (
@@ -373,11 +547,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         ) : null}
       </section>
 
-      <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 xl:px-20">
-        <SectionHeading title="Reflections" className="mb-12" />
-        <div className="space-y-8">
+      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        <SectionHeading title="Reflections" centered className="mb-12" />
+        <div className="mx-auto max-w-[820px] space-y-8 text-center">
           {caseStudy.reflections.map((reflection) => (
-            <p key={reflection.title} className="font-inter text-[22px] leading-[1.9] text-[#3c3e3f]">
+            <p key={reflection.title} className="font-inter text-[16px] leading-[1.7] text-[#3c3e3f]">
               <strong className="font-semibold">{reflection.title} </strong>
               {reflection.body}
             </p>
@@ -407,7 +581,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
+      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         <p className="mb-2 text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">More work</p>
         <h2 className="mb-8 font-serif-display text-[32px] italic text-[#0e2951]">Other Projects</h2>
         <div className="grid gap-5 md:grid-cols-3">

@@ -131,7 +131,7 @@
       "steps": [
         { "step": 1, "label": "Understand", "description": "Clarified the benefits selection journey and Nayya Choose's role in decision support." },
         { "step": 2, "label": "Define", "description": "Identified the feasible integration path between Flex and the external Nayya experience." },
-        { "step": 3, "label": "Align", "description": "Worked with UX, content, product, business analysis, and solution leads." },
+        { "step": 3, "label": "Align", "description": "Collaborated with the Solution Leads, Product Onwer, Business Analyst and Devs." },
         { "step": 4, "label": "Validate", "description": "Recommended user testing to understand concerns before finalizing the handoff." },
         { "step": 5, "label": "Measure", "description": "Used enrollment behavior and revenue projections to evaluate impact." }
       ]
@@ -153,7 +153,7 @@
         "id": "overview",
         "type": "overview",
         "title": "Project Overview",
-        "body": "The goal of this project was to support employees during the benefits selection process and help them choose coverage that best matched their needs. Nayya Choose is an AI-powered decision-support platform that asks employees a series of lifestyle-based questions and recommends benefit plans that fit their needs. My role was to identify the best path for integrating Nayya Choose into the Flex platform experience."
+        "body": ""
       },
       {
         "id": "team-context",

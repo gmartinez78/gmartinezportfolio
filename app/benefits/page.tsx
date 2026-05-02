@@ -100,7 +100,7 @@ const REFLECTIONS = [
 ];
 
 const CHALLENGE_POINTS = [
-  "Internal user couldn't change users' roles and permissions on their own, which increased support tickets and development work.",
+  "Internal users couldn't change users' roles and permissions on their own, which increased support tickets and development work.",
   "Manual workarounds wasted users' time and increased the risk of costly errors.",
   "Each unsupported enrollment request took 5-7 business days and was multiplied across hundreds of clients.",
 ];
@@ -128,7 +128,7 @@ const TASK_SUMMARY =
 const RESEARCH_DISCOVERY_ITEMS = [
   {
     title: "User Research",
-    body: "Spoke directly with the platform user to understand their pain points, day-to-day workflow, and where the experience was creating friction.",
+    body: "Spoke directly with platform users to understand their pain points, day-to-day workflow, and where the experience was creating friction.",
     icon: ASSETS.userIcon,
   },
   {
@@ -663,7 +663,7 @@ export default function BenefitsPage() {
       <section className="mx-auto max-w-[1200px] px-6 pb-10 md:px-10 xl:px-20">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
           <div>
-            <SectionHeading title="Situation" className="mb-8" />
+            <SectionHeading title="Users" className="mb-8" />
             <div className="mt-8 space-y-6">
               {CHALLENGE_POINTS.map((point) => (
                 <p key={point} className="max-w-[720px] text-[16px] leading-[1.625em] text-[#3c3e3f]">
@@ -706,9 +706,9 @@ export default function BenefitsPage() {
         </div>
       </section>
 
-      {/* ── Action ── */}
+      {/* ── Methodology ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading title="Action" centered className="mb-14" />
+        <SectionHeading title="Methodology" centered className="mb-14" />
         <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
           {RESEARCH_DISCOVERY_ITEMS.map((item, index) => (
             <Card
