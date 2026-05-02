@@ -40,7 +40,7 @@ const NAYYA_PROCESS_ALTERNATIVES = [
     title: "Guided decision modal",
     status: "Selected",
     body:
-      "Show a modal after users entered their family information, when guidance felt timely and directly connected to choosing better benefits.",
+      "Show a modal after users entered their family information, when guidance felt timely connected to choosing better benefits.",
     imageSrc: "/images/projects/nayya-guided-decision-modal.jpg",
   },
 ];
@@ -50,13 +50,13 @@ const NAYYA_PROCESS_TRADEOFFS = [
     alternative: "Embedded Nayya section",
     strength: "Most seamless and visible inside enrollment.",
     tradeoff: "Required too much product and engineering work for the project scope.",
-    decision: "Rejected by Product",
+    decision: "Rejected",
   },
   {
     alternative: "Benefit-list entry point",
     strength: "Lower implementation effort and easy to place in the existing UI.",
     tradeoff: "Relied on users noticing and seeking help, which was not their primary goal in that moment.",
-    decision: "Rejected by testing results",
+    decision: "Rejected",
   },
   {
     alternative: "Guided decision modal",
@@ -70,9 +70,68 @@ const NAYYA_IMPACT_FIGMA_EMBED =
   "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FYK1xcLLDokH5gNYAeDmNiP%2FNayya%3Fnode-id%3D20753-8778%26m%3Ddev%26t%3DNoMXsHgV2DmDrK0x-1";
 
 const NAYYA_DESIGN_STRATEGY = [
-  "Define a realistic integration path instead of forcing an embedded experience that the platform could not support.",
-  "Use communication and visual cues to explain where users were going, why the transition mattered, and how Nayya Choose supported their benefits decisions.",
-  "Protect continuity between Flex and Nayya Choose by making the handoff feel intentional, trustworthy, and aligned with the broader enrollment journey.",
+  "I started by reviewing the available data, gathering the right inputs, and aligning with the team on constraints and goals before moving into design.",
+  "From there, I explored several integration approaches and evaluated each one based on timing in the user journey, technical feasibility, and how clearly it communicated the value of the experience.",
+  "Once a direction was selected, I designed the handoff to feel intentional and trustworthy, using clear messaging and visual cues to help users understand the transition and stay confident as they chose their benefits.",
+];
+
+const NAYYA_TESTING_RESULTS = [
+  {
+    metric: "7",
+    label: "Participants",
+    finding: "Moderated usability testing on the integrated prototype",
+    insight: "Representative sample for qualitative insight, with patterns that were consistent across participants",
+    signal: "Positive",
+  },
+  {
+    metric: "4/5",
+    label: "Satisfaction score",
+    finding: "Users rated their overall experience completing the flow",
+    insight: "High comfort level with the process, and users felt supported through the benefit selection steps",
+    signal: "Positive",
+  },
+  {
+    metric: "100%",
+    label: "Task completion",
+    finding: "All participants successfully completed the end-to-end flow",
+    insight: "Core interaction design supported task completion without critical failure points",
+    signal: "Positive",
+  },
+  {
+    metric: "High",
+    label: "Data trust",
+    finding: "Users felt comfortable sharing personal information within the Nayya form",
+    insight: "Trust signals and context-setting reduced anxiety around data sharing",
+    signal: "Positive",
+  },
+  {
+    metric: "Low",
+    label: "Form fatigue",
+    finding: "Users perceived the form as shorter than expected",
+    insight: "Perceived effort was lower than anticipated, reducing drop-off risk at form entry",
+    signal: "Positive",
+  },
+  {
+    metric: "Critical",
+    label: "Transition clarity",
+    finding: "Users did not know Nayya was part of the Flex process and were confused returning to their original point",
+    insight: "The platform handoff lacked sufficient context, and users lost their place after completing Nayya",
+    signal: "Negative",
+  },
+  {
+    metric: "Modal",
+    label: "Dismissal rate",
+    finding: "Some users closed the modal automatically without reading it",
+    insight: "Reflexive dismiss behavior suggests the modal pattern may need reconsideration or a stronger hook",
+    signal: "Negative",
+  },
+  {
+    metric: "Low",
+    label: "Question relevance",
+    finding: "A few users questioned why certain personal questions were being asked",
+    insight: "Missing context around question purpose means users need clearer rationale to stay engaged",
+    signal: "Negative",
+  },
 ];
 
 const NAYYA_PHONE_IMAGE = "/images/projects/nayya-phone.svg";
@@ -232,7 +291,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         <SectionHeading eyebrow="Overview" title="Structure" className="mb-6" />
         {overviewBlock?.body ? (
-          <p className="mt-8 max-w-[860px] font-inter text-[18px] leading-[1.8] text-[#3c3e3f]">
+          <p className="mt-8 max-w-[860px] font-inter text-[18px] leading-[1.8] text-[#5c7792]">
             {overviewBlock.body}
           </p>
         ) : null}
@@ -289,12 +348,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </p>
                       ) : null}
                       {block.body ? (
-                        <p className="max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#3c3e3f]">{block.body}</p>
+                        <p className="max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">{block.body}</p>
                       ) : null}
                       {items.length ? (
                         <div className="mt-5 space-y-3">
                           {items.map((item) => (
-                            <p key={item} className="max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#3c3e3f]">
+                            <p key={item} className="max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                               {item}
                             </p>
                           ))}
@@ -330,7 +389,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <SectionHeading eyebrow="Admins' Pain" title="Points" className="mb-8" />
               <div className="space-y-8">
                 {caseStudy.problem.admin_pain_points.map((item) => (
-                  <p key={item} className="font-inter text-[22px] leading-[1.9] text-[#3c3e3f]">{item}</p>
+                  <p key={item} className="font-inter text-[22px] leading-[1.9] text-[#5c7792]">{item}</p>
                 ))}
               </div>
             </div>
@@ -338,7 +397,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <SectionHeading eyebrow="Users' Pain" title="Points" className="mb-8" />
               <div className="space-y-8">
                 {caseStudy.problem.user_pain_points.map((item) => (
-                  <p key={item} className="font-inter text-[22px] leading-[1.9] text-[#3c3e3f]">{item}</p>
+                  <p key={item} className="font-inter text-[22px] leading-[1.9] text-[#5c7792]">{item}</p>
                 ))}
               </div>
             </div>
@@ -354,7 +413,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <Card key={item} className="p-0 py-0">
                 <CardContent className="p-8">
                   <Badge>Constraint</Badge>
-                  <p className="mt-4 font-inter text-[22px] leading-[1.85] text-[#3c3e3f]">{item}</p>
+                  <p className="mt-4 font-inter text-[22px] leading-[1.85] text-[#5c7792]">{item}</p>
                 </CardContent>
               </Card>
             ))}
@@ -363,7 +422,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        <SectionHeading eyebrow="Methodology" title={methodologyName} className="mb-12" />
+        <SectionHeading
+          eyebrow={caseStudy.slug === "nayya-ai-benefits" ? methodologyName : "Methodology"}
+          title={caseStudy.slug === "nayya-ai-benefits" ? "Methodology" : methodologyName}
+          centered={caseStudy.slug === "nayya-ai-benefits"}
+          className="mb-12"
+        />
         <div className="grid gap-4 md:grid-cols-5">
           {caseStudy.methodology.steps.map((step, index) => (
             caseStudy.slug === "nayya-ai-benefits" ? (
@@ -396,16 +460,50 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </div>
       </section>
 
+      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        {caseStudy.slug === "nayya-ai-benefits" ? (
+          <>
+            <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+              Design Process
+            </h2>
+            <div className="mx-auto grid max-w-[980px] items-center gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+              <div className="flex justify-center lg:justify-start">
+                <img
+                  src={withBasePath(NAYYA_PHONE_IMAGE)}
+                  alt="Nayya mobile recommendation concept"
+                  className="h-auto w-full max-w-[500px]"
+                />
+              </div>
+              <div className="space-y-5 text-left">
+                {designStrategy.map((item) => (
+                  <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+                ))}
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <SectionHeading
+              title="Design Strategy"
+              centered
+              className="mb-12"
+            />
+            <div className="mx-auto max-w-[820px] space-y-8 text-center">
+              {designStrategy.map((item) => (
+                <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+              ))}
+            </div>
+          </>
+        )}
+      </section>
+
       {caseStudy.slug === "nayya-ai-benefits" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <p className="mb-3 text-center text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">Process</p>
           <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
             Alternatives explored
           </h2>
           <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-            I explored three ways to introduce Nayya during enrollment. The team evaluated each option
-            against user timing, product feasibility, and whether the guidance would feel relevant instead
-            of optional or disconnected.
+            Three integration approaches were considered and assessed on placement, feasibility, and user support. The guided decision modal was selected as the strongest option and moved into testing.
           </p>
 
           <div className="grid gap-5 md:grid-cols-3">
@@ -441,7 +539,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {NAYYA_PROCESS_TRADEOFFS.map((row) => (
               <div
                 key={row.alternative}
-                className="grid min-w-[900px] grid-cols-[1fr_1.2fr_1.4fr_0.8fr] border-t border-[#d7e8f7] text-[15px] leading-[1.6] text-[#3c3e3f]"
+                className="grid min-w-[900px] grid-cols-[1fr_1.2fr_1.4fr_0.8fr] border-t border-[#d7e8f7] text-[15px] leading-[1.6] text-[#5c7792]"
               >
                 <div className="px-5 py-5 font-semibold text-[#0e2951]">{row.alternative}</div>
                 <div className="px-5 py-5">{row.strength}</div>
@@ -453,36 +551,44 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        <div className={caseStudy.slug === "nayya-ai-benefits" ? "grid items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]" : ""}>
-          {caseStudy.slug === "nayya-ai-benefits" ? (
-            <div className="flex justify-center lg:justify-start">
-              <img
-                src={withBasePath(NAYYA_PHONE_IMAGE)}
-                alt="Nayya mobile recommendation concept"
-                className="h-auto w-full max-w-[420px]"
-              />
+      {caseStudy.slug === "nayya-ai-benefits" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+            Key Insights from Testing
+          </h2>
+          <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+            Research and discovery clarified the key questions for testing: Did users understand the
+            handoff, feel confident continuing, and maintain trust throughout the experience? The selected
+            guided decision modal was the concept tested, and the findings showed which parts of the
+            integration felt clear and where friction still remained.
+          </p>
+          <div className="overflow-hidden rounded-[28px] border-2 border-[#CFE5F8] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
+            <div className="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 border-b border-[#d7e8f7] bg-[#F7FBFF] px-6 py-5 text-[13px] font-semibold uppercase tracking-[0.18em] text-[#5c7792]">
+              <div>Metric</div>
+              <div>Finding</div>
+              <div>Insight</div>
             </div>
-          ) : null}
-          <div>
-            <SectionHeading
-              title="Design Strategy"
-              centered={caseStudy.slug !== "nayya-ai-benefits"}
-              className={caseStudy.slug === "nayya-ai-benefits" ? "mb-12 items-end text-right" : "mb-12"}
-            />
-            <div className={caseStudy.slug === "nayya-ai-benefits" ? "ml-auto max-w-[620px] space-y-8 text-right" : "mx-auto max-w-[820px] space-y-8 text-center"}>
-              {designStrategy.map((item) => (
-                <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#3c3e3f]">{item}</p>
-              ))}
-            </div>
+            {NAYYA_TESTING_RESULTS.map((row) => (
+              <div
+                key={`${row.metric}-${row.label}`}
+                className="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 border-b border-[#d7e8f7] px-6 py-6 last:border-b-0"
+              >
+                <div>
+                  <p className="text-[30px] font-semibold leading-none text-[#0e2951]">{row.metric}</p>
+                  <p className="mt-3 text-[14px] leading-[1.5] text-[#5c7792]">{row.label}</p>
+                </div>
+                <p className="text-[14px] font-normal leading-[1.65] text-[#0e2951]">{row.finding}</p>
+                <p className="text-[14px] font-normal leading-[1.65] text-[#0e2951]">{row.insight}</p>
+              </div>
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         <SectionHeading title={resultBlock?.title ?? "Results"} centered className="mb-12" />
         {resultBlock?.body ? (
-          <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#3c3e3f]">
+          <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
             {resultBlock.body}
           </p>
         ) : null}
@@ -530,7 +636,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Enrollment Behavior Insights</p>
                   <ul className="space-y-3">
                     {resultInsights.map((item) => (
-                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#3c3e3f]">{item}</li>
+                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
                     ))}
                   </ul>
                 </CardContent>
@@ -542,7 +648,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Opportunities and Next Steps</p>
                   <ul className="space-y-3">
                     {resultOpportunities.map((item) => (
-                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#3c3e3f]">{item}</li>
+                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
                     ))}
                   </ul>
                 </CardContent>
@@ -554,7 +660,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Projected Improvements</p>
                   <ul className="space-y-3">
                     {projectedImprovements.map((item) => (
-                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#3c3e3f]">{item}</li>
+                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
                     ))}
                   </ul>
                 </CardContent>
@@ -566,7 +672,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Success Metrics</p>
                   <ul className="space-y-3">
                     {successMetrics.map((item) => (
-                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#3c3e3f]">{item}</li>
+                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
                     ))}
                   </ul>
                 </CardContent>
@@ -580,7 +686,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <SectionHeading title="Reflections" centered className="mb-12" />
         <div className="mx-auto max-w-[820px] space-y-8 text-center">
           {caseStudy.reflections.map((reflection) => (
-            <p key={reflection.title} className="font-inter text-[16px] leading-[1.7] text-[#3c3e3f]">
+            <p key={reflection.title} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               <strong className="font-semibold">{reflection.title} </strong>
               {reflection.body}
             </p>
