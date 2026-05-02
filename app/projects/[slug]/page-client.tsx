@@ -14,7 +14,13 @@ type PayloadRow = {
   value?: string;
 };
 
-const NAYYA_PROBLEM_METRICS = [
+type ProblemMetric = {
+  value: string;
+  label: string;
+  context?: string;
+};
+
+const NAYYA_PROBLEM_METRICS: ProblemMetric[] = [
   { value: "32%", label: "of employees dropped off before completing the benefits selection flow" },
   { value: "44%", label: "of employees felt confident they had selected the best plan for their needs" },
   { value: "48%", label: "understood why they needed to continue in a separate experience" },
@@ -547,7 +553,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div className="px-5 py-5 font-semibold text-[#1183D0]">{row.decision}</div>
               </div>
             ))}
-          </div>
+            </div>
         </section>
       ) : null}
 
