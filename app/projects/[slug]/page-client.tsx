@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { resolveProjectHref, resolveTrustedLogo, usePublicCaseStudies, usePublicCaseStudy } from "@/lib/cms/public";
-import type { CaseStudyContentBlock } from "@/lib/cms/types";
+import type { CaseStudyContentBlock, CaseStudyReflection } from "@/lib/cms/types";
 import { withBasePath } from "@/lib/site";
 
 type PayloadRow = {
@@ -152,6 +152,25 @@ const NAYYA_TESTING_RESULTS = [
   },
 ];
 
+const NAYYA_REFLECTIONS: CaseStudyReflection[] = [
+  {
+    title: "Designing under constraints.",
+    body: "Designing under technical constraints does not mean compromising the experience. It means finding the most effective path within the boundaries you are given.",
+  },
+  {
+    title: "Test early, fix early.",
+    body: "User testing, even at a small scale, surfaces the decisions that matter most before they become expensive to fix.",
+  },
+  {
+    title: "Trust is a design problem.",
+    body: "When users cross platform boundaries, clarity and context are what keep them moving forward.",
+  },
+  {
+    title: "Constraints force focus.",
+    body: "The inability to embed Nayya natively pushed the team to invest in transition design, an area that is often overlooked when seamless integration feels like the obvious solution.",
+  },
+];
+
 const NAYYA_PHONE_IMAGE = "/images/projects/nayya-design-process.png";
 const NAYYA_METHODOLOGY_NAME = "Research & Discovery";
 
@@ -231,6 +250,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const problemMetrics = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_PROBLEM_METRICS : caseStudy.metrics.slice(0, 3);
   const designStrategy = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_DESIGN_STRATEGY : caseStudy.design_strategy;
   const methodologyName = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_METHODOLOGY_NAME : caseStudy.methodology.name;
+  const reflections = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_REFLECTIONS : caseStudy.reflections;
 
   return (
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden">
@@ -707,7 +727,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         <SectionHeading title="Learnings" centered className="mb-12" />
         <div className="mx-auto max-w-[820px] space-y-8 text-center">
-          {caseStudy.reflections.map((reflection) => (
+          {reflections.map((reflection) => (
             <p key={reflection.title} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               <strong className="font-semibold">{reflection.title} </strong>
               {reflection.body}
