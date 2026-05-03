@@ -12,6 +12,7 @@ import { withBasePath } from "@/lib/site";
 type PayloadRow = {
   metric?: string;
   value?: string;
+  context?: string;
 };
 
 type ProblemMetric = {
