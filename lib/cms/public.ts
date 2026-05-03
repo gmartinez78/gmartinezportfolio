@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { fallbackCaseStudies, fallbackSiteContent } from "@/lib/cms/fallback";
 import type { CaseStudyRecord, SiteContent } from "@/lib/cms/types";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
-import { withBasePath } from "@/lib/site";
+import { normalizeNavigableHref, withBasePath } from "@/lib/site";
 
 const trustedLogoMap: Record<string, string> = {
   IBX: withBasePath("/images/SNUZw.png"),
@@ -84,7 +84,7 @@ export function resolveProjectHeroImage(slug: string, explicit?: string | null) 
 
 export function resolveProjectHref(study: CaseStudyRecord) {
   if (study.external_link) {
-    return study.external_link;
+    return normalizeNavigableHref(study.external_link);
   }
 
   return projectHrefMap[study.slug] ?? withBasePath(`/projects/${study.slug}`);

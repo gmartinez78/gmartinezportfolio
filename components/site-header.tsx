@@ -1,5 +1,6 @@
- "use client";
+"use client";
 
+import Link from "next/link";
 import { withBasePath } from "../lib/site";
 import { usePublicSiteContent } from "../lib/cms/public";
 
@@ -57,16 +58,16 @@ export function SiteHeader({ active }: { active?: "Projects" | "Resume" | "Conta
     <header className="sticky top-0 z-50 border-b border-[#bcd2ff]/60 bg-white/85 backdrop-blur">
       <nav className="mx-auto flex min-h-16 max-w-[1200px] items-center justify-between gap-4 px-5 py-3 sm:px-8 lg:px-12">
         <div className="flex min-w-0 items-center gap-5 lg:gap-8">
-          <a href={withBasePath("/")} className="flex shrink-0 items-center gap-3" aria-label="Greddys Martinez home">
+          <Link href={withBasePath("/")} className="flex shrink-0 items-center gap-3" aria-label="Greddys Martinez home">
             <LogoMark className="h-10 w-auto" />
             <span className="hidden text-[15px] font-semibold leading-tight text-[#0e2951] sm:block">
               {siteContent.nav.logo_text}
             </span>
-          </a>
+          </Link>
           <ul className="flex items-center gap-1">
             {navLinks.map((link) => (
               <li key={link.label}>
-                <a
+                <Link
                   href={withBasePath(link.href)}
                   className={`rounded-[28px] px-3 py-2 text-sm font-semibold transition-colors sm:px-4 ${
                     active === link.label
@@ -75,7 +76,7 @@ export function SiteHeader({ active }: { active?: "Projects" | "Resume" | "Conta
                   }`}
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

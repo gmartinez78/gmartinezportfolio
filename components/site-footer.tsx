@@ -1,6 +1,7 @@
 "use client";
 
-import { withBasePath } from "../lib/site";
+import Link from "next/link";
+import { isExternalHref, normalizeNavigableHref, withBasePath } from "../lib/site";
 import { usePublicSiteContent } from "../lib/cms/public";
 import { LogoMark } from "./site-header";
 
@@ -14,12 +15,12 @@ export function SiteFooter() {
       <div className="border-t border-[#C4DCF0]" />
       <div className="max-w-[1200px] mx-auto px-6 py-12 md:px-10 lg:px-20 grid gap-10 md:grid-cols-2 xl:grid-cols-4">
         <div className="flex flex-col gap-3">
-          <a href={withBasePath("/")} className="flex items-center gap-3">
+          <Link href={withBasePath("/")} className="flex items-center gap-3">
             <LogoMark className="h-12 w-auto" />
             <span className="text-[18px] font-semibold leading-tight text-[#0e2951]">
               {siteContent.nav.logo_text}
             </span>
-          </a>
+          </Link>
           <p className="max-w-[280px] text-[14px] leading-[1.6] text-[#3c3e3f]">
             {siteContent.footer.tagline}
           </p>
@@ -30,13 +31,13 @@ export function SiteFooter() {
             Site Map
           </span>
           {footerLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
               href={withBasePath(link.href)}
               className="text-[14px] text-[#3c3e3f] transition-colors hover:text-[#1183D0]"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -47,9 +48,9 @@ export function SiteFooter() {
           {footerSocial.map((link) => (
             <a
               key={link.label}
-              href={link.href}
-              target={link.href.startsWith("http") ? "_blank" : undefined}
-              rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+              href={normalizeNavigableHref(link.href)}
+              target={isExternalHref(link.href) ? "_blank" : undefined}
+              rel={isExternalHref(link.href) ? "noreferrer" : undefined}
               className="text-[14px] text-[#3c3e3f] transition-colors hover:text-[#1183D0]"
             >
               {link.label}
@@ -64,12 +65,12 @@ export function SiteFooter() {
           <p className="text-[14px] leading-[1.6] text-[#3c3e3f]">
             {siteContent.footer.cta_body}
           </p>
-          <a
+          <Link
             href={withBasePath(siteContent.footer.cta_href)}
             className="text-[14px] font-medium text-[#1183D0] transition-colors hover:text-[#0e284b]"
           >
             {siteContent.footer.cta_label}
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -81,9 +82,9 @@ export function SiteFooter() {
         </span>
         <div className="flex items-center gap-4 text-[#1183D0]">
           <a
-            href={footerSocial[0]?.href ?? "#"}
-            target="_blank"
-            rel="noreferrer"
+            href={normalizeNavigableHref(footerSocial[0]?.href ?? "#")}
+            target={isExternalHref(footerSocial[0]?.href ?? "#") ? "_blank" : undefined}
+            rel={isExternalHref(footerSocial[0]?.href ?? "#") ? "noreferrer" : undefined}
             aria-label="LinkedIn"
             className="transition-opacity hover:opacity-70"
           >
@@ -99,9 +100,9 @@ export function SiteFooter() {
             </svg>
           </a>
           <a
-            href={footerSocial[1]?.href ?? "#"}
-            target="_blank"
-            rel="noreferrer"
+            href={normalizeNavigableHref(footerSocial[1]?.href ?? "#")}
+            target={isExternalHref(footerSocial[1]?.href ?? "#") ? "_blank" : undefined}
+            rel={isExternalHref(footerSocial[1]?.href ?? "#") ? "noreferrer" : undefined}
             aria-label="Behance"
             className="transition-opacity hover:opacity-70"
           >
@@ -110,9 +111,9 @@ export function SiteFooter() {
             </svg>
           </a>
           <a
-            href={footerSocial[2]?.href ?? "#"}
-            target="_blank"
-            rel="noreferrer"
+            href={normalizeNavigableHref(footerSocial[2]?.href ?? "#")}
+            target={isExternalHref(footerSocial[2]?.href ?? "#") ? "_blank" : undefined}
+            rel={isExternalHref(footerSocial[2]?.href ?? "#") ? "noreferrer" : undefined}
             aria-label="Upwork"
             className="transition-opacity hover:opacity-70"
           >

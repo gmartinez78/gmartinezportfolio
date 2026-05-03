@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
@@ -533,12 +534,12 @@ export default function BenefitsPage() {
               The CMS entry for this page was deleted or unpublished. It will reappear here once a
               published record with the slug <span className="font-semibold text-[#0e2951]">benefits-enrollment</span> exists again.
             </p>
-            <a
+            <Link
               href={withBasePath("/projects")}
               className="mt-8 inline-flex rounded-[24px] bg-[#1183D0] px-7 py-3 text-base font-semibold text-white transition-colors hover:bg-[#0e75b8]"
             >
               Back to Projects
-            </a>
+            </Link>
           </section>
           <SiteFooter />
         </>
@@ -547,9 +548,9 @@ export default function BenefitsPage() {
       <div className="bg-[#F0F7FF]">
       <div className="mx-auto max-w-[1200px] px-6 pt-6 lg:px-20">
         <div className="flex items-center gap-3 text-sm">
-          <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
+          <Link href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</Link>
           <span className="text-[#b8cce0]">›</span>
-          <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</a>
+          <Link href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</Link>
           <span className="text-[#b8cce0]">›</span>
           <span className="font-semibold text-[#0e2951]">{caseStudy?.title ?? "Enhancing Benefits Enrollment"}</span>
         </div>

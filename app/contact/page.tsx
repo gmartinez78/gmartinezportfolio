@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Button } from "../../components/ui/button";
@@ -166,7 +167,9 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-base font-semibold text-[#3c3e3f]">{card.label}</p>
-                  {card.href ? (
+                  {card.href?.startsWith("/") ? (
+                    <Link href={card.href} className="text-sm text-[#0e2951] font-medium hover:text-[#1183D0] transition-colors">{card.value}</Link>
+                  ) : card.href ? (
                     <a href={card.href} className="text-sm text-[#0e2951] font-medium hover:text-[#1183D0] transition-colors">{card.value}</a>
                   ) : (
                     <p className="text-sm text-[#0e2951] font-medium">{card.value}</p>

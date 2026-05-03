@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { TypewriterBanner } from "./components/typewriter-banner";
@@ -90,9 +91,9 @@ export default function PortfolioPage() {
             alt={hero.greeting}
             fill
             priority
-            className="object-cover opacity-35 blur-[1px] scale-110"
+            className="pointer-events-none object-cover opacity-35 blur-[1px] scale-110"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,20,35,0.92)_0%,rgba(8,20,35,0.72)_48%,rgba(8,20,35,0.3)_100%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(8,20,35,0.92)_0%,rgba(8,20,35,0.72)_48%,rgba(8,20,35,0.3)_100%)]" />
           <div className="relative grid min-h-[440px] gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
             <div className="flex max-w-[760px] flex-col justify-center">
               <TypewriterBanner
@@ -116,14 +117,14 @@ export default function PortfolioPage() {
                   asChild
                   size="sm"
                 >
-                  <a href={withBasePath("/projects")}>View selected work</a>
+                  <Link href={withBasePath("/projects")}>View selected work</Link>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
                   size="sm"
                 >
-                  <a href={withBasePath("/contact")}>Let&apos;s work together</a>
+                  <Link href={withBasePath("/contact")}>Let&apos;s work together</Link>
                 </Button>
               </div>
             </div>
@@ -184,7 +185,7 @@ export default function PortfolioPage() {
           {/* Project cards */}
           <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3">
             {featuredProjects.map((project) => (
-              <a
+              <Link
                 key={project.title}
                 href={project.href}
                 className="group flex cursor-pointer flex-col gap-5 outline-none"
@@ -226,7 +227,7 @@ export default function PortfolioPage() {
                     </span>
                   </div>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -237,7 +238,7 @@ export default function PortfolioPage() {
       <section
         className="relative isolate overflow-hidden px-6 py-16 md:px-10 xl:px-20"
       >
-        <div className="absolute inset-0 z-0 bg-[linear-gradient(180deg,#FFFFFF_0%,#F0F7FF_48%,rgba(17,131,208,0.28)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,#FFFFFF_0%,#F0F7FF_48%,rgba(17,131,208,0.28)_100%)]" />
         <div className="relative z-20 mx-auto flex max-w-[1200px] flex-col items-center gap-10 text-center">
           <SectionHeading eyebrow="Experience & Skills" title={siteContent.home.tools_section.headline} centered />
           <p className="max-w-[560px] text-[15px] leading-[1.8] text-[#3c3e3f]">
@@ -257,9 +258,9 @@ export default function PortfolioPage() {
             variant="link"
             className="mt-2 h-auto gap-4 px-0 text-sm font-normal leading-none text-[#1183D0] hover:no-underline"
           >
-            <a href={withBasePath(siteContent.home.tools_section.cta_href)}>
+            <Link href={withBasePath(siteContent.home.tools_section.cta_href)}>
               {siteContent.home.tools_section.cta_label.replace("→", "").trim()} <span className="text-[22px] leading-none">→</span>
-            </a>
+            </Link>
           </Button>
         </div>
       </section>
@@ -282,9 +283,9 @@ export default function PortfolioPage() {
           asChild
           size="sm"
         >
-          <a href={withBasePath(siteContent.home.stat_banner.cta_href.replace("#contact", "/contact"))}>
+          <Link href={withBasePath(siteContent.home.stat_banner.cta_href.replace("#contact", "/contact"))}>
             {siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
-          </a>
+          </Link>
         </Button>
       </section>
 

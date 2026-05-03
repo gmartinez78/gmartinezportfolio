@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
@@ -81,7 +82,7 @@ export default function ProjectsPage() {
       {/* Project Grid */}
       <section className="max-w-[1200px] mx-auto px-6 pb-20 flex flex-col gap-6">
         {filteredProjects.map((project, i) => (
-          <a
+          <Link
             key={project.title}
             href={resolveProjectHref(project)}
             className="group block transition-all hover:-translate-y-0.5"
@@ -131,7 +132,7 @@ export default function ProjectsPage() {
               </div>
             </CardContent>
             </Card>
-          </a>
+          </Link>
         ))}
       </section>
 
