@@ -1,8 +1,8 @@
 {
   "reviewEvery": 20,
-  "tasksSinceReview": 2,
-  "totalTrackedTasks": 2,
-  "lastTrackedCommit": "00fa3c7",
+  "tasksSinceReview": 3,
+  "totalTrackedTasks": 3,
+  "lastTrackedCommit": "d2297a6",
   "lastReviewDate": "2026-05-03",
   "status": "up_to_date"
 }

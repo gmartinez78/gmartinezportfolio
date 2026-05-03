@@ -21,9 +21,9 @@ values
   '6 months',
   'AI Benefits / HR SaaS',
   'Designed the integration of an Nayya as AI-powered benefits tool, guiding employees to choose coverage that matched their needs.',
-  array['AI/ML Product','UX Research','Product Design','Benefits'],
+  array['BENEFITS / ENSURANCE SAAS','UX Research','IA','Interaction Design','Design Systems'],
   array['UX Research','Product Design','AI Product'],
-  array['Figma','Miro','Jira','Webex','Copilot'],
+  array['Figma','Jira','Miro','Webex','Outlook','Copilot','Hotjar'],
   '{"cover":"/images/projects/nayya-cover.png","hero":"/images/projects/nayya-hero.png","gallery":[]}'::jsonb,
   '[{"name":"Nayya","logo":"/images/logos/nayya.png"},{"name":"Paychex","logo":"/images/logos/paychex.png"}]'::jsonb,
   '[{"value":"2x","label":"Benefits enrolled","context":"Survey completers vs. users who skipped Nayya"},{"value":"$6M","label":"Full-year impact","context":"Flex opportunity"},{"value":"$10M","label":"Full-year impact","context":"All PEO opportunity"}]'::jsonb,
@@ -42,7 +42,7 @@ values
     {"id":"actions","type":"custom","title":"Actions","body":"Because a seamless integration was not possible, we identified that users would need to leave Flex and access Nayya Choose in a separate experience. To reduce friction, I helped recommend user testing to better understand concerns before finalizing the experience. The research showed users needed clearer communication about where they were going, why the transition mattered, and visual cues that made the handoff feel intentional and trustworthy."},
     {"id":"impact","type":"results","title":"Impact","body":"The integration showed clear value for users who engaged with Nayya Choose. Participants who completed the survey enrolled in twice as many benefits as those who skipped it, and the work contributed to measurable growth across medical, ancillary, and PEO revenue.","payload":{"rows":[{"metric":"Annual growth target - Medical","value":"2%"},{"metric":"Annual growth target - Ancillary","value":"8%"},{"metric":"FY26 medical growth","value":"$1M"},{"metric":"FY26 ancillary growth","value":"$2M"},{"metric":"Full-year impact - Flex","value":"$6M"},{"metric":"Full-year impact - All PEO","value":"$10M"}],"insights":["Baseline average plans per participant (2023-2025): 4.46.","Participants who skipped Nayya: 2.57 plans per participant.","Participants who only started Nayya: 4.43 plans per participant.","Participants who received recommendations from Nayya: 5.44 plans per participant.","Participants who completed the Nayya survey enrolled in twice as many benefits as those who skipped it."],"opportunities":["Less than 7% of eligible employees completed a Nayya survey, leaving strong room for growth.","Increasing completion to 10% could add 10,000+ plans and generate $2M-$7M in incremental PEO benefits revenue.","Further research opportunities include deeper analysis of Nayya survey behavior and year-over-year enrollment changes.","Potential product expansion areas include 401(k), FinFit, and PayActiv recommendations."]}}
   ]$json$::jsonb,
-  'Some screens and data from this project are under NDA. The work shown is representative of the design approach.',
+  null,
   null,
   null
 ),

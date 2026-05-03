@@ -91,9 +91,9 @@
     "duration": "6 months",
     "industry": "AI Benefits / HR SaaS",
     "tagline": "Designed the integration of an Nayya as AI-powered benefits tool, guiding employees to choose coverage that matched their needs.",
-    "tags": ["AI/ML Product", "UX Research", "Product Design", "Benefits"],
+    "tags": ["BENEFITS / ENSURANCE SAAS", "UX Research", "IA", "Interaction Design", "Design Systems"],
+    "tools": ["Figma", "Jira", "Miro", "Webex", "Outlook", "Copilot", "Hotjar"],
     "filters": ["UX Research", "Product Design", "AI Product"],
-    "tools": ["Figma", "Miro", "Jira", "Webex", "Copilot"],
     "images": {
       "cover": "/images/projects/nayya-cover.png",
       "hero": "/images/projects/nayya-hero.png",
@@ -147,7 +147,7 @@
       { "title": "Trust is a design problem.", "body": "When users cross platform boundaries, clarity and context are what keep them moving forward." },
       { "title": "Constraints force focus.", "body": "The inability to embed Nayya natively pushed the team to invest in transition design, an area that is often overlooked when seamless integration feels like the obvious solution." }
     ],
-    "nda_notice": "Some screens and data from this project are under NDA. The work shown is representative of the design approach.",
+    "nda_notice": null,
     "password": null,
     "external_link": null,
     "content_blocks": [
@@ -407,7 +407,7 @@
       { "title": "Compliance can still feel understandable.", "body": "This project was not only about adding a new form. It was about designing a compliance-heavy workflow that could still feel clear, consistent, and manageable inside onboarding." },
       { "title": "Vendor handoffs need UX strategy.", "body": "By combining workflow design with iterative research, testing, and handoff strategy, the experience created a stronger foundation for product usability and business growth." }
     ],
-    "nda_notice": "Some screens and implementation details from this compliance workflow are under NDA. The work shown focuses on the UX approach, workflow strategy, and measurable product direction.",
+    "nda_notice": null,
     "password": null,
     "external_link": null,
     "content_blocks": [
