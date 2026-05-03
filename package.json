@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ai-context:update": "node scripts/update-ai-context-tracker.mjs",
+    "ai-context:reset": "node scripts/update-ai-context-tracker.mjs reset"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.105.1",

@@ -1,3 +1,14 @@
+<!-- AI_CONTEXT_TRACKER_START -->
+## Mantenimiento automático
+
+- Regla: revisar y actualizar este archivo cada 20 tareas/commits.
+- Tareas desde la última revisión: 1 / 20
+- Total de tareas rastreadas: 1
+- Último commit rastreado: 0463c98
+- Última revisión marcada: 2026-05-03
+- Estado: Al día
+<!-- AI_CONTEXT_TRACKER_END -->
+
 # Contexto IA del Portfolio
 
 ## Propósito del sitio
@@ -115,6 +126,7 @@ Importante:
 
 - `nayya-ai-benefits` tiene lógica especial dentro de `page-client.tsx`
 - no todo ese case study vive puramente en CMS; parte de su storytelling está codificado a mano
+- actualmente también tiene métricas y secciones específicas hardcodeadas para evitar depender solo del contenido remoto de Supabase
 
 ### Benefits case study
 
@@ -278,6 +290,13 @@ Antes de duplicar lógica, revisar ese archivo.
 - sí usa la ruta genérica
 - pero tiene constantes, métricas y bloques especiales en `app/projects/[slug]/page-client.tsx`
 - es un híbrido entre CMS y storytelling manual
+- hoy incluye contenido hardcodeado para:
+  - métricas superiores del hero
+  - métricas del bloque de problema
+  - alternativas exploradas
+  - tabla de `Key Insights from Testing`
+  - bloque `Design Process`
+  - imagen específica del design process
 
 ### 3. Arquitectura fallback-first
 

@@ -20,6 +20,18 @@ type ProblemMetric = {
   context?: string;
 };
 
+type HighlightMetric = {
+  value: string;
+  label: string;
+  context?: string;
+};
+
+const NAYYA_HIGHLIGHT_METRICS: HighlightMetric[] = [
+  { value: "307%", label: "IRR", context: "Projected ROI — estimated return from increased plan uptake (NPV $11.4M)." },
+  { value: "~115,500", label: "Annual Benefits", context: "Enrollments completed 5% above the 100K goal." },
+  { value: "67%", label: "Conversion Rate", context: "Users who received Nayya recommendations that fit their needs and enrolled in a plan." },
+];
+
 const NAYYA_PROBLEM_METRICS: ProblemMetric[] = [
   { value: "32%", label: "of employees dropped off before completing the benefits selection flow" },
   { value: "44%", label: "of employees felt confident they had selected the best plan for their needs" },
@@ -73,7 +85,7 @@ const NAYYA_PROCESS_TRADEOFFS = [
 ];
 
 const NAYYA_IMPACT_FIGMA_EMBED =
-  "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FYK1xcLLDokH5gNYAeDmNiP%2FNayya%3Fnode-id%3D20753-8778%26m%3Ddev%26t%3DNoMXsHgV2DmDrK0x-1";
+  "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FYK1xcLLDokH5gNYAeDmNiP%2FNayya%3Fnode-id%3D20753-8774%26t%3DaR6ccy3XAhFLwCo4-1";
 
 const NAYYA_DESIGN_STRATEGY = [
   "I started by reviewing the available data, gathering the right inputs, and aligning with the team on constraints and goals before moving into design.",
@@ -140,7 +152,7 @@ const NAYYA_TESTING_RESULTS = [
   },
 ];
 
-const NAYYA_PHONE_IMAGE = "/images/projects/nayya-phone.svg";
+const NAYYA_PHONE_IMAGE = "/images/projects/nayya-design-process.png";
 const NAYYA_METHODOLOGY_NAME = "Research & Discovery";
 
 const METHODOLOGY_COLORS = ["#87d4ac", "#f5e692", "#d9b8ff", "#68c7c1", "#d1f090"];
@@ -215,6 +227,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const resultOpportunities = getPayloadList(resultBlock?.payload, "opportunities");
   const projectedImprovements = getPayloadList(resultBlock?.payload, "projected");
   const successMetrics = getPayloadList(resultBlock?.payload, "successMetrics");
+  const highlightMetrics = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_HIGHLIGHT_METRICS : caseStudy.metrics.slice(0, 3);
   const problemMetrics = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_PROBLEM_METRICS : caseStudy.metrics.slice(0, 3);
   const designStrategy = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_DESIGN_STRATEGY : caseStudy.design_strategy;
   const methodologyName = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_METHODOLOGY_NAME : caseStudy.methodology.name;
@@ -280,7 +293,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         <div className="mx-auto max-w-[1040px]">
           <div className="grid gap-6 text-center md:grid-cols-3">
-            {caseStudy.metrics.slice(0, 3).map((metric, index) => (
+            {highlightMetrics.map((metric, index) => (
               <div
                 key={`${metric.label}-${metric.value}`}
                 className={index < 2 ? "md:border-r md:border-[#d7e8f7]" : ""}
@@ -568,8 +581,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             guided decision modal was the concept tested, and the findings showed which parts of the
             integration felt clear and where friction still remained.
           </p>
-          <div className="overflow-hidden rounded-[28px] border-2 border-[#CFE5F8] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
-            <div className="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 border-b border-[#d7e8f7] bg-[#F7FBFF] px-6 py-5 text-[13px] font-semibold uppercase tracking-[0.18em] text-[#5c7792]">
+          <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white">
+            <div className="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 border-b border-[#d7e8f7] bg-[#f7f9fb] px-6 py-4 text-[13px] font-bold uppercase tracking-[0.16em] text-[#0e2951]">
               <div>Metric</div>
               <div>Finding</div>
               <div>Insight</div>
@@ -577,27 +590,41 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {NAYYA_TESTING_RESULTS.map((row) => (
               <div
                 key={`${row.metric}-${row.label}`}
-                className="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 border-b border-[#d7e8f7] px-6 py-6 last:border-b-0"
+                className="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 border-t border-[#d7e8f7] px-5 py-5 text-[15px] leading-[1.6] text-[#5c7792]"
               >
                 <div>
                   <p className="text-[30px] font-semibold leading-none text-[#0e2951]">{row.metric}</p>
                   <p className="mt-3 text-[14px] leading-[1.5] text-[#5c7792]">{row.label}</p>
                 </div>
-                <p className="text-[14px] font-normal leading-[1.65] text-[#0e2951]">{row.finding}</p>
-                <p className="text-[14px] font-normal leading-[1.65] text-[#0e2951]">{row.insight}</p>
+                <p className="font-normal text-[#0e2951]">{row.finding}</p>
+                <p className="font-normal text-[#0e2951]">{row.insight}</p>
               </div>
             ))}
           </div>
         </section>
       ) : null}
 
+      {caseStudy.slug === "nayya-ai-benefits" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading title="The Solution" centered className="mb-12" />
+          {resultBlock?.body ? (
+            <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              {resultBlock.body}
+            </p>
+          ) : null}
+          <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
+            <iframe
+              title="Nayya impact frame from Figma"
+              src={NAYYA_IMPACT_FIGMA_EMBED}
+              className="h-[520px] w-full"
+              allowFullScreen
+            />
+          </div>
+        </section>
+      ) : null}
+
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        <SectionHeading title={resultBlock?.title ?? "Results"} centered className="mb-12" />
-        {resultBlock?.body ? (
-          <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-            {resultBlock.body}
-          </p>
-        ) : null}
+        <SectionHeading title={caseStudy.slug === "nayya-ai-benefits" ? "Results & Impact" : resultBlock?.title ?? "Results"} centered className="mb-12" />
         {caseStudy.slug !== "nayya-ai-benefits" ? (
           <div className="grid gap-6 md:grid-cols-3">
             {caseStudy.metrics.map((metric) => (
@@ -612,35 +639,24 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         ) : null}
         {resultRows.length ? (
-          <div className={`${caseStudy.slug === "nayya-ai-benefits" ? "grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-stretch" : caseStudy.slug !== "nayya-ai-benefits" ? "mt-10" : ""}`}>
-            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white">
-              {resultRows.map((row) => (
-                <div key={`${row.metric}-${row.value}`} className="grid gap-4 border-t border-[#d7e8f7] px-6 py-5 first:border-t-0 md:grid-cols-[1fr_auto] md:items-center">
-                  <p className="font-inter text-[15px] font-semibold text-[#0e2951]">{row.metric}</p>
-                  <p className="font-inter text-[28px] font-bold leading-none text-[#1183D0]">{row.value}</p>
-                </div>
-              ))}
-            </div>
-
-            {caseStudy.slug === "nayya-ai-benefits" ? (
-              <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
-                <iframe
-                  title="Nayya impact frame from Figma"
-                  src={NAYYA_IMPACT_FIGMA_EMBED}
-                  className="h-[520px] w-full"
-                  allowFullScreen
-                />
-              </div>
-            ) : null}
+          <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-6">
+            {resultRows.map((row) => (
+              <Card key={`${row.metric}-${row.value}`} className="p-0 py-0">
+                <CardContent className="p-5 text-center">
+                  <span className="font-inter text-[36px] font-bold leading-none text-[#1183D0]">{row.value}</span>
+                  <p className="mt-3 font-inter text-[14px] leading-[1.4] text-[#3c3e3f]">{row.metric}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         ) : null}
-        {[resultInsights, resultOpportunities, projectedImprovements, successMetrics].some((items) => items.length) ? (
+        {caseStudy.slug === "nayya-ai-benefits" && [resultInsights, resultOpportunities, projectedImprovements, successMetrics].some((items) => items.length) ? (
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {resultInsights.length ? (
-              <Card className="p-0 py-0">
+              <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
                 <CardContent className="p-8">
-                  <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Enrollment Behavior Insights</p>
-                  <ul className="space-y-3">
+                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Enrollment Behavior Insights</h3>
+                  <ul className="mt-5 list-disc space-y-3 pl-5">
                     {resultInsights.map((item) => (
                       <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
                     ))}
@@ -649,10 +665,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </Card>
             ) : null}
             {resultOpportunities.length ? (
-              <Card className="p-0 py-0">
+              <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
                 <CardContent className="p-8">
-                  <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Opportunities and Next Steps</p>
-                  <ul className="space-y-3">
+                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Opportunities and Next Steps</h3>
+                  <ul className="mt-5 list-disc space-y-3 pl-5">
                     {resultOpportunities.map((item) => (
                       <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
                     ))}
@@ -689,7 +705,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       </section>
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        <SectionHeading title="Reflections" centered className="mb-12" />
+        <SectionHeading title="Learnings" centered className="mb-12" />
         <div className="mx-auto max-w-[820px] space-y-8 text-center">
           {caseStudy.reflections.map((reflection) => (
             <p key={reflection.title} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
