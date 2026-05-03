@@ -53,7 +53,7 @@ export default function ProjectsPage() {
       {/* Hero */}
       <section className="mx-auto max-w-[1200px] px-6 pt-16 pb-10 text-center">
         <SectionHeading eyebrow="Selected Work" title="Projects" centered />
-        <p className="mx-auto max-w-xl text-lg leading-relaxed text-[#5c7792]">
+        <p className="mx-auto max-w-xl text-lg leading-relaxed text-[#5c7792] mt-6">
           Case studies and highlights from 10+ years designing enterprise SaaS, healthtech, and nonprofit digital experiences.
         </p>
 
@@ -116,7 +116,7 @@ export default function ProjectsPage() {
                   <span className="text-[#bcd2ff]">·</span>
                   <span className="text-xs text-[#5c7792]">{project.year}</span>
                 </div>
-                <h2 className="text-2xl font-serif-display italic text-[#0e2951] leading-snug mb-3">{project.title}</h2>
+                <h2 className="text-2xl font-serif-display italic text-[#0e2951] leading-snug mb-5">{project.title}</h2>
                 <p className="text-[#5c7792] text-sm leading-relaxed">{project.tagline}</p>
               </div>
               <div className="flex items-end justify-between mt-6 flex-wrap gap-4">

@@ -9,7 +9,7 @@ import { withBasePath } from "@/lib/site";
 const trustedLogoMap: Record<string, string> = {
   IBX: withBasePath("/images/SNUZw.png"),
   Skill: withBasePath("/images/IbuV3.png"),
-  Nayya: withBasePath("/images/bBw3A.png"),
+  Nayya: withBasePath("/images/SNUZ.png"),
   Paychex: withBasePath("/images/c54fy.png"),
   "Paramount+": withBasePath("/images/paramount-plus.svg"),
   Flock: withBasePath("/images/flock-logo.svg"),

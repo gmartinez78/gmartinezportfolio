@@ -3,7 +3,7 @@
     "slug": "benefits-enrollment",
     "status": "published",
     "featured": true,
-    "order": 1,
+    "order": 2,
     "title": "Enhancing Benefits Enrollment",
     "company": "Independence Blue Cross",
     "client_context": "Paychex via ITX Corp",
@@ -82,7 +82,7 @@
     "slug": "nayya-ai-benefits",
     "status": "published",
     "featured": true,
-    "order": 2,
+    "order": 1,
     "title": "Nayya Integration",
     "company": "Nayya",
     "client_context": "Paychex via ITX Corp",
@@ -100,7 +100,7 @@
       "gallery": []
     },
     "client_logos": [
-      { "name": "Nayya", "logo": "/images/logos/nayya.png" },
+      { "name": "Nayya", "logo": "/images/SNUZ.png" },
       { "name": "Paychex", "logo": "/images/logos/paychex.png" }
     ],
     "metrics": [
