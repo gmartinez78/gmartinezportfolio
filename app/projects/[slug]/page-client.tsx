@@ -737,7 +737,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Enrollment Behavior Insights</h3>
                   <ul className="mt-5 list-disc space-y-3 pl-5">
                     {resultInsights.slice(0, -1).map((item) => (
-                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
+                      item === "2026" ? (
+                        <li key={item} className="list-none ml-0 mt-6 mb-3 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">{item}</li>
+                      ) : (
+                        <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
+                      )
                     ))}
                   </ul>
                   <p className="mt-5 font-inter text-[15px] font-semibold leading-[1.7] text-[#5c7792]">{resultInsights[resultInsights.length - 1]}</p>

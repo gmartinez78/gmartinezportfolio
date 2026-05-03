@@ -10,7 +10,7 @@ update public.case_studies
 set content_blocks = jsonb_set(
   content_blocks,
   '{5,payload,insights}',
-  '["Baseline - Average Plans Per Participant (2023-2025): 4.46","Skip this survey","Get recommendation","Powered by NAYYA","Plans Per Participant in 2026 AE:","• Participants who \"skipped\" Nayya: 2.57","• Participants who only \"started\" Nayya: 4.43","• Participants who got recommendations from Nayya: 5.44"]'::jsonb
+  '["Baseline average plans per participant (2023-2025): 4.46","2026","Participants who skipped Nayya: 2.57","Participants who only started Nayya: 4.43","Participants who got recommendations from Nayya: 5.44","Participants who completed the Nayya survey enrolled in TWICE as many benefits as those who"]'::jsonb
 )
 where slug = 'nayya-ai-benefits';
 
