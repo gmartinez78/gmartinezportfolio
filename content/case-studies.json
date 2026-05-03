@@ -196,11 +196,14 @@
             { "metric": "Full-year impact - All PEO", "value": "$10M" }
           ],
           "insights": [
-            "Baseline average plans per participant (2023-2025): 4.",
-            "Participants who skipped Nayya: 2 plans per participant.",
-            "Participants who only started Nayya: 4 plans per participant.",
-            "Participants who received recommendations from Nayya: 5 plans per participant.",
-            "Participants who completed the Nayya survey enrolled in twice as many benefits as those who skipped it."
+            "Baseline - Average Plans Per Participant (2023-2025): 4.46",
+            "Skip this survey",
+            "Get recommendation",
+            "Powered by NAYYA",
+            "Plans Per Participant in 2026 AE:",
+            "• Participants who \"skipped\" Nayya: 2.57",
+            "• Participants who only \"started\" Nayya: 4.43",
+            "• Participants who got recommendations from Nayya: 5.44"
           ],
           "opportunities": [
             "Less than 7% of eligible employees completed a Nayya survey, leaving strong room for growth.",

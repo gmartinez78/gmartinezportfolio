@@ -9,8 +9,8 @@ where slug = 'nayya-ai-benefits';
 update public.case_studies
 set content_blocks = jsonb_set(
   content_blocks,
-  '{3,body}',
-  '"I was responsible for helping define the best integration path between the two platforms while protecting the user experience as much as possible.\n\nThis meant balancing business value, technical constraints, and user confidence during a sensitive decision-making process."'::jsonb
+  '{5,payload,insights}',
+  '["Baseline - Average Plans Per Participant (2023-2025): 4.46","Skip this survey","Get recommendation","Powered by NAYYA","Plans Per Participant in 2026 AE:","• Participants who \"skipped\" Nayya: 2.57","• Participants who only \"started\" Nayya: 4.43","• Participants who got recommendations from Nayya: 5.44"]'::jsonb
 )
 where slug = 'nayya-ai-benefits';
 
