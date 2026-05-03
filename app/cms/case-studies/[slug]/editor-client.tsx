@@ -12,6 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { fallbackCaseStudies } from "@/lib/cms/fallback";
 import type { CaseStudyRecord } from "@/lib/cms/types";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
+import { useSupabaseConnection } from "@/lib/supabase/use-supabase-connection";
 import { useCmsAuth } from "@/lib/supabase/use-cms-auth";
 
 const emptyCaseStudy: CaseStudyRecord = {
@@ -68,7 +69,7 @@ function nullableString(value: FormDataEntryValue | null) {
 export function CmsCaseStudyEditorClient({ slug }: { slug: string }) {
   const router = useRouter();
   const { canEdit, supabase } = useCmsAuth();
-  const connected = Boolean(getSupabaseBrowserClient());
+  const { checking, connected, error } = useSupabaseConnection();
   const isNew = slug === "new";
   const [study, setStudy] = useState<CaseStudyRecord | null>(isNew ? emptyCaseStudy : null);
   const [loading, setLoading] = useState(!isNew);
@@ -208,6 +209,8 @@ export function CmsCaseStudyEditorClient({ slug }: { slug: string }) {
       description="This editor keeps metadata structured and leaves rich repeated sections in JSON so each case study can support different narrative shapes without breaking the schema."
       activeHref="/cms/case-studies"
       connected={connected}
+      checking={checking}
+      connectionError={error}
     >
       <div className="space-y-6">
         <CmsAuthPanel />

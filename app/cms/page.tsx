@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { fallbackCaseStudies, fallbackSiteContent } from "@/lib/cms/fallback";
 import type { CaseStudyRecord, SiteContent } from "@/lib/cms/types";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
+import { useSupabaseConnection } from "@/lib/supabase/use-supabase-connection";
 import Link from "next/link";
 
 const blockGroups = [
@@ -28,7 +29,7 @@ const blockGroups = [
 export default function CmsDashboardPage() {
   const [siteContent, setSiteContent] = useState<SiteContent>(fallbackSiteContent);
   const [caseStudies, setCaseStudies] = useState<CaseStudyRecord[]>(fallbackCaseStudies);
-  const connected = Boolean(getSupabaseBrowserClient());
+  const { checking, connected, error } = useSupabaseConnection();
 
   useEffect(() => {
     const supabase = getSupabaseBrowserClient();
@@ -60,6 +61,8 @@ export default function CmsDashboardPage() {
       description="This CMS is aligned to the real content already present in the site and to the JSON models you provided. The schema is split between singleton site content and reusable case study posts."
       activeHref="/cms"
       connected={connected}
+      checking={checking}
+      connectionError={error}
     >
       <div className="grid gap-5 md:grid-cols-3">
         <Card>

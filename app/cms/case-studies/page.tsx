@@ -9,10 +9,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { fallbackCaseStudies } from "@/lib/cms/fallback";
 import type { CaseStudyRecord } from "@/lib/cms/types";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
+import { useSupabaseConnection } from "@/lib/supabase/use-supabase-connection";
 
 export default function CmsCaseStudiesPage() {
   const [caseStudies, setCaseStudies] = useState<CaseStudyRecord[]>(fallbackCaseStudies);
-  const connected = Boolean(getSupabaseBrowserClient());
+  const { checking, connected, error } = useSupabaseConnection();
 
   useEffect(() => {
     const supabase = getSupabaseBrowserClient();
@@ -38,6 +39,8 @@ export default function CmsCaseStudiesPage() {
       description="These entries map to the portfolio projects in your site. The editor is structured around the reusable blocks detected in the existing project pages and the JSON case study model."
       activeHref="/cms/case-studies"
       connected={connected}
+      checking={checking}
+      connectionError={error}
     >
       <div className="mb-6 flex justify-end">
         <Button asChild size="xs">

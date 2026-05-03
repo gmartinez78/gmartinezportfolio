@@ -6,9 +6,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useSupabaseConnection } from "@/lib/supabase/use-supabase-connection";
 
 export function CmsAuthPanel() {
   const { canEdit, loading, error, session, signIn, signOut, supabase } = useCmsAuth();
+  const { checking, connected, error: connectionError, hasEnv } = useSupabaseConnection();
   const [pending, setPending] = useState(false);
 
   async function handleSubmit(formData: FormData) {
@@ -23,7 +25,7 @@ export function CmsAuthPanel() {
     }
   }
 
-  if (!supabase) {
+  if (!supabase || !hasEnv) {
     return (
       <Card>
         <CardHeader>
@@ -32,6 +34,27 @@ export function CmsAuthPanel() {
         <CardContent className="text-sm leading-6 text-[#5c7792]">
           Add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` to use the live CMS.
           Until then, the admin screens fall back to the JSON files committed in the repo.
+        </CardContent>
+      </Card>
+    );
+  }
+
+  if (checking) {
+    return (
+      <Card>
+        <CardContent className="py-6 text-sm text-[#5c7792]">Checking Supabase connection...</CardContent>
+      </Card>
+    );
+  }
+
+  if (!connected) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>Supabase unavailable</CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm leading-6 text-[#5c7792]">
+          {connectionError ?? "The CMS could not reach the configured Supabase project."}
         </CardContent>
       </Card>
     );

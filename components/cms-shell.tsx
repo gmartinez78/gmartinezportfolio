@@ -12,14 +12,24 @@ export function CmsShell({
   description,
   activeHref,
   connected,
+  checking = false,
+  connectionError = null,
   children,
 }: {
   title: string;
   description: string;
   activeHref: string;
   connected: boolean;
+  checking?: boolean;
+  connectionError?: string | null;
   children: React.ReactNode;
 }) {
+  const connectionLabel = checking
+    ? "Checking Supabase"
+    : connected
+      ? "Supabase connected"
+      : "Fallback content mode";
+
   return (
     <main className="min-h-screen bg-[#F0F7FF] text-[#3c3e3f]">
       <div className="mx-auto grid max-w-[1440px] gap-8 px-4 py-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:px-8">
@@ -33,7 +43,7 @@ export function CmsShell({
             </p>
             <div className="mt-4">
               <Badge variant={connected ? "default" : "outline"}>
-                {connected ? "Supabase connected" : "Fallback content mode"}
+                {connectionLabel}
               </Badge>
             </div>
           </div>
@@ -59,9 +69,13 @@ export function CmsShell({
           </nav>
 
           <div className="mt-8 rounded-[22px] bg-[#F7FBFF] p-4 text-sm leading-6 text-[#5c7792]">
-            The CMS is modeled around the current site structure: global site sections plus case
-            studies with overview, metrics, pain points, constraints, methodology, strategy, and
-            reflections.
+            {connectionError ? (
+              <>
+                <span className="font-semibold text-[#0e2951]">Connection issue:</span> {connectionError}
+              </>
+            ) : (
+              "The CMS is modeled around the current site structure: global site sections plus case studies with overview, metrics, pain points, constraints, methodology, strategy, and reflections."
+            )}
           </div>
         </aside>
 

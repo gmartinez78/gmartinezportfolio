@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { fallbackSiteContent } from "@/lib/cms/fallback";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
+import { useSupabaseConnection } from "@/lib/supabase/use-supabase-connection";
 import { useCmsAuth } from "@/lib/supabase/use-cms-auth";
 
 type SiteSection = {
@@ -19,6 +20,7 @@ type SiteSection = {
 
 export default function CmsSiteContentPage() {
   const { canEdit, supabase } = useCmsAuth();
+  const { checking, connected, error } = useSupabaseConnection();
   const [sections, setSections] = useState<SiteSection[]>([
     { label: "Navigation", name: "nav_json", value: JSON.stringify(fallbackSiteContent.nav, null, 2) },
     { label: "Home", name: "home_json", value: JSON.stringify(fallbackSiteContent.home, null, 2) },
@@ -97,7 +99,9 @@ export default function CmsSiteContentPage() {
       title="Site Content"
       description="This editor mirrors the singleton site document from the JSON you provided. The site sections are stored as JSONB so your current page structure can evolve without schema churn."
       activeHref="/cms/site"
-      connected={Boolean(getSupabaseBrowserClient())}
+      connected={connected}
+      checking={checking}
+      connectionError={error}
     >
       <div className="space-y-6">
         <CmsAuthPanel />
