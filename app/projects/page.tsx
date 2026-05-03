@@ -31,6 +31,7 @@ export default function ProjectsPage() {
     filters: project.filters?.length ? project.filters : project.tags,
     stat: project.metrics[0]?.value ?? `${project.year ?? ""}`,
     statLabel: project.metrics[0]?.label ?? project.industry ?? "",
+    previewImage: project.images.cover || project.images.hero || "",
     bg: PROJECT_BACKGROUNDS[project.slug] ?? "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
   }));
   const filteredProjects =
@@ -49,14 +50,14 @@ export default function ProjectsPage() {
       <SiteHeader active="Projects" />
 
       {/* Hero */}
-      <section className="max-w-[1200px] mx-auto px-6 pt-16 pb-10">
-        <SectionHeading eyebrow="Selected Work" title="Projects" />
-        <p className="text-[#5c7792] text-lg max-w-xl leading-relaxed">
+      <section className="mx-auto max-w-[1200px] px-6 pt-16 pb-10 text-center">
+        <SectionHeading eyebrow="Selected Work" title="Projects" centered />
+        <p className="mx-auto max-w-xl text-lg leading-relaxed text-[#5c7792]">
           Case studies and highlights from 10+ years designing enterprise SaaS, healthtech, and nonprofit digital experiences.
         </p>
 
         {/* Filter Pills */}
-        <div className="flex flex-wrap gap-2 mt-8">
+        <div className="mt-8 flex flex-wrap justify-center gap-2">
           {FILTER_PILLS.map((filter) => (
             <Badge
               key={filter}
@@ -88,12 +89,12 @@ export default function ProjectsPage() {
             {/* Preview */}
             <div
               className={`w-full md:w-80 shrink-0 h-60 md:h-auto flex items-center justify-center relative overflow-hidden ${i % 2 === 1 ? "md:order-2" : ""}`}
-              style={project.slug !== "benefits-enrollment" ? { background: project.bg } : undefined}
+              style={!project.previewImage ? { background: project.bg } : undefined}
             >
-              {project.slug === "benefits-enrollment" ? (
+              {project.previewImage ? (
                 <Image
-                  src="/images/benefits/enhancing-benefits-banner-v2.png"
-                  alt="Benefits enrollment preview"
+                  src={project.previewImage}
+                  alt={`${project.title} preview`}
                   fill
                   sizes="(min-width: 768px) 320px, 100vw"
                   className="object-cover object-center"

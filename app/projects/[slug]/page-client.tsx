@@ -173,6 +173,7 @@ const NAYYA_REFLECTIONS: CaseStudyReflection[] = [
 ];
 
 const NAYYA_PHONE_IMAGE = "/images/projects/nayya-design-process.png";
+const NAYYA_HERO_IMAGE = "/images/projects/nayya-hero.png";
 const NAYYA_METHODOLOGY_NAME = "Research & Discovery";
 const NAYYA_YEAR = 2025;
 
@@ -236,7 +237,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
   const otherProjects = caseStudies
     .filter((project) => project.slug !== caseStudy.slug && project.status === "published")
-    .slice(0, 3);
+    .slice(0, 3)
+    .map((project) => ({
+      ...project,
+      previewImage: project.images.cover || project.images.hero || "",
+      previewMetric: project.metrics[0]?.value ?? project.year,
+      previewLabel: project.metrics[0]?.label ?? project.industry ?? "",
+    }));
   const findBlock = (id: string) => caseStudy.content_blocks?.find((block) => block.id === id);
   const overviewBlock = findBlock("overview");
   const storyBlocks = ["situation", "task", "research", "actions"]
@@ -254,6 +261,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const methodologyName = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_METHODOLOGY_NAME : caseStudy.methodology.name;
   const reflections = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_REFLECTIONS : caseStudy.reflections;
   const projectYear = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_YEAR : caseStudy.year;
+  const heroImage = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_HERO_IMAGE : caseStudy.images.hero;
 
   return (
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden">
@@ -282,10 +290,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             </div>
 
-            {caseStudy.images.hero ? (
+            {heroImage ? (
               <div className="relative mx-auto mb-10 h-[150px] w-full max-w-[840px] overflow-hidden rounded-[24px] shadow-[0_20px_64px_rgba(14,41,81,0.12)]">
                 <img
-                  src={withBasePath(caseStudy.images.hero)}
+                  src={withBasePath(heroImage)}
                   alt={`${caseStudy.title} banner`}
                   className="h-full w-full object-cover object-center"
                 />
@@ -629,40 +637,75 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug === "nayya-ai-benefits" ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title="The Solution" centered className="mb-12" />
-          {resultBlock?.body ? (
-            <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              {resultBlock.body}
-            </p>
-          ) : null}
-          <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
-            <iframe
-              title="Nayya impact frame from Figma"
-              src={NAYYA_IMPACT_FIGMA_EMBED}
-              className="h-[520px] w-full"
-              allowFullScreen
-            />
-          </div>
-        </section>
-      ) : null}
-
-      <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
-        <div className="mx-auto max-w-[1040px]">
-          <div className="grid gap-10 text-center md:grid-cols-3">
-            {highlightMetrics.map((metric, index) => (
-              <div
-                key={`${metric.label}-${metric.value}`}
-                className={index < 2 ? "md:border-r md:border-[#d7e8f7] px-4" : "px-4"}
-              >
-                <p className="text-[46px] font-bold leading-none text-[#1183D0]">{metric.value}</p>
-                <p className="mt-4 text-[18px] leading-[1.625em] text-[#5c7792]">{metric.label}</p>
-                {metric.context ? <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{metric.context}</p> : null}
+      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        <SectionHeading title="Results & Impact" centered className="mb-12" />
+        {resultBlock?.body ? (
+          <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+            {resultBlock.body}
+          </p>
+        ) : null}
+        {resultRows.length ? (
+          <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white">
+            {resultRows.map((row) => (
+              <div key={`${row.metric}-${row.value}`} className="grid gap-4 border-t border-[#d7e8f7] px-6 py-5 first:border-t-0 md:grid-cols-[1fr_auto] md:items-center">
+                <p className="font-inter text-[15px] font-semibold text-[#0e2951]">{row.metric}</p>
+                <p className="font-inter text-[28px] font-bold leading-none text-[#1183D0]">{row.value}</p>
               </div>
             ))}
           </div>
-        </div>
+        ) : null}
+        {[resultInsights, resultOpportunities, projectedImprovements, successMetrics].some((items) => items.length) ? (
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {resultInsights.length ? (
+              <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
+                <CardContent className="p-8">
+                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Enrollment Behavior Insights</h3>
+                  <ul className="mt-5 list-disc space-y-3 pl-5">
+                    {resultInsights.map((item) => (
+                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ) : null}
+            {resultOpportunities.length ? (
+              <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
+                <CardContent className="p-8">
+                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Opportunities and Next Steps</h3>
+                  <ul className="mt-5 list-disc space-y-3 pl-5">
+                    {resultOpportunities.map((item) => (
+                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ) : null}
+            {projectedImprovements.length ? (
+              <Card className="p-0 py-0">
+                <CardContent className="p-8">
+                  <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Projected Improvements</p>
+                  <ul className="space-y-3">
+                    {projectedImprovements.map((item) => (
+                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ) : null}
+            {successMetrics.length ? (
+              <Card className="p-0 py-0">
+                <CardContent className="p-8">
+                  <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Success Metrics</p>
+                  <ul className="space-y-3">
+                    {successMetrics.map((item) => (
+                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ) : null}
+          </div>
+        ) : null}
       </section>
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
@@ -730,13 +773,41 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <div className="grid gap-5 md:grid-cols-3">
           {otherProjects.map((project) => (
             <a key={project.slug} href={resolveProjectHref(project)} className="group overflow-hidden rounded-[28px] border border-[#CFE5F8] bg-white transition-all hover:-translate-y-0.5">
-              <div className="flex h-36 items-center justify-center bg-[radial-gradient(ellipse_at_20%_50%,#d4e8ff_0%,#edf5fb_70%)]">
-                <span className="font-serif-display text-3xl font-bold italic text-[#1183D0]">{project.metrics[0]?.value ?? project.year}</span>
+              <div className="relative h-40 overflow-hidden bg-[radial-gradient(ellipse_at_20%_50%,#d4e8ff_0%,#edf5fb_70%)]">
+                {project.previewImage ? (
+                  <img
+                    src={withBasePath(project.previewImage)}
+                    alt={`${project.title} preview`}
+                    className="h-full w-full object-cover object-center"
+                  />
+                ) : (
+                  <div className="flex h-full items-center justify-center text-center">
+                    <div>
+                      <span className="font-serif-display text-3xl font-bold italic text-[#1183D0]">
+                        {project.previewMetric}
+                      </span>
+                      {project.previewLabel ? (
+                        <p className="mx-auto mt-2 max-w-[140px] text-xs leading-tight text-[#5c7792]">
+                          {project.previewLabel}
+                        </p>
+                      ) : null}
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="p-6">
-                <p className="mb-1 text-xs text-[#5c7792]">{project.company}</p>
+                <div className="mb-3 flex items-center gap-3">
+                  <span className="text-xs font-medium text-[#5c7792]">{project.company}</span>
+                  <span className="text-[#bcd2ff]">·</span>
+                  <span className="text-xs text-[#5c7792]">{project.year}</span>
+                </div>
                 <h3 className="mb-2 text-[15px] font-semibold leading-snug text-[#0e2951]">{project.title}</h3>
-                <Badge variant="outline" size="tag">{project.tags[0]}</Badge>
+                <p className="mb-4 text-sm leading-relaxed text-[#5c7792]">{project.tagline}</p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <Badge key={tag} size="tag">{tag}</Badge>
+                  ))}
+                </div>
               </div>
             </a>
           ))}
