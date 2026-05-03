@@ -85,6 +85,8 @@ const DESIGN_PROCESS = [
   { label: "Test", color: "#d1f090", desc: "Post-launch Hotjar analysis" },
 ];
 
+const OUTCOME_SIGNAL_COLORS = ["#87d4ac", "#f5e692", "#d9b8ff", "#68c7c1", "#d1f090"];
+
 const RESULTS = [
   { value: "72%", label: "Reduction in processing time" },
   { value: "500+", label: "Employees self-managed without IT tickets" },
@@ -167,6 +169,10 @@ function Divider() {
       style={{ background: "linear-gradient(to right, rgba(17,131,208,0.4), rgba(9,67,106,0))" }}
     />
   );
+}
+
+function normalizeReflectionTitle(title: string) {
+  return title.replace(/\.+$/, "");
 }
 
 function ActionIcon({ title }: { title: string }) {
@@ -511,7 +517,7 @@ export default function BenefitsPage() {
       ];
 
   return (
-    <main className="bg-white text-[#3c3e3f] overflow-x-hidden">
+    <main className="bg-white text-[#5c7792] overflow-x-hidden">
       <SiteHeader active="Projects" />
 
       {!isLiveCaseStudy ? (
@@ -631,13 +637,13 @@ export default function BenefitsPage() {
 
           {/* Role */}
           <div className="xl:px-8">
-            <p className="text-[#3c3e3f] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter font-medium">
+            <p className="text-[#5c7792] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter font-medium">
               My Role
             </p>
             <div className="h-[3px] w-full bg-[#1183D0] rounded-full mb-5" />
             <ul className="space-y-1">
               {myRole.map((r) => (
-                <li key={r} className="text-[#3c3e3f] text-[16px] font-inter capitalize leading-[1.75] font-medium">{r}</li>
+                <li key={r} className="text-[#5c7792] text-[16px] font-inter capitalize leading-[1.75] font-medium">{r}</li>
               ))}
             </ul>
           </div>
@@ -672,7 +678,7 @@ export default function BenefitsPage() {
             <SectionHeading title="Users" className="mb-8" />
             <div className="mt-8 space-y-6">
               {CHALLENGE_POINTS.map((point) => (
-                <p key={point} className="max-w-[720px] text-[16px] leading-[1.625em] text-[#3c3e3f]">
+                <p key={point} className="max-w-[720px] text-[16px] leading-[1.625em] text-[#5c7792]">
                   {point}
                 </p>
               ))}
@@ -683,16 +689,16 @@ export default function BenefitsPage() {
             </h3>
             <div className="mt-8 space-y-6">
               {userPainPoints.map((point) => (
-                <p key={point} className="max-w-[720px] text-[16px] leading-[1.625em] text-[#3c3e3f]">
+                <p key={point} className="max-w-[720px] text-[16px] leading-[1.625em] text-[#5c7792]">
                   {point}
                 </p>
               ))}
             </div>
 
-            <h3 className="mt-12 text-[15px] uppercase tracking-[0.24em] text-[#5c7792]">
+            <h3 className="mt-12 text-[15px] uppercase tracking-[0.24em] text-[#1183D0]">
               Task
             </h3>
-            <p className="mt-8 max-w-[720px] text-[16px] leading-[1.625em] text-[#3c3e3f]">
+            <p className="mt-8 max-w-[720px] text-[16px] leading-[1.625em] text-[#5c7792]">
               {TASK_SUMMARY}
             </p>
           </div>
@@ -728,7 +734,7 @@ export default function BenefitsPage() {
                 <h3 className="text-[28px] font-normal leading-none text-[#1183D0]">
                   {item.title}
                 </h3>
-                <p className="mt-5 max-w-[320px] text-[16px] leading-[1.625em] text-[#3c3e3f]">
+                <p className="mt-5 max-w-[320px] text-[16px] leading-[1.625em] text-[#5c7792]">
                   {item.body}
                 </p>
               </CardContent>
@@ -739,7 +745,7 @@ export default function BenefitsPage() {
 
       {/* ── Design Thinking Process ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading eyebrow="Action" title="Methodology" className="mb-12" />
+        <SectionHeading eyebrow="Actions" title="Methodology" className="mb-12" />
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
           {methodologySteps.map((step, i) => (
             <div key={i} className="flex flex-col gap-4">
@@ -752,7 +758,7 @@ export default function BenefitsPage() {
                   className="rounded-xl w-full"
                   style={{ height: 10, backgroundColor: step.color }}
                 />
-                <p className="text-[#3c3e3f] font-inter font-semibold text-[15px] mt-2">
+                <p className="text-[#5c7792] font-inter font-semibold text-[15px] mt-2">
                   {i + 1}. {step.label}
                 </p>
                 <p className="font-inter text-[16px] leading-[1.625em] text-[#5c7792]">
@@ -773,7 +779,7 @@ export default function BenefitsPage() {
             <div className="flex flex-col gap-8">
               {strategyPoints.map((p, i) => (
                 <div key={i}>
-                  <p className="font-inter text-[16px] leading-[1.625em] font-normal text-[#3c3e3f]">{p}</p>
+                  <p className="font-inter text-[16px] leading-[1.625em] font-normal text-[#5c7792]">{p}</p>
                 </div>
               ))}
             </div>
@@ -807,7 +813,7 @@ export default function BenefitsPage() {
           {resultRows.map((row) => (
             <div
               key={row.metric}
-              className="grid min-w-[820px] grid-cols-[1.2fr_1.4fr_1.4fr_0.8fr] border-t border-[#d7e8f7] text-[15px] leading-[1.6] text-[#3c3e3f]"
+              className="grid min-w-[820px] grid-cols-[1.2fr_1.4fr_1.4fr_0.8fr] border-t border-[#d7e8f7] text-[15px] leading-[1.6] text-[#5c7792]"
             >
               <div className="px-5 py-5 font-semibold text-[#0e2951]">{row.metric}</div>
               <div className="px-5 py-5">{row.before}</div>
@@ -826,14 +832,21 @@ export default function BenefitsPage() {
             Indicative metrics based on project outcomes, rollout impact, and observed operational improvements where exact audited totals were not preserved.
           </p>
           <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {ADDITIONAL_RESULT_SIGNALS.map((item) => (
-              <Card key={item.title} className="overflow-hidden border-[#d7e8f7]">
-                <CardContent className="px-6 py-6">
-                  <p className="text-[30px] font-bold leading-none text-[#1183D0]">{item.value}</p>
-                  <h3 className="mt-4 text-[16px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
-                  <p className="mt-3 text-[15px] leading-[1.625em] text-[#5c7792]">{item.body}</p>
-                </CardContent>
-              </Card>
+            {ADDITIONAL_RESULT_SIGNALS.map((item, index) => (
+              <div key={item.title} className="flex flex-col gap-4">
+                <div
+                  className="flex flex-1 flex-col gap-2 rounded-2xl p-5"
+                  style={{ backgroundColor: `${OUTCOME_SIGNAL_COLORS[index % OUTCOME_SIGNAL_COLORS.length] ?? "#87d4ac"}33` }}
+                >
+                  <div
+                    className="w-full rounded-xl"
+                    style={{ height: 10, backgroundColor: OUTCOME_SIGNAL_COLORS[index % OUTCOME_SIGNAL_COLORS.length] ?? "#87d4ac" }}
+                  />
+                  <p className="mt-2 text-[30px] font-bold leading-none text-[#1183D0]">{item.value}</p>
+                  <h3 className="mt-2 text-[16px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
+                  <p className="mt-1 text-[15px] leading-[1.625em] text-[#5c7792]">{item.body}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -852,19 +865,18 @@ export default function BenefitsPage() {
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <SectionHeading title="Reflections" centered className="mb-12" />
 
-        <div className="mx-auto flex max-w-[820px] flex-col gap-10">
+        <div className="mx-auto grid max-w-[1040px] gap-6 md:grid-cols-2">
           {reflections.map((r, i) => (
-            <div
-              key={i}
-              className="text-center"
-            >
-              <h3 className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
-                {r.title}
-              </h3>
-              <p className="mx-auto mt-4 text-[16px] leading-[1.625em] text-[#3c3e3f]">
-                {r.body}
-              </p>
-            </div>
+            <Card key={i} className="border-0 bg-transparent p-0 py-0 shadow-none">
+              <CardContent className="p-8">
+                <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
+                  {normalizeReflectionTitle(r.title)}
+                </h3>
+                <p className="mt-4 text-[15px] leading-[1.7] text-[#5c7792]">
+                  {r.body}
+                </p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>
