@@ -110,7 +110,7 @@ export default function ProjectsPage() {
             {/* Content */}
             <CardContent className="flex flex-1 flex-col justify-between p-8">
               <div>
-                <div className="flex items-center gap-3 mb-3">
+                <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
                   <span className="text-xs text-[#5c7792] font-medium">{project.company}</span>
                   <span className="text-[#bcd2ff]">·</span>
                   <span className="text-xs text-[#5c7792]">{project.year}</span>

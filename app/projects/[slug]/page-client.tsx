@@ -283,7 +283,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <p className="mb-3 font-inter text-[13px] uppercase tracking-[3px] text-[#5c7792]">
                   {caseStudy.industry ?? "Case Study"}
                 </p>
-                <h1 className="mb-5 font-inter text-[44px] font-bold leading-[1.15] text-[#0e2951]">
+                <h1 className="mb-5 font-inter text-[36px] font-bold leading-[1.15] text-[#0e2951] md:text-[44px]">
                   {caseStudy.title}
                 </h1>
                 <p className="text-[16px] leading-[1.7] text-[#5c7792]">{caseStudy.tagline}</p>
@@ -345,8 +345,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {overviewBlock.body}
           </p>
         ) : null}
-        <div className="mt-8 grid gap-0 md:grid-cols-4">
-          <div className="border-[#4d87ae]/20 pr-8 md:border-r">
+        <div className="mt-8 grid gap-8 md:grid-cols-4 md:gap-0">
+          <div className="border-[#4d87ae]/20 pb-8 md:border-r md:pb-0 md:pr-8">
             <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Team Members</p>
             <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
             <ul className="space-y-1">
@@ -355,7 +355,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               ))}
             </ul>
           </div>
-          <div className="border-[#4d87ae]/20 px-8 md:border-r">
+          <div className="border-[#4d87ae]/20 py-8 md:border-r md:px-8 md:py-0">
             <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] font-medium text-[#3c3e3f]">My Role</p>
             <div className="mb-5 h-[3px] w-full rounded-full bg-[#1183D0]" />
             <ul className="space-y-1">
@@ -364,7 +364,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               ))}
             </ul>
           </div>
-          <div className="border-[#4d87ae]/20 px-8 md:border-r">
+          <div className="border-[#4d87ae]/20 py-8 md:border-r md:px-8 md:py-0">
             <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Tools Used</p>
             <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
             <ul className="space-y-1">
@@ -373,7 +373,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               ))}
             </ul>
           </div>
-          <div className="pl-8">
+          <div className="pt-8 md:pl-8 md:pt-0">
             <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Timeline</p>
             <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
             <p className="font-inter text-[16px] capitalize leading-[1.75] text-[#5c7792]">{caseStudy.duration}</p>
@@ -523,10 +523,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <img
                   src={withBasePath(NAYYA_PHONE_IMAGE)}
                   alt="Nayya mobile recommendation concept"
-                  className="h-auto w-full max-w-[500px]"
+                  className="h-auto w-full max-w-[420px] sm:max-w-[500px]"
                 />
               </div>
-              <div className="space-y-5 text-left">
+              <div className="space-y-5 text-center lg:text-left">
                 {designStrategy.map((item) => (
                   <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
                 ))}
@@ -581,7 +581,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ))}
           </div>
 
-          <div className="mt-10 overflow-x-auto rounded-[24px] border border-[#d7e8f7] bg-white">
+          <div className="mt-10 hidden overflow-x-auto rounded-[24px] border border-[#d7e8f7] bg-white md:block">
             <div className="grid min-w-[900px] grid-cols-[1fr_1.2fr_1.4fr_0.8fr] bg-[#f7f9fb] text-[13px] font-bold uppercase tracking-[0.16em] text-[#0e2951]">
               <div className="px-5 py-4">Alternative</div>
               <div className="px-5 py-4">Strength</div>
@@ -599,7 +599,32 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div className="px-5 py-5 font-semibold text-[#1183D0]">{row.decision}</div>
               </div>
             ))}
-            </div>
+          </div>
+
+          <div className="mt-10 grid gap-4 md:hidden">
+            {NAYYA_PROCESS_TRADEOFFS.map((row) => (
+              <Card key={row.alternative} className="overflow-hidden">
+                <CardContent className="space-y-4 px-5 py-5">
+                  <div>
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Alternative</p>
+                    <p className="mt-2 text-[18px] font-semibold leading-snug text-[#0e2951]">{row.alternative}</p>
+                  </div>
+                  <div>
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Strength</p>
+                    <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.strength}</p>
+                  </div>
+                  <div>
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Tradeoff</p>
+                    <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.tradeoff}</p>
+                  </div>
+                  <div>
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Decision</p>
+                    <p className="mt-2 text-[15px] font-semibold text-[#1183D0]">{row.decision}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </section>
       ) : null}
 
@@ -614,7 +639,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             guided decision modal was the concept tested, and the findings showed which parts of the
             integration felt clear and where friction still remained.
           </p>
-          <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white">
+          <div className="hidden overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white md:block">
             <div className="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 border-b border-[#d7e8f7] bg-[#f7f9fb] px-6 py-4 text-[13px] font-bold uppercase tracking-[0.16em] text-[#0e2951]">
               <div>Metric</div>
               <div>Finding</div>
@@ -632,6 +657,27 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <p className="font-normal text-[#5c7792]">{row.finding}</p>
                 <p className="font-normal text-[#5c7792]">{row.insight}</p>
               </div>
+            ))}
+          </div>
+
+          <div className="grid gap-4 md:hidden">
+            {NAYYA_TESTING_RESULTS.map((row) => (
+              <Card key={`${row.metric}-${row.label}`} className="overflow-hidden">
+                <CardContent className="space-y-4 px-5 py-5">
+                  <div>
+                    <p className="text-[28px] font-semibold leading-none text-[#0e2951]">{row.metric}</p>
+                    <p className="mt-2 text-[14px] leading-[1.5] text-[#5c7792]">{row.label}</p>
+                  </div>
+                  <div>
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Finding</p>
+                    <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{row.finding}</p>
+                  </div>
+                  <div>
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Insight</p>
+                    <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{row.insight}</p>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </section>
@@ -761,7 +807,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         ) : null}
         <div className="mt-10 h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
-        <div className="mt-12 grid gap-12 md:grid-cols-[1fr_auto_1fr] md:items-start">
+        <div className="mt-12 grid gap-10 md:grid-cols-[1fr_auto_1fr] md:items-start">
           <div className="flex flex-col items-center gap-6">
             <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
               Tools
@@ -819,7 +865,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 )}
               </div>
               <div className="p-6">
-                <div className="mb-3 flex items-center gap-3">
+                <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
                   <span className="text-xs font-medium text-[#5c7792]">{project.company}</span>
                   <span className="text-[#bcd2ff]">·</span>
                   <span className="text-xs text-[#5c7792]">{project.year}</span>
