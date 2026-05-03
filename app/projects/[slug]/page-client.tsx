@@ -637,20 +637,43 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
+      {caseStudy.slug === "nayya-ai-benefits" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading title="The Solution" centered className="mb-12" />
+          {resultBlock?.body ? (
+            <p className="mx-auto max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              {resultBlock.body}
+            </p>
+          ) : null}
+        </section>
+      ) : null}
+
+      {caseStudy.slug === "nayya-ai-benefits" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <div className="max-w-[1040px] mx-auto">
+            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
+              <iframe
+                title="Nayya impact frame from Figma"
+                src={NAYYA_IMPACT_FIGMA_EMBED}
+                className="h-[520px] w-full"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         <SectionHeading title="Results & Impact" centered className="mb-12" />
-        {resultBlock?.body ? (
-          <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-            {resultBlock.body}
-          </p>
-        ) : null}
         {resultRows.length ? (
-          <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white">
+          <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
             {resultRows.map((row) => (
-              <div key={`${row.metric}-${row.value}`} className="grid gap-4 border-t border-[#d7e8f7] px-6 py-5 first:border-t-0 md:grid-cols-[1fr_auto] md:items-center">
-                <p className="font-inter text-[15px] font-semibold text-[#0e2951]">{row.metric}</p>
-                <p className="font-inter text-[28px] font-bold leading-none text-[#1183D0]">{row.value}</p>
-              </div>
+              <Card key={`${row.metric}-${row.value}`} className="overflow-hidden">
+                <CardContent className="px-4 py-5">
+                  <p className="text-[24px] font-bold leading-none text-[#0e2951]">{row.value}</p>
+                  <p className="mt-2 text-[13px] leading-[1.4] text-[#0e2951]">{row.metric}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         ) : null}
