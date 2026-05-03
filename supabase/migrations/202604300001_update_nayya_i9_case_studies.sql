@@ -20,7 +20,7 @@ values
   2025,
   '6 months',
   'AI Benefits / HR SaaS',
-  'Designed the integration of an Nayya as AI-powered benefits tool, guiding employees to choose coverage that matched their needs.',
+  'Designed the integration of Nayya as an AI-powered benefits tool, guiding employees to choose coverage that matched their needs.',
   array['BENEFITS / ENSURANCE SAAS','UX Research','IA','Interaction Design','Design Systems'],
   array['UX Research','Product Design','AI Product'],
   array['Figma','Jira','Miro','Webex','Outlook','Copilot','Hotjar'],
