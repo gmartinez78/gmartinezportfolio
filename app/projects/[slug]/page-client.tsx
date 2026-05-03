@@ -398,8 +398,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </p>
                       ) : null}
                       {block.body ? (
-                        block.body.split("\n\n").map((paragraph, idx) => (
-                          <p key={idx} className="max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">{paragraph}</p>
+                        block.body.split(/\n+/).map((paragraph, idx) => (
+                          <p key={idx} className="max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#5c7792] mb-4 last:mb-0">{paragraph.trim()}</p>
                         ))
                       ) : null}
                       {items.length ? (
