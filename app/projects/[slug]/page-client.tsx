@@ -174,6 +174,7 @@ const NAYYA_REFLECTIONS: CaseStudyReflection[] = [
 
 const NAYYA_PHONE_IMAGE = "/images/projects/nayya-design-process.png";
 const NAYYA_METHODOLOGY_NAME = "Research & Discovery";
+const NAYYA_YEAR = 2025;
 
 const METHODOLOGY_COLORS = ["#87d4ac", "#f5e692", "#d9b8ff", "#68c7c1", "#d1f090"];
 
@@ -252,6 +253,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const designStrategy = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_DESIGN_STRATEGY : caseStudy.design_strategy;
   const methodologyName = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_METHODOLOGY_NAME : caseStudy.methodology.name;
   const reflections = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_REFLECTIONS : caseStudy.reflections;
+  const projectYear = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_YEAR : caseStudy.year;
 
   return (
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden">
@@ -281,7 +283,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
 
             {caseStudy.images.hero ? (
-              <div className="relative mx-auto mb-10 h-[150px] w-full overflow-hidden rounded-[24px] shadow-[0_20px_64px_rgba(14,41,81,0.12)]">
+              <div className="relative mx-auto mb-10 h-[150px] w-full max-w-[840px] overflow-hidden rounded-[24px] shadow-[0_20px_64px_rgba(14,41,81,0.12)]">
                 <img
                   src={withBasePath(caseStudy.images.hero)}
                   alt={`${caseStudy.title} banner`}
@@ -294,7 +296,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <div className="grid w-full gap-8 md:grid-cols-[1fr_2fr_1fr] md:items-center">
                 <div>
                   <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Year</p>
-                  <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy.year ?? ""}</p>
+                  <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{projectYear ?? ""}</p>
                 </div>
                 <div>
                   <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Role</p>
@@ -311,17 +313,17 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       </div>
 
-      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+      <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
         <div className="mx-auto max-w-[1040px]">
-          <div className="grid gap-6 text-center md:grid-cols-3">
+          <div className="grid gap-12 text-center md:grid-cols-3">
             {highlightMetrics.map((metric, index) => (
               <div
                 key={`${metric.label}-${metric.value}`}
-                className={index < 2 ? "md:border-r md:border-[#d7e8f7]" : ""}
+                className={`relative px-4 md:px-8 ${index < 2 ? "after:absolute after:right-0 after:top-0 after:h-full after:w-px after:bg-[#d7e8f7] after:content-['']" : ""}`}
               >
                 <p className="text-[46px] font-bold leading-none text-[#1183D0]">{metric.value}</p>
-                <p className="mt-3 text-[16px] leading-[1.625em] text-[#5c7792]">{metric.label}</p>
-                {metric.context ? <p className="mt-1 text-sm text-[#5c7792]">{metric.context}</p> : null}
+                <p className="mt-5 text-[16px] leading-[1.625em] text-[#5c7792]">{metric.label}</p>
+                {metric.context ? <p className="mt-3 text-[14px] leading-[1.6] text-[#5c7792]">{metric.context}</p> : null}
               </div>
             ))}
           </div>
@@ -388,7 +390,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </p>
                       ) : null}
                       {block.body ? (
-                        <p className="max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">{block.body}</p>
+                        block.body.split("\n\n").map((paragraph, idx) => (
+                          <p key={idx} className="max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">{paragraph}</p>
+                        ))
                       ) : null}
                       {items.length ? (
                         <div className="mt-5 space-y-3">
@@ -550,7 +554,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {NAYYA_PROCESS_ALTERNATIVES.map((item) => (
               <Card key={item.title} className="overflow-hidden border-transparent shadow-none">
                 <CardContent className="p-7">
-                  <Badge>{item.status}</Badge>
+                  <Badge className={item.status === "Rejected" ? "border border-[#1183D0] bg-white text-[#1183D0]" : ""}>{item.status}</Badge>
                   <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
                     {item.title}
                   </h3>
@@ -617,8 +621,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <p className="text-[30px] font-semibold leading-none text-[#0e2951]">{row.metric}</p>
                   <p className="mt-3 text-[14px] leading-[1.5] text-[#5c7792]">{row.label}</p>
                 </div>
-                <p className="font-normal text-[#0e2951]">{row.finding}</p>
-                <p className="font-normal text-[#0e2951]">{row.insight}</p>
+                <p className="font-normal text-[#5c7792]">{row.finding}</p>
+                <p className="font-normal text-[#5c7792]">{row.insight}</p>
               </div>
             ))}
           </div>
@@ -644,89 +648,21 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        <SectionHeading title={caseStudy.slug === "nayya-ai-benefits" ? "Results & Impact" : resultBlock?.title ?? "Results"} centered className="mb-12" />
-        {caseStudy.slug !== "nayya-ai-benefits" ? (
-          <div className="grid gap-6 md:grid-cols-3">
-            {caseStudy.metrics.map((metric) => (
-              <Card key={`${metric.label}-${metric.value}`} className="p-0 py-0">
-                <CardContent className="p-8">
-                  <span className="font-inter text-[52px] font-bold leading-none text-[#1183D0]">{metric.value}</span>
-                  <p className="mt-4 font-inter text-[18px] leading-[1.5] text-[#3c3e3f]">{metric.label}</p>
-                  {metric.context ? <p className="mt-2 text-sm text-[#5c7792]">{metric.context}</p> : null}
-                </CardContent>
-              </Card>
+      <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
+        <div className="mx-auto max-w-[1040px]">
+          <div className="grid gap-10 text-center md:grid-cols-3">
+            {highlightMetrics.map((metric, index) => (
+              <div
+                key={`${metric.label}-${metric.value}`}
+                className={index < 2 ? "md:border-r md:border-[#d7e8f7] px-4" : "px-4"}
+              >
+                <p className="text-[46px] font-bold leading-none text-[#1183D0]">{metric.value}</p>
+                <p className="mt-4 text-[18px] leading-[1.625em] text-[#5c7792]">{metric.label}</p>
+                {metric.context ? <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{metric.context}</p> : null}
+              </div>
             ))}
           </div>
-        ) : null}
-        {resultRows.length ? (
-          <div className="mt-8 grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-            {resultRows.map((row) => (
-              <Card key={`${row.metric}-${row.value}`} className="overflow-hidden">
-                <CardContent className="px-5 py-5">
-                  <p className="text-[26px] font-bold leading-none text-[#0e2951]">
-                    {row.value} <span className="text-[14px] font-normal text-[#0e2951]">{row.metric}</span>
-                  </p>
-                  {row.context ? (
-                    <p className="mt-1.5 text-[13px] leading-[1.5] text-[#5c7792]">{row.context}</p>
-                  ) : null}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        ) : null}
-        {caseStudy.slug === "nayya-ai-benefits" && [resultInsights, resultOpportunities, projectedImprovements, successMetrics].some((items) => items.length) ? (
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {resultInsights.length ? (
-              <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
-                <CardContent className="p-8">
-                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Enrollment Behavior Insights</h3>
-                  <ul className="mt-5 list-disc space-y-3 pl-5">
-                    {resultInsights.map((item) => (
-                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ) : null}
-            {resultOpportunities.length ? (
-              <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
-                <CardContent className="p-8">
-                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Opportunities and Next Steps</h3>
-                  <ul className="mt-5 list-disc space-y-3 pl-5">
-                    {resultOpportunities.map((item) => (
-                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ) : null}
-            {projectedImprovements.length ? (
-              <Card className="p-0 py-0">
-                <CardContent className="p-8">
-                  <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Projected Improvements</p>
-                  <ul className="space-y-3">
-                    {projectedImprovements.map((item) => (
-                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ) : null}
-            {successMetrics.length ? (
-              <Card className="p-0 py-0">
-                <CardContent className="p-8">
-                  <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Success Metrics</p>
-                  <ul className="space-y-3">
-                    {successMetrics.map((item) => (
-                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ) : null}
-          </div>
-        ) : null}
+        </div>
       </section>
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
