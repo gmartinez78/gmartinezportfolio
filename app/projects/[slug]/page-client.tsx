@@ -182,6 +182,8 @@ const NAYYA_REFLECTIONS: CaseStudyReflection[] = [
 const NAYYA_PHONE_IMAGE = "/images/projects/nayya-design-process.png";
 const NAYYA_METHODOLOGY_NAME = "Research & Discovery";
 const NAYYA_YEAR = 2025;
+const NAYYA_INSIGHTS_CLOSING =
+  "Participants who completed the Nayya survey enrolled in TWICE as many benefits as those who skipped it.";
 
 const METHODOLOGY_COLORS = ["#87d4ac", "#f5e692", "#d9b8ff", "#68c7c1", "#d1f090"];
 
@@ -203,6 +205,24 @@ function getPayloadRows(payload: Record<string, unknown> | null | undefined, key
 
 function isContentBlock(block: CaseStudyContentBlock | undefined): block is CaseStudyContentBlock {
   return Boolean(block);
+}
+
+function stripLeadingBullet(value: string) {
+  return value.replace(/^\s*[•·▪‣◦]\s*/, "");
+}
+
+function normalizeInsightHeading(value: string) {
+  return stripLeadingBullet(value).replace(/^2026\s+data$/i, "2026");
+}
+
+function shouldHideInsight(value: string) {
+  const normalized = stripLeadingBullet(value).toLowerCase();
+
+  return (
+    normalized === "skip this survey" ||
+    normalized === "get recommendation" ||
+    normalized === "powered by nayya"
+  );
 }
 
 export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
@@ -333,7 +353,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {highlightMetrics.map((metric, index) => (
               <div
                 key={`${metric.label}-${metric.value}`}
-                className={`relative px-4 md:px-8 ${index < 2 ? "after:absolute after:right-0 after:top-0 after:h-full after:w-px after:bg-[#d7e8f7] after:content-['']" : ""}`}
+                className={`relative px-4 md:px-8 ${index < 2 ? "after:absolute after:right-0 after:top-1/2 after:h-24 after:w-px after:-translate-y-1/2 after:bg-[#d7e8f7] after:content-['']" : ""}`}
               >
                 <p className="text-[46px] font-bold leading-none text-[#1183D0]">{metric.value}</p>
                 <p className="mt-5 text-[16px] leading-[1.625em] text-[#5c7792]">{metric.label}</p>
@@ -736,15 +756,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <CardContent className="p-8">
                   <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Enrollment Behavior Insights</h3>
                   <ul className="mt-5 list-disc space-y-3 pl-5">
-                    {resultInsights.slice(0, -1).map((item) => (
-                      item === "2026" ? (
-                        <li key={item} className="list-none ml-0 mt-6 mb-3 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">{item}</li>
+                    {resultInsights.filter((item) => !shouldHideInsight(item)).map((item) => (
+                      /^2026(?:\s+data)?$/i.test(stripLeadingBullet(item)) ? (
+                        <li key={item} className="list-none mt-6 mb-3 pl-1 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">{normalizeInsightHeading(item)}</li>
                       ) : (
-                        <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
+                        <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>
                       )
                     ))}
                   </ul>
-                  <p className="mt-5 font-inter text-[15px] font-semibold leading-[1.7] text-[#5c7792]">{resultInsights[resultInsights.length - 1]}</p>
+                  {caseStudy.slug === "nayya-ai-benefits" ? (
+                    <p className="mt-5 font-inter text-[15px] font-semibold leading-[1.7] text-[#5c7792]">
+                      {NAYYA_INSIGHTS_CLOSING}
+                    </p>
+                  ) : null}
                 </CardContent>
               </Card>
             ) : null}
@@ -754,7 +778,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Opportunities and Next Steps</h3>
                   <ul className="mt-5 list-disc space-y-3 pl-5">
                     {resultOpportunities.map((item) => (
-                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
+                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>
                     ))}
                   </ul>
                 </CardContent>
@@ -766,7 +790,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Projected Improvements</p>
                   <ul className="space-y-3">
                     {projectedImprovements.map((item) => (
-                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
+                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>
                     ))}
                   </ul>
                 </CardContent>
@@ -778,7 +802,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Success Metrics</p>
                   <ul className="space-y-3">
                     {successMetrics.map((item) => (
-                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
+                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>
                     ))}
                   </ul>
                 </CardContent>
@@ -812,9 +836,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 className="h-12 w-auto object-contain opacity-80"
               />
             ))}
-            <div className="flex h-12 items-center rounded-[18px] border border-[#d7e8f7] bg-white px-5 text-[20px] font-semibold tracking-[0.02em] text-[#0e2951] opacity-80">
-              ITX Corp
-            </div>
+            <img
+              src={withBasePath("/images/SNUZ.svg")}
+              alt="ITX"
+              className="h-12 w-auto object-contain opacity-80"
+            />
           </div>
         ) : null}
         <div className="mt-10 h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
