@@ -2,9 +2,9 @@
 ## Mantenimiento automático
 
 - Regla: revisar y actualizar este archivo cada 20 tareas/commits.
-- Tareas desde la última revisión: 5 / 20
-- Total de tareas rastreadas: 5
-- Último commit rastreado: 8591c0a
+- Tareas desde la última revisión: 6 / 20
+- Total de tareas rastreadas: 6
+- Último commit rastreado: 6dd353b
 - Última revisión marcada: 2026-05-03
 - Estado: Al día
 <!-- AI_CONTEXT_TRACKER_END -->

@@ -659,12 +659,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         ) : null}
         {resultRows.length ? (
-          <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-6">
+          <div className="mt-8 grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
             {resultRows.map((row) => (
-              <Card key={`${row.metric}-${row.value}`} className="p-0 py-0">
-                <CardContent className="p-5 text-center">
-                  <span className="font-inter text-[36px] font-bold leading-none text-[#1183D0]">{row.value}</span>
-                  <p className="mt-3 font-inter text-[14px] leading-[1.4] text-[#3c3e3f]">{row.metric}</p>
+              <Card key={`${row.metric}-${row.value}`} className="overflow-hidden">
+                <CardContent className="px-5 py-5">
+                  <p className="text-[26px] font-bold leading-none text-[#0e2951]">
+                    {row.value} <span className="text-[14px] font-normal text-[#0e2951]">{row.metric}</span>
+                  </p>
+                  {row.context ? (
+                    <p className="mt-1.5 text-[13px] leading-[1.5] text-[#5c7792]">{row.context}</p>
+                  ) : null}
                 </CardContent>
               </Card>
             ))}
@@ -736,27 +740,52 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </div>
       </section>
 
-      {caseStudy.nda_notice ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          {caseStudy.client_logos.length ? (
-            <div className="mb-8 flex flex-wrap items-center justify-center gap-6">
-              {caseStudy.client_logos.map((logo) => (
-                <img
-                  key={logo.name}
-                  src={resolveTrustedLogo(logo.name, logo.logo)}
-                  alt={logo.name}
-                  className="h-8 w-auto object-contain opacity-80"
-                />
+      <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
+        <div className="mb-8 h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
+        {caseStudy.client_logos.length ? (
+          <div className="mb-10 flex flex-wrap items-center justify-center gap-8">
+            {caseStudy.client_logos.map((logo) => (
+              <img
+                key={logo.name}
+                src={resolveTrustedLogo(logo.name, logo.logo)}
+                alt={logo.name}
+                className="h-12 w-auto object-contain opacity-80"
+              />
+            ))}
+            <div className="flex h-12 items-center rounded-[18px] border border-[#d7e8f7] bg-white px-5 text-[20px] font-semibold tracking-[0.02em] text-[#0e2951] opacity-80">
+              ITX Corp
+            </div>
+          </div>
+        ) : null}
+        <div className="mt-10 h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
+        <div className="mt-12 grid gap-12 md:grid-cols-[1fr_auto_1fr] md:items-start">
+          <div className="flex flex-col items-center gap-6">
+            <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
+              Tools
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              {caseStudy.tools.map((tool) => (
+                <Badge key={tool} size="tag">
+                  {tool}
+                </Badge>
               ))}
             </div>
-          ) : null}
-          <div className="border-t border-[#bcd2ff]/40 pt-8">
-            <p className="mx-auto max-w-[900px] text-center font-inter text-[13px] leading-[1.7] text-[#5c7792]">
-              <strong className="font-semibold text-[#5c7792]">NDA notice:</strong> {caseStudy.nda_notice}
-            </p>
           </div>
-        </section>
-      ) : null}
+          <div className="hidden w-px self-stretch bg-[#d7e8f7] md:block" />
+          <div className="flex flex-col items-center gap-6">
+            <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
+              Tags
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              {caseStudy.tags.map((tag) => (
+                <Badge key={tag} size="tag">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         <p className="mb-2 text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">More work</p>
