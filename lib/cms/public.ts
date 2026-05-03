@@ -48,8 +48,8 @@ const toolIconMap: Record<string, string> = {
 };
 
 const projectImageMap: Record<string, string> = {
-  "benefits-enrollment": withBasePath("/images/AxnrM.png"),
-  "nayya-ai-benefits": withBasePath("/images/k58t4.png"),
+  "benefits-enrollment": withBasePath("/images/projects/benefits-cover.png"),
+  "nayya-ai-benefits": withBasePath("/images/projects/nayya-cover.png"),
   "flock-accessibility-system": withBasePath("/images/FC4No.png"),
   "i9-everify-integration": withBasePath("/images/1x9VC.png"),
 };
@@ -70,8 +70,16 @@ export function resolveToolIcon(label: string) {
   return toolIconMap[label] ?? withBasePath("/images/tools/figma.svg");
 }
 
+export function resolveToolIconOptional(label: string) {
+  return toolIconMap[label] ?? null;
+}
+
 export function resolveProjectImage(slug: string, explicit?: string | null) {
   return projectImageMap[slug] ?? (explicit ? withBasePath(explicit) : withBasePath("/images/AxnrM.png"));
+}
+
+export function resolveProjectHeroImage(slug: string, explicit?: string | null) {
+  return explicit ? withBasePath(explicit) : resolveProjectImage(slug, explicit);
 }
 
 export function resolveProjectHref(study: CaseStudyRecord) {

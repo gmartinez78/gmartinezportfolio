@@ -2,20 +2,22 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const roles = [
-  "Sr. Product Designer.",
-  "AI-Augmented Designer.",
-  "Design Systems Lead.",
-  "Enterprise UX Specialist.",
-];
-
 const TYPING_SPEED = 75;
 const DELETING_SPEED = 38;
 const PAUSE_AFTER_TYPE = 1800;
 const PAUSE_AFTER_DELETE = 350;
 
-export function TypewriterBanner() {
+export function TypewriterBanner({
+  greeting = "Hey there! I'm Greddys,",
+  roles = ["Sr. Product Designer."],
+  description = "Building products end to end, from UX architecture and design systems to cross-functional execution that ships.",
+}: {
+  greeting?: string;
+  roles?: string[];
+  description?: string;
+}) {
   const [displayText, setDisplayText] = useState("");
+  const safeRoles = roles.length ? roles : ["Sr. Product Designer."];
   const stateRef = useRef({
     currentIdx: 0,
     charIdx: 0,
@@ -27,7 +29,7 @@ export function TypewriterBanner() {
 
     function tick() {
       const { currentIdx, charIdx, isDeleting } = stateRef.current;
-      const current = roles[currentIdx];
+      const current = safeRoles[currentIdx];
 
       if (!isDeleting) {
         const next = current.substring(0, charIdx + 1);
@@ -50,7 +52,7 @@ export function TypewriterBanner() {
 
       if (stateRef.current.charIdx === 0) {
         stateRef.current.isDeleting = false;
-        stateRef.current.currentIdx = (currentIdx + 1) % roles.length;
+        stateRef.current.currentIdx = (currentIdx + 1) % safeRoles.length;
         timer = setTimeout(tick, PAUSE_AFTER_DELETE);
       } else {
         timer = setTimeout(tick, DELETING_SPEED);
@@ -60,12 +62,12 @@ export function TypewriterBanner() {
     timer = setTimeout(tick, TYPING_SPEED);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [safeRoles]);
 
   return (
     <section className="flex min-h-[280px] flex-col justify-center">
       <h1 className="m-0 text-[28px] font-normal leading-[1.2] text-white">
-        Hey there! I&apos;m Greddys,
+        {greeting}
       </h1>
       <div className="mb-8 mt-3 flex min-h-[120px] items-center sm:min-h-[76px]">
         <span
@@ -80,8 +82,7 @@ export function TypewriterBanner() {
         />
       </div>
       <p className="m-0 max-w-[560px] text-[15px] leading-[1.8] text-white">
-        Building products end to end, from UX architecture and design systems
-        to cross-functional execution that ships.
+        {description}
       </p>
     </section>
   );

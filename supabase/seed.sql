@@ -154,7 +154,7 @@ values
   array['HR/Payroll SaaS','UX Research','IA','Interaction Design','Design Systems'],
   array['UX Research','Product Design','Design Systems'],
   array['Figma','Jira','Miro','Webex','Outlook','Copilot'],
-  '{"cover":"/images/projects/benefits-cover.png","hero":"/images/projects/benefits-hero.png","gallery":["/images/projects/benefits/figma-logo.png","/images/projects/benefits/jira-logo.png","/images/projects/benefits/miro-logo.png"]}'::jsonb,
+  '{"cover":"/images/projects/benefits-cover.png","hero":"/images/projects/benefits-cover.png","gallery":["/images/projects/benefits/figma-logo.png","/images/projects/benefits/jira-logo.png","/images/projects/benefits/miro-logo.png"]}'::jsonb,
   '[{"name":"Paychex","logo":"/images/logos/paychex.png"},{"name":"Nayya","logo":"/images/logos/nayya.png"},{"name":"IBX","logo":"/images/logos/ibx.png"}]'::jsonb,
   '[{"value":"72%","label":"Reduction in processing time","context":"benefits processing"},{"value":"500+","label":"Employees self-managed","context":"without IT tickets"},{"value":"3 mo","label":"End-to-end design & delivery","context":"timeline"}]'::jsonb,
   array['Product Owner','Program manager','Business analyst','Researcher','Dev team (12)','UX manager','UX Lead','UX/UI designer','Service architect','Scrum master'],

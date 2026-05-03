@@ -16,7 +16,7 @@
     "tools": ["Figma", "Jira", "Miro", "Webex", "Outlook", "Copilot", "Hotjar"],
     "images": {
       "cover": "/images/projects/benefits-cover.png",
-      "hero": "/images/projects/benefits-hero.png",
+      "hero": "/images/projects/benefits-cover.png",
       "gallery": [
         "/images/projects/benefits/figma-logo.png",
         "/images/projects/benefits/jira-logo.png",

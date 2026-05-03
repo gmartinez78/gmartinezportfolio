@@ -11,73 +11,35 @@ import {
   resolveCertificationLogo,
   resolveProjectHref,
   resolveProjectImage,
-  resolveToolIcon,
+  resolveToolIconOptional,
   resolveTrustedLogo,
   usePublicCaseStudies,
   usePublicSiteContent,
 } from "./lib/cms/public";
 import { withBasePath } from "./lib/site";
 
-const TOOLS_LEFT = [
-  { label: "Figma", x: "left-[78px]", y: "top-[72px]", size: "lg" as const, tone: "white" as const },
-  { label: "Angular", x: "left-[235px]", y: "top-[36px]", size: "lg" as const, tone: "white" as const },
-  { label: "Miro", x: "left-[405px]", y: "top-[18px]", size: "lg" as const, tone: "white" as const },
-  { label: "React", x: "left-[130px]", y: "top-[230px]", size: "sm" as const, tone: "white" as const },
-  { label: "HTML", x: "left-[78px]", y: "top-[340px]", size: "sm" as const, tone: "white" as const },
-  { label: "Jira", x: "left-[305px]", y: "top-[124px]", size: "sm" as const, tone: "white" as const },
-  { label: "Confluence", x: "left-[488px]", y: "top-[110px]", size: "sm" as const, tone: "white" as const },
-  { label: "Maze", x: "left-[395px]", y: "top-[252px]", size: "sm" as const, tone: "white" as const },
-  { label: "Notion", x: "left-[260px]", y: "top-[354px]", size: "sm" as const, tone: "white" as const },
-  { label: "Webex", x: "left-[550px]", y: "top-[385px]", size: "sm" as const, tone: "white" as const },
-];
-
-const TOOLS_RIGHT = [
-  { label: "Copilot", x: "right-[410px]", y: "top-[18px]", size: "sm" as const, tone: "white" as const },
-  { label: "Slack", x: "right-[250px]", y: "top-[52px]", size: "sm" as const, tone: "white" as const },
-  { label: "Claude", x: "right-[92px]", y: "top-[92px]", size: "sm" as const, tone: "white" as const },
-  { label: "ChatGPT", x: "right-[345px]", y: "top-[170px]", size: "sm" as const, tone: "white" as const },
-  { label: "VS Code", x: "right-[62px]", y: "top-[232px]", size: "sm" as const, tone: "white" as const },
-  { label: "Figma", x: "right-[210px]", y: "top-[365px]", size: "sm" as const, tone: "white" as const },
-  { label: "React", x: "right-[460px]", y: "top-[382px]", size: "sm" as const, tone: "white" as const },
-  { label: "Jira", x: "right-[500px]", y: "top-[118px]", size: "sm" as const, tone: "white" as const },
-  { label: "Miro", x: "right-[205px]", y: "top-[268px]", size: "sm" as const, tone: "white" as const },
-  { label: "Notion", x: "right-[380px]", y: "top-[350px]", size: "sm" as const, tone: "white" as const },
-];
-
-function ToolBadge({
-  label,
-  x,
-  y,
-  size,
-  tone,
-}: {
-  label: string;
-  x: string;
-  y: string;
-  size: "lg" | "sm";
-  tone: "white" | "blue";
-}) {
-  const sizeClass =
-    size === "lg"
-      ? "h-[74px] w-[74px] rounded-[16px]"
-      : "h-16 w-16 rounded-[15px]";
-  const toneClass =
-    tone === "white"
-      ? "bg-white shadow-[0_18px_42px_rgba(14,41,81,0.10)]"
-      : "bg-white shadow-[0_18px_42px_rgba(14,41,81,0.10)]";
+function ToolPill({ label }: { label: string }) {
+  const icon = resolveToolIconOptional(label);
 
   return (
     <div
-      className={`absolute ${x} ${y} z-10 ${sizeClass} ${toneClass} flex items-center justify-center`}
+      className="inline-flex min-h-14 items-center gap-3 rounded-full border border-white/70 bg-white/90 px-5 py-3 text-[#0e2951] shadow-[0_18px_42px_rgba(14,41,81,0.10)] backdrop-blur"
       title={label}
     >
-      <Image
-        src={resolveToolIcon(label)}
-        alt={label}
-        width={size === "lg" ? 42 : 32}
-        height={size === "lg" ? 42 : 32}
-        className="h-[64%] w-[64%] object-contain"
-      />
+      {icon ? (
+        <Image
+          src={icon}
+          alt={label}
+          width={26}
+          height={26}
+          className="h-[26px] w-[26px] object-contain"
+        />
+      ) : (
+        <span className="inline-flex min-w-8 items-center justify-center rounded-full bg-[#E0EEFB] px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1183D0]">
+          {label.slice(0, 2)}
+        </span>
+      )}
+      <span className="text-sm font-semibold">{label}</span>
     </div>
   );
 }
@@ -85,6 +47,7 @@ function ToolBadge({
 export default function PortfolioPage() {
   const { siteContent } = usePublicSiteContent();
   const { caseStudies } = usePublicCaseStudies();
+  const hero = siteContent.home.hero;
   const socialProofLogos = siteContent.home.trusted_by.clients.map((client) => ({
     src: resolveTrustedLogo(client.name, client.logo),
     alt: client.name,
@@ -96,17 +59,24 @@ export default function PortfolioPage() {
     ...item,
     logo: resolveCertificationLogo(item.name, item.logo),
   }));
-  const methodologyChips = siteContent.home.hero.methodology_chips.length
-    ? siteContent.home.hero.methodology_chips
+  const methodologyChips = hero.methodology_chips.length
+    ? hero.methodology_chips
     : ["AI product design", "UX research", "Enterprise SaaS", "Design systems"];
-  const featuredProjects = caseStudies.slice(0, 3).map((study) => ({
+  const featuredProjects = caseStudies
+    .filter((study) => study.featured)
+    .slice(0, 3)
+    .map((study) => ({
     title: study.title,
     description: study.tagline ?? "",
     image: resolveProjectImage(study.slug, study.images.cover),
     href: resolveProjectHref(study),
     tags: study.tags.slice(0, 4),
-    cta: study.slug === "benefits-enrollment" ? "See case study" : "See improvements",
+    cta: study.external_link ? "View project" : "View case study",
   }));
+  const toolRows = [siteContent.home.tools_section.row_1, siteContent.home.tools_section.row_2]
+    .map((row) => row.filter(Boolean))
+    .filter((row) => row.length > 0);
+  const heroDescription = "Building products end to end, from UX architecture and design systems to cross-functional execution that ships.";
 
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
@@ -116,8 +86,8 @@ export default function PortfolioPage() {
       <section className="bg-white px-4 py-5 sm:px-6 lg:px-10">
         <div className="relative mx-auto min-h-[560px] max-w-[1440px] overflow-hidden rounded-[28px] bg-[#102944] px-6 py-10 shadow-[0_24px_80px_rgba(14,41,81,0.18)] sm:px-10 lg:px-16 lg:py-16">
           <Image
-            src={withBasePath("/images/k58t4.png")}
-            alt=""
+            src={withBasePath(hero.photo || "/images/k58t4.png")}
+            alt={hero.greeting}
             fill
             priority
             className="object-cover opacity-35 blur-[1px] scale-110"
@@ -125,7 +95,11 @@ export default function PortfolioPage() {
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,20,35,0.92)_0%,rgba(8,20,35,0.72)_48%,rgba(8,20,35,0.3)_100%)]" />
           <div className="relative grid min-h-[440px] gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
             <div className="flex max-w-[760px] flex-col justify-center">
-              <TypewriterBanner />
+              <TypewriterBanner
+                greeting={hero.greeting}
+                roles={[hero.tagline]}
+                description={heroDescription}
+              />
               <div className="mt-10 flex flex-wrap gap-3">
                 {methodologyChips.map((tag) => (
                   <Badge
@@ -261,49 +235,33 @@ export default function PortfolioPage() {
 
       {/* ── Tools Section ── */}
       <section
-        className="relative isolate h-[520px] overflow-hidden"
+        className="relative isolate overflow-hidden px-6 py-16 md:px-10 xl:px-20"
       >
         <div className="absolute inset-0 z-0 bg-[linear-gradient(180deg,#FFFFFF_0%,#F0F7FF_48%,rgba(17,131,208,0.28)_100%)]" />
-
-        {TOOLS_LEFT.map((t) => (
-          <ToolBadge key={t.label} {...t} />
-        ))}
-
-        <div
-          className="absolute z-20 flex flex-col items-center gap-3.5 text-center"
-          style={{
-            left: "50%",
-            transform: "translateX(-50%)",
-            top: 112,
-            width: 500,
-          }}
-        >
-          <span className="text-[13px] font-medium tracking-[3px] text-[#0a1729] uppercase">
-            Experience &amp; Skills
-          </span>
-          <h2 className="font-serif-display italic text-[48px] leading-[1.15] text-[#1183D0] w-full text-center">
-            {siteContent.home.tools_section.headline.split(" & ").map((part, index, parts) => (
-              <span key={part}>
-                {part}
-                {index < parts.length - 1 ? <><br />&amp; </> : null}
-              </span>
-            ))}
-          </h2>
-          <p className="text-[15px] leading-[1.6] text-[#3c3e3f] max-w-[409px]">
+        <div className="relative z-20 mx-auto flex max-w-[1200px] flex-col items-center gap-10 text-center">
+          <SectionHeading eyebrow="Experience & Skills" title={siteContent.home.tools_section.headline} centered />
+          <p className="max-w-[560px] text-[15px] leading-[1.8] text-[#3c3e3f]">
             {siteContent.home.tools_section.description}
           </p>
+          <div className="flex w-full flex-col gap-4">
+            {toolRows.map((row, index) => (
+              <div key={`tool-row-${index}`} className="flex flex-wrap items-center justify-center gap-3">
+                {row.map((label) => (
+                  <ToolPill key={`${index}-${label}`} label={label} />
+                ))}
+              </div>
+            ))}
+          </div>
           <Button
             asChild
             variant="link"
-            className="mt-7 h-auto gap-4 px-0 text-sm font-normal leading-none text-[#1183D0] hover:no-underline"
+            className="mt-2 h-auto gap-4 px-0 text-sm font-normal leading-none text-[#1183D0] hover:no-underline"
           >
-            <a href={withBasePath(siteContent.home.tools_section.cta_href)}>{siteContent.home.tools_section.cta_label.replace("→", "").trim()} <span className="text-[22px] leading-none">→</span></a>
+            <a href={withBasePath(siteContent.home.tools_section.cta_href)}>
+              {siteContent.home.tools_section.cta_label.replace("→", "").trim()} <span className="text-[22px] leading-none">→</span>
+            </a>
           </Button>
         </div>
-
-        {TOOLS_RIGHT.map((t) => (
-          <ToolBadge key={t.label} {...t} />
-        ))}
       </section>
 
       {/* ── CTA Section ── */}

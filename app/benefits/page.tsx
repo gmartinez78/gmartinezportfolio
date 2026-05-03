@@ -7,12 +7,17 @@ import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
 import { Card, CardContent } from "../../components/ui/card";
 import { SectionHeading } from "../../components/ui/section-heading";
-import { resolveProjectHref, resolveTrustedLogo, usePublicCaseStudies, usePublicCaseStudy } from "../../lib/cms/public";
+import {
+  resolveProjectHeroImage,
+  resolveProjectHref,
+  resolveTrustedLogo,
+  usePublicCaseStudies,
+  usePublicCaseStudy,
+} from "../../lib/cms/public";
 import { withBasePath } from "../../lib/site";
 
 // ── Assets from Figma ─────────────────────────────────────────────────────────
 const ASSETS = {
-  heroBannerDashboard: withBasePath("/images/benefits/enhancing-benefits-banner-v2.png"),
   figmaLogo: withBasePath("/images/benefits/figma-logo.png"),
   jiraLogo: withBasePath("/images/benefits/jira-logo.png"),
   miroLogo: withBasePath("/images/benefits/miro-logo.png"),
@@ -492,6 +497,7 @@ export default function BenefitsPage() {
   ];
   const reflections = caseStudy?.reflections ?? REFLECTIONS;
   const otherProjects = caseStudies.filter((project) => project.slug !== "benefits-enrollment").slice(0, 3);
+  const heroImage = resolveProjectHeroImage("benefits-enrollment", caseStudy?.images.hero ?? null);
   const clientLogos = caseStudy?.client_logos.length
     ? caseStudy.client_logos.map((logo) => ({
         src: resolveTrustedLogo(logo.name, logo.logo),
@@ -559,7 +565,7 @@ export default function BenefitsPage() {
             </p>
             <div className="relative mx-auto mt-10 h-[150px] w-full max-w-[1040px] overflow-hidden rounded-[24px] shadow-[0_20px_64px_rgba(14,41,81,0.12)]">
               <Image
-                src={ASSETS.heroBannerDashboard}
+                src={heroImage}
                 alt="Benefits enrollment workflow and dashboard preview"
                 fill
                 sizes="(min-width: 1200px) 1040px, calc(100vw - 48px)"

@@ -9,6 +9,7 @@ import { Card, CardContent } from "../../components/ui/card";
 import { SectionHeading } from "../../components/ui/section-heading";
 import {
   resolveProjectHref,
+  resolveProjectImage,
   resolveTrustedLogo,
   usePublicCaseStudies,
   usePublicSiteContent,
@@ -31,7 +32,7 @@ export default function ProjectsPage() {
     filters: project.filters?.length ? project.filters : project.tags,
     stat: project.metrics[0]?.value ?? `${project.year ?? ""}`,
     statLabel: project.metrics[0]?.label ?? project.industry ?? "",
-    previewImage: project.images.cover || project.images.hero || "",
+    previewImage: resolveProjectImage(project.slug, project.images.cover || project.images.hero || ""),
     bg: PROJECT_BACKGROUNDS[project.slug] ?? "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
   }));
   const filteredProjects =

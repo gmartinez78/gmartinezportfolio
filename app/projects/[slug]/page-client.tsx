@@ -5,7 +5,14 @@ import { SiteHeader } from "@/components/site-header";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { resolveProjectHref, resolveTrustedLogo, usePublicCaseStudies, usePublicCaseStudy } from "@/lib/cms/public";
+import {
+  resolveProjectHeroImage,
+  resolveProjectHref,
+  resolveProjectImage,
+  resolveTrustedLogo,
+  usePublicCaseStudies,
+  usePublicCaseStudy,
+} from "@/lib/cms/public";
 import type { CaseStudyContentBlock, CaseStudyReflection } from "@/lib/cms/types";
 import { withBasePath } from "@/lib/site";
 
@@ -173,7 +180,6 @@ const NAYYA_REFLECTIONS: CaseStudyReflection[] = [
 ];
 
 const NAYYA_PHONE_IMAGE = "/images/projects/nayya-design-process.png";
-const NAYYA_HERO_IMAGE = "/images/projects/nayya-hero.png";
 const NAYYA_METHODOLOGY_NAME = "Research & Discovery";
 const NAYYA_YEAR = 2025;
 
@@ -240,7 +246,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     .slice(0, 3)
     .map((project) => ({
       ...project,
-      previewImage: project.images.cover || project.images.hero || "",
+      previewImage: resolveProjectImage(project.slug, project.images.cover || project.images.hero || ""),
       previewMetric: project.metrics[0]?.value ?? project.year,
       previewLabel: project.metrics[0]?.label ?? project.industry ?? "",
     }));
@@ -261,7 +267,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const methodologyName = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_METHODOLOGY_NAME : caseStudy.methodology.name;
   const reflections = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_REFLECTIONS : caseStudy.reflections;
   const projectYear = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_YEAR : caseStudy.year;
-  const heroImage = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_HERO_IMAGE : caseStudy.images.hero;
+  const heroImage = resolveProjectHeroImage(caseStudy.slug, caseStudy.images.hero);
 
   return (
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden">
