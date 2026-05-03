@@ -730,10 +730,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <CardContent className="p-8">
                   <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Enrollment Behavior Insights</h3>
                   <ul className="mt-5 list-disc space-y-3 pl-5">
-                    {resultInsights.map((item) => (
+                    {resultInsights.slice(0, -1).map((item) => (
                       <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item}</li>
                     ))}
                   </ul>
+                  <p className="mt-5 font-inter text-[15px] font-semibold leading-[1.7] text-[#5c7792]">{resultInsights[resultInsights.length - 1]}</p>
                 </CardContent>
               </Card>
             ) : null}
