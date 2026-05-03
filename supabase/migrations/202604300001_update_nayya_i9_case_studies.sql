@@ -17,7 +17,7 @@ values
   'Nayya',
   'Paychex via ITX Corp',
   'Sr. Product Designer',
-  2024,
+  2025,
   '6 months',
   'AI Benefits / HR SaaS',
   'Designed the integration of an Nayya as AI-powered benefits tool, guiding employees to choose coverage that matched their needs.',
