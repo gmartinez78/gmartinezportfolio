@@ -890,7 +890,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <h2 className="mt-3 font-serif-display text-[34px] italic leading-tight text-[#0e2951] md:text-[42px]">
                 Accessibility Audit
               </h2>
-              <div className="mx-auto mt-6 max-w-[860px] space-y-4 text-left">
+              <div className="mx-auto mt-6 max-w-[860px] space-y-4 text-center">
                 <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                   I built an audit framework that grouped issues by severity, system impact, and implementation complexity, while separating accessibility findings, system inconsistencies, and engineering constraints for clearer decision-making.
                 </p>
