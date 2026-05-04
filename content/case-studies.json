@@ -77,103 +77,14 @@
     "nda_notice": "Parts of this presentation — including some screens and project details — have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy.",
     "password": null,
     "external_link": null
-  },
-  {
-    "slug": "nayya-ai-benefits",
-    "status": "published",
-    "featured": true,
-    "order": 1,
-    "title": "Nayya Integration",
-    "company": "Nayya",
-    "client_context": "Paychex via ITX Corp",
-    "role": "Sr. Product Designer",
-    "year": 2025,
-    "duration": "6 months",
-    "industry": "AI Benefits / HR SaaS",
-    "tagline": "Designed the integration of Nayya as an AI-powered benefits tool, guiding employees to choose coverage that matched their needs.",
-    "tags": ["BENEFITS / ENSURANCE SAAS", "UX Research", "IA", "Interaction Design", "Design Systems"],
-    "tools": ["Figma", "Jira", "Miro", "Webex", "Outlook", "Copilot", "Hotjar"],
-    "filters": ["UX Research", "Product Design", "AI Product"],
-    "images": {
-      "cover": "/images/projects/nayya-cover.png",
-      "hero": "/images/projects/nayya-hero.png",
-      "gallery": []
-    },
-    "client_logos": [
-      { "name": "Nayya", "logo": "/images/SNUZ.svg" },
-      { "name": "Paychex", "logo": "/images/c54fy.png" }
-    ],
-    "metrics": [
-      { "value": "307%", "label": "IRR", "context": "Projected ROI — estimated return from increased plan uptake (NPV $11.4M)." },
-      { "value": "~115,500", "label": "Annual Benefits", "context": "Enrollments completed 5% above the 100K goal." },
-      { "value": "67%", "label": "Conversion Rate", "context": "Users who received Nayya recommendations that fit their needs and enrolled in a plan." }
-    ],
-    "team": ["UX Lead", "Content Designer", "Product Owner", "Business Analyst", "Solution Leads"],
-    "my_role": ["UX Strategy", "Integration UX", "User Research", "Product Thinking"],
-    "problem": {
-      "admin_pain_points": [
-        "A seamless embedded integration between Flex and Nayya Choose was not feasible under the technical constraints.",
-        "The team needed to balance business value, technical limitations, and user confidence during a sensitive decision-making process."
-      ],
-      "user_pain_points": [
-        "Employees needed more support when selecting benefits and choosing coverage that matched their needs.",
-        "Users would need to leave Flex and access Nayya Choose in a separate experience.",
-        "The transition needed clearer communication, stronger context, and visual cues that made the handoff feel intentional and trustworthy."
-      ]
-    },
-    "constraints": [
-      "A seamless embedded integration between Flex and Nayya Choose was not technically feasible.",
-      "The project moved on an aggressive timeline with significant technical limitations.",
-      "The experience had to protect user confidence during benefits decision-making."
-    ],
-    "methodology": {
-      "name": "Research & Discovery",
-      "steps": [
-        { "step": 1, "label": "Understand", "description": "Clarified the benefits selection journey and Nayya Choose's role in decision support." },
-        { "step": 2, "label": "Define", "description": "Identified the feasible integration path between Flex and the external Nayya experience." },
-        { "step": 3, "label": "Align", "description": "Collaborated with the Solution Leads, Product Onwer, Business Analyst and Devs." },
-        { "step": 4, "label": "Validate", "description": "Recommended user testing to understand concerns before finalizing the handoff." },
-        { "step": 5, "label": "Measure", "description": "Used enrollment behavior and revenue projections to evaluate impact." }
-      ]
-    },
-    "design_strategy": [
-      "Define a realistic integration path instead of forcing an embedded experience that the platform could not support.",
-      "Use communication and visual cues to explain where users were going, why the transition mattered, and how Nayya Choose supported their benefits decisions.",
-      "Protect continuity between Flex and Nayya Choose by making the handoff feel intentional, trustworthy, and aligned with the broader enrollment journey."
-    ],
-    "reflections": [
-      { "title": "Designing under constraints.", "body": "Designing under technical constraints does not mean compromising the experience. It means finding the most effective path within the boundaries you are given." },
-      { "title": "Test early, fix early.", "body": "User testing, even at a small scale, surfaces the decisions that matter most before they become expensive to fix." },
-      { "title": "Trust is a design problem.", "body": "When users cross platform boundaries, clarity and context are what keep them moving forward." },
-      { "title": "Constraints force focus.", "body": "The inability to embed Nayya natively pushed the team to invest in transition design, an area that is often overlooked when seamless integration feels like the obvious solution." }
-    ],
-    "nda_notice": null,
-    "password": null,
-    "external_link": null,
-    "content_blocks": [
+},
       {
-        "id": "overview",
-        "type": "overview",
-        "title": "Project Overview",
-        "body": ""
-      },
-      {
-        "id": "team-context",
+        "id": "research",
         "type": "custom",
-        "title": "Team",
-        "body": "I worked closely with the UX Lead and Content Designer to ensure consistency in both experience and messaging under a tight timeline. I also collaborated with the Product Owner, Business Analyst, and Solution Leads to align the proposed experience with business goals and technical realities."
-      },
-      {
-        "id": "situation",
-        "type": "custom",
-        "title": "Situation",
-        "body": "Employees needed more support when selecting benefits, and Nayya Choose offered a strong recommendation engine to guide them toward more relevant coverage.\n\nThe project moved on an aggressive timeline and came with significant technical limitations. A seamless embedded integration between Flex and Nayya Choose was not feasible."
-      },
-      {
-        "id": "task",
-        "type": "custom",
-        "title": "Task",
-        "body": "I was responsible for helping define the best integration path between the two platforms while protecting the user experience as much as possible.\n\nThis meant balancing business value, technical constraints, and user confidence during a sensitive decision-making process."
+        "title": "Audit Findings",
+        "payload": {
+          "items": []
+        }
       },
       {
         "id": "actions",
@@ -297,28 +208,13 @@
         "id": "situation",
         "type": "custom",
         "title": "Situation",
-        "body": "Flock had accumulated accessibility risk, duplicated interface patterns, and inconsistent component behavior across its product surfaces.\n\nThe lack of a mature system meant icons, typography, dialogs, and reusable UI patterns had drifted over time. That created friction for implementation, made handoff less reliable, and increased the cost of keeping the experience consistent.\n\nThis mattered beyond visual polish. It affected accessibility readiness, product quality, and the team's ability to scale improvements without re-solving the same problems page by page."
+        "body": "Flock had accumulated accessibility risk, duplicated interface patterns, and inconsistent component behavior across product surfaces.\n\nBecause the system had not matured, icons, typography, dialogs, and reusable UI patterns had drifted over time. This made implementation less reliable, increased handoff ambiguity, and raised the cost of maintaining a consistent experience.\n\nThis was not just a visual issue. It affected accessibility readiness, product quality, and the team's ability to scale improvements efficiently."
       },
       {
         "id": "task",
         "type": "custom",
         "title": "Task",
-        "body": "My role was to turn accessibility findings and UI inconsistencies into a clearer system direction.\n\nThat meant identifying what was broken, separating audit issues from system decisions, and helping define reusable patterns that design and engineering could actually adopt.\n\nSuccess meant reducing duplicated patterns, improving consistency between pages, clarifying handoff expectations, and creating stronger accessibility guidance for future work."
-      },
-      {
-        "id": "research",
-        "type": "custom",
-        "title": "Audit Findings",
-        "payload": {
-          "items": [
-            "Duplicate components existed with conflicting spacing, hierarchy, and interaction behavior.",
-            "Icons and typography lacked enough shared guidance for naming, usage, and accessibility consistency.",
-            "Dialogs and other high-impact surfaces showed inconsistent structure, dismissal patterns, and focus expectations.",
-            "States and variants were not documented clearly enough, which made implementation and QA more ambiguous.",
-            "Responsive behavior was not defined consistently, so layouts and components drifted between contexts.",
-            "Handoff materials lacked enough do / don't guidance, accessibility notes, and implementation-ready rules."
-          ]
-        }
+        "body": "My role was to translate accessibility findings and UI inconsistencies into a more unified system. I identified what needed to be fixed, separated audit issues from system-level decisions, and defined patterns that design and engineering could apply consistently.\n\nSuccess meant reducing duplication, improving cross-page consistency, clarifying handoff expectations, and strengthening accessibility guidance for future work."
       },
       {
         "id": "actions",

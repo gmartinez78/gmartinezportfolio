@@ -759,46 +759,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </div>
       </section>
 
-      {caseStudy.slug === "flock-accessibility-system" ? (
-        <>
-          <section className="mx-auto max-w-[1200px] px-6 py-6 md:px-10 xl:px-20">
-            <div className="rounded-[32px] border border-[#d7e8f7] bg-[#f7fbff] px-6 py-8 text-center shadow-[0_18px_48px_rgba(17,131,208,0.08)] md:px-10">
-              <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Accessibility Review</p>
-              <h2 className="mt-3 font-serif-display text-[34px] italic leading-tight text-[#0e2951] md:text-[42px]">
-                Checklist, legacy audit, and component fixes
-              </h2>
-              <p className="mx-auto mt-4 max-w-[860px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                This section documents how the accessibility checklist was applied to Flock, what the legacy dashboard audit surfaced, and how those findings translated into before/after component improvements.
-              </p>
-            </div>
-          </section>
-
-          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-            <SectionHeading eyebrow="Checklist" title="How the Accessibility Audit Was Structured" centered className="mb-12" />
-            <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              The checklist was used as a working framework, not just a scorecard. I used it to turn a fragmented product audit into grouped findings that could be prioritized, discussed with engineering, and converted into reusable interface decisions.
-            </p>
-            <FlockChecklistUsage />
-          </section>
-
-          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-            <SectionHeading eyebrow="Before" title="Legacy Dashboard Audit" centered className="mb-12" />
-            <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              To frame the system work, I first reconstructed a representative product surface and marked where structure, hierarchy, spacing, states, and interaction patterns had drifted. The goal was not to preserve the exact UI, but to make the inconsistencies visible enough to align design and engineering around what needed to change.
-            </p>
-            <FlockAuditSnapshot />
-          </section>
-
-          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-            <SectionHeading eyebrow="Checklist" title="Before & After Accessibility Updates" centered className="mb-12" />
-            <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              Using the accessibility checklist as a working framework, I translated audit findings into component-level changes. Each example below shows how the same product patterns were reworked to improve hierarchy, navigation, controls, and clarity without relying on the original branded UI.
-            </p>
-            <FlockChecklistShowcase />
-          </section>
-        </>
-      ) : null}
-
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         <SectionHeading eyebrow="Overview" title="Structure" className="mb-6" />
         {overviewBlock?.body ? (
@@ -917,6 +877,38 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         </section>
       )}
+
+      {caseStudy.slug === "flock-accessibility-system" ? (
+        <>
+          <section className="mx-auto max-w-[1200px] px-6 py-6 md:px-10 xl:px-20">
+            <div className="px-6 py-8 text-center md:px-10">
+              <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Accessibility Review</p>
+              <h2 className="mt-3 font-serif-display text-[34px] italic leading-tight text-[#0e2951] md:text-[42px]">
+                Checklist, legacy audit, and component fixes
+              </h2>
+              <p className="mx-auto mt-4 max-w-[860px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                This section documents how the accessibility checklist was applied to Flock, what the legacy dashboard audit surfaced, and how those findings translated into before/after component improvements.
+              </p>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+            <SectionHeading eyebrow="Checklist" title="How the Accessibility Audit Was Structured" centered className="mb-12" />
+            <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              The checklist was used as a working framework, not just a scorecard. I used it to turn a fragmented product audit into grouped findings that could be prioritized, discussed with engineering, and converted into reusable interface decisions.
+            </p>
+            <FlockChecklistUsage />
+          </section>
+
+          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+            <SectionHeading eyebrow="Checklist" title="Before & After Accessibility Updates" centered className="mb-12" />
+            <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              Using the accessibility checklist as a working framework, I translated audit findings into component-level changes. Each example below shows how the same product patterns were reworked to improve hierarchy, navigation, controls, and clarity without relying on the original branded UI.
+            </p>
+            <FlockChecklistShowcase />
+          </section>
+        </>
+      ) : null}
 
       {caseStudy.slug !== "nayya-ai-benefits" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">

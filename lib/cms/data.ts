@@ -42,7 +42,7 @@ export async function getCaseStudies(): Promise<CaseStudyRecord[]> {
     return sortCaseStudies(fallbackCaseStudies);
   }
 
-  return data as CaseStudyRecord[];
+  return sortCaseStudies(data) as CaseStudyRecord[];
 }
 
 export async function getCaseStudyBySlug(slug: string): Promise<CaseStudyRecord | null> {

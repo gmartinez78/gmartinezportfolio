@@ -173,7 +173,7 @@ values
   'nayya-ai-benefits',
   'published',
   true,
-  1,
+  2,
   'AI-Powered Benefits Advisor',
   'Nayya',
   'Paychex via ITX Corp',
