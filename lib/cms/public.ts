@@ -9,7 +9,7 @@ import { normalizeNavigableHref, withBasePath } from "@/lib/site";
 const trustedLogoMap: Record<string, string> = {
   IBX: withBasePath("/images/SNUZw.png"),
   Skill: withBasePath("/images/IbuV3.png"),
-  Nayya: withBasePath("/images/SNUZ.png"),
+  Nayya: withBasePath("/images/SNUZ.svg"),
   Paychex: withBasePath("/images/c54fy.png"),
   "Paramount+": withBasePath("/images/paramount-plus.svg"),
   Flock: withBasePath("/images/flock-logo.svg"),
@@ -51,7 +51,14 @@ const projectImageMap: Record<string, string> = {
   "benefits-enrollment": withBasePath("/images/projects/EB.png"),
   "nayya-ai-benefits": withBasePath("/images/projects/nayya-cover.png"),
   "flock-accessibility-system": withBasePath("/images/FC4No.png"),
-  "i9-everify-integration": withBasePath("/images/1x9VC.png"),
+  "i9-everify-integration": withBasePath("/images/benefits/user-management.png"),
+};
+
+const projectHeroImageMap: Record<string, string> = {
+  "benefits-enrollment": withBasePath("/images/projects/benefits-cover.png"),
+  "nayya-ai-benefits": withBasePath("/images/projects/nayya-hero.png"),
+  "flock-accessibility-system": withBasePath("/images/FC4No.png"),
+  "i9-everify-integration": withBasePath("/images/benefits/user-management.png"),
 };
 
 const projectHrefMap: Record<string, string> = {
@@ -75,11 +82,11 @@ export function resolveToolIconOptional(label: string) {
 }
 
 export function resolveProjectImage(slug: string, explicit?: string | null) {
-  return projectImageMap[slug] ?? (explicit ? withBasePath(explicit) : withBasePath("/images/AxnrM.png"));
+  return projectImageMap[slug] ?? (explicit ? withBasePath(explicit) : withBasePath("/images/projects/EB.png"));
 }
 
 export function resolveProjectHeroImage(slug: string, explicit?: string | null) {
-  return explicit ? withBasePath(explicit) : resolveProjectImage(slug, explicit);
+  return projectHeroImageMap[slug] ?? (explicit ? withBasePath(explicit) : resolveProjectImage(slug, explicit));
 }
 
 export function resolveProjectHref(study: CaseStudyRecord) {
