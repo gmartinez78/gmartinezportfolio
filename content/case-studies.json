@@ -18,15 +18,15 @@
       "cover": "/images/projects/EB.png",
       "hero": "/images/projects/benefits-cover.png",
       "gallery": [
-        "/images/projects/benefits/figma-logo.png",
-        "/images/projects/benefits/jira-logo.png",
-        "/images/projects/benefits/miro-logo.png"
+        "/images/benefits/figma-logo.png",
+        "/images/benefits/jira-logo.png",
+        "/images/benefits/miro-logo.png"
       ]
     },
     "client_logos": [
-      { "name": "Paychex", "logo": "/images/logos/paychex.png" },
+      { "name": "Paychex", "logo": "/images/c54fy.png" },
       { "name": "Flock", "logo": "/images/flock-logo.svg" },
-      { "name": "IBX", "logo": "/images/logos/ibx.png" }
+      { "name": "IBX", "logo": "/images/SNUZw.png" }
     ],
     "metrics": [
       { "value": "72%", "label": "Reduction in processing time", "context": "benefits processing" },
@@ -100,8 +100,8 @@
       "gallery": []
     },
     "client_logos": [
-      { "name": "Nayya", "logo": "/images/SNUZ.png" },
-      { "name": "Paychex", "logo": "/images/logos/paychex.png" }
+      { "name": "Nayya", "logo": "/images/SNUZ.svg" },
+      { "name": "Paychex", "logo": "/images/c54fy.png" }
     ],
     "metrics": [
       { "value": "307%", "label": "IRR", "context": "Projected ROI — estimated return from increased plan uptake (NPV $11.4M)." },
@@ -229,7 +229,7 @@
     "filters": ["Accessibility", "Design Systems", "Product Design"],
     "tools": ["Figma", "Jira", "Miro"],
     "images": {
-      "cover": "/images/projects/easterseals-cover.png",
+      "cover": "/images/FC4No.png",
       "hero": "",
       "gallery": []
     },
@@ -253,6 +253,11 @@
         "Dialogs, icons, typography, and responsive behavior lacked enough shared rules to feel cohesive across the product."
       ]
     },
+    "constraints": [
+      "Accessibility improvements had to happen while the product was live and already fragmented across multiple pages and patterns.",
+      "There was no fully mature design system in place, so audit work and system definition had to progress together.",
+      "The system needed to support real engineering constraints, QA, and implementation readiness rather than remain a Figma-only cleanup effort."
+    ],
     "methodology": {
       "name": "Audit to Systemization",
       "steps": [
@@ -292,7 +297,7 @@
         "id": "situation",
         "type": "custom",
         "title": "Situation",
-        "body": "Flock had accumulated accessibility risk, duplicated interface patterns, and inconsistent component behavior across its product surfaces.\n\nThe lack of a mature system meant icons, typography, dialogs, and reusable UI patterns had drifted over time. That created friction for implementation, made handoff less reliable, and increased the cost of keeping the experience consistent.\n\nThis mattered beyond visual polish. It affected accessibility readiness, product quality, and the team's ability to scale improvements without re-solving the same problems page by page.\n\nAccessibility improvements had to happen while the product was live and already fragmented across multiple pages and patterns. There was no fully mature design system in place, so audit work and system definition had to progress together. The system needed to support real engineering constraints, QA, and implementation readiness rather than remain a Figma-only cleanup effort."
+        "body": "Flock had accumulated accessibility risk, duplicated interface patterns, and inconsistent component behavior across its product surfaces.\n\nThe lack of a mature system meant icons, typography, dialogs, and reusable UI patterns had drifted over time. That created friction for implementation, made handoff less reliable, and increased the cost of keeping the experience consistent.\n\nThis mattered beyond visual polish. It affected accessibility readiness, product quality, and the team's ability to scale improvements without re-solving the same problems page by page."
       },
       {
         "id": "task",
@@ -363,12 +368,12 @@
     "filters": ["UX Research", "Product Design", "Compliance"],
     "tools": ["Figma", "Jira", "Miro", "Webex", "Outlook", "Copilot"],
     "images": {
-      "cover": "/images/projects/i9-everify-cover.png",
+      "cover": "/images/benefits/user-management.png",
       "hero": "",
       "gallery": []
     },
     "client_logos": [
-      { "name": "Paychex", "logo": "/images/logos/paychex.png" }
+      { "name": "Paychex", "logo": "/images/c54fy.png" }
     ],
     "metrics": [
       { "value": "26", "label": "Rounds of design exploration and testing", "context": "employee and admin journeys" },
