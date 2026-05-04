@@ -186,6 +186,401 @@ const NAYYA_INSIGHTS_CLOSING =
   "Participants who completed the Nayya survey enrolled in TWICE as many benefits as those who skipped it.";
 
 const METHODOLOGY_COLORS = ["#87d4ac", "#f5e692", "#d9b8ff", "#68c7c1", "#d1f090"];
+const FLOCK_AUDIT_LABELS = [
+  { color: "#50A8FF", label: "Navigation", note: "Top-level hierarchy and route clarity." },
+  { color: "#AD86FF", label: "Typography", note: "Heading scale, weight, and readability drift." },
+  { color: "#F091FF", label: "Spacing", note: "Inconsistent padding, gutters, and density." },
+  { color: "#FFB865", label: "States", note: "Hover, selected, and status patterns varied too much." },
+  { color: "#9CD99F", label: "Tables", note: "Headers, rows, and controls lacked a shared pattern." },
+  { color: "#D9A49C", label: "Dialogs", note: "Modal structure and actions were not standardized." },
+];
+const FLOCK_CHECKLIST_SECTIONS = [
+  {
+    title: "Color & Typography",
+    intro: "The audit found low-contrast surfaces, weak hierarchy, and inconsistent heading treatment across pages.",
+    checklist: [
+      "Raise text contrast for body copy and supporting labels.",
+      "Create a consistent heading scale and supporting text rhythm.",
+      "Use color as reinforcement, not the only status signal.",
+    ],
+  },
+  {
+    title: "Layout & Navigation",
+    intro: "Navigation patterns and page structure drifted between modules, making the product feel less predictable.",
+    checklist: [
+      "Clarify active navigation and page orientation.",
+      "Standardize spacing, grouping, and section containment.",
+      "Keep scanning paths stable across related screens.",
+    ],
+  },
+  {
+    title: "Links & Buttons",
+    intro: "Interactive controls used mixed visual rules, so priority and affordance were not always obvious.",
+    checklist: [
+      "Differentiate primary, secondary, and text actions clearly.",
+      "Add visible focus treatment and stronger hover states.",
+      "Avoid relying on color alone to identify links.",
+    ],
+  },
+  {
+    title: "Forms, Controls & Dynamic Content",
+    intro: "Form fields, inline feedback, and changeable content lacked enough structure to support accessibility and QA.",
+    checklist: [
+      "Pair every field with a persistent label and guidance.",
+      "Expose validation, state, and helper text consistently.",
+      "Make filters, toggles, and updates easier to follow.",
+    ],
+  },
+];
+const FLOCK_CHECKLIST_USAGE = [
+  {
+    step: "1. Baseline audit",
+    body: "I reconstructed a representative legacy dashboard and tagged recurring issues instead of reviewing isolated screens in a vacuum.",
+  },
+  {
+    step: "2. Pattern grouping",
+    body: "Findings were grouped into checklist categories so accessibility issues could be connected to reusable system decisions.",
+  },
+  {
+    step: "3. Component translation",
+    body: "Each issue was then translated into a before/after component example the team could review, implement, and QA consistently.",
+  },
+];
+
+function FlockAuditSnapshot() {
+  return (
+    <div className="overflow-hidden rounded-[28px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
+      <div className="border-b border-[#e3eef8] bg-[#f7fbff] px-5 py-3">
+        <div className="flex items-center gap-2">
+          <span className="h-2.5 w-2.5 rounded-full bg-[#d8e6f4]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#d8e6f4]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#d8e6f4]" />
+        </div>
+      </div>
+
+      <div className="grid lg:grid-cols-[minmax(0,1.35fr)_320px]">
+        <div className="overflow-x-auto bg-[#fbfdff] p-4 md:p-6">
+          <div className="min-w-[820px] rounded-[22px] border border-[#dceaf7] bg-white p-4 shadow-[0_18px_48px_rgba(14,41,81,0.08)]">
+            <div className="grid grid-cols-[220px_minmax(0,1fr)] gap-4">
+              <aside className="rounded-[18px] border border-[#e4eef7] bg-[#f7fbff] p-4">
+                <div className="mb-4 h-9 rounded-[10px] border-[5px]" style={{ borderColor: "#50A8FF" }} />
+                <div className="space-y-3">
+                  {["Workspace", "Queues", "Policies", "Users", "Reports", "Settings"].map((item, index) => (
+                    <div
+                      key={item}
+                      className={`rounded-[10px] px-3 py-2 text-[13px] font-medium ${
+                        index === 2 ? "border-[5px]" : "border border-transparent"
+                      }`}
+                      style={index === 2 ? { borderColor: "#AD86FF", color: "#0e2951" } : { color: "#5c7792" }}
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-5 rounded-[12px] border-[5px] px-3 py-4" style={{ borderColor: "#D9A49C" }}>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#0e2951]">Action panel</p>
+                  <div className="mt-3 flex gap-2">
+                    <div className="h-8 flex-1 rounded-[10px] bg-[#eef5fb]" />
+                    <div className="h-8 w-12 rounded-[10px] bg-[#eef5fb]" />
+                  </div>
+                </div>
+              </aside>
+
+              <div className="space-y-4">
+                <div className="rounded-[18px] border border-[#e4eef7] bg-white p-5">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="min-w-0 flex-1">
+                      <div className="inline-flex rounded-full border-[5px] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]" style={{ borderColor: "#9CD99F", color: "#0e2951" }}>
+                        Audit baseline
+                      </div>
+                      <h3 className="mt-4 max-w-[360px] border-[5px] px-3 py-2 text-[24px] font-semibold leading-tight text-[#0e2951]" style={{ borderColor: "#AD86FF" }}>
+                        Access patterns and interface rules had drifted over time
+                      </h3>
+                      <div className="mt-4 grid max-w-[420px] gap-3 sm:grid-cols-2">
+                        <div className="rounded-[14px] border-[5px] p-3" style={{ borderColor: "#F091FF" }}>
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">Density</p>
+                          <p className="mt-2 text-[14px] leading-[1.5] text-[#0e2951]">Spacing changed from section to section without a shared rule.</p>
+                        </div>
+                        <div className="rounded-[14px] border-[5px] p-3" style={{ borderColor: "#FFB865" }}>
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">States</p>
+                          <p className="mt-2 text-[14px] leading-[1.5] text-[#0e2951]">Tags, pills, and selected rows used competing visual signals.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="w-full max-w-[210px] rounded-[16px] border border-[#e4eef7] bg-[#f8fbfe] p-4">
+                      <div className="mb-3 border-[5px] p-3" style={{ borderColor: "#9CD99F" }}>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">Table header</p>
+                        <div className="mt-3 space-y-2">
+                          <div className="h-2 rounded-full bg-[#dceaf7]" />
+                          <div className="h-2 w-4/5 rounded-full bg-[#dceaf7]" />
+                        </div>
+                      </div>
+                      <div className="border-[5px] p-3" style={{ borderColor: "#50A8FF" }}>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">Sort / filter</p>
+                        <div className="mt-3 flex gap-2">
+                          <div className="h-8 flex-1 rounded-[10px] bg-white" />
+                          <div className="h-8 w-10 rounded-[10px] bg-white" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="rounded-[18px] border border-[#e4eef7] bg-white p-4">
+                  <div className="grid grid-cols-[1.15fr_0.9fr_0.9fr_1fr_0.7fr] gap-3 border-b border-[#e8f0f7] px-3 pb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">
+                    <span className="border-[5px] px-2 py-1" style={{ borderColor: "#50A8FF" }}>Entity</span>
+                    <span>Role</span>
+                    <span>Status</span>
+                    <span className="border-[5px] px-2 py-1" style={{ borderColor: "#F091FF" }}>Permissions</span>
+                    <span>Actions</span>
+                  </div>
+                  <div className="space-y-3 pt-3">
+                    {[
+                      ["Northwind Team", "Owner", "Active", "12 rules"],
+                      ["Ops Group", "Editor", "Pending", "8 rules"],
+                      ["Support Pod", "Viewer", "Active", "5 rules"],
+                      ["Regional Admin", "Manager", "Inactive", "11 rules"],
+                    ].map((row, index) => (
+                      <div key={row[0]} className="grid grid-cols-[1.15fr_0.9fr_0.9fr_1fr_0.7fr] gap-3 rounded-[14px] border border-[#edf3f8] bg-[#fcfeff] px-3 py-3 text-[14px] text-[#0e2951]">
+                        <div className={index === 1 ? "border-[5px] px-2 py-1" : ""} style={index === 1 ? { borderColor: "#AD86FF" } : undefined}>{row[0]}</div>
+                        <div>{row[1]}</div>
+                        <div className={index === 2 ? "border-[5px] px-2 py-1" : ""} style={index === 2 ? { borderColor: "#FFB865" } : undefined}>{row[2]}</div>
+                        <div>{row[3]}</div>
+                        <div className="flex justify-end">
+                          <div className={index === 3 ? "border-[5px] px-3 py-1" : "px-3 py-1"} style={index === 3 ? { borderColor: "#D9A49C" } : undefined}>•••</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-[#e3eef8] bg-[#f8fbfe] p-6 lg:border-l lg:border-t-0">
+          <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#1183D0]">Audit Key</p>
+          <h3 className="mt-4 text-[24px] font-semibold leading-tight text-[#0e2951]">How the “before” was analyzed</h3>
+          <p className="mt-4 text-[15px] leading-[1.7] text-[#5c7792]">
+            The original product surface was mapped as an audit artifact. I tagged recurring issues by pattern family so the team could see where accessibility, hierarchy, and system consistency were breaking down before proposing a shared solution.
+          </p>
+          <div className="mt-6 space-y-3">
+            {FLOCK_AUDIT_LABELS.map((item) => (
+              <div key={item.label} className="rounded-[16px] border border-[#dceaf7] bg-white p-4">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex h-5 w-5 rounded-[5px]" style={{ backgroundColor: item.color }} />
+                  <p className="text-[14px] font-semibold text-[#0e2951]">{item.label}</p>
+                </div>
+                <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{item.note}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FlockChecklistShowcase() {
+  return (
+    <div className="space-y-8">
+      {FLOCK_CHECKLIST_SECTIONS.map((section) => (
+        <Card key={section.title} className="overflow-hidden border border-[#d7e8f7]">
+          <CardContent className="p-0">
+            <div className="border-b border-[#e4eef7] bg-[#f7fbff] px-6 py-5">
+              <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#1183D0]">Checklist Applied</p>
+              <h3 className="mt-2 text-[28px] font-semibold leading-tight text-[#0e2951]">{section.title}</h3>
+              <p className="mt-3 max-w-[820px] text-[15px] leading-[1.7] text-[#5c7792]">{section.intro}</p>
+            </div>
+
+            <div className="grid gap-0 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1.2fr)_320px]">
+              <div className="border-b border-[#e4eef7] p-6 lg:border-b-0 lg:border-r">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#9b6b6b]">Before</p>
+                <div className="mt-4 rounded-[20px] border border-[#ecdede] bg-[#f9f4f4] p-5">
+                  {section.title === "Color & Typography" ? (
+                    <div className="space-y-4">
+                      <div className="h-3 w-20 rounded-full bg-[#d5b9b9]" />
+                      <h4 className="text-[26px] font-medium leading-tight text-[#8e8e8e]">General settings</h4>
+                      <p className="max-w-[420px] text-[14px] leading-[1.6] text-[#a2a2a2]">
+                        Supporting text blended into the background and the heading scale did not create a reliable reading order.
+                      </p>
+                      <div className="grid max-w-[460px] gap-3 sm:grid-cols-2">
+                        <div className="rounded-[14px] bg-white/70 p-4">
+                          <p className="text-[12px] text-[#b4b4b4]">Status</p>
+                          <p className="mt-2 text-[14px] text-[#d38f48]">Needs review</p>
+                        </div>
+                        <div className="rounded-[14px] bg-white/70 p-4">
+                          <p className="text-[12px] text-[#b4b4b4]">Owner</p>
+                          <p className="mt-2 text-[14px] text-[#989898]">Operations</p>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {section.title === "Layout & Navigation" ? (
+                    <div className="grid grid-cols-[180px_minmax(0,1fr)] gap-4">
+                      <div className="rounded-[16px] bg-white/70 p-4">
+                        <div className="space-y-3 text-[13px] text-[#9c9c9c]">
+                          <p>Home</p>
+                          <p>Reports</p>
+                          <p className="rounded-[10px] bg-[#ece1e1] px-2 py-1 text-[#7f7f7f]">Settings</p>
+                          <p>Users</p>
+                        </div>
+                      </div>
+                      <div className="space-y-4 rounded-[16px] bg-white/70 p-4">
+                        <div className="h-3 w-24 rounded-full bg-[#dfcbcb]" />
+                        <div className="grid gap-3 sm:grid-cols-2">
+                          <div className="h-24 rounded-[14px] bg-[#f2e7e7]" />
+                          <div className="h-24 rounded-[14px] bg-[#f2e7e7]" />
+                        </div>
+                        <div className="h-32 rounded-[14px] bg-[#f2e7e7]" />
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {section.title === "Links & Buttons" ? (
+                    <div className="space-y-4">
+                      <div className="flex flex-wrap gap-3">
+                        <button type="button" className="rounded-[12px] bg-[#d3d8df] px-4 py-2 text-[14px] text-[#7b8592]">Save</button>
+                        <button type="button" className="rounded-[12px] bg-[#eef2f6] px-4 py-2 text-[14px] text-[#9aa3ad]">Cancel</button>
+                        <a href="#0" className="self-center text-[14px] text-[#7ca7cf] no-underline">View details</a>
+                      </div>
+                      <div className="rounded-[14px] bg-white/70 p-4">
+                        <p className="text-[14px] leading-[1.6] text-[#9a9a9a]">
+                          Controls looked related, but visual priority and focus behavior were not clearly differentiated.
+                        </p>
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {section.title === "Forms, Controls & Dynamic Content" ? (
+                    <div className="space-y-4">
+                      <div className="rounded-[14px] bg-white/70 p-4">
+                        <div className="h-11 rounded-[12px] border border-[#e7d7d7] bg-white" />
+                        <p className="mt-2 text-[12px] text-[#b2a5a5]">No persistent label, helper text, or validation context.</p>
+                      </div>
+                      <div className="flex flex-wrap gap-3">
+                        <div className="rounded-[12px] bg-white/70 px-4 py-2 text-[13px] text-[#9f9f9f]">Filter</div>
+                        <div className="rounded-[12px] bg-[#f2e7e7] px-4 py-2 text-[13px] text-[#9f9f9f]">Active only</div>
+                      </div>
+                      <div className="rounded-[14px] bg-white/70 p-4">
+                        <p className="text-[14px] leading-[1.6] text-[#9a9a9a]">Inline updates and control state changes were easy to miss.</p>
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+
+              <div className="border-b border-[#e4eef7] p-6 lg:border-b-0 lg:border-r">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#4d87ae]">After</p>
+                <div className="mt-4 rounded-[20px] border border-[#d7e8f7] bg-[#f8fbfe] p-5">
+                  {section.title === "Color & Typography" ? (
+                    <div className="space-y-4">
+                      <div className="h-3 w-24 rounded-full bg-[#1183D0]" />
+                      <h4 className="text-[28px] font-semibold leading-tight text-[#0e2951]">System settings</h4>
+                      <p className="max-w-[420px] text-[15px] leading-[1.7] text-[#5c7792]">
+                        A stronger type scale, darker body copy, and clearer supporting labels created a more readable baseline for every screen.
+                      </p>
+                      <div className="grid max-w-[460px] gap-3 sm:grid-cols-2">
+                        <div className="rounded-[14px] border border-[#d7e8f7] bg-white p-4">
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">Status</p>
+                          <p className="mt-2 text-[14px] font-medium text-[#0e2951]">Needs review</p>
+                        </div>
+                        <div className="rounded-[14px] border border-[#d7e8f7] bg-white p-4">
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">Owner</p>
+                          <p className="mt-2 text-[14px] font-medium text-[#0e2951]">Operations</p>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {section.title === "Layout & Navigation" ? (
+                    <div className="grid grid-cols-[180px_minmax(0,1fr)] gap-4">
+                      <div className="rounded-[16px] border border-[#d7e8f7] bg-white p-4">
+                        <div className="space-y-3 text-[13px] font-medium text-[#5c7792]">
+                          <p>Home</p>
+                          <p>Reports</p>
+                          <p className="rounded-[10px] bg-[#E0EEFB] px-2 py-1 text-[#1183D0]">Settings</p>
+                          <p>Users</p>
+                        </div>
+                      </div>
+                      <div className="space-y-4 rounded-[16px] border border-[#d7e8f7] bg-white p-4">
+                        <div className="h-3 w-28 rounded-full bg-[#1183D0]" />
+                        <div className="grid gap-3 sm:grid-cols-2">
+                          <div className="rounded-[14px] border border-[#d7e8f7] bg-[#f8fbfe] p-4" />
+                          <div className="rounded-[14px] border border-[#d7e8f7] bg-[#f8fbfe] p-4" />
+                        </div>
+                        <div className="h-32 rounded-[14px] border border-[#d7e8f7] bg-[#f8fbfe]" />
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {section.title === "Links & Buttons" ? (
+                    <div className="space-y-4">
+                      <div className="flex flex-wrap gap-3">
+                        <button type="button" className="rounded-[14px] bg-[#1183D0] px-4 py-2 text-[14px] font-semibold text-white shadow-[0_10px_24px_rgba(17,131,208,0.18)]">Save changes</button>
+                        <button type="button" className="rounded-[14px] border border-[#CFE5F8] bg-white px-4 py-2 text-[14px] font-semibold text-[#1183D0]">Cancel</button>
+                        <a href="#0" className="self-center text-[14px] font-medium text-[#0e2951] underline underline-offset-4">View details</a>
+                      </div>
+                      <div className="rounded-[14px] border border-[#d7e8f7] bg-white p-4">
+                        <p className="text-[14px] leading-[1.6] text-[#5c7792]">
+                          Action hierarchy, hover affordance, and focus visibility were standardized to make interactions easier to interpret and test.
+                        </p>
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {section.title === "Forms, Controls & Dynamic Content" ? (
+                    <div className="space-y-4">
+                      <div className="rounded-[14px] border border-[#d7e8f7] bg-white p-4">
+                        <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">Email address</p>
+                        <div className="h-11 rounded-[12px] border-2 border-[#1183D0] bg-[#F7FBFF]" />
+                        <p className="mt-2 text-[12px] text-[#5c7792]">Used for account recovery and system alerts.</p>
+                      </div>
+                      <div className="flex flex-wrap gap-3">
+                        <div className="rounded-[12px] border border-[#d7e8f7] bg-white px-4 py-2 text-[13px] font-medium text-[#0e2951]">Filter</div>
+                        <div className="rounded-[12px] bg-[#E0EEFB] px-4 py-2 text-[13px] font-medium text-[#1183D0]">Active only</div>
+                      </div>
+                      <div className="rounded-[14px] border border-[#9CD99F] bg-[#f3fbf4] p-4">
+                        <p className="text-[14px] leading-[1.6] text-[#0e2951]">Changes saved. Filters and validation now use persistent status messaging.</p>
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+
+              <div className="p-6">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Requirements met</p>
+                <div className="mt-4 space-y-3">
+                  {section.checklist.map((item) => (
+                    <div key={item} className="rounded-[14px] border border-[#d7e8f7] bg-[#f8fbfe] px-4 py-3">
+                      <p className="text-[14px] leading-[1.6] text-[#0e2951]">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
+
+function FlockChecklistUsage() {
+  return (
+    <div className="grid gap-5 md:grid-cols-3">
+      {FLOCK_CHECKLIST_USAGE.map((item) => (
+        <Card key={item.step} className="overflow-hidden border border-[#d7e8f7]">
+          <CardContent className="p-7">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">{item.step}</p>
+            <p className="mt-4 text-[15px] leading-[1.7] text-[#5c7792]">{item.body}</p>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
 
 function getPayloadList(payload: Record<string, unknown> | null | undefined, key: string) {
   const value = payload?.[key];
@@ -363,6 +758,46 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         </div>
       </section>
+
+      {caseStudy.slug === "flock-accessibility-system" ? (
+        <>
+          <section className="mx-auto max-w-[1200px] px-6 py-6 md:px-10 xl:px-20">
+            <div className="rounded-[32px] border border-[#d7e8f7] bg-[#f7fbff] px-6 py-8 text-center shadow-[0_18px_48px_rgba(17,131,208,0.08)] md:px-10">
+              <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Accessibility Review</p>
+              <h2 className="mt-3 font-serif-display text-[34px] italic leading-tight text-[#0e2951] md:text-[42px]">
+                Checklist, legacy audit, and component fixes
+              </h2>
+              <p className="mx-auto mt-4 max-w-[860px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                This section documents how the accessibility checklist was applied to Flock, what the legacy dashboard audit surfaced, and how those findings translated into before/after component improvements.
+              </p>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+            <SectionHeading eyebrow="Checklist" title="How the Accessibility Audit Was Structured" centered className="mb-12" />
+            <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              The checklist was used as a working framework, not just a scorecard. I used it to turn a fragmented product audit into grouped findings that could be prioritized, discussed with engineering, and converted into reusable interface decisions.
+            </p>
+            <FlockChecklistUsage />
+          </section>
+
+          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+            <SectionHeading eyebrow="Before" title="Legacy Dashboard Audit" centered className="mb-12" />
+            <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              To frame the system work, I first reconstructed a representative product surface and marked where structure, hierarchy, spacing, states, and interaction patterns had drifted. The goal was not to preserve the exact UI, but to make the inconsistencies visible enough to align design and engineering around what needed to change.
+            </p>
+            <FlockAuditSnapshot />
+          </section>
+
+          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+            <SectionHeading eyebrow="Checklist" title="Before & After Accessibility Updates" centered className="mb-12" />
+            <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              Using the accessibility checklist as a working framework, I translated audit findings into component-level changes. Each example below shows how the same product patterns were reworked to improve hierarchy, navigation, controls, and clarity without relying on the original branded UI.
+            </p>
+            <FlockChecklistShowcase />
+          </section>
+        </>
+      ) : null}
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         <SectionHeading eyebrow="Overview" title="Structure" className="mb-6" />

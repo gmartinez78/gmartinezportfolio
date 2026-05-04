@@ -151,8 +151,8 @@ export function usePublicCaseStudies() {
 export function usePublicCaseStudy(slug: string) {
   const supabase = getSupabaseBrowserClient();
   const fallbackStudy = useMemo(() => fallbackCaseStudies.find((study) => study.slug === slug) ?? null, [slug]);
-  const [caseStudy, setCaseStudy] = useState<CaseStudyRecord | null>(supabase ? null : fallbackStudy);
-  const [loading, setLoading] = useState(true);
+  const [caseStudy, setCaseStudy] = useState<CaseStudyRecord | null>(fallbackStudy);
+  const [loading, setLoading] = useState(Boolean(supabase));
 
   useEffect(() => {
     if (!supabase) {

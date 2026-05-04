@@ -12,6 +12,7 @@ import {
   resolveCertificationLogo,
   resolveProjectHref,
   resolveProjectImage,
+  resolveToolIcon,
   resolveToolIconOptional,
   resolveTrustedLogo,
   usePublicCaseStudies,
@@ -19,28 +20,63 @@ import {
 } from "./lib/cms/public";
 import { withBasePath } from "./lib/site";
 
-function ToolPill({ label }: { label: string }) {
+const TOOLS_LEFT = [
+  { label: "Figma", x: "left-[7%]", y: "top-[72px]", size: "lg" as const },
+  { label: "Angular", x: "left-[18%]", y: "top-[34px]", size: "lg" as const },
+  { label: "Miro", x: "left-[31%]", y: "top-[18px]", size: "lg" as const },
+  { label: "React", x: "left-[10%]", y: "top-[236px]", size: "sm" as const },
+  { label: "HTML", x: "left-[6%]", y: "top-[352px]", size: "sm" as const },
+  { label: "Jira", x: "left-[22%]", y: "top-[132px]", size: "sm" as const },
+  { label: "Confluence", x: "left-[37%]", y: "top-[118px]", size: "sm" as const },
+  { label: "Maze", x: "left-[30%]", y: "top-[268px]", size: "sm" as const },
+  { label: "Notion", x: "left-[19%]", y: "top-[366px]", size: "sm" as const },
+  { label: "Webex", x: "left-[41%]", y: "top-[390px]", size: "sm" as const },
+];
+
+const TOOLS_RIGHT = [
+  { label: "Copilot", x: "right-[31%]", y: "top-[18px]", size: "sm" as const },
+  { label: "Slack", x: "right-[18%]", y: "top-[52px]", size: "sm" as const },
+  { label: "Claude", x: "right-[7%]", y: "top-[96px]", size: "sm" as const },
+  { label: "ChatGPT", x: "right-[26%]", y: "top-[172px]", size: "sm" as const },
+  { label: "VS Code", x: "right-[5%]", y: "top-[236px]", size: "sm" as const },
+  { label: "Figma", x: "right-[16%]", y: "top-[370px]", size: "sm" as const },
+  { label: "React", x: "right-[35%]", y: "top-[386px]", size: "sm" as const },
+  { label: "Jira", x: "right-[38%]", y: "top-[122px]", size: "sm" as const },
+  { label: "Miro", x: "right-[16%]", y: "top-[272px]", size: "sm" as const },
+  { label: "Notion", x: "right-[28%]", y: "top-[354px]", size: "sm" as const },
+];
+
+function ToolBadge({
+  label,
+  x,
+  y,
+  size,
+}: {
+  label: string;
+  x: string;
+  y: string;
+  size: "lg" | "sm";
+}) {
   const icon = resolveToolIconOptional(label);
+
+  if (!icon) {
+    return null;
+  }
+
+  const sizeClass = size === "lg" ? "h-[74px] w-[74px] rounded-[16px]" : "h-16 w-16 rounded-[15px]";
 
   return (
     <div
-      className="inline-flex min-h-14 items-center gap-3 rounded-full border border-white/70 bg-white/90 px-5 py-3 text-[#0e2951] shadow-[0_18px_42px_rgba(14,41,81,0.10)] backdrop-blur"
+      className={`absolute hidden ${x} ${y} z-10 ${sizeClass} items-center justify-center bg-white shadow-[0_18px_42px_rgba(14,41,81,0.10)] opacity-55 lg:flex`}
       title={label}
     >
-      {icon ? (
-        <Image
-          src={icon}
-          alt={label}
-          width={26}
-          height={26}
-          className="h-[26px] w-[26px] object-contain"
-        />
-      ) : (
-        <span className="inline-flex min-w-8 items-center justify-center rounded-full bg-[#E0EEFB] px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1183D0]">
-          {label.slice(0, 2)}
-        </span>
-      )}
-      <span className="text-sm font-semibold">{label}</span>
+      <Image
+        src={resolveToolIcon(label)}
+        alt={label}
+        width={size === "lg" ? 42 : 32}
+        height={size === "lg" ? 42 : 32}
+        className="h-[64%] w-[64%] object-contain"
+      />
     </div>
   );
 }
@@ -64,8 +100,8 @@ export default function PortfolioPage() {
     ? hero.methodology_chips
     : ["AI product design", "UX research", "Enterprise SaaS", "Design systems"];
   const featuredProjects = caseStudies
-    .filter((study) => study.featured)
-    .slice(0, 3)
+    .filter((study) => study.featured || study.slug === "flock-accessibility-system")
+    .slice(0, 4)
     .map((study) => ({
     title: study.title,
     description: study.tagline ?? "",
@@ -179,16 +215,16 @@ export default function PortfolioPage() {
 
       {/* ── Recent Work ── */}
       <section id="projects" className="bg-white py-12 px-6 md:px-10 xl:px-20">
-        <div className="max-w-[1200px] mx-auto flex flex-col items-center gap-12">
+        <div className="mx-auto flex w-full flex-col items-center gap-12">
           <SectionHeading eyebrow="Portfolio" title="Recent Work" centered />
 
           {/* Project cards */}
-          <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-4">
             {featuredProjects.map((project) => (
               <Link
                 key={project.title}
                 href={project.href}
-                className="group flex cursor-pointer flex-col gap-5 outline-none"
+                className="group flex w-full min-w-0 cursor-pointer flex-col gap-5 outline-none"
               >
                 {/* Image */}
                 <div className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] shadow-[0_18px_52px_rgba(14,41,81,0.12)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(14,41,81,0.22)] group-focus-visible:-translate-y-1 group-focus-visible:shadow-[0_28px_70px_rgba(14,41,81,0.22)] sm:h-[300px] xl:h-[230px]">
@@ -236,19 +272,41 @@ export default function PortfolioPage() {
 
       {/* ── Tools Section ── */}
       <section
-        className="relative isolate overflow-hidden px-6 py-16 md:px-10 xl:px-20"
+        className="relative isolate overflow-hidden px-6 py-16 md:px-10 lg:h-[520px] xl:px-20"
       >
         <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,#FFFFFF_0%,#F0F7FF_48%,rgba(17,131,208,0.28)_100%)]" />
-        <div className="relative z-20 mx-auto flex max-w-[1200px] flex-col items-center gap-10 text-center">
+        {TOOLS_LEFT.map((tool) => (
+          <ToolBadge key={`left-${tool.label}-${tool.x}`} {...tool} />
+        ))}
+        <div className="relative z-20 mx-auto flex max-w-[540px] flex-col items-center gap-5 text-center lg:absolute lg:left-1/2 lg:top-28 lg:-translate-x-1/2">
           <SectionHeading eyebrow="Experience & Skills" title={siteContent.home.tools_section.headline} centered />
           <p className="max-w-[560px] text-[15px] leading-[1.8] text-[#3c3e3f]">
             {siteContent.home.tools_section.description}
           </p>
-          <div className="flex w-full flex-col gap-4">
+          <div className="flex w-full flex-col gap-4 lg:hidden">
             {toolRows.map((row, index) => (
               <div key={`tool-row-${index}`} className="flex flex-wrap items-center justify-center gap-3">
                 {row.map((label) => (
-                  <ToolPill key={`${index}-${label}`} label={label} />
+                  <div
+                    key={`${index}-${label}`}
+                    className="inline-flex min-h-14 items-center gap-3 rounded-full border border-white/70 bg-white/90 px-5 py-3 text-[#0e2951] shadow-[0_18px_42px_rgba(14,41,81,0.10)] backdrop-blur"
+                    title={label}
+                  >
+                    {resolveToolIconOptional(label) ? (
+                      <Image
+                        src={resolveToolIcon(label)}
+                        alt={label}
+                        width={26}
+                        height={26}
+                        className="h-[26px] w-[26px] object-contain"
+                      />
+                    ) : (
+                      <span className="inline-flex min-w-8 items-center justify-center rounded-full bg-[#E0EEFB] px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1183D0]">
+                        {label.slice(0, 2)}
+                      </span>
+                    )}
+                    <span className="text-sm font-semibold">{label}</span>
+                  </div>
                 ))}
               </div>
             ))}
@@ -263,6 +321,9 @@ export default function PortfolioPage() {
             </Link>
           </Button>
         </div>
+        {TOOLS_RIGHT.map((tool) => (
+          <ToolBadge key={`right-${tool.label}-${tool.x}`} {...tool} />
+        ))}
       </section>
 
       {/* ── CTA Section ── */}

@@ -127,6 +127,20 @@ Importante:
 - `nayya-ai-benefits` tiene lógica especial dentro de `page-client.tsx`
 - no todo ese case study vive puramente en CMS; parte de su storytelling está codificado a mano
 - actualmente también tiene métricas y secciones específicas hardcodeadas para evitar depender solo del contenido remoto de Supabase
+- `flock-accessibility-system` ahora también tiene lógica especial ligera dentro de `page-client.tsx`
+- Flock incluye una sección custom de:
+  - `Audit Analysis`
+  - `Before & After Accessibility Updates`
+- esa narrativa está armada como UI anonimizada, sin reutilizar branding ni labels reales del producto
+- el objetivo es mostrar:
+  - el estado `before`
+  - cómo se auditó la experiencia
+  - ejemplos concretos de mejoras `after` por categoría de accesibilidad
+- las categorías actualmente representadas son:
+  - `Color & Typography`
+  - `Layout & Navigation`
+  - `Links & Buttons`
+  - `Forms, Controls & Dynamic Content`
 
 ### Benefits case study
 
@@ -224,6 +238,27 @@ Si se modifica la UI, preservar:
 - jerarquía fuerte
 - bastante aire/espaciado
 - credibilidad enterprise
+
+## Cambios recientes a preservar
+
+### Home
+
+- `portfolio-page.tsx` fue ajustado para incluir Flock en `Recent Work`
+- la sección `Recent Work` ahora contempla 4 cards destacadas
+- la sección `Tools I Love` volvió al layout con logos orbitando alrededor del bloque central en desktop
+- en mobile se mantiene fallback en filas para herramientas
+
+### Flock case study
+
+- el caso de Flock ya no debe tratarse como un template genérico solamente
+- ahora incluye storytelling visual específico de auditoría de accesibilidad
+- el bloque `Audit Analysis` usa una reconstrucción del producto para marcar problemas por familia de patrón
+- el bloque `Before & After Accessibility Updates` convierte el checklist de accesibilidad en ejemplos comparativos de componentes
+- evitar reemplazar esta sección por capturas literales del producto con branding real
+- si se expande, hacerlo en la misma lógica:
+  - anonimizar UI
+  - mostrar criterio de análisis
+  - conectar hallazgos con cambios concretos de diseño
 
 ## Convenciones de contenido y datos
 
