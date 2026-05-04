@@ -8,21 +8,23 @@ export const fallbackCaseStudies = (caseStudies as CaseStudyRecord[]).map((study
   ...study,
   filters:
     study.filters ??
-    Array.from(
-      new Set(
-        study.tags.filter((tag) =>
-          [
-            "UX Research",
-            "Product Design",
-            "Design Systems",
-            "Mobile",
-            "Accessibility",
-            "AI Product",
-            "Compliance",
-          ].includes(tag),
-        ),
-      ),
-    ),
+    (study.tags
+      ? Array.from(
+          new Set(
+            study.tags.filter((tag) =>
+              [
+                "UX Research",
+                "Product Design",
+                "Design Systems",
+                "Mobile",
+                "Accessibility",
+                "AI Product",
+                "Compliance",
+              ].includes(tag),
+            ),
+          ),
+        )
+      : []),
   content_blocks:
     study.content_blocks ??
     [
