@@ -1,4 +1,4 @@
-import { fallbackCaseStudies } from "@/lib/cms/fallback";
+import caseStudies from "@/content/case-studies.json";
 import { ProjectCaseStudyPageClient } from "./page-client";
 
 export default async function ProjectCaseStudyPage({
@@ -10,8 +10,9 @@ export default async function ProjectCaseStudyPage({
   return <ProjectCaseStudyPageClient slug={slug} />;
 }
 
-export function generateStaticParams() {
-  return fallbackCaseStudies
-    .filter((study) => study.slug !== "benefits-enrollment")
-    .map((study) => ({ slug: study.slug }));
+export async function generateStaticParams() {
+  const studies = (caseStudies as { slug: string }[]).filter(
+    (study) => study.slug && study.slug !== "benefits-enrollment"
+  );
+  return studies.map((study) => ({ slug: study.slug }));
 }

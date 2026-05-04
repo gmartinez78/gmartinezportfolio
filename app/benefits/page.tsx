@@ -927,12 +927,12 @@ export default function BenefitsPage() {
           {otherProjects.map((p) => (
             <a key={p.title} href={resolveProjectHref(p)} className="group bg-white hover:bg-white border border-[#CFE5F8] rounded-[28px] overflow-hidden transition-all hover:-translate-y-0.5">
               <div className="h-36 flex items-center justify-center" style={{ background: "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)" }}>
-                <span className="font-serif-display italic font-bold text-[#1183D0] text-3xl">{p.metrics[0]?.value ?? p.year}</span>
+                <span className="font-serif-display italic font-bold text-[#1183D0] text-3xl">{p.metrics?.[0]?.value ?? p.year}</span>
               </div>
               <div className="p-6">
                 <p className="text-[#5c7792] text-xs mb-1">{p.company}</p>
                 <h3 className="font-inter font-semibold text-[#0e2951] text-[15px] leading-snug mb-2">{p.title}</h3>
-                <Badge variant="outline" size="tag">{p.tags[0]}</Badge>
+                <Badge variant="outline" size="tag">{p.tags?.[0] ?? ""}</Badge>
               </div>
             </a>
           ))}

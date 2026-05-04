@@ -28,19 +28,25 @@ export default function ProjectsPage() {
   const { caseStudies } = usePublicCaseStudies();
   const { siteContent } = usePublicSiteContent();
   const [activeFilter, setActiveFilter] = useState("All");
-  const projects = caseStudies.map((project) => ({
+  
+  const projects = (caseStudies ?? []).filter(p => p?.slug).map((project) => ({
     ...project,
-    filters: project.filters?.length ? project.filters : project.tags,
+    title: project.title ?? "Untitled Project",
+    company: project.company ?? "",
+    year: project.year ?? "",
+    tagline: project.tagline ?? "",
+    tags: project.tags ?? [],
+    filters: project.filters?.length ? project.filters : project.tags ?? [],
     stat: project.metrics?.[0]?.value ?? `${project.year ?? ""}`,
     statLabel: project.metrics?.[0]?.label ?? project.industry ?? "",
-    previewImage: resolveProjectImage(project.slug, project.images.cover || project.images.hero || ""),
+    previewImage: resolveProjectImage(project.slug, project.images?.cover || project.images?.hero || ""),
     bg: PROJECT_BACKGROUNDS[project.slug] ?? "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
   }));
   const filteredProjects =
     activeFilter === "All"
       ? projects
       : projects.filter((project) => (project.filters ?? []).includes(activeFilter));
-  const socialLogos = siteContent.home.trusted_by.clients.map((client) => ({
+  const socialLogos = siteContent?.home?.trusted_by?.clients?.map((client) => ({
     src: resolveTrustedLogo(client.name, client.logo),
     alt: client.name,
     h: client.name === "Skill" ? 59 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : client.name === "Paramount+" ? 42 : 41,
@@ -122,7 +128,7 @@ export default function ProjectsPage() {
               </div>
               <div className="flex items-end justify-between mt-6 flex-wrap gap-4">
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
+                  {(project.tags ?? []).map((tag) => (
                     <Badge key={tag} size="tag">{tag}</Badge>
                   ))}
                 </div>

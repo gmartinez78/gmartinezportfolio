@@ -910,11 +910,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </>
       ) : null}
 
-      {caseStudy.slug !== "nayya-ai-benefits" ? (
+      {caseStudy.slug !== "nayya-ai-benefits" && (caseStudy.constraints?.length ?? 0) > 0 ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title="Constraints" centered className="mb-12" />
           <div className="grid gap-6 md:grid-cols-2">
-            {caseStudy.constraints.map((item) => (
+            {(caseStudy.constraints ?? []).map((item) => (
               <Card key={item} className="p-0 py-0">
                 <CardContent className="p-8">
                   <Badge>Constraint</Badge>
