@@ -672,7 +672,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     .filter(isContentBlock);
   const visibleStoryBlocks =
     caseStudy.slug === "flock-accessibility-system"
-      ? storyBlocks.filter((block) => block.id !== "research" && block.title !== "Audit Findings")
+      ? storyBlocks.filter((block) => block.id !== "research" && block.id !== "actions")
       : storyBlocks;
   const resultBlock = findBlock("impact");
   const resultRows = getPayloadRows(resultBlock?.payload, "rows");
@@ -817,7 +817,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
                   return (
                     <div key={block.id}>
-                      {block.title !== "Situation" ? (
+                      {block.title !== "Situation" && block.title !== "Actions" ? (
                         <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">
                           {block.title}
                         </p>
@@ -911,6 +911,22 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </p>
             <FlockChecklistShowcase />
           </section>
+
+          {caseStudy.slug === "flock-accessibility-system" && (
+            <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+              <div className="space-y-4">
+                <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                  I built an audit framework that grouped issues by severity, system impact, and implementation complexity, while separating accessibility findings, system inconsistencies, and engineering constraints for clearer decision-making.
+                </p>
+                <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                  I reviewed foundations and shared patterns across icons, typography, dialogs, and components to identify where states, variants, naming, and responsive behavior needed to be standardized. From that, I defined reusable patterns and clearer guidance in Figma to reduce ambiguity and improve handoff consistency.
+                </p>
+                <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                  I also partnered closely with developers during review and QA to adapt patterns to real technical constraints and confirm that the proposed system decisions worked in build.
+                </p>
+              </div>
+            </section>
+          )}
         </>
       ) : null}
 
