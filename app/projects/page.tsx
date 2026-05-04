@@ -33,7 +33,7 @@ export default function ProjectsPage() {
     ...project,
     title: project.title ?? "Untitled Project",
     company: project.company ?? "",
-    year: project.year ?? "",
+    year: project.year ?? 0,
     tagline: project.tagline ?? "",
     tags: project.tags ?? [],
     filters: project.filters?.length ? project.filters : project.tags ?? [],
