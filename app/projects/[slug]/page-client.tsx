@@ -670,6 +670,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const storyBlocks = ["situation", "task", "research", "actions"]
     .map((id) => findBlock(id))
     .filter(isContentBlock);
+  const visibleStoryBlocks =
+    caseStudy.slug === "flock-accessibility-system"
+      ? storyBlocks.filter((block) => block.id !== "research" && block.title !== "Audit Findings")
+      : storyBlocks;
   const resultBlock = findBlock("impact");
   const resultRows = getPayloadRows(resultBlock?.payload, "rows");
   const resultInsights = getPayloadList(resultBlock?.payload, "insights");
@@ -802,13 +806,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </div>
       </section>
 
-      {storyBlocks.length ? (
+      {visibleStoryBlocks.length ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
             <div>
               <SectionHeading eyebrow="Case Study" title="The problem" className="mb-12" />
               <div className="space-y-10">
-                {storyBlocks.map((block) => {
+                {visibleStoryBlocks.map((block) => {
                   const items = getPayloadList(block.payload, "items");
 
                   return (
