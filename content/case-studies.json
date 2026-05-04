@@ -311,10 +311,9 @@
         "title": "Actions",
         "payload": {
           "items": [
-            "Built an audit framework that grouped issues by severity, system impact, and implementation complexity, helping distinguish accessibility findings, system inconsistencies, and engineering constraints for clearer decision-making.",
-            "Reviewed foundations and reusable patterns across icons, typography, dialogs, and shared components to identify where states, variants, and naming needed to be standardized.",
-            "Established reusable patterns in Figma with documented states, composition rules, responsive behavior, and usage guidance to improve handoff consistency and support scalable implementation.",
-            "Partnered closely with developers during review and QA to adjust patterns to real technical constraints and validate that the proposed system decisions held up in build."
+            "I built an audit framework that grouped issues by severity, system impact, and implementation complexity, while separating accessibility findings, system inconsistencies, and engineering constraints for clearer decision-making.",
+            "I reviewed foundations and shared patterns across icons, typography, dialogs, and components to identify where states, variants, naming, and responsive behavior needed to be standardized. From that, I defined reusable patterns and clearer guidance in Figma to reduce ambiguity and improve handoff consistency.",
+            "I also partnered closely with developers during review and QA to adapt patterns to real technical constraints and confirm that the proposed system decisions worked in build."
           ]
         }
       },
