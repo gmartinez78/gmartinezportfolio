@@ -17,7 +17,7 @@ values
   'Flock',
   'Paychex via ITX Corp',
   'Product Designer',
-  2024,
+  2025,
   '6 months audit + 1 year build',
   'Accessibility / Design Systems',
   'Led accessibility auditing and design system unification work to reduce compliance risk, improve component consistency, and strengthen design-to-development delivery.',
