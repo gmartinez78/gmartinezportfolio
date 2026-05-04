@@ -86,8 +86,6 @@ const DESIGN_PROCESS = [
   { label: "Test", color: "#d1f090", desc: "Post-launch Hotjar analysis" },
 ];
 
-const OUTCOME_SIGNAL_COLORS = ["#87d4ac", "#f5e692", "#d9b8ff", "#68c7c1", "#d1f090"];
-
 const RESULTS = [
   { value: "72%", label: "Reduction in processing time" },
   { value: "500+", label: "Employees self-managed without IT tickets" },
@@ -676,7 +674,7 @@ export default function BenefitsPage() {
       <section className="mx-auto max-w-[1200px] px-6 pb-10 md:px-10 xl:px-20">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
           <div>
-            <SectionHeading title="Users" className="mb-8" />
+            <SectionHeading eyebrow="Case Study" title="The Problem" className="mb-8" />
             <div className="mt-8 space-y-6">
               {CHALLENGE_POINTS.map((point) => (
                 <p key={point} className="max-w-[720px] text-[16px] leading-[1.625em] text-[#5c7792]">
@@ -721,7 +719,6 @@ export default function BenefitsPage() {
 
       {/* ── Methodology ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading title="Methodology" centered className="mb-14" />
         <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
           {RESEARCH_DISCOVERY_ITEMS.map((item, index) => (
             <Card
@@ -826,28 +823,21 @@ export default function BenefitsPage() {
           ))}
         </div>
         <div className="mt-8">
-          <p className="text-center text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
+          <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
             Additional outcome signals
-          </p>
+          </h2>
           <p className="mx-auto mt-4 max-w-[760px] text-center text-[14px] italic leading-[1.7] text-[#5c7792]">
             Indicative metrics based on project outcomes, rollout impact, and observed operational improvements where exact audited totals were not preserved.
           </p>
           <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {ADDITIONAL_RESULT_SIGNALS.map((item, index) => (
-              <div key={item.title} className="flex flex-col gap-4">
-                <div
-                  className="flex flex-1 flex-col gap-2 rounded-2xl p-5"
-                  style={{ backgroundColor: `${OUTCOME_SIGNAL_COLORS[index % OUTCOME_SIGNAL_COLORS.length] ?? "#87d4ac"}33` }}
-                >
-                  <div
-                    className="w-full rounded-xl"
-                    style={{ height: 10, backgroundColor: OUTCOME_SIGNAL_COLORS[index % OUTCOME_SIGNAL_COLORS.length] ?? "#87d4ac" }}
-                  />
-                  <p className="mt-2 text-[30px] font-bold leading-none text-[#1183D0]">{item.value}</p>
-                  <h3 className="mt-2 text-[16px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
-                  <p className="mt-1 text-[15px] leading-[1.625em] text-[#5c7792]">{item.body}</p>
-                </div>
-              </div>
+            {ADDITIONAL_RESULT_SIGNALS.map((item) => (
+              <Card key={item.title} className="overflow-hidden border-transparent shadow-none">
+                <CardContent className="p-7">
+                  <p className="text-[30px] font-bold leading-none text-[#0e2951]">{item.value}</p>
+                  <h3 className="mt-3 text-[16px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
+                  <p className="mt-4 text-[15px] leading-[1.7] text-[#5c7792]">{item.body}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
