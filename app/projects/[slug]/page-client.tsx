@@ -886,9 +886,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <>
           <section className="mx-auto max-w-[1200px] px-6 py-6 md:px-10 xl:px-20">
             <div className="px-6 py-8 text-center md:px-10">
-              <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Accessibility Review</p>
+              <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Research & discovery</p>
               <h2 className="mt-3 font-serif-display text-[34px] italic leading-tight text-[#0e2951] md:text-[42px]">
-                Research & discovery
+                Accessibility Audit
               </h2>
               <p className="mx-auto mt-4 max-w-[860px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                 This section documents how the accessibility checklist was applied to Flock, what the legacy dashboard audit surfaced, and how those findings translated into before/after component improvements.
