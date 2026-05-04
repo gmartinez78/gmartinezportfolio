@@ -31,8 +31,8 @@ export default function ProjectsPage() {
   const projects = caseStudies.map((project) => ({
     ...project,
     filters: project.filters?.length ? project.filters : project.tags,
-    stat: project.metrics[0]?.value ?? `${project.year ?? ""}`,
-    statLabel: project.metrics[0]?.label ?? project.industry ?? "",
+    stat: project.metrics?.[0]?.value ?? `${project.year ?? ""}`,
+    statLabel: project.metrics?.[0]?.label ?? project.industry ?? "",
     previewImage: resolveProjectImage(project.slug, project.images.cover || project.images.hero || ""),
     bg: PROJECT_BACKGROUNDS[project.slug] ?? "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
   }));
