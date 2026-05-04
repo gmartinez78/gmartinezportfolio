@@ -890,16 +890,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <h2 className="mt-3 font-serif-display text-[34px] italic leading-tight text-[#0e2951] md:text-[42px]">
                 Accessibility Audit
               </h2>
-              <p className="mx-auto mt-4 max-w-[860px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                This section documents how the accessibility checklist was applied to Flock, what the legacy dashboard audit surfaced, and how those findings translated into before/after component improvements.
-              </p>
-            </div>
-          </section>
-
-          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-            <SectionHeading eyebrow="Checklist" title="How the Accessibility Audit Was Structured" centered className="mb-12" />
-            {caseStudy.slug === "flock-accessibility-system" && (
-              <div className="mb-10 space-y-4">
+              <div className="mx-auto mt-6 max-w-[860px] space-y-4 text-left">
                 <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                   I built an audit framework that grouped issues by severity, system impact, and implementation complexity, while separating accessibility findings, system inconsistencies, and engineering constraints for clearer decision-making.
                 </p>
@@ -910,7 +901,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   I also partnered closely with developers during review and QA to adapt patterns to real technical constraints and confirm that the proposed system decisions worked in build.
                 </p>
               </div>
-            )}
+              <p className="mx-auto mt-6 max-w-[860px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                This section documents how the accessibility checklist was applied to Flock, what the legacy dashboard audit surfaced, and how those findings translated into before/after component improvements.
+              </p>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+            <SectionHeading eyebrow="Checklist" title="How the Accessibility Audit Was Structured" centered className="mb-12" />
             <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               The checklist was used as a working framework, not just a scorecard. I used it to turn a fragmented product audit into grouped findings that could be prioritized, discussed with engineering, and converted into reusable interface decisions.
             </p>
