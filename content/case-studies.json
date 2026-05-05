@@ -236,10 +236,9 @@
     "client_logos": [],
     "metrics": [
       { "value": "6 months", "label": "Audit and prioritization", "context": "initial accessibility and system review" },
-      { "value": "1 system", "label": "Shared foundation", "context": "aligned patterns, typography, icons, and dialogs" },
-      { "value": "2 designers", "label": "Working with 3 developers", "context": "cross-functional system effort" }
+      { "value": "1 system", "label": "Shared foundation", "context": "aligned patterns, typography, icons, and dialogs" }
     ],
-    "team": ["2 designers", "UX Lead", "UX Manager", "Product Owner", "Business Analyst", "3 developers", "Dev Lead"],
+    "team": ["1 designer", "UX Lead", "UX Manager", "Product Owner", "Business Analyst", "3 developers", "Dev Lead"],
     "my_role": ["Accessibility Audit Lead", "Component Strategy", "Design Systems", "Engineering Partnership"],
     "problem": {
       "admin_pain_points": [
