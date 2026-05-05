@@ -423,7 +423,7 @@ function FlockChecklistShowcase() {
   return (
     <div className="space-y-8">
       {FLOCK_CHECKLIST_SECTIONS.map((section) => (
-        <Card key={section.title} className="overflow-hidden border border-[#d7e8f7]">
+        <Card key={section.title} className="gap-0 overflow-hidden border border-[#d7e8f7] py-0">
           <CardContent className="p-0">
             <div className="border-b border-[#e4eef7] bg-[#f7fbff] px-6 py-5">
               <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#1183D0]">Checklist Applied</p>
@@ -1160,10 +1160,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               centered
               className="mb-12"
             />
-            <div className="mx-auto max-w-[820px] space-y-8 text-center">
-              {designStrategy.map((item) => (
-                <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
-              ))}
+            <div className="mx-auto grid max-w-[1100px] items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+              <div className="flex justify-center lg:justify-start">
+                <img
+                  src={withBasePath("/images/projects/flock-notification-banner.svg")}
+                  alt="Flock notification banner design"
+                  className="h-auto w-full max-w-[420px]"
+                />
+              </div>
+              <div className="space-y-8 text-center lg:text-left">
+                {designStrategy.map((item) => (
+                  <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+                ))}
+              </div>
             </div>
           </>
         ) : (
