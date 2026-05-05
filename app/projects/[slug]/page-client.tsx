@@ -202,18 +202,19 @@ const FLOCK_CHECKLIST_SECTIONS = [
     title: "Color & Typography",
     intro: "The audit found low-contrast surfaces, weak hierarchy, and inconsistent heading treatment across pages.",
     checklist: [
-      "Raise text contrast for body copy and supporting labels.",
-      "Create a consistent heading scale and supporting text rhythm.",
-      "Use color as reinforcement, not the only status signal.",
+      "Contrast: All text, UI elements, and graphics meet minimum contrast ratios and remain readable in all states.",
+      "Color Usage: Color is not the only way to convey information; additional cues (icons, labels, states) are used.",
+      "Focus & States: Interactive elements have clear, visible focus states that are distinct from hover and other states.",
     ],
   },
   {
     title: "Layout & Navigation",
     intro: "Navigation patterns and page structure drifted between modules, making the product feel less predictable.",
     checklist: [
-      "Clarify active navigation and page orientation.",
-      "Standardize spacing, grouping, and section containment.",
-      "Keep scanning paths stable across related screens.",
+      "Reading Order: Content follows a clear, logical order, ensuring proper reading and navigation for all users, including screen readers.",
+      "Tables: Data tables are simplified, avoid complex structures, and include clear captions.",
+      "Navigation Consistency: Navigation is consistent across pages, making it easier to learn and use.",
+      "Navigation States: All navigation elements include clear states (default, hover, active, focus, and selected) to indicate interaction and location.",
     ],
   },
   {
@@ -431,44 +432,58 @@ function FlockChecklistShowcase() {
             <div className="grid gap-0 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1.2fr)_320px]">
               <div className="border-b border-[#e4eef7] p-6 lg:border-b-0 lg:border-r">
                 <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#9b6b6b]">Before</p>
-                <div className="mt-4 rounded-[20px] border border-[#ecdede] bg-[#f9f4f4] p-5">
+                <div className="mt-4 rounded-[20px] border border-[#EEEFEF] p-5">
                   {section.title === "Color & Typography" ? (
                     <div className="space-y-4">
                       <div className="h-3 w-20 rounded-full bg-[#d5b9b9]" />
-                      <h4 className="text-[26px] font-medium leading-tight text-[#8e8e8e]">General settings</h4>
-                      <p className="max-w-[420px] text-[14px] leading-[1.6] text-[#a2a2a2]">
+                      <div className="space-y-1">
+                        <p className="text-[14px] font-medium uppercase tracking-[0.16em] text-[#7D7F80]">General</p>
+                        <h4 className="text-[26px] font-medium leading-tight text-[#7D7F80]">settings</h4>
+                      </div>
+                      <p className="max-w-[420px] text-[14px] leading-[1.6] text-[#929395]">
                         Supporting text blended into the background and the heading scale did not create a reliable reading order.
                       </p>
                       <div className="grid max-w-[460px] gap-3 sm:grid-cols-2">
                         <div className="rounded-[14px] bg-white/70 p-4">
                           <p className="text-[12px] text-[#b4b4b4]">Status</p>
-                          <p className="mt-2 text-[14px] text-[#d38f48]">Needs review</p>
+                          <p className="mt-2 inline-flex rounded-full bg-[#FE9C32] px-3 py-1 text-[14px] font-medium text-white">Needs review</p>
                         </div>
                         <div className="rounded-[14px] bg-white/70 p-4">
                           <p className="text-[12px] text-[#b4b4b4]">Owner</p>
                           <p className="mt-2 text-[14px] text-[#989898]">Operations</p>
                         </div>
                       </div>
+                      <button
+                        type="button"
+                        className="rounded-[14px] bg-[#1AB065] px-4 py-2 text-[14px] font-semibold text-white shadow-[0_10px_24px_rgba(26,176,101,0.18)]"
+                      >
+                        Save changes
+                      </button>
                     </div>
                   ) : null}
 
                   {section.title === "Layout & Navigation" ? (
-                    <div className="grid grid-cols-[180px_minmax(0,1fr)] gap-4">
-                      <div className="rounded-[16px] bg-white/70 p-4">
-                        <div className="space-y-3 text-[13px] text-[#9c9c9c]">
-                          <p>Home</p>
-                          <p>Reports</p>
-                          <p className="rounded-[10px] bg-[#ece1e1] px-2 py-1 text-[#7f7f7f]">Settings</p>
-                          <p>Users</p>
-                        </div>
+                    <div className="space-y-4">
+                      <div className="rounded-[12px] bg-[#FFF7AC] px-4 py-3 text-[13px] font-medium text-[#7D7F80]">
+                        Go back to broker portal
                       </div>
-                      <div className="space-y-4 rounded-[16px] bg-white/70 p-4">
-                        <div className="h-3 w-24 rounded-full bg-[#dfcbcb]" />
-                        <div className="grid gap-3 sm:grid-cols-2">
-                          <div className="h-24 rounded-[14px] bg-[#f2e7e7]" />
-                          <div className="h-24 rounded-[14px] bg-[#f2e7e7]" />
+                      <div className="grid grid-cols-[180px_minmax(0,1fr)] gap-4">
+                        <div className="rounded-[16px] bg-[#303845] p-4">
+                          <div className="space-y-3 text-[13px] text-white">
+                            <p>Home</p>
+                            <p>Reports</p>
+                            <p className="rounded-[10px] bg-white/12 px-2 py-1 text-white">Settings</p>
+                            <p>Users</p>
+                          </div>
                         </div>
-                        <div className="h-32 rounded-[14px] bg-[#f2e7e7]" />
+                        <div className="space-y-4 rounded-[16px] bg-white/70 p-4">
+                          <div className="h-3 w-24 rounded-full bg-[#dfcbcb]" />
+                          <div className="grid gap-3 sm:grid-cols-2">
+                            <div className="h-24 rounded-[14px] bg-[#f2e7e7]" />
+                            <div className="h-24 rounded-[14px] bg-[#f2e7e7]" />
+                          </div>
+                          <div className="h-32 rounded-[14px] bg-[#f2e7e7]" />
+                        </div>
                       </div>
                     </div>
                   ) : null}
@@ -511,7 +526,16 @@ function FlockChecklistShowcase() {
                 <div className="mt-4 rounded-[20px] border border-[#d7e8f7] bg-[#f8fbfe] p-5">
                   {section.title === "Color & Typography" ? (
                     <div className="space-y-4">
-                      <div className="h-3 w-24 rounded-full bg-[#1183D0]" />
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="h-3 w-24 rounded-full bg-[#1183D0]" />
+                        <button
+                          type="button"
+                          aria-label="Close"
+                          className="inline-flex items-center justify-center text-[16px] font-medium leading-none text-[#5c7792]"
+                        >
+                          X
+                        </button>
+                      </div>
                       <h4 className="text-[28px] font-semibold leading-tight text-[#0e2951]">System settings</h4>
                       <p className="max-w-[420px] text-[15px] leading-[1.7] text-[#5c7792]">
                         A stronger type scale, darker body copy, and clearer supporting labels created a more readable baseline for every screen.
@@ -519,25 +543,37 @@ function FlockChecklistShowcase() {
                       <div className="grid max-w-[460px] gap-3 sm:grid-cols-2">
                         <div className="rounded-[14px] border border-[#d7e8f7] bg-white p-4">
                           <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">Status</p>
-                          <p className="mt-2 text-[14px] font-medium text-[#0e2951]">Needs review</p>
+                          <p className="mt-2 inline-flex rounded-full bg-[#FFF1E2] px-3 py-1 text-[14px] font-medium text-[#A85A00]">Needs review</p>
                         </div>
                         <div className="rounded-[14px] border border-[#d7e8f7] bg-white p-4">
                           <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">Owner</p>
                           <p className="mt-2 text-[14px] font-medium text-[#0e2951]">Operations</p>
                         </div>
                       </div>
+                      <button
+                        type="button"
+                        className="rounded-[14px] bg-[#1183D0] px-4 py-2 text-[14px] font-semibold text-white shadow-[0_10px_24px_rgba(17,131,208,0.18)]"
+                      >
+                        Save changes
+                      </button>
                     </div>
                   ) : null}
 
                   {section.title === "Layout & Navigation" ? (
                     <div className="grid grid-cols-[180px_minmax(0,1fr)] gap-4">
-                      <div className="rounded-[16px] border border-[#d7e8f7] bg-white p-4">
-                        <div className="space-y-3 text-[13px] font-medium text-[#5c7792]">
+                        <div className="flex flex-col justify-between rounded-[16px] bg-[#303845] p-4">
+                        <div className="space-y-3 text-[13px] font-medium text-white">
                           <p>Home</p>
                           <p>Reports</p>
-                          <p className="rounded-[10px] bg-[#E0EEFB] px-2 py-1 text-[#1183D0]">Settings</p>
+                          <p className="inline-flex rounded-[10px] bg-[#1183D0] px-2 py-1 text-white shadow-[0_8px_18px_rgba(17,131,208,0.24)]">Settings</p>
                           <p>Users</p>
                         </div>
+                        <button
+                          type="button"
+                          className="mt-6 rounded-[12px] border border-white/30 bg-transparent px-4 py-2 text-[13px] font-medium text-white"
+                        >
+                          Back to the portal
+                        </button>
                       </div>
                       <div className="space-y-4 rounded-[16px] border border-[#d7e8f7] bg-white p-4">
                         <div className="h-3 w-28 rounded-full bg-[#1183D0]" />
@@ -589,7 +625,19 @@ function FlockChecklistShowcase() {
                 <div className="mt-4 space-y-3">
                   {section.checklist.map((item) => (
                     <div key={item} className="rounded-[14px] border border-[#d7e8f7] bg-[#f8fbfe] px-4 py-3">
-                      <p className="text-[14px] leading-[1.6] text-[#0e2951]">{item}</p>
+                      <p
+                        className="text-[14px] leading-[1.6] text-[#0e2951]"
+                        dangerouslySetInnerHTML={{
+                          __html: item
+                            .replace("Contrast:", "<strong>Contrast:</strong>")
+                            .replace("Color Usage:", "<strong>Color Usage:</strong>")
+                            .replace("Focus & States:", "<strong>Focus & States:</strong>")
+                            .replace("Reading Order:", "<strong>Reading Order:</strong>")
+                            .replace("Tables:", "<strong>Tables:</strong>")
+                            .replace("Navigation Consistency:", "<strong>Navigation Consistency:</strong>")
+                            .replace("Navigation States:", "<strong>Navigation States:</strong>"),
+                        }}
+                      />
                     </div>
                   ))}
                 </div>
