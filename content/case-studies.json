@@ -224,7 +224,7 @@
     "year": 2025,
     "duration": "6 months audit + 1 year build",
     "industry": "Accessibility / Design Systems",
-    "tagline": "Led an accessibility audit and system unification effort to reduce pattern debt, improve consistency, and strengthen design-to-development delivery across Flock.",
+    "tagline": "Led an accessibility audit and helped unify the design system. This reduced pattern debt, made the product more consistent, and improved collaboration between design and development teams.",
     "tags": ["Accessibility", "Design Systems", "UX Research", "Product Design"],
     "filters": ["Accessibility", "Design Systems", "Product Design"],
     "tools": ["Figma", "Jira", "Miro"],
@@ -261,21 +261,21 @@
     "methodology": {
       "name": "Audit to Systemization",
       "steps": [
-        { "step": 1, "label": "Audit", "description": "Reviewed accessibility issues, page-level inconsistencies, and component debt across the product." },
-        { "step": 2, "label": "Prioritize", "description": "Grouped findings by severity, implementation risk, and system impact to clarify what needed structural change first." },
-        { "step": 3, "label": "Define", "description": "Separated accessibility fixes from design-system decisions by documenting patterns, variants, states, and usage rules." },
-        { "step": 4, "label": "Align", "description": "Worked closely with developers to adapt component decisions to implementation realities, QA needs, and handoff clarity." },
-        { "step": 5, "label": "Validate", "description": "Used design review, accessibility checks, and implementation feedback to strengthen adoption and consistency over time." }
+        { "step": 1, "label": "Audit", "description": "Reviewed accessibility issues and component mismatches against the existing internal library." },
+        { "step": 2, "label": "Structure", "description": "Grouped findings by severity, system impact, and implementation complexity to separate quick fixes from structural problems." },
+        { "step": 3, "label": "Systemize", "description": "Defined reusable patterns, variants, states, and usage rules, separating accessibility fixes from system decisions." },
+        { "step": 4, "label": "Align", "description": "Partnered closely with developers to align on React implementation, validate feasibility, and ensure design decisions translated correctly into build." },
+        { "step": 5, "label": "Validate", "description": "Used design reviews, accessibility checks, and implementation feedback to iterate and improve consistency." }
       ]
     },
     "design_strategy": [
-      "Use accessibility auditing as a structural input to system design rather than treating compliance as a late-stage QA task.",
       "Clarify foundations, components, patterns, and modules so teams know when to use each pattern and how it should behave.",
-      "Reduce ambiguity for engineering by defining states, variants, responsive behavior, and documentation that supports implementation."
+      "Separated accessibility fixes from design-system decisions by documenting patterns, variants, states, and usage rules.",
+      "Worked closely with developers to adapt component decisions to implementation realities, QA needs, and handoff clarity.",
+      "Used design review, accessibility checks, and implementation feedback to strengthen adoption and consistency."
     ],
     "reflections": [
-      { "title": "Leadership needs criteria.", "body": "This work became stronger once success criteria were explicit. The team needed clear signals for what should be fixed first, what should become reusable, and what good implementation looked like." },
-      { "title": "Systems work is product work.", "body": "The most valuable outcome was not a prettier library. It was a clearer product foundation that reduced ambiguity, improved accessibility decisions, and helped design and engineering move with more confidence." }
+      { "title": "Usability is about revealing what matters.", "body": "Usability isn't about removing; it's about revealing what matters. This project proves that accessibility, performance, and UX all strengthen each other when treated as one discipline." }
     ],
     "nda_notice": null,
     "password": null,
@@ -297,13 +297,13 @@
         "id": "situation",
         "type": "custom",
         "title": "Situation",
-        "body": "Flock had accumulated accessibility risk, duplicated interface patterns, and inconsistent component behavior across its product surfaces.\n\nThe lack of a mature system meant icons, typography, dialogs, and reusable UI patterns had drifted over time. That created friction for implementation, made handoff less reliable, and increased the cost of keeping the experience consistent.\n\nThis mattered beyond visual polish. It affected accessibility readiness, product quality, and the team's ability to scale improvements without re-solving the same problems page by page."
+        "body": "The lack of a design system meant icons, typography, dialogs, repeated interface patterns, inconsistent component behavior, and reusable UI patterns had drifted over time.\n\nThat created friction for implementation, affected accessibility readiness, made handoffs less reliable, and increased the cost of maintaining consistency in the experience."
       },
       {
         "id": "task",
         "type": "custom",
         "title": "Task",
-        "body": "My role was to turn accessibility findings and UI inconsistencies into a clearer system direction.\n\nThat meant identifying what was broken, separating audit issues from system decisions, and helping define reusable patterns that design and engineering could actually adopt.\n\nSuccess meant reducing duplicated patterns, improving consistency between pages, clarifying handoff expectations, and creating stronger accessibility guidance for future work."
+        "body": "My role was to turn accessibility findings and UI inconsistencies into a clear system direction to define reusable patterns that design and engineering could adopt.\n\nThe product had been recently acquired, so the goal was to keep its visual identity while improving consistency and usability through a more scalable, React-based system.\n\nSuccess meant reducing duplicated patterns, improving the product, clarifying handoff expectations, and creating stronger accessibility guidance for future work."
       },
       {
         "id": "actions",
@@ -334,17 +334,16 @@
             "Defining states, variants, and usage rules reduced ambiguity between design and engineering and improved the quality of implementation conversations."
           ],
           "projected": [
-            "Fewer duplicated patterns and less visual inconsistency across updated pages.",
             "A clearer adoption path for reusable components, patterns, and modules.",
             "More reliable handoff and QA because accessibility notes and usage guidance are documented.",
-            "Lower risk in future accessibility reviews by addressing issues systemically instead of page by page."
+            "Lower risk in future accessibility reviews by addressing issues systemically instead of page by page.",
+            "Pattern consistency helps users understand the interactions on the pages."
           ],
           "successMetrics": [
             "Reduction of duplicated or conflicting component patterns.",
-            "Improved consistency of states, variants, and responsive behavior across reused modules.",
+            "Improved components’ states, variants, and responsive behavior across reused modules.",
             "Fewer implementation questions during handoff and QA.",
-            "Accessibility issues identified and resolved by severity before release.",
-            "Adoption of standardized patterns in new or updated product areas."
+            "Accessibility issues identified and resolved by severity before release."
           ]
         }
       }

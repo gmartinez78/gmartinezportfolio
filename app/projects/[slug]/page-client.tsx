@@ -246,13 +246,23 @@ const FLOCK_CHECKLIST_USAGE = [
     body: "Each issue was then translated into a before/after component example the team could review, implement, and QA consistently.",
   },
 ];
-const FLOCK_A11Y_REFERENCE = [
-  "Color & Typography: verify contrast, readable type scale, and hierarchy that does not rely on color alone.",
-  "Layout & Navigation: keep structure, active navigation, spacing, and responsive behavior predictable across modules.",
-  "Links & Buttons: differentiate actions clearly and preserve visible hover, focus, and link affordances.",
-  "Forms & Controls: pair inputs with persistent labels, instructions, validation, and clear state changes.",
-  "Dynamic Content: make dialogs, tables, filters, and feedback patterns consistent enough for QA and assistive use.",
-  "Implementation Notes: document do / don't guidance, naming, states, and accessibility expectations for handoff.",
+const FLOCK_RESULTS_COMPARISON = [
+  {
+    before: "Compliance issues across existing pages.",
+    after: "Approved accessibility standards (Level A, Level AA) and a clearer standardization path.",
+  },
+  {
+    before: "Fragmented and duplicated patterns.",
+    after: "Unified shared library direction.",
+  },
+  {
+    before: "Weak handoff and limited reusable components.",
+    after: "Documented information to create alignment and clearer implementation support.",
+  },
+];
+const FLOCK_SOLUTION = [
+  "Create a Figma file with component definitions for devs and future project changes.",
+  "Write a storybook about behaviors, patterns, and states for future reference.",
 ];
 
 function FlockAuditSnapshot() {
@@ -590,29 +600,6 @@ function FlockChecklistUsage() {
   );
 }
 
-function FlockAuditChecklist() {
-  return (
-    <Card className="h-full overflow-hidden border border-[#d7e8f7] bg-[#f8fbfe] shadow-[0_18px_48px_rgba(17,131,208,0.08)]">
-      <CardContent className="flex h-full flex-col p-7">
-        <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#1183D0]">A11y checklist reference</p>
-        <p className="mt-3 text-[15px] leading-[1.7] text-[#5c7792]">
-          Built from the accessibility checklist used for the audit, covering the core requirements that shaped the Flock review.
-        </p>
-        <div className="mt-6 space-y-3">
-          {FLOCK_A11Y_REFERENCE.map((item, index) => (
-            <div key={item} className="flex items-start gap-3 rounded-[14px] border border-[#d7e8f7] bg-white px-4 py-3">
-              <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#E0EEFB] text-[12px] font-semibold text-[#1183D0]">
-                {index + 1}
-              </span>
-              <p className="text-[14px] leading-[1.6] text-[#0e2951]">{item}</p>
-            </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
 function getPayloadList(payload: Record<string, unknown> | null | undefined, key: string) {
   const value = payload?.[key];
   return Array.isArray(value) ? value.filter((item): item is string => typeof item === "string") : [];
@@ -916,37 +903,37 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "flock-accessibility-system" ? (
         <>
           <section className="mx-auto max-w-[1200px] px-6 py-6 md:px-10 xl:px-20">
-            <div className="px-6 py-8 md:px-10">
-              <div className="mb-8 text-center">
+            <div className="px-6 py-6 md:px-10">
+              <div className="mb-5 text-center">
                 <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Research & discovery</p>
                 <h2 className="mt-3 font-serif-display text-[34px] italic leading-tight text-[#0e2951] md:text-[42px]">
                   Accessibility Audit
                 </h2>
+                <p className="mx-auto mt-4 max-w-[760px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                  I translated audit findings into reusable system guidance by separating accessibility issues from pattern decisions and documenting how components should behave.
+                </p>
               </div>
-              <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch">
-                <Card className="h-full overflow-hidden border-0 bg-transparent shadow-none">
-                  <CardContent className="flex h-full flex-col items-start p-7 text-left">
-                    <div className="max-w-[860px] space-y-4">
+              <div className="mx-auto max-w-[860px]">
+                <Card className="overflow-hidden border-0 bg-transparent shadow-none">
+                  <CardContent className="px-7 py-4 text-center">
+                    <div className="space-y-4">
                       <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                        I built an audit framework that grouped issues by severity, system impact, and implementation complexity, while separating accessibility findings, system inconsistencies, and engineering constraints for clearer decision-making.
+                        I built an audit that highlights issues by severity, system impact, and implementation complexity, while separating accessibility findings and system inconsistencies.
                       </p>
                       <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                        I reviewed foundations and shared patterns across icons, typography, dialogs, and components to identify where states, variants, naming, and responsive behavior needed to be standardized. From that, I defined reusable patterns and clearer guidance in Figma to reduce ambiguity and improve handoff consistency.
+                        I reviewed foundations and identified shared patterns across icons, typography, dialogs, and components to standardize states, variants, naming, and responsive behavior.
+                      </p>
+                      <h3 className="pt-3 font-serif-display text-[28px] italic leading-tight text-[#0e2951] md:text-[34px]">
+                        Component translation
+                      </h3>
+                      <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                        From that, I defined reusable patterns and clearer guidance in Figma to reduce ambiguity and improve handoff consistency.
                       </p>
                     </div>
                   </CardContent>
                 </Card>
-                <FlockAuditChecklist />
               </div>
             </div>
-          </section>
-
-          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-            <SectionHeading eyebrow="Checklist" title="How the Accessibility Audit Was Structured" centered className="mb-12" />
-            <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              The checklist was used as a working framework, not just a scorecard. I used it to turn a fragmented product audit into grouped findings that could be prioritized, discussed with engineering, and converted into reusable interface decisions.
-            </p>
-            <FlockChecklistUsage />
           </section>
 
           <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
@@ -1038,7 +1025,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         ) : (
           <>
             <SectionHeading
-              title="Design Strategy"
+              title="Design Process"
               centered
               className="mb-12"
             />
@@ -1196,6 +1183,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
+      {caseStudy.slug === "flock-accessibility-system" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading title="The Solution" centered className="mb-12" />
+          <div className="mx-auto max-w-[860px] space-y-4 text-center">
+            {FLOCK_SOLUTION.map((item) => (
+              <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                {item}
+              </p>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       {caseStudy.slug === "nayya-ai-benefits" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="max-w-[1040px] mx-auto">
@@ -1213,7 +1213,23 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         <SectionHeading title="Results & Impact" centered className="mb-12" />
-        {resultRows.length ? (
+        {caseStudy.slug === "flock-accessibility-system" ? (
+          <div className="mx-auto max-w-[1040px] overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white">
+            <div className="grid grid-cols-[1fr_1fr] gap-6 border-b border-[#d7e8f7] bg-[#f7f9fb] px-6 py-4 text-[13px] font-bold uppercase tracking-[0.16em] text-[#0e2951]">
+              <div>Before</div>
+              <div>After</div>
+            </div>
+            {FLOCK_RESULTS_COMPARISON.map((row) => (
+              <div
+                key={row.before}
+                className="grid grid-cols-[1fr_1fr] gap-6 border-t border-[#d7e8f7] px-6 py-5 text-[15px] leading-[1.7] text-[#5c7792]"
+              >
+                <p>{row.before}</p>
+                <p className="text-[#0e2951]">{row.after}</p>
+              </div>
+            ))}
+          </div>
+        ) : resultRows.length ? (
           <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
             {resultRows.map((row) => (
               <Card key={`${row.metric}-${row.value}`} className="overflow-hidden">
@@ -1225,7 +1241,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ))}
           </div>
         ) : null}
-        {[resultInsights, resultOpportunities, projectedImprovements, successMetrics].some((items) => items.length) ? (
+        {caseStudy.slug !== "flock-accessibility-system" && [resultInsights, resultOpportunities, projectedImprovements, successMetrics].some((items) => items.length) ? (
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {resultInsights.length ? (
               <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
