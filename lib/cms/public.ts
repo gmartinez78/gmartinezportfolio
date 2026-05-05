@@ -48,7 +48,7 @@ const toolIconMap: Record<string, string> = {
 };
 
 const projectImageMap: Record<string, string> = {
-  "benefits-enrollment": withBasePath("/images/benefits/enhancing-benefits-banner.png"),
+  "benefits-enrollment": withBasePath("/images/projects/EB.png"),
   "nayya-ai-benefits": withBasePath("/images/projects/nayya-cover.png"),
   "flock-accessibility-system": withBasePath("/images/FC4No.png"),
   "i9-everify-integration": withBasePath("/images/benefits/user-management.png"),
@@ -83,10 +83,6 @@ export function resolveToolIconOptional(label: string) {
 
 export function resolveProjectImage(slug: string, explicit?: string | null) {
   return projectImageMap[slug] ?? (explicit ? withBasePath(explicit) : withBasePath("/images/projects/EB.png"));
-}
-
-export function shouldContainProjectPreview(slug: string) {
-  return slug === "benefits-enrollment";
 }
 
 export function resolveProjectHeroImage(slug: string, explicit?: string | null) {

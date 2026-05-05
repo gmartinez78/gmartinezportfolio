@@ -15,7 +15,6 @@ import {
   resolveToolIcon,
   resolveToolIconOptional,
   resolveTrustedLogo,
-  shouldContainProjectPreview,
   usePublicCaseStudies,
   usePublicSiteContent,
 } from "./lib/cms/public";
@@ -234,9 +233,7 @@ export default function PortfolioPage() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    className={`transition-transform duration-500 group-hover:scale-[1.04] group-focus-visible:scale-[1.04] ${
-                      shouldContainProjectPreview(project.slug) ? "object-contain object-center" : "object-cover object-center"
-                    }`}
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.04] group-focus-visible:scale-[1.04]"
                   />
                 </div>
 
