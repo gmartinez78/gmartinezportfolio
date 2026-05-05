@@ -15,6 +15,7 @@ import {
   resolveToolIcon,
   resolveToolIconOptional,
   resolveTrustedLogo,
+  shouldContainProjectPreview,
   usePublicCaseStudies,
   usePublicSiteContent,
 } from "./lib/cms/public";
@@ -103,6 +104,7 @@ export default function PortfolioPage() {
     .filter((study) => study.featured || study.slug === "flock-accessibility-system")
     .slice(0, 4)
     .map((study) => ({
+    slug: study.slug,
     title: study.title,
     description: study.tagline ?? "",
     image: resolveProjectImage(study.slug, study.images.cover),
@@ -232,7 +234,9 @@ export default function PortfolioPage() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.04] group-focus-visible:scale-[1.04]"
+                    className={`transition-transform duration-500 group-hover:scale-[1.04] group-focus-visible:scale-[1.04] ${
+                      shouldContainProjectPreview(project.slug) ? "object-contain object-center" : "object-cover object-center"
+                    }`}
                   />
                 </div>
 

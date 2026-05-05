@@ -12,6 +12,7 @@ import {
   resolveProjectHref,
   resolveProjectImage,
   resolveTrustedLogo,
+  shouldContainProjectPreview,
   usePublicCaseStudies,
   usePublicSiteContent,
 } from "../../lib/cms/public";
@@ -105,7 +106,11 @@ export default function ProjectsPage() {
                   alt={`${project.title} preview`}
                   fill
                   sizes="(min-width: 768px) 320px, 100vw"
-                  className="object-cover object-center"
+                  className={
+                    shouldContainProjectPreview(project.slug)
+                      ? "object-contain object-center"
+                      : "object-cover object-center"
+                  }
                 />
               ) : (
                 <div className="text-center">

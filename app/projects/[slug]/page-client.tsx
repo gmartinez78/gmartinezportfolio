@@ -10,6 +10,7 @@ import {
   resolveProjectHref,
   resolveProjectImage,
   resolveTrustedLogo,
+  shouldContainProjectPreview,
   usePublicCaseStudies,
   usePublicCaseStudy,
 } from "@/lib/cms/public";
@@ -1376,7 +1377,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <img
                     src={withBasePath(project.previewImage)}
                     alt={`${project.title} preview`}
-                    className="h-full w-full object-cover object-center"
+                    className={`h-full w-full ${
+                      shouldContainProjectPreview(project.slug) ? "object-contain object-center" : "object-cover object-center"
+                    }`}
                   />
                 ) : (
                   <div className="flex h-full items-center justify-center text-center">
