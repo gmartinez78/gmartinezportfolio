@@ -1,14 +1,17 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
+  resolveHomeCardId,
+  resolveHomeCardImage,
   resolveProjectHeroImage,
   resolveProjectHref,
-  resolveProjectImage,
   resolveTrustedLogo,
   usePublicCaseStudies,
   usePublicCaseStudy,
@@ -679,9 +682,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     .slice(0, 3)
     .map((project) => ({
       ...project,
-      previewImage: resolveProjectImage(project.slug, project.images.cover || project.images.hero || ""),
-      previewMetric: project.metrics[0]?.value ?? project.year,
-      previewLabel: project.metrics[0]?.label ?? project.industry ?? "",
+      cardId: resolveHomeCardId(project.slug),
+      previewImage: resolveHomeCardImage(project.slug, project.images.cover || project.images.hero || ""),
     }));
   const findBlock = (id: string) => caseStudy.content_blocks?.find((block) => block.id === id);
   const overviewBlock = findBlock("overview");
@@ -1370,44 +1372,42 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <h2 className="mb-8 font-serif-display text-[32px] italic text-[#0e2951]">Other Projects</h2>
         <div className="grid gap-5 md:grid-cols-3">
           {otherProjects.map((project) => (
-            <a key={project.slug} href={resolveProjectHref(project)} className="group overflow-hidden rounded-[28px] border border-[#CFE5F8] bg-white transition-all hover:-translate-y-0.5">
-              <div className="relative h-40 overflow-hidden bg-[radial-gradient(ellipse_at_20%_50%,#d4e8ff_0%,#edf5fb_70%)]">
-                {project.previewImage ? (
-                  <img
-                    src={withBasePath(project.previewImage)}
-                    alt={`${project.title} preview`}
-                    className="h-full w-full object-cover object-center"
-                  />
-                ) : (
-                  <div className="flex h-full items-center justify-center text-center">
-                    <div>
-                      <span className="font-serif-display text-3xl font-bold italic text-[#1183D0]">
-                        {project.previewMetric}
-                      </span>
-                      {project.previewLabel ? (
-                        <p className="mx-auto mt-2 max-w-[140px] text-xs leading-tight text-[#5c7792]">
-                          {project.previewLabel}
-                        </p>
-                      ) : null}
-                    </div>
-                  </div>
-                )}
+            <Link
+              key={project.slug}
+              id={project.cardId}
+              data-home-card-id={project.cardId}
+              href={resolveProjectHref(project)}
+              className="group flex min-w-0 cursor-pointer flex-col gap-5 outline-none"
+            >
+              <div className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] shadow-[0_18px_52px_rgba(14,41,81,0.12)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(14,41,81,0.22)] group-focus-visible:-translate-y-1 group-focus-visible:shadow-[0_28px_70px_rgba(14,41,81,0.22)]">
+                <Image
+                  src={project.previewImage}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.04] group-focus-visible:scale-[1.04]"
+                />
               </div>
-              <div className="p-6">
-                <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <span className="text-xs font-medium text-[#5c7792]">{project.company}</span>
-                  <span className="text-[#bcd2ff]">·</span>
-                  <span className="text-xs text-[#5c7792]">{project.year}</span>
-                </div>
-                <h3 className="mb-2 text-[15px] font-semibold leading-snug text-[#0e2951]">{project.title}</h3>
-                <p className="mb-4 text-sm leading-relaxed text-[#5c7792]">{project.tagline}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <Badge key={tag} size="tag">{tag}</Badge>
-                  ))}
+              <div className="flex flex-wrap gap-3">
+                {project.tags.map((tag) => (
+                  <Badge key={tag} size="tag">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+              <h3 className="font-serif-display italic text-[30px] leading-snug text-[#1183D0] transition-colors duration-200 group-hover:text-[#0e2951] group-focus-visible:text-[#0e2951]">
+                {project.title}
+              </h3>
+              <div className="-mt-2 h-[116px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                <div className="flex h-full flex-col justify-between">
+                  <p className="text-[14px] leading-relaxed text-[#5c7792]">
+                    {project.tagline}
+                  </p>
+                  <span className="inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline group-focus-visible:underline">
+                    {project.external_link ? "View project" : "View case study"} →
+                  </span>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>

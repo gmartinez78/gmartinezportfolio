@@ -10,8 +10,9 @@ import { Button } from "./components/ui/button";
 import { SectionHeading } from "./components/ui/section-heading";
 import {
   resolveCertificationLogo,
+  resolveHomeCardId,
+  resolveHomeCardImage,
   resolveProjectHref,
-  resolveProjectImage,
   resolveToolIcon,
   resolveToolIconOptional,
   resolveTrustedLogo,
@@ -103,14 +104,15 @@ export default function PortfolioPage() {
     .filter((study) => study.featured || study.slug === "flock-accessibility-system")
     .slice(0, 4)
     .map((study) => ({
-    slug: study.slug,
-    title: study.title,
-    description: study.tagline ?? "",
-    image: resolveProjectImage(study.slug, study.images.cover),
-    href: resolveProjectHref(study),
-    tags: study.tags.slice(0, 4),
-    cta: study.external_link ? "View project" : "View case study",
-  }));
+      slug: study.slug,
+      cardId: resolveHomeCardId(study.slug),
+      title: study.title,
+      description: study.tagline ?? "",
+      image: resolveHomeCardImage(study.slug, study.images.cover),
+      href: resolveProjectHref(study),
+      tags: study.tags.slice(0, 4),
+      cta: study.external_link ? "View project" : "View case study",
+    }));
   const toolRows = [siteContent.home.tools_section.row_1, siteContent.home.tools_section.row_2]
     .map((row) => row.filter(Boolean))
     .filter((row) => row.length > 0);
@@ -224,6 +226,8 @@ export default function PortfolioPage() {
             {featuredProjects.map((project) => (
               <Link
                 key={project.title}
+                id={project.cardId}
+                data-home-card-id={project.cardId}
                 href={project.href}
                 className="group flex w-full min-w-0 cursor-pointer flex-col gap-5 outline-none"
               >

@@ -65,6 +65,25 @@ const projectHrefMap: Record<string, string> = {
   "benefits-enrollment": withBasePath("/benefits"),
 };
 
+const homeCardMediaMap: Record<string, { id: string; image: string }> = {
+  "benefits-enrollment": {
+    id: "home-card-benefits-enrollment",
+    image: withBasePath("/images/home-cards/home-card-benefits-enrollment.png"),
+  },
+  "nayya-ai-benefits": {
+    id: "home-card-nayya-ai-benefits",
+    image: withBasePath("/images/home-cards/home-card-nayya-ai-benefits.png"),
+  },
+  "flock-accessibility-system": {
+    id: "home-card-flock-accessibility-system",
+    image: withBasePath("/images/home-cards/home-card-flock-accessibility-system.png"),
+  },
+  "i9-everify-integration": {
+    id: "home-card-i9-everify-integration",
+    image: withBasePath("/images/home-cards/home-card-i9-everify-integration.png"),
+  },
+};
+
 export function resolveTrustedLogo(name: string, explicit?: string | null) {
   return trustedLogoMap[name] ?? (explicit ? withBasePath(explicit) : withBasePath("/images/SNUZw.png"));
 }
@@ -95,6 +114,14 @@ export function resolveProjectHref(study: CaseStudyRecord) {
   }
 
   return projectHrefMap[study.slug] ?? withBasePath(`/projects/${study.slug}`);
+}
+
+export function resolveHomeCardId(slug: string) {
+  return homeCardMediaMap[slug]?.id ?? `home-card-${slug}`;
+}
+
+export function resolveHomeCardImage(slug: string, explicit?: string | null) {
+  return homeCardMediaMap[slug]?.image ?? resolveProjectImage(slug, explicit);
 }
 
 export function usePublicSiteContent() {
