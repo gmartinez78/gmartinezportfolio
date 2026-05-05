@@ -221,18 +221,20 @@ const FLOCK_CHECKLIST_SECTIONS = [
     title: "Links & Buttons",
     intro: "Interactive controls used mixed visual rules, so priority and affordance were not always obvious.",
     checklist: [
-      "Differentiate primary, secondary, and text actions clearly.",
-      "Add visible focus treatment and stronger hover states.",
-      "Avoid relying on color alone to identify links.",
+      "Links vs Buttons: Links are used for navigation (URL change or focus shift); buttons are used for actions.",
+      "Link & Button Text: Labels are clear, descriptive, and concise. Avoid vague text and indicate external links when needed.",
+      "Contrast: Links and buttons meet contrast requirements, including text, background, and borders, and are clearly distinguishable as interactive elements.",
+      "Target Size: Clickable elements meet minimum size requirements (24×24 CSS px) where applicable.",
     ],
   },
   {
-    title: "Forms, Controls & Dynamic Content",
+    title: "Forms & Controls",
     intro: "Form fields, inline feedback, and changeable content lacked enough structure to support accessibility and QA.",
     checklist: [
-      "Pair every field with a persistent label and guidance.",
-      "Expose validation, state, and helper text consistently.",
-      "Make filters, toggles, and updates easier to follow.",
+      "Forms & Controls: Inputs, labels, and controls are clear, visible, and placed close together. All states (active, focus, hover) are defined.",
+      "Error & Status Messages: Users receive clear feedback for actions, errors, and system states. Messages are placed correctly and provide enough guidance to fix issues.",
+      "Dynamic Content: Interactive content (audio, video, UI elements) is accessible via keyboard and meets contrast and state requirements.",
+      "Motion & Animation: Animations follow accessibility guidelines, avoid unnecessary motion, and include options to reduce or stop movement.",
     ],
   },
 ];
@@ -435,7 +437,6 @@ function FlockChecklistShowcase() {
                 <div className="mt-4 rounded-[20px] border border-[#EEEFEF] p-5">
                   {section.title === "Color & Typography" ? (
                     <div className="space-y-4">
-                      <div className="h-3 w-20 rounded-full bg-[#d5b9b9]" />
                       <div className="space-y-1">
                         <p className="text-[14px] font-medium uppercase tracking-[0.16em] text-[#7D7F80]">General</p>
                         <h4 className="text-[26px] font-medium leading-tight text-[#7D7F80]">settings</h4>
@@ -446,7 +447,7 @@ function FlockChecklistShowcase() {
                       <div className="grid max-w-[460px] gap-3 sm:grid-cols-2">
                         <div className="rounded-[14px] bg-white/70 p-4">
                           <p className="text-[12px] text-[#b4b4b4]">Status</p>
-                          <p className="mt-2 inline-flex rounded-full bg-[#FE9C32] px-3 py-1 text-[14px] font-medium text-white">Needs review</p>
+                          <p className="mt-2 inline-flex rounded-full bg-[#FE9C32] px-3 py-1 text-[14px] font-medium text-white">Review</p>
                         </div>
                         <div className="rounded-[14px] bg-white/70 p-4">
                           <p className="text-[12px] text-[#b4b4b4]">Owner</p>
@@ -467,7 +468,7 @@ function FlockChecklistShowcase() {
                       <div className="rounded-[12px] bg-[#FFF7AC] px-4 py-3 text-[13px] font-medium text-[#7D7F80]">
                         Go back to broker portal
                       </div>
-                      <div className="grid grid-cols-[180px_minmax(0,1fr)] gap-4">
+                      <div className="grid gap-4 sm:grid-cols-[180px_minmax(0,1fr)]">
                         <div className="rounded-[16px] bg-[#303845] p-4">
                           <div className="space-y-3 text-[13px] text-white">
                             <p>Home</p>
@@ -476,13 +477,10 @@ function FlockChecklistShowcase() {
                             <p>Users</p>
                           </div>
                         </div>
-                        <div className="space-y-4 rounded-[16px] bg-white/70 p-4">
-                          <div className="h-3 w-24 rounded-full bg-[#dfcbcb]" />
-                          <div className="grid gap-3 sm:grid-cols-2">
-                            <div className="h-24 rounded-[14px] bg-[#f2e7e7]" />
-                            <div className="h-24 rounded-[14px] bg-[#f2e7e7]" />
+                        <div className="rounded-[16px] bg-white/70 p-4">
+                          <div className="rounded-[16px] border border-[#eadede] bg-[#fcfbfb] p-4">
+                            <div className="min-h-[240px] rounded-[20px] border border-[#eadede] bg-white" />
                           </div>
-                          <div className="h-32 rounded-[14px] bg-[#f2e7e7]" />
                         </div>
                       </div>
                     </div>
@@ -491,9 +489,9 @@ function FlockChecklistShowcase() {
                   {section.title === "Links & Buttons" ? (
                     <div className="space-y-4">
                       <div className="flex flex-wrap gap-3">
-                        <button type="button" className="rounded-[12px] bg-[#d3d8df] px-4 py-2 text-[14px] text-[#7b8592]">Save</button>
-                        <button type="button" className="rounded-[12px] bg-[#eef2f6] px-4 py-2 text-[14px] text-[#9aa3ad]">Cancel</button>
-                        <a href="#0" className="self-center text-[14px] text-[#7ca7cf] no-underline">View details</a>
+                        <button type="button" className="rounded-[14px] bg-[#1AB065] px-4 py-2 text-[14px] font-semibold text-white shadow-[0_10px_24px_rgba(26,176,101,0.18)]">Save</button>
+                        <button type="button" className="rounded-[14px] bg-[#0E6FB3] px-4 py-2 text-[14px] font-semibold text-white shadow-[0_10px_24px_rgba(14,111,179,0.18)]">Cancel</button>
+                        <a href="#0" className="self-center text-[14px] text-[#1249BF] no-underline">View details</a>
                       </div>
                       <div className="rounded-[14px] bg-white/70 p-4">
                         <p className="text-[14px] leading-[1.6] text-[#9a9a9a]">
@@ -503,11 +501,12 @@ function FlockChecklistShowcase() {
                     </div>
                   ) : null}
 
-                  {section.title === "Forms, Controls & Dynamic Content" ? (
+                  {section.title === "Forms & Controls" ? (
                     <div className="space-y-4">
                       <div className="rounded-[14px] bg-white/70 p-4">
                         <div className="h-11 rounded-[12px] border border-[#e7d7d7] bg-white" />
                         <p className="mt-2 text-[12px] text-[#b2a5a5]">No persistent label, helper text, or validation context.</p>
+                        <p className="mt-2 text-[12px] text-[#C98F8F]">Error</p>
                       </div>
                       <div className="flex flex-wrap gap-3">
                         <div className="rounded-[12px] bg-white/70 px-4 py-2 text-[13px] text-[#9f9f9f]">Filter</div>
@@ -527,7 +526,7 @@ function FlockChecklistShowcase() {
                   {section.title === "Color & Typography" ? (
                     <div className="space-y-4">
                       <div className="flex items-start justify-between gap-4">
-                        <div className="h-3 w-24 rounded-full bg-[#1183D0]" />
+                        <div />
                         <button
                           type="button"
                           aria-label="Close"
@@ -543,7 +542,7 @@ function FlockChecklistShowcase() {
                       <div className="grid max-w-[460px] gap-3 sm:grid-cols-2">
                         <div className="rounded-[14px] border border-[#d7e8f7] bg-white p-4">
                           <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">Status</p>
-                          <p className="mt-2 inline-flex rounded-full bg-[#FFF1E2] px-3 py-1 text-[14px] font-medium text-[#A85A00]">Needs review</p>
+                          <p className="mt-2 inline-flex rounded-full bg-[#FFF1E2] px-3 py-1 text-[14px] font-medium text-[#A85A00]">Review</p>
                         </div>
                         <div className="rounded-[14px] border border-[#d7e8f7] bg-white p-4">
                           <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">Owner</p>
@@ -560,28 +559,26 @@ function FlockChecklistShowcase() {
                   ) : null}
 
                   {section.title === "Layout & Navigation" ? (
-                    <div className="grid grid-cols-[180px_minmax(0,1fr)] gap-4">
-                        <div className="flex flex-col justify-between rounded-[16px] bg-[#303845] p-4">
+                    <div className="grid gap-4 sm:grid-cols-[180px_minmax(0,1fr)]">
+                      <div className="flex flex-col justify-between rounded-[16px] bg-[#303845] p-4">
                         <div className="space-y-3 text-[13px] font-medium text-white">
                           <p>Home</p>
                           <p>Reports</p>
-                          <p className="inline-flex rounded-[10px] bg-[#1183D0] px-2 py-1 text-white shadow-[0_8px_18px_rgba(17,131,208,0.24)]">Settings</p>
+                          <p className="block w-full rounded-[10px] bg-[rgba(17,131,208,0.26)] px-3 py-2 text-white shadow-[0_10px_24px_rgba(17,131,208,0.18)] ring-1 ring-[rgba(216,236,251,0.4)]">Settings</p>
                           <p>Users</p>
                         </div>
                         <button
                           type="button"
-                          className="mt-6 rounded-[12px] border border-white/30 bg-transparent px-4 py-2 text-[13px] font-medium text-white"
+                          className="mt-6 inline-flex items-center gap-2 bg-transparent px-0 py-2 text-[13px] font-medium text-white"
                         >
+                          <span aria-hidden="true">←</span>
                           Back to the portal
                         </button>
                       </div>
-                      <div className="space-y-4 rounded-[16px] border border-[#d7e8f7] bg-white p-4">
-                        <div className="h-3 w-28 rounded-full bg-[#1183D0]" />
-                        <div className="grid gap-3 sm:grid-cols-2">
-                          <div className="rounded-[14px] border border-[#d7e8f7] bg-[#f8fbfe] p-4" />
-                          <div className="rounded-[14px] border border-[#d7e8f7] bg-[#f8fbfe] p-4" />
+                      <div className="rounded-[16px] border border-[#d7e8f7] bg-white p-4">
+                        <div className="rounded-[16px] border border-[#d7e8f7] bg-[#f8fbfe] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
+                          <div className="min-h-[240px] rounded-[20px] border border-[#d7e8f7] bg-white shadow-[0_8px_20px_rgba(17,131,208,0.08)]" />
                         </div>
-                        <div className="h-32 rounded-[14px] border border-[#d7e8f7] bg-[#f8fbfe]" />
                       </div>
                     </div>
                   ) : null}
@@ -601,12 +598,24 @@ function FlockChecklistShowcase() {
                     </div>
                   ) : null}
 
-                  {section.title === "Forms, Controls & Dynamic Content" ? (
+                  {section.title === "Forms & Controls" ? (
                     <div className="space-y-4">
+                      <div className="rounded-[14px] border border-[#d7e8f7] bg-white p-4">
+                        <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">Name and last name</p>
+                        <div className="grid gap-3 sm:grid-cols-2">
+                          <div className="h-11 rounded-[12px] border border-[#d7e8f7] bg-[#F7FBFF]" />
+                          <div className="h-11 rounded-[12px] border border-[#d7e8f7] bg-[#F7FBFF]" />
+                        </div>
+                        <p className="mt-2 text-[12px] text-[#5c7792]">Users can enter their first and last name in clearly separated fields.</p>
+                      </div>
                       <div className="rounded-[14px] border border-[#d7e8f7] bg-white p-4">
                         <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">Email address</p>
                         <div className="h-11 rounded-[12px] border-2 border-[#1183D0] bg-[#F7FBFF]" />
                         <p className="mt-2 text-[12px] text-[#5c7792]">Used for account recovery and system alerts.</p>
+                        <div className="mt-2 inline-flex items-center gap-2 rounded-[10px] bg-[#FDECEC] px-3 py-2 text-[12px] font-medium text-[#B54708]">
+                          <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#FDEAD7] text-[11px] leading-none text-[#B54708]">!</span>
+                          <p>Enter a valid email address to continue.</p>
+                        </div>
                       </div>
                       <div className="flex flex-wrap gap-3">
                         <div className="rounded-[12px] border border-[#d7e8f7] bg-white px-4 py-2 text-[13px] font-medium text-[#0e2951]">Filter</div>
@@ -624,7 +633,7 @@ function FlockChecklistShowcase() {
                 <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Requirements met</p>
                 <div className="mt-4 space-y-3">
                   {section.checklist.map((item) => (
-                    <div key={item} className="rounded-[14px] border border-[#d7e8f7] bg-[#f8fbfe] px-4 py-3">
+                    <div key={item} className="px-1 py-1">
                       <p
                         className="text-[14px] leading-[1.6] text-[#0e2951]"
                         dangerouslySetInnerHTML={{
@@ -635,7 +644,14 @@ function FlockChecklistShowcase() {
                             .replace("Reading Order:", "<strong>Reading Order:</strong>")
                             .replace("Tables:", "<strong>Tables:</strong>")
                             .replace("Navigation Consistency:", "<strong>Navigation Consistency:</strong>")
-                            .replace("Navigation States:", "<strong>Navigation States:</strong>"),
+                            .replace("Navigation States:", "<strong>Navigation States:</strong>")
+                            .replace("Links vs Buttons:", "<strong>Links vs Buttons:</strong>")
+                            .replace("Link & Button Text:", "<strong>Link & Button Text:</strong>")
+                            .replace("Target Size:", "<strong>Target Size:</strong>")
+                            .replace("Forms & Controls:", "<strong>Forms & Controls:</strong>")
+                            .replace("Error & Status Messages:", "<strong>Error & Status Messages:</strong>")
+                            .replace("Dynamic Content:", "<strong>Dynamic Content:</strong>")
+                            .replace("Motion & Animation:", "<strong>Motion & Animation:</strong>"),
                         }}
                       />
                     </div>
