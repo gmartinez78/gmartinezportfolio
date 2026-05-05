@@ -264,8 +264,22 @@ const FLOCK_RESULTS_COMPARISON = [
   },
 ];
 const FLOCK_SOLUTION = [
-  "Create a Figma file with component definitions for devs and future project changes.",
-  "Write a storybook about behaviors, patterns, and states for future reference.",
+  {
+    title: "Consistency",
+    body: "Reusable components (buttons, headers, fonts, etc.) ensure a uniform design across the project, making it easier for developers to match the final product to the design.",
+  },
+  {
+    title: "Faster Updates",
+    body: "When a component is updated, all instances automatically adjust, keeping designers and developers aligned without manual revisions.",
+  },
+  {
+    title: "Design Systems",
+    body: "Components are part of a design system, providing clear guidelines for both teams and reducing errors in implementation.",
+  },
+  {
+    title: "Auto Layout & Constraints",
+    body: "Designers can use auto layout to create responsive components, which developers can easily translate into code for different screen sizes.",
+  },
 ];
 
 function FlockAuditSnapshot() {
@@ -945,25 +959,22 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <h2 className="mt-3 font-serif-display text-[34px] italic leading-tight text-[#0e2951] md:text-[42px]">
                   Accessibility Audit
                 </h2>
-                <p className="mx-auto mt-4 max-w-[760px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                  I translated audit findings into reusable system guidance by separating accessibility issues from pattern decisions and documenting how components should behave.
-                </p>
               </div>
               <div className="mx-auto grid max-w-[1180px] items-center gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
                 <Card className="overflow-hidden border-0 bg-transparent shadow-none">
                   <CardContent className="px-0 py-4 text-left lg:flex lg:min-h-[420px] lg:flex-col lg:justify-center">
                     <div className="space-y-4">
                       <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                        I built an audit that highlights issues by severity, system impact, and implementation complexity, while separating accessibility findings and system inconsistencies.
+                        Existing Confluence documentation and the product were reviewed to identify missing patterns and determine which could be retained within the new library structure.
                       </p>
                       <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                        I reviewed foundations and identified shared patterns across icons, typography, dialogs, and components to standardize states, variants, naming, and responsive behavior.
+                        Issues were organized by severity, system impact, and implementation complexity, while distinguishing between accessibility gaps and system inconsistencies.
                       </p>
-                      <h3 className="pt-3 font-serif-display text-[28px] italic leading-tight text-[#0e2951] md:text-[34px]">
-                        Component translation
-                      </h3>
                       <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                        From that, I defined reusable patterns and clearer guidance in Figma to reduce ambiguity and improve handoff consistency.
+                        Audit findings were translated into reusable system guidance by separating accessibility issues from pattern decisions and documenting expected component behavior.
+                      </p>
+                      <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                        Accessibility checks were conducted using Axe and VoiceOver to analyze issues across desktop and mobile.
                       </p>
                     </div>
                   </CardContent>
@@ -990,9 +1001,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </section>
 
           <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-            <SectionHeading eyebrow="Checklist" title="Before & After Accessibility Updates" centered className="mb-12" />
+            <h2 className="mb-12 text-center font-serif-display text-[28px] italic leading-tight text-[#0e2951] md:text-[34px]">
+              Before &amp; After Accessibility Updates
+            </h2>
             <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              Using the accessibility checklist as a working framework, I translated audit findings into component-level changes. Each example below shows how the same product patterns were reworked to improve hierarchy, navigation, controls, and clarity without relying on the original branded UI.
+              Each example below shows how the same product patterns were reworked to improve hierarchy, navigation, controls, and clarity without relying on the original branded UI.
             </p>
             <FlockChecklistShowcase />
           </section>
@@ -1075,6 +1088,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
                 ))}
               </div>
+            </div>
+          </>
+        ) : caseStudy.slug === "flock-accessibility-system" ? (
+          <>
+            <SectionHeading
+              title="Design Process"
+              centered
+              className="mb-12"
+            />
+            <div className="mx-auto max-w-[820px] space-y-8 text-center">
+              {designStrategy.map((item) => (
+                <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+              ))}
             </div>
           </>
         ) : (
@@ -1241,12 +1267,30 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "flock-accessibility-system" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title="The Solution" centered className="mb-12" />
-          <div className="mx-auto max-w-[860px] space-y-4 text-center">
-            {FLOCK_SOLUTION.map((item) => (
-              <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                {item}
-              </p>
-            ))}
+          <div className="mx-auto grid max-w-[1120px] items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+            <div className="space-y-5 text-center lg:text-left">
+              {FLOCK_SOLUTION.map((item) => (
+                <div key={item.title} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                  <p>
+                    <span className="font-semibold text-[#0e2951]">{item.title}:</span> {item.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <a
+              href={withBasePath("/images/projects/flock-buttons-suggestions.svg")}
+              target="_blank"
+              rel="noreferrer"
+              className="group block"
+            >
+              <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.10)]">
+                <img
+                  src={withBasePath("/images/projects/flock-buttons-suggestions.svg")}
+                  alt="Flock button suggestions and solution example"
+                  className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.01]"
+                />
+              </div>
+            </a>
           </div>
         </section>
       ) : null}
