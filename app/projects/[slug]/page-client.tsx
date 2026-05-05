@@ -525,8 +525,7 @@ function FlockChecklistShowcase() {
                 <div className="mt-4 rounded-[20px] border border-[#d7e8f7] bg-[#f8fbfe] p-5">
                   {section.title === "Color & Typography" ? (
                     <div className="space-y-4">
-                      <div className="flex items-start justify-between gap-4">
-                        <div />
+                      <div className="flex items-start justify-end gap-4">
                         <button
                           type="button"
                           aria-label="Close"
