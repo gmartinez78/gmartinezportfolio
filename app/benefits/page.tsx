@@ -9,6 +9,8 @@ import { Badge } from "../../components/ui/badge";
 import { Card, CardContent } from "../../components/ui/card";
 import { SectionHeading } from "../../components/ui/section-heading";
 import {
+  resolveHomeCardId,
+  resolveHomeCardImage,
   resolveProjectHeroImage,
   resolveProjectHref,
   resolveTrustedLogo,
@@ -501,7 +503,14 @@ export default function BenefitsPage() {
     },
   ];
   const reflections = caseStudy?.reflections ?? REFLECTIONS;
-  const otherProjects = caseStudies.filter((project) => project.slug !== "benefits-enrollment").slice(0, 3);
+  const otherProjects = caseStudies
+    .filter((project) => project.slug !== "benefits-enrollment")
+    .slice(0, 3)
+    .map((project) => ({
+      ...project,
+      cardId: resolveHomeCardId(project.slug),
+      previewImage: resolveHomeCardImage(project.slug, project.images?.cover || project.images?.hero || ""),
+    }));
   const heroImage = resolveProjectHeroImage("benefits-enrollment", caseStudy?.images.hero ?? null);
   const clientLogos = caseStudy?.client_logos.length
     ? caseStudy.client_logos.map((logo) => ({
@@ -925,16 +934,42 @@ export default function BenefitsPage() {
         <h2 className="font-serif-display italic text-[#0e2951] text-[32px] mb-8">Other Projects</h2>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {otherProjects.map((p) => (
-            <a key={p.title} href={resolveProjectHref(p)} className="group bg-white hover:bg-white border border-[#CFE5F8] rounded-[28px] overflow-hidden transition-all hover:-translate-y-0.5">
-              <div className="h-36 flex items-center justify-center" style={{ background: "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)" }}>
-                <span className="font-serif-display italic font-bold text-[#1183D0] text-3xl">{p.metrics?.[0]?.value ?? p.year}</span>
+            <Link
+              key={p.slug}
+              id={p.cardId}
+              data-home-card-id={p.cardId}
+              href={resolveProjectHref(p)}
+              className="group flex min-w-0 cursor-pointer flex-col gap-5 outline-none"
+            >
+              <div className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] shadow-[0_18px_52px_rgba(14,41,81,0.12)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(14,41,81,0.22)] group-focus-visible:-translate-y-1 group-focus-visible:shadow-[0_28px_70px_rgba(14,41,81,0.22)]">
+                <Image
+                  src={p.previewImage}
+                  alt={p.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.04] group-focus-visible:scale-[1.04]"
+                />
               </div>
-              <div className="p-6">
-                <p className="text-[#5c7792] text-xs mb-1">{p.company}</p>
-                <h3 className="font-inter font-semibold text-[#0e2951] text-[15px] leading-snug mb-2">{p.title}</h3>
-                <Badge variant="outline" size="tag">{p.tags?.[0] ?? ""}</Badge>
+              <div className="flex flex-wrap gap-3">
+                {(p.tags ?? []).map((tag) => (
+                  <Badge key={tag} size="tag">
+                    {tag}
+                  </Badge>
+                ))}
               </div>
-            </a>
+              <h3 className="font-serif-display italic text-[30px] leading-snug text-[#1183D0] transition-colors duration-200 group-hover:text-[#0e2951] group-focus-visible:text-[#0e2951]">
+                {p.title}
+              </h3>
+              <div className="-mt-2 h-[116px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                <div className="flex h-full flex-col justify-between">
+                  <p className="text-[14px] leading-relaxed text-[#5c7792]">
+                    {p.tagline ?? ""}
+                  </p>
+                  <span className="inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline group-focus-visible:underline">
+                    {p.external_link ? "View project" : "View case study"} →
+                  </span>
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
       </section>

@@ -766,22 +766,24 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       </div>
 
-      <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
-        <div className="mx-auto max-w-[1040px]">
-          <div className="grid gap-12 text-center md:grid-cols-3">
-            {highlightMetrics.map((metric, index) => (
-              <div
-                key={`${metric.label}-${metric.value}`}
-                className={`relative px-4 md:px-8 ${index < 2 ? "after:absolute after:right-0 after:top-1/2 after:h-24 after:w-px after:-translate-y-1/2 after:bg-[#d7e8f7] after:content-['']" : ""}`}
-              >
-                <p className="text-[46px] font-bold leading-none text-[#1183D0]">{metric.value}</p>
-                <p className="mt-5 text-[16px] leading-[1.625em] text-[#5c7792]">{metric.label}</p>
-                {metric.context ? <p className="mt-3 text-[14px] leading-[1.6] text-[#5c7792]">{metric.context}</p> : null}
-              </div>
-            ))}
+      {caseStudy.slug !== "flock-accessibility-system" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-[1040px]">
+            <div className="grid gap-12 text-center md:grid-cols-3">
+              {highlightMetrics.map((metric, index) => (
+                <div
+                  key={`${metric.label}-${metric.value}`}
+                  className={`relative px-4 md:px-8 ${index < 2 ? "after:absolute after:right-0 after:top-1/2 after:h-24 after:w-px after:-translate-y-1/2 after:bg-[#d7e8f7] after:content-['']" : ""}`}
+                >
+                  <p className="text-[46px] font-bold leading-none text-[#1183D0]">{metric.value}</p>
+                  <p className="mt-5 text-[16px] leading-[1.625em] text-[#5c7792]">{metric.label}</p>
+                  {metric.context ? <p className="mt-3 text-[14px] leading-[1.6] text-[#5c7792]">{metric.context}</p> : null}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         <SectionHeading eyebrow="Overview" title="Structure" className="mb-6" />

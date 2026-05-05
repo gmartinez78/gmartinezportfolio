@@ -9,8 +9,9 @@ import { Badge } from "../../components/ui/badge";
 import { Card, CardContent } from "../../components/ui/card";
 import { SectionHeading } from "../../components/ui/section-heading";
 import {
+  resolveProjectListCardId,
+  resolveProjectListCardImage,
   resolveProjectHref,
-  resolveProjectImage,
   resolveTrustedLogo,
   usePublicCaseStudies,
   usePublicSiteContent,
@@ -31,6 +32,7 @@ export default function ProjectsPage() {
   
   const projects = (caseStudies ?? []).filter(p => p?.slug).map((project) => ({
     ...project,
+    cardId: resolveProjectListCardId(project.slug),
     title: project.title ?? "Untitled Project",
     company: project.company ?? "",
     year: project.year ?? 0,
@@ -39,7 +41,7 @@ export default function ProjectsPage() {
     filters: project.filters?.length ? project.filters : project.tags ?? [],
     stat: project.metrics?.[0]?.value ?? `${project.year ?? ""}`,
     statLabel: project.metrics?.[0]?.label ?? project.industry ?? "",
-    previewImage: resolveProjectImage(project.slug, project.images?.cover || project.images?.hero || ""),
+    previewImage: resolveProjectListCardImage(project.slug, project.images?.cover || project.images?.hero || ""),
     bg: PROJECT_BACKGROUNDS[project.slug] ?? "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
   }));
   const filteredProjects =
@@ -90,6 +92,8 @@ export default function ProjectsPage() {
         {filteredProjects.map((project, i) => (
           <Link
             key={project.title}
+            id={project.cardId}
+            data-project-list-card-id={project.cardId}
             href={resolveProjectHref(project)}
             className="group block transition-all hover:-translate-y-0.5"
           >

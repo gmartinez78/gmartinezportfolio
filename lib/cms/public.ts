@@ -84,6 +84,25 @@ const homeCardMediaMap: Record<string, { id: string; image: string }> = {
   },
 };
 
+const projectListCardMediaMap: Record<string, { id: string; image: string }> = {
+  "benefits-enrollment": {
+    id: "project-list-card-benefits-enrollment",
+    image: withBasePath("/images/project-list-cards/project-list-card-benefits-enrollment.png"),
+  },
+  "nayya-ai-benefits": {
+    id: "project-list-card-nayya-ai-benefits",
+    image: withBasePath("/images/project-list-cards/project-list-card-nayya-ai-benefits.png"),
+  },
+  "flock-accessibility-system": {
+    id: "project-list-card-flock-accessibility-system",
+    image: withBasePath("/images/project-list-cards/project-list-card-flock-accessibility-system.png"),
+  },
+  "i9-everify-integration": {
+    id: "project-list-card-i9-everify-integration",
+    image: withBasePath("/images/project-list-cards/project-list-card-i9-everify-integration.png"),
+  },
+};
+
 export function resolveTrustedLogo(name: string, explicit?: string | null) {
   return trustedLogoMap[name] ?? (explicit ? withBasePath(explicit) : withBasePath("/images/SNUZw.png"));
 }
@@ -122,6 +141,14 @@ export function resolveHomeCardId(slug: string) {
 
 export function resolveHomeCardImage(slug: string, explicit?: string | null) {
   return homeCardMediaMap[slug]?.image ?? resolveProjectImage(slug, explicit);
+}
+
+export function resolveProjectListCardId(slug: string) {
+  return projectListCardMediaMap[slug]?.id ?? `project-list-card-${slug}`;
+}
+
+export function resolveProjectListCardImage(slug: string, explicit?: string | null) {
+  return projectListCardMediaMap[slug]?.image ?? resolveProjectImage(slug, explicit);
 }
 
 export function usePublicSiteContent() {
