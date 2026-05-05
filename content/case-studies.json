@@ -235,7 +235,7 @@
     },
     "client_logos": [],
     "metrics": [
-      { "value": "6 mo", "label": "Audit and prioritization", "context": "initial accessibility and system review" },
+      { "value": "6 months", "label": "Audit and prioritization", "context": "initial accessibility and system review" },
       { "value": "1 system", "label": "Shared foundation", "context": "aligned patterns, typography, icons, and dialogs" },
       { "value": "2 designers", "label": "Working with 3 developers", "context": "cross-functional system effort" }
     ],
@@ -261,11 +261,11 @@
     "methodology": {
       "name": "Audit to Systemization",
       "steps": [
-        { "step": 1, "label": "Audit", "description": "Reviewed accessibility issues and component mismatches against the existing internal library." },
-        { "step": 2, "label": "Structure", "description": "Grouped findings by severity, system impact, and implementation complexity to separate quick fixes from structural problems." },
-        { "step": 3, "label": "Systemize", "description": "Defined reusable patterns, variants, states, and usage rules, separating accessibility fixes from system decisions." },
-        { "step": 4, "label": "Align", "description": "Partnered closely with developers to align on React implementation, validate feasibility, and ensure design decisions translated correctly into build." },
-        { "step": 5, "label": "Validate", "description": "Used design reviews, accessibility checks, and implementation feedback to iterate and improve consistency." }
+        { "step": 1, "label": "Audit", "description": "Checked for accessibility issues and components that didn't match the system." },
+        { "step": 2, "label": "Structure", "description": "Grouped problems by importance to see what to fix first." },
+        { "step": 3, "label": "Systemize", "description": "Created clear patterns, states, and rules for how components should work." },
+        { "step": 4, "label": "Align", "description": "Worked with developers to make sure designs could be built correctly in React." },
+        { "step": 5, "label": "Validate", "description": "Reviewed designs and builds, using feedback to improve consistency." }
       ]
     },
     "design_strategy": [

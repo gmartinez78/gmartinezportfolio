@@ -905,6 +905,38 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       )}
 
       {caseStudy.slug === "flock-accessibility-system" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
+          <SectionHeading
+            eyebrow="Methodology"
+            title={methodologyName}
+            centered
+            className="mb-12"
+          />
+          <div className="grid gap-4 md:grid-cols-5">
+            {caseStudy.methodology.steps.map((step, index) => (
+              <div key={step.step} className="flex flex-col gap-4">
+                <div
+                  className="flex flex-1 flex-col gap-2 rounded-2xl p-5"
+                  style={{ backgroundColor: `${METHODOLOGY_COLORS[index] ?? "#87d4ac"}33` }}
+                >
+                  <div
+                    className="w-full rounded-xl"
+                    style={{ height: 10, backgroundColor: METHODOLOGY_COLORS[index] ?? "#87d4ac" }}
+                  />
+                  <p className="mt-2 font-inter text-[15px] font-semibold text-[#3c3e3f]">
+                    {step.step}. {step.label}
+                  </p>
+                  <p className="font-inter text-[14px] leading-[1.625em] text-[#5c7792]">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {caseStudy.slug === "flock-accessibility-system" ? (
         <>
           <section className="mx-auto max-w-[1200px] px-6 py-6 md:px-10 xl:px-20">
             <div className="px-6 py-6 md:px-10">
@@ -917,9 +949,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   I translated audit findings into reusable system guidance by separating accessibility issues from pattern decisions and documenting how components should behave.
                 </p>
               </div>
-              <div className="mx-auto max-w-[860px]">
+              <div className="mx-auto grid max-w-[1180px] items-center gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
                 <Card className="overflow-hidden border-0 bg-transparent shadow-none">
-                  <CardContent className="px-7 py-4 text-center">
+                  <CardContent className="px-0 py-4 text-left lg:flex lg:min-h-[420px] lg:flex-col lg:justify-center">
                     <div className="space-y-4">
                       <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                         I built an audit that highlights issues by severity, system impact, and implementation complexity, while separating accessibility findings and system inconsistencies.
@@ -936,6 +968,23 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </div>
                   </CardContent>
                 </Card>
+                <a
+                  href={withBasePath("/images/projects/flock-buttons-ui.svg")}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group block"
+                >
+                  <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.10)]">
+                    <img
+                      src={withBasePath("/images/projects/flock-buttons-ui.svg")}
+                      alt="Flock button accessibility audit examples"
+                      className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.01]"
+                    />
+                  </div>
+                  <p className="mt-4 text-center font-inter text-[13px] leading-[1.6] text-[#5c7792]">
+                    Open image to zoom
+                  </p>
+                </a>
               </div>
             </div>
           </section>
@@ -966,44 +1015,46 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        <SectionHeading
-          eyebrow={caseStudy.slug === "nayya-ai-benefits" ? methodologyName : "Methodology"}
-          title={caseStudy.slug === "nayya-ai-benefits" ? "Methodology" : methodologyName}
-          centered={caseStudy.slug === "nayya-ai-benefits"}
-          className="mb-12"
-        />
-        <div className="grid gap-4 md:grid-cols-5">
-          {caseStudy.methodology.steps.map((step, index) => (
-            caseStudy.slug === "nayya-ai-benefits" ? (
-              <div key={step.step} className="flex flex-col gap-4">
-                <div
-                  className="flex flex-1 flex-col gap-2 rounded-2xl p-5"
-                  style={{ backgroundColor: `${METHODOLOGY_COLORS[index] ?? "#87d4ac"}33` }}
-                >
+      {caseStudy.slug !== "flock-accessibility-system" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading
+            eyebrow={caseStudy.slug === "nayya-ai-benefits" ? methodologyName : "Methodology"}
+            title={caseStudy.slug === "nayya-ai-benefits" ? "Methodology" : methodologyName}
+            centered={caseStudy.slug === "nayya-ai-benefits"}
+            className="mb-12"
+          />
+          <div className="grid gap-4 md:grid-cols-5">
+            {caseStudy.methodology.steps.map((step, index) => (
+              caseStudy.slug === "nayya-ai-benefits" ? (
+                <div key={step.step} className="flex flex-col gap-4">
                   <div
-                    className="w-full rounded-xl"
-                    style={{ height: 10, backgroundColor: METHODOLOGY_COLORS[index] ?? "#87d4ac" }}
-                  />
-                  <p className="mt-2 font-inter text-[15px] font-semibold text-[#3c3e3f]">
-                    {index + 1}. {step.label}
-                  </p>
-                  <p className="font-inter text-[14px] leading-[1.625em] text-[#5c7792]">
-                    {step.description}
-                  </p>
+                    className="flex flex-1 flex-col gap-2 rounded-2xl p-5"
+                    style={{ backgroundColor: `${METHODOLOGY_COLORS[index] ?? "#87d4ac"}33` }}
+                  >
+                    <div
+                      className="w-full rounded-xl"
+                      style={{ height: 10, backgroundColor: METHODOLOGY_COLORS[index] ?? "#87d4ac" }}
+                    />
+                    <p className="mt-2 font-inter text-[15px] font-semibold text-[#3c3e3f]">
+                      {index + 1}. {step.label}
+                    </p>
+                    <p className="font-inter text-[14px] leading-[1.625em] text-[#5c7792]">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <Card key={step.step} className="p-0 py-0">
-                <CardContent className="p-6">
-                  <p className="font-inter text-[15px] font-semibold text-[#3c3e3f]">{index + 1}. {step.label}</p>
-                  <p className="mt-2 font-inter text-[13px] leading-[1.5] text-[#5c7792]">{step.description}</p>
-                </CardContent>
-              </Card>
-            )
-          ))}
-        </div>
-      </section>
+              ) : (
+                <Card key={step.step} className="p-0 py-0">
+                  <CardContent className="p-6">
+                    <p className="font-inter text-[15px] font-semibold text-[#3c3e3f]">{index + 1}. {step.label}</p>
+                    <p className="mt-2 font-inter text-[13px] leading-[1.5] text-[#5c7792]">{step.description}</p>
+                  </CardContent>
+                </Card>
+              )
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         {caseStudy.slug === "nayya-ai-benefits" ? (
