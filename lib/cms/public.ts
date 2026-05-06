@@ -55,9 +55,9 @@ const projectImageMap: Record<string, string> = {
 };
 
 const projectHeroImageMap: Record<string, string> = {
-  "benefits-enrollment": withBasePath("/images/projects/benefits-cover.png"),
-  "nayya-ai-benefits": withBasePath("/images/projects/nayya-hero.png"),
-  "flock-accessibility-system": withBasePath("/images/FC4No.png"),
+  "benefits-enrollment": withBasePath("/images/projects/hero/benefits-hero.png"),
+  "nayya-ai-benefits": withBasePath("/images/projects/hero/nayya-hero.png"),
+  "flock-accessibility-system": withBasePath("/images/projects/hero/flock-hero.png"),
   "i9-everify-integration": withBasePath("/images/benefits/user-management.png"),
 };
 
