@@ -229,7 +229,7 @@
     "filters": ["Accessibility", "Design Systems", "Product Design"],
     "tools": ["Figma", "Jira", "Miro"],
     "images": {
-      "cover": "/images/projects/flock-accessibility-system/thumbnails/flock-thumbnail.png",
+      "cover": "/images/projects/flock-thumbnail.png",
       "hero": "/images/projects/flock-accessibility-system/hero/flock-hero.png",
       "gallery": []
     },
