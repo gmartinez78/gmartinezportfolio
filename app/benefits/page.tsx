@@ -520,7 +520,7 @@ export default function BenefitsPage() {
       }))
     : [
         { src: ASSETS.paychex, alt: "Paychex", width: 120 },
-        { src: withBasePath("/images/flock-logo.svg"), alt: "Flock", width: 120 },
+        { src: withBasePath("/images/flock-logo.png"), alt: "Flock", width: 120 },
         { src: ASSETS.ibx, alt: "IBX", width: 60 },
       ];
 
