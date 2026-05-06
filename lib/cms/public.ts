@@ -48,17 +48,17 @@ const toolIconMap: Record<string, string> = {
 };
 
 const projectImageMap: Record<string, string> = {
-  "benefits-enrollment": withBasePath("/images/thumbnails/thumbnail-benefits.png"),
-  "nayya-ai-benefits": withBasePath("/images/thumbnails/thumbnail-nayya-cover.png"),
-  "flock-accessibility-system": withBasePath("/images/project-list-cards/project-list-card-flock-accessibility-system.png"),
-  "i9-everify-integration": withBasePath("/images/benefits/user-management.png"),
+  "benefits-enrollment": withBasePath("/images/projects/benefits-enrollment/thumbnails/thumbnail-benefits.png"),
+  "nayya-ai-benefits": withBasePath("/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png"),
+  "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/thumbnails/project-list-card-flock-accessibility-system.png"),
+  "i9-everify-integration": withBasePath("/images/projects/i9-everify-integration/hero/user-management.png"),
 };
 
 const projectHeroImageMap: Record<string, string> = {
-  "benefits-enrollment": withBasePath("/images/projects/hero/benefits-hero.png"),
-  "nayya-ai-benefits": withBasePath("/images/projects/hero/nayya-hero.png"),
-  "flock-accessibility-system": withBasePath("/images/projects/hero/flock-hero.png"),
-  "i9-everify-integration": withBasePath("/images/benefits/user-management.png"),
+  "benefits-enrollment": withBasePath("/images/projects/benefits-enrollment/hero/benefits-hero.png"),
+  "nayya-ai-benefits": withBasePath("/images/projects/nayya-ai-benefits/hero/nayya-hero.png"),
+  "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/hero/flock-hero.png"),
+  "i9-everify-integration": withBasePath("/images/projects/i9-everify-integration/hero/user-management.png"),
 };
 
 const projectHrefMap: Record<string, string> = {
@@ -68,38 +68,38 @@ const projectHrefMap: Record<string, string> = {
 const homeCardMediaMap: Record<string, { id: string; image: string }> = {
   "benefits-enrollment": {
     id: "home-card-benefits-enrollment",
-    image: withBasePath("/images/thumbnails/thumbnail-benefits.png"),
+    image: withBasePath("/images/projects/benefits-enrollment/thumbnails/thumbnail-benefits.png"),
   },
   "nayya-ai-benefits": {
     id: "home-card-nayya-ai-benefits",
-    image: withBasePath("/images/thumbnails/thumbnail-nayya-cover.png"),
+    image: withBasePath("/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png"),
   },
   "flock-accessibility-system": {
     id: "home-card-flock-accessibility-system",
-    image: withBasePath("/images/project-list-cards/project-list-card-flock-accessibility-system.png"),
+    image: withBasePath("/images/projects/flock-accessibility-system/thumbnails/project-list-card-flock-accessibility-system.png"),
   },
   "i9-everify-integration": {
     id: "home-card-i9-everify-integration",
-    image: withBasePath("/images/home-cards/home-card-i9-everify-integration.png"),
+    image: withBasePath("/images/projects/i9-everify-integration/thumbnails/home-card-i9-everify-integration.png"),
   },
 };
 
 const projectListCardMediaMap: Record<string, { id: string; image: string }> = {
   "benefits-enrollment": {
     id: "project-list-card-benefits-enrollment",
-    image: withBasePath("/images/thumbnails/thumbnail-benefits.png"),
+    image: withBasePath("/images/projects/benefits-enrollment/thumbnails/thumbnail-benefits.png"),
   },
   "nayya-ai-benefits": {
     id: "project-list-card-nayya-ai-benefits",
-    image: withBasePath("/images/thumbnails/thumbnail-nayya-cover.png"),
+    image: withBasePath("/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png"),
   },
   "flock-accessibility-system": {
     id: "project-list-card-flock-accessibility-system",
-    image: withBasePath("/images/project-list-cards/project-list-card-flock-accessibility-system.png"),
+    image: withBasePath("/images/projects/flock-accessibility-system/thumbnails/project-list-card-flock-accessibility-system.png"),
   },
   "i9-everify-integration": {
     id: "project-list-card-i9-everify-integration",
-    image: withBasePath("/images/project-list-cards/project-list-card-i9-everify-integration.png"),
+    image: withBasePath("/images/projects/i9-everify-integration/thumbnails/project-list-card-i9-everify-integration.png"),
   },
 };
 

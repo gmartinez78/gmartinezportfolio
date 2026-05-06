@@ -56,21 +56,21 @@ const NAYYA_PROCESS_ALTERNATIVES = [
     status: "Rejected",
     body:
       "Add the Nayya form as its own step inside the enrollment process, keeping the assistance directly in the core flow.",
-    imageSrc: "/images/projects/nayya-embedded-section.jpg",
+    imageSrc: "/images/projects/nayya-ai-benefits/banners/nayya-embedded-section.jpg",
   },
   {
     title: "Benefit-list entry point",
     status: "Rejected",
     body:
       "Place a button in the benefits list so users could choose to use Nayya while reviewing available coverage options.",
-    imageSrc: "/images/projects/nayya-benefit-list-entry.jpg",
+    imageSrc: "/images/projects/nayya-ai-benefits/banners/nayya-benefit-list-entry.jpg",
   },
   {
     title: "Guided decision modal",
     status: "Selected",
     body:
       "Show a modal after users entered their family information, when guidance felt timely connected to choosing better benefits.",
-    imageSrc: "/images/projects/nayya-guided-decision-modal.jpg",
+    imageSrc: "/images/projects/nayya-ai-benefits/banners/nayya-guided-decision-modal.jpg",
   },
 ];
 
@@ -182,7 +182,7 @@ const NAYYA_REFLECTIONS: CaseStudyReflection[] = [
   },
 ];
 
-const NAYYA_PHONE_IMAGE = "/images/projects/nayya-design-process.png";
+const NAYYA_PHONE_IMAGE = "/images/projects/nayya-ai-benefits/banners/nayya-design-process.png";
 const NAYYA_INSIGHTS_CLOSING =
   "Participants who completed the Nayya survey enrolled in TWICE as many benefits as those who skipped it.";
 
@@ -1041,14 +1041,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </CardContent>
                 </Card>
                 <a
-                  href={withBasePath("/images/projects/flock-buttons-ui.svg")}
+                  href={withBasePath("/images/projects/flock-accessibility-system/banners/flock-buttons-ui.svg")}
                   target="_blank"
                   rel="noreferrer"
                   className="group block"
                 >
                   <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.10)]">
                     <img
-                      src={withBasePath("/images/projects/flock-buttons-ui.svg")}
+                      src={withBasePath("/images/projects/flock-accessibility-system/banners/flock-buttons-ui.svg")}
                       alt="Flock button accessibility audit examples"
                       className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.01]"
                     />
@@ -1161,7 +1161,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="mx-auto grid max-w-[1100px] items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
               <div className="flex justify-center lg:justify-start">
                 <img
-                  src={withBasePath("/images/projects/flock-notification-banner.svg")}
+                  src={withBasePath("/images/projects/flock-accessibility-system/banners/flock-notification-banner.svg")}
                   alt="Flock notification banner design"
                   className="h-auto w-full max-w-[420px]"
                 />
@@ -1348,14 +1348,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               ))}
             </div>
             <a
-              href={withBasePath("/images/projects/flock-buttons-suggestions.svg")}
+              href={withBasePath("/images/projects/flock-accessibility-system/banners/flock-buttons-suggestions.svg")}
               target="_blank"
               rel="noreferrer"
               className="group block"
             >
               <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.10)]">
                 <img
-                  src={withBasePath("/images/projects/flock-buttons-suggestions.svg")}
+                  src={withBasePath("/images/projects/flock-accessibility-system/banners/flock-buttons-suggestions.svg")}
                   alt="Flock button suggestions and solution example"
                   className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.01]"
                 />

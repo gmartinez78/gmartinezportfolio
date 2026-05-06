@@ -890,7 +890,7 @@ export default function BenefitsPage() {
               alt={logo.alt}
               width={logo.width}
               height={32}
-              className="object-contain opacity-80"
+              className="h-8 w-auto object-contain opacity-80"
             />
           ))}
         </div>

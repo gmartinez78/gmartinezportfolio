@@ -126,7 +126,7 @@ export default function PortfolioPage() {
       <section className="bg-white px-4 py-5 sm:px-6 lg:px-10">
         <div className="relative mx-auto min-h-[560px] max-w-[1440px] overflow-hidden rounded-[28px] bg-[#102944] px-6 py-10 shadow-[0_24px_80px_rgba(14,41,81,0.18)] sm:px-10 lg:px-16 lg:py-16">
           <Image
-            src={withBasePath(hero.photo || "/images/projects/hero/benefits-hero.png")}
+            src={withBasePath(hero.photo || "/images/projects/benefits-enrollment/hero/benefits-hero.png")}
             alt={hero.greeting}
             fill
             priority
