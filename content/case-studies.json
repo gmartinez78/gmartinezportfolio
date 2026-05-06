@@ -100,7 +100,7 @@
       "gallery": []
     },
     "client_logos": [
-      { "name": "Nayya", "logo": "/images/SNUZ.svg" },
+      { "name": "Nayya", "logo": "/images/SNUZw.svg" },
       { "name": "Paychex", "logo": "/images/c54fy.png" }
     ],
     "metrics": [
@@ -229,7 +229,7 @@
     "filters": ["Accessibility", "Design Systems", "Product Design"],
     "tools": ["Figma", "Jira", "Miro"],
     "images": {
-      "cover": "/images/projects/flock-thumbnail.png",
+      "cover": "/images/projects/flock-accessibility-system/thumbnails/flock.png",
       "hero": "/images/projects/flock-accessibility-system/hero/flock-hero.png",
       "gallery": []
     },

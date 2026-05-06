@@ -1498,7 +1498,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               />
             ))}
             <img
-              src={withBasePath("/images/SNUZ.svg")}
+              src={withBasePath("/images/SNUZw.svg")}
               alt="ITX"
               className="h-12 w-auto object-contain opacity-80"
             />

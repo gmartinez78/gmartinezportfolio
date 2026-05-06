@@ -222,7 +222,7 @@ export default function PortfolioPage() {
           <SectionHeading eyebrow="Portfolio" title="Recent Work" centered />
 
           {/* Project cards */}
-          <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3">
             {featuredProjects.map((project) => (
               <Link
                 key={project.title}
