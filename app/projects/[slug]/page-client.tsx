@@ -183,8 +183,6 @@ const NAYYA_REFLECTIONS: CaseStudyReflection[] = [
 ];
 
 const NAYYA_PHONE_IMAGE = "/images/projects/nayya-design-process.png";
-const NAYYA_METHODOLOGY_NAME = "Research & Discovery";
-const NAYYA_YEAR = 2025;
 const NAYYA_INSIGHTS_CLOSING =
   "Participants who completed the Nayya survey enrolled in TWICE as many benefits as those who skipped it.";
 
@@ -780,9 +778,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const highlightMetrics = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_HIGHLIGHT_METRICS : caseStudy.metrics.slice(0, 3);
   const problemMetrics = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_PROBLEM_METRICS : caseStudy.metrics.slice(0, 3);
   const designStrategy = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_DESIGN_STRATEGY : caseStudy.design_strategy;
-  const methodologyName = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_METHODOLOGY_NAME : caseStudy.methodology.name;
+  const methodologyName = caseStudy.methodology.name;
   const reflections = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_REFLECTIONS : caseStudy.reflections;
-  const projectYear = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_YEAR : caseStudy.year;
+  const projectYear = caseStudy.year;
   const heroImage = resolveProjectHeroImage(caseStudy.slug, caseStudy.images.hero);
 
   return (

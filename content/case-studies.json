@@ -229,8 +229,8 @@
     "filters": ["Accessibility", "Design Systems", "Product Design"],
     "tools": ["Figma", "Jira", "Miro"],
     "images": {
-      "cover": "/images/FC4No.png",
-      "hero": "",
+      "cover": "/images/project-list-cards/project-list-card-flock-accessibility-system.png",
+      "hero": "/images/projects/hero/flock-hero.png",
       "gallery": []
     },
     "client_logos": [],
