@@ -225,7 +225,7 @@
     "duration": "6 months audit + 1 year build",
     "industry": "Accessibility / Design Systems",
     "tagline": "Led an accessibility audit and helped unify the design system. This reduced pattern debt, made the product more consistent, and improved collaboration between design and development teams.",
-    "tags": ["Accessibility", "Design Systems", "UX Research", "Product Design"],
+    "tags": ["Accessibility", "Design Systems", "UX Research", "Product Design", "Axe", "A11y", "Design system", "Voice Over", "Storybook"],
     "filters": ["Accessibility", "Design Systems", "Product Design"],
     "tools": ["Figma", "Jira", "Miro"],
     "images": {
