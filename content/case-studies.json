@@ -15,8 +15,8 @@
     "tags": ["BENEFITS / ENSURANCE SAAS", "UX Research", "IA", "Interaction Design", "Design Systems"],
     "tools": ["Figma", "Jira", "Miro", "Webex", "Outlook", "Copilot", "Hotjar"],
     "images": {
-      "cover": "/images/projects/EB.png",
-      "hero": "/images/projects/benefits-cover.png",
+      "cover": "/images/thumbnails/thumbnail-benefits.png",
+      "hero": "/images/projects/hero/benefits-hero.png",
       "gallery": [
         "/images/benefits/figma-logo.png",
         "/images/benefits/jira-logo.png",
@@ -95,8 +95,8 @@
     "tools": ["Figma", "Jira", "Miro", "Webex", "Outlook", "Copilot", "Hotjar"],
     "filters": ["UX Research", "Product Design", "AI Product"],
     "images": {
-      "cover": "/images/projects/nayya-cover.png",
-      "hero": "/images/projects/nayya-hero.png",
+      "cover": "/images/thumbnails/thumbnail-nayya-cover.png",
+      "hero": "/images/projects/hero/nayya-hero.png",
       "gallery": []
     },
     "client_logos": [

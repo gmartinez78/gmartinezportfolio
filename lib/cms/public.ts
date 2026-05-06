@@ -48,8 +48,8 @@ const toolIconMap: Record<string, string> = {
 };
 
 const projectImageMap: Record<string, string> = {
-  "benefits-enrollment": withBasePath("/images/projects/EB.png"),
-  "nayya-ai-benefits": withBasePath("/images/projects/nayya-cover.png"),
+  "benefits-enrollment": withBasePath("/images/thumbnails/thumbnail-benefits.png"),
+  "nayya-ai-benefits": withBasePath("/images/thumbnails/thumbnail-nayya-cover.png"),
   "flock-accessibility-system": withBasePath("/images/project-list-cards/project-list-card-flock-accessibility-system.png"),
   "i9-everify-integration": withBasePath("/images/benefits/user-management.png"),
 };
@@ -76,7 +76,7 @@ const homeCardMediaMap: Record<string, { id: string; image: string }> = {
   },
   "flock-accessibility-system": {
     id: "home-card-flock-accessibility-system",
-    image: withBasePath("/images/home-cards/home-card-flock-accessibility-system.png"),
+    image: withBasePath("/images/project-list-cards/project-list-card-flock-accessibility-system.png"),
   },
   "i9-everify-integration": {
     id: "home-card-i9-everify-integration",
