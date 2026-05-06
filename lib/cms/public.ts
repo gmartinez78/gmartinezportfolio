@@ -50,7 +50,7 @@ const toolIconMap: Record<string, string> = {
 const projectImageMap: Record<string, string> = {
   "benefits-enrollment": withBasePath("/images/projects/benefits-enrollment/thumbnails/thumbnail-benefits.png"),
   "nayya-ai-benefits": withBasePath("/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png"),
-  "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/thumbnails/project-list-card-flock-accessibility-system.png"),
+  "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/thumbnails/flock-thumbnail.png"),
   "i9-everify-integration": withBasePath("/images/projects/i9-everify-integration/hero/user-management.png"),
 };
 
@@ -76,7 +76,7 @@ const homeCardMediaMap: Record<string, { id: string; image: string }> = {
   },
   "flock-accessibility-system": {
     id: "home-card-flock-accessibility-system",
-    image: withBasePath("/images/projects/flock-accessibility-system/thumbnails/project-list-card-flock-accessibility-system.png"),
+    image: withBasePath("/images/projects/flock-accessibility-system/thumbnails/flock-thumbnail.png"),
   },
   "i9-everify-integration": {
     id: "home-card-i9-everify-integration",
@@ -95,7 +95,7 @@ const projectListCardMediaMap: Record<string, { id: string; image: string }> = {
   },
   "flock-accessibility-system": {
     id: "project-list-card-flock-accessibility-system",
-    image: withBasePath("/images/projects/flock-accessibility-system/thumbnails/project-list-card-flock-accessibility-system.png"),
+    image: withBasePath("/images/projects/flock-accessibility-system/thumbnails/flock-thumbnail.png"),
   },
   "i9-everify-integration": {
     id: "project-list-card-i9-everify-integration",
