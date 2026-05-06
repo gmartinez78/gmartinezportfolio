@@ -68,11 +68,11 @@ const projectHrefMap: Record<string, string> = {
 const homeCardMediaMap: Record<string, { id: string; image: string }> = {
   "benefits-enrollment": {
     id: "home-card-benefits-enrollment",
-    image: withBasePath("/images/home-cards/home-card-benefits-enrollment.png"),
+    image: withBasePath("/images/thumbnails/thumbnail-benefits.png"),
   },
   "nayya-ai-benefits": {
     id: "home-card-nayya-ai-benefits",
-    image: withBasePath("/images/home-cards/home-card-nayya-ai-benefits.png"),
+    image: withBasePath("/images/thumbnails/thumbnail-nayya-cover.png"),
   },
   "flock-accessibility-system": {
     id: "home-card-flock-accessibility-system",
@@ -87,11 +87,11 @@ const homeCardMediaMap: Record<string, { id: string; image: string }> = {
 const projectListCardMediaMap: Record<string, { id: string; image: string }> = {
   "benefits-enrollment": {
     id: "project-list-card-benefits-enrollment",
-    image: withBasePath("/images/project-list-cards/project-list-card-benefits-enrollment.png"),
+    image: withBasePath("/images/thumbnails/thumbnail-benefits.png"),
   },
   "nayya-ai-benefits": {
     id: "project-list-card-nayya-ai-benefits",
-    image: withBasePath("/images/project-list-cards/project-list-card-nayya-ai-benefits.png"),
+    image: withBasePath("/images/thumbnails/thumbnail-nayya-cover.png"),
   },
   "flock-accessibility-system": {
     id: "project-list-card-flock-accessibility-system",
