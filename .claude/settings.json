@@ -1,13 +1,15 @@
 {
-  "enabledPlugins": {
-    "ui-ux-pro-max@ui-ux-pro-max-skill": true
-  },
   "permissions": {
     "allow": [
       "Bash(git -C /Users/gred/gmartinezportfolio push origin Images)",
       "Bash(git -C /Users/gred/gmartinezportfolio checkout main)",
       "Bash(git -C /Users/gred/gmartinezportfolio branch -d Images)",
-      "Bash(git -C /Users/gred/gmartinezportfolio push origin --delete Images)"
+      "Bash(git -C /Users/gred/gmartinezportfolio push origin --delete Images)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
+  },
+  "enabledPlugins": {
+    "ui-ux-pro-max@ui-ux-pro-max-skill": true
   }
 }
