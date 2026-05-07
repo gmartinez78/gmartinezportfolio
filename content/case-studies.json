@@ -430,13 +430,13 @@
         "id": "situation",
         "type": "custom",
         "title": "Situation",
-        "body": "Flex clients needed a more efficient way to manage I-9 and E-Verify requirements during onboarding. Without an integrated workflow, clients often relied on manual processes or custom off-platform solutions, creating friction, compliance risk, and operational inefficiencies. The work also had to account for multiple user roles, vendor handoffs, billing requirements, status tracking, and future scalability."
+        "body": "Flex clients needed a more efficient way to manage I-9 and E-Verify requirements during onboarding. Without an integrated workflow, clients often relied on manual processes or custom off-platform solutions, creating friction, compliance risk, and operational inefficiencies."
       },
       {
         "id": "task",
         "type": "custom",
         "title": "Task",
-        "body": "My role was to help define a UX approach that integrated I-9 and E-Verify into Flex in a way that felt consistent with existing onboarding patterns while accommodating the technical and compliance constraints of a third-party experience. This meant designing for both the employee journey, where a new hire initiates Section 1, and the admin journey, where a client user configures access, tracks status, and completes Section 2."
+        "body": "My role was to define a UX approach that integrated I-9 and E-Verify into Flex, designing for both the employee journey (Section 1 initiation) and the admin journey (configuration, status tracking, and Section 2 completion), while staying consistent with existing onboarding patterns and accommodating third-party compliance constraints."
       },
       {
         "id": "research",
