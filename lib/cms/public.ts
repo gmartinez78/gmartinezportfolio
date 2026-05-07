@@ -53,14 +53,14 @@ const projectImageMap: Record<string, string> = {
   "benefits-enrollment": withBasePath("/images/projects/benefits-enrollment/thumbnails/thumbnail-benefits.png"),
   "nayya-ai-benefits": withBasePath("/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png"),
   "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/thumbnails/flock.png"),
-  "i9-everify-integration": withBasePath("/images/projects/i9-everify-integration/hero/user-management.png"),
+  "i9-everify-integration": withBasePath("/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png"),
 };
 
 const projectHeroImageMap: Record<string, string> = {
   "benefits-enrollment": withBasePath("/images/projects/benefits-enrollment/hero/benefits-hero.png"),
   "nayya-ai-benefits": withBasePath("/images/projects/nayya-ai-benefits/hero/nayya-hero.png"),
   "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/hero/flock-hero.png"),
-  "i9-everify-integration": withBasePath("/images/projects/i9-everify-integration/hero/user-management.png"),
+  "i9-everify-integration": withBasePath("/images/projects/i9-everify-integration/hero/i9-banner.png"),
 };
 
 const projectHrefMap: Record<string, string> = {
@@ -82,7 +82,7 @@ const homeCardMediaMap: Record<string, { id: string; image: string }> = {
   },
   "i9-everify-integration": {
     id: "home-card-i9-everify-integration",
-    image: withBasePath("/images/projects/i9-everify-integration/thumbnails/home-card-i9-everify-integration.png"),
+    image: withBasePath("/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png"),
   },
 };
 
@@ -101,7 +101,7 @@ const projectListCardMediaMap: Record<string, { id: string; image: string }> = {
   },
   "i9-everify-integration": {
     id: "project-list-card-i9-everify-integration",
-    image: withBasePath("/images/projects/i9-everify-integration/thumbnails/project-list-card-i9-everify-integration.png"),
+    image: withBasePath("/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png"),
   },
 };
 
