@@ -1173,6 +1173,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 ))}
               </div>
             </div>
+            <div className="mt-10">
+              <img
+                src={withBasePath("/images/projects/i9-everify-integration/banners/i9-employee-design-process.svg")}
+                alt="I-9 employee interface design"
+                className="h-auto w-full"
+              />
+            </div>
           </>
         ) : caseStudy.slug === "flock-accessibility-system" ? (
           <>
