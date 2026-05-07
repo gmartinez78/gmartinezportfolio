@@ -424,7 +424,7 @@
         "id": "overview",
         "type": "overview",
         "title": "Project Overview",
-        "body": "The I-9 and E-Verify initiative focused on helping Flex clients manage employment verification and onboarding compliance more efficiently within the platform. The experience enabled new hires to complete Section 1 of Form I-9 and allowed administrators to complete Section 2 through an integration with HIREtech, a third-party vendor. The solution also supported Remote I-9 requests, onboarding task visibility, document access, and transaction-based billing tied directly to onboarding."
+        "body": ""
       },
       {
         "id": "situation",
