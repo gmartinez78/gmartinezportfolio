@@ -889,6 +889,7 @@ export default function BenefitsPage() {
               width={logo.width}
               height={32}
               className="h-8 w-auto object-contain opacity-80"
+              style={{ width: "auto" }}
             />
           ))}
         </div>
