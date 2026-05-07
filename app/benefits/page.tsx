@@ -33,10 +33,6 @@ const ASSETS = {
   ibx: withBasePath("/images/SNUZw.png"),
 };
 
-const BENEFITS_STRATEGY_FIGMA_LINK =
-  "https://www.figma.com/design/sCK6Jts4ID7bDc5dCmTgsY/AE---porft?node-id=223-1186&m=dev&t=NP7TGuZDFhnLT48c-1";
-const BENEFITS_STRATEGY_IMAGE = withBasePath("/images/projects/benefits-cover.png");
-
 // ── Data ──────────────────────────────────────────────────────────────────────
 const TEAM_MEMBERS = [
   "Product Owner", "Program manager", "Business analyst",
@@ -796,27 +792,16 @@ export default function BenefitsPage() {
             </div>
           </div>
 
-          {/* Right visual */}
+          {/* Right embed */}
           <div className="flex justify-end">
-            <a
-              href={BENEFITS_STRATEGY_FIGMA_LINK}
-              target="_blank"
-              rel="noreferrer"
-              className="group block w-full"
-            >
-              <div className="w-full overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.12)]">
-                <Image
-                  src={BENEFITS_STRATEGY_IMAGE}
-                  alt="Benefits enrollment design strategy source frame"
-                  width={1600}
-                  height={1040}
-                  className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.01]"
-                />
-              </div>
-              <p className="mt-3 text-center text-[12px] font-medium uppercase tracking-[0.18em] text-[#5c7792]">
-                Open source frame in Figma
-              </p>
-            </a>
+            <div className="w-full overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.12)]">
+              <iframe
+                title="Design Strategy Figma Embed"
+                src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FsCK6Jts4ID7bDc5dCmTgsY%2FAE---porft%3Fnode-id%3D223-1186%26m%3Ddev%26t%3DNP7TGuZDFhnLT48c-1"
+                className="h-[520px] w-full"
+                allowFullScreen
+              />
+            </div>
           </div>
         </div>
       </section>
