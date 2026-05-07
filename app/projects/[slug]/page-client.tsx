@@ -761,12 +761,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     }));
   const findBlock = (id: string) => caseStudy.content_blocks?.find((block) => block.id === id);
   const overviewBlock = findBlock("overview");
-  const storyBlocks = ["situation", "task", "research", "actions"]
+  const storyBlocks = ["situation", "task", "actions", "research"]
     .map((id) => findBlock(id))
     .filter(isContentBlock);
   const visibleStoryBlocks =
     caseStudy.slug === "flock-accessibility-system"
       ? storyBlocks.filter((block) => block.id !== "research" && block.id !== "actions")
+      : caseStudy.slug === "i9-everify-integration"
+      ? storyBlocks.filter((block) => block.id !== "research")
       : storyBlocks;
   const resultBlock = findBlock("impact");
   const resultRows = getPayloadRows(resultBlock?.payload, "rows");
@@ -1072,7 +1074,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </>
       ) : null}
 
-      {caseStudy.slug !== "nayya-ai-benefits" && caseStudy.slug !== "flock-accessibility-system" && (caseStudy.constraints?.length ?? 0) > 0 ? (
+      {caseStudy.slug !== "nayya-ai-benefits" && caseStudy.slug !== "flock-accessibility-system" && caseStudy.slug !== "i9-everify-integration" && (caseStudy.constraints?.length ?? 0) > 0 ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title="Constraints" centered className="mb-12" />
           <div className="grid gap-6 md:grid-cols-2">
@@ -1091,14 +1093,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug !== "flock-accessibility-system" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading
-            eyebrow={caseStudy.slug === "nayya-ai-benefits" ? methodologyName : "Methodology"}
-            title={caseStudy.slug === "nayya-ai-benefits" ? "Methodology" : methodologyName}
-            centered={caseStudy.slug === "nayya-ai-benefits"}
+            eyebrow={["nayya-ai-benefits", "i9-everify-integration"].includes(caseStudy.slug) ? methodologyName : "Methodology"}
+            title={["nayya-ai-benefits", "i9-everify-integration"].includes(caseStudy.slug) ? "Methodology" : methodologyName}
+            centered={["nayya-ai-benefits", "i9-everify-integration"].includes(caseStudy.slug)}
             className="mb-12"
           />
           <div className="grid gap-4 md:grid-cols-5">
             {caseStudy.methodology.steps.map((step, index) => (
-              caseStudy.slug === "nayya-ai-benefits" ? (
+              ["nayya-ai-benefits", "i9-everify-integration"].includes(caseStudy.slug) ? (
                 <div key={step.step} className="flex flex-col gap-4">
                   <div
                     className="flex flex-1 flex-col gap-2 rounded-2xl p-5"
@@ -1187,6 +1189,28 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </>
         )}
       </section>
+
+      {caseStudy.slug === "i9-everify-integration" && findBlock("research") ? (() => {
+        const block = findBlock("research")!;
+        const items = getPayloadList(block.payload, "items");
+        return (
+          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+            <SectionHeading title={block.title} centered className="mb-12" />
+            <div className="mx-auto max-w-[820px] space-y-4 text-center">
+              {block.body ? block.body.split(/\n+/).map((p, i) => (
+                <p key={i} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{p.trim()}</p>
+              )) : null}
+              {items.length ? (
+                <div className="mt-5 space-y-3">
+                  {items.map((item) => (
+                    <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </section>
+        );
+      })() : null}
 
       {caseStudy.slug === "nayya-ai-benefits" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
