@@ -1159,14 +1159,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               centered
               className="mb-12"
             />
-            <div className="mx-auto grid max-w-[1100px] items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-              <div className="flex justify-center lg:justify-start">
-                <img
-                  src={withBasePath("/images/projects/i9-everify-integration/banners/i9-admin-design-process.svg")}
-                  alt="I-9 admin interface design"
-                  className="h-auto w-full"
-                />
-              </div>
+            <div className="mx-auto max-w-[1100px]">
+              <img
+                src={withBasePath("/images/projects/i9-everify-integration/banners/i9-admin-design-process.svg")}
+                alt="I-9 admin interface design"
+                className="h-auto w-full"
+              />
+            </div>
+            <div className="mx-auto mt-10 max-w-[1100px]">
               <div className="space-y-5 text-center lg:text-left">
                 {designStrategy.map((item) => (
                   <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
