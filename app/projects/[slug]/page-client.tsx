@@ -1501,11 +1501,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         {caseStudy.slug === "flock-accessibility-system" ? (
           <div className="mb-10 flex flex-wrap items-center justify-center gap-8">
             <img
-              src={withBasePath("/images/flock-logo.png")}
-              alt="Flock"
-              className="h-12 w-auto object-contain opacity-80"
-            />
-            <img
               src={withBasePath("/images/SNUZw.png")}
               alt="IBX"
               className="h-12 w-auto object-contain opacity-80"
@@ -1513,6 +1508,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <img
               src={withBasePath("/images/c54fy.png")}
               alt="Paychex"
+              className="h-12 w-auto object-contain opacity-80"
+            />
+            <img
+              src={withBasePath("/images/IbuV3.png")}
+              alt="Flock"
               className="h-12 w-auto object-contain opacity-80"
             />
           </div>
