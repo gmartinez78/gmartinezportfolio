@@ -30,7 +30,7 @@ const ASSETS = {
   miscSticker: withBasePath("/images/benefits/misc-sticker.png"),
   paychex: withBasePath("/images/c54fy.png"),
   nayya: withBasePath("/images/bBw3A.png"),
-  ibx: withBasePath("/images/SNUZw.png"),
+  ibx: withBasePath("/images/flock-logo.png"),
 };
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -122,10 +122,8 @@ const CHALLENGE_METRICS = [
 const ADDITIONAL_RESULT_SIGNALS = [
   { title: "Security incidents", value: "35%", body: "Fewer unauthorized access incidents after centralizing role governance and access control." },
   { title: "User experience improvements", value: "4.6/5", body: "Positive internal feedback on ease of access, navigation, and role clarity inside the platform." },
-  { title: "System performance impact", value: "<2%", body: "Negligible performance impact while expanding access control and user management capabilities." },
   { title: "Compliance and audit", value: "100%", body: "Audit-ready role structure and clearer permission ownership across supported user types." },
   { title: "Authentication success rate", value: "+18%", body: "Improved successful access outcomes after clarifying permissions and reducing friction in account setup." },
-  { title: "Scalability and flexibility", value: "3x", body: "Greater support for additional users and role configurations without adding the same operational overhead." },
   { title: "Cost-benefit analysis", value: "32%", body: "Lower support effort tied to manual account changes, access requests, and user administration tasks." },
   { title: "Security team feedback", value: "8.9/10", body: "Strong qualitative confidence from internal stakeholders in the updated access model and control patterns." },
 ];
@@ -863,7 +861,7 @@ export default function BenefitsPage() {
 
       {/* ── Reflections ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading title="Reflections" centered className="mb-12" />
+        <SectionHeading title="Learnings" centered className="mb-12" />
 
         <div className="mx-auto grid max-w-[1040px] gap-6 md:grid-cols-2">
           {reflections.map((r, i) => (
