@@ -10,6 +10,7 @@ const trustedLogoMap: Record<string, string> = {
   IBX: withBasePath("/images/SNUZw.png"),
   Skill: withBasePath("/images/IbuV3.png"),
   Hakuna: withBasePath("/images/hakuna.avif"),
+  Elevation: withBasePath("/images/elevation.png"),
   Nayya: withBasePath("/images/bBw3A.png"),
   Paychex: withBasePath("/images/c54fy.png"),
   "Paramount+": withBasePath("/images/paramount-plus.svg"),

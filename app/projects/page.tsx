@@ -51,8 +51,8 @@ export default function ProjectsPage() {
   const socialLogos = siteContent?.home?.trusted_by?.clients?.map((client) => ({
     src: resolveTrustedLogo(client.name, client.logo),
     alt: client.name,
-    h: client.name === "Skill" ? 59 : client.name === "Hakuna" ? 51 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : client.name === "Paramount+" ? 34 : client.name === "IBX" ? 34 : 41,
-    w: client.name === "Skill" ? 107 : client.name === "Hakuna" ? 142 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : client.name === "Paramount+" ? 132 : client.name === "IBX" ? 48 : 57,
+    h: client.name === "Skill" ? 59 : client.name === "Hakuna" ? 30 : client.name === "Elevation" ? 56 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : client.name === "Paramount+" ? 24 : client.name === "IBX" ? 34 : 41,
+    w: client.name === "Skill" ? 107 : client.name === "Hakuna" ? 96 : client.name === "Elevation" ? 220 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : client.name === "Paramount+" ? 94 : client.name === "IBX" ? 48 : 57,
   }));
 
   return (
@@ -157,7 +157,7 @@ export default function ProjectsPage() {
               alt={logo.alt}
               width={logo.w}
               height={logo.h}
-              className="max-h-[58px] w-auto object-contain opacity-80 grayscale transition-all hover:grayscale-0 hover:opacity-100"
+              className={`w-auto object-contain opacity-80 grayscale transition-all hover:grayscale-0 hover:opacity-100 ${logo.alt === "Hakuna" ? "max-h-[30px] brightness-0 saturate-0 opacity-45 hover:opacity-70" : logo.alt === "Paramount+" ? "max-h-[24px]" : logo.alt === "Elevation" ? "max-h-[56px] mix-blend-multiply" : "max-h-[58px]"}`}
             />
           ))}
         </div>
