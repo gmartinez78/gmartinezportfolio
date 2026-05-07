@@ -1171,14 +1171,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 {designStrategy.map((item) => (
                   <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
                 ))}
+                <div className="mt-6">
+                  <img
+                    src={withBasePath("/images/projects/i9-everify-integration/banners/i9-employee-design-process.svg")}
+                    alt="I-9 employee interface design"
+                    className="h-auto w-full"
+                  />
+                </div>
               </div>
-            </div>
-            <div className="mt-10">
-              <img
-                src={withBasePath("/images/projects/i9-everify-integration/banners/i9-employee-design-process.svg")}
-                alt="I-9 employee interface design"
-                className="h-auto w-full"
-              />
             </div>
           </>
         ) : caseStudy.slug === "flock-accessibility-system" ? (
