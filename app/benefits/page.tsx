@@ -511,11 +511,11 @@ export default function BenefitsPage() {
     }));
   const heroImage = resolveProjectHeroImage("benefits-enrollment", caseStudy?.images.hero ?? null);
   const clientLogos = caseStudy?.client_logos.length
-    ? caseStudy.client_logos.map((logo) => ({
-        src: resolveTrustedLogo(logo.name, logo.logo),
-        alt: logo.name,
-        width: logo.name === "Paychex" ? 120 : logo.name === "Flock" ? 120 : logo.name === "Nayya" ? 80 : 60,
-      }))
+    ? caseStudy.client_logos.map((logo) => {
+        const name = logo.name === "Nayya" ? "Flock" : logo.name;
+        const src = name === "Flock" ? withBasePath("/images/flock-logo.png") : resolveTrustedLogo(logo.name, logo.logo);
+        return { src, alt: name, width: name === "Paychex" ? 120 : name === "Flock" ? 120 : 60 };
+      })
     : [
         { src: ASSETS.paychex, alt: "Paychex", width: 120 },
         { src: withBasePath("/images/flock-logo.png"), alt: "Flock", width: 120 },
