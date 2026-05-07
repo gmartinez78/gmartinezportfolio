@@ -1,9 +1,10 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { shouldUseLocalPublicContent } from "@/lib/cms/source";
 
 const publicUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const publicAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-const useLocalContent = /^(1|true|yes)$/i.test(process.env.NEXT_PUBLIC_USE_LOCAL_CONTENT ?? "");
+const useLocalContent = shouldUseLocalPublicContent();
 
 export function hasSupabasePublicEnv() {
   return !useLocalContent && Boolean(publicUrl && publicAnonKey);

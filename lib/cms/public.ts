@@ -9,7 +9,7 @@ import { normalizeNavigableHref, withBasePath } from "@/lib/site";
 const trustedLogoMap: Record<string, string> = {
   IBX: withBasePath("/images/SNUZw.png"),
   Skill: withBasePath("/images/IbuV3.png"),
-  Nayya: withBasePath("/images/SNUZw.svg"),
+  Nayya: withBasePath("/images/SNUZ.svg"),
   Paychex: withBasePath("/images/c54fy.png"),
   "Paramount+": withBasePath("/images/paramount-plus.svg"),
   Flock: withBasePath("/images/flock-logo.png"),
@@ -103,6 +103,53 @@ const projectListCardMediaMap: Record<string, { id: string; image: string }> = {
   },
 };
 
+const legacyAssetMap: Record<string, string> = {
+  "/images/hero-photo.jpg": "/images/projects/benefits-enrollment/hero/benefits-hero.png",
+  "/images/logos/ibx.png": "/images/SNUZw.png",
+  "/images/logos/skill.png": "/images/IbuV3.png",
+  "/images/logos/nayya.png": "/images/SNUZ.svg",
+  "/images/logos/paychex.png": "/images/c54fy.png",
+  "/images/certs/upwork-cert.png": "/images/iNSrn.png",
+  "/images/certs/nng-cert.png": "/images/OiSjn.png",
+};
+
+function resolveLegacyAssetPath(path?: string | null) {
+  if (!path) {
+    return path ?? null;
+  }
+
+  return legacyAssetMap[path] ?? path;
+}
+
+function normalizeSiteContent(content: SiteContent): SiteContent {
+  return {
+    ...content,
+    home: {
+      ...content.home,
+      hero: {
+        ...content.home.hero,
+        photo:
+          resolveLegacyAssetPath(content.home.hero.photo) ??
+          "/images/projects/benefits-enrollment/hero/benefits-hero.png",
+      },
+      trusted_by: {
+        ...content.home.trusted_by,
+        clients: content.home.trusted_by.clients.map((client) => ({
+          ...client,
+          logo: resolveLegacyAssetPath(client.logo) ?? client.logo,
+        })),
+      },
+    },
+    resume: {
+      ...content.resume,
+      certifications: content.resume.certifications.map((certification) => ({
+        ...certification,
+        logo: resolveLegacyAssetPath(certification.logo) ?? certification.logo,
+      })),
+    },
+  };
+}
+
 export function resolveTrustedLogo(name: string, explicit?: string | null) {
   return trustedLogoMap[name] ?? (explicit ? withBasePath(explicit) : withBasePath("/images/SNUZw.png"));
 }
@@ -171,7 +218,7 @@ export function usePublicSiteContent() {
         .maybeSingle();
 
       if (data?.payload) {
-        setSiteContent(data.payload as SiteContent);
+        setSiteContent(normalizeSiteContent(data.payload as SiteContent));
       }
       setLoading(false);
     })();

@@ -18,7 +18,7 @@ values (
     "hero": {
       "greeting": "I am Greddys Martinez",
       "tagline": "a designer in AI Research & UX / UI",
-      "photo": "/images/hero-photo.jpg",
+      "photo": "/images/projects/benefits-enrollment/hero/benefits-hero.png",
       "methodology_chips": [
         "Classic",
         "Agile based",
@@ -30,16 +30,16 @@ values (
     "trusted_by": {
       "label": "Collaborated with",
       "clients": [
-        { "name": "IBX", "logo": "/images/logos/ibx.png" },
-        { "name": "Skill", "logo": "/images/logos/skill.png" },
-        { "name": "Nayya", "logo": "/images/logos/nayya.png" },
-        { "name": "Paychex", "logo": "/images/logos/paychex.png" },
+        { "name": "IBX", "logo": "/images/SNUZw.png" },
+        { "name": "Skill", "logo": "/images/IbuV3.png" },
+        { "name": "Nayya", "logo": "/images/SNUZ.svg" },
+        { "name": "Paychex", "logo": "/images/c54fy.png" },
         { "name": "Paramount+", "logo": "/images/paramount-plus.svg" }
       ]
     },
     "certifications": [
-      { "name": "Upwork Certification", "logo": "/images/certs/upwork-cert.png" },
-      { "name": "NN/g UX Certification", "logo": "/images/certs/nng-cert.png" }
+      { "name": "Upwork Certification", "logo": "/images/iNSrn.png" },
+      { "name": "NN/g UX Certification", "logo": "/images/OiSjn.png" }
     ],
     "stat_banner": {
       "text": "Last quarter, my clients saw a",
@@ -155,7 +155,7 @@ values
   array['UX Research','Product Design','Design Systems'],
   array['Figma','Jira','Miro','Webex','Outlook','Copilot'],
   '{"cover":"/images/projects/EB.png","hero":"/images/projects/benefits-cover.png","gallery":["/images/projects/benefits/figma-logo.png","/images/projects/benefits/jira-logo.png","/images/projects/benefits/miro-logo.png"]}'::jsonb,
-  '[{"name":"Paychex","logo":"/images/logos/paychex.png"},{"name":"Nayya","logo":"/images/logos/nayya.png"},{"name":"IBX","logo":"/images/logos/ibx.png"}]'::jsonb,
+  '[{"name":"Paychex","logo":"/images/c54fy.png"},{"name":"Nayya","logo":"/images/SNUZ.svg"},{"name":"IBX","logo":"/images/SNUZw.png"}]'::jsonb,
   '[{"value":"72%","label":"Reduction in processing time","context":"benefits processing"},{"value":"500+","label":"Employees self-managed","context":"without IT tickets"},{"value":"3 mo","label":"End-to-end design & delivery","context":"timeline"}]'::jsonb,
   array['Product Owner','Program manager','Business analyst','Researcher','Dev team (12)','UX manager','UX Lead','UX/UI designer','Service architect','Scrum master'],
   array['User Research','UX/UI Design','Product Thinking','Narrative'],
@@ -186,7 +186,7 @@ values
   array['UX Research','Product Design'],
   array['Figma','Miro','Maze','Copilot'],
   '{"cover":"/images/projects/nayya-cover.png","hero":"/images/projects/nayya-hero.png","gallery":[]}'::jsonb,
-  '[{"name":"Nayya","logo":"/images/logos/nayya.png"},{"name":"Paychex","logo":"/images/logos/paychex.png"}]'::jsonb,
+  '[{"name":"Nayya","logo":"/images/SNUZ.svg"},{"name":"Paychex","logo":"/images/c54fy.png"}]'::jsonb,
   '[{"value":"4.8★","label":"Average user satisfaction","context":"post-launch survey"},{"value":"67%","label":"Recommendation-to-enrollment","context":"conversion rate"},{"value":"~115K","label":"Enrollments influenced","context":"projected annual"}]'::jsonb,
   array['Product Owner','UX Lead','UX/UI designer','AI/ML Engineer','Dev team'],
   array['Conversational UX Design','AI interaction design','Prototyping','User Research'],

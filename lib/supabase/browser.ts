@@ -1,13 +1,14 @@
 "use client";
 
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { shouldUseLocalPublicContent } from "@/lib/cms/source";
 
 let browserClient: SupabaseClient | null = null;
 
 export function getSupabaseBrowserClient(): SupabaseClient | null {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  const useLocalContent = /^(1|true|yes)$/i.test(process.env.NEXT_PUBLIC_USE_LOCAL_CONTENT ?? "");
+  const useLocalContent = shouldUseLocalPublicContent();
 
   if (useLocalContent || !url || !anonKey) {
     return null;
