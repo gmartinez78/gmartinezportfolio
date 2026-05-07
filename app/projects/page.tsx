@@ -51,8 +51,8 @@ export default function ProjectsPage() {
   const socialLogos = siteContent?.home?.trusted_by?.clients?.map((client) => ({
     src: resolveTrustedLogo(client.name, client.logo),
     alt: client.name,
-    h: client.name === "Skill" ? 59 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : client.name === "Paramount+" ? 42 : 41,
-    w: client.name === "Skill" ? 107 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : client.name === "Paramount+" ? 164 : 57,
+    h: client.name === "Skill" ? 59 : client.name === "Hakuna" ? 51 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : client.name === "Paramount+" ? 34 : client.name === "IBX" ? 34 : 41,
+    w: client.name === "Skill" ? 107 : client.name === "Hakuna" ? 142 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : client.name === "Paramount+" ? 132 : client.name === "IBX" ? 48 : 57,
   }));
 
   return (

@@ -32,7 +32,8 @@ values (
       "clients": [
         { "name": "IBX", "logo": "/images/SNUZw.png" },
         { "name": "Skill", "logo": "/images/IbuV3.png" },
-        { "name": "Nayya", "logo": "/images/SNUZ.svg" },
+        { "name": "Hakuna", "logo": "/images/hakuna.avif" },
+        { "name": "Nayya", "logo": "/images/bBw3A.png" },
         { "name": "Paychex", "logo": "/images/c54fy.png" },
         { "name": "Paramount+", "logo": "/images/paramount-plus.svg" }
       ]
@@ -186,7 +187,7 @@ values
   array['UX Research','Product Design'],
   array['Figma','Miro','Maze','Copilot'],
   '{"cover":"/images/projects/nayya-cover.png","hero":"/images/projects/nayya-hero.png","gallery":[]}'::jsonb,
-  '[{"name":"Nayya","logo":"/images/SNUZ.svg"},{"name":"Paychex","logo":"/images/c54fy.png"}]'::jsonb,
+  '[{"name":"Nayya","logo":"/images/bBw3A.png"},{"name":"Paychex","logo":"/images/c54fy.png"}]'::jsonb,
   '[{"value":"4.8★","label":"Average user satisfaction","context":"post-launch survey"},{"value":"67%","label":"Recommendation-to-enrollment","context":"conversion rate"},{"value":"~115K","label":"Enrollments influenced","context":"projected annual"}]'::jsonb,
   array['Product Owner','UX Lead','UX/UI designer','AI/ML Engineer','Dev team'],
   array['Conversational UX Design','AI interaction design','Prototyping','User Research'],

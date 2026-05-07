@@ -9,7 +9,8 @@ import { normalizeNavigableHref, withBasePath } from "@/lib/site";
 const trustedLogoMap: Record<string, string> = {
   IBX: withBasePath("/images/SNUZw.png"),
   Skill: withBasePath("/images/IbuV3.png"),
-  Nayya: withBasePath("/images/SNUZ.svg"),
+  Hakuna: withBasePath("/images/hakuna.avif"),
+  Nayya: withBasePath("/images/bBw3A.png"),
   Paychex: withBasePath("/images/c54fy.png"),
   "Paramount+": withBasePath("/images/paramount-plus.svg"),
   Flock: withBasePath("/images/flock-logo.png"),
@@ -107,7 +108,7 @@ const legacyAssetMap: Record<string, string> = {
   "/images/hero-photo.jpg": "/images/projects/benefits-enrollment/hero/benefits-hero.png",
   "/images/logos/ibx.png": "/images/SNUZw.png",
   "/images/logos/skill.png": "/images/IbuV3.png",
-  "/images/logos/nayya.png": "/images/SNUZ.svg",
+  "/images/logos/nayya.png": "/images/bBw3A.png",
   "/images/logos/paychex.png": "/images/c54fy.png",
   "/images/certs/upwork-cert.png": "/images/iNSrn.png",
   "/images/certs/nng-cert.png": "/images/OiSjn.png",

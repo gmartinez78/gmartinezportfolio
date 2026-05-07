@@ -180,9 +180,8 @@ const NAYYA_REFLECTIONS: CaseStudyReflection[] = [
 ];
 
 const NAYYA_PHONE_IMAGE = "/images/projects/nayya-ai-benefits/banners/nayya-design-process.png";
-const NAYYA_IMPACT_IMAGE = "/images/projects/nayya-ai-benefits/banners/nayya-guided-decision-modal.jpg";
-const NAYYA_IMPACT_FIGMA_LINK =
-  "https://www.figma.com/design/YK1xcLLDokH5gNYAeDmNiP/Nayya?node-id=20753-8774&m=dev&t=OkK79FuO2xBLEwc6-1";
+const NAYYA_IMPACT_FIGMA_EMBED =
+  "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FYK1xcLLDokH5gNYAeDmNiP%2FNayya%3Fnode-id%3D20753-8774%26m%3Ddev%26t%3DOkK79FuO2xBLEwc6-1";
 const NAYYA_INSIGHTS_CLOSING =
   "Participants who completed the Nayya survey enrolled in TWICE as many benefits as those who skipped it.";
 
@@ -1368,25 +1367,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "nayya-ai-benefits" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="max-w-[1040px] mx-auto">
-            <a
-              href={NAYYA_IMPACT_FIGMA_LINK}
-              target="_blank"
-              rel="noreferrer"
-              className="group block"
-            >
-              <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
-                <Image
-                  src={withBasePath(NAYYA_IMPACT_IMAGE)}
-                  alt="Nayya guided decision modal and impact exploration"
-                  width={1600}
-                  height={1040}
-                  className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.01]"
-                />
-              </div>
-              <p className="mt-3 text-center text-[12px] font-medium uppercase tracking-[0.18em] text-[#5c7792]">
-                Open source frame in Figma
-              </p>
-            </a>
+            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
+              <iframe
+                title="Nayya impact frame from Figma"
+                src={NAYYA_IMPACT_FIGMA_EMBED}
+                className="h-[520px] w-full"
+                allowFullScreen
+              />
+            </div>
           </div>
         </section>
       ) : null}
