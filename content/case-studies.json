@@ -365,8 +365,8 @@
     "filters": ["UX Research", "Product Design", "Compliance"],
     "tools": ["Figma", "Jira", "Miro", "Webex", "Outlook", "Copilot"],
     "images": {
-      "cover": "/images/projects/i9-everify-integration/hero/user-management.png",
-      "hero": "",
+      "cover": "/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png",
+      "hero": "/images/projects/i9-everify-integration/hero/i9-banner.png",
       "gallery": []
     },
     "client_logos": [
