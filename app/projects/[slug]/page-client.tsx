@@ -836,25 +836,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
               </div>
               <div className="h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
-              {caseStudy.slug === "flock-accessibility-system" ? (
-                <div className="flex flex-wrap items-center justify-center gap-8 pt-1">
-                  <img
-                    src={withBasePath("/images/flock-logo.png")}
-                    alt="Flock"
-                    className="max-h-[52px] w-auto object-contain opacity-80 grayscale transition-all hover:grayscale-0 hover:opacity-100"
-                  />
-                  <img
-                    src={withBasePath("/images/SNUZw.png")}
-                    alt="IBX"
-                    className="max-h-[52px] w-auto object-contain opacity-80 grayscale transition-all hover:grayscale-0 hover:opacity-100"
-                  />
-                  <img
-                    src={withBasePath("/images/c54fy.png")}
-                    alt="Paychex"
-                    className="max-h-[52px] w-auto object-contain opacity-80 grayscale transition-all hover:grayscale-0 hover:opacity-100"
-                  />
-                </div>
-              ) : null}
             </div>
           </div>
         </section>
@@ -1517,6 +1498,25 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
         <div className="mb-8 h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
+        {caseStudy.slug === "flock-accessibility-system" ? (
+          <div className="mb-10 flex flex-wrap items-center justify-center gap-8">
+            <img
+              src={withBasePath("/images/flock-logo.png")}
+              alt="Flock"
+              className="h-12 w-auto object-contain opacity-80"
+            />
+            <img
+              src={withBasePath("/images/SNUZw.png")}
+              alt="IBX"
+              className="h-12 w-auto object-contain opacity-80"
+            />
+            <img
+              src={withBasePath("/images/c54fy.png")}
+              alt="Paychex"
+              className="h-12 w-auto object-contain opacity-80"
+            />
+          </div>
+        ) : null}
         {caseStudy.client_logos.length ? (
           <div className="mb-10 flex flex-wrap items-center justify-center gap-8">
             {caseStudy.client_logos.map((logo) => (
