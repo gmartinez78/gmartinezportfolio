@@ -453,6 +453,7 @@ export default function ResumePage() {
                   width={110}
                   height={154}
                   className="h-auto w-[92px] sm:w-[110px]"
+                  style={{ height: "auto" }}
                 />
                 <p className="mt-3 text-[15px] font-medium leading-snug text-[#1f2f3d]">
                   NN/Group Certified
@@ -471,7 +472,7 @@ export default function ResumePage() {
         <SectionHeading eyebrow="Career" title="Experience" centered className="mb-8" />
         <div className="flex flex-col gap-5">
           {experience.map((job) => (
-            <Card key={job.role} className="p-0 py-0">
+            <Card key={`${job.role}-${job.company}`} className="p-0 py-0">
               <CardContent className="p-6">
               <div className="flex items-start justify-between gap-4 flex-wrap">
                 <div>
@@ -618,6 +619,7 @@ export default function ResumePage() {
                 width={38}
                 height={54}
                 className="h-auto w-[30px] sm:w-[38px]"
+                style={{ height: "auto" }}
               />
               <div>
                 <h3 className="text-[18px] font-semibold text-[#0e2951] sm:text-[20px]">
