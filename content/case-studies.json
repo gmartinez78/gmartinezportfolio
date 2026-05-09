@@ -712,10 +712,8 @@
       ]
     },
     "design_strategy": [
-      "Make I-9 feel like part of Flex onboarding rather than a disconnected compliance task.",
-      "Use clearer handoff messaging, progress states, and completion feedback to reduce confusion around the external HIREtech experience.",
-      "Keep completed documents, progress indicators, and follow-up actions visible after the vendor experience.",
-      "Design for compliance, billing, and scalability without overwhelming the employee or admin journeys."
+
+      "Use clearer handoff messaging, progress states, and completion feedback to reduce confusion around the external HIREtech experience."
     ],
     "reflections": [
       {

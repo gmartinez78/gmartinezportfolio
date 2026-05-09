@@ -1159,6 +1159,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               centered
               className="mb-12"
             />
+            <div className="mx-auto mb-10 max-w-[820px] text-center">
+              <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                Made I-9 feel like part of Flex onboarding rather than a disconnected compliance task by aligning it with existing onboarding patterns and designing a dedicated company settings flow to configure and manage the integration.
+              </p>
+            </div>
             <div className="mx-auto max-w-[1100px]">
               <img
                 src={withBasePath("/images/projects/i9-everify-integration/banners/i9-admin-design-process.svg")}
@@ -1166,15 +1171,31 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 className="h-auto w-full"
               />
             </div>
-            <div className="mx-auto mt-10 max-w-[1100px]">
-              <div className="space-y-5 text-center lg:text-left">
+            <div className="mx-auto mt-10 max-w-[820px] text-center">
+              <div className="space-y-5">
                 {designStrategy.map((item) => (
                   <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
                 ))}
+              </div>
+            </div>
+            <div className="mx-auto mt-10 max-w-[1100px]">
+              <div>
                 <div className="mt-6">
                   <img
                     src={withBasePath("/images/projects/i9-everify-integration/banners/i9-employee-design-process.svg")}
                     alt="I-9 employee interface design"
+                    className="h-auto w-full"
+                  />
+                </div>
+                <div className="mx-auto my-10 max-w-[820px] text-center">
+                  <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                    Keep completed documents, progress indicators, and follow-up actions visible after the vendor experience.
+                  </p>
+                </div>
+                <div className="mt-6">
+                  <img
+                    src={withBasePath("/images/projects/i9-everify-integration/banners/i9-admin-experience.svg")}
+                    alt="I-9 admin experience"
                     className="h-auto w-full"
                   />
                 </div>
