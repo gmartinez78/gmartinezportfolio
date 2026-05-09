@@ -12,8 +12,22 @@
     "duration": "3 months",
     "industry": "BENEFITS / ENSURANCE SAAS",
     "tagline": "Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%.",
-    "tags": ["BENEFITS / ENSURANCE SAAS", "UX Research", "IA", "Interaction Design", "Design Systems"],
-    "tools": ["Figma", "Jira", "Miro", "Webex", "Outlook", "Copilot", "Hotjar"],
+    "tags": [
+      "BENEFITS / ENSURANCE SAAS",
+      "UX Research",
+      "IA",
+      "Interaction Design",
+      "Design Systems"
+    ],
+    "tools": [
+      "Figma",
+      "Jira",
+      "Miro",
+      "Webex",
+      "Outlook",
+      "Copilot",
+      "Hotjar"
+    ],
     "images": {
       "cover": "/images/projects/benefits-enrollment/thumbnails/thumbnail-benefits.png",
       "hero": "/images/projects/benefits-enrollment/hero/benefits-hero.png",
@@ -24,21 +38,54 @@
       ]
     },
     "client_logos": [
-      { "name": "Paychex", "logo": "/images/c54fy.png" },
-      { "name": "Flock", "logo": "/images/flock-logo.png" },
-      { "name": "IBX", "logo": "/images/SNUZw.png" }
+      {
+        "name": "Paychex",
+        "logo": "/images/c54fy.png"
+      },
+      {
+        "name": "Flock",
+        "logo": "/images/flock-logo.png"
+      },
+      {
+        "name": "IBX",
+        "logo": "/images/SNUZw.png"
+      }
     ],
     "metrics": [
-      { "value": "72%", "label": "Reduction in processing time", "context": "benefits processing" },
-      { "value": "500+", "label": "Employees self-managed", "context": "without IT tickets" },
-      { "value": "3 mo", "label": "End-to-end design & delivery", "context": "timeline" }
+      {
+        "value": "72%",
+        "label": "Reduction in processing time",
+        "context": "benefits processing"
+      },
+      {
+        "value": "500+",
+        "label": "Employees self-managed",
+        "context": "without IT tickets"
+      },
+      {
+        "value": "3 mo",
+        "label": "End-to-end design & delivery",
+        "context": "timeline"
+      }
     ],
     "team": [
-      "Product Owner", "Program manager", "Business analyst", "Researcher",
-      "Dev team (12)", "UX manager", "UX Lead", "UX/UI designer",
-      "Service architect", "Scrum master"
+      "Product Owner",
+      "Program manager",
+      "Business analyst",
+      "Researcher",
+      "Dev team (12)",
+      "UX manager",
+      "UX Lead",
+      "UX/UI designer",
+      "Service architect",
+      "Scrum master"
     ],
-    "my_role": ["User Research", "UX/UI Design", "Product Thinking", "Narrative"],
+    "my_role": [
+      "User Research",
+      "UX/UI Design",
+      "Product Thinking",
+      "Narrative"
+    ],
     "problem": {
       "admin_pain_points": [
         "Benefits changes required running multiple payroll cycles and manual reconciliation.",
@@ -58,11 +105,31 @@
     "methodology": {
       "name": "Design Thinking",
       "steps": [
-        { "step": 1, "label": "Empathize", "description": "User interviews & stakeholder sessions" },
-        { "step": 2, "label": "Define", "description": "Problem framing & pain point mapping" },
-        { "step": 3, "label": "Ideate", "description": "Flows, architecture & wireframing" },
-        { "step": 4, "label": "Prototype", "description": "Hi-fi screens & interactive prototypes" },
-        { "step": 5, "label": "Test", "description": "Post-launch Hotjar analysis" }
+        {
+          "step": 1,
+          "label": "Empathize",
+          "description": "User interviews & stakeholder sessions"
+        },
+        {
+          "step": 2,
+          "label": "Define",
+          "description": "Problem framing & pain point mapping"
+        },
+        {
+          "step": 3,
+          "label": "Ideate",
+          "description": "Flows, architecture & wireframing"
+        },
+        {
+          "step": 4,
+          "label": "Prototype",
+          "description": "Hi-fi screens & interactive prototypes"
+        },
+        {
+          "step": 5,
+          "label": "Test",
+          "description": "Post-launch Hotjar analysis"
+        }
       ]
     },
     "design_strategy": [
@@ -71,8 +138,14 @@
       "With no design system, collaboration with the development team ensured the forward-facing UI remained cohesive throughout."
     ],
     "reflections": [
-      { "title": "Architecture before UI.", "body": "Investing time in mapping the permission model before designing screens prevented costly rework. The logic had to be airtight before any pixel moved." },
-      { "title": "Trust through constraints.", "body": "Working without a design system forced tight collaboration with engineers. Constant syncs kept the UI cohesive and the handoff smooth even under timeline pressure." }
+      {
+        "title": "Architecture before UI.",
+        "body": "Investing time in mapping the permission model before designing screens prevented costly rework. The logic had to be airtight before any pixel moved."
+      },
+      {
+        "title": "Trust through constraints.",
+        "body": "Working without a design system forced tight collaboration with engineers. Constant syncs kept the UI cohesive and the handoff smooth even under timeline pressure."
+      }
     ],
     "nda_notice": "Parts of this presentation — including some screens and project details — have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy.",
     "password": null,
@@ -91,25 +164,72 @@
     "duration": "6 months",
     "industry": "AI Benefits / HR SaaS",
     "tagline": "Designed the integration of Nayya as an AI-powered benefits tool, guiding employees to choose coverage that matched their needs.",
-    "tags": ["BENEFITS / ENSURANCE SAAS", "UX Research", "IA", "Interaction Design", "Design Systems"],
-    "tools": ["Figma", "Jira", "Miro", "Webex", "Outlook", "Copilot", "Hotjar"],
-    "filters": ["UX Research", "Product Design", "AI Product"],
+    "tags": [
+      "BENEFITS / ENSURANCE SAAS",
+      "UX Research",
+      "IA",
+      "Interaction Design",
+      "Design Systems"
+    ],
+    "tools": [
+      "Figma",
+      "Jira",
+      "Miro",
+      "Webex",
+      "Outlook",
+      "Copilot",
+      "Hotjar"
+    ],
+    "filters": [
+      "UX Research",
+      "Product Design",
+      "AI Product"
+    ],
     "images": {
       "cover": "/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png",
       "hero": "/images/projects/nayya-ai-benefits/hero/nayya-hero.png",
       "gallery": []
     },
     "client_logos": [
-      { "name": "Nayya", "logo": "/images/bBw3A.png" },
-      { "name": "Paychex", "logo": "/images/c54fy.png" }
+      {
+        "name": "Nayya",
+        "logo": "/images/bBw3A.png"
+      },
+      {
+        "name": "Paychex",
+        "logo": "/images/c54fy.png"
+      }
     ],
     "metrics": [
-      { "value": "307%", "label": "IRR", "context": "Projected ROI — estimated return from increased plan uptake (NPV $11.4M)." },
-      { "value": "~115,500", "label": "Annual Benefits", "context": "Enrollments completed 5% above the 100K goal." },
-      { "value": "67%", "label": "Conversion Rate", "context": "Users who received Nayya recommendations that fit their needs and enrolled in a plan." }
+      {
+        "value": "307%",
+        "label": "IRR",
+        "context": "Projected ROI — estimated return from increased plan uptake (NPV $11.4M)."
+      },
+      {
+        "value": "~115,500",
+        "label": "Annual Benefits",
+        "context": "Enrollments completed 5% above the 100K goal."
+      },
+      {
+        "value": "67%",
+        "label": "Conversion Rate",
+        "context": "Users who received Nayya recommendations that fit their needs and enrolled in a plan."
+      }
     ],
-    "team": ["UX Lead", "Content Designer", "Product Owner", "Business Analyst", "Solution Leads"],
-    "my_role": ["UX Strategy", "Integration UX", "User Research", "Product Thinking"],
+    "team": [
+      "UX Lead",
+      "Content Designer",
+      "Product Owner",
+      "Business Analyst",
+      "Solution Leads"
+    ],
+    "my_role": [
+      "UX Strategy",
+      "Integration UX",
+      "User Research",
+      "Product Thinking"
+    ],
     "problem": {
       "admin_pain_points": [
         "A seamless embedded integration between Flex and Nayya Choose was not feasible under the technical constraints.",
@@ -129,11 +249,31 @@
     "methodology": {
       "name": "Research & Discovery",
       "steps": [
-        { "step": 1, "label": "Understand", "description": "Clarified the benefits selection journey and Nayya Choose's role in decision support." },
-        { "step": 2, "label": "Define", "description": "Identified the feasible integration path between Flex and the external Nayya experience." },
-        { "step": 3, "label": "Align", "description": "Collaborated with the Solution Leads, Product Onwer, Business Analyst and Devs." },
-        { "step": 4, "label": "Validate", "description": "Recommended user testing to understand concerns before finalizing the handoff." },
-        { "step": 5, "label": "Measure", "description": "Used enrollment behavior and revenue projections to evaluate impact." }
+        {
+          "step": 1,
+          "label": "Understand",
+          "description": "Clarified the benefits selection journey and Nayya Choose's role in decision support."
+        },
+        {
+          "step": 2,
+          "label": "Define",
+          "description": "Identified the feasible integration path between Flex and the external Nayya experience."
+        },
+        {
+          "step": 3,
+          "label": "Align",
+          "description": "Collaborated with the Solution Leads, Product Onwer, Business Analyst and Devs."
+        },
+        {
+          "step": 4,
+          "label": "Validate",
+          "description": "Recommended user testing to understand concerns before finalizing the handoff."
+        },
+        {
+          "step": 5,
+          "label": "Measure",
+          "description": "Used enrollment behavior and revenue projections to evaluate impact."
+        }
       ]
     },
     "design_strategy": [
@@ -142,10 +282,22 @@
       "Protect continuity between Flex and Nayya Choose by making the handoff feel intentional, trustworthy, and aligned with the broader enrollment journey."
     ],
     "reflections": [
-      { "title": "Designing under constraints.", "body": "Designing under technical constraints does not mean compromising the experience. It means finding the most effective path within the boundaries you are given." },
-      { "title": "Test early, fix early.", "body": "User testing, even at a small scale, surfaces the decisions that matter most before they become expensive to fix." },
-      { "title": "Trust is a design problem.", "body": "When users cross platform boundaries, clarity and context are what keep them moving forward." },
-      { "title": "Constraints force focus.", "body": "The inability to embed Nayya natively pushed the team to invest in transition design, an area that is often overlooked when seamless integration feels like the obvious solution." }
+      {
+        "title": "Designing under constraints.",
+        "body": "Designing under technical constraints does not mean compromising the experience. It means finding the most effective path within the boundaries you are given."
+      },
+      {
+        "title": "Test early, fix early.",
+        "body": "User testing, even at a small scale, surfaces the decisions that matter most before they become expensive to fix."
+      },
+      {
+        "title": "Trust is a design problem.",
+        "body": "When users cross platform boundaries, clarity and context are what keep them moving forward."
+      },
+      {
+        "title": "Constraints force focus.",
+        "body": "The inability to embed Nayya natively pushed the team to invest in transition design, an area that is often overlooked when seamless integration feels like the obvious solution."
+      }
     ],
     "nda_notice": null,
     "password": null,
@@ -188,12 +340,30 @@
         "body": "The integration showed clear value for users who engaged with Nayya Choose. Participants who completed the survey enrolled in twice as many benefits as those who skipped it, and the work contributed to measurable growth across medical, ancillary, and PEO revenue.",
         "payload": {
           "rows": [
-            { "metric": "Annual growth target - Medical", "value": "2%" },
-            { "metric": "Annual growth target - Ancillary", "value": "8%" },
-            { "metric": "FY26 medical growth", "value": "$1M" },
-            { "metric": "FY26 ancillary growth", "value": "$2M" },
-            { "metric": "Full-year impact - Flex", "value": "$6M" },
-            { "metric": "Full-year impact - All PEO", "value": "$10M" }
+            {
+              "metric": "Annual growth target - Medical",
+              "value": "2%"
+            },
+            {
+              "metric": "Annual growth target - Ancillary",
+              "value": "8%"
+            },
+            {
+              "metric": "FY26 medical growth",
+              "value": "$1M"
+            },
+            {
+              "metric": "FY26 ancillary growth",
+              "value": "$2M"
+            },
+            {
+              "metric": "Full-year impact - Flex",
+              "value": "$6M"
+            },
+            {
+              "metric": "Full-year impact - All PEO",
+              "value": "$10M"
+            }
           ],
           "insights": [
             "Baseline average plans per participant (2023-2025): 4.46",
@@ -225,9 +395,27 @@
     "duration": "6 months audit + 1 year build",
     "industry": "Accessibility / Design Systems",
     "tagline": "Led an accessibility audit and helped unify the design system. This reduced pattern debt, made the product more consistent, and improved collaboration between design and development teams.",
-    "tags": ["Accessibility", "Design Systems", "UX Research", "Product Design", "Axe", "A11y", "Design system", "Voice Over", "Storybook"],
-    "filters": ["Accessibility", "Design Systems", "Product Design"],
-    "tools": ["Figma", "Jira", "Miro"],
+    "tags": [
+      "Accessibility",
+      "Design Systems",
+      "UX Research",
+      "Product Design",
+      "Axe",
+      "A11y",
+      "Design system",
+      "Voice Over",
+      "Storybook"
+    ],
+    "filters": [
+      "Accessibility",
+      "Design Systems",
+      "Product Design"
+    ],
+    "tools": [
+      "Figma",
+      "Jira",
+      "Miro"
+    ],
     "images": {
       "cover": "/images/projects/flock-accessibility-system/thumbnails/flock.png",
       "hero": "/images/projects/flock-accessibility-system/hero/flock-hero.png",
@@ -235,11 +423,32 @@
     },
     "client_logos": [],
     "metrics": [
-      { "value": "6 months", "label": "Audit and prioritization", "context": "initial accessibility and system review" },
-      { "value": "1 system", "label": "Shared foundation", "context": "aligned patterns, typography, icons, and dialogs" }
+      {
+        "value": "6 months",
+        "label": "Audit and prioritization",
+        "context": "initial accessibility and system review"
+      },
+      {
+        "value": "1 system",
+        "label": "Shared foundation",
+        "context": "aligned patterns, typography, icons, and dialogs"
+      }
     ],
-    "team": ["1 designer", "UX Lead", "UX Manager", "Product Owner", "Business Analyst", "3 developers", "Dev Lead"],
-    "my_role": ["Accessibility Audit Lead", "Component Strategy", "Design Systems", "Engineering Partnership"],
+    "team": [
+      "1 designer",
+      "UX Lead",
+      "UX Manager",
+      "Product Owner",
+      "Business Analyst",
+      "3 developers",
+      "Dev Lead"
+    ],
+    "my_role": [
+      "Accessibility Audit Lead",
+      "Component Strategy",
+      "Design Systems",
+      "Engineering Partnership"
+    ],
     "problem": {
       "admin_pain_points": [
         "The product had accessibility risk across core flows and no mature shared library to address issues systematically.",
@@ -260,11 +469,31 @@
     "methodology": {
       "name": "Audit to Systemization",
       "steps": [
-        { "step": 1, "label": "Audit", "description": "Checked for accessibility issues and components that didn't match the system." },
-        { "step": 2, "label": "Structure", "description": "Grouped problems by importance to see what to fix first." },
-        { "step": 3, "label": "Systemize", "description": "Created clear patterns, states, and rules for how components should work." },
-        { "step": 4, "label": "Align", "description": "Worked with developers to make sure designs could be built correctly in React." },
-        { "step": 5, "label": "Validate", "description": "Reviewed designs and builds, using feedback to improve consistency." }
+        {
+          "step": 1,
+          "label": "Audit",
+          "description": "Checked for accessibility issues and components that didn't match the system."
+        },
+        {
+          "step": 2,
+          "label": "Structure",
+          "description": "Grouped problems by importance to see what to fix first."
+        },
+        {
+          "step": 3,
+          "label": "Systemize",
+          "description": "Created clear patterns, states, and rules for how components should work."
+        },
+        {
+          "step": 4,
+          "label": "Align",
+          "description": "Worked with developers to make sure designs could be built correctly in React."
+        },
+        {
+          "step": 5,
+          "label": "Validate",
+          "description": "Reviewed designs and builds, using feedback to improve consistency."
+        }
       ]
     },
     "design_strategy": [
@@ -274,7 +503,10 @@
       "Used design review, accessibility checks, and implementation feedback to strengthen adoption and consistency."
     ],
     "reflections": [
-      { "title": "Usability is about revealing what matters.", "body": "Usability isn't about removing; it's about revealing what matters. This project proves that accessibility, performance, and UX all strengthen each other when treated as one discipline." }
+      {
+        "title": "Usability is about revealing what matters.",
+        "body": "Usability isn't about removing; it's about revealing what matters. This project proves that accessibility, performance, and UX all strengthen each other when treated as one discipline."
+      }
     ],
     "nda_notice": null,
     "password": null,
@@ -323,9 +555,18 @@
         "body": "The project created a clearer system foundation for accessibility, component reuse, and implementation consistency. Because confirmed business metrics were not preserved, the outcomes are framed through product, system, and delivery signals.",
         "payload": {
           "rows": [
-            { "metric": "Accessibility risk", "value": "Lowered" },
-            { "metric": "Pattern debt", "value": "Reduced" },
-            { "metric": "Handoff clarity", "value": "Stronger" }
+            {
+              "metric": "Accessibility risk",
+              "value": "Lowered"
+            },
+            {
+              "metric": "Pattern debt",
+              "value": "Reduced"
+            },
+            {
+              "metric": "Handoff clarity",
+              "value": "Stronger"
+            }
           ],
           "insights": [
             "The audit made severity and prioritization visible, which helped the team address structural accessibility problems instead of isolated UI fixes.",
@@ -360,25 +601,72 @@
     "year": 2024,
     "duration": "Around 3 years",
     "industry": "HR Compliance / Onboarding SaaS",
-    "tagline": "Integrated I-9 and E-Verify into Flex onboarding through UX research, workflow design, and third-party compliance handoffs with HIREtech.",
-    "tags": ["UX Research", "Product Design", "Workflow Design", "Compliance"],
-    "filters": ["UX Research", "Product Design", "Compliance"],
-    "tools": ["Figma", "Jira", "Miro", "Webex", "Outlook", "Copilot"],
+    "tagline": "Integrated I-9 and E-Verify into Flex onboarding, improving task completion by 12% and user confidence from 3.2 to 4.0.",
+    "tags": [
+      "UX Research",
+      "Product Design",
+      "Workflow Design",
+      "Compliance"
+    ],
+    "filters": [
+      "UX Research",
+      "Product Design",
+      "Compliance"
+    ],
+    "tools": [
+      "Figma",
+      "Jira",
+      "Miro",
+      "Webex",
+      "Outlook",
+      "Copilot"
+    ],
     "images": {
       "cover": "/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png",
       "hero": "/images/projects/i9-everify-integration/hero/i9-banner.png",
       "gallery": []
     },
     "client_logos": [
-      { "name": "Paychex", "logo": "/images/c54fy.png" }
+      {
+        "name": "Paychex",
+        "logo": "/images/c54fy.png"
+      }
     ],
     "metrics": [
-      { "value": "26", "label": "Rounds of design exploration and testing", "context": "employee and admin journeys" },
-      { "value": "2", "label": "Core workflows supported", "context": "employee Section 1 and admin Section 2" },
-      { "value": "7", "label": "Success metric areas defined", "context": "compliance, errors, time, automation, satisfaction, support, scalability" }
+      {
+        "value": "76%",
+        "label": "of Flex clients lacked a compliant I-9 workflow",
+        "context": "the compliance gap this project was designed to close"
+      },
+      {
+        "value": "26",
+        "label": "Rounds of exploration & testing",
+        "context": "across 18 participants across employee and admin journeys"
+      },
+      {
+        "value": "2,548",
+        "label": "Survey responses post first release",
+        "context": "confirmed the integrated direction was working"
+      }
     ],
-    "team": ["Product Owner", "Program Manager", "Business Analyst", "Researcher", "Dev Team (12)", "UX Manager", "UX Lead", "UX/UI Designer", "Service Architect", "Scrum Master"],
-    "my_role": ["User Research", "UX/UI Design", "Product Thinking", "Narrative"],
+    "team": [
+      "Product Owner",
+      "Program Manager",
+      "Business Analyst",
+      "Researcher",
+      "Dev Team (12)",
+      "UX Manager",
+      "UX Lead",
+      "UX/UI Designer",
+      "Service Architect",
+      "Scrum Master"
+    ],
+    "my_role": [
+      "User Research",
+      "UX/UI Design",
+      "Product Thinking",
+      "Narrative"
+    ],
     "problem": {
       "admin_pain_points": [
         "Clients often relied on manual processes or custom off-platform solutions to manage I-9 and E-Verify requirements.",
@@ -399,11 +687,31 @@
     "methodology": {
       "name": "Design Thinking",
       "steps": [
-        { "step": 1, "label": "Research", "description": "Conducted 26 rounds of design exploration and testing across employee and admin journeys." },
-        { "step": 2, "label": "Map", "description": "Mapped where the workflow should begin in Flex and where users would transition into HIREtech." },
-        { "step": 3, "label": "Align", "description": "Aligned I-9 with familiar onboarding task patterns like W-4 and direct deposit." },
-        { "step": 4, "label": "Clarify", "description": "Defined handoff moments, status visibility, task ownership, and completion feedback." },
-        { "step": 5, "label": "Scale", "description": "Considered future needs including shared workers, same-FEIN clients, white-label support, and document migration." }
+        {
+          "step": 1,
+          "label": "Research",
+          "description": "Conducted 26 rounds of design exploration and testing across employee and admin journeys."
+        },
+        {
+          "step": 2,
+          "label": "Map",
+          "description": "Mapped where the workflow should begin in Flex and where users would transition into HIREtech."
+        },
+        {
+          "step": 3,
+          "label": "Align",
+          "description": "Aligned I-9 with familiar onboarding task patterns like W-4 and direct deposit."
+        },
+        {
+          "step": 4,
+          "label": "Clarify",
+          "description": "Defined handoff moments, status visibility, task ownership, and completion feedback."
+        },
+        {
+          "step": 5,
+          "label": "Scale",
+          "description": "Considered future needs including shared workers, same-FEIN clients, white-label support, and document migration."
+        }
       ]
     },
     "design_strategy": [
@@ -413,8 +721,18 @@
       "Design for compliance, billing, and scalability without overwhelming the employee or admin journeys."
     ],
     "reflections": [
-      { "title": "Compliance can still feel understandable.", "body": "This project was not only about adding a new form. It was about designing a compliance-heavy workflow that could still feel clear, consistent, and manageable inside onboarding." },
-      { "title": "Vendor handoffs need UX strategy.", "body": "By combining workflow design with iterative research, testing, and handoff strategy, the experience created a stronger foundation for product usability and business growth." }
+      {
+        "title": "What worked.",
+        "body": "Anchoring a compliance-heavy workflow to familiar onboarding patterns made I-9 feel native to the product rather than a bolted-on task. A single usability test with 7 users was enough to shift a product decision and protect a better experience — data beats opinion. Combining iterative testing with clear handoff strategy created a stronger foundation for both usability and business growth."
+      },
+      {
+        "title": "What I’d do differently.",
+        "body": "Establish third-party alignment earlier — waiting on compliance validation from HIREtech created rework and slowed design iterations. Moving faster through compliance content decisions by setting clearer approval checkpoints upfront, rather than iterating in circles, would have saved time."
+      },
+      {
+        "title": "What this unlocked.",
+        "body": "The project exposed a missing pattern in Flex for communicating third-party transitions to users. Solving it here created a reusable transparency pattern that addressed a systemic problem affecting multiple integrations across the platform."
+      }
     ],
     "nda_notice": null,
     "password": null,
@@ -424,32 +742,38 @@
         "id": "overview",
         "type": "overview",
         "title": "Project Overview",
-        "body": ""
-                                                                                          },
+        "body": "The I-9 and E-Verify initiative focused on helping Flex clients manage employment verification and onboarding compliance more efficiently within the platform. The experience enabled new hires to complete Section 1 of Form I-9 and allowed administrators to complete Section 2 through an integration with HIREtech, a third-party vendor. The solution also supported Remote I-9 requests, onboarding task visibility, document access, and transaction-based billing tied directly to onboarding."
+      },
       {
         "id": "situation",
         "type": "custom",
         "title": "Situation",
-        "body": "Flex clients needed a more efficient way to manage I-9 and E-Verify requirements during onboarding. Without an integrated workflow, clients often relied on manual processes or custom off-platform solutions, creating friction, compliance risk, and operational inefficiencies."
+        "body": "76% of Flex clients had no compliant I-9 and E-Verify workflow during onboarding.\n\nManual workarounds created compliance risk and operational friction across hiring workflows."
       },
       {
         "id": "task",
         "type": "custom",
         "title": "Task",
-        "body": "My role was to define a UX approach that integrated I-9 and E-Verify into Flex, designing for both the employee journey (Section 1 initiation) and the admin journey (configuration, status tracking, and Section 2 completion), while staying consistent with existing onboarding patterns and accommodating third-party compliance constraints."
+        "body": "",
+        "payload": {
+          "items": [
+            "Owned the end-to-end UX process as sole designer, from research to final handoff.",
+            "Designed for both the employee journey (Section 1) and the admin journey (Section 2 and status tracking).",
+            "Integrated I-9 and E-Verify into Flex without fragmenting the existing onboarding experience."
+          ]
+        }
       },
       {
         "id": "research",
         "type": "custom",
-        "title": "UX Research",
-        "body": "Research played a central role in shaping the workflow and reducing friction across employee and admin experiences.",
+        "title": "Research & Discovery",
+        "body": "",
         "payload": {
           "items": [
-            "Conducted 26 rounds of design exploration and testing to refine the workflow across employee and admin journeys.",
-            "Used user testing to validate how participants understood task ownership, status visibility, and redirects to the external HIREtech experience.",
-            "Included survey-based testing to capture perception, confidence, and clarity across key onboarding and compliance moments.",
-            "Reviewed Hotjar research to identify friction points, hesitation patterns, and places where users needed stronger cues before leaving Flex.",
-            "Used findings to improve workflow clarity, handoff messaging, progress states, and the narrative around why users were being redirected."
+            "Stakeholder interviews with 2 BAs, 3 engineers, 2 product leads, and ~30 HR clients confirmed the approach: integrate I-9 into the existing onboarding flow using familiar components and patterns rather than building a separate experience.",
+            "Hotjar analysis of existing onboarding flow recordings revealed users dropped off due to heavy content and unclear guidance, creating friction before the handoff even occurred.",
+            "Maze and moderated usability testing across 18 participants and 26 rounds showed the biggest clarity gap was at the HIREtech handoff — users hesitated without stronger ownership cues and redirect context.",
+            "A post-release survey with 2,548 responses validated the integrated direction was working and surfaced specific areas needing refinement after launch."
           ]
         }
       },
@@ -457,13 +781,16 @@
         "id": "actions",
         "type": "custom",
         "title": "Actions",
+        "body": "",
         "payload": {
           "items": [
-            "Mapped both the employee and admin journeys to understand where the workflow should begin in Flex and where users would transition into HIREtech.",
-            "Aligned the experience with familiar onboarding task patterns already used for workflows like W-4 and direct deposit, so I-9 felt like part of the product rather than a disconnected compliance task.",
-            "Defined clearer handoff moments between Flex and HIREtech, including task initiation, status visibility, and completion feedback inside Flex.",
-            "Helped shape how completed documents, progress indicators, and follow-up actions should remain visible after the vendor experience.",
-            "Considered future scalability needs such as shared workers, same-FEIN clients, white-label support, and migration of existing I-9 documents."
+            "Conducted 26 rounds of design exploration and usability testing using Maze and moderated sessions across 18 participants to validate task ownership, redirect clarity, and status visibility.",
+            "Pushed back on product’s decision to place I-9 settings in the hiring dashboard — ran a usability test where 7 out of 7 users navigated to Settings naturally, and used that data to realign the team.",
+            "Aligned the I-9 workflow with familiar onboarding patterns like W-4 and direct deposit, defining clearer handoff moments, progress states, and completion feedback between Flex and HIREtech.",
+            "Built an interactive prototype covering the full employee and admin flows, including task initiation, redirect, status visibility, and completion states.",
+            "Delivered detailed design specs for development including behaviors, content examples, component definitions, and edge case documentation.",
+            "Designed email communications to announce the new integration and follow up with users who did not complete the I-9 process.",
+            "Created handoff guidelines documenting how the Flex to HIREtech integration was communicated to users, covering redirect messaging, progress states, and completion feedback."
           ]
         }
       },
@@ -471,25 +798,38 @@
         "id": "impact",
         "type": "results",
         "title": "Result",
-        "body": "The project established a scalable framework for bringing I-9 and E-Verify into Flex while reducing reliance on manual processes and supporting compliance-driven onboarding tasks more effectively. The work integrated I-9 initiation into the onboarding flow, improved visibility into status and follow-up actions, supported both employee and admin workflows, and created a stronger foundation for automation and transaction-based billing.",
+        "body": "",
         "payload": {
-          "projected": [
-            "Higher compliance completion rates by making I-9 tasks visible inside onboarding and easier to track.",
-            "Lower error rates through clearer workflow guidance, validation, and status communication.",
-            "Reduced processing time by embedding task initiation directly into Flex and reducing manual coordination.",
-            "Improved user confidence by clarifying handoffs between Flex and HIREtech.",
-            "Lower support burden through clearer ownership, better progress visibility, and a more guided experience.",
-            "Stronger operational efficiency for admins managing onboarding tasks across multiple hires.",
-            "Better scalability for future onboarding, compliance, and billing-related growth."
+          "rows": [
+            {
+              "metric": "Task completion rate",
+              "value": "+12%"
+            },
+            {
+              "metric": "Avg time on task",
+              "value": "−26%"
+            },
+            {
+              "metric": "Redirect hesitation",
+              "value": "−13%"
+            },
+            {
+              "metric": "Status interpretation errors",
+              "value": "−9%"
+            },
+            {
+              "metric": "User confidence score",
+              "value": "+0.8"
+            }
           ],
-          "successMetrics": [
-            "Compliance rate: percentage of I-9s and E-Verify checks completed accurately and within legal timeframes.",
-            "Error rate reduction: fewer discrepancies, missing fields, and verification issues.",
-            "Processing time: average time required to complete Section 1 and Section 2 workflows.",
-            "Automation impact: reduced manual intervention and stronger workflow efficiency.",
-            "User satisfaction: confidence and ease of use for HR teams, admins, and employees.",
-            "Training and support effectiveness: lower support requests and smoother rollout.",
-            "Scalability: readiness to support increased product volume and future compliance needs."
+          "insights": [
+            "Task completion rate — 69% (early concept) to 81% (refined concept).",
+            "Average time on task — 4m 12s to 3m 06s.",
+            "Redirect hesitation reduced from 46% to 33%.",
+            "Status interpretation errors down from 31% to 22%.",
+            "User confidence score improved from 3.2/5 to 4.0/5.",
+            "Manual process dependency baseline established at 60–70%; target set at under 25% for post-launch tracking.",
+            "2,548 survey responses post first release confirmed the integrated direction was working."
           ]
         }
       }
