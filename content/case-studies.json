@@ -635,18 +635,15 @@
     "metrics": [
       {
         "value": "76%",
-        "label": "of Flex clients lacked a compliant I-9 workflow",
-        "context": "the compliance gap this project was designed to close"
+        "label": "of Flex clients lacked a compliant I-9 workflow"
       },
       {
         "value": "26",
-        "label": "Rounds of exploration & testing",
-        "context": "across 18 participants across employee and admin journeys"
+        "label": "Rounds of exploration & testing"
       },
       {
         "value": "2,548",
-        "label": "Survey responses post first release",
-        "context": "confirmed the integrated direction was working"
+        "label": "Survey responses post first release"
       }
     ],
     "team": [
@@ -690,7 +687,7 @@
         {
           "step": 1,
           "label": "Research",
-          "description": "Conducted 26 rounds of design exploration and testing across employee and admin journeys."
+          "description": "Research"
         },
         {
           "step": 2,
@@ -739,16 +736,10 @@
     "external_link": null,
     "content_blocks": [
       {
-        "id": "overview",
-        "type": "overview",
-        "title": "Project Overview",
-        "body": "The I-9 and E-Verify initiative focused on helping Flex clients manage employment verification and onboarding compliance more efficiently within the platform. The experience enabled new hires to complete Section 1 of Form I-9 and allowed administrators to complete Section 2 through an integration with HIREtech, a third-party vendor. The solution also supported Remote I-9 requests, onboarding task visibility, document access, and transaction-based billing tied directly to onboarding."
-      },
-      {
         "id": "situation",
         "type": "custom",
         "title": "Situation",
-        "body": "76% of Flex clients had no compliant I-9 and E-Verify workflow during onboarding.\n\nManual workarounds created compliance risk and operational friction across hiring workflows."
+        "body": "Flex clients were completing I-9 and E-Verify requirements outside the platform, relying on manual coordination, off-platform tools, and admin follow-up to close compliance gaps.\n\nAround 76% of users were affected, creating inconsistent completion rates, higher error risk, and increased support burden across hiring workflows.\n\nWithout a native workflow, there was no reliable way to track status, confirm ownership, or ensure compliance was completed on time."
       },
       {
         "id": "task",
@@ -773,7 +764,14 @@
             "Stakeholder interviews with 2 BAs, 3 engineers, 2 product leads, and ~30 HR clients confirmed the approach: integrate I-9 into the existing onboarding flow using familiar components and patterns rather than building a separate experience.",
             "Hotjar analysis of existing onboarding flow recordings revealed users dropped off due to heavy content and unclear guidance, creating friction before the handoff even occurred.",
             "Maze and moderated usability testing across 18 participants and 26 rounds showed the biggest clarity gap was at the HIREtech handoff — users hesitated without stronger ownership cues and redirect context.",
-            "A post-release survey with 2,548 responses validated the integrated direction was working and surfaced specific areas needing refinement after launch."
+            "A post-release survey with 2,548 responses validated the integrated direction was working and surfaced specific areas needing refinement after launch.",
+            "Conducted 26 rounds of design exploration and usability testing using Maze and moderated sessions across 18 participants to validate task ownership, redirect clarity, and status visibility.",
+            "Pushed back on product’s decision to place I-9 settings in the hiring dashboard — ran a usability test where 7 out of 7 users navigated to Settings naturally, and used that data to realign the team.",
+            "Aligned the I-9 workflow with familiar onboarding patterns like W-4 and direct deposit, defining clearer handoff moments, progress states, and completion feedback between Flex and HIREtech.",
+            "Built an interactive prototype covering the full employee and admin flows, including task initiation, redirect, status visibility, and completion states.",
+            "Delivered detailed design specs for development including behaviors, content examples, component definitions, and edge case documentation.",
+            "Designed email communications to announce the new integration and follow up with users who did not complete the I-9 process.",
+            "Created handoff guidelines documenting how the Flex to HIREtech integration was communicated to users, covering redirect messaging, progress states, and completion feedback."
           ]
         }
       },
@@ -783,15 +781,7 @@
         "title": "Actions",
         "body": "",
         "payload": {
-          "items": [
-            "Conducted 26 rounds of design exploration and usability testing using Maze and moderated sessions across 18 participants to validate task ownership, redirect clarity, and status visibility.",
-            "Pushed back on product’s decision to place I-9 settings in the hiring dashboard — ran a usability test where 7 out of 7 users navigated to Settings naturally, and used that data to realign the team.",
-            "Aligned the I-9 workflow with familiar onboarding patterns like W-4 and direct deposit, defining clearer handoff moments, progress states, and completion feedback between Flex and HIREtech.",
-            "Built an interactive prototype covering the full employee and admin flows, including task initiation, redirect, status visibility, and completion states.",
-            "Delivered detailed design specs for development including behaviors, content examples, component definitions, and edge case documentation.",
-            "Designed email communications to announce the new integration and follow up with users who did not complete the I-9 process.",
-            "Created handoff guidelines documenting how the Flex to HIREtech integration was communicated to users, covering redirect messaging, progress states, and completion feedback."
-          ]
+          "items": []
         }
       },
       {
