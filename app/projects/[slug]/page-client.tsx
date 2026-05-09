@@ -1467,7 +1467,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {resultInsights.length ? (
               <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
                 <CardContent className="p-8">
-                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Enrollment Behavior Insights</h3>
+                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{caseStudy.slug === "i9-everify-integration" ? "Key Results" : "Enrollment Behavior Insights"}</h3>
                   <ul className="mt-5 list-disc space-y-3 pl-5">
                     {resultInsights.filter((item) => !shouldHideInsight(item)).map((item) => (
                       /^2026(?:\s+data)?$/i.test(stripLeadingBullet(item)) ? (
