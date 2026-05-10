@@ -175,7 +175,7 @@ const I9_TESTING_RESULTS = [
   },
   {
     metric: "2,548",
-    label: "Survey responses",
+    label: "positive survey responses post release",
     finding: "A post-release survey validated the integrated direction was working.",
     insight: "Surfaced specific areas needing refinement after launch.",
   },

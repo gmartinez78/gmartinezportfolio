@@ -822,6 +822,12 @@
             "User confidence score improved from 3.2/5 to 4.0/5.",
             "Manual process dependency baseline established at 60–70%; target set at under 25% for post-launch tracking.",
             "2,548 survey responses post first release confirmed the integrated direction was working."
+          ],
+          "opportunities": [
+            "Employees leaving mid-flow had no way to save progress, creating drop-off risk and incomplete I-9 submissions.",
+            "Adding form save state could directly improve completion rates and reduce admin follow-up for unfinished cases.",
+            "Content misalignment between HIREtech and Flex was identified in testing; updated communication guidelines were delivered and awaiting HIREtech confirmation.",
+            "The transparency pattern developed for this integration opens the door to applying the same handoff strategy across other third-party workflows in Flex."
           ]
         }
       }
