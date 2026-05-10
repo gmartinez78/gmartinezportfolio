@@ -1349,26 +1349,34 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         return (
           <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
             <SectionHeading title={block.title} centered className="mb-12" />
-            <div className="mx-auto max-w-[820px] space-y-4 text-center">
-              {block.body ? block.body.split(/\n+/).map((p, i) => (
-                <p key={i} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{p.trim()}</p>
-              )) : null}
-              {items.length ? (
-                <div className="mt-5 space-y-3">
-                  {items.map((item) => (
-                    <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
-                  ))}
-                </div>
-              ) : null}
-              {deliveryItems.length ? (
-                <>
-                  <div className="mt-3 space-y-3">
+            <div className="mx-auto grid max-w-[1120px] items-start gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+              <div className="space-y-4">
+                {block.body ? block.body.split(/\n+/).map((p, i) => (
+                  <p key={i} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{p.trim()}</p>
+                )) : null}
+                {items.length ? (
+                  <div className="space-y-3">
+                    {items.map((item) => (
+                      <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+                    ))}
+                  </div>
+                ) : null}
+                {deliveryItems.length ? (
+                  <div className="space-y-3">
                     {deliveryItems.map((item) => (
                       <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
                     ))}
                   </div>
-                </>
-              ) : null}
+                ) : null}
+              </div>
+              <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.10)]">
+                <iframe
+                  title="I-9 solution design"
+                  src="https://embed.figma.com/design/WKPa60cO7df7mmw8SlB2dA/OLD-PHASE-I-9---Phase-1?node-id=382-141419&embed-host=share"
+                  className="h-[480px] w-full"
+                  allowFullScreen
+                />
+              </div>
             </div>
           </section>
         );
