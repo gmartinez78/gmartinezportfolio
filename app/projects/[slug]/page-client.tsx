@@ -1362,7 +1362,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               ) : null}
               {deliveryItems.length ? (
                 <>
-                  <p className="mt-10 font-inter text-[13px] font-semibold uppercase tracking-widest text-[#457ab5]">Delivery</p>
                   <div className="mt-3 space-y-3">
                     {deliveryItems.map((item) => (
                       <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>

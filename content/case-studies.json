@@ -748,7 +748,8 @@
           "items": [
             "Owned the end-to-end UX process as sole designer, from research to final handoff.",
             "Designed for both the employee journey (Section 1) and the admin journey (Section 2 and status tracking).",
-            "Integrated I-9 and E-Verify into Flex without fragmenting the existing onboarding experience."
+            "Integrated I-9 and E-Verify into Flex without fragmenting the existing onboarding experience.",
+            "Facilitated a working session with BAs, engineers, and product leads to surface open questions, integration constraints, and third-party gaps with HIREtech."
           ]
         }
       },
@@ -765,12 +766,10 @@
       {
         "id": "research",
         "type": "custom",
-        "title": "Research & Discovery",
+        "title": "The Solution",
         "body": "",
         "payload": {
-          "items": [
-            "Facilitated a working session with BAs, engineers, and product leads to surface open questions, integration constraints, and third-party gaps with HIREtech. Findings confirmed the approach: integrate I-9 into the existing onboarding flow using familiar components and patterns rather than building a separate experience."
-          ],
+          "items": [],
           "delivery_items": [
             "Delivered detailed design specs for development including behaviors, content examples, component definitions, and edge case documentation.",
             "Designed email communications to announce the new integration and follow up with users who did not complete the I-9 process.",
