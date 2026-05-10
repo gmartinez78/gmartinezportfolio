@@ -160,6 +160,33 @@ const NAYYA_TESTING_RESULTS = [
   },
 ];
 
+const I9_TESTING_RESULTS = [
+  {
+    metric: "High",
+    label: "Drop-off rate",
+    finding: "Hotjar analysis of existing onboarding flow recordings revealed users dropped off due to heavy content and unclear guidance.",
+    insight: "Friction was happening before the handoff even occurred, pointing to structural issues in the existing flow.",
+  },
+  {
+    metric: "26",
+    label: "Testing rounds",
+    finding: "Maze and moderated usability testing validated task ownership, redirect clarity, and status visibility.",
+    insight: "The biggest clarity gap was at the HIREtech handoff, users hesitated without stronger ownership cues and redirect context.",
+  },
+  {
+    metric: "2,548",
+    label: "Survey responses",
+    finding: "A post-release survey validated the integrated direction was working.",
+    insight: "Surfaced specific areas needing refinement after launch.",
+  },
+  {
+    metric: "7/7",
+    label: "Settings navigation",
+    finding: "Pushed back on product's decision to place I-9 settings in the hiring dashboard, ran a usability test where 7 out of 7 users navigated to Settings naturally.",
+    insight: "Used that data to realign the team and correct the navigation placement.",
+  },
+];
+
 const NAYYA_REFLECTIONS: CaseStudyReflection[] = [
   {
     title: "Designing under constraints.",
@@ -1259,6 +1286,58 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Integrated I-9 directly into the existing onboarding flow, aligning with competitive patterns and familiar user mental models. This was the approved direction.</p>
               </CardContent>
             </Card>
+          </div>
+        </section>
+      ) : null}
+
+      {caseStudy.slug === "i9-everify-integration" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+            Key Insights from Testing
+          </h2>
+          <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+            Research and discovery clarified the key questions for testing: Did users understand the handoff, feel confident continuing, and maintain trust throughout the experience? The selected guided decision modal was the concept tested, and the findings showed which parts of the integration felt clear and where friction still remained.
+          </p>
+          <div className="hidden overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white md:block">
+            <div className="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 border-b border-[#d7e8f7] bg-[#f7f9fb] px-6 py-4 text-[13px] font-bold uppercase tracking-[0.16em] text-[#0e2951]">
+              <div>Metric</div>
+              <div>Finding</div>
+              <div>Insight</div>
+            </div>
+            {I9_TESTING_RESULTS.map((row) => (
+              <div
+                key={`${row.metric}-${row.label}`}
+                className="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 border-t border-[#d7e8f7] px-5 py-5 text-[15px] leading-[1.6] text-[#5c7792]"
+              >
+                <div>
+                  <p className="text-[30px] font-semibold leading-none text-[#0e2951]">{row.metric}</p>
+                  <p className="mt-3 text-[14px] leading-[1.5] text-[#5c7792]">{row.label}</p>
+                </div>
+                <p className="font-normal text-[#5c7792]">{row.finding}</p>
+                <p className="font-normal text-[#5c7792]">{row.insight}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid gap-4 md:hidden">
+            {I9_TESTING_RESULTS.map((row) => (
+              <Card key={`${row.metric}-${row.label}`} className="overflow-hidden">
+                <CardContent className="space-y-4 px-5 py-5">
+                  <div>
+                    <p className="text-[28px] font-semibold leading-none text-[#0e2951]">{row.metric}</p>
+                    <p className="mt-2 text-[14px] leading-[1.5] text-[#5c7792]">{row.label}</p>
+                  </div>
+                  <div>
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Finding</p>
+                    <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{row.finding}</p>
+                  </div>
+                  <div>
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Insight</p>
+                    <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{row.insight}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </section>
       ) : null}

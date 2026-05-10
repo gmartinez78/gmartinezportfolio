@@ -769,12 +769,7 @@
         "body": "",
         "payload": {
           "items": [
-            "Facilitated a working session with BAs, engineers, and product leads to surface open questions, integration constraints, and third-party gaps with HIREtech. Findings confirmed the approach: integrate I-9 into the existing onboarding flow using familiar components and patterns rather than building a separate experience.",
-            "Hotjar analysis of existing onboarding flow recordings revealed users dropped off due to heavy content and unclear guidance, creating friction before the handoff even occurred.",
-            "Maze and moderated usability testing across 18 participants and 26 rounds showed the biggest clarity gap was at the HIREtech handoff — users hesitated without stronger ownership cues and redirect context.",
-            "A post-release survey with 2,548 responses validated the integrated direction was working and surfaced specific areas needing refinement after launch.",
-            "Conducted 26 rounds of design exploration and usability testing using Maze and moderated sessions across 18 participants to validate task ownership, redirect clarity, and status visibility.",
-            "Pushed back on product’s decision to place I-9 settings in the hiring dashboard — ran a usability test where 7 out of 7 users navigated to Settings naturally, and used that data to realign the team."
+            "Facilitated a working session with BAs, engineers, and product leads to surface open questions, integration constraints, and third-party gaps with HIREtech. Findings confirmed the approach: integrate I-9 into the existing onboarding flow using familiar components and patterns rather than building a separate experience."
           ],
           "delivery_items": [
             "Delivered detailed design specs for development including behaviors, content examples, component definitions, and edge case documentation.",
