@@ -790,8 +790,8 @@
         "payload": {
           "rows": [
             {
-              "metric": "Task completion rate",
-              "value": "+12%"
+              "metric": "Task completion rate from employee",
+              "value": "12%"
             },
             {
               "metric": "Avg time on task",
@@ -807,7 +807,7 @@
             },
             {
               "metric": "User confidence score",
-              "value": "+0.8"
+              "value": "0.8"
             }
           ],
           "insights": [

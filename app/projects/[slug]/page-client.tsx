@@ -1131,39 +1131,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug === "i9-everify-integration" && findBlock("research") ? (() => {
-        const block = findBlock("research")!;
-        const items = getPayloadList(block.payload, "items");
-        const deliveryItems = getPayloadList(block.payload, "delivery_items");
-        return (
-          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-            <SectionHeading title={block.title} centered className="mb-12" />
-            <div className="mx-auto max-w-[820px] space-y-4 text-center">
-              {block.body ? block.body.split(/\n+/).map((p, i) => (
-                <p key={i} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{p.trim()}</p>
-              )) : null}
-              {items.length ? (
-                <div className="mt-5 space-y-3">
-                  {items.map((item) => (
-                    <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
-                  ))}
-                </div>
-              ) : null}
-              {deliveryItems.length ? (
-                <>
-                  <p className="mt-10 font-inter text-[13px] font-semibold uppercase tracking-widest text-[#457ab5]">Delivery</p>
-                  <div className="mt-3 space-y-3">
-                    {deliveryItems.map((item) => (
-                      <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
-                    ))}
-                  </div>
-                </>
-              ) : null}
-            </div>
-          </section>
-        );
-      })() : null}
-
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         {caseStudy.slug === "nayya-ai-benefits" ? (
           <>
@@ -1272,6 +1239,39 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </>
         )}
       </section>
+
+      {caseStudy.slug === "i9-everify-integration" && findBlock("research") ? (() => {
+        const block = findBlock("research")!;
+        const items = getPayloadList(block.payload, "items");
+        const deliveryItems = getPayloadList(block.payload, "delivery_items");
+        return (
+          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+            <SectionHeading title={block.title} centered className="mb-12" />
+            <div className="mx-auto max-w-[820px] space-y-4 text-center">
+              {block.body ? block.body.split(/\n+/).map((p, i) => (
+                <p key={i} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{p.trim()}</p>
+              )) : null}
+              {items.length ? (
+                <div className="mt-5 space-y-3">
+                  {items.map((item) => (
+                    <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+                  ))}
+                </div>
+              ) : null}
+              {deliveryItems.length ? (
+                <>
+                  <p className="mt-10 font-inter text-[13px] font-semibold uppercase tracking-widest text-[#457ab5]">Delivery</p>
+                  <div className="mt-3 space-y-3">
+                    {deliveryItems.map((item) => (
+                      <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+                    ))}
+                  </div>
+                </>
+              ) : null}
+            </div>
+          </section>
+        );
+      })() : null}
 
       {caseStudy.slug === "nayya-ai-benefits" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
