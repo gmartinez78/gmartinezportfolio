@@ -753,6 +753,16 @@
         }
       },
       {
+        "id": "alternatives",
+        "type": "custom",
+        "title": "Alternatives explored",
+        "body": "",
+        "payload": {
+          "subtitle": "",
+          "items": []
+        }
+      },
+      {
         "id": "research",
         "type": "custom",
         "title": "Research & Discovery",

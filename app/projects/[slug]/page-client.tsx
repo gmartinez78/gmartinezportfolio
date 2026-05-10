@@ -1137,28 +1137,17 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
               Design Process
             </h2>
-            <div className="mx-auto grid max-w-[980px] items-center gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-              <div className="flex justify-center lg:justify-start">
-                <img
-                  src={withBasePath(NAYYA_PHONE_IMAGE)}
-                  alt="Nayya mobile recommendation concept"
-                  className="h-auto w-full max-w-[420px] sm:max-w-[500px]"
-                />
-              </div>
-              <div className="space-y-5 text-center lg:text-left">
-                {designStrategy.map((item) => (
-                  <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
-                ))}
-              </div>
+            <div className="mx-auto max-w-[820px] space-y-5 text-center">
+              {designStrategy.map((item) => (
+                <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+              ))}
             </div>
           </>
         ) : caseStudy.slug === "i9-everify-integration" ? (
           <>
-            <SectionHeading
-              title="Design Process"
-              centered
-              className="mb-12"
-            />
+            <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+              Design Process
+            </h2>
             <div className="mx-auto mb-10 max-w-[820px] text-center">
               <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                 Made I-9 feel like part of Flex onboarding rather than a disconnected compliance task by aligning it with existing onboarding patterns and designing a dedicated company settings flow to configure and manage the integration.
@@ -1239,6 +1228,35 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </>
         )}
       </section>
+
+      {caseStudy.slug === "i9-everify-integration" && findBlock("alternatives") ? (() => {
+        const block = findBlock("alternatives")!;
+        const altItems = getPayloadList(block.payload, "items") as { title: string; status: string; body: string }[];
+        if (!altItems.length) return null;
+        return (
+          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+            <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+              {block.title}
+            </h2>
+            {block.payload && (block.payload as Record<string, unknown>)["subtitle"] ? (
+              <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                {String((block.payload as Record<string, unknown>)["subtitle"])}
+              </p>
+            ) : null}
+            <div className="grid gap-5 md:grid-cols-3">
+              {altItems.map((item) => (
+                <Card key={item.title} className="overflow-hidden border-transparent shadow-none">
+                  <CardContent className="p-7">
+                    <Badge className={item.status === "Rejected" ? "border border-[#1183D0] bg-white text-[#1183D0]" : ""}>{item.status}</Badge>
+                    <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
+                    <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item.body}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
+        );
+      })() : null}
 
       {caseStudy.slug === "i9-everify-integration" && findBlock("research") ? (() => {
         const block = findBlock("research")!;
