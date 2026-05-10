@@ -1229,34 +1229,39 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         )}
       </section>
 
-      {caseStudy.slug === "i9-everify-integration" && findBlock("alternatives") ? (() => {
-        const block = findBlock("alternatives")!;
-        const altItems = getPayloadList(block.payload, "items") as { title: string; status: string; body: string }[];
-        if (!altItems.length) return null;
-        return (
-          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-            <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
-              {block.title}
-            </h2>
-            {block.payload && (block.payload as Record<string, unknown>)["subtitle"] ? (
-              <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                {String((block.payload as Record<string, unknown>)["subtitle"])}
-              </p>
-            ) : null}
-            <div className="grid gap-5 md:grid-cols-3">
-              {altItems.map((item) => (
-                <Card key={item.title} className="overflow-hidden border-transparent shadow-none">
-                  <CardContent className="p-7">
-                    <Badge className={item.status === "Rejected" ? "border border-[#1183D0] bg-white text-[#1183D0]" : ""}>{item.status}</Badge>
-                    <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
-                    <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item.body}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </section>
-        );
-      })() : null}
+      {caseStudy.slug === "i9-everify-integration" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+            Alternatives explored
+          </h2>
+          <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+            Three integration approaches were considered and assessed on placement, feasibility, and user support. The guided decision modal was selected as the strongest option and moved into testing.
+          </p>
+          <div className="grid gap-5 md:grid-cols-3">
+            <Card className="overflow-hidden border-transparent shadow-none">
+              <CardContent className="p-7">
+                <Badge className="border border-[#1183D0] bg-white text-[#1183D0]">Rejected</Badge>
+                <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Card title 1</h3>
+                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Card body 1</p>
+              </CardContent>
+            </Card>
+            <Card className="overflow-hidden border-transparent shadow-none">
+              <CardContent className="p-7">
+                <Badge className="border border-[#1183D0] bg-white text-[#1183D0]">Rejected</Badge>
+                <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Card title 2</h3>
+                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Card body 2</p>
+              </CardContent>
+            </Card>
+            <Card className="overflow-hidden border-transparent shadow-none">
+              <CardContent className="p-7">
+                <Badge>Selected</Badge>
+                <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Card title 3</h3>
+                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Card body 3</p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+      ) : null}
 
       {caseStudy.slug === "i9-everify-integration" && findBlock("research") ? (() => {
         const block = findBlock("research")!;
