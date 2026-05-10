@@ -1134,6 +1134,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "i9-everify-integration" && findBlock("research") ? (() => {
         const block = findBlock("research")!;
         const items = getPayloadList(block.payload, "items");
+        const deliveryItems = getPayloadList(block.payload, "delivery_items");
         return (
           <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
             <SectionHeading title={block.title} centered className="mb-12" />
@@ -1147,6 +1148,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
                   ))}
                 </div>
+              ) : null}
+              {deliveryItems.length ? (
+                <>
+                  <p className="mt-10 font-inter text-[13px] font-semibold uppercase tracking-widest text-[#457ab5]">Delivery</p>
+                  <div className="mt-3 space-y-3">
+                    {deliveryItems.map((item) => (
+                      <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+                    ))}
+                  </div>
+                </>
               ) : null}
             </div>
           </section>
