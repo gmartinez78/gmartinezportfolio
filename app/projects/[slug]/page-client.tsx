@@ -1235,28 +1235,28 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             Alternatives explored
           </h2>
           <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-            Three integration approaches were considered and assessed on placement, feasibility, and user support. The guided decision modal was selected as the strongest option and moved into testing.
+            Three integration approaches were considered and assessed on placement, user familiarity, and third-party dependency. Embedding I-9 directly into the existing onboarding flow was selected as the strongest option and moved into testing.
           </p>
           <div className="grid gap-5 md:grid-cols-3">
             <Card className="overflow-hidden border-transparent shadow-none">
               <CardContent className="p-7">
                 <Badge className="border border-[#1183D0] bg-white text-[#1183D0]">Rejected</Badge>
-                <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Card title 1</h3>
-                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Card body 1</p>
+                <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Launch I-9 from HIREtech</h3>
+                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Product initially proposed launching I-9 from HIREtech, but testing quickly ruled it out, new users didn't recognize the platform and had no context for why they were leaving Flex.</p>
               </CardContent>
             </Card>
             <Card className="overflow-hidden border-transparent shadow-none">
               <CardContent className="p-7">
                 <Badge className="border border-[#1183D0] bg-white text-[#1183D0]">Rejected</Badge>
-                <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Card title 2</h3>
-                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Card body 2</p>
+                <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Standalone I-9 section</h3>
+                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Explored a standalone I-9 section separate from onboarding, but competitive benchmarking showed embedding it within the onboarding flow was the industry standard.</p>
               </CardContent>
             </Card>
             <Card className="overflow-hidden border-transparent shadow-none">
               <CardContent className="p-7">
                 <Badge>Selected</Badge>
-                <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Card title 3</h3>
-                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Card body 3</p>
+                <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Integrated into onboarding flow</h3>
+                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Integrated I-9 directly into the existing onboarding flow, aligning with competitive patterns and familiar user mental models. This was the approved direction.</p>
               </CardContent>
             </Card>
           </div>
