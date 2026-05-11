@@ -116,7 +116,14 @@ export default function PortfolioPage() {
   const toolRows = [siteContent.home.tools_section.row_1, siteContent.home.tools_section.row_2]
     .map((row) => row.filter(Boolean))
     .filter((row) => row.length > 0);
-  const heroDescription = "Building products end to end, from UX architecture and design systems to cross-functional execution that ships.";
+  const heroRoles = [
+    "designing with AI, not just for it.",
+    "a senior product designer.",
+    "turning research into shipped product.",
+    "enterprise UX that scales.",
+    "your next UX hire.",
+  ];
+  const heroDescription = "10+ years shipping enterprise SaaS — from UX strategy and design systems to AI-powered features that reach millions of users.";
 
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
@@ -136,22 +143,22 @@ export default function PortfolioPage() {
           <div className="relative grid min-h-[440px] gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
             <div className="flex max-w-[760px] flex-col justify-center">
               <TypewriterBanner
-                greeting={hero.greeting}
-                roles={[hero.tagline]}
+                greeting="Hey, I'm Greddys —"
+                roles={heroRoles}
                 description={heroDescription}
               />
-              <div className="mt-10 flex flex-wrap gap-3">
-                {methodologyChips.map((tag) => (
+              <div className="mt-8 flex flex-wrap gap-2">
+                {["AI Product Design", "Design Systems", "Enterprise SaaS", "UX Research", "10+ Years"].map((tag) => (
                   <Badge
                     key={tag}
                     variant="outline"
-                    className="border-white/70 bg-white/10 text-white backdrop-blur hover:bg-white/10 hover:text-white"
+                    className="border-white/30 bg-white/10 text-white/80 backdrop-blur hover:bg-white/15 hover:text-white"
                   >
                     {tag}
                   </Badge>
                 ))}
               </div>
-              <div className="mt-10 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-wrap gap-3">
                 <Button
                   asChild
                   size="sm"
@@ -162,6 +169,7 @@ export default function PortfolioPage() {
                   asChild
                   variant="outline"
                   size="sm"
+                  className="border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white"
                 >
                   <Link href={withBasePath("/contact")}>Let&apos;s work together</Link>
                 </Button>
