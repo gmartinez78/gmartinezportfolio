@@ -177,19 +177,27 @@
       }
     ],
     "skills": {
-      "Design": ["Scalable design systems", "Component adoption", "Pattern definition", "Design tokens", "Figma libraries", "Accessibility Standards", "AI Product Design", "Enterprise UX", "B2B & B2C Products"],
-      "Research": ["Competitive Analysis", "Qualitative & Quantitative Research", "User Research", "Usability Testing", "Surveys", "Heuristic Evaluation", "User Interviews", "Information Architecture", "Personas"],
-      "Collaboration & Delivery": ["Async-friendly handoff", "Figma annotations", "Design-to-build alignment", "HTML", "CSS", "Cross-functional Collaboration", "Stakeholder Management", "Agile / Scrum"],
-      "AI in Design": ["Copilot", "OOUX with AI", "Research synthesis", "Rapid prototyping", "Design-frontend workflow automation", "LLM"]
+      "Design": ["Scalable design systems", "Component adoption", "Pattern definition", "Design tokens", "Figma libraries", "Digital Experience", "Storyboards", "Accessibility Standards", "Mapping Design Thinking", "AI Product Design", "Enterprise UX", "B2B & B2C Products"],
+      "Data-Heavy Interfaces": ["Complex workflow design", "Tables", "Filters", "Role-based experiences", "Multi-step flows", "Interconnected entities", "State-aware design"],
+      "Research": ["Competitive Analysis", "Qualitative & Quantitative Research", "User Research", "Usability Testing", "Surveys", "Heuristic Evaluation", "User Interviews", "Information Architecture", "Personas", "Affinity Mapping"],
+      "Collaboration & Delivery": ["Async-friendly handoff", "Figma annotations", "Design-to-build alignment", "HTML", "CSS", "Cross-functional Collaboration", "Stakeholder Management", "Agile / Scrum", "UX Advocacy", "Workshop Facilitation"],
+      "AI in Design": ["Copilot", "OOUX with AI", "Research synthesis", "Rapid prototyping", "Design-frontend workflow automation", "LLM"],
+      "Soft": ["Friendly", "Flexibility", "Team Player", "Communication", "Strategic", "Leadership", "Time Management", "Engaging", "Empathy", "Attention to Detail", "Problem Solving", "Prioritization", "Accountability", "Conflict Resolution"]
     },
-    "tools": ["Figma", "Jira", "Miro", "Copilot", "Webex", "ClickUp", "Confluence", "Maze", "Notion", "Slack", "HTML/CSS", "React"],
+    "tools": ["Figma", "Jira", "Miro", "Copilot", "Webex", "ClickUp", "Confluence", "Maze", "Notion", "Slack", "HTML/CSS", "React", "Claude", "VS Code", "ChatGPT"],
     "education": [
       { "year": "2013", "degree": "B.F.A. Graphic Design", "institution": "Universidad de las Artes · Guayaquil, Ecuador" },
       { "year": "2020", "degree": "UX Design Certificate", "institution": "Google / Coursera" }
     ],
     "certifications": [
-      { "name": "NN/Group UX Certification — Interaction Design", "level": "UX Certified Professional", "year": "2023", "logo": "/images/OiSjn.png" },
-      { "name": "Upwork Skill Certification — User Interface Design", "level": "Verified professional certification", "year": "2024", "logo": "/images/iNSrn.png" }
+      { "name": "Interaction Design Specialty", "level": "Advanced patterns for complex interactive systems and enterprise workflows", "year": "2023", "logo": "/images/OiSjn.png" },
+      { "name": "UX Management: Strategy & Tactics", "level": "Leading design teams, stakeholder alignment, and design ops", "year": "2023", "logo": "/images/OiSjn.png" },
+      { "name": "Measuring UX & ROI", "level": "Quantifying design impact through analytics, A/B testing, and KPIs", "year": "2022", "logo": "/images/OiSjn.png" },
+      { "name": "Journey Mapping", "level": "Mapping end-to-end user experiences across touchpoints and channels", "year": "2022", "logo": "/images/OiSjn.png" },
+      { "name": "Information Architecture", "level": "Organizing and structuring content for findability and clarity", "year": "2021", "logo": "/images/OiSjn.png" },
+      { "name": "Usability Testing", "level": "Planning, conducting, and analyzing usability studies", "year": "2021", "logo": "/images/OiSjn.png" },
+      { "name": "User Interface Design Guidelines", "level": "Applying evidence-based UI patterns and accessibility standards", "year": "2020", "logo": "/images/OiSjn.png" },
+      { "name": "Human-Computer Interaction", "level": "Foundational principles of cognitive science applied to design", "year": "2020", "logo": "/images/OiSjn.png" }
     ]
   }
 }
