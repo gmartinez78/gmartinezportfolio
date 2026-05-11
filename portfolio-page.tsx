@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useCallback, useState } from "react";
+import { PersonaModal, type Persona } from "./components/persona-modal";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { TypewriterBanner } from "./components/typewriter-banner";
@@ -83,6 +85,8 @@ function ToolBadge({
 }
 
 export default function PortfolioPage() {
+  const [persona, setPersona] = useState<Persona | null>(null);
+  const handlePersona = useCallback((p: Persona) => setPersona(p), []);
   const { siteContent } = usePublicSiteContent();
   const { caseStudies } = usePublicCaseStudies();
   const hero = siteContent.home.hero;
@@ -125,8 +129,121 @@ export default function PortfolioPage() {
   ];
   const heroDescription = "10+ years shipping enterprise SaaS, from UX strategy and design systems to AI-powered features that reach millions of users.";
 
+  const recentWorkSection = (
+    <section key="work" id="projects" className="bg-white py-12 px-6 md:px-10 xl:px-20">
+      <div className="mx-auto flex w-full flex-col items-center gap-12">
+        <SectionHeading eyebrow="Portfolio" title="Recent Work" centered />
+        <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3">
+          {featuredProjects.map((project) => (
+            <Link
+              key={project.title}
+              id={project.cardId}
+              data-home-card-id={project.cardId}
+              href={project.href}
+              className="group flex w-full min-w-0 cursor-pointer flex-col gap-5 outline-none"
+            >
+              <div className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] shadow-[0_18px_52px_rgba(14,41,81,0.12)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(14,41,81,0.22)] group-focus-visible:-translate-y-1 group-focus-visible:shadow-[0_28px_70px_rgba(14,41,81,0.22)] sm:h-[300px] xl:h-[230px]">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.04] group-focus-visible:scale-[1.04]"
+                />
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {project.tags.map((tag) => (
+                  <Badge key={tag} size="tag">{tag}</Badge>
+                ))}
+              </div>
+              <h3 className="font-serif-display italic text-[30px] leading-snug text-[#1183D0] transition-colors duration-200 group-hover:text-[#0e2951] group-focus-visible:text-[#0e2951]">
+                {project.title}
+              </h3>
+              <div className="-mt-2 h-[116px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                <div className="flex h-full flex-col justify-between">
+                  <p className="text-[14px] leading-relaxed text-[#5c7792]">{project.description}</p>
+                  <span className="inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline group-focus-visible:underline">
+                    {project.cta} →
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+
+  const toolsSection = (
+    <section key="tools" className="relative isolate overflow-hidden px-6 py-16 md:px-10 lg:h-[520px] xl:px-20">
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,#FFFFFF_0%,#F0F7FF_48%,rgba(17,131,208,0.28)_100%)]" />
+      {TOOLS_LEFT.map((tool) => (
+        <ToolBadge key={`left-${tool.label}-${tool.x}`} {...tool} />
+      ))}
+      <div className="relative z-20 mx-auto flex max-w-[540px] flex-col items-center gap-5 text-center lg:absolute lg:left-1/2 lg:top-28 lg:-translate-x-1/2">
+        <SectionHeading eyebrow="Experience & Skills" title={siteContent.home.tools_section.headline} centered />
+        <p className="max-w-[560px] text-[15px] leading-[1.8] text-[#3c3e3f]">
+          {siteContent.home.tools_section.description}
+        </p>
+        <div className="flex w-full flex-col gap-4 lg:hidden">
+          {toolRows.map((row, index) => (
+            <div key={`tool-row-${index}`} className="flex flex-wrap items-center justify-center gap-3">
+              {row.map((label) => (
+                <div
+                  key={`${index}-${label}`}
+                  className="inline-flex min-h-14 items-center gap-3 rounded-full border border-white/70 bg-white/90 px-5 py-3 text-[#0e2951] shadow-[0_18px_42px_rgba(14,41,81,0.10)] backdrop-blur"
+                  title={label}
+                >
+                  {resolveToolIconOptional(label) ? (
+                    <Image src={resolveToolIcon(label)} alt={label} width={26} height={26} className="h-[26px] w-[26px] object-contain" />
+                  ) : (
+                    <span className="inline-flex min-w-8 items-center justify-center rounded-full bg-[#E0EEFB] px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1183D0]">
+                      {label.slice(0, 2)}
+                    </span>
+                  )}
+                  <span className="text-sm font-semibold">{label}</span>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+        <Button asChild variant="link" className="mt-2 h-auto gap-4 px-0 text-sm font-normal leading-none text-[#1183D0] hover:no-underline">
+          <Link href={withBasePath(siteContent.home.tools_section.cta_href)}>
+            {siteContent.home.tools_section.cta_label.replace("→", "").trim()} <span className="text-[22px] leading-none">→</span>
+          </Link>
+        </Button>
+      </div>
+      {TOOLS_RIGHT.map((tool) => (
+        <ToolBadge key={`right-${tool.label}-${tool.x}`} {...tool} />
+      ))}
+    </section>
+  );
+
+  const ctaSection = (
+    <section key="cta" className="flex flex-col items-center justify-center gap-7 px-6 py-[80px] md:px-16 xl:px-30 text-center" style={{ background: "#0e2951" }}>
+      <span className="text-[13px] font-medium tracking-[3px] text-[#7CB8E8] uppercase">
+        {persona === "recruiter" ? "Why hire me?" : "Ready to Level Up?"}
+      </span>
+      <p className="text-[28px] leading-[1.5] text-[#A8C8E8] max-w-[800px]">
+        {siteContent.home.stat_banner.text} {siteContent.home.stat_banner.value} {siteContent.home.stat_banner.value_label}
+      </p>
+      <h2 className="font-serif-display italic font-bold text-[40px] text-white">
+        {persona === "recruiter" ? "Your team deserves that impact." : siteContent.home.stat_banner.cta_headline}
+      </h2>
+      <Button asChild size="sm">
+        <Link href={withBasePath(persona === "recruiter" ? "/resume" : siteContent.home.stat_banner.cta_href.replace("#contact", "/contact"))}>
+          {persona === "recruiter" ? "View my resume" : siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
+        </Link>
+      </Button>
+    </section>
+  );
+
+  const contentSections = persona === "recruiter"
+    ? [ctaSection, recentWorkSection, toolsSection]
+    : [recentWorkSection, toolsSection, ctaSection];
+
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
+      <PersonaModal onSelect={handlePersona} />
       <SiteHeader />
 
       {/* ── Hero ── */}
@@ -224,144 +341,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* ── Recent Work ── */}
-      <section id="projects" className="bg-white py-12 px-6 md:px-10 xl:px-20">
-        <div className="mx-auto flex w-full flex-col items-center gap-12">
-          <SectionHeading eyebrow="Portfolio" title="Recent Work" centered />
-
-          {/* Project cards */}
-          <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3">
-            {featuredProjects.map((project) => (
-              <Link
-                key={project.title}
-                id={project.cardId}
-                data-home-card-id={project.cardId}
-                href={project.href}
-                className="group flex w-full min-w-0 cursor-pointer flex-col gap-5 outline-none"
-              >
-                {/* Image */}
-                <div className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] shadow-[0_18px_52px_rgba(14,41,81,0.12)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(14,41,81,0.22)] group-focus-visible:-translate-y-1 group-focus-visible:shadow-[0_28px_70px_rgba(14,41,81,0.22)] sm:h-[300px] xl:h-[230px]">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.04] group-focus-visible:scale-[1.04]"
-                  />
-                </div>
-
-                {/* Tags – always visible */}
-                <div className="flex flex-wrap gap-3">
-                  {project.tags.map((tag) => (
-                    <Badge key={tag} size="tag">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-
-                {/* Title */}
-                <h3 className="font-serif-display italic text-[30px] leading-snug text-[#1183D0] transition-colors duration-200 group-hover:text-[#0e2951] group-focus-visible:text-[#0e2951]">
-                  {project.title}
-                </h3>
-
-                <div className="-mt-2 h-[116px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-                  <div className="flex h-full flex-col justify-between">
-                    {/* Description */}
-                    <p className="text-[14px] leading-relaxed text-[#5c7792]">
-                      {project.description}
-                    </p>
-
-                    {/* CTA */}
-                    <span className="inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline group-focus-visible:underline">
-                      {project.cta} →
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── Tools Section ── */}
-      <section
-        className="relative isolate overflow-hidden px-6 py-16 md:px-10 lg:h-[520px] xl:px-20"
-      >
-        <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,#FFFFFF_0%,#F0F7FF_48%,rgba(17,131,208,0.28)_100%)]" />
-        {TOOLS_LEFT.map((tool) => (
-          <ToolBadge key={`left-${tool.label}-${tool.x}`} {...tool} />
-        ))}
-        <div className="relative z-20 mx-auto flex max-w-[540px] flex-col items-center gap-5 text-center lg:absolute lg:left-1/2 lg:top-28 lg:-translate-x-1/2">
-          <SectionHeading eyebrow="Experience & Skills" title={siteContent.home.tools_section.headline} centered />
-          <p className="max-w-[560px] text-[15px] leading-[1.8] text-[#3c3e3f]">
-            {siteContent.home.tools_section.description}
-          </p>
-          <div className="flex w-full flex-col gap-4 lg:hidden">
-            {toolRows.map((row, index) => (
-              <div key={`tool-row-${index}`} className="flex flex-wrap items-center justify-center gap-3">
-                {row.map((label) => (
-                  <div
-                    key={`${index}-${label}`}
-                    className="inline-flex min-h-14 items-center gap-3 rounded-full border border-white/70 bg-white/90 px-5 py-3 text-[#0e2951] shadow-[0_18px_42px_rgba(14,41,81,0.10)] backdrop-blur"
-                    title={label}
-                  >
-                    {resolveToolIconOptional(label) ? (
-                      <Image
-                        src={resolveToolIcon(label)}
-                        alt={label}
-                        width={26}
-                        height={26}
-                        className="h-[26px] w-[26px] object-contain"
-                      />
-                    ) : (
-                      <span className="inline-flex min-w-8 items-center justify-center rounded-full bg-[#E0EEFB] px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1183D0]">
-                        {label.slice(0, 2)}
-                      </span>
-                    )}
-                    <span className="text-sm font-semibold">{label}</span>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-          <Button
-            asChild
-            variant="link"
-            className="mt-2 h-auto gap-4 px-0 text-sm font-normal leading-none text-[#1183D0] hover:no-underline"
-          >
-            <Link href={withBasePath(siteContent.home.tools_section.cta_href)}>
-              {siteContent.home.tools_section.cta_label.replace("→", "").trim()} <span className="text-[22px] leading-none">→</span>
-            </Link>
-          </Button>
-        </div>
-        {TOOLS_RIGHT.map((tool) => (
-          <ToolBadge key={`right-${tool.label}-${tool.x}`} {...tool} />
-        ))}
-      </section>
-
-      {/* ── CTA Section ── */}
-      <section
-        className="flex flex-col items-center justify-center gap-7 px-6 py-[80px] md:px-16 xl:px-30 text-center"
-        style={{ background: "#0e2951" }}
-      >
-        <span className="text-[13px] font-medium tracking-[3px] text-[#7CB8E8] uppercase">
-          Ready to Level Up?
-        </span>
-        <p className="text-[28px] leading-[1.5] text-[#A8C8E8] max-w-[800px]">
-          {siteContent.home.stat_banner.text} {siteContent.home.stat_banner.value} {siteContent.home.stat_banner.value_label}
-        </p>
-        <h2 className="font-serif-display italic font-bold text-[40px] text-white">
-          {siteContent.home.stat_banner.cta_headline}
-        </h2>
-        <Button
-          asChild
-          size="sm"
-        >
-          <Link href={withBasePath(siteContent.home.stat_banner.cta_href.replace("#contact", "/contact"))}>
-            {siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
-          </Link>
-        </Button>
-      </section>
+      {contentSections}
 
       <SiteFooter />
     </main>
