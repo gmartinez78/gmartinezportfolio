@@ -1256,16 +1256,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         )}
       </section>
 
-      {caseStudy.slug === "i9-everify-integration" && (
-        <div className="mx-auto max-w-[1100px] px-6 md:px-10 xl:px-20">
-          <img
-            src={withBasePath("/images/projects/i9-everify-integration/banners/i9-admin-experience.svg")}
-            alt="I-9 admin experience"
-            className="h-auto w-full"
-          />
-        </div>
-      )}
-
       {caseStudy.slug === "i9-everify-integration" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
