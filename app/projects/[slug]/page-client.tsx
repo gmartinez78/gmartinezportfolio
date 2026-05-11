@@ -38,7 +38,7 @@ type HighlightMetric = {
 };
 
 const NAYYA_HIGHLIGHT_METRICS: HighlightMetric[] = [
-  { value: "307%", label: "IRR", context: "Projected ROI — estimated return from increased plan uptake (NPV $11.4M)." },
+  { value: "307%", label: "IRR", context: "Projected ROI,estimated return from increased plan uptake (NPV $11.4M)." },
   { value: "~115,500", label: "Annual Benefits", context: "Enrollments completed 5% above the 100K goal." },
   { value: "67%", label: "Conversion Rate", context: "Users who received Nayya recommendations that fit their needs and enrolled in a plan." },
 ];

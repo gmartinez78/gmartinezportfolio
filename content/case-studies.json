@@ -147,7 +147,7 @@
         "body": "Working without a design system forced tight collaboration with engineers. Constant syncs kept the UI cohesive and the handoff smooth even under timeline pressure."
       }
     ],
-    "nda_notice": "Parts of this presentation — including some screens and project details — have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy.",
+    "nda_notice": "Parts of this presentation,including some screens and project details,have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy.",
     "password": null,
     "external_link": null
   },
@@ -204,7 +204,7 @@
       {
         "value": "307%",
         "label": "IRR",
-        "context": "Projected ROI — estimated return from increased plan uptake (NPV $11.4M)."
+        "context": "Projected ROI,estimated return from increased plan uptake (NPV $11.4M)."
       },
       {
         "value": "~115,500",
@@ -718,11 +718,11 @@
     "reflections": [
       {
         "title": "What worked.",
-        "body": "Anchoring a compliance-heavy workflow to familiar onboarding patterns made I-9 feel native to the product rather than a bolted-on task. A single usability test with 7 users was enough to shift a product decision and protect a better experience — data beats opinion. Combining iterative testing with clear handoff strategy created a stronger foundation for both usability and business growth."
+        "body": "Anchoring a compliance-heavy workflow to familiar onboarding patterns made I-9 feel native to the product rather than a bolted-on task. A single usability test with 7 users was enough to shift a product decision and protect a better experience,data beats opinion. Combining iterative testing with clear handoff strategy created a stronger foundation for both usability and business growth."
       },
       {
         "title": "What I’d do differently.",
-        "body": "Establish third-party alignment earlier — waiting on compliance validation from HIREtech created rework and slowed design iterations. Moving faster through compliance content decisions by setting clearer approval checkpoints upfront, rather than iterating in circles, would have saved time."
+        "body": "Establish third-party alignment earlier,waiting on compliance validation from HIREtech created rework and slowed design iterations. Moving faster through compliance content decisions by setting clearer approval checkpoints upfront, rather than iterating in circles, would have saved time."
       },
       {
         "title": "What this unlocked.",
@@ -815,8 +815,8 @@
             }
           ],
           "insights": [
-            "Task completion rate — 69% (early concept) to 81% (refined concept).",
-            "Average time on task — 4m 12s to 3m 06s.",
+            "Task completion rate,69% (early concept) to 81% (refined concept).",
+            "Average time on task,4m 12s to 3m 06s.",
             "Redirect hesitation reduced from 46% to 33%.",
             "Status interpretation errors down from 31% to 22%.",
             "User confidence score improved from 3.2/5 to 4.0/5.",
