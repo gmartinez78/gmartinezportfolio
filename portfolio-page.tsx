@@ -127,10 +127,10 @@ export default function PortfolioPage() {
     .map((row) => row.filter(Boolean))
     .filter((row) => row.length > 0);
   const heroRoles = [
-    "designing with AI, not just for it.",
-    "a senior product designer.",
-    "turning research into shipped product.",
-    "enterprise UX that scales.",
+    "designing with AI.",
+    "a senior designer.",
+    "research that ships.",
+    "enterprise UX.",
     "your next UX hire.",
   ];
   const heroDescription = "10+ years shipping enterprise SaaS, from UX strategy and design systems to AI-powered features that reach millions of users.";
