@@ -123,15 +123,15 @@ export default function PortfolioPage() {
     "enterprise UX that scales.",
     "your next UX hire.",
   ];
-  const heroDescription = "10+ years shipping enterprise SaaS — from UX strategy and design systems to AI-powered features that reach millions of users.";
+  const heroDescription = "10+ years shipping enterprise SaaS, from UX strategy and design systems to AI-powered features that reach millions of users.";
 
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
       <SiteHeader />
 
       {/* ── Hero ── */}
-      <section className="bg-white px-4 py-5 sm:px-6 lg:px-10">
-        <div className="relative mx-auto min-h-[560px] max-w-[1440px] overflow-hidden rounded-[28px] bg-[#102944] px-6 py-10 shadow-[0_24px_80px_rgba(14,41,81,0.18)] sm:px-10 lg:px-16 lg:py-16">
+      <section className="bg-white">
+        <div className="relative min-h-[420px] overflow-hidden bg-[#102944] px-6 py-8 sm:px-10 lg:px-16 lg:py-12">
           <Image
             src={withBasePath(hero.photo || "/images/projects/benefits-enrollment/hero/benefits-hero.png")}
             alt={hero.greeting}
@@ -140,7 +140,7 @@ export default function PortfolioPage() {
             className="pointer-events-none object-cover opacity-35 blur-[1px] scale-110"
           />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(8,20,35,0.92)_0%,rgba(8,20,35,0.72)_48%,rgba(8,20,35,0.3)_100%)]" />
-          <div className="relative grid min-h-[440px] gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
+          <div className="relative mx-auto grid min-h-[340px] max-w-[1400px] gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
             <div className="flex max-w-[760px] flex-col justify-center">
               <TypewriterBanner
                 greeting="Hey, I'm Greddys."
@@ -198,7 +198,7 @@ export default function PortfolioPage() {
         </div>
 
         {/* Social Proof Bar */}
-        <div className="-mx-4 sm:-mx-6 lg:-mx-10">
+        <div>
           <div className="flex min-h-[104px] flex-col items-start gap-5 px-6 py-6 md:flex-row md:items-center md:px-10 lg:px-20">
             <div className="flex shrink-0 items-center md:h-full md:w-[280px] md:pr-10">
               <span className="text-[13px] font-semibold text-[#3c3e3f]">
