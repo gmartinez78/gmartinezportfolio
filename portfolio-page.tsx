@@ -85,7 +85,7 @@ function ToolBadge({
 }
 
 export default function PortfolioPage() {
-  const [persona, setPersona] = useState<Persona | null>(null);
+  const [persona, setPersona] = useState<Persona | null>("client");
   const [modalKey, setModalKey] = useState(0);
   const handlePersona = useCallback((p: Persona) => setPersona(p), []);
   const handleReset = useCallback(() => {
@@ -328,7 +328,7 @@ export default function PortfolioPage() {
 
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
-      <PersonaModal key={modalKey} onSelect={handlePersona} />
+      {/* <PersonaModal key={modalKey} onSelect={handlePersona} /> */}
       <SiteHeader />
 
       {/* ── View switcher pill ── */}
