@@ -143,7 +143,7 @@ export default function PortfolioPage() {
           <div className="relative grid min-h-[440px] gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
             <div className="flex max-w-[760px] flex-col justify-center">
               <TypewriterBanner
-                greeting="Hey, I'm Greddys —"
+                greeting="Hey, I'm Greddys."
                 roles={heroRoles}
                 description={heroDescription}
               />
