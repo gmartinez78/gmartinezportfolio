@@ -69,7 +69,7 @@ export function TypewriterBanner({
       <h1 className="m-0 text-[28px] font-normal leading-[1.2] text-white">
         {greeting}
       </h1>
-      <div className="mb-5 mt-3 flex h-[96px] items-center overflow-hidden sm:h-[60px]">
+      <div className="mb-5 mt-3 flex h-[96px] items-center sm:h-[60px]">
         <span
           aria-live="polite"
           className="text-[42px] font-medium leading-[1.1] text-[#7CB8E8] sm:text-[52px] lg:text-[64px]"
