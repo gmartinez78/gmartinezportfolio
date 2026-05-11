@@ -237,8 +237,87 @@ export default function PortfolioPage() {
     </section>
   );
 
+  const recruiterImpactSection = (
+    <section key="recruiter-impact" className="bg-white px-6 py-16 md:px-10 xl:px-20">
+      <div className="mx-auto max-w-[1200px]">
+        <div className="mb-12 text-center">
+          <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">10+ Years of Impact</p>
+          <h2 className="font-serif-display text-[38px] italic leading-tight text-[#0e2951]">What I bring to your team</h2>
+          <p className="mx-auto mt-4 max-w-[600px] text-[15px] leading-[1.8] text-[#5c7792]">
+            Senior Product Designer with a track record across enterprise SaaS, FinTech, HR, and HealthTech. Here is what I have shipped.
+          </p>
+        </div>
+
+        {/* Impact stats grid */}
+        <div className="mb-14 grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-6">
+          {[
+            { value: "2.3M", label: "Users on the platform", sub: "Enterprise HR SaaS" },
+            { value: "72%", label: "Reduction in processing time", sub: "Benefits Enrollment" },
+            { value: "307%", label: "Projected IRR", sub: "AI Benefits Integration" },
+            { value: "9K+", label: "Support calls reduced/year", sub: "HR & Hiring flows" },
+            { value: "47%", label: "Avg. conversion increase", sub: "Last quarter" },
+            { value: "35%", label: "Faster form completion", sub: "Redesigned flows" },
+          ].map(({ value, label, sub }) => (
+            <div key={value + label} className="flex flex-col items-center rounded-[20px] bg-[#F0F7FF] px-4 py-6 text-center">
+              <span className="font-serif-display text-[38px] italic leading-none text-[#1183D0]">{value}</span>
+              <span className="mt-2 text-[13px] font-semibold leading-snug text-[#0e2951]">{label}</span>
+              <span className="mt-1 text-[11px] leading-snug text-[#5c7792]">{sub}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Expertise strip */}
+        <div className="mb-10 grid gap-5 md:grid-cols-3">
+          {[
+            {
+              label: "Seniority",
+              items: ["Staff / Senior IC", "Cross-functional lead", "Stakeholder-facing", "Mentor to junior & senior designers"],
+            },
+            {
+              label: "Industries",
+              items: ["Enterprise HR SaaS", "FinTech & HealthTech", "PropTech & Streaming", "Nonprofits & B2C"],
+            },
+            {
+              label: "Core strengths",
+              items: ["End-to-end design systems", "AI-powered features", "Complex data-heavy UX", "Research-to-ship ownership"],
+            },
+          ].map(({ label, items }) => (
+            <div key={label} className="rounded-[20px] border border-[#E0EEFB] bg-[#F8FBFF] px-6 py-6">
+              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{label}</p>
+              <ul className="space-y-2">
+                {items.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-[14px] leading-snug text-[#0e2951]">
+                    <span className="mt-[3px] h-[6px] w-[6px] shrink-0 rounded-full bg-[#1183D0]" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Resume CTAs */}
+        <div className="flex flex-wrap items-center justify-center gap-4">
+          <Button asChild size="sm">
+            <Link href={withBasePath("/resume")}>View full resume</Link>
+          </Button>
+          <Button asChild variant="secondary" size="sm">
+            <a href={withBasePath("/documents/greddys-martinez-resume-2026.pdf")} download>
+              Download Resume
+            </a>
+          </Button>
+          <Button asChild variant="outline" size="sm">
+            <a href="https://linkedin.com/in/greddysmartinez" target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+
   const contentSections = persona === "recruiter"
-    ? [ctaSection, recentWorkSection, toolsSection]
+    ? [recruiterImpactSection, recentWorkSection, toolsSection]
     : [recentWorkSection, toolsSection, ctaSection];
 
   return (
