@@ -349,7 +349,7 @@ export default function PortfolioPage() {
 
       {/* ── Hero ── */}
       <section className="bg-white">
-        <div className="relative min-h-[420px] overflow-hidden bg-[#102944] px-6 py-8 sm:px-10 lg:px-16 lg:py-12">
+        <div className="relative min-h-[420px] overflow-hidden bg-[#102944] px-6 py-[10rem] sm:px-10 lg:px-16">
           <Image
             src={withBasePath(hero.photo || "/images/projects/benefits-enrollment/hero/benefits-hero.png")}
             alt={hero.greeting}
