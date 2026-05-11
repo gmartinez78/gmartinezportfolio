@@ -86,7 +86,13 @@ function ToolBadge({
 
 export default function PortfolioPage() {
   const [persona, setPersona] = useState<Persona | null>(null);
+  const [modalKey, setModalKey] = useState(0);
   const handlePersona = useCallback((p: Persona) => setPersona(p), []);
+  const handleReset = useCallback(() => {
+    localStorage.removeItem("gm_persona");
+    setPersona(null);
+    setModalKey((k) => k + 1);
+  }, []);
   const { siteContent } = usePublicSiteContent();
   const { caseStudies } = usePublicCaseStudies();
   const hero = siteContent.home.hero;
@@ -322,8 +328,24 @@ export default function PortfolioPage() {
 
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
-      <PersonaModal onSelect={handlePersona} />
+      <PersonaModal key={modalKey} onSelect={handlePersona} />
       <SiteHeader />
+
+      {/* ── View switcher pill ── */}
+      {persona && (
+        <div className="fixed bottom-5 right-5 z-40 flex items-center gap-3 rounded-full bg-white px-4 py-2.5 shadow-[0_4px_24px_rgba(14,41,81,0.14)] ring-1 ring-[#E0EEFB]">
+          <span className="text-[12px] text-[#5c7792]">
+            {persona === "recruiter" ? "Recruiter view" : "Client view"}
+          </span>
+          <span className="h-3.5 w-px bg-[#E0EEFB]" />
+          <button
+            onClick={handleReset}
+            className="text-[12px] font-semibold text-[#1183D0] hover:underline"
+          >
+            Switch
+          </button>
+        </div>
+      )}
 
       {/* ── Hero ── */}
       <section className="bg-white">
