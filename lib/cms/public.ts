@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { fallbackCaseStudies, fallbackSiteContent } from "@/lib/cms/fallback";
+import { buildLockedNayyaPlaceholder, LOCKED_NAYYA_PLACEHOLDER_SLUG } from "@/lib/cms/locked-placeholder";
 import type { CaseStudyRecord, SiteContent } from "@/lib/cms/types";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
 import { normalizeNavigableHref, withBasePath } from "@/lib/site";
@@ -260,7 +261,22 @@ export function usePublicCaseStudies() {
 
 export function usePublicCaseStudy(slug: string) {
   const supabase = getSupabaseBrowserClient();
-  const fallbackStudy = useMemo(() => fallbackCaseStudies.find((study) => study.slug === slug) ?? null, [slug]);
+  const fallbackStudy = useMemo(() => {
+    const matchingStudy = fallbackCaseStudies.find((study) => study.slug === slug) ?? null;
+
+    if (matchingStudy) {
+      return matchingStudy;
+    }
+
+    if (slug === LOCKED_NAYYA_PLACEHOLDER_SLUG) {
+      const nayyaStudy = fallbackCaseStudies.find((study) => study.slug === "nayya-ai-benefits") ?? null;
+      const nextOrder = fallbackCaseStudies.reduce((maxOrder, study) => Math.max(maxOrder, study.order), 0) + 1;
+
+      return buildLockedNayyaPlaceholder(nayyaStudy, nextOrder);
+    }
+
+    return null;
+  }, [slug]);
   const [caseStudy, setCaseStudy] = useState<CaseStudyRecord | null>(fallbackStudy);
   const [loading, setLoading] = useState(false);
 

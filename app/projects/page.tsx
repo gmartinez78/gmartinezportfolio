@@ -8,6 +8,7 @@ import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
 import { Card, CardContent } from "../../components/ui/card";
 import { SectionHeading } from "../../components/ui/section-heading";
+import { appendLockedNayyaPlaceholder } from "../../lib/cms/locked-placeholder";
 import {
   resolveProjectListCardId,
   resolveProjectListCardImage,
@@ -29,8 +30,9 @@ export default function ProjectsPage() {
   const { caseStudies } = usePublicCaseStudies();
   const { siteContent } = usePublicSiteContent();
   const [activeFilter, setActiveFilter] = useState("All");
+  const allProjects = appendLockedNayyaPlaceholder(caseStudies ?? []);
   
-  const projects = (caseStudies ?? []).filter(p => p?.slug).map((project) => ({
+  const projects = allProjects.filter(p => p?.slug).map((project) => ({
     ...project,
     cardId: resolveProjectListCardId(project.slug),
     title: project.title ?? "Untitled Project",
@@ -126,6 +128,12 @@ export default function ProjectsPage() {
                   <span className="text-xs text-[#5c7792] font-medium">{project.company}</span>
                   <span className="text-[#bcd2ff]">·</span>
                   <span className="text-xs text-[#5c7792]">{project.year}</span>
+                  {project.password ? (
+                    <>
+                      <span className="text-[#bcd2ff]">·</span>
+                      <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Locked</span>
+                    </>
+                  ) : null}
                 </div>
                 <h2 className="text-2xl font-serif-display italic text-[#0e2951] leading-snug mb-5">{project.title}</h2>
                 <p className="text-[#5c7792] text-sm leading-relaxed">{project.tagline}</p>
@@ -137,7 +145,7 @@ export default function ProjectsPage() {
                   ))}
                 </div>
                 <span className="text-sm text-[#1183D0] font-medium group-hover:underline">
-                  {resolveProjectHref(project) === "#" ? "Coming soon" : "View case study ↗"}
+                  {project.password ? "Password required ↗" : resolveProjectHref(project) === "#" ? "Coming soon" : "View case study ↗"}
                 </span>
               </div>
             </CardContent>

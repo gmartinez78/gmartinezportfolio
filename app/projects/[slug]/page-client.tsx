@@ -1,11 +1,14 @@
 "use client";
 
+import { FormEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
   resolveHomeCardId,
@@ -745,6 +748,15 @@ function shouldHideInsight(value: string) {
 export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const { caseStudy, loading } = usePublicCaseStudy(slug);
   const { caseStudies } = usePublicCaseStudies();
+  const [enteredPassword, setEnteredPassword] = useState("");
+  const [passwordError, setPasswordError] = useState<string | null>(null);
+  const [isUnlocked, setIsUnlocked] = useState(false);
+
+  useEffect(() => {
+    setEnteredPassword("");
+    setPasswordError(null);
+    setIsUnlocked(false);
+  }, [caseStudy?.slug]);
 
   if (loading) {
     return (
@@ -753,6 +765,22 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section className="mx-auto max-w-[1200px] px-6 py-20 text-sm text-[#5c7792]">Loading case study...</section>
       </main>
     );
+  }
+
+  function handlePasswordSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (!caseStudy?.password) {
+      return;
+    }
+
+    if (enteredPassword.trim() === caseStudy.password) {
+      setIsUnlocked(true);
+      setPasswordError(null);
+      return;
+    }
+
+    setPasswordError("Incorrect password.");
   }
 
   if (!caseStudy || caseStudy.status !== "published") {
@@ -772,6 +800,84 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           >
             Back to Projects
           </a>
+        </section>
+        <SiteFooter />
+      </main>
+    );
+  }
+
+  if (caseStudy.password && !isUnlocked) {
+    const heroImage = resolveProjectHeroImage(caseStudy.slug, caseStudy.images.hero);
+
+    return (
+      <main className="min-h-screen bg-[#F0F7FF] text-[#3c3e3f]">
+        <SiteHeader active="Projects" />
+        <section className="mx-auto max-w-[1200px] px-6 pb-20 pt-8 md:px-10 xl:px-20">
+          <div className="mb-6 flex items-center gap-3 text-sm">
+            <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
+            <span className="text-[#b8cce0]">›</span>
+            <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</a>
+            <span className="text-[#b8cce0]">›</span>
+            <span className="font-semibold text-[#0e2951]">{caseStudy.title}</span>
+          </div>
+
+          <div className="overflow-hidden rounded-[32px] border border-[#cfe5f8] bg-white shadow-[0_24px_70px_rgba(14,41,81,0.12)]">
+            {heroImage ? (
+              <div className="relative h-[220px] w-full overflow-hidden border-b border-[#e0eefb]">
+                <img
+                  src={withBasePath(heroImage)}
+                  alt={`${caseStudy.title} preview`}
+                  className="h-full w-full scale-[1.03] object-cover object-center blur-md"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,41,81,0.12)_0%,rgba(240,247,255,0.7)_100%)]" />
+              </div>
+            ) : null}
+
+            <div className="mx-auto max-w-[640px] px-6 py-12 text-center md:px-10">
+              <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">
+                Password Protected
+              </p>
+              <h1 className="mt-6 font-serif-display text-[40px] italic leading-[1.08] text-[#0e2951]">
+                {caseStudy.title}
+              </h1>
+              <p className="mx-auto mt-5 max-w-[560px] text-[16px] leading-[1.75] text-[#5c7792]">
+                {caseStudy.tagline}
+              </p>
+              <p className="mx-auto mt-4 max-w-[540px] text-sm leading-[1.7] text-[#5c7792]">
+                This placeholder is locked for now while the final case study data is being prepared.
+              </p>
+
+              <form onSubmit={handlePasswordSubmit} className="mx-auto mt-10 max-w-[420px] text-left">
+                <label htmlFor="project-password" className="mb-3 block text-sm font-semibold text-[#0e2951]">
+                  Enter password
+                </label>
+                <Input
+                  id="project-password"
+                  type="password"
+                  value={enteredPassword}
+                  onChange={(event) => {
+                    setEnteredPassword(event.target.value);
+                    if (passwordError) {
+                      setPasswordError(null);
+                    }
+                  }}
+                  placeholder="Enter password"
+                  autoComplete="current-password"
+                />
+                {passwordError ? (
+                  <p className="mt-3 text-sm text-[#d60060]">{passwordError}</p>
+                ) : null}
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <Button type="submit" size="sm">
+                    Unlock case study
+                  </Button>
+                  <Button asChild variant="outline" size="sm">
+                    <Link href={withBasePath("/projects")}>Back to Projects</Link>
+                  </Button>
+                </div>
+              </form>
+            </div>
+          </div>
         </section>
         <SiteFooter />
       </main>
