@@ -23,12 +23,54 @@
   }
 }
 
+@keyframes hero-star-twinkle {
+  0%,
+  100% {
+    opacity: 0.22;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.75;
+    transform: scale(1.18);
+  }
+}
+
+@keyframes hero-shooting-star {
+  0% {
+    opacity: 0;
+    transform: translate3d(-12vw, -8vh, 0) rotate(18deg) scaleX(0.35);
+  }
+
+  8% {
+    opacity: 0.9;
+  }
+
+  24% {
+    opacity: 0;
+    transform: translate3d(38vw, 22vh, 0) rotate(18deg) scaleX(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(38vw, 22vh, 0) rotate(18deg) scaleX(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-\[logo-marquee_22s_linear_infinite\] {
     animation: none;
   }
 
   .animate-\[typewriter-cursor-blink_0\.75s_step-end_infinite\] {
+    animation: none;
+  }
+
+  .animate-\[hero-star-twinkle_var\(--twinkle-duration\)_ease-in-out_infinite\] {
+    animation: none;
+  }
+
+  .animate-\[hero-shooting-star_11s_linear_infinite\] {
     animation: none;
   }
 }

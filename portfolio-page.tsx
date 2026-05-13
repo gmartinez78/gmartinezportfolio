@@ -49,6 +49,24 @@ const TOOLS_RIGHT = [
   { label: "Notion", x: "right-[28%]", y: "top-[354px]", size: "sm" as const },
 ];
 
+const HERO_STARS = [
+  { left: "8%", top: "18%", size: 4, duration: "5.8s", delay: "0.2s" },
+  { left: "16%", top: "30%", size: 3, duration: "4.9s", delay: "1.1s" },
+  { left: "24%", top: "12%", size: 2, duration: "6.4s", delay: "2.1s" },
+  { left: "33%", top: "24%", size: 4, duration: "5.4s", delay: "0.8s" },
+  { left: "41%", top: "10%", size: 3, duration: "6.1s", delay: "1.9s" },
+  { left: "52%", top: "18%", size: 4, duration: "5.1s", delay: "1.3s" },
+  { left: "61%", top: "28%", size: 2, duration: "6.6s", delay: "0.5s" },
+  { left: "70%", top: "14%", size: 3, duration: "5.7s", delay: "2.2s" },
+  { left: "78%", top: "22%", size: 4, duration: "4.8s", delay: "0.4s" },
+  { left: "87%", top: "16%", size: 2, duration: "6.2s", delay: "1.6s" },
+  { left: "13%", top: "48%", size: 2, duration: "5.9s", delay: "2.8s" },
+  { left: "29%", top: "56%", size: 3, duration: "5.2s", delay: "1.4s" },
+  { left: "47%", top: "46%", size: 2, duration: "6.8s", delay: "0.6s" },
+  { left: "66%", top: "52%", size: 3, duration: "5.5s", delay: "2.4s" },
+  { left: "82%", top: "44%", size: 2, duration: "6.3s", delay: "1.7s" },
+];
+
 function ToolBadge({
   label,
   x,
@@ -133,7 +151,6 @@ export default function PortfolioPage() {
     "enterprise UX.",
     "your next UX hire.",
   ];
-  const heroDescription = "10+ years shipping enterprise SaaS, from UX strategy and design systems to AI-powered features that reach millions of users.";
   const heroPills = [
     { label: "AI Product Design", href: withBasePath("/projects?filter=AI%20Product") },
     { label: "Design Systems", href: withBasePath("/projects?filter=Design%20Systems") },
@@ -358,9 +375,37 @@ export default function PortfolioPage() {
       <section className="bg-white">
         <div
           className="relative overflow-hidden px-6 py-[8.5rem] sm:px-10 lg:px-16"
-          style={{ background: "linear-gradient(90deg, #edf7ff 0%, #f6f0ff 37%, #ffe9f1 68%, #fff5e8 100%)" }}
+          style={{ background: "linear-gradient(90deg, #e3f0fb 0%, #eee6fb 37%, #fbe3eb 68%, #fdf0df 100%)" }}
         >
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(164,147,255,0.16),transparent_42%),radial-gradient(circle_at_72%_26%,rgba(255,170,210,0.2),transparent_32%),radial-gradient(circle_at_92%_50%,rgba(255,225,190,0.22),transparent_24%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(164,147,255,0.22),transparent_42%),radial-gradient(circle_at_72%_26%,rgba(255,170,210,0.24),transparent_32%),radial-gradient(circle_at_92%_50%,rgba(255,225,190,0.24),transparent_24%),linear-gradient(180deg,rgba(126,151,187,0.08)_0%,rgba(255,255,255,0)_58%)]" />
+          <div
+            className="pointer-events-none absolute inset-x-[6%] top-0 bottom-[6%] opacity-80"
+            style={{
+              clipPath: "polygon(14% 0%, 86% 0%, 50% 86%)",
+              background:
+                "linear-gradient(180deg, rgba(255,255,255,0.34) 0%, rgba(233,238,255,0.24) 28%, rgba(216,221,248,0.18) 54%, rgba(167,179,223,0.12) 76%, rgba(124,146,203,0.06) 100%)",
+            }}
+          />
+          <div className="pointer-events-none absolute inset-0">
+            {HERO_STARS.map((star, index) => (
+              <span
+                key={`hero-star-${index}`}
+                className="absolute rounded-full bg-white/85 shadow-[0_0_10px_rgba(255,255,255,0.45)] animate-[hero-star-twinkle_var(--twinkle-duration)_ease-in-out_infinite]"
+                style={{
+                  left: star.left,
+                  top: star.top,
+                  width: `${star.size}px`,
+                  height: `${star.size}px`,
+                  animationDelay: star.delay,
+                  ["--twinkle-duration" as string]: star.duration,
+                }}
+              />
+            ))}
+          </div>
+          <div className="pointer-events-none absolute left-[12%] top-[12%] h-px w-[160px] animate-[hero-shooting-star_11s_linear_infinite] opacity-0">
+            <span className="absolute inset-0 rounded-full bg-[linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.95)_45%,rgba(255,255,255,0))] shadow-[0_0_14px_rgba(255,255,255,0.55)]" />
+            <span className="absolute right-0 top-1/2 h-[6px] w-[6px] -translate-y-1/2 rounded-full bg-white shadow-[0_0_16px_rgba(255,255,255,0.95)]" />
+          </div>
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.58)_42%,#ffffff_100%)]" />
           <div className="relative mx-auto flex min-h-[340px] max-w-[980px] flex-col items-center justify-center gap-8 text-center">
             <div className="flex max-w-[760px] flex-col items-center justify-center">
@@ -375,7 +420,7 @@ export default function PortfolioPage() {
                   </>
                 )}
                 roles={heroRoles}
-                description={heroDescription}
+                description=""
                 greetingClassName="text-[#0e2951]"
                 descriptionClassName="text-[#0e2951]"
               />
@@ -385,31 +430,17 @@ export default function PortfolioPage() {
                     key={pill.label}
                     asChild
                     variant="outline"
-                    className="border-[#d8d7f4] bg-white/60 text-[#4f5871] backdrop-blur hover:bg-white/80 hover:text-[#0e2951]"
+                    className="rounded-full border border-white/55 bg-white/28 px-1 py-1 text-[#31405b] shadow-[inset_0_1px_0_rgba(255,255,255,0.55),0_12px_28px_rgba(109,124,155,0.12)] backdrop-blur-xl transition-all duration-200 hover:-translate-y-0.5 hover:border-white/70 hover:bg-white/42 hover:text-[#0e2951] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.7),0_18px_36px_rgba(109,124,155,0.18)]"
                   >
-                    <Link href={pill.href}>{pill.label}</Link>
+                    <Link href={pill.href} className="rounded-full px-4 py-2 text-[13px] font-semibold tracking-[0.01em]">
+                      {pill.label}
+                    </Link>
                   </Badge>
                 ))}
               </div>
-              <div className="mt-8 flex flex-wrap justify-center gap-3">
-                <Button
-                  asChild
-                  size="sm"
-                >
-                  <Link href={withBasePath("/projects")}>View selected work</Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="sm"
-                  className="border-[#d8d7f4] bg-white/55 text-[#0e2951] hover:bg-white/80 hover:text-[#0e2951]"
-                >
-                  <Link href={withBasePath("/contact")}>Let&apos;s work together</Link>
-                </Button>
-              </div>
             </div>
 
-            <aside className="flex flex-col items-center gap-4 rounded-[28px] border border-white/50 bg-white/40 px-6 py-5 text-center shadow-[0_16px_40px_rgba(14,41,81,0.08)] backdrop-blur-sm">
+            <aside className="flex flex-col items-center gap-4 px-6 py-5 text-center">
               <span className="text-xs font-semibold uppercase tracking-[0.28em] text-[#6f7893]">
                 Certified by
               </span>
