@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
+import { CircleAlert } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
@@ -638,9 +639,16 @@ function FlockChecklistShowcase() {
                         <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">Email address</p>
                         <div className="h-11 rounded-[12px] border-2 border-[#1183D0] bg-[#F7FBFF]" />
                         <p className="mt-2 text-[12px] text-[#5c7792]">Used for account recovery and system alerts.</p>
-                        <div className="mt-2 inline-flex items-center gap-2 rounded-[10px] bg-[#FDECEC] px-3 py-2 text-[12px] font-medium text-[#B54708]">
-                          <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#FDEAD7] text-[11px] leading-none text-[#B54708]">!</span>
-                          <p>Enter a valid email address to continue.</p>
+                        <div
+                          role="alert"
+                          aria-live="polite"
+                          className="mt-3 flex items-start gap-3 rounded-[12px] border border-[#F2C6A1] bg-[#FFF4EB] px-3 py-3 text-[12px] font-medium text-[#8A3F00]"
+                        >
+                          <CircleAlert aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#A64B00]" />
+                          <div className="space-y-1">
+                            <p className="font-semibold leading-none text-[#7A3400]">Validation error</p>
+                            <p className="leading-[1.5] text-[#8A3F00]">Enter a valid email address to continue.</p>
+                          </div>
                         </div>
                       </div>
                       <div className="flex flex-wrap gap-3">
