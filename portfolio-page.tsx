@@ -134,6 +134,13 @@ export default function PortfolioPage() {
     "your next UX hire.",
   ];
   const heroDescription = "10+ years shipping enterprise SaaS, from UX strategy and design systems to AI-powered features that reach millions of users.";
+  const heroPills = [
+    { label: "AI Product Design", href: withBasePath("/projects?filter=AI%20Product") },
+    { label: "Design Systems", href: withBasePath("/projects?filter=Design%20Systems") },
+    { label: "Enterprise SaaS", href: withBasePath("/projects?topic=SaaS") },
+    { label: "UX Research", href: withBasePath("/projects?filter=UX%20Research") },
+    { label: "10+ Years", href: withBasePath("/projects") },
+  ];
 
   const recentWorkSection = (
     <section key="work" id="projects" className="bg-white py-12 px-6 md:px-10 xl:px-20">
@@ -329,7 +336,7 @@ export default function PortfolioPage() {
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
       {/* <PersonaModal key={modalKey} onSelect={handlePersona} /> */}
-      <SiteHeader />
+      <SiteHeader variant="transparent" />
 
       {/* ── View switcher pill ── */}
       {persona && (
@@ -349,34 +356,42 @@ export default function PortfolioPage() {
 
       {/* ── Hero ── */}
       <section className="bg-white">
-        <div className="relative min-h-[420px] overflow-hidden bg-[#102944] px-6 py-[10rem] sm:px-10 lg:px-16">
-          <Image
-            src={withBasePath(hero.photo || "/images/projects/benefits-enrollment/hero/benefits-hero.png")}
-            alt={hero.greeting}
-            fill
-            priority
-            className="pointer-events-none object-cover opacity-35 blur-[1px] scale-110"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(8,20,35,0.92)_0%,rgba(8,20,35,0.72)_48%,rgba(8,20,35,0.3)_100%)]" />
-          <div className="relative mx-auto grid min-h-[340px] max-w-[1400px] gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
-            <div className="flex max-w-[760px] flex-col justify-center">
+        <div
+          className="relative overflow-hidden px-6 py-[8.5rem] sm:px-10 lg:px-16"
+          style={{ background: "linear-gradient(90deg, #edf7ff 0%, #f6f0ff 37%, #ffe9f1 68%, #fff5e8 100%)" }}
+        >
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(164,147,255,0.16),transparent_42%),radial-gradient(circle_at_72%_26%,rgba(255,170,210,0.2),transparent_32%),radial-gradient(circle_at_92%_50%,rgba(255,225,190,0.22),transparent_24%)]" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.58)_42%,#ffffff_100%)]" />
+          <div className="relative mx-auto flex min-h-[340px] max-w-[980px] flex-col items-center justify-center gap-8 text-center">
+            <div className="flex max-w-[760px] flex-col items-center justify-center">
               <TypewriterBanner
-                greeting="Hey, I'm Greddys."
+                greeting={(
+                  <>
+                    Hey, I&apos;m{" "}
+                    <span className="font-serif-display text-[2.15em] italic leading-none text-[#0e2951]">
+                      Greddys
+                    </span>
+                    .
+                  </>
+                )}
                 roles={heroRoles}
                 description={heroDescription}
+                greetingClassName="text-[#0e2951]"
+                descriptionClassName="text-[#0e2951]"
               />
-              <div className="mt-8 flex flex-wrap gap-2">
-                {["AI Product Design", "Design Systems", "Enterprise SaaS", "UX Research", "10+ Years"].map((tag) => (
+              <div className="mt-8 flex flex-wrap justify-center gap-2">
+                {heroPills.map((pill) => (
                   <Badge
-                    key={tag}
+                    key={pill.label}
+                    asChild
                     variant="outline"
-                    className="border-white/30 bg-white/10 text-white/80 backdrop-blur hover:bg-white/15 hover:text-white"
+                    className="border-[#d8d7f4] bg-white/60 text-[#4f5871] backdrop-blur hover:bg-white/80 hover:text-[#0e2951]"
                   >
-                    {tag}
+                    <Link href={pill.href}>{pill.label}</Link>
                   </Badge>
                 ))}
               </div>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <Button
                   asChild
                   size="sm"
@@ -387,26 +402,26 @@ export default function PortfolioPage() {
                   asChild
                   variant="outline"
                   size="sm"
-                  className="border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white"
+                  className="border-[#d8d7f4] bg-white/55 text-[#0e2951] hover:bg-white/80 hover:text-[#0e2951]"
                 >
                   <Link href={withBasePath("/contact")}>Let&apos;s work together</Link>
                 </Button>
               </div>
             </div>
 
-            <aside className="flex flex-col items-start gap-4 p-5 text-white lg:ml-auto lg:w-[260px]">
-              <span className="text-xs font-semibold uppercase tracking-[0.28em] text-white/70">
+            <aside className="flex flex-col items-center gap-4 rounded-[28px] border border-white/50 bg-white/40 px-6 py-5 text-center shadow-[0_16px_40px_rgba(14,41,81,0.08)] backdrop-blur-sm">
+              <span className="text-xs font-semibold uppercase tracking-[0.28em] text-[#6f7893]">
                 Certified by
               </span>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center justify-center gap-3">
                 {certifications.slice(0, 2).map((item) => (
                   <div key={item.name} className="p-2 transition-opacity hover:opacity-85">
                     <Image
                       src={item.logo}
                       alt={item.name}
-                      width={86}
-                      height={86}
-                      className="h-[72px] w-[72px] object-contain sm:h-[86px] sm:w-[86px]"
+                      width={68}
+                      height={68}
+                      className="h-[56px] w-[56px] object-contain sm:h-[68px] sm:w-[68px]"
                     />
                   </div>
                 ))}
@@ -417,14 +432,14 @@ export default function PortfolioPage() {
 
         {/* Social Proof Bar */}
         <div>
-          <div className="flex min-h-[104px] flex-col items-start gap-5 px-6 py-6 md:flex-row md:items-center md:px-10 lg:px-20">
-            <div className="flex shrink-0 items-center md:h-full md:w-[280px] md:pr-10">
-              <span className="text-[13px] font-semibold text-[#3c3e3f]">
+          <div className="flex min-h-[92px] flex-col items-center gap-4 px-6 py-5 text-center md:px-10 lg:px-20">
+            <div className="flex shrink-0 items-center justify-center">
+              <span className="text-[12px] font-semibold text-[#5c7792]">
                 {siteContent.home.trusted_by.label}
               </span>
             </div>
-            <div className="relative w-full flex-1 overflow-hidden md:py-2">
-              <div className="flex w-max animate-[logo-marquee_22s_linear_infinite] items-center gap-14 pr-14 hover:[animation-play-state:paused]">
+            <div className="relative w-full max-w-[1080px] overflow-hidden md:py-1">
+              <div className="flex w-max animate-[logo-marquee_22s_linear_infinite] items-center gap-10 pr-10 hover:[animation-play-state:paused]">
                 {logoCarousel.map((logo, index) => (
                   <Image
                     key={`${logo.alt}-${index}`}
@@ -433,7 +448,7 @@ export default function PortfolioPage() {
                     width={logo.w}
                     height={logo.h}
                     aria-hidden={index >= socialProofLogos.length}
-                    className={`w-auto shrink-0 object-contain opacity-80 grayscale transition-all hover:grayscale-0 hover:opacity-100 ${logo.alt === "Hakuna" ? "max-h-[30px] brightness-0 saturate-0 opacity-45 hover:opacity-70" : logo.alt === "Paramount+" ? "max-h-[24px]" : logo.alt === "Elevation" ? "max-h-[56px] mix-blend-multiply" : "max-h-[58px]"}`}
+                    className={`w-auto shrink-0 object-contain opacity-75 grayscale transition-all hover:grayscale-0 hover:opacity-100 ${logo.alt === "Hakuna" ? "max-h-[20px] brightness-0 saturate-0 opacity-45 hover:opacity-70" : logo.alt === "Paramount+" ? "max-h-[16px]" : logo.alt === "Elevation" ? "max-h-[38px] mix-blend-multiply" : "max-h-[34px]"}`}
                   />
                 ))}
               </div>

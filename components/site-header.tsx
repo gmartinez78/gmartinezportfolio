@@ -50,12 +50,25 @@ export function LogoMark({ className = "" }: { className?: string }) {
   );
 }
 
-export function SiteHeader({ active }: { active?: "Projects" | "Resume" | "Contact" }) {
+export function SiteHeader({
+  active,
+  variant = "default",
+}: {
+  active?: "Projects" | "Resume" | "Contact";
+  variant?: "default" | "transparent";
+}) {
   const { siteContent } = usePublicSiteContent();
   const navLinks = siteContent.nav.links;
+  const isTransparent = variant === "transparent";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#bcd2ff]/60 bg-white/85 backdrop-blur">
+    <header
+      className={
+        isTransparent
+          ? "sticky top-0 z-50 border-b border-white/40 bg-white/45 backdrop-blur-md"
+          : "sticky top-0 z-50 border-b border-[#bcd2ff]/60 bg-white/85 backdrop-blur"
+      }
+    >
       <nav className="mx-auto flex min-h-16 max-w-[1200px] items-center justify-between gap-4 px-5 py-3 sm:px-8 lg:px-12">
         <div className="flex min-w-0 items-center gap-5 lg:gap-8">
           <Link href={withBasePath("/")} className="flex shrink-0 items-center gap-3" aria-label="Greddys Martinez home">
@@ -71,8 +84,12 @@ export function SiteHeader({ active }: { active?: "Projects" | "Resume" | "Conta
                   href={withBasePath(link.href)}
                   className={`rounded-[28px] px-3 py-2 text-sm font-semibold transition-colors sm:px-4 ${
                     active === link.label
-                      ? "bg-[#E0EEFB] text-[#1183D0]"
-                      : "text-[#5c7792] hover:bg-[#E0EEFB] hover:text-[#1183D0]"
+                      ? isTransparent
+                        ? "bg-black/5 text-[#0e2951]"
+                        : "bg-[#E0EEFB] text-[#1183D0]"
+                      : isTransparent
+                        ? "text-[#0e2951] hover:bg-black/5 hover:text-[#0e2951]"
+                        : "text-[#5c7792] hover:bg-[#E0EEFB] hover:text-[#1183D0]"
                   }`}
                 >
                   {link.label}
@@ -81,7 +98,7 @@ export function SiteHeader({ active }: { active?: "Projects" | "Resume" | "Conta
             ))}
           </ul>
         </div>
-        <div className="hidden items-center gap-4 text-[#1183D0] sm:flex">
+        <div className={`hidden items-center gap-4 sm:flex ${isTransparent ? "text-[#0e2951]" : "text-[#1183D0]"}`}>
           {SOCIAL_LINKS.map((link) => (
             <a
               key={link.label}
@@ -89,7 +106,9 @@ export function SiteHeader({ active }: { active?: "Projects" | "Resume" | "Conta
               target="_blank"
               rel="noreferrer"
               aria-label={link.label}
-              className="flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:bg-[#E0EEFB]"
+              className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors ${
+                isTransparent ? "hover:bg-black/5" : "hover:bg-[#E0EEFB]"
+              }`}
             >
               {link.icon}
             </a>

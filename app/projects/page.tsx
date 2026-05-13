@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
@@ -27,10 +28,25 @@ const PROJECT_BACKGROUNDS: Record<string, string> = {
 };
 
 export default function ProjectsPage() {
+  const searchParams = useSearchParams();
   const { caseStudies } = usePublicCaseStudies();
   const { siteContent } = usePublicSiteContent();
   const [activeFilter, setActiveFilter] = useState("All");
+  const [activeTopic, setActiveTopic] = useState<string | null>(null);
   const allProjects = appendLockedNayyaPlaceholder(caseStudies ?? []);
+  const initialFilter = searchParams.get("filter");
+  const initialTopic = searchParams.get("topic");
+
+  useEffect(() => {
+    if (initialFilter && FILTER_PILLS.includes(initialFilter)) {
+      setActiveFilter(initialFilter);
+      setActiveTopic(null);
+      return;
+    }
+
+    setActiveFilter("All");
+    setActiveTopic(initialTopic);
+  }, [initialFilter, initialTopic]);
   
   const projects = allProjects.filter(p => p?.slug).map((project) => ({
     ...project,
@@ -46,10 +62,32 @@ export default function ProjectsPage() {
     previewImage: resolveProjectListCardImage(project.slug, project.images?.cover || project.images?.hero || ""),
     bg: PROJECT_BACKGROUNDS[project.slug] ?? "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
   }));
-  const filteredProjects =
-    activeFilter === "All"
-      ? projects
-      : projects.filter((project) => (project.filters ?? []).includes(activeFilter));
+  const filteredProjects = useMemo(() => {
+    const normalizedTopic = activeTopic?.trim().toLowerCase() ?? null;
+
+    return projects.filter((project) => {
+      if (activeFilter !== "All" && !(project.filters ?? []).includes(activeFilter)) {
+        return false;
+      }
+
+      if (!normalizedTopic) {
+        return true;
+      }
+
+      const searchableValues = [
+        project.title,
+        project.company,
+        project.tagline,
+        project.industry,
+        ...(project.tags ?? []),
+        ...(project.filters ?? []),
+      ]
+        .filter(Boolean)
+        .map((value) => String(value).toLowerCase());
+
+      return searchableValues.some((value) => value.includes(normalizedTopic));
+    });
+  }, [activeFilter, activeTopic, projects]);
   const socialLogos = siteContent?.home?.trusted_by?.clients?.map((client) => ({
     src: resolveTrustedLogo(client.name, client.logo),
     alt: client.name,
@@ -67,6 +105,11 @@ export default function ProjectsPage() {
         <p className="mx-auto max-w-xl text-lg leading-relaxed text-[#5c7792] mt-6">
           Case studies and highlights from 10+ years designing enterprise SaaS, healthtech, and nonprofit digital experiences.
         </p>
+        {activeTopic ? (
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#1183D0]">
+            Showing projects related to <span className="font-semibold">{activeTopic}</span>.
+          </p>
+        ) : null}
 
         {/* Filter Pills */}
         <div className="mt-8 flex flex-wrap justify-center gap-2">
@@ -80,7 +123,12 @@ export default function ProjectsPage() {
               <button
                 type="button"
                 aria-pressed={activeFilter === filter}
-                onClick={() => setActiveFilter(filter)}
+                onClick={() => {
+                  setActiveFilter(filter);
+                  if (filter !== "All") {
+                    setActiveTopic(null);
+                  }
+                }}
               >
                 {filter}
               </button>
