@@ -32,7 +32,7 @@ export function SiteHeader({
     <header
       className={
         isTransparent
-          ? "absolute inset-x-0 top-0 z-50 border-b border-white/40 bg-white/45 backdrop-blur-md"
+          ? "absolute inset-x-0 top-0 z-50 border-b border-transparent bg-transparent"
           : "sticky top-0 z-50 border-b border-[#bcd2ff]/60 bg-white/85 backdrop-blur"
       }
     >

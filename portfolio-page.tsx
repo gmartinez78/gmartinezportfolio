@@ -375,15 +375,18 @@ export default function PortfolioPage() {
       <section className="bg-white">
         <div
           className="relative overflow-hidden px-6 py-[8.5rem] sm:px-10 lg:px-16"
-          style={{ background: "linear-gradient(90deg, #e3f0fb 0%, #eee6fb 37%, #fbe3eb 68%, #fdf0df 100%)" }}
+          style={{ background: "linear-gradient(90deg, #d7e8f7 0%, #e8ddf8 37%, #f7dce7 68%, #faead8 100%)" }}
         >
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(164,147,255,0.22),transparent_42%),radial-gradient(circle_at_72%_26%,rgba(255,170,210,0.24),transparent_32%),radial-gradient(circle_at_92%_50%,rgba(255,225,190,0.24),transparent_24%),linear-gradient(180deg,rgba(126,151,187,0.08)_0%,rgba(255,255,255,0)_58%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(164,147,255,0.26),transparent_42%),radial-gradient(circle_at_72%_26%,rgba(255,170,210,0.28),transparent_32%),radial-gradient(circle_at_92%_50%,rgba(255,225,190,0.28),transparent_24%),linear-gradient(180deg,rgba(105,129,168,0.12)_0%,rgba(255,255,255,0)_58%)]" />
           <div
-            className="pointer-events-none absolute inset-x-[6%] top-0 bottom-[6%] opacity-80"
+            className="pointer-events-none absolute inset-0 opacity-90"
             style={{
-              clipPath: "polygon(14% 0%, 86% 0%, 50% 86%)",
-              background:
-                "linear-gradient(180deg, rgba(255,255,255,0.34) 0%, rgba(233,238,255,0.24) 28%, rgba(216,221,248,0.18) 54%, rgba(167,179,223,0.12) 76%, rgba(124,146,203,0.06) 100%)",
+              background: `
+                linear-gradient(118deg, rgba(255,255,255,0.28) 6%, rgba(255,255,255,0) 37%),
+                linear-gradient(242deg, rgba(255,255,255,0.28) 6%, rgba(255,255,255,0) 37%),
+                linear-gradient(180deg, rgba(248,249,255,0.16) 0%, rgba(214,222,248,0.2) 26%, rgba(170,184,228,0.16) 54%, rgba(255,255,255,0) 76%),
+                radial-gradient(circle at 50% 74%, rgba(144,162,214,0.24), rgba(144,162,214,0) 24%)
+              `,
             }}
           />
           <div className="pointer-events-none absolute inset-0">
