@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 
 const TYPING_SPEED = 75;
@@ -11,10 +12,16 @@ export function TypewriterBanner({
   greeting = "Hey there! I'm Greddys,",
   roles = ["Sr. Product Designer."],
   description = "Building products end to end, from UX architecture and design systems to cross-functional execution that ships.",
+  greetingClassName = "text-white",
+  roleClassName = "text-[#7CB8E8]",
+  descriptionClassName = "text-white",
 }: {
-  greeting?: string;
+  greeting?: ReactNode;
   roles?: string[];
   description?: string;
+  greetingClassName?: string;
+  roleClassName?: string;
+  descriptionClassName?: string;
 }) {
   const [displayText, setDisplayText] = useState("");
   const safeRoles = roles.length ? roles : ["Sr. Product Designer."];
@@ -66,13 +73,13 @@ export function TypewriterBanner({
 
   return (
     <section className="flex min-h-[200px] flex-col justify-center">
-      <h1 className="m-0 text-[28px] font-normal leading-[1.2] text-white">
+      <h1 className={`m-0 text-[28px] font-normal leading-[1.2] ${greetingClassName}`}>
         {greeting}
       </h1>
       <div className="mb-5 mt-3 flex h-[96px] items-center sm:h-[60px]">
         <span
           aria-live="polite"
-          className="text-[42px] font-medium leading-[1.1] text-[#7CB8E8] sm:text-[52px] lg:text-[64px]"
+          className={`text-[32px] font-medium leading-[1.1] sm:text-[40px] lg:text-[50px] ${roleClassName}`}
         >
           {displayText}
         </span>
@@ -81,7 +88,7 @@ export function TypewriterBanner({
           className="ml-2 inline-block h-12 w-[3px] rounded-sm bg-[#1183D0] animate-[typewriter-cursor-blink_0.75s_step-end_infinite]"
         />
       </div>
-      <p className="m-0 max-w-[560px] text-[15px] leading-[1.8] text-white">
+      <p className={`m-0 max-w-[560px] text-[15px] leading-[1.8] ${descriptionClassName}`}>
         {description}
       </p>
     </section>
