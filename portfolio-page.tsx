@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, Star } from "lucide-react";
+import { FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, MousePointer2, Network, Star, Wand2 } from "lucide-react";
+import { MayAssistant } from "./components/may-assistant";
 import { PersonaModal, type Persona } from "./components/persona-modal";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
@@ -66,6 +67,19 @@ const HERO_STARS = [
   { left: "47%", top: "46%", size: 2, duration: "6.8s", delay: "0.6s" },
   { left: "66%", top: "52%", size: 3, duration: "5.5s", delay: "2.4s" },
   { left: "82%", top: "44%", size: 2, duration: "6.3s", delay: "1.7s" },
+];
+
+const HERO_CLOUDS = [
+  { left: "6%", top: "16%", width: 180, height: 54, opacity: 0.34, duration: "20s", delay: "0s" },
+  { left: "68%", top: "12%", width: 210, height: 62, opacity: 0.28, duration: "24s", delay: "1.4s" },
+  { left: "54%", top: "34%", width: 160, height: 48, opacity: 0.22, duration: "18s", delay: "0.8s" },
+];
+
+const HERO_UI_ORBS = [
+  { left: "9%", top: "28%", width: 132, height: 132, rotate: -18, depth: -18, fill: "linear-gradient(135deg, rgba(86,72,228,0.92) 0%, rgba(60,72,221,0.74) 100%)" },
+  { left: "77%", top: "22%", width: 88, height: 88, rotate: 12, depth: -12, fill: "linear-gradient(135deg, rgba(255,178,48,0.96) 0%, rgba(255,153,0,0.74) 100%)" },
+  { left: "73%", top: "54%", width: 154, height: 110, rotate: -14, depth: -22, fill: "linear-gradient(135deg, rgba(20,209,140,0.88) 0%, rgba(26,148,116,0.7) 100%)" },
+  { left: "21%", top: "64%", width: 160, height: 118, rotate: -22, depth: -28, fill: "linear-gradient(135deg, rgba(72,79,248,0.88) 0%, rgba(59,73,208,0.68) 100%)" },
 ];
 
 type HeroPhase = "sunrise" | "day" | "sunset" | "night";
@@ -233,6 +247,10 @@ function getGitHubActivityIcon(kind: GitHubActivityItem["kind"]) {
   return GitFork;
 }
 
+function getParallaxTransform(x: number, y: number, depth: number, rotate = 0) {
+  return `translate3d(${x * depth}px, ${y * depth}px, 0) rotate(${rotate}deg)`;
+}
+
 function ToolBadge({
   label,
   x,
@@ -274,6 +292,7 @@ export default function PortfolioPage() {
   const [heroPhase, setHeroPhase] = useState<HeroPhase>(() => getFallbackHeroPhase(new Date()));
   const [githubActivity, setGithubActivity] = useState<GitHubActivityItem[]>([]);
   const [githubUsername, setGithubUsername] = useState("gmartinez78");
+  const [heroPointer, setHeroPointer] = useState({ x: 0, y: 0 });
   const handlePersona = useCallback((p: Persona) => setPersona(p), []);
   const handleReset = useCallback(() => {
     localStorage.removeItem("gm_persona");
@@ -690,12 +709,54 @@ export default function PortfolioPage() {
         <div
           className="relative overflow-hidden px-6 py-[8.5rem] sm:px-10 lg:px-16"
           style={{ background: heroPhaseStyles.background }}
+          onMouseMove={(event) => {
+            const bounds = event.currentTarget.getBoundingClientRect();
+            const normalizedX = (event.clientX - bounds.left) / bounds.width - 0.5;
+            const normalizedY = (event.clientY - bounds.top) / bounds.height - 0.5;
+            setHeroPointer({ x: normalizedX, y: normalizedY });
+          }}
+          onMouseLeave={() => setHeroPointer({ x: 0, y: 0 })}
         >
           <div className="pointer-events-none absolute inset-0" style={{ background: heroPhaseStyles.overlay }} />
           <div
             className="pointer-events-none absolute inset-0 opacity-90"
             style={{ background: heroPhaseStyles.cone }}
           />
+          <div className="pointer-events-none absolute inset-0">
+            {HERO_CLOUDS.map((cloud, index) => (
+              <span
+                key={`hero-cloud-${index}`}
+                className="absolute rounded-full animate-[hero-cloud-drift_var(--cloud-duration)_ease-in-out_infinite]"
+                style={{
+                  left: cloud.left,
+                  top: cloud.top,
+                  width: `${cloud.width}px`,
+                  height: `${cloud.height}px`,
+                  opacity: cloud.opacity,
+                  animationDelay: cloud.delay,
+                  ["--cloud-duration" as string]: cloud.duration,
+                  background:
+                    "radial-gradient(ellipse at center, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.72) 48%, rgba(255,255,255,0) 78%)",
+                  filter: "blur(1px)",
+                  boxShadow:
+                    "0 10px 24px rgba(255,255,255,0.16), inset 0 1px 0 rgba(255,255,255,0.55)",
+                }}
+              >
+                <span
+                  className="absolute left-[12%] top-[18%] h-[62%] w-[34%] rounded-full bg-white/80"
+                  style={{ filter: "blur(4px)" }}
+                />
+                <span
+                  className="absolute left-[34%] top-[4%] h-[74%] w-[38%] rounded-full bg-white/85"
+                  style={{ filter: "blur(4px)" }}
+                />
+                <span
+                  className="absolute right-[10%] top-[22%] h-[58%] w-[32%] rounded-full bg-white/75"
+                  style={{ filter: "blur(4px)" }}
+                />
+              </span>
+            ))}
+          </div>
           <div className="pointer-events-none absolute inset-0" style={{ opacity: heroPhaseStyles.starOpacity }}>
             {HERO_STARS.map((star, index) => (
               <span
@@ -711,6 +772,139 @@ export default function PortfolioPage() {
                 }}
               />
             ))}
+          </div>
+          <div className="pointer-events-none absolute inset-0 hidden lg:block">
+            {HERO_UI_ORBS.map((orb, index) => (
+              <span
+                key={`hero-ui-orb-${index}`}
+                className="absolute rounded-[32px] shadow-[0_24px_50px_rgba(20,28,48,0.16),inset_0_1px_0_rgba(255,255,255,0.14)]"
+                style={{
+                  left: orb.left,
+                  top: orb.top,
+                  width: `${orb.width}px`,
+                  height: `${orb.height}px`,
+                  background: orb.fill,
+                  opacity: heroPhase === "night" ? 0.9 : 0.72,
+                  filter: "blur(0.2px)",
+                  transform: getParallaxTransform(heroPointer.x, heroPointer.y, orb.depth, orb.rotate),
+                  transition: "transform 180ms ease-out",
+                }}
+              />
+            ))}
+
+            <div
+              className="absolute left-[8%] top-[18%] w-[210px] rounded-[28px] border border-white/45 bg-white/20 p-4 shadow-[0_24px_50px_rgba(42,54,92,0.12),inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-xl"
+              style={{
+                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -26, -10),
+                transition: "transform 180ms ease-out",
+              }}
+            >
+              <div className="mb-3 flex items-center justify-between">
+                <span className="inline-flex items-center gap-2 rounded-full bg-white/45 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#3f4a67]">
+                  <LayoutTemplate className="h-3.5 w-3.5" />
+                  Wireframe
+                </span>
+                <span className="h-2.5 w-2.5 rounded-full bg-[#6d79ff]" />
+              </div>
+              <div className="space-y-2">
+                <div className="h-4 w-[62%] rounded-full bg-[#ffffff]/70" />
+                <div className="grid grid-cols-[1.25fr_0.9fr] gap-2">
+                  <div className="h-20 rounded-[18px] bg-[#dbe6ff]/75" />
+                  <div className="space-y-2">
+                    <div className="h-9 rounded-[14px] bg-[#ffffff]/70" />
+                    <div className="h-9 rounded-[14px] bg-[#f6d6ff]/60" />
+                  </div>
+                </div>
+                <div className="h-3 w-[48%] rounded-full bg-[#ffffff]/62" />
+              </div>
+            </div>
+
+            <div
+              className="absolute right-[10%] top-[18%] w-[178px] rounded-[26px] border border-white/45 bg-white/18 p-4 shadow-[0_24px_50px_rgba(42,54,92,0.12),inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-xl"
+              style={{
+                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -20, 9),
+                transition: "transform 180ms ease-out",
+              }}
+            >
+              <div className="mb-4 flex items-center justify-between">
+                <span className="inline-flex items-center gap-2 rounded-full bg-white/45 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#3f4a67]">
+                  <Network className="h-3.5 w-3.5" />
+                  UX Flow
+                </span>
+                <div className="flex gap-1.5">
+                  <span className="h-2 w-2 rounded-full bg-[#ffb230]" />
+                  <span className="h-2 w-2 rounded-full bg-[#625cff]" />
+                </div>
+              </div>
+              <div className="relative h-[104px] rounded-[20px] bg-[#f8fbff]/58">
+                <span className="absolute left-5 top-5 h-4 w-4 rounded-full bg-[#625cff]" />
+                <span className="absolute right-5 top-7 h-4 w-4 rounded-full bg-[#ffb230]" />
+                <span className="absolute bottom-5 left-1/2 h-4 w-4 -translate-x-1/2 rounded-full bg-[#13bf85]" />
+                <span className="absolute left-[38px] top-[32px] h-px w-[76px] bg-[#93a3d7]" />
+                <span className="absolute left-[52px] top-[38px] h-px w-[58px] rotate-[36deg] bg-[#93a3d7]" />
+                <span className="absolute right-[44px] top-[44px] h-px w-[54px] -rotate-[44deg] bg-[#93a3d7]" />
+              </div>
+            </div>
+
+            <div
+              className="absolute right-[14%] top-[44%] w-[220px] overflow-hidden rounded-[30px] border border-white/45 bg-white/16 p-3 shadow-[0_28px_58px_rgba(42,54,92,0.16),inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-xl"
+              style={{
+                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -24, 8),
+                transition: "transform 180ms ease-out",
+              }}
+            >
+              <div className="relative overflow-hidden rounded-[24px] bg-[linear-gradient(135deg,rgba(255,255,255,0.72)_0%,rgba(255,255,255,0.3)_100%)]">
+                <Image
+                  src={withBasePath("/images/profile-photo.png")}
+                  alt="Greddys Martinez portrait"
+                  width={420}
+                  height={420}
+                  className="h-[220px] w-full object-cover object-center"
+                  priority
+                />
+                <div className="absolute inset-x-0 bottom-0 h-20 bg-[linear-gradient(180deg,rgba(14,41,81,0)_0%,rgba(14,41,81,0.52)_100%)]" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80">
+                    Product designer
+                  </p>
+                  <p className="mt-1 text-[18px] font-semibold leading-none">
+                    Greddys
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="absolute left-[16%] bottom-[18%] flex items-center gap-3 rounded-full border border-white/55 bg-white/18 px-4 py-3 shadow-[0_20px_42px_rgba(42,54,92,0.12),inset_0_1px_0_rgba(255,255,255,0.5)] backdrop-blur-xl"
+              style={{
+                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -18, -6),
+                transition: "transform 180ms ease-out",
+              }}
+            >
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#ffffff]/55 text-[#3d52c6]">
+                <MousePointer2 className="h-4 w-4" />
+              </span>
+              <div className="text-left">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#5b6a89]">UI Motion</p>
+                <p className="text-[13px] font-medium text-[#22314f]">Cursor-aware interactions</p>
+              </div>
+            </div>
+
+            <div
+              className="absolute right-[18%] bottom-[16%] flex items-center gap-3 rounded-full border border-white/55 bg-white/18 px-4 py-3 shadow-[0_20px_42px_rgba(42,54,92,0.12),inset_0_1px_0_rgba(255,255,255,0.5)] backdrop-blur-xl"
+              style={{
+                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -16, 4),
+                transition: "transform 180ms ease-out",
+              }}
+            >
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#ffffff]/55 text-[#ff9d2f]">
+                <Wand2 className="h-4 w-4" />
+              </span>
+              <div className="text-left">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#5b6a89]">Design craft</p>
+                <p className="text-[13px] font-medium text-[#22314f]">Systems, flows, polish</p>
+              </div>
+            </div>
           </div>
           <div
             className="pointer-events-none absolute left-[12%] top-[12%] h-px w-[160px] animate-[hero-shooting-star_11s_linear_infinite] opacity-0"
@@ -801,6 +995,7 @@ export default function PortfolioPage() {
 
       {contentSections}
 
+      <MayAssistant />
       <SiteFooter />
     </main>
   );
