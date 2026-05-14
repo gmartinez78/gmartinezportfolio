@@ -634,7 +634,6 @@ export default function PortfolioPage() {
     { label: "Design Systems", href: withBasePath("/projects?filter=Design%20Systems") },
     { label: "Enterprise SaaS", href: withBasePath("/projects?topic=SaaS") },
     { label: "UX Research", href: withBasePath("/projects?filter=UX%20Research") },
-    { label: "10+ Years", href: withBasePath("/projects") },
   ];
   const heroPhaseStyles = useMemo(() => HERO_PHASE_STYLES[heroPhase], [heroPhase]);
 
