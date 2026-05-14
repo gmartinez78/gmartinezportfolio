@@ -1187,7 +1187,7 @@ export default function PortfolioPage() {
                 roles={heroRoles}
                 description=""
                 greetingClassName="text-[#0e2951]"
-                roleClassName="text-[#3b82f6]/50"
+                roleClassName="text-[#3b82f6]"
                 descriptionClassName="text-[#0e2951]"
               />
               <div className="mt-8 flex flex-wrap justify-center gap-2">
