@@ -910,7 +910,7 @@ export default function PortfolioPage() {
             </div>
 
             <div
-              className="absolute right-[24%] top-[52%] flex items-center gap-3 rounded-full border border-white/28 bg-white/10 px-3.5 py-2.5 shadow-[0_18px_34px_rgba(42,54,92,0.05),inset_0_1px_0_rgba(255,255,255,0.36)] backdrop-blur-xl"
+              className="absolute right-[14%] top-[57%] flex items-center gap-3 rounded-full border border-white/28 bg-white/10 px-3.5 py-2.5 shadow-[0_18px_34px_rgba(42,54,92,0.05),inset_0_1px_0_rgba(255,255,255,0.36)] backdrop-blur-xl"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -16, 4),
                 transition: "transform 180ms ease-out",
@@ -955,9 +955,9 @@ export default function PortfolioPage() {
                     key={pill.label}
                     asChild
                     variant="outline"
-                    className="rounded-full border border-white/55 bg-white/28 px-1 py-1 text-[#31405b] shadow-[inset_0_1px_0_rgba(255,255,255,0.55),0_12px_28px_rgba(109,124,155,0.12)] backdrop-blur-xl transition-all duration-200 hover:-translate-y-0.5 hover:border-white/70 hover:bg-white/42 hover:text-[#0e2951] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.7),0_18px_36px_rgba(109,124,155,0.18)]"
+                    className="rounded-full border border-[#c7d8ea] bg-[#fffdf8] px-1 py-1 text-[#16385c] shadow-[0_10px_24px_rgba(78,104,138,0.14)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#9bb9d7] hover:bg-white hover:text-[#0e2951] hover:shadow-[0_16px_32px_rgba(78,104,138,0.18)]"
                   >
-                    <Link href={pill.href} className="rounded-full px-4 py-2 text-[13px] font-semibold tracking-[0.01em]">
+                    <Link href={pill.href} className="rounded-full px-4 py-2 text-[13px] font-medium tracking-[0.01em]">
                       {pill.label}
                     </Link>
                   </Badge>
