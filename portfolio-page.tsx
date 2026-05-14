@@ -1239,7 +1239,7 @@ export default function PortfolioPage() {
                     width={logo.w}
                     height={logo.h}
                     aria-hidden={index >= socialProofLogos.length}
-                    className={`w-auto shrink-0 object-contain opacity-75 grayscale transition-all hover:grayscale-0 hover:opacity-100 ${logo.alt === "Hakuna" ? "max-h-[28px]" : logo.alt === "Paramount+" ? "max-h-[22px]" : "max-h-[46px]"}`}
+                    className={`w-auto shrink-0 object-contain transition-all ${logo.alt === "Hakuna" ? "max-h-[28px]" : logo.alt === "Paramount+" ? "max-h-[22px]" : "max-h-[46px]"}`}
                   />
                 ))}
               </div>
