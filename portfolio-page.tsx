@@ -883,9 +883,9 @@ export default function PortfolioPage() {
             </div>
 
             <div
-              className="absolute left-[50%] top-[22%] w-[188px] -translate-x-1/2 rounded-[26px] border border-white/34 bg-white/14 p-4 shadow-[0_24px_50px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.45)] backdrop-blur-xl"
+              className="absolute right-[12%] top-[49%] w-[188px] rounded-[26px] border border-white/34 bg-white/14 p-4 shadow-[0_24px_50px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.45)] backdrop-blur-xl"
               style={{
-                transform: `translateX(-50%) ${getParallaxTransform(heroPointer.x, heroPointer.y, -16, 2)}`,
+                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -16, 2),
                 transition: "transform 180ms ease-out",
               }}
             >
