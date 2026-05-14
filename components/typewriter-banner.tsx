@@ -72,11 +72,11 @@ export function TypewriterBanner({
   }, [safeRoles]);
 
   return (
-    <section className="flex min-h-[200px] flex-col justify-center">
+    <section className="flex min-h-[200px] flex-col items-center justify-center text-center">
       <h1 className={`m-0 text-[28px] font-normal leading-[1.2] ${greetingClassName}`}>
         {greeting}
       </h1>
-      <div className="mb-5 mt-3 flex h-[96px] items-center sm:h-[60px]">
+      <div className="mb-5 mt-3 flex h-[96px] items-center justify-center sm:h-[60px]">
         <span
           aria-live="polite"
           className={`text-[32px] font-medium leading-[1.1] sm:text-[40px] lg:text-[50px] ${roleClassName}`}
