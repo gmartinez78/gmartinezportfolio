@@ -957,9 +957,9 @@ export default function PortfolioPage() {
               />
             ))}
           </div>
-          <div className="pointer-events-none absolute inset-0 hidden lg:block">
+          <div className="pointer-events-none absolute inset-0 block">
             <div
-              className="absolute left-[7%] top-[16%] h-[280px] w-[320px] rounded-[38px] border border-white/16"
+              className="absolute left-[7%] top-[16%] h-[280px] w-[320px] rounded-[38px] border border-white/16 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -7, -8),
                 transition: "transform 180ms ease-out",
@@ -967,7 +967,7 @@ export default function PortfolioPage() {
               }}
             />
             <div
-              className="absolute left-[11%] top-[20%] h-[188px] w-[250px] rounded-[26px] border border-[#9aaee2]/22"
+              className="absolute left-[11%] top-[20%] h-[188px] w-[250px] rounded-[26px] border border-[#9aaee2]/22 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, -6),
                 transition: "transform 180ms ease-out",
@@ -975,7 +975,7 @@ export default function PortfolioPage() {
               }}
             />
             <div
-              className="absolute right-[8%] top-[19%] h-[226px] w-[266px] rounded-[34px] border border-white/16"
+              className="absolute right-[8%] top-[19%] h-[226px] w-[266px] rounded-[34px] border border-white/16 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -7, 9),
                 transition: "transform 180ms ease-out",
@@ -983,7 +983,7 @@ export default function PortfolioPage() {
               }}
             />
             <div
-              className="absolute right-[12%] top-[24%] h-[154px] w-[204px] rounded-[24px] border border-[#e4bdd0]/22"
+              className="absolute right-[12%] top-[24%] h-[154px] w-[204px] rounded-[24px] border border-[#e4bdd0]/22 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, 8),
                 transition: "transform 180ms ease-out",
@@ -991,28 +991,28 @@ export default function PortfolioPage() {
               }}
             />
             <div
-              className="absolute left-[16%] top-[58%] h-px w-[150px] bg-[#90a4da]/28"
+              className="absolute left-[16%] top-[58%] h-px w-[150px] bg-[#90a4da]/28 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -12, -6),
                 transition: "transform 180ms ease-out",
               }}
             />
             <div
-              className="absolute left-[16%] top-[58%] h-[56px] w-px bg-[#90a4da]/24"
+              className="absolute left-[16%] top-[58%] h-[56px] w-px bg-[#90a4da]/24 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -12, -6),
                 transition: "transform 180ms ease-out",
               }}
             />
             <div
-              className="absolute right-[18%] top-[58%] h-px w-[130px] bg-[#d6a8bc]/28"
+              className="absolute right-[18%] top-[58%] h-px w-[130px] bg-[#d6a8bc]/28 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, 5),
                 transition: "transform 180ms ease-out",
               }}
             />
             <div
-              className="absolute right-[24%] top-[46%] h-[74px] w-[74px] rounded-full border border-white/14"
+              className="absolute right-[24%] top-[46%] h-[74px] w-[74px] rounded-full border border-white/14 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -6, 0),
                 transition: "transform 180ms ease-out",
@@ -1020,7 +1020,7 @@ export default function PortfolioPage() {
               }}
             />
             <div
-              className="absolute left-[35%] top-[18%] rounded-full border border-white/24 bg-white/8 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#64738f]"
+              className="absolute left-[35%] top-[18%] rounded-full border border-white/24 bg-white/8 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#64738f] hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, 0),
                 transition: "transform 180ms ease-out",
@@ -1029,7 +1029,7 @@ export default function PortfolioPage() {
               User flow
             </div>
             <div
-              className="absolute right-[29%] top-[31%] rounded-full border border-white/24 bg-white/8 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#64738f]"
+              className="absolute right-[29%] top-[31%] rounded-full border border-white/24 bg-white/8 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#64738f] hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, 0),
                 transition: "transform 180ms ease-out",
@@ -1038,7 +1038,7 @@ export default function PortfolioPage() {
               Low-fi
             </div>
             <div
-              className="absolute left-[31%] top-[66%] rounded-[16px] border border-white/18 bg-white/8 px-4 py-3"
+              className="absolute left-[31%] top-[66%] rounded-[16px] border border-white/18 bg-white/8 px-4 py-3 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, -2),
                 transition: "transform 180ms ease-out",
@@ -1070,7 +1070,7 @@ export default function PortfolioPage() {
             ))}
 
             <div
-              className="absolute left-[8%] top-[20%] w-[194px] rounded-[26px] border border-white/30 bg-white/12 p-3.5 shadow-[0_20px_42px_rgba(42,54,92,0.06),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur-xl"
+              className="absolute left-[8%] top-[20%] w-[194px] rounded-[26px] border border-white/30 bg-white/12 p-3.5 shadow-[0_20px_42px_rgba(42,54,92,0.06),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur-xl hidden sm:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -26, -10),
                 transition: "transform 180ms ease-out",
@@ -1097,7 +1097,7 @@ export default function PortfolioPage() {
             </div>
 
             <div
-              className="absolute right-[12%] top-[19%] w-[166px] rounded-[24px] border border-white/30 bg-white/12 p-3.5 shadow-[0_20px_42px_rgba(42,54,92,0.06),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur-xl"
+              className="absolute right-[12%] top-[19%] w-[166px] rounded-[24px] border border-white/30 bg-white/12 p-3.5 shadow-[0_20px_42px_rgba(42,54,92,0.06),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur-xl hidden sm:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -20, 9),
                 transition: "transform 180ms ease-out",
@@ -1135,7 +1135,7 @@ export default function PortfolioPage() {
             </div>
 
             <div
-              className="absolute left-[16%] bottom-[18%] flex items-center gap-3 rounded-full border border-white/34 bg-white/12 px-4 py-3 shadow-[0_20px_42px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.42)] backdrop-blur-xl"
+              className="absolute left-[16%] bottom-[18%] hidden sm:flex items-center gap-3 rounded-full border border-white/34 bg-white/12 px-4 py-3 shadow-[0_20px_42px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.42)] backdrop-blur-xl"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -18, -6),
                 transition: "transform 180ms ease-out",
@@ -1151,7 +1151,7 @@ export default function PortfolioPage() {
             </div>
 
             <div
-              className="absolute right-[14%] top-[57%] flex items-center gap-3 rounded-full border border-white/28 bg-white/10 px-3.5 py-2.5 shadow-[0_18px_34px_rgba(42,54,92,0.05),inset_0_1px_0_rgba(255,255,255,0.36)] backdrop-blur-xl"
+              className="absolute right-[14%] top-[57%] hidden sm:flex items-center gap-3 rounded-full border border-white/28 bg-white/10 px-3.5 py-2.5 shadow-[0_18px_34px_rgba(42,54,92,0.05),inset_0_1px_0_rgba(255,255,255,0.36)] backdrop-blur-xl"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -16, 4),
                 transition: "transform 180ms ease-out",
@@ -1187,7 +1187,7 @@ export default function PortfolioPage() {
                 roles={heroRoles}
                 description=""
                 greetingClassName="text-[#0e2951]"
-                roleClassName="text-[#17406c]"
+                roleClassName="text-[#3b82f6]/50"
                 descriptionClassName="text-[#0e2951]"
               />
               <div className="mt-8 flex flex-wrap justify-center gap-2">
