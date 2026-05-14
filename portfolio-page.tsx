@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { PersonaModal, type Persona } from "./components/persona-modal";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
@@ -67,6 +67,136 @@ const HERO_STARS = [
   { left: "82%", top: "44%", size: 2, duration: "6.3s", delay: "1.7s" },
 ];
 
+type HeroPhase = "sunrise" | "day" | "sunset" | "night";
+
+const HERO_PHASE_STYLES: Record<
+  HeroPhase,
+  {
+    background: string;
+    overlay: string;
+    cone: string;
+    starOpacity: number;
+    shootingOpacity: number;
+  }
+> = {
+  sunrise: {
+    background: "linear-gradient(90deg, #dcebf8 0%, #eadff8 36%, #f8e0e8 68%, #fbe8d8 100%)",
+    overlay:
+      "radial-gradient(circle at top,rgba(176,160,255,0.24),transparent 42%),radial-gradient(circle at 72% 26%,rgba(255,176,203,0.24),transparent 32%),radial-gradient(circle at 92% 50%,rgba(255,226,185,0.25),transparent 24%),linear-gradient(180deg,rgba(109,132,171,0.1)_0%,rgba(255,255,255,0)_58%)",
+    cone:
+      "linear-gradient(118deg, rgba(255,255,255,0.26) 6%, rgba(255,255,255,0) 37%),linear-gradient(242deg, rgba(255,255,255,0.26) 6%, rgba(255,255,255,0) 37%),linear-gradient(180deg, rgba(248,249,255,0.14) 0%, rgba(221,226,249,0.18) 28%, rgba(182,193,232,0.15) 54%, rgba(255,255,255,0) 76%),radial-gradient(circle at 50% 74%, rgba(151,166,220,0.22), rgba(151,166,220,0) 24%)",
+    starOpacity: 0.72,
+    shootingOpacity: 0.55,
+  },
+  day: {
+    background: "linear-gradient(90deg, #e6f1fb 0%, #eee7fb 37%, #f9e5ee 68%, #fcf0e2 100%)",
+    overlay:
+      "radial-gradient(circle at top,rgba(171,160,246,0.16),transparent 42%),radial-gradient(circle at 72% 26%,rgba(255,174,202,0.18),transparent 32%),radial-gradient(circle at 92% 50%,rgba(255,224,189,0.2),transparent 24%),linear-gradient(180deg,rgba(118,141,177,0.06)_0%,rgba(255,255,255,0)_58%)",
+    cone:
+      "linear-gradient(118deg, rgba(255,255,255,0.2) 6%, rgba(255,255,255,0) 37%),linear-gradient(242deg, rgba(255,255,255,0.2) 6%, rgba(255,255,255,0) 37%),linear-gradient(180deg, rgba(249,250,255,0.1) 0%, rgba(225,231,249,0.12) 28%, rgba(191,202,235,0.1) 54%, rgba(255,255,255,0) 76%),radial-gradient(circle at 50% 74%, rgba(162,176,224,0.16), rgba(162,176,224,0) 24%)",
+    starOpacity: 0.3,
+    shootingOpacity: 0.18,
+  },
+  sunset: {
+    background: "linear-gradient(90deg, #d8e7f6 0%, #e6daf6 34%, #f4d7e5 66%, #fae4d1 100%)",
+    overlay:
+      "radial-gradient(circle at top,rgba(161,144,242,0.28),transparent 42%),radial-gradient(circle at 72% 26%,rgba(255,157,191,0.28),transparent 32%),radial-gradient(circle at 92% 50%,rgba(255,207,152,0.28),transparent 24%),linear-gradient(180deg,rgba(95,114,152,0.14)_0%,rgba(255,255,255,0)_58%)",
+    cone:
+      "linear-gradient(118deg, rgba(255,255,255,0.24) 6%, rgba(255,255,255,0) 37%),linear-gradient(242deg, rgba(255,255,255,0.24) 6%, rgba(255,255,255,0) 37%),linear-gradient(180deg, rgba(248,242,255,0.14) 0%, rgba(218,212,244,0.18) 28%, rgba(177,166,220,0.18) 54%, rgba(255,255,255,0) 76%),radial-gradient(circle at 50% 74%, rgba(134,150,205,0.24), rgba(134,150,205,0) 24%)",
+    starOpacity: 0.8,
+    shootingOpacity: 0.65,
+  },
+  night: {
+    background: "linear-gradient(90deg, #8fa2c3 0%, #9f94c6 36%, #b28db0 68%, #b39b8d 100%)",
+    overlay:
+      "radial-gradient(circle at top,rgba(147,126,226,0.34),transparent 42%),radial-gradient(circle at 72% 26%,rgba(230,137,179,0.28),transparent 32%),radial-gradient(circle at 92% 50%,rgba(220,184,138,0.24),transparent 24%),linear-gradient(180deg,rgba(41,54,84,0.38)_0%,rgba(91,106,145,0.08)_58%,rgba(255,255,255,0)_100%)",
+    cone:
+      "linear-gradient(118deg, rgba(255,255,255,0.14) 6%, rgba(255,255,255,0) 37%),linear-gradient(242deg, rgba(255,255,255,0.14) 6%, rgba(255,255,255,0) 37%),linear-gradient(180deg, rgba(237,239,255,0.08) 0%, rgba(191,201,235,0.1) 28%, rgba(124,137,189,0.16) 54%, rgba(255,255,255,0) 76%),radial-gradient(circle at 50% 74%, rgba(95,115,179,0.32), rgba(95,115,179,0) 24%)",
+    starOpacity: 1,
+    shootingOpacity: 0.95,
+  },
+};
+
+function getDayOfYear(date: Date) {
+  const start = new Date(date.getFullYear(), 0, 0);
+  const diff = date.getTime() - start.getTime();
+  return Math.floor(diff / 86400000);
+}
+
+function normalizeDegrees(value: number) {
+  return ((value % 360) + 360) % 360;
+}
+
+function calculateSunEventHour(date: Date, latitude: number, longitude: number, isSunrise: boolean) {
+  const zenith = 90.833;
+  const dayOfYear = getDayOfYear(date);
+  const lngHour = longitude / 15;
+  const approximateTime = dayOfYear + ((isSunrise ? 6 : 18) - lngHour) / 24;
+  const meanAnomaly = 0.9856 * approximateTime - 3.289;
+  const trueLongitude = normalizeDegrees(
+    meanAnomaly +
+      1.916 * Math.sin((meanAnomaly * Math.PI) / 180) +
+      0.02 * Math.sin((2 * meanAnomaly * Math.PI) / 180) +
+      282.634,
+  );
+  let rightAscension = normalizeDegrees(
+    (Math.atan(0.91764 * Math.tan((trueLongitude * Math.PI) / 180)) * 180) / Math.PI,
+  );
+  const leftQuadrant = Math.floor(trueLongitude / 90) * 90;
+  const rightQuadrant = Math.floor(rightAscension / 90) * 90;
+  rightAscension = (rightAscension + leftQuadrant - rightQuadrant) / 15;
+
+  const sinDeclination = 0.39782 * Math.sin((trueLongitude * Math.PI) / 180);
+  const cosDeclination = Math.cos(Math.asin(sinDeclination));
+  const cosHourAngle =
+    (Math.cos((zenith * Math.PI) / 180) - sinDeclination * Math.sin((latitude * Math.PI) / 180)) /
+    (cosDeclination * Math.cos((latitude * Math.PI) / 180));
+
+  if (cosHourAngle > 1 || cosHourAngle < -1) {
+    return null;
+  }
+
+  let hourAngle = isSunrise
+    ? 360 - (Math.acos(cosHourAngle) * 180) / Math.PI
+    : (Math.acos(cosHourAngle) * 180) / Math.PI;
+  hourAngle /= 15;
+
+  const localMeanTime = hourAngle + rightAscension - 0.06571 * approximateTime - 6.622;
+  const utcHour = normalizeDegrees(localMeanTime - lngHour * 15) / 15;
+  const timezoneOffsetHours = -date.getTimezoneOffset() / 60;
+
+  return utcHour + timezoneOffsetHours;
+}
+
+function getDecimalHour(date: Date) {
+  return date.getHours() + date.getMinutes() / 60;
+}
+
+function getFallbackHeroPhase(date: Date): HeroPhase {
+  const hour = getDecimalHour(date);
+
+  if (hour >= 5 && hour < 8) return "sunrise";
+  if (hour >= 8 && hour < 17) return "day";
+  if (hour >= 17 && hour < 20) return "sunset";
+  return "night";
+}
+
+function getHeroPhaseForLocation(date: Date, latitude: number, longitude: number): HeroPhase {
+  const sunriseHour = calculateSunEventHour(date, latitude, longitude, true);
+  const sunsetHour = calculateSunEventHour(date, latitude, longitude, false);
+
+  if (sunriseHour === null || sunsetHour === null) {
+    return getFallbackHeroPhase(date);
+  }
+
+  const hour = getDecimalHour(date);
+
+  if (hour >= sunriseHour - 0.75 && hour < sunriseHour + 1.25) return "sunrise";
+  if (hour >= sunriseHour + 1.25 && hour < sunsetHour - 1.25) return "day";
+  if (hour >= sunsetHour - 1.25 && hour < sunsetHour + 0.85) return "sunset";
+  return "night";
+}
+
 function ToolBadge({
   label,
   x,
@@ -105,6 +235,7 @@ function ToolBadge({
 export default function PortfolioPage() {
   const [persona, setPersona] = useState<Persona | null>("client");
   const [modalKey, setModalKey] = useState(0);
+  const [heroPhase, setHeroPhase] = useState<HeroPhase>(() => getFallbackHeroPhase(new Date()));
   const handlePersona = useCallback((p: Persona) => setPersona(p), []);
   const handleReset = useCallback(() => {
     localStorage.removeItem("gm_persona");
@@ -158,6 +289,49 @@ export default function PortfolioPage() {
     { label: "UX Research", href: withBasePath("/projects?filter=UX%20Research") },
     { label: "10+ Years", href: withBasePath("/projects") },
   ];
+  const heroPhaseStyles = useMemo(() => HERO_PHASE_STYLES[heroPhase], [heroPhase]);
+
+  useEffect(() => {
+    let intervalId: ReturnType<typeof setInterval> | null = null;
+
+    const updateWithCoordinates = (latitude?: number, longitude?: number) => {
+      const now = new Date();
+      setHeroPhase(
+        typeof latitude === "number" && typeof longitude === "number"
+          ? getHeroPhaseForLocation(now, latitude, longitude)
+          : getFallbackHeroPhase(now),
+      );
+    };
+
+    updateWithCoordinates();
+
+    if (typeof navigator !== "undefined" && "geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        ({ coords }) => {
+          updateWithCoordinates(coords.latitude, coords.longitude);
+          intervalId = setInterval(() => {
+            updateWithCoordinates(coords.latitude, coords.longitude);
+          }, 15 * 60 * 1000);
+        },
+        () => {
+          intervalId = setInterval(() => {
+            updateWithCoordinates();
+          }, 15 * 60 * 1000);
+        },
+        { enableHighAccuracy: false, maximumAge: 30 * 60 * 1000, timeout: 5000 },
+      );
+    } else {
+      intervalId = setInterval(() => {
+        updateWithCoordinates();
+      }, 15 * 60 * 1000);
+    }
+
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, []);
 
   const recentWorkSection = (
     <section key="work" id="projects" className="bg-white py-12 px-6 md:px-10 xl:px-20">
@@ -375,21 +549,14 @@ export default function PortfolioPage() {
       <section className="bg-white">
         <div
           className="relative overflow-hidden px-6 py-[8.5rem] sm:px-10 lg:px-16"
-          style={{ background: "linear-gradient(90deg, #d7e8f7 0%, #e8ddf8 37%, #f7dce7 68%, #faead8 100%)" }}
+          style={{ background: heroPhaseStyles.background }}
         >
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(164,147,255,0.26),transparent_42%),radial-gradient(circle_at_72%_26%,rgba(255,170,210,0.28),transparent_32%),radial-gradient(circle_at_92%_50%,rgba(255,225,190,0.28),transparent_24%),linear-gradient(180deg,rgba(105,129,168,0.12)_0%,rgba(255,255,255,0)_58%)]" />
+          <div className="pointer-events-none absolute inset-0" style={{ background: heroPhaseStyles.overlay }} />
           <div
             className="pointer-events-none absolute inset-0 opacity-90"
-            style={{
-              background: `
-                linear-gradient(118deg, rgba(255,255,255,0.28) 6%, rgba(255,255,255,0) 37%),
-                linear-gradient(242deg, rgba(255,255,255,0.28) 6%, rgba(255,255,255,0) 37%),
-                linear-gradient(180deg, rgba(248,249,255,0.16) 0%, rgba(214,222,248,0.2) 26%, rgba(170,184,228,0.16) 54%, rgba(255,255,255,0) 76%),
-                radial-gradient(circle at 50% 74%, rgba(144,162,214,0.24), rgba(144,162,214,0) 24%)
-              `,
-            }}
+            style={{ background: heroPhaseStyles.cone }}
           />
-          <div className="pointer-events-none absolute inset-0">
+          <div className="pointer-events-none absolute inset-0" style={{ opacity: heroPhaseStyles.starOpacity }}>
             {HERO_STARS.map((star, index) => (
               <span
                 key={`hero-star-${index}`}
@@ -405,7 +572,10 @@ export default function PortfolioPage() {
               />
             ))}
           </div>
-          <div className="pointer-events-none absolute left-[12%] top-[12%] h-px w-[160px] animate-[hero-shooting-star_11s_linear_infinite] opacity-0">
+          <div
+            className="pointer-events-none absolute left-[12%] top-[12%] h-px w-[160px] animate-[hero-shooting-star_11s_linear_infinite] opacity-0"
+            style={{ opacity: heroPhaseStyles.shootingOpacity }}
+          >
             <span className="absolute inset-0 rounded-full bg-[linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.95)_45%,rgba(255,255,255,0))] shadow-[0_0_14px_rgba(255,255,255,0.55)]" />
             <span className="absolute right-0 top-1/2 h-[6px] w-[6px] -translate-y-1/2 rounded-full bg-white shadow-[0_0_16px_rgba(255,255,255,0.95)]" />
           </div>
