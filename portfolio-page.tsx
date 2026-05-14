@@ -105,6 +105,193 @@ const HERO_ASSISTANT_SUGGESTIONS = [
   "Where can I see resume details?",
 ];
 
+type LocalSearchItem = {
+  id: string;
+  title: string;
+  snippet: string;
+  href: string;
+  sectionId?: "projects" | "skills" | "github";
+  cardId?: string;
+  audience: HeroVisitorType[];
+  content: string;
+};
+
+function tokenizeSearchQuery(value: string) {
+  return Array.from(
+    new Set(
+      value
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, " ")
+        .split(/\s+/)
+        .filter(Boolean),
+    ),
+  );
+}
+
+function resolveHeroAssistantQuery(
+  rawQuery: string,
+  caseStudies: ReturnType<typeof usePublicCaseStudies>["caseStudies"],
+  siteContent: ReturnType<typeof usePublicSiteContent>["siteContent"],
+  viewer: HeroVisitorType | null,
+): HeroAssistantResult {
+  const query = rawQuery.trim();
+  if (!query) {
+    return {
+      response: "Ask about projects, case studies, skills, resume, contact details, or GitHub activity on this website.",
+      items: [],
+    };
+  }
+
+  const tokens = tokenizeSearchQuery(query);
+  const resumeSkills = Object.entries(siteContent.resume.skills).flatMap(([group, items]) => [group, ...items]);
+  const experienceText = siteContent.resume.experience
+    .flatMap((entry) => [entry.title, entry.company, entry.client, entry.period, entry.location, ...entry.bullets, ...entry.tags])
+    .join(" ");
+
+  const searchableItems: LocalSearchItem[] = [
+    ...caseStudies
+      .filter((study) => study.status === "published")
+      .map((study) => ({
+        id: `project-${study.slug}`,
+        title: study.title,
+        snippet: study.tagline ?? `Case study for ${study.company}`,
+        href: resolveProjectHref(study),
+        sectionId: "projects" as const,
+        cardId: resolveHomeCardId(study.slug),
+        audience: ["recruiter", "client"] as HeroVisitorType[],
+        content: [
+          study.title,
+          study.company,
+          study.client_context ?? "",
+          study.role ?? "",
+          study.industry ?? "",
+          study.tagline ?? "",
+          study.duration ?? "",
+          study.tags.join(" "),
+          study.filters?.join(" ") ?? "",
+          study.tools.join(" "),
+          study.metrics.map((metric) => `${metric.label} ${metric.value} ${metric.context ?? ""}`).join(" "),
+          study.my_role.join(" "),
+          study.design_strategy.join(" "),
+          study.problem.admin_pain_points.join(" "),
+          study.problem.user_pain_points.join(" "),
+          study.constraints.join(" "),
+        ].join(" "),
+      })),
+    {
+      id: "skills-tools",
+      title: siteContent.home.tools_section.headline,
+      snippet: siteContent.home.tools_section.description,
+      href: "#skills",
+      sectionId: "skills" as const,
+      audience: ["recruiter", "client"] as HeroVisitorType[],
+      content: [
+        siteContent.home.tools_section.headline,
+        siteContent.home.tools_section.description,
+        siteContent.home.tools_section.row_1.join(" "),
+        siteContent.home.tools_section.row_2.join(" "),
+        siteContent.resume.title,
+        siteContent.resume.bio,
+        siteContent.resume.tools.join(" "),
+        resumeSkills.join(" "),
+        experienceText,
+      ].join(" "),
+    },
+    {
+      id: "resume",
+      title: "Resume",
+      snippet: siteContent.resume.title,
+      href: withBasePath("/resume"),
+      audience: ["recruiter"] as HeroVisitorType[],
+      content: [
+        siteContent.resume.name,
+        siteContent.resume.title,
+        siteContent.resume.bio,
+        siteContent.resume.location,
+        siteContent.resume.tools.join(" "),
+        resumeSkills.join(" "),
+        experienceText,
+        siteContent.resume.education.map((item) => `${item.degree} ${item.institution} ${item.year}`).join(" "),
+        siteContent.resume.certifications.map((item) => `${item.name} ${item.level} ${item.year}`).join(" "),
+      ].join(" "),
+    },
+    {
+      id: "contact",
+      title: "Contact",
+      snippet: siteContent.contact.intro,
+      href: withBasePath("/contact"),
+      audience: ["recruiter", "client"] as HeroVisitorType[],
+      content: [
+        siteContent.contact.headline,
+        siteContent.contact.subheadline,
+        siteContent.contact.intro,
+        siteContent.contact.availability,
+        siteContent.contact.details.map((item) => `${item.label} ${item.value}`).join(" "),
+      ].join(" "),
+    },
+    {
+      id: "github",
+      title: "GitHub Activity",
+      snippet: "Recent public GitHub work and repository activity.",
+      href: "#github",
+      sectionId: "github" as const,
+      audience: ["recruiter", "client"] as HeroVisitorType[],
+      content: "github activity repositories commits pull requests public work code react next front end design system",
+    },
+  ].filter((item) => (viewer ? item.audience.includes(viewer) : true));
+
+  const rankedItems = searchableItems
+    .map((item) => {
+      const haystack = `${item.title} ${item.snippet} ${item.content}`.toLowerCase();
+      const score = tokens.reduce((total, token) => {
+        if (!haystack.includes(token)) {
+          return total;
+        }
+
+        if (item.title.toLowerCase().includes(token)) {
+          return total + 4;
+        }
+
+        if (item.snippet.toLowerCase().includes(token)) {
+          return total + 3;
+        }
+
+        return total + 1;
+      }, 0);
+
+      return { item, score };
+    })
+    .filter((entry) => entry.score > 0)
+    .sort((left, right) => right.score - left.score)
+    .slice(0, 6)
+    .map(({ item }) => ({
+      id: item.id,
+      title: item.title,
+      snippet: item.snippet,
+      href: item.href,
+      sectionId: item.sectionId,
+      cardId: item.cardId,
+    }));
+
+  if (!rankedItems.length) {
+    return {
+      response: "I can only provide information already available on this website. I couldn't find that here.",
+      items: [],
+    };
+  }
+
+  const projectCount = rankedItems.filter((item) => item.sectionId === "projects").length;
+  return {
+    response:
+      projectCount > 1
+        ? `I found ${projectCount} matching projects and a few related sections on this website.`
+        : projectCount === 1
+          ? "I found 1 matching project on this website and a few relevant places to continue."
+          : `I found relevant information on this website for "${query}".`,
+    items: rankedItems,
+  };
+}
+
 const HERO_PHASE_STYLES: Record<
   HeroPhase,
   {
@@ -471,14 +658,7 @@ export default function PortfolioPage() {
     }
 
     try {
-      const response = await fetch(
-        withBasePath(`/api/site-search?q=${encodeURIComponent(query)}&viewer=${heroVisitorType}`),
-      );
-      if (!response.ok) {
-        throw new Error("Search failed");
-      }
-
-      const result = (await response.json()) as HeroAssistantResult;
+      const result = resolveHeroAssistantQuery(query, caseStudies, siteContent, heroVisitorType);
       setHeroAssistantResponse(result.response);
       setHeroAssistantResults(result.items);
 
@@ -498,14 +678,17 @@ export default function PortfolioPage() {
 
   function handleHeroVisitorTypeSelect(type: HeroVisitorType) {
     setHeroVisitorType(type);
-    setHighlightedProjectIds([]);
+    setHighlightedProjectIds(type === "recruiter" ? featuredProjects.slice(0, 2).map((project) => project.cardId) : []);
     setHeroAssistantResults([]);
     setHeroAssistantQuery("");
     setHeroAssistantResponse(
       type === "recruiter"
-        ? "Recruiter mode on. Ask about shipped work, AI projects, design systems, UX research, resume details, or GitHub activity on this website."
+        ? "Recruiter mode on. I highlighted two relevant case studies below. Ask about shipped work, AI projects, design systems, UX research, resume details, or GitHub activity on this website."
         : "Client mode on. Ask about projects, capabilities, tools, contact details, UX research, or design systems on this website.",
     );
+    if (type === "recruiter") {
+      scrollToSection("projects");
+    }
   }
 
   useEffect(() => {
