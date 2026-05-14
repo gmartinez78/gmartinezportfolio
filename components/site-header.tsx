@@ -46,7 +46,7 @@ export function SiteHeader({
               <li key={link.label}>
                 <Link
                   href={withBasePath(link.href)}
-                  className={`rounded-[28px] px-3 py-2 text-sm font-semibold transition-colors sm:px-4 ${
+                  className={`rounded-[28px] px-3 py-2 text-sm font-light transition-colors sm:px-4 ${
                     active === link.label
                       ? isTransparent
                         ? "bg-black/5 text-[#0e2951]"

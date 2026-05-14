@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { BrainCircuit, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, MousePointer2, Network, Star, Wand2 } from "lucide-react";
+import { BrainCircuit, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, MousePointer2, Star, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { TypewriterBanner } from "./components/typewriter-banner";
@@ -820,7 +820,7 @@ export default function PortfolioPage() {
                   width: `${orb.width}px`,
                   height: `${orb.height}px`,
                   background: orb.fill,
-                  opacity: heroPhase === "night" ? 0.72 : 0.52,
+                  opacity: heroPhase === "night" ? 0.56 : 0.38,
                   filter: "blur(0.2px)",
                   transform: getParallaxTransform(heroPointer.x, heroPointer.y, orb.depth, orb.rotate),
                   transition: "transform 180ms ease-out",
@@ -829,7 +829,7 @@ export default function PortfolioPage() {
             ))}
 
             <div
-              className="absolute left-[8%] top-[18%] w-[210px] rounded-[28px] border border-white/34 bg-white/14 p-4 shadow-[0_24px_50px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.45)] backdrop-blur-xl"
+              className="absolute left-[8%] top-[20%] w-[194px] rounded-[26px] border border-white/30 bg-white/12 p-3.5 shadow-[0_20px_42px_rgba(42,54,92,0.06),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur-xl"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -26, -10),
                 transition: "transform 180ms ease-out",
@@ -856,36 +856,9 @@ export default function PortfolioPage() {
             </div>
 
             <div
-              className="absolute right-[10%] top-[18%] w-[178px] rounded-[26px] border border-white/34 bg-white/14 p-4 shadow-[0_24px_50px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.45)] backdrop-blur-xl"
+              className="absolute right-[12%] top-[19%] w-[166px] rounded-[24px] border border-white/30 bg-white/12 p-3.5 shadow-[0_20px_42px_rgba(42,54,92,0.06),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur-xl"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -20, 9),
-                transition: "transform 180ms ease-out",
-              }}
-            >
-              <div className="mb-4 flex items-center justify-between">
-                <span className="inline-flex items-center gap-2 rounded-full bg-white/45 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#3f4a67]">
-                  <Network className="h-3.5 w-3.5" />
-                  UX Flow
-                </span>
-                <div className="flex gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-[#ffb230]" />
-                  <span className="h-2 w-2 rounded-full bg-[#625cff]" />
-                </div>
-              </div>
-              <div className="relative h-[104px] rounded-[20px] bg-[#f8fbff]/58">
-                <span className="absolute left-5 top-5 h-4 w-4 rounded-full bg-[#625cff]" />
-                <span className="absolute right-5 top-7 h-4 w-4 rounded-full bg-[#ffb230]" />
-                <span className="absolute bottom-5 left-1/2 h-4 w-4 -translate-x-1/2 rounded-full bg-[#13bf85]" />
-                <span className="absolute left-[38px] top-[32px] h-px w-[76px] bg-[#93a3d7]" />
-                <span className="absolute left-[52px] top-[38px] h-px w-[58px] rotate-[36deg] bg-[#93a3d7]" />
-                <span className="absolute right-[44px] top-[44px] h-px w-[54px] -rotate-[44deg] bg-[#93a3d7]" />
-              </div>
-            </div>
-
-            <div
-              className="absolute right-[12%] top-[49%] w-[188px] rounded-[26px] border border-white/34 bg-white/14 p-4 shadow-[0_24px_50px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.45)] backdrop-blur-xl"
-              style={{
-                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -16, 2),
                 transition: "transform 180ms ease-out",
               }}
             >
@@ -898,7 +871,7 @@ export default function PortfolioPage() {
                   live
                 </span>
               </div>
-              <div className="rounded-[18px] bg-[#f8fbff]/60 p-3">
+              <div className="rounded-[16px] bg-[#f8fbff]/56 p-2.5">
                 <div className="mb-2 flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-[#6d79ff]" />
                   <div className="h-2 w-[56%] rounded-full bg-[#d9e2ff]" />
@@ -937,13 +910,13 @@ export default function PortfolioPage() {
             </div>
 
             <div
-              className="absolute right-[18%] bottom-[16%] flex items-center gap-3 rounded-full border border-white/34 bg-white/12 px-4 py-3 shadow-[0_20px_42px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.42)] backdrop-blur-xl"
+              className="absolute right-[24%] top-[52%] flex items-center gap-3 rounded-full border border-white/28 bg-white/10 px-3.5 py-2.5 shadow-[0_18px_34px_rgba(42,54,92,0.05),inset_0_1px_0_rgba(255,255,255,0.36)] backdrop-blur-xl"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -16, 4),
                 transition: "transform 180ms ease-out",
               }}
             >
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#ffffff]/55 text-[#ff9d2f]">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#ffffff]/48 text-[#ff9d2f]">
                 <Wand2 className="h-4 w-4" />
               </span>
               <div className="text-left">
