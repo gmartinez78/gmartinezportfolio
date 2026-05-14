@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import { BrainCircuit, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, MousePointer2, Star, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { TypewriterBanner } from "./components/typewriter-banner";
 import { Badge } from "./components/ui/badge";
 import { Button } from "./components/ui/button";
+import { Input } from "./components/ui/input";
 import { SectionHeading } from "./components/ui/section-heading";
 import {
   resolveHomeCardId,
@@ -83,6 +84,14 @@ type GitHubActivityItem = {
   timestamp: string | null;
   url: string;
 };
+
+type HeroAssistantResult = {
+  matches: string[];
+  response: string;
+  sectionId?: "projects" | "skills" | "github";
+};
+
+type HeroVisitorType = "recruiter" | "client";
 
 const HERO_PHASE_STYLES: Record<
   HeroPhase,
@@ -373,11 +382,77 @@ function HeroPrototypeOverlay({
   );
 }
 
+function resolveHeroAssistantQuery(
+  rawQuery: string,
+  featuredProjects: Array<{ title: string; tags: string[]; description: string; cardId: string }>,
+): HeroAssistantResult {
+  const query = rawQuery.trim().toLowerCase();
+
+  if (!query) {
+    return {
+      matches: [],
+      response: "Ask about projects, skills, tools, design systems, UX research, or GitHub activity on this page.",
+    };
+  }
+
+  const matchedProjects = featuredProjects.filter((project) => {
+    const haystack = [project.title, project.description, ...project.tags].join(" ").toLowerCase();
+    return haystack.includes(query);
+  });
+
+  if (matchedProjects.length) {
+    return {
+      matches: matchedProjects.map((project) => project.cardId),
+      sectionId: "projects",
+      response:
+        matchedProjects.length === 1
+          ? `I found 1 project in this page that matches "${rawQuery}".`
+          : `I found ${matchedProjects.length} projects in this page that match "${rawQuery}".`,
+    };
+  }
+
+  if (/(project|case study|work|portfolio)/.test(query)) {
+    return {
+      matches: [],
+      sectionId: "projects",
+      response: "I can show the project section on this page, but I only filter the projects displayed here.",
+    };
+  }
+
+  if (/(skill|skills|tool|tools|figma|react|ai|research|design system|systems|ux)/.test(query)) {
+    return {
+      matches: [],
+      sectionId: "skills",
+      response: "I can take you to the skills and tools section shown on this page.",
+    };
+  }
+
+  if (/(github|repo|repositories|commit|pull request|activity)/.test(query)) {
+    return {
+      matches: [],
+      sectionId: "github",
+      response: "I can show the GitHub activity section that is available on this page.",
+    };
+  }
+
+  return {
+    matches: [],
+    response:
+      "I can only provide information already available in this page: projects, skills/tools, and GitHub activity. I can't provide anything outside this page.",
+  };
+}
+
 export default function PortfolioPage() {
   const [heroPhase, setHeroPhase] = useState<HeroPhase>(() => getFallbackHeroPhase(new Date()));
   const [githubActivity, setGithubActivity] = useState<GitHubActivityItem[]>([]);
   const [githubUsername, setGithubUsername] = useState("gmartinez78");
   const [heroPointer, setHeroPointer] = useState({ x: 0, y: 0 });
+  const [heroVisitorType, setHeroVisitorType] = useState<HeroVisitorType | null>(null);
+  const [heroAssistantQuery, setHeroAssistantQuery] = useState("");
+  const [heroAssistantResponse, setHeroAssistantResponse] = useState(
+    "Before I help, tell me who you are. I will adapt the page guidance to this portfolio.",
+  );
+  const [highlightedProjectIds, setHighlightedProjectIds] = useState<string[]>([]);
   const { siteContent } = usePublicSiteContent();
   const { caseStudies } = usePublicCaseStudies();
   const hero = siteContent.home.hero;
@@ -422,6 +497,39 @@ export default function PortfolioPage() {
     { label: "10+ Years", href: withBasePath("/projects") },
   ];
   const heroPhaseStyles = useMemo(() => HERO_PHASE_STYLES[heroPhase], [heroPhase]);
+
+  function scrollToSection(sectionId?: "projects" | "skills" | "github") {
+    if (!sectionId || typeof document === "undefined") {
+      return;
+    }
+
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function handleHeroAssistantSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (!heroVisitorType) {
+      setHeroAssistantResponse("Choose recruiter or client first. Then I can filter only the content available in this page.");
+      return;
+    }
+
+    const result = resolveHeroAssistantQuery(heroAssistantQuery, featuredProjects);
+    setHeroAssistantResponse(result.response);
+    setHighlightedProjectIds(result.matches);
+    scrollToSection(result.sectionId);
+  }
+
+  function handleHeroVisitorTypeSelect(type: HeroVisitorType) {
+    setHeroVisitorType(type);
+    setHighlightedProjectIds([]);
+    setHeroAssistantQuery("");
+    setHeroAssistantResponse(
+      type === "recruiter"
+        ? "Recruiter mode on. Ask about shipped work, AI projects, design systems, UX research, or GitHub activity in this page."
+        : "Client mode on. Ask about projects, capabilities, tools, UX research, or design systems shown in this page.",
+    );
+  }
 
   useEffect(() => {
     let intervalId: ReturnType<typeof setInterval> | null = null;
@@ -509,7 +617,11 @@ export default function PortfolioPage() {
               id={project.cardId}
               data-home-card-id={project.cardId}
               href={project.href}
-              className="group flex w-full min-w-0 cursor-pointer flex-col gap-5 outline-none"
+              className={`group flex w-full min-w-0 cursor-pointer flex-col gap-5 outline-none ${
+                highlightedProjectIds.length && !highlightedProjectIds.includes(project.cardId)
+                  ? "opacity-45 transition-opacity"
+                  : ""
+              }`}
             >
               <div className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] shadow-[0_18px_52px_rgba(14,41,81,0.12)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(14,41,81,0.22)] group-focus-visible:-translate-y-1 group-focus-visible:shadow-[0_28px_70px_rgba(14,41,81,0.22)] sm:h-[300px] xl:h-[230px]">
                 <Image
@@ -518,6 +630,9 @@ export default function PortfolioPage() {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.04] group-focus-visible:scale-[1.04]"
                 />
+                {highlightedProjectIds.includes(project.cardId) ? (
+                  <div className="pointer-events-none absolute inset-0 ring-2 ring-[#1183D0] ring-offset-4 ring-offset-white" />
+                ) : null}
               </div>
               <div className="flex flex-wrap gap-3">
                 {project.tags.map((tag) => (
@@ -543,7 +658,7 @@ export default function PortfolioPage() {
   );
 
   const toolsSection = (
-    <section key="tools" className="relative isolate overflow-hidden px-6 py-16 md:px-10 lg:h-[520px] xl:px-20">
+    <section key="tools" id="skills" className="relative isolate overflow-hidden px-6 py-16 md:px-10 lg:h-[520px] xl:px-20">
       <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,#FFFFFF_0%,#F0F7FF_48%,rgba(17,131,208,0.28)_100%)]" />
       {TOOLS_LEFT.map((tool) => (
         <ToolBadge key={`left-${tool.label}-${tool.x}`} {...tool} />
@@ -607,7 +722,7 @@ export default function PortfolioPage() {
   );
 
   const githubActivitySection = (
-    <section key="github-activity" className="bg-white px-6 py-16 md:px-10 xl:px-20">
+    <section key="github-activity" id="github" className="bg-white px-6 py-16 md:px-10 xl:px-20">
       <div className="mx-auto max-w-[1200px]">
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
@@ -949,6 +1064,69 @@ export default function PortfolioPage() {
                 roleClassName="text-[#17406c]"
                 descriptionClassName="text-[#0e2951]"
               />
+              <div className="mt-7 w-full max-w-[620px] rounded-[28px] border border-[#b8d2e9] bg-[linear-gradient(135deg,rgba(255,255,255,0.96)_0%,rgba(239,247,255,0.98)_100%)] p-3 shadow-[0_20px_52px_rgba(55,90,136,0.16)]">
+                <div className="rounded-[22px] border border-[#d8e7f5] bg-white/92 p-4 text-left">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                      <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[#0f4d82] text-white shadow-[0_10px_24px_rgba(15,77,130,0.22)]">
+                        <BrainCircuit className="h-5 w-5" />
+                      </span>
+                      <div>
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">
+                          LLM Layer
+                        </p>
+                        <p className="text-[15px] font-medium text-[#0e2951]">
+                          {heroVisitorType ? "Ask only about content inside this page" : "Who are you?"}
+                        </p>
+                      </div>
+                    </div>
+                    <span className="rounded-full border border-[#c8daf0] bg-[#f3f8fd] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#46698f]">
+                      {heroVisitorType ? "Page scoped" : "Entry prompt"}
+                    </span>
+                  </div>
+                  <form onSubmit={handleHeroAssistantSubmit} className="mt-4 flex flex-col gap-3">
+                    {!heroVisitorType ? (
+                      <div className="flex flex-wrap gap-3">
+                        <button
+                          type="button"
+                          onClick={() => handleHeroVisitorTypeSelect("recruiter")}
+                          className="inline-flex items-center justify-center rounded-full border border-[#b7cee6] bg-[#f5f9fd] px-4 py-2 text-[13px] font-medium text-[#0e2951] transition-colors hover:border-[#8fb2d6] hover:bg-white"
+                        >
+                          I&apos;m a recruiter
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleHeroVisitorTypeSelect("client")}
+                          className="inline-flex items-center justify-center rounded-full border border-[#b7cee6] bg-[#f5f9fd] px-4 py-2 text-[13px] font-medium text-[#0e2951] transition-colors hover:border-[#8fb2d6] hover:bg-white"
+                        >
+                          I&apos;m a client
+                        </button>
+                      </div>
+                    ) : null}
+                    <Input
+                      value={heroAssistantQuery}
+                      onChange={(event) => setHeroAssistantQuery(event.target.value)}
+                      placeholder={
+                        heroVisitorType === "recruiter"
+                          ? "Try: AI project, design systems, UX research, GitHub"
+                          : heroVisitorType === "client"
+                          ? "Try: projects, enterprise SaaS, AI product, UX research"
+                          : "Choose recruiter or client first"
+                      }
+                      disabled={!heroVisitorType}
+                      className="h-12 rounded-[18px] border-[#d6e5f3] bg-[#f8fbff] px-5 text-[15px] text-[#0e2951] placeholder:text-[#7d9bb8]"
+                    />
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <p className="text-[13px] leading-[1.6] text-[#5c7792]">
+                        {heroAssistantResponse}
+                      </p>
+                      <Button type="submit" size="sm" className="shrink-0" disabled={!heroVisitorType}>
+                        Filter this page
+                      </Button>
+                    </div>
+                  </form>
+                </div>
+              </div>
               <div className="mt-8 flex flex-wrap justify-center gap-2">
                 {heroPills.map((pill) => (
                   <Badge
