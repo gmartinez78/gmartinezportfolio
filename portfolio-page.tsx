@@ -847,34 +847,6 @@ export default function PortfolioPage() {
             </div>
 
             <div
-              className="absolute right-[14%] top-[44%] w-[220px] overflow-hidden rounded-[30px] border border-white/45 bg-white/16 p-3 shadow-[0_28px_58px_rgba(42,54,92,0.16),inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-xl"
-              style={{
-                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -24, 8),
-                transition: "transform 180ms ease-out",
-              }}
-            >
-              <div className="relative overflow-hidden rounded-[24px] bg-[linear-gradient(135deg,rgba(255,255,255,0.72)_0%,rgba(255,255,255,0.3)_100%)]">
-                <Image
-                  src={withBasePath("/images/profile-photo.png")}
-                  alt="Greddys Martinez portrait"
-                  width={420}
-                  height={420}
-                  className="h-[220px] w-full object-cover object-center"
-                  priority
-                />
-                <div className="absolute inset-x-0 bottom-0 h-20 bg-[linear-gradient(180deg,rgba(14,41,81,0)_0%,rgba(14,41,81,0.52)_100%)]" />
-                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80">
-                    Product designer
-                  </p>
-                  <p className="mt-1 text-[18px] font-semibold leading-none">
-                    Greddys
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div
               className="absolute left-[16%] bottom-[18%] flex items-center gap-3 rounded-full border border-white/55 bg-white/18 px-4 py-3 shadow-[0_20px_42px_rgba(42,54,92,0.12),inset_0_1px_0_rgba(255,255,255,0.5)] backdrop-blur-xl"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -18, -6),
@@ -949,7 +921,27 @@ export default function PortfolioPage() {
               <span className="text-xs font-semibold uppercase tracking-[0.28em] text-[#6f7893]">
                 Certified by
               </span>
-              <div className="flex items-center justify-center gap-3">
+              <div className="flex items-center justify-center gap-4">
+                <div
+                  className="relative hidden h-[92px] w-[92px] shrink-0 rounded-full border border-white/45 bg-white/18 p-2 shadow-[0_24px_52px_rgba(42,54,92,0.16),inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-xl lg:block"
+                  style={{
+                    transform: getParallaxTransform(heroPointer.x, heroPointer.y, -12, 0),
+                    transition: "transform 180ms ease-out",
+                  }}
+                >
+                  <div className="relative h-full w-full overflow-hidden rounded-full">
+                    <Image
+                      src={withBasePath("/images/profile-photo.png")}
+                      alt="Greddys Martinez portrait"
+                      width={184}
+                      height={184}
+                      className="h-full w-full object-cover object-center"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(109,121,255,0.14)_0%,rgba(255,255,255,0.02)_40%,rgba(255,173,92,0.18)_100%)] mix-blend-multiply" />
+                    <div className="absolute inset-0 ring-1 ring-white/30" />
+                  </div>
+                </div>
                 {certifications.slice(0, 2).map((item) => (
                   <div key={item.name} className="p-2 transition-opacity hover:opacity-85">
                     <Image
