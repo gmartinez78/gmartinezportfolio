@@ -925,7 +925,7 @@ export default function PortfolioPage() {
       {/* ── Hero ── */}
       <section className="bg-white">
         <div
-          className="relative overflow-hidden px-6 py-[8.5rem] sm:px-10 lg:px-16"
+          className="relative overflow-hidden px-6 pt-[8.5rem] pb-[3rem] sm:px-10 lg:px-16"
           style={{ background: heroPhaseStyles.background }}
           onMouseMove={(event) => {
             const bounds = event.currentTarget.getBoundingClientRect();
