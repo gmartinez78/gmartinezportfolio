@@ -582,7 +582,7 @@ function HeroPrototypeOverlay({
 }
 
 export default function PortfolioPage() {
-  const [heroPhase, setHeroPhase] = useState<HeroPhase>(() => getFallbackHeroPhase(new Date()));
+  const heroPhase: HeroPhase = "day";
   const [githubActivity, setGithubActivity] = useState<GitHubActivityItem[]>([]);
   const [githubUsername, setGithubUsername] = useState("gmartinez78");
   const [heroPointer, setHeroPointer] = useState({ x: 0, y: 0 });
@@ -689,24 +689,6 @@ export default function PortfolioPage() {
       scrollToSection("projects");
     }
   }
-
-  useEffect(() => {
-    let intervalId: ReturnType<typeof setInterval> | null = null;
-    const updateHeroPhase = () => {
-      setHeroPhase(getFallbackHeroPhase(new Date()));
-    };
-
-    updateHeroPhase();
-    intervalId = setInterval(() => {
-      updateHeroPhase();
-    }, 15 * 60 * 1000);
-
-    return () => {
-      if (intervalId) {
-        clearInterval(intervalId);
-      }
-    };
-  }, []);
 
   useEffect(() => {
     let isActive = true;
@@ -1079,7 +1061,7 @@ export default function PortfolioPage() {
                   width: `${orb.width}px`,
                   height: `${orb.height}px`,
                   background: orb.fill,
-                  opacity: heroPhase === "night" ? 0.56 : 0.38,
+                  opacity: 0.38,
                   filter: "blur(0.2px)",
                   transform: getParallaxTransform(heroPointer.x, heroPointer.y, orb.depth, orb.rotate),
                   transition: "transform 180ms ease-out",
