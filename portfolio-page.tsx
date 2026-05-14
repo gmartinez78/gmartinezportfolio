@@ -796,7 +796,7 @@ export default function PortfolioPage() {
 
   const toolsSection = (
     <section key="tools" id="skills" className="relative isolate overflow-hidden px-6 py-16 md:px-10 lg:h-[520px] xl:px-20">
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,#FFFFFF_0%,#F0F7FF_48%,rgba(17,131,208,0.28)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,#FFFFFF_0%,rgba(168,200,232,0.3)_48%,rgba(14,41,81,0.18)_100%)]" />
       {TOOLS_LEFT.map((tool) => (
         <ToolBadge key={`left-${tool.label}-${tool.x}`} {...tool} delay={tool.delay} />
       ))}
