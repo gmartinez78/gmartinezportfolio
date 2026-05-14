@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, Star } from "lucide-react";
 import { PersonaModal, type Persona } from "./components/persona-modal";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
@@ -68,6 +69,15 @@ const HERO_STARS = [
 ];
 
 type HeroPhase = "sunrise" | "day" | "sunset" | "night";
+type GitHubActivityItem = {
+  id: string;
+  kind: "commit" | "pull_request" | "issue" | "release" | "repo" | "star";
+  title: string;
+  detail: string;
+  repo: string;
+  timestamp: string | null;
+  url: string;
+};
 
 const HERO_PHASE_STYLES: Record<
   HeroPhase,
@@ -197,6 +207,32 @@ function getHeroPhaseForLocation(date: Date, latitude: number, longitude: number
   return "night";
 }
 
+function formatRelativeTimestamp(value: string | null) {
+  if (!value) {
+    return "Recently";
+  }
+
+  const then = new Date(value).getTime();
+  const now = Date.now();
+  const diffMinutes = Math.max(1, Math.round((now - then) / 60000));
+
+  if (diffMinutes < 60) return `${diffMinutes}m ago`;
+  const diffHours = Math.round(diffMinutes / 60);
+  if (diffHours < 24) return `${diffHours}h ago`;
+  const diffDays = Math.round(diffHours / 24);
+  if (diffDays < 30) return `${diffDays}d ago`;
+  const diffMonths = Math.round(diffDays / 30);
+  return `${diffMonths}mo ago`;
+}
+
+function getGitHubActivityIcon(kind: GitHubActivityItem["kind"]) {
+  if (kind === "commit") return GitCommitHorizontal;
+  if (kind === "pull_request") return GitPullRequest;
+  if (kind === "star") return Star;
+  if (kind === "repo") return FolderGit2;
+  return GitFork;
+}
+
 function ToolBadge({
   label,
   x,
@@ -236,6 +272,8 @@ export default function PortfolioPage() {
   const [persona, setPersona] = useState<Persona | null>("client");
   const [modalKey, setModalKey] = useState(0);
   const [heroPhase, setHeroPhase] = useState<HeroPhase>(() => getFallbackHeroPhase(new Date()));
+  const [githubActivity, setGithubActivity] = useState<GitHubActivityItem[]>([]);
+  const [githubUsername, setGithubUsername] = useState("gmartinez78");
   const handlePersona = useCallback((p: Persona) => setPersona(p), []);
   const handleReset = useCallback(() => {
     localStorage.removeItem("gm_persona");
@@ -330,6 +368,39 @@ export default function PortfolioPage() {
       if (intervalId) {
         clearInterval(intervalId);
       }
+    };
+  }, []);
+
+  useEffect(() => {
+    let isActive = true;
+
+    void (async () => {
+      try {
+        const response = await fetch(withBasePath("/api/github-activity"));
+        if (!response.ok) {
+          return;
+        }
+
+        const payload = (await response.json()) as {
+          items?: GitHubActivityItem[];
+          username?: string;
+        };
+
+        if (!isActive) {
+          return;
+        }
+
+        setGithubActivity(payload.items ?? []);
+        setGithubUsername(payload.username ?? "gmartinez78");
+      } catch {
+        if (isActive) {
+          setGithubActivity([]);
+        }
+      }
+    })();
+
+    return () => {
+      isActive = false;
     };
   }, []);
 
@@ -520,13 +591,82 @@ export default function PortfolioPage() {
     </section>
   );
 
+  const githubActivitySection = (
+    <section key="github-activity" className="bg-white px-6 py-16 md:px-10 xl:px-20">
+      <div className="mx-auto max-w-[1200px]">
+        <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">GitHub</p>
+            <h2 className="mt-3 font-serif-display text-[38px] italic leading-tight text-[#0e2951]">
+              Recent Activity
+            </h2>
+            <p className="mt-4 max-w-[620px] text-[15px] leading-[1.8] text-[#5c7792]">
+              A live snapshot of recent public work and repository activity from @{githubUsername}.
+            </p>
+          </div>
+          <a
+            href={`https://github.com/${githubUsername}`}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 text-[14px] font-medium text-[#1183D0] transition-colors hover:text-[#0e2951]"
+          >
+            View GitHub profile <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        {githubActivity.length ? (
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {githubActivity.map((item) => {
+              const Icon = getGitHubActivityIcon(item.kind);
+              return (
+                <a
+                  key={item.id}
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex min-h-[190px] flex-col justify-between rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] p-6 transition-all hover:-translate-y-1 hover:border-[#bcd2ff] hover:shadow-[0_18px_42px_rgba(14,41,81,0.12)]"
+                >
+                  <div>
+                    <div className="mb-4 flex items-center justify-between gap-4">
+                      <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white text-[#1183D0] shadow-[0_8px_20px_rgba(17,131,208,0.12)]">
+                        <Icon className="h-5 w-5" />
+                      </span>
+                      <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#7a98b5]">
+                        {formatRelativeTimestamp(item.timestamp)}
+                      </span>
+                    </div>
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
+                      {item.repo}
+                    </p>
+                    <h3 className="mt-3 text-[18px] font-semibold leading-snug text-[#0e2951]">
+                      {item.title}
+                    </h3>
+                  </div>
+                  <p className="mt-5 text-[14px] leading-[1.7] text-[#5c7792]">
+                    {item.detail}
+                  </p>
+                </a>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] px-6 py-8">
+            <p className="text-[15px] leading-[1.7] text-[#5c7792]">
+              GitHub activity is temporarily unavailable right now. The section is wired and will populate when the public feed responds.
+            </p>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+
   const contentSections = persona === "recruiter"
-    ? [recruiterImpactSection, recentWorkSection, toolsSection]
-    : [recentWorkSection, toolsSection, ctaSection];
+    ? [recruiterImpactSection, recentWorkSection, toolsSection, githubActivitySection]
+    : [recentWorkSection, toolsSection, ctaSection, githubActivitySection];
 
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
-      {/* <PersonaModal key={modalKey} onSelect={handlePersona} /> */}
+      <PersonaModal key={modalKey} onSelect={handlePersona} />
       <SiteHeader variant="transparent" />
 
       {/* ── View switcher pill ── */}
