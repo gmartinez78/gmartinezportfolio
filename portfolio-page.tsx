@@ -585,11 +585,9 @@ export default function PortfolioPage() {
               <TypewriterBanner
                 greeting={(
                   <>
-                    Hey, I&apos;m{" "}
                     <span className="font-serif-display text-[2.15em] italic leading-none text-[#0e2951]">
-                      Greddys
+                      Greddys Martinez
                     </span>
-                    .
                   </>
                 )}
                 roles={heroRoles}
