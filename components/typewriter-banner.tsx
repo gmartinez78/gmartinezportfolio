@@ -79,7 +79,7 @@ export function TypewriterBanner({
       <div className="mb-5 mt-3 flex h-[96px] items-center sm:h-[60px]">
         <span
           aria-live="polite"
-          className={`text-[42px] font-medium leading-[1.1] sm:text-[52px] lg:text-[64px] ${roleClassName}`}
+          className={`text-[32px] font-medium leading-[1.1] sm:text-[40px] lg:text-[50px] ${roleClassName}`}
         >
           {displayText}
         </span>

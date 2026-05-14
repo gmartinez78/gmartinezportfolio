@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useState } from "react";
-import { ArrowUp, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Mic, MousePointer2, Star, Wand2 } from "lucide-react";
+import { ArrowUp, BrainCircuit, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Mic, MousePointer2, Star, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { TypewriterBanner } from "./components/typewriter-banner";
@@ -532,38 +532,14 @@ export default function PortfolioPage() {
 
   useEffect(() => {
     let intervalId: ReturnType<typeof setInterval> | null = null;
-
-    const updateWithCoordinates = (latitude?: number, longitude?: number) => {
-      const now = new Date();
-      setHeroPhase(
-        typeof latitude === "number" && typeof longitude === "number"
-          ? getHeroPhaseForLocation(now, latitude, longitude)
-          : getFallbackHeroPhase(now),
-      );
+    const updateHeroPhase = () => {
+      setHeroPhase(getFallbackHeroPhase(new Date()));
     };
 
-    updateWithCoordinates();
-
-    if (typeof navigator !== "undefined" && "geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        ({ coords }) => {
-          updateWithCoordinates(coords.latitude, coords.longitude);
-          intervalId = setInterval(() => {
-            updateWithCoordinates(coords.latitude, coords.longitude);
-          }, 15 * 60 * 1000);
-        },
-        () => {
-          intervalId = setInterval(() => {
-            updateWithCoordinates();
-          }, 15 * 60 * 1000);
-        },
-        { enableHighAccuracy: false, maximumAge: 30 * 60 * 1000, timeout: 5000 },
-      );
-    } else {
-      intervalId = setInterval(() => {
-        updateWithCoordinates();
-      }, 15 * 60 * 1000);
-    }
+    updateHeroPhase();
+    intervalId = setInterval(() => {
+      updateHeroPhase();
+    }, 15 * 60 * 1000);
 
     return () => {
       if (intervalId) {
@@ -1052,7 +1028,7 @@ export default function PortfolioPage() {
               <TypewriterBanner
                 greeting={(
                   <>
-                    <span className="font-serif-display text-[2.15em] italic leading-none text-[#0e2951]">
+                    <span className="font-serif-display text-[1.8em] italic leading-none text-[#0e2951]">
                       Greddys Martinez
                     </span>
                   </>
@@ -1063,16 +1039,24 @@ export default function PortfolioPage() {
                 roleClassName="text-[#17406c]"
                 descriptionClassName="text-[#0e2951]"
               />
-              <div className="mt-7 w-full max-w-[760px] rounded-[38px] bg-[linear-gradient(90deg,#ef7cc7_0%,#86a7ff_52%,#f28bc9_100%)] p-[1px] shadow-[0_26px_64px_rgba(91,106,168,0.18)]">
+              <button
+                type="button"
+                onClick={() => handleHeroVisitorTypeSelect("recruiter")}
+                className="mt-5 inline-flex items-center gap-2 text-[13px] font-medium uppercase tracking-[0.16em] text-[#5d6f8b] transition-colors hover:text-[#0e2951]"
+              >
+                <span>Try the recruiter experience</span>
+                <span aria-hidden="true" className="text-[16px] leading-none">↘</span>
+              </button>
+              <div className="mt-7 w-full max-w-[660px] rounded-[34px] bg-[linear-gradient(90deg,#ef7cc7_0%,#86a7ff_52%,#f28bc9_100%)] p-[1px] shadow-[0_22px_56px_rgba(91,106,168,0.16)]">
                 <form
                   onSubmit={handleHeroAssistantSubmit}
-                  className="rounded-[37px] border border-white/60 bg-[linear-gradient(180deg,#ffffff_0%,#f7f1e8_100%)] px-7 pb-6 pt-7 text-left"
+                  className="rounded-[33px] border border-white/60 bg-[linear-gradient(180deg,#ffffff_0%,#f7f1e8_100%)] px-6 pb-4 pt-5 text-left"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <p className="text-[14px] font-medium text-[#7c766e]">
-                        {heroVisitorType ? "Page-scoped assistant" : "Choose your entry point first"}
-                      </p>
+                      {heroVisitorType ? (
+                        <p className="text-[14px] font-medium text-[#7c766e]">Page-scoped assistant</p>
+                      ) : null}
                     </div>
                   </div>
 
@@ -1106,11 +1090,13 @@ export default function PortfolioPage() {
                         : "Who are you? Choose recruiter or client first"
                     }
                     disabled={!heroVisitorType}
-                    rows={4}
-                    className="mt-5 min-h-[126px] w-full resize-none border-0 bg-transparent p-0 text-[22px] leading-[1.35] text-[#64605a] outline-none placeholder:text-[#6f6a64] disabled:cursor-not-allowed disabled:opacity-65"
+                    rows={2}
+                    className={`mt-3 min-h-[72px] w-full resize-none border-0 bg-transparent p-0 leading-[1.35] text-[#64605a] outline-none placeholder:text-[#6f6a64] disabled:cursor-not-allowed disabled:opacity-65 ${
+                      heroVisitorType ? "text-[22px]" : "text-[13px]"
+                    }`}
                   />
 
-                  <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
+                  <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
                     <div className="flex flex-col gap-2">
                       <p className="max-w-[420px] text-[13px] leading-[1.55] text-[#7d766d]">
                         {heroAssistantResponse}
