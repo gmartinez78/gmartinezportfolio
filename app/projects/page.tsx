@@ -223,3 +223,11 @@ function ProjectsPage() {
     </main>
   );
 }
+
+export default function Page() {
+  return (
+    <Suspense fallback={null}>
+      <ProjectsPage />
+    </Suspense>
+  );
+}
