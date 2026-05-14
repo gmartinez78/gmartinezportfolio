@@ -85,9 +85,15 @@ type GitHubActivityItem = {
 };
 
 type HeroAssistantResult = {
-  matches: string[];
   response: string;
-  sectionId?: "projects" | "skills" | "github";
+  items: Array<{
+    id: string;
+    title: string;
+    snippet: string;
+    href: string;
+    sectionId?: "projects" | "skills" | "github";
+    cardId?: string;
+  }>;
 };
 
 type HeroVisitorType = "recruiter" | "client";
@@ -381,66 +387,6 @@ function HeroPrototypeOverlay({
   );
 }
 
-function resolveHeroAssistantQuery(
-  rawQuery: string,
-  featuredProjects: Array<{ title: string; tags: string[]; description: string; cardId: string }>,
-): HeroAssistantResult {
-  const query = rawQuery.trim().toLowerCase();
-
-  if (!query) {
-    return {
-      matches: [],
-      response: "Ask about projects, skills, tools, design systems, UX research, or GitHub activity on this page.",
-    };
-  }
-
-  const matchedProjects = featuredProjects.filter((project) => {
-    const haystack = [project.title, project.description, ...project.tags].join(" ").toLowerCase();
-    return haystack.includes(query);
-  });
-
-  if (matchedProjects.length) {
-    return {
-      matches: matchedProjects.map((project) => project.cardId),
-      sectionId: "projects",
-      response:
-        matchedProjects.length === 1
-          ? `I found 1 project in this page that matches "${rawQuery}".`
-          : `I found ${matchedProjects.length} projects in this page that match "${rawQuery}".`,
-    };
-  }
-
-  if (/(project|case study|work|portfolio)/.test(query)) {
-    return {
-      matches: [],
-      sectionId: "projects",
-      response: "I can show the project section on this page, but I only filter the projects displayed here.",
-    };
-  }
-
-  if (/(skill|skills|tool|tools|figma|react|ai|research|design system|systems|ux)/.test(query)) {
-    return {
-      matches: [],
-      sectionId: "skills",
-      response: "I can take you to the skills and tools section shown on this page.",
-    };
-  }
-
-  if (/(github|repo|repositories|commit|pull request|activity)/.test(query)) {
-    return {
-      matches: [],
-      sectionId: "github",
-      response: "I can show the GitHub activity section that is available on this page.",
-    };
-  }
-
-  return {
-    matches: [],
-    response:
-      "I can only provide information already available in this page: projects, skills/tools, and GitHub activity. I can't provide anything outside this page.",
-  };
-}
-
 export default function PortfolioPage() {
   const [heroPhase, setHeroPhase] = useState<HeroPhase>(() => getFallbackHeroPhase(new Date()));
   const [githubActivity, setGithubActivity] = useState<GitHubActivityItem[]>([]);
@@ -451,6 +397,7 @@ export default function PortfolioPage() {
   const [heroAssistantResponse, setHeroAssistantResponse] = useState(
     "Before I help, tell me who you are. I will adapt the page guidance to this portfolio.",
   );
+  const [heroAssistantResults, setHeroAssistantResults] = useState<HeroAssistantResult["items"]>([]);
   const [highlightedProjectIds, setHighlightedProjectIds] = useState<string[]>([]);
   const { siteContent } = usePublicSiteContent();
   const { caseStudies } = usePublicCaseStudies();
@@ -458,8 +405,8 @@ export default function PortfolioPage() {
   const socialProofLogos = siteContent.home.trusted_by.clients.map((client) => ({
     src: resolveTrustedLogo(client.name, client.logo),
     alt: client.name,
-    h: client.name === "Skill" ? 59 : client.name === "Hakuna" ? 30 : client.name === "Elevation" ? 56 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : client.name === "Paramount+" ? 24 : client.name === "IBX" ? 34 : 41,
-    w: client.name === "Skill" ? 107 : client.name === "Hakuna" ? 96 : client.name === "Elevation" ? 220 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : client.name === "Paramount+" ? 94 : client.name === "IBX" ? 48 : 57,
+    h: client.name === "Skill" ? 59 : client.name === "Hakuna" ? 30 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : client.name === "Paramount+" ? 24 : client.name === "IBX" ? 34 : 41,
+    w: client.name === "Skill" ? 107 : client.name === "Hakuna" ? 96 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : client.name === "Paramount+" ? 94 : client.name === "IBX" ? 48 : 57,
   }));
   const logoCarousel = [...socialProofLogos, ...socialProofLogos];
   const methodologyChips = hero.methodology_chips.length
@@ -505,28 +452,57 @@ export default function PortfolioPage() {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  function handleHeroAssistantSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleHeroAssistantSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!heroVisitorType) {
-      setHeroAssistantResponse("Choose recruiter or client first. Then I can filter only the content available in this page.");
+      setHeroAssistantResponse("Choose recruiter or client first. Then I can search only the content available on this website.");
       return;
     }
 
-    const result = resolveHeroAssistantQuery(heroAssistantQuery, featuredProjects);
-    setHeroAssistantResponse(result.response);
-    setHighlightedProjectIds(result.matches);
-    scrollToSection(result.sectionId);
+    const query = heroAssistantQuery.trim();
+    if (!query) {
+      setHeroAssistantResponse("Ask about projects, skills, resume, contact details, or GitHub activity on this website.");
+      setHeroAssistantResults([]);
+      setHighlightedProjectIds([]);
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        withBasePath(`/api/site-search?q=${encodeURIComponent(query)}&viewer=${heroVisitorType}`),
+      );
+      if (!response.ok) {
+        throw new Error("Search failed");
+      }
+
+      const result = (await response.json()) as HeroAssistantResult;
+      setHeroAssistantResponse(result.response);
+      setHeroAssistantResults(result.items);
+
+      const projectMatches = result.items
+        .map((item) => item.cardId)
+        .filter((value): value is string => Boolean(value));
+      setHighlightedProjectIds(projectMatches);
+
+      const firstSection = result.items.find((item) => item.sectionId)?.sectionId;
+      scrollToSection(firstSection);
+    } catch {
+      setHeroAssistantResponse("I couldn't search the website right now.");
+      setHeroAssistantResults([]);
+      setHighlightedProjectIds([]);
+    }
   }
 
   function handleHeroVisitorTypeSelect(type: HeroVisitorType) {
     setHeroVisitorType(type);
     setHighlightedProjectIds([]);
+    setHeroAssistantResults([]);
     setHeroAssistantQuery("");
     setHeroAssistantResponse(
       type === "recruiter"
-        ? "Recruiter mode on. Ask about shipped work, AI projects, design systems, UX research, or GitHub activity in this page."
-        : "Client mode on. Ask about projects, capabilities, tools, UX research, or design systems shown in this page.",
+        ? "Recruiter mode on. Ask about shipped work, AI projects, design systems, UX research, resume details, or GitHub activity on this website."
+        : "Client mode on. Ask about projects, capabilities, tools, contact details, UX research, or design systems on this website.",
     );
   }
 
@@ -584,7 +560,16 @@ export default function PortfolioPage() {
   const recentWorkSection = (
     <section key="work" id="projects" className="bg-white py-12 px-6 md:px-10 xl:px-20">
       <div className="mx-auto flex w-full flex-col items-center gap-12">
-        <SectionHeading eyebrow="Projects" title="Recent Work" centered />
+        <div className="flex w-full flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <SectionHeading eyebrow="Projects" title="Recent Work" className="items-start text-left" />
+          <Button
+            asChild
+            variant="outline"
+            className="h-11 rounded-full border-[#c7d8ea] px-5 text-[13px] font-medium text-[#16385c] shadow-[0_10px_24px_rgba(78,104,138,0.10)] transition-all hover:border-[#9bb9d7] hover:bg-white hover:text-[#0e2951]"
+          >
+            <Link href={withBasePath("/projects")}>View all projects</Link>
+          </Button>
+        </div>
         <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3">
           {featuredProjects.map((project) => (
             <Link
@@ -1055,7 +1040,7 @@ export default function PortfolioPage() {
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       {heroVisitorType ? (
-                        <p className="text-[14px] font-medium text-[#7c766e]">Page-scoped assistant</p>
+                        <p className="text-[14px] font-medium text-[#7c766e]">Website-scoped assistant</p>
                       ) : null}
                     </div>
                   </div>
@@ -1065,9 +1050,9 @@ export default function PortfolioPage() {
                     onChange={(event) => setHeroAssistantQuery(event.target.value)}
                     placeholder={
                       heroVisitorType === "recruiter"
-                        ? "Ask Greddys about shipped AI work, design systems, UX research, or GitHub activity in this page"
+                        ? "Ask Greddys about shipped AI work, design systems, UX research, resume details, or GitHub activity on this website"
                         : heroVisitorType === "client"
-                        ? "Ask Greddys about projects, enterprise SaaS, AI product design, or UX research in this page"
+                        ? "Ask Greddys about projects, enterprise SaaS, AI product design, UX research, or contact details on this website"
                         : "Who are you? Choose recruiter or client first"
                     }
                     disabled={!heroVisitorType}
@@ -1082,6 +1067,19 @@ export default function PortfolioPage() {
                       <p className="max-w-[420px] text-[13px] leading-[1.55] text-[#7d766d]">
                         {heroAssistantResponse}
                       </p>
+                      {heroAssistantResults.length ? (
+                        <div className="flex max-w-[500px] flex-wrap gap-2">
+                          {heroAssistantResults.slice(0, 4).map((item) => (
+                            <Link
+                              key={item.id}
+                              href={item.href}
+                              className="inline-flex items-center rounded-full border border-[#d8ddd9] bg-white/90 px-3 py-1.5 text-[12px] font-medium text-[#4f5b67] transition-colors hover:border-[#aab6c2] hover:text-[#0e2951]"
+                            >
+                              {item.title}
+                            </Link>
+                          ))}
+                        </div>
+                      ) : null}
                     </div>
                     <div className="flex items-center gap-4">
                       <button
@@ -1139,7 +1137,7 @@ export default function PortfolioPage() {
                     width={logo.w}
                     height={logo.h}
                     aria-hidden={index >= socialProofLogos.length}
-                    className={`w-auto shrink-0 object-contain opacity-75 grayscale transition-all hover:grayscale-0 hover:opacity-100 ${logo.alt === "Hakuna" ? "max-h-[20px] brightness-0 saturate-0 opacity-45 hover:opacity-70" : logo.alt === "Paramount+" ? "max-h-[16px]" : logo.alt === "Elevation" ? "max-h-[38px] mix-blend-multiply" : "max-h-[34px]"}`}
+                    className={`w-auto shrink-0 object-contain opacity-75 grayscale transition-all hover:grayscale-0 hover:opacity-100 ${logo.alt === "Hakuna" ? "max-h-[20px] brightness-0 saturate-0 opacity-45 hover:opacity-70" : logo.alt === "Paramount+" ? "max-h-[16px]" : "max-h-[34px]"}`}
                   />
                 ))}
               </div>
