@@ -3,13 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useState } from "react";
-import { BrainCircuit, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, MousePointer2, Star, Wand2 } from "lucide-react";
+import { ArrowUp, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Mic, MousePointer2, Star, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { TypewriterBanner } from "./components/typewriter-banner";
 import { Badge } from "./components/ui/badge";
 import { Button } from "./components/ui/button";
-import { Input } from "./components/ui/input";
 import { SectionHeading } from "./components/ui/section-heading";
 import {
   resolveHomeCardId,
@@ -1064,68 +1063,76 @@ export default function PortfolioPage() {
                 roleClassName="text-[#17406c]"
                 descriptionClassName="text-[#0e2951]"
               />
-              <div className="mt-7 w-full max-w-[620px] rounded-[28px] border border-[#b8d2e9] bg-[linear-gradient(135deg,rgba(255,255,255,0.96)_0%,rgba(239,247,255,0.98)_100%)] p-3 shadow-[0_20px_52px_rgba(55,90,136,0.16)]">
-                <div className="rounded-[22px] border border-[#d8e7f5] bg-white/92 p-4 text-left">
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="flex items-center gap-3">
-                      <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[#0f4d82] text-white shadow-[0_10px_24px_rgba(15,77,130,0.22)]">
-                        <BrainCircuit className="h-5 w-5" />
-                      </span>
-                      <div>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">
-                          LLM Layer
-                        </p>
-                        <p className="text-[15px] font-medium text-[#0e2951]">
-                          {heroVisitorType ? "Ask only about content inside this page" : "Who are you?"}
-                        </p>
-                      </div>
+              <div className="mt-7 w-full max-w-[760px] rounded-[38px] bg-[linear-gradient(90deg,#ef7cc7_0%,#86a7ff_52%,#f28bc9_100%)] p-[1px] shadow-[0_26px_64px_rgba(91,106,168,0.18)]">
+                <form
+                  onSubmit={handleHeroAssistantSubmit}
+                  className="rounded-[37px] border border-white/60 bg-[linear-gradient(180deg,#ffffff_0%,#f7f1e8_100%)] px-7 pb-6 pt-7 text-left"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-[14px] font-medium text-[#7c766e]">
+                        {heroVisitorType ? "Page-scoped assistant" : "Choose your entry point first"}
+                      </p>
                     </div>
-                    <span className="rounded-full border border-[#c8daf0] bg-[#f3f8fd] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#46698f]">
-                      {heroVisitorType ? "Page scoped" : "Entry prompt"}
-                    </span>
                   </div>
-                  <form onSubmit={handleHeroAssistantSubmit} className="mt-4 flex flex-col gap-3">
-                    {!heroVisitorType ? (
-                      <div className="flex flex-wrap gap-3">
-                        <button
-                          type="button"
-                          onClick={() => handleHeroVisitorTypeSelect("recruiter")}
-                          className="inline-flex items-center justify-center rounded-full border border-[#b7cee6] bg-[#f5f9fd] px-4 py-2 text-[13px] font-medium text-[#0e2951] transition-colors hover:border-[#8fb2d6] hover:bg-white"
-                        >
-                          I&apos;m a recruiter
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => handleHeroVisitorTypeSelect("client")}
-                          className="inline-flex items-center justify-center rounded-full border border-[#b7cee6] bg-[#f5f9fd] px-4 py-2 text-[13px] font-medium text-[#0e2951] transition-colors hover:border-[#8fb2d6] hover:bg-white"
-                        >
-                          I&apos;m a client
-                        </button>
-                      </div>
-                    ) : null}
-                    <Input
-                      value={heroAssistantQuery}
-                      onChange={(event) => setHeroAssistantQuery(event.target.value)}
-                      placeholder={
-                        heroVisitorType === "recruiter"
-                          ? "Try: AI project, design systems, UX research, GitHub"
-                          : heroVisitorType === "client"
-                          ? "Try: projects, enterprise SaaS, AI product, UX research"
-                          : "Choose recruiter or client first"
-                      }
-                      disabled={!heroVisitorType}
-                      className="h-12 rounded-[18px] border-[#d6e5f3] bg-[#f8fbff] px-5 text-[15px] text-[#0e2951] placeholder:text-[#7d9bb8]"
-                    />
-                    <div className="flex flex-wrap items-center justify-between gap-3">
-                      <p className="text-[13px] leading-[1.6] text-[#5c7792]">
+
+                  {!heroVisitorType ? (
+                    <div className="mt-5 flex flex-wrap gap-3">
+                      <button
+                        type="button"
+                        onClick={() => handleHeroVisitorTypeSelect("recruiter")}
+                        className="inline-flex items-center justify-center rounded-full border border-[#d7cdc0] bg-white/68 px-4 py-2 text-[13px] font-medium text-[#57524a] transition-colors hover:border-[#bcaea0] hover:bg-white"
+                      >
+                        I&apos;m a recruiter
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleHeroVisitorTypeSelect("client")}
+                        className="inline-flex items-center justify-center rounded-full border border-[#d7cdc0] bg-white/68 px-4 py-2 text-[13px] font-medium text-[#57524a] transition-colors hover:border-[#bcaea0] hover:bg-white"
+                      >
+                        I&apos;m a client
+                      </button>
+                    </div>
+                  ) : null}
+
+                  <textarea
+                    value={heroAssistantQuery}
+                    onChange={(event) => setHeroAssistantQuery(event.target.value)}
+                    placeholder={
+                      heroVisitorType === "recruiter"
+                        ? "Ask Greddys about shipped AI work, design systems, UX research, or GitHub activity in this page"
+                        : heroVisitorType === "client"
+                        ? "Ask Greddys about projects, enterprise SaaS, AI product design, or UX research in this page"
+                        : "Who are you? Choose recruiter or client first"
+                    }
+                    disabled={!heroVisitorType}
+                    rows={4}
+                    className="mt-5 min-h-[126px] w-full resize-none border-0 bg-transparent p-0 text-[22px] leading-[1.35] text-[#64605a] outline-none placeholder:text-[#6f6a64] disabled:cursor-not-allowed disabled:opacity-65"
+                  />
+
+                  <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
+                    <div className="flex flex-col gap-2">
+                      <p className="max-w-[420px] text-[13px] leading-[1.55] text-[#7d766d]">
                         {heroAssistantResponse}
                       </p>
-                      <Button type="submit" size="sm" className="shrink-0" disabled={!heroVisitorType}>
-                        Filter this page
-                      </Button>
                     </div>
-                  </form>
-                </div>
+                    <div className="flex items-center gap-4">
+                      <button
+                        type="button"
+                        className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[#8c857b] transition-colors hover:bg-white/45"
+                      >
+                        <Mic className="h-5 w-5" />
+                      </button>
+                      <button
+                        type="submit"
+                        disabled={!heroVisitorType}
+                        className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#8b877f] text-white transition-colors hover:bg-[#767169] disabled:cursor-not-allowed disabled:opacity-50"
+                      >
+                        <ArrowUp className="h-5 w-5" />
+                      </button>
+                    </div>
+                  </div>
+                </form>
               </div>
               <div className="mt-8 flex flex-wrap justify-center gap-2">
                 {heroPills.map((pill) => (
