@@ -23,29 +23,29 @@ import {
 import { withBasePath } from "./lib/site";
 
 const TOOLS_LEFT = [
-  { label: "Figma", x: "left-[7%]", y: "top-[72px]", size: "lg" as const },
-  { label: "Angular", x: "left-[18%]", y: "top-[34px]", size: "lg" as const },
-  { label: "Miro", x: "left-[31%]", y: "top-[18px]", size: "lg" as const },
-  { label: "React", x: "left-[10%]", y: "top-[236px]", size: "sm" as const },
-  { label: "HTML", x: "left-[6%]", y: "top-[352px]", size: "sm" as const },
-  { label: "Jira", x: "left-[22%]", y: "top-[132px]", size: "sm" as const },
-  { label: "Confluence", x: "left-[37%]", y: "top-[118px]", size: "sm" as const },
-  { label: "Maze", x: "left-[30%]", y: "top-[268px]", size: "sm" as const },
-  { label: "Notion", x: "left-[19%]", y: "top-[366px]", size: "sm" as const },
-  { label: "Webex", x: "left-[41%]", y: "top-[390px]", size: "sm" as const },
+  { label: "Figma", x: "left-[7%]", y: "top-[72px]", size: "lg" as const, delay: "0s" },
+  { label: "Angular", x: "left-[18%]", y: "top-[34px]", size: "lg" as const, delay: "0.6s" },
+  { label: "Miro", x: "left-[31%]", y: "top-[18px]", size: "lg" as const, delay: "1.2s" },
+  { label: "React", x: "left-[10%]", y: "top-[236px]", size: "sm" as const, delay: "0.9s" },
+  { label: "HTML", x: "left-[6%]", y: "top-[352px]", size: "sm" as const, delay: "1.8s" },
+  { label: "Jira", x: "left-[22%]", y: "top-[132px]", size: "sm" as const, delay: "0.3s" },
+  { label: "Confluence", x: "left-[37%]", y: "top-[118px]", size: "sm" as const, delay: "1.5s" },
+  { label: "Maze", x: "left-[30%]", y: "top-[268px]", size: "sm" as const, delay: "2.1s" },
+  { label: "Notion", x: "left-[19%]", y: "top-[366px]", size: "sm" as const, delay: "0.7s" },
+  { label: "Webex", x: "left-[41%]", y: "top-[390px]", size: "sm" as const, delay: "1.4s" },
 ];
 
 const TOOLS_RIGHT = [
-  { label: "Copilot", x: "right-[31%]", y: "top-[18px]", size: "sm" as const },
-  { label: "Slack", x: "right-[18%]", y: "top-[52px]", size: "sm" as const },
-  { label: "Claude", x: "right-[7%]", y: "top-[96px]", size: "sm" as const },
-  { label: "ChatGPT", x: "right-[26%]", y: "top-[172px]", size: "sm" as const },
-  { label: "VS Code", x: "right-[5%]", y: "top-[236px]", size: "sm" as const },
-  { label: "Figma", x: "right-[16%]", y: "top-[370px]", size: "sm" as const },
-  { label: "React", x: "right-[35%]", y: "top-[386px]", size: "sm" as const },
-  { label: "Jira", x: "right-[38%]", y: "top-[122px]", size: "sm" as const },
-  { label: "Miro", x: "right-[16%]", y: "top-[272px]", size: "sm" as const },
-  { label: "Notion", x: "right-[28%]", y: "top-[354px]", size: "sm" as const },
+  { label: "Copilot", x: "right-[31%]", y: "top-[18px]", size: "sm" as const, delay: "0.4s" },
+  { label: "Slack", x: "right-[18%]", y: "top-[52px]", size: "sm" as const, delay: "1.1s" },
+  { label: "Claude", x: "right-[7%]", y: "top-[96px]", size: "sm" as const, delay: "1.7s" },
+  { label: "ChatGPT", x: "right-[26%]", y: "top-[172px]", size: "sm" as const, delay: "0.2s" },
+  { label: "VS Code", x: "right-[5%]", y: "top-[236px]", size: "sm" as const, delay: "1.3s" },
+  { label: "Figma", x: "right-[16%]", y: "top-[370px]", size: "sm" as const, delay: "0.8s" },
+  { label: "React", x: "right-[35%]", y: "top-[386px]", size: "sm" as const, delay: "2.0s" },
+  { label: "Jira", x: "right-[38%]", y: "top-[122px]", size: "sm" as const, delay: "0.5s" },
+  { label: "Miro", x: "right-[16%]", y: "top-[272px]", size: "sm" as const, delay: "1.6s" },
+  { label: "Notion", x: "right-[28%]", y: "top-[354px]", size: "sm" as const, delay: "0.1s" },
 ];
 
 const HERO_STARS = [
@@ -455,11 +455,13 @@ function ToolBadge({
   x,
   y,
   size,
+  delay = "0s",
 }: {
   label: string;
   x: string;
   y: string;
   size: "lg" | "sm";
+  delay?: string;
 }) {
   const icon = resolveToolIconOptional(label);
 
@@ -473,6 +475,7 @@ function ToolBadge({
     <div
       className={`absolute hidden ${x} ${y} z-10 ${sizeClass} items-center justify-center bg-white shadow-[0_18px_42px_rgba(14,41,81,0.10)] opacity-55 lg:flex`}
       title={label}
+      style={{ animation: `tool-float 3.8s ease-in-out ${delay} infinite` }}
     >
       <Image
         src={resolveToolIcon(label)}
@@ -795,7 +798,7 @@ export default function PortfolioPage() {
     <section key="tools" id="skills" className="relative isolate overflow-hidden px-6 py-16 md:px-10 lg:h-[520px] xl:px-20">
       <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,#FFFFFF_0%,#F0F7FF_48%,rgba(17,131,208,0.28)_100%)]" />
       {TOOLS_LEFT.map((tool) => (
-        <ToolBadge key={`left-${tool.label}-${tool.x}`} {...tool} />
+        <ToolBadge key={`left-${tool.label}-${tool.x}`} {...tool} delay={tool.delay} />
       ))}
       <div className="relative z-20 mx-auto flex max-w-[540px] flex-col items-center gap-5 text-center lg:absolute lg:left-1/2 lg:top-28 lg:-translate-x-1/2">
         <SectionHeading eyebrow="Experience & Skills" title={siteContent.home.tools_section.headline} centered />
@@ -831,7 +834,7 @@ export default function PortfolioPage() {
         </Button>
       </div>
       {TOOLS_RIGHT.map((tool) => (
-        <ToolBadge key={`right-${tool.label}-${tool.x}`} {...tool} />
+        <ToolBadge key={`right-${tool.label}-${tool.x}`} {...tool} delay={tool.delay} />
       ))}
     </section>
   );
