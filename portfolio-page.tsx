@@ -927,7 +927,7 @@ export default function PortfolioPage() {
     </section>
   );
 
-  const contentSections = [toolsSection, ctaSection, githubActivitySection];
+  const contentSections = [toolsSection, ctaSection];
 
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
@@ -1207,7 +1207,7 @@ export default function PortfolioPage() {
                     key={pill.label}
                     asChild
                     variant="outline"
-                    className="rounded-full border border-[#c7d8ea] bg-[#fffdf8] px-1 py-1 text-[#16385c] shadow-[0_10px_24px_rgba(78,104,138,0.14)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#9bb9d7] hover:bg-white hover:text-[#0e2951] hover:shadow-[0_16px_32px_rgba(78,104,138,0.18)]"
+                    className="rounded-full border border-[#0e2951]/80 bg-[#0e2951] px-1 py-1 text-[#7CB8E8] shadow-[0_10px_24px_rgba(14,41,81,0.22)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#17406c] hover:border-[#17406c] hover:text-[#A8C8E8] hover:shadow-[0_16px_32px_rgba(14,41,81,0.32)]"
                   >
                     <Link href={pill.href} className="rounded-full px-4 py-2 text-[13px] font-medium tracking-[0.01em]">
                       {pill.label}
