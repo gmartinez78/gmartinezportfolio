@@ -57,20 +57,6 @@
   }
 }
 
-@keyframes hero-cloud-drift {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-
-  50% {
-    transform: translate3d(22px, 6px, 0);
-  }
-
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .animate-\[logo-marquee_22s_linear_infinite\] {
     animation: none;
@@ -85,10 +71,6 @@
   }
 
   .animate-\[hero-shooting-star_11s_linear_infinite\] {
-    animation: none;
-  }
-
-  .animate-\[hero-cloud-drift_var\(--cloud-duration\)_ease-in-out_infinite\] {
     animation: none;
   }
 }

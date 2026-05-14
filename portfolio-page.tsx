@@ -2,10 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, MousePointer2, Network, Star, Wand2 } from "lucide-react";
-import { MayAssistant } from "./components/may-assistant";
-import { PersonaModal, type Persona } from "./components/persona-modal";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { TypewriterBanner } from "./components/typewriter-banner";
@@ -67,12 +65,6 @@ const HERO_STARS = [
   { left: "47%", top: "46%", size: 2, duration: "6.8s", delay: "0.6s" },
   { left: "66%", top: "52%", size: 3, duration: "5.5s", delay: "2.4s" },
   { left: "82%", top: "44%", size: 2, duration: "6.3s", delay: "1.7s" },
-];
-
-const HERO_CLOUDS = [
-  { left: "6%", top: "16%", width: 180, height: 54, opacity: 0.34, duration: "20s", delay: "0s" },
-  { left: "68%", top: "12%", width: 210, height: 62, opacity: 0.28, duration: "24s", delay: "1.4s" },
-  { left: "54%", top: "34%", width: 160, height: 48, opacity: 0.22, duration: "18s", delay: "0.8s" },
 ];
 
 const HERO_UI_ORBS = [
@@ -287,18 +279,10 @@ function ToolBadge({
 }
 
 export default function PortfolioPage() {
-  const [persona, setPersona] = useState<Persona | null>("client");
-  const [modalKey, setModalKey] = useState(0);
   const [heroPhase, setHeroPhase] = useState<HeroPhase>(() => getFallbackHeroPhase(new Date()));
   const [githubActivity, setGithubActivity] = useState<GitHubActivityItem[]>([]);
   const [githubUsername, setGithubUsername] = useState("gmartinez78");
   const [heroPointer, setHeroPointer] = useState({ x: 0, y: 0 });
-  const handlePersona = useCallback((p: Persona) => setPersona(p), []);
-  const handleReset = useCallback(() => {
-    localStorage.removeItem("gm_persona");
-    setPersona(null);
-    setModalKey((k) => k + 1);
-  }, []);
   const { siteContent } = usePublicSiteContent();
   const { caseStudies } = usePublicCaseStudies();
   const hero = siteContent.home.hero;
@@ -515,17 +499,17 @@ export default function PortfolioPage() {
   const ctaSection = (
     <section key="cta" className="flex flex-col items-center justify-center gap-7 px-6 py-[80px] md:px-16 xl:px-30 text-center" style={{ background: "#0e2951" }}>
       <span className="text-[13px] font-medium tracking-[3px] text-[#7CB8E8] uppercase">
-        {persona === "recruiter" ? "Why hire me?" : "Ready to Level Up?"}
+        Ready to Level Up?
       </span>
       <p className="text-[28px] leading-[1.5] text-[#A8C8E8] max-w-[800px]">
         {siteContent.home.stat_banner.text} {siteContent.home.stat_banner.value} {siteContent.home.stat_banner.value_label}
       </p>
       <h2 className="font-serif-display italic font-bold text-[40px] text-white">
-        {persona === "recruiter" ? "Your team deserves that impact." : siteContent.home.stat_banner.cta_headline}
+        {siteContent.home.stat_banner.cta_headline}
       </h2>
       <Button asChild size="sm">
-        <Link href={withBasePath(persona === "recruiter" ? "/resume" : siteContent.home.stat_banner.cta_href.replace("#contact", "/contact"))}>
-          {persona === "recruiter" ? "View my resume" : siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
+        <Link href={withBasePath(siteContent.home.stat_banner.cta_href.replace("#contact", "/contact"))}>
+          {siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
         </Link>
       </Button>
     </section>
@@ -679,30 +663,11 @@ export default function PortfolioPage() {
     </section>
   );
 
-  const contentSections = persona === "recruiter"
-    ? [recruiterImpactSection, recentWorkSection, toolsSection, githubActivitySection]
-    : [recentWorkSection, toolsSection, ctaSection, githubActivitySection];
+  const contentSections = [recentWorkSection, toolsSection, ctaSection, githubActivitySection];
 
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
-      <PersonaModal key={modalKey} onSelect={handlePersona} />
       <SiteHeader variant="transparent" />
-
-      {/* ── View switcher pill ── */}
-      {persona && (
-        <div className="fixed bottom-5 right-5 z-40 flex items-center gap-3 rounded-full bg-white px-4 py-2.5 shadow-[0_4px_24px_rgba(14,41,81,0.14)] ring-1 ring-[#E0EEFB]">
-          <span className="text-[12px] text-[#5c7792]">
-            {persona === "recruiter" ? "Recruiter view" : "Client view"}
-          </span>
-          <span className="h-3.5 w-px bg-[#E0EEFB]" />
-          <button
-            onClick={handleReset}
-            className="text-[12px] font-semibold text-[#1183D0] hover:underline"
-          >
-            Switch
-          </button>
-        </div>
-      )}
 
       {/* ── Hero ── */}
       <section className="bg-white">
@@ -722,41 +687,6 @@ export default function PortfolioPage() {
             className="pointer-events-none absolute inset-0 opacity-90"
             style={{ background: heroPhaseStyles.cone }}
           />
-          <div className="pointer-events-none absolute inset-0">
-            {HERO_CLOUDS.map((cloud, index) => (
-              <span
-                key={`hero-cloud-${index}`}
-                className="absolute rounded-full animate-[hero-cloud-drift_var(--cloud-duration)_ease-in-out_infinite]"
-                style={{
-                  left: cloud.left,
-                  top: cloud.top,
-                  width: `${cloud.width}px`,
-                  height: `${cloud.height}px`,
-                  opacity: cloud.opacity,
-                  animationDelay: cloud.delay,
-                  ["--cloud-duration" as string]: cloud.duration,
-                  background:
-                    "radial-gradient(ellipse at center, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.72) 48%, rgba(255,255,255,0) 78%)",
-                  filter: "blur(1px)",
-                  boxShadow:
-                    "0 10px 24px rgba(255,255,255,0.16), inset 0 1px 0 rgba(255,255,255,0.55)",
-                }}
-              >
-                <span
-                  className="absolute left-[12%] top-[18%] h-[62%] w-[34%] rounded-full bg-white/80"
-                  style={{ filter: "blur(4px)" }}
-                />
-                <span
-                  className="absolute left-[34%] top-[4%] h-[74%] w-[38%] rounded-full bg-white/85"
-                  style={{ filter: "blur(4px)" }}
-                />
-                <span
-                  className="absolute right-[10%] top-[22%] h-[58%] w-[32%] rounded-full bg-white/75"
-                  style={{ filter: "blur(4px)" }}
-                />
-              </span>
-            ))}
-          </div>
           <div className="pointer-events-none absolute inset-0" style={{ opacity: heroPhaseStyles.starOpacity }}>
             {HERO_STARS.map((star, index) => (
               <span
@@ -774,6 +704,99 @@ export default function PortfolioPage() {
             ))}
           </div>
           <div className="pointer-events-none absolute inset-0 hidden lg:block">
+            <div
+              className="absolute left-[7%] top-[16%] h-[280px] w-[320px] rounded-[38px] border border-white/16"
+              style={{
+                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -7, -8),
+                transition: "transform 180ms ease-out",
+                opacity: 0.4,
+              }}
+            />
+            <div
+              className="absolute left-[11%] top-[20%] h-[188px] w-[250px] rounded-[26px] border border-[#9aaee2]/22"
+              style={{
+                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, -6),
+                transition: "transform 180ms ease-out",
+                opacity: 0.52,
+              }}
+            />
+            <div
+              className="absolute right-[8%] top-[19%] h-[226px] w-[266px] rounded-[34px] border border-white/16"
+              style={{
+                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -7, 9),
+                transition: "transform 180ms ease-out",
+                opacity: 0.38,
+              }}
+            />
+            <div
+              className="absolute right-[12%] top-[24%] h-[154px] w-[204px] rounded-[24px] border border-[#e4bdd0]/22"
+              style={{
+                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, 8),
+                transition: "transform 180ms ease-out",
+                opacity: 0.52,
+              }}
+            />
+            <div
+              className="absolute left-[16%] top-[58%] h-px w-[150px] bg-[#90a4da]/28"
+              style={{
+                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -12, -6),
+                transition: "transform 180ms ease-out",
+              }}
+            />
+            <div
+              className="absolute left-[16%] top-[58%] h-[56px] w-px bg-[#90a4da]/24"
+              style={{
+                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -12, -6),
+                transition: "transform 180ms ease-out",
+              }}
+            />
+            <div
+              className="absolute right-[18%] top-[58%] h-px w-[130px] bg-[#d6a8bc]/28"
+              style={{
+                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, 5),
+                transition: "transform 180ms ease-out",
+              }}
+            />
+            <div
+              className="absolute right-[24%] top-[46%] h-[74px] w-[74px] rounded-full border border-white/14"
+              style={{
+                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -6, 0),
+                transition: "transform 180ms ease-out",
+                opacity: 0.45,
+              }}
+            />
+            <div
+              className="absolute left-[35%] top-[18%] rounded-full border border-white/24 bg-white/8 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#64738f]"
+              style={{
+                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, 0),
+                transition: "transform 180ms ease-out",
+              }}
+            >
+              User flow
+            </div>
+            <div
+              className="absolute right-[29%] top-[31%] rounded-full border border-white/24 bg-white/8 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#64738f]"
+              style={{
+                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, 0),
+                transition: "transform 180ms ease-out",
+              }}
+            >
+              Low-fi
+            </div>
+            <div
+              className="absolute left-[31%] top-[66%] rounded-[16px] border border-white/18 bg-white/8 px-4 py-3"
+              style={{
+                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, -2),
+                transition: "transform 180ms ease-out",
+                opacity: 0.72,
+              }}
+            >
+              <div className="mb-2 h-2 w-16 rounded-full bg-white/34" />
+              <div className="space-y-2">
+                <div className="h-2 w-24 rounded-full bg-white/26" />
+                <div className="h-2 w-12 rounded-full bg-white/22" />
+              </div>
+            </div>
             {HERO_UI_ORBS.map((orb, index) => (
               <span
                 key={`hero-ui-orb-${index}`}
@@ -784,7 +807,7 @@ export default function PortfolioPage() {
                   width: `${orb.width}px`,
                   height: `${orb.height}px`,
                   background: orb.fill,
-                  opacity: heroPhase === "night" ? 0.9 : 0.72,
+                  opacity: heroPhase === "night" ? 0.72 : 0.52,
                   filter: "blur(0.2px)",
                   transform: getParallaxTransform(heroPointer.x, heroPointer.y, orb.depth, orb.rotate),
                   transition: "transform 180ms ease-out",
@@ -793,7 +816,7 @@ export default function PortfolioPage() {
             ))}
 
             <div
-              className="absolute left-[8%] top-[18%] w-[210px] rounded-[28px] border border-white/45 bg-white/20 p-4 shadow-[0_24px_50px_rgba(42,54,92,0.12),inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-xl"
+              className="absolute left-[8%] top-[18%] w-[210px] rounded-[28px] border border-white/34 bg-white/14 p-4 shadow-[0_24px_50px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.45)] backdrop-blur-xl"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -26, -10),
                 transition: "transform 180ms ease-out",
@@ -820,7 +843,7 @@ export default function PortfolioPage() {
             </div>
 
             <div
-              className="absolute right-[10%] top-[18%] w-[178px] rounded-[26px] border border-white/45 bg-white/18 p-4 shadow-[0_24px_50px_rgba(42,54,92,0.12),inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-xl"
+              className="absolute right-[10%] top-[18%] w-[178px] rounded-[26px] border border-white/34 bg-white/14 p-4 shadow-[0_24px_50px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.45)] backdrop-blur-xl"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -20, 9),
                 transition: "transform 180ms ease-out",
@@ -847,7 +870,7 @@ export default function PortfolioPage() {
             </div>
 
             <div
-              className="absolute left-[16%] bottom-[18%] flex items-center gap-3 rounded-full border border-white/55 bg-white/18 px-4 py-3 shadow-[0_20px_42px_rgba(42,54,92,0.12),inset_0_1px_0_rgba(255,255,255,0.5)] backdrop-blur-xl"
+              className="absolute left-[16%] bottom-[18%] flex items-center gap-3 rounded-full border border-white/34 bg-white/12 px-4 py-3 shadow-[0_20px_42px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.42)] backdrop-blur-xl"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -18, -6),
                 transition: "transform 180ms ease-out",
@@ -863,7 +886,7 @@ export default function PortfolioPage() {
             </div>
 
             <div
-              className="absolute right-[18%] bottom-[16%] flex items-center gap-3 rounded-full border border-white/55 bg-white/18 px-4 py-3 shadow-[0_20px_42px_rgba(42,54,92,0.12),inset_0_1px_0_rgba(255,255,255,0.5)] backdrop-blur-xl"
+              className="absolute right-[18%] bottom-[16%] flex items-center gap-3 rounded-full border border-white/34 bg-white/12 px-4 py-3 shadow-[0_20px_42px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.42)] backdrop-blur-xl"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -16, 4),
                 transition: "transform 180ms ease-out",
@@ -986,8 +1009,6 @@ export default function PortfolioPage() {
       </section>
 
       {contentSections}
-
-      <MayAssistant />
       <SiteFooter />
     </main>
   );
