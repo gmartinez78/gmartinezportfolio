@@ -840,17 +840,30 @@ export default function PortfolioPage() {
   );
 
   const ctaSection = (
-    <section key="cta" className="flex flex-col items-center justify-center gap-7 px-6 py-[80px] md:px-16 xl:px-30 text-center" style={{ background: "#0e2951" }}>
-      <span className="text-[13px] font-medium tracking-[3px] text-[#7CB8E8] uppercase">
+    <section key="cta" className="relative isolate overflow-hidden flex flex-col items-center justify-center gap-6 px-6 py-[100px] md:px-16 xl:px-30 text-center" style={{ background: "#0e2951" }}>
+      {/* subtle radial glow */}
+      <div className="pointer-events-none absolute inset-0 z-0" style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(124,184,232,0.13) 0%, transparent 70%)" }} />
+
+      <span className="relative z-10 text-[12px] font-semibold tracking-[4px] text-[#7CB8E8] uppercase">
         Ready to Level Up?
       </span>
-      <p className="text-[28px] leading-[1.5] text-[#A8C8E8] max-w-[800px]">
-        {siteContent.home.stat_banner.text} {siteContent.home.stat_banner.value} {siteContent.home.stat_banner.value_label}
+
+      {/* Big stat */}
+      <div className="relative z-10 flex flex-col items-center gap-1">
+        <span className="font-serif-display italic font-bold leading-none text-white" style={{ fontSize: "clamp(72px, 14vw, 140px)" }}>
+          47%
+        </span>
+        <span className="text-[16px] font-medium text-[#A8C8E8] tracking-wide">
+          average increase in conversions
+        </span>
+      </div>
+
+      <p className="relative z-10 text-[18px] leading-[1.7] text-[#c8dff2] max-w-[520px]">
+        Last quarter, my clients saw this.<br />
+        <span className="text-white font-medium">Your product deserves that too.</span>
       </p>
-      <h2 className="font-serif-display italic font-bold text-[40px] text-white">
-        {siteContent.home.stat_banner.cta_headline}
-      </h2>
-      <Button asChild size="sm">
+
+      <Button asChild size="sm" className="relative z-10 mt-2">
         <Link href={withBasePath(siteContent.home.stat_banner.cta_href.replace("#contact", "/contact"))}>
           {siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
         </Link>
