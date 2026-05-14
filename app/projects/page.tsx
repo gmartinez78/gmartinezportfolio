@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -27,7 +27,7 @@ const PROJECT_BACKGROUNDS: Record<string, string> = {
   "i9-everify-integration": "radial-gradient(ellipse at 50% 80%, #d9e7f5 0%, #f3f8fc 72%)",
 };
 
-export default function ProjectsPage() {
+function ProjectsPage() {
   const searchParams = useSearchParams();
   const { caseStudies } = usePublicCaseStudies();
   const { siteContent } = usePublicSiteContent();
