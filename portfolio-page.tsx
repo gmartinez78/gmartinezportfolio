@@ -1121,7 +1121,7 @@ export default function PortfolioPage() {
               <TypewriterBanner
                 greeting={(
                   <>
-                    <span className="font-serif-display text-[1.8em] italic leading-none text-[#0e2951]">
+                    <span className="font-serif-display text-[1.2em] italic leading-none text-[#0e2951]">
                       Greddys Martinez
                     </span>
                   </>
