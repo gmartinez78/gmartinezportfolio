@@ -593,6 +593,7 @@ export default function PortfolioPage() {
   );
   const [heroAssistantResults, setHeroAssistantResults] = useState<HeroAssistantResult["items"]>([]);
   const [highlightedProjectIds, setHighlightedProjectIds] = useState<string[]>([]);
+  const [openProjectIdx, setOpenProjectIdx] = useState(0);
   const { siteContent } = usePublicSiteContent();
   const { caseStudies } = usePublicCaseStudies();
   const hero = siteContent.home.hero;
@@ -736,48 +737,55 @@ export default function PortfolioPage() {
             <Link href={withBasePath("/projects")}>View all projects</Link>
           </Button>
         </div>
-        <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3">
-          {featuredProjects.map((project) => (
-            <Link
-              key={project.title}
-              id={project.cardId}
-              data-home-card-id={project.cardId}
-              href={project.href}
-              className={`group flex w-full min-w-0 cursor-pointer flex-col gap-5 outline-none ${
-                highlightedProjectIds.length && !highlightedProjectIds.includes(project.cardId)
-                  ? "opacity-45 transition-opacity"
-                  : ""
-              }`}
-            >
-              <div className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] shadow-[0_18px_52px_rgba(14,41,81,0.12)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(14,41,81,0.22)] group-focus-visible:-translate-y-1 group-focus-visible:shadow-[0_28px_70px_rgba(14,41,81,0.22)] sm:h-[300px] xl:h-[230px]">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.04] group-focus-visible:scale-[1.04]"
-                />
-                {highlightedProjectIds.includes(project.cardId) ? (
-                  <div className="pointer-events-none absolute inset-0 ring-2 ring-[#1183D0] ring-offset-4 ring-offset-white" />
-                ) : null}
-              </div>
-              <div className="flex flex-wrap gap-3">
-                {project.tags.map((tag) => (
-                  <Badge key={tag} size="tag">{tag}</Badge>
-                ))}
-              </div>
-              <h3 className="font-serif-display italic text-[30px] leading-snug text-[#1183D0] transition-colors duration-200 group-hover:text-[#0e2951] group-focus-visible:text-[#0e2951]">
-                {project.title}
-              </h3>
-              <div className="-mt-2 h-[116px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-                <div className="flex h-full flex-col justify-between">
-                  <p className="text-[14px] leading-relaxed text-[#5c7792]">{project.description}</p>
-                  <span className="inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline group-focus-visible:underline">
-                    {project.cta} →
-                  </span>
+        <div
+          className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3"
+          onMouseLeave={() => setOpenProjectIdx(0)}
+        >
+          {featuredProjects.map((project, index) => {
+            const isOpen = openProjectIdx === index;
+            return (
+              <Link
+                key={project.title}
+                id={project.cardId}
+                data-home-card-id={project.cardId}
+                href={project.href}
+                onMouseEnter={() => setOpenProjectIdx(index)}
+                className={`flex w-full min-w-0 cursor-pointer flex-col gap-5 outline-none ${
+                  highlightedProjectIds.length && !highlightedProjectIds.includes(project.cardId)
+                    ? "opacity-45 transition-opacity"
+                    : ""
+                }`}
+              >
+                <div className={`relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] transition-all duration-300 sm:h-[300px] xl:h-[230px] ${isOpen ? "-translate-y-1 shadow-[0_28px_70px_rgba(14,41,81,0.22)]" : "shadow-[0_18px_52px_rgba(14,41,81,0.12)]"}`}>
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className={`object-cover transition-transform duration-500 ${isOpen ? "scale-[1.04]" : ""}`}
+                  />
+                  {highlightedProjectIds.includes(project.cardId) ? (
+                    <div className="pointer-events-none absolute inset-0 ring-2 ring-[#1183D0] ring-offset-4 ring-offset-white" />
+                  ) : null}
                 </div>
-              </div>
-            </Link>
-          ))}
+                <div className="flex flex-wrap gap-3">
+                  {project.tags.map((tag) => (
+                    <Badge key={tag} size="tag">{tag}</Badge>
+                  ))}
+                </div>
+                <h3 className={`font-serif-display italic text-[30px] leading-snug transition-colors duration-200 ${isOpen ? "text-[#0e2951]" : "text-[#1183D0]"}`}>
+                  {project.title}
+                </h3>
+                <div className={`-mt-2 h-[116px] transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0"}`}>
+                  <div className="flex h-full flex-col justify-between">
+                    <p className="text-[14px] leading-relaxed text-[#5c7792]">{project.description}</p>
+                    <span className={`inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 ${isOpen ? "underline" : ""}`}>
+                      {project.cta} →
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
