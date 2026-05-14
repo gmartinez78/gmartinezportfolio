@@ -1060,25 +1060,6 @@ export default function PortfolioPage() {
                     </div>
                   </div>
 
-                  {!heroVisitorType ? (
-                    <div className="mt-5 flex flex-wrap gap-3">
-                      <button
-                        type="button"
-                        onClick={() => handleHeroVisitorTypeSelect("recruiter")}
-                        className="inline-flex items-center justify-center rounded-full border border-[#d7cdc0] bg-white/68 px-4 py-2 text-[13px] font-medium text-[#57524a] transition-colors hover:border-[#bcaea0] hover:bg-white"
-                      >
-                        I&apos;m a recruiter
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => handleHeroVisitorTypeSelect("client")}
-                        className="inline-flex items-center justify-center rounded-full border border-[#d7cdc0] bg-white/68 px-4 py-2 text-[13px] font-medium text-[#57524a] transition-colors hover:border-[#bcaea0] hover:bg-white"
-                      >
-                        I&apos;m a client
-                      </button>
-                    </div>
-                  ) : null}
-
                   <textarea
                     value={heroAssistantQuery}
                     onChange={(event) => setHeroAssistantQuery(event.target.value)}
