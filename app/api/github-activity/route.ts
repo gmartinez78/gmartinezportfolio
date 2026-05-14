@@ -1,3 +1,5 @@
+export const dynamic = "force-static";
+
 import { NextResponse } from "next/server";
 
 const GITHUB_USERNAME = "gmartinez78";
