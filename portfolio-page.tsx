@@ -98,6 +98,13 @@ type HeroAssistantResult = {
 
 type HeroVisitorType = "recruiter" | "client";
 
+const HERO_ASSISTANT_SUGGESTIONS = [
+  "Show me AI projects",
+  "Which case studies include UX research?",
+  "What design systems work is on this site?",
+  "Where can I see resume details?",
+];
+
 const HERO_PHASE_STYLES: Record<
   HeroPhase,
   {
@@ -395,7 +402,7 @@ export default function PortfolioPage() {
   const [heroVisitorType, setHeroVisitorType] = useState<HeroVisitorType | null>(null);
   const [heroAssistantQuery, setHeroAssistantQuery] = useState("");
   const [heroAssistantResponse, setHeroAssistantResponse] = useState(
-    "Before I help, tell me who you are. I will adapt the page guidance to this portfolio.",
+    "Ask about projects, UX research, design systems, resume details, contact info, or GitHub activity on this website.",
   );
   const [heroAssistantResults, setHeroAssistantResults] = useState<HeroAssistantResult["items"]>([]);
   const [highlightedProjectIds, setHighlightedProjectIds] = useState<string[]>([]);
@@ -454,11 +461,6 @@ export default function PortfolioPage() {
 
   async function handleHeroAssistantSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    if (!heroVisitorType) {
-      setHeroAssistantResponse("Choose recruiter or client first. Then I can search only the content available on this website.");
-      return;
-    }
 
     const query = heroAssistantQuery.trim();
     if (!query) {
@@ -1035,7 +1037,7 @@ export default function PortfolioPage() {
               <div className="mt-7 w-full max-w-[660px] rounded-[34px] bg-[linear-gradient(90deg,#ef7cc7_0%,#86a7ff_52%,#f28bc9_100%)] p-[1px] shadow-[0_22px_56px_rgba(91,106,168,0.16)]">
                 <form
                   onSubmit={handleHeroAssistantSubmit}
-                  className="rounded-[33px] border border-white/60 bg-[linear-gradient(180deg,#ffffff_0%,#f7f1e8_100%)] px-6 pb-4 pt-5 text-left"
+                  className="rounded-[33px] border border-white/60 bg-white px-6 pb-4 pt-5 text-left"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>
@@ -1053,12 +1055,11 @@ export default function PortfolioPage() {
                         ? "Ask Greddys about shipped AI work, design systems, UX research, resume details, or GitHub activity on this website"
                         : heroVisitorType === "client"
                         ? "Ask Greddys about projects, enterprise SaaS, AI product design, UX research, or contact details on this website"
-                        : "Who are you? Choose recruiter or client first"
+                        : "Ask about projects, UX research, AI work, design systems, resume details, or contact info"
                     }
-                    disabled={!heroVisitorType}
                     rows={2}
-                    className={`mt-3 min-h-[72px] w-full resize-none border-0 bg-transparent p-0 leading-[1.35] text-[#64605a] outline-none placeholder:text-[#6f6a64] disabled:cursor-not-allowed disabled:opacity-65 ${
-                      heroVisitorType ? "text-[22px]" : "text-[13px]"
+                    className={`mt-3 min-h-[72px] w-full resize-none border-0 bg-transparent p-0 leading-[1.35] text-[#64605a] outline-none placeholder:text-[#6f6a64] ${
+                      heroVisitorType ? "text-[22px]" : "text-[16px]"
                     }`}
                   />
 
@@ -1067,6 +1068,20 @@ export default function PortfolioPage() {
                       <p className="max-w-[420px] text-[13px] leading-[1.55] text-[#7d766d]">
                         {heroAssistantResponse}
                       </p>
+                      {!heroAssistantResults.length ? (
+                        <div className="flex max-w-[520px] flex-wrap gap-2">
+                          {HERO_ASSISTANT_SUGGESTIONS.map((suggestion) => (
+                            <button
+                              key={suggestion}
+                              type="button"
+                              onClick={() => setHeroAssistantQuery(suggestion)}
+                              className="inline-flex items-center rounded-full border border-[#ddd6cd] bg-white/72 px-3 py-1.5 text-[12px] font-medium text-[#6a645e] transition-colors hover:border-[#c6beb4] hover:bg-white hover:text-[#0e2951]"
+                            >
+                              {suggestion}
+                            </button>
+                          ))}
+                        </div>
+                      ) : null}
                       {heroAssistantResults.length ? (
                         <div className="flex max-w-[500px] flex-wrap gap-2">
                           {heroAssistantResults.slice(0, 4).map((item) => (
@@ -1090,8 +1105,7 @@ export default function PortfolioPage() {
                       </button>
                       <button
                         type="submit"
-                        disabled={!heroVisitorType}
-                        className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#8b877f] text-white transition-colors hover:bg-[#767169] disabled:cursor-not-allowed disabled:opacity-50"
+                        className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#8b877f] text-white transition-colors hover:bg-[#767169]"
                       >
                         <ArrowUp className="h-5 w-5" />
                       </button>
