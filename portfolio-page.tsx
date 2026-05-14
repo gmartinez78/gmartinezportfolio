@@ -473,7 +473,7 @@ function ToolBadge({
 
   return (
     <div
-      className={`absolute hidden ${x} ${y} z-10 ${sizeClass} items-center justify-center bg-white shadow-[0_18px_42px_rgba(14,41,81,0.10)] opacity-55 lg:flex`}
+      className={`absolute hidden ${x} ${y} z-10 ${sizeClass} items-center justify-center bg-white shadow-[0_18px_42px_rgba(14,41,81,0.10)] lg:flex`}
       title={label}
       style={{ animation: `tool-float 3.8s ease-in-out ${delay} infinite` }}
     >
