@@ -936,13 +936,13 @@ export default function PortfolioPage() {
           onMouseLeave={() => setHeroPointer({ x: 0, y: 0 })}
         >
           <div className="pointer-events-none absolute inset-0" style={{ background: heroPhaseStyles.overlay }} />
-          <div className="absolute right-6 top-4 z-20 sm:right-10 lg:right-16">
+          <div className="absolute right-6 top-[72px] z-20 sm:right-10 lg:right-16">
             <Image
               src={withBasePath("/images/OiSjn.png")}
               alt="NN/g UX Certification"
-              width={72}
-              height={72}
-              className="h-[72px] w-[72px] object-contain opacity-80 drop-shadow-sm"
+              width={100}
+              height={100}
+              className="h-[100px] w-[100px] object-contain opacity-85 drop-shadow-sm"
             />
           </div>
           <div
