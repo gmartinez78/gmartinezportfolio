@@ -13,12 +13,14 @@ export function TypewriterBanner({
   roles = ["Sr. Product Designer."],
   description = "Building products end to end, from UX architecture and design systems to cross-functional execution that ships.",
   greetingClassName = "text-white",
+  roleClassName = "text-[#7CB8E8]",
   descriptionClassName = "text-white",
 }: {
   greeting?: ReactNode;
   roles?: string[];
   description?: string;
   greetingClassName?: string;
+  roleClassName?: string;
   descriptionClassName?: string;
 }) {
   const [displayText, setDisplayText] = useState("");
@@ -77,7 +79,7 @@ export function TypewriterBanner({
       <div className="mb-5 mt-3 flex h-[96px] items-center sm:h-[60px]">
         <span
           aria-live="polite"
-          className="text-[42px] font-medium leading-[1.1] text-[#7CB8E8] sm:text-[52px] lg:text-[64px]"
+          className={`text-[42px] font-medium leading-[1.1] sm:text-[52px] lg:text-[64px] ${roleClassName}`}
         >
           {displayText}
         </span>

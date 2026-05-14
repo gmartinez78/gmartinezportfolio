@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, MousePointer2, Network, Star, Wand2 } from "lucide-react";
+import { BrainCircuit, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, MousePointer2, Network, Star, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { TypewriterBanner } from "./components/typewriter-banner";
@@ -11,7 +11,6 @@ import { Badge } from "./components/ui/badge";
 import { Button } from "./components/ui/button";
 import { SectionHeading } from "./components/ui/section-heading";
 import {
-  resolveCertificationLogo,
   resolveHomeCardId,
   resolveHomeCardImage,
   resolveProjectHref,
@@ -278,6 +277,102 @@ function ToolBadge({
   );
 }
 
+function HeroPrototypeOverlay({
+  heroPointer,
+}: {
+  heroPointer: { x: number; y: number };
+}) {
+  return (
+    <div className="pointer-events-none absolute inset-0 hidden lg:block">
+      <div
+        className="absolute left-[6%] top-[14%] h-px w-[14%] bg-[linear-gradient(90deg,rgba(255,255,255,0.55),rgba(255,255,255,0))]"
+        style={{
+          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, 0),
+          transition: "transform 180ms ease-out",
+        }}
+      />
+      <div
+        className="absolute left-[20%] top-[14%] text-[10px] font-semibold uppercase tracking-[0.24em] text-[#5d6d8b]"
+        style={{
+          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, 0),
+          transition: "transform 180ms ease-out",
+        }}
+      >
+        Prototype grid
+      </div>
+      <div
+        className="absolute right-[8%] top-[16%] h-[76px] w-[76px] rounded-[20px] border border-dashed border-white/22"
+        style={{
+          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, 0),
+          transition: "transform 180ms ease-out",
+        }}
+      />
+      <div
+        className="absolute left-[14%] top-[34%] h-px w-[22%] border-t border-dashed border-white/20"
+        style={{
+          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -9, 0),
+          transition: "transform 180ms ease-out",
+        }}
+      />
+      <div
+        className="absolute right-[16%] top-[35%] h-px w-[18%] border-t border-dashed border-white/18"
+        style={{
+          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -9, 0),
+          transition: "transform 180ms ease-out",
+        }}
+      />
+      <div
+        className="absolute left-[26%] top-[23%] h-8 w-8 border-l border-t border-white/24"
+        style={{
+          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -7, 0),
+          transition: "transform 180ms ease-out",
+        }}
+      />
+      <div
+        className="absolute right-[24%] top-[58%] h-9 w-9 border-r border-b border-white/20"
+        style={{
+          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -7, 0),
+          transition: "transform 180ms ease-out",
+        }}
+      />
+      <div
+        className="absolute left-[22%] bottom-[20%] flex items-center gap-2 rounded-full border border-white/24 bg-white/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-[#5f708f]"
+        style={{
+          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, 0),
+          transition: "transform 180ms ease-out",
+        }}
+      >
+        <span className="h-1.5 w-1.5 rounded-full bg-[#6e7dff]/70" />
+        entry
+      </div>
+      <div
+        className="absolute right-[21%] bottom-[22%] flex items-center gap-2 rounded-full border border-white/24 bg-white/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-[#5f708f]"
+        style={{
+          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, 0),
+          transition: "transform 180ms ease-out",
+        }}
+      >
+        <span className="h-1.5 w-1.5 rounded-full bg-[#13bf85]/65" />
+        handoff
+      </div>
+      <div
+        className="absolute inset-x-[30%] top-[27%] h-px bg-[linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.32),rgba(255,255,255,0))]"
+        style={{
+          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -6, 0),
+          transition: "transform 180ms ease-out",
+        }}
+      />
+      <div
+        className="absolute inset-x-[34%] bottom-[26%] h-px bg-[linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.24),rgba(255,255,255,0))]"
+        style={{
+          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -6, 0),
+          transition: "transform 180ms ease-out",
+        }}
+      />
+    </div>
+  );
+}
+
 export default function PortfolioPage() {
   const [heroPhase, setHeroPhase] = useState<HeroPhase>(() => getFallbackHeroPhase(new Date()));
   const [githubActivity, setGithubActivity] = useState<GitHubActivityItem[]>([]);
@@ -293,10 +388,6 @@ export default function PortfolioPage() {
     w: client.name === "Skill" ? 107 : client.name === "Hakuna" ? 96 : client.name === "Elevation" ? 220 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : client.name === "Paramount+" ? 94 : client.name === "IBX" ? 48 : 57,
   }));
   const logoCarousel = [...socialProofLogos, ...socialProofLogos];
-  const certifications = siteContent.home.certifications.map((item) => ({
-    ...item,
-    logo: resolveCertificationLogo(item.name, item.logo),
-  }));
   const methodologyChips = hero.methodology_chips.length
     ? hero.methodology_chips
     : ["AI product design", "UX research", "Enterprise SaaS", "Design systems"];
@@ -410,7 +501,7 @@ export default function PortfolioPage() {
   const recentWorkSection = (
     <section key="work" id="projects" className="bg-white py-12 px-6 md:px-10 xl:px-20">
       <div className="mx-auto flex w-full flex-col items-center gap-12">
-        <SectionHeading eyebrow="Portfolio" title="Recent Work" centered />
+        <SectionHeading eyebrow="Projects" title="Recent Work" centered />
         <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3">
           {featuredProjects.map((project) => (
             <Link
@@ -515,85 +606,6 @@ export default function PortfolioPage() {
     </section>
   );
 
-  const recruiterImpactSection = (
-    <section key="recruiter-impact" className="bg-white px-6 py-16 md:px-10 xl:px-20">
-      <div className="mx-auto max-w-[1200px]">
-        <div className="mb-12 text-center">
-          <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">10+ Years of Impact</p>
-          <h2 className="font-serif-display text-[38px] italic leading-tight text-[#0e2951]">What I bring to your team</h2>
-          <p className="mx-auto mt-4 max-w-[600px] text-[15px] leading-[1.8] text-[#5c7792]">
-            Senior Product Designer with a track record across enterprise SaaS, FinTech, HR, and HealthTech. Here is what I have shipped.
-          </p>
-        </div>
-
-        {/* Impact stats grid */}
-        <div className="mb-14 grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-6">
-          {[
-            { value: "2.3M", label: "Users on the platform", sub: "Enterprise HR SaaS" },
-            { value: "72%", label: "Reduction in processing time", sub: "Benefits Enrollment" },
-            { value: "307%", label: "Projected IRR", sub: "AI Benefits Integration" },
-            { value: "9K+", label: "Support calls reduced/year", sub: "HR & Hiring flows" },
-            { value: "47%", label: "Avg. conversion increase", sub: "Last quarter" },
-            { value: "35%", label: "Faster form completion", sub: "Redesigned flows" },
-          ].map(({ value, label, sub }) => (
-            <div key={value + label} className="flex flex-col items-center rounded-[20px] bg-[#F0F7FF] px-4 py-6 text-center">
-              <span className="font-serif-display text-[38px] italic leading-none text-[#1183D0]">{value}</span>
-              <span className="mt-2 text-[13px] font-semibold leading-snug text-[#0e2951]">{label}</span>
-              <span className="mt-1 text-[11px] leading-snug text-[#5c7792]">{sub}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Expertise strip */}
-        <div className="mb-10 grid gap-5 md:grid-cols-3">
-          {[
-            {
-              label: "Seniority",
-              items: ["Staff / Senior IC", "Cross-functional lead", "Stakeholder-facing", "Mentor to junior & senior designers"],
-            },
-            {
-              label: "Industries",
-              items: ["Enterprise HR SaaS", "FinTech & HealthTech", "PropTech & Streaming", "Nonprofits & B2C"],
-            },
-            {
-              label: "Core strengths",
-              items: ["End-to-end design systems", "AI-powered features", "Complex data-heavy UX", "Research-to-ship ownership"],
-            },
-          ].map(({ label, items }) => (
-            <div key={label} className="rounded-[20px] border border-[#E0EEFB] bg-[#F8FBFF] px-6 py-6">
-              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{label}</p>
-              <ul className="space-y-2">
-                {items.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-[14px] leading-snug text-[#0e2951]">
-                    <span className="mt-[3px] h-[6px] w-[6px] shrink-0 rounded-full bg-[#1183D0]" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        {/* Resume CTAs */}
-        <div className="flex flex-wrap items-center justify-center gap-4">
-          <Button asChild size="sm">
-            <Link href={withBasePath("/resume")}>View full resume</Link>
-          </Button>
-          <Button asChild variant="secondary" size="sm">
-            <a href={withBasePath("/documents/greddys-martinez-resume-2026.pdf")} download>
-              Download Resume
-            </a>
-          </Button>
-          <Button asChild variant="outline" size="sm">
-            <a href="https://linkedin.com/in/greddysmartinez" target="_blank" rel="noopener noreferrer">
-              LinkedIn
-            </a>
-          </Button>
-        </div>
-      </div>
-    </section>
-  );
-
   const githubActivitySection = (
     <section key="github-activity" className="bg-white px-6 py-16 md:px-10 xl:px-20">
       <div className="mx-auto max-w-[1200px]">
@@ -663,7 +675,7 @@ export default function PortfolioPage() {
     </section>
   );
 
-  const contentSections = [recentWorkSection, toolsSection, ctaSection, githubActivitySection];
+  const contentSections = [toolsSection, ctaSection, githubActivitySection];
 
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
@@ -687,6 +699,7 @@ export default function PortfolioPage() {
             className="pointer-events-none absolute inset-0 opacity-90"
             style={{ background: heroPhaseStyles.cone }}
           />
+          <HeroPrototypeOverlay heroPointer={heroPointer} />
           <div className="pointer-events-none absolute inset-0" style={{ opacity: heroPhaseStyles.starOpacity }}>
             {HERO_STARS.map((star, index) => (
               <span
@@ -870,6 +883,44 @@ export default function PortfolioPage() {
             </div>
 
             <div
+              className="absolute left-[50%] top-[22%] w-[188px] -translate-x-1/2 rounded-[26px] border border-white/34 bg-white/14 p-4 shadow-[0_24px_50px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.45)] backdrop-blur-xl"
+              style={{
+                transform: `translateX(-50%) ${getParallaxTransform(heroPointer.x, heroPointer.y, -16, 2)}`,
+                transition: "transform 180ms ease-out",
+              }}
+            >
+              <div className="mb-3 flex items-center justify-between">
+                <span className="inline-flex items-center gap-2 rounded-full bg-white/45 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#3f4a67]">
+                  <BrainCircuit className="h-3.5 w-3.5" />
+                  AI Assist
+                </span>
+                <span className="rounded-full border border-[#7f8fff]/30 bg-[#6f7cff]/16 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#4e5fc7]">
+                  live
+                </span>
+              </div>
+              <div className="rounded-[18px] bg-[#f8fbff]/60 p-3">
+                <div className="mb-2 flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-[#6d79ff]" />
+                  <div className="h-2 w-[56%] rounded-full bg-[#d9e2ff]" />
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="h-5 w-5 rounded-full bg-[#e7ecff]" />
+                    <div className="h-2 w-[68%] rounded-full bg-white/80" />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="h-5 w-5 rounded-full bg-[#ffe6d0]" />
+                    <div className="h-2 w-[54%] rounded-full bg-white/72" />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="h-5 w-5 rounded-full bg-[#d8f3e7]" />
+                    <div className="h-2 w-[74%] rounded-full bg-white/82" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
               className="absolute left-[16%] bottom-[18%] flex items-center gap-3 rounded-full border border-white/34 bg-white/12 px-4 py-3 shadow-[0_20px_42px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.42)] backdrop-blur-xl"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -18, -6),
@@ -922,6 +973,7 @@ export default function PortfolioPage() {
                 roles={heroRoles}
                 description=""
                 greetingClassName="text-[#0e2951]"
+                roleClassName="text-[#17406c]"
                 descriptionClassName="text-[#0e2951]"
               />
               <div className="mt-8 flex flex-wrap justify-center gap-2">
@@ -939,47 +991,10 @@ export default function PortfolioPage() {
                 ))}
               </div>
             </div>
-
-            <aside className="flex flex-col items-center gap-4 px-6 py-5 text-center">
-              <span className="text-xs font-semibold uppercase tracking-[0.28em] text-[#6f7893]">
-                Certified by
-              </span>
-              <div className="flex items-center justify-center gap-4">
-                <div
-                  className="relative hidden h-[92px] w-[92px] shrink-0 rounded-full border border-white/45 bg-white/18 p-2 shadow-[0_24px_52px_rgba(42,54,92,0.16),inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-xl lg:block"
-                  style={{
-                    transform: getParallaxTransform(heroPointer.x, heroPointer.y, -12, 0),
-                    transition: "transform 180ms ease-out",
-                  }}
-                >
-                  <div className="relative h-full w-full overflow-hidden rounded-full">
-                    <Image
-                      src={withBasePath("/images/profile-photo.png")}
-                      alt="Greddys Martinez portrait"
-                      width={184}
-                      height={184}
-                      className="h-full w-full object-cover object-center"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(109,121,255,0.14)_0%,rgba(255,255,255,0.02)_40%,rgba(255,173,92,0.18)_100%)] mix-blend-multiply" />
-                    <div className="absolute inset-0 ring-1 ring-white/30" />
-                  </div>
-                </div>
-                {certifications.slice(0, 2).map((item) => (
-                  <div key={item.name} className="p-2 transition-opacity hover:opacity-85">
-                    <Image
-                      src={item.logo}
-                      alt={item.name}
-                      width={68}
-                      height={68}
-                      className="h-[56px] w-[56px] object-contain sm:h-[68px] sm:w-[68px]"
-                    />
-                  </div>
-                ))}
-              </div>
-            </aside>
           </div>
         </div>
+
+        {recentWorkSection}
 
         {/* Social Proof Bar */}
         <div>
