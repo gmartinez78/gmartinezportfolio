@@ -1230,14 +1230,14 @@ export default function PortfolioPage() {
 
         {/* Social Proof Bar */}
         <div>
-          <div className="flex min-h-[92px] flex-col items-center gap-4 px-6 py-5 text-center md:px-10 lg:px-20">
+          <div className="flex min-h-[160px] flex-col items-center gap-6 px-6 py-10 text-center md:px-10 lg:px-20">
             <div className="flex shrink-0 items-center justify-center">
-              <span className="text-[12px] font-semibold text-[#5c7792]">
+              <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#5c7792]">
                 {siteContent.home.trusted_by.label}
               </span>
             </div>
-            <div className="relative w-full max-w-[1080px] overflow-hidden md:py-1">
-              <div className="flex w-max animate-[logo-marquee_22s_linear_infinite] items-center gap-10 pr-10 hover:[animation-play-state:paused]">
+            <div className="relative w-full max-w-[1200px] overflow-hidden md:py-2">
+              <div className="flex w-max animate-[logo-marquee_22s_linear_infinite] items-center gap-14 pr-14 hover:[animation-play-state:paused]">
                 {logoCarousel.map((logo, index) => (
                   <Image
                     key={`${logo.alt}-${index}`}
@@ -1246,7 +1246,7 @@ export default function PortfolioPage() {
                     width={logo.w}
                     height={logo.h}
                     aria-hidden={index >= socialProofLogos.length}
-                    className={`w-auto shrink-0 object-contain opacity-75 grayscale transition-all hover:grayscale-0 hover:opacity-100 ${logo.alt === "Hakuna" ? "max-h-[20px] brightness-0 saturate-0 opacity-45 hover:opacity-70" : logo.alt === "Paramount+" ? "max-h-[16px]" : "max-h-[34px]"}`}
+                    className={`w-auto shrink-0 object-contain opacity-75 grayscale transition-all hover:grayscale-0 hover:opacity-100 ${logo.alt === "Hakuna" ? "max-h-[28px] brightness-0 saturate-0 opacity-45 hover:opacity-70" : logo.alt === "Paramount+" ? "max-h-[22px]" : "max-h-[46px]"}`}
                   />
                 ))}
               </div>
