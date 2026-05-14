@@ -460,7 +460,7 @@ function ToolBadge({
   label: string;
   x: string;
   y: string;
-  size: "lg" | "sm";
+  size: "lg" | "sm" | "xs";
   delay?: string;
 }) {
   const icon = resolveToolIconOptional(label);
@@ -469,7 +469,7 @@ function ToolBadge({
     return null;
   }
 
-  const sizeClass = size === "lg" ? "h-[74px] w-[74px] rounded-[16px]" : "h-16 w-16 rounded-[15px]";
+  const sizeClass = size === "lg" ? "h-[74px] w-[74px] rounded-[16px]" : size === "sm" ? "h-16 w-16 rounded-[15px]" : "h-10 w-10 rounded-[11px]";
 
   return (
     <div
@@ -480,8 +480,8 @@ function ToolBadge({
       <Image
         src={resolveToolIcon(label)}
         alt={label}
-        width={size === "lg" ? 42 : 32}
-        height={size === "lg" ? 42 : 32}
+        width={size === "lg" ? 42 : size === "sm" ? 32 : 22}
+        height={size === "lg" ? 42 : size === "sm" ? 32 : 22}
         className="h-[64%] w-[64%] object-contain"
       />
     </div>
