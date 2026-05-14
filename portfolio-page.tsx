@@ -23,29 +23,29 @@ import {
 import { withBasePath } from "./lib/site";
 
 const TOOLS_LEFT = [
-  { label: "Figma", x: "left-[7%]", y: "top-[72px]", size: "lg" as const, delay: "0s" },
-  { label: "Angular", x: "left-[18%]", y: "top-[34px]", size: "lg" as const, delay: "0.6s" },
-  { label: "Miro", x: "left-[22%]", y: "top-[18px]", size: "lg" as const, delay: "1.2s" },
-  { label: "React", x: "left-[10%]", y: "top-[236px]", size: "sm" as const, delay: "0.9s" },
-  { label: "HTML", x: "left-[6%]", y: "top-[352px]", size: "sm" as const, delay: "1.8s" },
-  { label: "Jira", x: "left-[20%]", y: "top-[132px]", size: "sm" as const, delay: "0.3s" },
-  { label: "Confluence", x: "left-[14%]", y: "top-[430px]", size: "sm" as const, delay: "1.5s" },
-  { label: "Maze", x: "left-[22%]", y: "top-[268px]", size: "sm" as const, delay: "2.1s" },
-  { label: "Notion", x: "left-[10%]", y: "top-[366px]", size: "sm" as const, delay: "0.7s" },
-  { label: "Webex", x: "left-[20%]", y: "top-[390px]", size: "sm" as const, delay: "1.4s" },
+  { label: "Angular", x: "left-[18%]", y: "top-[16px]", size: "lg" as const, delay: "0.6s" },
+  { label: "Figma", x: "left-[6%]", y: "top-[60px]", size: "lg" as const, delay: "0s" },
+  { label: "Miro", x: "left-[22%]", y: "top-[130px]", size: "lg" as const, delay: "1.2s" },
+  { label: "Jira", x: "left-[8%]", y: "top-[190px]", size: "sm" as const, delay: "0.3s" },
+  { label: "React", x: "left-[20%]", y: "top-[250px]", size: "sm" as const, delay: "0.9s" },
+  { label: "Confluence", x: "left-[6%]", y: "top-[318px]", size: "sm" as const, delay: "1.5s" },
+  { label: "Maze", x: "left-[20%]", y: "top-[370px]", size: "sm" as const, delay: "2.1s" },
+  { label: "HTML", x: "left-[10%]", y: "top-[428px]", size: "sm" as const, delay: "1.8s" },
+  { label: "Notion", x: "left-[21%]", y: "top-[460px]", size: "sm" as const, delay: "0.7s" },
+  { label: "Webex", x: "left-[6%]", y: "top-[468px]", size: "sm" as const, delay: "1.4s" },
 ];
 
 const TOOLS_RIGHT = [
-  { label: "Copilot", x: "right-[22%]", y: "top-[18px]", size: "sm" as const, delay: "0.4s" },
-  { label: "Slack", x: "right-[14%]", y: "top-[52px]", size: "sm" as const, delay: "1.1s" },
-  { label: "Claude", x: "right-[5%]", y: "top-[96px]", size: "sm" as const, delay: "1.7s" },
-  { label: "ChatGPT", x: "right-[20%]", y: "top-[172px]", size: "sm" as const, delay: "0.2s" },
-  { label: "VS Code", x: "right-[4%]", y: "top-[236px]", size: "sm" as const, delay: "1.3s" },
-  { label: "Figma", x: "right-[14%]", y: "top-[370px]", size: "sm" as const, delay: "0.8s" },
-  { label: "React", x: "right-[8%]", y: "top-[440px]", size: "sm" as const, delay: "2.0s" },
-  { label: "Jira", x: "right-[20%]", y: "top-[122px]", size: "sm" as const, delay: "0.5s" },
-  { label: "Miro", x: "right-[10%]", y: "top-[272px]", size: "sm" as const, delay: "1.6s" },
-  { label: "Notion", x: "right-[20%]", y: "top-[340px]", size: "sm" as const, delay: "0.1s" },
+  { label: "Copilot", x: "right-[20%]", y: "top-[16px]", size: "sm" as const, delay: "0.4s" },
+  { label: "Claude", x: "right-[5%]", y: "top-[60px]", size: "sm" as const, delay: "1.7s" },
+  { label: "Jira", x: "right-[18%]", y: "top-[130px]", size: "sm" as const, delay: "0.5s" },
+  { label: "Slack", x: "right-[5%]", y: "top-[190px]", size: "sm" as const, delay: "1.1s" },
+  { label: "ChatGPT", x: "right-[18%]", y: "top-[250px]", size: "sm" as const, delay: "0.2s" },
+  { label: "VS Code", x: "right-[5%]", y: "top-[318px]", size: "sm" as const, delay: "1.3s" },
+  { label: "Notion", x: "right-[18%]", y: "top-[370px]", size: "sm" as const, delay: "0.1s" },
+  { label: "Miro", x: "right-[7%]", y: "top-[428px]", size: "sm" as const, delay: "1.6s" },
+  { label: "Figma", x: "right-[20%]", y: "top-[460px]", size: "sm" as const, delay: "0.8s" },
+  { label: "React", x: "right-[7%]", y: "top-[468px]", size: "sm" as const, delay: "2.0s" },
 ];
 
 const HERO_STARS = [
