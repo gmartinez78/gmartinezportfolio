@@ -551,62 +551,63 @@ export default function BenefitsPage() {
       ) : (
         <>
       <div className="bg-[#F0F7FF]">
-      <div className="mx-auto max-w-[1200px] px-6 pt-6 lg:px-20">
-        <div className="flex items-center gap-3 text-sm">
-          <Link href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</Link>
-          <span className="text-[#b8cce0]">›</span>
-          <Link href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</Link>
-          <span className="text-[#b8cce0]">›</span>
-          <span className="font-semibold text-[#0e2951]">{caseStudy?.title ?? "Enhancing Benefits Enrollment"}</span>
-        </div>
-        <div className="mt-5 h-px w-full bg-[#d7e8f7]" />
-      </div>
-
-      {/* ── Hero ── */}
-      <section className="relative mx-auto max-w-[1200px] px-6 pt-8 pb-0 md:px-10 xl:px-20">
-        <div className="px-6 pt-4 text-center md:px-12 lg:px-[120px]">
-          <div className="mx-auto max-w-[820px]">
-            <p className="mb-3 font-inter text-[13px] uppercase tracking-[3px] text-[#5c7792]">
-              {caseStudy?.industry ?? "Case Study Redesign 2025"}
-            </p>
-            <h1 className="font-inter text-[40px] font-bold leading-[1.15] text-[#0e2951] md:text-[48px]">
-              {caseStudy?.title ?? "Enhancing Benefits Enrollment"}
-            </h1>
-            <p className="mx-auto mt-5 max-w-[680px] font-inter text-[16px] leading-[1.625em] text-[#5c7792]">
-              {caseStudy?.tagline ?? "Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%."}
-            </p>
-            <div className="relative mx-auto mt-10 h-[150px] w-full max-w-[1040px] overflow-hidden rounded-[24px] shadow-[0_20px_64px_rgba(14,41,81,0.12)]">
-              <Image
-                src={heroImage}
-                alt="Benefits enrollment workflow and dashboard preview"
-                fill
-                sizes="(min-width: 1200px) 1040px, calc(100vw - 48px)"
-                className="object-cover object-center"
-                priority
-              />
-            </div>
-            <div className="mt-10 flex flex-col items-center gap-8 pt-8">
-              <div className="grid w-full gap-8 text-center md:grid-cols-[1fr_2fr_1fr] md:items-center">
-                <div>
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Year</p>
-                  <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy?.year ?? 2024}</p>
-                </div>
-                <div>
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Role</p>
-                  <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy?.role ?? "Sr. Product Designer"}</p>
-                </div>
-                <div>
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Client</p>
-                  <p className="mt-1 text-[14px] font-medium text-[#0e2951]">
-                    {caseStudy?.client_context ?? "Paychex via ITX Corp"}
-                  </p>
-                </div>
-              </div>
-              <div className="h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
-            </div>
+        <div className="mx-auto max-w-[1200px] px-6 pt-6 lg:px-20">
+          <div className="flex items-center gap-3 text-sm">
+            <Link href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</Link>
+            <span className="text-[#b8cce0]">›</span>
+            <Link href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</Link>
+            <span className="text-[#b8cce0]">›</span>
+            <span className="font-semibold text-[#0e2951]">{caseStudy?.title ?? "Enhancing Benefits Enrollment"}</span>
           </div>
         </div>
-      </section>
+
+        {/* ── Hero ── */}
+        <section className="mx-auto max-w-[1200px] px-6 pt-8 pb-0 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-[1040px] rounded-[0] px-3 pb-4">
+            <div className="px-6 pt-4 text-center md:px-12 lg:px-[120px]">
+              <div className="mx-auto max-w-[820px]">
+                <p className="mb-3 font-inter text-[13px] uppercase tracking-[3px] text-[#5c7792]">
+                  {caseStudy?.industry ?? "Case Study Redesign 2025"}
+                </p>
+                <h1 className="font-inter text-[40px] font-bold leading-[1.15] text-[#0e2951] md:text-[48px]">
+                  {caseStudy?.title ?? "Enhancing Benefits Enrollment"}
+                </h1>
+                <p className="mx-auto mt-5 max-w-[680px] font-inter text-[16px] leading-[1.625em] text-[#5c7792]">
+                  {caseStudy?.tagline ?? "Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%."}
+                </p>
+                <div className="relative mx-auto mt-10 h-[150px] w-full max-w-[1040px] overflow-hidden rounded-[24px] shadow-[0_20px_64px_rgba(14,41,81,0.12)]">
+                  <Image
+                    src={heroImage}
+                    alt="Benefits enrollment workflow and dashboard preview"
+                    fill
+                    sizes="(min-width: 1200px) 1040px, calc(100vw - 48px)"
+                    className="object-cover object-center"
+                    priority
+                  />
+                </div>
+                <div className="relative mt-10 flex flex-col items-center gap-8 pt-8">
+                  <div className="grid w-full gap-8 text-center md:grid-cols-[1fr_2fr_1fr] md:items-center">
+                    <div>
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Year</p>
+                      <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy?.year ?? 2024}</p>
+                    </div>
+                    <div>
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Role</p>
+                      <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy?.role ?? "Sr. Product Designer"}</p>
+                    </div>
+                    <div>
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Client</p>
+                      <p className="mt-1 text-[14px] font-medium text-[#0e2951]">
+                        {caseStudy?.client_context ?? "Paychex via ITX Corp"}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
 
       <section className="mx-auto max-w-[1200px] px-6 pt-12 pb-10 md:px-10 xl:px-20">

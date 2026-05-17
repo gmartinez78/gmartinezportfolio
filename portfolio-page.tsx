@@ -746,7 +746,7 @@ export default function PortfolioPage() {
     <section
       key="tools"
       id="skills"
-      className="isolate mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center overflow-clip px-4 pb-24 pt-56 md:px-8"
+      className="isolate mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center overflow-clip bg-white px-4 pb-24 pt-56 md:px-8"
     >
       <div className="relative mx-auto flex flex-col items-center gap-6">
         <div className="pointer-events-none absolute bottom-[104px] h-[248px] w-[629px] max-w-none select-none md:bottom-10 md:h-[496px] md:w-[1257px]">

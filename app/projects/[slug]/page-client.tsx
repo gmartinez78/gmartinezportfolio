@@ -41,11 +41,6 @@ type HighlightMetric = {
   context?: string;
 };
 
-const HOME_BANNER_GRADIENT =
-  "linear-gradient(90deg, #e6f1fb 0%, #eee7fb 37%, #f9e5ee 68%, #fcf0e2 100%)";
-const HOME_BANNER_GRADIENT_OVERLAY =
-  "radial-gradient(circle at top,rgba(171,160,246,0.16),transparent 42%),radial-gradient(circle at 72% 26%,rgba(255,174,202,0.18),transparent 32%),radial-gradient(circle at 92% 50%,rgba(255,224,189,0.2),transparent 24%),linear-gradient(180deg,rgba(118,141,177,0.06)_0%,rgba(255,255,255,0)_58%)";
-
 const NAYYA_HIGHLIGHT_METRICS: HighlightMetric[] = [
   { value: "307%", label: "IRR", context: "Projected ROI,estimated return from increased plan uptake (NPV $11.4M)." },
   { value: "~115,500", label: "Annual Benefits", context: "Enrollments completed 5% above the 100K goal." },
@@ -825,15 +820,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     return (
       <main className="min-h-screen bg-[#F0F7FF] text-[#3c3e3f]">
         <SiteHeader active="Projects" />
-        <section
-          className="relative overflow-hidden pt-8 pb-20"
-          style={{ background: HOME_BANNER_GRADIENT }}
-        >
-          <div
-            className="pointer-events-none absolute inset-0"
-            style={{ background: HOME_BANNER_GRADIENT_OVERLAY }}
-          />
-          <div className="relative mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20">
+        <section className="mx-auto max-w-[1200px] px-6 pb-20 pt-8 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-[1200px] px-0 md:px-0 xl:px-0">
             <div className="mb-6 flex items-center gap-3 text-sm">
               <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
               <span className="text-[#b8cce0]">›</span>
@@ -943,15 +931,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden">
       <SiteHeader active="Projects" />
 
-      <div
-        className="relative overflow-hidden"
-        style={{ background: HOME_BANNER_GRADIENT }}
-      >
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{ background: HOME_BANNER_GRADIENT_OVERLAY }}
-        />
-        <div className="relative mx-auto flex max-w-[1200px] items-center gap-3 px-6 pt-6 text-sm lg:px-20">
+      <div className="bg-[#F0F7FF]">
+        <div className="mx-auto flex max-w-[1200px] items-center gap-3 px-6 pt-6 text-sm lg:px-20">
           <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
           <span className="text-[#b8cce0]">›</span>
           <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</a>
@@ -959,7 +940,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <span className="font-semibold text-[#0e2951]">{caseStudy.title}</span>
         </div>
 
-        <section className="relative mx-auto max-w-[1200px] px-6 pt-16 pb-0 md:px-10 xl:px-20">
+        <section className="mx-auto max-w-[1200px] px-6 pt-16 pb-0 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[1040px] rounded-[0] px-3 pb-4">
             <div className="mb-6 text-center">
               <div className="relative mx-auto max-w-[760px] px-5 py-6 sm:px-8">
