@@ -65,22 +65,37 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
         {
           step: 1,
           label: "Audit the funnel",
-          description: "Mapped Meta campaign data against Google Analytics flow reports to locate the drop-off and identify what the page was answering too early.",
+          description: "Mapped Meta campaign data against Google Analytics flow reports to locate the drop-off. The pattern was clear: visitors scrolled past the hero, hit the EUR5220 Gold tier within seconds, and exited. The page was answering the wrong question first: is this about years of cost, or whether this is for me and how I start?",
         },
         {
           step: 2,
           label: "Benchmark the category",
-          description: "Compared five direct competitors against seven conversion-driving dimensions to identify the structural gaps blocking Zapiano's entry conversion.",
+          description: "Compared five direct competitors against seven conversion-driving dimensions that matter for cold paid traffic in the adult piano learning category. Pianote, the closest gold-standard comparable, scored 7 of 7 while Zapiano scored 0 strong out of 7.",
         },
         {
           step: 3,
           label: "Reframe the offer",
-          description: "Recommended replacing Club tiers as the cold-traffic entry point with a EUR9 introduction course and a clearer upsell path to PianoStarter at EUR29 per month.",
+          description: "This is where the redesign stopped being a landing page exercise and became a funnel strategy recommendation. I proposed killing the Club tiers as the paid entry point, moving them deeper in the funnel for warm and returning users, leading with the EUR9 Introduction Course as the cold-traffic entry, and upselling to PianoStarter at EUR29/month after the intro. The reasoning I brought to the PM and Marketing was straightforward: users did not need three options to compare, they needed one clear next thing to do. Daily piano practice is a habit, and the offer architecture should mirror that.",
         },
         {
           step: 4,
-          label: "Design, test, and learn",
-          description: "Built modular Kajabi-friendly sections, tested two social-proof variants, and used Copilot to synthesize the winning behavior patterns once the data was meaningful.",
+          label: "Redesign the landing",
+          description: "Sven leads the hero, beginner-vs-returner segmentation is woven into the copy, one primary CTA focuses on the EUR9 intro purchase, the email gate moves below social proof, and community credibility shows up in the fold instead of three competing pricing blocks.",
+        },
+        {
+          step: 5,
+          label: "Build modular components",
+          description: "Designed each section as a swappable unit so Marketing could keep testing post-launch without needing engineering for every iteration.",
+        },
+        {
+          step: 6,
+          label: "A/B test social proof",
+          description: "Variant A used physical community proof through annual Zapiano member meetup photos in Switzerland and Germany. Variant B used digital community proof through mobile app screenshots, member feed views, and in-product social proof.",
+        },
+        {
+          step: 7,
+          label: "Synthesize with Copilot",
+          description: "Once both variants had statistically meaningful data, I used Copilot to compare scroll depth, time-to-CTA, and segment behavior across variants. It compressed the slowest part of the testing cycle, synthesis, without replacing the design judgment that came before it.",
         },
       ],
     },
@@ -129,7 +144,7 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
         id: "actions",
         type: "custom",
         title: "Actions",
-        body: "1. Audited the existing funnel\nMapped Meta campaign data against Google Analytics flow reports to locate the drop-off. The pattern was clear: visitors scrolled past the hero, hit the EUR5220 Gold tier within seconds, and exited. The page was answering the wrong question first: is this about years of cost, or whether this is for me and how I start?\n\n2. Ran a competitive benchmark\nCompared five direct competitors against seven conversion-driving dimensions that matter for cold paid traffic in the adult piano learning category. Pianote, the closest gold-standard comparable, scored 7 of 7 while Zapiano scored 0 strong out of 7.\n\n3. Reframed the offer architecture\nThis is where the redesign stopped being a landing page exercise and became a funnel strategy recommendation. I proposed killing the Club tiers as the paid entry point, moving them deeper in the funnel for warm and returning users, leading with the EUR9 Introduction Course as the cold-traffic entry, and upselling to PianoStarter at EUR29/month after the intro.\n\nThe reasoning I brought to the PM and Marketing was straightforward: users did not need three options to compare, they needed one clear next thing to do. Daily piano practice is a habit, and the offer architecture should mirror that.\n\n4. Redesigned the landing around the new offer\nSven leads the hero, beginner-vs-returner segmentation is woven into the copy, one primary CTA focuses on the EUR9 intro purchase, the email gate moves below social proof, and community credibility shows up in the fold instead of three competing pricing blocks.\n\n5. Built modular Figma components for Kajabi\nDesigned each section as a swappable unit so Marketing could keep testing post-launch without needing engineering for every iteration.\n\n6. A/B tested two social proof treatments\nVariant A used physical community proof through annual Zapiano member meetup photos in Switzerland and Germany. Variant B used digital community proof through mobile app screenshots, member feed views, and in-product social proof.\n\n7. Synthesized test results with Copilot\nOnce both variants had statistically meaningful data, I used Copilot to compare scroll depth, time-to-CTA, and segment behavior across variants. It compressed the slowest part of the testing cycle, synthesis, without replacing the design judgment that came before it.",
+        body: "The redesign combined a funnel audit, competitor benchmark, offer reframe, modular landing-page redesign, and post-launch testing. The step-by-step process is outlined in the methodology below.",
       },
       {
         id: "research",

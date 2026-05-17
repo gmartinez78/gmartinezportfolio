@@ -1426,14 +1426,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug !== "flock-accessibility-system" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading
-            eyebrow={["nayya-ai-benefits", "i9-everify-integration"].includes(caseStudy.slug) ? methodologyName : "Methodology"}
-            title={["nayya-ai-benefits", "i9-everify-integration"].includes(caseStudy.slug) ? "Methodology" : methodologyName}
-            centered={["nayya-ai-benefits", "i9-everify-integration"].includes(caseStudy.slug)}
+            eyebrow={["nayya-ai-benefits", "i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG].includes(caseStudy.slug) ? methodologyName : "Methodology"}
+            title={["nayya-ai-benefits", "i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG].includes(caseStudy.slug) ? "Methodology" : methodologyName}
+            centered={["nayya-ai-benefits", "i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG].includes(caseStudy.slug)}
             className="mb-12"
           />
           <div className="grid gap-4 md:grid-cols-5">
             {caseStudy.methodology.steps.map((step, index) => (
-              ["nayya-ai-benefits", "i9-everify-integration"].includes(caseStudy.slug) ? (
+              ["nayya-ai-benefits", "i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG].includes(caseStudy.slug) ? (
                 <div key={step.step} className="flex flex-col gap-4">
                   <div
                     className="flex flex-1 flex-col gap-2 rounded-2xl p-5"
