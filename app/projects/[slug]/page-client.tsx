@@ -382,7 +382,7 @@ const NAYYA_IMPACT_FIGMA_EMBED =
 const NAYYA_INSIGHTS_CLOSING =
   "Participants who completed the Nayya survey enrolled in TWICE as many benefits as those who skipped it.";
 
-const METHODOLOGY_COLORS = ["#87d4ac", "#f5e692", "#d9b8ff", "#68c7c1", "#d1f090"];
+const METHODOLOGY_COLORS = ["#87d4ac", "#f5e692", "#d9b8ff", "#68c7c1", "#d1f090", "#f7b6c8", "#a9c6ff"];
 const FLOCK_AUDIT_LABELS = [
   { color: "#50A8FF", label: "Navigation", note: "Top-level hierarchy and route clarity." },
   { color: "#AD86FF", label: "Typography", note: "Heading scale, weight, and readability drift." },
@@ -1269,6 +1269,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           ))}
                         </div>
                       ) : null}
+                      {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG && block.id === "task" && successMetrics.length ? (
+                        <div className="mt-8">
+                          <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Success Metrics</p>
+                          <ul className="space-y-3">
+                            {successMetrics.map((item) => (
+                              <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : null}
                     </div>
                   );
                 })}
@@ -1448,9 +1458,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     <p className="mt-2 font-inter text-[15px] font-semibold text-[#3c3e3f]">
                       {index + 1}. {step.label}
                     </p>
-                    <p className="font-inter text-[14px] leading-[1.625em] text-[#5c7792]">
-                      {step.description}
-                    </p>
+                    {caseStudy.slug !== CONFIDENTIAL_PLACEHOLDER_SLUG ? (
+                      <p className="font-inter text-[14px] leading-[1.625em] text-[#5c7792]">
+                        {step.description}
+                      </p>
+                    ) : null}
                   </div>
                 </div>
               ) : (
@@ -1463,259 +1475,22 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               )
             ))}
           </div>
-        </section>
-      ) : null}
-
-      {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG && findBlock("research") ? (() => {
-        const block = findBlock("research")!;
-        const items = getPayloadList(block.payload, "items");
-
-        return (
-          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-            <SectionHeading title={block.title} centered className="mb-12" />
-            <div className="mx-auto max-w-[820px] text-center">
-              {block.body ? block.body.split(/\n+/).map((paragraph, idx) => (
-                <p key={idx} className="mb-4 font-inter text-[16px] leading-[1.7] text-[#5c7792] last:mb-0">
-                  {paragraph.trim()}
-                </p>
-              )) : null}
-              {items.length ? (
-                <div className="mt-6 space-y-4">
-                  {items.map((item) => (
-                    <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                      {item}
-                    </p>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          </section>
-        );
-      })() : null}
-
-      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        {caseStudy.slug === "nayya-ai-benefits" ? (
-          <>
-            <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
-              Design Process
-            </h2>
-            <div className="mx-auto max-w-[820px] space-y-5 text-center">
-              {designStrategy.map((item) => (
-                <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
-              ))}
-            </div>
-          </>
-        ) : caseStudy.slug === "i9-everify-integration" ? (
-          <>
-            <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
-              Design Process
-            </h2>
-            <div className="mx-auto mb-10 max-w-[820px] text-center">
-              <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                Made I-9 feel like part of Flex onboarding rather than a disconnected compliance task by aligning it with existing onboarding patterns and designing a dedicated company settings flow to configure and manage the integration.
-              </p>
-            </div>
-            <div className="mx-auto max-w-[1100px]">
-              <img
-                src={withBasePath("/images/projects/i9-everify-integration/banners/i9-admin-design-process.svg")}
-                alt="I-9 admin interface design"
-                className="h-auto w-full"
-              />
-            </div>
-            <div className="mx-auto mt-10 max-w-[820px] text-center">
-              <div className="space-y-5">
-                {designStrategy.map((item) => (
-                  <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
-                ))}
-              </div>
-            </div>
-            <div className="mx-auto mt-10 max-w-[1100px]">
-              <div>
-                <div className="mt-6">
-                  <img
-                    src={withBasePath("/images/projects/i9-everify-integration/banners/i9-employee-design-process.svg")}
-                    alt="I-9 employee interface design"
-                    className="h-auto w-full"
-                  />
-                </div>
-                <div className="mx-auto my-10 max-w-[820px] text-center">
-                  <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                    Keep completed documents, progress indicators, and follow-up actions visible after the vendor experience.
+          {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG ? (
+            <div className="mx-auto mt-10 max-w-[860px] space-y-8">
+              {caseStudy.methodology.steps.map((step, index) => (
+                <div key={`${step.step}-detail`} className="text-center">
+                  <p className="text-[18px] font-semibold text-[#1c1e21]">
+                    {index + 1}. {step.label}
+                  </p>
+                  <p className="mt-3 font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                    {step.description}
                   </p>
                 </div>
-                <div className="mt-6">
-                  <img
-                    src={withBasePath("/images/projects/i9-everify-integration/banners/i9-admin-experience.svg")}
-                    alt="I-9 admin experience"
-                    className="h-auto w-full"
-                  />
-                </div>
-              </div>
-            </div>
-          </>
-        ) : caseStudy.slug === "flock-accessibility-system" ? (
-          <>
-            <SectionHeading
-              title="Design Process"
-              centered
-              className="mb-12"
-            />
-            <div className="mx-auto grid max-w-[1100px] items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-              <div className="flex justify-center lg:justify-start">
-                <img
-                  src={withBasePath("/images/projects/flock-accessibility-system/banners/flock-notification-banner.svg")}
-                  alt="Flock notification banner design"
-                  className="h-auto w-full max-w-[420px]"
-                />
-              </div>
-              <div className="space-y-8 text-center lg:text-left">
-                {designStrategy.map((item) => (
-                  <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
-                ))}
-              </div>
-            </div>
-          </>
-        ) : (
-          <>
-            <SectionHeading
-              title="Design Process"
-              centered
-              className="mb-12"
-            />
-            <div className="mx-auto max-w-[820px] space-y-8 text-center">
-              {designStrategy.map((item) => (
-                <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
               ))}
             </div>
-          </>
-        )}
-      </section>
-
-      {caseStudy.slug === "i9-everify-integration" ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
-            Alternatives explored
-          </h2>
-          <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-            Three integration approaches were considered and assessed on placement, user familiarity, and third-party dependency. Embedding I-9 directly into the existing onboarding flow was selected as the strongest option and moved into testing.
-          </p>
-          <div className="grid gap-5 md:grid-cols-3">
-            <Card className="overflow-hidden border-transparent shadow-none">
-              <CardContent className="p-7">
-                <Badge className="border border-[#1183D0] bg-white text-[#1183D0]">Rejected</Badge>
-                <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Launch I-9 from HIREtech</h3>
-                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Product initially proposed launching I-9 from HIREtech, but testing quickly ruled it out, new users didn't recognize the platform and had no context for why they were leaving Flex.</p>
-              </CardContent>
-            </Card>
-            <Card className="overflow-hidden border-transparent shadow-none">
-              <CardContent className="p-7">
-                <Badge className="border border-[#1183D0] bg-white text-[#1183D0]">Rejected</Badge>
-                <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Standalone I-9 section</h3>
-                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Explored a standalone I-9 section separate from onboarding, but competitive benchmarking showed embedding it within the onboarding flow was the industry standard.</p>
-              </CardContent>
-            </Card>
-            <Card className="overflow-hidden border-transparent shadow-none">
-              <CardContent className="p-7">
-                <Badge>Selected</Badge>
-                <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Integrated into onboarding flow</h3>
-                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Integrated I-9 directly into the existing onboarding flow, aligning with competitive patterns and familiar user mental models. This was the approved direction.</p>
-              </CardContent>
-            </Card>
-          </div>
+          ) : null}
         </section>
       ) : null}
-
-      {caseStudy.slug === "i9-everify-integration" ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
-            Key Insights from Testing
-          </h2>
-          <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-            Research and discovery clarified the key questions for testing: Did users understand the handoff, feel confident continuing, and maintain trust throughout the experience? The selected guided decision modal was the concept tested, and the findings showed which parts of the integration felt clear and where friction still remained.
-          </p>
-          <div className="hidden overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white md:block">
-            <div className="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 border-b border-[#d7e8f7] bg-[#f7f9fb] px-6 py-4 text-[13px] font-bold uppercase tracking-[0.16em] text-[#0e2951]">
-              <div>Metric</div>
-              <div>Finding</div>
-              <div>Insight</div>
-            </div>
-            {I9_TESTING_RESULTS.map((row) => (
-              <div
-                key={`${row.metric}-${row.label}`}
-                className="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 border-t border-[#d7e8f7] px-5 py-5 text-[15px] leading-[1.6] text-[#5c7792]"
-              >
-                <div>
-                  <p className="text-[30px] font-semibold leading-none text-[#0e2951]">{row.metric}</p>
-                  <p className="mt-3 text-[14px] leading-[1.5] text-[#5c7792]">{row.label}</p>
-                </div>
-                <p className="font-normal text-[#5c7792]">{row.finding}</p>
-                <p className="font-normal text-[#5c7792]">{row.insight}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="grid gap-4 md:hidden">
-            {I9_TESTING_RESULTS.map((row) => (
-              <Card key={`${row.metric}-${row.label}`} className="overflow-hidden">
-                <CardContent className="space-y-4 px-5 py-5">
-                  <div>
-                    <p className="text-[28px] font-semibold leading-none text-[#0e2951]">{row.metric}</p>
-                    <p className="mt-2 text-[14px] leading-[1.5] text-[#5c7792]">{row.label}</p>
-                  </div>
-                  <div>
-                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Finding</p>
-                    <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{row.finding}</p>
-                  </div>
-                  <div>
-                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Insight</p>
-                    <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{row.insight}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
-      ) : null}
-
-      {caseStudy.slug === "i9-everify-integration" && findBlock("research") ? (() => {
-        const block = findBlock("research")!;
-        const items = getPayloadList(block.payload, "items");
-        const deliveryItems = getPayloadList(block.payload, "delivery_items");
-        return (
-          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-            <SectionHeading title={block.title} centered className="mb-12" />
-            <div className="mx-auto grid max-w-[1120px] items-start gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-              <div className="space-y-4">
-                {block.body ? block.body.split(/\n+/).map((p, i) => (
-                  <p key={i} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{p.trim()}</p>
-                )) : null}
-                {items.length ? (
-                  <div className="space-y-3">
-                    {items.map((item) => (
-                      <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
-                    ))}
-                  </div>
-                ) : null}
-                {deliveryItems.length ? (
-                  <div className="space-y-3">
-                    {deliveryItems.map((item) => (
-                      <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
-                    ))}
-                  </div>
-                ) : null}
-              </div>
-              <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.10)]">
-                <iframe
-                  title="I-9 solution design"
-                  src="https://embed.figma.com/design/WKPa60cO7df7mmw8SlB2dA/OLD-PHASE-I-9---Phase-1?node-id=382-141419&embed-host=share"
-                  className="h-[480px] w-full"
-                  allowFullScreen
-                />
-              </div>
-            </div>
-          </section>
-        );
-      })() : null}
 
       {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
@@ -1980,6 +1755,257 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         </section>
       ) : null}
+
+      {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG && findBlock("research") ? (() => {
+        const block = findBlock("research")!;
+        const items = getPayloadList(block.payload, "items");
+
+        return (
+          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+            <SectionHeading title={block.title} centered className="mb-12" />
+            <div className="mx-auto max-w-[820px] text-center">
+              {block.body ? block.body.split(/\n+/).map((paragraph, idx) => (
+                <p key={idx} className="mb-4 font-inter text-[16px] leading-[1.7] text-[#5c7792] last:mb-0">
+                  {paragraph.trim()}
+                </p>
+              )) : null}
+              {items.length ? (
+                <div className="mt-6 space-y-4">
+                  {items.map((item) => (
+                    <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                      {item}
+                    </p>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </section>
+        );
+      })() : null}
+
+      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        {caseStudy.slug === "nayya-ai-benefits" ? (
+          <>
+            <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+              Design Process
+            </h2>
+            <div className="mx-auto max-w-[820px] space-y-5 text-center">
+              {designStrategy.map((item) => (
+                <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+              ))}
+            </div>
+          </>
+        ) : caseStudy.slug === "i9-everify-integration" ? (
+          <>
+            <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+              Design Process
+            </h2>
+            <div className="mx-auto mb-10 max-w-[820px] text-center">
+              <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                Made I-9 feel like part of Flex onboarding rather than a disconnected compliance task by aligning it with existing onboarding patterns and designing a dedicated company settings flow to configure and manage the integration.
+              </p>
+            </div>
+            <div className="mx-auto max-w-[1100px]">
+              <img
+                src={withBasePath("/images/projects/i9-everify-integration/banners/i9-admin-design-process.svg")}
+                alt="I-9 admin interface design"
+                className="h-auto w-full"
+              />
+            </div>
+            <div className="mx-auto mt-10 max-w-[820px] text-center">
+              <div className="space-y-5">
+                {designStrategy.map((item) => (
+                  <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+                ))}
+              </div>
+            </div>
+            <div className="mx-auto mt-10 max-w-[1100px]">
+              <div>
+                <div className="mt-6">
+                  <img
+                    src={withBasePath("/images/projects/i9-everify-integration/banners/i9-employee-design-process.svg")}
+                    alt="I-9 employee interface design"
+                    className="h-auto w-full"
+                  />
+                </div>
+                <div className="mx-auto my-10 max-w-[820px] text-center">
+                  <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                    Keep completed documents, progress indicators, and follow-up actions visible after the vendor experience.
+                  </p>
+                </div>
+                <div className="mt-6">
+                  <img
+                    src={withBasePath("/images/projects/i9-everify-integration/banners/i9-admin-experience.svg")}
+                    alt="I-9 admin experience"
+                    className="h-auto w-full"
+                  />
+                </div>
+              </div>
+            </div>
+          </>
+        ) : caseStudy.slug === "flock-accessibility-system" ? (
+          <>
+            <SectionHeading
+              title="Design Process"
+              centered
+              className="mb-12"
+            />
+            <div className="mx-auto grid max-w-[1100px] items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+              <div className="flex justify-center lg:justify-start">
+                <img
+                  src={withBasePath("/images/projects/flock-accessibility-system/banners/flock-notification-banner.svg")}
+                  alt="Flock notification banner design"
+                  className="h-auto w-full max-w-[420px]"
+                />
+              </div>
+              <div className="space-y-8 text-center lg:text-left">
+                {designStrategy.map((item) => (
+                  <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+                ))}
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <SectionHeading
+              title="Design Process"
+              centered
+              className="mb-12"
+            />
+            <div className="mx-auto max-w-[820px] space-y-8 text-center">
+              {designStrategy.map((item) => (
+                <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+              ))}
+            </div>
+          </>
+        )}
+      </section>
+
+      {caseStudy.slug === "i9-everify-integration" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+            Alternatives explored
+          </h2>
+          <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+            Three integration approaches were considered and assessed on placement, user familiarity, and third-party dependency. Embedding I-9 directly into the existing onboarding flow was selected as the strongest option and moved into testing.
+          </p>
+          <div className="grid gap-5 md:grid-cols-3">
+            <Card className="overflow-hidden border-transparent shadow-none">
+              <CardContent className="p-7">
+                <Badge className="border border-[#1183D0] bg-white text-[#1183D0]">Rejected</Badge>
+                <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Launch I-9 from HIREtech</h3>
+                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Product initially proposed launching I-9 from HIREtech, but testing quickly ruled it out, new users didn't recognize the platform and had no context for why they were leaving Flex.</p>
+              </CardContent>
+            </Card>
+            <Card className="overflow-hidden border-transparent shadow-none">
+              <CardContent className="p-7">
+                <Badge className="border border-[#1183D0] bg-white text-[#1183D0]">Rejected</Badge>
+                <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Standalone I-9 section</h3>
+                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Explored a standalone I-9 section separate from onboarding, but competitive benchmarking showed embedding it within the onboarding flow was the industry standard.</p>
+              </CardContent>
+            </Card>
+            <Card className="overflow-hidden border-transparent shadow-none">
+              <CardContent className="p-7">
+                <Badge>Selected</Badge>
+                <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Integrated into onboarding flow</h3>
+                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Integrated I-9 directly into the existing onboarding flow, aligning with competitive patterns and familiar user mental models. This was the approved direction.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+      ) : null}
+
+      {caseStudy.slug === "i9-everify-integration" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+            Key Insights from Testing
+          </h2>
+          <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+            Research and discovery clarified the key questions for testing: Did users understand the handoff, feel confident continuing, and maintain trust throughout the experience? The selected guided decision modal was the concept tested, and the findings showed which parts of the integration felt clear and where friction still remained.
+          </p>
+          <div className="hidden overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white md:block">
+            <div className="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 border-b border-[#d7e8f7] bg-[#f7f9fb] px-6 py-4 text-[13px] font-bold uppercase tracking-[0.16em] text-[#0e2951]">
+              <div>Metric</div>
+              <div>Finding</div>
+              <div>Insight</div>
+            </div>
+            {I9_TESTING_RESULTS.map((row) => (
+              <div
+                key={`${row.metric}-${row.label}`}
+                className="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 border-t border-[#d7e8f7] px-5 py-5 text-[15px] leading-[1.6] text-[#5c7792]"
+              >
+                <div>
+                  <p className="text-[30px] font-semibold leading-none text-[#0e2951]">{row.metric}</p>
+                  <p className="mt-3 text-[14px] leading-[1.5] text-[#5c7792]">{row.label}</p>
+                </div>
+                <p className="font-normal text-[#5c7792]">{row.finding}</p>
+                <p className="font-normal text-[#5c7792]">{row.insight}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid gap-4 md:hidden">
+            {I9_TESTING_RESULTS.map((row) => (
+              <Card key={`${row.metric}-${row.label}`} className="overflow-hidden">
+                <CardContent className="space-y-4 px-5 py-5">
+                  <div>
+                    <p className="text-[28px] font-semibold leading-none text-[#0e2951]">{row.metric}</p>
+                    <p className="mt-2 text-[14px] leading-[1.5] text-[#5c7792]">{row.label}</p>
+                  </div>
+                  <div>
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Finding</p>
+                    <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{row.finding}</p>
+                  </div>
+                  <div>
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Insight</p>
+                    <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{row.insight}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {caseStudy.slug === "i9-everify-integration" && findBlock("research") ? (() => {
+        const block = findBlock("research")!;
+        const items = getPayloadList(block.payload, "items");
+        const deliveryItems = getPayloadList(block.payload, "delivery_items");
+        return (
+          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+            <SectionHeading title={block.title} centered className="mb-12" />
+            <div className="mx-auto grid max-w-[1120px] items-start gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+              <div className="space-y-4">
+                {block.body ? block.body.split(/\n+/).map((p, i) => (
+                  <p key={i} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{p.trim()}</p>
+                )) : null}
+                {items.length ? (
+                  <div className="space-y-3">
+                    {items.map((item) => (
+                      <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+                    ))}
+                  </div>
+                ) : null}
+                {deliveryItems.length ? (
+                  <div className="space-y-3">
+                    {deliveryItems.map((item) => (
+                      <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+              <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.10)]">
+                <iframe
+                  title="I-9 solution design"
+                  src="https://embed.figma.com/design/WKPa60cO7df7mmw8SlB2dA/OLD-PHASE-I-9---Phase-1?node-id=382-141419&embed-host=share"
+                  className="h-[480px] w-full"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </section>
+        );
+      })() : null}
 
       {caseStudy.slug === "nayya-ai-benefits" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
@@ -2249,7 +2275,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </CardContent>
               </Card>
             ) : null}
-            {successMetrics.length ? (
+            {successMetrics.length && caseStudy.slug !== CONFIDENTIAL_PLACEHOLDER_SLUG ? (
               <Card className="p-0 py-0">
                 <CardContent className="p-8">
                   <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Success Metrics</p>

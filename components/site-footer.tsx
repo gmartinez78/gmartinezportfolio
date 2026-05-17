@@ -11,7 +11,7 @@ export function SiteFooter() {
   const footerSocial = siteContent.footer.social_links;
 
   return (
-    <footer className="bg-[#F0F7FF]">
+    <footer className="bg-white">
       <div className="border-t border-[#C4DCF0]" />
       <div className="max-w-[1200px] mx-auto px-6 py-12 md:px-10 lg:px-20 grid gap-10 md:grid-cols-2 xl:grid-cols-4">
         <div className="flex flex-col gap-3">
