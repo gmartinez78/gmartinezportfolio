@@ -1623,11 +1623,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </p>
 
           <div className="hidden overflow-x-auto rounded-[24px] border border-[#d7e8f7] bg-white md:block">
-            <table className="min-w-[1520px] table-fixed border-collapse">
+            <table className="min-w-[1410px] table-fixed border-collapse">
               <colgroup>
-                <col className="w-[32px]" />
-                <col className="w-[68px]" />
-                <col className="w-[330px]" />
+                <col className="w-[384px]" />
                 <col className="w-[110px]" />
                 <col className="w-[180px]" />
                 <col className="w-[138px]" />
@@ -1642,8 +1640,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </colgroup>
               <thead className="bg-[#f7f9fb]">
                 <tr className="border-b border-[#d7e8f7] text-left text-[13px] font-medium text-[#5c7792]">
-                  <th className="px-3 py-4"></th>
-                  <th className="px-3 py-4">Active</th>
                   <th className="px-4 py-4">Campaign</th>
                   <th className="px-4 py-4">Delivery</th>
                   <th className="px-4 py-4">Actions</th>
@@ -1666,20 +1662,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       row.status === "Winner" ? "bg-[#f0fdf4]" : row.status === "Before" ? "bg-[#fafbfc]" : "bg-white"
                     }`}
                   >
-                    <td className="px-3 py-5 align-top">
-                      <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-[4px] bg-[#1f78ff] text-[12px] font-bold text-white">
-                        ✓
-                      </span>
-                    </td>
-                    <td className="px-3 py-5 align-top">
-                      <span
-                        className={`mt-1 inline-flex h-7 w-12 items-center rounded-full p-1 ${
-                          row.status === "Before" ? "bg-[#cfd4db] justify-start" : "bg-[#1f78ff] justify-end"
-                        }`}
-                      >
-                        <span className="h-5 w-5 rounded-full bg-white shadow-sm" />
-                      </span>
-                    </td>
                     <td className="px-4 py-5 align-top">
                       <p className="font-medium leading-snug text-[#0e2951]">{row.campaign}</p>
                       {row.status === "Winner" ? (
@@ -1718,8 +1700,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </tr>
                 ))}
                 <tr className="bg-[#f5f6f7] text-[15px] leading-[1.55] text-[#5c7792]">
-                  <td className="px-3 py-5"></td>
-                  <td className="px-3 py-5"></td>
                   <td className="px-4 py-5 font-medium text-[#0e2951]">Results from 3 campaigns</td>
                   <td className="px-4 py-5">—</td>
                   <td className="px-4 py-5">—</td>
