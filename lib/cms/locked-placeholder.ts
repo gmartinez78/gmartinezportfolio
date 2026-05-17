@@ -17,9 +17,9 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
     client_context: "Zapiano",
     role: "Sr. Product Designer",
     year: 2025,
-    duration: "2-3 weeks, April-May 2025",
+    duration: "2-3 weeks",
     industry: "Education / Performance Marketing",
-    tagline: "Paid landing conversion lifted 6% to 25% (+19pp, 4.2x). Cost per acquisition dropped from $4.20 to $0.85 (-80%).",
+    tagline: "Paid landing conversion lifted 6% to 25%. Cost per acquisition dropped from $4.20 to $0.85.",
     tags: ["Growth", "Paid Acquisition", "Experimentation", "Landing Pages"],
     filters: ["Product Design"],
     tools: ["Figma", "ClickUp", "Microsoft Copilot", "Google Analytics", "Meta Ads Manager"],
@@ -50,8 +50,8 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
     my_role: ["Sr. Product Designer", "Design", "Research", "Strategy"],
     problem: {
       admin_pain_points: [
-        "Meta campaigns drove healthy reach and impressions at the top of the funnel, but paid landing conversion was stuck at 6% and the team was losing the majority of visitors before any conversion event.",
-        "The existing Club-tier offer forced cold visitors to process three high-commitment subscription options before they understood whether the product was right for them.",
+        "Zapiano is a Swiss online piano course platform for adults, founded by piano teacher Sven Haefliger. Meta campaigns were driving healthy reach (1.77M people, 5.84M impressions), but paid landing conversion was stuck at 6% and most visitors bounced before any conversion event.",
+        "The existing page led with three Club subscription tiers side-by-side, dense feature blocks, and three competing CTAs. Cold traffic hit the highest-priced tier within the first scroll and left.",
       ],
       user_pain_points: [
         "Cold paid visitors hit the highest-priced tier within the first scroll, creating friction before trust or relevance had been established.",
@@ -117,7 +117,7 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
         id: "situation",
         type: "custom",
         title: "Situation",
-        body: "Zapiano is a Swiss online piano course platform founded by Sven Haefliger, a piano teacher with 25+ years of experience. The product targets adult beginners and returners who want depth and structure rather than the gamified, song-by-song experience competitors offer.\n\nThe paid acquisition engine was working at the top of the funnel. Meta campaigns drove healthy reach of about 1.77M people and 5.84M impressions across the test period at reasonable cost-per-result. The problem sat further down: paid landing conversion was stuck at 6%, and the team was losing the majority of paid visitors before any conversion event.\n\nThe existing landing page led with the full Zapiano Club offer. Three subscription tiers presented side-by-side, with dense feature blocks and three competing CTAs. Cold paid visitors hit the highest-priced tier within the first scroll and bounced.",
+        body: "Zapiano is a Swiss online piano course platform for adults, founded by piano teacher Sven Haefliger. Meta campaigns were driving healthy reach (1.77M people, 5.84M impressions), but paid landing conversion was stuck at 6% and most visitors bounced before any conversion event.\n\nThe existing page led with three Club subscription tiers side-by-side, dense feature blocks, and three competing CTAs. Cold traffic hit the highest-priced tier within the first scroll and left.",
       },
       {
         id: "task",
