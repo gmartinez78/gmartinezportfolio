@@ -142,6 +142,84 @@ const CONFIDENTIAL_BENCHMARK_ROWS: ConfidentialBenchmarkRow[] = [
   },
 ];
 
+const CONFIDENTIAL_FUNNEL_ARCHITECTURE = {
+  title: "Funnel architecture | Before vs After",
+  subtitle:
+    "The strategic reframe: from a 3-tier upfront decision to a stepped, low-friction entry that mirrors daily practice",
+  before: {
+    badge: "Before",
+    title: "Club tier as paid entry",
+    subtitle:
+      "Cold paid traffic asked to choose a 1-year, 2-year, or 5-year commitment within seconds of landing.",
+    stages: [
+      {
+        label: "Top of funnel",
+        name: "Meta Ad",
+        detail: "~1.77M reach | 5.84M impressions across the test period",
+      },
+      {
+        label: "Landing page",
+        name: "Zapiano Club LP",
+        detail: "All 3 tiers presented side-by-side. Dense feature blocks. Three competing CTAs.",
+        tone: "problem" as const,
+        tags: ["EUR365 / EUR1044 / EUR5220 above the fold", "No segmentation", "No clear next step"],
+      },
+      {
+        label: "Purchase decision",
+        name: "3-tier choice",
+        detail: "Bronze (EUR365) | Silver (multi-year savings) | Gold (5-year commitment)",
+        tags: ["High cognitive load", "High stakes"],
+      },
+      {
+        label: "Outcome",
+        name: "Subscription (or bounce)",
+        detail: "Most cold visitors bounced before this point.",
+      },
+    ],
+    conversion: "6.00% conversion to purchase",
+    takeawayTitle: "Core problem",
+    takeaway:
+      'Users could not process the tier comparison on cold traffic. The page asked "how much will this cost over years?" instead of "is this for me, and how do I start?"',
+  },
+  after: {
+    badge: "After",
+    title: "Stepped entry, then upsell",
+    subtitle:
+      "A EUR9 first action lowers the cost of saying yes. The big decision moves to a warmer point in the funnel.",
+    stages: [
+      {
+        label: "Top of funnel",
+        name: "Meta Ad",
+        detail: "Same campaigns, same spend, same audiences",
+      },
+      {
+        label: "Landing page",
+        name: "EUR9 Intro Course LP",
+        detail: "Sven leads hero. Beginner / returner segmentation. Single CTA. Community proof in fold.",
+        tone: "win" as const,
+        tags: ["Founder credibility", "Segmented copy", "Sticky CTA"],
+      },
+      {
+        label: "First purchase",
+        name: "EUR9 Intro Course",
+        detail: "One-time, transactional, low-friction. A clear first step that maps to daily practice.",
+        tags: ["Low cognitive load", "Habit-forming"],
+      },
+      {
+        label: "Warm upsell",
+        name: "PianoStarter EUR29/month",
+        detail: "Recurring subscription offered after the user has experienced the product. Decision happens warm, not cold.",
+      },
+    ],
+    conversion: "25.00% conversion to purchase",
+    takeawayTitle: "Core unlock",
+    takeaway:
+      "The biggest conversion lift came from changing what we asked visitors to decide, not from changing how we styled the buttons. The problem looked like UI. It was actually an offer problem.",
+  },
+  footer:
+    "Impact: 6% to 25% paid landing conversion (+19pp, 4.2x) | $4.20 to $0.85 cost per purchase (-80%) | ~22,000 incremental intro course purchases at no additional ad spend",
+};
+
 const NAYYA_PROCESS_ALTERNATIVES = [
   {
     title: "Embedded Nayya section",
@@ -1768,6 +1846,107 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
             <div className="border-t border-[#dadde1] bg-[#f5f6f7] px-6 py-4 text-[11px] text-[#65676b]">
               Score summary | Before: 0 strong, 3 partial, 4 missing of 7 dimensions. After: 7 strong of 7. Closed all 4 critical gaps versus Pianote category benchmark.
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+            Funnel Architecture
+          </h2>
+          <p className="mx-auto mb-10 max-w-[840px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+            The main shift was not visual styling. It was moving cold visitors away from a high-stakes subscription choice and into a smaller first purchase that better matched how adults actually start practicing.
+          </p>
+
+          <div className="overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
+            <div className="border-b border-[#dadde1] px-6 py-5">
+              <h3 className="text-[20px] font-semibold text-[#1c1e21]">{CONFIDENTIAL_FUNNEL_ARCHITECTURE.title}</h3>
+              <p className="mt-1 text-[13px] text-[#65676b]">{CONFIDENTIAL_FUNNEL_ARCHITECTURE.subtitle}</p>
+            </div>
+
+            <div className="grid lg:grid-cols-2">
+              {[CONFIDENTIAL_FUNNEL_ARCHITECTURE.before, CONFIDENTIAL_FUNNEL_ARCHITECTURE.after].map((column) => {
+                const isBefore = column.badge === "Before";
+                return (
+                  <div
+                    key={column.badge}
+                    className={`px-6 py-8 md:px-8 ${isBefore ? "border-b border-[#dadde1] bg-[#fef5f5] lg:border-b-0 lg:border-r" : "bg-[#f0fdf4]"}`}
+                  >
+                    <div className="mb-6 flex items-center gap-3">
+                      <span
+                        className={`inline-flex rounded-[4px] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.05em] ${
+                          isBefore ? "bg-[#fca5a5] text-[#7f1d1d]" : "bg-[#16a34a] text-white"
+                        }`}
+                      >
+                        {column.badge}
+                      </span>
+                      <span className="text-[16px] font-semibold text-[#1c1e21]">{column.title}</span>
+                    </div>
+                    <p className="mb-6 text-[12px] leading-[1.6] text-[#65676b]">{column.subtitle}</p>
+
+                    <div className="space-y-2">
+                      {column.stages.map((stage, index) => (
+                        <Fragment key={`${column.badge}-${stage.name}`}>
+                          <div
+                            className={`rounded-[8px] border bg-white px-4 py-4 ${
+                              stage.tone === "problem"
+                                ? "border-[#fca5a5]"
+                                : stage.tone === "win"
+                                  ? "border-[#86efac]"
+                                  : "border-[#dadde1]"
+                            }`}
+                          >
+                            <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.05em] text-[#65676b]">{stage.label}</p>
+                            <p className="mb-1 text-[14px] font-semibold text-[#1c1e21]">{stage.name}</p>
+                            <p className="text-[12px] leading-[1.5] text-[#65676b]">{stage.detail}</p>
+                            {stage.tags?.length ? (
+                              <div className="mt-3 flex flex-wrap gap-2">
+                                {stage.tags.map((tag) => (
+                                  <span
+                                    key={tag}
+                                    className={`rounded-[3px] px-2 py-1 text-[10px] font-medium ${
+                                      isBefore ? "bg-[#fee2e2] text-[#b91c1c]" : "bg-[#dbeafe] text-[#1e40af]"
+                                    }`}
+                                  >
+                                    {tag}
+                                  </span>
+                                ))}
+                              </div>
+                            ) : null}
+                          </div>
+                          {index === 0 || index === 1 ? (
+                            <div className="py-1 text-center text-[18px] leading-none text-[#65676b]">↓</div>
+                          ) : null}
+                          {index === 1 ? (
+                            <div
+                              className={`rounded-[6px] border border-dashed px-4 py-2 text-center text-[13px] font-semibold ${
+                                isBefore ? "border-[#fca5a5] bg-[#fee2e2] text-[#b91c1c]" : "border-[#86efac] bg-[#dcfce7] text-[#15803d]"
+                              }`}
+                            >
+                              {column.conversion}
+                            </div>
+                          ) : null}
+                        </Fragment>
+                      ))}
+                    </div>
+
+                    <div
+                      className={`mt-6 rounded-[4px] border-l-[3px] bg-white/70 px-4 py-4 text-[12px] leading-[1.5] text-[#1c1e21] ${
+                        isBefore ? "border-[#b91c1c]" : "border-[#15803d]"
+                      }`}
+                    >
+                      <strong className="mb-1 block text-[11px] uppercase tracking-[0.05em]">{column.takeawayTitle}</strong>
+                      {column.takeaway}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="border-t border-[#dadde1] bg-[#f5f6f7] px-6 py-4 text-[12px] leading-[1.5] text-[#65676b]">
+              <strong className="text-[#1c1e21]">Impact:</strong> {CONFIDENTIAL_FUNNEL_ARCHITECTURE.footer.replace(/^Impact:\s*/, "")}
             </div>
           </div>
         </section>
