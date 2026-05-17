@@ -41,31 +41,6 @@ type HighlightMetric = {
   context?: string;
 };
 
-function ProjectHeroWireframeAccent() {
-  return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      <div className="absolute left-[4%] top-10 hidden h-px w-24 bg-[linear-gradient(90deg,rgba(17,131,208,0.55),rgba(17,131,208,0))] md:block" />
-      <div className="absolute left-[4%] top-[2.15rem] hidden text-[10px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]/65 md:block">
-        UX flow
-      </div>
-      <div className="absolute right-[6%] top-12 hidden h-20 w-20 rounded-[22px] border border-dashed border-[#1183D0]/16 lg:block" />
-      <div className="absolute right-[8.5%] top-[4.4rem] hidden text-[10px] uppercase tracking-[0.24em] text-[#5c7792]/65 lg:block">
-        low-fi
-      </div>
-      <div className="absolute left-[11%] top-[8.75rem] hidden h-10 w-10 border-l border-t border-[#1183D0]/24 md:block" />
-      <div className="absolute right-[12%] top-[12.5rem] hidden h-10 w-10 border-r border-t border-[#1183D0]/18 md:block" />
-      <div className="absolute bottom-24 left-[7%] hidden h-px w-20 bg-[linear-gradient(90deg,rgba(14,41,81,0),rgba(14,41,81,0.24),rgba(14,41,81,0))] lg:block" />
-      <div className="absolute bottom-[5.65rem] left-[calc(7%+4.75rem)] hidden h-2 w-2 rounded-full border border-[#1183D0]/25 bg-white lg:block" />
-      <div className="absolute bottom-16 right-[10%] hidden items-center gap-2 rounded-full border border-[#d7e8f7] bg-white/72 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-[#5c7792]/80 backdrop-blur-sm lg:flex">
-        <span className="h-1.5 w-1.5 rounded-full bg-[#1183D0]/55" />
-        user path
-      </div>
-      <div className="absolute inset-x-[18%] top-[5.75rem] hidden h-px bg-[linear-gradient(90deg,rgba(17,131,208,0),rgba(17,131,208,0.16),rgba(17,131,208,0))] md:block" />
-      <div className="absolute inset-x-[24%] bottom-[7.5rem] hidden border-t border-dashed border-[#1183D0]/14 md:block" />
-    </div>
-  );
-}
-
 const NAYYA_HIGHLIGHT_METRICS: HighlightMetric[] = [
   { value: "307%", label: "IRR", context: "Projected ROI,estimated return from increased plan uptake (NPV $11.4M)." },
   { value: "~115,500", label: "Annual Benefits", context: "Enrollments completed 5% above the 100K goal." },
@@ -855,7 +830,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
 
           <div className="relative overflow-hidden rounded-[32px] border border-[#cfe5f8] bg-white shadow-[0_24px_70px_rgba(14,41,81,0.12)]">
-            <ProjectHeroWireframeAccent />
             {heroImage ? (
               <div className="relative h-[220px] w-full overflow-hidden border-b border-[#e0eefb]">
                 <img
@@ -966,14 +940,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
         <section className="mx-auto max-w-[1200px] px-6 pt-16 pb-0 md:px-10 xl:px-20">
           <div className="relative mx-auto max-w-[1040px] overflow-hidden rounded-[32px] px-3 pb-4">
-            <ProjectHeroWireframeAccent />
             <div className="mb-6 text-center">
-              <div className="relative mx-auto max-w-[760px] px-5 py-6 sm:px-8">
-                <div className="absolute left-0 top-0 hidden h-9 w-9 border-l border-t border-[#1183D0]/22 md:block" />
-                <div className="absolute bottom-0 right-0 hidden h-9 w-9 border-b border-r border-[#1183D0]/18 md:block" />
-                <div className="absolute left-8 top-2 hidden text-[10px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]/55 md:block">
-                  Entry point
-                </div>
+              <div className="mx-auto max-w-[760px] px-5 py-6 sm:px-8">
                 <p className="mb-3 font-inter text-[13px] uppercase tracking-[3px] text-[#5c7792]">
                   {caseStudy.industry ?? "Case Study"}
                 </p>
@@ -986,16 +954,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
             {heroImage ? (
               <div className="relative mx-auto mb-10 h-[150px] w-full max-w-[840px] overflow-hidden rounded-[24px] shadow-[0_20px_64px_rgba(14,41,81,0.12)]">
-                <div className="pointer-events-none absolute inset-x-4 top-4 z-10 hidden items-center justify-between text-[10px] uppercase tracking-[0.24em] text-white/72 md:flex">
-                  <span className="rounded-full border border-white/20 bg-[#0e2951]/16 px-3 py-1 backdrop-blur-sm">
-                    UI handoff
-                  </span>
-                  <span className="rounded-full border border-white/20 bg-[#0e2951]/16 px-3 py-1 backdrop-blur-sm">
-                    Prototype cues
-                  </span>
-                </div>
-                <div className="pointer-events-none absolute left-5 top-5 z-10 hidden h-10 w-10 border-l border-t border-white/38 md:block" />
-                <div className="pointer-events-none absolute bottom-5 right-5 z-10 hidden h-10 w-10 border-b border-r border-white/30 md:block" />
                 <img
                   src={withBasePath(heroImage)}
                   alt={`${caseStudy.title} banner`}
