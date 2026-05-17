@@ -100,7 +100,7 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
       ],
     },
     design_strategy: [
-      "Reduce the cognitive cost of the first yes by leading with a single low-friction paid entry instead of multiple long-term commitments.",
+      "The redesign combined a funnel audit, competitor benchmark, offer reframe, modular landing-page redesign, and post-launch testing. Reduce the cognitive cost of the first yes by leading with a single low-friction paid entry instead of multiple long-term commitments.",
       "Make founder credibility, beginner-vs-returner relevance, and community proof visible early enough to help cold traffic orient before price friction hits.",
       "Design the page as a modular no-code system Marketing could keep testing inside Kajabi without needing engineering for every iteration.",
     ],
@@ -144,7 +144,7 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
         id: "actions",
         type: "custom",
         title: "Actions",
-        body: "The redesign combined a funnel audit, competitor benchmark, offer reframe, modular landing-page redesign, and post-launch testing. The step-by-step process is outlined in the methodology below.",
+        body: "",
       },
       {
         id: "research",
