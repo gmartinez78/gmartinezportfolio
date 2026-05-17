@@ -1083,6 +1083,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const visibleStoryBlocks =
     caseStudy.slug === "flock-accessibility-system"
       ? storyBlocks.filter((block) => block.id !== "research" && block.id !== "actions")
+      : caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG
+      ? storyBlocks.filter((block) => block.id !== "research")
       : caseStudy.slug === "i9-everify-integration"
       ? storyBlocks.filter((block) => block.id !== "research")
       : storyBlocks;
@@ -1463,6 +1465,33 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         </section>
       ) : null}
+
+      {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG && findBlock("research") ? (() => {
+        const block = findBlock("research")!;
+        const items = getPayloadList(block.payload, "items");
+
+        return (
+          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+            <SectionHeading title={block.title} centered className="mb-12" />
+            <div className="mx-auto max-w-[820px] text-center">
+              {block.body ? block.body.split(/\n+/).map((paragraph, idx) => (
+                <p key={idx} className="mb-4 font-inter text-[16px] leading-[1.7] text-[#5c7792] last:mb-0">
+                  {paragraph.trim()}
+                </p>
+              )) : null}
+              {items.length ? (
+                <div className="mt-6 space-y-4">
+                  {items.map((item) => (
+                    <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                      {item}
+                    </p>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </section>
+        );
+      })() : null}
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         {caseStudy.slug === "nayya-ai-benefits" ? (
