@@ -41,6 +41,11 @@ type HighlightMetric = {
   context?: string;
 };
 
+const HOME_BANNER_GRADIENT =
+  "linear-gradient(90deg, #e6f1fb 0%, #eee7fb 37%, #f9e5ee 68%, #fcf0e2 100%)";
+const HOME_BANNER_GRADIENT_OVERLAY =
+  "radial-gradient(circle at top,rgba(171,160,246,0.16),transparent 42%),radial-gradient(circle at 72% 26%,rgba(255,174,202,0.18),transparent 32%),radial-gradient(circle at 92% 50%,rgba(255,224,189,0.2),transparent 24%),linear-gradient(180deg,rgba(118,141,177,0.06)_0%,rgba(255,255,255,0)_58%)";
+
 const NAYYA_HIGHLIGHT_METRICS: HighlightMetric[] = [
   { value: "307%", label: "IRR", context: "Projected ROI,estimated return from increased plan uptake (NPV $11.4M)." },
   { value: "~115,500", label: "Annual Benefits", context: "Enrollments completed 5% above the 100K goal." },
@@ -820,70 +825,79 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     return (
       <main className="min-h-screen bg-[#F0F7FF] text-[#3c3e3f]">
         <SiteHeader active="Projects" />
-        <section className="mx-auto max-w-[1200px] px-6 pb-20 pt-8 md:px-10 xl:px-20">
-          <div className="mb-6 flex items-center gap-3 text-sm">
-            <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
-            <span className="text-[#b8cce0]">›</span>
-            <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</a>
-            <span className="text-[#b8cce0]">›</span>
-            <span className="font-semibold text-[#0e2951]">{caseStudy.title}</span>
-          </div>
+        <section
+          className="relative overflow-hidden pt-8 pb-20"
+          style={{ background: HOME_BANNER_GRADIENT }}
+        >
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{ background: HOME_BANNER_GRADIENT_OVERLAY }}
+          />
+          <div className="relative mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20">
+            <div className="mb-6 flex items-center gap-3 text-sm">
+              <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
+              <span className="text-[#b8cce0]">›</span>
+              <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</a>
+              <span className="text-[#b8cce0]">›</span>
+              <span className="font-semibold text-[#0e2951]">{caseStudy.title}</span>
+            </div>
 
-          <div className="relative overflow-hidden rounded-[32px] border border-[#cfe5f8] bg-white shadow-[0_24px_70px_rgba(14,41,81,0.12)]">
-            {heroImage ? (
-              <div className="relative h-[220px] w-full overflow-hidden border-b border-[#e0eefb]">
-                <img
-                  src={withBasePath(heroImage)}
-                  alt={`${caseStudy.title} preview`}
-                  className="h-full w-full scale-[1.03] object-cover object-center blur-md"
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,41,81,0.12)_0%,rgba(240,247,255,0.7)_100%)]" />
-              </div>
-            ) : null}
-
-            <div className="mx-auto max-w-[640px] px-6 py-12 text-center md:px-10">
-              <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">
-                Password Protected
-              </p>
-              <h1 className="mt-6 font-serif-display text-[40px] italic leading-[1.08] text-[#0e2951]">
-                {caseStudy.title}
-              </h1>
-              <p className="mx-auto mt-5 max-w-[560px] text-[16px] leading-[1.75] text-[#5c7792]">
-                {caseStudy.tagline}
-              </p>
-              <p className="mx-auto mt-4 max-w-[540px] text-sm leading-[1.7] text-[#5c7792]">
-                This placeholder is locked for now while the final case study data is being prepared.
-              </p>
-
-              <form onSubmit={handlePasswordSubmit} className="mx-auto mt-10 max-w-[420px] text-left">
-                <label htmlFor="project-password" className="mb-3 block text-sm font-semibold text-[#0e2951]">
-                  Enter password
-                </label>
-                <Input
-                  id="project-password"
-                  type="password"
-                  value={enteredPassword}
-                  onChange={(event) => {
-                    setEnteredPassword(event.target.value);
-                    if (passwordError) {
-                      setPasswordError(null);
-                    }
-                  }}
-                  placeholder="Enter password"
-                  autoComplete="current-password"
-                />
-                {passwordError ? (
-                  <p className="mt-3 text-sm text-[#d60060]">{passwordError}</p>
-                ) : null}
-                <div className="mt-5 flex flex-wrap gap-3">
-                  <Button type="submit" size="sm">
-                    Unlock case study
-                  </Button>
-                  <Button asChild variant="outline" size="sm">
-                    <Link href={withBasePath("/projects")}>Back to Projects</Link>
-                  </Button>
+            <div className="relative rounded-[0]">
+              {heroImage ? (
+                <div className="relative h-[220px] w-full overflow-hidden border-b border-[#e0eefb]">
+                  <img
+                    src={withBasePath(heroImage)}
+                    alt={`${caseStudy.title} preview`}
+                    className="h-full w-full scale-[1.03] object-cover object-center blur-md"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,41,81,0.12)_0%,rgba(240,247,255,0.7)_100%)]" />
                 </div>
-              </form>
+              ) : null}
+
+              <div className="relative mx-auto max-w-[640px] px-6 py-12 text-center md:px-10">
+                <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">
+                  Password Protected
+                </p>
+                <h1 className="mt-6 font-serif-display text-[40px] italic leading-[1.08] text-[#0e2951]">
+                  {caseStudy.title}
+                </h1>
+                <p className="mx-auto mt-5 max-w-[560px] text-[16px] leading-[1.75] text-[#5c7792]">
+                  {caseStudy.tagline}
+                </p>
+                <p className="mx-auto mt-4 max-w-[540px] text-sm leading-[1.7] text-[#5c7792]">
+                  This placeholder is locked for now while the final case study data is being prepared.
+                </p>
+
+                <form onSubmit={handlePasswordSubmit} className="mx-auto mt-10 max-w-[420px] text-left">
+                  <label htmlFor="project-password" className="mb-3 block text-sm font-semibold text-[#0e2951]">
+                    Enter password
+                  </label>
+                  <Input
+                    id="project-password"
+                    type="password"
+                    value={enteredPassword}
+                    onChange={(event) => {
+                      setEnteredPassword(event.target.value);
+                      if (passwordError) {
+                        setPasswordError(null);
+                      }
+                    }}
+                    placeholder="Enter password"
+                    autoComplete="current-password"
+                  />
+                  {passwordError ? (
+                    <p className="mt-3 text-sm text-[#d60060]">{passwordError}</p>
+                  ) : null}
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    <Button type="submit" size="sm">
+                      Unlock case study
+                    </Button>
+                    <Button asChild variant="outline" size="sm">
+                      <Link href={withBasePath("/projects")}>Back to Projects</Link>
+                    </Button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </section>
@@ -929,8 +943,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden">
       <SiteHeader active="Projects" />
 
-      <div className="bg-[#F0F7FF]">
-        <div className="mx-auto flex max-w-[1200px] items-center gap-3 px-6 pt-6 text-sm lg:px-20">
+      <div
+        className="relative overflow-hidden"
+        style={{ background: HOME_BANNER_GRADIENT }}
+      >
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: HOME_BANNER_GRADIENT_OVERLAY }}
+        />
+        <div className="relative mx-auto flex max-w-[1200px] items-center gap-3 px-6 pt-6 text-sm lg:px-20">
           <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
           <span className="text-[#b8cce0]">›</span>
           <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</a>
@@ -938,10 +959,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <span className="font-semibold text-[#0e2951]">{caseStudy.title}</span>
         </div>
 
-        <section className="mx-auto max-w-[1200px] px-6 pt-16 pb-0 md:px-10 xl:px-20">
-          <div className="relative mx-auto max-w-[1040px] overflow-hidden rounded-[32px] px-3 pb-4">
+        <section className="relative mx-auto max-w-[1200px] px-6 pt-16 pb-0 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-[1040px] rounded-[0] px-3 pb-4">
             <div className="mb-6 text-center">
-              <div className="mx-auto max-w-[760px] px-5 py-6 sm:px-8">
+              <div className="relative mx-auto max-w-[760px] px-5 py-6 sm:px-8">
                 <p className="mb-3 font-inter text-[13px] uppercase tracking-[3px] text-[#5c7792]">
                   {caseStudy.industry ?? "Case Study"}
                 </p>
@@ -963,7 +984,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             ) : null}
 
-            <div className="mt-10 flex flex-col items-center gap-8 pt-8 text-center">
+            <div className="relative mt-10 flex flex-col items-center gap-8 pt-8 text-center">
               <div className="grid w-full gap-8 md:grid-cols-[1fr_2fr_1fr] md:items-center">
                 <div>
                   <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Year</p>

@@ -15,38 +15,27 @@ import {
   resolveHomeCardImage,
   resolveProjectHref,
   resolveToolIcon,
-  resolveToolIconOptional,
   resolveTrustedLogo,
   usePublicCaseStudies,
   usePublicSiteContent,
 } from "./lib/cms/public";
 import { withBasePath } from "./lib/site";
 
-const TOOLS_LEFT = [
-  { label: "Miro",       x: "left-[27%]", y: "top-[90px]",  size: "xs" as const, delay: "1.2s" },
-  { label: "Angular",    x: "left-[26%]", y: "top-[240px]", size: "xs" as const, delay: "0.6s" },
-  { label: "Figma",      x: "left-[25%]", y: "top-[370px]", size: "xs" as const, delay: "0s"   },
-  { label: "Jira",       x: "left-[15%]", y: "top-[30px]",  size: "sm" as const, delay: "0.3s" },
-  { label: "React",      x: "left-[14%]", y: "top-[160px]", size: "sm" as const, delay: "0.9s" },
-  { label: "Confluence", x: "left-[15%]", y: "top-[310px]", size: "sm" as const, delay: "1.5s" },
-  { label: "Maze",       x: "left-[14%]", y: "top-[440px]", size: "sm" as const, delay: "2.1s" },
-  { label: "HTML",       x: "left-[5%]",  y: "top-[70px]",  size: "lg" as const, delay: "1.8s" },
-  { label: "Notion",     x: "left-[4%]",  y: "top-[260px]", size: "lg" as const, delay: "0.7s" },
-  { label: "Webex",      x: "left-[5%]",  y: "top-[420px]", size: "lg" as const, delay: "1.4s" },
-];
-
-const TOOLS_RIGHT = [
-  { label: "ChatGPT",  x: "right-[27%]", y: "top-[90px]",  size: "xs" as const, delay: "0.2s" },
-  { label: "Copilot",  x: "right-[26%]", y: "top-[240px]", size: "xs" as const, delay: "0.4s" },
-  { label: "Notion",   x: "right-[25%]", y: "top-[370px]", size: "xs" as const, delay: "0.1s" },
-  { label: "Jira",     x: "right-[15%]", y: "top-[30px]",  size: "sm" as const, delay: "0.5s" },
-  { label: "Slack",    x: "right-[14%]", y: "top-[160px]", size: "sm" as const, delay: "1.1s" },
-  { label: "Figma",    x: "right-[15%]", y: "top-[310px]", size: "sm" as const, delay: "0.8s" },
-  { label: "React",    x: "right-[14%]", y: "top-[440px]", size: "sm" as const, delay: "2.0s" },
-  { label: "Claude",   x: "right-[5%]",  y: "top-[70px]",  size: "lg" as const, delay: "1.7s" },
-  { label: "VS Code",  x: "right-[4%]",  y: "top-[260px]", size: "lg" as const, delay: "1.3s" },
-  { label: "Miro",     x: "right-[5%]",  y: "top-[420px]", size: "lg" as const, delay: "1.6s" },
-];
+const TOOL_SHOWCASE_ICONS = [
+  { label: "Jira", className: "absolute top-[5%] left-[2%] w-[15px] md:w-[30px]" },
+  { label: "React", className: "absolute top-[2%] left-[12%] w-[16px] md:w-[32px]" },
+  { label: "Miro", className: "absolute top-[25%] left-[15%] w-[20px] md:w-[40px]" },
+  { label: "ChatGPT", className: "absolute top-[8%] left-[40%] w-[35px] md:w-[70px]" },
+  { label: "HTML", className: "absolute top-[1%] left-[63%] w-[15px] md:w-[30px]" },
+  { label: "Confluence", className: "absolute top-[19%] left-[69%] w-[19px] md:w-[38px]" },
+  { label: "Notion", className: "absolute top-[15%] left-[82%] w-[20px] md:w-[40px]" },
+  { label: "Claude", className: "absolute top-0 left-[90%] w-[12px] md:w-[25px]" },
+  { label: "Figma", className: "absolute top-[45%] left-[19%] w-[30px] md:w-[60px]" },
+  { label: "Angular", className: "absolute top-[35%] left-[85%] w-[19px] md:w-[38px]" },
+  { label: "VS Code", className: "absolute top-[30%] left-[95%] w-[22px] md:w-[44px]" },
+  { label: "Copilot", className: "absolute top-[75%] left-[93%] w-[15px] md:w-[30px]" },
+  { label: "Maze", className: "absolute top-[80%] left-[10%] w-[15px] md:w-[30px]" },
+] as const;
 
 const HERO_STARS = [
   { left: "8%", top: "18%", size: 4, duration: "5.8s", delay: "0.2s" },
@@ -450,44 +439,6 @@ function getParallaxTransform(x: number, y: number, depth: number, rotate = 0) {
   return `translate3d(${x * depth}px, ${y * depth}px, 0) rotate(${rotate}deg)`;
 }
 
-function ToolBadge({
-  label,
-  x,
-  y,
-  size,
-  delay = "0s",
-}: {
-  label: string;
-  x: string;
-  y: string;
-  size: "lg" | "sm" | "xs";
-  delay?: string;
-}) {
-  const icon = resolveToolIconOptional(label);
-
-  if (!icon) {
-    return null;
-  }
-
-  const sizeClass = size === "lg" ? "h-[74px] w-[74px] rounded-[16px]" : size === "sm" ? "h-16 w-16 rounded-[15px]" : "h-10 w-10 rounded-[11px]";
-
-  return (
-    <div
-      className={`absolute hidden ${x} ${y} z-10 ${sizeClass} items-center justify-center lg:flex`}
-      title={label}
-      style={{ animation: `tool-float 3.8s ease-in-out ${delay} infinite` }}
-    >
-      <Image
-        src={resolveToolIcon(label)}
-        alt={label}
-        width={size === "lg" ? 42 : size === "sm" ? 32 : 22}
-        height={size === "lg" ? 42 : size === "sm" ? 32 : 22}
-        className="h-[64%] w-[64%] object-contain"
-      />
-    </div>
-  );
-}
-
 function HeroPrototypeOverlay({
   heroPointer,
 }: {
@@ -623,9 +574,6 @@ export default function PortfolioPage() {
       tags: study.tags.slice(0, 4),
       cta: study.external_link ? "View project" : "View case study",
     }));
-  const toolRows = [siteContent.home.tools_section.row_1, siteContent.home.tools_section.row_2]
-    .map((row) => row.filter(Boolean))
-    .filter((row) => row.length > 0);
   const heroRoles = [
     "designing with AI.",
     "a senior designer.",
@@ -795,47 +743,46 @@ export default function PortfolioPage() {
   );
 
   const toolsSection = (
-    <section key="tools" id="skills" className="relative isolate overflow-hidden px-6 py-16 md:px-10 lg:h-[520px] xl:px-20">
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,#ffffff_0%,#f0f7fd_30%,#f4f0fd_60%,#fdf0f6_80%,#fef6ee_100%)]" />
-      {TOOLS_LEFT.map((tool) => (
-        <ToolBadge key={`left-${tool.label}-${tool.x}`} {...tool} delay={tool.delay} />
-      ))}
-      <div className="relative z-20 mx-auto flex max-w-[540px] flex-col items-center gap-5 text-center lg:absolute lg:left-1/2 lg:top-28 lg:-translate-x-1/2">
-        <SectionHeading eyebrow="Experience & Skills" title={siteContent.home.tools_section.headline} centered />
-        <p className="max-w-[560px] text-[15px] leading-[1.8] text-[#3c3e3f]">
+    <section
+      key="tools"
+      id="skills"
+      className="isolate mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center overflow-clip px-4 pb-24 pt-56 md:px-8"
+    >
+      <div className="relative mx-auto flex flex-col items-center gap-6">
+        <div className="pointer-events-none absolute bottom-[104px] h-[248px] w-[629px] max-w-none select-none md:bottom-10 md:h-[496px] md:w-[1257px]">
+          <div className="relative h-full w-full">
+            {TOOL_SHOWCASE_ICONS.map((tool) => (
+              <div key={`${tool.label}-${tool.className}`} className={tool.className}>
+                <Image
+                  src={resolveToolIcon(tool.label)}
+                  alt={tool.label}
+                  width={64}
+                  height={64}
+                  draggable={false}
+                  className="h-full w-full object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative z-10 flex flex-col items-center gap-6">
+          <p className="text-center text-[13px] font-semibold uppercase tracking-[0.3em] text-[#1183D0]">
+            Experience & Skills
+          </p>
+          <h2 className="max-w-[320px] text-center font-serif-display text-[48px] italic leading-[1.05] text-[#0e2951] md:max-w-[620px] md:text-[72px]">
+            {siteContent.home.tools_section.headline}
+          </h2>
+        </div>
+        <p className="relative z-10 mb-4 max-w-[320px] text-center text-[16px] leading-[1.8] text-[#5c7792] md:max-w-[560px] md:text-[20px]">
           {siteContent.home.tools_section.description}
         </p>
-        <div className="flex w-full flex-col gap-4 lg:hidden">
-          {toolRows.map((row, index) => (
-            <div key={`tool-row-${index}`} className="flex flex-wrap items-center justify-center gap-3">
-              {row.map((label) => (
-                <div
-                  key={`${index}-${label}`}
-                  className="inline-flex min-h-14 items-center gap-3 rounded-full border border-white/70 bg-white/90 px-5 py-3 text-[#0e2951] shadow-[0_18px_42px_rgba(14,41,81,0.10)] backdrop-blur"
-                  title={label}
-                >
-                  {resolveToolIconOptional(label) ? (
-                    <Image src={resolveToolIcon(label)} alt={label} width={26} height={26} className="h-[26px] w-[26px] object-contain" />
-                  ) : (
-                    <span className="inline-flex min-w-8 items-center justify-center rounded-full bg-[#E0EEFB] px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1183D0]">
-                      {label.slice(0, 2)}
-                    </span>
-                  )}
-                  <span className="text-sm font-semibold">{label}</span>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-        <Button asChild variant="link" className="mt-2 h-auto gap-4 px-0 text-sm font-normal leading-none text-[#1183D0] hover:no-underline">
+        <Button asChild className="relative z-10 h-12 rounded-xl px-6 text-base">
           <Link href={withBasePath(siteContent.home.tools_section.cta_href)}>
-            {siteContent.home.tools_section.cta_label.replace("→", "").trim()} <span className="text-[22px] leading-none">→</span>
+            {siteContent.home.tools_section.cta_label.replace("→", "").trim()}
           </Link>
         </Button>
       </div>
-      {TOOLS_RIGHT.map((tool) => (
-        <ToolBadge key={`right-${tool.label}-${tool.x}`} {...tool} delay={tool.delay} />
-      ))}
     </section>
   );
 
