@@ -1623,89 +1623,124 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </p>
 
           <div className="hidden overflow-x-auto rounded-[24px] border border-[#d7e8f7] bg-white md:block">
-            <div className="grid min-w-[1460px] grid-cols-[1.5fr_0.8fr_1.1fr_1.1fr_1fr_0.9fr_0.9fr_1.1fr_0.9fr_0.9fr_0.9fr_1fr_1fr_1fr] bg-[#f7f9fb] text-[13px] font-bold uppercase tracking-[0.16em] text-[#0e2951]">
-              <div className="px-4 py-4">Campaign</div>
-              <div className="px-4 py-4">Status</div>
-              <div className="px-4 py-4">Delivery</div>
-              <div className="px-4 py-4">Actions</div>
-              <div className="px-4 py-4">Bid strategy</div>
-              <div className="px-4 py-4">Budget</div>
-              <div className="px-4 py-4">Attribution</div>
-              <div className="px-4 py-4">Results</div>
-              <div className="px-4 py-4">Reach</div>
-              <div className="px-4 py-4">Impressions</div>
-              <div className="px-4 py-4">Conv. rate</div>
-              <div className="px-4 py-4">Cost per result</div>
-              <div className="px-4 py-4">Amount spent</div>
-              <div className="px-4 py-4">Decision</div>
-            </div>
-            {CONFIDENTIAL_CAMPAIGN_ROWS.map((row) => (
-              <div
-                key={row.campaign}
-                className={`grid min-w-[1460px] grid-cols-[1.5fr_0.8fr_1.1fr_1.1fr_1fr_0.9fr_0.9fr_1.1fr_0.9fr_0.9fr_0.9fr_1fr_1fr_1fr] border-t border-[#d7e8f7] text-[15px] leading-[1.6] text-[#5c7792] ${
-                  row.status === "Winner" ? "bg-[#f0fdf4]" : row.status === "Before" ? "bg-[#fafbfc]" : ""
-                }`}
-              >
-                <div className="px-4 py-5 font-semibold text-[#0e2951]">{row.campaign}</div>
-                <div className="px-4 py-5">
-                  {row.status === "Winner" ? (
-                    <span className="inline-flex rounded-full bg-[#16a34a] px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.12em] text-white">
-                      Winner
-                    </span>
-                  ) : row.status === "Before" ? (
-                    <span className="inline-flex rounded-full bg-[#65676b] px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.12em] text-white">
-                      Before
-                    </span>
-                  ) : (
-                    <span className="inline-flex rounded-full bg-[#eaf4fd] px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
-                      Variant
-                    </span>
-                  )}
-                </div>
-                <div className="px-4 py-5">{row.delivery}</div>
-                <div className="px-4 py-5">{row.action}</div>
-                <div className="px-4 py-5">{row.bidStrategy}</div>
-                <div className="px-4 py-5">{row.budget}</div>
-                <div className="px-4 py-5">{row.attribution}</div>
-                <div className="px-4 py-5">
-                  <p className={`font-semibold ${row.status === "Winner" ? "text-[#16a34a]" : "text-[#0e2951]"}`}>{row.results}</p>
-                  {row.resultsDelta ? <p className="text-[13px] text-[#16a34a]">{row.resultsDelta}</p> : null}
-                </div>
-                <div className="px-4 py-5">{row.reach}</div>
-                <div className="px-4 py-5">{row.impressions}</div>
-                <div className={`px-4 py-5 font-semibold ${row.status === "Winner" ? "text-[#16a34a]" : "text-[#0e2951]"}`}>{row.conversionRate}</div>
-                <div className="px-4 py-5">
-                  <p className={`font-semibold ${row.status === "Winner" ? "text-[#16a34a]" : "text-[#0e2951]"}`}>{row.costPerResult}</p>
-                  {row.costDelta ? <p className="text-[13px] text-[#16a34a]">{row.costDelta}</p> : null}
-                </div>
-                <div className="px-4 py-5">{row.amountSpent}</div>
-                <div className="px-4 py-5 font-medium text-[#0e2951]">
-                  {row.status === "Winner" ? "Scale" : row.status === "Before" ? "Baseline" : "Learn"}
-                </div>
-              </div>
-            ))}
-            <div className="grid min-w-[1460px] grid-cols-[1.5fr_0.8fr_1.1fr_1.1fr_1fr_0.9fr_0.9fr_1.1fr_0.9fr_0.9fr_0.9fr_1fr_1fr_1fr] border-t border-[#d7e8f7] bg-[#f5f6f7] text-[15px] leading-[1.6] text-[#5c7792]">
-              <div className="px-4 py-5 font-semibold text-[#0e2951]">Results from 3 campaigns</div>
-              <div className="px-4 py-5">—</div>
-              <div className="px-4 py-5">—</div>
-              <div className="px-4 py-5">—</div>
-              <div className="px-4 py-5">—</div>
-              <div className="px-4 py-5">—</div>
-              <div className="px-4 py-5">—</div>
-              <div className="px-4 py-5">
-                <p className="font-semibold text-[#0e2951]">{CONFIDENTIAL_CAMPAIGN_TOTALS.results}</p>
-                <p className="text-[13px]">Total purchases</p>
-              </div>
-              <div className="px-4 py-5">{CONFIDENTIAL_CAMPAIGN_TOTALS.reach}</div>
-              <div className="px-4 py-5">{CONFIDENTIAL_CAMPAIGN_TOTALS.impressions}</div>
-              <div className="px-4 py-5">—</div>
-              <div className="px-4 py-5">
-                <p className="font-semibold text-[#0e2951]">{CONFIDENTIAL_CAMPAIGN_TOTALS.avgCostPerPurchase}</p>
-                <p className="text-[13px]">Avg. per purchase</p>
-              </div>
-              <div className="px-4 py-5">{CONFIDENTIAL_CAMPAIGN_TOTALS.amountSpent}</div>
-              <div className="px-4 py-5">—</div>
-            </div>
+            <table className="min-w-[1520px] table-fixed border-collapse">
+              <colgroup>
+                <col className="w-[32px]" />
+                <col className="w-[68px]" />
+                <col className="w-[330px]" />
+                <col className="w-[110px]" />
+                <col className="w-[180px]" />
+                <col className="w-[138px]" />
+                <col className="w-[106px]" />
+                <col className="w-[110px]" />
+                <col className="w-[142px]" />
+                <col className="w-[112px]" />
+                <col className="w-[118px]" />
+                <col className="w-[108px]" />
+                <col className="w-[156px]" />
+                <col className="w-[126px]" />
+              </colgroup>
+              <thead className="bg-[#f7f9fb]">
+                <tr className="border-b border-[#d7e8f7] text-left text-[13px] font-medium text-[#5c7792]">
+                  <th className="px-3 py-4"></th>
+                  <th className="px-3 py-4">Active</th>
+                  <th className="px-4 py-4">Campaign</th>
+                  <th className="px-4 py-4">Delivery</th>
+                  <th className="px-4 py-4">Actions</th>
+                  <th className="px-4 py-4">Bid strategy</th>
+                  <th className="px-4 py-4">Budget</th>
+                  <th className="px-4 py-4">Attribution</th>
+                  <th className="px-4 py-4">Results</th>
+                  <th className="px-4 py-4 text-right">Reach</th>
+                  <th className="px-4 py-4 text-right">Impressions</th>
+                  <th className="px-4 py-4 text-right">Conv. rate</th>
+                  <th className="px-4 py-4 text-right">Cost per result</th>
+                  <th className="px-4 py-4 text-right">Amount spent</th>
+                </tr>
+              </thead>
+              <tbody>
+                {CONFIDENTIAL_CAMPAIGN_ROWS.map((row) => (
+                  <tr
+                    key={row.campaign}
+                    className={`border-b border-[#d7e8f7] text-[15px] leading-[1.55] text-[#5c7792] ${
+                      row.status === "Winner" ? "bg-[#f0fdf4]" : row.status === "Before" ? "bg-[#fafbfc]" : "bg-white"
+                    }`}
+                  >
+                    <td className="px-3 py-5 align-top">
+                      <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-[4px] bg-[#1f78ff] text-[12px] font-bold text-white">
+                        ✓
+                      </span>
+                    </td>
+                    <td className="px-3 py-5 align-top">
+                      <span
+                        className={`mt-1 inline-flex h-7 w-12 items-center rounded-full p-1 ${
+                          row.status === "Before" ? "bg-[#cfd4db] justify-start" : "bg-[#1f78ff] justify-end"
+                        }`}
+                      >
+                        <span className="h-5 w-5 rounded-full bg-white shadow-sm" />
+                      </span>
+                    </td>
+                    <td className="px-4 py-5 align-top">
+                      <p className="font-medium leading-snug text-[#0e2951]">{row.campaign}</p>
+                      {row.status === "Winner" ? (
+                        <span className="mt-3 inline-flex rounded-full bg-[#16a34a] px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.08em] text-white">
+                          Winner
+                        </span>
+                      ) : row.status === "Before" ? (
+                        <span className="mt-3 inline-flex rounded-[6px] bg-[#65676b] px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.08em] text-white">
+                          Before
+                        </span>
+                      ) : null}
+                    </td>
+                    <td className="px-4 py-5 align-top">
+                      <p className="font-medium text-[#0e2951]">{row.delivery}</p>
+                    </td>
+                    <td className="px-4 py-5 align-top text-[#1f78ff]">
+                      {row.action}
+                    </td>
+                    <td className="px-4 py-5 align-top text-[#0e2951]">{row.bidStrategy}</td>
+                    <td className="px-4 py-5 align-top text-[#0e2951]">{row.budget}</td>
+                    <td className="px-4 py-5 align-top text-[#0e2951]">{row.attribution}</td>
+                    <td className="px-4 py-5 align-top">
+                      <p className={`font-semibold ${row.status === "Winner" ? "text-[#16a34a]" : "text-[#0e2951]"}`}>{row.results}</p>
+                      <p className="text-[13px] leading-[1.3]">Intro course purchases</p>
+                      {row.resultsDelta ? <p className="mt-1 text-[13px] font-medium text-[#16a34a]">{row.resultsDelta}</p> : null}
+                    </td>
+                    <td className="px-4 py-5 text-right align-top text-[#0e2951]">{row.reach}</td>
+                    <td className="px-4 py-5 text-right align-top text-[#0e2951]">{row.impressions}</td>
+                    <td className={`px-4 py-5 text-right align-top font-semibold ${row.status === "Winner" ? "text-[#16a34a]" : "text-[#0e2951]"}`}>{row.conversionRate}</td>
+                    <td className="px-4 py-5 text-right align-top">
+                      <p className={`font-semibold ${row.status === "Winner" ? "text-[#16a34a]" : "text-[#0e2951]"}`}>{row.costPerResult}</p>
+                      <p className="text-[13px] leading-[1.3]">Per purchase</p>
+                      {row.costDelta ? <p className="mt-1 text-[13px] font-medium text-[#16a34a]">{row.costDelta}</p> : null}
+                    </td>
+                    <td className="px-4 py-5 text-right align-top text-[#0e2951]">{row.amountSpent}</td>
+                  </tr>
+                ))}
+                <tr className="bg-[#f5f6f7] text-[15px] leading-[1.55] text-[#5c7792]">
+                  <td className="px-3 py-5"></td>
+                  <td className="px-3 py-5"></td>
+                  <td className="px-4 py-5 font-medium text-[#0e2951]">Results from 3 campaigns</td>
+                  <td className="px-4 py-5">—</td>
+                  <td className="px-4 py-5">—</td>
+                  <td className="px-4 py-5">—</td>
+                  <td className="px-4 py-5">—</td>
+                  <td className="px-4 py-5">—</td>
+                  <td className="px-4 py-5">
+                    <p className="font-semibold text-[#0e2951]">{CONFIDENTIAL_CAMPAIGN_TOTALS.results}</p>
+                    <p className="text-[13px] leading-[1.3]">Total intro purchases</p>
+                  </td>
+                  <td className="px-4 py-5 text-right text-[#0e2951]">{CONFIDENTIAL_CAMPAIGN_TOTALS.reach}</td>
+                  <td className="px-4 py-5 text-right text-[#0e2951]">{CONFIDENTIAL_CAMPAIGN_TOTALS.impressions}</td>
+                  <td className="px-4 py-5 text-right">—</td>
+                  <td className="px-4 py-5 text-right">
+                    <p className="font-semibold text-[#0e2951]">{CONFIDENTIAL_CAMPAIGN_TOTALS.avgCostPerPurchase}</p>
+                    <p className="text-[13px] leading-[1.3]">Avg. per purchase</p>
+                  </td>
+                  <td className="px-4 py-5 text-right text-[#0e2951]">{CONFIDENTIAL_CAMPAIGN_TOTALS.amountSpent}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           <div className="grid gap-4 md:hidden">
