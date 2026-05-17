@@ -33,6 +33,11 @@ const ASSETS = {
   ibx: withBasePath("/images/flock-logo.png"),
 };
 
+const HOME_BANNER_GRADIENT =
+  "linear-gradient(90deg, #e6f1fb 0%, #eee7fb 37%, #f9e5ee 68%, #fcf0e2 100%)";
+const HOME_BANNER_GRADIENT_OVERLAY =
+  "radial-gradient(circle at top,rgba(171,160,246,0.16),transparent 42%),radial-gradient(circle at 72% 26%,rgba(255,174,202,0.18),transparent 32%),radial-gradient(circle at 92% 50%,rgba(255,224,189,0.2),transparent 24%),linear-gradient(180deg,rgba(118,141,177,0.06)_0%,rgba(255,255,255,0)_58%)";
+
 // ── Data ──────────────────────────────────────────────────────────────────────
 const TEAM_MEMBERS = [
   "Product Owner", "Program manager", "Business analyst",
@@ -550,8 +555,15 @@ export default function BenefitsPage() {
         </>
       ) : (
         <>
-      <div className="bg-[#F0F7FF]">
-        <div className="mx-auto max-w-[1200px] px-6 pt-6 lg:px-20">
+      <div
+        className="relative overflow-hidden"
+        style={{ background: HOME_BANNER_GRADIENT }}
+      >
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: HOME_BANNER_GRADIENT_OVERLAY }}
+        />
+        <div className="relative mx-auto max-w-[1200px] px-6 pt-6 lg:px-20">
           <div className="flex items-center gap-3 text-sm">
             <Link href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</Link>
             <span className="text-[#b8cce0]">›</span>
@@ -562,7 +574,7 @@ export default function BenefitsPage() {
         </div>
 
         {/* ── Hero ── */}
-        <section className="mx-auto max-w-[1200px] px-6 pt-8 pb-0 md:px-10 xl:px-20">
+        <section className="relative mx-auto max-w-[1200px] px-6 pt-8 pb-0 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[1040px] rounded-[0] px-3 pb-4">
             <div className="px-6 pt-4 text-center md:px-12 lg:px-[120px]">
               <div className="mx-auto max-w-[820px]">
@@ -602,7 +614,6 @@ export default function BenefitsPage() {
                       </p>
                     </div>
                   </div>
-                  <div className="h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
                 </div>
               </div>
             </div>
