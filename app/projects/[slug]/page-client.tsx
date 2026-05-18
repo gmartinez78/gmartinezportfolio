@@ -1478,7 +1478,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="mx-auto mt-10 max-w-[860px] space-y-8">
               {caseStudy.methodology.steps.map((step, index) => (
                 <div key={`${step.step}-detail`} className="text-center">
-                  <h2 className="text-[18px] font-semibold text-[#1c1e21]">
+                  <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
                     {index + 1}. {step.label}
                   </h2>
                   <p className="mt-3 font-inter text-[16px] leading-[1.7] text-[#5c7792]">
