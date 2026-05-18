@@ -81,7 +81,6 @@ type ConfidentialBenchmarkRow = {
 const CONFIDENTIAL_BENCHMARK_HEADERS = [
   "Low-friction entry offer",
   "Beginner vs returner path",
-  "Founder / teacher in hero",
   "Community proof on page",
   "Pricing clarity",
   "Mobile-optimized hero",
@@ -93,35 +92,35 @@ const CONFIDENTIAL_BENCHMARK_ROWS: ConfidentialBenchmarkRow[] = [
     product: "Simply Piano",
     domain: "hellosimply.com",
     group: "Direct competitors",
-    scores: ["strong", "strong", "missing", "partial", "strong", "strong", "strong"],
+    scores: ["strong", "strong", "partial", "strong", "strong", "strong"],
     takeaway: "7-day free trial sets category baseline. Onboarding quiz segments by level.",
   },
   {
     product: "Skoove",
     domain: "skoove.com",
     group: "Direct competitors",
-    scores: ["strong", "partial", "missing", "missing", "strong", "strong", "strong"],
+    scores: ["strong", "partial", "missing", "strong", "strong", "strong"],
     takeaway: "Free tier as entry hook. Skips segmentation, treats all visitors as beginners.",
   },
   {
     product: "Flowkey",
     domain: "flowkey.com",
     group: "Direct competitors",
-    scores: ["strong", "strong", "missing", "missing", "strong", "strong", "strong"],
+    scores: ["strong", "strong", "missing", "strong", "strong", "strong"],
     takeaway: "Strong hero video. Beginner / intermediate / returner paths clearly labeled.",
   },
   {
     product: "Yousician",
     domain: "yousician.com",
     group: "Direct competitors",
-    scores: ["strong", "strong", "missing", "partial", "partial", "strong", "strong"],
+    scores: ["strong", "strong", "partial", "partial", "strong", "strong"],
     takeaway: "10M+ user social proof. Pricing transparency criticized in user reviews.",
   },
   {
     product: "Pianote",
     domain: "pianote.com",
     group: "Direct competitors",
-    scores: ["strong", "strong", "strong", "strong", "strong", "strong", "strong"],
+    scores: ["strong", "strong", "strong", "strong", "strong", "strong"],
     takeaway: "Category gold standard. Real teachers in hero, community is core value prop.",
   },
   {
@@ -129,7 +128,7 @@ const CONFIDENTIAL_BENCHMARK_ROWS: ConfidentialBenchmarkRow[] = [
     domain: "zapiano.com (original LP)",
     group: "Zapiano",
     badge: "Before",
-    scores: ["missing", "missing", "partial", "partial", "missing", "partial", "missing"],
+    scores: ["missing", "missing", "partial", "missing", "partial", "missing"],
     takeaway: "Entry cost €365 minimum. Three Club tiers competed for attention. No segmentation.",
   },
   {
@@ -137,7 +136,7 @@ const CONFIDENTIAL_BENCHMARK_ROWS: ConfidentialBenchmarkRow[] = [
     domain: "zapiano.com (redesign)",
     group: "Zapiano",
     badge: "After",
-    scores: ["strong", "strong", "strong", "strong", "strong", "strong", "strong"],
+    scores: ["strong", "strong", "strong", "strong", "strong", "strong"],
     takeaway: "€9 intro course as paid entry. Beginner / returner path. Sven leads hero. Community block in fold.",
   },
 ];
@@ -1513,7 +1512,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="border-b border-[#dadde1] px-6 py-5">
               <h3 className="text-[18px] font-semibold text-[#1c1e21]">Competitive benchmark</h3>
               <p className="mt-1 text-[13px] text-[#65676b]">
-                Adult piano learning category | 5 direct competitors compared across 7 conversion-driving dimensions
+                Adult piano learning category | 5 direct competitors compared across conversion-driving dimensions
               </p>
             </div>
 
