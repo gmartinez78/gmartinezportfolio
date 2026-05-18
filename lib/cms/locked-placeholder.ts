@@ -80,7 +80,7 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
         {
           step: 4,
           label: "Build modular components",
-          description: "Designed each section as a swappable unit so Marketing could keep testing post-launch without needing engineering for every iteration.",
+          description: "The redesign combined a funnel audit, competitor benchmark, offer reframe, modular landing-page redesign, and post-launch testing. Reduce the cognitive cost of the first yes by leading with a single low-friction paid entry instead of multiple long-term commitments. Make founder credibility, beginner-vs-returner relevance, and community proof visible early enough to help cold traffic orient before price friction hits. Design the page as a modular no-code system Marketing could keep testing inside Kajabi without needing engineering for every iteration.",
         },
         {
           step: 5,
@@ -89,11 +89,7 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
         },
       ],
     },
-    design_strategy: [
-      "The redesign combined a funnel audit, competitor benchmark, offer reframe, modular landing-page redesign, and post-launch testing. Reduce the cognitive cost of the first yes by leading with a single low-friction paid entry instead of multiple long-term commitments.",
-      "Make founder credibility, beginner-vs-returner relevance, and community proof visible early enough to help cold traffic orient before price friction hits.",
-      "Design the page as a modular no-code system Marketing could keep testing inside Kajabi without needing engineering for every iteration.",
-    ],
+    design_strategy: [],
     reflections: [
       {
         title: "The bottleneck was the offer, not the UI.",
