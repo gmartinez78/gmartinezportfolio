@@ -1484,274 +1484,256 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <p className="mt-3 font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                     {step.description}
                   </p>
+                  {index === 0 ? (
+                    <div className="mt-10 overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)] text-left">
+                      <div className="border-b border-[#dadde1] px-6 py-5">
+                        <h3 className="text-[20px] font-semibold text-[#1c1e21]">{CONFIDENTIAL_FUNNEL_ARCHITECTURE.title}</h3>
+                        <p className="mt-1 text-[13px] text-[#65676b]">{CONFIDENTIAL_FUNNEL_ARCHITECTURE.subtitle}</p>
+                      </div>
+                      <div className="grid lg:grid-cols-2">
+                        {[CONFIDENTIAL_FUNNEL_ARCHITECTURE.before, CONFIDENTIAL_FUNNEL_ARCHITECTURE.after].map((column) => {
+                          const isBefore = column.badge === "Before";
+                          return (
+                            <div
+                              key={column.badge}
+                              className={`px-6 py-8 md:px-8 ${isBefore ? "border-b border-[#dadde1] bg-[#fef5f5] lg:border-b-0 lg:border-r" : "bg-[#f0fdf4]"}`}
+                            >
+                              <div className="mb-6 flex items-center gap-3">
+                                <span
+                                  className={`inline-flex rounded-[4px] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.05em] ${
+                                    isBefore ? "bg-[#fca5a5] text-[#7f1d1d]" : "bg-[#16a34a] text-white"
+                                  }`}
+                                >
+                                  {column.badge}
+                                </span>
+                                <span className="text-[16px] font-semibold text-[#1c1e21]">{column.title}</span>
+                              </div>
+                              <p className="mb-6 text-[12px] leading-[1.6] text-[#65676b]">{column.subtitle}</p>
+                              <div className="space-y-2">
+                                {column.stages.map((stage, stageIndex) => (
+                                  <Fragment key={`${column.badge}-${stage.name}`}>
+                                    <div
+                                      className={`rounded-[8px] border bg-white px-4 py-4 ${
+                                        stage.tone === "problem"
+                                          ? "border-[#fca5a5]"
+                                          : stage.tone === "win"
+                                            ? "border-[#86efac]"
+                                            : "border-[#dadde1]"
+                                      }`}
+                                    >
+                                      <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.05em] text-[#65676b]">{stage.label}</p>
+                                      <p className="mb-1 text-[14px] font-semibold text-[#1c1e21]">{stage.name}</p>
+                                      <p className="text-[12px] leading-[1.5] text-[#65676b]">{stage.detail}</p>
+                                      {stage.tags?.length ? (
+                                        <div className="mt-3 flex flex-wrap gap-2">
+                                          {stage.tags.map((tag) => (
+                                            <span
+                                              key={tag}
+                                              className={`rounded-[3px] px-2 py-1 text-[10px] font-medium ${
+                                                isBefore ? "bg-[#fee2e2] text-[#b91c1c]" : "bg-[#dbeafe] text-[#1e40af]"
+                                              }`}
+                                            >
+                                              {tag}
+                                            </span>
+                                          ))}
+                                        </div>
+                                      ) : null}
+                                    </div>
+                                    {stageIndex === 0 || stageIndex === 1 ? (
+                                      <div className="py-1 text-center text-[18px] leading-none text-[#65676b]">↓</div>
+                                    ) : null}
+                                    {stageIndex === 1 ? (
+                                      <div
+                                        className={`rounded-[6px] border border-dashed px-4 py-2 text-center text-[13px] font-semibold ${
+                                          isBefore ? "border-[#fca5a5] bg-[#fee2e2] text-[#b91c1c]" : "border-[#86efac] bg-[#dcfce7] text-[#15803d]"
+                                        }`}
+                                      >
+                                        {column.conversion}
+                                      </div>
+                                    ) : null}
+                                  </Fragment>
+                                ))}
+                              </div>
+                              <div
+                                className={`mt-6 rounded-[4px] border-l-[3px] bg-white/70 px-4 py-4 text-[12px] leading-[1.5] text-[#1c1e21] ${
+                                  isBefore ? "border-[#b91c1c]" : "border-[#15803d]"
+                                }`}
+                              >
+                                <strong className="mb-1 block text-[11px] uppercase tracking-[0.05em]">{column.takeawayTitle}</strong>
+                                {column.takeaway}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                      <div className="border-t border-[#dadde1] bg-[#f5f6f7] px-6 py-4 text-[12px] leading-[1.5] text-[#65676b]">
+                        <strong className="text-[#1c1e21]">Impact:</strong> {CONFIDENTIAL_FUNNEL_ARCHITECTURE.footer.replace(/^Impact:\s*/, "")}
+                      </div>
+                    </div>
+                  ) : null}
+                  {index === 1 ? (
+                    <div className="mt-10 text-left">
+                      <div className="mx-auto mb-10 max-w-[860px] space-y-5 text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                        <p>
+                          Before sketching anything, I audited five direct competitors against seven conversion heuristics that matter for cold paid traffic. The pattern was clear: Zapiano was the weakest landing in the category on every dimension that drives entry conversion.
+                        </p>
+                        <p>
+                          Pianote, the closest gold-standard comparable for a founder-led, community-driven, premium subscription experience, scored 7 of 7. Zapiano scored 0 strong out of 7.
+                        </p>
+                        <p>
+                          The redesign brief wrote itself: close the four critical gaps of entry friction, segmentation, founder visibility, and community proof while keeping what was already working, including risk reversal and content depth.
+                        </p>
+                      </div>
+
+                      <div className="overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
+                        <div className="border-b border-[#dadde1] px-6 py-5">
+                          <h3 className="text-[18px] font-semibold text-[#1c1e21]">Competitive benchmark</h3>
+                          <p className="mt-1 text-[13px] text-[#65676b]">
+                            Adult piano learning category | 5 direct competitors compared across conversion-driving dimensions
+                          </p>
+                        </div>
+
+                        <div className="flex flex-wrap items-center gap-x-5 gap-y-3 border-b border-[#dadde1] bg-[#f5f6f7] px-6 py-4 text-[12px] text-[#65676b]">
+                          <div className="flex items-center gap-2">
+                            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#dcfce7] text-[12px] font-semibold text-[#15803d]">✓</span>
+                            Strong
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#fef3c7] text-[12px] font-semibold text-[#b45309]">~</span>
+                            Partial
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#fee2e2] text-[12px] font-semibold text-[#b91c1c]">✗</span>
+                            Missing
+                          </div>
+                          <div className="ml-auto">Analysis: April 2025 | Method: competitive benchmark of paid traffic landing pages</div>
+                        </div>
+
+                        <div className="hidden overflow-x-auto md:block">
+                          <table className="min-w-[1360px] w-full border-collapse text-[13px]">
+                            <thead>
+                              <tr className="bg-[#f5f6f7] text-center text-[11px] font-medium leading-[1.4] text-[#65676b]">
+                                <th className="min-w-[230px] border-b border-r border-[#ebedf0] px-4 py-3 text-left">Product</th>
+                                {CONFIDENTIAL_BENCHMARK_HEADERS.map((header) => (
+                                  <th key={header} className="border-b border-r border-[#ebedf0] px-2 py-3">
+                                    {header}
+                                  </th>
+                                ))}
+                                <th className="min-w-[220px] border-b border-[#ebedf0] px-4 py-3 text-left">Key takeaway for Zapiano</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {(["Direct competitors", "Zapiano"] as const).map((group) => (
+                                <Fragment key={group}>
+                                  <tr className="bg-[#ebedf0]">
+                                    <td colSpan={9} className="px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-[0.04em] text-[#65676b]">
+                                      {group}
+                                    </td>
+                                  </tr>
+                                  {CONFIDENTIAL_BENCHMARK_ROWS.filter((row) => row.group === group).map((row) => (
+                                    <tr
+                                      key={`${group}-${row.product}-${row.domain}`}
+                                      className={
+                                        row.badge === "After"
+                                          ? "bg-[#f0fdf4]"
+                                          : row.badge === "Before"
+                                            ? "bg-[#fef5f5]"
+                                            : "bg-white"
+                                      }
+                                    >
+                                      <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-left">
+                                        <div className="font-medium text-[#1c1e21]">
+                                          {row.product}
+                                          {row.badge === "Before" ? (
+                                            <span className="ml-2 inline-flex rounded-[4px] bg-[#fca5a5] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#7f1d1d]">
+                                              Before
+                                            </span>
+                                          ) : row.badge === "After" ? (
+                                            <span className="ml-2 inline-flex rounded-[4px] bg-[#16a34a] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-white">
+                                              After
+                                            </span>
+                                          ) : null}
+                                        </div>
+                                        <div className="mt-1 text-[11px] text-[#65676b]">{row.domain}</div>
+                                      </td>
+                                      {row.scores.map((score, scoreIndex) => (
+                                        <td key={`${row.product}-${scoreIndex}`} className="border-b border-r border-[#ebedf0] px-2 py-4 text-center">
+                                          <span
+                                            className={`inline-flex h-[26px] w-[26px] items-center justify-center rounded-full text-[14px] font-semibold ${
+                                              score === "strong"
+                                                ? "bg-[#dcfce7] text-[#15803d]"
+                                                : score === "partial"
+                                                  ? "bg-[#fef3c7] text-[#b45309]"
+                                                  : "bg-[#fee2e2] text-[#b91c1c]"
+                                            }`}
+                                          >
+                                            {score === "strong" ? "✓" : score === "partial" ? "~" : "✗"}
+                                          </span>
+                                        </td>
+                                      ))}
+                                      <td className="border-b border-[#ebedf0] px-4 py-4 text-left text-[12px] leading-[1.45] text-[#65676b]">
+                                        {row.takeaway}
+                                      </td>
+                                    </tr>
+                                  ))}
+                                </Fragment>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+
+                        <div className="grid gap-4 p-5 md:hidden">
+                          {(["Direct competitors", "Zapiano"] as const).map((group) => (
+                            <div key={group} className="space-y-4">
+                              <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#65676b]">{group}</p>
+                              {CONFIDENTIAL_BENCHMARK_ROWS.filter((row) => row.group === group).map((row) => (
+                                <Card
+                                  key={`mobile-${group}-${row.product}-${row.domain}`}
+                                  className={row.badge === "After" ? "border-[#9cd99f] bg-[#f0fdf4]" : row.badge === "Before" ? "border-[#f3b2b2] bg-[#fef5f5]" : ""}
+                                >
+                                  <CardContent className="space-y-4 px-5 py-5">
+                                    <div>
+                                      <p className="text-[18px] font-semibold text-[#0e2951]">
+                                        {row.product}
+                                        {row.badge ? (
+                                          <span className={`ml-2 inline-flex rounded-[4px] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] ${row.badge === "After" ? "bg-[#16a34a] text-white" : "bg-[#fca5a5] text-[#7f1d1d]"}`}>
+                                            {row.badge}
+                                          </span>
+                                        ) : null}
+                                      </p>
+                                      <p className="mt-1 text-[13px] text-[#5c7792]">{row.domain}</p>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-3 text-[12px] leading-[1.5] text-[#5c7792]">
+                                      {CONFIDENTIAL_BENCHMARK_HEADERS.map((header, headerIndex) => (
+                                        <div key={`${row.product}-mobile-${header}`}>
+                                          <p className="font-semibold text-[#0e2951]">{header}</p>
+                                          <p className="mt-1">
+                                            {row.scores[headerIndex] === "strong" ? "Strong" : row.scores[headerIndex] === "partial" ? "Partial" : "Missing"}
+                                          </p>
+                                        </div>
+                                      ))}
+                                    </div>
+                                    <div>
+                                      <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">Key takeaway</p>
+                                      <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{row.takeaway}</p>
+                                    </div>
+                                  </CardContent>
+                                </Card>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="border-t border-[#dadde1] bg-[#f5f6f7] px-6 py-4 text-[11px] text-[#65676b]">
+                          Score summary | Before: 0 strong, 3 partial, 4 missing of 7 dimensions. After: 7 strong of 7. Closed all 4 critical gaps versus Pianote category benchmark.
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
                 </div>
               ))}
             </div>
           ) : null}
-        </section>
-      ) : null}
-
-      {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
-            Competitive Landing Page Audit
-          </h2>
-          <div className="mx-auto mb-10 max-w-[860px] space-y-5 text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-            <p>
-              Before sketching anything, I audited five direct competitors against seven conversion heuristics that matter for cold paid traffic. The pattern was clear: Zapiano was the weakest landing in the category on every dimension that drives entry conversion.
-            </p>
-            <p>
-              Pianote, the closest gold-standard comparable for a founder-led, community-driven, premium subscription experience, scored 7 of 7. Zapiano scored 0 strong out of 7.
-            </p>
-            <p>
-              The redesign brief wrote itself: close the four critical gaps of entry friction, segmentation, founder visibility, and community proof while keeping what was already working, including risk reversal and content depth.
-            </p>
-          </div>
-
-          <div className="overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
-            <div className="border-b border-[#dadde1] px-6 py-5">
-              <h3 className="text-[18px] font-semibold text-[#1c1e21]">Competitive benchmark</h3>
-              <p className="mt-1 text-[13px] text-[#65676b]">
-                Adult piano learning category | 5 direct competitors compared across conversion-driving dimensions
-              </p>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-3 border-b border-[#dadde1] bg-[#f5f6f7] px-6 py-4 text-[12px] text-[#65676b]">
-              <div className="flex items-center gap-2">
-                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#dcfce7] text-[12px] font-semibold text-[#15803d]">✓</span>
-                Strong
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#fef3c7] text-[12px] font-semibold text-[#b45309]">~</span>
-                Partial
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#fee2e2] text-[12px] font-semibold text-[#b91c1c]">✗</span>
-                Missing
-              </div>
-              <div className="ml-auto">Analysis: April 2025 | Method: competitive benchmark of paid traffic landing pages</div>
-            </div>
-
-            <div className="hidden overflow-x-auto md:block">
-              <table className="min-w-[1360px] w-full border-collapse text-[13px]">
-                <thead>
-                  <tr className="bg-[#f5f6f7] text-center text-[11px] font-medium leading-[1.4] text-[#65676b]">
-                    <th className="min-w-[230px] border-b border-r border-[#ebedf0] px-4 py-3 text-left">Product</th>
-                    {CONFIDENTIAL_BENCHMARK_HEADERS.map((header) => (
-                      <th key={header} className="border-b border-r border-[#ebedf0] px-2 py-3">
-                        {header}
-                      </th>
-                    ))}
-                    <th className="min-w-[220px] border-b border-[#ebedf0] px-4 py-3 text-left">Key takeaway for Zapiano</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {(["Direct competitors", "Zapiano"] as const).map((group) => (
-                    <Fragment key={group}>
-                      <tr key={`${group}-divider`} className="bg-[#ebedf0]">
-                        <td colSpan={9} className="px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-[0.04em] text-[#65676b]">
-                          {group}
-                        </td>
-                      </tr>
-                      {CONFIDENTIAL_BENCHMARK_ROWS.filter((row) => row.group === group).map((row) => (
-                        <tr
-                          key={`${group}-${row.product}-${row.domain}`}
-                          className={
-                            row.badge === "After"
-                              ? "bg-[#f0fdf4]"
-                              : row.badge === "Before"
-                                ? "bg-[#fef5f5]"
-                                : "bg-white"
-                          }
-                        >
-                          <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-left">
-                            <div className="font-medium text-[#1c1e21]">
-                              {row.product}
-                              {row.badge === "Before" ? (
-                                <span className="ml-2 inline-flex rounded-[4px] bg-[#fca5a5] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#7f1d1d]">
-                                  Before
-                                </span>
-                              ) : row.badge === "After" ? (
-                                <span className="ml-2 inline-flex rounded-[4px] bg-[#16a34a] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-white">
-                                  After
-                                </span>
-                              ) : null}
-                            </div>
-                            <div className="mt-1 text-[11px] text-[#65676b]">{row.domain}</div>
-                          </td>
-                          {row.scores.map((score, index) => (
-                            <td key={`${row.product}-${index}`} className="border-b border-r border-[#ebedf0] px-2 py-4 text-center">
-                              <span
-                                className={`inline-flex h-[26px] w-[26px] items-center justify-center rounded-full text-[14px] font-semibold ${
-                                  score === "strong"
-                                    ? "bg-[#dcfce7] text-[#15803d]"
-                                    : score === "partial"
-                                      ? "bg-[#fef3c7] text-[#b45309]"
-                                      : "bg-[#fee2e2] text-[#b91c1c]"
-                                }`}
-                              >
-                                {score === "strong" ? "✓" : score === "partial" ? "~" : "✗"}
-                              </span>
-                            </td>
-                          ))}
-                          <td className="border-b border-[#ebedf0] px-4 py-4 text-left text-[12px] leading-[1.45] text-[#65676b]">
-                            {row.takeaway}
-                          </td>
-                        </tr>
-                      ))}
-                    </Fragment>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <div className="grid gap-4 p-5 md:hidden">
-              {(["Direct competitors", "Zapiano"] as const).map((group) => (
-                <div key={group} className="space-y-4">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#65676b]">{group}</p>
-                  {CONFIDENTIAL_BENCHMARK_ROWS.filter((row) => row.group === group).map((row) => (
-                    <Card
-                      key={`mobile-${group}-${row.product}-${row.domain}`}
-                      className={row.badge === "After" ? "border-[#9cd99f] bg-[#f0fdf4]" : row.badge === "Before" ? "border-[#f3b2b2] bg-[#fef5f5]" : ""}
-                    >
-                      <CardContent className="space-y-4 px-5 py-5">
-                        <div>
-                          <p className="text-[18px] font-semibold text-[#0e2951]">
-                            {row.product}
-                            {row.badge ? (
-                              <span className={`ml-2 inline-flex rounded-[4px] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] ${row.badge === "After" ? "bg-[#16a34a] text-white" : "bg-[#fca5a5] text-[#7f1d1d]"}`}>
-                                {row.badge}
-                              </span>
-                            ) : null}
-                          </p>
-                          <p className="mt-1 text-[13px] text-[#5c7792]">{row.domain}</p>
-                        </div>
-                        <div className="grid grid-cols-2 gap-3 text-[12px] leading-[1.5] text-[#5c7792]">
-                          {CONFIDENTIAL_BENCHMARK_HEADERS.map((header, index) => (
-                            <div key={`${row.product}-mobile-${header}`}>
-                              <p className="font-semibold text-[#0e2951]">{header}</p>
-                              <p className="mt-1">
-                                {row.scores[index] === "strong" ? "Strong" : row.scores[index] === "partial" ? "Partial" : "Missing"}
-                              </p>
-                            </div>
-                          ))}
-                        </div>
-                        <div>
-                          <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">Key takeaway</p>
-                          <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{row.takeaway}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              ))}
-            </div>
-
-            <div className="border-t border-[#dadde1] bg-[#f5f6f7] px-6 py-4 text-[11px] text-[#65676b]">
-              Score summary | Before: 0 strong, 3 partial, 4 missing of 7 dimensions. After: 7 strong of 7. Closed all 4 critical gaps versus Pianote category benchmark.
-            </div>
-          </div>
-        </section>
-      ) : null}
-
-      {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
-            Funnel Architecture
-          </h2>
-          <p className="mx-auto mb-10 max-w-[840px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-            The main shift was not visual styling. It was moving cold visitors away from a high-stakes subscription choice and into a smaller first purchase that better matched how adults actually start practicing.
-          </p>
-
-          <div className="overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
-            <div className="border-b border-[#dadde1] px-6 py-5">
-              <h3 className="text-[20px] font-semibold text-[#1c1e21]">{CONFIDENTIAL_FUNNEL_ARCHITECTURE.title}</h3>
-              <p className="mt-1 text-[13px] text-[#65676b]">{CONFIDENTIAL_FUNNEL_ARCHITECTURE.subtitle}</p>
-            </div>
-
-            <div className="grid lg:grid-cols-2">
-              {[CONFIDENTIAL_FUNNEL_ARCHITECTURE.before, CONFIDENTIAL_FUNNEL_ARCHITECTURE.after].map((column) => {
-                const isBefore = column.badge === "Before";
-                return (
-                  <div
-                    key={column.badge}
-                    className={`px-6 py-8 md:px-8 ${isBefore ? "border-b border-[#dadde1] bg-[#fef5f5] lg:border-b-0 lg:border-r" : "bg-[#f0fdf4]"}`}
-                  >
-                    <div className="mb-6 flex items-center gap-3">
-                      <span
-                        className={`inline-flex rounded-[4px] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.05em] ${
-                          isBefore ? "bg-[#fca5a5] text-[#7f1d1d]" : "bg-[#16a34a] text-white"
-                        }`}
-                      >
-                        {column.badge}
-                      </span>
-                      <span className="text-[16px] font-semibold text-[#1c1e21]">{column.title}</span>
-                    </div>
-                    <p className="mb-6 text-[12px] leading-[1.6] text-[#65676b]">{column.subtitle}</p>
-
-                    <div className="space-y-2">
-                      {column.stages.map((stage, index) => (
-                        <Fragment key={`${column.badge}-${stage.name}`}>
-                          <div
-                            className={`rounded-[8px] border bg-white px-4 py-4 ${
-                              stage.tone === "problem"
-                                ? "border-[#fca5a5]"
-                                : stage.tone === "win"
-                                  ? "border-[#86efac]"
-                                  : "border-[#dadde1]"
-                            }`}
-                          >
-                            <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.05em] text-[#65676b]">{stage.label}</p>
-                            <p className="mb-1 text-[14px] font-semibold text-[#1c1e21]">{stage.name}</p>
-                            <p className="text-[12px] leading-[1.5] text-[#65676b]">{stage.detail}</p>
-                            {stage.tags?.length ? (
-                              <div className="mt-3 flex flex-wrap gap-2">
-                                {stage.tags.map((tag) => (
-                                  <span
-                                    key={tag}
-                                    className={`rounded-[3px] px-2 py-1 text-[10px] font-medium ${
-                                      isBefore ? "bg-[#fee2e2] text-[#b91c1c]" : "bg-[#dbeafe] text-[#1e40af]"
-                                    }`}
-                                  >
-                                    {tag}
-                                  </span>
-                                ))}
-                              </div>
-                            ) : null}
-                          </div>
-                          {index === 0 || index === 1 ? (
-                            <div className="py-1 text-center text-[18px] leading-none text-[#65676b]">↓</div>
-                          ) : null}
-                          {index === 1 ? (
-                            <div
-                              className={`rounded-[6px] border border-dashed px-4 py-2 text-center text-[13px] font-semibold ${
-                                isBefore ? "border-[#fca5a5] bg-[#fee2e2] text-[#b91c1c]" : "border-[#86efac] bg-[#dcfce7] text-[#15803d]"
-                              }`}
-                            >
-                              {column.conversion}
-                            </div>
-                          ) : null}
-                        </Fragment>
-                      ))}
-                    </div>
-
-                    <div
-                      className={`mt-6 rounded-[4px] border-l-[3px] bg-white/70 px-4 py-4 text-[12px] leading-[1.5] text-[#1c1e21] ${
-                        isBefore ? "border-[#b91c1c]" : "border-[#15803d]"
-                      }`}
-                    >
-                      <strong className="mb-1 block text-[11px] uppercase tracking-[0.05em]">{column.takeawayTitle}</strong>
-                      {column.takeaway}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="border-t border-[#dadde1] bg-[#f5f6f7] px-6 py-4 text-[12px] leading-[1.5] text-[#65676b]">
-              <strong className="text-[#1c1e21]">Impact:</strong> {CONFIDENTIAL_FUNNEL_ARCHITECTURE.footer.replace(/^Impact:\s*/, "")}
-            </div>
-          </div>
         </section>
       ) : null}
 

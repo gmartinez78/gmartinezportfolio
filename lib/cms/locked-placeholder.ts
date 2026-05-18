@@ -74,28 +74,18 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
         },
         {
           step: 3,
-          label: "Reframe the offer",
-          description: "This is where the redesign stopped being a landing page exercise and became a funnel strategy recommendation. I proposed killing the Club tiers as the paid entry point, moving them deeper in the funnel for warm and returning users, leading with the EUR9 Introduction Course as the cold-traffic entry, and upselling to PianoStarter at EUR29/month after the intro. The reasoning I brought to the PM and Marketing was straightforward: users did not need three options to compare, they needed one clear next thing to do. Daily piano practice is a habit, and the offer architecture should mirror that.",
+          label: "Reframe the landing",
+          description: "This is where the redesign stopped being a landing page exercise and became a funnel strategy recommendation. I proposed killing the Club tiers as the paid entry point, moving them deeper in the funnel for warm and returning users, leading with the EUR9 Introduction Course as the cold-traffic entry, and upselling to PianoStarter at EUR29/month after the intro. The reasoning I brought to the PM and Marketing was straightforward: users did not need three options to compare, they needed one clear next thing to do. Daily piano practice is a habit, and the offer architecture should mirror that. From there, Sven leads the hero, beginner-vs-returner segmentation is woven into the copy, one primary CTA focuses on the EUR9 intro purchase, the email gate moves below social proof, and community credibility shows up in the fold instead of three competing pricing blocks.",
         },
         {
           step: 4,
-          label: "Redesign the landing",
-          description: "Sven leads the hero, beginner-vs-returner segmentation is woven into the copy, one primary CTA focuses on the EUR9 intro purchase, the email gate moves below social proof, and community credibility shows up in the fold instead of three competing pricing blocks.",
-        },
-        {
-          step: 5,
           label: "Build modular components",
           description: "Designed each section as a swappable unit so Marketing could keep testing post-launch without needing engineering for every iteration.",
         },
         {
-          step: 6,
+          step: 5,
           label: "A/B test social proof",
           description: "Variant A used physical community proof through annual Zapiano member meetup photos in Switzerland and Germany. Variant B used digital community proof through mobile app screenshots, member feed views, and in-product social proof.",
-        },
-        {
-          step: 7,
-          label: "Synthesize with Copilot",
-          description: "Once both variants had statistically meaningful data, I used Copilot to compare scroll depth, time-to-CTA, and segment behavior across variants. It compressed the slowest part of the testing cycle, synthesis, without replacing the design judgment that came before it.",
         },
       ],
     },
@@ -150,7 +140,7 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
         id: "research",
         type: "custom",
         title: "Research",
-        body: "The audit and experiment made the structural gaps visible before design execution started.",
+        body: "The audit and experiment made the structural gaps visible before design execution started. Once both variants had statistically meaningful data, I used Copilot to compare scroll depth, time-to-CTA, and segment behavior across variants. It compressed the slowest part of the testing cycle, synthesis, without replacing the design judgment that came before it.",
         payload: {
           items: [
             "Pianote, the closest gold-standard comparable, scored 7 out of 7 on the benchmark while Zapiano scored 0 strong out of 7.",
