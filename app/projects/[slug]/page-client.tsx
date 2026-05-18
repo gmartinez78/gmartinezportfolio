@@ -225,7 +225,7 @@ const CONFIDENTIAL_FUNNEL_ARCHITECTURE = {
       "The biggest conversion lift came from changing what we asked visitors to decide, not from changing how we styled the buttons. The problem looked like UI. It was actually an offer problem.",
   },
   footer:
-    "Impact: 6% to 25% paid landing conversion (+19pp, 4.2x) | $4.20 to $0.85 cost per purchase (-80%) | 7,118 purchases on the winning variant vs 2,847 on control",
+    "Impact: 1.04M reach | 2.85M impressions | 14,885 purchases | $26,568.50 total spend | $1.79 blended cost per result",
 };
 
 const CONFIDENTIAL_AB_TEST_ROWS: ConfidentialAbTestRow[] = [
@@ -976,12 +976,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [passwordError, setPasswordError] = useState<string | null>(null);
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [isReframeImageExpanded, setIsReframeImageExpanded] = useState(false);
+  const [isBuildImageExpanded, setIsBuildImageExpanded] = useState(false);
 
   useEffect(() => {
     setEnteredPassword("");
     setPasswordError(null);
     setIsUnlocked(false);
     setIsReframeImageExpanded(false);
+    setIsBuildImageExpanded(false);
   }, [caseStudy?.slug]);
 
   if (loading) {
@@ -1186,6 +1188,17 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <p className="text-[16px] leading-[1.7] text-[#5c7792]">{caseStudy.tagline}</p>
               </div>
             </div>
+
+            {heroImage && caseStudy.slug === "nayya-ai-benefits" ? (
+              <div className="relative mx-auto mb-10 h-[150px] w-full max-w-[840px] overflow-hidden rounded-[24px] shadow-[0_20px_64px_rgba(14,41,81,0.12)]">
+                <img
+                  src={withBasePath(heroImage)}
+                  alt={`${caseStudy.title} banner`}
+                  className="h-full w-full object-cover object-center"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(14,41,81,0.05)_0%,rgba(14,41,81,0.16)_100%)]" />
+              </div>
+            ) : null}
 
             <div className="relative mt-10 flex flex-col items-center gap-8 pt-8 text-center">
               <div className="grid w-full gap-8 md:grid-cols-[1fr_2fr_1fr] md:items-center">
@@ -1554,6 +1567,50 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             {isReframeImageExpanded ? "View less" : "View more"}
                           </Button>
                         </div>
+                      </div>
+                    </div>
+                  ) : index === 3 ? (
+                    <div className="mt-3 grid items-start gap-8 text-left lg:grid-cols-[minmax(0,1fr)_420px]">
+                      <div className="rounded-[24px] border border-[#d7dfeb] bg-white p-3 shadow-[0_18px_40px_rgba(14,41,81,0.08)]">
+                        <div
+                          className={`relative overflow-hidden rounded-[18px] transition-[max-height] duration-300 ease-out ${
+                            isBuildImageExpanded ? "max-h-none" : "max-h-[520px]"
+                          }`}
+                        >
+                          <span className="absolute left-4 top-4 z-10 inline-flex rounded-[4px] bg-[#16a34a] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-white">
+                            After
+                          </span>
+                          <img
+                            src={withBasePath("/images/projects/zapiano/banners/page-7.svg")}
+                            alt="Zapiano landing redesign after applying benchmark and funnel improvements"
+                            className="h-auto w-full"
+                          />
+                          {!isBuildImageExpanded ? (
+                            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/90 to-white/0" />
+                          ) : null}
+                        </div>
+                        <div className="mt-4 flex justify-center">
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setIsBuildImageExpanded((current) => !current)}
+                            className="rounded-full border-[#d7dfeb] bg-white px-5 text-[#0e2951] hover:bg-[#f8fbff]"
+                          >
+                            {isBuildImageExpanded ? "View less" : "View more"}
+                          </Button>
+                        </div>
+                      </div>
+                      <div className="space-y-3">
+                        {step.description.split("\n").map((line, lineIndex) => {
+                          const trimmed = line.trim();
+                          if (!trimmed) return null;
+                          return (
+                            <p key={`${step.step}-line-${lineIndex}`} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                              {trimmed}
+                            </p>
+                          );
+                        })}
                       </div>
                     </div>
                   ) : (

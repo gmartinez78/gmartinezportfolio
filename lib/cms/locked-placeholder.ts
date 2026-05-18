@@ -19,7 +19,7 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
     year: 2025,
     duration: "2 to 3 months",
     industry: "Education / Performance Marketing",
-    tagline: "Paid landing conversion lifted 6% to 25%. Winning-variant acquisition cost dropped from $4.20 to $0.85.",
+    tagline: "Across three campaign variants, the funnel generated 1.04M reach, 14,885 purchases, and a blended $1.79 cost per result on $26.6K spend.",
     tags: ["Growth", "Paid Acquisition", "Experimentation", "Landing Pages"],
     filters: ["Product Design"],
     tools: ["Figma", "ClickUp", "Microsoft Copilot", "Google Analytics", "Meta Ads Manager"],
@@ -31,18 +31,18 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
     client_logos: [],
     metrics: [
       {
-        value: "+19%",
-        label: "Paid landing conversion",
+        value: "1.04M",
+        label: "Reach across all campaign variants",
         context: "",
       },
       {
-        value: "80%",
-        label: "reduction on the winning variant.",
+        value: "14,885",
+        label: "Purchases recorded across the test snapshot",
         context: "",
       },
       {
-        value: "7,118",
-        label: "Purchases on winning variant",
+        value: "$1.79",
+        label: "Blended cost per result",
         context: "",
       },
     ],
@@ -140,8 +140,8 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
           rows: [
             {
               metric: "Amount Spent",
-              value: "$6,050.30",
-              context: "Direct dashboard spend for the winning variant, aligned with the CPA and purchase figures shown in this case study.",
+              value: "$26,568.50",
+              context: "Total spend across the three campaign variants shown in the preserved Meta dashboard.",
             },
             {
               metric: "Return on Ad Spend (ROAS)",
@@ -149,14 +149,14 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
               context: "Modeled from total recorded purchases at a €9 intro-course price point: ~€133,965 revenue against $26,568.50 spend.",
             },
             {
-              metric: "Cost per Acquisition (CPA)",
-              value: "$0.85",
-              context: "Direct dashboard value for the winning variant, down from $4.20 on the original control.",
+              metric: "Purchases",
+              value: "14,885",
+              context: "Total purchases recorded across the three campaign variants in the dashboard snapshot.",
             },
             {
               metric: "Cost per Click (CPC)",
               value: "~$0.25",
-              context: "Modeled blended estimate across the three campaign variants using implied clicks from purchase volume and landing conversion rates; included as directional, not as a direct platform CPC.",
+              context: "Modeled blended estimate across the three campaign variants using implied clicks from purchase volume and landing conversion rates.",
             },
             {
               metric: "Cost per Result (CPR)",
@@ -167,6 +167,11 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
               metric: "Reach",
               value: "1.04M",
               context: "Total recorded reach across the three campaign variants in the dashboard snapshot.",
+            },
+            {
+              metric: "Impressions",
+              value: "2.85M",
+              context: "Total impressions recorded across the three campaign variants in the dashboard snapshot.",
             },
           ],
           insights: [
