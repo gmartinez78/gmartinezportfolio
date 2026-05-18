@@ -1764,8 +1764,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         );
       })() : null}
 
-      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        {caseStudy.slug === "nayya-ai-benefits" ? (
+      {(caseStudy.slug === "nayya-ai-benefits" || caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "flock-accessibility-system" || designStrategy.length > 0) ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          {caseStudy.slug === "nayya-ai-benefits" ? (
           <>
             <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
               Design Process
@@ -1776,7 +1777,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               ))}
             </div>
           </>
-        ) : caseStudy.slug === "i9-everify-integration" ? (
+          ) : caseStudy.slug === "i9-everify-integration" ? (
           <>
             <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
               Design Process
@@ -1824,7 +1825,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             </div>
           </>
-        ) : caseStudy.slug === "flock-accessibility-system" ? (
+          ) : caseStudy.slug === "flock-accessibility-system" ? (
           <>
             <SectionHeading
               title="Design Process"
@@ -1846,7 +1847,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             </div>
           </>
-        ) : (
+          ) : (
           <>
             <SectionHeading
               title="Design Process"
@@ -1859,8 +1860,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               ))}
             </div>
           </>
-        )}
-      </section>
+          )}
+        </section>
+      ) : null}
 
       {caseStudy.slug === "i9-everify-integration" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
