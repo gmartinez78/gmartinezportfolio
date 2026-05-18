@@ -1578,9 +1578,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           Before sketching anything, I audited five direct competitors against seven conversion heuristics that matter for cold paid traffic. The pattern was clear: Zapiano was the weakest landing in the category on every dimension that drives entry conversion.
                         </p>
                         <p>
-                          Pianote, the closest gold-standard comparable for a founder-led, community-driven, premium subscription experience, scored 7 of 7. Zapiano scored 0 strong out of 7.
-                        </p>
-                        <p>
                           The redesign brief wrote itself: close the four critical gaps of entry friction, segmentation, founder visibility, and community proof while keeping what was already working, including risk reversal and content depth.
                         </p>
                       </div>

@@ -70,12 +70,12 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
         {
           step: 2,
           label: "Benchmark the category",
-          description: "Compared five direct competitors against seven conversion-driving dimensions that matter for cold paid traffic in the adult piano learning category. Pianote, the closest gold-standard comparable, scored 7 of 7 while Zapiano scored 0 strong out of 7.",
+          description: "",
         },
         {
           step: 3,
           label: "Reframe the landing",
-          description: "This is where the redesign stopped being a landing page exercise and became a funnel strategy recommendation. I proposed killing the Club tiers as the paid entry point, moving them deeper in the funnel for warm and returning users, leading with the EUR9 Introduction Course as the cold-traffic entry, and upselling to PianoStarter at EUR29/month after the intro. The reasoning I brought to the PM and Marketing was straightforward: users did not need three options to compare, they needed one clear next thing to do. Daily piano practice is a habit, and the offer architecture should mirror that. From there, Sven leads the hero, beginner-vs-returner segmentation is woven into the copy, one primary CTA focuses on the EUR9 intro purchase, the email gate moves below social proof, and community credibility shows up in the fold instead of three competing pricing blocks.",
+          description: "The biggest problem was not the landing page. It was the offer. The Club tiers were the real conversion blocker, so I made a strategic recommendation to the PM and Marketing: kill the Club tiers as the cold-traffic entry, move them deeper in the funnel for warm and returning users, lead with the €9 Introduction Course as the paid landing entry, and upsell to PianoStarter at €29/month after the intro. My reasoning was straightforward: users did not need three options to compare. They needed one clear next thing to do. Daily piano practice is a habit, and the offer architecture had to mirror that. The team approved the offer change. From there I redesigned the landing around the new entry: beginner vs returner segmentation in the copy, one primary CTA focused on the €9 intro purchase, the email gate moved below social proof, and community credibility in the fold instead of three competing pricing blocks.",
         },
         {
           step: 4,
