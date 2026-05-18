@@ -2426,7 +2426,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </Card>
             ) : null}
             {projectedImprovements.length ? (
-              <div className="p-8">
+              <div className="p-8 md:col-span-2">
                 <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Projected Improvements</p>
                 <ul className="space-y-3">
                   {projectedImprovements.map((item) => (
