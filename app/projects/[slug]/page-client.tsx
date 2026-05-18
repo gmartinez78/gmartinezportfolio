@@ -1481,9 +1481,24 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
                     {index + 1}. {step.label}
                   </h2>
-                  <p className="mt-3 font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                    {step.description}
-                  </p>
+                  <div className="mt-3 space-y-3">
+                    {step.description.split("\n").map((line, lineIndex) => {
+                      const trimmed = line.trim();
+                      if (!trimmed) return null;
+                      if (trimmed.startsWith("- ")) {
+                        return (
+                          <p key={`${step.step}-line-${lineIndex}`} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                            {trimmed}
+                          </p>
+                        );
+                      }
+                      return (
+                        <p key={`${step.step}-line-${lineIndex}`} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                          {trimmed}
+                        </p>
+                      );
+                    })}
+                  </div>
                   {index === 0 ? (
                     <div className="mt-10 overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)] text-left">
                       <div className="border-b border-[#dadde1] px-6 py-5">
