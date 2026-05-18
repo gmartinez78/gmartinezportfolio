@@ -41,7 +41,7 @@ type HighlightMetric = {
   context?: string;
 };
 
-const CONFIDENTIAL_PLACEHOLDER_SLUG = "nayya-ai-benefits-private";
+const CONFIDENTIAL_PLACEHOLDER_SLUG = "zapiano-marketing";
 
 const HOME_BANNER_GRADIENT =
   "linear-gradient(90deg, #e6f1fb 0%, #eee7fb 37%, #f9e5ee 68%, #fcf0e2 100%)";
@@ -78,9 +78,17 @@ type ConfidentialBenchmarkRow = {
   takeaway: string;
 };
 
+type ConfidentialAbTestRow = {
+  metric: string;
+  variantA: string;
+  variantB: string;
+  takeaway: string;
+};
+
 const CONFIDENTIAL_BENCHMARK_HEADERS = [
   "Low-friction entry offer",
   "Beginner vs returner path",
+  "Founder credibility upfront",
   "Community proof on page",
   "Pricing clarity",
   "Mobile-first clarity",
@@ -92,35 +100,35 @@ const CONFIDENTIAL_BENCHMARK_ROWS: ConfidentialBenchmarkRow[] = [
     product: "Simply Piano",
     domain: "hellosimply.com",
     group: "Direct competitors",
-    scores: ["strong", "strong", "partial", "strong", "strong", "strong"],
+    scores: ["strong", "strong", "missing", "partial", "strong", "strong", "strong"],
     takeaway: "7-day free trial sets category baseline. Onboarding quiz segments by level.",
   },
   {
     product: "Skoove",
     domain: "skoove.com",
     group: "Direct competitors",
-    scores: ["strong", "partial", "missing", "strong", "strong", "strong"],
+    scores: ["strong", "partial", "missing", "missing", "strong", "strong", "strong"],
     takeaway: "Free tier as entry hook. Skips segmentation, treats all visitors as beginners.",
   },
   {
     product: "Flowkey",
     domain: "flowkey.com",
     group: "Direct competitors",
-    scores: ["strong", "strong", "missing", "strong", "strong", "strong"],
+    scores: ["strong", "strong", "missing", "missing", "strong", "strong", "strong"],
     takeaway: "Strong hero video. Beginner / intermediate / returner paths clearly labeled.",
   },
   {
     product: "Yousician",
     domain: "yousician.com",
     group: "Direct competitors",
-    scores: ["strong", "strong", "partial", "partial", "strong", "strong"],
+    scores: ["strong", "strong", "missing", "partial", "partial", "strong", "strong"],
     takeaway: "10M+ user social proof. Pricing transparency criticized in user reviews.",
   },
   {
     product: "Pianote",
     domain: "pianote.com",
     group: "Direct competitors",
-    scores: ["strong", "strong", "strong", "strong", "strong", "strong"],
+    scores: ["strong", "strong", "strong", "strong", "strong", "strong", "strong"],
     takeaway: "Category gold standard. Real teachers in hero, community is core value prop.",
   },
   {
@@ -128,7 +136,7 @@ const CONFIDENTIAL_BENCHMARK_ROWS: ConfidentialBenchmarkRow[] = [
     domain: "zapiano.com (original LP)",
     group: "Zapiano",
     badge: "Before",
-    scores: ["missing", "missing", "partial", "missing", "partial", "missing"],
+    scores: ["missing", "missing", "missing", "partial", "missing", "partial", "missing"],
     takeaway:
       "- High upfront cost\n- Competing membership tiers\n- No audience segmentation before users understood the value",
   },
@@ -137,7 +145,7 @@ const CONFIDENTIAL_BENCHMARK_ROWS: ConfidentialBenchmarkRow[] = [
     domain: "zapiano.com (redesign)",
     group: "Zapiano",
     badge: "After",
-    scores: ["strong", "strong", "strong", "strong", "strong", "strong"],
+    scores: ["strong", "strong", "strong", "strong", "strong", "strong", "strong"],
     takeaway: "€9 intro course as paid entry. Beginner / returner path. Sven leads hero. Community block in fold.",
   },
 ];
@@ -219,6 +227,33 @@ const CONFIDENTIAL_FUNNEL_ARCHITECTURE = {
   footer:
     "Impact: 6% to 25% paid landing conversion (+19pp, 4.2x) | $4.20 to $0.85 cost per purchase (-80%) | ~22,000 incremental intro course purchases at no additional ad spend",
 };
+
+const CONFIDENTIAL_AB_TEST_ROWS: ConfidentialAbTestRow[] = [
+  {
+    metric: "Social proof treatment",
+    variantA: "Physical community proof",
+    variantB: "Digital community proof",
+    takeaway: "The test isolated proof format, not the offer.",
+  },
+  {
+    metric: "Creative used",
+    variantA: "Annual Zapiano member meetup photos in Switzerland and Germany",
+    variantB: "Mobile app screenshots, member feed views, and in-product social proof",
+    takeaway: "Variant B made the product itself visible much earlier.",
+  },
+  {
+    metric: "Audience signal",
+    variantA: "Warm, authentic, but implied in-person participation",
+    variantB: "Immediate, tangible preview for cold, mobile-first visitors",
+    takeaway: "Cold paid traffic responded better to product tangibility than community warmth.",
+  },
+  {
+    metric: "Conversion outcome",
+    variantA: "Lower-performing variant",
+    variantB: "Winning variant",
+    takeaway: "Variant B won decisively and became the rollout direction.",
+  },
+];
 
 const NAYYA_PROCESS_ALTERNATIVES = [
   {
@@ -1460,7 +1495,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               {caseStudy.methodology.steps.map((step, index) => (
                 <div key={`${step.step}-detail`} className="text-center">
                   <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
-                    {index + 1}. {step.label}
+                    {step.label}
                   </h2>
                   {index === 2 ? (
                     <div className="mt-3 grid items-start gap-8 text-left lg:grid-cols-[minmax(0,1fr)_420px]">
@@ -1481,6 +1516,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             isReframeImageExpanded ? "max-h-none" : "max-h-[520px]"
                           }`}
                         >
+                          <span className="absolute left-4 top-4 z-10 inline-flex rounded-[4px] bg-[#fca5a5] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#7f1d1d]">
+                            Before
+                          </span>
                           <img
                             src={withBasePath("/images/projects/zapiano/banners/page-6.svg")}
                             alt="Zapiano landing redesign reference"
@@ -1616,16 +1654,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         <p>
                           Before sketching anything, I audited five direct competitors against seven conversion heuristics that matter for cold paid traffic. The pattern was clear: Zapiano was the weakest landing in the category on every dimension that drives entry conversion.
                         </p>
-                        <p>
-                          The redesign brief wrote itself: close the four critical gaps of entry friction, segmentation, founder visibility, and community proof while keeping what was already working, including risk reversal and content depth.
-                        </p>
                       </div>
 
                       <div className="overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
                         <div className="border-b border-[#dadde1] px-6 py-5">
                           <h3 className="text-[18px] font-semibold text-[#1c1e21]">Competitive benchmark</h3>
                           <p className="mt-1 text-[13px] text-[#65676b]">
-                            Adult piano learning category | 5 direct competitors compared across conversion-driving dimensions
+                            Adult piano learning category | 5 competitors evaluated across 7 UX and conversion heuristics
                           </p>
                         </div>
 
@@ -1646,7 +1681,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </div>
 
                         <div className="hidden overflow-x-auto md:block">
-                          <table className="min-w-[1360px] w-full border-collapse text-[13px]">
+                          <table className="min-w-[1480px] w-full border-collapse text-[13px]">
                             <thead>
                               <tr className="bg-[#f5f6f7] text-center text-[11px] font-medium leading-[1.4] text-[#65676b]">
                                 <th className="min-w-[230px] border-b border-r border-[#ebedf0] px-4 py-3 text-left">Product</th>
@@ -1662,7 +1697,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                               {(["Direct competitors", "Zapiano"] as const).map((group) => (
                                 <Fragment key={group}>
                                   <tr className="bg-[#ebedf0]">
-                                    <td colSpan={9} className="px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-[0.04em] text-[#65676b]">
+                                    <td colSpan={10} className="px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-[0.04em] text-[#65676b]">
                                       {group}
                                     </td>
                                   </tr>
@@ -1769,8 +1804,93 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </div>
 
                         <div className="border-t border-[#dadde1] bg-[#f5f6f7] px-6 py-4 text-[11px] text-[#65676b]">
-                          Score summary | Before: 0 strong, 3 partial, 4 missing of 7 dimensions. After: 7 strong of 7. Closed all 4 critical gaps versus Pianote category benchmark.
+                          Score summary | Before: 0 strong, 2 partial, 5 missing of 7 dimensions. After: 7 strong of 7. Closed all 4 critical gaps versus Pianote category benchmark.
                         </div>
+                      </div>
+                      <div className="mx-auto mt-8 max-w-[820px] text-center">
+                        <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                          The redesign brief wrote itself: close the four critical gaps of entry friction, segmentation, founder visibility, and community proof while keeping what was already working, including risk reversal and content depth.
+                        </p>
+                      </div>
+                    </div>
+                  ) : null}
+                  {index === 4 ? (
+                    <div className="mt-10 text-left">
+                      <div className="overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
+                        <div className="border-b border-[#dadde1] px-6 py-5">
+                          <h3 className="text-[18px] font-semibold text-[#1c1e21]">A/B testing comparison</h3>
+                          <p className="mt-1 text-[13px] text-[#65676b]">
+                            Same offer, same audience, two different social proof treatments.
+                          </p>
+                        </div>
+
+                        <div className="hidden overflow-x-auto md:block">
+                          <table className="w-full border-collapse text-[13px]">
+                            <thead>
+                              <tr className="bg-[#f5f6f7] text-left text-[11px] font-medium leading-[1.4] text-[#65676b]">
+                                <th className="w-[20%] border-b border-r border-[#ebedf0] px-4 py-3">Difference</th>
+                                <th className="w-[24%] border-b border-r border-[#ebedf0] px-4 py-3">Variant A</th>
+                                <th className="w-[24%] border-b border-r border-[#ebedf0] px-4 py-3">Variant B</th>
+                                <th className="w-[32%] border-b border-[#ebedf0] px-4 py-3">Why it mattered</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {CONFIDENTIAL_AB_TEST_ROWS.map((row) => (
+                                <tr key={row.metric} className={row.metric === "Conversion outcome" ? "bg-[#f0fdf4]" : "bg-white"}>
+                                  <td className="border-b border-r border-[#ebedf0] px-4 py-4 font-semibold text-[#1c1e21]">{row.metric}</td>
+                                  <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-[#65676b]">{row.variantA}</td>
+                                  <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-[#65676b]">
+                                    <div className="flex items-start gap-2">
+                                      <span>{row.variantB}</span>
+                                      {row.metric === "Conversion outcome" ? (
+                                        <span className="inline-flex rounded-[4px] bg-[#16a34a] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-white">
+                                          Winner
+                                        </span>
+                                      ) : null}
+                                    </div>
+                                  </td>
+                                  <td className="border-b border-[#ebedf0] px-4 py-4 text-[#65676b]">{row.takeaway}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+
+                        <div className="grid gap-4 p-5 md:hidden">
+                          {CONFIDENTIAL_AB_TEST_ROWS.map((row) => (
+                            <Card key={`ab-mobile-${row.metric}`}>
+                              <CardContent className="space-y-4 px-5 py-5">
+                                <p className="text-[16px] font-semibold text-[#0e2951]">{row.metric}</p>
+                                <div className="space-y-3 text-[14px] leading-[1.6] text-[#5c7792]">
+                                  <div>
+                                    <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#65676b]">Variant A</p>
+                                    <p className="mt-1">{row.variantA}</p>
+                                  </div>
+                                  <div>
+                                    <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#65676b]">Variant B</p>
+                                    <p className="mt-1">
+                                      {row.variantB}
+                                      {row.metric === "Conversion outcome" ? (
+                                        <span className="ml-2 inline-flex rounded-[4px] bg-[#16a34a] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-white">
+                                          Winner
+                                        </span>
+                                      ) : null}
+                                    </p>
+                                  </div>
+                                  <div>
+                                    <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">Why it mattered</p>
+                                    <p className="mt-1">{row.takeaway}</p>
+                                  </div>
+                                </div>
+                              </CardContent>
+                            </Card>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="mx-auto mt-8 max-w-[820px] text-center">
+                        <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                          Once both variants had statistically meaningful data, I used Copilot to compare scroll depth, time-to-CTA, and segment behavior across variants. It compressed the slowest part of the testing cycle, synthesis, without replacing the design judgment that came before it.
+                        </p>
                       </div>
                     </div>
                   ) : null}

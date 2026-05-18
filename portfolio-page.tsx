@@ -22,19 +22,19 @@ import {
 import { withBasePath } from "./lib/site";
 
 const TOOL_SHOWCASE_ICONS = [
-  { label: "Jira", className: "absolute top-[5%] left-[2%] w-[15px] md:w-[30px]" },
-  { label: "React", className: "absolute top-[2%] left-[12%] w-[16px] md:w-[32px]" },
-  { label: "Miro", className: "absolute top-[25%] left-[15%] w-[20px] md:w-[40px]" },
-  { label: "ChatGPT", className: "absolute top-[8%] left-[40%] w-[35px] md:w-[70px]" },
-  { label: "HTML", className: "absolute top-[1%] left-[63%] w-[15px] md:w-[30px]" },
-  { label: "Confluence", className: "absolute top-[19%] left-[69%] w-[19px] md:w-[38px]" },
-  { label: "Notion", className: "absolute top-[15%] left-[82%] w-[20px] md:w-[40px]" },
-  { label: "Claude", className: "absolute top-0 left-[90%] w-[12px] md:w-[25px]" },
-  { label: "Figma", className: "absolute top-[45%] left-[19%] w-[30px] md:w-[60px]" },
-  { label: "Angular", className: "absolute top-[35%] left-[85%] w-[19px] md:w-[38px]" },
-  { label: "VS Code", className: "absolute top-[30%] left-[95%] w-[22px] md:w-[44px]" },
-  { label: "Copilot", className: "absolute top-[75%] left-[93%] w-[15px] md:w-[30px]" },
-  { label: "Maze", className: "absolute top-[80%] left-[10%] w-[15px] md:w-[30px]" },
+  { label: "Jira", className: "absolute top-[5%] left-[2%] w-[15px] md:w-[30px]", duration: "5.6s", delay: "0.1s" },
+  { label: "React", className: "absolute top-[2%] left-[12%] w-[16px] md:w-[32px]", duration: "6.2s", delay: "0.7s" },
+  { label: "Miro", className: "absolute top-[25%] left-[15%] w-[20px] md:w-[40px]", duration: "5.8s", delay: "1.1s" },
+  { label: "ChatGPT", className: "absolute top-[8%] left-[40%] w-[35px] md:w-[70px]", duration: "6.5s", delay: "0.4s" },
+  { label: "HTML", className: "absolute top-[1%] left-[63%] w-[15px] md:w-[30px]", duration: "5.4s", delay: "1.5s" },
+  { label: "Confluence", className: "absolute top-[19%] left-[69%] w-[19px] md:w-[38px]", duration: "6.1s", delay: "0.9s" },
+  { label: "Notion", className: "absolute top-[15%] left-[82%] w-[20px] md:w-[40px]", duration: "5.9s", delay: "1.3s" },
+  { label: "Claude", className: "absolute top-0 left-[90%] w-[12px] md:w-[25px]", duration: "6.4s", delay: "0.2s" },
+  { label: "Figma", className: "absolute top-[45%] left-[19%] w-[30px] md:w-[60px]", duration: "5.7s", delay: "0.8s" },
+  { label: "Angular", className: "absolute top-[35%] left-[85%] w-[19px] md:w-[38px]", duration: "6.3s", delay: "1.2s" },
+  { label: "VS Code", className: "absolute top-[30%] left-[95%] w-[22px] md:w-[44px]", duration: "5.5s", delay: "0.6s" },
+  { label: "Copilot", className: "absolute top-[75%] left-[93%] w-[15px] md:w-[30px]", duration: "6.6s", delay: "1.6s" },
+  { label: "Maze", className: "absolute top-[80%] left-[10%] w-[15px] md:w-[30px]", duration: "6.0s", delay: "1.0s" },
 ] as const;
 
 const HERO_STARS = [
@@ -752,7 +752,11 @@ export default function PortfolioPage() {
         <div className="pointer-events-none absolute bottom-[104px] h-[248px] w-[629px] max-w-none select-none md:bottom-10 md:h-[496px] md:w-[1257px]">
           <div className="relative h-full w-full">
             {TOOL_SHOWCASE_ICONS.map((tool) => (
-              <div key={`${tool.label}-${tool.className}`} className={tool.className}>
+              <div
+                key={`${tool.label}-${tool.className}`}
+                className={tool.className}
+                style={{ animation: `tool-float ${tool.duration} ease-in-out ${tool.delay} infinite` }}
+              >
                 <Image
                   src={resolveToolIcon(tool.label)}
                   alt={tool.label}

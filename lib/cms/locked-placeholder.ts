@@ -1,6 +1,6 @@
 import type { CaseStudyRecord } from "@/lib/cms/types";
 
-export const LOCKED_NAYYA_PLACEHOLDER_SLUG = "nayya-ai-benefits-private";
+export const LOCKED_NAYYA_PLACEHOLDER_SLUG = "zapiano-marketing";
 
 const LOCKED_NAYYA_SOURCE_SLUG = "nayya-ai-benefits";
 const LOCKED_NAYYA_PLACEHOLDER_PASSWORD = "placeholder";
@@ -75,17 +75,17 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
         {
           step: 3,
           label: "Reframe the landing",
-          description: "The biggest problem was not the landing page. It was the offer. The Club tiers were the real conversion blocker, so I made a strategic recommendation to the PM and Marketing: kill the Club tiers as the cold-traffic entry, move them deeper in the funnel for warm and returning users, lead with the €9 Introduction Course as the paid landing entry, and upsell to PianoStarter at €29/month after the intro.\n\nMy reasoning was straightforward: users did not need three options to compare. They needed one clear next thing to do. Daily piano practice is a habit, and the offer architecture had to mirror that. The team approved the offer change. From there I redesigned the landing around the new entry:\n\n- beginner vs returner segmentation in the copy\n- one primary CTA focused on the €9 intro purchase\n- the email gate moved below social proof\n- community credibility in the fold instead of three competing pricing blocks",
+          description: "The Club tiers were the real conversion blocker, so I recommended killing them as the cold-traffic entry, leading with the €9 Introduction Course, and upselling to PianoStarter at €29/month after the intro.\n\nUsers did not need three options to compare, they needed one clear next thing to do. The team approved the change, and I redesigned the landing around the new entry:\n\n- beginner vs returner segmentation\n- one primary CTA for the €9 intro\n- email gate below social proof\n- community credibility in the fold instead of three competing pricing blocks",
         },
         {
           step: 4,
           label: "Build modular components",
-          description: "The redesign combined a funnel audit, competitor benchmark, offer reframe, modular landing-page redesign, and post-launch testing. Reduce the cognitive cost of the first yes by leading with a single low-friction paid entry instead of multiple long-term commitments. Make founder credibility, beginner-vs-returner relevance, and community proof visible early enough to help cold traffic orient before price friction hits. Design the page as a modular no-code system Marketing could keep testing inside Kajabi without needing engineering for every iteration.",
+          description: "The redesign combined a funnel audit, competitor benchmark, offer reframe, modular landing-page redesign, and post-launch testing. Reduce the cognitive cost of the first yes by leading with a single low-friction paid entry instead of multiple long-term commitments.\n\nMake founder credibility, beginner-vs-returner relevance, and community proof visible early enough to help cold traffic orient before price friction hits. Design the page as a modular no-code system Marketing could keep testing inside Kajabi without needing engineering for every iteration.",
         },
         {
           step: 5,
           label: "A/B test social proof",
-          description: "Variant A used physical community proof through annual Zapiano member meetup photos in Switzerland and Germany. Variant B used digital community proof through mobile app screenshots, member feed views, and in-product social proof.\nOnce both variants had statistically meaningful data, I used Copilot to compare scroll depth, time-to-CTA, and segment behavior across variants. It compressed the slowest part of the testing cycle, synthesis, without replacing the design judgment that came before it.",
+          description: "Variant A used physical community proof through annual Zapiano member meetup photos in Switzerland and Germany. Variant B used digital community proof through mobile app screenshots, member feed views, and in-product social proof.",
         },
       ],
     },
