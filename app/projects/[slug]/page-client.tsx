@@ -225,7 +225,7 @@ const CONFIDENTIAL_FUNNEL_ARCHITECTURE = {
       "The biggest conversion lift came from changing what we asked visitors to decide, not from changing how we styled the buttons. The problem looked like UI. It was actually an offer problem.",
   },
   footer:
-    "Impact: 6% to 25% paid landing conversion (+19pp, 4.2x) | $4.20 to $0.85 cost per purchase (-80%) | ~22,000 incremental intro course purchases at no additional ad spend",
+    "Impact: 6% to 25% paid landing conversion (+19pp, 4.2x) | $4.20 to $0.85 cost per purchase (-80%) | 7,118 purchases on the winning variant vs 2,847 on control",
 };
 
 const CONFIDENTIAL_AB_TEST_ROWS: ConfidentialAbTestRow[] = [

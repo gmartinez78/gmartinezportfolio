@@ -19,7 +19,7 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
     year: 2025,
     duration: "2 to 3 months",
     industry: "Education / Performance Marketing",
-    tagline: "Paid landing conversion lifted 6% to 25%. Cost per acquisition dropped from $4.20 to $0.85.",
+    tagline: "Paid landing conversion lifted 6% to 25%. Winning-variant acquisition cost dropped from $4.20 to $0.85.",
     tags: ["Growth", "Paid Acquisition", "Experimentation", "Landing Pages"],
     filters: ["Product Design"],
     tools: ["Figma", "ClickUp", "Microsoft Copilot", "Google Analytics", "Meta Ads Manager"],
@@ -41,8 +41,8 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
         context: "",
       },
       {
-        value: "4.9x",
-        label: "More purchases",
+        value: "7,118",
+        label: "Purchases on winning variant",
         context: "",
       },
     ],
@@ -139,19 +139,34 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
         payload: {
           rows: [
             {
-              metric: "Purchase rate",
-              value: "25.0%",
-              context: "Up from 6.0% on the original landing page, a +19 percentage point lift and 4.2x improvement.",
+              metric: "Amount Spent",
+              value: "$26,568.50",
+              context: "Total spend across the three campaign variants shown in the preserved Meta dashboard.",
             },
             {
-              metric: "Cost per acquisition",
+              metric: "Return on Ad Spend (ROAS)",
+              value: "~5.0x",
+              context: "Modeled from total recorded purchases at a €9 intro-course price point: ~€133,965 revenue against $26,568.50 spend.",
+            },
+            {
+              metric: "Cost per Acquisition (CPA)",
               value: "$0.85",
-              context: "Down from $4.20, an 80% reduction on the winning variant.",
+              context: "Direct dashboard value for the winning variant, down from $4.20 on the original control.",
             },
             {
-              metric: "Modeled revenue",
-              value: "~EUR198K",
-              context: "Modeled against campaign reach, the redesign translated to roughly 22,000 incremental intro course purchases with no increase in ad spend, with strong downstream LTV implications once PianoStarter upsell is factored in.",
+              metric: "Cost per Click (CPC)",
+              value: "~$0.21",
+              context: "Estimated from spend and the 25.0% landing conversion rate on the winning variant; this is directional, not a direct platform CPC.",
+            },
+            {
+              metric: "Cost per Result (CPR)",
+              value: "$1.79",
+              context: "Average cost per result across all three campaigns in the dashboard snapshot.",
+            },
+            {
+              metric: "Reach",
+              value: "1.04M",
+              context: "Total recorded reach across the three campaign variants in the dashboard snapshot.",
             },
           ],
           insights: [
@@ -163,6 +178,14 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
             "Personalized hero copy based on ad creative so beginner ads route to a beginner hero and returner ads route to a returner hero.",
             "A pre-paywall qualifier quiz with 3-4 questions on goals and level to lift intro-to-subscription conversion further down the funnel.",
             "AI-generated copy variants for headline A/B testing at scale.",
+          ],
+          projected: [
+            "Conservative 1-month scenario: with a 5,500 to 6,000 media budget and using the blended dashboard CPR of $1.79 rather than the winning-variant low of $0.85, the campaign would project roughly 3,070 to 3,350 intro-course purchases.",
+            "At a €9 entry ticket, that implies about €27.6K to €30.2K in top-of-funnel revenue before any PianoStarter upsell or downstream LTV is counted.",
+            "Using the preserved dashboard delivery ratios as a baseline, that same budget range would conservatively translate to roughly 215K to 235K people reached and about 590K to 645K impressions over one month.",
+            "Primary markets worked in this setup: Germany, Switzerland, Sweden, and the Netherlands.",
+            "Recommended targeting mix for a conservative next-month run: broad Advantage+ / algorithmic cold audiences for scale, piano-learning and adult-beginner interest clusters for control, plus warm retargeting from site visitors or CRM / first-party lists when available.",
+            "Estimated audience size by targeting type: broad Advantage+ cold audiences in these four markets can usually support a combined reachable pool in the low millions, interest-based pools are typically narrower but still large enough for monthly testing, and first-party / retargeting pools depend on site traffic and database volume.",
           ],
           successMetrics: [
             "Increase paid landing conversion without increasing ad spend.",
