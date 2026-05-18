@@ -17,7 +17,7 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
     client_context: "Zapiano",
     role: "Sr. Product Designer",
     year: 2025,
-    duration: "2-3 weeks",
+    duration: "2 to 3 months",
     industry: "Education / Performance Marketing",
     tagline: "Paid landing conversion lifted 6% to 25%. Cost per acquisition dropped from $4.20 to $0.85.",
     tags: ["Growth", "Paid Acquisition", "Experimentation", "Landing Pages"],
@@ -75,7 +75,7 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
         {
           step: 3,
           label: "Reframe the landing",
-          description: "The biggest problem was not the landing page. It was the offer. The Club tiers were the real conversion blocker, so I made a strategic recommendation to the PM and Marketing: kill the Club tiers as the cold-traffic entry, move them deeper in the funnel for warm and returning users, lead with the €9 Introduction Course as the paid landing entry, and upsell to PianoStarter at €29/month after the intro. My reasoning was straightforward: users did not need three options to compare. They needed one clear next thing to do. Daily piano practice is a habit, and the offer architecture had to mirror that. The team approved the offer change. From there I redesigned the landing around the new entry:\n- beginner vs returner segmentation in the copy\n- one primary CTA focused on the €9 intro purchase\n- the email gate moved below social proof\n- community credibility in the fold instead of three competing pricing blocks",
+          description: "The biggest problem was not the landing page. It was the offer. The Club tiers were the real conversion blocker, so I made a strategic recommendation to the PM and Marketing: kill the Club tiers as the cold-traffic entry, move them deeper in the funnel for warm and returning users, lead with the €9 Introduction Course as the paid landing entry, and upsell to PianoStarter at €29/month after the intro.\n\nMy reasoning was straightforward: users did not need three options to compare. They needed one clear next thing to do. Daily piano practice is a habit, and the offer architecture had to mirror that. The team approved the offer change. From there I redesigned the landing around the new entry:\n\n- beginner vs returner segmentation in the copy\n- one primary CTA focused on the €9 intro purchase\n- the email gate moved below social proof\n- community credibility in the fold instead of three competing pricing blocks",
         },
         {
           step: 4,
@@ -85,7 +85,7 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
         {
           step: 5,
           label: "A/B test social proof",
-          description: "Variant A used physical community proof through annual Zapiano member meetup photos in Switzerland and Germany. Variant B used digital community proof through mobile app screenshots, member feed views, and in-product social proof.",
+          description: "Variant A used physical community proof through annual Zapiano member meetup photos in Switzerland and Germany. Variant B used digital community proof through mobile app screenshots, member feed views, and in-product social proof.\nOnce both variants had statistically meaningful data, I used Copilot to compare scroll depth, time-to-CTA, and segment behavior across variants. It compressed the slowest part of the testing cycle, synthesis, without replacing the design judgment that came before it.",
         },
       ],
     },
@@ -131,20 +131,6 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
         type: "custom",
         title: "Actions",
         body: "",
-      },
-      {
-        id: "research",
-        type: "custom",
-        title: "Research",
-        body: "The audit and experiment made the structural gaps visible before design execution started. Once both variants had statistically meaningful data, I used Copilot to compare scroll depth, time-to-CTA, and segment behavior across variants. It compressed the slowest part of the testing cycle, synthesis, without replacing the design judgment that came before it.",
-        payload: {
-          items: [
-            "Pianote, the closest gold-standard comparable, scored 7 out of 7 on the benchmark while Zapiano scored 0 strong out of 7.",
-            "Four critical gaps stood out: no low-friction entry offer, no beginner-vs-returner path, no pricing clarity, and no sticky CTA.",
-            "Variant A used physical community proof from member meetups in Switzerland and Germany; Variant B used digital community proof through app and feed screenshots.",
-            "Variant B won because the product became more tangible to cold, mobile-first visitors without implying an in-person commitment too early.",
-          ],
-        },
       },
       {
         id: "impact",

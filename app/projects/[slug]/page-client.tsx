@@ -83,8 +83,8 @@ const CONFIDENTIAL_BENCHMARK_HEADERS = [
   "Beginner vs returner path",
   "Community proof on page",
   "Pricing clarity",
-  "Mobile-optimized hero",
-  "Sticky / clear CTA",
+  "Mobile-first clarity",
+  "CTA visibility & clarity",
 ] as const;
 
 const CONFIDENTIAL_BENCHMARK_ROWS: ConfidentialBenchmarkRow[] = [
@@ -129,7 +129,8 @@ const CONFIDENTIAL_BENCHMARK_ROWS: ConfidentialBenchmarkRow[] = [
     group: "Zapiano",
     badge: "Before",
     scores: ["missing", "missing", "partial", "missing", "partial", "missing"],
-    takeaway: "Entry cost €365 minimum. Three Club tiers competed for attention. No segmentation.",
+    takeaway:
+      "- High upfront cost\n- Competing membership tiers\n- No audience segmentation before users understood the value",
   },
   {
     product: "Zapiano",
@@ -924,11 +925,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [enteredPassword, setEnteredPassword] = useState("");
   const [passwordError, setPasswordError] = useState<string | null>(null);
   const [isUnlocked, setIsUnlocked] = useState(false);
+  const [isReframeImageExpanded, setIsReframeImageExpanded] = useState(false);
 
   useEffect(() => {
     setEnteredPassword("");
     setPasswordError(null);
     setIsUnlocked(false);
+    setIsReframeImageExpanded(false);
   }, [caseStudy?.slug]);
 
   if (loading) {
@@ -1003,17 +1006,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
 
             <div className="relative rounded-[0]">
-              {heroImage ? (
-                <div className="relative h-[220px] w-full overflow-hidden border-b border-[#e0eefb]">
-                  <img
-                    src={withBasePath(heroImage)}
-                    alt={`${caseStudy.title} preview`}
-                    className="h-full w-full scale-[1.03] object-cover object-center blur-md"
-                  />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,41,81,0.12)_0%,rgba(240,247,255,0.7)_100%)]" />
-                </div>
-              ) : null}
-
               <div className="relative mx-auto max-w-[640px] px-6 py-12 text-center md:px-10">
                 <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">
                   Password Protected
@@ -1144,17 +1136,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <p className="text-[16px] leading-[1.7] text-[#5c7792]">{caseStudy.tagline}</p>
               </div>
             </div>
-
-            {heroImage ? (
-              <div className="relative mx-auto mb-10 h-[150px] w-full max-w-[840px] overflow-hidden rounded-[24px] shadow-[0_20px_64px_rgba(14,41,81,0.12)]">
-                <img
-                  src={withBasePath(heroImage)}
-                  alt={`${caseStudy.title} banner`}
-                  className="h-full w-full object-cover object-center"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(14,41,81,0.05)_0%,rgba(14,41,81,0.16)_100%)]" />
-              </div>
-            ) : null}
 
             <div className="relative mt-10 flex flex-col items-center gap-8 pt-8 text-center">
               <div className="grid w-full gap-8 md:grid-cols-[1fr_2fr_1fr] md:items-center">
@@ -1481,24 +1462,67 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
                     {index + 1}. {step.label}
                   </h2>
-                  <div className="mt-3 space-y-3">
-                    {step.description.split("\n").map((line, lineIndex) => {
-                      const trimmed = line.trim();
-                      if (!trimmed) return null;
-                      if (trimmed.startsWith("- ")) {
+                  {index === 2 ? (
+                    <div className="mt-3 grid items-start gap-8 text-left lg:grid-cols-[minmax(0,1fr)_420px]">
+                      <div className="space-y-3">
+                        {step.description.split("\n").map((line, lineIndex) => {
+                          const trimmed = line.trim();
+                          if (!trimmed) return null;
+                          return (
+                            <p key={`${step.step}-line-${lineIndex}`} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                              {trimmed}
+                            </p>
+                          );
+                        })}
+                      </div>
+                      <div className="rounded-[24px] border border-[#d7dfeb] bg-white p-3 shadow-[0_18px_40px_rgba(14,41,81,0.08)]">
+                        <div
+                          className={`relative overflow-hidden rounded-[18px] transition-[max-height] duration-300 ease-out ${
+                            isReframeImageExpanded ? "max-h-none" : "max-h-[520px]"
+                          }`}
+                        >
+                          <img
+                            src={withBasePath("/images/projects/zapiano/banners/page-6.svg")}
+                            alt="Zapiano landing redesign reference"
+                            className="h-auto w-full"
+                          />
+                          {!isReframeImageExpanded ? (
+                            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/90 to-white/0" />
+                          ) : null}
+                        </div>
+                        <div className="mt-4 flex justify-center">
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setIsReframeImageExpanded((current) => !current)}
+                            className="rounded-full border-[#d7dfeb] bg-white px-5 text-[#0e2951] hover:bg-[#f8fbff]"
+                          >
+                            {isReframeImageExpanded ? "View less" : "View more"}
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="mt-3 space-y-3">
+                      {step.description.split("\n").map((line, lineIndex) => {
+                        const trimmed = line.trim();
+                        if (!trimmed) return null;
+                        if (trimmed.startsWith("- ")) {
+                          return (
+                            <p key={`${step.step}-line-${lineIndex}`} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                              {trimmed}
+                            </p>
+                          );
+                        }
                         return (
                           <p key={`${step.step}-line-${lineIndex}`} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                             {trimmed}
                           </p>
                         );
-                      }
-                      return (
-                        <p key={`${step.step}-line-${lineIndex}`} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                          {trimmed}
-                        </p>
-                      );
-                    })}
-                  </div>
+                      })}
+                    </div>
+                  )}
                   {index === 0 ? (
                     <div className="mt-10 overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)] text-left">
                       <div className="border-b border-[#dadde1] px-6 py-5">
@@ -1684,7 +1708,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                                         </td>
                                       ))}
                                       <td className="border-b border-[#ebedf0] px-4 py-4 text-left text-[12px] leading-[1.45] text-[#65676b]">
-                                        {row.takeaway}
+                                        <div className="space-y-1">
+                                          {row.takeaway.split("\n").map((line, lineIndex) => (
+                                            <p key={`${row.product}-${row.domain}-takeaway-${lineIndex}`}>{line}</p>
+                                          ))}
+                                        </div>
                                       </td>
                                     </tr>
                                   ))}
@@ -1727,7 +1755,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                                     </div>
                                     <div>
                                       <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">Key takeaway</p>
-                                      <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{row.takeaway}</p>
+                                      <div className="mt-2 space-y-1 text-[14px] leading-[1.6] text-[#5c7792]">
+                                        {row.takeaway.split("\n").map((line, lineIndex) => (
+                                          <p key={`mobile-${row.product}-${row.domain}-takeaway-${lineIndex}`}>{line}</p>
+                                        ))}
+                                      </div>
                                     </div>
                                   </CardContent>
                                 </Card>
