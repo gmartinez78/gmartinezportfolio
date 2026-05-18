@@ -140,8 +140,8 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
           rows: [
             {
               metric: "Amount Spent",
-              value: "$26,568.50",
-              context: "Total spend across the three campaign variants shown in the preserved Meta dashboard.",
+              value: "$6,050.30",
+              context: "Direct dashboard spend for the winning variant, aligned with the CPA and purchase figures shown in this case study.",
             },
             {
               metric: "Return on Ad Spend (ROAS)",
@@ -152,6 +152,11 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
               metric: "Cost per Acquisition (CPA)",
               value: "$0.85",
               context: "Direct dashboard value for the winning variant, down from $4.20 on the original control.",
+            },
+            {
+              metric: "Cost per Click (CPC)",
+              value: "~$0.25",
+              context: "Modeled blended estimate across the three campaign variants using implied clicks from purchase volume and landing conversion rates; included as directional, not as a direct platform CPC.",
             },
             {
               metric: "Cost per Result (CPR)",
