@@ -255,6 +255,21 @@ const CONFIDENTIAL_AB_TEST_ROWS: ConfidentialAbTestRow[] = [
   },
 ];
 
+const CONFIDENTIAL_CONSERVATIVE_SCENARIO_ROWS = [
+  {
+    budget: "$5,500",
+    reach: "~216K",
+    purchases: "~3,073",
+    revenue: "~€27.7K",
+  },
+  {
+    budget: "$6,000",
+    reach: "~236K",
+    purchases: "~3,352",
+    revenue: "~€30.2K",
+  },
+] as const;
+
 const NAYYA_PROCESS_ALTERNATIVES = [
   {
     title: "Embedded Nayya section",
@@ -2419,6 +2434,58 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>
                     ))}
                   </ul>
+                  {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG ? (
+                    <div className="mt-8 overflow-hidden rounded-[20px] border border-[#d7e8f7] bg-white">
+                      <div className="border-b border-[#d7e8f7] bg-[#f7f9fb] px-5 py-4">
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">
+                          Conservative 1-Month Scenario
+                        </p>
+                      </div>
+                      <div className="hidden md:block">
+                        <div className="grid grid-cols-4 border-b border-[#d7e8f7] px-5 py-4 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#0e2951]">
+                          <div>Budget</div>
+                          <div>Reach</div>
+                          <div>Purchases</div>
+                          <div>Revenue</div>
+                        </div>
+                        {CONFIDENTIAL_CONSERVATIVE_SCENARIO_ROWS.map((row) => (
+                          <div
+                            key={row.budget}
+                            className="grid grid-cols-4 border-t border-[#d7e8f7] px-5 py-4 text-[15px] leading-[1.6] text-[#5c7792]"
+                          >
+                            <div className="font-semibold text-[#0e2951]">{row.budget}</div>
+                            <div>{row.reach}</div>
+                            <div>{row.purchases}</div>
+                            <div>{row.revenue}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="grid gap-3 p-4 md:hidden">
+                        {CONFIDENTIAL_CONSERVATIVE_SCENARIO_ROWS.map((row) => (
+                          <Card key={`scenario-${row.budget}`} className="overflow-hidden">
+                            <CardContent className="grid grid-cols-2 gap-3 px-4 py-4 text-[14px] leading-[1.5] text-[#5c7792]">
+                              <div>
+                                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#65676b]">Budget</p>
+                                <p className="mt-1 font-semibold text-[#0e2951]">{row.budget}</p>
+                              </div>
+                              <div>
+                                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#65676b]">Reach</p>
+                                <p className="mt-1">{row.reach}</p>
+                              </div>
+                              <div>
+                                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#65676b]">Purchases</p>
+                                <p className="mt-1">{row.purchases}</p>
+                              </div>
+                              <div>
+                                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#65676b]">Revenue</p>
+                                <p className="mt-1">{row.revenue}</p>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
                 </CardContent>
               </Card>
             ) : null}

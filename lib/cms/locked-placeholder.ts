@@ -50,7 +50,7 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
     my_role: ["Sr. Product Designer", "Design", "Research", "Strategy"],
     problem: {
       admin_pain_points: [
-        "Zapiano is a Swiss online piano course platform for adults, founded by piano teacher Sven Haefliger. Meta campaigns were driving healthy reach (1.77M people, 5.84M impressions), but paid landing conversion was stuck at 6% and most visitors bounced before any conversion event.",
+        "Zapiano is a Swiss online piano course platform for adults, founded by piano teacher Sven Haefliger. Meta campaigns were driving healthy reach (1.04M reach, 2.85M impressions), but paid landing conversion was stuck at 6% and most visitors bounced before any conversion event.",
         "The existing page led with three Club subscription tiers side-by-side, dense feature blocks, and three competing CTAs. Cold traffic hit the highest-priced tier within the first scroll and left.",
       ],
       user_pain_points: [
@@ -118,7 +118,7 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
         id: "situation",
         type: "custom",
         title: "Situation",
-        body: "Zapiano is a Swiss online piano course platform for adults, founded by piano teacher Sven Haefliger. Meta campaigns were driving healthy reach (1.77M people, 5.84M impressions), but paid landing conversion was stuck at 6% and most visitors bounced before any conversion event.\n\nThe existing page led with three Club subscription tiers side-by-side, dense feature blocks, and three competing CTAs. Cold traffic hit the highest-priced tier within the first scroll and left.",
+        body: "Zapiano is a Swiss online piano course platform for adults, founded by piano teacher Sven Haefliger. Meta campaigns were driving healthy reach (1.04M reach, 2.85M impressions), but paid landing conversion was stuck at 6% and most visitors bounced before any conversion event.\n\nThe existing page led with three Club subscription tiers side-by-side, dense feature blocks, and three competing CTAs. Cold traffic hit the highest-priced tier within the first scroll and left.",
       },
       {
         id: "task",
@@ -152,11 +152,6 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
               metric: "Cost per Acquisition (CPA)",
               value: "$0.85",
               context: "Direct dashboard value for the winning variant, down from $4.20 on the original control.",
-            },
-            {
-              metric: "Cost per Click (CPC)",
-              value: "~$0.21",
-              context: "Estimated from spend and the 25.0% landing conversion rate on the winning variant; this is directional, not a direct platform CPC.",
             },
             {
               metric: "Cost per Result (CPR)",
