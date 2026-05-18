@@ -81,6 +81,7 @@ type ConfidentialBenchmarkRow = {
 const CONFIDENTIAL_BENCHMARK_HEADERS = [
   "Low-friction entry offer",
   "Beginner vs returner path",
+  "Founder / teacher in hero",
   "Community proof on page",
   "Pricing clarity",
   "Mobile-optimized hero",
@@ -92,35 +93,35 @@ const CONFIDENTIAL_BENCHMARK_ROWS: ConfidentialBenchmarkRow[] = [
     product: "Simply Piano",
     domain: "hellosimply.com",
     group: "Direct competitors",
-    scores: ["strong", "strong", "partial", "strong", "strong", "strong"],
+    scores: ["strong", "strong", "missing", "partial", "strong", "strong", "strong"],
     takeaway: "7-day free trial sets category baseline. Onboarding quiz segments by level.",
   },
   {
     product: "Skoove",
     domain: "skoove.com",
     group: "Direct competitors",
-    scores: ["strong", "partial", "missing", "strong", "strong", "strong"],
+    scores: ["strong", "partial", "missing", "missing", "strong", "strong", "strong"],
     takeaway: "Free tier as entry hook. Skips segmentation, treats all visitors as beginners.",
   },
   {
     product: "Flowkey",
     domain: "flowkey.com",
     group: "Direct competitors",
-    scores: ["strong", "strong", "missing", "strong", "strong", "strong"],
+    scores: ["strong", "strong", "missing", "missing", "strong", "strong", "strong"],
     takeaway: "Strong hero video. Beginner / intermediate / returner paths clearly labeled.",
   },
   {
     product: "Yousician",
     domain: "yousician.com",
     group: "Direct competitors",
-    scores: ["strong", "strong", "partial", "partial", "strong", "strong"],
+    scores: ["strong", "strong", "missing", "partial", "partial", "strong", "strong"],
     takeaway: "10M+ user social proof. Pricing transparency criticized in user reviews.",
   },
   {
     product: "Pianote",
     domain: "pianote.com",
     group: "Direct competitors",
-    scores: ["strong", "strong", "strong", "strong", "strong", "strong"],
+    scores: ["strong", "strong", "strong", "strong", "strong", "strong", "strong"],
     takeaway: "Category gold standard. Real teachers in hero, community is core value prop.",
   },
   {
@@ -128,16 +129,16 @@ const CONFIDENTIAL_BENCHMARK_ROWS: ConfidentialBenchmarkRow[] = [
     domain: "zapiano.com (original LP)",
     group: "Zapiano",
     badge: "Before",
-    scores: ["missing", "missing", "partial", "missing", "partial", "missing"],
-    takeaway: "Entry cost EUR365 minimum. Three Club tiers competed for attention. No segmentation.",
+    scores: ["missing", "missing", "partial", "partial", "missing", "partial", "missing"],
+    takeaway: "Entry cost €365 minimum. Three Club tiers competed for attention. No segmentation.",
   },
   {
     product: "Zapiano",
     domain: "zapiano.com (redesign)",
     group: "Zapiano",
     badge: "After",
-    scores: ["strong", "strong", "strong", "strong", "strong", "strong"],
-    takeaway: "EUR9 intro course as paid entry. Beginner / returner path. Sven leads hero. Community block in fold.",
+    scores: ["strong", "strong", "strong", "strong", "strong", "strong", "strong"],
+    takeaway: "€9 intro course as paid entry. Beginner / returner path. Sven leads hero. Community block in fold.",
   },
 ];
 
@@ -1510,9 +1511,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
           <div className="overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
             <div className="border-b border-[#dadde1] px-6 py-5">
-              <h3 className="text-[18px] font-semibold text-[#1c1e21]">Competitive landing page audit</h3>
+              <h3 className="text-[18px] font-semibold text-[#1c1e21]">Competitive benchmark</h3>
               <p className="mt-1 text-[13px] text-[#65676b]">
-                Adult piano learning category | 5 direct competitors evaluated against 7 conversion heuristics
+                Adult piano learning category | 5 direct competitors compared across 7 conversion-driving dimensions
               </p>
             </div>
 
@@ -1529,7 +1530,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#fee2e2] text-[12px] font-semibold text-[#b91c1c]">✗</span>
                 Missing
               </div>
-              <div className="ml-auto">Analysis: Aug 2024 | Methodology: heuristic review of paid traffic landing pages</div>
+              <div className="ml-auto">Analysis: April 2025 | Method: competitive benchmark of paid traffic landing pages</div>
             </div>
 
             <div className="hidden overflow-x-auto md:block">
