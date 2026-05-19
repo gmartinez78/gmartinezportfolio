@@ -1581,7 +1581,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             After
                           </span>
                           <img
-                            src={withBasePath("/images/projects/zapiano/banners/page-7.svg")}
+                            src={withBasePath("/images/projects/zapiano/banners/page-3.svg")}
                             alt="Zapiano landing redesign after applying benchmark and funnel improvements"
                             className="h-auto w-full"
                           />
