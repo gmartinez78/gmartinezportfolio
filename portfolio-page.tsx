@@ -556,7 +556,7 @@ export default function PortfolioPage() {
       image: resolveProjectListCardImage(study.slug, study.images?.cover || study.images?.hero || ""),
       background: PROJECT_BACKGROUNDS[study.slug] ?? "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
       href: resolveProjectHref(study),
-      tags: study.tags.slice(0, 4),
+      tags: study.tags.slice(0, 2),
       password: study.password,
       cta: study.external_link ? "View project" : "View case study",
     }));
@@ -853,143 +853,17 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_#edf6ff_0%,_#ffffff_50%,_#fff3e4_100%)] p-5">
-                  <div className="mb-4 mt-10 rounded-[18px] bg-white/80 p-3 shadow-[0_10px_24px_rgba(31,53,94,0.06)]">
-                    <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#7b8598]">
-                      Pages
-                    </div>
-                    <div className="grid gap-2 md:grid-cols-3">
-                      <div className="rounded-[14px] bg-white px-3 py-2 shadow-[0_8px_18px_rgba(20,34,56,0.04)]">
-                        <p className="text-[12px] font-semibold text-[#0e2951]">Research</p>
-                        <p className="mt-1 text-[11px] text-[#7b8598]">behavior + trust patterns</p>
-                      </div>
-                      <div className="rounded-[14px] bg-[#eaf3ff] px-3 py-2 ring-1 ring-[#bfd8ff]">
-                        <p className="text-[12px] font-semibold text-[#0e2951]">Flows</p>
-                        <p className="mt-1 text-[11px] text-[#6f7c95]">selected direction</p>
-                      </div>
-                      <div className="rounded-[14px] bg-white px-3 py-2 shadow-[0_8px_18px_rgba(20,34,56,0.04)]">
-                        <p className="text-[12px] font-semibold text-[#0e2951]">Prototype</p>
-                        <p className="mt-1 text-[11px] text-[#7b8598]">handoff-ready states</p>
-                      </div>
-                    </div>
-                  </div>
-
                   <div className="relative overflow-hidden">
-                    <div className="absolute left-8 top-6 rounded-full bg-white/85 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#667595] shadow-[0_10px_24px_rgba(31,53,94,0.08)]">
-                      Figma canvas
-                    </div>
                     <div className="mx-auto mt-4 max-w-[860px] rotate-[-1deg] rounded-[28px] border border-[#dfe7f2] bg-white p-3 shadow-[0_24px_60px_rgba(31,53,94,0.14)]">
                       <div className="overflow-hidden rounded-[20px] border border-[#edf1f7] bg-[#fcfdff]">
                         <div className="grid gap-0 md:grid-cols-[1.15fr_0.9fr]">
                           <div className="border-r border-[#edf1f7] bg-[linear-gradient(180deg,#ffffff_0%,#f7faff_100%)] p-4">
-                            <div className="mb-3 flex items-center justify-between">
-                              <span className="rounded-full bg-[#eef6ff] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">
-                                opportunity map
-                              </span>
-                              <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#7b8598]">
-                                v2
-                              </span>
-                            </div>
-                            <div className="space-y-3">
-                              <div className="rounded-[18px] border border-[#e7eef8] bg-white p-3 shadow-[0_10px_24px_rgba(31,53,94,0.05)]">
-                                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#7b8598]">User need</p>
-                                <p className="mt-1 text-[14px] font-semibold text-[#0e2951]">Understand what action to take next</p>
-                              </div>
-                              <div className="flex items-center gap-2 pl-3">
-                                <span className="h-2 w-2 rounded-full bg-[#1183D0] animate-[impact-flow-pulse_2.6s_ease-in-out_infinite]" />
-                                <div className="h-[2px] flex-1 rounded-full bg-[linear-gradient(90deg,#cde5fb_0%,#8ac0f0_100%)]" />
-                              </div>
-                              <div className="rounded-[18px] border border-[#e7eef8] bg-[#fff8ee] p-3 shadow-[0_10px_24px_rgba(31,53,94,0.05)]">
-                                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#b67a20]">Business value</p>
-                                <p className="mt-1 text-[14px] font-semibold text-[#0e2951]">Reduce drop-off and improve benefit selection confidence</p>
-                              </div>
-                              <div className="grid grid-cols-3 gap-2">
-                                <div className="rounded-[14px] bg-[#e8f3ff] px-2 py-3">
-                                  <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#6a7ea3]">Impact</p>
-                                  <div className="mt-2 h-12 rounded-[10px] bg-[#bfdcff]" />
-                                </div>
-                                <div className="rounded-[14px] bg-[#fff2de] px-2 py-3">
-                                  <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#b67a20]">Risk</p>
-                                  <div className="mt-2 h-12 rounded-[10px] bg-[#ffd9ab]" />
-                                </div>
-                                <div className="rounded-[14px] bg-[#eef8f1] px-2 py-3">
-                                  <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#4c8a60]">Scope</p>
-                                  <div className="mt-2 h-12 rounded-[10px] bg-[#cfeeda]" />
-                                </div>
-                              </div>
-                            </div>
+                            <div className="h-full rounded-[18px] bg-white shadow-[0_10px_24px_rgba(31,53,94,0.05)]" />
                           </div>
                           <div className="bg-[linear-gradient(180deg,#fbfcff_0%,#f3f7ff_100%)] p-4">
-                            <div className="mb-3 flex items-center justify-between">
-                              <span className="rounded-full bg-[#f4efff] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#7760a8]">
-                                decision frame
-                              </span>
-                              <span className="rounded-full border border-[#d8e4fb] px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">
-                                aligned
-                              </span>
-                            </div>
                             <div className="rounded-[20px] border border-[#dfe7f2] bg-white p-4 shadow-[0_14px_28px_rgba(31,53,94,0.07)]">
-                              <div className="mb-3 h-3 w-[44%] rounded-full bg-[#dce7ff]" />
-                              <div className="space-y-3">
-                                <div className="rounded-[16px] bg-[#f7faff] p-3">
-                                  <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#7b8598]">Why this direction</p>
-                                  <p className="mt-1 text-[13px] font-medium text-[#0e2951]">Balances user clarity, trust, and realistic implementation scope.</p>
-                                </div>
-                                <div className="grid grid-cols-2 gap-2">
-                                  <div className="rounded-[14px] bg-[#eaf4ff] p-3">
-                                    <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#6a7ea3]">User</p>
-                                    <div className="mt-2 h-10 rounded-[10px] bg-[#cfe2ff]" />
-                                  </div>
-                                  <div className="rounded-[14px] bg-[#fff1de] p-3">
-                                    <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#b67a20]">Business</p>
-                                    <div className="mt-2 h-10 rounded-[10px] bg-[#ffdcb6]" />
-                                  </div>
-                                </div>
-                                <div className="h-9 rounded-[12px] bg-[linear-gradient(135deg,#1762d6_0%,#72a9ff_100%)] shadow-[0_10px_20px_rgba(23,98,214,0.2)]" />
-                              </div>
+                              <div className="h-24 rounded-[16px] bg-[#f7faff]" />
                             </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="absolute bottom-12 left-8 z-10 w-[34%] min-w-[180px] rounded-[20px] border border-[#dbe5f3] bg-[#0f1728] p-3 text-white shadow-[0_18px_40px_rgba(15,23,40,0.24)] animate-[impact-flow-float_5.4s_ease-in-out_infinite]">
-                      <div className="mb-2 flex items-center justify-between">
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#91a8ff]">
-                          business logic
-                        </span>
-                        <span className="rounded-full bg-white/8 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#d7e0ff]">
-                          ai assist
-                        </span>
-                      </div>
-                      <div className="space-y-1.5 font-mono text-[10px] leading-5 text-[#d9e4ff]">
-                        <div><span className="text-[#7fb8ff]">if</span> valueScore &gt; <span className="text-[#ffc777]">frictionCost</span></div>
-                        <div><span className="text-[#7fb8ff]">prioritize</span> <span className="text-[#c3e88d]">recommendedDirection</span>()</div>
-                        <div><span className="text-[#f78c6c]">balance</span>(userNeed, businessGoal, effort)</div>
-                      </div>
-                    </div>
-                    <div className="pointer-events-none absolute bottom-[23%] left-[34%] z-[9] hidden h-[2px] w-[28%] overflow-hidden rounded-full bg-[#d8e4fb] lg:block">
-                      <span className="absolute inset-y-0 left-0 w-[42%] rounded-full bg-[linear-gradient(90deg,rgba(17,131,208,0),rgba(17,131,208,0.95),rgba(17,131,208,0))] animate-[impact-flow-travel_2.6s_linear_infinite]" />
-                    </div>
-                    <div className="pointer-events-none absolute bottom-[20.5%] left-[61%] z-[9] hidden lg:flex h-7 w-7 items-center justify-center rounded-full border border-[#bfd8ff] bg-white text-[#1183D0] shadow-[0_10px_24px_rgba(31,53,94,0.12)] animate-[impact-flow-pulse_2.6s_ease-in-out_infinite]">
-                      <ArrowUp className="h-3.5 w-3.5 rotate-90" />
-                    </div>
-                    <div className="absolute bottom-6 right-6 w-[42%] rounded-[22px] border border-[#dfe7f2] bg-white/96 p-3 shadow-[0_18px_36px_rgba(31,53,94,0.14)]">
-                      <div className="mb-2 flex items-center justify-between">
-                        <span className="rounded-full bg-[#eef6ff] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">
-                          Output
-                        </span>
-                        <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#7b8598]">Strategic frame</span>
-                      </div>
-                      <div className="rounded-[16px] border border-[#edf1f7] bg-[#fbfcff] p-3 animate-[impact-flow-float_4.8s_ease-in-out_0.4s_infinite]">
-                        <div className="mb-2 h-3 w-[46%] rounded-full bg-[#dce7ff]" />
-                        <div className="space-y-2.5">
-                          <div className="rounded-[12px] bg-[#eef6ff] p-2.5">
-                            <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#6a7ea3]">Value delivered</p>
-                            <p className="mt-1 text-[12px] font-medium text-[#0e2951]">A direction that is useful to users and defensible for the business.</p>
-                          </div>
-                          <div className="grid grid-cols-3 gap-2">
-                            <div className="h-9 rounded-[10px] bg-[#dceaff]" />
-                            <div className="h-9 rounded-[10px] bg-[#ffe9cf]" />
-                            <div className="h-9 rounded-[10px] bg-[#e2f6ea]" />
                           </div>
                         </div>
                       </div>
