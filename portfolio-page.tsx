@@ -745,10 +745,26 @@ export default function PortfolioPage() {
     <section
       key="tools"
       id="skills"
-      className="isolate mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center overflow-clip bg-white px-4 pb-24 pt-56 md:px-8"
+      className="isolate mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center overflow-clip bg-white px-4 pb-24 pt-40 md:px-8"
     >
       <div className="relative mx-auto flex flex-col items-center gap-6">
-        <div className="pointer-events-none absolute bottom-[104px] h-[248px] w-[629px] max-w-none select-none md:bottom-10 md:h-[496px] md:w-[1257px]">
+        <div className="relative z-10 flex flex-col items-center gap-6">
+          <p className="text-center text-[13px] font-semibold uppercase tracking-[0.3em] text-[#1183D0]">
+            Experience & Skills
+          </p>
+          <h2 className="max-w-[320px] text-center font-serif-display text-[30px] leading-[1.05] text-[#0e2951] md:max-w-[620px] md:text-[44px]">
+            {siteContent.home.tools_section.headline}
+          </h2>
+          <Button asChild className="h-12 rounded-xl px-6 text-base">
+            <Link href={withBasePath(siteContent.home.tools_section.cta_href)}>
+              {siteContent.home.tools_section.cta_label.replace("→", "").trim()}
+            </Link>
+          </Button>
+        </div>
+        <p className="relative z-10 mb-4 max-w-[320px] text-center text-[14px] leading-[1.8] text-[#5c7792] md:max-w-[560px] md:text-[17px]">
+          {siteContent.home.tools_section.description}
+        </p>
+        <div className="pointer-events-none relative mt-4 h-[248px] w-[629px] max-w-none select-none md:h-[496px] md:w-[1257px]">
           <div className="relative h-full w-full">
             {TOOL_SHOWCASE_ICONS.map((tool) => (
               <div
@@ -768,43 +784,32 @@ export default function PortfolioPage() {
             ))}
           </div>
         </div>
-
-        <div className="relative z-10 flex flex-col items-center gap-6">
-          <p className="text-center text-[13px] font-semibold uppercase tracking-[0.3em] text-[#1183D0]">
-            Experience & Skills
-          </p>
-          <h2 className="max-w-[320px] text-center font-serif-display text-[36px] leading-[1.05] text-[#0e2951] md:max-w-[620px] md:text-[54px]">
-            {siteContent.home.tools_section.headline}
-          </h2>
-        </div>
-        <p className="relative z-10 mb-4 max-w-[320px] text-center text-[14px] leading-[1.8] text-[#5c7792] md:max-w-[560px] md:text-[17px]">
-          {siteContent.home.tools_section.description}
-        </p>
-        <Button asChild className="relative z-10 h-12 rounded-xl px-6 text-base">
-          <Link href={withBasePath(siteContent.home.tools_section.cta_href)}>
-            {siteContent.home.tools_section.cta_label.replace("→", "").trim()}
-          </Link>
-        </Button>
       </div>
     </section>
   );
 
   const ctaSection = (
-    <section key="cta" className="flex flex-col items-center justify-center gap-7 px-6 py-[80px] md:px-16 xl:px-30 text-center" style={{ background: "#0e2951" }}>
-      <span className="text-[13px] font-medium tracking-[3px] text-[#7CB8E8] uppercase">
-        Ready to Level Up?
-      </span>
-      <p className="text-[28px] leading-[1.5] text-[#A8C8E8] max-w-[800px]">
-        {siteContent.home.stat_banner.text} {siteContent.home.stat_banner.value} {siteContent.home.stat_banner.value_label}
-      </p>
-      <h2 className="font-serif-display font-bold text-[40px] text-white">
-        {siteContent.home.stat_banner.cta_headline}
-      </h2>
-      <Button asChild size="sm">
-        <Link href={withBasePath(siteContent.home.stat_banner.cta_href.replace("#contact", "/contact"))}>
-          {siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
-        </Link>
-      </Button>
+    <section
+      key="cta"
+      className="px-6 py-[80px] text-center md:px-16 xl:px-30"
+      style={{ background: "#f1eeef" }}
+    >
+      <div className="mx-auto flex max-w-[980px] flex-col items-center justify-center gap-7 rounded-[36px] bg-white px-8 py-12 shadow-[0_24px_60px_rgba(60,62,63,0.08)] md:px-14 md:py-16">
+        <span className="text-[13px] font-medium uppercase tracking-[3px] text-[#1183D0]">
+          Ready to Level Up?
+        </span>
+        <p className="max-w-[800px] text-[28px] leading-[1.5] text-[#5c7792]">
+          {siteContent.home.stat_banner.text} {siteContent.home.stat_banner.value} {siteContent.home.stat_banner.value_label}
+        </p>
+        <h2 className="font-serif-display font-bold text-[40px] text-[#0e2951]">
+          {siteContent.home.stat_banner.cta_headline}
+        </h2>
+        <Button asChild size="sm">
+          <Link href={withBasePath(siteContent.home.stat_banner.cta_href.replace("#contact", "/contact"))}>
+            {siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
+          </Link>
+        </Button>
+      </div>
     </section>
   );
 
