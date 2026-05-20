@@ -1126,24 +1126,66 @@ export default function PortfolioPage() {
   const ctaSection = (
     <section
       key="cta"
-      className="px-6 py-[80px] text-center md:px-16 xl:px-30"
-      style={{ background: "#f1eeef" }}
+      className="px-6 py-[80px] md:px-16 xl:px-30"
+      style={{ background: "#ffffff" }}
     >
-      <div className="mx-auto flex max-w-[980px] flex-col items-center justify-center gap-7 rounded-[36px] bg-white px-8 py-12 shadow-[0_24px_60px_rgba(60,62,63,0.08)] md:px-14 md:py-16">
-        <span className="text-[13px] font-medium uppercase tracking-[3px] text-[#1183D0]">
-          Ready to Level Up?
-        </span>
-        <p className="max-w-[800px] text-[28px] leading-[1.5] text-[#5c7792]">
-          {siteContent.home.stat_banner.text} {siteContent.home.stat_banner.value} {siteContent.home.stat_banner.value_label}
-        </p>
-        <h2 className="font-inter font-bold text-[40px] text-[#0e2951]">
-          {siteContent.home.stat_banner.cta_headline}
-        </h2>
-        <Button asChild size="sm">
-          <Link href={withBasePath(siteContent.home.stat_banner.cta_href.replace("#contact", "/contact"))}>
-            {siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
-          </Link>
-        </Button>
+      <div className="mx-auto max-w-[1180px] overflow-hidden rounded-[36px] border border-[#e4ebf3] bg-white text-[#0e2951] shadow-[0_24px_60px_rgba(60,62,63,0.08)]">
+        <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative px-8 py-10 md:px-12 md:py-14">
+            <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-[#1183D0]/14 blur-3xl" />
+            <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-[#ffcf8c]/10 blur-3xl" />
+            <div className="relative">
+              <span className="inline-flex rounded-full border border-[#d7e5f4] bg-[#f5f9ff] px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">
+                Ready to Level Up?
+              </span>
+              <h2 className="mt-6 max-w-[620px] font-inter text-[42px] font-semibold leading-[1.02] text-[#0e2951] md:text-[58px]">
+                Your product deserves that too.
+              </h2>
+              <p className="mt-5 max-w-[640px] text-[18px] leading-[1.8] text-[#4f6486]">
+                {siteContent.home.stat_banner.text} {siteContent.home.stat_banner.value} {siteContent.home.stat_banner.value_label}
+              </p>
+              <p className="mt-6 max-w-[620px] text-[16px] leading-[1.8] text-[#5c7792]">
+                Browse case studies, share what your team is working on, or reach out directly to start a conversation.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3 text-[14px] text-[#4f6486]">
+                <span className="underline decoration-[#b8cadf] underline-offset-4">Email</span>
+                <span className="underline decoration-[#b8cadf] underline-offset-4">LinkedIn ↗</span>
+                <span className="underline decoration-[#b8cadf] underline-offset-4">Case studies</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-[#e8eef6] bg-[#f8fbff] px-8 py-10 md:px-12 md:py-14 lg:border-l lg:border-t-0">
+            <div className="space-y-5">
+              <div>
+                <label className="mb-2 block text-[14px] font-medium text-[#0e2951]">Name</label>
+                <div className="rounded-[14px] border border-[#d7e2f0] bg-white px-4 py-4 text-[15px] text-[#8a98ab]">
+                  Hello
+                </div>
+              </div>
+              <div>
+                <label className="mb-2 block text-[14px] font-medium text-[#0e2951]">Email</label>
+                <div className="rounded-[14px] border border-[#d7e2f0] bg-white px-4 py-4 text-[15px] text-[#8a98ab]">
+                  How should I reach you?
+                </div>
+              </div>
+              <div>
+                <label className="mb-2 block text-[14px] font-medium text-[#0e2951]">Message</label>
+                <div className="min-h-[132px] rounded-[14px] border border-[#d7e2f0] bg-white px-4 py-4 text-[15px] text-[#8a98ab]">
+                  How can I help?
+                </div>
+              </div>
+              <div className="rounded-[18px] border border-[#dce7f4] bg-white px-4 py-4 text-[13px] leading-7 text-[#5c7792]">
+                Tell me about the product, the team, or the design challenge. I’ll follow up from the contact page without the extra friction.
+              </div>
+              <Button asChild size="sm" className="h-12 rounded-full border border-[#c8d7ea] bg-white px-6 text-[#0e2951] hover:bg-[#0e2951] hover:text-white">
+                <Link href={withBasePath(siteContent.home.stat_banner.cta_href.replace("#contact", "/contact"))}>
+                  {siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
