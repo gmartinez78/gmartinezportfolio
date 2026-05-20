@@ -528,6 +528,7 @@ export default function PortfolioPage() {
   );
   const [heroAssistantResults, setHeroAssistantResults] = useState<HeroAssistantResult["items"]>([]);
   const [highlightedProjectIds, setHighlightedProjectIds] = useState<string[]>([]);
+  const [activeProjectCardId, setActiveProjectCardId] = useState<string | null>(null);
   const projectsSliderRef = useRef<HTMLDivElement | null>(null);
   const { siteContent } = usePublicSiteContent();
   const { caseStudies } = usePublicCaseStudies();
@@ -666,6 +667,17 @@ export default function PortfolioPage() {
   }
 
   useEffect(() => {
+    if (!homeProjects.length) {
+      setActiveProjectCardId(null);
+      return;
+    }
+
+    setActiveProjectCardId((current) =>
+      current && homeProjects.some((project) => project.cardId === current) ? current : homeProjects[0]?.cardId ?? null,
+    );
+  }, [homeProjects]);
+
+  useEffect(() => {
     let isActive = true;
 
     void (async () => {
@@ -706,70 +718,80 @@ export default function PortfolioPage() {
           className="flex w-full snap-x snap-mandatory gap-6 overflow-x-auto overflow-y-hidden pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {homeProjects.map((project) => (
-            <Link
-              key={project.title}
-              id={project.cardId}
-              data-home-card-id={project.cardId}
-              data-home-slider-card
-              href={project.href}
-              className={`group flex min-w-[86%] snap-start flex-col gap-5 rounded-[30px] bg-white p-0 outline-none transition-all md:min-w-[46%] xl:min-w-[31%] ${
-                highlightedProjectIds.length && !highlightedProjectIds.includes(project.cardId)
-                  ? "opacity-45"
-                  : ""
-              }`}
-            >
-              <div className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] transition-all duration-300 group-hover:-translate-y-1 sm:h-[300px] xl:h-[230px]" style={!project.image ? { background: project.background } : undefined}>
-                {project.image ? (
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                  />
-                ) : (
-                  <div className="flex h-full items-center justify-center px-6 text-center">
-                    <div>
-                      <div className="text-5xl font-inter font-bold text-[#1183D0]">{project.year}</div>
-                      <div className="mt-2 text-xs leading-tight text-[#5c7792]">{project.company}</div>
-                    </div>
-                  </div>
-                )}
-                {highlightedProjectIds.includes(project.cardId) ? (
-                  <div className="pointer-events-none absolute inset-0 ring-2 ring-[#1183D0] ring-offset-4 ring-offset-white" />
-                ) : null}
-              </div>
-              <div className="flex flex-wrap gap-3">
-                {project.tags.map((tag) => (
-                  <Badge key={tag} size="tag">{tag}</Badge>
-                ))}
-              </div>
-              <div className="flex min-h-[236px] flex-col justify-between">
-                <div>
-                  <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <span className="text-xs font-medium text-[#5c7792]">{project.company}</span>
-                    <span className="text-[#bcd2ff]">·</span>
-                    <span className="text-xs text-[#5c7792]">{project.year}</span>
-                    {project.password ? (
-                      <>
-                        <span className="text-[#bcd2ff]">·</span>
-                        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Locked</span>
-                      </>
+            (() => {
+              const isActiveCard =
+                activeProjectCardId === project.cardId ||
+                (highlightedProjectIds.length > 0 && highlightedProjectIds.includes(project.cardId));
+
+              return (
+                <Link
+                  key={project.title}
+                  id={project.cardId}
+                  data-home-card-id={project.cardId}
+                  data-home-slider-card
+                  href={project.href}
+                  onMouseEnter={() => setActiveProjectCardId(project.cardId)}
+                  onFocus={() => setActiveProjectCardId(project.cardId)}
+                  className={`group flex min-w-[86%] snap-start flex-col gap-5 rounded-[30px] bg-white p-0 outline-none transition-all md:min-w-[46%] xl:min-w-[31%] ${
+                    highlightedProjectIds.length && !highlightedProjectIds.includes(project.cardId)
+                      ? "opacity-45"
+                      : ""
+                  }`}
+                >
+                  <div className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] transition-all duration-300 group-hover:-translate-y-1 sm:h-[300px] xl:h-[230px]" style={!project.image ? { background: project.background } : undefined}>
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                      />
+                    ) : (
+                      <div className="flex h-full items-center justify-center px-6 text-center">
+                        <div>
+                          <div className="text-5xl font-inter font-bold text-[#1183D0]">{project.year}</div>
+                          <div className="mt-2 text-xs leading-tight text-[#5c7792]">{project.company}</div>
+                        </div>
+                      </div>
+                    )}
+                    {isActiveCard ? (
+                      <div className="pointer-events-none absolute inset-0 ring-2 ring-[#1183D0] ring-offset-4 ring-offset-white" />
                     ) : null}
                   </div>
-                  <h3 className="font-inter text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200">
-                    {project.title}
-                  </h3>
-                </div>
-                <div className="-mt-1 h-[148px] translate-y-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                  <div className="flex h-full flex-col justify-between">
-                    <p className="text-[15px] leading-relaxed text-[#5c7792]">{project.description}</p>
-                    <span className="inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline">
-                      {project.cta} →
-                    </span>
+                  <div className="flex flex-wrap gap-3">
+                    {project.tags.map((tag) => (
+                      <Badge key={tag} size="tag">{tag}</Badge>
+                    ))}
                   </div>
-                </div>
-              </div>
-            </Link>
+                  <div className="flex min-h-[236px] flex-col justify-between">
+                    <div>
+                      <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
+                        <span className="text-xs font-medium text-[#5c7792]">{project.company}</span>
+                        <span className="text-[#bcd2ff]">·</span>
+                        <span className="text-xs text-[#5c7792]">{project.year}</span>
+                        {project.password ? (
+                          <>
+                            <span className="text-[#bcd2ff]">·</span>
+                            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Locked</span>
+                          </>
+                        ) : null}
+                      </div>
+                      <h3 className="font-inter text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200">
+                        {project.title}
+                      </h3>
+                    </div>
+                    <div className={`-mt-1 h-[148px] transition-all duration-300 ${isActiveCard ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"}`}>
+                      <div className="flex h-full flex-col justify-between">
+                        <p className="text-[15px] leading-relaxed text-[#5c7792]">{project.description}</p>
+                        <span className="inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline">
+                          {project.cta} →
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })()
           ))}
         </div>
         <div className="flex w-full items-center justify-end gap-3">
@@ -802,14 +824,11 @@ export default function PortfolioPage() {
           className="group rounded-[34px] bg-[#f4f2f3] p-5 transition-transform duration-300 hover:-translate-y-1 md:p-7"
         >
           <div className="mb-7 flex flex-col gap-3 md:max-w-[760px]">
-            <span className="inline-flex w-fit items-center rounded-full bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
-              AI workflow + Figma craft
-            </span>
-            <h2 className="font-inter text-[34px] leading-[1.05] text-[#0e2951] md:text-[52px]">
+            <h2 className="font-inter text-[18px] leading-[1.15] text-[#0e2951] md:text-[26px]">
               I turn AI prompts into design systems, flows, and shipped product screens.
             </h2>
-            <p className="max-w-[720px] text-[18px] leading-[1.7] text-[#5c7792]">
-              From rapid concepting with Codex to polished product UI in Figma, I use AI as a creative accelerator without losing systems thinking, usability, or execution detail.
+            <p className="max-w-[720px] text-[14px] leading-[1.6] text-[#5c7792] md:text-[15px]">
+              I use AI to explore faster, pressure-test directions, and translate rough thinking into structured product work inside Figma without losing usability, systems thinking, or implementation detail.
             </p>
           </div>
 
@@ -830,77 +849,99 @@ export default function PortfolioPage() {
                   <p className="text-[12px] text-[#7b8598]">Figma file connected to product thinking and implementation</p>
                 </div>
               </div>
-              <span className="rounded-full bg-[#eaf6ff] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">
-                Codex-assisted
-              </span>
             </div>
 
-            <div className="grid gap-0 lg:grid-cols-[220px_minmax(0,1fr)_260px]">
+            <div className="grid gap-0 lg:grid-cols-[220px_minmax(0,1fr)_280px]">
               <div className="border-b border-r border-[#eef2f7] bg-[#fbfcfe] p-4 lg:border-b-0">
-                <div className="mb-4 flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#ff7f66]" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#ffcf5a]" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#59d594]" />
+                <div className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#7b8598]">
+                  Layers
                 </div>
                 <div className="space-y-2">
                   <div className="rounded-[14px] bg-white px-3 py-2 shadow-[0_10px_20px_rgba(20,34,56,0.05)]">
-                    <p className="text-[12px] font-semibold text-[#0e2951]">Research notes</p>
-                    <p className="mt-1 text-[11px] leading-relaxed text-[#7b8598]">decision friction, trust, family context</p>
+                    <p className="text-[12px] font-semibold text-[#0e2951]">0. Discovery</p>
+                    <p className="mt-1 text-[11px] leading-relaxed text-[#7b8598]">family information, trust, guidance timing</p>
                   </div>
                   <div className="rounded-[14px] bg-[#eef6ff] px-3 py-2">
-                    <p className="text-[12px] font-semibold text-[#0e2951]">AI prompts</p>
-                    <p className="mt-1 text-[11px] leading-relaxed text-[#6f7c95]">generate concepts, rewrite states, compare modal hooks</p>
+                    <p className="text-[12px] font-semibold text-[#0e2951]">1. Alternatives explored</p>
+                    <p className="mt-1 text-[11px] leading-relaxed text-[#6f7c95]">embedded section, benefit-list entry, guided modal</p>
                   </div>
                   <div className="rounded-[14px] bg-[#fff4e8] px-3 py-2">
-                    <p className="text-[12px] font-semibold text-[#0e2951]">Design decisions</p>
-                    <p className="mt-1 text-[11px] leading-relaxed text-[#6f7c95]">timing, hierarchy, system reuse, handoff clarity</p>
+                    <p className="text-[12px] font-semibold text-[#0e2951]">2. Selected concept</p>
+                    <p className="mt-1 text-[11px] leading-relaxed text-[#6f7c95]">guided decision modal moved into testing</p>
+                  </div>
+                  <div className="rounded-[14px] bg-[#f4efff] px-3 py-2">
+                    <p className="text-[12px] font-semibold text-[#0e2951]">3. AI support</p>
+                    <p className="mt-1 text-[11px] leading-relaxed text-[#6f7c95]">option generation, copy iterations, structure checks</p>
                   </div>
                 </div>
               </div>
 
-              <div className="relative overflow-hidden border-b border-[#eef2f7] bg-[radial-gradient(circle_at_top_left,_#edf6ff_0%,_#ffffff_52%,_#fff6ec_100%)] p-5 lg:border-b-0">
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div className="rounded-[24px] border border-[#dbe5f3] bg-white/90 p-4 shadow-[0_18px_34px_rgba(31,53,94,0.08)]">
-                    <div className="mb-3 flex items-center justify-between">
-                      <span className="rounded-full bg-[#eef3ff] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#62739d]">
-                        wireframe
-                      </span>
-                      <span className="h-2.5 w-2.5 rounded-full bg-[#6c78ff] animate-pulse" />
+              <div className="relative overflow-hidden border-b border-[#eef2f7] bg-[#f7f8fb] lg:border-b-0">
+                <div className="flex items-center justify-between border-b border-[#e8ebf2] bg-white px-4 py-2.5">
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-1.5">
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#ff6257]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2f]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
                     </div>
-                    <div className="space-y-3">
-                      <div className="h-4 w-[70%] rounded-full bg-[#dce7ff]" />
-                      <div className="grid grid-cols-[1.15fr_0.85fr] gap-3">
-                        <div className="h-28 rounded-[18px] bg-[#dfeaff]" />
-                        <div className="space-y-3">
-                          <div className="h-12 rounded-[16px] bg-[#fff0d9]" />
-                          <div className="h-12 rounded-[16px] bg-[#f4dbff]" />
-                        </div>
+                    <span className="rounded-full bg-[#f1f4f9] px-3 py-1 text-[11px] font-medium text-[#67758f]">
+                      Drafts / Nayya / Guided decision modal
+                    </span>
+                  </div>
+                  <div className="hidden items-center gap-2 md:flex">
+                    <span className="rounded-full bg-[#f6f8fc] px-3 py-1 text-[11px] font-medium text-[#67758f]">Share</span>
+                    <span className="rounded-full bg-[#0e2951] px-3 py-1 text-[11px] font-semibold text-white">Present</span>
+                  </div>
+                </div>
+
+                <div className="grid min-h-[430px] lg:grid-cols-[180px_minmax(0,1fr)]">
+                  <div className="border-r border-[#e8ebf2] bg-[#fbfcfe] p-4">
+                    <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#7b8598]">
+                      Pages
+                    </div>
+                    <div className="space-y-2">
+                      <div className="rounded-[14px] bg-white px-3 py-2 shadow-[0_8px_18px_rgba(20,34,56,0.04)]">
+                        <p className="text-[12px] font-semibold text-[#0e2951]">Research</p>
+                        <p className="mt-1 text-[11px] text-[#7b8598]">behavior + trust patterns</p>
                       </div>
-                      <div className="h-3 w-[46%] rounded-full bg-[#edf3ff]" />
+                      <div className="rounded-[14px] bg-[#eaf3ff] px-3 py-2 ring-1 ring-[#bfd8ff]">
+                        <p className="text-[12px] font-semibold text-[#0e2951]">Flows</p>
+                        <p className="mt-1 text-[11px] text-[#6f7c95]">selected direction</p>
+                      </div>
+                      <div className="rounded-[14px] bg-white px-3 py-2 shadow-[0_8px_18px_rgba(20,34,56,0.04)]">
+                        <p className="text-[12px] font-semibold text-[#0e2951]">Prototype</p>
+                        <p className="mt-1 text-[11px] text-[#7b8598]">handoff-ready states</p>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="rounded-[24px] border border-[#eadcf4] bg-white/92 p-4 shadow-[0_18px_34px_rgba(31,53,94,0.08)]">
-                    <div className="mb-3 flex items-center justify-between">
-                      <span className="rounded-full bg-[#fff0f7] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#7f5b95]">
-                        live preview
-                      </span>
-                      <span className="rounded-full border border-[#bfd7ff] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">
-                        updating
-                      </span>
+                  <div className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_#edf6ff_0%,_#ffffff_50%,_#fff3e4_100%)] p-5">
+                    <div className="absolute left-8 top-6 rounded-full bg-white/85 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#667595] shadow-[0_10px_24px_rgba(31,53,94,0.08)]">
+                      Figma canvas
                     </div>
-                    <div className="space-y-3">
-                      <div className="h-8 rounded-[14px] bg-[#f5f8ff]" />
-                      <div className="rounded-[18px] bg-[linear-gradient(135deg,#1762d6_0%,#72a9ff_100%)] p-4 text-white shadow-[0_14px_24px_rgba(23,98,214,0.25)]">
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80">guided decision</p>
-                        <p className="mt-2 text-[15px] font-semibold">Help employees choose better-fit benefits faster.</p>
-                        <div className="mt-4 h-9 rounded-[12px] bg-white/18" />
+                    <div className="ml-4 mt-10 max-w-[560px] rotate-[-1.5deg] rounded-[28px] border border-[#dfe7f2] bg-white p-3 shadow-[0_24px_60px_rgba(31,53,94,0.14)]">
+                      <Image
+                        src={withBasePath("/images/projects/nayya-ai-benefits/banners/nayya-design-process.png")}
+                        alt="Nayya design process shown in a Figma-style canvas"
+                        width={1200}
+                        height={820}
+                        className="h-auto w-full rounded-[20px] border border-[#edf1f7] object-cover"
+                      />
+                    </div>
+                    <div className="absolute bottom-6 right-6 w-[42%] rounded-[22px] border border-[#dfe7f2] bg-white/96 p-3 shadow-[0_18px_36px_rgba(31,53,94,0.14)]">
+                      <div className="mb-2 flex items-center justify-between">
+                        <span className="rounded-full bg-[#eef6ff] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">
+                          Selected
+                        </span>
+                        <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#7b8598]">Prototype</span>
                       </div>
-                      <div className="grid grid-cols-3 gap-2">
-                        <div className="h-10 rounded-[12px] bg-[#ddf4e7]" />
-                        <div className="h-10 rounded-[12px] bg-[#ffe9cf]" />
-                        <div className="h-10 rounded-[12px] bg-[#e5e7ff]" />
-                      </div>
+                      <Image
+                        src={withBasePath("/images/projects/nayya-ai-benefits/banners/nayya-guided-decision-modal.svg")}
+                        alt="Guided decision modal preview"
+                        width={900}
+                        height={620}
+                        className="h-auto w-full rounded-[16px] border border-[#edf1f7] object-cover"
+                      />
                     </div>
                   </div>
                 </div>
@@ -917,18 +958,18 @@ export default function PortfolioPage() {
                     Prompt to flow exploration
                   </div>
                   <div className="rounded-[14px] bg-[#0c1220] p-3 font-mono text-[11px] leading-6 text-[#d9e4ff]">
-                    <div className="text-[#7fb8ff]">const</div> modalHook = <span className="text-[#ffc777]">"better timing"</span>;
+                    <div className="text-[#7fb8ff]">const</div> options = <span className="text-[#c3e88d]">["embedded section", "list entry", "guided modal"]</span>;
                     <br />
-                    <div className="text-[#7fb8ff]">const</div> screenState = <span className="text-[#c3e88d]">generateOptions</span>();
+                    <div className="text-[#7fb8ff]">const</div> selected = <span className="text-[#ffc777]">"guided decision modal"</span>;
                     <br />
-                    <span className="text-[#f78c6c]">refine</span>(hierarchy, copy, trustSignals);
+                    <span className="text-[#f78c6c]">refine</span>(timing, trustSignals, familyContext);
                   </div>
                   <div className="flex items-center gap-2 text-[12px] text-[#c9d5ff]">
                     <GitCommitHorizontal className="h-3.5 w-3.5" />
                     Design variations translated into production-ready decisions
                   </div>
                   <div className="rounded-[16px] bg-[linear-gradient(135deg,rgba(56,75,255,0.25),rgba(18,24,38,0.05))] px-3 py-2 text-[11px] leading-relaxed text-[#dce7ff]">
-                    AI helps me move faster. Judgment, systems thinking, and product framing keep the work useful.
+                    AI helps me explore faster, but the product decision still comes from tradeoffs, testing goals, and what can realistically ship.
                   </div>
                 </div>
               </div>
@@ -942,38 +983,41 @@ export default function PortfolioPage() {
             className="group rounded-[34px] bg-[#f4f2f3] p-5 transition-transform duration-300 hover:-translate-y-1 md:p-6"
           >
             <div className="mb-5 rounded-[22px] bg-white p-4 shadow-[0_14px_32px_rgba(30,38,61,0.06)]">
-              <div className="mb-2 flex items-start justify-between gap-3">
-                <div>
-                  <p className="text-[16px] font-semibold text-[#0e2951]">Guided decision modal</p>
-                  <p className="mt-1 text-[13px] leading-relaxed text-[#6f7c95]">
-                    A focused intervention to make benefit choices clearer, faster, and easier to trust.
-                  </p>
+              <div className="flex items-start gap-4">
+                <div className="min-w-0 flex-1">
+                  <div className="mb-2 flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-[16px] font-semibold text-[#0e2951]">Guided decision modal</p>
+                      <p className="mt-1 text-[13px] leading-relaxed text-[#6f7c95]">
+                        Show a modal after users entered their family information, when guidance felt timely connected to choosing better benefits.
+                      </p>
+                    </div>
+                    <span className="rounded-full bg-[#e8f8ea] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#339154]">
+                      selected
+                    </span>
+                  </div>
+                  <div className="mt-3 inline-flex rounded-full bg-[#eef7ff] px-3 py-1 text-[11px] font-semibold text-[#1183D0]">
+                    Alternatives explored for Nayya
+                  </div>
                 </div>
-                <span className="rounded-full bg-[#e8f8ea] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#339154]">
-                  optimized flow
-                </span>
-              </div>
-              <div className="mt-3 inline-flex rounded-full bg-[#eef7ff] px-3 py-1 text-[11px] font-semibold text-[#1183D0]">
-                Process optimization for Nayya
+                <div className="w-[108px] shrink-0 overflow-hidden rounded-[16px] border border-[#e2e8f2] bg-white shadow-[0_10px_22px_rgba(30,38,61,0.08)]">
+                  <Image
+                    src={withBasePath("/images/projects/nayya-ai-benefits/banners/nayya-guided-decision-modal.svg")}
+                    alt="Nayya guided decision modal"
+                    width={240}
+                    height={180}
+                    className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                </div>
               </div>
             </div>
 
             <h3 className="max-w-[320px] font-inter text-[26px] leading-[1.15] text-[#0e2951]">
-              I simplify complex decision moments into clearer product steps.
+              Three integration approaches were considered and assessed on placement, feasibility, and user support.
             </h3>
             <p className="mt-3 max-w-[320px] text-[17px] leading-[1.7] text-[#5c7792]">
-              This work balanced timing, behavior, and product trust so users could act with more confidence.
+              The guided decision modal was selected as the strongest option and moved into testing.
             </p>
-
-            <div className="mt-6 overflow-hidden rounded-[28px] border border-[#e2e8f2] bg-white">
-              <Image
-                src={withBasePath("/images/projects/nayya-ai-benefits/banners/nayya-guided-decision-modal.jpg")}
-                alt="Nayya guided decision modal"
-                width={900}
-                height={620}
-                className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              />
-            </div>
           </Link>
 
           <Link
