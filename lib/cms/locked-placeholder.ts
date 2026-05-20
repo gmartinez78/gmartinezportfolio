@@ -3,7 +3,6 @@ import type { CaseStudyRecord } from "@/lib/cms/types";
 export const LOCKED_NAYYA_PLACEHOLDER_SLUG = "zapiano-marketing";
 
 const LOCKED_NAYYA_SOURCE_SLUG = "nayya-ai-benefits";
-const LOCKED_NAYYA_PLACEHOLDER_PASSWORD = "placeholder";
 const LOCKED_NAYYA_PLACEHOLDER_MEDIA = "/images/projects/EB.png";
 
 function createLockedPlaceholder(order: number): CaseStudyRecord {
@@ -105,7 +104,7 @@ function createLockedPlaceholder(order: number): CaseStudyRecord {
       },
     ],
     nda_notice: "Some supporting visuals and data views are adapted for portfolio use, but the funnel strategy, benchmark, and performance outcomes reflect the project.",
-    password: LOCKED_NAYYA_PLACEHOLDER_PASSWORD,
+    password: null,
     external_link: null,
     content_blocks: [
       {
