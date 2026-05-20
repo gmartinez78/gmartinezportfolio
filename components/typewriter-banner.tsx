@@ -81,7 +81,7 @@ export function TypewriterBanner({
       <div className={`mb-5 mt-3 flex h-[96px] items-center sm:h-[60px] ${align === "left" ? "justify-start" : "justify-center"}`}>
         <span
           aria-live="polite"
-          className={`text-[32px] font-medium leading-[1.1] sm:text-[40px] lg:text-[50px] ${roleClassName}`}
+          className={`text-[28px] font-medium leading-[1.1] sm:text-[34px] lg:text-[42px] ${roleClassName}`}
         >
           {displayText}
         </span>

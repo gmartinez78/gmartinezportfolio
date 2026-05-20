@@ -760,7 +760,7 @@ export default function PortfolioPage() {
                     {project.title}
                   </h3>
                 </div>
-                <div className="-mt-1 h-[148px] opacity-100 transition-opacity duration-300 group-hover:opacity-100">
+                <div className="-mt-1 h-[148px] translate-y-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                   <div className="flex h-full flex-col justify-between">
                     <p className="text-[15px] leading-relaxed text-[#5c7792]">{project.description}</p>
                     <span className="inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline">
@@ -1067,21 +1067,6 @@ export default function PortfolioPage() {
               </div>
             </div>
 
-            <div
-              className="absolute right-[6%] bottom-[12%] z-[2] hidden sm:flex items-center gap-3 rounded-full border border-white/28 bg-white/10 px-3.5 py-2.5 shadow-[0_18px_34px_rgba(42,54,92,0.05),inset_0_1px_0_rgba(255,255,255,0.36)] backdrop-blur-xl"
-              style={{
-                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -16, 4),
-                transition: "transform 180ms ease-out",
-              }}
-            >
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#ffffff]/48 text-[#ff9d2f]">
-                <Wand2 className="h-4 w-4" />
-              </span>
-              <div className="text-left">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#5b6a89]">Design craft</p>
-                <p className="text-[13px] font-medium text-[#22314f]">Systems, flows, polish</p>
-              </div>
-            </div>
           </div>
           <div
             className="pointer-events-none absolute left-[12%] top-[12%] h-px w-[160px] animate-[hero-shooting-star_11s_linear_infinite] opacity-0"
@@ -1096,7 +1081,7 @@ export default function PortfolioPage() {
               <TypewriterBanner
                 greeting={(
                   <>
-                    <span className="font-inter text-[1.55em] leading-none text-[#0e2951]">
+                    <span className="font-inter text-[1.8em] leading-none text-[#0e2951]">
                       Greddys Martinez
                     </span>
                   </>
