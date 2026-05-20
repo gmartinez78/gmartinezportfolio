@@ -825,58 +825,16 @@ export default function PortfolioPage() {
         >
           <div className="mb-7 flex flex-col gap-3 md:max-w-[760px]">
             <h2 className="font-inter text-[18px] leading-[1.15] text-[#0e2951] md:text-[26px]">
-              Growing business judgment alongside product and design execution.
+              Business thinking across product and design.
             </h2>
             <p className="max-w-[720px] text-[14px] leading-[1.6] text-[#5c7792] md:text-[15px]">
-              Brings strong business thinking to product work, with clear focus on value delivered for the business. The approach reflects maturity, strategy, and the ability to connect design decisions to broader product goals.
+              Brings clear business thinking to product work, with focus on value delivered for the business. The approach reflects maturity, strategy, and the ability to connect design decisions to broader product goals.
             </p>
           </div>
 
           <div className="overflow-hidden rounded-[28px] border border-[#e5e8f0] bg-white">
-            <div className="flex items-center justify-between border-b border-[#eef2f7] px-4 py-3">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-[12px] bg-[#f7f1ff]">
-                  <Image
-                    src={withBasePath("/images/tools/figma.svg")}
-                    alt="Figma"
-                    width={18}
-                    height={18}
-                    className="h-[18px] w-[18px]"
-                  />
-                </span>
-                <div>
-                  <p className="text-[14px] font-semibold text-[#0e2951]">Nayya AI Benefits Flow</p>
-                  <p className="text-[12px] text-[#7b8598]">Figma file connected to product thinking and implementation</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid gap-0 lg:grid-cols-[220px_minmax(0,1fr)_280px]">
-              <div className="border-b border-r border-[#eef2f7] bg-[#fbfcfe] p-4 lg:border-b-0">
-                <div className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#7b8598]">
-                  Layers
-                </div>
-                <div className="space-y-2">
-                  <div className="rounded-[14px] bg-white px-3 py-2 shadow-[0_10px_20px_rgba(20,34,56,0.05)]">
-                    <p className="text-[12px] font-semibold text-[#0e2951]">0. Discovery</p>
-                    <p className="mt-1 text-[11px] leading-relaxed text-[#7b8598]">family information, trust, guidance timing</p>
-                  </div>
-                  <div className="rounded-[14px] bg-[#eef6ff] px-3 py-2">
-                    <p className="text-[12px] font-semibold text-[#0e2951]">1. Alternatives explored</p>
-                    <p className="mt-1 text-[11px] leading-relaxed text-[#6f7c95]">embedded section, benefit-list entry, guided modal</p>
-                  </div>
-                  <div className="rounded-[14px] bg-[#fff4e8] px-3 py-2">
-                    <p className="text-[12px] font-semibold text-[#0e2951]">2. Selected concept</p>
-                    <p className="mt-1 text-[11px] leading-relaxed text-[#6f7c95]">guided decision modal moved into testing</p>
-                  </div>
-                  <div className="rounded-[14px] bg-[#f4efff] px-3 py-2">
-                    <p className="text-[12px] font-semibold text-[#0e2951]">3. AI support</p>
-                    <p className="mt-1 text-[11px] leading-relaxed text-[#6f7c95]">option generation, copy iterations, structure checks</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative overflow-hidden border-b border-[#eef2f7] bg-[#f7f8fb] lg:border-b-0">
+            <div className="space-y-4">
+              <div className="relative overflow-hidden rounded-b-[28px] border-b border-[#eef2f7] bg-[#f7f8fb]">
                 <div className="flex items-center justify-between border-b border-[#e8ebf2] bg-white px-4 py-2.5">
                   <div className="flex items-center gap-3">
                     <div className="flex items-center gap-1.5">
@@ -894,12 +852,12 @@ export default function PortfolioPage() {
                   </div>
                 </div>
 
-                <div className="grid min-h-[430px] lg:grid-cols-[180px_minmax(0,1fr)]">
-                  <div className="border-r border-[#e8ebf2] bg-[#fbfcfe] p-4">
+                <div className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_#edf6ff_0%,_#ffffff_50%,_#fff3e4_100%)] p-5">
+                  <div className="mb-4 mt-10 rounded-[18px] bg-white/80 p-3 shadow-[0_10px_24px_rgba(31,53,94,0.06)]">
                     <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#7b8598]">
                       Pages
                     </div>
-                    <div className="space-y-2">
+                    <div className="grid gap-2 md:grid-cols-3">
                       <div className="rounded-[14px] bg-white px-3 py-2 shadow-[0_8px_18px_rgba(20,34,56,0.04)]">
                         <p className="text-[12px] font-semibold text-[#0e2951]">Research</p>
                         <p className="mt-1 text-[11px] text-[#7b8598]">behavior + trust patterns</p>
@@ -915,32 +873,97 @@ export default function PortfolioPage() {
                     </div>
                   </div>
 
-                  <div className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_#edf6ff_0%,_#ffffff_50%,_#fff3e4_100%)] p-5">
+                  <div className="relative overflow-hidden">
                     <div className="absolute left-8 top-6 rounded-full bg-white/85 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#667595] shadow-[0_10px_24px_rgba(31,53,94,0.08)]">
                       Figma canvas
                     </div>
-                    <div className="ml-4 mt-10 max-w-[560px] rotate-[-1.5deg] rounded-[28px] border border-[#dfe7f2] bg-white p-3 shadow-[0_24px_60px_rgba(31,53,94,0.14)]">
-                      <Image
-                        src={withBasePath("/images/projects/nayya-ai-benefits/banners/nayya-design-process.png")}
-                        alt="Nayya design process shown in a Figma-style canvas"
-                        width={1200}
-                        height={820}
-                        className="h-auto w-full rounded-[20px] border border-[#edf1f7] object-cover"
-                      />
+                    <div className="mx-auto mt-4 max-w-[860px] rotate-[-1deg] rounded-[28px] border border-[#dfe7f2] bg-white p-3 shadow-[0_24px_60px_rgba(31,53,94,0.14)]">
+                      <div className="overflow-hidden rounded-[20px] border border-[#edf1f7] bg-[#fcfdff]">
+                        <div className="grid gap-0 md:grid-cols-[1.15fr_0.9fr]">
+                          <div className="border-r border-[#edf1f7] bg-[linear-gradient(180deg,#ffffff_0%,#f7faff_100%)] p-4">
+                            <div className="mb-3 flex items-center justify-between">
+                              <span className="rounded-full bg-[#eef6ff] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">
+                                opportunity map
+                              </span>
+                              <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#7b8598]">
+                                v2
+                              </span>
+                            </div>
+                            <div className="space-y-3">
+                              <div className="rounded-[18px] border border-[#e7eef8] bg-white p-3 shadow-[0_10px_24px_rgba(31,53,94,0.05)]">
+                                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#7b8598]">User need</p>
+                                <p className="mt-1 text-[14px] font-semibold text-[#0e2951]">Understand what action to take next</p>
+                              </div>
+                              <div className="flex items-center gap-2 pl-3">
+                                <span className="h-2 w-2 rounded-full bg-[#1183D0] animate-[impact-flow-pulse_2.6s_ease-in-out_infinite]" />
+                                <div className="h-[2px] flex-1 rounded-full bg-[linear-gradient(90deg,#cde5fb_0%,#8ac0f0_100%)]" />
+                              </div>
+                              <div className="rounded-[18px] border border-[#e7eef8] bg-[#fff8ee] p-3 shadow-[0_10px_24px_rgba(31,53,94,0.05)]">
+                                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#b67a20]">Business value</p>
+                                <p className="mt-1 text-[14px] font-semibold text-[#0e2951]">Reduce drop-off and improve benefit selection confidence</p>
+                              </div>
+                              <div className="grid grid-cols-3 gap-2">
+                                <div className="rounded-[14px] bg-[#e8f3ff] px-2 py-3">
+                                  <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#6a7ea3]">Impact</p>
+                                  <div className="mt-2 h-12 rounded-[10px] bg-[#bfdcff]" />
+                                </div>
+                                <div className="rounded-[14px] bg-[#fff2de] px-2 py-3">
+                                  <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#b67a20]">Risk</p>
+                                  <div className="mt-2 h-12 rounded-[10px] bg-[#ffd9ab]" />
+                                </div>
+                                <div className="rounded-[14px] bg-[#eef8f1] px-2 py-3">
+                                  <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#4c8a60]">Scope</p>
+                                  <div className="mt-2 h-12 rounded-[10px] bg-[#cfeeda]" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="bg-[linear-gradient(180deg,#fbfcff_0%,#f3f7ff_100%)] p-4">
+                            <div className="mb-3 flex items-center justify-between">
+                              <span className="rounded-full bg-[#f4efff] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#7760a8]">
+                                decision frame
+                              </span>
+                              <span className="rounded-full border border-[#d8e4fb] px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">
+                                aligned
+                              </span>
+                            </div>
+                            <div className="rounded-[20px] border border-[#dfe7f2] bg-white p-4 shadow-[0_14px_28px_rgba(31,53,94,0.07)]">
+                              <div className="mb-3 h-3 w-[44%] rounded-full bg-[#dce7ff]" />
+                              <div className="space-y-3">
+                                <div className="rounded-[16px] bg-[#f7faff] p-3">
+                                  <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#7b8598]">Why this direction</p>
+                                  <p className="mt-1 text-[13px] font-medium text-[#0e2951]">Balances user clarity, trust, and realistic implementation scope.</p>
+                                </div>
+                                <div className="grid grid-cols-2 gap-2">
+                                  <div className="rounded-[14px] bg-[#eaf4ff] p-3">
+                                    <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#6a7ea3]">User</p>
+                                    <div className="mt-2 h-10 rounded-[10px] bg-[#cfe2ff]" />
+                                  </div>
+                                  <div className="rounded-[14px] bg-[#fff1de] p-3">
+                                    <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#b67a20]">Business</p>
+                                    <div className="mt-2 h-10 rounded-[10px] bg-[#ffdcb6]" />
+                                  </div>
+                                </div>
+                                <div className="h-9 rounded-[12px] bg-[linear-gradient(135deg,#1762d6_0%,#72a9ff_100%)] shadow-[0_10px_20px_rgba(23,98,214,0.2)]" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div className="absolute bottom-12 left-8 z-10 w-[34%] min-w-[180px] rounded-[20px] border border-[#dbe5f3] bg-[#0f1728] p-3 text-white shadow-[0_18px_40px_rgba(15,23,40,0.24)] animate-[impact-flow-float_5.4s_ease-in-out_infinite]">
                       <div className="mb-2 flex items-center justify-between">
                         <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#91a8ff]">
-                          flow logic
+                          business logic
                         </span>
                         <span className="rounded-full bg-white/8 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#d7e0ff]">
                           ai assist
                         </span>
                       </div>
                       <div className="space-y-1.5 font-mono text-[10px] leading-5 text-[#d9e4ff]">
-                        <div><span className="text-[#7fb8ff]">if</span> familyInfo === <span className="text-[#ffc777]">complete</span></div>
-                        <div><span className="text-[#7fb8ff]">show</span> <span className="text-[#c3e88d]">guidedDecisionModal</span>()</div>
-                        <div><span className="text-[#f78c6c]">rank</span>(fit, cost, confidence)</div>
+                        <div><span className="text-[#7fb8ff]">if</span> valueScore &gt; <span className="text-[#ffc777]">frictionCost</span></div>
+                        <div><span className="text-[#7fb8ff]">prioritize</span> <span className="text-[#c3e88d]">recommendedDirection</span>()</div>
+                        <div><span className="text-[#f78c6c]">balance</span>(userNeed, businessGoal, effort)</div>
                       </div>
                     </div>
                     <div className="pointer-events-none absolute bottom-[23%] left-[34%] z-[9] hidden h-[2px] w-[28%] overflow-hidden rounded-full bg-[#d8e4fb] lg:block">
@@ -952,45 +975,108 @@ export default function PortfolioPage() {
                     <div className="absolute bottom-6 right-6 w-[42%] rounded-[22px] border border-[#dfe7f2] bg-white/96 p-3 shadow-[0_18px_36px_rgba(31,53,94,0.14)]">
                       <div className="mb-2 flex items-center justify-between">
                         <span className="rounded-full bg-[#eef6ff] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">
-                          Selected
+                          Output
                         </span>
-                        <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#7b8598]">Prototype</span>
+                        <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#7b8598]">Strategic frame</span>
                       </div>
-                      <Image
-                        src={withBasePath("/images/projects/nayya-ai-benefits/banners/nayya-guided-decision-modal.svg")}
-                        alt="Guided decision modal preview"
-                        width={900}
-                        height={620}
-                        className="h-auto w-full rounded-[16px] border border-[#edf1f7] object-cover animate-[impact-flow-float_4.8s_ease-in-out_0.4s_infinite]"
-                      />
+                      <div className="rounded-[16px] border border-[#edf1f7] bg-[#fbfcff] p-3 animate-[impact-flow-float_4.8s_ease-in-out_0.4s_infinite]">
+                        <div className="mb-2 h-3 w-[46%] rounded-full bg-[#dce7ff]" />
+                        <div className="space-y-2.5">
+                          <div className="rounded-[12px] bg-[#eef6ff] p-2.5">
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#6a7ea3]">Value delivered</p>
+                            <p className="mt-1 text-[12px] font-medium text-[#0e2951]">A direction that is useful to users and defensible for the business.</p>
+                          </div>
+                          <div className="grid grid-cols-3 gap-2">
+                            <div className="h-9 rounded-[10px] bg-[#dceaff]" />
+                            <div className="h-9 rounded-[10px] bg-[#ffe9cf]" />
+                            <div className="h-9 rounded-[10px] bg-[#e2f6ea]" />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-[#121826] p-4 text-white">
-                <div className="mb-3 flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#89a4ff]">
+              <div className="bg-[linear-gradient(180deg,#f8fbff_0%,#eef4fb_100%)] p-4">
+                <div className="mb-3 flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#5f78a0]">
                   <FolderGit2 className="h-4 w-4" />
-                  Codex workflow
+                  Collaboration board
                 </div>
-                <div className="space-y-3 rounded-[20px] border border-white/8 bg-white/5 p-4">
-                  <div className="flex items-center gap-2 text-[12px] text-[#c9d5ff]">
-                    <GitFork className="h-3.5 w-3.5" />
-                    Prompt to flow exploration
+                <div className="rounded-[20px] border border-[#d9e4f2] bg-white p-4 shadow-[0_16px_34px_rgba(31,53,94,0.08)]">
+                  <div className="mb-4 flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-[12px] text-[#5f78a0]">
+                      <GitFork className="h-3.5 w-3.5" />
+                      User needs + business goals
+                    </div>
+                    <div className="flex -space-x-2">
+                      <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-[#1183D0] text-[10px] font-semibold text-white">GM</span>
+                      <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-[#ffb649] text-[10px] font-semibold text-[#7a4a00]">PM</span>
+                      <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-[#8fdcb8] text-[10px] font-semibold text-[#1f6a48]">ENG</span>
+                    </div>
                   </div>
-                  <div className="rounded-[14px] bg-[#0c1220] p-3 font-mono text-[11px] leading-6 text-[#d9e4ff]">
-                    <div className="text-[#7fb8ff]">const</div> options = <span className="text-[#c3e88d]">["embedded section", "list entry", "guided modal"]</span>;
-                    <br />
-                    <div className="text-[#7fb8ff]">const</div> selected = <span className="text-[#ffc777]">"guided decision modal"</span>;
-                    <br />
-                    <span className="text-[#f78c6c]">refine</span>(timing, trustSignals, familyContext);
+                  <div className="grid gap-3 md:grid-cols-3">
+                    <div className="space-y-3">
+                      <div className="rounded-[16px] bg-[#fff3b6] p-3 shadow-[0_10px_20px_rgba(180,154,40,0.12)]">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#8a6a00]">User need</p>
+                        <p className="mt-1 text-[12px] font-medium leading-5 text-[#4f4520]">
+                          Help people understand what to do next without added friction.
+                        </p>
+                      </div>
+                      <div className="rounded-[16px] bg-[#c8f0ee] p-3 shadow-[0_10px_20px_rgba(76,160,160,0.12)]">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#226f72]">Observation</p>
+                        <p className="mt-1 text-[12px] font-medium leading-5 text-[#234f52]">
+                          Decision confidence drops when value and next steps are not obvious.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="rounded-[16px] bg-[#ffd7ad] p-3 shadow-[0_10px_20px_rgba(210,130,70,0.12)]">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#9a5416]">Business goal</p>
+                        <p className="mt-1 text-[12px] font-medium leading-5 text-[#5f3a15]">
+                          Support better choices while reducing drop-off and wasted effort.
+                        </p>
+                      </div>
+                      <div className="rounded-[16px] bg-[#e3edff] p-3 shadow-[0_10px_20px_rgba(80,120,200,0.12)]">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#4668a8]">Decision</p>
+                        <p className="mt-1 text-[12px] font-medium leading-5 text-[#2e446f]">
+                          Align guidance, timing, and implementation scope around the highest-value path.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="relative rounded-[18px] border border-dashed border-[#d7e1ef] bg-[#fafcff] p-3">
+                      <div className="mb-2 flex items-center justify-between">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#7b8598]">Live notes</p>
+                        <span className="rounded-full bg-[#eef6ff] px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
+                          Syncing
+                        </span>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="rounded-[12px] bg-white px-3 py-2 shadow-[0_6px_16px_rgba(31,53,94,0.05)] text-[11px] leading-5 text-[#5c7792]">
+                          PM: tie the recommendation to measurable value.
+                        </div>
+                        <div className="rounded-[12px] bg-white px-3 py-2 shadow-[0_6px_16px_rgba(31,53,94,0.05)] text-[11px] leading-5 text-[#5c7792]">
+                          Design: make the tradeoff and next step obvious.
+                        </div>
+                        <div className="rounded-[12px] bg-white px-3 py-2 shadow-[0_6px_16px_rgba(31,53,94,0.05)] text-[11px] leading-5 text-[#5c7792]">
+                          Eng: keep scope lightweight enough to ship.
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 text-[12px] text-[#c9d5ff]">
+                  <div className="my-4 flex items-center gap-2 px-2">
+                    <div className="h-[2px] flex-1 rounded-full bg-[linear-gradient(90deg,#e6c44e_0%,#8dbaf3_50%,#8fdcb8_100%)]" />
+                    <span className="rounded-full bg-[#0e2951] px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-white">
+                      aligned
+                    </span>
+                    <div className="h-[2px] flex-1 rounded-full bg-[linear-gradient(90deg,#8fdcb8_0%,#8dbaf3_50%,#ffd29a_100%)]" />
+                  </div>
+                  <div className="flex items-center gap-2 text-[12px] text-[#5f78a0]">
                     <GitCommitHorizontal className="h-3.5 w-3.5" />
-                    Design variations translated into production-ready decisions
+                    Shared inputs translated into product direction
                   </div>
-                  <div className="rounded-[16px] bg-[linear-gradient(135deg,rgba(56,75,255,0.25),rgba(18,24,38,0.05))] px-3 py-2 text-[11px] leading-relaxed text-[#dce7ff]">
-                    AI helps me explore faster, but the product decision still comes from tradeoffs, testing goals, and what can realistically ship.
+                  <div className="mt-3 rounded-[16px] bg-[linear-gradient(135deg,#edf5ff_0%,#f7fbff_100%)] px-3 py-2 text-[11px] leading-relaxed text-[#4f6486]">
+                    Collaboration helps connect user needs, business goals, and implementation tradeoffs into clearer product decisions.
                   </div>
                 </div>
               </div>
@@ -1037,8 +1123,8 @@ export default function PortfolioPage() {
             <h3 className="max-w-[320px] font-inter text-[26px] leading-[1.15] text-[#0e2951]">
               Accessibility documentation and UX validation
             </h3>
-            <p className="mt-3 max-w-[320px] text-[17px] leading-[1.7] text-[#5c7792]">
-              Contributed to accessibility documentation, collaborated on UX audits, and used well-organized design files as a reference for clearer, more consistent product decisions.
+            <p className="mt-3 max-w-[320px] text-[14px] leading-[1.6] text-[#5c7792] md:text-[15px]">
+              Brings accessibility thinking to product work through documentation, UX audits, and well-structured design systems that support clearer, more consistent decisions.
             </p>
           </Link>
 
@@ -1052,8 +1138,8 @@ export default function PortfolioPage() {
               <h3 className="max-w-[320px] font-inter text-[26px] leading-[1.15] text-[#0e2951]">
                 Design systems and cross-functional support.
               </h3>
-              <p className="mt-3 max-w-[320px] text-[17px] leading-[1.7] text-[#5c7792]">
-                A strong partner for quick design feedback, design systems consultation, and practical IT-related problem solving across the product workflow.
+              <p className="mt-3 max-w-[320px] text-[14px] leading-[1.6] text-[#5c7792] md:text-[15px]">
+                A reliable partner for quick design feedback, design systems consultation, and practical IT-related problem solving across the product workflow.
               </p>
 
               <div className="mt-6 grid gap-3">
