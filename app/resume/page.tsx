@@ -397,7 +397,7 @@ export default function ResumePage() {
         <div className="relative overflow-hidden px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
           <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
             <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#0e2951]">Resume</span>
-            <h1 className="mt-8 text-5xl font-serif-display leading-[0.95] text-[#0e2951] sm:text-6xl lg:text-7xl">
+            <h1 className="mt-8 text-5xl font-inter leading-[0.95] text-[#0e2951] sm:text-6xl lg:text-7xl">
               {resume.name}
             </h1>
             <p className="mt-5 text-xl font-medium text-[#1f2f3d] sm:text-2xl">
@@ -495,7 +495,7 @@ export default function ResumePage() {
                     <li key={b.heading} className="text-sm text-[#3c3e3f] leading-relaxed">
                       <div className="flex gap-2">
                         <span className="text-[#1183D0] mt-1 shrink-0">›</span>
-                        <span className="font-serif-display font-semibold text-[#0e2951]">
+                        <span className="font-inter font-semibold text-[#0e2951]">
                           {b.heading}
                         </span>
                       </div>

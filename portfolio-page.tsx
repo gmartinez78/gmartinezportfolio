@@ -729,7 +729,7 @@ export default function PortfolioPage() {
                 ) : (
                   <div className="flex h-full items-center justify-center px-6 text-center">
                     <div>
-                      <div className="text-5xl font-serif-display font-bold text-[#1183D0]">{project.year}</div>
+                      <div className="text-5xl font-inter font-bold text-[#1183D0]">{project.year}</div>
                       <div className="mt-2 text-xs leading-tight text-[#5c7792]">{project.company}</div>
                     </div>
                   </div>
@@ -756,7 +756,7 @@ export default function PortfolioPage() {
                       </>
                     ) : null}
                   </div>
-                  <h3 className="font-serif-display text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200">
+                  <h3 className="font-inter text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200">
                     {project.title}
                   </h3>
                 </div>
@@ -826,7 +826,7 @@ export default function PortfolioPage() {
           <p className="text-center text-[13px] font-semibold uppercase tracking-[0.3em] text-[#1183D0]">
             Experience & Skills
           </p>
-          <h2 className="max-w-[320px] text-center font-serif-display text-[30px] leading-[1.05] text-[#0e2951] md:max-w-[620px] md:text-[44px]">
+          <h2 className="max-w-[320px] text-center font-inter text-[30px] leading-[1.05] text-[#0e2951] md:max-w-[620px] md:text-[44px]">
             {siteContent.home.tools_section.headline}
           </h2>
         </div>
@@ -855,7 +855,7 @@ export default function PortfolioPage() {
         <p className="max-w-[800px] text-[28px] leading-[1.5] text-[#5c7792]">
           {siteContent.home.stat_banner.text} {siteContent.home.stat_banner.value} {siteContent.home.stat_banner.value_label}
         </p>
-        <h2 className="font-serif-display font-bold text-[40px] text-[#0e2951]">
+        <h2 className="font-inter font-bold text-[40px] text-[#0e2951]">
           {siteContent.home.stat_banner.cta_headline}
         </h2>
         <Button asChild size="sm">
@@ -1096,7 +1096,7 @@ export default function PortfolioPage() {
               <TypewriterBanner
                 greeting={(
                   <>
-                    <span className="font-serif-display text-[1.2em] leading-none text-[#0e2951]">
+                    <span className="font-inter text-[1.2em] leading-none text-[#0e2951]">
                       Greddys Martinez
                     </span>
                   </>

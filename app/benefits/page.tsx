@@ -537,7 +537,7 @@ export default function BenefitsPage() {
             <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">
               Case Study Unavailable
             </p>
-            <h1 className="mt-6 font-serif-display text-[44px] leading-[1.05] text-[#0e2951]">
+            <h1 className="mt-6 font-inter text-[44px] leading-[1.05] text-[#0e2951]">
               This case study is no longer published
             </h1>
             <p className="mt-5 max-w-[620px] text-base leading-7 text-[#5c7792]">
@@ -842,7 +842,7 @@ export default function BenefitsPage() {
           ))}
         </div>
         <div className="mt-8">
-          <h2 className="mb-5 text-center font-serif-display text-[36px] leading-tight text-[#0e2951]">
+          <h2 className="mb-5 text-center font-inter text-[36px] leading-tight text-[#0e2951]">
             Additional outcome signals
           </h2>
           <p className="mx-auto mt-4 max-w-[760px] text-center text-[14px] leading-[1.7] text-[#5c7792]">
@@ -942,7 +942,7 @@ export default function BenefitsPage() {
       {/* ── Other Projects ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0] mb-2">More work</p>
-        <h2 className="mb-8 font-serif-display text-[32px] text-[#0e2951]">Other Projects</h2>
+        <h2 className="mb-8 font-inter text-[32px] text-[#0e2951]">Other Projects</h2>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {otherProjects.map((p) => (
             <Link
@@ -967,7 +967,7 @@ export default function BenefitsPage() {
                   </Badge>
                 ))}
               </div>
-              <h3 className="font-serif-display text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200 group-hover:text-[rgb(14_41_81/var(--tw-text-opacity,1))] group-focus-visible:text-[rgb(14_41_81/var(--tw-text-opacity,1))]">
+              <h3 className="font-inter text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200 group-hover:text-[rgb(14_41_81/var(--tw-text-opacity,1))] group-focus-visible:text-[rgb(14_41_81/var(--tw-text-opacity,1))]">
                 {p.title}
               </h3>
               <div className="-mt-2 h-[116px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">

@@ -163,7 +163,7 @@ function ProjectsPage() {
                 />
               ) : (
                 <div className="text-center">
-                  <div className="text-5xl font-serif-display font-bold text-[#1183D0]">{project.stat}</div>
+                  <div className="text-5xl font-inter font-bold text-[#1183D0]">{project.stat}</div>
                   <div className="text-xs text-[#5c7792] mt-1 max-w-[120px] mx-auto leading-tight">{project.statLabel}</div>
                 </div>
               )}
@@ -183,7 +183,7 @@ function ProjectsPage() {
                     </>
                   ) : null}
                 </div>
-                <h2 className="mb-5 text-2xl font-serif-display leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))]">{project.title}</h2>
+                <h2 className="mb-5 text-2xl font-inter leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))]">{project.title}</h2>
                 <p className="text-[15px] leading-relaxed text-[#5c7792]">{project.tagline}</p>
               </div>
               <div className="flex items-end justify-between mt-6 flex-wrap gap-4">

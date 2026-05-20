@@ -40,7 +40,7 @@ export function SiteHeader({
         <Link href={withBasePath("/")} className="flex shrink-0 items-center gap-3 text-left" aria-label="Greddys Martinez home">
           <LogoMark className="h-10 w-auto" />
           <span className="text-[17px] font-semibold leading-tight text-[#0e2951]">
-            {siteContent.nav.logo_text}
+            Greddys
           </span>
         </Link>
         <div className="ml-auto flex min-w-0 items-center gap-5 lg:gap-8">
