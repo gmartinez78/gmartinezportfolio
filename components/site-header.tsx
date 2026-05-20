@@ -37,7 +37,7 @@ export function SiteHeader({
       }
     >
       <nav className="mx-auto flex min-h-16 max-w-[1200px] items-center justify-between gap-6 px-5 py-3 sm:px-8 lg:px-12">
-        <Link href={withBasePath("/")} className="flex shrink-0 items-center gap-3" aria-label="Greddys Martinez home">
+        <Link href={withBasePath("/")} className="flex shrink-0 items-center gap-3 text-left" aria-label="Greddys Martinez home">
           <LogoMark className="h-10 w-auto" />
           <span className="text-[17px] font-semibold leading-tight text-[#0e2951]">
             {siteContent.nav.logo_text}

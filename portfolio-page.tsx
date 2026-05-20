@@ -913,14 +913,14 @@ export default function PortfolioPage() {
               }}
             />
             <div
-              className="absolute left-[16%] top-[58%] h-px w-[150px] bg-[#90a4da]/28 hidden lg:block"
+              className="absolute right-[34%] top-[58%] h-px w-[150px] bg-[#90a4da]/28 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -12, -6),
                 transition: "transform 180ms ease-out",
               }}
             />
             <div
-              className="absolute left-[16%] top-[58%] h-[56px] w-px bg-[#90a4da]/24 hidden lg:block"
+              className="absolute right-[34%] top-[58%] h-[56px] w-px bg-[#90a4da]/24 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -12, -6),
                 transition: "transform 180ms ease-out",
@@ -942,7 +942,7 @@ export default function PortfolioPage() {
               }}
             />
             <div
-              className="absolute left-[35%] top-[18%] rounded-full border border-white/24 bg-white/8 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#64738f] hidden lg:block"
+              className="absolute right-[35%] top-[18%] rounded-full border border-white/24 bg-white/8 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#64738f] hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, 0),
                 transition: "transform 180ms ease-out",
@@ -960,7 +960,7 @@ export default function PortfolioPage() {
               Low-fi
             </div>
             <div
-              className="absolute left-[31%] top-[66%] rounded-[16px] border border-white/18 bg-white/8 px-4 py-3 hidden lg:block"
+              className="absolute right-[30%] top-[66%] rounded-[16px] border border-white/18 bg-white/8 px-4 py-3 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, -2),
                 transition: "transform 180ms ease-out",
@@ -992,7 +992,7 @@ export default function PortfolioPage() {
             ))}
 
             <div
-              className="absolute left-[8%] top-[20%] w-[194px] rounded-[26px] border border-white/30 bg-white/12 p-3.5 shadow-[0_20px_42px_rgba(42,54,92,0.06),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur-xl hidden sm:block"
+              className="absolute right-[31%] top-[20%] w-[194px] rounded-[26px] border border-white/30 bg-white/12 p-3.5 shadow-[0_20px_42px_rgba(42,54,92,0.06),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur-xl hidden sm:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -26, -10),
                 transition: "transform 180ms ease-out",
@@ -1057,7 +1057,7 @@ export default function PortfolioPage() {
             </div>
 
             <div
-              className="absolute left-[16%] bottom-[18%] hidden sm:flex items-center gap-3 rounded-full border border-white/34 bg-white/12 px-4 py-3 shadow-[0_20px_42px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.42)] backdrop-blur-xl"
+              className="absolute right-[26%] bottom-[18%] hidden sm:flex items-center gap-3 rounded-full border border-white/34 bg-white/12 px-4 py-3 shadow-[0_20px_42px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.42)] backdrop-blur-xl"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -18, -6),
                 transition: "transform 180ms ease-out",
@@ -1096,8 +1096,8 @@ export default function PortfolioPage() {
             <span className="absolute right-0 top-1/2 h-[6px] w-[6px] -translate-y-1/2 rounded-full bg-white shadow-[0_0_16px_rgba(255,255,255,0.95)]" />
           </div>
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.58)_42%,#ffffff_100%)]" />
-          <div className="relative mx-auto flex min-h-[340px] max-w-[980px] flex-col items-center justify-center gap-8 text-center">
-            <div className="flex max-w-[760px] flex-col items-center justify-center">
+          <div className="relative mx-auto flex min-h-[340px] w-full max-w-[1200px] flex-col items-start justify-center gap-8 px-5 text-left sm:px-8 lg:px-12">
+            <div className="flex w-full max-w-[760px] flex-col items-start justify-center">
               <TypewriterBanner
                 greeting={(
                   <>
@@ -1111,15 +1111,16 @@ export default function PortfolioPage() {
                 greetingClassName="text-[#0e2951]"
                 roleClassName="text-[#3b82f6]"
                 descriptionClassName="text-[#0e2951]"
+                align="left"
               />
             </div>
           </div>
-          <div className="relative z-10 mx-auto mt-8 grid w-full max-w-[1180px] gap-4 px-6 text-left md:mt-10 md:grid-cols-2 md:px-10 lg:px-16">
+          <div className="relative z-10 mx-auto mt-8 grid w-full max-w-[1180px] gap-4 px-6 text-left md:mt-10 md:grid-cols-2 md:px-10 lg:grid-cols-4 lg:px-16">
             {heroPills.map((pill) => (
               <Link
                 key={pill.title}
                 href={pill.href}
-                className="group flex min-h-[92px] items-center gap-4 rounded-[22px] border border-[#f1ece8] bg-[#f8f6f3] px-4 py-4 shadow-[0_12px_24px_rgba(60,62,63,0.04)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_18px_30px_rgba(60,62,63,0.08)]"
+                className="group flex min-h-[92px] items-center gap-4 rounded-[22px] border border-[#f1ece8] bg-white px-4 py-4 shadow-[0_12px_24px_rgba(60,62,63,0.04)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_18px_30px_rgba(60,62,63,0.08)]"
               >
                 <span className={`inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] ${pill.accentClassName}`}>
                   <pill.icon className="h-5 w-5" />
