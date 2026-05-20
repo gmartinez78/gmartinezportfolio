@@ -825,10 +825,10 @@ export default function PortfolioPage() {
         >
           <div className="mb-7 flex flex-col gap-3 md:max-w-[760px]">
             <h2 className="font-inter text-[18px] leading-[1.15] text-[#0e2951] md:text-[26px]">
-              Turning AI prompts into design systems, flows, and shipped product screens.
+              Growing business judgment alongside product and design execution.
             </h2>
             <p className="max-w-[720px] text-[14px] leading-[1.6] text-[#5c7792] md:text-[15px]">
-              I use AI to explore faster, pressure-test directions, and translate rough thinking into structured product work inside Figma without losing usability, systems thinking, or implementation detail.
+              Brings strong business thinking to product work, with clear focus on value delivered for the business. The approach reflects maturity, strategy, and the ability to connect design decisions to broader product goals.
             </p>
           </div>
 
@@ -1000,28 +1000,45 @@ export default function PortfolioPage() {
 
         <div className="grid gap-5">
           <Link
-            href={withBasePath("/projects/nayya-ai-benefits")}
+            href={withBasePath("/projects/flock-accessibility-system")}
             className="group rounded-[34px] bg-[#f4f2f3] p-5 transition-transform duration-300 hover:-translate-y-1 md:p-6"
           >
             <div className="mb-5 rounded-[22px] bg-white p-4 shadow-[0_14px_32px_rgba(30,38,61,0.06)]">
-              <div className="flex items-start gap-4">
-                <div className="h-[148px] w-[88px] shrink-0 overflow-hidden rounded-[16px] shadow-[0_10px_22px_rgba(30,38,61,0.08)]">
-                  <Image
-                    src={withBasePath("/images/projects/nayya-ai-benefits/banners/nayya-guided-decision-modal.svg")}
-                    alt="Nayya guided decision modal"
-                    width={240}
-                    height={180}
-                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
+              <div className="rounded-[18px] border border-[#e7edf6] bg-[#fbfcfe] p-3 shadow-[0_10px_22px_rgba(30,38,61,0.04)]">
+                <div className="mb-3 flex items-center justify-between">
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#0e2951]">
+                    A11y validation
+                  </p>
+                  <span className="rounded-full bg-[#e8f8ea] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#339154]">
+                    in review
+                  </span>
+                </div>
+                <div className="space-y-2.5">
+                  <div className="flex items-center justify-between rounded-[12px] bg-white px-3 py-2">
+                    <span className="text-[12px] font-medium text-[#5c7792]">Focus order</span>
+                    <span className="rounded-full bg-[#e8f8ea] px-2 py-0.5 text-[10px] font-semibold text-[#339154]">Pass</span>
+                  </div>
+                  <div className="flex items-center justify-between rounded-[12px] bg-white px-3 py-2">
+                    <span className="text-[12px] font-medium text-[#5c7792]">Color contrast</span>
+                    <span className="rounded-full bg-[#eef7ff] px-2 py-0.5 text-[10px] font-semibold text-[#1183D0]">Check</span>
+                  </div>
+                  <div className="flex items-center justify-between rounded-[12px] bg-white px-3 py-2">
+                    <span className="text-[12px] font-medium text-[#5c7792]">Labels and roles</span>
+                    <span className="rounded-full bg-[#e8f8ea] px-2 py-0.5 text-[10px] font-semibold text-[#339154]">Pass</span>
+                  </div>
+                  <div className="flex items-center justify-between rounded-[12px] bg-white px-3 py-2">
+                    <span className="text-[12px] font-medium text-[#5c7792]">Keyboard states</span>
+                    <span className="rounded-full bg-[#fff3df] px-2 py-0.5 text-[10px] font-semibold text-[#d68524]">Audit</span>
+                  </div>
                 </div>
               </div>
             </div>
 
             <h3 className="max-w-[320px] font-inter text-[26px] leading-[1.15] text-[#0e2951]">
-              Guided decision
+              Accessibility documentation and UX validation
             </h3>
             <p className="mt-3 max-w-[320px] text-[17px] leading-[1.7] text-[#5c7792]">
-              Show a modal after users entered their family information, when guidance felt timely connected to choosing better benefits.
+              Contributed to accessibility documentation, collaborated on UX audits, and used well-organized design files as a reference for clearer, more consistent product decisions.
             </p>
           </Link>
 
@@ -1033,10 +1050,10 @@ export default function PortfolioPage() {
             <div className="absolute bottom-8 right-6 h-24 w-24 rounded-full bg-[#9ec6ff]/35 blur-2xl" />
             <div className="relative">
               <h3 className="max-w-[320px] font-inter text-[26px] leading-[1.15] text-[#0e2951]">
-                Turning onboarding and enrollment into lighter, reusable systems.
+                Design systems and cross-functional support.
               </h3>
               <p className="mt-3 max-w-[320px] text-[17px] leading-[1.7] text-[#5c7792]">
-                From multi-step flows to reusable UI patterns, I build experiences that reduce confusion without losing momentum.
+                A strong partner for quick design feedback, design systems consultation, and practical IT-related problem solving across the product workflow.
               </p>
 
               <div className="mt-6 grid gap-3">
@@ -1046,31 +1063,14 @@ export default function PortfolioPage() {
                       <LayoutTemplate className="h-4 w-4" />
                     </span>
                     <div>
-                      <p className="text-[14px] font-semibold text-[#0e2951]">Reusable patterns</p>
-                      <p className="text-[12px] text-[#7b8598]">cards, banners, guided states, decision support</p>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-3 gap-2">
-                    <div className="h-12 rounded-[14px] bg-[#dfe9ff]" />
-                    <div className="h-12 rounded-[14px] bg-[#ffe7cb]" />
-                    <div className="h-12 rounded-[14px] bg-[#e2f6ea]" />
-                  </div>
-                </div>
-
-                <div className="rounded-[24px] bg-white/80 p-4 shadow-[0_18px_34px_rgba(31,53,94,0.08)]">
-                  <div className="mb-3 flex items-center gap-2">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-[12px] bg-[#fff2e5] text-[#f08f21]">
-                      <Star className="h-4 w-4" />
-                    </span>
-                    <div>
-                      <p className="text-[14px] font-semibold text-[#0e2951]">Outcome-driven UX</p>
-                      <p className="text-[12px] text-[#7b8598]">clearer decisions, faster handoff, stronger confidence</p>
+                      <p className="text-[14px] font-semibold text-[#0e2951]">Quick design feedback</p>
+                      <p className="text-[12px] text-[#7b8598]">fast reviews, clear notes, actionable product decisions</p>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    <span className="rounded-full bg-[#eef6ff] px-3 py-1 text-[11px] font-semibold text-[#1183D0]">Enrollment</span>
-                    <span className="rounded-full bg-[#fff1df] px-3 py-1 text-[11px] font-semibold text-[#d68524]">Behavior change</span>
-                    <span className="rounded-full bg-[#ebf8ef] px-3 py-1 text-[11px] font-semibold text-[#2f8c54]">Systems thinking</span>
+                    <span className="rounded-full bg-[#eef6ff] px-3 py-1 text-[11px] font-semibold text-[#1183D0]">Reviews</span>
+                    <span className="rounded-full bg-[#fff1df] px-3 py-1 text-[11px] font-semibold text-[#d68524]">Iteration</span>
+                    <span className="rounded-full bg-[#ebf8ef] px-3 py-1 text-[11px] font-semibold text-[#2f8c54]">Alignment</span>
                   </div>
                 </div>
               </div>
