@@ -2,17 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FormEvent, useEffect, useMemo, useState } from "react";
-import { ArrowUp, BrainCircuit, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Mic, MousePointer2, Star, Wand2 } from "lucide-react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { ArrowLeft, ArrowRight, ArrowUp, BrainCircuit, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Mic, MousePointer2, Star, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { TypewriterBanner } from "./components/typewriter-banner";
 import { Badge } from "./components/ui/badge";
 import { Button } from "./components/ui/button";
-import { SectionHeading } from "./components/ui/section-heading";
+import { appendLockedNayyaPlaceholder } from "./lib/cms/locked-placeholder";
 import {
   resolveHomeCardId,
-  resolveHomeCardImage,
+  resolveProjectListCardImage,
   resolveProjectHref,
   resolveToolIcon,
   resolveTrustedLogo,
@@ -61,6 +61,13 @@ const HERO_UI_ORBS = [
   { left: "73%", top: "54%", width: 154, height: 110, rotate: -14, depth: -22, fill: "linear-gradient(135deg, rgba(20,209,140,0.88) 0%, rgba(26,148,116,0.7) 100%)" },
   { left: "21%", top: "64%", width: 160, height: 118, rotate: -22, depth: -28, fill: "linear-gradient(135deg, rgba(72,79,248,0.88) 0%, rgba(59,73,208,0.68) 100%)" },
 ];
+
+const PROJECT_BACKGROUNDS: Record<string, string> = {
+  "benefits-enrollment": "radial-gradient(ellipse at 82% 50%, #b7daf1 11%, #e9f3fb 64%, #edf5fb 98%)",
+  "nayya-ai-benefits": "radial-gradient(ellipse at 20% 50%, #cfe9f7 0%, #f0f7ff 72%)",
+  "flock-accessibility-system": "radial-gradient(ellipse at 80% 20%, #c8f0e0 0%, #edf5fb 70%)",
+  "i9-everify-integration": "radial-gradient(ellipse at 50% 80%, #d9e7f5 0%, #f3f8fc 72%)",
+};
 
 type HeroPhase = "sunrise" | "day" | "sunset" | "night";
 type GitHubActivityItem = {
@@ -447,22 +454,6 @@ function HeroPrototypeOverlay({
   return (
     <div className="pointer-events-none absolute inset-0 hidden lg:block">
       <div
-        className="absolute left-[6%] top-[14%] h-px w-[14%] bg-[linear-gradient(90deg,rgba(255,255,255,0.55),rgba(255,255,255,0))]"
-        style={{
-          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, 0),
-          transition: "transform 180ms ease-out",
-        }}
-      />
-      <div
-        className="absolute left-[20%] top-[14%] text-[10px] font-semibold uppercase tracking-[0.24em] text-[#5d6d8b]"
-        style={{
-          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, 0),
-          transition: "transform 180ms ease-out",
-        }}
-      >
-        Prototype grid
-      </div>
-      <div
         className="absolute right-[8%] top-[16%] h-[76px] w-[76px] rounded-[20px] border border-dashed border-white/22"
         style={{
           transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, 0),
@@ -470,21 +461,21 @@ function HeroPrototypeOverlay({
         }}
       />
       <div
-        className="absolute left-[14%] top-[34%] h-px w-[22%] border-t border-dashed border-white/20"
+        className="absolute right-[24%] top-[35%] h-px w-[18%] border-t border-dashed border-white/20"
         style={{
           transform: getParallaxTransform(heroPointer.x, heroPointer.y, -9, 0),
           transition: "transform 180ms ease-out",
         }}
       />
       <div
-        className="absolute right-[16%] top-[35%] h-px w-[18%] border-t border-dashed border-white/18"
+        className="absolute right-[38%] top-[27%] h-px w-[16%] border-t border-dashed border-white/18"
         style={{
           transform: getParallaxTransform(heroPointer.x, heroPointer.y, -9, 0),
           transition: "transform 180ms ease-out",
         }}
       />
       <div
-        className="absolute left-[26%] top-[23%] h-8 w-8 border-l border-t border-white/24"
+        className="absolute right-[40%] top-[19%] h-8 w-8 border-l border-t border-white/24"
         style={{
           transform: getParallaxTransform(heroPointer.x, heroPointer.y, -7, 0),
           transition: "transform 180ms ease-out",
@@ -498,17 +489,7 @@ function HeroPrototypeOverlay({
         }}
       />
       <div
-        className="absolute left-[22%] bottom-[20%] flex items-center gap-2 rounded-full border border-white/24 bg-white/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-[#5f708f]"
-        style={{
-          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, 0),
-          transition: "transform 180ms ease-out",
-        }}
-      >
-        <span className="h-1.5 w-1.5 rounded-full bg-[#6e7dff]/70" />
-        entry
-      </div>
-      <div
-        className="absolute right-[21%] bottom-[22%] flex items-center gap-2 rounded-full border border-white/24 bg-white/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-[#5f708f]"
+        className="absolute right-[10%] bottom-[14%] flex items-center gap-2 rounded-full border border-white/24 bg-white/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-[#5f708f]"
         style={{
           transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, 0),
           transition: "transform 180ms ease-out",
@@ -547,7 +528,7 @@ export default function PortfolioPage() {
   );
   const [heroAssistantResults, setHeroAssistantResults] = useState<HeroAssistantResult["items"]>([]);
   const [highlightedProjectIds, setHighlightedProjectIds] = useState<string[]>([]);
-  const [openProjectIdx, setOpenProjectIdx] = useState(0);
+  const projectsSliderRef = useRef<HTMLDivElement | null>(null);
   const { siteContent } = usePublicSiteContent();
   const { caseStudies } = usePublicCaseStudies();
   const hero = siteContent.home.hero;
@@ -561,17 +542,21 @@ export default function PortfolioPage() {
   const methodologyChips = hero.methodology_chips.length
     ? hero.methodology_chips
     : ["AI product design", "UX research", "Enterprise SaaS", "Design systems"];
-  const featuredProjects = caseStudies
-    .filter((study) => study.featured || study.slug === "flock-accessibility-system")
-    .slice(0, 4)
+  const allProjects = appendLockedNayyaPlaceholder(caseStudies ?? []);
+  const homeProjects = allProjects
+    .filter((study) => study?.slug)
     .map((study) => ({
       slug: study.slug,
       cardId: resolveHomeCardId(study.slug),
       title: study.title,
       description: study.tagline ?? "",
-      image: resolveHomeCardImage(study.slug, study.images.cover),
+      company: study.company ?? "",
+      year: study.year ?? 0,
+      image: resolveProjectListCardImage(study.slug, study.images?.cover || study.images?.hero || ""),
+      background: PROJECT_BACKGROUNDS[study.slug] ?? "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
       href: resolveProjectHref(study),
       tags: study.tags.slice(0, 4),
+      password: study.password,
       cta: study.external_link ? "View project" : "View case study",
     }));
   const heroRoles = [
@@ -621,6 +606,20 @@ export default function PortfolioPage() {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
+  function scrollProjects(direction: "left" | "right") {
+    const container = projectsSliderRef.current;
+    if (!container) {
+      return;
+    }
+
+    const firstCard = container.querySelector<HTMLElement>("[data-home-slider-card]");
+    const scrollAmount = firstCard ? firstCard.offsetWidth + 24 : container.clientWidth * 0.9;
+    container.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  }
+
   async function handleHeroAssistantSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -653,7 +652,7 @@ export default function PortfolioPage() {
 
   function handleHeroVisitorTypeSelect(type: HeroVisitorType) {
     setHeroVisitorType(type);
-    setHighlightedProjectIds(type === "recruiter" ? featuredProjects.slice(0, 2).map((project) => project.cardId) : []);
+    setHighlightedProjectIds(type === "recruiter" ? homeProjects.slice(0, 2).map((project) => project.cardId) : []);
     setHeroAssistantResults([]);
     setHeroAssistantQuery("");
     setHeroAssistantResponse(
@@ -702,64 +701,90 @@ export default function PortfolioPage() {
   const recentWorkSection = (
     <section key="work" id="projects" className="bg-white py-12 px-6 md:px-10 xl:px-20">
       <div className="mx-auto flex w-full flex-col items-center gap-12">
-        <div className="flex w-full flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <SectionHeading eyebrow="Projects" title="Recent Work" className="items-start text-left" />
-          <Link
-            href={withBasePath("/projects")}
-            className="inline-flex items-center text-[14px] font-medium text-[#1183D0] underline-offset-2 hover:underline"
+        <div className="flex w-full items-center justify-end gap-3">
+          <button
+            type="button"
+            onClick={() => scrollProjects("left")}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#cfe5f8] bg-white text-[#1183D0] transition-colors hover:border-[#1183D0] hover:bg-[#f7fbff]"
+            aria-label="Scroll projects left"
           >
-            View all projects →
-          </Link>
+            <ArrowLeft className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollProjects("right")}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#cfe5f8] bg-white text-[#1183D0] transition-colors hover:border-[#1183D0] hover:bg-[#f7fbff]"
+            aria-label="Scroll projects right"
+          >
+            <ArrowRight className="h-4 w-4" />
+          </button>
         </div>
         <div
-          className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3"
-          onMouseLeave={() => setOpenProjectIdx(0)}
+          ref={projectsSliderRef}
+          className="flex w-full snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          {featuredProjects.map((project, index) => {
-            const isOpen = openProjectIdx === index;
-            return (
-              <Link
-                key={project.title}
-                id={project.cardId}
-                data-home-card-id={project.cardId}
-                href={project.href}
-                onMouseEnter={() => setOpenProjectIdx(index)}
-                className={`flex w-full min-w-0 cursor-pointer flex-col gap-5 outline-none ${
-                  highlightedProjectIds.length && !highlightedProjectIds.includes(project.cardId)
-                    ? "opacity-45 transition-opacity"
-                    : ""
-                }`}
-              >
-                <div className={`relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] transition-all duration-300 sm:h-[300px] xl:h-[230px] ${isOpen ? "-translate-y-1 shadow-[0_28px_70px_rgba(14,41,81,0.22)]" : "shadow-[0_18px_52px_rgba(14,41,81,0.12)]"}`}>
+          {homeProjects.map((project) => (
+            <Link
+              key={project.title}
+              id={project.cardId}
+              data-home-card-id={project.cardId}
+              data-home-slider-card
+              href={project.href}
+              className={`group flex min-w-[86%] snap-start flex-col gap-5 rounded-[30px] bg-white p-0 outline-none transition-all md:min-w-[46%] xl:min-w-[31%] ${
+                highlightedProjectIds.length && !highlightedProjectIds.includes(project.cardId)
+                  ? "opacity-45"
+                  : ""
+              }`}
+            >
+              <div className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] transition-all duration-300 sm:h-[300px] xl:h-[230px]" style={!project.image ? { background: project.background } : undefined}>
+                {project.image ? (
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className={`object-cover transition-transform duration-500 ${isOpen ? "scale-[1.04]" : ""}`}
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                   />
-                  {highlightedProjectIds.includes(project.cardId) ? (
-                    <div className="pointer-events-none absolute inset-0 ring-2 ring-[#1183D0] ring-offset-4 ring-offset-white" />
-                  ) : null}
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  {project.tags.map((tag) => (
-                    <Badge key={tag} size="tag">{tag}</Badge>
-                  ))}
-                </div>
-                <h3 className="font-serif-display text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200">
-                  {project.title}
-                </h3>
-                <div className={`-mt-2 h-[116px] transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0"}`}>
-                  <div className="flex h-full flex-col justify-between">
-                    <p className="text-[15px] leading-relaxed text-[#5c7792]">{project.description}</p>
-                    <span className={`inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 ${isOpen ? "underline" : ""}`}>
-                      {project.cta} →
-                    </span>
+                ) : (
+                  <div className="flex h-full items-center justify-center px-6 text-center">
+                    <div>
+                      <div className="text-5xl font-serif-display font-bold text-[#1183D0]">{project.year}</div>
+                      <div className="mt-2 text-xs leading-tight text-[#5c7792]">{project.company}</div>
+                    </div>
                   </div>
+                )}
+                {highlightedProjectIds.includes(project.cardId) ? (
+                  <div className="pointer-events-none absolute inset-0 ring-2 ring-[#1183D0] ring-offset-4 ring-offset-white" />
+                ) : null}
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {project.tags.map((tag) => (
+                  <Badge key={tag} size="tag">{tag}</Badge>
+                ))}
+              </div>
+              <div className="flex min-h-[132px] flex-col justify-between">
+                <div>
+                  <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <span className="text-xs font-medium text-[#5c7792]">{project.company}</span>
+                    <span className="text-[#bcd2ff]">·</span>
+                    <span className="text-xs text-[#5c7792]">{project.year}</span>
+                    {project.password ? (
+                      <>
+                        <span className="text-[#bcd2ff]">·</span>
+                        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Locked</span>
+                      </>
+                    ) : null}
+                  </div>
+                  <h3 className="font-serif-display text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200">
+                    {project.title}
+                  </h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-[#5c7792]">{project.description}</p>
                 </div>
-              </Link>
-            );
-          })}
+                <span className="mt-4 inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline">
+                  {project.cta} →
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </section>
@@ -881,23 +906,7 @@ export default function PortfolioPage() {
           </div>
           <div className="pointer-events-none absolute inset-0 block">
             <div
-              className="absolute left-[7%] top-[16%] h-[280px] w-[320px] rounded-[38px] border border-white/16 hidden lg:block"
-              style={{
-                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -7, -8),
-                transition: "transform 180ms ease-out",
-                opacity: 0.4,
-              }}
-            />
-            <div
-              className="absolute left-[11%] top-[20%] h-[188px] w-[250px] rounded-[26px] border border-[#9aaee2]/22 hidden lg:block"
-              style={{
-                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, -6),
-                transition: "transform 180ms ease-out",
-                opacity: 0.52,
-              }}
-            />
-            <div
-              className="absolute right-[8%] top-[19%] h-[226px] w-[266px] rounded-[34px] border border-white/16 hidden lg:block"
+              className="absolute right-[3%] top-[19%] h-[226px] w-[266px] rounded-[34px] border border-white/16 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -7, 9),
                 transition: "transform 180ms ease-out",
@@ -905,7 +914,7 @@ export default function PortfolioPage() {
               }}
             />
             <div
-              className="absolute right-[12%] top-[24%] h-[154px] w-[204px] rounded-[24px] border border-[#e4bdd0]/22 hidden lg:block"
+              className="absolute right-[7%] top-[24%] h-[154px] w-[204px] rounded-[24px] border border-[#e4bdd0]/22 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, 8),
                 transition: "transform 180ms ease-out",
@@ -913,28 +922,28 @@ export default function PortfolioPage() {
               }}
             />
             <div
-              className="absolute right-[34%] top-[58%] h-px w-[150px] bg-[#90a4da]/28 hidden lg:block"
+              className="absolute right-[28%] top-[58%] h-px w-[150px] bg-[#90a4da]/28 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -12, -6),
                 transition: "transform 180ms ease-out",
               }}
             />
             <div
-              className="absolute right-[34%] top-[58%] h-[56px] w-px bg-[#90a4da]/24 hidden lg:block"
+              className="absolute right-[28%] top-[58%] h-[56px] w-px bg-[#90a4da]/24 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -12, -6),
                 transition: "transform 180ms ease-out",
               }}
             />
             <div
-              className="absolute right-[18%] top-[58%] h-px w-[130px] bg-[#d6a8bc]/28 hidden lg:block"
+              className="absolute right-[12%] top-[58%] h-px w-[130px] bg-[#d6a8bc]/28 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, 5),
                 transition: "transform 180ms ease-out",
               }}
             />
             <div
-              className="absolute right-[24%] top-[46%] h-[74px] w-[74px] rounded-full border border-white/14 hidden lg:block"
+              className="absolute right-[18%] top-[46%] h-[74px] w-[74px] rounded-full border border-white/14 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -6, 0),
                 transition: "transform 180ms ease-out",
@@ -942,7 +951,7 @@ export default function PortfolioPage() {
               }}
             />
             <div
-              className="absolute right-[35%] top-[18%] rounded-full border border-white/24 bg-white/8 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#64738f] hidden lg:block"
+              className="absolute right-[33%] top-[14%] z-[2] rounded-full border border-white/24 bg-white/8 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#64738f] hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, 0),
                 transition: "transform 180ms ease-out",
@@ -951,7 +960,7 @@ export default function PortfolioPage() {
               User flow
             </div>
             <div
-              className="absolute right-[29%] top-[31%] rounded-full border border-white/24 bg-white/8 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#64738f] hidden lg:block"
+              className="absolute right-[26%] top-[34%] z-[2] rounded-full border border-white/24 bg-white/8 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#64738f] hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, 0),
                 transition: "transform 180ms ease-out",
@@ -960,7 +969,7 @@ export default function PortfolioPage() {
               Low-fi
             </div>
             <div
-              className="absolute right-[30%] top-[66%] rounded-[16px] border border-white/18 bg-white/8 px-4 py-3 hidden lg:block"
+              className="absolute right-[18%] top-[62%] z-[1] rounded-[16px] border border-white/18 bg-white/8 px-4 py-3 hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, -2),
                 transition: "transform 180ms ease-out",
@@ -973,26 +982,8 @@ export default function PortfolioPage() {
                 <div className="h-2 w-12 rounded-full bg-white/22" />
               </div>
             </div>
-            {HERO_UI_ORBS.map((orb, index) => (
-              <span
-                key={`hero-ui-orb-${index}`}
-                className="absolute rounded-[32px] shadow-[0_24px_50px_rgba(20,28,48,0.16),inset_0_1px_0_rgba(255,255,255,0.14)]"
-                style={{
-                  left: orb.left,
-                  top: orb.top,
-                  width: `${orb.width}px`,
-                  height: `${orb.height}px`,
-                  background: orb.fill,
-                  opacity: 0.38,
-                  filter: "blur(0.2px)",
-                  transform: getParallaxTransform(heroPointer.x, heroPointer.y, orb.depth, orb.rotate),
-                  transition: "transform 180ms ease-out",
-                }}
-              />
-            ))}
-
             <div
-              className="absolute right-[31%] top-[20%] w-[194px] rounded-[26px] border border-white/30 bg-white/12 p-3.5 shadow-[0_20px_42px_rgba(42,54,92,0.06),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur-xl hidden sm:block"
+              className="absolute right-[28%] top-[20%] z-[1] w-[194px] rounded-[26px] border border-white/30 bg-white/12 p-3.5 shadow-[0_20px_42px_rgba(42,54,92,0.06),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur-xl hidden sm:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -26, -10),
                 transition: "transform 180ms ease-out",
@@ -1019,7 +1010,7 @@ export default function PortfolioPage() {
             </div>
 
             <div
-              className="absolute right-[12%] top-[19%] w-[166px] rounded-[24px] border border-white/30 bg-white/12 p-3.5 shadow-[0_20px_42px_rgba(42,54,92,0.06),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur-xl hidden sm:block"
+              className="absolute right-[10%] top-[18%] z-[1] w-[166px] rounded-[24px] border border-white/30 bg-white/12 p-3.5 shadow-[0_20px_42px_rgba(42,54,92,0.06),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur-xl hidden sm:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -20, 9),
                 transition: "transform 180ms ease-out",
@@ -1057,7 +1048,7 @@ export default function PortfolioPage() {
             </div>
 
             <div
-              className="absolute right-[26%] bottom-[18%] hidden sm:flex items-center gap-3 rounded-full border border-white/34 bg-white/12 px-4 py-3 shadow-[0_20px_42px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.42)] backdrop-blur-xl"
+              className="absolute right-[18%] bottom-[26%] z-[2] hidden sm:flex items-center gap-3 rounded-full border border-white/34 bg-white/12 px-4 py-3 shadow-[0_20px_42px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.42)] backdrop-blur-xl"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -18, -6),
                 transition: "transform 180ms ease-out",
@@ -1073,7 +1064,7 @@ export default function PortfolioPage() {
             </div>
 
             <div
-              className="absolute right-[14%] top-[57%] hidden sm:flex items-center gap-3 rounded-full border border-white/28 bg-white/10 px-3.5 py-2.5 shadow-[0_18px_34px_rgba(42,54,92,0.05),inset_0_1px_0_rgba(255,255,255,0.36)] backdrop-blur-xl"
+              className="absolute right-[6%] bottom-[12%] z-[2] hidden sm:flex items-center gap-3 rounded-full border border-white/28 bg-white/10 px-3.5 py-2.5 shadow-[0_18px_34px_rgba(42,54,92,0.05),inset_0_1px_0_rgba(255,255,255,0.36)] backdrop-blur-xl"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -16, 4),
                 transition: "transform 180ms ease-out",
@@ -1156,7 +1147,10 @@ export default function PortfolioPage() {
                     width={logo.w}
                     height={logo.h}
                     aria-hidden={index >= socialProofLogos.length}
-                    className={`w-auto shrink-0 object-contain opacity-75 grayscale transition-all hover:grayscale-0 hover:opacity-100 ${logo.alt === "Hakuna" ? "max-h-[28px] brightness-0" : logo.alt === "Paramount+" ? "max-h-[22px]" : "max-h-[46px]"}`}
+                    className={`w-auto shrink-0 object-contain opacity-80 transition-all hover:opacity-100 ${logo.alt === "Hakuna" ? "max-h-[28px]" : logo.alt === "Paramount+" ? "max-h-[22px]" : "max-h-[46px]"}`}
+                    style={{
+                      filter: "brightness(0) saturate(100%) invert(42%) sepia(14%) saturate(954%) hue-rotate(170deg) brightness(94%) contrast(88%)",
+                    }}
                   />
                 ))}
               </div>
