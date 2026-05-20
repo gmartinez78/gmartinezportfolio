@@ -66,6 +66,50 @@
   }
 }
 
+@keyframes impact-flow-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes impact-flow-travel {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(240%);
+    opacity: 0;
+  }
+}
+
+@keyframes impact-flow-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 10px 24px rgba(31,53,94,0.12);
+  }
+
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 14px 32px rgba(17,131,208,0.2);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-\[logo-marquee_22s_linear_infinite\] {
     animation: none;
@@ -80,6 +124,13 @@
   }
 
   .animate-\[hero-shooting-star_11s_linear_infinite\] {
+    animation: none;
+  }
+
+  .animate-\[impact-flow-float_5\.4s_ease-in-out_infinite\],
+  .animate-\[impact-flow-float_4\.8s_ease-in-out_0\.4s_infinite\],
+  .animate-\[impact-flow-travel_2\.6s_linear_infinite\],
+  .animate-\[impact-flow-pulse_2\.6s_ease-in-out_infinite\] {
     animation: none;
   }
 }

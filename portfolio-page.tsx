@@ -825,7 +825,7 @@ export default function PortfolioPage() {
         >
           <div className="mb-7 flex flex-col gap-3 md:max-w-[760px]">
             <h2 className="font-inter text-[18px] leading-[1.15] text-[#0e2951] md:text-[26px]">
-              I turn AI prompts into design systems, flows, and shipped product screens.
+              Turning AI prompts into design systems, flows, and shipped product screens.
             </h2>
             <p className="max-w-[720px] text-[14px] leading-[1.6] text-[#5c7792] md:text-[15px]">
               I use AI to explore faster, pressure-test directions, and translate rough thinking into structured product work inside Figma without losing usability, systems thinking, or implementation detail.
@@ -928,6 +928,27 @@ export default function PortfolioPage() {
                         className="h-auto w-full rounded-[20px] border border-[#edf1f7] object-cover"
                       />
                     </div>
+                    <div className="absolute bottom-12 left-8 z-10 w-[34%] min-w-[180px] rounded-[20px] border border-[#dbe5f3] bg-[#0f1728] p-3 text-white shadow-[0_18px_40px_rgba(15,23,40,0.24)] animate-[impact-flow-float_5.4s_ease-in-out_infinite]">
+                      <div className="mb-2 flex items-center justify-between">
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#91a8ff]">
+                          flow logic
+                        </span>
+                        <span className="rounded-full bg-white/8 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#d7e0ff]">
+                          ai assist
+                        </span>
+                      </div>
+                      <div className="space-y-1.5 font-mono text-[10px] leading-5 text-[#d9e4ff]">
+                        <div><span className="text-[#7fb8ff]">if</span> familyInfo === <span className="text-[#ffc777]">complete</span></div>
+                        <div><span className="text-[#7fb8ff]">show</span> <span className="text-[#c3e88d]">guidedDecisionModal</span>()</div>
+                        <div><span className="text-[#f78c6c]">rank</span>(fit, cost, confidence)</div>
+                      </div>
+                    </div>
+                    <div className="pointer-events-none absolute bottom-[23%] left-[34%] z-[9] hidden h-[2px] w-[28%] overflow-hidden rounded-full bg-[#d8e4fb] lg:block">
+                      <span className="absolute inset-y-0 left-0 w-[42%] rounded-full bg-[linear-gradient(90deg,rgba(17,131,208,0),rgba(17,131,208,0.95),rgba(17,131,208,0))] animate-[impact-flow-travel_2.6s_linear_infinite]" />
+                    </div>
+                    <div className="pointer-events-none absolute bottom-[20.5%] left-[61%] z-[9] hidden lg:flex h-7 w-7 items-center justify-center rounded-full border border-[#bfd8ff] bg-white text-[#1183D0] shadow-[0_10px_24px_rgba(31,53,94,0.12)] animate-[impact-flow-pulse_2.6s_ease-in-out_infinite]">
+                      <ArrowUp className="h-3.5 w-3.5 rotate-90" />
+                    </div>
                     <div className="absolute bottom-6 right-6 w-[42%] rounded-[22px] border border-[#dfe7f2] bg-white/96 p-3 shadow-[0_18px_36px_rgba(31,53,94,0.14)]">
                       <div className="mb-2 flex items-center justify-between">
                         <span className="rounded-full bg-[#eef6ff] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">
@@ -940,7 +961,7 @@ export default function PortfolioPage() {
                         alt="Guided decision modal preview"
                         width={900}
                         height={620}
-                        className="h-auto w-full rounded-[16px] border border-[#edf1f7] object-cover"
+                        className="h-auto w-full rounded-[16px] border border-[#edf1f7] object-cover animate-[impact-flow-float_4.8s_ease-in-out_0.4s_infinite]"
                       />
                     </div>
                   </div>
@@ -984,39 +1005,23 @@ export default function PortfolioPage() {
           >
             <div className="mb-5 rounded-[22px] bg-white p-4 shadow-[0_14px_32px_rgba(30,38,61,0.06)]">
               <div className="flex items-start gap-4">
-                <div className="min-w-0 flex-1">
-                  <div className="mb-2 flex items-start justify-between gap-3">
-                    <div>
-                      <p className="text-[16px] font-semibold text-[#0e2951]">Guided decision modal</p>
-                      <p className="mt-1 text-[13px] leading-relaxed text-[#6f7c95]">
-                        Show a modal after users entered their family information, when guidance felt timely connected to choosing better benefits.
-                      </p>
-                    </div>
-                    <span className="rounded-full bg-[#e8f8ea] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#339154]">
-                      selected
-                    </span>
-                  </div>
-                  <div className="mt-3 inline-flex rounded-full bg-[#eef7ff] px-3 py-1 text-[11px] font-semibold text-[#1183D0]">
-                    Alternatives explored for Nayya
-                  </div>
-                </div>
-                <div className="w-[108px] shrink-0 overflow-hidden rounded-[16px] border border-[#e2e8f2] bg-white shadow-[0_10px_22px_rgba(30,38,61,0.08)]">
+                <div className="h-[148px] w-[88px] shrink-0 overflow-hidden rounded-[16px] shadow-[0_10px_22px_rgba(30,38,61,0.08)]">
                   <Image
                     src={withBasePath("/images/projects/nayya-ai-benefits/banners/nayya-guided-decision-modal.svg")}
                     alt="Nayya guided decision modal"
                     width={240}
                     height={180}
-                    className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 </div>
               </div>
             </div>
 
             <h3 className="max-w-[320px] font-inter text-[26px] leading-[1.15] text-[#0e2951]">
-              Three integration approaches were considered and assessed on placement, feasibility, and user support.
+              Guided decision modal
             </h3>
             <p className="mt-3 max-w-[320px] text-[17px] leading-[1.7] text-[#5c7792]">
-              The guided decision modal was selected as the strongest option and moved into testing.
+              Show a modal after users entered their family information, when guidance felt timely connected to choosing better benefits.
             </p>
           </Link>
 
@@ -1028,7 +1033,7 @@ export default function PortfolioPage() {
             <div className="absolute bottom-8 right-6 h-24 w-24 rounded-full bg-[#9ec6ff]/35 blur-2xl" />
             <div className="relative">
               <h3 className="max-w-[320px] font-inter text-[26px] leading-[1.15] text-[#0e2951]">
-                I design systems that make onboarding and enrollment feel lighter.
+                Turning onboarding and enrollment into lighter, reusable systems.
               </h3>
               <p className="mt-3 max-w-[320px] text-[17px] leading-[1.7] text-[#5c7792]">
                 From multi-step flows to reusable UI patterns, I build experiences that reduce confusion without losing momentum.
