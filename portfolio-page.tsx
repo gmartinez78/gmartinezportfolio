@@ -1018,7 +1018,7 @@ export default function PortfolioPage() {
             </div>
 
             <h3 className="max-w-[320px] font-inter text-[26px] leading-[1.15] text-[#0e2951]">
-              Guided decision modal
+              Guided decision
             </h3>
             <p className="mt-3 max-w-[320px] text-[17px] leading-[1.7] text-[#5c7792]">
               Show a modal after users entered their family information, when guidance felt timely connected to choosing better benefits.
