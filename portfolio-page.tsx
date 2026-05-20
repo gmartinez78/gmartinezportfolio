@@ -1127,7 +1127,9 @@ export default function PortfolioPage() {
     <section
       key="cta"
       className="px-6 py-[80px] md:px-16 xl:px-30"
-      style={{ background: "#ffffff" }}
+      style={{
+        backgroundImage: `linear-gradient(180deg, #ffffff 0%, #ffffff 18%, rgba(255,255,255,0) 42%), ${heroPhaseStyles.background}`,
+      }}
     >
       <div className="mx-auto max-w-[1180px] overflow-hidden rounded-[36px] border border-[#e4ebf3] bg-white text-[#0e2951] shadow-[0_24px_60px_rgba(60,62,63,0.08)]">
         <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
@@ -1135,16 +1137,10 @@ export default function PortfolioPage() {
             <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-[#1183D0]/14 blur-3xl" />
             <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-[#ffcf8c]/10 blur-3xl" />
             <div className="relative">
-              <span className="inline-flex rounded-full border border-[#d7e5f4] bg-[#f5f9ff] px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">
-                Ready to Level Up?
-              </span>
-              <h2 className="mt-6 max-w-[620px] font-inter text-[42px] font-semibold leading-[1.02] text-[#0e2951] md:text-[58px]">
+              <h2 className="max-w-[620px] font-inter text-[42px] font-semibold leading-[1.02] text-[#0e2951] md:text-[58px]">
                 Your product deserves that too.
               </h2>
-              <p className="mt-5 max-w-[640px] text-[18px] leading-[1.8] text-[#4f6486]">
-                {siteContent.home.stat_banner.text} {siteContent.home.stat_banner.value} {siteContent.home.stat_banner.value_label}
-              </p>
-              <p className="mt-6 max-w-[620px] text-[16px] leading-[1.8] text-[#5c7792]">
+              <p className="mt-5 max-w-[620px] text-[16px] leading-[1.8] text-[#5c7792]">
                 Browse case studies, share what your team is working on, or reach out directly to start a conversation.
               </p>
               <div className="mt-8 flex flex-wrap gap-3 text-[14px] text-[#4f6486]">
