@@ -1131,9 +1131,8 @@ export default function PortfolioPage() {
         backgroundImage: `linear-gradient(180deg, #ffffff 0%, #ffffff 18%, rgba(255,255,255,0) 42%), ${heroPhaseStyles.background}`,
       }}
     >
-      <div className="mx-auto max-w-[1180px] overflow-hidden rounded-[36px] border border-[#e4ebf3] bg-white text-[#0e2951] shadow-[0_24px_60px_rgba(60,62,63,0.08)]">
-        <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="relative px-8 py-10 md:px-12 md:py-14">
+      <div className="mx-auto grid max-w-[1180px] gap-8 text-[#0e2951] lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+          <div className="relative px-2 py-2 md:px-4 md:py-4">
             <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-[#1183D0]/14 blur-3xl" />
             <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-[#ffcf8c]/10 blur-3xl" />
             <div className="relative">
@@ -1151,7 +1150,7 @@ export default function PortfolioPage() {
             </div>
           </div>
 
-          <div className="border-t border-[#e8eef6] bg-[#f8fbff] px-8 py-10 md:px-12 md:py-14 lg:border-l lg:border-t-0">
+          <div className="rounded-[32px] border border-[#e4ebf3] bg-[rgba(248,251,255,0.88)] px-8 py-10 shadow-[0_18px_44px_rgba(60,62,63,0.06)] backdrop-blur-sm md:px-12 md:py-14">
             <div className="space-y-5">
               <div>
                 <label className="mb-2 block text-[14px] font-medium text-[#0e2951]">Name</label>
@@ -1181,7 +1180,6 @@ export default function PortfolioPage() {
               </Button>
             </div>
           </div>
-        </div>
       </div>
     </section>
   );
