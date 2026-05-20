@@ -582,10 +582,34 @@ export default function PortfolioPage() {
     "your next UX hire.",
   ];
   const heroPills = [
-    { label: "AI Product Design", href: withBasePath("/projects?filter=AI%20Product") },
-    { label: "Design Systems", href: withBasePath("/projects?filter=Design%20Systems") },
-    { label: "Enterprise SaaS", href: withBasePath("/projects?topic=SaaS") },
-    { label: "UX Research", href: withBasePath("/projects?filter=UX%20Research") },
+    {
+      title: "AI Product Design",
+      subtitle: "from prompt to shipped UX",
+      href: withBasePath("/projects?filter=AI%20Product"),
+      icon: BrainCircuit,
+      accentClassName: "bg-[#FFC437] text-[#0e2951]",
+    },
+    {
+      title: "Design Systems",
+      subtitle: "patterns built to scale",
+      href: withBasePath("/projects?filter=Design%20Systems"),
+      icon: LayoutTemplate,
+      accentClassName: "bg-[#F78BE3] text-[#0e2951]",
+    },
+    {
+      title: "UX Research",
+      subtitle: "insight that shapes delivery",
+      href: withBasePath("/projects?filter=UX%20Research"),
+      icon: Mic,
+      accentClassName: "bg-[#25D7C4] text-[#0e2951]",
+    },
+    {
+      title: "Enterprise SaaS",
+      subtitle: "clear flows for complex products",
+      href: withBasePath("/projects?topic=SaaS"),
+      icon: FolderGit2,
+      accentClassName: "bg-[#4E8BFF] text-white",
+    },
   ];
   const heroPhaseStyles = useMemo(() => HERO_PHASE_STYLES[heroPhase], [heroPhase]);
 
@@ -745,26 +769,10 @@ export default function PortfolioPage() {
     <section
       key="tools"
       id="skills"
-      className="isolate mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center overflow-clip bg-white px-4 pb-24 pt-40 md:px-8"
+      className="isolate mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center overflow-clip bg-white px-4 pb-24 pt-56 md:px-8"
     >
       <div className="relative mx-auto flex flex-col items-center gap-6">
-        <div className="relative z-10 flex flex-col items-center gap-6">
-          <p className="text-center text-[13px] font-semibold uppercase tracking-[0.3em] text-[#1183D0]">
-            Experience & Skills
-          </p>
-          <h2 className="max-w-[320px] text-center font-serif-display text-[30px] leading-[1.05] text-[#0e2951] md:max-w-[620px] md:text-[44px]">
-            {siteContent.home.tools_section.headline}
-          </h2>
-          <Button asChild className="h-12 rounded-xl px-6 text-base">
-            <Link href={withBasePath(siteContent.home.tools_section.cta_href)}>
-              {siteContent.home.tools_section.cta_label.replace("→", "").trim()}
-            </Link>
-          </Button>
-        </div>
-        <p className="relative z-10 mb-4 max-w-[320px] text-center text-[14px] leading-[1.8] text-[#5c7792] md:max-w-[560px] md:text-[17px]">
-          {siteContent.home.tools_section.description}
-        </p>
-        <div className="pointer-events-none relative mt-4 h-[248px] w-[629px] max-w-none select-none md:h-[496px] md:w-[1257px]">
+        <div className="pointer-events-none absolute bottom-[104px] h-[248px] w-[629px] max-w-none select-none md:bottom-10 md:h-[496px] md:w-[1257px]">
           <div className="relative h-full w-full">
             {TOOL_SHOWCASE_ICONS.map((tool) => (
               <div
@@ -784,6 +792,23 @@ export default function PortfolioPage() {
             ))}
           </div>
         </div>
+
+        <div className="relative z-10 flex flex-col items-center gap-6">
+          <p className="text-center text-[13px] font-semibold uppercase tracking-[0.3em] text-[#1183D0]">
+            Experience & Skills
+          </p>
+          <h2 className="max-w-[320px] text-center font-serif-display text-[30px] leading-[1.05] text-[#0e2951] md:max-w-[620px] md:text-[44px]">
+            {siteContent.home.tools_section.headline}
+          </h2>
+        </div>
+        <p className="relative z-10 mb-4 max-w-[320px] text-center text-[14px] leading-[1.8] text-[#5c7792] md:max-w-[560px] md:text-[17px]">
+          {siteContent.home.tools_section.description}
+        </p>
+        <Button asChild className="relative z-10 h-12 rounded-xl px-6 text-base">
+          <Link href={withBasePath(siteContent.home.tools_section.cta_href)}>
+            {siteContent.home.tools_section.cta_label.replace("→", "").trim()}
+          </Link>
+        </Button>
       </div>
     </section>
   );
@@ -1087,25 +1112,30 @@ export default function PortfolioPage() {
                 roleClassName="text-[#3b82f6]"
                 descriptionClassName="text-[#0e2951]"
               />
-              <div className="mt-8 flex flex-wrap justify-center gap-2">
-                {heroPills.map((pill) => (
-                  <Badge
-                    key={pill.label}
-                    asChild
-                    variant="outline"
-                    className="rounded-full border border-[#c7d8ea] bg-[#fffdf8] px-1 py-1 text-[#16385c] shadow-[0_10px_24px_rgba(78,104,138,0.14)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#9bb9d7] hover:bg-white hover:text-[#0e2951] hover:shadow-[0_16px_32px_rgba(78,104,138,0.18)]"
-                  >
-                    <Link href={pill.href} className="rounded-full px-4 py-2 text-[13px] font-medium tracking-[0.01em]">
-                      {pill.label}
-                    </Link>
-                  </Badge>
-                ))}
-              </div>
             </div>
           </div>
+          <div className="relative z-10 mx-auto mt-8 grid w-full max-w-[1180px] gap-4 px-6 text-left md:mt-10 md:grid-cols-2 md:px-10 lg:px-16">
+            {heroPills.map((pill) => (
+              <Link
+                key={pill.title}
+                href={pill.href}
+                className="group flex min-h-[92px] items-center gap-4 rounded-[22px] border border-[#f1ece8] bg-[#f8f6f3] px-4 py-4 shadow-[0_12px_24px_rgba(60,62,63,0.04)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_18px_30px_rgba(60,62,63,0.08)]"
+              >
+                <span className={`inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] ${pill.accentClassName}`}>
+                  <pill.icon className="h-5 w-5" />
+                </span>
+                <span className="flex min-w-0 flex-col">
+                  <span className="text-[15px] font-semibold leading-tight text-[#16191d]">
+                    {pill.title}
+                  </span>
+                  <span className="mt-1 text-[12px] leading-relaxed text-[#71717f]">
+                    {pill.subtitle}
+                  </span>
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
-
-        {recentWorkSection}
 
         {/* Social Proof Bar */}
         <div>
@@ -1132,6 +1162,8 @@ export default function PortfolioPage() {
             </div>
           </div>
         </div>
+
+        {recentWorkSection}
       </section>
 
       {contentSections}
