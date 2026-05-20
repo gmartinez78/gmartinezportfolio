@@ -701,27 +701,9 @@ export default function PortfolioPage() {
   const recentWorkSection = (
     <section key="work" id="projects" className="bg-white py-12 px-6 md:px-10 xl:px-20">
       <div className="mx-auto flex w-full flex-col items-center gap-12">
-        <div className="flex w-full items-center justify-end gap-3">
-          <button
-            type="button"
-            onClick={() => scrollProjects("left")}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#cfe5f8] bg-white text-[#1183D0] transition-colors hover:border-[#1183D0] hover:bg-[#f7fbff]"
-            aria-label="Scroll projects left"
-          >
-            <ArrowLeft className="h-4 w-4" />
-          </button>
-          <button
-            type="button"
-            onClick={() => scrollProjects("right")}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#cfe5f8] bg-white text-[#1183D0] transition-colors hover:border-[#1183D0] hover:bg-[#f7fbff]"
-            aria-label="Scroll projects right"
-          >
-            <ArrowRight className="h-4 w-4" />
-          </button>
-        </div>
         <div
           ref={projectsSliderRef}
-          className="flex w-full snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex w-full snap-x snap-mandatory gap-6 overflow-x-auto overflow-y-hidden pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {homeProjects.map((project) => (
             <Link
@@ -736,7 +718,7 @@ export default function PortfolioPage() {
                   : ""
               }`}
             >
-              <div className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] transition-all duration-300 sm:h-[300px] xl:h-[230px]" style={!project.image ? { background: project.background } : undefined}>
+              <div className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] transition-all duration-300 group-hover:-translate-y-1 sm:h-[300px] xl:h-[230px]" style={!project.image ? { background: project.background } : undefined}>
                 {project.image ? (
                   <Image
                     src={project.image}
@@ -761,7 +743,7 @@ export default function PortfolioPage() {
                   <Badge key={tag} size="tag">{tag}</Badge>
                 ))}
               </div>
-              <div className="flex min-h-[132px] flex-col justify-between">
+              <div className="flex min-h-[164px] flex-col justify-between">
                 <div>
                   <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
                     <span className="text-xs font-medium text-[#5c7792]">{project.company}</span>
@@ -777,14 +759,36 @@ export default function PortfolioPage() {
                   <h3 className="font-serif-display text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200">
                     {project.title}
                   </h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-[#5c7792]">{project.description}</p>
                 </div>
-                <span className="mt-4 inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline">
-                  {project.cta} →
-                </span>
+                <div className="-mt-1 h-[92px] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="flex h-full flex-col justify-between">
+                    <p className="text-[15px] leading-relaxed text-[#5c7792]">{project.description}</p>
+                    <span className="inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline">
+                      {project.cta} →
+                    </span>
+                  </div>
+                </div>
               </div>
             </Link>
           ))}
+        </div>
+        <div className="flex w-full items-center justify-end gap-3">
+          <button
+            type="button"
+            onClick={() => scrollProjects("left")}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#cfe5f8] bg-white text-[#1183D0] transition-colors hover:border-[#1183D0] hover:bg-[#f7fbff]"
+            aria-label="Scroll projects left"
+          >
+            <ArrowLeft className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollProjects("right")}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#cfe5f8] bg-white text-[#1183D0] transition-colors hover:border-[#1183D0] hover:bg-[#f7fbff]"
+            aria-label="Scroll projects right"
+          >
+            <ArrowRight className="h-4 w-4" />
+          </button>
         </div>
       </div>
     </section>
@@ -794,10 +798,10 @@ export default function PortfolioPage() {
     <section
       key="tools"
       id="skills"
-      className="isolate mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center overflow-clip bg-white px-4 pb-24 pt-56 md:px-8"
+      className="isolate mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center overflow-clip bg-white px-4 pb-24 pt-36 md:px-8"
     >
       <div className="relative mx-auto flex flex-col items-center gap-6">
-        <div className="pointer-events-none absolute bottom-[104px] h-[248px] w-[629px] max-w-none select-none md:bottom-10 md:h-[496px] md:w-[1257px]">
+        <div className="pointer-events-none absolute bottom-[44px] h-[248px] w-[629px] max-w-none select-none md:bottom-[-12px] md:h-[496px] md:w-[1257px]">
           <div className="relative h-full w-full">
             {TOOL_SHOWCASE_ICONS.map((tool) => (
               <div
@@ -960,7 +964,7 @@ export default function PortfolioPage() {
               User flow
             </div>
             <div
-              className="absolute right-[26%] top-[34%] z-[2] rounded-full border border-white/24 bg-white/8 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#64738f] hidden lg:block"
+              className="absolute right-[26%] top-[50%] z-[2] rounded-full border border-white/24 bg-white/8 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#64738f] hidden lg:block"
               style={{
                 transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, 0),
                 transition: "transform 180ms ease-out",
@@ -1100,7 +1104,7 @@ export default function PortfolioPage() {
                 roles={heroRoles}
                 description=""
                 greetingClassName="text-[#0e2951]"
-                roleClassName="text-[#3b82f6]"
+                roleClassName="text-[#1183D0]"
                 descriptionClassName="text-[#0e2951]"
                 align="left"
               />
