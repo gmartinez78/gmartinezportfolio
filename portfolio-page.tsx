@@ -833,7 +833,7 @@ export default function PortfolioPage() {
           </div>
 
           <div className="overflow-hidden rounded-[28px] border border-[#e5e8f0] bg-white">
-            <div className="space-y-4">
+            <div>
               <div className="relative overflow-hidden rounded-b-[28px] border-b border-[#eef2f7] bg-[#f7f8fb]">
               </div>
 
@@ -1054,7 +1054,7 @@ export default function PortfolioPage() {
         <p className="relative z-10 mb-4 max-w-[320px] text-center text-[14px] leading-[1.8] text-[#5c7792] md:max-w-[560px] md:text-[17px]">
           {siteContent.home.tools_section.description}
         </p>
-        <Button asChild className="relative z-10 h-12 rounded-xl px-6 text-base">
+        <Button asChild variant="secondary" className="relative z-10 h-12 rounded-xl px-6 text-base">
           <Link href={withBasePath(siteContent.home.tools_section.cta_href)}>
             {siteContent.home.tools_section.cta_label.replace("→", "").trim()}
           </Link>
