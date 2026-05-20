@@ -38,7 +38,7 @@ export function CmsShell({
             <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">
               Portfolio CMS
             </p>
-            <p className="mt-3 font-serif-display text-[32px] italic leading-none text-[#0e2951]">
+            <p className="mt-3 font-serif-display text-[32px] leading-none text-[#0e2951]">
               Greddys
             </p>
             <div className="mt-4">
@@ -81,7 +81,7 @@ export function CmsShell({
 
         <section className="rounded-[32px] border-2 border-[#CFE5F8] bg-white p-6 shadow-sm lg:p-8">
           <div className="border-b border-[#E0EEFB] pb-6">
-            <h1 className="font-serif-display text-[44px] italic leading-none text-[#0e2951]">
+            <h1 className="font-serif-display text-[44px] leading-none text-[#0e2951]">
               {title}
             </h1>
             <p className="mt-4 max-w-[780px] text-base leading-7 text-[#5c7792]">{description}</p>

@@ -15,6 +15,8 @@ const buttonVariants = cva(
           "rounded-[24px] border-[#CFE5F8] bg-white text-[#1183D0] shadow-none hover:border-[#1183D0] hover:bg-white hover:text-[#1183D0]",
         secondary:
           "rounded-[24px] bg-[#E0EEFB] text-[#1183D0] shadow-none hover:bg-[#d4e9fb]",
+        tertiary:
+          "rounded-[24px] border-[#CFE5F8] bg-transparent text-[#5c7792] shadow-none hover:border-[#9bb9d7] hover:bg-white hover:text-[#0e2951]",
         ghost:
           "rounded-[24px] bg-transparent text-[#5c7792] shadow-none hover:bg-transparent hover:text-[#1183D0]",
         destructive:

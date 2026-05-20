@@ -30,7 +30,7 @@ const TOOL_SHOWCASE_ICONS = [
   { label: "Confluence", className: "absolute top-[19%] left-[69%] w-[19px] md:w-[38px]", duration: "6.1s", delay: "0.9s" },
   { label: "Notion", className: "absolute top-[15%] left-[82%] w-[20px] md:w-[40px]", duration: "5.9s", delay: "1.3s" },
   { label: "Claude", className: "absolute top-0 left-[90%] w-[12px] md:w-[25px]", duration: "6.4s", delay: "0.2s" },
-  { label: "Figma", className: "absolute top-[45%] left-[19%] w-[30px] md:w-[60px]", duration: "5.7s", delay: "0.8s" },
+  { label: "Figma", className: "absolute top-[45%] left-[19%] w-[22px] md:w-[44px]", duration: "5.7s", delay: "0.8s" },
   { label: "Angular", className: "absolute top-[35%] left-[85%] w-[19px] md:w-[38px]", duration: "6.3s", delay: "1.2s" },
   { label: "VS Code", className: "absolute top-[30%] left-[95%] w-[22px] md:w-[44px]", duration: "5.5s", delay: "0.6s" },
   { label: "Copilot", className: "absolute top-[75%] left-[93%] w-[15px] md:w-[30px]", duration: "6.6s", delay: "1.6s" },
@@ -680,13 +680,12 @@ export default function PortfolioPage() {
       <div className="mx-auto flex w-full flex-col items-center gap-12">
         <div className="flex w-full flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeading eyebrow="Projects" title="Recent Work" className="items-start text-left" />
-          <Button
-            asChild
-            variant="outline"
-            className="h-11 rounded-full border-[#c7d8ea] px-5 text-[13px] font-medium text-[#16385c] shadow-[0_10px_24px_rgba(78,104,138,0.10)] transition-all hover:border-[#9bb9d7] hover:bg-white hover:text-[#0e2951]"
+          <Link
+            href={withBasePath("/projects")}
+            className="inline-flex items-center text-[14px] font-medium text-[#1183D0] underline-offset-2 hover:underline"
           >
-            <Link href={withBasePath("/projects")}>View all projects</Link>
-          </Button>
+            View all projects →
+          </Link>
         </div>
         <div
           className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3"
@@ -723,12 +722,12 @@ export default function PortfolioPage() {
                     <Badge key={tag} size="tag">{tag}</Badge>
                   ))}
                 </div>
-                <h3 className="font-serif-display italic text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200">
+                <h3 className="font-serif-display text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200">
                   {project.title}
                 </h3>
                 <div className={`-mt-2 h-[116px] transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0"}`}>
                   <div className="flex h-full flex-col justify-between">
-                    <p className="text-[14px] leading-relaxed text-[#5c7792]">{project.description}</p>
+                    <p className="text-[15px] leading-relaxed text-[#5c7792]">{project.description}</p>
                     <span className={`inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 ${isOpen ? "underline" : ""}`}>
                       {project.cta} →
                     </span>
@@ -774,11 +773,11 @@ export default function PortfolioPage() {
           <p className="text-center text-[13px] font-semibold uppercase tracking-[0.3em] text-[#1183D0]">
             Experience & Skills
           </p>
-          <h2 className="max-w-[320px] text-center font-serif-display text-[48px] italic leading-[1.05] text-[#0e2951] md:max-w-[620px] md:text-[72px]">
+          <h2 className="max-w-[320px] text-center font-serif-display text-[36px] leading-[1.05] text-[#0e2951] md:max-w-[620px] md:text-[54px]">
             {siteContent.home.tools_section.headline}
           </h2>
         </div>
-        <p className="relative z-10 mb-4 max-w-[320px] text-center text-[16px] leading-[1.8] text-[#5c7792] md:max-w-[560px] md:text-[20px]">
+        <p className="relative z-10 mb-4 max-w-[320px] text-center text-[14px] leading-[1.8] text-[#5c7792] md:max-w-[560px] md:text-[17px]">
           {siteContent.home.tools_section.description}
         </p>
         <Button asChild className="relative z-10 h-12 rounded-xl px-6 text-base">
@@ -798,7 +797,7 @@ export default function PortfolioPage() {
       <p className="text-[28px] leading-[1.5] text-[#A8C8E8] max-w-[800px]">
         {siteContent.home.stat_banner.text} {siteContent.home.stat_banner.value} {siteContent.home.stat_banner.value_label}
       </p>
-      <h2 className="font-serif-display italic font-bold text-[40px] text-white">
+      <h2 className="font-serif-display font-bold text-[40px] text-white">
         {siteContent.home.stat_banner.cta_headline}
       </h2>
       <Button asChild size="sm">
@@ -1072,7 +1071,7 @@ export default function PortfolioPage() {
               <TypewriterBanner
                 greeting={(
                   <>
-                    <span className="font-serif-display text-[1.2em] italic leading-none text-[#0e2951]">
+                    <span className="font-serif-display text-[1.2em] leading-none text-[#0e2951]">
                       Greddys Martinez
                     </span>
                   </>

@@ -1019,7 +1019,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">
             Case Study Unavailable
           </p>
-          <h1 className="mt-6 font-serif-display text-[44px] italic leading-[1.05] text-[#0e2951]">
+          <h1 className="mt-6 font-serif-display text-[44px] leading-[1.05] text-[#0e2951]">
             This case study is no longer published
           </h1>
           <a
@@ -1062,7 +1062,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">
                   Password Protected
                 </p>
-                <h1 className="mt-6 font-serif-display text-[40px] italic leading-[1.08] text-[#0e2951]">
+                <h1 className="mt-6 font-serif-display text-[40px] leading-[1.08] text-[#0e2951]">
                   {caseStudy.title}
                 </h1>
                 <p className="mx-auto mt-5 max-w-[560px] text-[16px] leading-[1.75] text-[#5c7792]">
@@ -1406,7 +1406,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="px-6 py-6 md:px-10">
               <div className="mb-5 text-center">
                 <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Research & discovery</p>
-                <h2 className="mt-3 font-serif-display text-[34px] italic leading-tight text-[#0e2951] md:text-[42px]">
+                <h2 className="mt-3 font-serif-display text-[34px] leading-tight text-[#0e2951] md:text-[42px]">
                   Accessibility Audit
                 </h2>
               </div>
@@ -1451,7 +1451,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </section>
 
           <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-            <h2 className="mb-12 text-center font-serif-display text-[28px] italic leading-tight text-[#0e2951] md:text-[34px]">
+            <h2 className="mb-12 text-center font-serif-display text-[28px] leading-tight text-[#0e2951] md:text-[34px]">
               Before &amp; After Accessibility Updates
             </h2>
             <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
@@ -1522,7 +1522,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="mx-auto mt-10 max-w-[860px] space-y-8">
               {caseStudy.methodology.steps.map((step, index) => (
                 <div key={`${step.step}-detail`} className="text-center">
-                  <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+                  <h2 className="mb-5 text-center font-serif-display text-[36px] leading-tight text-[#0e2951]">
                     {step.label}
                   </h2>
                   {index === 2 ? (
@@ -2004,7 +2004,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           {caseStudy.slug === "nayya-ai-benefits" ? (
           <>
-            <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+            <h2 className="mb-5 text-center font-serif-display text-[36px] leading-tight text-[#0e2951]">
               Design Process
             </h2>
             <div className="mx-auto max-w-[820px] space-y-5 text-center">
@@ -2015,7 +2015,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </>
           ) : caseStudy.slug === "i9-everify-integration" ? (
           <>
-            <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+            <h2 className="mb-5 text-center font-serif-display text-[36px] leading-tight text-[#0e2951]">
               Design Process
             </h2>
             <div className="mx-auto mb-10 max-w-[820px] text-center">
@@ -2102,7 +2102,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "i9-everify-integration" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+          <h2 className="mb-5 text-center font-serif-display text-[36px] leading-tight text-[#0e2951]">
             Alternatives explored
           </h2>
           <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
@@ -2136,7 +2136,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "i9-everify-integration" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+          <h2 className="mb-5 text-center font-serif-display text-[36px] leading-tight text-[#0e2951]">
             Key Insights from Testing
           </h2>
           <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
@@ -2228,7 +2228,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "nayya-ai-benefits" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+          <h2 className="mb-5 text-center font-serif-display text-[36px] leading-tight text-[#0e2951]">
             Alternatives explored
           </h2>
           <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
@@ -2307,7 +2307,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "nayya-ai-benefits" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+          <h2 className="mb-5 text-center font-serif-display text-[36px] leading-tight text-[#0e2951]">
             Key Insights from Testing
           </h2>
           <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
@@ -2642,7 +2642,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         <p className="mb-2 text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">More work</p>
-        <h2 className="mb-8 font-serif-display text-[32px] italic text-[#0e2951]">Other Projects</h2>
+        <h2 className="mb-8 font-serif-display text-[32px] text-[#0e2951]">Other Projects</h2>
         <div className="grid gap-5 md:grid-cols-3">
           {otherProjects.map((project) => (
             <Link
@@ -2667,12 +2667,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </Badge>
                 ))}
               </div>
-              <h3 className="font-serif-display italic text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200 group-hover:text-[rgb(14_41_81/var(--tw-text-opacity,1))] group-focus-visible:text-[rgb(14_41_81/var(--tw-text-opacity,1))]">
+              <h3 className="font-serif-display text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200 group-hover:text-[rgb(14_41_81/var(--tw-text-opacity,1))] group-focus-visible:text-[rgb(14_41_81/var(--tw-text-opacity,1))]">
                 {project.title}
               </h3>
               <div className="-mt-2 h-[116px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
                 <div className="flex h-full flex-col justify-between">
-                  <p className="text-[14px] leading-relaxed text-[#5c7792]">
+                  <p className="text-[15px] leading-relaxed text-[#5c7792]">
                     {project.tagline}
                   </p>
                   <span className="inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline group-focus-visible:underline">

@@ -29,7 +29,7 @@ export function SectionHeading({
       ) : null}
       <h2
         className={cn(
-          "font-serif-display text-[44px] italic leading-[1.05]",
+          "font-serif-display text-[44px] leading-[1.05]",
           inverse ? "text-white" : "text-[#0e2951]"
         )}
       >

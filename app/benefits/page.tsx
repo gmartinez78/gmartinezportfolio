@@ -537,7 +537,7 @@ export default function BenefitsPage() {
             <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">
               Case Study Unavailable
             </p>
-            <h1 className="mt-6 font-serif-display text-[44px] italic leading-[1.05] text-[#0e2951]">
+            <h1 className="mt-6 font-serif-display text-[44px] leading-[1.05] text-[#0e2951]">
               This case study is no longer published
             </h1>
             <p className="mt-5 max-w-[620px] text-base leading-7 text-[#5c7792]">
@@ -842,10 +842,10 @@ export default function BenefitsPage() {
           ))}
         </div>
         <div className="mt-8">
-          <h2 className="mb-5 text-center font-serif-display text-[36px] italic leading-tight text-[#0e2951]">
+          <h2 className="mb-5 text-center font-serif-display text-[36px] leading-tight text-[#0e2951]">
             Additional outcome signals
           </h2>
-          <p className="mx-auto mt-4 max-w-[760px] text-center text-[14px] italic leading-[1.7] text-[#5c7792]">
+          <p className="mx-auto mt-4 max-w-[760px] text-center text-[14px] leading-[1.7] text-[#5c7792]">
             Indicative metrics based on project outcomes, rollout impact, and observed operational improvements where exact audited totals were not preserved.
           </p>
           <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -865,7 +865,7 @@ export default function BenefitsPage() {
       {/* ── Product Deep Dive ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <SectionHeading eyebrow="Solution" title="The Platform" centered className="mb-4" />
-        <p className="text-center text-[14px] text-[#5c7792] italic mb-8">
+        <p className="mb-8 text-center text-[14px] text-[#5c7792]">
           The dashboard below is an interactive example — click the tabs to explore the User Accounts and Roles &amp; Permissions views.
         </p>
         <ProductPreview />
@@ -906,7 +906,7 @@ export default function BenefitsPage() {
           ))}
         </div>
         <div className="border-t border-[#bcd2ff]/40 pt-8 mt-10">
-          <p className="mx-auto max-w-[900px] text-center font-inter text-[14px] italic leading-[1.7] text-[#5c7792]">
+          <p className="mx-auto max-w-[900px] text-center font-inter text-[14px] leading-[1.7] text-[#5c7792]">
             <strong className="font-semibold text-[#5c7792]">NDA notice:</strong> {caseStudy?.nda_notice ?? "Parts of this presentation — including some screens and project details — have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy."}
           </p>
         </div>
@@ -942,7 +942,7 @@ export default function BenefitsPage() {
       {/* ── Other Projects ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0] mb-2">More work</p>
-        <h2 className="font-serif-display italic text-[#0e2951] text-[32px] mb-8">Other Projects</h2>
+        <h2 className="mb-8 font-serif-display text-[32px] text-[#0e2951]">Other Projects</h2>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {otherProjects.map((p) => (
             <Link
@@ -967,12 +967,12 @@ export default function BenefitsPage() {
                   </Badge>
                 ))}
               </div>
-              <h3 className="font-serif-display italic text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200 group-hover:text-[rgb(14_41_81/var(--tw-text-opacity,1))] group-focus-visible:text-[rgb(14_41_81/var(--tw-text-opacity,1))]">
+              <h3 className="font-serif-display text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200 group-hover:text-[rgb(14_41_81/var(--tw-text-opacity,1))] group-focus-visible:text-[rgb(14_41_81/var(--tw-text-opacity,1))]">
                 {p.title}
               </h3>
               <div className="-mt-2 h-[116px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
                 <div className="flex h-full flex-col justify-between">
-                  <p className="text-[14px] leading-relaxed text-[#5c7792]">
+                  <p className="text-[15px] leading-relaxed text-[#5c7792]">
                     {p.tagline ?? ""}
                   </p>
                   <span className="inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline group-focus-visible:underline">
