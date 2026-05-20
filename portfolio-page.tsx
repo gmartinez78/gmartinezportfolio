@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, ArrowUp, BrainCircuit, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Mic, MousePointer2, Star, Wand2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUp, BrainCircuit, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Lightbulb, Mic, MousePointer2, Star, Target, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { TypewriterBanner } from "./components/typewriter-banner";
@@ -764,7 +764,7 @@ export default function PortfolioPage() {
                     ))}
                   </div>
                   <div className="flex min-h-[236px] flex-col justify-between">
-                    <div>
+                    <div className="pb-4">
                       <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
                         <span className="text-xs font-medium text-[#5c7792]">{project.company}</span>
                         <span className="text-[#bcd2ff]">·</span>
@@ -781,7 +781,7 @@ export default function PortfolioPage() {
                       </h3>
                     </div>
                     <div className={`-mt-1 h-[148px] transition-all duration-300 ${isActiveCard ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"}`}>
-                      <div className="flex h-full flex-col justify-between">
+                      <div className="flex h-full flex-col gap-3">
                         <p className="text-[15px] leading-relaxed text-[#5c7792]">{project.description}</p>
                         <span className="inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline">
                           {project.cta} →
@@ -837,7 +837,7 @@ export default function PortfolioPage() {
               <div className="relative overflow-hidden rounded-b-[28px] border-b border-[#eef2f7] bg-[#f7f8fb]">
               </div>
 
-              <div className="overflow-hidden rounded-[28px] border border-[#dfe8f5] bg-[linear-gradient(180deg,#f8fbff_0%,#eef4fb_100%)] shadow-[0_18px_34px_rgba(31,53,94,0.08)]">
+              <div className="-mx-4 overflow-hidden rounded-[28px] border border-[#dfe8f5] bg-[linear-gradient(180deg,#f8fbff_0%,#eef4fb_100%)] shadow-[0_18px_34px_rgba(31,53,94,0.08)] md:-mx-5">
                 <div className="flex items-center border-b border-[#e5edf8] bg-white px-4 py-3">
                   <div className="flex items-center gap-2">
                     <span className="h-2.5 w-2.5 rounded-full bg-[#ff6257]" />
@@ -850,7 +850,55 @@ export default function PortfolioPage() {
                     <FolderGit2 className="h-4 w-4" />
                     Collaboration board
                   </div>
-                  <div className="rounded-[24px] border border-[#d9e4f2] bg-white px-4 py-5 shadow-[0_12px_28px_rgba(31,53,94,0.06)] md:px-5">
+                  <div className="relative rounded-[24px] border border-[#d9e4f2] bg-white px-4 py-5 shadow-[0_12px_28px_rgba(31,53,94,0.06)] md:px-5">
+                    <div
+                      className="pointer-events-none absolute left-[18%] top-[24%] hidden items-center gap-2 md:flex animate-[collab-cursor-drift_5.8s_ease-in-out_infinite]"
+                      style={{
+                        ["--cursor-from-x" as string]: "-26px",
+                        ["--cursor-from-y" as string]: "18px",
+                        ["--cursor-mid-x" as string]: "0px",
+                        ["--cursor-mid-y" as string]: "0px",
+                        ["--cursor-to-x" as string]: "28px",
+                        ["--cursor-to-y" as string]: "-14px",
+                      }}
+                    >
+                      <MousePointer2 className="h-4 w-4 rotate-[-18deg] fill-[#1183D0] text-[#1183D0]" />
+                      <span className="rounded-full bg-[#1183D0] px-2.5 py-1 text-[10px] font-semibold text-white shadow-[0_8px_18px_rgba(17,131,208,0.22)]">
+                        Product Manager
+                      </span>
+                    </div>
+                    <div
+                      className="pointer-events-none absolute left-[42%] top-[58%] hidden items-center gap-2 md:flex animate-[collab-cursor-drift_6.6s_ease-in-out_1.2s_infinite]"
+                      style={{
+                        ["--cursor-from-x" as string]: "24px",
+                        ["--cursor-from-y" as string]: "22px",
+                        ["--cursor-mid-x" as string]: "0px",
+                        ["--cursor-mid-y" as string]: "0px",
+                        ["--cursor-to-x" as string]: "-30px",
+                        ["--cursor-to-y" as string]: "-10px",
+                      }}
+                    >
+                      <MousePointer2 className="h-4 w-4 rotate-[10deg] fill-[#ffb649] text-[#ffb649]" />
+                      <span className="rounded-full bg-[#ffb649] px-2.5 py-1 text-[10px] font-semibold text-[#7a4a00] shadow-[0_8px_18px_rgba(255,182,73,0.22)]">
+                        Design
+                      </span>
+                    </div>
+                    <div
+                      className="pointer-events-none absolute right-[10%] top-[32%] hidden items-center gap-2 md:flex animate-[collab-cursor-drift_6.2s_ease-in-out_2.1s_infinite]"
+                      style={{
+                        ["--cursor-from-x" as string]: "30px",
+                        ["--cursor-from-y" as string]: "-16px",
+                        ["--cursor-mid-x" as string]: "0px",
+                        ["--cursor-mid-y" as string]: "0px",
+                        ["--cursor-to-x" as string]: "-24px",
+                        ["--cursor-to-y" as string]: "16px",
+                      }}
+                    >
+                      <MousePointer2 className="h-4 w-4 rotate-[-10deg] fill-[#35b97f] text-[#35b97f]" />
+                      <span className="rounded-full bg-[#35b97f] px-2.5 py-1 text-[10px] font-semibold text-white shadow-[0_8px_18px_rgba(53,185,127,0.2)]">
+                        Engineer
+                      </span>
+                    </div>
                     <div className="mb-5 flex items-center justify-between gap-4">
                       <div className="flex items-center gap-2 text-[12px] text-[#5f78a0]">
                         <GitFork className="h-3.5 w-3.5" />
@@ -865,13 +913,19 @@ export default function PortfolioPage() {
                     <div className="grid gap-3 lg:grid-cols-[1fr_1fr_0.92fr]">
                       <div className="space-y-3">
                         <div className="rounded-[18px] bg-[#fff1ab] p-4 shadow-[0_10px_20px_rgba(180,154,40,0.10)]">
-                          <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8a6a00]">User need</p>
+                          <div className="flex items-center gap-2">
+                            <Eye className="h-3.5 w-3.5 text-[#8a6a00]" />
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8a6a00]">User need</p>
+                          </div>
                           <p className="mt-2 text-[14px] font-medium leading-8 text-[#51461f]">
                             Help people understand what to do next without added friction.
                           </p>
                         </div>
                         <div className="rounded-[18px] bg-[#bfe9e8] p-4 shadow-[0_10px_20px_rgba(76,160,160,0.10)]">
-                          <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#226f72]">Observation</p>
+                          <div className="flex items-center gap-2">
+                            <Lightbulb className="h-3.5 w-3.5 text-[#226f72]" />
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#226f72]">Observation</p>
+                          </div>
                           <p className="mt-2 text-[14px] font-medium leading-8 text-[#234f52]">
                             Decision confidence drops when value and next steps are not obvious.
                           </p>
@@ -879,13 +933,19 @@ export default function PortfolioPage() {
                       </div>
                       <div className="space-y-3">
                         <div className="rounded-[18px] bg-[#ffd3a6] p-4 shadow-[0_10px_20px_rgba(210,130,70,0.10)]">
-                          <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#9a5416]">Business goal</p>
+                          <div className="flex items-center gap-2">
+                            <Target className="h-3.5 w-3.5 text-[#9a5416]" />
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#9a5416]">Business goal</p>
+                          </div>
                           <p className="mt-2 text-[14px] font-medium leading-8 text-[#5f3a15]">
                             Support better choices while reducing drop-off and wasted effort.
                           </p>
                         </div>
                         <div className="rounded-[18px] bg-[#d5e2ff] p-4 shadow-[0_10px_20px_rgba(80,120,200,0.10)]">
-                          <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#4668a8]">Decision</p>
+                          <div className="flex items-center gap-2">
+                            <GitCommitHorizontal className="h-3.5 w-3.5 text-[#4668a8]" />
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#4668a8]">Decision</p>
+                          </div>
                           <p className="mt-2 text-[14px] font-medium leading-8 text-[#2e446f]">
                             Align guidance, timing, and implementation scope around the highest-value path.
                           </p>
@@ -1302,7 +1362,7 @@ export default function PortfolioPage() {
               <TypewriterBanner
                 greeting={(
                   <>
-                    <span className="font-inter text-[1.8em] leading-none text-[#0e2951]">
+                    <span className="font-inter text-[2.05em] leading-none text-[#0e2951]">
                       Greddys Martinez
                     </span>
                   </>

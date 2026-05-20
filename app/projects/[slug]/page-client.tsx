@@ -975,15 +975,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [enteredPassword, setEnteredPassword] = useState("");
   const [passwordError, setPasswordError] = useState<string | null>(null);
   const [isUnlocked, setIsUnlocked] = useState(false);
-  const [isReframeImageExpanded, setIsReframeImageExpanded] = useState(false);
-  const [isBuildImageExpanded, setIsBuildImageExpanded] = useState(false);
 
   useEffect(() => {
     setEnteredPassword("");
     setPasswordError(null);
     setIsUnlocked(false);
-    setIsReframeImageExpanded(false);
-    setIsBuildImageExpanded(false);
   }, [caseStudy?.slug]);
 
   if (loading) {
@@ -1539,11 +1535,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         })}
                       </div>
                       <div className="rounded-[24px] border border-[#d7dfeb] bg-white p-3 shadow-[0_18px_40px_rgba(14,41,81,0.08)]">
-                        <div
-                          className={`relative overflow-hidden rounded-[18px] transition-[max-height] duration-300 ease-out ${
-                            isReframeImageExpanded ? "max-h-none" : "max-h-[520px]"
-                          }`}
-                        >
+                        <div className="relative max-h-[520px] overflow-hidden rounded-[18px]">
                           <span className="absolute left-4 top-4 z-10 inline-flex rounded-[4px] bg-[#fca5a5] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#7f1d1d]">
                             Before
                           </span>
@@ -1552,31 +1544,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             alt="Zapiano landing redesign reference"
                             className="h-auto w-full"
                           />
-                          {!isReframeImageExpanded ? (
-                            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/90 to-white/0" />
-                          ) : null}
-                        </div>
-                        <div className="mt-4 flex justify-center">
-                          <Button
-                            type="button"
-                            variant="outline"
-                            size="sm"
-                            onClick={() => setIsReframeImageExpanded((current) => !current)}
-                            className="rounded-full border-[#d7dfeb] bg-white px-5 text-[#0e2951] hover:bg-[#f8fbff]"
-                          >
-                            {isReframeImageExpanded ? "View less" : "View more"}
-                          </Button>
+                          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/92 to-white/0" />
                         </div>
                       </div>
                     </div>
                   ) : index === 3 ? (
                     <div className="mt-3 grid items-start gap-8 text-left lg:grid-cols-[minmax(0,1fr)_420px]">
                       <div className="rounded-[24px] border border-[#d7dfeb] bg-white p-3 shadow-[0_18px_40px_rgba(14,41,81,0.08)]">
-                        <div
-                          className={`relative overflow-hidden rounded-[18px] transition-[max-height] duration-300 ease-out ${
-                            isBuildImageExpanded ? "max-h-none" : "max-h-[520px]"
-                          }`}
-                        >
+                        <div className="relative max-h-[520px] overflow-hidden rounded-[18px]">
                           <span className="absolute left-4 top-4 z-10 inline-flex rounded-[4px] bg-[#16a34a] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-white">
                             After
                           </span>
@@ -1585,20 +1560,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             alt="Zapiano landing redesign after applying benchmark and funnel improvements"
                             className="h-auto w-full"
                           />
-                          {!isBuildImageExpanded ? (
-                            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/90 to-white/0" />
-                          ) : null}
-                        </div>
-                        <div className="mt-4 flex justify-center">
-                          <Button
-                            type="button"
-                            variant="outline"
-                            size="sm"
-                            onClick={() => setIsBuildImageExpanded((current) => !current)}
-                            className="rounded-full border-[#d7dfeb] bg-white px-5 text-[#0e2951] hover:bg-[#f8fbff]"
-                          >
-                            {isBuildImageExpanded ? "View less" : "View more"}
-                          </Button>
+                          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/92 to-white/0" />
                         </div>
                       </div>
                       <div className="space-y-3">

@@ -110,6 +110,25 @@
   }
 }
 
+@keyframes collab-cursor-drift {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--cursor-from-x, 0px), var(--cursor-from-y, 8px), 0) scale(0.98);
+  }
+
+  15%,
+  70% {
+    opacity: 1;
+    transform: translate3d(var(--cursor-mid-x, 0px), var(--cursor-mid-y, 0px), 0) scale(1);
+  }
+
+  85% {
+    opacity: 0;
+    transform: translate3d(var(--cursor-to-x, 10px), var(--cursor-to-y, -6px), 0) scale(0.98);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-\[logo-marquee_22s_linear_infinite\] {
     animation: none;
@@ -131,6 +150,12 @@
   .animate-\[impact-flow-float_4\.8s_ease-in-out_0\.4s_infinite\],
   .animate-\[impact-flow-travel_2\.6s_linear_infinite\],
   .animate-\[impact-flow-pulse_2\.6s_ease-in-out_infinite\] {
+    animation: none;
+  }
+
+  .animate-\[collab-cursor-drift_5\.8s_ease-in-out_infinite\],
+  .animate-\[collab-cursor-drift_6\.6s_ease-in-out_1\.2s_infinite\],
+  .animate-\[collab-cursor-drift_6\.2s_ease-in-out_2\.1s_infinite\] {
     animation: none;
   }
 }
