@@ -723,7 +723,7 @@ export default function PortfolioPage() {
                     <Badge key={tag} size="tag">{tag}</Badge>
                   ))}
                 </div>
-                <h3 className={`font-serif-display italic text-[30px] leading-snug transition-colors duration-200 ${isOpen ? "text-[#0e2951]" : "text-[#1183D0]"}`}>
+                <h3 className="font-serif-display italic text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200">
                   {project.title}
                 </h3>
                 <div className={`-mt-2 h-[116px] transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0"}`}>

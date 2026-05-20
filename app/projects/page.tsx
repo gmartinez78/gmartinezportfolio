@@ -183,7 +183,7 @@ function ProjectsPage() {
                     </>
                   ) : null}
                 </div>
-                <h2 className="text-2xl font-serif-display italic text-[#0e2951] leading-snug mb-5">{project.title}</h2>
+                <h2 className="mb-5 text-2xl font-serif-display italic leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))]">{project.title}</h2>
                 <p className="text-[#5c7792] text-sm leading-relaxed">{project.tagline}</p>
               </div>
               <div className="flex items-end justify-between mt-6 flex-wrap gap-4">

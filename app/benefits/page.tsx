@@ -967,7 +967,7 @@ export default function BenefitsPage() {
                   </Badge>
                 ))}
               </div>
-              <h3 className="font-serif-display italic text-[30px] leading-snug text-[#1183D0] transition-colors duration-200 group-hover:text-[#0e2951] group-focus-visible:text-[#0e2951]">
+              <h3 className="font-serif-display italic text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200 group-hover:text-[rgb(14_41_81/var(--tw-text-opacity,1))] group-focus-visible:text-[rgb(14_41_81/var(--tw-text-opacity,1))]">
                 {p.title}
               </h3>
               <div className="-mt-2 h-[116px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
