@@ -835,53 +835,14 @@ export default function PortfolioPage() {
           <div className="overflow-hidden rounded-[28px] border border-[#e5e8f0] bg-white">
             <div className="space-y-4">
               <div className="relative overflow-hidden rounded-b-[28px] border-b border-[#eef2f7] bg-[#f7f8fb]">
-                <div className="flex items-center justify-between border-b border-[#e8ebf2] bg-white px-4 py-2.5">
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-1.5">
-                      <span className="h-2.5 w-2.5 rounded-full bg-[#ff6257]" />
-                      <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2f]" />
-                      <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-                    </div>
-                    <span className="rounded-full bg-[#f1f4f9] px-3 py-1 text-[11px] font-medium text-[#67758f]">
-                      Drafts / Nayya / Guided decision modal
-                    </span>
-                  </div>
-                  <div className="hidden items-center gap-2 md:flex">
-                    <span className="rounded-full bg-[#f6f8fc] px-3 py-1 text-[11px] font-medium text-[#67758f]">Share</span>
-                    <span className="rounded-full bg-[#0e2951] px-3 py-1 text-[11px] font-semibold text-white">Present</span>
-                  </div>
-                </div>
-
-                <div className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_#edf6ff_0%,_#ffffff_50%,_#fff3e4_100%)] p-5">
-                  <div className="relative overflow-hidden">
-                    <div className="mx-auto mt-4 max-w-[860px] rotate-[-1deg] rounded-[28px] border border-[#dfe7f2] bg-white p-3 shadow-[0_24px_60px_rgba(31,53,94,0.14)]">
-                      <div className="overflow-hidden rounded-[20px] border border-[#edf1f7] bg-[#fcfdff]">
-                        <div className="grid gap-0 md:grid-cols-[1.15fr_0.9fr]">
-                          <div className="border-r border-[#edf1f7] bg-[linear-gradient(180deg,#ffffff_0%,#f7faff_100%)] p-4">
-                            <div className="h-full rounded-[18px] bg-white shadow-[0_10px_24px_rgba(31,53,94,0.05)]" />
-                          </div>
-                          <div className="bg-[linear-gradient(180deg,#fbfcff_0%,#f3f7ff_100%)] p-4">
-                            <div className="rounded-[20px] border border-[#dfe7f2] bg-white p-4 shadow-[0_14px_28px_rgba(31,53,94,0.07)]">
-                              <div className="h-24 rounded-[16px] bg-[#f7faff]" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
 
               <div className="overflow-hidden rounded-[28px] border border-[#dfe8f5] bg-[linear-gradient(180deg,#f8fbff_0%,#eef4fb_100%)] shadow-[0_18px_34px_rgba(31,53,94,0.08)]">
-                <div className="flex items-center justify-between border-b border-[#e5edf8] bg-white px-4 py-3">
+                <div className="flex items-center border-b border-[#e5edf8] bg-white px-4 py-3">
                   <div className="flex items-center gap-2">
                     <span className="h-2.5 w-2.5 rounded-full bg-[#ff6257]" />
                     <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2f]" />
                     <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="rounded-full bg-[#f3f6fb] px-3 py-1 text-[11px] font-medium text-[#67758f]">Share</span>
-                    <span className="rounded-full bg-[#0e2951] px-3 py-1 text-[11px] font-semibold text-white">Present</span>
                   </div>
                 </div>
                 <div className="p-4 md:p-5">
@@ -1086,8 +1047,8 @@ export default function PortfolioPage() {
           <p className="text-center text-[13px] font-semibold uppercase tracking-[0.3em] text-[#1183D0]">
             Experience & Skills
           </p>
-          <h2 className="max-w-[320px] text-center font-inter text-[30px] leading-[1.05] text-[#0e2951] md:max-w-[620px] md:text-[44px]">
-            {siteContent.home.tools_section.headline}
+          <h2 className="max-w-[320px] whitespace-pre-line text-center font-inter text-[30px] leading-[1.05] text-[#0e2951] md:max-w-[620px] md:text-[44px]">
+            {siteContent.home.tools_section.headline.replace(" Work With", "\nWork With")}
           </h2>
         </div>
         <p className="relative z-10 mb-4 max-w-[320px] text-center text-[14px] leading-[1.8] text-[#5c7792] md:max-w-[560px] md:text-[17px]">
