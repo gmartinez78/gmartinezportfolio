@@ -1027,9 +1027,6 @@ export default function PortfolioPage() {
             <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#ffcf8c]/45 blur-2xl" />
             <div className="absolute bottom-8 right-6 h-24 w-24 rounded-full bg-[#9ec6ff]/35 blur-2xl" />
             <div className="relative">
-              <div className="mb-4 inline-flex items-center rounded-full bg-white/85 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#1183D0] shadow-[0_10px_24px_rgba(20,34,56,0.06)]">
-                Another high-impact build
-              </div>
               <h3 className="max-w-[320px] font-inter text-[26px] leading-[1.15] text-[#0e2951]">
                 I design systems that make onboarding and enrollment feel lighter.
               </h3>
