@@ -93,14 +93,15 @@ function ProjectsPage() {
     h: client.name === "Skill" ? 59 : client.name === "Hakuna" ? 30 : client.name === "Elevation" ? 56 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : client.name === "Paramount+" ? 24 : client.name === "IBX" ? 34 : 41,
     w: client.name === "Skill" ? 107 : client.name === "Hakuna" ? 96 : client.name === "Elevation" ? 220 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : client.name === "Paramount+" ? 94 : client.name === "IBX" ? 48 : 57,
   }));
+  const mutedRingColor = "color-mix(in oklab, var(--ring) 50%, transparent)";
 
   return (
-    <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden min-h-screen">
+    <main className="bg-white text-[#3c3e3f] overflow-x-hidden min-h-screen">
       <SiteHeader active="Projects" />
 
       {/* Hero */}
       <section className="mx-auto max-w-[1200px] px-6 pt-16 pb-10 text-center">
-        <h1 className="font-inter text-[44px] leading-[1.05] text-[#0e2951]">Projects</h1>
+        <h1 className="font-inter text-[44px] leading-[1.05]" style={{ color: mutedRingColor }}>Projects</h1>
         <p className="mx-auto max-w-xl text-lg leading-relaxed text-[#5c7792] mt-6">
           Case studies and highlights from 10+ years designing enterprise SaaS, healthtech, and nonprofit digital experiences.
         </p>
@@ -210,16 +211,29 @@ function ProjectsPage() {
 
       {/* Social proof */}
       <section className="border-t border-[#bcd2ff]/40 py-10">
-        <p className="text-center text-[13px] font-semibold text-[#1183D0] uppercase tracking-[0.45em] mb-6">Companies I've worked with</p>
+        <p className="mb-6 text-center text-[13px] font-semibold uppercase tracking-[0.45em]" style={{ color: mutedRingColor }}>
+          Companies I've worked with
+        </p>
         <div className="flex items-center justify-center gap-10 flex-wrap px-6">
           {socialLogos.map((logo) => (
-            <Image
+            <span
               key={logo.alt}
-              src={logo.src}
-              alt={logo.alt}
-              width={logo.w}
-              height={logo.h}
-              className={`w-auto object-contain opacity-80 grayscale transition-all hover:grayscale-0 hover:opacity-100 ${logo.alt === "Hakuna" ? "max-h-[30px] brightness-0 saturate-0 opacity-45 hover:opacity-70" : logo.alt === "Paramount+" ? "max-h-[24px]" : logo.alt === "Elevation" ? "max-h-[56px] mix-blend-multiply" : "max-h-[58px]"}`}
+              aria-label={logo.alt}
+              role="img"
+              className={`block transition-opacity hover:opacity-100 ${logo.alt === "Hakuna" ? "max-h-[30px] opacity-45" : logo.alt === "Paramount+" ? "max-h-[24px] opacity-60" : logo.alt === "Elevation" ? "max-h-[56px] opacity-55" : "max-h-[58px] opacity-60"}`}
+              style={{
+                width: `${logo.w}px`,
+                height: `${logo.h}px`,
+                backgroundColor: mutedRingColor,
+                WebkitMaskImage: `url(${logo.src})`,
+                maskImage: `url(${logo.src})`,
+                WebkitMaskRepeat: "no-repeat",
+                maskRepeat: "no-repeat",
+                WebkitMaskPosition: "center",
+                maskPosition: "center",
+                WebkitMaskSize: "contain",
+                maskSize: "contain",
+              }}
             />
           ))}
         </div>
