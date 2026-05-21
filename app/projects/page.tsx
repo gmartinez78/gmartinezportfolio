@@ -95,7 +95,7 @@ function ProjectsPage() {
   }));
 
   return (
-    <main className="bg-white text-[#3c3e3f] overflow-x-hidden min-h-screen">
+    <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden min-h-screen">
       <SiteHeader active="Projects" />
 
       {/* Hero */}
