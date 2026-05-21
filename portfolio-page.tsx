@@ -529,6 +529,16 @@ export default function PortfolioPage() {
   const [heroAssistantResults, setHeroAssistantResults] = useState<HeroAssistantResult["items"]>([]);
   const [highlightedProjectIds, setHighlightedProjectIds] = useState<string[]>([]);
   const [activeProjectCardId, setActiveProjectCardId] = useState<string | null>(null);
+  const [ctaForm, setCtaForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [ctaErrors, setCtaErrors] = useState<{
+    name?: string;
+    email?: string;
+    message?: string;
+  }>({});
   const projectsSliderRef = useRef<HTMLDivElement | null>(null);
   const { siteContent } = usePublicSiteContent();
   const { caseStudies } = usePublicCaseStudies();
@@ -648,6 +658,47 @@ export default function PortfolioPage() {
       setHeroAssistantResponse("I couldn't search the website right now.");
       setHeroAssistantResults([]);
       setHighlightedProjectIds([]);
+    }
+  }
+
+  function handleCtaSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const nextErrors: {
+      name?: string;
+      email?: string;
+      message?: string;
+    } = {};
+
+    if (!ctaForm.name.trim()) {
+      nextErrors.name = "Please add your name.";
+    }
+
+    if (!ctaForm.email.trim()) {
+      nextErrors.email = "Please add your email.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ctaForm.email.trim())) {
+      nextErrors.email = "Please enter a valid email.";
+    }
+
+    if (!ctaForm.message.trim()) {
+      nextErrors.message = "Please add a message.";
+    } else if (ctaForm.message.trim().length < 12) {
+      nextErrors.message = "Please add a bit more detail.";
+    }
+
+    setCtaErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) {
+      return;
+    }
+
+    const subject = encodeURIComponent(`Portfolio inquiry from ${ctaForm.name.trim()}`);
+    const body = encodeURIComponent(
+      `Name: ${ctaForm.name.trim()}\nEmail: ${ctaForm.email.trim()}\n\nMessage:\n${ctaForm.message.trim()}`,
+    );
+
+    if (typeof window !== "undefined") {
+      window.location.href = `mailto:greddysmartinez5@gmail.com?subject=${subject}&body=${body}`;
     }
   }
 
@@ -1151,34 +1202,61 @@ export default function PortfolioPage() {
           </div>
 
           <div className="rounded-[32px] border border-[#e4ebf3] bg-[rgba(248,251,255,0.88)] px-8 py-10 shadow-[0_18px_44px_rgba(60,62,63,0.06)] backdrop-blur-sm md:px-12 md:py-14">
-            <div className="space-y-5">
+            <form className="space-y-5" onSubmit={handleCtaSubmit} noValidate>
               <div>
-                <label className="mb-2 block text-[14px] font-medium text-[#0e2951]">Name</label>
-                <div className="rounded-[14px] border border-[#d7e2f0] bg-white px-4 py-4 text-[15px] text-[#8a98ab]">
-                  Hello
-                </div>
+                <label className="mb-2 block text-[14px] font-medium text-[#0e2951]" htmlFor="cta-name">Name</label>
+                <input
+                  id="cta-name"
+                  type="text"
+                  value={ctaForm.name}
+                  onChange={(event) => {
+                    setCtaForm((current) => ({ ...current, name: event.target.value }));
+                    setCtaErrors((current) => ({ ...current, name: undefined }));
+                  }}
+                  className="w-full rounded-[14px] border border-[#d7e2f0] bg-white px-4 py-4 text-[15px] text-[#0e2951] outline-none transition-colors placeholder:text-[#8a98ab] focus:border-[#1183D0]"
+                  placeholder="Hello"
+                  aria-invalid={Boolean(ctaErrors.name)}
+                />
+                {ctaErrors.name ? <p className="mt-2 text-[12px] text-[#c25b67]">{ctaErrors.name}</p> : null}
               </div>
               <div>
-                <label className="mb-2 block text-[14px] font-medium text-[#0e2951]">Email</label>
-                <div className="rounded-[14px] border border-[#d7e2f0] bg-white px-4 py-4 text-[15px] text-[#8a98ab]">
-                  How should I reach you?
-                </div>
+                <label className="mb-2 block text-[14px] font-medium text-[#0e2951]" htmlFor="cta-email">Email</label>
+                <input
+                  id="cta-email"
+                  type="email"
+                  value={ctaForm.email}
+                  onChange={(event) => {
+                    setCtaForm((current) => ({ ...current, email: event.target.value }));
+                    setCtaErrors((current) => ({ ...current, email: undefined }));
+                  }}
+                  className="w-full rounded-[14px] border border-[#d7e2f0] bg-white px-4 py-4 text-[15px] text-[#0e2951] outline-none transition-colors placeholder:text-[#8a98ab] focus:border-[#1183D0]"
+                  placeholder="How should I reach you?"
+                  aria-invalid={Boolean(ctaErrors.email)}
+                />
+                {ctaErrors.email ? <p className="mt-2 text-[12px] text-[#c25b67]">{ctaErrors.email}</p> : null}
               </div>
               <div>
-                <label className="mb-2 block text-[14px] font-medium text-[#0e2951]">Message</label>
-                <div className="min-h-[132px] rounded-[14px] border border-[#d7e2f0] bg-white px-4 py-4 text-[15px] text-[#8a98ab]">
-                  How can I help?
-                </div>
+                <label className="mb-2 block text-[14px] font-medium text-[#0e2951]" htmlFor="cta-message">Message</label>
+                <textarea
+                  id="cta-message"
+                  value={ctaForm.message}
+                  onChange={(event) => {
+                    setCtaForm((current) => ({ ...current, message: event.target.value }));
+                    setCtaErrors((current) => ({ ...current, message: undefined }));
+                  }}
+                  className="min-h-[132px] w-full rounded-[14px] border border-[#d7e2f0] bg-white px-4 py-4 text-[15px] text-[#0e2951] outline-none transition-colors placeholder:text-[#8a98ab] focus:border-[#1183D0]"
+                  placeholder="How can I help?"
+                  aria-invalid={Boolean(ctaErrors.message)}
+                />
+                {ctaErrors.message ? <p className="mt-2 text-[12px] text-[#c25b67]">{ctaErrors.message}</p> : null}
               </div>
               <div className="rounded-[18px] border border-[#dce7f4] bg-white px-4 py-4 text-[13px] leading-7 text-[#5c7792]">
                 Tell me about the product, the team, or the design challenge. I’ll follow up from the contact page without the extra friction.
               </div>
-              <Button asChild size="sm" className="h-12 rounded-full border border-[#c8d7ea] bg-white px-6 text-[#0e2951] hover:bg-[#0e2951] hover:text-white">
-                <a href="mailto:greddysmartinez5@gmail.com">
-                  {siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
-                </a>
+              <Button type="submit" size="sm" className="h-12 rounded-full border border-[#c8d7ea] bg-white px-6 text-[#0e2951] hover:bg-[#0e2951] hover:text-white">
+                {siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
               </Button>
-            </div>
+            </form>
           </div>
       </div>
     </section>
