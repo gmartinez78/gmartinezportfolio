@@ -394,7 +394,12 @@ export default function ResumePage() {
             </a>
           </Button>
         </div>
-        <div className="relative overflow-hidden px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
+        <div
+          className="relative overflow-hidden rounded-[38px] border border-white/55 bg-[linear-gradient(135deg,rgba(247,241,249,0.84)_0%,rgba(243,247,255,0.82)_44%,rgba(255,247,239,0.8)_100%)] px-6 py-12 shadow-[0_26px_72px_rgba(31,53,94,0.10)] sm:px-10 lg:px-16 lg:py-16"
+        >
+          <div className="pointer-events-none absolute -left-16 top-12 h-44 w-44 rounded-full bg-[#d8ebff]/70 blur-3xl" />
+          <div className="pointer-events-none absolute right-8 top-0 h-36 w-36 rounded-full bg-[#f0d9ff]/55 blur-3xl" />
+          <div className="pointer-events-none absolute bottom-0 right-0 h-40 w-40 rounded-full bg-[#ffe7c7]/55 blur-3xl" />
           <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
             <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#0e2951]">Resume</span>
             <h1 className="mt-8 text-5xl font-inter leading-[0.95] text-[#0e2951] sm:text-6xl lg:text-7xl">
@@ -421,7 +426,6 @@ export default function ResumePage() {
                 {resume.linkedin}
               </span>
             </div>
-            <div className="mt-8 h-1 w-20 rounded-full bg-[#1183D0]" />
             <p className="mt-8 max-w-4xl text-lg leading-relaxed text-[#243746]">
               {resume.bio}
             </p>
@@ -472,8 +476,11 @@ export default function ResumePage() {
         <SectionHeading eyebrow="Career" title="Experience" centered className="mb-8" />
         <div className="flex flex-col gap-5">
           {experience.map((job) => (
-            <Card key={`${job.role}-${job.company}`} className="p-0 py-0">
-              <CardContent className="p-6">
+            <Card
+              key={`${job.role}-${job.company}`}
+              className="overflow-hidden rounded-[34px] border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.84)_0%,rgba(247,251,255,0.74)_100%)] p-0 py-0 shadow-[0_22px_56px_rgba(31,53,94,0.08)] backdrop-blur-xl"
+            >
+              <CardContent className="p-6 sm:p-7">
               <div className="flex items-start justify-between gap-4 flex-wrap">
                 <div>
                   <h3 className="text-lg font-semibold text-[#0e2951]">{job.role}</h3>
@@ -522,7 +529,7 @@ export default function ResumePage() {
 
       {/* Skills & Education */}
       <section className="max-w-[1200px] mx-auto px-6 py-10">
-        <Card className="bg-[#F0F7FF] p-0 py-0">
+        <Card className="overflow-hidden rounded-[36px] border border-white/60 bg-[linear-gradient(135deg,rgba(247,241,249,0.78)_0%,rgba(243,247,255,0.82)_38%,rgba(255,248,241,0.76)_100%)] p-0 py-0 shadow-[0_24px_64px_rgba(31,53,94,0.10)]">
           <CardContent className="px-6 py-10 sm:px-8 lg:px-12 lg:py-12">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
@@ -572,7 +579,7 @@ export default function ResumePage() {
               <SectionHeading eyebrow="Training" title="Education" />
               <div className="mt-8 flex flex-col gap-5">
                 {education.map((edu) => (
-                  <Card key={edu.degree} className="p-0 py-0">
+                  <Card key={edu.degree} className="rounded-[28px] border border-white/60 bg-white/72 p-0 py-0 shadow-[0_14px_36px_rgba(31,53,94,0.06)]">
                     <CardContent className="px-6 py-6">
                     <Badge size="tag">
                       {edu.year}
@@ -591,7 +598,7 @@ export default function ResumePage() {
                 <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-4">
                   {tools.map((tool) => (
                     <div key={tool.label} className="flex flex-col items-center text-center">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#e2e8f0] bg-white shadow-sm">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/70 bg-white/82 shadow-[0_10px_24px_rgba(31,53,94,0.06)]">
                         <Image src={tool.src} alt={tool.label} width={26} height={26} />
                       </div>
                       <span className="mt-2 text-xs font-medium text-[#3c3e3f]">
@@ -631,7 +638,7 @@ export default function ResumePage() {
 
             <div className="mt-8 flex flex-col gap-5">
               {certifications.map((item) => (
-                <Card key={`${item.year}-${item.title}`} className="bg-[#f7fbff] p-0 py-0">
+                <Card key={`${item.year}-${item.title}`} className="rounded-[30px] border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.82)_0%,rgba(247,251,255,0.76)_100%)] p-0 py-0 shadow-[0_16px_40px_rgba(31,53,94,0.07)]">
                   <CardContent className="p-6">
                   <Badge size="tag">
                     {item.year}
@@ -653,14 +660,14 @@ export default function ResumePage() {
                     target="_blank"
                     rel="noreferrer"
                     key={credential.title}
-                    className="block rounded-[28px] border-2 border-[#CFE5F8] bg-[#f7fbff] text-center shadow-sm transition-opacity hover:opacity-80"
+                    className="block rounded-[30px] border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.82)_0%,rgba(247,251,255,0.78)_100%)] text-center shadow-[0_18px_42px_rgba(31,53,94,0.08)] transition-all hover:-translate-y-1 hover:opacity-95"
                   >
                     <CardContent className="px-8 py-8">{children}</CardContent>
                   </a>
                 ) : (
                   <Card
                     key={credential.title}
-                    className="bg-[#f7fbff] p-0 py-0 text-center"
+                    className="rounded-[30px] border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.82)_0%,rgba(247,251,255,0.78)_100%)] p-0 py-0 text-center shadow-[0_18px_42px_rgba(31,53,94,0.08)]"
                   >
                     <CardContent className="px-8 py-8">{children}</CardContent>
                   </Card>

@@ -91,17 +91,24 @@ export default function ContactPage() {
 
       {/* Hero */}
       <section className="max-w-[1200px] mx-auto px-6 pt-16 pb-10 text-center">
-        <SectionHeading eyebrow={siteContent.contact.subheadline} title={siteContent.contact.headline} centered className="items-center" />
-        <p className="text-[#5c7792] text-lg max-w-xl mx-auto leading-relaxed">
-          {siteContent.contact.intro}
-        </p>
+        <div className="relative overflow-hidden rounded-[38px] border border-white/55 bg-[linear-gradient(135deg,rgba(247,241,249,0.84)_0%,rgba(243,247,255,0.82)_44%,rgba(255,247,239,0.8)_100%)] px-6 py-12 shadow-[0_26px_72px_rgba(31,53,94,0.10)] sm:px-10 lg:px-16 lg:py-16">
+          <div className="pointer-events-none absolute -left-16 top-12 h-44 w-44 rounded-full bg-[#d8ebff]/70 blur-3xl" />
+          <div className="pointer-events-none absolute right-8 top-0 h-36 w-36 rounded-full bg-[#f0d9ff]/55 blur-3xl" />
+          <div className="pointer-events-none absolute bottom-0 right-0 h-40 w-40 rounded-full bg-[#ffe7c7]/55 blur-3xl" />
+          <div className="relative">
+            <SectionHeading eyebrow={siteContent.contact.subheadline} title={siteContent.contact.headline} centered className="items-center" />
+            <p className="mx-auto max-w-xl text-lg leading-relaxed text-[#5c7792]">
+              {siteContent.contact.intro}
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* 2-col: Form + Info */}
       <section className="max-w-[1200px] mx-auto px-6 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Form */}
-          <Card className="p-0 py-0">
+          <Card className="overflow-hidden rounded-[34px] border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.84)_0%,rgba(247,251,255,0.74)_100%)] p-0 py-0 shadow-[0_22px_56px_rgba(31,53,94,0.08)] backdrop-blur-xl">
             <CardContent className="p-8">
             <h2 className="text-xl font-semibold text-[#0e2951] mb-6">Send a message</h2>
             <form className="flex flex-col gap-4">
@@ -160,9 +167,12 @@ export default function ContactPage() {
               {siteContent.contact.availability}
             </p>
             {infoCards.map((card) => (
-              <Card key={card.label} className="p-0 py-0">
+              <Card
+                key={card.label}
+                className="overflow-hidden rounded-[30px] border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.84)_0%,rgba(247,251,255,0.74)_100%)] p-0 py-0 shadow-[0_18px_42px_rgba(31,53,94,0.08)]"
+              >
                 <CardContent className="flex items-center gap-6 p-6">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#E0EEFB] text-black">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white/78 text-[#0e2951] shadow-[0_10px_24px_rgba(31,53,94,0.06)]">
                   {card.icon}
                 </div>
                 <div>
