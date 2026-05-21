@@ -1,88 +1,62 @@
 <svg width="1400" height="1100" viewBox="0 0 1400 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg" x1="104" y1="78" x2="1292" y2="994" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#EFF7FF"/>
-      <stop offset="0.34" stop-color="#F6F0FF"/>
-      <stop offset="0.68" stop-color="#FFF5EC"/>
-      <stop offset="1" stop-color="#FFFDF9"/>
+    <linearGradient id="bg" x1="94" y1="72" x2="1278" y2="1016" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EEF7FF"/>
+      <stop offset="0.36" stop-color="#F6F0FF"/>
+      <stop offset="0.7" stop-color="#FFF5EC"/>
+      <stop offset="1" stop-color="#FFFDF8"/>
     </linearGradient>
-    <linearGradient id="cardGlow" x1="226" y1="199" x2="1114" y2="889" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FFFFFF" stop-opacity="0.92"/>
-      <stop offset="1" stop-color="#F8FBFF" stop-opacity="0.82"/>
+    <linearGradient id="panel" x1="190" y1="156" x2="1172" y2="930" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#F8FBFF" stop-opacity="0.88"/>
     </linearGradient>
-    <filter id="shadow" x="108" y="98" width="1188" height="918" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <filter id="shadow" x="102" y="94" width="1196" height="926" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
       <feFlood flood-opacity="0" result="BackgroundImageFix"/>
       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-      <feOffset dy="28"/>
-      <feGaussianBlur stdDeviation="34"/>
+      <feOffset dy="30"/>
+      <feGaussianBlur stdDeviation="36"/>
       <feColorMatrix type="matrix" values="0 0 0 0 0.139583 0 0 0 0 0.213972 0 0 0 0 0.365833 0 0 0 0.14 0"/>
       <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
       <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
     </filter>
-    <clipPath id="mainShot">
-      <rect x="250" y="224" width="734" height="506" rx="36"/>
-    </clipPath>
-    <clipPath id="rightShot">
-      <rect x="936" y="182" width="214" height="468" rx="30"/>
-    </clipPath>
-    <clipPath id="leftShot">
-      <rect x="176" y="382" width="252" height="304" rx="28"/>
+    <clipPath id="shot">
+      <rect x="196" y="262" width="1008" height="590" rx="34"/>
     </clipPath>
   </defs>
 
   <rect width="1400" height="1100" rx="56" fill="url(#bg)"/>
-  <circle cx="204" cy="162" r="118" fill="#DDEEFF"/>
-  <circle cx="1174" cy="190" r="142" fill="#FFE2BB"/>
-  <circle cx="1114" cy="890" r="176" fill="#D5F1E7"/>
+  <circle cx="184" cy="174" r="126" fill="#DCEEFF"/>
+  <circle cx="1180" cy="182" r="152" fill="#FFE2BB"/>
+  <circle cx="1124" cy="886" r="176" fill="#D8F2E8"/>
 
   <g filter="url(#shadow)">
-    <rect x="176" y="166" width="1050" height="782" rx="46" fill="url(#cardGlow)"/>
-    <rect x="176.5" y="166.5" width="1049" height="781" rx="45.5" stroke="#DDE7F3"/>
+    <rect x="174" y="164" width="1052" height="782" rx="44" fill="url(#panel)"/>
+    <rect x="174.5" y="164.5" width="1051" height="781" rx="43.5" stroke="#DDE7F3"/>
 
-    <g opacity="0.85">
-      <rect x="228" y="208" width="120" height="40" rx="20" fill="#FFFFFF"/>
-      <rect x="364" y="208" width="98" height="40" rx="20" fill="#EAF4FF"/>
-      <rect x="1038" y="208" width="136" height="46" rx="23" fill="#0E2951"/>
-      <circle cx="259" cy="228" r="8" fill="#FF6257"/>
-      <circle cx="285" cy="228" r="8" fill="#FFBD2F"/>
-      <circle cx="311" cy="228" r="8" fill="#28C840"/>
-      <text x="387" y="233" fill="#1183D0" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1.4">PAID FUNNEL</text>
-      <text x="1078" y="237" fill="white" font-family="Arial, sans-serif" font-size="17" font-weight="700">Zapiano</text>
+    <rect x="224" y="208" width="160" height="42" rx="21" fill="#FFFFFF"/>
+    <rect x="398" y="208" width="188" height="42" rx="21" fill="#EAF4FF"/>
+    <circle cx="254" cy="229" r="8" fill="#FF6257"/>
+    <circle cx="280" cy="229" r="8" fill="#FFBD2F"/>
+    <circle cx="306" cy="229" r="8" fill="#28C840"/>
+    <text x="430" y="234" fill="#1183D0" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1.6">LANDING AFTER</text>
+
+    <text x="224" y="324" fill="#0E2951" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2.8">ZAPIANO REDESIGN</text>
+    <text x="224" y="410" fill="#0E2951" font-family="Arial, sans-serif" font-size="62" font-weight="700">Paid funnel</text>
+    <text x="224" y="476" fill="#0E2951" font-family="Arial, sans-serif" font-size="62" font-weight="700">after</text>
+    <text x="224" y="542" fill="#5C7792" font-family="Arial, sans-serif" font-size="24">Single entry offer, clearer CTA hierarchy, and a landing flow</text>
+    <text x="224" y="576" fill="#5C7792" font-family="Arial, sans-serif" font-size="24">rebuilt to convert cold paid traffic with less friction.</text>
+
+    <rect x="224" y="612" width="174" height="44" rx="22" fill="#EAF4FF"/>
+    <rect x="412" y="612" width="158" height="44" rx="22" fill="#FFF1DF"/>
+    <rect x="584" y="612" width="182" height="44" rx="22" fill="#EBF8EF"/>
+    <text x="253" y="640" fill="#1183D0" font-family="Arial, sans-serif" font-size="18" font-weight="700">€9 intro offer</text>
+    <text x="442" y="640" fill="#D68524" font-family="Arial, sans-serif" font-size="18" font-weight="700">1 clear CTA</text>
+    <text x="613" y="640" fill="#2F8C54" font-family="Arial, sans-serif" font-size="18" font-weight="700">modular Kajabi</text>
+
+    <g clip-path="url(#shot)">
+      <rect x="196" y="262" width="1008" height="590" rx="34" fill="#F8FBFE"/>
+      <image href="../banners/page-3.svg" x="196" y="262" width="1008" height="1984.5" preserveAspectRatio="xMidYMin slice"/>
     </g>
-
-    <text x="228" y="306" fill="#0E2951" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2.8">LANDING REDESIGN</text>
-    <text x="228" y="390" fill="#0E2951" font-family="Arial, sans-serif" font-size="58" font-weight="700">Zapiano funnel</text>
-    <text x="228" y="452" fill="#0E2951" font-family="Arial, sans-serif" font-size="58" font-weight="700">experiments</text>
-    <text x="228" y="512" fill="#5C7792" font-family="Arial, sans-serif" font-size="25">Entry offer, segmentation, and modular landing blocks</text>
-    <text x="228" y="548" fill="#5C7792" font-family="Arial, sans-serif" font-size="25">designed to turn cold paid traffic into lower-friction starts.</text>
-
-    <rect x="228" y="594" width="186" height="46" rx="23" fill="#EAF4FF"/>
-    <rect x="428" y="594" width="164" height="46" rx="23" fill="#FFF1DF"/>
-    <rect x="606" y="594" width="178" height="46" rx="23" fill="#EBF8EF"/>
-    <text x="257" y="623" fill="#1183D0" font-family="Arial, sans-serif" font-size="18" font-weight="700">€9 intro offer</text>
-    <text x="455" y="623" fill="#D68524" font-family="Arial, sans-serif" font-size="18" font-weight="700">A/B variants</text>
-    <text x="635" y="623" fill="#2F8C54" font-family="Arial, sans-serif" font-size="18" font-weight="700">Kajabi modules</text>
-
-    <g clip-path="url(#mainShot)">
-      <rect x="250" y="224" width="734" height="506" rx="36" fill="#F7FAFE"/>
-      <image href="../banners/page-6.svg" x="250" y="224" width="734" height="3158.45" preserveAspectRatio="xMidYMin slice"/>
-    </g>
-    <rect x="250.5" y="224.5" width="733" height="505" rx="35.5" stroke="#D9E5F2"/>
-
-    <g transform="rotate(6 1043 416)">
-      <g clip-path="url(#rightShot)">
-        <rect x="936" y="182" width="214" height="468" rx="30" fill="#FFFFFF"/>
-        <image href="../banners/page-3.svg" x="880" y="182" width="299.52" height="468" preserveAspectRatio="xMidYMin slice"/>
-      </g>
-      <rect x="936.5" y="182.5" width="213" height="467" rx="29.5" stroke="#D9E5F2"/>
-    </g>
-
-    <g transform="rotate(-7 302 534)">
-      <g clip-path="url(#leftShot)">
-        <rect x="176" y="382" width="252" height="304" rx="28" fill="#FFFFFF"/>
-        <image href="../banners/page-7.svg" x="102" y="382" width="326.67" height="643.13" preserveAspectRatio="xMidYMin slice"/>
-      </g>
-      <rect x="176.5" y="382.5" width="251" height="303" rx="27.5" stroke="#D9E5F2"/>
-    </g>
+    <rect x="196.5" y="262.5" width="1007" height="589" rx="33.5" stroke="#D9E5F2"/>
   </g>
 </svg>
