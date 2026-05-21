@@ -1174,9 +1174,9 @@ export default function PortfolioPage() {
                 Tell me about the product, the team, or the design challenge. I’ll follow up from the contact page without the extra friction.
               </div>
               <Button asChild size="sm" className="h-12 rounded-full border border-[#c8d7ea] bg-white px-6 text-[#0e2951] hover:bg-[#0e2951] hover:text-white">
-                <Link href={withBasePath(siteContent.home.stat_banner.cta_href.replace("#contact", "/contact"))}>
+                <a href="mailto:greddysmartinez5@gmail.com">
                   {siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
-                </Link>
+                </a>
               </Button>
             </div>
           </div>
