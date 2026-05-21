@@ -35,7 +35,6 @@ export function SectionHeading({
       >
         {title}
       </h2>
-      <div className={cn("h-1 w-24 rounded-full", inverse ? "bg-white" : "bg-[#1183D0]")} />
     </div>
   )
 }

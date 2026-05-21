@@ -8,7 +8,6 @@ import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
 import { Card, CardContent } from "../../components/ui/card";
-import { SectionHeading } from "../../components/ui/section-heading";
 import { appendLockedNayyaPlaceholder } from "../../lib/cms/locked-placeholder";
 import {
   resolveProjectListCardId,
@@ -101,7 +100,7 @@ function ProjectsPage() {
 
       {/* Hero */}
       <section className="mx-auto max-w-[1200px] px-6 pt-16 pb-10 text-center">
-        <SectionHeading eyebrow="Selected Work" title="Projects" centered />
+        <h1 className="font-inter text-[44px] leading-[1.05] text-[#0e2951]">Projects</h1>
         <p className="mx-auto max-w-xl text-lg leading-relaxed text-[#5c7792] mt-6">
           Case studies and highlights from 10+ years designing enterprise SaaS, healthtech, and nonprofit digital experiences.
         </p>
@@ -145,54 +144,61 @@ function ProjectsPage() {
             id={project.cardId}
             data-project-list-card-id={project.cardId}
             href={resolveProjectHref(project)}
-            className="group block transition-all hover:-translate-y-0.5"
+            className="group block transition-all duration-300 hover:-translate-y-1.5"
           >
-            <Card className="flex p-0 py-0 transition-shadow hover:shadow-[0_12px_40px_#00000018] md:flex-row">
+            <Card className="relative flex overflow-hidden rounded-[40px] border border-white/55 bg-[linear-gradient(135deg,rgba(247,241,249,0.82)_0%,rgba(243,247,255,0.76)_40%,rgba(255,246,238,0.78)_100%)] p-0 py-0 shadow-[0_26px_70px_rgba(31,53,94,0.10)] backdrop-blur-xl transition-all duration-300 group-hover:border-white/75 group-hover:shadow-[0_34px_84px_rgba(31,53,94,0.14)] md:flex-row">
+            <div className="pointer-events-none absolute -left-12 top-10 h-44 w-44 rounded-full bg-[#d8ebff]/70 blur-3xl" />
+            <div className="pointer-events-none absolute right-10 top-0 h-36 w-36 rounded-full bg-[#f0d9ff]/55 blur-3xl" />
+            <div className="pointer-events-none absolute bottom-0 right-0 h-48 w-48 rounded-full bg-[#ffe7c7]/60 blur-3xl" />
             {/* Preview */}
             <div
-              className={`w-full md:w-80 shrink-0 h-60 md:h-auto flex items-center justify-center relative overflow-hidden ${i % 2 === 1 ? "md:order-2" : ""}`}
+              className={`relative flex h-64 w-full shrink-0 items-center justify-center overflow-hidden border-b border-white/35 bg-white/22 p-5 md:h-auto md:w-[340px] md:border-b-0 ${i % 2 === 1 ? "md:order-2" : ""}`}
               style={!project.previewImage ? { background: project.bg } : undefined}
             >
-              {project.previewImage ? (
-                <Image
-                  src={project.previewImage}
-                  alt={`${project.title} preview`}
-                  fill
-                  sizes="(min-width: 768px) 320px, 100vw"
-                  className="object-cover object-center"
-                />
-              ) : (
-                <div className="text-center">
-                  <div className="text-5xl font-inter font-bold text-[#1183D0]">{project.stat}</div>
-                  <div className="text-xs text-[#5c7792] mt-1 max-w-[120px] mx-auto leading-tight">{project.statLabel}</div>
-                </div>
-              )}
+              <div className={`relative h-full w-full overflow-hidden rounded-[30px] border border-white/60 bg-white/55 shadow-[0_18px_42px_rgba(31,53,94,0.08)] transition-transform duration-500 group-hover:scale-[1.03] ${i % 2 === 1 ? "md:rotate-[1.6deg]" : "md:rotate-[-1.6deg]"}`}>
+                {project.previewImage ? (
+                  <Image
+                    src={project.previewImage}
+                    alt={`${project.title} preview`}
+                    fill
+                    sizes="(min-width: 768px) 340px, 100vw"
+                    className="object-cover object-center"
+                  />
+                ) : (
+                  <div className="flex h-full items-center justify-center text-center">
+                    <div>
+                      <div className="text-5xl font-inter font-bold text-[#1183D0]">{project.stat}</div>
+                      <div className="mx-auto mt-1 max-w-[120px] text-xs leading-tight text-[#5c7792]">{project.statLabel}</div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Content */}
-            <CardContent className="flex flex-1 flex-col justify-between p-8">
+            <CardContent className="relative flex flex-1 flex-col justify-between bg-transparent p-8 md:p-9">
               <div>
-                <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <span className="text-xs text-[#5c7792] font-medium">{project.company}</span>
-                  <span className="text-[#bcd2ff]">·</span>
-                  <span className="text-xs text-[#5c7792]">{project.year}</span>
+                <div className="mb-4 flex flex-wrap items-center gap-2">
+                  <span className="rounded-full bg-white/72 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">
+                    {project.company}
+                  </span>
+                  <span className="rounded-full bg-white/62 px-3 py-1 text-[11px] font-medium text-[#6a7e9d]">
+                    {project.year}
+                  </span>
                   {project.password ? (
-                    <>
-                      <span className="text-[#bcd2ff]">·</span>
-                      <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Locked</span>
-                    </>
+                    <span className="rounded-full bg-[#eaf4ff] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Locked</span>
                   ) : null}
                 </div>
-                <h2 className="mb-5 text-2xl font-inter leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))]">{project.title}</h2>
-                <p className="text-[15px] leading-relaxed text-[#5c7792]">{project.tagline}</p>
+                <h2 className="mb-5 text-[28px] font-inter leading-[1.08] text-[rgb(14_41_81/var(--tw-text-opacity,1))]">{project.title}</h2>
+                <p className="max-w-[560px] text-[15px] leading-[1.8] text-[#5c7792]">{project.tagline}</p>
               </div>
-              <div className="flex items-end justify-between mt-6 flex-wrap gap-4">
+              <div className="mt-7 flex flex-wrap items-end justify-between gap-4">
                 <div className="flex flex-wrap gap-2">
                   {(project.tags ?? []).map((tag) => (
                     <Badge key={tag} size="tag">{tag}</Badge>
                   ))}
                 </div>
-                <span className="text-sm text-[#1183D0] font-medium group-hover:underline">
+                <span className="rounded-full bg-white/72 px-4 py-2 text-sm font-medium text-[#1183D0] transition-colors group-hover:bg-white">
                   {project.password ? "Password required ↗" : resolveProjectHref(project) === "#" ? "Coming soon" : "View case study ↗"}
                 </span>
               </div>
