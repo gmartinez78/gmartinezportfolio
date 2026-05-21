@@ -1079,7 +1079,7 @@ export default function PortfolioPage() {
     <section
       key="tools"
       id="skills"
-      className="isolate mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center overflow-clip bg-white px-4 pb-24 pt-36 md:px-8"
+      className="isolate mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center overflow-clip bg-white px-4 pb-10 pt-36 md:px-8"
     >
       <div className="relative mx-auto flex flex-col items-center gap-6">
         <div className="pointer-events-none absolute bottom-[44px] h-[248px] w-[629px] max-w-none select-none md:bottom-[-12px] md:h-[496px] md:w-[1257px]">
@@ -1136,8 +1136,8 @@ export default function PortfolioPage() {
             <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-[#1183D0]/14 blur-3xl" />
             <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-[#ffcf8c]/10 blur-3xl" />
             <div className="relative">
-              <h2 className="max-w-[620px] font-inter text-[42px] font-semibold leading-[1.02] text-[#0e2951] md:text-[58px]">
-                Your product deserves that too.
+              <h2 className="max-w-[620px] font-inter text-[42px] font-normal leading-[1.02] text-[#0e2951] md:text-[58px]">
+                Let’s work together, or explore my projects first.
               </h2>
               <p className="mt-5 max-w-[620px] text-[16px] leading-[1.8] text-[#5c7792]">
                 Browse case studies, share what your team is working on, or reach out directly to start a conversation.

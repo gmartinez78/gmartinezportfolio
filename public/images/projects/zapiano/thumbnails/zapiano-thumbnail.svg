@@ -20,7 +20,7 @@
       <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
     </filter>
     <clipPath id="shot">
-      <rect x="196" y="262" width="1008" height="590" rx="34"/>
+      <rect x="76" y="168" width="1248" height="764" rx="38"/>
     </clipPath>
   </defs>
 
@@ -33,30 +33,17 @@
     <rect x="174" y="164" width="1052" height="782" rx="44" fill="url(#panel)"/>
     <rect x="174.5" y="164.5" width="1051" height="781" rx="43.5" stroke="#DDE7F3"/>
 
-    <rect x="224" y="208" width="160" height="42" rx="21" fill="#FFFFFF"/>
-    <rect x="398" y="208" width="188" height="42" rx="21" fill="#EAF4FF"/>
-    <circle cx="254" cy="229" r="8" fill="#FF6257"/>
-    <circle cx="280" cy="229" r="8" fill="#FFBD2F"/>
-    <circle cx="306" cy="229" r="8" fill="#28C840"/>
-    <text x="430" y="234" fill="#1183D0" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1.6">LANDING AFTER</text>
-
-    <text x="224" y="324" fill="#0E2951" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2.8">ZAPIANO REDESIGN</text>
-    <text x="224" y="410" fill="#0E2951" font-family="Arial, sans-serif" font-size="62" font-weight="700">Paid funnel</text>
-    <text x="224" y="476" fill="#0E2951" font-family="Arial, sans-serif" font-size="62" font-weight="700">after</text>
-    <text x="224" y="542" fill="#5C7792" font-family="Arial, sans-serif" font-size="24">Single entry offer, clearer CTA hierarchy, and a landing flow</text>
-    <text x="224" y="576" fill="#5C7792" font-family="Arial, sans-serif" font-size="24">rebuilt to convert cold paid traffic with less friction.</text>
-
-    <rect x="224" y="612" width="174" height="44" rx="22" fill="#EAF4FF"/>
-    <rect x="412" y="612" width="158" height="44" rx="22" fill="#FFF1DF"/>
-    <rect x="584" y="612" width="182" height="44" rx="22" fill="#EBF8EF"/>
-    <text x="253" y="640" fill="#1183D0" font-family="Arial, sans-serif" font-size="18" font-weight="700">€9 intro offer</text>
-    <text x="442" y="640" fill="#D68524" font-family="Arial, sans-serif" font-size="18" font-weight="700">1 clear CTA</text>
-    <text x="613" y="640" fill="#2F8C54" font-family="Arial, sans-serif" font-size="18" font-weight="700">modular Kajabi</text>
-
     <g clip-path="url(#shot)">
-      <rect x="196" y="262" width="1008" height="590" rx="34" fill="#F8FBFE"/>
-      <image href="../banners/page-3.svg" x="196" y="262" width="1008" height="1984.5" preserveAspectRatio="xMidYMin slice"/>
+      <rect x="76" y="168" width="1248" height="764" rx="38" fill="#F8FBFE"/>
+      <image href="../banners/page-3.svg" x="24" y="-40" width="1300" height="2561.39" preserveAspectRatio="xMidYMin slice"/>
     </g>
-    <rect x="196.5" y="262.5" width="1007" height="589" rx="33.5" stroke="#D9E5F2"/>
+    <rect x="76.5" y="168.5" width="1247" height="763" rx="37.5" stroke="#D9E5F2"/>
+
+    <rect x="130" y="204" width="160" height="42" rx="21" fill="#FFFFFF" fill-opacity="0.92"/>
+    <rect x="304" y="204" width="188" height="42" rx="21" fill="#EAF4FF" fill-opacity="0.92"/>
+    <circle cx="160" cy="225" r="8" fill="#FF6257"/>
+    <circle cx="186" cy="225" r="8" fill="#FFBD2F"/>
+    <circle cx="212" cy="225" r="8" fill="#28C840"/>
+    <text x="336" y="230" fill="#1183D0" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1.6">LANDING AFTER</text>
   </g>
 </svg>

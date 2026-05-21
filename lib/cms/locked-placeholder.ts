@@ -3,7 +3,7 @@ import type { CaseStudyRecord } from "@/lib/cms/types";
 export const LOCKED_NAYYA_PLACEHOLDER_SLUG = "zapiano-marketing";
 
 const LOCKED_NAYYA_SOURCE_SLUG = "nayya-ai-benefits";
-const LOCKED_NAYYA_PLACEHOLDER_MEDIA = "/images/projects/zapiano/thumbnails/zapiano-thumbnail.svg";
+const LOCKED_NAYYA_PLACEHOLDER_MEDIA = "/images/projects/zapiano/thumbnails/zapiano-thumbnail.png";
 
 function createLockedPlaceholder(order: number): CaseStudyRecord {
   return {
