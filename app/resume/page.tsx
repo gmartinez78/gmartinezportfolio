@@ -394,12 +394,7 @@ export default function ResumePage() {
             </a>
           </Button>
         </div>
-        <div
-          className="relative overflow-hidden rounded-[38px] border border-white/55 bg-[linear-gradient(135deg,rgba(247,241,249,0.84)_0%,rgba(243,247,255,0.82)_44%,rgba(255,247,239,0.8)_100%)] px-6 py-12 shadow-[0_26px_72px_rgba(31,53,94,0.10)] sm:px-10 lg:px-16 lg:py-16"
-        >
-          <div className="pointer-events-none absolute -left-16 top-12 h-44 w-44 rounded-full bg-[#d8ebff]/70 blur-3xl" />
-          <div className="pointer-events-none absolute right-8 top-0 h-36 w-36 rounded-full bg-[#f0d9ff]/55 blur-3xl" />
-          <div className="pointer-events-none absolute bottom-0 right-0 h-40 w-40 rounded-full bg-[#ffe7c7]/55 blur-3xl" />
+        <div className="relative overflow-hidden px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
           <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
             <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#0e2951]">Resume</span>
             <h1 className="mt-8 text-5xl font-inter leading-[0.95] text-[#0e2951] sm:text-6xl lg:text-7xl">

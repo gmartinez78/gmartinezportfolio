@@ -86,21 +86,16 @@ export default function ContactPage() {
     });
 
   return (
-    <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden min-h-screen">
+    <main className="bg-white text-[#3c3e3f] overflow-x-hidden min-h-screen">
       <SiteHeader active="Contact" />
 
       {/* Hero */}
       <section className="max-w-[1200px] mx-auto px-6 pt-16 pb-10 text-center">
-        <div className="relative overflow-hidden rounded-[38px] border border-white/55 bg-[linear-gradient(135deg,rgba(247,241,249,0.84)_0%,rgba(243,247,255,0.82)_44%,rgba(255,247,239,0.8)_100%)] px-6 py-12 shadow-[0_26px_72px_rgba(31,53,94,0.10)] sm:px-10 lg:px-16 lg:py-16">
-          <div className="pointer-events-none absolute -left-16 top-12 h-44 w-44 rounded-full bg-[#d8ebff]/70 blur-3xl" />
-          <div className="pointer-events-none absolute right-8 top-0 h-36 w-36 rounded-full bg-[#f0d9ff]/55 blur-3xl" />
-          <div className="pointer-events-none absolute bottom-0 right-0 h-40 w-40 rounded-full bg-[#ffe7c7]/55 blur-3xl" />
-          <div className="relative">
-            <SectionHeading eyebrow={siteContent.contact.subheadline} title={siteContent.contact.headline} centered className="items-center" />
-            <p className="mx-auto max-w-xl text-lg leading-relaxed text-[#5c7792]">
-              {siteContent.contact.intro}
-            </p>
-          </div>
+        <div className="px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
+          <SectionHeading eyebrow={siteContent.contact.subheadline} title={siteContent.contact.headline} centered className="items-center" />
+          <p className="mx-auto max-w-xl text-lg leading-relaxed text-[#5c7792]">
+            {siteContent.contact.intro}
+          </p>
         </div>
       </section>
 
