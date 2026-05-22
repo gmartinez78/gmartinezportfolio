@@ -534,6 +534,7 @@ export default function PortfolioPage() {
     email: "",
     message: "",
   });
+  const [ctaToast, setCtaToast] = useState<string | null>(null);
   const [ctaErrors, setCtaErrors] = useState<{
     name?: string;
     email?: string;
@@ -698,8 +699,19 @@ export default function PortfolioPage() {
     );
 
     if (typeof window !== "undefined") {
-      window.location.href = `mailto:greddysmartinez5@gmail.com?subject=${subject}&body=${body}`;
+      window.open(
+        `https://mail.google.com/mail/?view=cm&fs=1&to=greddysmartinez5@gmail.com&su=${subject}&body=${body}`,
+        "_blank",
+        "noopener,noreferrer",
+      );
     }
+
+    setCtaToast("Your Gmail draft is ready to send.");
+    setCtaForm({
+      name: "",
+      email: "",
+      message: "",
+    });
   }
 
   function handleHeroVisitorTypeSelect(type: HeroVisitorType) {
@@ -760,6 +772,20 @@ export default function PortfolioPage() {
       isActive = false;
     };
   }, []);
+
+  useEffect(() => {
+    if (!ctaToast) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setCtaToast(null);
+    }, 3200);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [ctaToast]);
 
   const recentWorkSection = (
     <section key="work" id="projects" className="bg-white py-12 px-6 md:px-10 xl:px-20">
@@ -1194,9 +1220,20 @@ export default function PortfolioPage() {
                 Browse case studies, share what your team is working on, or reach out directly to start a conversation.
               </p>
               <div className="mt-8 flex flex-wrap gap-3 text-[14px] text-[#4f6486]">
-                <span className="underline decoration-[#b8cadf] underline-offset-4">Email</span>
-                <span className="underline decoration-[#b8cadf] underline-offset-4">LinkedIn ↗</span>
-                <span className="underline decoration-[#b8cadf] underline-offset-4">Case studies</span>
+                <a href="mailto:greddysmartinez5@gmail.com" className="underline decoration-[#b8cadf] underline-offset-4 hover:text-[#0e2951]">
+                  Email
+                </a>
+                <a
+                  href="https://linkedin.com/in/greddysmartinez"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline decoration-[#b8cadf] underline-offset-4 hover:text-[#0e2951]"
+                >
+                  LinkedIn ↗
+                </a>
+                <Link href={withBasePath("/projects")} className="underline decoration-[#b8cadf] underline-offset-4 hover:text-[#0e2951]">
+                  Case studies
+                </Link>
               </div>
             </div>
           </div>
@@ -1266,6 +1303,11 @@ export default function PortfolioPage() {
 
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
+      {ctaToast ? (
+        <div className="fixed right-4 top-24 z-[80] max-w-[320px] rounded-[18px] border border-white/60 bg-[linear-gradient(135deg,rgba(247,241,249,0.96)_0%,rgba(243,247,255,0.94)_45%,rgba(255,247,239,0.92)_100%)] px-4 py-3 text-sm font-medium text-[#0e2951] shadow-[0_18px_40px_rgba(31,53,94,0.16)] backdrop-blur-xl">
+          {ctaToast}
+        </div>
+      ) : null}
       <SiteHeader variant="transparent" />
 
       {/* ── Hero ── */}
