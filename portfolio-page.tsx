@@ -535,6 +535,7 @@ export default function PortfolioPage() {
     message: "",
   });
   const [ctaToast, setCtaToast] = useState<string | null>(null);
+  const [ctaSubmitting, setCtaSubmitting] = useState(false);
   const [ctaErrors, setCtaErrors] = useState<{
     name?: string;
     email?: string;
@@ -662,7 +663,7 @@ export default function PortfolioPage() {
     }
   }
 
-  function handleCtaSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleCtaSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const nextErrors: {
@@ -693,25 +694,40 @@ export default function PortfolioPage() {
       return;
     }
 
-    const subject = encodeURIComponent(`Portfolio inquiry from ${ctaForm.name.trim()}`);
-    const body = encodeURIComponent(
-      `Name: ${ctaForm.name.trim()}\nEmail: ${ctaForm.email.trim()}\n\nMessage:\n${ctaForm.message.trim()}`,
-    );
+    setCtaSubmitting(true);
 
-    if (typeof window !== "undefined") {
-      window.open(
-        `https://mail.google.com/mail/?view=cm&fs=1&to=greddysmartinez5@gmail.com&su=${subject}&body=${body}`,
-        "_blank",
-        "noopener,noreferrer",
-      );
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/greddysmartinez5@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: ctaForm.name.trim(),
+          email: ctaForm.email.trim(),
+          message: ctaForm.message.trim(),
+          _subject: `Portfolio inquiry from ${ctaForm.name.trim()}`,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Email request failed");
+      }
+
+      setCtaToast("Email sent. I’ll get back to you soon.");
+      setCtaForm({
+        name: "",
+        email: "",
+        message: "",
+      });
+    } catch {
+      setCtaToast("I couldn’t send the email right now. Please try again.");
+    } finally {
+      setCtaSubmitting(false);
     }
-
-    setCtaToast("Your Gmail draft is ready to send.");
-    setCtaForm({
-      name: "",
-      email: "",
-      message: "",
-    });
   }
 
   function handleHeroVisitorTypeSelect(type: HeroVisitorType) {
@@ -1290,8 +1306,13 @@ export default function PortfolioPage() {
               <div className="rounded-[18px] border border-[#dce7f4] bg-white px-4 py-4 text-[13px] leading-7 text-[#5c7792]">
                 Tell me about the product, the team, or the design challenge. I’ll follow up from the contact page without the extra friction.
               </div>
-              <Button type="submit" size="sm" className="h-12 rounded-full border border-[#c8d7ea] bg-white px-6 text-[#0e2951] hover:bg-[#0e2951] hover:text-white">
-                {siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
+              <Button
+                type="submit"
+                size="sm"
+                disabled={ctaSubmitting}
+                className="h-12 rounded-full border border-[#c8d7ea] bg-white px-6 text-[#0e2951] hover:bg-[#0e2951] hover:text-white disabled:cursor-not-allowed disabled:opacity-70"
+              >
+                {ctaSubmitting ? "Sending..." : siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
               </Button>
             </form>
           </div>
