@@ -421,7 +421,7 @@ export default function ResumePage() {
                 {resume.linkedin}
               </span>
             </div>
-            <p className="mt-8 max-w-4xl text-lg leading-relaxed text-[#243746]">
+            <p className="mt-8 max-w-4xl text-[15px] leading-[1.7] text-[#243746] sm:text-base">
               {resume.bio}
             </p>
             <div className="mt-10 flex flex-wrap items-start justify-center gap-10 sm:gap-14">

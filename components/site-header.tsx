@@ -49,14 +49,14 @@ export function SiteHeader({
               <li key={link.label}>
                 <Link
                   href={withBasePath(link.href)}
-                  className={`rounded-[28px] px-3 py-2 text-sm font-light transition-colors sm:px-4 ${
+                  className={`inline-flex items-center rounded-full px-3.5 py-2 text-sm transition-all duration-200 sm:px-4 ${
                     active === link.label
                       ? isTransparent
-                        ? "bg-black/5 text-[#0e2951]"
-                        : "bg-[#E0EEFB] text-[#1183D0]"
+                        ? "bg-white/70 text-[#0e2951] shadow-[0_10px_24px_rgba(14,41,81,0.08)]"
+                        : "bg-[#E0EEFB] text-[#1183D0] shadow-[0_10px_24px_rgba(17,131,208,0.12)]"
                       : isTransparent
-                        ? "text-[#0e2951] hover:bg-black/5 hover:text-[#0e2951]"
-                        : "text-[#5c7792] hover:bg-[#E0EEFB] hover:text-[#1183D0]"
+                        ? "text-[#0e2951] hover:-translate-y-0.5 hover:bg-white/70 hover:text-[#0e2951] hover:shadow-[0_10px_24px_rgba(14,41,81,0.08)]"
+                        : "text-[#5c7792] hover:-translate-y-0.5 hover:bg-[#E0EEFB] hover:text-[#1183D0] hover:shadow-[0_10px_24px_rgba(17,131,208,0.10)]"
                   }`}
                 >
                   {link.label}
