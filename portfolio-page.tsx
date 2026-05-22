@@ -707,9 +707,11 @@ export default function PortfolioPage() {
           name: ctaForm.name.trim(),
           email: ctaForm.email.trim(),
           message: ctaForm.message.trim(),
+          website: "https://www.greddys.com",
           _subject: `Portfolio inquiry from ${ctaForm.name.trim()}`,
           _template: "table",
           _captcha: "false",
+          _next: "https://www.greddys.com",
         }),
       });
 
