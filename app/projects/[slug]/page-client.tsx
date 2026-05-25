@@ -1328,42 +1328,94 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </div>
                       ) : null}
                       {table.length ? (
-                        <div className="mt-8 overflow-hidden rounded-[24px] border border-[#1f1f1f] bg-white shadow-[0_18px_40px_rgba(14,41,81,0.08)]">
-                          <div className="grid grid-cols-5 bg-[#6b6b6b] text-white">
-                            {["EVENT - STEP", "CHURN #", "CHURN %", "USER #", "REMAINING %"].map((label, index) => (
-                              <div
-                                key={label}
-                                className={`px-4 py-4 text-[13px] font-semibold uppercase tracking-[0.04em] md:text-[15px] ${
-                                  index < 4 ? "border-r border-[#1f1f1f]" : ""
-                                }`}
-                              >
-                                {label}
-                              </div>
+                        <div className="mt-8 overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
+                          <div className="border-b border-[#dadde1] px-6 py-5">
+                            <h3 className="text-[18px] font-semibold text-[#1c1e21]">Funnel churn snapshot</h3>
+                            <p className="mt-1 text-[13px] text-[#65676b]">
+                              Highest visible churn points across the quiz entry and progression flow
+                            </p>
+                          </div>
+                          <div className="hidden overflow-x-auto md:block">
+                            <table className="w-full border-collapse text-[13px]">
+                              <thead>
+                                <tr className="bg-[#f5f6f7] text-left text-[11px] font-medium leading-[1.4] text-[#65676b]">
+                                  {["EVENT - STEP", "CHURN #", "CHURN %", "USER #", "REMAINING %"].map((label, index) => (
+                                    <th
+                                      key={label}
+                                      className={`px-4 py-3 ${index < 4 ? "border-b border-r border-[#ebedf0]" : "border-b border-[#ebedf0]"}`}
+                                    >
+                                      {label}
+                                    </th>
+                                  ))}
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {table.map((row, rowIndex) => (
+                                  <tr key={`${row.step}-${rowIndex}`} className="bg-white">
+                                    <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-[#1c1e21]">
+                                      <div className="flex items-center gap-3">
+                                        <span
+                                          className="h-3 w-3 rounded-full"
+                                          style={{ backgroundColor: typeof row.dotColor === "string" ? row.dotColor : "#22c55e" }}
+                                        />
+                                        <span className="font-medium">{typeof row.step === "string" ? row.step : ""}</span>
+                                      </div>
+                                    </td>
+                                    <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-[#65676b]">
+                                      {typeof row.churnCount === "string" ? row.churnCount : ""}
+                                    </td>
+                                    <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-[#65676b]">
+                                      {typeof row.churnPercent === "string" ? row.churnPercent : ""}
+                                    </td>
+                                    <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-[#65676b]">
+                                      {typeof row.userCount === "string" ? row.userCount : ""}
+                                    </td>
+                                    <td className="border-b border-[#ebedf0] px-4 py-4 text-[#65676b]">
+                                      {typeof row.remainingPercent === "string" ? row.remainingPercent : ""}
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                          <div className="grid gap-4 p-5 md:hidden">
+                            {table.map((row, rowIndex) => (
+                              <Card key={`mobile-${row.step}-${rowIndex}`}>
+                                <CardContent className="space-y-4 px-5 py-5">
+                                  <div className="flex items-center gap-3">
+                                    <span
+                                      className="h-3 w-3 rounded-full"
+                                      style={{ backgroundColor: typeof row.dotColor === "string" ? row.dotColor : "#22c55e" }}
+                                    />
+                                    <p className="text-[18px] font-semibold text-[#0e2951]">
+                                      {typeof row.step === "string" ? row.step : ""}
+                                    </p>
+                                  </div>
+                                  <div className="grid grid-cols-2 gap-3 text-[12px] leading-[1.5] text-[#5c7792]">
+                                    <div>
+                                      <p className="font-semibold text-[#0e2951]">Churn #</p>
+                                      <p className="mt-1">{typeof row.churnCount === "string" ? row.churnCount : ""}</p>
+                                    </div>
+                                    <div>
+                                      <p className="font-semibold text-[#0e2951]">Churn %</p>
+                                      <p className="mt-1">{typeof row.churnPercent === "string" ? row.churnPercent : ""}</p>
+                                    </div>
+                                    <div>
+                                      <p className="font-semibold text-[#0e2951]">User #</p>
+                                      <p className="mt-1">{typeof row.userCount === "string" ? row.userCount : ""}</p>
+                                    </div>
+                                    <div>
+                                      <p className="font-semibold text-[#0e2951]">Remaining %</p>
+                                      <p className="mt-1">{typeof row.remainingPercent === "string" ? row.remainingPercent : ""}</p>
+                                    </div>
+                                  </div>
+                                </CardContent>
+                              </Card>
                             ))}
                           </div>
-                          {table.map((row, rowIndex) => (
-                            <div key={`${row.step}-${rowIndex}`} className="grid grid-cols-5 border-t border-[#1f1f1f]">
-                              <div className="flex items-center gap-3 border-r border-[#1f1f1f] px-4 py-4 text-[15px] text-[#111111] md:text-[17px]">
-                                <span
-                                  className="h-3 w-3 rounded-full"
-                                  style={{ backgroundColor: typeof row.dotColor === "string" ? row.dotColor : "#22c55e" }}
-                                />
-                                <span>{typeof row.step === "string" ? row.step : ""}</span>
-                              </div>
-                              <div className="border-r border-[#1f1f1f] px-4 py-4 text-[15px] text-[#111111] md:text-[17px]">
-                                {typeof row.churnCount === "string" ? row.churnCount : ""}
-                              </div>
-                              <div className="border-r border-[#1f1f1f] px-4 py-4 text-[15px] text-[#111111] md:text-[17px]">
-                                {typeof row.churnPercent === "string" ? row.churnPercent : ""}
-                              </div>
-                              <div className="border-r border-[#1f1f1f] px-4 py-4 text-[15px] text-[#111111] md:text-[17px]">
-                                {typeof row.userCount === "string" ? row.userCount : ""}
-                              </div>
-                              <div className="px-4 py-4 text-[15px] text-[#111111] md:text-[17px]">
-                                {typeof row.remainingPercent === "string" ? row.remainingPercent : ""}
-                              </div>
-                            </div>
-                          ))}
+                          <div className="border-t border-[#dadde1] bg-[#f5f6f7] px-6 py-4 text-[11px] text-[#65676b]">
+                            Source: funnel event snapshot focused on the most visible churn points in the quiz path.
+                          </div>
                         </div>
                       ) : null}
                       {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG && block.id === "task" && successMetrics.length ? (
