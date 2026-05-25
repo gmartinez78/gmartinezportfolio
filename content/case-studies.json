@@ -995,11 +995,11 @@
           "heading": "Funnel diagnosis & design improvements",
           "table": [
             {
-              "step": "31. age",
-              "churnCount": "7",
-              "churnPercent": "0.13%",
-              "userCount": "5,403",
-              "remainingPercent": "18.03%",
+              "step": "34. enter email",
+              "churnCount": "1,156",
+              "churnPercent": "21.62%",
+              "userCount": "4,190",
+              "remainingPercent": "13,99%",
               "dotColor": "#5ca95c"
             },
             {
