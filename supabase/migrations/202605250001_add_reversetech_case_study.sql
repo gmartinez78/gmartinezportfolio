@@ -53,7 +53,7 @@ values (
     {"value":"37+","label":"Mid-funnel steps under suspicion","context":"The long quiz middle that appeared to be the likely source of drop-off."}
   ]'::jsonb,
   array['Growth team','Paid acquisition stakeholders','Product designer','Analytics partners'],
-  array['Funnel Diagnosis','UX Strategy','Conversion Research','Problem Framing'],
+  array['Funnel Data Interpretation','UX & Conversion Problem Identification','Paywall Experiment Design','Testable Design Solution Framing'],
   '{
     "admin_pain_points":[
       "The funnel was converting at only 0.63% end to end, creating pressure to optimize quickly without clear evidence about where the real breakdown occurred.",
@@ -137,7 +137,7 @@ values (
       "id":"task",
       "type":"custom",
       "title":"Task",
-      "body":"My job was not to immediately shorten screens or redraw the flow. It was to help define the problem correctly.\n\nThe core question was whether the funnel was truly failing because the middle was too long, or whether the visible pain of the quiz was distracting the team from higher-leverage issues elsewhere in the journey."
+      "body":"The scope of the work centered on funnel diagnosis and design improvements, paywall experiment design, and competitor pattern extraction.\n\nMy role was to interpret funnel data, identify UX and conversion problems, and translate those insights into concrete, testable design solutions inside a performance-driven product environment."
     },
     {
       "id":"actions",

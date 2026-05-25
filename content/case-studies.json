@@ -892,10 +892,10 @@
       "Analytics partners"
     ],
     "my_role": [
-      "Funnel Diagnosis",
-      "UX Strategy",
-      "Conversion Research",
-      "Problem Framing"
+      "Funnel Data Interpretation",
+      "UX & Conversion Problem Identification",
+      "Paywall Experiment Design",
+      "Testable Design Solution Framing"
     ],
     "problem": {
       "admin_pain_points": [
@@ -988,7 +988,7 @@
         "id": "task",
         "type": "custom",
         "title": "Task",
-        "body": "My job was not to immediately shorten screens or redraw the flow. It was to help define the problem correctly.\n\nThe core question was whether the funnel was truly failing because the middle was too long, or whether the visible pain of the quiz was distracting the team from higher-leverage issues elsewhere in the journey."
+        "body": "The scope of the work centered on funnel diagnosis and design improvements, paywall experiment design, and competitor pattern extraction.\n\nMy role was to interpret funnel data, identify UX and conversion problems, and translate those insights into concrete, testable design solutions inside a performance-driven product environment."
       },
       {
         "id": "actions",
