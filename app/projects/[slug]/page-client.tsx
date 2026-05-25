@@ -1432,7 +1432,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                                 className="h-3 w-3 rounded-full"
                                 style={{ backgroundColor: typeof row.dotColor === "string" ? row.dotColor : "#22c55e" }}
                               />
-                              <span className="font-medium">{typeof row.step === "string" ? row.step : ""}</span>
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className="font-medium">{typeof row.step === "string" ? row.step : ""}</span>
+                                {typeof row.tag === "string" ? (
+                                  <span className="inline-flex rounded-[4px] bg-[#dbeafe] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#1e40af]">
+                                    {row.tag}
+                                  </span>
+                                ) : null}
+                              </div>
                             </div>
                           </td>
                           <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-[#65676b]">
@@ -1461,9 +1468,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             className="h-3 w-3 rounded-full"
                             style={{ backgroundColor: typeof row.dotColor === "string" ? row.dotColor : "#22c55e" }}
                           />
-                          <p className="text-[18px] font-semibold text-[#0e2951]">
-                            {typeof row.step === "string" ? row.step : ""}
-                          </p>
+                          <div>
+                            <p className="text-[18px] font-semibold text-[#0e2951]">
+                              {typeof row.step === "string" ? row.step : ""}
+                            </p>
+                            {typeof row.tag === "string" ? (
+                              <span className="mt-2 inline-flex rounded-[4px] bg-[#dbeafe] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#1e40af]">
+                                {row.tag}
+                              </span>
+                            ) : null}
+                          </div>
                         </div>
                         <div className="grid grid-cols-2 gap-3 text-[12px] leading-[1.5] text-[#5c7792]">
                           <div>

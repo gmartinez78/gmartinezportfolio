@@ -166,7 +166,7 @@ values (
             "userCount":"4,190",
             "remainingPercent":"13,99%",
             "dotColor":"#ff2d2d",
-            "tag":"Selected for design proposal"
+            "tag":"Design pick"
           }
         ],
         "analyses":[
