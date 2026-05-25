@@ -173,6 +173,16 @@ values (
             "title":"31. Age Step - Good Performance",
             "body":"A clear, low-effort step. By this point abandoning the flow would feel wasteful, so users push through. The cognitive and emotional load is minimal, there's no financial decision attached, and most people understand that age matters in a health plan.",
             "consideration":"Age is asked twice, on the landing and again at step 31. Testing it on a single step could cut effort and shorten the funnel."
+          },
+          {
+            "title":"4. Main goal - Regular Performance",
+            "body":"The single-select option keeps it light and avoids decision overload for users. The friction is more subtle: this is the moment the user tells the product what outcome they want, so naming one goal carries emotional weight. A hypothesis, based on research, is that selecting a goal adds emotional weight to this step, and that weight can feel like pressure, especially when the options don't fully align with the user or they haven't decided yet.",
+            "consideration":"Test a version with different content options, and add an \"I haven't decided yet\" choice. Also reduce the number of steps before this question, so users reach their goal-setting moment sooner, while intent is still high."
+          },
+          {
+            "title":"1. Start Quiz",
+            "body":"Placeholder text.",
+            "consideration":"Placeholder consideration."
           }
         ]
       }
