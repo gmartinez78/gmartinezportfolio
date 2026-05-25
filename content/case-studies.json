@@ -836,33 +836,31 @@
     "status": "published",
     "featured": false,
     "order": 6,
-    "title": "ReverseTech AI Workflow Redesign",
-    "company": "ReverseTech",
-    "client_context": "Confidential B2B platform",
+    "title": "Reverse Health Quiz Funnel Diagnosis",
+    "company": "Reverse Health",
+    "client_context": "Paid search acquisition funnel",
     "role": "Sr. Product Designer",
     "year": 2026,
-    "duration": "4 months",
-    "industry": "AI Operations / Enterprise SaaS",
-    "tagline": "Redesigned a fragmented AI-assisted operations workflow into a guided review experience that helped teams move faster with more confidence.",
+    "duration": "Strategy and funnel analysis",
+    "industry": "Health & Fitness / Growth Funnel",
+    "tagline": "A 44-step quiz funnel selling a calisthenics program for women was converting at just 0.63%, and the team needed to determine whether the visible problem, the long middle, was actually the real bottleneck.",
     "tags": [
-      "AI Product",
+      "Growth",
       "UX Research",
       "Product Design",
-      "Enterprise SaaS",
-      "Workflow Design"
+      "Paid Acquisition",
+      "Funnel Optimization"
     ],
     "filters": [
       "UX Research",
-      "Product Design",
-      "AI Product"
+      "Product Design"
     ],
     "tools": [
       "Figma",
-      "Jira",
+      "Google Ads",
+      "Analytics",
       "Miro",
-      "Webex",
-      "Notion",
-      "Copilot"
+      "Notion"
     ],
     "images": {
       "cover": "/images/projects/EB.png",
@@ -872,100 +870,99 @@
     "client_logos": [],
     "metrics": [
       {
-        "value": "38%",
-        "label": "Faster review completion",
-        "context": "Average time to evaluate and approve AI-generated repair recommendations."
+        "value": "44",
+        "label": "Total quiz steps",
+        "context": "Full end-to-end funnel length from paid click to purchase."
       },
       {
-        "value": "24%",
-        "label": "Lower clarification requests",
-        "context": "Fewer follow-ups between operations and specialist teams after rollout."
+        "value": "0.63%",
+        "label": "End-to-end conversion",
+        "context": "Overall purchase conversion across the full funnel."
       },
       {
-        "value": "4.3/5",
-        "label": "Operator confidence",
-        "context": "Post-pilot satisfaction with the new review and approval flow."
+        "value": "37+",
+        "label": "Mid-funnel steps under suspicion",
+        "context": "The long quiz middle that appeared to be the likely source of drop-off."
       }
     ],
     "team": [
-      "Product Owner",
-      "Engineering Lead",
-      "2 developers",
-      "Data specialist",
-      "Operations lead"
+      "Growth team",
+      "Paid acquisition stakeholders",
+      "Product designer",
+      "Analytics partners"
     ],
     "my_role": [
+      "Funnel Diagnosis",
       "UX Strategy",
-      "Workflow Design",
-      "User Research",
-      "Prototype Validation"
+      "Conversion Research",
+      "Problem Framing"
     ],
     "problem": {
       "admin_pain_points": [
-        "Operations teams were reviewing AI-generated repair recommendations across disconnected screens with limited context.",
-        "Specialists spent too much time answering repeat clarification questions because confidence signals were weak and decision history was hard to read."
+        "The funnel was converting at only 0.63% end to end, creating pressure to optimize quickly without clear evidence about where the real breakdown occurred.",
+        "Because the experience contained 44 steps, the team could easily default to the most visible explanation, that the quiz was simply too long, without first proving whether that was the dominant problem."
       ],
       "user_pain_points": [
-        "Operators could see the recommendation, but not enough rationale to understand why the system suggested it.",
-        "Key actions were spread across separate views, forcing users to jump between records before they could approve, edit, or escalate a case.",
-        "The workflow needed to feel dependable without pretending the AI was always right."
+        "Most visitors were arriving cold from Google Ads, so every step had to justify why they should keep going before enough trust had been built.",
+        "The middle of the funnel contained 37+ quiz steps, making it easy to assume the interaction cost itself was pushing users out.",
+        "Without a sharper diagnosis, any redesign risked polishing the middle while ignoring weaker parts of the funnel before or after it."
       ]
     },
     "constraints": [
-      "The existing platform architecture could not support a full rebuild, so improvements had to fit within the current data model and release timeline.",
-      "AI recommendations needed stronger explainability without overwhelming users with technical detail.",
-      "The pilot had to prove value quickly with a small operational team before broader rollout."
+      "Traffic was primarily cold paid search, which meant intent and trust were weaker than in a warm or referral-based funnel.",
+      "The quiz felt like the obvious culprit, but that intuition itself was a constraint because it could bias the team toward the wrong intervention.",
+      "The work needed to separate what looked painful from what was actually suppressing conversion."
     ],
     "methodology": {
-      "name": "Discovery to Pilot",
+      "name": "Funnel Diagnosis",
       "steps": [
         {
           "step": 1,
-          "label": "Observe",
-          "description": "Mapped current review behavior with operations stakeholders to identify hesitation points, missing context, and handoff failures."
+          "label": "Map",
+          "description": "Documented the full funnel from Google ad click through the 44-step quiz to purchase, identifying where the team believed friction was highest."
         },
         {
           "step": 2,
-          "label": "Frame",
-          "description": "Defined the minimum information users needed to trust, edit, or reject an AI recommendation without leaving the main task."
+          "label": "Question",
+          "description": "Challenged the default assumption that the long middle was the primary issue, reframing the problem as a funnel-level diagnosis instead of a step-count complaint."
         },
         {
           "step": 3,
-          "label": "Design",
-          "description": "Explored guided-review concepts that grouped evidence, system rationale, and next actions into one clear sequence."
+          "label": "Break down",
+          "description": "Separated the experience into acquisition promise, entry experience, quiz progression, and post-quiz transition so each part could be evaluated on its own terms."
         },
         {
           "step": 4,
-          "label": "Validate",
-          "description": "Tested interactive prototypes with operators and refined the flow around confidence, exception handling, and escalation paths."
+          "label": "Prioritize",
+          "description": "Focused the team on identifying which section of the funnel was truly leaking intent before committing to a redesign direction."
         },
         {
           "step": 5,
-          "label": "Pilot",
-          "description": "Measured adoption and task efficiency after release with the first operations cohort."
+          "label": "Frame next moves",
+          "description": "Defined the core problem statement the next design phase should solve instead of assuming the answer was to shorten the quiz."
         }
       ]
     },
     "design_strategy": [
-      "Bring the recommendation, supporting evidence, and decision action into one review surface so users do not need to stitch the workflow together themselves.",
-      "Use explainability as decision support, not as a technical dump, surfacing only the rationale that helps users act with confidence.",
-      "Design clear override and escalation paths so the system feels assistive rather than overly automated."
+      "Treat the 44-step flow as a system rather than a single UI problem, because low conversion can come from weak acquisition-to-landing alignment, not just excessive step count.",
+      "Resist optimizing the most painful-looking section until the funnel is broken into diagnosable stages with clearer hypotheses.",
+      "Use problem framing to protect the team from solving the wrong problem too early."
     ],
     "reflections": [
       {
-        "title": "Confidence needed structure.",
-        "body": "Users were not rejecting AI because they disliked automation. They were hesitating because the workflow made them reconstruct too much context before they could trust the output."
+        "title": "The obvious problem is not always the real one.",
+        "body": "A long quiz is easy to blame because it is visible. That does not automatically make it the highest-leverage place to intervene."
       },
       {
-        "title": "Explainability has to be selective.",
-        "body": "Showing every signal would have made the experience heavier. The better move was surfacing only the evidence that supported the next decision."
+        "title": "Cold traffic changes the standard.",
+        "body": "Visitors arriving from Google Ads have not earned much trust yet, so every part of the funnel has to work harder than it would in a warm audience context."
       },
       {
-        "title": "Escalation is part of trust.",
-        "body": "AI-assisted workflows feel stronger when people know exactly what happens when they disagree with the system."
+        "title": "Diagnosis is design work.",
+        "body": "Before changing layouts or reducing steps, the team needed a sharper understanding of where intent was actually breaking down."
       }
     ],
-    "nda_notice": "Client-specific names, interface details, and supporting visuals are omitted, but the workflow, process, and outcomes shown here reflect the shipped work.",
+    "nda_notice": "Some funnel details are summarized for portfolio use, but the structure, traffic context, and conversion problem reflect the real engagement.",
     "password": null,
     "external_link": null,
     "content_blocks": [
@@ -979,59 +976,55 @@
         "id": "team-context",
         "type": "custom",
         "title": "Team",
-        "body": "I partnered with the Product Owner, Engineering Lead, and operations stakeholders to define a review flow that balanced speed, explainability, and real implementation limits. The work also required close coordination with a data specialist to understand what evidence the model could expose reliably in the interface."
+        "body": "I worked across growth and product conversations to help frame the real problem before design effort was spent in the wrong place. The work required alignment between acquisition thinking, funnel behavior, and user experience diagnosis."
       },
       {
         "id": "situation",
         "type": "custom",
         "title": "Situation",
-        "body": "ReverseTech was introducing AI-assisted recommendations into an operations workflow where teams still needed to make the final call. The opportunity was strong, but the current experience scattered evidence, history, and next actions across multiple screens.\n\nThat fragmentation slowed reviews and made users second-guess the system even when the recommendation itself was useful."
+        "body": "Reverse Health was running a 44-step quiz funnel that sold a calisthenics program for women. End to end, the funnel was converting at 0.63%.\n\nTraffic was mostly cold paid search, with a typical visit beginning from a Google ad. Inside the team, the most intuitive explanation was that the long quiz middle, more than 37 steps, had to be where users were dropping."
       },
       {
         "id": "task",
         "type": "custom",
         "title": "Task",
-        "body": "My responsibility was to define a clearer review experience that helped users understand what the AI suggested, why it suggested it, and what action they should take next.\n\nThe solution needed to fit the current platform, support exceptions and overrides, and prove value quickly in a pilot setting."
+        "body": "My job was not to immediately shorten screens or redraw the flow. It was to help define the problem correctly.\n\nThe core question was whether the funnel was truly failing because the middle was too long, or whether the visible pain of the quiz was distracting the team from higher-leverage issues elsewhere in the journey."
       },
       {
         "id": "actions",
         "type": "custom",
         "title": "Actions",
-        "body": "I started by mapping the review workflow with operators and identifying the moments where they paused, switched screens, or asked for specialist help. That gave us a practical definition of what “confidence” actually meant in this product.\n\nFrom there, I designed a guided review surface that grouped recommendation rationale, record evidence, change history, and action controls into a single sequence. We tested prototypes with operators, simplified the evidence hierarchy, and clarified when users should approve, edit, or escalate a case."
+        "body": "I framed the funnel as a sequence of separate commitments: the ad promise, the landing entry, the quiz progression, and the post-quiz transition into purchase. That made it possible to evaluate the experience as more than just a long form.\n\nInstead of treating the 37+ step middle as a proven root cause, I positioned it as a hypothesis. The design work at this stage was about creating a clearer diagnostic lens so the next round of decisions would target the actual bottleneck rather than the most obvious-looking friction."
       },
       {
         "id": "impact",
         "type": "results",
         "title": "Impact",
-        "body": "The pilot showed that a more structured review experience could improve speed without making the AI feel like a black box. Teams moved faster, asked fewer repeat questions, and reported stronger confidence when making final decisions.",
+        "body": "This phase sharpened the problem statement: a long middle may be part of the issue, but it should not be treated as the answer before the full funnel is diagnosed. The immediate value of the work was creating a better frame for what to test and redesign next.",
         "payload": {
           "rows": [
             {
-              "metric": "Review completion time",
-              "value": "-38%"
+              "metric": "Total funnel length",
+              "value": "44 steps"
             },
             {
-              "metric": "Clarification requests",
-              "value": "-24%"
+              "metric": "Overall conversion",
+              "value": "0.63%"
             },
             {
-              "metric": "Pilot satisfaction",
-              "value": "4.3/5"
-            },
-            {
-              "metric": "Escalation accuracy",
-              "value": "+17%"
+              "metric": "Suspected friction zone",
+              "value": "37+ steps"
             }
           ],
           "insights": [
-            "Operators no longer needed to open multiple records to understand the recommendation before acting.",
-            "Trust improved most when evidence and action were presented together rather than on separate screens.",
-            "Override and escalation options reduced resistance by making the AI feel assistive instead of absolute."
+            "The quiz middle felt like the problem because it was long and highly visible.",
+            "Cold paid search traffic raised the cost of every commitment in the funnel, not just the quiz steps themselves.",
+            "The most important outcome of this phase was reframing the work from \"shorten the quiz\" to \"diagnose the real bottleneck first.\""
           ],
           "opportunities": [
-            "Expand confidence signals with richer evidence summaries for higher-risk recommendation types.",
-            "Add saved review states for interrupted sessions so operators can resume complex cases without losing context.",
-            "Instrument downstream quality metrics to compare accepted AI recommendations with manual decisions over time."
+            "Compare drop-off and intent quality between the landing entry, the quiz middle, and the post-quiz purchase transition.",
+            "Test whether the ad promise and landing expectation are aligned well enough for cold search traffic before asking users to commit to a long flow.",
+            "Identify which moments in the quiz earn momentum and which ones merely add interaction cost."
           ]
         }
       }
