@@ -1016,7 +1016,8 @@
               "churnPercent": "21.62%",
               "userCount": "4,190",
               "remainingPercent": "13,99%",
-              "dotColor": "#ff2d2d"
+              "dotColor": "#ff2d2d",
+              "tag": "Selected for design proposal"
             }
           ],
           "analyses": [
@@ -1034,9 +1035,9 @@
             },
             {
               "title": "34. Enter Email - Bad Performance",
-              "body": "This is the largest drop-off in the funnel. Seven in ten people who land never take the first action, which points to a landing and value-proposition problem. The content doesn't create enough connection to begin the form: it's too generic and not specific to the user's motivations, and the quiz doesn't actually take one minute.",
-              "consideration": "Considerations: there may be a mismatch between the ad promise and the landing page content (I don't have access to this data to review it).",
-              "image": "/images/projects/Reversetech/start.png"
+              "body": "This is the second biggest in funnel leak, and it's the worst possible place to lose people. At this point users can't yet see the value of the product, so asking for an email without explaining the benefit can feel like a marketing capture step rather than part of the personalized plan experience.",
+              "consideration": "Some users also sense the paywall coming. Handing over an email right before a likely payment ask makes the wall feel closer, so a chunk bail preemptively.",
+              "image": "/images/projects/Reversetech/email.png"
             }
           ]
         }
