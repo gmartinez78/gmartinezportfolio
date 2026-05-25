@@ -144,11 +144,11 @@ values (
         "heading":"Funnel diagnosis & design improvements",
         "table":[
           {
-            "step":"34. enter email",
-            "churnCount":"1,156",
-            "churnPercent":"21.62%",
-            "userCount":"4,190",
-            "remainingPercent":"13,99%",
+            "step":"31. age",
+            "churnCount":"7",
+            "churnPercent":"0.13%",
+            "userCount":"5,403",
+            "remainingPercent":"18.03%",
             "dotColor":"#5ca95c"
           },
           {
@@ -160,11 +160,11 @@ values (
             "dotColor":"#ffd45c"
           },
           {
-            "step":"1. Start Quiz",
-            "churnCount":"21,057",
-            "churnPercent":"70.28%",
-            "userCount":"8,903",
-            "remainingPercent":"29.72%",
+            "step":"34. enter email",
+            "churnCount":"1,156",
+            "churnPercent":"21.62%",
+            "userCount":"4,190",
+            "remainingPercent":"13,99%",
             "dotColor":"#ff2d2d"
           }
         ],

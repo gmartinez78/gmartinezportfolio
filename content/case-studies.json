@@ -995,11 +995,11 @@
           "heading": "Funnel diagnosis & design improvements",
           "table": [
             {
-              "step": "34. enter email",
-              "churnCount": "1,156",
-              "churnPercent": "21.62%",
-              "userCount": "4,190",
-              "remainingPercent": "13,99%",
+              "step": "31. age",
+              "churnCount": "7",
+              "churnPercent": "0.13%",
+              "userCount": "5,403",
+              "remainingPercent": "18.03%",
               "dotColor": "#5ca95c"
             },
             {
@@ -1011,11 +1011,11 @@
               "dotColor": "#ffd45c"
             },
             {
-              "step": "1. Start Quiz",
-              "churnCount": "21,057",
-              "churnPercent": "70.28%",
-              "userCount": "8,903",
-              "remainingPercent": "29.72%",
+              "step": "34. enter email",
+              "churnCount": "1,156",
+              "churnPercent": "21.62%",
+              "userCount": "4,190",
+              "remainingPercent": "13,99%",
               "dotColor": "#ff2d2d"
             }
           ],
@@ -1033,7 +1033,7 @@
               "image": "/images/projects/Reversetech/goal.png"
             },
             {
-              "title": "1. Start Quiz",
+              "title": "34. Enter Email",
               "body": "This is the largest drop-off in the funnel. Seven in ten people who land never take the first action, which points to a landing and value-proposition problem. The content doesn't create enough connection to begin the form: it's too generic and not specific to the user's motivations, and the quiz doesn't actually take one minute.",
               "consideration": "Considerations: there may be a mismatch between the ad promise and the landing page content (I don't have access to this data to review it).",
               "image": "/images/projects/Reversetech/start.png"
