@@ -139,7 +139,7 @@ values (
       "id":"task-1",
       "type":"custom",
       "title":"Task 1",
-      "body":"I framed the funnel as a sequence of separate commitments: the ad promise, the landing entry, the quiz progression, and the post-quiz transition into purchase. That made it possible to evaluate the experience as more than just a long form.\n\nInstead of treating the 37+ step middle as a proven root cause, I positioned it as a hypothesis. The design work at this stage was about creating a clearer diagnostic lens so the next round of decisions would target the actual bottleneck rather than the most obvious-looking friction.",
+      "body":"I analyzed the 44-step funnel and selected 3 steps to examine more closely based on churn, user volume, and how much each one could influence downstream conversion.\n\nFor each step, I focused on two questions:\n\n• Why I think it is performing the way it is.\n• What user behavior, friction, or clarity issue might explain the data.",
       "payload":{
         "heading":"Funnel diagnosis & design improvements",
         "table":[
