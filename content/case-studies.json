@@ -1018,6 +1018,13 @@
               "remainingPercent": "29.72%",
               "dotColor": "#ff2d2d"
             }
+          ],
+          "analyses": [
+            {
+              "title": "Age Step - Good Performance",
+              "body": "A clear, low-effort step. By this point abandoning the flow would feel wasteful, so users push through. The cognitive and emotional load is minimal, there's no financial decision attached, and most people understand that age matters in a health plan.",
+              "consideration": "Age is asked twice, on the landing and again at step 31. Testing it on a single step could cut effort and shorten the funnel."
+            }
           ]
         }
       },

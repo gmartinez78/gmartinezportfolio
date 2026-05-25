@@ -1169,6 +1169,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     Array.isArray(taskDetailBlock.payload.table)
       ? (taskDetailBlock.payload.table as Array<Record<string, unknown>>)
       : [];
+  const taskDetailAnalyses =
+    taskDetailBlock?.payload &&
+    typeof taskDetailBlock.payload === "object" &&
+    Array.isArray(taskDetailBlock.payload.analyses)
+      ? (taskDetailBlock.payload.analyses as Array<Record<string, unknown>>)
+      : [];
 
   return (
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden">
@@ -1484,6 +1490,34 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div className="border-t border-[#dadde1] bg-[#f5f6f7] px-6 py-4 text-[11px] text-[#65676b]">
                   Source: funnel event snapshot focused on the most visible churn points in the quiz path.
                 </div>
+              </div>
+            ) : null}
+            {taskDetailAnalyses.length ? (
+              <div className="mt-8 grid gap-6">
+                {taskDetailAnalyses.map((item, index) => (
+                  <div key={`${item.title}-${index}`} className="overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
+                    <div className="border-b border-[#dadde1] px-6 py-5">
+                      <h3 className="text-[18px] font-semibold text-[#1c1e21]">
+                        {typeof item.title === "string" ? item.title : ""}
+                      </h3>
+                    </div>
+                    <div className="space-y-5 px-6 py-6">
+                      <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                        {typeof item.body === "string" ? item.body : ""}
+                      </p>
+                      {typeof item.consideration === "string" ? (
+                        <div className="rounded-[16px] bg-[#f5f6f7] px-5 py-4">
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
+                            Consideration
+                          </p>
+                          <p className="mt-2 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                            {item.consideration}
+                          </p>
+                        </div>
+                      ) : null}
+                    </div>
+                  </div>
+                ))}
               </div>
             ) : null}
           </div>
