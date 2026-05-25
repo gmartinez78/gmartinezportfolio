@@ -1496,22 +1496,35 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <div className="mt-10 space-y-8 text-center">
                 {taskDetailAnalyses.map((item, index) => (
                   <div key={`${item.title}-${index}`} className="mx-auto max-w-[860px]">
-                    <h3 className="text-[22px] font-semibold leading-[1.3] text-[#1c1e21]">
-                      {typeof item.title === "string" ? item.title : ""}
-                    </h3>
-                    <p className="mt-4 font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                      {typeof item.body === "string" ? item.body : ""}
-                    </p>
-                    {typeof item.consideration === "string" ? (
-                      <div className="mx-auto mt-5 max-w-[760px] rounded-[16px] bg-[#f5f6f7] px-5 py-4">
-                        <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
-                          Consideration
+                    <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
+                      <div>
+                        <h3 className="text-[22px] font-semibold leading-[1.3] text-[#1c1e21]">
+                          {typeof item.title === "string" ? item.title : ""}
+                        </h3>
+                        <p className="mt-4 font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                          {typeof item.body === "string" ? item.body : ""}
                         </p>
-                        <p className="mt-2 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                          {item.consideration}
-                        </p>
+                        {typeof item.consideration === "string" ? (
+                          <div className="mx-auto mt-5 max-w-[760px] rounded-[16px] bg-[#f5f6f7] px-5 py-4">
+                            <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
+                              Consideration
+                            </p>
+                            <p className="mt-2 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                              {item.consideration}
+                            </p>
+                          </div>
+                        ) : null}
                       </div>
-                    ) : null}
+                      {typeof item.image === "string" ? (
+                        <div className="mx-auto w-full max-w-[320px] overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
+                          <img
+                            src={withBasePath(item.image)}
+                            alt={typeof item.title === "string" ? item.title : "Analysis reference"}
+                            className="h-auto w-full"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
                   </div>
                 ))}
               </div>
