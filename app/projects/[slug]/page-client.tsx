@@ -1493,7 +1493,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             ) : null}
             {taskDetailAnalyses.length ? (
-              <div className="mt-10 space-y-8">
+              <div className="mt-14 space-y-14">
                 {taskDetailAnalyses.map((item, index) => (
                   <div key={`${item.title}-${index}`} className="mx-auto max-w-[860px]">
                     {(() => {
