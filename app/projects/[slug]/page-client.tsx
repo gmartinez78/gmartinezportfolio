@@ -1493,11 +1493,25 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             ) : null}
             {taskDetailAnalyses.length ? (
-              <div className="mt-10 space-y-8 text-center">
+              <div className="mt-10 space-y-8">
                 {taskDetailAnalyses.map((item, index) => (
                   <div key={`${item.title}-${index}`} className="mx-auto max-w-[860px]">
+                    {(() => {
+                      const imageOnRight = item.image === "/images/projects/Reversetech/goal.png";
+                      return (
                     <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
-                      <div>
+                      {typeof item.image === "string" ? (
+                        <div
+                          className={`mx-auto w-full max-w-[192px] overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)] ${imageOnRight ? "lg:order-2" : "lg:order-1"}`}
+                        >
+                          <img
+                            src={withBasePath(item.image)}
+                            alt={typeof item.title === "string" ? item.title : "Analysis reference"}
+                            className="h-auto w-full"
+                          />
+                        </div>
+                      ) : null}
+                      <div className={`${typeof item.image === "string" ? (imageOnRight ? "lg:order-1" : "lg:order-2") : ""} text-left`}>
                         <h3 className="text-[22px] font-semibold leading-[1.3] text-[#1c1e21]">
                           {typeof item.title === "string" ? item.title : ""}
                         </h3>
@@ -1505,7 +1519,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           {typeof item.body === "string" ? item.body : ""}
                         </p>
                         {typeof item.consideration === "string" ? (
-                          <div className="mx-auto mt-5 max-w-[760px] rounded-[16px] bg-[#f5f6f7] px-5 py-4">
+                          <div className="mt-5 max-w-[760px] rounded-[16px] bg-[#f5f6f7] px-5 py-4">
                             <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
                               Consideration
                             </p>
@@ -1515,16 +1529,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           </div>
                         ) : null}
                       </div>
-                      {typeof item.image === "string" ? (
-                        <div className="mx-auto w-full max-w-[320px] overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
-                          <img
-                            src={withBasePath(item.image)}
-                            alt={typeof item.title === "string" ? item.title : "Analysis reference"}
-                            className="h-auto w-full"
-                          />
-                        </div>
-                      ) : null}
                     </div>
+                      );
+                    })()}
                   </div>
                 ))}
               </div>

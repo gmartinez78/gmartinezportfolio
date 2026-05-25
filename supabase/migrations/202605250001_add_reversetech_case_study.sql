@@ -178,12 +178,14 @@ values (
           {
             "title":"4. Main goal - Regular Performance",
             "body":"The single-select option keeps it light and avoids decision overload for users. The friction is more subtle: this is the moment the user tells the product what outcome they want, so naming one goal carries emotional weight. A hypothesis, based on research, is that selecting a goal adds emotional weight to this step, and that weight can feel like pressure, especially when the options don't fully align with the user or they haven't decided yet.",
-            "consideration":"Test a version with different content options, and add an \"I haven't decided yet\" choice. Also reduce the number of steps before this question, so users reach their goal-setting moment sooner, while intent is still high."
+            "consideration":"Test a version with different content options, and add an \"I haven't decided yet\" choice. Also reduce the number of steps before this question, so users reach their goal-setting moment sooner, while intent is still high.",
+            "image":"/images/projects/Reversetech/goal.png"
           },
           {
             "title":"1. Start Quiz",
             "body":"Placeholder text.",
-            "consideration":"Placeholder consideration."
+            "consideration":"Placeholder consideration.",
+            "image":"/images/projects/Reversetech/start.png"
           }
         ]
       }
