@@ -1493,29 +1493,25 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             ) : null}
             {taskDetailAnalyses.length ? (
-              <div className="mt-8 grid gap-6">
+              <div className="mt-10 space-y-8 text-center">
                 {taskDetailAnalyses.map((item, index) => (
-                  <div key={`${item.title}-${index}`} className="overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
-                    <div className="border-b border-[#dadde1] px-6 py-5">
-                      <h3 className="text-[18px] font-semibold text-[#1c1e21]">
-                        {typeof item.title === "string" ? item.title : ""}
-                      </h3>
-                    </div>
-                    <div className="space-y-5 px-6 py-6">
-                      <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                        {typeof item.body === "string" ? item.body : ""}
-                      </p>
-                      {typeof item.consideration === "string" ? (
-                        <div className="rounded-[16px] bg-[#f5f6f7] px-5 py-4">
-                          <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
-                            Consideration
-                          </p>
-                          <p className="mt-2 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                            {item.consideration}
-                          </p>
-                        </div>
-                      ) : null}
-                    </div>
+                  <div key={`${item.title}-${index}`} className="mx-auto max-w-[860px]">
+                    <h3 className="text-[22px] font-semibold leading-[1.3] text-[#1c1e21]">
+                      {typeof item.title === "string" ? item.title : ""}
+                    </h3>
+                    <p className="mt-4 font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                      {typeof item.body === "string" ? item.body : ""}
+                    </p>
+                    {typeof item.consideration === "string" ? (
+                      <div className="mx-auto mt-5 max-w-[760px] rounded-[16px] bg-[#f5f6f7] px-5 py-4">
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
+                          Consideration
+                        </p>
+                        <p className="mt-2 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                          {item.consideration}
+                        </p>
+                      </div>
+                    ) : null}
                   </div>
                 ))}
               </div>
