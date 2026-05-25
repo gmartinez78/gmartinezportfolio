@@ -12,6 +12,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
+  isHiddenCaseStudySlug,
   resolveHomeCardId,
   resolveHomeCardImage,
   resolveProjectHeroImage,
@@ -1107,7 +1108,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   }
 
   const otherProjects = caseStudies
-    .filter((project) => project.slug !== caseStudy.slug && project.status === "published")
+    .filter(
+      (project) =>
+        project.slug !== caseStudy.slug &&
+        project.status === "published" &&
+        !isHiddenCaseStudySlug(project.slug),
+    )
     .slice(0, 3)
     .map((project) => ({
       ...project,

@@ -10,6 +10,7 @@ import { Badge } from "../../components/ui/badge";
 import { Card, CardContent } from "../../components/ui/card";
 import { appendLockedNayyaPlaceholder } from "../../lib/cms/locked-placeholder";
 import {
+  isHiddenCaseStudySlug,
   resolveProjectListCardId,
   resolveProjectListCardImage,
   resolveProjectHref,
@@ -47,7 +48,7 @@ function ProjectsPage() {
     setActiveTopic(initialTopic);
   }, [initialFilter, initialTopic]);
   
-  const projects = allProjects.filter(p => p?.slug).map((project) => ({
+  const projects = allProjects.filter((project) => project?.slug && !isHiddenCaseStudySlug(project.slug)).map((project) => ({
     ...project,
     cardId: resolveProjectListCardId(project.slug),
     title: project.title ?? "Untitled Project",

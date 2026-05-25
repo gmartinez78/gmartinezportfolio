@@ -9,6 +9,7 @@ import { Badge } from "../../components/ui/badge";
 import { Card, CardContent } from "../../components/ui/card";
 import { SectionHeading } from "../../components/ui/section-heading";
 import {
+  isHiddenCaseStudySlug,
   resolveHomeCardId,
   resolveHomeCardImage,
   resolveProjectHeroImage,
@@ -507,7 +508,7 @@ export default function BenefitsPage() {
   ];
   const reflections = caseStudy?.reflections ?? REFLECTIONS;
   const otherProjects = caseStudies
-    .filter((project) => project.slug !== "benefits-enrollment")
+    .filter((project) => project.slug !== "benefits-enrollment" && !isHiddenCaseStudySlug(project.slug))
     .slice(0, 3)
     .map((project) => ({
       ...project,

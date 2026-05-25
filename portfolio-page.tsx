@@ -11,6 +11,7 @@ import { Badge } from "./components/ui/badge";
 import { Button } from "./components/ui/button";
 import { appendLockedNayyaPlaceholder } from "./lib/cms/locked-placeholder";
 import {
+  isHiddenCaseStudySlug,
   resolveHomeCardId,
   resolveProjectListCardImage,
   resolveProjectHref,
@@ -146,7 +147,7 @@ function resolveHeroAssistantQuery(
 
   const searchableItems: LocalSearchItem[] = [
     ...caseStudies
-      .filter((study) => study.status === "published")
+      .filter((study) => study.status === "published" && !isHiddenCaseStudySlug(study.slug))
       .map((study) => ({
         id: `project-${study.slug}`,
         title: study.title,
@@ -557,7 +558,7 @@ export default function PortfolioPage() {
     : ["AI product design", "UX research", "Enterprise SaaS", "Design systems"];
   const allProjects = appendLockedNayyaPlaceholder(caseStudies ?? []);
   const homeProjects = allProjects
-    .filter((study) => study?.slug)
+    .filter((study) => study?.slug && !isHiddenCaseStudySlug(study.slug))
     .map((study) => ({
       slug: study.slug,
       cardId: resolveHomeCardId(study.slug),

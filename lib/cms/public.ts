@@ -66,6 +66,7 @@ const projectHeroImageMap: Record<string, string> = {
 
 const projectHrefMap: Record<string, string> = {
   "benefits-enrollment": withBasePath("/benefits"),
+  reversetech: withBasePath("/reversetech"),
 };
 
 const homeCardMediaMap: Record<string, { id: string; image: string }> = {
@@ -115,6 +116,8 @@ const legacyAssetMap: Record<string, string> = {
   "/images/certs/upwork-cert.png": "/images/iNSrn.png",
   "/images/certs/nng-cert.png": "/images/OiSjn.png",
 };
+
+const HIDDEN_CASE_STUDY_SLUGS = new Set(["reversetech"]);
 
 function resolveLegacyAssetPath(path?: string | null) {
   if (!path) {
@@ -199,6 +202,10 @@ export function resolveProjectListCardId(slug: string) {
 
 export function resolveProjectListCardImage(slug: string, explicit?: string | null) {
   return projectListCardMediaMap[slug]?.image ?? resolveProjectImage(slug, explicit);
+}
+
+export function isHiddenCaseStudySlug(slug: string) {
+  return HIDDEN_CASE_STUDY_SLUGS.has(slug);
 }
 
 export function usePublicSiteContent() {
