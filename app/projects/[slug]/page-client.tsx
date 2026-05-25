@@ -1122,7 +1122,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     }));
   const findBlock = (id: string) => caseStudy.content_blocks?.find((block) => block.id === id);
   const overviewBlock = findBlock("overview");
-  const storyBlocks = ["situation", "task", "actions", "research"]
+  const storyBlocks = ["situation", "task", "task-1", "actions", "research"]
     .map((id) => findBlock(id))
     .filter(isContentBlock);
   const visibleStoryBlocks =
@@ -1292,6 +1292,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <div className="space-y-10">
                 {visibleStoryBlocks.map((block) => {
                   const items = getPayloadList(block.payload, "items");
+                  const heading =
+                    block.payload && typeof block.payload === "object" && typeof block.payload.heading === "string"
+                      ? block.payload.heading
+                      : null;
+                  const table =
+                    block.payload && typeof block.payload === "object" && Array.isArray(block.payload.table)
+                      ? (block.payload.table as Array<Record<string, unknown>>)
+                      : [];
 
                   return (
                     <div key={block.id}>
@@ -1299,6 +1307,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">
                           {block.title}
                         </p>
+                      ) : null}
+                      {heading ? (
+                        <h3 className="mb-4 font-inter text-[28px] leading-[1.15] text-[#0e2951] md:text-[34px]">
+                          {heading}
+                        </h3>
                       ) : null}
                       {block.body ? (
                         block.body.split(/\n+/).map((paragraph, idx) => (
@@ -1311,6 +1324,45 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             <p key={item} className="max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                               {item}
                             </p>
+                          ))}
+                        </div>
+                      ) : null}
+                      {table.length ? (
+                        <div className="mt-8 overflow-hidden rounded-[24px] border border-[#1f1f1f] bg-white shadow-[0_18px_40px_rgba(14,41,81,0.08)]">
+                          <div className="grid grid-cols-5 bg-[#6b6b6b] text-white">
+                            {["EVENT - STEP", "CHURN #", "CHURN %", "USER #", "REMAINING %"].map((label, index) => (
+                              <div
+                                key={label}
+                                className={`px-4 py-4 text-[13px] font-semibold uppercase tracking-[0.04em] md:text-[15px] ${
+                                  index < 4 ? "border-r border-[#1f1f1f]" : ""
+                                }`}
+                              >
+                                {label}
+                              </div>
+                            ))}
+                          </div>
+                          {table.map((row, rowIndex) => (
+                            <div key={`${row.step}-${rowIndex}`} className="grid grid-cols-5 border-t border-[#1f1f1f]">
+                              <div className="flex items-center gap-3 border-r border-[#1f1f1f] px-4 py-4 text-[15px] text-[#111111] md:text-[17px]">
+                                <span
+                                  className="h-3 w-3 rounded-full"
+                                  style={{ backgroundColor: typeof row.dotColor === "string" ? row.dotColor : "#22c55e" }}
+                                />
+                                <span>{typeof row.step === "string" ? row.step : ""}</span>
+                              </div>
+                              <div className="border-r border-[#1f1f1f] px-4 py-4 text-[15px] text-[#111111] md:text-[17px]">
+                                {typeof row.churnCount === "string" ? row.churnCount : ""}
+                              </div>
+                              <div className="border-r border-[#1f1f1f] px-4 py-4 text-[15px] text-[#111111] md:text-[17px]">
+                                {typeof row.churnPercent === "string" ? row.churnPercent : ""}
+                              </div>
+                              <div className="border-r border-[#1f1f1f] px-4 py-4 text-[15px] text-[#111111] md:text-[17px]">
+                                {typeof row.userCount === "string" ? row.userCount : ""}
+                              </div>
+                              <div className="px-4 py-4 text-[15px] text-[#111111] md:text-[17px]">
+                                {typeof row.remainingPercent === "string" ? row.remainingPercent : ""}
+                              </div>
+                            </div>
                           ))}
                         </div>
                       ) : null}
@@ -1480,7 +1532,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug !== "flock-accessibility-system" ? (
+      {caseStudy.slug !== "flock-accessibility-system" && caseStudy.slug !== "reversetech" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading
             eyebrow={["nayya-ai-benefits", "i9-everify-integration"].includes(caseStudy.slug) ? methodologyName : "Methodology"}

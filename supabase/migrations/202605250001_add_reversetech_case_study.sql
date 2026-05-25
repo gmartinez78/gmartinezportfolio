@@ -65,11 +65,7 @@ values (
       "Without a sharper diagnosis, any redesign risked polishing the middle while ignoring weaker parts of the funnel before or after it."
     ]
   }'::jsonb,
-  array[
-    'Traffic was primarily cold paid search, which meant intent and trust were weaker than in a warm or referral-based funnel.',
-    'The quiz felt like the obvious culprit, but that intuition itself was a constraint because it could bias the team toward the wrong intervention.',
-    'The work needed to separate what looked painful from what was actually suppressing conversion.'
-  ],
+  array[]::text[],
   '{
     "name":"Funnel Diagnosis",
     "steps":[
@@ -138,6 +134,41 @@ values (
       "type":"custom",
       "title":"Task",
       "body":"The scope of the work centered on funnel diagnosis and design improvements, paywall experiment design, and competitor pattern extraction.\n\nMy role was to interpret funnel data, identify UX and conversion problems, and translate those insights into concrete, testable design solutions inside a performance-driven product environment."
+    },
+    {
+      "id":"task-1",
+      "type":"custom",
+      "title":"Task 1",
+      "body":"",
+      "payload":{
+        "heading":"Funnel diagnosis & design improvements",
+        "table":[
+          {
+            "step":"31. age",
+            "churnCount":"7",
+            "churnPercent":"0.13%",
+            "userCount":"5,403",
+            "remainingPercent":"18.03%",
+            "dotColor":"#5ca95c"
+          },
+          {
+            "step":"4. Main goal",
+            "churnCount":"224",
+            "churnPercent":"3.20%",
+            "userCount":"6,784",
+            "remainingPercent":"22.64%",
+            "dotColor":"#ffd45c"
+          },
+          {
+            "step":"1. Start Quiz",
+            "churnCount":"21,057",
+            "churnPercent":"70.28%",
+            "userCount":"8,903",
+            "remainingPercent":"29.72%",
+            "dotColor":"#ff2d2d"
+          }
+        ]
+      }
     },
     {
       "id":"actions",
