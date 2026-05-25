@@ -139,7 +139,7 @@ values (
       "id":"task-1",
       "type":"custom",
       "title":"Task 1",
-      "body":"",
+      "body":"I framed the funnel as a sequence of separate commitments: the ad promise, the landing entry, the quiz progression, and the post-quiz transition into purchase. That made it possible to evaluate the experience as more than just a long form.\n\nInstead of treating the 37+ step middle as a proven root cause, I positioned it as a hypothesis. The design work at this stage was about creating a clearer diagnostic lens so the next round of decisions would target the actual bottleneck rather than the most obvious-looking friction.",
       "payload":{
         "heading":"Funnel diagnosis & design improvements",
         "table":[
@@ -169,12 +169,6 @@ values (
           }
         ]
       }
-    },
-    {
-      "id":"actions",
-      "type":"custom",
-      "title":"Actions",
-      "body":"I framed the funnel as a sequence of separate commitments: the ad promise, the landing entry, the quiz progression, and the post-quiz transition into purchase. That made it possible to evaluate the experience as more than just a long form.\n\nInstead of treating the 37+ step middle as a proven root cause, I positioned it as a hypothesis. The design work at this stage was about creating a clearer diagnostic lens so the next round of decisions would target the actual bottleneck rather than the most obvious-looking friction."
     },
     {
       "id":"impact",
