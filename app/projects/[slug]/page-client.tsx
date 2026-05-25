@@ -1135,11 +1135,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ? storyBlocks.filter((block) => block.id !== "research")
       : storyBlocks;
   const resultBlock = findBlock("impact");
+  const sourcesBlock = findBlock("sources");
   const resultRows = getPayloadRows(resultBlock?.payload, "rows");
   const resultInsights = getPayloadList(resultBlock?.payload, "insights");
   const resultOpportunities = getPayloadList(resultBlock?.payload, "opportunities");
   const projectedImprovements = getPayloadList(resultBlock?.payload, "projected");
   const successMetrics = getPayloadList(resultBlock?.payload, "successMetrics");
+  const sourceItems = getPayloadList(sourcesBlock?.payload, "items");
+  const sourceEntries =
+    sourcesBlock?.payload &&
+    typeof sourcesBlock.payload === "object" &&
+    Array.isArray(sourcesBlock.payload.sources)
+      ? (sourcesBlock.payload.sources as Array<Record<string, unknown>>)
+      : [];
   const highlightMetrics =
     caseStudy.slug === "nayya-ai-benefits"
       ? NAYYA_HIGHLIGHT_METRICS
@@ -1157,6 +1165,21 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const reflections = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_REFLECTIONS : caseStudy.reflections;
   const projectYear = caseStudy.year;
   const heroImage = resolveProjectHeroImage(caseStudy.slug, caseStudy.images.hero);
+  const designProposalTitle = caseStudy.slug === "reversetech" ? "Enter Email: Design Proposal" : "Design Proposal";
+  const proposedSolutionIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf("Proposed Solution") : -1;
+  const designNotesIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf("A few notes") : -1;
+  const designProposalIntro =
+    caseStudy.slug === "reversetech" && proposedSolutionIndex >= 0
+      ? designStrategy.slice(0, proposedSolutionIndex)
+      : designStrategy;
+  const designProposalSolutions =
+    caseStudy.slug === "reversetech" && proposedSolutionIndex >= 0
+      ? designStrategy.slice(proposedSolutionIndex + 1, designNotesIndex >= 0 ? designNotesIndex : undefined)
+      : [];
+  const designProposalNotes =
+    caseStudy.slug === "reversetech" && designNotesIndex >= 0
+      ? designStrategy.slice(designNotesIndex + 1)
+      : [];
   const taskDetailHeading =
     taskDetailBlock?.payload &&
     typeof taskDetailBlock.payload === "object" &&
@@ -2156,7 +2179,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           {caseStudy.slug === "nayya-ai-benefits" ? (
           <>
             <h2 className="mb-5 text-center font-inter text-[36px] leading-tight text-[#0e2951]">
-              Design Proposal
+              {designProposalTitle}
             </h2>
             <div className="mx-auto max-w-[820px] space-y-5 text-center">
               {designStrategy.map((item) => (
@@ -2167,7 +2190,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           ) : caseStudy.slug === "i9-everify-integration" ? (
           <>
             <h2 className="mb-5 text-center font-inter text-[36px] leading-tight text-[#0e2951]">
-              Design Proposal
+              {designProposalTitle}
             </h2>
             <div className="mx-auto mb-10 max-w-[820px] text-center">
               <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
@@ -2215,7 +2238,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           ) : caseStudy.slug === "flock-accessibility-system" ? (
           <>
             <SectionHeading
-              title="Design Proposal"
+              title={designProposalTitle}
               centered
               className="mb-12"
             />
@@ -2237,15 +2260,51 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           ) : (
           <>
             <SectionHeading
-              title="Design Proposal"
+              title={designProposalTitle}
               centered
               className="mb-12"
             />
-            <div className="mx-auto max-w-[820px] space-y-8 text-center">
-              {designStrategy.map((item) => (
-                <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
-              ))}
-            </div>
+            {caseStudy.slug === "reversetech" ? (
+              <div className="mx-auto max-w-[820px] space-y-8 text-center">
+                {designProposalIntro.map((item) => (
+                  <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                    {item}
+                  </p>
+                ))}
+                {designProposalSolutions.length ? (
+                  <div className="rounded-[16px] bg-[#f5f6f7] px-5 py-4 text-left">
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
+                      Proposed Solution
+                    </p>
+                    <div className="mt-2 space-y-3">
+                      {designProposalSolutions.map((item) => (
+                        <p key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+                {designProposalNotes.length ? (
+                  <div className="space-y-5">
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
+                      A few notes
+                    </p>
+                    {designProposalNotes.map((item) => (
+                      <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                        {item}
+                      </p>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            ) : (
+              <div className="mx-auto max-w-[820px] space-y-8 text-center">
+                {designStrategy.map((item) => (
+                  <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+                ))}
+              </div>
+            )}
           </>
           )}
         </section>
@@ -2722,6 +2781,49 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           ))}
         </div>
       </section>
+
+      {sourceItems.length || sourceEntries.length ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading title={sourcesBlock?.title ?? "Sources"} centered className="mb-12" />
+          <div className="mx-auto max-w-[900px] space-y-5">
+            {sourceEntries.length
+              ? sourceEntries.map((item, index) => (
+                <div key={`${item.title}-${index}`} className="space-y-2">
+                  <p className="font-inter text-[16px] leading-[1.7] text-[#0e2951]">
+                    <a
+                      href={typeof item.url === "string" ? item.url : "#"}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-semibold underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                      >
+                        {typeof item.title === "string" ? item.title : ""}
+                      </a>
+                  </p>
+                  <p className="font-inter text-[15px] leading-[1.75] text-[#5c7792]">
+                    {typeof item.description === "string" ? item.description : ""}
+                  </p>
+                  {typeof item.secondaryUrl === "string" && typeof item.secondaryTitle === "string" ? (
+                    <p className="font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                      <a
+                        href={item.secondaryUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-medium underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                      >
+                        {item.secondaryTitle}
+                      </a>
+                    </p>
+                  ) : null}
+                </div>
+              ))
+              : sourceItems.map((item) => (
+                  <p key={item} className="font-inter text-[15px] leading-[1.75] text-[#5c7792]">
+                    {item}
+                  </p>
+                ))}
+          </div>
+        </section>
+      ) : null}
 
       <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
         <div className="mb-8 h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />

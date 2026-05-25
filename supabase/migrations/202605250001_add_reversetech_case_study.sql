@@ -97,9 +97,21 @@ values (
     ]
   }'::jsonb,
   array[
-    'Treat the 44-step flow as a system rather than a single UI problem, because low conversion can come from weak acquisition-to-landing alignment, not just excessive step count.',
-    'Resist optimizing the most painful-looking section until the funnel is broken into diagnosable stages with clearer hypotheses.',
-    'Use problem framing to protect the team from solving the wrong problem too early.'
+    'I chose Enter Email as the focus for the design proposal because it is the second-largest in-funnel drop-off and one of the most critical moments to lose users.',
+    'The funnel also feels longer than necessary because progress is not clearly visible. Users do not know how far they have come or how much is left, which can create fatigue even when each screen is simple. Showing progress can reduce anxiety and motivate completion.',
+    'This matters especially before the email step, because every screen leading up to it shapes whether users feel the experience is worth continuing. If the communication does not clearly explain progress, value, and relevance along the way, the email request can feel abrupt instead of earned.',
+    'The research is consistent: a form is a value exchange. When users give something valuable, like their email and attention, they need to understand what they get in return. In the current flow, the email step feels more like marketing capture than part of the personalized plan experience.',
+    'The copy is also too transactional. Outcome-based language, like "See your plan," is stronger than action-based language, like "Continue," because it reconnects users to their original motivation. Trust signals are also missing, which makes the email ask feel riskier and may trigger concerns about spam.',
+    'Some questions could be combined or made conditional so users only see what is relevant. This would reduce both the actual length and the perceived effort, which matters because most users do not return once they abandon a form. It is also relevant to introduce images related to the app so users can get a closer look at what they are buying, and to use icons or activity-based imagery when a question is directly connected to that context.',
+    'Proposed Solution',
+    'Reconnect value at the gate. Frame the email as the key to the plan they have already built, using outcome copy, not "continue."',
+    'Add a progress indicator with the total ("Step X of Y") so users always know how much is left.',
+    'Unify or make conditional the questions that are not essential, to cut both real and perceived length.',
+    'Add a short line on why the email is needed and what will be sent, to lower spam and lock-in worry.',
+    'A few notes',
+    'The strongest research-backed points here are the value exchange, the progress indicator with a visible total, and the perception stat about forms that look too long. Those are the arguments I would lead with if someone pushed on "says who."',
+    'I would treat loose vendor stats, like the common "20 to 43% completion lift" claims, with caution and leave them out unless they can be sourced more cleanly.',
+    'I standardized the language to US English, including "personalized," to stay consistent with the rest of the case study.'
   ],
   '[
     {
@@ -211,6 +223,58 @@ values (
           "Compare drop-off and intent quality between the landing entry, the quiz middle, and the post-quiz purchase transition.",
           "Test whether the ad promise and landing expectation are aligned well enough for cold search traffic before asking users to commit to a long flow.",
           "Identify which moments in the quiz earn momentum and which ones merely add interaction cost."
+        ]
+      }
+    },
+    {
+      "id":"sources",
+      "type":"custom",
+      "title":"Sources",
+      "body":"",
+      "payload":{
+        "sources":[
+          {
+            "title":"Nielsen Norman Group — \"Progress Indicators Make a Slow System Less Insufferable\"",
+            "url":"https://www.nngroup.com/articles/progress-indicators/",
+            "description":"Supports progress feedback reducing uncertainty and keeping users moving. Caveat: this NN/g piece is about system and wait-time progress, not multi-step counters, so it works best paired with the goal-gradient research below for the step-count point specifically."
+          },
+          {
+            "title":"Baymard Institute — \"Checkout Flows Average 5 Steps and 11+ Form Fields\"",
+            "url":"https://baymard.com/blog/checkout-flow-average-form-fields",
+            "description":"Supports unifying questions over just splitting steps: the number of form fields users must manage matters more to checkout UX than the number of steps, and most flows can drop to 6 to 8 fields."
+          },
+          {
+            "title":"The Manifest — \"6 Steps for Avoiding Online Form Abandonment\"",
+            "url":"https://themanifest.com/web-design/6-steps-avoiding-online-form-abandonment",
+            "description":"Used for the stat that 27% of users abandon a form because it is too long, and once they abandon, they rarely return. Caveat: this is a 2018 survey of 502 people, so I treat it as dated."
+          },
+          {
+            "title":"Nunes & Drèze (2006), Journal of Consumer Research — \"The Endowed Progress Effect: How Artificial Advancement Increases Effort\"",
+            "url":"https://academic.oup.com/jcr/article-abstract/32/4/504/1787425",
+            "description":"The exact origin of the term \"endowed progress effect\": people given artificial advancement toward a goal show greater persistence toward reaching it."
+          },
+          {
+            "title":"Kivetz, Urminsky & Zheng (2006), Journal of Marketing Research — \"The Goal-Gradient Hypothesis Resurrected\"",
+            "url":"https://journals.sagepub.com/doi/abs/10.1509/jmkr.43.1.39",
+            "description":"Supports the claim that people accelerate effort as they get closer to a reward. I use this when I reference the goal-gradient effect.",
+            "secondaryTitle":"Columbia Business School summary",
+            "secondaryUrl":"https://business.columbia.edu/insights/chazen-global-insights/goal-gradient-hypothesis-resurrected-purchase-acceleration"
+          },
+          {
+            "title":"IBM Carbon Design System — Progress indicator, usage guidelines",
+            "url":"https://carbondesignsystem.com/components/progress-indicator/usage/",
+            "description":"An authoritative design-system reference for showing users where they are: dividing the end goal into smaller subtasks increases the sense of completeness, and keeping users informed of where they are gives them a sense of control."
+          },
+          {
+            "title":"WebAIM Million 2025 report",
+            "url":"https://webaim.org/projects/million/2025",
+            "description":"Used for the accessibility angle on the email field: home pages averaged 6.3 form inputs, and 34.2% of those inputs were not properly labeled. Note: the 48% figure floating around secondary sources is the share of homepages with at least one unlabeled input, which is a different metric."
+          },
+          {
+            "title":"HubSpot — \"10 Form Conversion Optimization Tips\"",
+            "url":"https://blog.hubspot.com/marketing/optimize-conversion-forms",
+            "description":"From HubSpot's analysis of 40,000+ landing pages: buttons labeled \"Submit\" had lower conversion rates, and 3-field forms converted best with a drop-off after that. I use this for the \"outcome copy beats continue\" and \"keep the ask minimal\" points."
+          }
         ]
       }
     }
