@@ -97,21 +97,16 @@ values (
     ]
   }'::jsonb,
   array[
-    'I chose Enter Email as the focus for the design proposal because it is the second-largest in-funnel drop-off and one of the most critical moments to lose users.',
-    'The funnel also feels longer than necessary because progress is not clearly visible. Users do not know how far they have come or how much is left, which can create fatigue even when each screen is simple. Showing progress can reduce anxiety and motivate completion.',
-    'This matters especially before the email step, because every screen leading up to it shapes whether users feel the experience is worth continuing. If the communication does not clearly explain progress, value, and relevance along the way, the email request can feel abrupt instead of earned.',
-    'The research is consistent: a form is a value exchange. When users give something valuable, like their email and attention, they need to understand what they get in return. In the current flow, the email step feels more like marketing capture than part of the personalized plan experience.',
-    'The copy is also too transactional. Outcome-based language, like "See your plan," is stronger than action-based language, like "Continue," because it reconnects users to their original motivation. Trust signals are also missing, which makes the email ask feel riskier and may trigger concerns about spam.',
-    'Some questions could be combined or made conditional so users only see what is relevant. This would reduce both the actual length and the perceived effort, which matters because most users do not return once they abandon a form. It is also relevant to introduce images related to the app so users can get a closer look at what they are buying, and to use icons or activity-based imagery when a question is directly connected to that context.',
+    'I chose Enter Email as the focus for the design proposal because it is the second-largest in-funnel drop-off and one of the critical moments to lose users.',
+    'By this point, users have invested time in the quiz but still have not seen the product''s value clearly. Because progress is not visible, the funnel can feel longer than necessary, creating fatigue even when each screen is simple. This makes the email request feel abrupt instead of earned.',
+    'The issue is a weak value exchange. Users are being asked to give something valuable, their email and attention, before clearly understanding what they receive in return. In the current flow, the step feels more like lead capture than part of the personalized plan experience.',
+    'To reduce friction, the pages before email should better prepare users by showing progress, reinforcing why each question matters, and previewing the value of the final plan. The email page itself should reconnect users to their motivation, show what they are about to receive, and use outcome-based copy such as "See your plan" instead of "Continue."',
+    'Adding trust signals, visible progress, app previews, and more relevant imagery would also make the ask feel safer and more connected to the product. Some questions could also be combined or made conditional so users only see what is relevant, reducing both the actual length and the perceived effort before they reach the email step.',
     'Proposed Solution',
-    'Reconnect value at the gate. Frame the email as the key to the plan they have already built, using outcome copy, not "continue."',
-    'Add a progress indicator with the total ("Step X of Y") so users always know how much is left.',
-    'Unify or make conditional the questions that are not essential, to cut both real and perceived length.',
-    'Add a short line on why the email is needed and what will be sent, to lower spam and lock-in worry.',
-    'A few notes',
-    'The strongest research-backed points here are the value exchange, the progress indicator with a visible total, and the perception stat about forms that look too long. Those are the arguments I would lead with if someone pushed on "says who."',
-    'I would treat loose vendor stats, like the common "20 to 43% completion lift" claims, with caution and leave them out unless they can be sourced more cleanly.',
-    'I standardized the language to US English, including "personalized," to stay consistent with the rest of the case study.'
+    'Prepare users before the email step by showing visible progress and reinforcing why each question matters.',
+    'Reframe the email page around the value users are about to unlock, using outcome-based copy such as "See your plan" instead of "Continue."',
+    'Add trust signals, app previews, and more relevant imagery so the ask feels safer and more connected to the product.',
+    'Combine or make conditional the less essential questions so users only see what is relevant before reaching the email step.'
   ],
   '[
     {
