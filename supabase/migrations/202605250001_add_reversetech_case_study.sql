@@ -94,17 +94,11 @@ values (
   }'::jsonb,
   array[
     'I chose Enter Email as the focus for the design proposal because it is the second-largest in-funnel drop-off and one of the critical moments to lose users.',
-    'The content leading up to the email step does not feel personalized enough for users to believe they are moving toward a custom result. Instead of feeling like the product is building information specifically for them, the pages read more like generic steps in a form. The email page itself should reconnect users to their motivation, show what they are about to receive, and use outcome-based copy such as "See your plan" instead of "Continue."',
     'By this point, users have invested time in the quiz but still have not seen the product''s value clearly. Because progress is not visible, the funnel can feel longer than necessary, creating fatigue even when each screen is simple. This makes the email request feel abrupt instead of earned.',
     'The issue is a weak value exchange. Users are being asked to give something valuable, their email and attention, before clearly understanding what they receive in return. In the current flow, the step feels more like lead capture than part of the personalized plan experience.',
     'Hypothesis 1',
     'To reduce friction, the pages before email should better prepare users by showing progress, reinforcing why each question matters, and previewing the value of the final plan.',
-    'Adding trust signals, visible progress, app previews, and more relevant imagery would also make the ask feel safer and more connected to the product. Some questions could also be combined or made conditional so users only see what is relevant, reducing both the actual length and the perceived effort before they reach the email step.',
-    'Proposed Solution',
-    'Prepare users before the email step by showing visible progress and reinforcing why each question matters.',
-    'Reframe the email page around the value users are about to unlock, using outcome-based copy such as "See your plan" instead of "Continue."',
-    'Add trust signals, app previews, and more relevant imagery so the ask feels safer and more connected to the product.',
-    'Combine or make conditional the less essential questions so users only see what is relevant before reaching the email step.'
+    'Adding trust signals, visible progress, app previews, and more relevant imagery would also make the ask feel safer and more connected to the product.'
   ],
   '[
     {
@@ -200,7 +194,7 @@ values (
       "id":"cta-variants",
       "type":"custom",
       "title":"CTA Variant",
-      "body":"",
+      "body":"The content on the email step does not feel personalized enough to make users believe a custom result is being built for them. The email page should reconnect them to their goal, preview what they will receive, and use outcome-based copy.",
       "payload":{
         "variants":[
           {
