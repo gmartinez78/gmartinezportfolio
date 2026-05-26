@@ -430,6 +430,8 @@ const NAYYA_REFLECTIONS: CaseStudyReflection[] = [
 const NAYYA_PHONE_IMAGE = "/images/projects/nayya-ai-benefits/banners/nayya-design-process.png";
 const NAYYA_IMPACT_FIGMA_EMBED =
   "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FYK1xcLLDokH5gNYAeDmNiP%2FNayya%3Fnode-id%3D20753-8774%26m%3Ddev%26t%3DOkK79FuO2xBLEwc6-1";
+const REVERSE_TECH_FLOW_EMBED =
+  "https://embed.figma.com/design/82wWga1ObOtJEZ9LyNaQTo/Reverse-Tech---Flow?node-id=15-5087&embed-host=share";
 const NAYYA_INSIGHTS_CLOSING =
   "Participants who completed the Nayya survey enrolled in TWICE as many benefits as those who skipped it.";
 
@@ -2366,6 +2368,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     ))}
                   </div>
                 ) : null}
+                <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
+                  <iframe
+                    title="Reverse Tech Flow from Figma"
+                    src={REVERSE_TECH_FLOW_EMBED}
+                    className="h-[720px] w-full"
+                    allowFullScreen
+                  />
+                </div>
               </div>
             ) : (
               <div className="mx-auto max-w-[820px] space-y-8 text-center">

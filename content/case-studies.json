@@ -933,8 +933,7 @@
       "Prepare users before the email step by showing visible progress and reinforcing why each question matters.",
       "Reframe the email page around the value users are about to unlock, using outcome-based copy such as \"See your plan\" instead of \"Continue.\"",
       "Add trust signals, app previews, and more relevant imagery so the ask feels safer and more connected to the product.",
-      "Combine or make conditional the less essential questions so users only see what is relevant before reaching the email step.",
-      "[Reverse Tech Flow](https://www.figma.com/design/82wWga1ObOtJEZ9LyNaQTo/Reverse-Tech---Flow?node-id=5-1681&m=dev&t=hvrS6bhfKg1fByaZ-1)"
+      "Combine or make conditional the less essential questions so users only see what is relevant before reaching the email step."
     ],
     "reflections": [
       {
