@@ -1215,6 +1215,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const projectYear = caseStudy.year;
   const heroImage = resolveProjectHeroImage(caseStudy.slug, caseStudy.images.hero);
   const designProposalTitle = caseStudy.slug === "reversetech" ? "Enter Email: Design Proposal" : "Design Proposal";
+  const hypothesisIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf("Hypothesis 1") : -1;
   const proposedSolutionIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf("Proposed Solution") : -1;
   const designNotesIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf("A few notes") : -1;
   const designProposalLinks =
@@ -1222,9 +1223,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ? designStrategy.map((item) => parseStandaloneMarkdownLink(item)).filter(isMarkdownLink)
       : [];
   const designProposalIntro =
-    caseStudy.slug === "reversetech" && proposedSolutionIndex >= 0
-      ? designStrategy.slice(0, proposedSolutionIndex).filter((item) => !parseStandaloneMarkdownLink(item))
+    caseStudy.slug === "reversetech" && hypothesisIndex >= 0
+      ? designStrategy.slice(0, hypothesisIndex).filter((item) => !parseStandaloneMarkdownLink(item))
       : designStrategy.filter((item) => !parseStandaloneMarkdownLink(item));
+  const hypothesisItems =
+    caseStudy.slug === "reversetech" && hypothesisIndex >= 0 && proposedSolutionIndex > hypothesisIndex
+      ? designStrategy
+          .slice(hypothesisIndex + 1, proposedSolutionIndex)
+          .filter((item) => !parseStandaloneMarkdownLink(item))
+      : [];
   const designProposalSolutions =
     caseStudy.slug === "reversetech" && proposedSolutionIndex >= 0
       ? designStrategy
@@ -2339,16 +2346,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                 ) : null}
                 {designProposalIntro.map((item) => {
-                  if (item === "Hypothesis 1") {
-                    return (
-                      <p
-                        key={item}
-                        className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]"
-                      >
-                        {item}
-                      </p>
-                    );
-                  }
                   const markdownLink = parseStandaloneMarkdownLink(item);
                   if (markdownLink) {
                     return (
@@ -2413,14 +2410,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     ))}
                   </div>
                 ) : null}
-                <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
-                  <iframe
-                    title="Reverse Tech Flow from Figma"
-                    src={REVERSE_TECH_FLOW_EMBED}
-                    className="h-[720px] w-full"
-                    allowFullScreen
-                  />
-                </div>
               </div>
             ) : (
               <div className="mx-auto max-w-[820px] space-y-8 text-center">
@@ -2449,7 +2438,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       {block.body}
                     </p>
                   ) : null}
-                  <div className="grid gap-5 md:grid-cols-3">
+                  <div className="space-y-14">
                     {variants.map((variant, index) => (
                       (() => {
                         const imageSrc = typeof variant.imageSrc === "string" ? variant.imageSrc : null;
@@ -2457,37 +2446,37 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         const variantAlt = variantTitle || "Variant wireframe";
 
                         return (
-                          <Card key={`${block.id}-${index}`} className="overflow-hidden border-transparent shadow-none">
-                            <CardContent className="p-7">
-                              <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">
+                          <div key={`${block.id}-${index}`} className="mx-auto max-w-[860px]">
+                            <div className="mx-auto max-w-[760px] text-center">
+                              <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
                                 {typeof variant.label === "string" ? variant.label : `Variant ${index + 1}`}
                               </p>
-                              <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
+                              <h3 className="mt-3 text-[22px] font-semibold leading-[1.3] text-[#1c1e21]">
                                 {variantTitle}
                               </h3>
-                              <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                              <p className="mt-4 font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                                 {typeof variant.body === "string" ? variant.body : ""}
                               </p>
-                              {imageSrc ? (
-                                <button
-                                  type="button"
-                                  onClick={() =>
-                                    setLightboxImage({
-                                      src: withBasePath(imageSrc),
-                                      alt: variantAlt,
-                                    })
-                                  }
-                                  className="mt-6 block w-full overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white text-left transition-transform hover:scale-[1.01]"
-                                >
-                                  <img
-                                    src={withBasePath(imageSrc)}
-                                    alt={variantAlt}
-                                    className="h-auto w-full"
-                                  />
-                                </button>
-                              ) : null}
-                            </CardContent>
-                          </Card>
+                            </div>
+                            {imageSrc ? (
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  setLightboxImage({
+                                    src: withBasePath(imageSrc),
+                                    alt: variantAlt,
+                                  })
+                                }
+                                className="mx-auto mt-8 block w-full max-w-[760px] overflow-hidden rounded-[24px] border border-[#dadde1] bg-white text-left shadow-[0_20px_64px_rgba(14,41,81,0.08)] transition-transform hover:scale-[1.01]"
+                              >
+                                <img
+                                  src={withBasePath(imageSrc)}
+                                  alt={variantAlt}
+                                  className="h-auto w-full"
+                                />
+                              </button>
+                            ) : null}
+                          </div>
                         );
                       })()
                     ))}
@@ -2495,6 +2484,27 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
               ) : null
             )}
+          </div>
+        </section>
+      ) : null}
+
+      {caseStudy.slug === "reversetech" && hypothesisItems.length ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading title="Hypothesis 1" centered className="mb-12" />
+          <div className="mx-auto max-w-[820px] space-y-8 text-center">
+            {hypothesisItems.map((item) => (
+              <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                {item}
+              </p>
+            ))}
+            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
+              <iframe
+                title="Reverse Tech Flow from Figma"
+                src={REVERSE_TECH_FLOW_EMBED}
+                className="h-[720px] w-full"
+                allowFullScreen
+              />
+            </div>
           </div>
         </section>
       ) : null}
