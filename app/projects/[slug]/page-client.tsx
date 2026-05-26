@@ -2394,7 +2394,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ].map(({ block, variants }) =>
               block && variants.length ? (
                 <div key={block.id}>
-                  <SectionHeading title={block.title} centered className="mb-12" />
+                  <h3 className="mb-6 text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
+                    {block.title}
+                  </h3>
                   {block.body ? (
                     <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                       {block.body}
@@ -2410,9 +2412,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         return (
                           <Card key={`${block.id}-${index}`} className="overflow-hidden border-transparent shadow-none">
                             <CardContent className="p-7">
-                              <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
-                                {typeof variant.label === "string" ? variant.label : `Variant ${index + 1}`}
-                              </p>
+                              <span className="inline-flex rounded-full bg-[#dbeafe] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1e40af]">
+                                {`Variant ${index + 1}`}
+                              </span>
                               <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
                                 {variantTitle}
                               </h3>
