@@ -2430,7 +2430,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                                       alt: variantAlt,
                                     })
                                   }
-                                  className="mt-6 block w-full overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white text-left transition-transform hover:scale-[1.01]"
+                                  className="mt-6 block w-full overflow-hidden rounded-[18px] bg-white text-left transition-transform hover:scale-[1.01]"
                                 >
                                   <img
                                     src={withBasePath(imageSrc)}

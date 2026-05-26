@@ -200,19 +200,19 @@ values (
           {
             "label":"Variant 1",
             "title":"See my personalized plan",
-            "body":"Add explanation here.",
+            "body":"This variant reframes the email ask as a completion moment. The screen tells users their personalized plan is ready to save, adds a clear no-spam reassurance, and keeps the layout focused on the value they are about to receive instead of making the step feel like generic lead capture.",
             "imageSrc":"/images/projects/Reversetech/cta-variant-1.svg"
           },
           {
             "label":"Variant 2",
             "title":"Get my calisthenics plan",
-            "body":"Add explanation here.",
+            "body":"This version adds an \"Almost done\" cue and keeps the reassurance message, but makes the step feel more transitional than the first option. It tests whether a lighter progress signal can reduce hesitation while still framing the email as part of finishing the flow.",
             "imageSrc":"/images/projects/Reversetech/cta-variant-2.svg"
           },
           {
             "label":"Variant 3",
-            "title":"CTA Variant 3",
-            "body":"Add explanation here.",
+            "title":"Unlock my personalized plan",
+            "body":"This variant shifts the message toward access by telling users to unlock their personalized plan. It tests a slightly stronger CTA framing, but it also feels closer to a gate, so the tradeoff is whether the value promise is clear enough to avoid sounding like forced lead capture.",
             "imageSrc":"/images/projects/Reversetech/cta-variant-3.svg"
           }
         ]
@@ -228,19 +228,19 @@ values (
           {
             "label":"Variant 1",
             "title":"Content Variant 1",
-            "body":"Add explanation here.",
+            "body":"This version personalizes the headline around a specific goal, in this case weight loss. It makes the outcome feel more tailored, but it also narrows the promise early, so it works best when the preceding answers make that goal feel clearly chosen by the user.",
             "imageSrc":"/images/projects/Reversetech/content-variant-1.svg"
           },
           {
             "label":"Variant 2",
             "title":"Content Variant 2",
-            "body":"Add explanation here.",
+            "body":"This option keeps the plan-ready framing and pairs it with a direct no-spam reassurance. It is the safest content variant because it clarifies what the user gets while lowering privacy anxiety without adding too much extra explanation.",
             "imageSrc":"/images/projects/Reversetech/content-variant-2.svg"
           },
           {
             "label":"Variant 3",
             "title":"Content Variant 3",
-            "body":"Add explanation here.",
+            "body":"This variant introduces a more energetic results-focused message and ties the plan to a concrete fitness outcome. It is more motivational than the others, but it depends on strong relevance, because broad outcome claims can feel less credible if they do not match the user's answers closely.",
             "imageSrc":"/images/projects/Reversetech/content-variant-3.svg"
           }
         ]
