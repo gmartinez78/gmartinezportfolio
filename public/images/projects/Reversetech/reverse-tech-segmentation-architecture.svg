@@ -1,0 +1,151 @@
+<svg width="1800" height="1280" viewBox="0 0 1800 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1800" height="1280" fill="#FAFAF7"/>
+  <style>
+    .title { font-family: Arial, sans-serif; font-size: 34px; font-weight: 700; fill: #171717; }
+    .subtitle { font-family: Arial, sans-serif; font-size: 17px; fill: #57534E; }
+    .label { font-family: Arial, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .08em; fill: #A33B2E; text-transform: uppercase; }
+    .h { font-family: Arial, sans-serif; font-size: 20px; font-weight: 700; fill: #1F2937; }
+    .p { font-family: Arial, sans-serif; font-size: 15px; fill: #57534E; }
+    .small { font-family: Arial, sans-serif; font-size: 13px; fill: #6B7280; }
+    .box { fill: #FFFFFF; stroke: #D6D3CC; stroke-width: 2; rx: 14; }
+    .decision { fill: #FFF6F2; stroke: #D45A44; stroke-width: 2; rx: 14; }
+    .goal { fill: #F3F7F5; stroke: #A8C8BB; stroke-width: 2; rx: 14; }
+    .email { fill: #F2F5FB; stroke: #9EB4D6; stroke-width: 2; rx: 14; }
+    .line { stroke: #9CA3AF; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .branch { stroke: #D45A44; stroke-width: 2.5; fill: none; marker-end: url(#arrow-red); }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9CA3AF"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#D45A44"/>
+    </marker>
+  </defs>
+
+  <text x="80" y="70" class="title">Reverse Health segmented quiz architecture</text>
+  <text x="80" y="104" class="subtitle">Recommended flow from paid click to email gate, using age, goal, motivation, and activity context to reduce friction before asking for email.</text>
+
+  <rect x="80" y="150" width="270" height="118" class="box"/>
+  <text x="105" y="184" class="label">Entry</text>
+  <text x="105" y="216" class="h">Paid ad / landing</text>
+  <text x="105" y="244" class="p">Match the ad promise and start</text>
+  <text x="105" y="264" class="p">with one clear outcome.</text>
+
+  <rect x="410" y="150" width="270" height="118" class="decision"/>
+  <text x="435" y="184" class="label">Segment 1</text>
+  <text x="435" y="216" class="h">Age select</text>
+  <text x="435" y="244" class="p">Ask once if it changes proof,</text>
+  <text x="435" y="264" class="p">imagery, pacing, or safety copy.</text>
+
+  <rect x="740" y="150" width="270" height="118" class="box"/>
+  <text x="765" y="184" class="label">Trust</text>
+  <text x="765" y="216" class="h">Matched social proof</text>
+  <text x="765" y="244" class="p">Use age-relevant proof before</text>
+  <text x="765" y="264" class="p">asking for deeper intent.</text>
+
+  <rect x="1070" y="150" width="270" height="118" class="decision"/>
+  <text x="1095" y="184" class="label">Segment 2</text>
+  <text x="1095" y="216" class="h">Main goal</text>
+  <text x="1095" y="244" class="p">Lose weight, get stronger,</text>
+  <text x="1095" y="264" class="p">improve health, or undecided.</text>
+
+  <path d="M350 209 H410" class="line"/>
+  <path d="M680 209 H740" class="line"/>
+  <path d="M1010 209 H1070" class="line"/>
+
+  <rect x="80" y="340" width="360" height="160" class="goal"/>
+  <text x="110" y="376" class="label">Flow A</text>
+  <text x="110" y="410" class="h">Weight loss user</text>
+  <text x="110" y="440" class="p">Goal-specific app proof: show plan</text>
+  <text x="110" y="462" class="p">preview, food/body outcome, and</text>
+  <text x="110" y="484" class="p">low-effort starting point.</text>
+
+  <rect x="520" y="340" width="360" height="160" class="goal"/>
+  <text x="550" y="376" class="label">Flow B</text>
+  <text x="550" y="410" class="h">Strength user</text>
+  <text x="550" y="440" class="p">Goal-specific app proof: show</text>
+  <text x="550" y="462" class="p">progression, workouts, and visible</text>
+  <text x="550" y="484" class="p">activity imagery.</text>
+
+  <rect x="960" y="340" width="360" height="160" class="goal"/>
+  <text x="990" y="376" class="label">Flow C</text>
+  <text x="990" y="410" class="h">Health user</text>
+  <text x="990" y="440" class="p">Goal-specific app proof: show</text>
+  <text x="990" y="462" class="p">gentle routine, wellbeing framing,</text>
+  <text x="990" y="484" class="p">and safety reassurance.</text>
+
+  <rect x="1400" y="340" width="320" height="160" class="goal"/>
+  <text x="1430" y="376" class="label">Flow D</text>
+  <text x="1430" y="410" class="h">Undecided user</text>
+  <text x="1430" y="440" class="p">Offer "I haven't decided yet"</text>
+  <text x="1430" y="462" class="p">and guide with low-pressure</text>
+  <text x="1430" y="484" class="p">recommendation questions.</text>
+
+  <path d="M1205 268 C1205 305 260 305 260 340" class="branch"/>
+  <path d="M1205 268 C1205 305 700 305 700 340" class="branch"/>
+  <path d="M1205 268 C1205 305 1140 305 1140 340" class="branch"/>
+  <path d="M1205 268 C1205 305 1560 305 1560 340" class="branch"/>
+
+  <rect x="160" y="590" width="310" height="145" class="box"/>
+  <text x="190" y="626" class="label">Personalize</text>
+  <text x="190" y="660" class="h">Activity context</text>
+  <text x="190" y="690" class="p">Use icons or images when the</text>
+  <text x="190" y="712" class="p">question connects to an activity.</text>
+
+  <rect x="545" y="590" width="310" height="145" class="decision"/>
+  <text x="575" y="626" class="label">Optional</text>
+  <text x="575" y="660" class="h">Event / target date</text>
+  <text x="575" y="690" class="p">Ask only if it can personalize</text>
+  <text x="575" y="712" class="p">urgency, reminders, and plan pace.</text>
+
+  <rect x="930" y="590" width="310" height="145" class="box"/>
+  <text x="960" y="626" class="label">Reduce effort</text>
+  <text x="960" y="660" class="h">Conditional questions</text>
+  <text x="960" y="690" class="p">Only show questions relevant to</text>
+  <text x="960" y="712" class="p">age, goal, activity, and intent.</text>
+
+  <rect x="1315" y="590" width="310" height="145" class="email"/>
+  <text x="1345" y="626" class="label">Gate</text>
+  <text x="1345" y="660" class="h">Email value exchange</text>
+  <text x="1345" y="690" class="p">Show progress, plan preview,</text>
+  <text x="1345" y="712" class="p">trust copy, and "See your plan".</text>
+
+  <path d="M260 500 C260 550 315 550 315 590" class="line"/>
+  <path d="M700 500 C700 550 700 550 700 590" class="line"/>
+  <path d="M1140 500 C1140 550 1085 550 1085 590" class="line"/>
+  <path d="M1560 500 C1560 550 1470 550 1470 590" class="line"/>
+  <path d="M470 662 H545" class="line"/>
+  <path d="M855 662 H930" class="line"/>
+  <path d="M1240 662 H1315" class="line"/>
+
+  <rect x="80" y="830" width="510" height="290" class="box"/>
+  <text x="110" y="868" class="label">Required pages</text>
+  <text x="110" y="902" class="h">Core pages I would keep</text>
+  <text x="110" y="938" class="p">1. Landing / start: align the ad promise.</text>
+  <text x="110" y="966" class="p">2. Age select: keep once if it powers segmentation.</text>
+  <text x="110" y="994" class="p">3. Social proof: make trust feel specific.</text>
+  <text x="110" y="1022" class="p">4. Main goal: route users to a relevant promise.</text>
+  <text x="110" y="1050" class="p">5. Goal-specific app proof: show what they are buying.</text>
+  <text x="110" y="1078" class="p">6. Email gate: ask after value is visible.</text>
+
+  <rect x="650" y="830" width="510" height="290" class="decision"/>
+  <text x="680" y="868" class="label">Event module</text>
+  <text x="680" y="902" class="h">Use as optional motivation, not a blocker</text>
+  <text x="680" y="938" class="p">Good question: "Is there a date you want to feel ready for?"</text>
+  <text x="680" y="966" class="p">Options: no date, vacation, wedding, birthday, medical visit, other.</text>
+  <text x="680" y="994" class="p">Ask after goal and before email, only when it helps personalize pace.</text>
+  <text x="680" y="1022" class="p">Do not ask "are you motivated?" directly; it can feel judgmental.</text>
+  <text x="680" y="1050" class="p">Use the date later for plan timeline, reminders, and progress framing.</text>
+
+  <rect x="1220" y="830" width="500" height="290" class="email"/>
+  <text x="1250" y="868" class="label">Email page rules</text>
+  <text x="1250" y="902" class="h">Make the ask feel earned</text>
+  <text x="1250" y="938" class="p">Show Step X of Y or a near-finish indicator.</text>
+  <text x="1250" y="966" class="p">Preview the personalized plan or app screen.</text>
+  <text x="1250" y="994" class="p">Explain why email is needed and what will be sent.</text>
+  <text x="1250" y="1022" class="p">Use trust copy: no spam, plan saved, editable later.</text>
+  <text x="1250" y="1050" class="p">CTA should be outcome-based: "See your plan".</text>
+
+  <text x="80" y="1215" class="small">Recommendation: keep segmentation only when it changes content, proof, image selection, plan pace, or the email value exchange. Otherwise combine or skip the question.</text>
+</svg>
