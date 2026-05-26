@@ -1036,6 +1036,62 @@
         }
       },
       {
+        "id": "cta-variants",
+        "type": "custom",
+        "title": "CTA Variant",
+        "body": "",
+        "payload": {
+          "variants": [
+            {
+              "label": "Variant 1",
+              "title": "CTA Variant 1",
+              "body": "Add explanation here.",
+              "imageSrc": "/images/projects/Reversetech/cta-variant-1.svg"
+            },
+            {
+              "label": "Variant 2",
+              "title": "CTA Variant 2",
+              "body": "Add explanation here.",
+              "imageSrc": "/images/projects/Reversetech/cta-variant-2.svg"
+            },
+            {
+              "label": "Variant 3",
+              "title": "CTA Variant 3",
+              "body": "Add explanation here.",
+              "imageSrc": "/images/projects/Reversetech/cta-variant-3.svg"
+            }
+          ]
+        }
+      },
+      {
+        "id": "content-variants",
+        "type": "custom",
+        "title": "Content Variant",
+        "body": "",
+        "payload": {
+          "variants": [
+            {
+              "label": "Variant 1",
+              "title": "Content Variant 1",
+              "body": "Add explanation here.",
+              "imageSrc": "/images/projects/Reversetech/content-variant-1.svg"
+            },
+            {
+              "label": "Variant 2",
+              "title": "Content Variant 2",
+              "body": "Add explanation here.",
+              "imageSrc": "/images/projects/Reversetech/content-variant-2.svg"
+            },
+            {
+              "label": "Variant 3",
+              "title": "Content Variant 3",
+              "body": "Add explanation here.",
+              "imageSrc": "/images/projects/Reversetech/content-variant-3.svg"
+            }
+          ]
+        }
+      },
+      {
         "id": "impact",
         "type": "results",
         "title": "Impact",
