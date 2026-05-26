@@ -964,6 +964,10 @@ function parseStandaloneMarkdownLink(value: string) {
   return { label: match[1], url: match[2] };
 }
 
+function isMarkdownLink(value: ReturnType<typeof parseStandaloneMarkdownLink>): value is NonNullable<ReturnType<typeof parseStandaloneMarkdownLink>> {
+  return Boolean(value);
+}
+
 function normalizeInsightHeading(value: string) {
   return stripLeadingBullet(value).replace(/^2026\s+data$/i, "2026");
 }
@@ -1176,13 +1180,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const designProposalTitle = caseStudy.slug === "reversetech" ? "Enter Email: Design Proposal" : "Design Proposal";
   const proposedSolutionIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf("Proposed Solution") : -1;
   const designNotesIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf("A few notes") : -1;
+  const designProposalLinks =
+    caseStudy.slug === "reversetech"
+      ? designStrategy.map((item) => parseStandaloneMarkdownLink(item)).filter(isMarkdownLink)
+      : [];
   const designProposalIntro =
     caseStudy.slug === "reversetech" && proposedSolutionIndex >= 0
-      ? designStrategy.slice(0, proposedSolutionIndex)
-      : designStrategy;
+      ? designStrategy.slice(0, proposedSolutionIndex).filter((item) => !parseStandaloneMarkdownLink(item))
+      : designStrategy.filter((item) => !parseStandaloneMarkdownLink(item));
   const designProposalSolutions =
     caseStudy.slug === "reversetech" && proposedSolutionIndex >= 0
-      ? designStrategy.slice(proposedSolutionIndex + 1, designNotesIndex >= 0 ? designNotesIndex : undefined)
+      ? designStrategy
+          .slice(proposedSolutionIndex + 1, designNotesIndex >= 0 ? designNotesIndex : undefined)
+          .filter((item) => !parseStandaloneMarkdownLink(item))
       : [];
   const designProposalNotes =
     caseStudy.slug === "reversetech" && designNotesIndex >= 0
@@ -2272,10 +2282,25 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <SectionHeading
               title={designProposalTitle}
               centered
-              className="mb-12"
+              className={caseStudy.slug === "reversetech" ? "mb-5" : "mb-12"}
             />
             {caseStudy.slug === "reversetech" ? (
               <div className="mx-auto max-w-[820px] space-y-8 text-center">
+                {designProposalLinks.length ? (
+                  <div className="flex justify-center">
+                    {designProposalLinks.map((link) => (
+                      <a
+                        key={link.url}
+                        href={link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex rounded-full border border-[#1183D0]/30 px-4 py-2 font-inter text-[14px] font-semibold text-[#1183D0] transition-colors hover:border-[#1183D0] hover:text-[#0e2951]"
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
                 {designProposalIntro.map((item) => {
                   const markdownLink = parseStandaloneMarkdownLink(item);
                   if (markdownLink) {
