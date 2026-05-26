@@ -2451,37 +2451,45 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   ) : null}
                   <div className="grid gap-5 md:grid-cols-3">
                     {variants.map((variant, index) => (
-                      <Card key={`${block.id}-${index}`} className="overflow-hidden border-transparent shadow-none">
-                        <CardContent className="p-7">
-                          <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">
-                            {typeof variant.label === "string" ? variant.label : `Variant ${index + 1}`}
-                          </p>
-                          <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
-                            {typeof variant.title === "string" ? variant.title : ""}
-                          </h3>
-                          <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                            {typeof variant.body === "string" ? variant.body : ""}
-                          </p>
-                          {typeof variant.imageSrc === "string" ? (
-                            <button
-                              type="button"
-                              onClick={() =>
-                                setLightboxImage({
-                                  src: withBasePath(variant.imageSrc),
-                                  alt: typeof variant.title === "string" ? variant.title : "Variant wireframe",
-                                })
-                              }
-                              className="mt-6 block w-full overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white text-left transition-transform hover:scale-[1.01]"
-                            >
-                              <img
-                                src={withBasePath(variant.imageSrc)}
-                                alt={typeof variant.title === "string" ? variant.title : "Variant wireframe"}
-                                className="h-auto w-full"
-                              />
-                            </button>
-                          ) : null}
-                        </CardContent>
-                      </Card>
+                      (() => {
+                        const imageSrc = typeof variant.imageSrc === "string" ? variant.imageSrc : null;
+                        const variantTitle = typeof variant.title === "string" ? variant.title : "";
+                        const variantAlt = variantTitle || "Variant wireframe";
+
+                        return (
+                          <Card key={`${block.id}-${index}`} className="overflow-hidden border-transparent shadow-none">
+                            <CardContent className="p-7">
+                              <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">
+                                {typeof variant.label === "string" ? variant.label : `Variant ${index + 1}`}
+                              </p>
+                              <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
+                                {variantTitle}
+                              </h3>
+                              <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                                {typeof variant.body === "string" ? variant.body : ""}
+                              </p>
+                              {imageSrc ? (
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    setLightboxImage({
+                                      src: withBasePath(imageSrc),
+                                      alt: variantAlt,
+                                    })
+                                  }
+                                  className="mt-6 block w-full overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white text-left transition-transform hover:scale-[1.01]"
+                                >
+                                  <img
+                                    src={withBasePath(imageSrc)}
+                                    alt={variantAlt}
+                                    className="h-auto w-full"
+                                  />
+                                </button>
+                              ) : null}
+                            </CardContent>
+                          </Card>
+                        );
+                      })()
                     ))}
                   </div>
                 </div>
