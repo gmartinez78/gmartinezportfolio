@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, Fragment, useEffect, useState } from "react";
-import { CircleAlert } from "lucide-react";
+import { CircleAlert, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
@@ -990,12 +990,33 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [enteredPassword, setEnteredPassword] = useState("");
   const [passwordError, setPasswordError] = useState<string | null>(null);
   const [isUnlocked, setIsUnlocked] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
 
   useEffect(() => {
     setEnteredPassword("");
     setPasswordError(null);
     setIsUnlocked(false);
   }, [caseStudy?.slug]);
+
+  useEffect(() => {
+    if (!lightboxImage) {
+      document.body.style.overflow = "";
+      return;
+    }
+
+    document.body.style.overflow = "hidden";
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setLightboxImage(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [lightboxImage]);
 
   if (loading) {
     return (
@@ -2442,13 +2463,22 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             {typeof variant.body === "string" ? variant.body : ""}
                           </p>
                           {typeof variant.imageSrc === "string" ? (
-                            <div className="mt-6 overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setLightboxImage({
+                                  src: withBasePath(variant.imageSrc),
+                                  alt: typeof variant.title === "string" ? variant.title : "Variant wireframe",
+                                })
+                              }
+                              className="mt-6 block w-full overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white text-left transition-transform hover:scale-[1.01]"
+                            >
                               <img
                                 src={withBasePath(variant.imageSrc)}
                                 alt={typeof variant.title === "string" ? variant.title : "Variant wireframe"}
                                 className="h-auto w-full"
                               />
-                            </div>
+                            </button>
                           ) : null}
                         </CardContent>
                       </Card>
@@ -2978,6 +3008,34 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 ))}
           </div>
         </section>
+      ) : null}
+
+      {lightboxImage ? (
+        <div
+          className="fixed inset-0 z-[120] flex items-center justify-center bg-black/70 px-4 py-6"
+          onClick={() => setLightboxImage(null)}
+        >
+          <div
+            className="relative w-full max-w-[1200px]"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              aria-label="Close image preview"
+              onClick={() => setLightboxImage(null)}
+              className="absolute right-3 top-3 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <div className="overflow-hidden rounded-[24px] bg-white shadow-[0_30px_80px_rgba(0,0,0,0.28)]">
+              <img
+                src={lightboxImage.src}
+                alt={lightboxImage.alt}
+                className="max-h-[85vh] w-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
       ) : null}
 
       <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
