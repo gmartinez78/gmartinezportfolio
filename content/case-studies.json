@@ -1039,19 +1039,19 @@
             {
               "label": "Variant 1",
               "title": "See my personalized plan",
-              "body": "This version makes the offer more specific by naming the Calisthenics plan directly and adding a strong social-proof block below the field. The hypothesis is that a clearer product label plus visible adoption can make the email step feel more credible and less like generic lead capture.",
+              "body": "This version makes the offer more specific by naming the Calisthenics plan directly. The hypothesis is that a clearer product label can make the email step feel more credible and less like generic lead capture.",
               "imageSrc": "/images/projects/Reversetech/cta-variant-1.svg"
             },
             {
               "label": "Variant 2",
               "title": "Get my calisthenics plan",
-              "body": "This variant keeps the same product-specific headline and social-proof module, but presents the email ask in a slightly cleaner, more direct way. It tests whether reducing extra phrasing around the field makes the step feel faster while still giving users enough confidence to continue.",
+              "body": "This variant keeps the same product-specific headline, but presents the email ask in a slightly cleaner, more direct way. It tests whether reducing extra phrasing around the field makes the step feel faster while still giving users enough confidence to continue.",
               "imageSrc": "/images/projects/Reversetech/cta-variant-2.svg"
             },
             {
               "label": "Variant 3",
               "title": "Unlock my personalized plan",
-              "body": "This version is the most stripped back. It relies on the personalized Calisthenics headline and the \"women have already joined\" proof card to do most of the persuasion, testing whether a simpler page with fewer competing signals feels more trustworthy and easier to act on.",
+              "body": "This version is the most stripped back. It relies on the personalized Calisthenics headline to do most of the persuasion, testing whether a simpler page with fewer competing signals feels more trustworthy and easier to act on.",
               "imageSrc": "/images/projects/Reversetech/cta-variant-3.svg"
             }
           ]

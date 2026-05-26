@@ -2389,8 +2389,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="space-y-16">
             {[
-              { block: ctaVariantsBlock, variants: ctaVariants },
               { block: contentVariantsBlock, variants: contentVariants },
+              { block: ctaVariantsBlock, variants: ctaVariants },
             ].map(({ block, variants }) =>
               block && variants.length ? (
                 <div key={block.id}>
