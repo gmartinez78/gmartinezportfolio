@@ -205,7 +205,7 @@ values (
           },
           {
             "label":"Variant 2",
-            "title":"CTA Variant 2",
+            "title":"Get my calisthenics plan",
             "body":"Add explanation here.",
             "imageSrc":"/images/projects/Reversetech/cta-variant-2.svg"
           },
