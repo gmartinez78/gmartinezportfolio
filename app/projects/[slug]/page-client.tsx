@@ -1317,54 +1317,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug === "reversetech" && (ctaVariants.length || contentVariants.length) ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <div className="space-y-16">
-            {[
-              { block: ctaVariantsBlock, variants: ctaVariants },
-              { block: contentVariantsBlock, variants: contentVariants },
-            ].map(({ block, variants }) =>
-              block && variants.length ? (
-                <div key={block.id}>
-                  <SectionHeading title={block.title} centered className="mb-12" />
-                  {block.body ? (
-                    <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                      {block.body}
-                    </p>
-                  ) : null}
-                  <div className="grid gap-5 md:grid-cols-3">
-                    {variants.map((variant, index) => (
-                      <Card key={`${block.id}-${index}`} className="overflow-hidden border-transparent shadow-none">
-                        <CardContent className="p-7">
-                          <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">
-                            {typeof variant.label === "string" ? variant.label : `Variant ${index + 1}`}
-                          </p>
-                          <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
-                            {typeof variant.title === "string" ? variant.title : ""}
-                          </h3>
-                          <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                            {typeof variant.body === "string" ? variant.body : ""}
-                          </p>
-                          {typeof variant.imageSrc === "string" ? (
-                            <div className="mt-6 overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
-                              <img
-                                src={withBasePath(variant.imageSrc)}
-                                alt={typeof variant.title === "string" ? variant.title : "Variant wireframe"}
-                                className="h-auto w-full"
-                              />
-                            </div>
-                          ) : null}
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                </div>
-              ) : null
-            )}
-          </div>
-        </section>
-      ) : null}
-
       {caseStudy.slug !== "reversetech" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading eyebrow="Overview" title="Structure" className="mb-6" />
@@ -2458,6 +2410,54 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             )}
           </>
           )}
+        </section>
+      ) : null}
+
+      {caseStudy.slug === "reversetech" && (ctaVariants.length || contentVariants.length) ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <div className="space-y-16">
+            {[
+              { block: ctaVariantsBlock, variants: ctaVariants },
+              { block: contentVariantsBlock, variants: contentVariants },
+            ].map(({ block, variants }) =>
+              block && variants.length ? (
+                <div key={block.id}>
+                  <SectionHeading title={block.title} centered className="mb-12" />
+                  {block.body ? (
+                    <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                      {block.body}
+                    </p>
+                  ) : null}
+                  <div className="grid gap-5 md:grid-cols-3">
+                    {variants.map((variant, index) => (
+                      <Card key={`${block.id}-${index}`} className="overflow-hidden border-transparent shadow-none">
+                        <CardContent className="p-7">
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">
+                            {typeof variant.label === "string" ? variant.label : `Variant ${index + 1}`}
+                          </p>
+                          <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
+                            {typeof variant.title === "string" ? variant.title : ""}
+                          </h3>
+                          <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                            {typeof variant.body === "string" ? variant.body : ""}
+                          </p>
+                          {typeof variant.imageSrc === "string" ? (
+                            <div className="mt-6 overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
+                              <img
+                                src={withBasePath(variant.imageSrc)}
+                                alt={typeof variant.title === "string" ? variant.title : "Variant wireframe"}
+                                className="h-auto w-full"
+                              />
+                            </div>
+                          ) : null}
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+              ) : null
+            )}
+          </div>
         </section>
       ) : null}
 
