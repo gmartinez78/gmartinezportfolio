@@ -47,11 +47,7 @@ values (
   array['Figma','Google Ads','Analytics','Miro','Notion'],
   '{"cover":"/images/projects/EB.png","hero":"/images/projects/EB.png","gallery":[]}'::jsonb,
   '[]'::jsonb,
-  '[
-    {"value":"44","label":"Total quiz steps","context":"Full end-to-end funnel length from paid click to purchase."},
-    {"value":"0.63%","label":"End-to-end conversion","context":"Overall purchase conversion across the full funnel."},
-    {"value":"37+","label":"Mid-funnel steps under suspicion","context":"The long quiz middle that appeared to be the likely source of drop-off."}
-  ]'::jsonb,
+  '[]'::jsonb,
   array['Growth team','Paid acquisition stakeholders','Product designer','Analytics partners'],
   array['Funnel Data Interpretation','UX & Conversion Problem Identification','Paywall Experiment Design','Testable Design Solution Framing'],
   '{
@@ -205,11 +201,7 @@ values (
       "title":"Impact",
       "body":"This phase sharpened the problem statement: a long middle may be part of the issue, but it should not be treated as the answer before the full funnel is diagnosed. The immediate value of the work was creating a better frame for what to test and redesign next.",
       "payload":{
-        "rows":[
-          {"metric":"Total funnel length","value":"44 steps"},
-          {"metric":"Overall conversion","value":"0.63%"},
-          {"metric":"Suspected friction zone","value":"37+ steps"}
-        ],
+        "rows":[],
         "insights":[
           "The quiz middle felt like the problem because it was long and highly visible.",
           "Cold paid search traffic raised the cost of every commitment in the funnel, not just the quiz steps themselves.",
