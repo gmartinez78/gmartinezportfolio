@@ -1264,7 +1264,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       </div>
 
-      {caseStudy.slug !== "flock-accessibility-system" ? (
+      {caseStudy.slug !== "flock-accessibility-system" && caseStudy.slug !== "reversetech" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[1040px]">
             <div className="grid gap-12 text-center md:grid-cols-3">
@@ -1283,48 +1283,50 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        <SectionHeading eyebrow="Overview" title="Structure" className="mb-6" />
-        {overviewBlock?.body ? (
-          <p className="mt-8 max-w-[860px] font-inter text-[18px] leading-[1.8] text-[#5c7792]">
-            {overviewBlock.body}
-          </p>
-        ) : null}
-        <div className="mt-8 grid gap-8 md:grid-cols-4 md:gap-0">
-          <div className="border-[#4d87ae]/20 pb-8 md:border-r md:pb-0 md:pr-8">
-            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Team Members</p>
-            <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
-            <ul className="space-y-1">
-              {caseStudy.team.map((item) => (
-                <li key={item} className="font-inter text-[16px] capitalize leading-[1.75] text-[#5c7792]">{item}</li>
-              ))}
-            </ul>
+      {caseStudy.slug !== "reversetech" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading eyebrow="Overview" title="Structure" className="mb-6" />
+          {overviewBlock?.body ? (
+            <p className="mt-8 max-w-[860px] font-inter text-[18px] leading-[1.8] text-[#5c7792]">
+              {overviewBlock.body}
+            </p>
+          ) : null}
+          <div className="mt-8 grid gap-8 md:grid-cols-4 md:gap-0">
+            <div className="border-[#4d87ae]/20 pb-8 md:border-r md:pb-0 md:pr-8">
+              <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Team Members</p>
+              <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
+              <ul className="space-y-1">
+                {caseStudy.team.map((item) => (
+                  <li key={item} className="font-inter text-[16px] capitalize leading-[1.75] text-[#5c7792]">{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="border-[#4d87ae]/20 py-8 md:border-r md:px-8 md:py-0">
+              <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] font-medium text-[#3c3e3f]">My Role</p>
+              <div className="mb-5 h-[3px] w-full rounded-full bg-[#1183D0]" />
+              <ul className="space-y-1">
+                {caseStudy.my_role.map((item) => (
+                  <li key={item} className="font-inter text-[16px] capitalize leading-[1.75] font-medium text-[#3c3e3f]">{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="border-[#4d87ae]/20 py-8 md:border-r md:px-8 md:py-0">
+              <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Tools Used</p>
+              <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
+              <ul className="space-y-1">
+                {caseStudy.tools.map((item) => (
+                  <li key={item} className="font-inter text-[16px] capitalize leading-[1.75] text-[#5c7792]">{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="pt-8 md:pl-8 md:pt-0">
+              <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Timeline</p>
+              <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
+              <p className="font-inter text-[16px] capitalize leading-[1.75] text-[#5c7792]">{caseStudy.duration}</p>
+            </div>
           </div>
-          <div className="border-[#4d87ae]/20 py-8 md:border-r md:px-8 md:py-0">
-            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] font-medium text-[#3c3e3f]">My Role</p>
-            <div className="mb-5 h-[3px] w-full rounded-full bg-[#1183D0]" />
-            <ul className="space-y-1">
-              {caseStudy.my_role.map((item) => (
-                <li key={item} className="font-inter text-[16px] capitalize leading-[1.75] font-medium text-[#3c3e3f]">{item}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="border-[#4d87ae]/20 py-8 md:border-r md:px-8 md:py-0">
-            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Tools Used</p>
-            <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
-            <ul className="space-y-1">
-              {caseStudy.tools.map((item) => (
-                <li key={item} className="font-inter text-[16px] capitalize leading-[1.75] text-[#5c7792]">{item}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="pt-8 md:pl-8 md:pt-0">
-            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Timeline</p>
-            <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
-            <p className="font-inter text-[16px] capitalize leading-[1.75] text-[#5c7792]">{caseStudy.duration}</p>
-          </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       {visibleStoryBlocks.length ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
@@ -2627,9 +2629,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        <SectionHeading title="Results & Impact" centered className="mb-12" />
-        {caseStudy.slug === "flock-accessibility-system" ? (
+      {caseStudy.slug !== "reversetech" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading title="Results & Impact" centered className="mb-12" />
+          {caseStudy.slug === "flock-accessibility-system" ? (
           <div className="mx-auto max-w-[1040px] overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white">
             <div className="grid grid-cols-[1fr_1fr] gap-6 border-b border-[#d7e8f7] bg-[#f7f9fb] px-6 py-4 text-[13px] font-bold uppercase tracking-[0.16em] text-[#0e2951]">
               <div>Before</div>
@@ -2767,20 +2770,23 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </Card>
             ) : null}
           </div>
-        ) : null}
-      </section>
+          ) : null}
+        </section>
+      ) : null}
 
-      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        <SectionHeading title="Learnings" centered className="mb-12" />
-        <div className="mx-auto max-w-[820px] space-y-8 text-center">
-          {reflections.map((reflection) => (
-            <p key={reflection.title} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              <strong className="font-semibold">{reflection.title} </strong>
-              {reflection.body}
-            </p>
-          ))}
-        </div>
-      </section>
+      {caseStudy.slug !== "reversetech" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading title="Learnings" centered className="mb-12" />
+          <div className="mx-auto max-w-[820px] space-y-8 text-center">
+            {reflections.map((reflection) => (
+              <p key={reflection.title} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                <strong className="font-semibold">{reflection.title} </strong>
+                {reflection.body}
+              </p>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       {sourceItems.length || sourceEntries.length ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
