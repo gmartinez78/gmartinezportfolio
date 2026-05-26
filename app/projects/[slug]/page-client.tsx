@@ -2304,6 +2304,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                 ) : null}
                 {designProposalIntro.map((item) => {
+                  if (item === "Hypothesis 1") {
+                    return (
+                      <p
+                        key={item}
+                        className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]"
+                      >
+                        {item}
+                      </p>
+                    );
+                  }
                   const markdownLink = parseStandaloneMarkdownLink(item);
                   if (markdownLink) {
                     return (
