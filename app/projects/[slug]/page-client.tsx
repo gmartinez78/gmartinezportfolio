@@ -956,6 +956,14 @@ function stripLeadingBullet(value: string) {
   return value.replace(/^\s*[•·▪‣◦]\s*/, "");
 }
 
+function parseStandaloneMarkdownLink(value: string) {
+  const match = value.match(/^\[([^\]]+)\]\((https?:\/\/[^)]+)\)$/);
+  if (!match) {
+    return null;
+  }
+  return { label: match[1], url: match[2] };
+}
+
 function normalizeInsightHeading(value: string) {
   return stripLeadingBullet(value).replace(/^2026\s+data$/i, "2026");
 }
@@ -2268,22 +2276,56 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             />
             {caseStudy.slug === "reversetech" ? (
               <div className="mx-auto max-w-[820px] space-y-8 text-center">
-                {designProposalIntro.map((item) => (
-                  <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                    {item}
-                  </p>
-                ))}
+                {designProposalIntro.map((item) => {
+                  const markdownLink = parseStandaloneMarkdownLink(item);
+                  if (markdownLink) {
+                    return (
+                      <p key={item} className="font-inter text-[16px] leading-[1.7]">
+                        <a
+                          href={markdownLink.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="font-medium text-[#1183D0] underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#0e2951]"
+                        >
+                          {markdownLink.label}
+                        </a>
+                      </p>
+                    );
+                  }
+                  return (
+                    <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                      {item}
+                    </p>
+                  );
+                })}
                 {designProposalSolutions.length ? (
                   <div className="rounded-[16px] bg-[#f5f6f7] px-5 py-4 text-left">
                     <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
                       Proposed Solution
                     </p>
                     <div className="mt-2 space-y-3">
-                      {designProposalSolutions.map((item) => (
-                        <p key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                          {item}
-                        </p>
-                      ))}
+                      {designProposalSolutions.map((item) => {
+                        const markdownLink = parseStandaloneMarkdownLink(item);
+                        if (markdownLink) {
+                          return (
+                            <p key={item} className="font-inter text-[15px] leading-[1.7]">
+                              <a
+                                href={markdownLink.url}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="font-medium text-[#1183D0] underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#0e2951]"
+                              >
+                                {markdownLink.label}
+                              </a>
+                            </p>
+                          );
+                        }
+                        return (
+                          <p key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                            {item}
+                          </p>
+                        );
+                      })}
                     </div>
                   </div>
                 ) : null}
