@@ -1061,12 +1061,12 @@
         "title": "Content Variant",
         "body": "By this point, users have invested time in the quiz but still have not seen the product's value clearly. Because progress is not visible, the funnel can feel longer than necessary, creating fatigue even when each screen is simple. This makes the email request feel abrupt instead of earned.",
         "payload": {
-          "note": "I selected Variant 3 for the purpose of this task, but I think a good approach would be to A/B test a few ideas.",
+          "note": "As a result, the step feels more like lead capture than part of the personalized plan experience, so I proposed testing a few solutions. For the purpose of this task, I selected Variant 3 as the final design solution, but I think a good approach would be to A/B test a few ideas.",
           "variants": [
             {
               "label": "Variant 3",
               "title": "Variation: Category, Headline, Subtitle and Help Text",
-              "body": "This variant introduces a more energetic results-focused message and ties the plan to a concrete fitness outcome. It is more motivational than the others, but it depends on strong relevance, because broad outcome claims can feel less credible if they do not match the user's answers closely.",
+              "body": "This variant introduces energetic results-focused message and ties the plan to a concrete fitness outcome. It is more motivational than the others, but it depends on strong relevance.",
               "imageSrc": "/images/projects/Reversetech/content-variant-3.svg"
             },
             {

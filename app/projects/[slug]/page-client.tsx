@@ -2413,11 +2413,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   block.payload &&
                   typeof block.payload === "object" &&
                   typeof block.payload.note === "string" ? (
-                    <div className="mx-auto mb-10 max-w-[760px] rounded-[20px] bg-[#f6f9fc] px-5 py-4 text-center shadow-[0_10px_30px_rgba(14,41,81,0.06)]">
-                      <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                        {block.payload.note}
-                      </p>
-                    </div>
+                    <p className="mx-auto mb-8 max-w-[760px] text-center font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                      {block.payload.note}
+                    </p>
                   ) : null}
                   <div className="grid gap-5 md:grid-cols-3">
                     {variants.map((variant, index) => (
