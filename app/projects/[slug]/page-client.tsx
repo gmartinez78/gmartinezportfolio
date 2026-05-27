@@ -3531,6 +3531,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "reversetech" ? (
         <section id="rt-paywall-experiment-design" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
+          <p className="mb-2 text-center text-[13px] font-semibold uppercase tracking-[0.32em] text-[#1183D0]">Task 2</p>
           <SectionHeading title="Paywall experiment design" centered className="mb-8" />
           <div className="mx-auto mt-10 max-w-[900px] space-y-5 text-center">
             <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
