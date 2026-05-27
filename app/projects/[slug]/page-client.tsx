@@ -3695,10 +3695,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
           {/* Phone frames — low-fi wireframes */}
           <div className="mt-12">
-            <h3 className="mb-2 text-center font-inter text-[28px] leading-tight text-[#0e2951]">Variants, side by side</h3>
-            <p className="mx-auto mb-10 max-w-[720px] text-center font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-              Low-fi wireframes showing the current paywall alongside both proposed variants.
-            </p>
+            <h3 className="mb-8 text-center font-inter text-[28px] leading-tight text-[#0e2951]">Variants, side by side</h3>
             <div className="grid gap-8 md:grid-cols-3">
 
               {/* ── Control ── */}
@@ -3736,8 +3733,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               {/* ── Experiment A ── */}
               <div>
                 <div className="mb-3 flex items-baseline gap-2">
-                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#c8412a] bg-[#c8412a] text-[12px] font-semibold text-white">A</span>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#c8412a]">experiment a</span>
+                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#2a5cb8] bg-[#2a5cb8] text-[12px] font-semibold text-white">A</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#2a5cb8]">experiment a</span>
                 </div>
                 <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
                   <strong className="text-[#0e2951]">Hypothesis. </strong>If we collapse the page into one focused decision — pre-selected plan, personalized recap, guarantee adjacent to CTA — overall conversion rises.
@@ -3751,14 +3748,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     {/* Step indicator instead of timer */}
                     <div className="flex items-center justify-between rounded-[10px] border border-[#1c1a17] px-2 py-1 text-[10px] text-[#1c1a17]">
                       <span className="font-semibold">step 5 of 5</span>
-                      <span className="rounded-full bg-[#1c1a17] px-[10px] py-[4px] text-[10px] text-black">Skip to plans</span>
+                      <span className="rounded-full bg-[#1c1a17] px-[10px] py-[4px] text-[10px] text-white">Skip to plans</span>
                     </div>
                     {/* Personal recap card */}
-                    <div className="rounded-[10px] border border-[#1c1a17] bg-[#fffaee] p-[7px]">
+                    <div className="rounded-[10px] border border-[#1c1a17] bg-[#DCEAEF] p-[7px]">
                       <p className="text-[7px] uppercase tracking-wide text-[#4a443a]">your plan · built from your quiz</p>
                       <div className="mt-1 grid grid-cols-[44px_1fr_44px] items-center gap-[5px]">
                         <div className="flex min-h-[44px] items-center justify-center rounded-[6px] border border-[#1c1a17] bg-[#fffdf6] text-[8px] text-[#4a443a]">now</div>
-                        <p className="text-center text-[12px] font-semibold text-[#1c1a17]">→ in <span className="text-[#c8412a]">12 weeks</span></p>
+                        <p className="text-center text-[12px] font-semibold text-[#1c1a17]">→ in <span className="text-[#2a5cb8]">12 weeks</span></p>
                         <div className="flex min-h-[44px] items-center justify-center rounded-[6px] border border-[#1c1a17] bg-[#fffdf6] text-[8px] text-[#4a443a]">goal</div>
                       </div>
                       <div className="mt-1 grid grid-cols-3 gap-[3px] text-center text-[9px]">
@@ -3773,9 +3770,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     {/* Recommended plan label */}
                     <p className="text-center text-[11px] font-semibold text-[#1c1a17]">Your recommended plan</p>
                     {/* Pre-selected plan */}
-                    <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border-2 border-[#c8412a] bg-white px-2 py-[9px]">
-                      <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#3f7a3a] px-[5px] py-[1px] text-[7px] text-black">RECOMMENDED FOR YOU</span>
-                      <div className="h-[12px] w-[12px] rounded-full bg-[#c8412a] shadow-[inset_0_0_0_2px_white]" />
+                    <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border-2 border-[#2a5cb8] bg-[#DCEAEF] px-2 py-[9px]">
+                      <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">RECOMMENDED FOR YOU</span>
+                      <div className="h-[12px] w-[12px] rounded-full bg-[#2a5cb8] shadow-[inset_0_0_0_2px_white]" />
                       <div>
                         <p className="text-[11px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
                         <p className="text-[9px] text-[#4a443a]">$18.99 today · $0.21/day</p>
@@ -3802,16 +3799,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       ))}
                     </div>
                     {/* CTA */}
-                    <div className="flex items-center justify-between rounded-full bg-[#c8412a] px-[12px] py-[8px]">
+                    <div className="flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
                       <span className="text-[11px] font-bold text-white">Continue</span>
-                      <span className="text-[10px] text-black">→</span>
+                      <span className="text-[10px] text-white">→</span>
                     </div>
                     <p className="text-[8px] leading-[1.4] text-[#4a443a]">$18.99 today, then $89.99/12 wks. Cancel anytime.</p>
                     <div className="flex min-h-[28px] items-center justify-center rounded-[8px] border border-[#1c1a17] bg-[#fffdf6] text-[9px] uppercase text-[#4a443a]">single testimonial · 1 photo · 1 quote</div>
                   </div>
                 </div>
                 <div className="mt-5">
-                  <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#c8412a]">Δ vs control</p>
+                  <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#2a5cb8]">Δ vs control</p>
                   <ul className="mt-3 space-y-2 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
                     {[
                       'Replace timers w/ progress indicator ("5 of 5")',
@@ -4050,11 +4047,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#2a5cb8]">Δ vs control</p>
                   <ul className="mt-3 space-y-2 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
                     {[
-                      "Compare on progress toward goal, not $/day",
-                      "Rename shorter plans to soft framings (kick-start / build habit)",
-                      "Bonus coach consultation moves to 12-wk only",
-                      '"Best value" pill → "reaches your goal" pill',
-                      "CTA copy primes the 12-wk choice",
+                      "Continue is used as the CTA to reduce friction and activate the payment step.",
+                      "The 12-wk plan is preselected and reinforced with a motivational tag.",
+                      "An app preview is added to connect the paywall more directly to the product value.",
+                      "The content order is changed to keep the scroll active and maintain momentum.",
+                      "A 30-day guarantee is added to strengthen trust before purchase.",
                     ].map((item) => (
                       <li key={item}>{item}</li>
                     ))}
