@@ -1230,12 +1230,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <Link href={withBasePath("/projects")}>Back to Projects</Link>
                     </Button>
                   </div>
-                </form>
-              </div>
-            </div>
-          </section>
-        <SiteFooter />
-      </main>
+	                </form>
+	              </div>
+	            </div>
+	          </div>
+	          </section>
+	        <SiteFooter />
+	      </main>
     );
   }
 
