@@ -93,9 +93,9 @@ values (
     ]
   }'::jsonb,
   array[
-    'I chose Enter Email as the focus for the design proposal because it is the second-largest in-funnel drop-off and one of the critical moments to lose users.',
-    'By this point, users have invested time in the quiz but still have not seen the product''s value clearly. Because progress is not visible, the funnel can feel longer than necessary, creating fatigue even when each screen is simple. This makes the email request feel abrupt instead of earned.',
-    'The issue is a weak value exchange. Users are being asked to give something valuable, their email and attention, before clearly understanding what they receive in return. In the current flow, the step feels more like lead capture than part of the personalized plan experience.',
+    'I chose Enter Email as the focus because it is the second-largest in-funnel drop-off and a critical moment to lose users.',
+    'The main issue is a weak value exchange: users are asked to give their email and attention before clearly seeing what they will receive. As a result, the step feels more like lead capture than part of the personalized plan experience.',
+    'Because of this, I proposed testing a few solutions instead of committing to one design direction too early.',
     'Hypothesis 1',
     'To reduce friction, the pages before email should better prepare users by showing progress, reinforcing why each question matters, and previewing the value of the final plan.',
     'Adding trust signals, visible progress, app previews, and more relevant imagery would also make the ask feel safer and more connected to the product.'
@@ -222,24 +222,24 @@ values (
       "id":"content-variants",
       "type":"custom",
       "title":"Content Variant",
-      "body":"",
+      "body":"By this point, users have invested time in the quiz but still have not seen the product''s value clearly. Because progress is not visible, the funnel can feel longer than necessary, creating fatigue even when each screen is simple. This makes the email request feel abrupt instead of earned.",
       "payload":{
         "variants":[
           {
             "label":"Variant 1",
-            "title":"Content Variant 1",
-            "body":"This version personalizes the headline around a specific goal, in this case weight loss. It makes the outcome feel more tailored, but it also narrows the promise early, so it works best when the preceding answers make that goal feel clearly chosen by the user.",
+            "title":"Category and Headline",
+            "body":"This version personalizes the headline around a specific goal, in this case weight loss. It makes the outcome feel more tailored, but it also narrows the promise early. The idea is to bring the user's main goal selection into the email step so the experience stays connected to what they already chose.",
             "imageSrc":"/images/projects/Reversetech/content-variant-1.svg"
           },
           {
             "label":"Variant 2",
-            "title":"Content Variant 2",
+            "title":"Category, Headline, Subtitle and Help Text",
             "body":"This option keeps the plan-ready framing and pairs it with a direct no-spam reassurance. It is the safest content variant because it clarifies what the user gets while lowering privacy anxiety without adding too much extra explanation.",
             "imageSrc":"/images/projects/Reversetech/content-variant-2.svg"
           },
           {
             "label":"Variant 3",
-            "title":"Content Variant 3",
+            "title":"Variation: Category, Headline, Subtitle and Help Text",
             "body":"This variant introduces a more energetic results-focused message and ties the plan to a concrete fitness outcome. It is more motivational than the others, but it depends on strong relevance, because broad outcome claims can feel less credible if they do not match the user's answers closely.",
             "imageSrc":"/images/projects/Reversetech/content-variant-3.svg"
           }
