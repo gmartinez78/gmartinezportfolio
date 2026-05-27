@@ -2381,7 +2381,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         );
       })() : null}
 
-      {(caseStudy.slug === "nayya-ai-benefits" || caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "flock-accessibility-system" || designStrategy.length > 0) ? (
+      {(caseStudy.slug === "nayya-ai-benefits" ||
+        caseStudy.slug === "i9-everify-integration" ||
+        caseStudy.slug === "flock-accessibility-system" ||
+        (designStrategy.length > 0 && (caseStudy.slug !== "reversetech" || reversetechTaskTab !== "task2"))) ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           {caseStudy.slug === "nayya-ai-benefits" ? (
           <>
