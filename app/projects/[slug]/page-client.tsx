@@ -1586,7 +1586,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {taskDetailBlock && (caseStudy.slug !== "reversetech" || reversetechTaskTab === "task1") ? (
         <section id="rt-funnel-diagnosis" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading eyebrow={taskDetailBlock.title} title={taskDetailHeading ?? taskDetailBlock.title} centered className="mb-12" />
+          <SectionHeading
+            eyebrow={caseStudy.slug === "reversetech" ? undefined : taskDetailBlock.title}
+            title={taskDetailHeading ?? taskDetailBlock.title}
+            centered
+            className="mb-12"
+          />
           <div className="mx-auto max-w-[1040px]">
             {taskDetailBlock.body ? (
               <div className="mx-auto mb-8 max-w-[820px] space-y-4 text-center">
@@ -3508,11 +3513,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task2" ? (
         <section id="rt-paywall-experiment-design" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <p className="mb-2 text-center text-[13px] font-semibold uppercase tracking-[0.32em] text-[#1183D0]">Task 2</p>
           <SectionHeading title="Paywall experiment design" centered className="mb-8" />
           <div className="mx-auto mt-10 max-w-[980px]">
-            <h3 className="text-center font-inter text-[28px] leading-tight text-[#0e2951]">Goals</h3>
-            <p className="mx-auto mt-4 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+            <p className="mx-auto max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               The experiments were framed around one conversion objective, one revenue objective, and one constraint that kept the proposed changes grounded in the existing offer structure.
             </p>
             <div className="mt-8 grid gap-6 md:grid-cols-3 md:gap-0">
@@ -3629,7 +3632,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
           <div className="mt-10">
             <h3 className="text-center font-inter text-[28px] leading-tight text-[#0e2951]">Where the leaks probably are</h3>
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <div className="mt-8 grid gap-6 md:grid-cols-3 md:gap-0">
               {[
                 {
                   title: "Decision overload",
@@ -3643,13 +3646,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   title: "Cheap-anchor trap",
                   body: "The 12-week plan wins on per-day value, but the 1-week option looks safer on upfront price. That makes the lowest-commitment entry point a drag on AOV.",
                 },
-              ].map((item) => (
-                <Card key={item.title} className="overflow-hidden">
-                  <CardContent className="p-7">
-                    <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
-                    <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item.body}</p>
-                  </CardContent>
-                </Card>
+              ].map((item, index) => (
+                <div
+                  key={item.title}
+                  className={`text-center ${index > 0 ? "md:border-l md:border-[#d7e8f7] md:pl-6" : ""} ${index < 2 ? "md:pr-6" : ""}`}
+                >
+                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
+                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item.body}</p>
+                  {index < 2 ? <div className="mt-6 h-px bg-[#d7e8f7] md:hidden" /> : null}
+                </div>
               ))}
             </div>
           </div>
