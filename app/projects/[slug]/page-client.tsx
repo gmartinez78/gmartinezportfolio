@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, Fragment, useEffect, useState } from "react";
-import { CircleAlert, X } from "lucide-react";
+import { CircleAlert, Minus, Plus, RotateCcw, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
@@ -991,6 +991,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [passwordError, setPasswordError] = useState<string | null>(null);
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
+  const [lightboxZoom, setLightboxZoom] = useState(1);
 
   useEffect(() => {
     setEnteredPassword("");
@@ -1001,6 +1002,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   useEffect(() => {
     if (!lightboxImage) {
       document.body.style.overflow = "";
+      setLightboxZoom(1);
       return;
     }
 
@@ -1214,7 +1216,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const reflections = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_REFLECTIONS : caseStudy.reflections;
   const projectYear = caseStudy.year;
   const heroImage = resolveProjectHeroImage(caseStudy.slug, caseStudy.images.hero);
-  const designProposalTitle = caseStudy.slug === "reversetech" ? "Enter Email: Design Proposal" : "Design Proposal";
+  const designProposalTitle = caseStudy.slug === "reversetech" ? "Design Proposal" : "Design Proposal";
   const hypothesisIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf("Hypothesis 1") : -1;
   const designNotesIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf("A few notes") : -1;
   const designProposalLinks =
@@ -3017,6 +3019,33 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             className="relative w-full max-w-[1200px]"
             onClick={(event) => event.stopPropagation()}
           >
+            <div className="absolute left-3 top-3 z-10 flex items-center gap-2">
+              <button
+                type="button"
+                aria-label="Zoom out"
+                onClick={() => setLightboxZoom((current) => Math.max(1, Number((current - 0.25).toFixed(2))))}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
+              >
+                <Minus className="h-5 w-5" />
+              </button>
+              <button
+                type="button"
+                aria-label="Zoom in"
+                onClick={() => setLightboxZoom((current) => Math.min(3, Number((current + 0.25).toFixed(2))))}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
+              >
+                <Plus className="h-5 w-5" />
+              </button>
+              <button
+                type="button"
+                aria-label="Reset zoom"
+                onClick={() => setLightboxZoom(1)}
+                className="inline-flex h-10 items-center justify-center rounded-full bg-white px-4 text-[12px] font-semibold uppercase tracking-[0.08em] text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
+              >
+                <RotateCcw className="mr-2 h-4 w-4" />
+                Reset
+              </button>
+            </div>
             <button
               type="button"
               aria-label="Close image preview"
@@ -3026,11 +3055,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <X className="h-5 w-5" />
             </button>
             <div className="overflow-hidden rounded-[24px] bg-white shadow-[0_30px_80px_rgba(0,0,0,0.28)]">
-              <img
-                src={lightboxImage.src}
-                alt={lightboxImage.alt}
-                className="max-h-[85vh] w-full object-contain"
-              />
+              <div className="max-h-[85vh] overflow-auto p-4">
+                <div className="flex min-h-full min-w-full items-start justify-center">
+                  <img
+                    src={lightboxImage.src}
+                    alt={lightboxImage.alt}
+                    className="h-auto max-w-none object-contain"
+                    style={{ width: `${lightboxZoom * 100}%` }}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
