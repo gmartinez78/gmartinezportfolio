@@ -3541,7 +3541,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-[980px]">
-            <p className="mx-auto max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+            <h3 className="text-center font-inter text-[28px] leading-tight text-[#0e2951]">Goals</h3>
+            <p className="mx-auto mt-4 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               The experiments were framed around one conversion objective, one revenue objective, and one constraint that kept the proposed changes grounded in the existing offer structure.
             </p>
             <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -3679,8 +3680,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
           </div>
           <div className="mt-10">
-            <h3 className="text-center font-inter text-[28px] leading-tight text-[#0e2951]">Experiments</h3>
-            <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-2">
               <Card className="overflow-hidden">
                 <CardContent className="p-7">
                   <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Variant A</p>
