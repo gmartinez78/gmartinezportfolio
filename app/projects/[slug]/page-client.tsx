@@ -1025,6 +1025,7 @@ const REVERSE_TECH_PAGE_NAV = [
   { title: "Hypothesis 1", href: "#content-variants" },
   { title: "Hypothesis 2", href: "#cta-variants" },
   { title: "Hypothesis 3", href: "#rt-hypothesis-2" },
+  { title: "Hypothesis 4", href: "#rt-hypothesis-4" },
   { title: "Sources", href: "#rt-sources" },
 ] as const;
 
@@ -1086,7 +1087,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [lightboxZoom, setLightboxZoom] = useState(1);
   const [prototypeIndex, setPrototypeIndex] = useState(0);
   const [reversetechComparisonTab, setReversetechComparisonTab] = useState<"before" | "after">("after");
-  const [openHypothesisId, setOpenHypothesisId] = useState<"content-variants" | "cta-variants" | "rt-hypothesis-2">("content-variants");
+  const [openHypothesisId, setOpenHypothesisId] = useState<"content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4">("content-variants");
 
   useEffect(() => {
     setEnteredPassword("");
@@ -1231,12 +1232,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </Button>
                   </div>
 	                </form>
-	              </div>
-	            </div>
-	          </div>
-	          </section>
-	        <SiteFooter />
-	      </main>
+              </div>
+            </div>
+          </div>
+        </section>
+        <SiteFooter />
+      </main>
     );
   }
 
@@ -2690,6 +2691,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     "Mobile Prototype Flow",
                     "Test whether improving the pages before email makes the ask feel more earned by reducing fatigue and adding stronger context.",
                   ],
+                  [
+                    "Hypothesis 4",
+                    "Exploratory hypothesis",
+                    "Check whether age segment, device, source, or step context may be influencing the email drop-off beyond the screen itself.",
+                  ],
                 ].map(([label, title, description]) => (
                   <div key={label} className="grid gap-2 px-6 py-4 md:grid-cols-[0.7fr_1fr_1.2fr] md:gap-4">
                     <div className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1183D0]">{label}</div>
@@ -2833,20 +2839,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </button>
             {openHypothesisId === "rt-hypothesis-2" ? (
               <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-6">
-                <div className="mx-auto max-w-[820px] space-y-8 text-center">
-                  {hypothesisItems.map((item) => (
-                    <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                      {item}
-                    </p>
-                  ))}
-                  <div className="space-y-4">
-                    <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
-                      Prototype Portion
-                    </p>
-                    <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                      Browse the mobile flow portion below. Open any screen to zoom and inspect the sequence in detail.
-                    </p>
-                  </div>
+                <div className="grid gap-8 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)] lg:items-start">
                   <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] px-4 py-5 shadow-[0_24px_64px_rgba(17,131,208,0.08)]">
                     <div className="mb-4 flex items-center justify-between gap-3">
                       <button
@@ -2915,13 +2908,22 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       ))}
                     </div>
                   </div>
-                  <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
-                    <iframe
-                      title="Reverse Tech Flow from Figma"
-                      src={REVERSE_TECH_FLOW_EMBED}
-                      className="h-[720px] w-full"
-                      allowFullScreen
-                    />
+                  <div className="space-y-8 text-left">
+                    <div className="space-y-4">
+                      {hypothesisItems.map((item) => (
+                        <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                    <div className="space-y-4">
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
+                        Prototype Portion
+                      </p>
+                      <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                        Browse the mobile flow portion below. Open any screen to zoom and inspect the sequence in detail.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -2994,6 +2996,51 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {caseStudy.slug === "reversetech" ? (
+        <section id="rt-hypothesis-4" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
+          <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+            <button
+              type="button"
+              onClick={() =>
+                setOpenHypothesisId((current) =>
+                  current === "rt-hypothesis-4" ? current : "rt-hypothesis-4"
+                )
+              }
+              className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+            >
+              <div>
+                <p className="mb-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
+                  Hypothesis 4
+                </p>
+                <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
+                  Exploratory hypothesis
+                </h3>
+              </div>
+              {openHypothesisId === "rt-hypothesis-4" ? <Minus className="h-5 w-5 text-[#1183D0]" /> : <Plus className="h-5 w-5 text-[#1183D0]" />}
+            </button>
+            {openHypothesisId === "rt-hypothesis-4" ? (
+              <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-6">
+                <div className="mx-auto max-w-[860px] space-y-5">
+                  <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                    This is a directional hypothesis, not a conclusion. The email drop-off may not be caused only by the email screen itself; it may also be influenced by user context that is not visible in the current data.
+                  </p>
+                  <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                    For example, we do not know the user&apos;s age segment or device type. Younger users may be more active in the acquisition phase, especially from social or ad-driven traffic, but also more sensitive to how their personal data is collected and used. If that is true, the email step may create trust friction before they feel enough value from the product.
+                  </p>
+                  <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                    Device may also play a role. If a large share of users reach this step on mobile, the drop-off could be affected by smaller screen space, form fatigue, typing effort, or weaker visibility of reassurance copy. On desktop, the issue may be less about input friction and more about value clarity or trust.
+                  </p>
+                  <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                    Because we do not have age, device, traffic source, or interaction data, I would treat this as an exploratory hypothesis and validate it by segmenting email-step completion by age group, mobile vs. desktop, source, and time spent on the step.
+                  </p>
+                </div>
+              </div>
+            ) : null}
           </div>
         </section>
       ) : null}
