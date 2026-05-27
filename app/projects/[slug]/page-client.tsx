@@ -3733,11 +3733,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               {/* ── Experiment A ── */}
               <div>
                 <div className="mb-3 flex items-baseline gap-2">
-                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#2a5cb8] bg-[#2a5cb8] text-[12px] font-semibold text-white">A</span>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#2a5cb8]">experiment a</span>
+                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#c8412a] bg-[#c8412a] text-[12px] font-semibold text-white">A</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#c8412a]">experiment a</span>
                 </div>
                 <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
-                  <strong className="text-[#0e2951]">Hypothesis. </strong>If we collapse the page into one focused decision — pre-selected plan, personalized recap, guarantee adjacent to CTA — overall conversion rises.
+                  <strong className="text-[#0e2951]">Hypothesis. </strong>If we collapse the page into one focused decision, with a pre-selected plan, personalized recap, and guarantee adjacent to the CTA, overall conversion rises.
                   <br />
                   <strong className="text-[#0e2951]">Primary metric: </strong>paywall → purchase rate.
                 </div>
@@ -3767,22 +3767,32 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         ))}
                       </div>
                     </div>
-                    {/* Recommended plan label */}
-                    <p className="text-center text-[11px] font-semibold text-[#1c1a17]">Your recommended plan</p>
-                    {/* Pre-selected plan */}
-                    <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border-2 border-[#2a5cb8] bg-[#DCEAEF] px-2 py-[9px]">
-                      <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">RECOMMENDED FOR YOU</span>
-                      <div className="h-[12px] w-[12px] rounded-full bg-[#2a5cb8] shadow-[inset_0_0_0_2px_white]" />
-                      <div>
-                        <p className="text-[11px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
-                        <p className="text-[9px] text-[#4a443a]">$18.99 today · $0.21/day</p>
+                    <p className="text-center text-[11px] font-semibold text-[#1c1a17]">Choose your plan</p>
+                    <div className="space-y-[6px]">
+                      <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border-2 border-[#2a5cb8] bg-[#DCEAEF] px-2 py-[9px]">
+                        <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">RECOMMENDED FOR YOU</span>
+                        <div className="h-[12px] w-[12px] rounded-full bg-[#2a5cb8] shadow-[inset_0_0_0_2px_white]" />
+                        <div>
+                          <p className="text-[11px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
+                          <p className="text-[9px] text-[#4a443a]">$18.99 today · $0.21/day</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-[13px] font-bold text-[#1c1a17]">$18.99</p>
+                          <p className="text-[8px] text-[#4a443a]">today</p>
+                        </div>
                       </div>
-                      <div className="text-right">
-                        <p className="text-[13px] font-bold text-[#1c1a17]">$18.99</p>
-                        <p className="text-[8px] text-[#4a443a]">today</p>
+                      <div className="grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[8px] opacity-75">
+                        <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
+                        <div>
+                          <p className="text-[11px] font-bold text-[#1c1a17]">ANNUAL PLAN</p>
+                          <p className="text-[9px] text-[#4a443a]">$14.00 today · $0.50/day</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-[13px] font-bold text-[#1c1a17]">$14.00</p>
+                          <p className="text-[8px] text-[#4a443a]">today</p>
+                        </div>
                       </div>
                     </div>
-                    <p className="text-center text-[10px] text-[#4a443a] underline">▾ see 1-week &amp; 4-week options</p>
                     {/* Value stack */}
                     <div className="rounded-[10px] border border-[#1c1a17] bg-white p-[7px]">
                       <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">what&apos;s included</p>
@@ -3809,11 +3819,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
                 <div className="mt-5">
                   <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#2a5cb8]">Δ vs control</p>
-                  <ul className="mt-3 space-y-2 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                  <ul className="mt-3 list-disc space-y-2 pl-5 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
                     {[
                       'Replace timers w/ progress indicator ("5 of 5")',
                       "Personalized recap above the plan",
-                      "One plan recommended + selected · others collapsed",
+                      "Two plans are presented, with the 12-wk option recommended and pre-selected",
                       '"What you get" + guarantee right beside CTA',
                       "Cut repeated plan ladder · trim long scroll",
                     ].map((item) => (
@@ -3830,7 +3840,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#2a5cb8]">experiment b</span>
                 </div>
                 <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
-                  <strong className="text-[#0e2951]">Hypothesis. </strong>Reframing the comparison from &quot;$/day&quot; to &quot;time to reach your target weight&quot; makes 1-wk and 4-wk look insufficient and pulls mix toward 12-wk.
+                  <strong className="text-[#0e2951]">Hypothesis. </strong>Reframing the comparison to time to reach your target weight makes 1-wk and 4-wk look insufficient and pulls mix toward 12-wk.
                   <br />
                   <strong className="text-[#0e2951]">Primary metric: </strong>% of purchasers picking 12-wk · AOV.
                 </div>
@@ -4045,10 +4055,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
                 <div className="mt-5">
                   <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#2a5cb8]">Δ vs control</p>
-                  <ul className="mt-3 space-y-2 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                  <ul className="mt-3 list-disc space-y-2 pl-5 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
                     {[
                       "Continue is used as the CTA to reduce friction and activate the payment step.",
-                      "The 12-wk plan is preselected and reinforced with a motivational tag.",
+                      "The 12-wk plan is pre-selected and reinforced with a motivational tag.",
                       "An app preview is added to connect the paywall more directly to the product value.",
                       "The content order is changed to keep the scroll active and maintain momentum.",
                       "A 30-day guarantee is added to strengthen trust before purchase.",
