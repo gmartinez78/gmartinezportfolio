@@ -3821,6 +3821,27 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <p className="text-[9px] leading-[1.4] text-[#1c1a17]">Visa · Mastercard · Amex · PayPal · Apple Pay</p>
                     </div>
                     <div className="px-2 py-[6px]">
+                      <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">Featured in</p>
+                      <div className="mt-2 flex items-center justify-between gap-2 text-[8px] uppercase tracking-wide text-[#1c1a17] opacity-80">
+                        {["Forbes", "Women's Health", "Healthline"].map((logo) => (
+                          <span key={logo} className="flex-1 text-center">
+                            {logo}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[6px] text-center">
+                          <p className="text-[11px] font-bold text-[#1c1a17]">4.8</p>
+                          <p className="text-[8px] text-[#4a443a]">rating</p>
+                        </div>
+                        <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[6px] text-center">
+                          <p className="text-[11px] font-bold text-[#1c1a17]">900K+</p>
+                          <p className="text-[8px] text-[#4a443a]">downloads</p>
+                        </div>
+                      </div>
+                      <p className="mt-2 text-center text-[8px] text-[#4a443a]">120K+ reviews across app stores</p>
+                    </div>
+                    <div className="px-2 py-[6px]">
                       <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">What&apos;s included in your plan</p>
                       <div className="mt-2 flex gap-2 overflow-hidden">
                         {[
@@ -3836,7 +3857,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           >
                             <p className="text-[7px] uppercase tracking-wide text-[#4a443a]">{label}</p>
                             <div className="mt-1 flex min-h-[44px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 text-[8px] uppercase tracking-wide text-[#4a443a]">
-                              image
+                              app image
                             </div>
                           </div>
                         ))}
@@ -3847,10 +3868,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         <span className="h-1.5 w-1.5 rounded-full bg-[#1c1a17]/35" />
                       </div>
                       <div className="mt-3 space-y-1.5">
+                        <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">5 reasons to get the plan</p>
                         {[
                           "12-week personalized training plan",
                           "1:1 coach consultation",
                           "Progress and habit tracking",
+                          "Meal guidance built around your goal",
+                          "Flexible workouts you can do anywhere",
                         ].map((item) => (
                           <div key={item} className="flex items-center gap-2 text-[8px] leading-[1.35] text-[#1c1a17]">
                             <span className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-[#1c1a17] text-[7px]">•</span>
@@ -3858,6 +3882,18 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           </div>
                         ))}
                       </div>
+                    </div>
+                    <div className="px-2 py-[6px]">
+                      <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
+                        <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">Testimonial</p>
+                        <div className="mt-2 flex min-h-[44px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 text-[8px] uppercase tracking-wide text-[#4a443a]">
+                          image
+                        </div>
+                      </div>
+                      <p className="mt-2 text-[8px] leading-[1.4] text-[#4a443a]">
+                        Results vary by individual. These images are illustrative and not a guarantee of specific outcomes.
+                        {" "}Consult a healthcare provider before beginning any weight loss program.
+                      </p>
                     </div>
                   </div>
                 </div>
