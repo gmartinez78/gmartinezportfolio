@@ -3803,7 +3803,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </div>
                     {/* CTA */}
                     <div className="flex items-center justify-between rounded-full bg-[#c8412a] px-[12px] py-[8px]">
-                      <span className="text-[11px] font-bold text-white">Start my 12-week plan</span>
+                      <span className="text-[11px] font-bold text-white">Continue</span>
                       <span className="text-[10px] text-black">→</span>
                     </div>
                     <p className="text-[8px] leading-[1.4] text-[#4a443a]">$18.99 today, then $89.99/12 wks. Cancel anytime.</p>
@@ -3842,7 +3842,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     {/* Sticky top */}
                     <div className="flex items-center justify-between rounded-[10px] border border-[#1c1a17] bg-white px-2 py-1 text-[10px] text-[#1c1a17]">
                       <span className="font-semibold">⏱ 09:53</span>
-                      <span className="rounded-full bg-[#1c1a17] px-[10px] py-[4px] text-[10px] uppercase text-white">GET MY PLAN</span>
+                      <span className="rounded-full bg-[#1c1a17] px-[10px] py-[4px] text-[10px] uppercase text-white">Continue</span>
                     </div>
                     {/* Before/after */}
                     <div className="grid grid-cols-2 gap-[6px]">
@@ -3900,7 +3900,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     {/* CTA */}
                     <div className="flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
                       <span className="text-[10px] uppercase text-white">12-WK</span>
-                      <span className="text-[11px] font-bold uppercase text-white">GET MY PLAN</span>
+                      <span className="text-[11px] font-bold uppercase text-white">Continue</span>
                     </div>
                     <div className="rounded-[8px] border border-[#1c1a17]/30 px-2 py-[6px]">
                       <p className="text-[8px] leading-[1.4] text-[#4a443a]">
