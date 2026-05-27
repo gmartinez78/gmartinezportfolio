@@ -3532,43 +3532,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "reversetech" ? (
         <section id="rt-paywall-experiment-design" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title="Paywall experiment design" centered className="mb-8" />
-          <div className="mx-auto mt-10 grid max-w-[980px] items-start gap-8 lg:grid-cols-[420px_minmax(0,1fr)]">
-            <div className="max-w-[420px]">
-              <button
-                type="button"
-                onClick={() =>
-                  setLightboxImage({
-                    src: withBasePath("/images/projects/Reversetech/paywall.png"),
-                    alt: "Current Reversetech paywall design",
-                  })
-                }
-                className="block w-full rounded-[24px] border border-[#d7e8f7] bg-white p-3 text-left shadow-[0_20px_48px_rgba(17,131,208,0.08)] transition-transform hover:scale-[1.01]"
-              >
-                <div className="relative max-h-[520px] overflow-hidden rounded-[18px]">
-                  <span className="absolute left-4 top-4 z-10 inline-flex rounded-[4px] bg-[#dbeafe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#1e40af]">
-                    Current paywall
-                  </span>
-                  <img
-                    src={withBasePath("/images/projects/Reversetech/paywall.png")}
-                    alt="Current Reversetech paywall design"
-                    className="h-auto w-full"
-                  />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/92 to-white/0" />
-                </div>
-              </button>
-            </div>
-            <div className="space-y-5 text-left lg:pt-4">
-              <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                Walk through the paywall, the final screen before checkout in the calisthenics funnel, and propose two distinct experiments: one to improve overall paywall conversion and one to shift plan mix toward the 12-week plan to lift AOV.
-              </p>
-              <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                The key tension is that increasing total purchase rate may require reducing friction and lowering commitment, while pushing the 12-week plan may improve revenue per user but cost overall conversion.
-              </p>
-            </div>
+          <div className="mx-auto mt-10 max-w-[900px] space-y-5 text-center">
+            <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              Walk through the paywall, the final screen before checkout in the calisthenics funnel, and propose two distinct experiments: one to improve overall paywall conversion and one to shift plan mix toward the 12-week plan to lift AOV.
+            </p>
+            <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              The key tension is that increasing total purchase rate may require reducing friction and lowering commitment, while pushing the 12-week plan may improve revenue per user but cost overall conversion.
+            </p>
           </div>
           <div className="mx-auto mt-10 max-w-[980px]">
-            <h3 className="text-center font-inter text-[28px] leading-tight text-[#0e2951]">Experiment goals</h3>
-            <p className="mx-auto mt-4 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+            <p className="mx-auto max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               The experiments were framed around one conversion objective, one revenue objective, and one constraint that kept the proposed changes grounded in the existing offer structure.
             </p>
             <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -3585,6 +3558,30 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </Card>
               ))}
             </div>
+          </div>
+          <div className="mx-auto mt-10 max-w-[320px]">
+            <button
+              type="button"
+              onClick={() =>
+                setLightboxImage({
+                  src: withBasePath("/images/projects/Reversetech/paywall.png"),
+                  alt: "Current Reversetech paywall design",
+                })
+              }
+              className="block w-full rounded-[24px] border border-[#d7e8f7] bg-white p-3 text-left shadow-[0_20px_48px_rgba(17,131,208,0.08)] transition-transform hover:scale-[1.01]"
+            >
+              <div className="relative max-h-[440px] overflow-hidden rounded-[18px]">
+                <span className="absolute left-4 top-4 z-10 inline-flex rounded-[4px] bg-[#dbeafe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#1e40af]">
+                  Current paywall
+                </span>
+                <img
+                  src={withBasePath("/images/projects/Reversetech/paywall.png")}
+                  alt="Current Reversetech paywall design"
+                  className="h-auto w-full"
+                />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/92 to-white/0" />
+              </div>
+            </button>
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {[
