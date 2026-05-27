@@ -2603,8 +2603,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "reversetech" && hypothesisItems.length ? (
         <section id="rt-hypothesis-2" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <h3 className="mb-12 text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
+          <p className="mb-3 text-center font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
             Hypothesis 2
+          </p>
+          <h3 className="mb-12 text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
+            Add placeholder title here
           </h3>
           <div className="mx-auto max-w-[820px] space-y-8 text-center">
             {hypothesisItems.map((item) => (
