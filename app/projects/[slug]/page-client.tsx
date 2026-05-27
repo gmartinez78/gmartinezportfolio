@@ -3533,14 +3533,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section id="rt-paywall-experiment-design" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <p className="mb-2 text-center text-[13px] font-semibold uppercase tracking-[0.32em] text-[#1183D0]">Task 2</p>
           <SectionHeading title="Paywall experiment design" centered className="mb-8" />
-          <div className="mx-auto mt-10 max-w-[900px] space-y-5 text-center">
-            <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              Walk through the paywall, the final screen before checkout in the calisthenics funnel, and propose two distinct experiments: one to improve overall paywall conversion and one to shift plan mix toward the 12-week plan to lift AOV.
-            </p>
-            <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              The key tension is that increasing total purchase rate may require reducing friction and lowering commitment, while pushing the 12-week plan may improve revenue per user but cost overall conversion.
-            </p>
-          </div>
           <div className="mx-auto mt-10 max-w-[980px]">
             <h3 className="text-center font-inter text-[28px] leading-tight text-[#0e2951]">Goals</h3>
             <p className="mx-auto mt-4 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
@@ -3563,7 +3555,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               ))}
             </div>
           </div>
-          <div className="mx-auto mt-10 grid max-w-[980px] items-start gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
+          <div className="mx-auto mt-10 max-w-[980px]">
+            <h3 className="text-center font-inter text-[28px] leading-tight text-[#0e2951]">Walk-through</h3>
+            <div className="mt-8 grid items-start gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
             <div className="mx-auto w-full max-w-[320px]">
               <button
                 type="button"
@@ -3589,8 +3583,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </button>
             </div>
             <div>
-              <h3 className="font-inter text-[28px] leading-tight text-[#0e2951]">Walk-through</h3>
-              <div className="mt-5 space-y-4">
+              <div className="space-y-4">
                 {[
                   [
                     "1",
@@ -3654,6 +3647,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                 ))}
               </div>
+            </div>
             </div>
           </div>
           <div className="mt-10">
