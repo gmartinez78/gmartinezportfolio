@@ -2408,13 +2408,29 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         const imageSrc = typeof variant.imageSrc === "string" ? variant.imageSrc : null;
                         const variantTitle = typeof variant.title === "string" ? variant.title : "";
                         const variantAlt = variantTitle || "Variant wireframe";
+                        const isSelectedContentVariant =
+                          caseStudy.slug === "reversetech" &&
+                          block.id === "content-variants" &&
+                          index === 2;
 
                         return (
-                          <Card key={`${block.id}-${index}`} className="overflow-hidden border-transparent shadow-none">
+                          <Card
+                            key={`${block.id}-${index}`}
+                            className={`overflow-hidden border-transparent shadow-none ${
+                              isSelectedContentVariant ? "bg-[#f3f8ff]" : ""
+                            }`}
+                          >
                             <CardContent className="p-7">
-                              <span className="inline-flex rounded-full bg-[#dbeafe] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1e40af]">
-                                {`Variant ${index + 1}`}
-                              </span>
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className="inline-flex rounded-full bg-[#dbeafe] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1e40af]">
+                                  {`Variant ${index + 1}`}
+                                </span>
+                                {isSelectedContentVariant ? (
+                                  <span className="inline-flex rounded-full bg-[#dff3e8] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1f7a4d]">
+                                    Selected
+                                  </span>
+                                ) : null}
+                              </div>
                               <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
                                 {variantTitle}
                               </h3>

@@ -1064,10 +1064,10 @@
         "payload": {
           "variants": [
             {
-              "label": "Variant 1",
-              "title": "Category and Headline",
-              "body": "This version personalizes the headline around a specific goal, in this case weight loss. It makes the outcome feel more tailored, but it also narrows the promise early. The idea is to bring the user's main goal selection into the email step so the experience stays connected to what they already chose.",
-              "imageSrc": "/images/projects/Reversetech/content-variant-1.svg"
+              "label": "Variant 3",
+              "title": "Variation: Category, Headline, Subtitle and Help Text",
+              "body": "This variant introduces a more energetic results-focused message and ties the plan to a concrete fitness outcome. It is more motivational than the others, but it depends on strong relevance, because broad outcome claims can feel less credible if they do not match the user's answers closely.",
+              "imageSrc": "/images/projects/Reversetech/content-variant-3.svg"
             },
             {
               "label": "Variant 2",
@@ -1076,10 +1076,10 @@
               "imageSrc": "/images/projects/Reversetech/content-variant-2.svg"
             },
             {
-              "label": "Variant 3",
-              "title": "Variation: Category, Headline, Subtitle and Help Text",
-              "body": "This variant introduces a more energetic results-focused message and ties the plan to a concrete fitness outcome. It is more motivational than the others, but it depends on strong relevance, because broad outcome claims can feel less credible if they do not match the user's answers closely.",
-              "imageSrc": "/images/projects/Reversetech/content-variant-3.svg"
+              "label": "Variant 1",
+              "title": "Category and Headline",
+              "body": "This version personalizes the headline based on the user’s selected goal, such as weight loss. It makes the outcome feel more relevant and tailored, while keeping the email step connected to what the user already chose. The tradeoff is that it narrows the promise earlier, so the main goal selected needs to be here to keep the user's motivations.",
+              "imageSrc": "/images/projects/Reversetech/content-variant-1.svg"
             }
           ]
         }
