@@ -836,14 +836,14 @@
     "status": "published",
     "featured": false,
     "order": 6,
-    "title": "Reverse Health Quiz Funnel Diagnosis",
+    "title": "Reverse Health Email Step Optimization",
     "company": "Reverse Health",
     "client_context": "Paid search acquisition funnel",
     "role": "Sr. Product Designer",
     "year": 2026,
     "duration": "Strategy and funnel analysis",
     "industry": "Health & Fitness / Growth Funnel",
-    "tagline": "A 44-step quiz funnel selling a calisthenics program for women was converting at just 0.63%, and the team needed to determine whether the visible problem, the long middle, was actually the real bottleneck.",
+    "tagline": "After diagnosing a 44-step quiz funnel, I focused on the Enter Email step, the second-largest drop-off, and proposed testable content and CTA directions to make the value exchange feel clearer and more personalized.",
     "tags": [
       "Growth",
       "UX Research",
@@ -924,8 +924,7 @@
       ]
     },
     "design_strategy": [
-      "I chose Enter Email as the focus because it is the second-largest in-funnel drop-off and a critical moment to lose users. The main issue is a weak value exchange: users are asked to give their email and attention before clearly seeing what they will receive. As a result, the step feels more like lead capture than part of the personalized plan experience.",
-      "Because of this, I proposed testing a few solutions instead of committing to one design direction too early.",
+      "I chose Enter Email as the focus because it is the second-largest in-funnel drop-off and a critical moment to lose users. The main issue is a weak value exchange: users are asked to give their email and attention before clearly seeing what they will receive. As a result, the step feels more like lead capture than part of the personalized plan experience, so I proposed testing a few solutions instead of committing to one design direction too early.",
       "Hypothesis 1",
       "To reduce friction, the pages before email should better prepare users by showing progress, reinforcing why each question matters, and previewing the value of the final plan.",
       "Adding trust signals, visible progress, app previews, and more relevant imagery would also make the ask feel safer and more connected to the product."
