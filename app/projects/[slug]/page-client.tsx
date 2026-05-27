@@ -2616,13 +2616,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <div className="px-6 py-6 text-left">
                     <div className="mt-3 space-y-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
                       <p>
-                        For the email step, the design fix is about strengthening the value exchange before asking for the email. Research shows users are more likely to complete a form when the request feels tied to a clear reward, so this version reframes the page around the user&apos;s selected main goal, like weight loss, and uses outcome-based copy (&ldquo;See my plan&rdquo;) instead of a generic &ldquo;Continue.&rdquo;
+                        For the email step, the design fix focuses on strengthening the value exchange before asking for the user&apos;s email. Research shows users are more likely to complete a form when the request is tied to a clear reward, so this version reframes the page around the user&apos;s selected main goal, such as weight loss, and uses outcome-based copy like &ldquo;See my plan&rdquo; instead of a generic &ldquo;Continue.&rdquo;
                       </p>
                       <p>
-                        Because the funnel is built in a templated CMS, I&apos;d treat the CTA, subtitle, trust message, and static copy as parameterizable changes I can test without engineering. Changing the headline dynamically across the three goals is the exception: that would need conditional logic or a new CMS variable.
+                        Because the funnel is built in a templated CMS, I would treat the CTA, subtitle, trust message, and static page copy as parameterizable changes that can be tested without engineering. The main exception is dynamically changing the headline across three different goals, which would likely require conditional logic or a new CMS variable.
                       </p>
                       <p>
-                        If the CMS supports page variants or duplicated pages, I&apos;d first test goal-based static versions with no new development, one variant per goal, and split traffic across them. If those lift email completion, the investment in a reusable dynamic personalization component is easier to justify.
+                        If the CMS supports duplicated pages or static page variants, I would first test one goal-based version per segment without new development and route traffic to each version. If those variants improve email completion, then investing in a reusable dynamic personalization component would be easier to justify.
                       </p>
                     </div>
                     <div className="mt-6 overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-[#f8fbff]">
