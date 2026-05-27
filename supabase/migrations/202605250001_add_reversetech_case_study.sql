@@ -210,7 +210,7 @@ values (
           {
             "label":"Variant 3",
             "title":"Unlock my personalized plan",
-            "body":"This version is the most stripped back. It relies on the personalized Calisthenics headline to do most of the persuasion, testing whether a simpler page with fewer competing signals feels more trustworthy and easier to act on.",
+            "body":"This version is the most stripped back. It relies on the personalized Calisthenics headline to do most of the persuasion.",
             "imageSrc":"/images/projects/Reversetech/cta-variant-3.svg"
           }
         ]

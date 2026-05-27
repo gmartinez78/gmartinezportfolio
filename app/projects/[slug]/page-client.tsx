@@ -2396,6 +2396,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ].map(({ block, variants }) =>
               block && variants.length ? (
                 <div key={block.id}>
+                  {caseStudy.slug === "reversetech" && block.id === "cta-variants" ? (
+                    <p className="mb-3 text-center font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
+                      Hypothesis 1
+                    </p>
+                  ) : null}
                   <h3 className="mb-6 text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
                     {block.title}
                   </h3>
@@ -2403,6 +2408,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                       {block.body}
                     </p>
+                  ) : null}
+                  {block.id === "content-variants" &&
+                  block.payload &&
+                  typeof block.payload === "object" &&
+                  typeof block.payload.note === "string" ? (
+                    <div className="mx-auto mb-10 max-w-[760px] rounded-[20px] bg-[#f6f9fc] px-5 py-4 text-center shadow-[0_10px_30px_rgba(14,41,81,0.06)]">
+                      <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                        {block.payload.note}
+                      </p>
+                    </div>
                   ) : null}
                   <div className="grid gap-5 md:grid-cols-3">
                     {variants.map((variant, index) => (
