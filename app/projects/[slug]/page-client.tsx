@@ -3871,7 +3871,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
                       <div>
                         <p className="text-[11px] font-bold text-[#1c1a17]">1-week · Kick-start</p>
-                        <p className="text-[9px] text-[#4a443a]">$10.5 total</p>
+                        <p className="text-[9px] text-[#4a443a]">$10.5</p>
                       </div>
                       <div className="text-right">
                         <p className="text-[13px] font-bold text-[#1c1a17]">$1.5</p>
@@ -3882,7 +3882,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
                       <div>
                         <p className="text-[11px] font-bold text-[#1c1a17]">4-week · Build habit</p>
-                        <p className="text-[9px] text-[#4a443a]">$9.8 total</p>
+                        <p className="text-[9px] text-[#4a443a]">1 mo - $9.8</p>
                       </div>
                       <div className="text-right">
                         <p className="text-[13px] font-bold text-[#1c1a17]">$0.35</p>
@@ -3895,7 +3895,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <div className="grid grid-cols-[1fr_68px] items-center gap-[8px]">
                         <div>
                           <p className="text-[12px] font-bold text-[#1c1a17]">12-week · Full transformation</p>
-                          <p className="text-[9px] text-[#4a443a]">$17.64 total</p>
+                          <p className="text-[9px] text-[#4a443a]">3 mo - $17.64</p>
                         </div>
                         <div className="text-right">
                           <p className="text-[13px] font-bold text-[#1c1a17]">$0.21</p>
@@ -3980,7 +3980,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
                             <div>
                               <p className="text-[11px] font-bold text-[#1c1a17]">1-week · Kick-start</p>
-                              <p className="text-[9px] text-[#4a443a]">$10.5 total</p>
+                              <p className="text-[9px] text-[#4a443a]">$10.5</p>
                             </div>
                             <div className="text-right">
                               <p className="text-[13px] font-bold text-[#1c1a17]">$1.5</p>
@@ -3990,7 +3990,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
                             <div>
                               <p className="text-[11px] font-bold text-[#1c1a17]">4-week · Build habit</p>
-                              <p className="text-[9px] text-[#4a443a]">1 mo · $9.8 total</p>
+                              <p className="text-[9px] text-[#4a443a]">1 mo - $9.8</p>
                             </div>
                             <div className="text-right">
                               <p className="text-[13px] font-bold text-[#1c1a17]">$0.35</p>
@@ -4002,7 +4002,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             <div className="grid grid-cols-[1fr_68px] items-center gap-[8px]">
                               <div>
                                 <p className="text-[12px] font-bold text-[#1c1a17]">12-week · Full transformation</p>
-                                <p className="text-[9px] text-[#4a443a]">2 mo · $17.64 total</p>
+                                <p className="text-[9px] text-[#4a443a]">3 mo - $17.64</p>
                               </div>
                               <div className="text-right">
                                 <p className="text-[13px] font-bold text-[#1c1a17]">$0.21</p>
