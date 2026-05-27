@@ -3564,21 +3564,26 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                 The key tension is that increasing total purchase rate may require reducing friction and lowering commitment, while pushing the 12-week plan may improve revenue per user but cost overall conversion.
               </p>
-              <div className="space-y-3 rounded-[24px] border border-[#d7e8f7] bg-[#f7fbff] p-6">
-                {[
-                  ["Goal A", "Lift overall paywall conversion across any plan purchase."],
-                  ["Goal B", "Shift more purchasers toward the 12-week plan to raise AOV."],
-                  ["Constraint", "Keep the existing 1 / 4 / 12-week ladder and offer mechanics intact."],
-                ].map(([label, body]) => (
-                  <div key={label} className="flex gap-3">
-                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#1183D0]" />
-                    <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                      <strong className="font-semibold text-[#0e2951]">{label} </strong>
-                      {body}
-                    </p>
-                  </div>
-                ))}
-              </div>
+            </div>
+          </div>
+          <div className="mx-auto mt-10 max-w-[980px]">
+            <h3 className="text-center font-inter text-[28px] leading-tight text-[#0e2951]">Experiment goals</h3>
+            <p className="mx-auto mt-4 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              The experiments were framed around one conversion objective, one revenue objective, and one constraint that kept the proposed changes grounded in the existing offer structure.
+            </p>
+            <div className="mt-8 grid gap-4 md:grid-cols-3">
+              {[
+                ["Goal A", "Lift overall paywall conversion across any plan purchase."],
+                ["Goal B", "Shift more purchasers toward the 12-week plan to raise AOV."],
+                ["Constraint", "Keep the existing 1 / 4 / 12-week ladder and offer mechanics intact."],
+              ].map(([label, body]) => (
+                <Card key={label} className="overflow-hidden">
+                  <CardContent className="p-7 text-center">
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{label}</p>
+                    <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{body}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
