@@ -3833,7 +3833,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#2a5cb8]">experiment b</span>
                 </div>
                 <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
-                  <strong className="text-[#0e2951]">Hypothesis. </strong>Reframing from $/day to &quot;time to reach your target weight&quot; makes shorter plans look insufficient and pulls mix toward the 12-week.
+                  <strong className="text-[#0e2951]">Hypothesis. </strong>Reframing the comparison from &quot;$/day&quot; to &quot;time to reach your target weight&quot; makes 1-wk and 4-wk look insufficient and pulls mix toward 12-wk.
+                  <br />
+                  <strong className="text-[#0e2951]">Primary metric: </strong>% of purchasers picking 12-wk · AOV.
                 </div>
                 {/* Phone */}
                 <div className="relative rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17]">
@@ -4001,6 +4003,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                               </div>
                             </div>
                           </div>
+                        </div>
+                        <div className="mt-3 flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
+                          <span className="text-[10px] uppercase text-white">12-WK</span>
+                          <span className="text-[11px] font-bold uppercase text-white">Continue</span>
                         </div>
                       </div>
                     </div>
