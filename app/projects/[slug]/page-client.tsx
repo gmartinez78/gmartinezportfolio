@@ -2625,6 +2625,29 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         Since Everflow supports rotating or split-testing different landing pages and sending traffic to specific pages through Offer URLs or Smart Links, I would first test goal-based static variants without new development if possible. If that improves email completion, then investing in a reusable dynamic personalization component would be more justified.
                       </p>
                     </div>
+                    <div className="mt-6 overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-[#f8fbff]">
+                      <div className="grid grid-cols-[1.2fr_0.8fr_0.8fr_1fr] gap-3 border-b border-[#d7e8f7] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#0e2951]">
+                        <div>Change</div>
+                        <div>CMS</div>
+                        <div>Dev</div>
+                        <div>Testing</div>
+                      </div>
+                      {[
+                        ["CTA, subtitle, trust copy", "Yes", "No", "Fast"],
+                        ["Static goal-based variants", "Yes", "No", "Everflow"],
+                        ["Dynamic goal headline", "Partial", "Yes", "Later"],
+                      ].map((row) => (
+                        <div
+                          key={row[0]}
+                          className="grid grid-cols-[1.2fr_0.8fr_0.8fr_1fr] gap-3 border-b border-[#e7eef6] px-4 py-3 text-[13px] leading-[1.5] text-[#5c7792] last:border-b-0"
+                        >
+                          <div className="font-medium text-[#0e2951]">{row[0]}</div>
+                          <div>{row[1]}</div>
+                          <div>{row[2]}</div>
+                          <div>{row[3]}</div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
