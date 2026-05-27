@@ -2616,37 +2616,42 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <div className="px-6 py-6 text-left">
                     <div className="mt-3 space-y-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
                       <p>
-                        For the email step, the design fix focuses on strengthening the value exchange before asking for the user&apos;s email. Research shows users are more likely to complete a form when the request is tied to a clear reward, so this version reframes the page around the user&apos;s selected main goal, such as weight loss, and uses outcome-based copy like &ldquo;See my plan&rdquo; instead of a generic &ldquo;Continue.&rdquo;
-                      </p>
-                      <p>
-                        Because the funnel is built in a templated CMS, I would treat the CTA, subtitle, trust message, and static page copy as parameterizable changes that can be tested without engineering. The main exception is dynamically changing the headline across three different goals, which would likely require conditional logic or a new CMS variable.
-                      </p>
-                      <p>
-                        If the CMS supports duplicated pages or static page variants, I would first test one goal-based version per segment without new development and route traffic to each version. If those variants improve email completion, then investing in a reusable dynamic personalization component would be easier to justify.
+                        The design fix focuses on strengthening the value exchange before asking for the user&apos;s email. Research shows users are more likely to complete a form when the request is tied to a clear reward, so this version reframes the page around the user&apos;s selected main goal, such as weight loss, and uses outcome-based copy like &ldquo;See my plan&rdquo; instead of a generic &ldquo;Continue.&rdquo;
                       </p>
                     </div>
-                    <div className="mt-6 overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-[#f8fbff]">
-                      <div className="grid grid-cols-[1.2fr_0.8fr_0.8fr_1fr] gap-3 border-b border-[#d7e8f7] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#0e2951]">
-                        <div>Change</div>
-                        <div>CMS</div>
-                        <div>Dev</div>
-                        <div>Testing</div>
-                      </div>
-                      {[
-                        ["CTA, subtitle, trust copy", "Yes", "No", "Fast"],
-                        ["Static goal-based variants", "Yes", "No", "Everflow"],
-                        ["Dynamic goal headline", "Partial", "Yes", "Later"],
-                      ].map((row) => (
-                        <div
-                          key={row[0]}
-                          className="grid grid-cols-[1.2fr_0.8fr_0.8fr_1fr] gap-3 border-b border-[#e7eef6] px-4 py-3 text-[13px] leading-[1.5] text-[#5c7792] last:border-b-0"
-                        >
-                          <div className="font-medium text-[#0e2951]">{row[0]}</div>
-                          <div>{row[1]}</div>
-                          <div>{row[2]}</div>
-                          <div>{row[3]}</div>
+                    <div className="mt-6 grid gap-4">
+                      <div className="rounded-[18px] border border-[#d7e8f7] bg-[#f8fbff] p-5">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
+                            CMS-ready
+                          </span>
+                          <span className="inline-flex rounded-full bg-[#e0f2fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#0369a1]">
+                            No engineering
+                          </span>
                         </div>
-                      ))}
+                        <h4 className="mt-4 font-inter text-[18px] font-semibold leading-[1.35] text-[#0e2951]">
+                          What can be tested now
+                        </h4>
+                        <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                          Because the funnel is built in a templated CMS, I would treat the CTA, subtitle, trust message, and static page copy as parameterizable changes that can be tested without engineering.
+                        </p>
+                      </div>
+                      <div className="rounded-[18px] border border-[#d7e8f7] bg-white p-5">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="inline-flex rounded-full bg-[#fee2e2] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b91c1c]">
+                            Needs dev
+                          </span>
+                          <span className="inline-flex rounded-full bg-[#ede9fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#6d28d9]">
+                            Conditional logic
+                          </span>
+                        </div>
+                        <h4 className="mt-4 font-inter text-[18px] font-semibold leading-[1.35] text-[#0e2951]">
+                          What comes next
+                        </h4>
+                        <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                          The main exception is dynamically changing the headline across three different goals, which would likely require conditional logic or a new CMS variable. If the CMS supports duplicated pages or static page variants, I would first test one goal-based version per segment without new development and route traffic to each version. If those variants improve email completion, then investing in a reusable dynamic personalization component would be easier to justify.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
