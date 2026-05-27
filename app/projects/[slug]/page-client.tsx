@@ -1641,21 +1641,21 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         <tr key={`${row.step}-${rowIndex}`} className="bg-white">
                           <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-[#1c1e21]">
                             <div className="flex items-center gap-3">
-                              {(() => {
-                                const performance = getReverseTechPerformanceLabel(row.step);
-                                return performance ? (
-                                  <span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] ${performance.className}`}>
-                                    {performance.label}
-                                  </span>
-                                ) : (
-                                  <span
-                                    className="h-3 w-3 rounded-full"
-                                    style={{ backgroundColor: typeof row.dotColor === "string" ? row.dotColor : "#22c55e" }}
-                                  />
-                                );
-                              })()}
                               <div className="flex flex-wrap items-center gap-2">
                                 <span className="font-medium">{typeof row.step === "string" ? row.step : ""}</span>
+                                {(() => {
+                                  const performance = getReverseTechPerformanceLabel(row.step);
+                                  return performance ? (
+                                    <span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] ${performance.className}`}>
+                                      {performance.label}
+                                    </span>
+                                  ) : (
+                                    <span
+                                      className="h-3 w-3 rounded-full"
+                                      style={{ backgroundColor: typeof row.dotColor === "string" ? row.dotColor : "#22c55e" }}
+                                    />
+                                  );
+                                })()}
                                 {typeof row.tag === "string" ? (
                                   <span className="inline-flex rounded-[4px] bg-[#dbeafe] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#1e40af]">
                                     {row.tag}
@@ -1686,28 +1686,30 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     <Card key={`mobile-${row.step}-${rowIndex}`}>
                       <CardContent className="space-y-4 px-5 py-5">
                         <div className="flex items-center gap-3">
-                          {(() => {
-                            const performance = getReverseTechPerformanceLabel(row.step);
-                            return performance ? (
-                              <span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] ${performance.className}`}>
-                                {performance.label}
-                              </span>
-                            ) : (
-                              <span
-                                className="h-3 w-3 rounded-full"
-                                style={{ backgroundColor: typeof row.dotColor === "string" ? row.dotColor : "#22c55e" }}
-                              />
-                            );
-                          })()}
                           <div>
-                            <p className="text-[18px] font-semibold text-[#0e2951]">
-                              {typeof row.step === "string" ? row.step : ""}
-                            </p>
-                            {typeof row.tag === "string" ? (
-                              <span className="mt-2 inline-flex rounded-[4px] bg-[#dbeafe] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#1e40af]">
-                                {row.tag}
-                              </span>
-                            ) : null}
+                            <div className="flex flex-wrap items-center gap-2">
+                              <p className="text-[18px] font-semibold text-[#0e2951]">
+                                {typeof row.step === "string" ? row.step : ""}
+                              </p>
+                              {(() => {
+                                const performance = getReverseTechPerformanceLabel(row.step);
+                                return performance ? (
+                                  <span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] ${performance.className}`}>
+                                    {performance.label}
+                                  </span>
+                                ) : (
+                                  <span
+                                    className="h-3 w-3 rounded-full"
+                                    style={{ backgroundColor: typeof row.dotColor === "string" ? row.dotColor : "#22c55e" }}
+                                  />
+                                );
+                              })()}
+                              {typeof row.tag === "string" ? (
+                                <span className="inline-flex rounded-[4px] bg-[#dbeafe] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#1e40af]">
+                                  {row.tag}
+                                </span>
+                              ) : null}
+                            </div>
                           </div>
                         </div>
                         <div className="grid grid-cols-2 gap-3 text-[12px] leading-[1.5] text-[#5c7792]">
@@ -2547,35 +2549,36 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             )}
             {caseStudy.slug === "reversetech" ? (
               <div className="mx-auto mt-12 max-w-[920px]">
-                <div className="flex items-center justify-center gap-2 px-4 pb-6">
-                  <button
-                    type="button"
-                    onClick={() => setReversetechComparisonTab("before")}
-                    className={`inline-flex rounded-full px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.08em] transition-colors ${
-                      reversetechComparisonTab === "before"
-                        ? "bg-[#0e2951] text-white"
-                        : "bg-white text-[#5c7792]"
-                    }`}
-                  >
-                    Before
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setReversetechComparisonTab("after")}
-                    className={`inline-flex rounded-full px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.08em] transition-colors ${
-                      reversetechComparisonTab === "after"
-                        ? "bg-[#1183D0] text-white"
-                        : "bg-white text-[#5c7792]"
-                    }`}
-                  >
-                    After
-                  </button>
-                </div>
                 <div className="grid items-start gap-0 md:grid-cols-[320px_minmax(0,1fr)]">
                   <div className="px-6 pb-4 text-center md:pb-0">
-                    <p className="mb-4 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
-                      {reversetechComparisonTab === "before" ? "Before" : "After"}
-                    </p>
+                    <div className="mb-4 flex justify-center">
+                      <div className="inline-flex rounded-full border border-[#d7e8f7] bg-[#f8fbff] p-1 shadow-[0_8px_24px_rgba(17,131,208,0.08)]">
+                        <button
+                          type="button"
+                          onClick={() => setReversetechComparisonTab("before")}
+                          aria-pressed={reversetechComparisonTab === "before"}
+                          className={`min-w-[96px] rounded-full px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.08em] transition-all ${
+                            reversetechComparisonTab === "before"
+                              ? "bg-[#0e2951] text-white shadow-[0_6px_16px_rgba(14,41,81,0.22)]"
+                              : "text-[#5c7792]"
+                          }`}
+                        >
+                          Before
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setReversetechComparisonTab("after")}
+                          aria-pressed={reversetechComparisonTab === "after"}
+                          className={`min-w-[96px] rounded-full px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.08em] transition-all ${
+                            reversetechComparisonTab === "after"
+                              ? "bg-[#1183D0] text-white shadow-[0_6px_16px_rgba(17,131,208,0.22)]"
+                              : "text-[#5c7792]"
+                          }`}
+                        >
+                          After
+                        </button>
+                      </div>
+                    </div>
                     <button
                       type="button"
                       onClick={() =>
@@ -2611,11 +2614,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </button>
                   </div>
                   <div className="px-6 py-6 text-left">
-                      <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                        {reversetechComparisonTab === "before"
-                          ? "Add before-state placeholder text here. I will change this later."
-                          : "Add after-state placeholder text here. I will change this later."}
-                      </p>
+                    <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                      For the proposed email screen, the design fix focuses on improving the value exchange before asking for the user&apos;s email. The research suggests that users are more likely to complete a form when the request feels connected to a clear reward, so this version reframes the page around the user&apos;s selected main goal, such as weight loss, and uses outcome-based copy like &ldquo;See my plan&rdquo; instead of a generic &ldquo;Continue.&rdquo; Because the funnel is built in a templated CMS, I would treat the CTA, subtitle, trust message, and static page copy as parameterizable changes that can be tested without engineering. However, dynamically changing the headline across three different goals would likely require conditional logic or a new CMS variable, unless the current setup already supports passing quiz answers into later screens. Since Everflow supports rotating or split-testing different landing pages and sending traffic to specific pages through Offer URLs or Smart Links, I would first test goal-based static variants without new development if possible. If that improves email completion, then investing in a reusable dynamic personalization component would be more justified.
+                    </p>
                   </div>
                 </div>
               </div>
