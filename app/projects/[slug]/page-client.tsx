@@ -984,6 +984,30 @@ function shouldHideInsight(value: string) {
   );
 }
 
+const REVERSE_TECH_PAGE_NAV = [
+  {
+    title: "The Problem",
+    href: "#rt-problem",
+    children: [
+      { label: "Situation", href: "#situation" },
+      { label: "Task", href: "#task" },
+    ],
+  },
+  {
+    title: "Funnel Diagnosis",
+    href: "#rt-funnel-diagnosis",
+    children: [
+      { label: "31. Age Step", href: "#rt-age-step" },
+      { label: "4. Main Goal", href: "#rt-main-goal" },
+      { label: "34. Enter Email", href: "#rt-enter-email" },
+    ],
+  },
+  { title: "Design Proposal", href: "#rt-design-proposal" },
+  { title: "Principal Hypothesis", href: "#content-variants" },
+  { title: "Hypothesis 1", href: "#cta-variants" },
+  { title: "Sources", href: "#rt-sources" },
+] as const;
+
 export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const { caseStudy, loading } = usePublicCaseStudy(slug);
   const { caseStudies } = usePublicCaseStudies();
@@ -1386,7 +1410,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {visibleStoryBlocks.length ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        <section id="rt-problem" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
             <div>
               <SectionHeading eyebrow="Case Study" title="The problem" className="mb-12" />
@@ -1394,7 +1418,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 {visibleStoryBlocks.map((block) => {
                   const items = getPayloadList(block.payload, "items");
                   return (
-                    <div key={block.id}>
+                    <div key={block.id} id={caseStudy.slug === "reversetech" ? block.id : undefined} className={caseStudy.slug === "reversetech" ? "scroll-mt-24" : undefined}>
                       {block.title !== "Situation" && block.title !== "Actions" ? (
                         <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">
                           {block.title}
@@ -1431,19 +1455,56 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
 
             <div className="grid gap-4">
-              {problemMetrics.map((metric) => (
-                <Card key={`${metric.label}-${metric.value}`} className="overflow-hidden">
-                  <CardContent className="px-7 py-7">
-                    <p className="text-[30px] font-bold leading-none text-[#0e2951]">{metric.value}</p>
-                    <p className="mt-3 text-[16px] leading-[1.625em] text-[#0e2951]">
-                      {metric.label}
-                    </p>
-                    {metric.context ? (
-                      <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{metric.context}</p>
-                    ) : null}
-                  </CardContent>
-                </Card>
-              ))}
+              {caseStudy.slug === "reversetech" ? (
+                <div className="lg:sticky lg:top-24">
+                  <Card className="overflow-hidden border border-[#d7e8f7] shadow-[0_18px_40px_rgba(14,41,81,0.08)]">
+                    <CardContent className="px-6 py-6">
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">
+                        On This Page
+                      </p>
+                      <div className="mt-5 space-y-5">
+                        {REVERSE_TECH_PAGE_NAV.map((item) => (
+                          <div key={item.title}>
+                            <a
+                              href={item.href}
+                              className="font-inter text-[15px] font-semibold leading-[1.5] text-[#0e2951] transition-colors hover:text-[#1183D0]"
+                            >
+                              {item.title}
+                            </a>
+                            {"children" in item && item.children?.length ? (
+                              <div className="mt-3 space-y-2 border-l border-[#d7e8f7] pl-4">
+                                {item.children.map((child) => (
+                                  <a
+                                    key={child.href}
+                                    href={child.href}
+                                    className="block font-inter text-[14px] leading-[1.6] text-[#5c7792] transition-colors hover:text-[#1183D0]"
+                                  >
+                                    {child.label}
+                                  </a>
+                                ))}
+                              </div>
+                            ) : null}
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              ) : (
+                problemMetrics.map((metric) => (
+                  <Card key={`${metric.label}-${metric.value}`} className="overflow-hidden">
+                    <CardContent className="px-7 py-7">
+                      <p className="text-[30px] font-bold leading-none text-[#0e2951]">{metric.value}</p>
+                      <p className="mt-3 text-[16px] leading-[1.625em] text-[#0e2951]">
+                        {metric.label}
+                      </p>
+                      {metric.context ? (
+                        <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{metric.context}</p>
+                      ) : null}
+                    </CardContent>
+                  </Card>
+                ))
+              )}
             </div>
           </div>
         </section>
@@ -1471,7 +1532,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       )}
 
       {taskDetailBlock ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        <section id="rt-funnel-diagnosis" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading eyebrow={taskDetailBlock.title} title={taskDetailHeading ?? taskDetailBlock.title} centered className="mb-12" />
           <div className="mx-auto max-w-[1040px]">
             {taskDetailBlock.body ? (
@@ -1591,7 +1652,21 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {taskDetailAnalyses.length ? (
               <div className="mt-14 space-y-14">
                 {taskDetailAnalyses.map((item, index) => (
-                  <div key={`${item.title}-${index}`} className="mx-auto max-w-[860px]">
+                  <div
+                    key={`${item.title}-${index}`}
+                    id={
+                      typeof item.title === "string"
+                        ? item.title.includes("Age Step")
+                          ? "rt-age-step"
+                          : item.title.includes("Main goal")
+                            ? "rt-main-goal"
+                            : item.title.includes("Enter Email")
+                              ? "rt-enter-email"
+                              : undefined
+                        : undefined
+                    }
+                    className="mx-auto max-w-[860px] scroll-mt-24"
+                  >
                     <div className="mx-auto max-w-[760px] text-center">
                       <h3 className="text-[22px] font-semibold leading-[1.3] text-[#1c1e21]">
                         {typeof item.title === "string" ? item.title : ""}
@@ -1730,7 +1805,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {caseStudy.slug !== "nayya-ai-benefits" && caseStudy.slug !== "flock-accessibility-system" && caseStudy.slug !== "i9-everify-integration" && (caseStudy.constraints?.length ?? 0) > 0 ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        <section id="rt-design-proposal" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title="Constraints" centered className="mb-12" />
           <div className="grid gap-6 md:grid-cols-2">
             {(caseStudy.constraints ?? []).map((item) => (
@@ -2395,7 +2470,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               { block: ctaVariantsBlock, variants: ctaVariants },
             ].map(({ block, variants }) =>
               block && variants.length ? (
-                <div key={block.id}>
+                <div key={block.id} id={caseStudy.slug === "reversetech" ? block.id : undefined} className={caseStudy.slug === "reversetech" ? "scroll-mt-24" : undefined}>
+                  {caseStudy.slug === "reversetech" && block.id === "content-variants" ? (
+                    <p className="mb-3 text-center font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
+                      Principal Hypothesis
+                    </p>
+                  ) : null}
                   {caseStudy.slug === "reversetech" && block.id === "cta-variants" ? (
                     <p className="mb-3 text-center font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
                       Hypothesis 1
@@ -2484,7 +2564,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {caseStudy.slug === "reversetech" && hypothesisItems.length ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        <section id="rt-sources" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title="Hypothesis 1" centered className="mb-12" />
           <div className="mx-auto max-w-[820px] space-y-8 text-center">
             {hypothesisItems.map((item) => (

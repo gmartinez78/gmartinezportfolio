@@ -7,7 +7,7 @@
     "title": "Enhancing Benefits Enrollment",
     "company": "Paychex & Flock",
     "client_context": "Paychex & Flock",
-    "role": "Sr. Product Designer",
+    "role": "Senior Product Designer (Growth & Monetization)",
     "year": 2025,
     "duration": "3 months",
     "industry": "BENEFITS / ENSURANCE SAAS",
@@ -843,7 +843,7 @@
     "year": 2026,
     "duration": "Strategy and funnel analysis",
     "industry": "Health & Fitness / Growth Funnel",
-    "tagline": "After diagnosing a 44-step quiz funnel, I focused on the Enter Email step, the second-largest drop-off, and proposed testable content and CTA directions to make the value exchange feel clearer and more personalized.",
+    "tagline": "A growth-focused case study about interpreting funnel data, identifying UX and conversion problems, and turning those insights into testable design solutions.",
     "tags": [
       "Growth",
       "UX Research",
@@ -1037,19 +1037,19 @@
             {
               "label": "Variant 1",
               "title": "See my personalized plan",
-              "body": "This version makes the offer more specific by naming the Calisthenics plan directly. The hypothesis is that a clearer product label can make the email step feel more credible and less like generic lead capture.",
+              "body": "Makes the offer more specific by naming the Calisthenics plan directly. The hypothesis is that a clearer product label can make the email step feel more credible and less like generic lead capture.",
               "imageSrc": "/images/projects/Reversetech/cta-variant-1.svg"
             },
             {
               "label": "Variant 2",
               "title": "Get my calisthenics plan",
-              "body": "This variant keeps the same product-specific headline, but presents the email ask in a slightly cleaner, more direct way. It tests whether reducing extra phrasing around the field makes the step feel faster while still giving users enough confidence to continue.",
+              "body": "Keeps the same product-specific headline, but presents the email ask in a slightly cleaner way. It tests whether reducing extra phrasing around the field makes the step feel faster while still giving users enough confidence to continue.",
               "imageSrc": "/images/projects/Reversetech/cta-variant-2.svg"
             },
             {
               "label": "Variant 3",
               "title": "Unlock my personalized plan",
-              "body": "This version is the most stripped back. It relies on the personalized Calisthenics headline to do most of the persuasion.",
+              "body": "Is the most stripped back. It relies on the personalized Calisthenics headline to do most of the persuasion.",
               "imageSrc": "/images/projects/Reversetech/cta-variant-3.svg"
             }
           ]
@@ -1066,19 +1066,19 @@
             {
               "label": "Variant 3",
               "title": "Variation: Category, Headline, Subtitle and Help Text",
-              "body": "This variant introduces energetic results-focused message and ties the plan to a concrete fitness outcome. It is more motivational than the others, but it depends on strong relevance.",
+              "body": "Introduces energetic results-focused message and ties the plan to a concrete fitness outcome. It is more motivational than the others, but it depends on strong relevance.",
               "imageSrc": "/images/projects/Reversetech/content-variant-3.svg"
             },
             {
               "label": "Variant 2",
               "title": "Category, Headline, Subtitle and Help Text",
-              "body": "This option keeps the plan-ready framing and pairs it with a direct no-spam reassurance. It is the safest content variant because it clarifies what the user gets while lowering privacy anxiety without adding too much extra explanation.",
+              "body": "Keeps the plan-ready framing and pairs it with a direct no-spam reassurance. It is the safest content variant because it clarifies what the user gets while lowering privacy anxiety without adding too much extra explanation.",
               "imageSrc": "/images/projects/Reversetech/content-variant-2.svg"
             },
             {
               "label": "Variant 1",
               "title": "Category and Headline",
-              "body": "This version personalizes the headline based on the user’s selected goal, such as weight loss. It makes the outcome feel more relevant and tailored, while keeping the email step connected to what the user already chose. The tradeoff is that it narrows the promise earlier, so the main goal selected needs to be here to keep the user's motivations.",
+              "body": "Personalizes the headline based on the user’s selected goal. It makes the outcome feel relevant and tailored, while keeping the email step connected to what the user already chose. The tradeoff is that it narrows the promise earlier, so the main goal selected needs to be here to keep the user's motivations.",
               "imageSrc": "/images/projects/Reversetech/content-variant-1.svg"
             }
           ]
