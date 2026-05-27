@@ -1466,8 +1466,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {visibleStoryBlocks.length ? (
         <section id="rt-problem" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <div className={`grid gap-10 ${caseStudy.slug === "reversetech" ? "" : "lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start"}`}>
-            <div>
+          <div className={caseStudy.slug === "reversetech" ? "mx-auto max-w-[860px]" : "grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start"}>
+            <div className={caseStudy.slug === "reversetech" ? "text-center" : ""}>
               <SectionHeading eyebrow="Case Study" title="The problem" className="mb-12" />
               <div className="space-y-10">
                 {visibleStoryBlocks.map((block) => {
@@ -1481,13 +1481,25 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       ) : null}
                       {block.body ? (
                         block.body.split(/\n+/).map((paragraph, idx) => (
-                          <p key={idx} className="max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#5c7792] mb-4 last:mb-0">{paragraph.trim()}</p>
+                          <p
+                            key={idx}
+                            className={`font-inter text-[16px] leading-[1.7] text-[#5c7792] mb-4 last:mb-0 ${
+                              caseStudy.slug === "reversetech" ? "mx-auto max-w-[760px]" : "max-w-[720px]"
+                            }`}
+                          >
+                            {paragraph.trim()}
+                          </p>
                         ))
                       ) : null}
                       {items.length ? (
                         <div className="mt-5 space-y-3">
                           {items.map((item) => (
-                            <p key={item} className="max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                            <p
+                              key={item}
+                              className={`font-inter text-[16px] leading-[1.7] text-[#5c7792] ${
+                                caseStudy.slug === "reversetech" ? "mx-auto max-w-[760px]" : "max-w-[720px]"
+                              }`}
+                            >
                               {item}
                             </p>
                           ))}
@@ -3518,7 +3530,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <p className="mx-auto max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               The experiments were framed around one conversion objective, one revenue objective, and one constraint that kept the proposed changes grounded in the existing offer structure.
             </p>
-            <div className="mt-8 grid gap-6 md:grid-cols-3 md:gap-0">
+            <div className="mt-12 grid gap-8 md:grid-cols-3 md:gap-0">
               {[
                 ["Goal A", "Lift overall paywall conversion across any plan purchase."],
                 ["Goal B", "Shift more purchasers toward the 12-week plan to raise AOV."],
@@ -3526,11 +3538,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               ].map(([label, body], index) => (
                 <div
                   key={label}
-                  className={`text-center ${index > 0 ? "md:border-l md:border-[#d7e8f7] md:pl-6" : ""} ${index < 2 ? "md:pr-6" : ""}`}
+                  className={`py-3 text-center ${index > 0 ? "md:border-l md:border-[#d7e8f7] md:pl-8" : ""} ${index < 2 ? "md:pr-8" : ""}`}
                 >
                   <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{label}</p>
                   <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{body}</p>
-                  {index < 2 ? <div className="mt-6 h-px bg-[#d7e8f7] md:hidden" /> : null}
+                  {index < 2 ? <div className="mt-8 h-px bg-[#d7e8f7] md:hidden" /> : null}
                 </div>
               ))}
             </div>
@@ -3583,7 +3595,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   [
                     "4",
                     "Plan ladder (1 / 4 / 12 wk)",
-                    "Per-day price is the dominant number, strikethrough anchors total price. 12-week marked Best Value. No plan is pre-selected, no obvious primary.",
+                    "Per-day price is the dominant number, strikethrough anchors total price.",
                   ],
                   [
                     "5",
@@ -3597,16 +3609,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   ],
                   [
                     "7",
-                    "Big CTA + small-print legal",
-                    "Defaults to charging for the 12-week, but the user may not realize that if they didn't actively select.",
-                  ],
-                  [
-                    "8",
                     "Long scroll",
                     'App, "as seen in", testimonial, plan ladder repeated. Repetition catches scrollers but adds a lot of dead weight.',
                   ],
                   [
-                    "9",
+                    "8",
                     "Money-back stamp + safe-checkout + contact",
                     "Trust closer at the very end.",
                   ],
