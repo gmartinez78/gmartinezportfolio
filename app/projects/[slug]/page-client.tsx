@@ -1576,10 +1576,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <div className="mx-auto max-w-[900px] border-b border-[#d7e8f7]">
             <div className="flex flex-wrap items-end justify-center gap-0">
             {[
-              { id: "task1" as const, label: "Task 1", description: "Funnel diagnosis" },
-              { id: "task2" as const, label: "Task 2", description: "Paywall experiments" },
-              { id: "task3" as const, label: "Task 3", description: "Competitor patterns" },
-              { id: "task4" as const, label: "Task 4", description: "Extra process" },
+              { id: "task1" as const, label: "Task 1" },
+              { id: "task2" as const, label: "Task 2" },
+              { id: "task3" as const, label: "Task 3" },
+              { id: "task4" as const, label: "Task 4" },
             ].map((item, index) => (
               <button
                 key={item.label}
@@ -1592,7 +1592,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 } ${index > 0 ? "-ml-px" : ""}`}
               >
                 <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{item.label}</p>
-                <p className="mt-1 font-inter text-[14px] text-[#0e2951]">{item.description}</p>
                 {reversetechTaskTab === item.id ? (
                   <span className="absolute inset-x-0 -bottom-px h-px bg-white" />
                 ) : null}
