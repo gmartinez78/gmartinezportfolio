@@ -34,7 +34,7 @@ values (
   'published',
   false,
   6,
-  'Reverse Health Email Step Optimization',
+  'Senior Product Designer (Growth & Monetization)',
   'Reverse Health',
   'Paid search acquisition funnel',
   'Senior Product Designer (Growth & Monetization)',
@@ -94,7 +94,7 @@ values (
   }'::jsonb,
   array[
     'I chose Enter Email as the focus because it is the second-largest in-funnel drop-off and a critical moment to lose users. The main issue is a weak value exchange: users are asked to give their email and attention before clearly seeing what they will receive. As a result, the step feels more like lead capture than part of the personalized plan experience, so I proposed testing a few solutions.',
-    'Hypothesis 1',
+    'Hypothesis 2',
     'To reduce friction, the pages before email should better prepare users by showing progress, reinforcing why each question matters, and previewing the value of the final plan.',
     'Adding trust signals, visible progress, app previews, and more relevant imagery would also make the ask feel safer and more connected to the product.'
   ],
@@ -204,7 +204,7 @@ values (
           {
             "label":"Variant 2",
             "title":"Get my calisthenics plan",
-            "body":"Keeps the same product-specific headline, but presents the email ask in a slightly cleaner way. It tests whether reducing extra phrasing around the field makes the step feel faster while still giving users enough confidence to continue.",
+            "body":"Presents the email ask in a slightly cleaner way. It tests whether reducing extra phrasing around the field makes the step feel faster while still giving users enough confidence to continue.",
             "imageSrc":"/images/projects/Reversetech/cta-variant-2.svg"
           },
           {

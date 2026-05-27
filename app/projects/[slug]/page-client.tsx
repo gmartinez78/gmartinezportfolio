@@ -984,6 +984,25 @@ function shouldHideInsight(value: string) {
   );
 }
 
+function getReverseTechPerformanceLabel(step: unknown) {
+  if (typeof step !== "string") {
+    return null;
+  }
+
+  const normalized = step.toLowerCase();
+  if (normalized.includes("31. age")) {
+    return { label: "Good", className: "bg-[#dcfce7] text-[#15803d]" };
+  }
+  if (normalized.includes("4. main goal")) {
+    return { label: "Moderate", className: "bg-[#fef3c7] text-[#b45309]" };
+  }
+  if (normalized.includes("34. enter email")) {
+    return { label: "Poor", className: "bg-[#fee2e2] text-[#b91c1c]" };
+  }
+
+  return null;
+}
+
 const REVERSE_TECH_PAGE_NAV = [
   {
     title: "The Problem",
@@ -1005,6 +1024,7 @@ const REVERSE_TECH_PAGE_NAV = [
   { title: "Design Proposal", href: "#rt-design-proposal" },
   { title: "Principal Hypothesis", href: "#content-variants" },
   { title: "Hypothesis 1", href: "#cta-variants" },
+  { title: "Hypothesis 2", href: "#rt-hypothesis-2" },
   { title: "Sources", href: "#rt-sources" },
 ] as const;
 
@@ -1241,7 +1261,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const projectYear = caseStudy.year;
   const heroImage = resolveProjectHeroImage(caseStudy.slug, caseStudy.images.hero);
   const designProposalTitle = caseStudy.slug === "reversetech" ? "Design Proposal" : "Design Proposal";
-  const hypothesisIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf("Hypothesis 1") : -1;
+  const hypothesisIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf("Hypothesis 2") : -1;
   const designNotesIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf("A few notes") : -1;
   const designProposalLinks =
     caseStudy.slug === "reversetech"
@@ -1571,10 +1591,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         <tr key={`${row.step}-${rowIndex}`} className="bg-white">
                           <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-[#1c1e21]">
                             <div className="flex items-center gap-3">
-                              <span
-                                className="h-3 w-3 rounded-full"
-                                style={{ backgroundColor: typeof row.dotColor === "string" ? row.dotColor : "#22c55e" }}
-                              />
+                              {(() => {
+                                const performance = getReverseTechPerformanceLabel(row.step);
+                                return performance ? (
+                                  <span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] ${performance.className}`}>
+                                    {performance.label}
+                                  </span>
+                                ) : (
+                                  <span
+                                    className="h-3 w-3 rounded-full"
+                                    style={{ backgroundColor: typeof row.dotColor === "string" ? row.dotColor : "#22c55e" }}
+                                  />
+                                );
+                              })()}
                               <div className="flex flex-wrap items-center gap-2">
                                 <span className="font-medium">{typeof row.step === "string" ? row.step : ""}</span>
                                 {typeof row.tag === "string" ? (
@@ -1607,10 +1636,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     <Card key={`mobile-${row.step}-${rowIndex}`}>
                       <CardContent className="space-y-4 px-5 py-5">
                         <div className="flex items-center gap-3">
-                          <span
-                            className="h-3 w-3 rounded-full"
-                            style={{ backgroundColor: typeof row.dotColor === "string" ? row.dotColor : "#22c55e" }}
-                          />
+                          {(() => {
+                            const performance = getReverseTechPerformanceLabel(row.step);
+                            return performance ? (
+                              <span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] ${performance.className}`}>
+                                {performance.label}
+                              </span>
+                            ) : (
+                              <span
+                                className="h-3 w-3 rounded-full"
+                                style={{ backgroundColor: typeof row.dotColor === "string" ? row.dotColor : "#22c55e" }}
+                              />
+                            );
+                          })()}
                           <div>
                             <p className="text-[18px] font-semibold text-[#0e2951]">
                               {typeof row.step === "string" ? row.step : ""}
@@ -2564,8 +2602,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {caseStudy.slug === "reversetech" && hypothesisItems.length ? (
-        <section id="rt-sources" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title="Hypothesis 1" centered className="mb-12" />
+        <section id="rt-hypothesis-2" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading title="Hypothesis 2" centered className="mb-12" />
           <div className="mx-auto max-w-[820px] space-y-8 text-center">
             {hypothesisItems.map((item) => (
               <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
