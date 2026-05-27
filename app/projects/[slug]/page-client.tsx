@@ -3545,18 +3545,20 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <p className="mx-auto mt-4 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               The experiments were framed around one conversion objective, one revenue objective, and one constraint that kept the proposed changes grounded in the existing offer structure.
             </p>
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <div className="mt-8 grid gap-6 md:grid-cols-3 md:gap-0">
               {[
                 ["Goal A", "Lift overall paywall conversion across any plan purchase."],
                 ["Goal B", "Shift more purchasers toward the 12-week plan to raise AOV."],
                 ["Constraint", "Keep the existing 1 / 4 / 12-week ladder and offer mechanics intact."],
-              ].map(([label, body]) => (
-                <Card key={label} className="overflow-hidden">
-                  <CardContent className="p-7 text-center">
-                    <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{label}</p>
-                    <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{body}</p>
-                  </CardContent>
-                </Card>
+              ].map(([label, body], index) => (
+                <div
+                  key={label}
+                  className={`text-center ${index > 0 ? "md:border-l md:border-[#d7e8f7] md:pl-6" : ""} ${index < 2 ? "md:pr-6" : ""}`}
+                >
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{label}</p>
+                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{body}</p>
+                  {index < 2 ? <div className="mt-6 h-px bg-[#d7e8f7] md:hidden" /> : null}
+                </div>
               ))}
             </div>
           </div>
