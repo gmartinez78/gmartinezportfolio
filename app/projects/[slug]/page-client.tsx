@@ -3564,27 +3564,131 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                 The key tension is that increasing total purchase rate may require reducing friction and lowering commitment, while pushing the 12-week plan may improve revenue per user but cost overall conversion.
               </p>
+              <div className="space-y-3 rounded-[24px] border border-[#d7e8f7] bg-[#f7fbff] p-6">
+                {[
+                  ["Goal A", "Lift overall paywall conversion across any plan purchase."],
+                  ["Goal B", "Shift more purchasers toward the 12-week plan to raise AOV."],
+                  ["Constraint", "Keep the existing 1 / 4 / 12-week ladder and offer mechanics intact."],
+                ].map(([label, body]) => (
+                  <div key={label} className="flex gap-3">
+                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#1183D0]" />
+                    <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                      <strong className="font-semibold text-[#0e2951]">{label} </strong>
+                      {body}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
+          </div>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {[
+              {
+                title: "Decision overload",
+                body: "Three plans, multiple prices, stacked urgency, bonus framing, legal copy, and a repeated ladder ask users to process too much before they feel ready to choose.",
+              },
+              {
+                title: "Weak personalization",
+                body: "The current paywall only lightly echoes quiz inputs. It does not connect a specific plan length to the user’s target weight, timeline, or expected outcome.",
+              },
+              {
+                title: "Cheap-anchor trap",
+                body: "The 12-week plan wins on per-day value, but the 1-week option looks safer on upfront price. That makes the lowest-commitment entry point a drag on AOV.",
+              },
+            ].map((item) => (
+              <Card key={item.title} className="overflow-hidden">
+                <CardContent className="p-7">
+                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
+                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item.body}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-2">
             <Card className="overflow-hidden">
               <CardContent className="p-7">
                 <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Variant A</p>
-                <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Current paywall control</h3>
+                <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Commit, then pay</h3>
                 <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                  Keep the existing paywall unchanged to preserve a baseline for conversion, drop-off, and upgrade intent after the email step.
+                  Collapse the page into one clear decision: recommend and preselect the 12-week plan, personalize the recap above the ladder, and move trust signals directly beside the CTA to reduce drop-off.
                 </p>
+                <ul className="mt-5 space-y-3">
+                  {[
+                    "Replace countdown urgency with a progress indicator such as step 5 of 5.",
+                    "Show a quiz-based recap with current state, target state, and a suggested finish window.",
+                    "Preselect the 12-week plan and collapse the shorter options behind a secondary reveal.",
+                    "Place value stack, guarantee, and safe-checkout cues adjacent to the main CTA.",
+                  ].map((item) => (
+                    <li key={item} className="font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </CardContent>
             </Card>
             <Card className="overflow-hidden">
               <CardContent className="p-7">
                 <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Variant B</p>
-                <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Value-first paywall</h3>
+                <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Days-to-goal framing</h3>
                 <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                  Lead with the user&apos;s selected goal, expected outcome, and what unlocks immediately before emphasizing price, so the upgrade feels like the next logical step rather than a sudden sales wall.
+                  Reframe the comparison away from price-per-day and toward progress toward the user&apos;s target. The 12-week plan becomes the only option that fully gets them there, which should improve plan mix and AOV.
                 </p>
+                <ul className="mt-5 space-y-3">
+                  {[
+                    "Compare plans by how much of the target each one realistically covers.",
+                    "Rename shorter options as a kick-start or habit-building step instead of a full solution.",
+                    "Replace the best-value badge with outcome framing such as reaches your goal.",
+                    "Reserve the bonus consultation and CTA language for the 12-week transformation path.",
+                  ].map((item) => (
+                    <li key={item} className="font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </CardContent>
             </Card>
+          </div>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {[
+              {
+                title: "Measure Variant A",
+                body: "Primary metric: paywall-to-purchase conversion rate.",
+                points: [
+                  "Guardrails: refund rate, NPS, time on paywall, and AOV.",
+                  "Stop if refunds rise materially, suggesting the personalization over-promises.",
+                ],
+              },
+              {
+                title: "Measure Variant B",
+                body: "Primary metric: share of purchasers selecting the 12-week plan and resulting AOV.",
+                points: [
+                  "Guardrails: overall paywall conversion and refund rate.",
+                  "Stop if plan mix improves but overall conversion falls without enough revenue lift.",
+                ],
+              },
+              {
+                title: "What to test next",
+                body: "If either direction shows signal, the next round can combine the strongest mechanics.",
+                points: [
+                  "Combine personalized recap with days-to-goal comparison.",
+                  "Remove the repeated lower plan ladder and test alternate price anchors.",
+                ],
+              },
+            ].map((item) => (
+              <Card key={item.title} className="overflow-hidden">
+                <CardContent className="p-7">
+                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
+                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item.body}</p>
+                  <ul className="mt-5 space-y-3">
+                    {item.points.map((point) => (
+                      <li key={point} className="font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </section>
       ) : null}
