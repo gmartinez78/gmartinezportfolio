@@ -3582,32 +3582,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
           <div className="mx-auto mt-10 max-w-[980px]">
             <h3 className="text-center font-inter text-[28px] leading-tight text-[#0e2951]">Walk-through</h3>
-            <div className="mt-8 grid items-start gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
-            <div className="mx-auto w-full max-w-[320px]">
-              <button
-                type="button"
-                onClick={() =>
-                  setLightboxImage({
-                    src: withBasePath("/images/projects/Reversetech/paywall.png"),
-                    alt: "Current Reversetech paywall design",
-                  })
-                }
-                className="block w-full rounded-[24px] border border-[#d7e8f7] bg-white p-3 text-left shadow-[0_20px_48px_rgba(17,131,208,0.08)] transition-transform hover:scale-[1.01]"
-              >
-                <div className="relative max-h-[440px] overflow-hidden rounded-[18px]">
-                  <span className="absolute left-4 top-4 z-10 inline-flex rounded-[4px] bg-[#dbeafe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#1e40af]">
-                    Current paywall
-                  </span>
-                  <img
-                    src={withBasePath("/images/projects/Reversetech/paywall.png")}
-                    alt="Current Reversetech paywall design"
-                    className="h-auto w-full"
-                  />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/92 to-white/0" />
-                </div>
-              </button>
-            </div>
-            <div>
+            <div className="mx-auto mt-8 max-w-[860px]">
               <div className="space-y-4">
                 {[
                   [
@@ -3663,7 +3638,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 ))}
               </div>
             </div>
-            </div>
           </div>
           <div className="mt-10">
             <h3 className="text-center font-inter text-[28px] leading-tight text-[#0e2951]">Where the leaks probably are</h3>
@@ -3693,52 +3667,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               ))}
             </div>
           </div>
-          <div className="mt-10">
-            <div className="grid gap-4 md:grid-cols-2">
-              <Card className="overflow-hidden">
-                <CardContent className="p-7">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Variant A</p>
-                  <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Commit, then pay</h3>
-                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                    Collapse the page into one clear decision: recommend and preselect the 12-week plan, personalize the recap above the ladder, and move trust signals directly beside the CTA to reduce drop-off.
-                  </p>
-                  <ul className="mt-5 space-y-3">
-                    {[
-                      "Replace countdown urgency with a progress indicator such as step 5 of 5.",
-                      "Show a quiz-based recap with current state, target state, and a suggested finish window.",
-                      "Preselect the 12-week plan and collapse the shorter options behind a secondary reveal.",
-                      "Place value stack, guarantee, and safe-checkout cues adjacent to the main CTA.",
-                    ].map((item) => (
-                      <li key={item} className="font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-              <Card className="overflow-hidden">
-                <CardContent className="p-7">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Variant B</p>
-                  <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Days-to-goal framing</h3>
-                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                    Reframe the comparison away from price-per-day and toward progress toward the user&apos;s target. The 12-week plan becomes the only option that fully gets them there, which should improve plan mix and AOV.
-                  </p>
-                  <ul className="mt-5 space-y-3">
-                    {[
-                      "Compare plans by how much of the target each one realistically covers.",
-                      "Rename shorter options as a kick-start or habit-building step instead of a full solution.",
-                      "Replace the best-value badge with outcome framing such as reaches your goal.",
-                      "Reserve the bonus consultation and CTA language for the 12-week transformation path.",
-                    ].map((item) => (
-                      <li key={item} className="font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
           {/* Phone frames — low-fi wireframes */}
           <div className="mt-12">
             <h3 className="mb-2 text-center font-inter text-[28px] leading-tight text-[#0e2951]">Variants, side by side</h3>
@@ -3757,73 +3685,27 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
                   <strong className="text-[#0e2951]">What ships now. </strong>Plan ladder with two urgency timers, no pre-selection, /day pricing dominant.
                 </div>
-                {/* Phone */}
-                <div className="relative rounded-[36px] border-2 border-[#1c1a17] bg-[#fbf6ea] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17]">
-                  {/* Notch */}
-                  <div className="mx-auto mb-[10px] h-[8px] w-[80px] rounded-full bg-[#1c1a17]" />
-                  {/* Screen */}
-                  <div className="flex min-h-[580px] flex-col gap-[7px] rounded-[18px] border border-dashed border-[#1c1a17] bg-[#fffdf6] p-[10px]">
-                    {/* Sticky top */}
-                    <div className="flex items-center justify-between rounded-[10px] border border-[#1c1a17] bg-white px-2 py-1 font-mono text-[10px]">
-                      <span className="font-semibold">⏱ 09:53</span>
-                      <span className="rounded-full bg-[#c8412a] px-[10px] py-[4px] text-[10px] text-white">Get my plan</span>
-                    </div>
-                    {/* Before/after */}
-                    <div className="grid grid-cols-2 gap-[6px]">
-                      {[["Now photo", "Body fat 30%"], ["After photo", "Body fat 14%"]].map(([label, cap]) => (
-                        <div key={label}>
-                          <div className="flex min-h-[100px] items-center justify-center rounded-[8px] border border-[#1c1a17] bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] p-[4px] text-center font-mono text-[9px] uppercase tracking-wide text-[#4a443a]">{label}</div>
-                          <p className="mt-1 text-center font-mono text-[9px] text-[#1c1a17]">{cap}</p>
-                        </div>
-                      ))}
-                    </div>
-                    {/* Heading */}
-                    <p className="text-center font-semibold text-[#1c1a17]" style={{ fontSize: 14 }}>Choose <span className="text-[#c8412a]">Your Plan!</span></p>
-                    {/* Summary chips */}
-                    <div className="grid grid-cols-2 gap-[5px]">
-                      {[["Goal", "Toned body"], ["Target", "50 kg"]].map(([k, v]) => (
-                        <div key={k} className="rounded-[8px] border border-[#1c1a17] bg-white px-2 py-[5px]">
-                          <p className="font-mono text-[8px] text-[#4a443a]">{k}</p>
-                          <p className="text-[11px] font-bold text-[#1c1a17]">{v}</p>
-                        </div>
-                      ))}
-                    </div>
-                    {/* Urgency */}
-                    <div className="rounded-[8px] bg-[#c8412a] px-2 py-[5px] text-center text-[10px] font-bold text-white">78% discount expires in 09:53</div>
-                    {/* Plans */}
-                    {[
-                      { name: "1-WEEK", old: "$19.99 → $4.99", big: "$0.71", unit: "per day", best: false, pill: null },
-                      { name: "4-WEEK", old: "$39.99 → $9.99", big: "$0.33", unit: "per day", best: false, pill: null },
-                      { name: "12-WEEK", old: "$89.99 → $18.99", big: "$0.21", unit: "per day", best: true, pill: "BEST VALUE" },
-                    ].map((plan) => (
-                      <div key={plan.name} className={`relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border bg-white px-2 py-[7px] ${plan.best ? "border-2 border-[#c8412a]" : "border-[#1c1a17]"}`}>
-                        {plan.pill ? <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#3f7a3a] px-[5px] py-[1px] font-mono text-[8px] text-white">{plan.pill}</span> : null}
-                        <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17] bg-white" />
-                        <div>
-                          <p className="text-[11px] font-bold text-[#1c1a17]">{plan.name}</p>
-                          <p className="font-mono text-[9px] text-[#4a443a] line-through">{plan.old}</p>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-[13px] font-bold text-[#1c1a17]">{plan.big}</p>
-                          <p className="font-mono text-[8px] text-[#4a443a]">{plan.unit}</p>
-                        </div>
-                      </div>
-                    ))}
-                    {/* Gift */}
-                    <div className="grid grid-cols-[1fr_44px] gap-[5px] rounded-[8px] border border-dashed border-[#1c1a17] bg-[#fffaee] px-2 py-[5px] text-[10px] leading-[1.3] text-[#1c1a17]">
-                      <span>🎁 1:1 coach consultation — bonus</span>
-                      <div className="flex items-center justify-center rounded-[6px] border border-[#1c1a17] bg-[#fffdf6] font-mono text-[8px] text-[#4a443a]">img</div>
-                    </div>
-                    <div className="rounded-[8px] border border-[#1c1a17] bg-white px-2 py-[5px] text-center text-[10px] text-[#1c1a17]">30-day money-back guarantee</div>
-                    {/* CTA */}
-                    <div className="flex items-center justify-between rounded-full bg-[#c8412a] px-[12px] py-[8px]">
-                      <span className="font-mono text-[10px] text-white/90">09:53</span>
-                      <span className="text-[12px] font-bold text-white">Get my plan</span>
-                    </div>
-                    <p className="text-[8px] leading-[1.4] text-[#4a443a]">By tapping Get my plan you agree to… recurring $89.99 / 12 wks…</p>
-                    <div className="flex min-h-[36px] items-center justify-center rounded-[8px] border border-[#1c1a17] bg-[#fffdf6] font-mono text-[9px] uppercase text-[#4a443a]">↓ app · "as seen in" · testimonial · plan ladder ↓</div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setLightboxImage({
+                      src: withBasePath("/images/projects/Reversetech/paywall.png"),
+                      alt: "Current Reversetech paywall design",
+                    })
+                  }
+                  className="block w-full rounded-[24px] border border-[#d7e8f7] bg-white p-3 text-left shadow-[0_20px_48px_rgba(17,131,208,0.08)] transition-transform hover:scale-[1.01]"
+                >
+                  <div className="relative max-h-[620px] overflow-hidden rounded-[18px]">
+                    <span className="absolute left-4 top-4 z-10 inline-flex rounded-[4px] bg-[#dbeafe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#1e40af]">
+                      Current paywall
+                    </span>
+                    <img
+                      src={withBasePath("/images/projects/Reversetech/paywall.png")}
+                      alt="Current Reversetech paywall design"
+                      className="h-auto w-full"
+                    />
                   </div>
-                </div>
+                </button>
               </div>
 
               {/* ── Experiment A ── */}
@@ -3834,7 +3716,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <span className="font-inter text-[18px] font-semibold text-[#0e2951]">Commit, then pay</span>
                 </div>
                 <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
-                  <strong className="text-[#0e2951]">Hypothesis. </strong>Collapse the page into one focused decision — pre-selected plan, personalized recap, guarantee adjacent to CTA — to lift overall conversion.
+                  <strong className="text-[#0e2951]">Hypothesis. </strong>If we collapse the page into one focused decision — pre-selected plan, personalized recap, guarantee adjacent to CTA — overall conversion rises.
+                  <br />
+                  <strong className="text-[#0e2951]">Primary metric: </strong>paywall → purchase rate.
                 </div>
                 {/* Phone */}
                 <div className="relative rounded-[36px] border-2 border-[#1c1a17] bg-[#fbf6ea] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17]">
