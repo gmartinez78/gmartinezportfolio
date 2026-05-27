@@ -1085,6 +1085,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
   const [lightboxZoom, setLightboxZoom] = useState(1);
   const [prototypeIndex, setPrototypeIndex] = useState(0);
+  const [reversetechComparisonTab, setReversetechComparisonTab] = useState<"before" | "after">("after");
 
   useEffect(() => {
     setEnteredPassword("");
@@ -2547,29 +2548,63 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {caseStudy.slug === "reversetech" ? (
               <div className="mx-auto mt-12 max-w-[920px]">
                 <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
+                  <div className="flex items-center justify-center gap-2 border-b border-[#d7e8f7] bg-[#f8fbff] px-4 py-4">
+                    <button
+                      type="button"
+                      onClick={() => setReversetechComparisonTab("before")}
+                      className={`inline-flex rounded-full px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.08em] transition-colors ${
+                        reversetechComparisonTab === "before"
+                          ? "bg-[#0e2951] text-white"
+                          : "bg-white text-[#5c7792]"
+                      }`}
+                    >
+                      Before
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setReversetechComparisonTab("after")}
+                      className={`inline-flex rounded-full px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.08em] transition-colors ${
+                        reversetechComparisonTab === "after"
+                          ? "bg-[#1183D0] text-white"
+                          : "bg-white text-[#5c7792]"
+                      }`}
+                    >
+                      After
+                    </button>
+                  </div>
                   <div className="grid items-center gap-0 md:grid-cols-[320px_minmax(0,1fr)]">
                     <button
                       type="button"
                       onClick={() =>
                         setLightboxImage({
-                          src: withBasePath("/images/projects/Reversetech/cta-variant-4.svg"),
-                          alt: "CTA Variant 4",
+                          src: withBasePath(
+                            reversetechComparisonTab === "before"
+                              ? "/images/projects/Reversetech/email.png"
+                              : "/images/projects/Reversetech/cta-variant-4.svg"
+                          ),
+                          alt: reversetechComparisonTab === "before" ? "Enter Email before" : "Enter Email after",
                         })
                       }
                       className="block w-full border-b border-[#d7e8f7] text-left transition-transform hover:scale-[1.01] md:border-b-0 md:border-r"
                     >
                       <img
-                        src={withBasePath("/images/projects/Reversetech/cta-variant-4.svg")}
-                        alt="CTA Variant 4"
+                        src={withBasePath(
+                          reversetechComparisonTab === "before"
+                            ? "/images/projects/Reversetech/email.png"
+                            : "/images/projects/Reversetech/cta-variant-4.svg"
+                        )}
+                        alt={reversetechComparisonTab === "before" ? "Enter Email before" : "Enter Email after"}
                         className="h-auto w-full"
                       />
                     </button>
                     <div className="px-6 py-6 text-left">
                       <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
-                        Placeholder
+                        {reversetechComparisonTab === "before" ? "Before" : "After"}
                       </p>
                       <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                        Add fake text here. I will change this later.
+                        {reversetechComparisonTab === "before"
+                          ? "Add before-state placeholder text here. I will change this later."
+                          : "Add after-state placeholder text here. I will change this later."}
                       </p>
                     </div>
                   </div>
