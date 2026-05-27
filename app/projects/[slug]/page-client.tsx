@@ -3540,6 +3540,30 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               The key tension is that increasing total purchase rate may require reducing friction and lowering commitment, while pushing the 12-week plan may improve revenue per user but cost overall conversion.
             </p>
           </div>
+          <div className="mt-10 max-w-[420px]">
+            <button
+              type="button"
+              onClick={() =>
+                setLightboxImage({
+                  src: withBasePath("/images/projects/Reversetech/paywall.png"),
+                  alt: "Current Reversetech paywall design",
+                })
+              }
+              className="block w-full rounded-[24px] border border-[#d7e8f7] bg-white p-3 text-left shadow-[0_20px_48px_rgba(17,131,208,0.08)] transition-transform hover:scale-[1.01]"
+            >
+              <div className="relative max-h-[520px] overflow-hidden rounded-[18px]">
+                <span className="absolute left-4 top-4 z-10 inline-flex rounded-[4px] bg-[#dbeafe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#1e40af]">
+                  Current paywall
+                </span>
+                <img
+                  src={withBasePath("/images/projects/Reversetech/paywall.png")}
+                  alt="Current Reversetech paywall design"
+                  className="h-auto w-full"
+                />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/92 to-white/0" />
+              </div>
+            </button>
+          </div>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             <Card className="overflow-hidden">
               <CardContent className="p-7">
