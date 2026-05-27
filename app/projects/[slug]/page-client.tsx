@@ -1003,33 +1003,6 @@ function getReverseTechPerformanceLabel(step: unknown) {
   return null;
 }
 
-const REVERSE_TECH_PAGE_NAV = [
-  {
-    title: "The Problem",
-    href: "#rt-problem",
-    children: [
-      { label: "Situation", href: "#situation" },
-      { label: "Task", href: "#task" },
-    ],
-  },
-  {
-    title: "Funnel Diagnosis",
-    href: "#rt-funnel-diagnosis",
-    children: [
-      { label: "31. Age Step", href: "#rt-age-step" },
-      { label: "4. Main Goal", href: "#rt-main-goal" },
-      { label: "34. Enter Email", href: "#rt-enter-email" },
-    ],
-  },
-  { title: "Design Proposal", href: "#rt-design-proposal" },
-  { title: "Hypothesis 1", href: "#content-variants" },
-  { title: "Hypothesis 2", href: "#cta-variants" },
-  { title: "Hypothesis 3", href: "#rt-hypothesis-2" },
-  { title: "Hypothesis 4", href: "#rt-hypothesis-4" },
-  { title: "Paywall Experiment Design", href: "#rt-paywall-experiment-design" },
-  { title: "Sources", href: "#rt-sources" },
-] as const;
-
 const REVERSE_TECH_HYPOTHESIS_2_FLOW = [
   "/images/projects/Reversetech/flow/Wireframes - Age Select V1 1.svg",
   "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 1.svg",
@@ -1406,7 +1379,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ) : null}
 
             <div className="relative mt-10 flex flex-col items-center gap-8 pt-8 text-center">
-              <div className="grid w-full gap-8 md:grid-cols-[1fr_2fr_1fr] md:items-center">
+              <div className="mx-auto grid w-full max-w-[760px] gap-8 md:grid-cols-3 md:items-center">
                 <div>
                   <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Year</p>
                   <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{projectYear ?? ""}</p>
@@ -1491,7 +1464,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {visibleStoryBlocks.length ? (
         <section id="rt-problem" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+          <div className={`grid gap-10 ${caseStudy.slug === "reversetech" ? "" : "lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start"}`}>
             <div>
               <SectionHeading eyebrow="Case Study" title="The problem" className="mb-12" />
               <div className="space-y-10">
@@ -1534,43 +1507,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             </div>
 
+            {caseStudy.slug !== "reversetech" ? (
             <div className="grid gap-4">
-              {caseStudy.slug === "reversetech" ? (
-                <div className="lg:sticky lg:top-24">
-                  <Card className="overflow-hidden border border-[#d7e8f7] shadow-[0_18px_40px_rgba(14,41,81,0.08)]">
-                    <CardContent className="px-6 py-6">
-                      <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">
-                        On This Page
-                      </p>
-                      <div className="mt-5 space-y-5">
-                        {REVERSE_TECH_PAGE_NAV.map((item) => (
-                          <div key={item.title}>
-                            <a
-                              href={item.href}
-                              className="font-inter text-[15px] font-semibold leading-[1.5] text-[#0e2951] transition-colors hover:text-[#1183D0]"
-                            >
-                              {item.title}
-                            </a>
-                            {"children" in item && item.children?.length ? (
-                              <div className="mt-3 space-y-2 border-l border-[#d7e8f7] pl-4">
-                                {item.children.map((child) => (
-                                  <a
-                                    key={child.href}
-                                    href={child.href}
-                                    className="block font-inter text-[14px] leading-[1.6] text-[#5c7792] transition-colors hover:text-[#1183D0]"
-                                  >
-                                    {child.label}
-                                  </a>
-                                ))}
-                              </div>
-                            ) : null}
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              ) : (
+              {
                 problemMetrics.map((metric) => (
                   <Card key={`${metric.label}-${metric.value}`} className="overflow-hidden">
                     <CardContent className="px-7 py-7">
@@ -1584,8 +1523,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </CardContent>
                   </Card>
                 ))
-              )}
+              }
             </div>
+            ) : null}
           </div>
         </section>
       ) : (
@@ -1610,6 +1550,27 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         </section>
       )}
+
+      {caseStudy.slug === "reversetech" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-2 md:px-10 xl:px-20">
+          <div className="mx-auto flex max-w-[860px] flex-wrap justify-center gap-3">
+            {[
+              { label: "Task 1", href: "#rt-funnel-diagnosis", description: "Funnel diagnosis" },
+              { label: "Task 2", href: "#rt-paywall-experiment-design", description: "Paywall experiments" },
+              { label: "Task 3", href: "#rt-task-3", description: "Competitor patterns" },
+            ].map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="min-w-[180px] rounded-full border border-[#d7e8f7] bg-white px-5 py-3 text-center shadow-[0_14px_34px_rgba(14,41,81,0.06)] transition-colors hover:border-[#1183D0]"
+              >
+                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{item.label}</p>
+                <p className="mt-1 font-inter text-[14px] text-[#0e2951]">{item.description}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       {taskDetailBlock ? (
         <section id="rt-funnel-diagnosis" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
