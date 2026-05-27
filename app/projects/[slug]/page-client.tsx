@@ -3559,29 +3559,83 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               ))}
             </div>
           </div>
-          <div className="mx-auto mt-10 max-w-[320px]">
-            <button
-              type="button"
-              onClick={() =>
-                setLightboxImage({
-                  src: withBasePath("/images/projects/Reversetech/paywall.png"),
-                  alt: "Current Reversetech paywall design",
-                })
-              }
-              className="block w-full rounded-[24px] border border-[#d7e8f7] bg-white p-3 text-left shadow-[0_20px_48px_rgba(17,131,208,0.08)] transition-transform hover:scale-[1.01]"
-            >
-              <div className="relative max-h-[440px] overflow-hidden rounded-[18px]">
-                <span className="absolute left-4 top-4 z-10 inline-flex rounded-[4px] bg-[#dbeafe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#1e40af]">
-                  Current paywall
-                </span>
-                <img
-                  src={withBasePath("/images/projects/Reversetech/paywall.png")}
-                  alt="Current Reversetech paywall design"
-                  className="h-auto w-full"
-                />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/92 to-white/0" />
+          <div className="mx-auto mt-10 grid max-w-[980px] items-start gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
+            <div className="mx-auto w-full max-w-[320px]">
+              <button
+                type="button"
+                onClick={() =>
+                  setLightboxImage({
+                    src: withBasePath("/images/projects/Reversetech/paywall.png"),
+                    alt: "Current Reversetech paywall design",
+                  })
+                }
+                className="block w-full rounded-[24px] border border-[#d7e8f7] bg-white p-3 text-left shadow-[0_20px_48px_rgba(17,131,208,0.08)] transition-transform hover:scale-[1.01]"
+              >
+                <div className="relative max-h-[440px] overflow-hidden rounded-[18px]">
+                  <span className="absolute left-4 top-4 z-10 inline-flex rounded-[4px] bg-[#dbeafe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#1e40af]">
+                    Current paywall
+                  </span>
+                  <img
+                    src={withBasePath("/images/projects/Reversetech/paywall.png")}
+                    alt="Current Reversetech paywall design"
+                    className="h-auto w-full"
+                  />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/92 to-white/0" />
+                </div>
+              </button>
+            </div>
+            <div className="rounded-[24px] border border-[#d7e8f7] bg-white p-7 shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+              <h3 className="font-inter text-[28px] leading-tight text-[#0e2951]">Walk-through</h3>
+              <div className="mt-5 space-y-4">
+                {[
+                  [
+                    "Sticky top bar",
+                    '09:53 countdown + "Get my plan" CTA. Heavy urgency right out of the gate. Hard to ignore but reads spammy on a first impression.',
+                  ],
+                  [
+                    "Now / After the plan",
+                    "Body photos with body-fat % and a fitness-level dot meter. Strong emotional anchor and the only personalized thing above the fold.",
+                  ],
+                  [
+                    "Goal + target weight chips",
+                    "Quiz answers echoed back. Small, almost decorative.",
+                  ],
+                  [
+                    "78% discount expires in 09:53",
+                    "Second urgency banner. Repeats what's in the sticky.",
+                  ],
+                  [
+                    "Plan ladder (1 / 4 / 12 wk)",
+                    "Per-day price is the dominant number, strikethrough anchors total price. 12-week marked Best Value. No plan is pre-selected, no obvious primary.",
+                  ],
+                  [
+                    "Special gift",
+                    "1:1 coach consultation, framed as a bonus, included with any plan.",
+                  ],
+                  [
+                    "30-day money-back guarantee",
+                    "Text link, not visually weighted.",
+                  ],
+                  [
+                    "Big CTA + small-print legal",
+                    "Defaults to charging for the 12-week, but the user may not realize that if they didn't actively select.",
+                  ],
+                  [
+                    "Long scroll",
+                    'App, "as seen in", testimonial, plan ladder repeated. Repetition catches scrollers but adds a lot of dead weight.',
+                  ],
+                  [
+                    "Money-back stamp + safe-checkout + contact",
+                    "Trust closer at the very end.",
+                  ],
+                ].map(([title, body]) => (
+                  <p key={title} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                    <strong className="font-semibold text-[#0e2951]">{title} </strong>
+                    {body}
+                  </p>
+                ))}
               </div>
-            </button>
+            </div>
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {[
