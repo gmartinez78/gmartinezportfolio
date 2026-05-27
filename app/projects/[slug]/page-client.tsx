@@ -1022,9 +1022,9 @@ const REVERSE_TECH_PAGE_NAV = [
     ],
   },
   { title: "Design Proposal", href: "#rt-design-proposal" },
-  { title: "Principal Hypothesis", href: "#content-variants" },
-  { title: "Hypothesis 1", href: "#cta-variants" },
-  { title: "Hypothesis 2", href: "#rt-hypothesis-2" },
+  { title: "Hypothesis 1", href: "#content-variants" },
+  { title: "Hypothesis 2", href: "#cta-variants" },
+  { title: "Hypothesis 3", href: "#rt-hypothesis-2" },
   { title: "Sources", href: "#rt-sources" },
 ] as const;
 
@@ -1086,11 +1086,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [lightboxZoom, setLightboxZoom] = useState(1);
   const [prototypeIndex, setPrototypeIndex] = useState(0);
   const [reversetechComparisonTab, setReversetechComparisonTab] = useState<"before" | "after">("after");
+  const [openHypothesisId, setOpenHypothesisId] = useState<"content-variants" | "cta-variants" | "rt-hypothesis-2">("content-variants");
 
   useEffect(() => {
     setEnteredPassword("");
     setPasswordError(null);
     setIsUnlocked(false);
+    setOpenHypothesisId("content-variants");
   }, [caseStudy?.slug]);
 
   useEffect(() => {
@@ -1311,7 +1313,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const projectYear = caseStudy.year;
   const heroImage = resolveProjectHeroImage(caseStudy.slug, caseStudy.images.hero);
   const designProposalTitle = caseStudy.slug === "reversetech" ? "Design Proposal" : "Design Proposal";
-  const hypothesisIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf("Hypothesis 2") : -1;
+  const hypothesisIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf("Hypothesis 3") : -1;
   const designNotesIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf("A few notes") : -1;
   const designProposalLinks =
     caseStudy.slug === "reversetech"
@@ -2614,30 +2616,36 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </button>
                   </div>
                   <div className="px-6 py-6 text-left">
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
-                        CMS-ready
-                      </span>
-                      <span className="inline-flex rounded-full bg-[#e0f2fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#0369a1]">
-                        No engineering
-                      </span>
-                      <span className="inline-flex rounded-full bg-[#fee2e2] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b91c1c]">
-                        Needs dev
-                      </span>
-                      <span className="inline-flex rounded-full bg-[#ede9fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#6d28d9]">
-                        Conditional logic
-                      </span>
-                    </div>
                     <div className="mt-3 space-y-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
                       <p>
-                        The design fix focuses on strengthening the value exchange before asking for the user&apos;s email. Research shows users are more likely to complete a form when the request is tied to a clear reward, so this version reframes the page around the user&apos;s selected main goal, such as weight loss, and uses outcome-based copy like &ldquo;See my plan&rdquo; instead of a generic &ldquo;Continue.&rdquo;
+                        The design fix focuses on strengthening the value exchange before asking for the user&apos;s email. Research shows users are more likely to complete a form when the request is tied to a clear reward, so this version reframes the page around the user&apos;s selected main goal, such as weight loss, and uses outcome-based copy like <em>&ldquo;See my plan&rdquo;</em> instead of a generic <em>&ldquo;Continue.&rdquo;</em>
                       </p>
-                      <p>
-                        Because the funnel is built in a templated CMS, I would treat the CTA, subtitle, trust message, and static page copy as parameterizable changes that can be tested without engineering. Based on that, I explored both a CTA variant and a content variant. The main exception is dynamically changing the headline across three different goals, which would likely require conditional logic or a new CMS variable.
-                      </p>
-                      <p>
-                        If the CMS supports duplicated pages or static page variants, I would first test one goal-based version per segment without new development and route traffic to each version. If those variants improve email completion, then investing in a reusable dynamic personalization component would be easier to justify.
-                      </p>
+                      <div className="space-y-3">
+                        <div className="flex flex-wrap gap-2">
+                          <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
+                            CMS-ready
+                          </span>
+                          <span className="inline-flex rounded-full bg-[#e0f2fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#0369a1]">
+                            No engineering
+                          </span>
+                        </div>
+                        <p>
+                          Because the funnel is built in a templated CMS, I would treat the CTA, subtitle, trust message, and static page copy as parameterizable changes that can be tested without engineering. Based on that, I explored both a CTA variant and a content variant. The main exception is dynamically changing the headline across three different goals, which would likely require conditional logic or a new CMS variable.
+                        </p>
+                      </div>
+                      <div className="space-y-3">
+                        <div className="flex flex-wrap gap-2">
+                          <span className="inline-flex rounded-full bg-[#fee2e2] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b91c1c]">
+                            Needs dev
+                          </span>
+                          <span className="inline-flex rounded-full bg-[#ede9fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#6d28d9]">
+                            Conditional logic
+                          </span>
+                        </div>
+                        <p>
+                          If the CMS supports duplicated pages or static page variants, I would first test one goal-based version per segment without new development and route traffic to each version. If those variants improve email completion, then investing in a reusable dynamic personalization component would be easier to justify.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2650,97 +2658,149 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "reversetech" && (ctaVariants.length || contentVariants.length) ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <div className="space-y-16">
+          <div className="space-y-6">
+            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+              <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-5">
+                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">
+                  How I tackled the email-step metrics
+                </h3>
+                <p className="mt-2 max-w-[760px] font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                  I wanted to tackle the email-step performance by testing three hypotheses across content, CTA framing, and the pages leading up to the email gate.
+                </p>
+              </div>
+              <div className="hidden grid-cols-[0.7fr_1fr_1.2fr] gap-4 border-b border-[#d7e8f7] px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#0e2951] md:grid">
+                <div>Hypothesis</div>
+                <div>What I tested</div>
+                <div>Why it mattered</div>
+              </div>
+              <div className="divide-y divide-[#e7eef6]">
+                {[
+                  [
+                    "Hypothesis 1",
+                    "Content Variant",
+                    "Test whether the email step feels more personalized and valuable when the content reflects the user’s selected goal.",
+                  ],
+                  [
+                    "Hypothesis 2",
+                    "CTA Variant",
+                    "Test whether outcome-based CTA language reduces the feeling of generic lead capture and makes the reward clearer.",
+                  ],
+                  [
+                    "Hypothesis 3",
+                    "Mobile Prototype Flow",
+                    "Test whether improving the pages before email makes the ask feel more earned by reducing fatigue and adding stronger context.",
+                  ],
+                ].map(([label, title, description]) => (
+                  <div key={label} className="grid gap-2 px-6 py-4 md:grid-cols-[0.7fr_1fr_1.2fr] md:gap-4">
+                    <div className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1183D0]">{label}</div>
+                    <div className="font-inter text-[14px] font-semibold text-[#0e2951]">{title}</div>
+                    <div className="font-inter text-[14px] leading-[1.7] text-[#5c7792]">{description}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
             {[
               { block: contentVariantsBlock, variants: contentVariants },
               { block: ctaVariantsBlock, variants: ctaVariants },
             ].map(({ block, variants }) =>
               block && variants.length ? (
                 <div key={block.id} id={caseStudy.slug === "reversetech" ? block.id : undefined} className={caseStudy.slug === "reversetech" ? "scroll-mt-24" : undefined}>
-                  {caseStudy.slug === "reversetech" && block.id === "content-variants" ? (
-                    <p className="mb-3 text-center font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
-                      Principal Hypothesis
-                    </p>
-                  ) : null}
-                  {caseStudy.slug === "reversetech" && block.id === "cta-variants" ? (
-                    <p className="mb-3 text-center font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
-                      Hypothesis 1
-                    </p>
-                  ) : null}
-                  <h3 className="mb-6 text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
-                    {block.title}
-                  </h3>
-                  {block.body ? (
-                    <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                      {block.body}
-                    </p>
-                  ) : null}
-                  {block.id === "content-variants" &&
-                  block.payload &&
-                  typeof block.payload === "object" &&
-                  typeof block.payload.note === "string" ? (
-                    <p className="mx-auto mb-8 max-w-[760px] text-center font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                      {block.payload.note}
-                    </p>
-                  ) : null}
-                  <div className="grid gap-5 md:grid-cols-3">
-                    {variants.map((variant, index) => (
-                      (() => {
-                        const imageSrc = typeof variant.imageSrc === "string" ? variant.imageSrc : null;
-                        const variantTitle = typeof variant.title === "string" ? variant.title : "";
-                        const variantAlt = variantTitle || "Variant wireframe";
-                        const isSelectedContentVariant =
-                          caseStudy.slug === "reversetech" &&
-                          block.id === "content-variants" &&
-                          index === 2;
+                  <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setOpenHypothesisId((current) =>
+                          current === block.id ? current : (block.id as "content-variants" | "cta-variants")
+                        )
+                      }
+                      className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                    >
+                      <div>
+                        <p className="mb-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
+                          {block.id === "content-variants" ? "Hypothesis 1" : "Hypothesis 2"}
+                        </p>
+                        <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
+                          {block.title}
+                        </h3>
+                      </div>
+                      {openHypothesisId === block.id ? <Minus className="h-5 w-5 text-[#1183D0]" /> : <Plus className="h-5 w-5 text-[#1183D0]" />}
+                    </button>
+                    {openHypothesisId === block.id ? (
+                      <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-2">
+                        {block.body ? (
+                          <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                            {block.body}
+                          </p>
+                        ) : null}
+                        {block.id === "content-variants" &&
+                        block.payload &&
+                        typeof block.payload === "object" &&
+                        typeof block.payload.note === "string" ? (
+                          <p className="mx-auto mb-8 max-w-[760px] text-center font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                            {block.payload.note}
+                          </p>
+                        ) : null}
+                        <div className="grid gap-5 md:grid-cols-3">
+                          {variants.map((variant, index) => (
+                            (() => {
+                              const imageSrc = typeof variant.imageSrc === "string" ? variant.imageSrc : null;
+                              const variantTitle = typeof variant.title === "string" ? variant.title : "";
+                              const variantAlt = variantTitle || "Variant wireframe";
+                              const isSelectedContentVariant =
+                                caseStudy.slug === "reversetech" &&
+                                block.id === "content-variants" &&
+                                index === 2;
 
-                        return (
-                          <Card
-                            key={`${block.id}-${index}`}
-                            className={`overflow-hidden border-transparent shadow-none ${
-                              isSelectedContentVariant ? "bg-[#f3f8ff]" : ""
-                            }`}
-                          >
-                            <CardContent className="p-7">
-                              <div className="flex flex-wrap items-center gap-2">
-                                <span className="inline-flex rounded-full bg-[#dbeafe] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1e40af]">
-                                  {`Variant ${index + 1}`}
-                                </span>
-                                {isSelectedContentVariant ? (
-                                  <span className="inline-flex rounded-full bg-[#dff3e8] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1f7a4d]">
-                                    Selected
-                                  </span>
-                                ) : null}
-                              </div>
-                              <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
-                                {variantTitle}
-                              </h3>
-                              <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                                {typeof variant.body === "string" ? variant.body : ""}
-                              </p>
-                              {imageSrc ? (
-                                <button
-                                  type="button"
-                                  onClick={() =>
-                                    setLightboxImage({
-                                      src: withBasePath(imageSrc),
-                                      alt: variantAlt,
-                                    })
-                                  }
-                                  className="mt-6 block w-full overflow-hidden rounded-[18px] bg-white text-left transition-transform hover:scale-[1.01]"
+                              return (
+                                <Card
+                                  key={`${block.id}-${index}`}
+                                  className={`overflow-hidden border-transparent shadow-none ${
+                                    isSelectedContentVariant ? "bg-[#f3f8ff]" : ""
+                                  }`}
                                 >
-                                  <img
-                                    src={withBasePath(imageSrc)}
-                                    alt={variantAlt}
-                                    className="h-auto w-full"
-                                  />
-                                </button>
-                              ) : null}
-                            </CardContent>
-                          </Card>
-                        );
-                      })()
-                    ))}
+                                  <CardContent className="p-7">
+                                    <div className="flex flex-wrap items-center gap-2">
+                                      <span className="inline-flex rounded-full bg-[#dbeafe] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1e40af]">
+                                        {`Variant ${index + 1}`}
+                                      </span>
+                                      {isSelectedContentVariant ? (
+                                        <span className="inline-flex rounded-full bg-[#dff3e8] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1f7a4d]">
+                                          Selected
+                                        </span>
+                                      ) : null}
+                                    </div>
+                                    <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
+                                      {variantTitle}
+                                    </h3>
+                                    <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                                      {typeof variant.body === "string" ? variant.body : ""}
+                                    </p>
+                                    {imageSrc ? (
+                                      <button
+                                        type="button"
+                                        onClick={() =>
+                                          setLightboxImage({
+                                            src: withBasePath(imageSrc),
+                                            alt: variantAlt,
+                                          })
+                                        }
+                                        className="mt-6 block w-full overflow-hidden rounded-[18px] bg-white text-left transition-transform hover:scale-[1.01]"
+                                      >
+                                        <img
+                                          src={withBasePath(imageSrc)}
+                                          alt={variantAlt}
+                                          className="h-auto w-full"
+                                        />
+                                      </button>
+                                    ) : null}
+                                  </CardContent>
+                                </Card>
+                              );
+                            })()
+                          ))}
+                        </div>
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               ) : null
@@ -2751,102 +2811,121 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "reversetech" && hypothesisItems.length ? (
         <section id="rt-hypothesis-2" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <p className="mb-3 text-center font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
-            Hypothesis 2
-          </p>
-          <h3 className="mb-12 text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
-            Mobile Prototype Flow
-          </h3>
-          <div className="mx-auto max-w-[820px] space-y-8 text-center">
-            {hypothesisItems.map((item) => (
-              <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                {item}
-              </p>
-            ))}
-            <div className="space-y-4">
-              <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
-                Prototype Portion
-              </p>
-              <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                Browse the mobile flow portion below. Open any screen to zoom and inspect the sequence in detail.
-              </p>
-            </div>
-            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] px-4 py-5 shadow-[0_24px_64px_rgba(17,131,208,0.08)]">
-              <div className="mb-4 flex items-center justify-between gap-3">
-                <button
-                  type="button"
-                  onClick={() => setPrototypeIndex((current) => Math.max(0, current - 1))}
-                  disabled={prototypeIndex === 0}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d7e8f7] bg-white text-[#0e2951] transition-colors hover:text-[#1183D0] disabled:cursor-not-allowed disabled:opacity-40"
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </button>
-                <p className="font-inter text-[13px] font-medium leading-[1.5] text-[#5c7792]">
-                  Screen {prototypeIndex + 1} of {REVERSE_TECH_HYPOTHESIS_2_FLOW.length}
+          <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+            <button
+              type="button"
+              onClick={() =>
+                setOpenHypothesisId((current) =>
+                  current === "rt-hypothesis-2" ? current : "rt-hypothesis-2"
+                )
+              }
+              className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+            >
+              <div>
+                <p className="mb-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
+                  Hypothesis 3
                 </p>
-                <button
-                  type="button"
-                  onClick={() =>
-                    setPrototypeIndex((current) =>
-                      Math.min(REVERSE_TECH_HYPOTHESIS_2_FLOW.length - 1, current + 1)
-                    )
-                  }
-                  disabled={prototypeIndex === REVERSE_TECH_HYPOTHESIS_2_FLOW.length - 1}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d7e8f7] bg-white text-[#0e2951] transition-colors hover:text-[#1183D0] disabled:cursor-not-allowed disabled:opacity-40"
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </button>
+                <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
+                  Mobile Prototype Flow
+                </h3>
               </div>
-              {(() => {
-                const src = REVERSE_TECH_HYPOTHESIS_2_FLOW[prototypeIndex];
-                const label = getReverseTechFlowLabel(src);
-
-                return (
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setLightboxImage({
-                        src: withBasePath(src),
-                        alt: label,
-                      })
-                    }
-                    className="mx-auto block w-full max-w-[260px] text-left transition-transform hover:scale-[1.01]"
-                  >
-                    <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_14px_34px_rgba(14,41,81,0.08)]">
-                      <img
-                        src={withBasePath(src)}
-                        alt={label}
-                        className="h-auto w-full"
-                      />
-                    </div>
-                    <p className="mt-3 text-center font-inter text-[13px] font-medium leading-[1.5] text-[#5c7792]">
-                      {label}
+              {openHypothesisId === "rt-hypothesis-2" ? <Minus className="h-5 w-5 text-[#1183D0]" /> : <Plus className="h-5 w-5 text-[#1183D0]" />}
+            </button>
+            {openHypothesisId === "rt-hypothesis-2" ? (
+              <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-6">
+                <div className="mx-auto max-w-[820px] space-y-8 text-center">
+                  {hypothesisItems.map((item) => (
+                    <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                      {item}
                     </p>
-                  </button>
-                );
-              })()}
-              <div className="mt-5 flex flex-wrap justify-center gap-2">
-                {REVERSE_TECH_HYPOTHESIS_2_FLOW.map((src, index) => (
-                  <button
-                    key={src}
-                    type="button"
-                    onClick={() => setPrototypeIndex(index)}
-                    aria-label={`Go to screen ${index + 1}`}
-                    className={`h-2.5 rounded-full transition-all ${
-                      index === prototypeIndex ? "w-8 bg-[#1183D0]" : "w-2.5 bg-[#c7dff3]"
-                    }`}
-                  />
-                ))}
+                  ))}
+                  <div className="space-y-4">
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
+                      Prototype Portion
+                    </p>
+                    <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                      Browse the mobile flow portion below. Open any screen to zoom and inspect the sequence in detail.
+                    </p>
+                  </div>
+                  <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] px-4 py-5 shadow-[0_24px_64px_rgba(17,131,208,0.08)]">
+                    <div className="mb-4 flex items-center justify-between gap-3">
+                      <button
+                        type="button"
+                        onClick={() => setPrototypeIndex((current) => Math.max(0, current - 1))}
+                        disabled={prototypeIndex === 0}
+                        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d7e8f7] bg-white text-[#0e2951] transition-colors hover:text-[#1183D0] disabled:cursor-not-allowed disabled:opacity-40"
+                      >
+                        <ChevronLeft className="h-5 w-5" />
+                      </button>
+                      <p className="font-inter text-[13px] font-medium leading-[1.5] text-[#5c7792]">
+                        Screen {prototypeIndex + 1} of {REVERSE_TECH_HYPOTHESIS_2_FLOW.length}
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setPrototypeIndex((current) =>
+                            Math.min(REVERSE_TECH_HYPOTHESIS_2_FLOW.length - 1, current + 1)
+                          )
+                        }
+                        disabled={prototypeIndex === REVERSE_TECH_HYPOTHESIS_2_FLOW.length - 1}
+                        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d7e8f7] bg-white text-[#0e2951] transition-colors hover:text-[#1183D0] disabled:cursor-not-allowed disabled:opacity-40"
+                      >
+                        <ChevronRight className="h-5 w-5" />
+                      </button>
+                    </div>
+                    {(() => {
+                      const src = REVERSE_TECH_HYPOTHESIS_2_FLOW[prototypeIndex];
+                      const label = getReverseTechFlowLabel(src);
+
+                      return (
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setLightboxImage({
+                              src: withBasePath(src),
+                              alt: label,
+                            })
+                          }
+                          className="mx-auto block w-full max-w-[260px] text-left transition-transform hover:scale-[1.01]"
+                        >
+                          <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_14px_34px_rgba(14,41,81,0.08)]">
+                            <img
+                              src={withBasePath(src)}
+                              alt={label}
+                              className="h-auto w-full"
+                            />
+                          </div>
+                          <p className="mt-3 text-center font-inter text-[13px] font-medium leading-[1.5] text-[#5c7792]">
+                            {label}
+                          </p>
+                        </button>
+                      );
+                    })()}
+                    <div className="mt-5 flex flex-wrap justify-center gap-2">
+                      {REVERSE_TECH_HYPOTHESIS_2_FLOW.map((src, index) => (
+                        <button
+                          key={src}
+                          type="button"
+                          onClick={() => setPrototypeIndex(index)}
+                          aria-label={`Go to screen ${index + 1}`}
+                          className={`h-2.5 rounded-full transition-all ${
+                            index === prototypeIndex ? "w-8 bg-[#1183D0]" : "w-2.5 bg-[#c7dff3]"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
+                    <iframe
+                      title="Reverse Tech Flow from Figma"
+                      src={REVERSE_TECH_FLOW_EMBED}
+                      className="h-[720px] w-full"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
-              <iframe
-                title="Reverse Tech Flow from Figma"
-                src={REVERSE_TECH_FLOW_EMBED}
-                className="h-[720px] w-full"
-                allowFullScreen
-              />
-            </div>
+            ) : null}
             <div className="space-y-5 pt-4 text-left">
               <div className="text-center">
                 <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
@@ -2915,7 +2994,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </p>
                 </div>
               </div>
-            </div>
           </div>
         </section>
       ) : null}
