@@ -3678,49 +3678,52 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               ))}
             </div>
           </div>
-          <div className="mt-10 grid gap-4 md:grid-cols-2">
-            <Card className="overflow-hidden">
-              <CardContent className="p-7">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Variant A</p>
-                <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Commit, then pay</h3>
-                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                  Collapse the page into one clear decision: recommend and preselect the 12-week plan, personalize the recap above the ladder, and move trust signals directly beside the CTA to reduce drop-off.
-                </p>
-                <ul className="mt-5 space-y-3">
-                  {[
-                    "Replace countdown urgency with a progress indicator such as step 5 of 5.",
-                    "Show a quiz-based recap with current state, target state, and a suggested finish window.",
-                    "Preselect the 12-week plan and collapse the shorter options behind a secondary reveal.",
-                    "Place value stack, guarantee, and safe-checkout cues adjacent to the main CTA.",
-                  ].map((item) => (
-                    <li key={item} className="font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-            <Card className="overflow-hidden">
-              <CardContent className="p-7">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Variant B</p>
-                <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Days-to-goal framing</h3>
-                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                  Reframe the comparison away from price-per-day and toward progress toward the user&apos;s target. The 12-week plan becomes the only option that fully gets them there, which should improve plan mix and AOV.
-                </p>
-                <ul className="mt-5 space-y-3">
-                  {[
-                    "Compare plans by how much of the target each one realistically covers.",
-                    "Rename shorter options as a kick-start or habit-building step instead of a full solution.",
-                    "Replace the best-value badge with outcome framing such as reaches your goal.",
-                    "Reserve the bonus consultation and CTA language for the 12-week transformation path.",
-                  ].map((item) => (
-                    <li key={item} className="font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+          <div className="mt-10">
+            <h3 className="text-center font-inter text-[28px] leading-tight text-[#0e2951]">Experiments</h3>
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              <Card className="overflow-hidden">
+                <CardContent className="p-7">
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Variant A</p>
+                  <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Commit, then pay</h3>
+                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                    Collapse the page into one clear decision: recommend and preselect the 12-week plan, personalize the recap above the ladder, and move trust signals directly beside the CTA to reduce drop-off.
+                  </p>
+                  <ul className="mt-5 space-y-3">
+                    {[
+                      "Replace countdown urgency with a progress indicator such as step 5 of 5.",
+                      "Show a quiz-based recap with current state, target state, and a suggested finish window.",
+                      "Preselect the 12-week plan and collapse the shorter options behind a secondary reveal.",
+                      "Place value stack, guarantee, and safe-checkout cues adjacent to the main CTA.",
+                    ].map((item) => (
+                      <li key={item} className="font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+              <Card className="overflow-hidden">
+                <CardContent className="p-7">
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Variant B</p>
+                  <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Days-to-goal framing</h3>
+                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                    Reframe the comparison away from price-per-day and toward progress toward the user&apos;s target. The 12-week plan becomes the only option that fully gets them there, which should improve plan mix and AOV.
+                  </p>
+                  <ul className="mt-5 space-y-3">
+                    {[
+                      "Compare plans by how much of the target each one realistically covers.",
+                      "Rename shorter options as a kick-start or habit-building step instead of a full solution.",
+                      "Replace the best-value badge with outcome framing such as reaches your goal.",
+                      "Reserve the bonus consultation and CTA language for the 12-week transformation path.",
+                    ].map((item) => (
+                      <li key={item} className="font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {[
