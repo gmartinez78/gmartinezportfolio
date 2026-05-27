@@ -1009,6 +1009,56 @@ function getReverseTechPerformanceLabel(step: unknown) {
   return null;
 }
 
+function formatReverseTechStepTitle(step: unknown) {
+  if (typeof step !== "string") {
+    return "";
+  }
+
+  const cleaned = step
+    .replace(/^\d+\.\s*/, "")
+    .replace(/\s*-\s*(good|moderate|poor|regular|bad)\s+performance$/i, "")
+    .trim();
+  const normalized = cleaned.toLowerCase();
+
+  if (normalized === "age" || normalized.startsWith("age step")) {
+    return "Age";
+  }
+  if (normalized === "main goal") {
+    return "Main Goal";
+  }
+  if (normalized === "enter email") {
+    return "Enter Email";
+  }
+
+  return cleaned;
+}
+
+function getReverseTechStepTag(step: unknown) {
+  if (typeof step !== "string") {
+    return null;
+  }
+
+  const normalized = step.toLowerCase();
+
+  if (normalized.includes("good performance")) {
+    return { label: "Good", className: "bg-[#dcfce7] text-[#15803d]" };
+  }
+  if (normalized.includes("moderate performance")) {
+    return { label: "Moderate", className: "bg-[#fef3c7] text-[#b45309]" };
+  }
+  if (normalized.includes("poor performance")) {
+    return { label: "Poor", className: "bg-[#fee2e2] text-[#b91c1c]" };
+  }
+  if (normalized.includes("regular performance")) {
+    return { label: "Moderate", className: "bg-[#fef3c7] text-[#b45309]" };
+  }
+  if (normalized.includes("bad performance")) {
+    return { label: "Poor", className: "bg-[#fee2e2] text-[#b91c1c]" };
+  }
+
+  return getReverseTechPerformanceLabel(step);
+}
+
 const REVERSE_TECH_HYPOTHESIS_2_FLOW = [
   "/images/projects/Reversetech/flow/Wireframes - Age Select V1 1.svg",
   "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 1.svg",
@@ -1068,20 +1118,24 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [prototypeIndex, setPrototypeIndex] = useState(0);
   const [reversetechTaskTab, setReversetechTaskTab] = useState<"task1" | "task2" | "task3" | "task4">("task1");
   const [reversetechComparisonTab, setReversetechComparisonTab] = useState<"before" | "after">("after");
-  const [openHypothesisId, setOpenHypothesisId] = useState<
-    "content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4" | null
-  >(null);
+  const [openHypothesisIds, setOpenHypothesisIds] = useState<
+    Array<"content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4">
+  >([]);
 
   useEffect(() => {
     setEnteredPassword("");
     setPasswordError(null);
     setIsUnlocked(false);
     setReversetechTaskTab("task1");
-    setOpenHypothesisId(null);
+    setOpenHypothesisIds([]);
   }, [caseStudy?.slug]);
 
-  const toggleHypothesis = (hypothesisId: NonNullable<typeof openHypothesisId>) => {
-    setOpenHypothesisId((current) => (current === hypothesisId ? null : hypothesisId));
+  const toggleHypothesis = (hypothesisId: "content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4") => {
+    setOpenHypothesisIds((current) =>
+      current.includes(hypothesisId)
+        ? current.filter((id) => id !== hypothesisId)
+        : [...current, hypothesisId]
+    );
   };
 
   useEffect(() => {
@@ -1340,6 +1394,124 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     Array.isArray(taskDetailBlock.payload.analyses)
       ? (taskDetailBlock.payload.analyses as Array<Record<string, unknown>>)
       : [];
+  const reverseTechHypothesis3Accordion = (
+    <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+      <button
+        type="button"
+        onClick={() => toggleHypothesis("rt-hypothesis-2")}
+        className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+      >
+        <div>
+          <p className="mb-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
+            Hypothesis 3
+          </p>
+          <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
+            Personalize screens
+          </h3>
+        </div>
+        {openHypothesisIds.includes("rt-hypothesis-2") ? <Minus className="h-5 w-5 text-[#1183D0]" /> : <Plus className="h-5 w-5 text-[#1183D0]" />}
+      </button>
+      {openHypothesisIds.includes("rt-hypothesis-2") ? (
+        <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-6">
+          <div className="grid gap-8 xl:grid-cols-[minmax(0,320px)_minmax(0,1fr)] xl:items-start">
+            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] px-4 py-5 shadow-[0_24px_64px_rgba(17,131,208,0.08)]">
+              <div className="mb-4 flex items-center justify-between gap-3">
+                <button
+                  type="button"
+                  onClick={() => setPrototypeIndex((current) => Math.max(0, current - 1))}
+                  disabled={prototypeIndex === 0}
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d7e8f7] bg-white text-[#0e2951] transition-colors hover:text-[#1183D0] disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <p className="font-inter text-[13px] font-medium leading-[1.5] text-[#5c7792]">
+                  Screen {prototypeIndex + 1} of {REVERSE_TECH_HYPOTHESIS_2_FLOW.length}
+                </p>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setPrototypeIndex((current) =>
+                      Math.min(REVERSE_TECH_HYPOTHESIS_2_FLOW.length - 1, current + 1)
+                    )
+                  }
+                  disabled={prototypeIndex === REVERSE_TECH_HYPOTHESIS_2_FLOW.length - 1}
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d7e8f7] bg-white text-[#0e2951] transition-colors hover:text-[#1183D0] disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              </div>
+              {(() => {
+                const src = REVERSE_TECH_HYPOTHESIS_2_FLOW[prototypeIndex];
+                const label = getReverseTechFlowLabel(src);
+
+                return (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setLightboxImage({
+                        src: withBasePath(src),
+                        alt: label,
+                      })
+                    }
+                    className="mx-auto block w-full max-w-[260px] text-left transition-transform hover:scale-[1.01]"
+                  >
+                    <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_14px_34px_rgba(14,41,81,0.08)]">
+                      <img
+                        src={withBasePath(src)}
+                        alt={label}
+                        className="h-auto w-full"
+                      />
+                    </div>
+                    <p className="mt-3 text-center font-inter text-[13px] font-medium leading-[1.5] text-[#5c7792]">
+                      {label}
+                    </p>
+                  </button>
+                );
+              })()}
+              <div className="mt-5 flex flex-wrap justify-center gap-2">
+                {REVERSE_TECH_HYPOTHESIS_2_FLOW.map((src, index) => (
+                  <button
+                    key={src}
+                    type="button"
+                    onClick={() => setPrototypeIndex(index)}
+                    aria-label={`Go to screen ${index + 1}`}
+                    className={`h-2.5 rounded-full transition-all ${
+                      index === prototypeIndex ? "w-8 bg-[#1183D0]" : "w-2.5 bg-[#c7dff3]"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="space-y-8 text-left">
+              <div className="space-y-4">
+                {hypothesisItems.map((item) => (
+                  <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                    {item}
+                  </p>
+                ))}
+              </div>
+              <div className="space-y-4">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
+                  Prototype Portion
+                </p>
+                <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                  Browse the mobile flow portion below. Open any screen to zoom and inspect the sequence in detail.
+                </p>
+              </div>
+              <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
+                <iframe
+                  title="Reverse Tech Flow from Figma"
+                  src={REVERSE_TECH_FLOW_EMBED}
+                  className="h-[720px] w-full"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
 
   return (
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden">
@@ -1632,10 +1804,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <table className="w-full border-collapse text-[13px]">
                     <thead>
                       <tr className="bg-[#f5f6f7] text-left text-[11px] font-medium leading-[1.4] text-[#65676b]">
-                        {["EVENT - STEP", "CHURN #", "CHURN %", "USER #", "REMAINING %"].map((label, index) => (
+                        {["EVENT - STEP", "PERFORMANCE", "CHURN #", "CHURN %", "USER #", "REMAINING %"].map((label, index) => (
                           <th
                             key={label}
-                            className={`px-4 py-3 ${index < 4 ? "border-b border-r border-[#ebedf0]" : "border-b border-[#ebedf0]"}`}
+                            className={`px-4 py-3 ${index < 5 ? "border-b border-r border-[#ebedf0]" : "border-b border-[#ebedf0]"}`}
                           >
                             {label}
                           </th>
@@ -1648,20 +1820,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-[#1c1e21]">
                             <div className="flex items-center gap-3">
                               <div className="flex flex-wrap items-center gap-2">
-                                <span className="font-medium">{typeof row.step === "string" ? row.step : ""}</span>
-                                {(() => {
-                                  const performance = getReverseTechPerformanceLabel(row.step);
-                                  return performance ? (
-                                    <span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] ${performance.className}`}>
-                                      {performance.label}
-                                    </span>
-                                  ) : (
-                                    <span
-                                      className="h-3 w-3 rounded-full"
-                                      style={{ backgroundColor: typeof row.dotColor === "string" ? row.dotColor : "#22c55e" }}
-                                    />
-                                  );
-                                })()}
+                                <span className="font-medium">{formatReverseTechStepTitle(row.step)}</span>
                                 {typeof row.tag === "string" ? (
                                   <span className="inline-flex rounded-[4px] bg-[#dbeafe] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#1e40af]">
                                     {row.tag}
@@ -1669,6 +1828,21 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                                 ) : null}
                               </div>
                             </div>
+                          </td>
+                          <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-[#65676b]">
+                            {(() => {
+                              const performance = getReverseTechPerformanceLabel(row.step);
+                              return performance ? (
+                                <span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] ${performance.className}`}>
+                                  {performance.label}
+                                </span>
+                              ) : (
+                                <span
+                                  className="inline-block h-3 w-3 rounded-full"
+                                  style={{ backgroundColor: typeof row.dotColor === "string" ? row.dotColor : "#22c55e" }}
+                                />
+                              );
+                            })()}
                           </td>
                           <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-[#65676b]">
                             {typeof row.churnCount === "string" ? row.churnCount : ""}
@@ -1695,7 +1869,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <div>
                             <div className="flex flex-wrap items-center gap-2">
                               <p className="text-[18px] font-semibold text-[#0e2951]">
-                                {typeof row.step === "string" ? row.step : ""}
+                                {formatReverseTechStepTitle(row.step)}
                               </p>
                               {(() => {
                                 const performance = getReverseTechPerformanceLabel(row.step);
@@ -1764,20 +1938,32 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     className="mx-auto max-w-[860px] scroll-mt-24"
                   >
                     <div className="mx-auto max-w-[760px] text-center">
-                      <h3 className="text-[22px] font-semibold leading-[1.3] text-[#1c1e21]">
-                        {typeof item.title === "string" ? item.title : ""}
-                      </h3>
+                      <div className="space-y-3">
+                        <h3 className="text-[22px] font-semibold leading-[1.3] text-[#1c1e21]">
+                          {formatReverseTechStepTitle(item.title)}
+                        </h3>
+                        {(() => {
+                          const performance = getReverseTechStepTag(item.title);
+                          return performance ? (
+                            <div>
+                              <span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] ${performance.className}`}>
+                                {performance.label}
+                              </span>
+                            </div>
+                          ) : null;
+                        })()}
+                      </div>
                       <p className="mt-4 font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                         {typeof item.body === "string" ? item.body : ""}
                       </p>
                     </div>
                     {(typeof item.image === "string" || typeof item.consideration === "string") ? (
-                      <div className="mx-auto mt-8 grid max-w-[760px] items-start gap-6 lg:grid-cols-[192px_minmax(0,1fr)]">
+                      <div className="mx-auto mt-8 flex max-w-[760px] flex-col items-center gap-6">
                         {typeof item.image === "string" ? (
                           <div className="mx-auto w-full max-w-[192px] overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
                             <img
                               src={withBasePath(item.image)}
-                              alt={typeof item.title === "string" ? item.title : "Analysis reference"}
+                              alt={formatReverseTechStepTitle(item.title) || "Analysis reference"}
                               className="h-auto w-full"
                             />
                           </div>
@@ -1785,7 +1971,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <div />
                         )}
                         {typeof item.consideration === "string" ? (
-                          <div className="rounded-[16px] bg-[#f5f6f7] px-5 py-4 text-left">
+                          <div className="w-full rounded-[16px] bg-[#f5f6f7] px-5 py-4 text-left">
                             <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
                               Consideration
                             </p>
@@ -2623,35 +2809,85 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </button>
                   </div>
                   <div className="px-6 py-6 text-left">
-                    <div className="mt-3 space-y-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                      <p>
-                        The design fix focuses on strengthening the value exchange before asking for the user&apos;s email. Research shows users are more likely to complete a form when the request is tied to a clear reward, so this version reframes the page around the user&apos;s selected main goal, such as weight loss, and uses outcome-based copy like <em>&ldquo;See my plan&rdquo;</em> instead of a generic <em>&ldquo;Continue.&rdquo;</em>
-                      </p>
-                      <div className="space-y-3">
-                        <div className="flex flex-wrap gap-2">
-                          <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
-                            CMS-ready
-                          </span>
-                          <span className="inline-flex rounded-full bg-[#e0f2fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#0369a1]">
-                            No engineering
-                          </span>
+                    <div className="mt-3 space-y-5 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                      <div className="px-1 py-1">
+                        <div className="space-y-2">
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
+                            Design direction
+                          </p>
+                          <ul className="space-y-3">
+                            <li className="flex items-start gap-3">
+                              <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#1183D0]" />
+                              <span>The design fix focuses on strengthening the value exchange before asking for the user&apos;s email.</span>
+                            </li>
+                            <li className="flex items-start gap-3">
+                              <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#1183D0]" />
+                              <span>Research shows users are more likely to complete a form when the request is tied to a clear reward.</span>
+                            </li>
+                            <li className="flex items-start gap-3">
+                              <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#1183D0]" />
+                              <span>This version reframes the page around the user&apos;s selected main goal, such as weight loss, and uses outcome-based copy like <em>&ldquo;See my plan&rdquo;</em> instead of a generic <em>&ldquo;Continue.&rdquo;</em></span>
+                            </li>
+                          </ul>
                         </div>
-                        <p>
-                          Because the funnel is built in a templated CMS, I would treat the CTA, subtitle, trust message, and static page copy as parameterizable changes that can be tested without engineering. Based on that, I explored both a CTA variant and a content variant. The main exception is dynamically changing the headline across three different goals, which would likely require conditional logic or a new CMS variable.
-                        </p>
                       </div>
-                      <div className="space-y-3">
-                        <div className="flex flex-wrap gap-2">
-                          <span className="inline-flex rounded-full bg-[#fee2e2] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b91c1c]">
-                            Needs dev
-                          </span>
-                          <span className="inline-flex rounded-full bg-[#ede9fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#6d28d9]">
-                            Conditional logic
-                          </span>
+                      <div className="border-t border-[#d7e8f7] px-1 pt-5">
+                        <div className="space-y-3">
+                          <div className="space-y-2">
+                            <div className="flex flex-wrap items-center gap-2">
+                              <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0e2951]">
+                                Low-effort test path
+                              </p>
+                              <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
+                                CMS-ready
+                              </span>
+                              <span className="inline-flex rounded-full bg-[#e0f2fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#0369a1]">
+                                No engineering
+                              </span>
+                            </div>
+                            <ul className="space-y-3">
+                              <li className="flex items-start gap-3">
+                                <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#15803d]" />
+                                <span>Because the funnel is built in a templated CMS, I would treat the CTA, subtitle, trust message, and static page copy as parameterizable changes that can be tested without engineering.</span>
+                              </li>
+                              <li className="flex items-start gap-3">
+                                <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#15803d]" />
+                                <span>Based on that, I explored both a CTA variant and a content variant.</span>
+                              </li>
+                              <li className="flex items-start gap-3">
+                                <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#15803d]" />
+                                <span>The main exception is dynamically changing the headline across three different goals, which would likely require conditional logic or a new CMS variable.</span>
+                              </li>
+                            </ul>
+                          </div>
                         </div>
-                        <p>
-                          If the CMS supports duplicated pages or static page variants, I would first test one goal-based version per segment without new development and route traffic to each version. If those variants improve email completion, then investing in a reusable dynamic personalization component would be easier to justify.
-                        </p>
+                      </div>
+                      <div className="border-t border-[#d7e8f7] px-1 pt-5">
+                        <div className="space-y-3">
+                          <div className="space-y-2">
+                            <div className="flex flex-wrap items-center gap-2">
+                              <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0e2951]">
+                                Higher-effort version
+                              </p>
+                              <span className="inline-flex rounded-full bg-[#fee2e2] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b91c1c]">
+                                Needs dev
+                              </span>
+                              <span className="inline-flex rounded-full bg-[#ede9fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#6d28d9]">
+                                Conditional logic
+                              </span>
+                            </div>
+                            <ul className="space-y-3">
+                              <li className="flex items-start gap-3">
+                                <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#b91c1c]" />
+                                <span>If the CMS supports duplicated pages or static page variants, I would first test one goal-based version per segment without new development and route traffic to each version.</span>
+                              </li>
+                              <li className="flex items-start gap-3">
+                                <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#b91c1c]" />
+                                <span>If those variants improve email completion, then investing in a reusable dynamic personalization component would be easier to justify.</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -2731,9 +2967,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           {block.title}
                         </h3>
                       </div>
-                      {openHypothesisId === block.id ? <Minus className="h-5 w-5 text-[#1183D0]" /> : <Plus className="h-5 w-5 text-[#1183D0]" />}
+                      {openHypothesisIds.includes(block.id as "content-variants" | "cta-variants") ? <Minus className="h-5 w-5 text-[#1183D0]" /> : <Plus className="h-5 w-5 text-[#1183D0]" />}
                     </button>
-                    {openHypothesisId === block.id ? (
+                    {openHypothesisIds.includes(block.id as "content-variants" | "cta-variants") ? (
                       <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-2">
                         {block.body ? (
                           <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
@@ -2799,133 +3035,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
               ) : null
             )}
+            {hypothesisItems.length ? reverseTechHypothesis3Accordion : null}
           </div>
         </section>
       ) : null}
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task4" && hypothesisItems.length ? (
-        <section id="rt-hypothesis-2" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
-            <button
-              type="button"
-              onClick={() => toggleHypothesis("rt-hypothesis-2")}
-              className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
-            >
-              <div>
-                <p className="mb-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
-                  Hypothesis 3
-                </p>
-                <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
-                  Personalize screens
-                </h3>
-              </div>
-              {openHypothesisId === "rt-hypothesis-2" ? <Minus className="h-5 w-5 text-[#1183D0]" /> : <Plus className="h-5 w-5 text-[#1183D0]" />}
-            </button>
-            {openHypothesisId === "rt-hypothesis-2" ? (
-              <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-6">
-                <div className="grid gap-8 xl:grid-cols-[minmax(0,320px)_minmax(0,1fr)] xl:items-start">
-                  <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] px-4 py-5 shadow-[0_24px_64px_rgba(17,131,208,0.08)]">
-                    <div className="mb-4 flex items-center justify-between gap-3">
-                      <button
-                        type="button"
-                        onClick={() => setPrototypeIndex((current) => Math.max(0, current - 1))}
-                        disabled={prototypeIndex === 0}
-                        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d7e8f7] bg-white text-[#0e2951] transition-colors hover:text-[#1183D0] disabled:cursor-not-allowed disabled:opacity-40"
-                      >
-                        <ChevronLeft className="h-5 w-5" />
-                      </button>
-                      <p className="font-inter text-[13px] font-medium leading-[1.5] text-[#5c7792]">
-                        Screen {prototypeIndex + 1} of {REVERSE_TECH_HYPOTHESIS_2_FLOW.length}
-                      </p>
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setPrototypeIndex((current) =>
-                            Math.min(REVERSE_TECH_HYPOTHESIS_2_FLOW.length - 1, current + 1)
-                          )
-                        }
-                        disabled={prototypeIndex === REVERSE_TECH_HYPOTHESIS_2_FLOW.length - 1}
-                        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d7e8f7] bg-white text-[#0e2951] transition-colors hover:text-[#1183D0] disabled:cursor-not-allowed disabled:opacity-40"
-                      >
-                        <ChevronRight className="h-5 w-5" />
-                      </button>
-                    </div>
-                    {(() => {
-                      const src = REVERSE_TECH_HYPOTHESIS_2_FLOW[prototypeIndex];
-                      const label = getReverseTechFlowLabel(src);
-
-                      return (
-                        <button
-                          type="button"
-                          onClick={() =>
-                            setLightboxImage({
-                              src: withBasePath(src),
-                              alt: label,
-                            })
-                          }
-                          className="mx-auto block w-full max-w-[260px] text-left transition-transform hover:scale-[1.01]"
-                        >
-                          <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_14px_34px_rgba(14,41,81,0.08)]">
-                            <img
-                              src={withBasePath(src)}
-                              alt={label}
-                              className="h-auto w-full"
-                            />
-                          </div>
-                          <p className="mt-3 text-center font-inter text-[13px] font-medium leading-[1.5] text-[#5c7792]">
-                            {label}
-                          </p>
-                        </button>
-                      );
-                    })()}
-                    <div className="mt-5 flex flex-wrap justify-center gap-2">
-                      {REVERSE_TECH_HYPOTHESIS_2_FLOW.map((src, index) => (
-                        <button
-                          key={src}
-                          type="button"
-                          onClick={() => setPrototypeIndex(index)}
-                          aria-label={`Go to screen ${index + 1}`}
-                          className={`h-2.5 rounded-full transition-all ${
-                            index === prototypeIndex ? "w-8 bg-[#1183D0]" : "w-2.5 bg-[#c7dff3]"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                  <div className="space-y-8 text-left">
-                    <div className="space-y-4">
-                      {hypothesisItems.map((item) => (
-                        <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                          {item}
-                        </p>
-                      ))}
-                    </div>
-                    <div className="space-y-4">
-                      <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
-                        Prototype Portion
-                      </p>
-                      <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                        Browse the mobile flow portion below. Open any screen to zoom and inspect the sequence in detail.
-                      </p>
-                    </div>
-                    <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
-                      <iframe
-                        title="Reverse Tech Flow from Figma"
-                        src={REVERSE_TECH_FLOW_EMBED}
-                        className="h-[720px] w-full"
-                        allowFullScreen
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ) : null}
-          </div>
+        <section id="rt-hypothesis-2" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-0 md:px-10 xl:px-20">
+          {reverseTechHypothesis3Accordion}
         </section>
       ) : null}
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task1" ? (
-        <section id="rt-hypothesis-4" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
+        <section id="rt-hypothesis-4" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-0 md:px-10 xl:px-20">
           <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
             <button
               type="button"
@@ -2940,9 +3062,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   Exploratory hypothesis
                 </h3>
               </div>
-              {openHypothesisId === "rt-hypothesis-4" ? <Minus className="h-5 w-5 text-[#1183D0]" /> : <Plus className="h-5 w-5 text-[#1183D0]" />}
+              {openHypothesisIds.includes("rt-hypothesis-4") ? <Minus className="h-5 w-5 text-[#1183D0]" /> : <Plus className="h-5 w-5 text-[#1183D0]" />}
             </button>
-            {openHypothesisId === "rt-hypothesis-4" ? (
+            {openHypothesisIds.includes("rt-hypothesis-4") ? (
               <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-6">
                 <div className="mx-auto max-w-[860px] space-y-5">
                   <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
@@ -3575,7 +3697,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <div className="mt-12">
             <h3 className="mb-2 text-center font-inter text-[28px] leading-tight text-[#0e2951]">Variants, side by side</h3>
             <p className="mx-auto mb-10 max-w-[720px] text-center font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-              Low-fi wireframes showing the current paywall alongside both proposed variants. Every box stands in for a real component.
+              Low-fi wireframes showing the current paywall alongside both proposed variants.
             </p>
             <div className="grid gap-8 md:grid-cols-3">
 
@@ -3584,7 +3706,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div className="mb-3 flex items-baseline gap-2">
                   <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#d7e8f7] bg-white text-[12px] font-semibold text-[#5c7792]">C</span>
                   <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">control</span>
-                  <span className="font-inter text-[18px] font-semibold text-[#0e2951]">Today</span>
                 </div>
                 <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
                   <strong className="text-[#0e2951]">What ships now. </strong>Plan ladder with two urgency timers, no pre-selection, /day pricing dominant.
@@ -3617,7 +3738,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div className="mb-3 flex items-baseline gap-2">
                   <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#c8412a] bg-[#c8412a] text-[12px] font-semibold text-white">A</span>
                   <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#c8412a]">experiment a</span>
-                  <span className="font-inter text-[18px] font-semibold text-[#0e2951]">Commit, then pay</span>
                 </div>
                 <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
                   <strong className="text-[#0e2951]">Hypothesis. </strong>If we collapse the page into one focused decision — pre-selected plan, personalized recap, guarantee adjacent to CTA — overall conversion rises.
@@ -3711,7 +3831,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div className="mb-3 flex items-baseline gap-2">
                   <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#2a5cb8] bg-[#2a5cb8] text-[12px] font-semibold text-white">B</span>
                   <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#2a5cb8]">experiment b</span>
-                  <span className="font-inter text-[18px] font-semibold text-[#0e2951]">Days-to-goal</span>
                 </div>
                 <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
                   <strong className="text-[#0e2951]">Hypothesis. </strong>Reframing from $/day to &quot;time to reach your target weight&quot; makes shorter plans look insufficient and pulls mix toward the 12-week.
@@ -3820,11 +3939,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </div>
                       <div className="mt-3 space-y-1.5">
                         {[
-                          "12-week personalized training plan",
+                          "12-week personalized training plan printable guide",
                           "1:1 coach consultation",
                           "Progress and habit tracking",
+                          "Visible change phases from now to your goal",
                           "Meal guidance built around your goal",
-                          "Flexible workouts you can do anywhere",
                         ].map((item) => (
                           <div key={item} className="flex items-center gap-2 text-[8px] leading-[1.35] text-[#1c1a17]">
                             <span className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-[#1c1a17] text-[7px]">•</span>
@@ -3839,15 +3958,51 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         <div className="mt-2 flex min-h-[72px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 text-[9px] uppercase tracking-wide text-[#4a443a]">
                           image
                         </div>
-                        <p className="mt-2 text-[10px] tracking-[0.12em] text-[#1c1a17]">★★★★★</p>
-                        <p className="mt-1 text-[8px] leading-[1.4] text-[#1c1a17]">
-                          “The plan finally made the next step feel clear and worth it.”
-                        </p>
                       </div>
                       <p className="mt-2 text-[8px] leading-[1.4] text-[#4a443a]">
                         Results vary by individual. These images are illustrative and not a guarantee of specific outcomes.
                         {" "}Consult a healthcare provider before beginning any weight loss program.
                       </p>
+                    </div>
+                    <div className="px-2 py-[6px]">
+                      <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px]">
+                        <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">Choose your plan</p>
+                        <div className="mt-2 space-y-1.5">
+                          <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
+                            <div>
+                              <p className="text-[11px] font-bold text-[#1c1a17]">1-week · Kick-start</p>
+                              <p className="text-[9px] text-[#4a443a]">$10.5 total</p>
+                            </div>
+                            <div className="text-right">
+                              <p className="text-[13px] font-bold text-[#1c1a17]">$1.5</p>
+                              <p className="text-[8px] text-[#4a443a]">per day</p>
+                            </div>
+                          </div>
+                          <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
+                            <div>
+                              <p className="text-[11px] font-bold text-[#1c1a17]">4-week · Build habit</p>
+                              <p className="text-[9px] text-[#4a443a]">1 mo · $9.8 total</p>
+                            </div>
+                            <div className="text-right">
+                              <p className="text-[13px] font-bold text-[#1c1a17]">$0.35</p>
+                              <p className="text-[8px] text-[#4a443a]">per day</p>
+                            </div>
+                          </div>
+                          <div className="relative rounded-[10px] border-2 border-[#2a5cb8] bg-[#DCEAEF] px-2 py-[9px]">
+                            <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">REACHES YOUR GOAL</span>
+                            <div className="grid grid-cols-[1fr_68px] items-center gap-[8px]">
+                              <div>
+                                <p className="text-[12px] font-bold text-[#1c1a17]">12-week · Full transformation</p>
+                                <p className="text-[9px] text-[#4a443a]">2 mo · $17.64 total</p>
+                              </div>
+                              <div className="text-right">
+                                <p className="text-[13px] font-bold text-[#1c1a17]">$0.21</p>
+                                <p className="text-[8px] text-[#4a443a]">per day</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div className="px-2 py-[6px]">
                       <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">Featured in</p>
@@ -3869,6 +4024,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </div>
                       </div>
                       <p className="mt-2 text-center text-[8px] text-[#4a443a]">120K+ reviews across app stores</p>
+                      <div className="mt-2 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
+                        <p className="text-[10px] tracking-[0.12em] text-[#1c1a17]">★★★★★</p>
+                        <p className="mt-3 text-[8px] leading-[1.4] text-[#1c1a17]">
+                          “The plan finally made the next step feel clear and worth it.”
+                        </p>
+                      </div>
+                      <div className="mt-2 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
+                        <p className="text-[9px] font-semibold text-[#1c1a17]">30-Day Money-Back Guarantee</p>
+                        <p className="mt-2 text-[8px] leading-[1.4] text-[#1c1a17]">
+                          Get 100% of your money back if you don&apos;t see visible results after following our program!
+                        </p>
+                        <p className="mt-3 text-[8px] underline text-[#4a443a]">Money-back policy</p>
+                      </div>
                     </div>
                   </div>
                 </div>
