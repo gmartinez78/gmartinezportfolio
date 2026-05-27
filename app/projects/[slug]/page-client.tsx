@@ -1232,10 +1232,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                 </form>
               </div>
-	              </div>
-	            </div>
-	          </div>
-	        </section>
+            </div>
+          </section>
         <SiteFooter />
       </main>
     );
