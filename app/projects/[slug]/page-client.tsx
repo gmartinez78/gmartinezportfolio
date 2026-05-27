@@ -2614,9 +2614,17 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </button>
                   </div>
                   <div className="px-6 py-6 text-left">
-                    <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                      For the proposed email screen, the design fix focuses on improving the value exchange before asking for the user&apos;s email. The research suggests that users are more likely to complete a form when the request feels connected to a clear reward, so this version reframes the page around the user&apos;s selected main goal, such as weight loss, and uses outcome-based copy like &ldquo;See my plan&rdquo; instead of a generic &ldquo;Continue.&rdquo; Because the funnel is built in a templated CMS, I would treat the CTA, subtitle, trust message, and static page copy as parameterizable changes that can be tested without engineering. However, dynamically changing the headline across three different goals would likely require conditional logic or a new CMS variable, unless the current setup already supports passing quiz answers into later screens. Since Everflow supports rotating or split-testing different landing pages and sending traffic to specific pages through Offer URLs or Smart Links, I would first test goal-based static variants without new development if possible. If that improves email completion, then investing in a reusable dynamic personalization component would be more justified.
-                    </p>
+                    <div className="mt-3 space-y-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                      <p>
+                        For the proposed email screen, the design fix focuses on improving the value exchange before asking for the user&apos;s email. The research suggests that users are more likely to complete a form when the request feels connected to a clear reward, so this version reframes the page around the user&apos;s selected main goal, such as weight loss, and uses outcome-based copy like &ldquo;See my plan&rdquo; instead of a generic &ldquo;Continue.&rdquo;
+                      </p>
+                      <p>
+                        Because the funnel is built in a templated CMS, I would treat the CTA, subtitle, trust message, and static page copy as parameterizable changes that can be tested without engineering. However, dynamically changing the headline across three different goals would likely require conditional logic or a new CMS variable.
+                      </p>
+                      <p>
+                        Since Everflow supports rotating or split-testing different landing pages and sending traffic to specific pages through Offer URLs or Smart Links, I would first test goal-based static variants without new development if possible. If that improves email completion, then investing in a reusable dynamic personalization component would be more justified.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
