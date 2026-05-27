@@ -3571,34 +3571,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               ))}
             </div>
           </div>
-          <div className="mt-10">
-            <h3 className="text-center font-inter text-[28px] leading-tight text-[#0e2951]">Where the leaks probably are</h3>
-            <div className="mt-8 grid gap-6 md:grid-cols-3 md:gap-0">
-              {[
-                {
-                  title: "Decision overload",
-                  body: "Three plans, multiple prices, stacked urgency, bonus framing, legal copy, and a repeated ladder ask users to process too much before they feel ready to choose.",
-                },
-                {
-                  title: "Weak personalization",
-                  body: "The current paywall only lightly echoes quiz inputs. It does not connect a specific plan length to the user’s target weight, timeline, or expected outcome.",
-                },
-                {
-                  title: "Cheap-anchor trap",
-                  body: "The 12-week plan wins on per-day value, but the 1-week option looks safer on upfront price. That makes the lowest-commitment entry point a drag on AOV.",
-                },
-              ].map((item, index) => (
-                <div
-                  key={item.title}
-                  className={`text-center ${index > 0 ? "md:border-l md:border-[#d7e8f7] md:pl-6" : ""} ${index < 2 ? "md:pr-6" : ""}`}
-                >
-                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
-                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item.body}</p>
-                  {index < 2 ? <div className="mt-6 h-px bg-[#d7e8f7] md:hidden" /> : null}
-                </div>
-              ))}
-            </div>
-          </div>
           {/* Phone frames — low-fi wireframes */}
           <div className="mt-12">
             <h3 className="mb-2 text-center font-inter text-[28px] leading-tight text-[#0e2951]">Variants, side by side</h3>
@@ -3821,28 +3793,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <p className="text-[9px] leading-[1.4] text-[#1c1a17]">Visa · Mastercard · Amex · PayPal · Apple Pay</p>
                     </div>
                     <div className="px-2 py-[6px]">
-                      <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">Featured in</p>
-                      <div className="mt-2 flex items-center justify-between gap-2 text-[8px] uppercase tracking-wide text-[#1c1a17] opacity-80">
-                        {["Forbes", "Women's Health", "Healthline"].map((logo) => (
-                          <span key={logo} className="flex-1 text-center">
-                            {logo}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="mt-3 grid grid-cols-2 gap-2">
-                        <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[6px] text-center">
-                          <p className="text-[11px] font-bold text-[#1c1a17]">4.8</p>
-                          <p className="text-[8px] text-[#4a443a]">rating</p>
-                        </div>
-                        <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[6px] text-center">
-                          <p className="text-[11px] font-bold text-[#1c1a17]">900K+</p>
-                          <p className="text-[8px] text-[#4a443a]">downloads</p>
-                        </div>
-                      </div>
-                      <p className="mt-2 text-center text-[8px] text-[#4a443a]">120K+ reviews across app stores</p>
-                    </div>
-                    <div className="px-2 py-[6px]">
-                      <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">What&apos;s included in your plan</p>
+                      <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">What&apos;s included in your plan</p>
                       <div className="mt-2 flex gap-2 overflow-hidden">
                         {[
                           ["Plan", "12-week personalized training"],
@@ -3868,7 +3819,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         <span className="h-1.5 w-1.5 rounded-full bg-[#1c1a17]/35" />
                       </div>
                       <div className="mt-3 space-y-1.5">
-                        <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">5 reasons to get the plan</p>
                         {[
                           "12-week personalized training plan",
                           "1:1 coach consultation",
@@ -3884,16 +3834,41 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </div>
                     </div>
                     <div className="px-2 py-[6px]">
-                      <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
-                        <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">Testimonial</p>
-                        <div className="mt-2 flex min-h-[44px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 text-[8px] uppercase tracking-wide text-[#4a443a]">
+                      <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[10px] text-center">
+                        <p className="text-[9px] uppercase tracking-wide text-[#4a443a]">Testimonial</p>
+                        <div className="mt-2 flex min-h-[72px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 text-[9px] uppercase tracking-wide text-[#4a443a]">
                           image
                         </div>
+                        <p className="mt-2 text-[10px] tracking-[0.12em] text-[#1c1a17]">★★★★★</p>
+                        <p className="mt-1 text-[8px] leading-[1.4] text-[#1c1a17]">
+                          “The plan finally made the next step feel clear and worth it.”
+                        </p>
                       </div>
                       <p className="mt-2 text-[8px] leading-[1.4] text-[#4a443a]">
                         Results vary by individual. These images are illustrative and not a guarantee of specific outcomes.
                         {" "}Consult a healthcare provider before beginning any weight loss program.
                       </p>
+                    </div>
+                    <div className="px-2 py-[6px]">
+                      <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">Featured in</p>
+                      <div className="mt-2 grid grid-cols-2 gap-x-2 gap-y-1 text-[8px] uppercase tracking-wide text-[#1c1a17] opacity-80">
+                        {["Mirror", "Sky Sports", "The Guardian", "University of Oregon"].map((logo) => (
+                          <span key={logo} className="text-center">
+                            {logo}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[6px] text-center">
+                          <p className="text-[11px] font-bold text-[#1c1a17]">4.8</p>
+                          <p className="text-[8px] text-[#4a443a]">rating</p>
+                        </div>
+                        <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[6px] text-center">
+                          <p className="text-[11px] font-bold text-[#1c1a17]">900K+</p>
+                          <p className="text-[8px] text-[#4a443a]">downloads</p>
+                        </div>
+                      </div>
+                      <p className="mt-2 text-center text-[8px] text-[#4a443a]">120K+ reviews across app stores</p>
                     </div>
                   </div>
                 </div>
@@ -3957,6 +3932,34 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </CardContent>
               </Card>
             ))}
+          </div>
+          <div className="mt-12">
+            <h3 className="text-center font-inter text-[28px] leading-tight text-[#0e2951]">Where the leaks probably are</h3>
+            <div className="mt-8 grid gap-6 md:grid-cols-3 md:gap-0">
+              {[
+                {
+                  title: "Decision overload",
+                  body: "Three plans, multiple prices, stacked urgency, bonus framing, legal copy, and a repeated ladder ask users to process too much before they feel ready to choose.",
+                },
+                {
+                  title: "Weak personalization",
+                  body: "The current paywall only lightly echoes quiz inputs. It does not connect a specific plan length to the user’s target weight, timeline, or expected outcome.",
+                },
+                {
+                  title: "Cheap-anchor trap",
+                  body: "The 12-week plan wins on per-day value, but the 1-week option looks safer on upfront price. That makes the lowest-commitment entry point a drag on AOV.",
+                },
+              ].map((item, index) => (
+                <div
+                  key={item.title}
+                  className={`text-center ${index > 0 ? "md:border-l md:border-[#d7e8f7] md:pl-6" : ""} ${index < 2 ? "md:pr-6" : ""}`}
+                >
+                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
+                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item.body}</p>
+                  {index < 2 ? <div className="mt-6 h-px bg-[#d7e8f7] md:hidden" /> : null}
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       ) : null}
