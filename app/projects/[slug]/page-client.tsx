@@ -2544,6 +2544,38 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 ))}
               </div>
             )}
+            {caseStudy.slug === "reversetech" ? (
+              <div className="mx-auto mt-12 max-w-[920px]">
+                <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
+                  <div className="grid items-center gap-0 md:grid-cols-[320px_minmax(0,1fr)]">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setLightboxImage({
+                          src: withBasePath("/images/projects/Reversetech/cta-variant-4.svg"),
+                          alt: "CTA Variant 4",
+                        })
+                      }
+                      className="block w-full border-b border-[#d7e8f7] text-left transition-transform hover:scale-[1.01] md:border-b-0 md:border-r"
+                    >
+                      <img
+                        src={withBasePath("/images/projects/Reversetech/cta-variant-4.svg")}
+                        alt="CTA Variant 4"
+                        className="h-auto w-full"
+                      />
+                    </button>
+                    <div className="px-6 py-6 text-left">
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
+                        Placeholder
+                      </p>
+                      <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                        Add fake text here. I will change this later.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : null}
           </>
           )}
         </section>
