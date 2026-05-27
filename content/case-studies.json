@@ -924,8 +924,7 @@
       ]
     },
     "design_strategy": [
-      "I chose Enter Email as the focus because it is the second-largest in-funnel drop-off and a critical moment to lose users.",
-      "The main issue is a weak value exchange: users are asked to give their email and attention before clearly seeing what they will receive. As a result, the step feels more like lead capture than part of the personalized plan experience.",
+      "I chose Enter Email as the focus because it is the second-largest in-funnel drop-off and a critical moment to lose users. The main issue is a weak value exchange: users are asked to give their email and attention before clearly seeing what they will receive. As a result, the step feels more like lead capture than part of the personalized plan experience.",
       "Because of this, I proposed testing a few solutions instead of committing to one design direction too early.",
       "Hypothesis 1",
       "To reduce friction, the pages before email should better prepare users by showing progress, reinforcing why each question matters, and previewing the value of the final plan.",
