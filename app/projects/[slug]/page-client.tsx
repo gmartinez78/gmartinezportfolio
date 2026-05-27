@@ -3584,81 +3584,99 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
               </button>
             </div>
-            <div className="rounded-[24px] border border-[#d7e8f7] bg-white p-7 shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+            <div>
               <h3 className="font-inter text-[28px] leading-tight text-[#0e2951]">Walk-through</h3>
               <div className="mt-5 space-y-4">
                 {[
                   [
+                    "1",
                     "Sticky top bar",
                     '09:53 countdown + "Get my plan" CTA. Heavy urgency right out of the gate. Hard to ignore but reads spammy on a first impression.',
                   ],
                   [
+                    "2",
                     "Now / After the plan",
                     "Body photos with body-fat % and a fitness-level dot meter. Strong emotional anchor and the only personalized thing above the fold.",
                   ],
                   [
+                    "3",
                     "Goal + target weight chips",
                     "Quiz answers echoed back. Small, almost decorative.",
                   ],
                   [
+                    "4",
                     "78% discount expires in 09:53",
                     "Second urgency banner. Repeats what's in the sticky.",
                   ],
                   [
+                    "5",
                     "Plan ladder (1 / 4 / 12 wk)",
                     "Per-day price is the dominant number, strikethrough anchors total price. 12-week marked Best Value. No plan is pre-selected, no obvious primary.",
                   ],
                   [
+                    "6",
                     "Special gift",
                     "1:1 coach consultation, framed as a bonus, included with any plan.",
                   ],
                   [
+                    "7",
                     "30-day money-back guarantee",
                     "Text link, not visually weighted.",
                   ],
                   [
+                    "8",
                     "Big CTA + small-print legal",
                     "Defaults to charging for the 12-week, but the user may not realize that if they didn't actively select.",
                   ],
                   [
+                    "9",
                     "Long scroll",
                     'App, "as seen in", testimonial, plan ladder repeated. Repetition catches scrollers but adds a lot of dead weight.',
                   ],
                   [
+                    "10",
                     "Money-back stamp + safe-checkout + contact",
                     "Trust closer at the very end.",
                   ],
-                ].map(([title, body]) => (
-                  <p key={title} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                    <strong className="font-semibold text-[#0e2951]">{title} </strong>
-                    {body}
-                  </p>
+                ].map(([step, title, body]) => (
+                  <div key={title} className="flex gap-4">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#e8f3fb] text-[13px] font-semibold text-[#1183D0]">
+                      {step}
+                    </div>
+                    <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                      <strong className="font-semibold text-[#0e2951]">{title} </strong>
+                      {body}
+                    </p>
+                  </div>
                 ))}
               </div>
             </div>
           </div>
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {[
-              {
-                title: "Decision overload",
-                body: "Three plans, multiple prices, stacked urgency, bonus framing, legal copy, and a repeated ladder ask users to process too much before they feel ready to choose.",
-              },
-              {
-                title: "Weak personalization",
-                body: "The current paywall only lightly echoes quiz inputs. It does not connect a specific plan length to the user’s target weight, timeline, or expected outcome.",
-              },
-              {
-                title: "Cheap-anchor trap",
-                body: "The 12-week plan wins on per-day value, but the 1-week option looks safer on upfront price. That makes the lowest-commitment entry point a drag on AOV.",
-              },
-            ].map((item) => (
-              <Card key={item.title} className="overflow-hidden">
-                <CardContent className="p-7">
-                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
-                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item.body}</p>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="mt-10">
+            <h3 className="text-center font-inter text-[28px] leading-tight text-[#0e2951]">Where the leaks probably are</h3>
+            <div className="mt-8 grid gap-4 md:grid-cols-3">
+              {[
+                {
+                  title: "Decision overload",
+                  body: "Three plans, multiple prices, stacked urgency, bonus framing, legal copy, and a repeated ladder ask users to process too much before they feel ready to choose.",
+                },
+                {
+                  title: "Weak personalization",
+                  body: "The current paywall only lightly echoes quiz inputs. It does not connect a specific plan length to the user’s target weight, timeline, or expected outcome.",
+                },
+                {
+                  title: "Cheap-anchor trap",
+                  body: "The 12-week plan wins on per-day value, but the 1-week option looks safer on upfront price. That makes the lowest-commitment entry point a drag on AOV.",
+                },
+              ].map((item) => (
+                <Card key={item.title} className="overflow-hidden">
+                  <CardContent className="p-7">
+                    <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
+                    <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item.body}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-2">
             <Card className="overflow-hidden">
