@@ -9,7 +9,11 @@
       "Bash(git push *)",
       "Bash(npx supabase *)",
       "Bash(python3 -c ' *)",
-      "Bash(git fetch *)"
+      "Bash(git fetch *)",
+      "Bash(cp \"/Users/gred/.claude/projects/-Users-gred-Desktop-gmartinezportfolio-main/547feddd-29d3-4582-b73a-d0560727e573/tool-results/webfetch-1779912966018-ifljsl.bin\" /tmp/paywall_experiments.pen.gz)",
+      "Bash(gunzip -f /tmp/paywall_experiments.pen.gz)",
+      "Bash(mkdir -p paywall_design)",
+      "Bash(tar -xf paywall_experiments.pen -C paywall_design)"
     ]
   },
   "enabledPlugins": {

@@ -3530,7 +3530,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <p className="mx-auto max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               The experiments were framed around one conversion objective, one revenue objective, and one constraint that kept the proposed changes grounded in the existing offer structure.
             </p>
-            <div className="mt-12 grid gap-8 md:grid-cols-3 md:gap-0">
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
               {[
                 ["Goal A", "Lift overall paywall conversion across any plan purchase."],
                 ["Goal B", "Shift more purchasers toward the 12-week plan to raise AOV."],
@@ -3538,11 +3538,44 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               ].map(([label, body], index) => (
                 <div
                   key={label}
-                  className={`py-3 text-center ${index > 0 ? "md:border-l md:border-[#d7e8f7] md:pl-8" : ""} ${index < 2 ? "md:pr-8" : ""}`}
+                  className="relative overflow-hidden rounded-[24px] bg-white px-6 py-7 text-center shadow-[0_14px_34px_rgba(14,41,81,0.06)]"
                 >
+                  <svg
+                    className="pointer-events-none absolute inset-0 h-full w-full"
+                    viewBox="0 0 320 220"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                  >
+                    <rect
+                      x="8"
+                      y="8"
+                      width="304"
+                      height="204"
+                      rx="24"
+                      fill="none"
+                      stroke="#1183D0"
+                      strokeWidth="2"
+                      strokeDasharray={index === 2 ? "10 8" : undefined}
+                    />
+                    <path
+                      d="M18 28C54 12 100 16 142 24C186 33 236 31 286 18"
+                      fill="none"
+                      stroke="#1183D0"
+                      strokeOpacity="0.18"
+                      strokeWidth="2"
+                    />
+                    <path
+                      d="M24 192C80 180 138 182 192 190C236 196 270 196 298 188"
+                      fill="none"
+                      stroke="#1183D0"
+                      strokeOpacity="0.16"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                  <div className="relative">
                   <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{label}</p>
                   <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{body}</p>
-                  {index < 2 ? <div className="mt-8 h-px bg-[#d7e8f7] md:hidden" /> : null}
+                  </div>
                 </div>
               ))}
             </div>
@@ -3600,7 +3633,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   [
                     "5",
                     "Special gift",
-                    "1:1 coach consultation, framed as a bonus, included with any plan.",
+                    "1:1 coach consultation, framed as a bonus and included with the 12-week offer.",
                   ],
                   [
                     "6",
@@ -3706,6 +3739,265 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </Card>
             </div>
           </div>
+          {/* Phone frames — low-fi wireframes */}
+          <div className="mt-12">
+            <h3 className="mb-2 text-center font-inter text-[28px] leading-tight text-[#0e2951]">Variants, side by side</h3>
+            <p className="mx-auto mb-10 max-w-[720px] text-center font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+              Low-fi wireframes showing the current paywall alongside both proposed variants. Every box stands in for a real component.
+            </p>
+            <div className="grid gap-8 md:grid-cols-3">
+
+              {/* ── Control ── */}
+              <div>
+                <div className="mb-3 flex items-baseline gap-2">
+                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#d7e8f7] bg-white text-[12px] font-semibold text-[#5c7792]">C</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">control</span>
+                  <span className="font-inter text-[18px] font-semibold text-[#0e2951]">Today</span>
+                </div>
+                <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
+                  <strong className="text-[#0e2951]">What ships now. </strong>Plan ladder with two urgency timers, no pre-selection, /day pricing dominant.
+                </div>
+                {/* Phone */}
+                <div className="relative rounded-[36px] border-2 border-[#1c1a17] bg-[#fbf6ea] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17]">
+                  {/* Notch */}
+                  <div className="mx-auto mb-[10px] h-[8px] w-[80px] rounded-full bg-[#1c1a17]" />
+                  {/* Screen */}
+                  <div className="flex min-h-[580px] flex-col gap-[7px] rounded-[18px] border border-dashed border-[#1c1a17] bg-[#fffdf6] p-[10px]">
+                    {/* Sticky top */}
+                    <div className="flex items-center justify-between rounded-[10px] border border-[#1c1a17] bg-white px-2 py-1 font-mono text-[10px]">
+                      <span className="font-semibold">⏱ 09:53</span>
+                      <span className="rounded-full bg-[#c8412a] px-[10px] py-[4px] text-[10px] text-white">Get my plan</span>
+                    </div>
+                    {/* Before/after */}
+                    <div className="grid grid-cols-2 gap-[6px]">
+                      {[["Now photo", "Body fat 30%"], ["After photo", "Body fat 14%"]].map(([label, cap]) => (
+                        <div key={label}>
+                          <div className="flex min-h-[100px] items-center justify-center rounded-[8px] border border-[#1c1a17] bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] p-[4px] text-center font-mono text-[9px] uppercase tracking-wide text-[#4a443a]">{label}</div>
+                          <p className="mt-1 text-center font-mono text-[9px] text-[#1c1a17]">{cap}</p>
+                        </div>
+                      ))}
+                    </div>
+                    {/* Heading */}
+                    <p className="text-center font-semibold text-[#1c1a17]" style={{ fontSize: 14 }}>Choose <span className="text-[#c8412a]">Your Plan!</span></p>
+                    {/* Summary chips */}
+                    <div className="grid grid-cols-2 gap-[5px]">
+                      {[["Goal", "Toned body"], ["Target", "50 kg"]].map(([k, v]) => (
+                        <div key={k} className="rounded-[8px] border border-[#1c1a17] bg-white px-2 py-[5px]">
+                          <p className="font-mono text-[8px] text-[#4a443a]">{k}</p>
+                          <p className="text-[11px] font-bold text-[#1c1a17]">{v}</p>
+                        </div>
+                      ))}
+                    </div>
+                    {/* Urgency */}
+                    <div className="rounded-[8px] bg-[#c8412a] px-2 py-[5px] text-center text-[10px] font-bold text-white">78% discount expires in 09:53</div>
+                    {/* Plans */}
+                    {[
+                      { name: "1-WEEK", old: "$19.99 → $4.99", big: "$0.71", unit: "per day", best: false, pill: null },
+                      { name: "4-WEEK", old: "$39.99 → $9.99", big: "$0.33", unit: "per day", best: false, pill: null },
+                      { name: "12-WEEK", old: "$89.99 → $18.99", big: "$0.21", unit: "per day", best: true, pill: "BEST VALUE" },
+                    ].map((plan) => (
+                      <div key={plan.name} className={`relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border bg-white px-2 py-[7px] ${plan.best ? "border-2 border-[#c8412a]" : "border-[#1c1a17]"}`}>
+                        {plan.pill ? <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#3f7a3a] px-[5px] py-[1px] font-mono text-[8px] text-white">{plan.pill}</span> : null}
+                        <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17] bg-white" />
+                        <div>
+                          <p className="text-[11px] font-bold text-[#1c1a17]">{plan.name}</p>
+                          <p className="font-mono text-[9px] text-[#4a443a] line-through">{plan.old}</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-[13px] font-bold text-[#1c1a17]">{plan.big}</p>
+                          <p className="font-mono text-[8px] text-[#4a443a]">{plan.unit}</p>
+                        </div>
+                      </div>
+                    ))}
+                    {/* Gift */}
+                    <div className="grid grid-cols-[1fr_44px] gap-[5px] rounded-[8px] border border-dashed border-[#1c1a17] bg-[#fffaee] px-2 py-[5px] text-[10px] leading-[1.3] text-[#1c1a17]">
+                      <span>🎁 1:1 coach consultation — bonus</span>
+                      <div className="flex items-center justify-center rounded-[6px] border border-[#1c1a17] bg-[#fffdf6] font-mono text-[8px] text-[#4a443a]">img</div>
+                    </div>
+                    <div className="rounded-[8px] border border-[#1c1a17] bg-white px-2 py-[5px] text-center text-[10px] text-[#1c1a17]">30-day money-back guarantee</div>
+                    {/* CTA */}
+                    <div className="flex items-center justify-between rounded-full bg-[#c8412a] px-[12px] py-[8px]">
+                      <span className="font-mono text-[10px] text-white/90">09:53</span>
+                      <span className="text-[12px] font-bold text-white">Get my plan</span>
+                    </div>
+                    <p className="text-[8px] leading-[1.4] text-[#4a443a]">By tapping Get my plan you agree to… recurring $89.99 / 12 wks…</p>
+                    <div className="flex min-h-[36px] items-center justify-center rounded-[8px] border border-[#1c1a17] bg-[#fffdf6] font-mono text-[9px] uppercase text-[#4a443a]">↓ app · "as seen in" · testimonial · plan ladder ↓</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* ── Experiment A ── */}
+              <div>
+                <div className="mb-3 flex items-baseline gap-2">
+                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#c8412a] bg-[#c8412a] text-[12px] font-semibold text-white">A</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#c8412a]">experiment a</span>
+                  <span className="font-inter text-[18px] font-semibold text-[#0e2951]">Commit, then pay</span>
+                </div>
+                <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
+                  <strong className="text-[#0e2951]">Hypothesis. </strong>Collapse the page into one focused decision — pre-selected plan, personalized recap, guarantee adjacent to CTA — to lift overall conversion.
+                </div>
+                {/* Phone */}
+                <div className="relative rounded-[36px] border-2 border-[#1c1a17] bg-[#fbf6ea] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17]">
+                  <div className="mx-auto mb-[10px] h-[8px] w-[80px] rounded-full bg-[#1c1a17]" />
+                  <div className="flex min-h-[580px] flex-col gap-[7px] rounded-[18px] border border-dashed border-[#1c1a17] bg-[#fffdf6] p-[10px]">
+                    {/* Step indicator instead of timer */}
+                    <div className="flex items-center justify-between rounded-[10px] border border-[#1c1a17] bg-white px-2 py-1 font-mono text-[10px]">
+                      <span className="font-semibold">step 5 of 5</span>
+                      <span className="rounded-full bg-[#1c1a17] px-[10px] py-[4px] text-[10px] text-white">Skip to plans</span>
+                    </div>
+                    {/* Personal recap card */}
+                    <div className="rounded-[10px] border border-[#1c1a17] bg-[#fffaee] p-[7px]">
+                      <p className="font-mono text-[7px] uppercase tracking-wide text-[#4a443a]">your plan · built from your quiz</p>
+                      <div className="mt-1 grid grid-cols-[44px_1fr_44px] items-center gap-[5px]">
+                        <div className="flex min-h-[44px] items-center justify-center rounded-[6px] border border-[#1c1a17] bg-[#fffdf6] font-mono text-[8px] text-[#4a443a]">now</div>
+                        <p className="text-center text-[12px] font-semibold text-[#1c1a17]">→ in <span className="text-[#c8412a]">12 weeks</span></p>
+                        <div className="flex min-h-[44px] items-center justify-center rounded-[6px] border border-[#1c1a17] bg-[#fffdf6] font-mono text-[8px] text-[#4a443a]">goal</div>
+                      </div>
+                      <div className="mt-1 grid grid-cols-3 gap-[3px] text-center text-[9px]">
+                        {[["30%", "body fat now"], ["14%", "target"], ["Aug 19", "finish date"]].map(([v, k]) => (
+                          <div key={k}>
+                            <p className="font-bold text-[#1c1a17]">{v}</p>
+                            <p className="font-mono text-[7px] text-[#4a443a]">{k}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    {/* Recommended plan label */}
+                    <p className="text-center text-[11px] font-semibold text-[#1c1a17]">Your recommended plan</p>
+                    {/* Pre-selected plan */}
+                    <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border-2 border-[#c8412a] bg-white px-2 py-[9px]">
+                      <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#3f7a3a] px-[5px] py-[1px] font-mono text-[7px] text-white">RECOMMENDED FOR YOU</span>
+                      <div className="h-[12px] w-[12px] rounded-full bg-[#c8412a] shadow-[inset_0_0_0_2px_white]" />
+                      <div>
+                        <p className="text-[11px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
+                        <p className="font-mono text-[9px] text-[#4a443a]">$18.99 today · $0.21/day</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-[13px] font-bold text-[#1c1a17]">$18.99</p>
+                        <p className="font-mono text-[8px] text-[#4a443a]">today</p>
+                      </div>
+                    </div>
+                    <p className="text-center text-[10px] text-[#4a443a] underline">▾ see 1-week &amp; 4-week options</p>
+                    {/* Value stack */}
+                    <div className="rounded-[10px] border border-[#1c1a17] bg-white p-[7px]">
+                      <p className="font-mono text-[8px] uppercase tracking-wide text-[#4a443a]">what&apos;s included</p>
+                      <ul className="mt-1 list-disc pl-4 text-[10px] leading-[1.5] text-[#1c1a17]">
+                        {["Personalized 12-wk training", "1:1 coach consultation (bonus)", "Habit + weight tracker", "24/7 coach chat"].map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    {/* Trust badges */}
+                    <div className="grid grid-cols-2 gap-[5px]">
+                      {["🛡 30-day money back", "🔒 Safe checkout"].map((b) => (
+                        <div key={b} className="rounded-[8px] border border-[#1c1a17] bg-white px-2 py-[5px] text-center text-[10px] text-[#1c1a17]">{b}</div>
+                      ))}
+                    </div>
+                    {/* CTA */}
+                    <div className="flex items-center justify-between rounded-full bg-[#c8412a] px-[12px] py-[8px]">
+                      <span className="text-[11px] font-bold text-white">Start my 12-week plan</span>
+                      <span className="font-mono text-[10px] text-white/90">→</span>
+                    </div>
+                    <p className="text-[8px] leading-[1.4] text-[#4a443a]">$18.99 today, then $89.99/12 wks. Cancel anytime.</p>
+                    <div className="flex min-h-[28px] items-center justify-center rounded-[8px] border border-[#1c1a17] bg-[#fffdf6] font-mono text-[9px] uppercase text-[#4a443a]">single testimonial · 1 photo · 1 quote</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* ── Experiment B ── */}
+              <div>
+                <div className="mb-3 flex items-baseline gap-2">
+                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#2a5cb8] bg-[#2a5cb8] text-[12px] font-semibold text-white">B</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#2a5cb8]">experiment b</span>
+                  <span className="font-inter text-[18px] font-semibold text-[#0e2951]">Days-to-goal</span>
+                </div>
+                <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
+                  <strong className="text-[#0e2951]">Hypothesis. </strong>Reframing from $/day to &quot;time to reach your target weight&quot; makes shorter plans look insufficient and pulls mix toward the 12-week.
+                </div>
+                {/* Phone */}
+                <div className="relative rounded-[36px] border-2 border-[#1c1a17] bg-[#fbf6ea] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17]">
+                  <div className="mx-auto mb-[10px] h-[8px] w-[80px] rounded-full bg-[#1c1a17]" />
+                  <div className="flex min-h-[580px] flex-col gap-[7px] rounded-[18px] border border-dashed border-[#1c1a17] bg-[#fffdf6] p-[10px]">
+                    {/* Sticky top */}
+                    <div className="flex items-center justify-between rounded-[10px] border border-[#1c1a17] bg-white px-2 py-1 font-mono text-[10px]">
+                      <span className="font-semibold">⏱ 09:53</span>
+                      <span className="rounded-full bg-[#c8412a] px-[10px] py-[4px] text-[10px] text-white">Get my plan</span>
+                    </div>
+                    {/* Before/after */}
+                    <div className="grid grid-cols-2 gap-[6px]">
+                      {[["Now", "30% body fat"], ["Goal", "14% body fat"]].map(([label, cap]) => (
+                        <div key={label}>
+                          <div className="flex min-h-[90px] items-center justify-center rounded-[8px] border border-[#1c1a17] bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] p-[4px] text-center font-mono text-[9px] uppercase tracking-wide text-[#4a443a]">{label}</div>
+                          <p className="mt-1 text-center font-mono text-[9px] text-[#1c1a17]">{cap}</p>
+                        </div>
+                      ))}
+                    </div>
+                    {/* Heading */}
+                    <p className="text-center text-[13px] font-semibold text-[#1c1a17]">Pick how far you want to go</p>
+                    <p className="text-center font-mono text-[9px] text-[#4a443a]">based on your target: 50 kg · 14% body fat</p>
+                    {/* 1-week row */}
+                    <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[7px]">
+                      <div>
+                        <p className="text-[11px] font-bold text-[#1c1a17]">1-week · Kick-start</p>
+                        <p className="font-mono text-[9px] text-[#4a443a]">~10% of the way</p>
+                        <div className="mt-1 h-[6px] overflow-hidden rounded-full bg-[#1c1a1720]">
+                          <div className="h-full w-[10%] rounded-full bg-[#c8412a]" />
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-mono text-[9px] text-[#4a443a] line-through">$19.99</p>
+                        <p className="text-[13px] font-bold text-[#1c1a17]">$4.99</p>
+                      </div>
+                    </div>
+                    {/* 4-week row */}
+                    <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[7px]">
+                      <div>
+                        <p className="text-[11px] font-bold text-[#1c1a17]">4-week · Build habit</p>
+                        <p className="font-mono text-[9px] text-[#4a443a]">~35% of the way</p>
+                        <div className="mt-1 h-[6px] overflow-hidden rounded-full bg-[#1c1a1720]">
+                          <div className="h-full w-[35%] rounded-full bg-[#c8412a]" />
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-mono text-[9px] text-[#4a443a] line-through">$39.99</p>
+                        <p className="text-[13px] font-bold text-[#1c1a17]">$9.99</p>
+                      </div>
+                    </div>
+                    {/* 12-week row — highlighted */}
+                    <div className="relative grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border-2 border-[#c8412a] bg-[#fffaee] px-2 py-[9px]">
+                      <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#c8412a] px-[5px] py-[1px] font-mono text-[7px] text-white">REACHES YOUR GOAL</span>
+                      <div>
+                        <p className="text-[12px] font-bold text-[#1c1a17]">12-week · Full transformation</p>
+                        <p className="font-mono text-[9px] text-[#4a443a]">Hits 14% body fat by Aug 19</p>
+                        <div className="mt-1 h-[6px] overflow-hidden rounded-full bg-[#1c1a1720]">
+                          <div className="h-full w-full rounded-full bg-[#c8412a]" />
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-mono text-[9px] text-[#4a443a] line-through">$89.99</p>
+                        <p className="text-[13px] font-bold text-[#1c1a17]">$18.99</p>
+                      </div>
+                    </div>
+                    <p className="text-center text-[11px] text-[#4a443a]">That&apos;s <span className="font-bold text-[#c8412a]">$0.21/day</span> for the only plan that gets you there.</p>
+                    {/* Gift — 12-wk only */}
+                    <div className="grid grid-cols-[1fr_44px] gap-[5px] rounded-[8px] border border-dashed border-[#1c1a17] bg-[#fffaee] px-2 py-[5px] text-[10px] leading-[1.3] text-[#1c1a17]">
+                      <span>🎁 1:1 coach consultation — included with 12-wk only</span>
+                      <div className="flex items-center justify-center rounded-[6px] border border-[#1c1a17] bg-[#fffdf6] font-mono text-[8px] text-[#4a443a]">img</div>
+                    </div>
+                    {/* CTA */}
+                    <div className="flex items-center justify-between rounded-full bg-[#c8412a] px-[12px] py-[8px]">
+                      <span className="font-mono text-[10px] text-white/90">12-wk</span>
+                      <span className="text-[11px] font-bold text-white">Start full transformation</span>
+                    </div>
+                    <div className="rounded-[8px] border border-[#1c1a17] bg-white px-2 py-[5px] text-center text-[10px] text-[#1c1a17]">30-day money-back guarantee</div>
+                    <p className="text-[8px] leading-[1.4] text-[#4a443a]">$18.99 today, then $89.99/12 wks…</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {[
               {
