@@ -1431,10 +1431,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   {metric.context ? <p className="mt-3 text-[14px] leading-[1.6] text-[#5c7792]">{metric.context}</p> : null}
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
+	              </div>
+	            </div>
+	          </div>
+	        </section>
+	      ) : null}
 
       {caseStudy.slug !== "reversetech" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
