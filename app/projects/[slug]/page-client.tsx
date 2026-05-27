@@ -3567,8 +3567,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 {[
                   [
                     "1",
-                    "Sticky top bar",
-                    '09:53 countdown + "Get my plan" CTA. Heavy urgency right out of the gate. Hard to ignore but reads spammy on a first impression.',
+                    "Stacked urgency",
+                    'Sticky top bar with the 09:53 countdown + "Get my plan" CTA, followed by a second 78% discount countdown banner. The urgency is impossible to miss, but repeated so early it can read as spammy on first impression.',
                   ],
                   [
                     "2",
@@ -3582,36 +3582,31 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   ],
                   [
                     "4",
-                    "78% discount expires in 09:53",
-                    "Second urgency banner. Repeats what's in the sticky.",
-                  ],
-                  [
-                    "5",
                     "Plan ladder (1 / 4 / 12 wk)",
                     "Per-day price is the dominant number, strikethrough anchors total price. 12-week marked Best Value. No plan is pre-selected, no obvious primary.",
                   ],
                   [
-                    "6",
+                    "5",
                     "Special gift",
                     "1:1 coach consultation, framed as a bonus, included with any plan.",
                   ],
                   [
-                    "7",
+                    "6",
                     "30-day money-back guarantee",
                     "Text link, not visually weighted.",
                   ],
                   [
-                    "8",
+                    "7",
                     "Big CTA + small-print legal",
                     "Defaults to charging for the 12-week, but the user may not realize that if they didn't actively select.",
                   ],
                   [
-                    "9",
+                    "8",
                     "Long scroll",
                     'App, "as seen in", testimonial, plan ladder repeated. Repetition catches scrollers but adds a lot of dead weight.',
                   ],
                   [
-                    "10",
+                    "9",
                     "Money-back stamp + safe-checkout + contact",
                     "Trust closer at the very end.",
                   ],
