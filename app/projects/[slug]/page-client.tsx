@@ -1026,6 +1026,7 @@ const REVERSE_TECH_PAGE_NAV = [
   { title: "Hypothesis 2", href: "#cta-variants" },
   { title: "Hypothesis 3", href: "#rt-hypothesis-2" },
   { title: "Hypothesis 4", href: "#rt-hypothesis-4" },
+  { title: "Paywall Experiment Design", href: "#rt-paywall-experiment-design" },
   { title: "Sources", href: "#rt-sources" },
 ] as const;
 
@@ -1087,7 +1088,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [lightboxZoom, setLightboxZoom] = useState(1);
   const [prototypeIndex, setPrototypeIndex] = useState(0);
   const [reversetechComparisonTab, setReversetechComparisonTab] = useState<"before" | "after">("after");
-  const [openHypothesisId, setOpenHypothesisId] = useState<"content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4">("content-variants");
+  const [openHypothesisId, setOpenHypothesisId] = useState<
+    "content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4" | null
+  >("content-variants");
 
   useEffect(() => {
     setEnteredPassword("");
@@ -1095,6 +1098,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     setIsUnlocked(false);
     setOpenHypothesisId("content-variants");
   }, [caseStudy?.slug]);
+
+  const toggleHypothesis = (hypothesisId: NonNullable<typeof openHypothesisId>) => {
+    setOpenHypothesisId((current) => (current === hypothesisId ? null : hypothesisId));
+  };
 
   useEffect(() => {
     if (!lightboxImage) {
@@ -2714,11 +2721,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
                     <button
                       type="button"
-                      onClick={() =>
-                        setOpenHypothesisId((current) =>
-                          current === block.id ? current : (block.id as "content-variants" | "cta-variants")
-                        )
-                      }
+                      onClick={() => toggleHypothesis(block.id as "content-variants" | "cta-variants")}
                       className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
                     >
                       <div>
@@ -2820,11 +2823,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
             <button
               type="button"
-              onClick={() =>
-                setOpenHypothesisId((current) =>
-                  current === "rt-hypothesis-2" ? current : "rt-hypothesis-2"
-                )
-              }
+              onClick={() => toggleHypothesis("rt-hypothesis-2")}
               className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
             >
               <div>
@@ -2839,7 +2838,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </button>
             {openHypothesisId === "rt-hypothesis-2" ? (
               <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-6">
-                <div className="grid gap-8 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)] lg:items-start">
+                <div className="grid gap-8 xl:grid-cols-[minmax(0,320px)_minmax(0,1fr)] xl:items-start">
                   <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] px-4 py-5 shadow-[0_24px_64px_rgba(17,131,208,0.08)]">
                     <div className="mb-4 flex items-center justify-between gap-3">
                       <button
@@ -2924,79 +2923,18 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         Browse the mobile flow portion below. Open any screen to zoom and inspect the sequence in detail.
                       </p>
                     </div>
+                    <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
+                      <iframe
+                        title="Reverse Tech Flow from Figma"
+                        src={REVERSE_TECH_FLOW_EMBED}
+                        className="h-[720px] w-full"
+                        allowFullScreen
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             ) : null}
-            <div className="space-y-5 pt-4 text-left">
-              <div className="text-center">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
-                  Implementation Feasibility
-                </p>
-                <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                  To make the proposal more actionable, I mapped each direction by implementation effort and how easily it could be tested in the current setup.
-                </p>
-              </div>
-              <div className="grid gap-4 md:grid-cols-3">
-                <div className="rounded-[20px] border border-[#d7e8f7] bg-white p-5 shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
-                  <div className="flex flex-wrap gap-2">
-                    <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
-                      CMS-only
-                    </span>
-                    <span className="inline-flex rounded-full bg-[#e0f2fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#0369a1]">
-                      No dev
-                    </span>
-                    <span className="inline-flex rounded-full bg-[#fef3c7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b45309]">
-                      Fast to test
-                    </span>
-                  </div>
-                  <h4 className="mt-4 font-inter text-[18px] font-semibold leading-[1.35] text-[#0e2951]">
-                    Copy-only refinements
-                  </h4>
-                  <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                    Update the CTA, subtitle, trust line, and supporting copy as parameterizable CMS fields. This is the lowest-effort path and the fastest way to validate whether stronger value framing lifts email completion.
-                  </p>
-                </div>
-                <div className="rounded-[20px] border border-[#d7e8f7] bg-white p-5 shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
-                  <div className="flex flex-wrap gap-2">
-                    <span className="inline-flex rounded-full bg-[#e0f2fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#0369a1]">
-                      CMS + Everflow
-                    </span>
-                    <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
-                      A/B testable
-                    </span>
-                    <span className="inline-flex rounded-full bg-[#fef3c7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b45309]">
-                      Medium effort
-                    </span>
-                  </div>
-                  <h4 className="mt-4 font-inter text-[18px] font-semibold leading-[1.35] text-[#0e2951]">
-                    Static goal-based variants
-                  </h4>
-                  <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                    Create separate landing or email-step variants for different goals and rotate traffic through Everflow. This keeps testing lightweight while validating whether stronger goal specificity improves the value exchange.
-                  </p>
-                </div>
-                <div className="rounded-[20px] border border-[#d7e8f7] bg-white p-5 shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
-                  <div className="flex flex-wrap gap-2">
-                    <span className="inline-flex rounded-full bg-[#fee2e2] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b91c1c]">
-                      Dev required
-                    </span>
-                    <span className="inline-flex rounded-full bg-[#ede9fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#6d28d9]">
-                      Variable logic
-                    </span>
-                    <span className="inline-flex rounded-full bg-[#dbeafe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#1d4ed8]">
-                      Higher leverage
-                    </span>
-                  </div>
-                  <h4 className="mt-4 font-inter text-[18px] font-semibold leading-[1.35] text-[#0e2951]">
-                    Dynamic personalization
-                  </h4>
-                  <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                    Pass the selected main goal into the email step and swap the headline or supporting content conditionally. This requires more setup, but it becomes more justified if static variants show that goal-based personalization materially improves conversion.
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
       ) : null}
@@ -3006,11 +2944,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
             <button
               type="button"
-              onClick={() =>
-                setOpenHypothesisId((current) =>
-                  current === "rt-hypothesis-4" ? current : "rt-hypothesis-4"
-                )
-              }
+              onClick={() => toggleHypothesis("rt-hypothesis-4")}
               className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
             >
               <div>
@@ -3041,6 +2975,80 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
               </div>
             ) : null}
+          </div>
+        </section>
+      ) : null}
+
+      {caseStudy.slug === "reversetech" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <div className="space-y-5 text-left">
+            <div className="text-center">
+              <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
+                Implementation Feasibility
+              </p>
+              <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                To make the proposal more actionable, I mapped each direction by implementation effort and how easily it could be tested in the current setup.
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              <div className="rounded-[20px] border border-[#d7e8f7] bg-white p-5 shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
+                <div className="flex flex-wrap gap-2">
+                  <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
+                    CMS-only
+                  </span>
+                  <span className="inline-flex rounded-full bg-[#e0f2fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#0369a1]">
+                    No dev
+                  </span>
+                  <span className="inline-flex rounded-full bg-[#fef3c7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b45309]">
+                    Fast to test
+                  </span>
+                </div>
+                <h4 className="mt-4 font-inter text-[18px] font-semibold leading-[1.35] text-[#0e2951]">
+                  Copy-only refinements
+                </h4>
+                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                  Update the CTA, subtitle, trust line, and supporting copy as parameterizable CMS fields. This is the lowest-effort path and the fastest way to validate whether stronger value framing lifts email completion.
+                </p>
+              </div>
+              <div className="rounded-[20px] border border-[#d7e8f7] bg-white p-5 shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
+                <div className="flex flex-wrap gap-2">
+                  <span className="inline-flex rounded-full bg-[#e0f2fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#0369a1]">
+                    CMS + Everflow
+                  </span>
+                  <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
+                    A/B testable
+                  </span>
+                  <span className="inline-flex rounded-full bg-[#fef3c7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b45309]">
+                    Medium effort
+                  </span>
+                </div>
+                <h4 className="mt-4 font-inter text-[18px] font-semibold leading-[1.35] text-[#0e2951]">
+                  Static goal-based variants
+                </h4>
+                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                  Create separate landing or email-step variants for different goals and rotate traffic through Everflow. This keeps testing lightweight while validating whether stronger goal specificity improves the value exchange.
+                </p>
+              </div>
+              <div className="rounded-[20px] border border-[#d7e8f7] bg-white p-5 shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
+                <div className="flex flex-wrap gap-2">
+                  <span className="inline-flex rounded-full bg-[#fee2e2] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b91c1c]">
+                    Dev required
+                  </span>
+                  <span className="inline-flex rounded-full bg-[#ede9fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#6d28d9]">
+                    Variable logic
+                  </span>
+                  <span className="inline-flex rounded-full bg-[#dbeafe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#1d4ed8]">
+                    Higher leverage
+                  </span>
+                </div>
+                <h4 className="mt-4 font-inter text-[18px] font-semibold leading-[1.35] text-[#0e2951]">
+                  Dynamic personalization
+                </h4>
+                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                  Pass the selected main goal into the email step and swap the headline or supporting content conditionally. This requires more setup, but it becomes more justified if static variants show that goal-based personalization materially improves conversion.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
       ) : null}
@@ -3521,8 +3529,77 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
+      {caseStudy.slug === "reversetech" ? (
+        <section id="rt-paywall-experiment-design" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading title="Paywall experiment design" centered className="mb-8" />
+          <div className="mx-auto max-w-[900px] space-y-5 text-center">
+            <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              Walk through the paywall, the final screen before checkout in the calisthenics funnel, and propose two distinct experiments: one to improve overall paywall conversion and one to shift plan mix toward the 12-week plan to lift AOV.
+            </p>
+            <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              The key tension is that increasing total purchase rate may require reducing friction and lowering commitment, while pushing the 12-week plan may improve revenue per user but cost overall conversion.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            <Card className="overflow-hidden">
+              <CardContent className="p-7">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Variant A</p>
+                <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Current paywall control</h3>
+                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                  Keep the existing paywall unchanged to preserve a baseline for conversion, drop-off, and upgrade intent after the email step.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="overflow-hidden">
+              <CardContent className="p-7">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Variant B</p>
+                <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Value-first paywall</h3>
+                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                  Lead with the user&apos;s selected goal, expected outcome, and what unlocks immediately before emphasizing price, so the upgrade feels like the next logical step rather than a sudden sales wall.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="overflow-hidden">
+              <CardContent className="p-7">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Variant C</p>
+                <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Risk-reduction paywall</h3>
+                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                  Test reassurance elements such as cancellation clarity, trial language, or progress continuity to reduce commitment anxiety without changing the product itself.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+          <div className="mt-8 overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+            <div className="grid gap-0 md:grid-cols-3">
+              {[
+                [
+                  "Primary metric",
+                  "Paywall conversion rate, segmented by device, age bucket, and acquisition source to identify where pricing friction is strongest.",
+                ],
+                [
+                  "Secondary signals",
+                  "CTA clicks, time on paywall, exit rate, and scroll depth to distinguish weak motivation from offer confusion or trust concerns.",
+                ],
+                [
+                  "Decision rule",
+                  "Roll forward only if the winning variant improves paid conversion without increasing earlier-step drop-off or attracting lower-intent users.",
+                ],
+              ].map(([title, body], index) => (
+                <div
+                  key={title}
+                  className={`px-6 py-5 text-left ${index > 0 ? "border-t border-[#d7e8f7] md:border-l md:border-t-0" : ""}`}
+                >
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{title}</p>
+                  <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       {sourceItems.length || sourceEntries.length ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        <section id={caseStudy.slug === "reversetech" ? "rt-sources" : undefined} className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title={sourcesBlock?.title ?? "Sources"} centered className="mb-12" />
           <div className="mx-auto max-w-[900px] space-y-5">
             {sourceEntries.length
