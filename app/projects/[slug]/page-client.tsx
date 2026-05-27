@@ -3786,6 +3786,20 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     <div className="flex min-h-[28px] items-center justify-center rounded-[8px] border border-[#1c1a17] bg-[#fffdf6] font-mono text-[9px] uppercase text-[#4a443a]">single testimonial · 1 photo · 1 quote</div>
                   </div>
                 </div>
+                <div className="mt-5">
+                  <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#c8412a]">Δ vs control</p>
+                  <ul className="mt-3 space-y-2 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                    {[
+                      'Replace timers w/ progress indicator ("5 of 5")',
+                      "Personalized recap above the plan",
+                      "One plan recommended + selected · others collapsed",
+                      '"What you get" + guarantee right beside CTA',
+                      "Cut repeated plan ladder · trim long scroll",
+                    ].map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
               {/* ── Experiment B ── */}
@@ -3876,6 +3890,20 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     <div className="rounded-[8px] border border-[#1c1a17] bg-white px-2 py-[5px] text-center text-[10px] text-[#1c1a17]">30-day money-back guarantee</div>
                     <p className="text-[8px] leading-[1.4] text-[#4a443a]">$18.99 today, then $89.99/12 wks…</p>
                   </div>
+                </div>
+                <div className="mt-5">
+                  <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#2a5cb8]">Δ vs control</p>
+                  <ul className="mt-3 space-y-2 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                    {[
+                      "Compare on progress toward goal, not $/day",
+                      "Rename shorter plans to soft framings (kick-start / build habit)",
+                      "Bonus coach consultation moves to 12-wk only",
+                      '"Best value" pill → "reaches your goal" pill',
+                      "CTA copy primes the 12-wk choice",
+                    ].map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
 
