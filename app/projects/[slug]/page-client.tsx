@@ -2547,32 +2547,35 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             )}
             {caseStudy.slug === "reversetech" ? (
               <div className="mx-auto mt-12 max-w-[920px]">
-                <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
-                  <div className="flex items-center justify-center gap-2 border-b border-[#d7e8f7] bg-[#f8fbff] px-4 py-4">
-                    <button
-                      type="button"
-                      onClick={() => setReversetechComparisonTab("before")}
-                      className={`inline-flex rounded-full px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.08em] transition-colors ${
-                        reversetechComparisonTab === "before"
-                          ? "bg-[#0e2951] text-white"
-                          : "bg-white text-[#5c7792]"
-                      }`}
-                    >
-                      Before
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setReversetechComparisonTab("after")}
-                      className={`inline-flex rounded-full px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.08em] transition-colors ${
-                        reversetechComparisonTab === "after"
-                          ? "bg-[#1183D0] text-white"
-                          : "bg-white text-[#5c7792]"
-                      }`}
-                    >
-                      After
-                    </button>
-                  </div>
-                  <div className="grid items-center gap-0 md:grid-cols-[320px_minmax(0,1fr)]">
+                <div className="flex items-center justify-center gap-2 px-4 pb-6">
+                  <button
+                    type="button"
+                    onClick={() => setReversetechComparisonTab("before")}
+                    className={`inline-flex rounded-full px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.08em] transition-colors ${
+                      reversetechComparisonTab === "before"
+                        ? "bg-[#0e2951] text-white"
+                        : "bg-white text-[#5c7792]"
+                    }`}
+                  >
+                    Before
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setReversetechComparisonTab("after")}
+                    className={`inline-flex rounded-full px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.08em] transition-colors ${
+                      reversetechComparisonTab === "after"
+                        ? "bg-[#1183D0] text-white"
+                        : "bg-white text-[#5c7792]"
+                    }`}
+                  >
+                    After
+                  </button>
+                </div>
+                <div className="grid items-start gap-0 md:grid-cols-[320px_minmax(0,1fr)]">
+                  <div className="px-6 pb-4 text-center md:pb-0">
+                    <p className="mb-4 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
+                      {reversetechComparisonTab === "before" ? "Before" : "After"}
+                    </p>
                     <button
                       type="button"
                       onClick={() =>
@@ -2585,28 +2588,34 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           alt: reversetechComparisonTab === "before" ? "Enter Email before" : "Enter Email after",
                         })
                       }
-                      className="block w-full border-b border-[#d7e8f7] text-left transition-transform hover:scale-[1.01] md:border-b-0 md:border-r"
+                      className="block w-full text-left transition-transform hover:scale-[1.01]"
                     >
-                      <img
-                        src={withBasePath(
-                          reversetechComparisonTab === "before"
-                            ? "/images/projects/Reversetech/email.png"
-                            : "/images/projects/Reversetech/cta-variant-4.svg"
-                        )}
-                        alt={reversetechComparisonTab === "before" ? "Enter Email before" : "Enter Email after"}
-                        className="h-auto w-full"
-                      />
+                      {reversetechComparisonTab === "before" ? (
+                        <div className="mx-auto w-full max-w-[240px] rounded-[36px] bg-[#151515] p-[10px] shadow-[0_18px_40px_rgba(15,23,42,0.24)] ring-1 ring-black/10">
+                          <div className="relative overflow-hidden rounded-[28px] bg-black">
+                            <div className="pointer-events-none absolute left-1/2 top-0 z-10 h-[24px] w-[120px] -translate-x-1/2 rounded-b-[18px] bg-[#151515]" />
+                            <img
+                              src={withBasePath("/images/projects/Reversetech/email.png")}
+                              alt="Enter Email before"
+                              className="h-auto w-full"
+                            />
+                          </div>
+                        </div>
+                      ) : (
+                        <img
+                          src={withBasePath("/images/projects/Reversetech/cta-variant-4.svg")}
+                          alt="Enter Email after"
+                          className="h-auto w-full"
+                        />
+                      )}
                     </button>
-                    <div className="px-6 py-6 text-left">
-                      <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
-                        {reversetechComparisonTab === "before" ? "Before" : "After"}
-                      </p>
+                  </div>
+                  <div className="px-6 py-6 text-left">
                       <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
                         {reversetechComparisonTab === "before"
                           ? "Add before-state placeholder text here. I will change this later."
                           : "Add after-state placeholder text here. I will change this later."}
                       </p>
-                    </div>
                   </div>
                 </div>
               </div>
