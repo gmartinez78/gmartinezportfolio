@@ -1381,16 +1381,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ) : null}
 
             <div className="relative mt-10 flex flex-col items-center gap-8 pt-8 text-center">
-              <div className="mx-auto grid w-full max-w-[760px] gap-8 md:grid-cols-3 md:items-center">
-                <div>
+              <div className="mx-auto grid w-full max-w-[760px] justify-items-center gap-8 md:grid-cols-3 md:items-center">
+                <div className="text-center">
                   <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Year</p>
                   <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{projectYear ?? ""}</p>
                 </div>
-                <div>
+                <div className="text-center">
                   <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Role</p>
                   <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy.role ?? ""}</p>
                 </div>
-                <div>
+                <div className="text-center">
                   <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Client</p>
                   <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy.client_context ?? caseStudy.company}</p>
                 </div>
@@ -2795,7 +2795,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug === "reversetech" && hypothesisItems.length ? (
+      {caseStudy.slug === "reversetech" && reversetechTaskTab === "task3" && hypothesisItems.length ? (
         <section id="rt-hypothesis-2" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
             <button
@@ -2916,7 +2916,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug === "reversetech" ? (
+      {caseStudy.slug === "reversetech" && reversetechTaskTab === "task3" ? (
         <section id="rt-hypothesis-4" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
             <button
@@ -2956,7 +2956,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug === "reversetech" ? (
+      {caseStudy.slug === "reversetech" && reversetechTaskTab === "task3" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="space-y-5 text-left">
             <div className="text-center">
