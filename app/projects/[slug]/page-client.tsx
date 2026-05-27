@@ -1060,6 +1060,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
   const [lightboxZoom, setLightboxZoom] = useState(1);
   const [prototypeIndex, setPrototypeIndex] = useState(0);
+  const [reversetechTaskTab, setReversetechTaskTab] = useState<"task1" | "task2" | "task3">("task1");
   const [reversetechComparisonTab, setReversetechComparisonTab] = useState<"before" | "after">("after");
   const [openHypothesisId, setOpenHypothesisId] = useState<
     "content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4" | null
@@ -1069,6 +1070,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     setEnteredPassword("");
     setPasswordError(null);
     setIsUnlocked(false);
+    setReversetechTaskTab("task1");
     setOpenHypothesisId("content-variants");
   }, [caseStudy?.slug]);
 
@@ -1553,26 +1555,36 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "reversetech" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-2 md:px-10 xl:px-20">
-          <div className="mx-auto flex max-w-[860px] flex-wrap justify-center gap-3">
+          <div className="mx-auto max-w-[900px] border-b border-[#d7e8f7]">
+            <div className="flex flex-wrap items-end justify-center gap-0">
             {[
-              { label: "Task 1", href: "#rt-funnel-diagnosis", description: "Funnel diagnosis" },
-              { label: "Task 2", href: "#rt-paywall-experiment-design", description: "Paywall experiments" },
-              { label: "Task 3", href: "#rt-task-3", description: "Competitor patterns" },
-            ].map((item) => (
-              <a
+              { id: "task1" as const, label: "Task 1", description: "Funnel diagnosis" },
+              { id: "task2" as const, label: "Task 2", description: "Paywall experiments" },
+              { id: "task3" as const, label: "Task 3", description: "Competitor patterns" },
+            ].map((item, index) => (
+              <button
                 key={item.label}
-                href={item.href}
-                className="min-w-[180px] rounded-full border border-[#d7e8f7] bg-white px-5 py-3 text-center shadow-[0_14px_34px_rgba(14,41,81,0.06)] transition-colors hover:border-[#1183D0]"
+                type="button"
+                onClick={() => setReversetechTaskTab(item.id)}
+                className={`relative min-w-[180px] border-[#d7e8f7] px-5 py-4 text-center transition-colors ${
+                  reversetechTaskTab === item.id
+                    ? "border-x border-t bg-white"
+                    : "border-x border-t border-transparent bg-transparent hover:bg-[#f8fbff]"
+                } ${index > 0 ? "-ml-px" : ""}`}
               >
                 <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{item.label}</p>
                 <p className="mt-1 font-inter text-[14px] text-[#0e2951]">{item.description}</p>
-              </a>
+                {reversetechTaskTab === item.id ? (
+                  <span className="absolute inset-x-0 -bottom-px h-px bg-white" />
+                ) : null}
+              </button>
             ))}
+            </div>
           </div>
         </section>
       ) : null}
 
-      {taskDetailBlock ? (
+      {taskDetailBlock && (caseStudy.slug !== "reversetech" || reversetechTaskTab === "task1") ? (
         <section id="rt-funnel-diagnosis" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading eyebrow={taskDetailBlock.title} title={taskDetailHeading ?? taskDetailBlock.title} centered className="mb-12" />
           <div className="mx-auto max-w-[1040px]">
@@ -2625,8 +2637,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug === "reversetech" && (ctaVariants.length || contentVariants.length) ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+      {caseStudy.slug === "reversetech" && reversetechTaskTab === "task3" && (ctaVariants.length || contentVariants.length) ? (
+        <section id="rt-task-3" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
+          <p className="mb-2 text-center text-[13px] font-semibold uppercase tracking-[0.32em] text-[#1183D0]">Task 3</p>
           <div className="space-y-6">
             <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
               <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-5">
@@ -3490,7 +3503,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug === "reversetech" ? (
+      {caseStudy.slug === "reversetech" && reversetechTaskTab === "task2" ? (
         <section id="rt-paywall-experiment-design" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <p className="mb-2 text-center text-[13px] font-semibold uppercase tracking-[0.32em] text-[#1183D0]">Task 2</p>
           <SectionHeading title="Paywall experiment design" centered className="mb-8" />
