@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, Fragment, useEffect, useState } from "react";
-import { CircleAlert, Minus, Plus, RotateCcw, X } from "lucide-react";
+import { CircleAlert, ChevronLeft, ChevronRight, Minus, Plus, RotateCcw, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
@@ -1028,6 +1028,54 @@ const REVERSE_TECH_PAGE_NAV = [
   { title: "Sources", href: "#rt-sources" },
 ] as const;
 
+const REVERSE_TECH_HYPOTHESIS_2_FLOW = [
+  "/images/projects/Reversetech/flow/Wireframes - Age Select V1 1.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 1.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 2.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 4.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 6.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 7.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 8.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 9.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 10.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 11.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 13.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 14.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 15.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 16.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 18.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 19.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 20.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 23.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 25.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 26.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 28.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 29.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 30.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 31.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 32.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 33.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 34.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 35.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 36.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 37.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 38.svg",
+  "/images/projects/Reversetech/flow/Wireframes - Social Proof V1 41.svg",
+] as const;
+
+function getReverseTechFlowLabel(src: string) {
+  if (src.includes("Age Select")) {
+    return "Age Select";
+  }
+
+  const match = src.match(/Social Proof V1 (\d+)/i);
+  if (match) {
+    return `Social Proof ${match[1]}`;
+  }
+
+  return "Prototype Screen";
+}
+
 export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const { caseStudy, loading } = usePublicCaseStudy(slug);
   const { caseStudies } = usePublicCaseStudies();
@@ -1036,6 +1084,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
   const [lightboxZoom, setLightboxZoom] = useState(1);
+  const [prototypeIndex, setPrototypeIndex] = useState(0);
 
   useEffect(() => {
     setEnteredPassword("");
@@ -2607,7 +2656,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             Hypothesis 2
           </p>
           <h3 className="mb-12 text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
-            Add placeholder title here
+            Mobile Prototype Flow
           </h3>
           <div className="mx-auto max-w-[820px] space-y-8 text-center">
             {hypothesisItems.map((item) => (
@@ -2615,6 +2664,82 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 {item}
               </p>
             ))}
+            <div className="space-y-4">
+              <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
+                Prototype Portion
+              </p>
+              <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                Browse the mobile flow portion below. Open any screen to zoom and inspect the sequence in detail.
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] px-4 py-5 shadow-[0_24px_64px_rgba(17,131,208,0.08)]">
+              <div className="mb-4 flex items-center justify-between gap-3">
+                <button
+                  type="button"
+                  onClick={() => setPrototypeIndex((current) => Math.max(0, current - 1))}
+                  disabled={prototypeIndex === 0}
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d7e8f7] bg-white text-[#0e2951] transition-colors hover:text-[#1183D0] disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <p className="font-inter text-[13px] font-medium leading-[1.5] text-[#5c7792]">
+                  Screen {prototypeIndex + 1} of {REVERSE_TECH_HYPOTHESIS_2_FLOW.length}
+                </p>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setPrototypeIndex((current) =>
+                      Math.min(REVERSE_TECH_HYPOTHESIS_2_FLOW.length - 1, current + 1)
+                    )
+                  }
+                  disabled={prototypeIndex === REVERSE_TECH_HYPOTHESIS_2_FLOW.length - 1}
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d7e8f7] bg-white text-[#0e2951] transition-colors hover:text-[#1183D0] disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              </div>
+              {(() => {
+                const src = REVERSE_TECH_HYPOTHESIS_2_FLOW[prototypeIndex];
+                const label = getReverseTechFlowLabel(src);
+
+                return (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setLightboxImage({
+                        src: withBasePath(src),
+                        alt: label,
+                      })
+                    }
+                    className="mx-auto block w-full max-w-[260px] text-left transition-transform hover:scale-[1.01]"
+                  >
+                    <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_14px_34px_rgba(14,41,81,0.08)]">
+                      <img
+                        src={withBasePath(src)}
+                        alt={label}
+                        className="h-auto w-full"
+                      />
+                    </div>
+                    <p className="mt-3 text-center font-inter text-[13px] font-medium leading-[1.5] text-[#5c7792]">
+                      {label}
+                    </p>
+                  </button>
+                );
+              })()}
+              <div className="mt-5 flex flex-wrap justify-center gap-2">
+                {REVERSE_TECH_HYPOTHESIS_2_FLOW.map((src, index) => (
+                  <button
+                    key={src}
+                    type="button"
+                    onClick={() => setPrototypeIndex(index)}
+                    aria-label={`Go to screen ${index + 1}`}
+                    className={`h-2.5 rounded-full transition-all ${
+                      index === prototypeIndex ? "w-8 bg-[#1183D0]" : "w-2.5 bg-[#c7dff3]"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
             <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
               <iframe
                 title="Reverse Tech Flow from Figma"
