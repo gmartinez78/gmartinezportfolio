@@ -1116,6 +1116,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
   const [lightboxZoom, setLightboxZoom] = useState(1);
   const [isPaywallControlExpanded, setIsPaywallControlExpanded] = useState(false);
+  const [activeExperimentModal, setActiveExperimentModal] = useState<"a" | "b" | null>(null);
   const [prototypeIndex, setPrototypeIndex] = useState(0);
   const [reversetechTaskTab, setReversetechTaskTab] = useState<"task1" | "task2" | "task3" | "task4">("task1");
   const [reversetechComparisonTab, setReversetechComparisonTab] = useState<"before" | "after">("after");
@@ -1133,6 +1134,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     setShowStickyTaskTabs(false);
     setOpenHypothesisIds([]);
     setIsPaywallControlExpanded(false);
+    setActiveExperimentModal(null);
   }, [caseStudy?.slug]);
 
   const toggleHypothesis = (hypothesisId: "content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4") => {
@@ -2691,7 +2693,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {(caseStudy.slug === "nayya-ai-benefits" ||
         caseStudy.slug === "i9-everify-integration" ||
         caseStudy.slug === "flock-accessibility-system" ||
-        (designStrategy.length > 0 && (caseStudy.slug !== "reversetech" || reversetechTaskTab !== "task2"))) ? (
+        (designStrategy.length > 0 && (caseStudy.slug !== "reversetech" || reversetechTaskTab === "task1"))) ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           {caseStudy.slug === "nayya-ai-benefits" ? (
           <>
@@ -3877,7 +3879,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div className="relative w-full rounded-[24px] border border-[#d7e8f7] bg-white p-3 pb-8 text-left shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
                   <div
                     className={`relative rounded-[18px] border border-[#d7e8f7] bg-[#f8fbff] ${
-                      isPaywallControlExpanded ? "overflow-visible" : "h-[632px] overflow-hidden"
+                      isPaywallControlExpanded ? "overflow-visible" : "h-[920px] overflow-hidden"
                     }`}
                   >
                     <img
@@ -3908,7 +3910,35 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <strong className="text-[#0e2951]">Primary metric: </strong>paywall → purchase rate.
                 </div>
                 {/* Phone */}
-                <div className="relative rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17]">
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setActiveExperimentModal("a")}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      setActiveExperimentModal("a");
+                    }
+                  }}
+                  className={`relative cursor-zoom-in rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17] transition-transform ${
+                    activeExperimentModal === "a"
+                      ? "fixed left-1/2 top-1/2 z-[130] w-[min(92vw,460px)] max-h-[88vh] -translate-x-1/2 -translate-y-1/2 overflow-auto cursor-auto"
+                      : ""
+                  }`}
+                >
+                  {activeExperimentModal === "a" ? (
+                    <button
+                      type="button"
+                      aria-label="Close experiment A preview"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        setActiveExperimentModal(null);
+                      }}
+                      className="absolute right-3 top-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  ) : null}
                   <div className="mx-auto mb-[10px] h-[8px] w-[80px] rounded-full bg-[#1c1a17]" />
                   <div className={`${kalam.className} flex min-h-[580px] flex-col gap-[7px] rounded-[18px] p-[10px]`}>
                     {/* Timer bar */}
@@ -4172,7 +4202,35 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <strong className="text-[#0e2951]">Primary metric: </strong>% of purchasers picking 12-wk · AOV.
                 </div>
                 {/* Phone */}
-                <div className="relative rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17]">
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setActiveExperimentModal("b")}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      setActiveExperimentModal("b");
+                    }
+                  }}
+                  className={`relative cursor-zoom-in rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17] transition-transform ${
+                    activeExperimentModal === "b"
+                      ? "fixed left-1/2 top-1/2 z-[130] w-[min(92vw,460px)] max-h-[88vh] -translate-x-1/2 -translate-y-1/2 overflow-auto cursor-auto"
+                      : ""
+                  }`}
+                >
+                  {activeExperimentModal === "b" ? (
+                    <button
+                      type="button"
+                      aria-label="Close experiment B preview"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        setActiveExperimentModal(null);
+                      }}
+                      className="absolute right-3 top-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  ) : null}
                   <div className="mx-auto mb-[10px] h-[8px] w-[80px] rounded-full bg-[#1c1a17]" />
                   <div className={`${kalam.className} flex min-h-[580px] flex-col gap-[7px] rounded-[18px] p-[10px]`}>
                     {/* Sticky top */}
@@ -4455,6 +4513,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 ))}
           </div>
         </section>
+      ) : null}
+
+      {activeExperimentModal ? (
+        <div
+          className="fixed inset-0 z-[120] bg-black/70"
+          onClick={() => setActiveExperimentModal(null)}
+        />
       ) : null}
 
       {lightboxImage ? (
