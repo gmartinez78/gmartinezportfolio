@@ -3818,7 +3818,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                 </div>
                 <div className="mt-5">
-                  <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#2a5cb8]">Δ vs control</p>
+                  <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#c8412a]">Δ vs control</p>
                   <ul className="mt-3 list-disc space-y-2 pl-5 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
                     {[
                       'Replace timers w/ progress indicator ("5 of 5")',
