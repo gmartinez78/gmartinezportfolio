@@ -322,6 +322,8 @@ const REVERSE_TECH_COMPETITOR_DIMENSIONS = [
   },
 ] as const;
 
+const REVERSE_TECH_MUSCLE_BOOSTER_URL = "https://plan.muscle-booster.io/onboarding";
+
 const REVERSE_TECH_PATTERN_ROWS = [
   {
     label: "Pattern 1 to test",
@@ -3726,7 +3728,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   >
                     <div className="border-r border-[#d7e8f7] pr-4 font-semibold text-[#0e2951]">{row.dimension}</div>
                     <div className="border-r border-[#d7e8f7] px-4">{row.reverseHealth}</div>
-                    <div className="border-r border-[#d7e8f7] px-4">{row.muscleBooster}</div>
+                  <div className="border-r border-[#d7e8f7] px-4">
+                    <a
+                      href={REVERSE_TECH_MUSCLE_BOOSTER_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                    >
+                      {row.muscleBooster}
+                    </a>
+                  </div>
                     <div className="border-r border-[#d7e8f7] px-4">{row.floHealth}</div>
                     <div className="pl-4">{row.betterMe}</div>
                   </div>
@@ -3749,7 +3760,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </div>
                       <div>
                         <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Muscle Booster</p>
-                        <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.muscleBooster}</p>
+                        <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">
+                          <a
+                            href={REVERSE_TECH_MUSCLE_BOOSTER_URL}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                          >
+                            {row.muscleBooster}
+                          </a>
+                        </p>
                       </div>
                       <div>
                         <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Flo Health</p>
@@ -4759,14 +4779,61 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
 
           <div className="mt-12">
-            <div className="mx-auto mb-12 max-w-[900px] px-6 py-2 text-center">
+            <div className="mx-auto mb-12 max-w-[980px] px-6 py-2 text-center">
               <h3 className="text-center font-inter text-[24px] leading-tight text-[#0e2951]">What is the tension between these two experiments?</h3>
-              <p className="mt-5 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                Experiment A is optimized to reduce friction and increase the number of users who complete a purchase. Its risk is that by emphasizing a personalized discount and a smoother path, it may improve conversion without pushing enough users toward the higher-value 12-week plan.
-              </p>
-              <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                Experiment B is optimized to shift plan mix toward the 12-week option and increase AOV. Its risk is that the stronger push toward one plan may create more friction for users who are not ready for that commitment, which could hurt overall conversion.
-              </p>
+              <div className="mt-6 grid gap-5 text-left md:grid-cols-2">
+                <div className="rounded-[24px] border border-[#f0d3cd] bg-[#fff8f6] p-6 shadow-[0_16px_32px_rgba(200,65,42,0.08)]">
+                  <div className="mb-4 flex items-center gap-3">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#c8412a] text-[14px] font-semibold text-white">A</span>
+                    <p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-[#c8412a]">Experiment A</p>
+                  </div>
+                  <ul className="space-y-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#c8412a] shadow-[0_8px_20px_rgba(200,65,42,0.12)]">
+                        <Plus className="h-4 w-4" />
+                      </span>
+                      <span>Optimized to reduce friction and increase the number of users who complete a purchase.</span>
+                    </li>
+                  </ul>
+                  <div className="mt-5 rounded-[18px] border border-[#f0d3cd] bg-white/80 px-4 py-4 text-left">
+                    <div className="flex items-center gap-3">
+                      <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#c8412a] shadow-[0_8px_20px_rgba(200,65,42,0.12)]">
+                        <CircleAlert className="h-4 w-4" />
+                      </span>
+                      <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#c8412a]">Risk</p>
+                    </div>
+                    <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                      By emphasizing a personalized discount and a smoother path, it may improve conversion without pushing enough users toward the higher-value 12-week plan.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] p-6 shadow-[0_16px_32px_rgba(17,131,208,0.08)]">
+                  <div className="mb-4 flex items-center gap-3">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#2a5cb8] text-[14px] font-semibold text-white">B</span>
+                    <p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-[#2a5cb8]">Experiment B</p>
+                  </div>
+                  <ul className="space-y-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#2a5cb8] shadow-[0_8px_20px_rgba(42,92,184,0.12)]">
+                        <Plus className="h-4 w-4" />
+                      </span>
+                      <span>Optimized to shift plan mix toward the 12-week option and increase AOV.</span>
+                    </li>
+                  </ul>
+                  <div className="mt-5 rounded-[18px] border border-[#d7e8f7] bg-white/80 px-4 py-4 text-left">
+                    <div className="flex items-center gap-3">
+                      <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#2a5cb8] shadow-[0_8px_20px_rgba(42,92,184,0.12)]">
+                        <CircleAlert className="h-4 w-4" />
+                      </span>
+                      <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#2a5cb8]">Risk</p>
+                    </div>
+                    <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                      The stronger push toward one plan may create more friction for users who are not ready for that commitment, which could hurt overall conversion.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
