@@ -1812,7 +1812,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       { id: "task1" as const, label: "Task 1" },
                       { id: "task2" as const, label: "Task 2" },
                       { id: "task3" as const, label: "Task 3" },
-                      { id: "task4" as const, label: "Task 4" },
+                      { id: "task4" as const, label: "Task 4 (Optional)" },
                     ].map((item, index) => (
                       <button
                         key={`sticky-${item.label}`}
@@ -1842,7 +1842,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   { id: "task1" as const, label: "Task 1" },
                   { id: "task2" as const, label: "Task 2" },
                   { id: "task3" as const, label: "Task 3" },
-                  { id: "task4" as const, label: "Task 4" },
+                  { id: "task4" as const, label: "Task 4 (Optional)" },
                 ].map((item, index) => (
                   <button
                     key={item.label}
@@ -2991,143 +2991,58 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug === "reversetech" && reversetechTaskTab === "task1" && (ctaVariants.length || contentVariants.length) ? (
+      {caseStudy.slug === "reversetech" && reversetechTaskTab === "task3" ? (
         <section id="rt-task-3" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <div className="space-y-6">
-            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
-              <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-5">
-                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">
-                  How I tackled the email-step metrics
-                </h3>
-                <p className="mt-2 max-w-[760px] font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                  I wanted to tackle the email-step performance by testing three hypotheses across content, CTA framing, and the pages leading up to the email gate.
-                </p>
-              </div>
-              <div className="hidden grid-cols-[0.7fr_1fr_1.2fr] gap-4 border-b border-[#d7e8f7] px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#0e2951] md:grid">
-                <div>Hypothesis</div>
-                <div>What I tested</div>
-                <div>Why it mattered</div>
-              </div>
-              <div className="divide-y divide-[#e7eef6]">
-                {[
-                  [
-                    "Hypothesis 1",
-                    "Content Variant",
-                    "Test whether the email step feels more personalized and valuable when the content reflects the user’s selected goal.",
-                  ],
-                  [
-                    "Hypothesis 2",
-                    "CTA Variant",
-                    "Test whether outcome-based CTA language reduces the feeling of generic lead capture and makes the reward clearer.",
-                  ],
-                  [
-                    "Hypothesis 3",
-                    "Personalize screens",
-                    "Test whether improving the pages before email makes the ask feel more earned by reducing fatigue and adding stronger context.",
-                  ],
-                  [
-                    "Hypothesis 4",
-                    "Exploratory hypothesis",
-                    "Check whether age segment, device, source, or step context may be influencing the email drop-off beyond the screen itself.",
-                  ],
-                ].map(([label, title, description]) => (
-                  <div key={label} className="grid gap-2 px-6 py-4 md:grid-cols-[0.7fr_1fr_1.2fr] md:gap-4">
-                    <div className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1183D0]">{label}</div>
-                    <div className="font-inter text-[14px] font-semibold text-[#0e2951]">{title}</div>
-                    <div className="font-inter text-[14px] leading-[1.7] text-[#5c7792]">{description}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            {[
-              { block: contentVariantsBlock, variants: contentVariants },
-              { block: ctaVariantsBlock, variants: ctaVariants },
-            ].map(({ block, variants }) =>
-              block && variants.length ? (
-                <div key={block.id} id={caseStudy.slug === "reversetech" ? block.id : undefined} className={caseStudy.slug === "reversetech" ? "scroll-mt-24" : undefined}>
-                  <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
-                    <button
-                      type="button"
-                      onClick={() => toggleHypothesis(block.id as "content-variants" | "cta-variants")}
-                      className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
-                    >
-                      <div>
-                        <p className="mb-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
-                          {block.id === "content-variants" ? "Hypothesis 1" : "Hypothesis 2"}
-                        </p>
-                        <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
-                          {block.title}
-                        </h3>
-                      </div>
-                      {openHypothesisIds.includes(block.id as "content-variants" | "cta-variants") ? <Minus className="h-5 w-5 text-[#1183D0]" /> : <Plus className="h-5 w-5 text-[#1183D0]" />}
-                    </button>
-                    {openHypothesisIds.includes(block.id as "content-variants" | "cta-variants") ? (
-                      <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-2">
-                        {block.body ? (
-                          <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                            {block.body}
-                          </p>
-                        ) : null}
-                        {block.id === "content-variants" &&
-                        block.payload &&
-                        typeof block.payload === "object" &&
-                        typeof block.payload.note === "string" ? (
-                          <p className="mx-auto mb-8 max-w-[760px] text-center font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                            {block.payload.note}
-                          </p>
-                        ) : null}
-                        <div className="grid gap-5 md:grid-cols-3">
-                          {variants.map((variant, index) => (
-                            (() => {
-                              const imageSrc = typeof variant.imageSrc === "string" ? variant.imageSrc : null;
-                              const variantTitle = typeof variant.title === "string" ? variant.title : "";
-                              const variantAlt = variantTitle || "Variant wireframe";
+          <SectionHeading title="Competitor pattern extraction" centered className="mb-8" />
+          <div className="mx-auto max-w-[980px] space-y-6">
+            <p className="mx-auto max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              This task focuses on identifying relevant competitor funnels, extracting patterns worth testing, and separating useful ideas from patterns that should be avoided.
+            </p>
 
-                              return (
-                                <Card key={`${block.id}-${index}`} className="overflow-hidden border-transparent shadow-none">
-                                  <CardContent className="p-7">
-                                    <div className="flex flex-wrap items-center gap-2">
-                                      <span className="inline-flex rounded-full bg-[#dbeafe] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1e40af]">
-                                        {`Variant ${index + 1}`}
-                                      </span>
-                                    </div>
-                                    <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
-                                      {variantTitle}
-                                    </h3>
-                                    <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                                      {typeof variant.body === "string" ? variant.body : ""}
-                                    </p>
-                                    {imageSrc ? (
-                                      <button
-                                        type="button"
-                                        onClick={() =>
-                                          setLightboxImage({
-                                            src: withBasePath(imageSrc),
-                                            alt: variantAlt,
-                                          })
-                                        }
-                                        className="mt-6 block w-full overflow-hidden rounded-[18px] bg-white text-left transition-transform hover:scale-[1.01]"
-                                      >
-                                        <img
-                                          src={withBasePath(imageSrc)}
-                                          alt={variantAlt}
-                                          className="h-auto w-full"
-                                        />
-                                      </button>
-                                    ) : null}
-                                  </CardContent>
-                                </Card>
-                              );
-                            })()
-                          ))}
-                        </div>
-                      </div>
-                    ) : null}
-                  </div>
-                </div>
-              ) : null
-            )}
-            {hypothesisItems.length ? reverseTechHypothesis3Accordion : null}
+            <div className="grid gap-6 lg:grid-cols-2">
+              <Card className="overflow-hidden rounded-[24px] border border-[#d7e8f7] shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+                <CardContent className="p-7">
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">3.1</p>
+                  <h3 className="mt-3 font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">Discovery</h3>
+                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                    Identify 2-3 competitor funnels you believe are relevant to our category. Briefly explain why you consider each one relevant based on factors such as positioning, audience, business model, scale, or any other criteria you find important.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="overflow-hidden rounded-[24px] border border-[#d7e8f7] shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+                <CardContent className="p-7">
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">3.2</p>
+                  <h3 className="mt-3 font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">Pattern extraction</h3>
+                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                    After reviewing the funnels, identify the patterns that are most worth testing and the ones that should be avoided in our calisthenics funnel.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+              <Card className="overflow-hidden rounded-[24px] border border-[#d7e8f7] shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+                <CardContent className="p-7">
+                  <h3 className="font-inter text-[20px] font-semibold leading-[1.35] text-[#0e2951]">2 patterns worth testing</h3>
+                  <ul className="mt-5 list-disc space-y-3 pl-5 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                    <li>Include a screenshot from the competitor funnel showing the pattern.</li>
+                    <li>Name the metric you believe the pattern could improve.</li>
+                    <li>Write a rough hypothesis for why it might work in our funnel.</li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="overflow-hidden rounded-[24px] border border-[#d7e8f7] shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+                <CardContent className="p-7">
+                  <h3 className="font-inter text-[20px] font-semibold leading-[1.35] text-[#0e2951]">1 pattern to avoid</h3>
+                  <ul className="mt-5 list-disc space-y-3 pl-5 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                    <li>Include a screenshot of the pattern.</li>
+                    <li>Explain why you would avoid it, such as ethical concerns, poor brand fit, mismatched audience, or another reason.</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </section>
       ) : null}
