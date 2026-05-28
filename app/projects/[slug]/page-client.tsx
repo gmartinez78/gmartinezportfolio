@@ -1744,31 +1744,33 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       )}
 
       {caseStudy.slug === "reversetech" ? (
-        <section className="sticky top-[76px] z-40 mx-auto max-w-[1200px] bg-white/90 px-6 py-2 backdrop-blur md:top-[84px] md:px-10 xl:px-20">
-          <div className="mx-auto max-w-[900px] border-b border-[#d7e8f7]">
-            <div className="flex flex-wrap items-end justify-center gap-0">
-            {[
-              { id: "task1" as const, label: "Task 1" },
-              { id: "task2" as const, label: "Task 2" },
-              { id: "task3" as const, label: "Task 3" },
-              { id: "task4" as const, label: "Task 4" },
-            ].map((item, index) => (
-              <button
-                key={item.label}
-                type="button"
-                onClick={() => setReversetechTaskTab(item.id)}
-                className={`relative min-w-[180px] border-[#d7e8f7] px-5 py-4 text-center transition-colors ${
-                  reversetechTaskTab === item.id
-                    ? "border-x border-t bg-white"
-                    : "border-x border-t border-transparent bg-transparent hover:bg-[#f8fbff]"
-                } ${index > 0 ? "-ml-px" : ""}`}
-              >
-                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{item.label}</p>
-                {reversetechTaskTab === item.id ? (
-                  <span className="absolute inset-x-0 -bottom-px h-px bg-white" />
-                ) : null}
-              </button>
-            ))}
+        <section className="sticky top-16 z-40 border-b border-[#d7e8f7] bg-white/95 backdrop-blur md:top-[72px]">
+          <div className="mx-auto max-w-[1200px] px-6 py-2 md:px-10 xl:px-20">
+            <div className="mx-auto max-w-[900px]">
+              <div className="flex flex-wrap items-end justify-center gap-0">
+              {[
+                { id: "task1" as const, label: "Task 1" },
+                { id: "task2" as const, label: "Task 2" },
+                { id: "task3" as const, label: "Task 3" },
+                { id: "task4" as const, label: "Task 4" },
+              ].map((item, index) => (
+                <button
+                  key={item.label}
+                  type="button"
+                  onClick={() => setReversetechTaskTab(item.id)}
+                  className={`relative min-w-[180px] border-[#d7e8f7] px-5 py-4 text-center transition-colors ${
+                    reversetechTaskTab === item.id
+                      ? "border-x border-t bg-white"
+                      : "border-x border-t border-transparent bg-transparent hover:bg-[#f8fbff]"
+                  } ${index > 0 ? "-ml-px" : ""}`}
+                >
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{item.label}</p>
+                  {reversetechTaskTab === item.id ? (
+                    <span className="absolute inset-x-0 -bottom-px h-px bg-white" />
+                  ) : null}
+                </button>
+              ))}
+              </div>
             </div>
           </div>
         </section>
@@ -3702,6 +3704,22 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div key={title} className="space-y-3">
                   <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{title}</p>
                   <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{body}</p>
+                  {title === "Experiment B" ? (
+                    <div className="pt-2 text-left">
+                      <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#2a5cb8]">Δ vs control</p>
+                      <ul className="mt-3 list-disc space-y-2 pl-5 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                        {[
+                          "Continue is used as the CTA to reduce friction and activate the payment step.",
+                          "The 12-wk plan is pre-selected and reinforced with a motivational tag.",
+                          "An app preview is added to connect the paywall more directly to the product value.",
+                          "The content order is changed to keep the scroll active and maintain momentum.",
+                          "A 30-day guarantee is added to strengthen trust before purchase.",
+                        ].map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
                 </div>
               ))}
             </div>
@@ -3847,7 +3865,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <div>
                 <div className="mb-3 flex items-baseline gap-2">
                   <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#2a5cb8] bg-[#2a5cb8] text-[12px] font-semibold text-white">B</span>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#2a5cb8]">experiment b</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#2a5cb8]">Reverse Health</span>
                 </div>
                 <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
                   <strong className="text-[#0e2951]">Hypothesis. </strong>Reframing the comparison to time to reach your target weight makes 1-wk and 4-wk look insufficient and pulls mix toward 12-wk.
@@ -3860,7 +3878,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <div className={`${kalam.className} flex min-h-[580px] flex-col gap-[7px] rounded-[18px] p-[10px]`}>
                     {/* Sticky top */}
                     <div className="flex items-center justify-between rounded-[10px] border border-[#1c1a17] bg-white px-2 py-1 text-[10px] text-[#1c1a17]">
-                      <span className="font-semibold">⏱ 09:53</span>
+                      <span className="font-semibold uppercase tracking-[0.16em]">Reverse Health</span>
                       <span className="rounded-full bg-[#1c1a17] px-[10px] py-[4px] text-[10px] uppercase text-white">Continue</span>
                     </div>
                     {/* Before/after */}
@@ -4062,20 +4080,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="mt-5">
-                  <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#2a5cb8]">Δ vs control</p>
-                  <ul className="mt-3 list-disc space-y-2 pl-5 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                    {[
-                      "Continue is used as the CTA to reduce friction and activate the payment step.",
-                      "The 12-wk plan is pre-selected and reinforced with a motivational tag.",
-                      "An app preview is added to connect the paywall more directly to the product value.",
-                      "The content order is changed to keep the scroll active and maintain momentum.",
-                      "A 30-day guarantee is added to strengthen trust before purchase.",
-                    ].map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
                 </div>
               </div>
 
