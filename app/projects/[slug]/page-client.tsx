@@ -3710,66 +3710,69 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
           {/* Phone frames — low-fi wireframes */}
           <div className="mt-12">
-            <div className="mx-auto mb-8 grid max-w-[980px] gap-8 text-center md:grid-cols-2">
-              {[
-                [
-                  "Goal A",
-                  "Improve overall paywall conversion rate so more users purchase any plan.",
-                  "Experiment A",
-                  "Placeholder text for experiment A.",
-                ],
-                [
-                  "Goal B",
-                  "Shift plan mix toward the 12-week plan to lift AOV (average order value / average revenue per user).",
-                  "Experiment B",
-                  "This version reframes the paywall around progress toward the user’s target weight loss. The 12-week option is positioned as the plan most likely to help the user reach that goal through time framing, app-value previews, trust signals, and repeated commitment points. Connecting the user’s goal to the price helps maintain engagement.",
-                ],
-              ].map(([goalLabel, goalBody, title, body]) => (
-                <div key={title} className="space-y-3">
-                  <div className="overflow-hidden rounded-[24px] bg-white px-6 py-7 text-center shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
-                    <div className="text-center">
-                      <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{goalLabel}</p>
-                      <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{goalBody}</p>
-                    </div>
-                  </div>
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{title}</p>
-                  <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{body}</p>
-                  {title === "Experiment A" ? (
-                    <div className="pt-2 text-left">
-                      <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#c8412a]">Δ vs control</p>
-                      <ul className="mt-3 list-disc space-y-2 pl-5 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                        {[
-                          'Replace timers w/ progress indicator ("5 of 5")',
-                          "Personalized recap above the plan",
-                          "Two plans are presented, with the 12-wk option recommended and pre-selected",
-                          '"What you get" + guarantee right beside CTA',
-                          "Cut repeated plan ladder · trim long scroll",
-                        ].map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : null}
-                  {title === "Experiment B" ? (
-                    <div className="pt-2 text-left">
-                      <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#2a5cb8]">Δ vs control</p>
-                      <ul className="mt-3 list-disc space-y-2 pl-5 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                        {[
-                          "Continue is used as the CTA to reduce friction and activate the payment step.",
-                          "The 12-wk plan is pre-selected and reinforced with a motivational tag.",
-                          "An app preview is added to connect the paywall more directly to the product value.",
-                          "The content order is changed to keep the scroll active and maintain momentum.",
-                          "A 30-day guarantee is added to strengthen trust before purchase.",
-                        ].map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : null}
+            <div className="mx-auto mb-8 grid max-w-[1180px] gap-8 text-center md:grid-cols-3">
+              <div className="overflow-hidden rounded-[24px] bg-white px-6 py-7 text-center shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Control</p>
+                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                  What ships now. The existing paywall presents a plan ladder with two urgency timers, no pre-selection, and daily pricing as the dominant framing.
+                </p>
+                <div className="mt-5 border-t border-[#d7e8f7] pt-5 text-left">
+                  <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#5c7792]">Current structure</p>
+                  <ul className="mt-3 list-disc space-y-2 pl-5 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                    {[
+                      "Three plan choices compete at once",
+                      "Urgency timers carry most of the persuasion",
+                      "Value is framed more around price than outcome",
+                    ].map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 </div>
-              ))}
+              </div>
+              <div className="overflow-hidden rounded-[24px] bg-white px-6 py-7 text-center shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Goal A</p>
+                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Improve overall paywall conversion rate so more users purchase any plan.</p>
+                <div className="mt-5 border-t border-[#d7e8f7] pt-5">
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Experiment A</p>
+                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">This version highlights plan discounts based on a personal goal the user may have, creating a more guided flow. It opens with a personalized before-and-after recap, surfaces a personalized limited-time promo code, narrows the decision to three clearer plan options, and moves the primary CTA, trust signals, and guarantee closer to the point of commitment.</p>
+                </div>
+                <div className="mt-5 border-t border-[#d7e8f7] pt-5 text-left">
+                        <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#c8412a]">Δ vs control</p>
+                        <ul className="mt-3 list-disc space-y-2 pl-5 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                          {[
+                            "The Continue button reminds users how much they save.",
+                            "Personalized recap above the plan",
+                            "Three plans are presented, with the 12-wk option recommended and pre-selected.",
+                            "Featured-in logos and a video testimonial reinforce trust before purchase.",
+                          ].map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="overflow-hidden rounded-[24px] bg-white px-6 py-7 text-center shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Goal B</p>
+                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Shift plan mix toward the 12-week plan to lift AOV (average order value / average revenue per user).</p>
+                <div className="mt-5 border-t border-[#d7e8f7] pt-5">
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Experiment B</p>
+                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">This version reframes the paywall around progress toward the user’s target weight loss. The 12-week option is positioned as the plan most likely to help the user reach that goal through time framing, app-value previews, trust signals, and repeated commitment points. Connecting the user’s goal to the price helps maintain engagement.</p>
+                </div>
+                <div className="mt-5 border-t border-[#d7e8f7] pt-5 text-left">
+                  <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#2a5cb8]">Δ vs control</p>
+                  <ul className="mt-3 list-disc space-y-2 pl-5 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                    {[
+                      "Continue is used as the CTA to reduce friction and activate the payment step.",
+                      "The 12-wk plan is pre-selected and reinforced with a motivational tag.",
+                      "An app preview is added to connect the paywall more directly to the product value.",
+                      "The content order is changed to keep the scroll active and maintain momentum.",
+                      "A 30-day guarantee is added to strengthen trust before purchase.",
+                    ].map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
-            <h3 className="mb-8 text-center font-inter text-[28px] leading-tight text-[#0e2951]">Variants, side by side</h3>
             <div className="grid gap-8 md:grid-cols-3">
 
               {/* ── Control ── */}
@@ -3791,10 +3794,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   }
                   className="block w-full rounded-[24px] border border-[#d7e8f7] bg-white p-3 text-left shadow-[0_20px_48px_rgba(17,131,208,0.08)] transition-transform hover:scale-[1.01]"
                 >
-                  <div className="relative max-h-[620px] overflow-hidden rounded-[18px]">
-                    <span className="absolute left-4 top-4 z-10 inline-flex rounded-[4px] bg-[#dbeafe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#1e40af]">
-                      Current paywall
-                    </span>
+                  <div className="relative max-h-[920px] overflow-hidden rounded-[18px]">
                     <img
                       src={withBasePath("/images/projects/Reversetech/paywall.png")}
                       alt="Current Reversetech paywall design"
@@ -3956,12 +3956,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         ))}
                       </div>
                       <div className="mt-3 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
-                        <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">Progress in the app</p>
-                        <div className="mt-2 flex min-h-[72px] items-center justify-center rounded-[6px] bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] text-[8px] uppercase tracking-wide text-[#4a443a]">
-                          app progress image
-                        </div>
-                      </div>
-                      <div className="mt-3 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
                         <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">Featured in</p>
                         <div className="mt-2 grid grid-cols-2 gap-x-2 gap-y-1 text-[8px] uppercase tracking-wide text-[#1c1a17] opacity-80">
                           {["Mirror", "Sky Sports", "The Guardian", "University of Oregon"].map((logo) => (
@@ -3969,6 +3963,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                               {logo}
                             </span>
                           ))}
+                        </div>
+                      </div>
+                      <div className="mt-3 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
+                        <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">Progress in the app</p>
+                        <div className="mt-2 flex min-h-[72px] items-center justify-center rounded-[6px] bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] text-[8px] uppercase tracking-wide text-[#4a443a]">
+                          app progress image
                         </div>
                       </div>
                     </div>
@@ -4040,9 +4040,28 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           </div>
                         </div>
                         <div className="mt-3 flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
-                          <span className="text-[10px] uppercase text-white">12-WK</span>
-                          <span className="text-[11px] font-bold uppercase text-white">Continue - Save 51%</span>
+                          <span className="text-[11px] font-bold text-white">Continue - Save 51%</span>
+                          <span className="text-[10px] text-white">→</span>
                         </div>
+                      </div>
+                      <div className="mt-2 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
+                        <p className="text-[9px] font-semibold uppercase tracking-wide text-[#1c1a17]">30 days</p>
+                        <p className="mt-1 text-[8px] leading-[1.35] text-[#4a443a]">Try the plan risk-free and request a refund within 30 days if it is not the right fit.</p>
+                      </div>
+                      <div className="mt-2 text-center text-[8px] leading-[1.4] text-[#4a443a]">
+                        <p>All of our payments are processed through Reverse Group Inc.</p>
+                        <p className="mt-2">1603 Capital Avenue</p>
+                        <p>Suite 413-D179</p>
+                        <p>Cheyenne, Wyoming 82001</p>
+                        <p>United States</p>
+                      </div>
+                      <div className="mt-2 flex justify-center gap-2">
+                        <button type="button" className="rounded-full border border-[#1c1a17]/20 px-3 py-[5px] text-[8px] uppercase tracking-wide text-[#4a443a]">
+                          Privacy
+                        </button>
+                        <button type="button" className="rounded-full border border-[#1c1a17]/20 px-3 py-[5px] text-[8px] uppercase tracking-wide text-[#4a443a]">
+                          Terms
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -4053,7 +4072,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <div>
                 <div className="mb-3 flex items-baseline gap-2">
                   <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#2a5cb8] bg-[#2a5cb8] text-[12px] font-semibold text-white">B</span>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#2a5cb8]">Reverse Health</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#2a5cb8]">Experiment B</span>
                 </div>
                 <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
                   <strong className="text-[#0e2951]">Hypothesis. </strong>Reframing the comparison to time to reach your target weight makes 1-wk and 4-wk look insufficient and pulls mix toward 12-wk.
@@ -4266,6 +4285,21 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </p>
                         <p className="mt-3 text-[8px] underline text-[#4a443a]">Money-back policy</p>
                       </div>
+                      <div className="mt-2 text-center text-[8px] leading-[1.4] text-[#4a443a]">
+                        <p>All of our payments are processed through Reverse Group Inc.</p>
+                        <p className="mt-2">1603 Capital Avenue</p>
+                        <p>Suite 413-D179</p>
+                        <p>Cheyenne, Wyoming 82001</p>
+                        <p>United States</p>
+                      </div>
+                      <div className="mt-2 flex justify-center gap-2">
+                        <button type="button" className="rounded-full border border-[#1c1a17]/20 px-3 py-[5px] text-[8px] uppercase tracking-wide text-[#4a443a]">
+                          Privacy
+                        </button>
+                        <button type="button" className="rounded-full border border-[#1c1a17]/20 px-3 py-[5px] text-[8px] uppercase tracking-wide text-[#4a443a]">
+                          Terms
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -4274,48 +4308,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
           </div>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {[
-              {
-                title: "Measure Variant A",
-                body: "Primary metric: paywall-to-purchase conversion rate.",
-                points: [
-                  "Guardrails: refund rate, NPS, time on paywall, and AOV.",
-                  "Stop if refunds rise materially, suggesting the personalization over-promises.",
-                ],
-              },
-              {
-                title: "Measure Variant B",
-                body: "Primary metric: share of purchasers selecting the 12-week plan and resulting AOV.",
-                points: [
-                  "Guardrails: overall paywall conversion and refund rate.",
-                  "Stop if plan mix improves but overall conversion falls without enough revenue lift.",
-                ],
-              },
-              {
-                title: "What to test next",
-                body: "If either direction shows signal, the next round can combine the strongest mechanics.",
-                points: [
-                  "Combine personalized recap with days-to-goal comparison.",
-                  "Remove the repeated lower plan ladder and test alternate price anchors.",
-                ],
-              },
-            ].map((item) => (
-              <Card key={item.title} className="overflow-hidden">
-                <CardContent className="p-7">
-                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
-                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item.body}</p>
-                  <ul className="mt-5 space-y-3">
-                    {item.points.map((point) => (
-                      <li key={point} className="font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
           <div className="mt-12">
             <h3 className="text-center font-inter text-[28px] leading-tight text-[#0e2951]">Where the leaks probably are</h3>
             <div className="mt-8 grid gap-6 md:grid-cols-3 md:gap-0">
