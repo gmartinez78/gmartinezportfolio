@@ -3656,7 +3656,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
                 {[
                   {
-                    competitor: "Muscle Boost",
+                    competitor: "Muscle Booster",
                     relevance: "Positioning, audience, business model, scale.",
                     pattern: "Add discovery placeholder",
                     metric: "Add placeholder",
@@ -3682,7 +3682,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     className="grid grid-cols-[1.05fr_1.15fr_1.2fr_0.9fr_1.35fr] border-t border-[#d7e8f7] px-6 py-5 text-[15px] leading-[1.7] text-[#5c7792]"
                   >
                     <div className="border-r border-[#d7e8f7] pr-4 font-semibold text-[#0e2951]">
-                      {row.competitor === "Muscle Boost" ? (
+                      {row.competitor === "Muscle Booster" ? (
                         <a
                           href="https://plan.muscle-booster.io/start-today"
                           target="_blank"
@@ -3724,7 +3724,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <div className="grid gap-4 p-5 md:hidden">
                 {[
                   {
-                    competitor: "Muscle Boost",
+                    competitor: "Muscle Booster",
                     relevance: "Positioning, audience, business model, scale.",
                     pattern: "Add discovery placeholder",
                     metric: "Add placeholder",
@@ -3750,7 +3750,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <div>
                         <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Competitor</p>
                         <p className="mt-2 text-[18px] font-semibold leading-snug text-[#0e2951]">
-                          {row.competitor === "Muscle Boost" ? (
+                          {row.competitor === "Muscle Booster" ? (
                             <a
                               href="https://plan.muscle-booster.io/start-today"
                               target="_blank"
@@ -3842,7 +3842,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                   {[
                     {
-                      label: "Muscle Boost",
+                      label: "Muscle Booster",
                       title: "Worth testing",
                       pattern: "Anatomical Results Preview: Use of animations that highlight the specific muscle tissues activated by the calisthenics plan.",
                       metric: "Trial Start Rate / Paid Conversion",
@@ -3886,7 +3886,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div className="grid gap-4 p-5 md:hidden">
                   {[
                     {
-                      label: "Muscle Boost",
+                      label: "Muscle Booster",
                       title: "Worth testing",
                       pattern: "Anatomical Results Preview: Use of animations that highlight the specific muscle tissues activated by the calisthenics plan.",
                       metric: "Trial Start Rate / Paid Conversion",
