@@ -330,6 +330,7 @@ const REVERSE_TECH_BETTER_ME_URL = "https://betterme-wallpilates.com/";
 const REVERSE_TECH_PATTERN_ROWS = [
   {
     label: "Pattern 1 to test",
+    tag: "Worth testing",
     title: "Informational interstitial screen in a questionnaire flow",
     screenshotTitle: "Better Me",
     source: "Muscle Booster (Better Me runs a version of this too)",
@@ -341,6 +342,7 @@ const REVERSE_TECH_PATTERN_ROWS = [
   },
   {
     label: "Pattern 2 to test",
+    tag: "Worth testing",
     title: "Low-friction progress stepper",
     screenshotTitle: "Flo Health",
     source: "Flo Health",
@@ -351,6 +353,20 @@ const REVERSE_TECH_PATTERN_ROWS = [
       "If we add a low-friction progress stepper throughout the questionnaire, quiz completion and step-through rate should increase. The pattern makes the flow feel shorter, more manageable, and easier to finish quickly, which reduces perceived effort and helps users stay engaged until they reach the next value moment.",
     note:
       "The goal of this pattern is not to add persuasion directly. It is to reduce friction by making progress visible and by reinforcing that the questionnaire is fast to complete.",
+  },
+  {
+    label: "Pattern to avoid",
+    tag: "Avoid",
+    title: "Short 7-day trial with scarcity-led conversion pressure",
+    screenshotTitle: "Muscle Booster",
+    source: "Muscle Booster / Better Me",
+    screenshot: "short-trial paywall with urgency and auto-renewal framing",
+    imageSrc: "/images/projects/Reversetech/muscle-booster.png",
+    metric: "Day 7 retention, renewal rate, and conversion quality",
+    hypothesis:
+      "A short 7-day trial plus scarcity timers can lift top-line trial starts, but it often lowers conversion quality. It pushes the monetization moment too early, before the user has built enough habit, trust, or commitment to the product. That can hurt retention, weaken renewals, and reduce downstream LTV even if the initial conversion looks stronger.",
+    note:
+      "Recent subscription-app benchmarks and trial-length research point in the same direction: shorter trials can accelerate the decision moment, but they also create more front-loaded churn and weaker long-term retention when users have not had enough time to experience value.",
   },
 ] as const;
 
@@ -3943,7 +3959,20 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           </div>
                         </div>
                       </div>
-                      <div className="border-r border-[#d7e8f7] px-4">{row.title}</div>
+                      <div className="border-r border-[#d7e8f7] px-4">
+                        {"tag" in row && row.tag ? (
+                          <span
+                            className={`mb-3 inline-flex rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] ${
+                              row.tag === "Avoid"
+                                ? "bg-[#fee2e2] text-[#b91c1c]"
+                                : "bg-[#e0f2fe] text-[#0369a1]"
+                            }`}
+                          >
+                            {row.tag}
+                          </span>
+                        ) : null}
+                        <p>{row.title}</p>
+                      </div>
                       <div className="border-r border-[#d7e8f7] px-4">{row.metric}</div>
                       <div className="pl-4">
                         <p>{row.hypothesis}</p>
@@ -3988,6 +4017,17 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </div>
                         <div>
                           <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Pattern</p>
+                          {"tag" in row && row.tag ? (
+                            <span
+                              className={`mt-2 inline-flex rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] ${
+                                row.tag === "Avoid"
+                                  ? "bg-[#fee2e2] text-[#b91c1c]"
+                                  : "bg-[#e0f2fe] text-[#0369a1]"
+                              }`}
+                            >
+                              {row.tag}
+                            </span>
+                          ) : null}
                           <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.title}</p>
                         </div>
                         <div>
