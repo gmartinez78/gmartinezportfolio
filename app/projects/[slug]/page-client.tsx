@@ -3711,167 +3711,60 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section id="rt-task-3" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title="Competitor pattern extraction" centered className="mb-8" />
           <div className="mx-auto max-w-[980px] space-y-6">
-            <p className="mx-auto max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              Identify 2-3 competitor funnels you think are relevant to our category. Briefly explain why you consider them relevant based on positioning, audience, business model, and scale.
-            </p>
             <h3 className="text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
               Discovery
             </h3>
             <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
               <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-4">
-                <p className="text-center text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Pattern discovery</p>
+                <p className="text-center text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Competitor analysis</p>
               </div>
               <div className="hidden md:block">
-                <div className="grid grid-cols-[1.05fr_1.15fr_1.2fr_0.9fr_1.35fr] border-b border-[#d7e8f7] px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0e2951]">
-                  <div className="border-r border-[#d7e8f7] pr-4">Competitor</div>
-                  <div className="border-r border-[#d7e8f7] px-4">Strategic Relevance: Positioning, Audience, Business Model, Scale</div>
-                  <div className="border-r border-[#d7e8f7] px-4">Identified Pattern</div>
-                  <div className="border-r border-[#d7e8f7] px-4">Metric Moved</div>
-                  <div className="pl-4">Hypothesis / Justification</div>
+                <div className="grid grid-cols-[0.9fr_1fr_1fr_1fr_1fr] border-b border-[#d7e8f7] px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0e2951]">
+                  <div className="border-r border-[#d7e8f7] pr-4">Dimension</div>
+                  <div className="border-r border-[#d7e8f7] px-4">Reverse Health (us)</div>
+                  <div className="border-r border-[#d7e8f7] px-4">Muscle Booster</div>
+                  <div className="border-r border-[#d7e8f7] px-4">Flo Health</div>
+                  <div className="pl-4">BetterMe</div>
                 </div>
-                {[
-                  {
-                    competitor: "Muscle Booster",
-                    relevance: "Positioning, audience, business model, scale.",
-                    pattern: "Add discovery placeholder",
-                    metric: "Add placeholder",
-                    hypothesis: "Add discovery placeholder notes.",
-                  },
-                  {
-                    competitor: "Ladder",
-                    relevance: "Positioning, audience, business model, scale.",
-                    pattern: "Add discovery placeholder",
-                    metric: "Add placeholder",
-                    hypothesis: "Add discovery placeholder notes.",
-                  },
-                  {
-                    competitor: "BetterMe (Pattern to Avoid)",
-                    relevance: "Positioning, audience, business model, scale.",
-                    pattern: "Add discovery placeholder",
-                    metric: "Add placeholder",
-                    hypothesis: "Add discovery placeholder notes.",
-                  },
-                ].map((row) => (
+                {REVERSE_TECH_COMPETITOR_DIMENSIONS.map((row) => (
                   <div
-                    key={row.competitor}
-                    className="grid grid-cols-[1.05fr_1.15fr_1.2fr_0.9fr_1.35fr] border-t border-[#d7e8f7] px-6 py-5 text-[15px] leading-[1.7] text-[#5c7792]"
+                    key={row.dimension}
+                    className="grid grid-cols-[0.9fr_1fr_1fr_1fr_1fr] border-t border-[#d7e8f7] px-6 py-5 text-[15px] leading-[1.7] text-[#5c7792]"
                   >
-                    <div className="border-r border-[#d7e8f7] pr-4 font-semibold text-[#0e2951]">
-                      {row.competitor === "Muscle Booster" ? (
-                        <a
-                          href="https://plan.muscle-booster.io/start-today"
-                          target="_blank"
-                          rel="noreferrer"
-                          className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
-                        >
-                          {row.competitor}
-                        </a>
-                      ) : row.competitor === "Ladder" ? (
-                        <a
-                          href="https://www.joinladder.com/quiz?utm_medium=organic&utm_source=website&utm_campaign=homepage&utm_term=hero-cta&utm_content=homepagesurvey&variant=riddler_hybrid_og_v2&page=0"
-                          target="_blank"
-                          rel="noreferrer"
-                          className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
-                        >
-                          {row.competitor}
-                        </a>
-                      ) : row.competitor === "BetterMe (Pattern to Avoid)" ? (
-                        <a
-                          href="https://betterme-pilates.com/first-page-brand-palette?flow=2117"
-                          target="_blank"
-                          rel="noreferrer"
-                          className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
-                        >
-                          {row.competitor}
-                        </a>
-                      ) : (
-                        row.competitor
-                      )}
-                    </div>
-                    <div className="border-r border-[#d7e8f7] px-4">{row.relevance}</div>
-                    <div className="border-r border-[#d7e8f7] px-4">{row.pattern}</div>
-                    <div className="border-r border-[#d7e8f7] px-4">{row.metric}</div>
-                    <div className="pl-4">{row.hypothesis}</div>
+                    <div className="border-r border-[#d7e8f7] pr-4 font-semibold text-[#0e2951]">{row.dimension}</div>
+                    <div className="border-r border-[#d7e8f7] px-4">{row.reverseHealth}</div>
+                    <div className="border-r border-[#d7e8f7] px-4">{row.muscleBooster}</div>
+                    <div className="border-r border-[#d7e8f7] px-4">{row.floHealth}</div>
+                    <div className="pl-4">{row.betterMe}</div>
                   </div>
                 ))}
               </div>
 
               <div className="grid gap-4 p-5 md:hidden">
-                {[
-                  {
-                    competitor: "Muscle Booster",
-                    relevance: "Positioning, audience, business model, scale.",
-                    pattern: "Add discovery placeholder",
-                    metric: "Add placeholder",
-                    hypothesis: "Add discovery placeholder notes.",
-                  },
-                  {
-                    competitor: "Ladder",
-                    relevance: "Positioning, audience, business model, scale.",
-                    pattern: "Add discovery placeholder",
-                    metric: "Add placeholder",
-                    hypothesis: "Add discovery placeholder notes.",
-                  },
-                  {
-                    competitor: "BetterMe (Pattern to Avoid)",
-                    relevance: "Positioning, audience, business model, scale.",
-                    pattern: "Add discovery placeholder",
-                    metric: "Add placeholder",
-                    hypothesis: "Add discovery placeholder notes.",
-                  },
-                ].map((row) => (
-                  <Card key={`mobile-${row.competitor}`} className="overflow-hidden">
+                {REVERSE_TECH_COMPETITOR_DIMENSIONS.map((row) => (
+                  <Card key={`mobile-${row.dimension}`} className="overflow-hidden">
                     <CardContent className="space-y-4 px-5 py-5">
                       <div>
-                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Competitor</p>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Dimension</p>
                         <p className="mt-2 text-[18px] font-semibold leading-snug text-[#0e2951]">
-                          {row.competitor === "Muscle Booster" ? (
-                            <a
-                              href="https://plan.muscle-booster.io/start-today"
-                              target="_blank"
-                              rel="noreferrer"
-                              className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
-                            >
-                              {row.competitor}
-                            </a>
-                          ) : row.competitor === "Ladder" ? (
-                            <a
-                              href="https://www.joinladder.com/quiz?utm_medium=organic&utm_source=website&utm_campaign=homepage&utm_term=hero-cta&utm_content=homepagesurvey&variant=riddler_hybrid_og_v2&page=0"
-                              target="_blank"
-                              rel="noreferrer"
-                              className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
-                            >
-                              {row.competitor}
-                            </a>
-                          ) : row.competitor === "BetterMe (Pattern to Avoid)" ? (
-                            <a
-                              href="https://betterme-pilates.com/first-page-brand-palette?flow=2117"
-                              target="_blank"
-                              rel="noreferrer"
-                              className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
-                            >
-                              {row.competitor}
-                            </a>
-                          ) : (
-                            row.competitor
-                          )}
+                          {row.dimension}
                         </p>
                       </div>
                       <div>
-                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Strategic Relevance: Positioning, Audience, Business Model, Scale</p>
-                        <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.relevance}</p>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Reverse Health (us)</p>
+                        <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.reverseHealth}</p>
                       </div>
                       <div>
-                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Identified Pattern</p>
-                        <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.pattern}</p>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Muscle Booster</p>
+                        <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.muscleBooster}</p>
                       </div>
                       <div>
-                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Metric Moved</p>
-                        <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.metric}</p>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Flo Health</p>
+                        <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.floHealth}</p>
                       </div>
                       <div>
-                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Hypothesis / Justification</p>
-                        <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.hypothesis}</p>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">BetterMe</p>
+                        <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.betterMe}</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -3879,21 +3772,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             </div>
 
-            <div className="px-6 py-2">
-              <h3 className="text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
-                Strategic Analysis Summary
-              </h3>
-              <div className="mt-6 space-y-4 text-center font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                <p>
-                  <strong className="text-[#0e2951]">The Authority Advantage:</strong> For a calisthenics product, scientifically demonstrating how tissues transform is vital to justify a high-price yearly plan, which is the gold standard for monetization in health apps with a 68% adoption rate.
-                </p>
-                <p>
-                  <strong className="text-[#0e2951]">The Risk of Immediacy:</strong> Following the trend of shortening trials risks burning out the user before they experience a real benefit. 2026 data confirms the battle for the subscriber is won or lost in the first session (Day 0), but actual conversion requires enough time to form a lasting habit.
-                </p>
-                <p>
-                  <strong className="text-[#0e2951]">Identity over Instructions:</strong> Similar to Ladder, Reverse Health should transition from selling exercises to selling a calisthenics identity, which serves as a powerful stabilizer for the customer base against low-cost AI competition.
-                </p>
-              </div>
+            <div className="rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] px-6 py-6 text-center shadow-[0_16px_32px_rgba(17,131,208,0.06)]">
+              <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                <strong className="text-[#0e2951]">Set note:</strong> Muscle Booster and BetterMe share the same quiz-to-paywall logic, so I deliberately pull only one test pattern from that camp (projection) and source the second test from Flo (value-first), which runs a different model. That keeps my two test patterns on genuinely different logics instead of repeating conversion twice.
+              </p>
             </div>
 
             <div className="space-y-5 pt-4">
@@ -3903,7 +3785,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   Which patterns are worth testing?
                 </h3>
                 <p className="mx-auto mt-3 max-w-[760px] font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                  Two patterns below are structured as opportunities to test in our calisthenics funnel. The final row captures one pattern that should be deliberately avoided.
+                  The two test patterns sit on opposite philosophies on purpose. Pattern 1 sells the result before value. Pattern 2 proves value and earns trust before the ask. That contrast is what makes them two real patterns, not one idea twice.
                 </p>
               </div>
 
@@ -3915,29 +3797,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     <div className="border-r border-[#d7e8f7] px-4">Metric Moved</div>
                     <div className="pl-4">Hypothesis / Why</div>
                   </div>
-                  {[
-                    {
-                      label: "Muscle Booster",
-                      title: "Worth testing",
-                      pattern: "Anatomical Results Preview: Use of animations that highlight the specific muscle tissues activated by the calisthenics plan.",
-                      metric: "Trial Start Rate / Paid Conversion",
-                      hypothesis: "Scientific visuals break through \"vibe-coding\" and establish instant medical credibility, validating that bodyweight training is effective for hypertrophy.",
-                    },
-                    {
-                      label: "Ladder",
-                      title: "Worth testing",
-                      pattern: "\"Squad\" Assignment by Persona: Requiring users to choose a specific role (e.g., \"Calisthenics Operator\") to generate identity alignment from the start.",
-                      metric: "Day 30 Retention / LTV",
-                      hypothesis: "Users who feel part of a group or \"team\" have higher community accountability. Completing at least 2 workouts during a trial drastically increases long-term subscription rates.",
-                    },
-                    {
-                      label: "BetterMe",
-                      title: "Avoid",
-                      pattern: "Ultra-Short Trials (3-4 days): Shortening the trial window to accelerate the collection of conversion data and cash flow.",
-                      metric: "Day 0 Churn / Conversion Quality",
-                      hypothesis: "WHY AVOID: 55.4% of cancellations for 3-day trials occur on Day 0 due to \"fear of being charged\". Trials lasting 17-32 days convert 70% better than those under 4 days.",
-                    },
-                  ].map((row) => (
+                  {REVERSE_TECH_PATTERN_ROWS.map((row) => (
                     <div
                       key={row.label}
                       className="grid grid-cols-[0.95fr_1.05fr_0.8fr_1.2fr] border-t border-[#d7e8f7] px-6 py-5 text-[15px] leading-[1.7] text-[#5c7792]"
@@ -3946,54 +3806,39 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         <div className="flex aspect-[4/5] items-center justify-center rounded-[20px] border border-dashed border-[#b8d7ee] bg-[#f8fbff] px-4 text-center">
                           <div>
                             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{row.label}</p>
-                            <p className="mt-2 font-inter text-[14px] font-semibold text-[#0e2951]">{row.title}</p>
-                            <p className="mt-3 text-[13px] leading-[1.6] text-[#7b93ab]">Add screenshot</p>
+                            <p className="mt-2 font-inter text-[14px] font-semibold text-[#0e2951]">{row.source}</p>
+                            <p className="mt-3 text-[13px] leading-[1.6] text-[#7b93ab]">[SCREENSHOT: {row.screenshot}]</p>
                           </div>
                         </div>
                       </div>
-                      <div className="border-r border-[#d7e8f7] px-4">{row.pattern}</div>
+                      <div className="border-r border-[#d7e8f7] px-4">{row.title}</div>
                       <div className="border-r border-[#d7e8f7] px-4">{row.metric}</div>
-                      <div className="pl-4">{row.hypothesis}</div>
+                      <div className="pl-4">
+                        <p>{row.hypothesis}</p>
+                        {"note" in row && row.note ? (
+                          <p className="mt-3 text-[14px] leading-[1.6] text-[#7b93ab]">
+                            <strong className="text-[#0e2951]">Note:</strong> {row.note}
+                          </p>
+                        ) : null}
+                      </div>
                     </div>
                   ))}
                 </div>
 
                 <div className="grid gap-4 p-5 md:hidden">
-                  {[
-                    {
-                      label: "Muscle Booster",
-                      title: "Worth testing",
-                      pattern: "Anatomical Results Preview: Use of animations that highlight the specific muscle tissues activated by the calisthenics plan.",
-                      metric: "Trial Start Rate / Paid Conversion",
-                      hypothesis: "Scientific visuals break through \"vibe-coding\" and establish instant medical credibility, validating that bodyweight training is effective for hypertrophy.",
-                    },
-                    {
-                      label: "Ladder",
-                      title: "Worth testing",
-                      pattern: "\"Squad\" Assignment by Persona: Requiring users to choose a specific role (e.g., \"Calisthenics Operator\") to generate identity alignment from the start.",
-                      metric: "Day 30 Retention / LTV",
-                      hypothesis: "Users who feel part of a group or \"team\" have higher community accountability. Completing at least 2 workouts during a trial drastically increases long-term subscription rates.",
-                    },
-                    {
-                      label: "BetterMe",
-                      title: "Avoid",
-                      pattern: "Ultra-Short Trials (3-4 days): Shortening the trial window to accelerate the collection of conversion data and cash flow.",
-                      metric: "Day 0 Churn / Conversion Quality",
-                      hypothesis: "WHY AVOID: 55.4% of cancellations for 3-day trials occur on Day 0 due to \"fear of being charged\". Trials lasting 17-32 days convert 70% better than those under 4 days.",
-                    },
-                  ].map((row) => (
+                  {REVERSE_TECH_PATTERN_ROWS.map((row) => (
                     <Card key={`pattern-mobile-${row.label}`} className="overflow-hidden">
                       <CardContent className="space-y-4 px-5 py-5">
                         <div className="flex aspect-[4/3] items-center justify-center rounded-[20px] border border-dashed border-[#b8d7ee] bg-[#f8fbff] px-4 text-center">
                           <div>
                             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{row.label}</p>
-                            <p className="mt-2 font-inter text-[14px] font-semibold text-[#0e2951]">{row.title}</p>
-                            <p className="mt-3 text-[13px] leading-[1.6] text-[#7b93ab]">Add screenshot</p>
+                            <p className="mt-2 font-inter text-[14px] font-semibold text-[#0e2951]">{row.source}</p>
+                            <p className="mt-3 text-[13px] leading-[1.6] text-[#7b93ab]">[SCREENSHOT: {row.screenshot}]</p>
                           </div>
                         </div>
                         <div>
                           <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Pattern</p>
-                          <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.pattern}</p>
+                          <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.title}</p>
                         </div>
                         <div>
                           <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Metric Moved</p>
@@ -4002,6 +3847,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         <div>
                           <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Hypothesis / Why</p>
                           <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.hypothesis}</p>
+                          {"note" in row && row.note ? (
+                            <p className="mt-3 text-[14px] leading-[1.6] text-[#7b93ab]">
+                              <strong className="text-[#0e2951]">Note:</strong> {row.note}
+                            </p>
+                          ) : null}
                         </div>
                       </CardContent>
                     </Card>
