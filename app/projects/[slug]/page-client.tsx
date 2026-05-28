@@ -277,6 +277,81 @@ const CONFIDENTIAL_CONSERVATIVE_SCENARIO_ROWS = [
   },
 ] as const;
 
+const REVERSE_TECH_COMPETITOR_DIMENSIONS = [
+  {
+    dimension: "Funnel model",
+    reverseHealth: "Age-first 1-min quiz to personalized plan",
+    muscleBooster: "Quiz to personalized plan",
+    floHealth: "Quiz onboarding to freemium app",
+    betterMe: "Quiz to personalized plan",
+  },
+  {
+    dimension: "Monetization",
+    reverseHealth: "Hard paywall, recurring subscription",
+    muscleBooster: "Hard paywall + scarcity timers, subscription",
+    floHealth: "Freemium (free core, Premium upsell)",
+    betterMe: "7-day trial then subscription, aggressive auto-renewal",
+  },
+  {
+    dimension: "Free option",
+    reverseHealth: "None, paywall right after the quiz",
+    muscleBooster: "Minimal, paywall-led",
+    floHealth: "Yes, genuine free tier",
+    betterMe: "Thin and trial-gated, not real freemium",
+  },
+  {
+    dimension: "Target audience",
+    reverseHealth: "Women, 40 to 60+, midlife",
+    muscleBooster: "Broad, male-skewing",
+    floHealth: "Women, broad age, cycle and life-stage",
+    betterMe: "Women-skewing, broad age incl. midlife",
+  },
+  {
+    dimension: "Positioning",
+    reverseHealth: "Fitness for women's unique needs, calisthenics",
+    muscleBooster: "Muscle building, aesthetics",
+    floHealth: "Women's health, privacy-forward, life-stage personalization",
+    betterMe: "Inclusive wellness, women-focused",
+  },
+  {
+    dimension: "Key funnel mechanic",
+    reverseHealth: "Age-gate + women's-needs framing + FB community",
+    muscleBooster: "Target-body selector, aesthetic before/afters, projection",
+    floHealth: "Free useful insights + privacy and trust signals",
+    betterMe: "Quiz to trial, pressure discounts and countdowns",
+  },
+  {
+    dimension: "Role in my analysis",
+    reverseHealth: "Baseline (the funnel we're improving)",
+    muscleBooster: "TEST 1: persuasion projection",
+    floHealth: "TEST 2: value-first + trust",
+    betterMe: "AVOID source: pressure billing",
+  },
+] as const;
+
+const REVERSE_TECH_PATTERN_ROWS = [
+  {
+    label: "Pattern 1 to test",
+    title: "Personalized outcome projection before the paywall",
+    source: "Muscle Booster (BetterMe runs a version of this too)",
+    screenshot: "the \"you'll reach your goal by [date]\" projection screen with the progress curve, shown right before the paywall",
+    metric: "Paywall view to purchase (conversion rate)",
+    hypothesis:
+      "If we show a personalized outcome projection tied to the user's quiz answers right before the paywall, then paywall-to-purchase conversion goes up, because a concrete dated result reframes the subscription as the path to that result instead of an open-ended cost.",
+  },
+  {
+    label: "Pattern 2 to test",
+    title: "Value-first preview and trust signals before the paywall",
+    source: "Flo Health",
+    screenshot: "Flo's free personalized insight screen, or its privacy and data-reassurance screen during onboarding",
+    metric: "Quiz completion rate and activation (first-workout completion), with downstream 7-day conversion",
+    hypothesis:
+      "If we give a real piece of personalized value before the paywall (a free starter session or a personalized readiness result) and pair the quiz with clear privacy reassurance, then quiz completion and activation go up, because the user gets proof of value and feels safe sharing personal data before she's asked to pay. This matters for a 40 to 60+ audience that's both value-cautious and privacy-cautious about health data.",
+    note:
+      "Flo gives two extractable signals here, the freemium value-first taste and the privacy-forward onboarding. If I want a single clean metric, I'd split them: value-first to lift activation, privacy signals to lift quiz completion.",
+  },
+] as const;
+
 const NAYYA_PROCESS_ALTERNATIVES = [
   {
     title: "Embedded Nayya section",
