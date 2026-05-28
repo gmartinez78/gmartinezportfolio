@@ -3695,6 +3695,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
           {/* Phone frames — low-fi wireframes */}
           <div className="mt-12">
+            <div className="mx-auto mb-8 grid max-w-[980px] gap-4 md:grid-cols-2">
+              {["Experiment A", "Experiment B"].map((title) => (
+                <div
+                  key={title}
+                  className="rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] px-6 py-6 text-center shadow-[0_14px_34px_rgba(14,41,81,0.05)]"
+                >
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{title}</p>
+                  <div className="mt-4 flex min-h-[88px] items-center justify-center rounded-[14px] border border-dashed border-[#b8d6ee] bg-white text-[13px] uppercase tracking-[0.12em] text-[#5c7792]">
+                    Placeholder
+                  </div>
+                </div>
+              ))}
+            </div>
             <h3 className="mb-8 text-center font-inter text-[28px] leading-tight text-[#0e2951]">Variants, side by side</h3>
             <div className="grid gap-8 md:grid-cols-3">
 
