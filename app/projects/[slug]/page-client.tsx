@@ -3649,7 +3649,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <div className="hidden md:block">
                 <div className="grid grid-cols-[1.05fr_1.15fr_1.2fr_0.9fr_1.35fr] border-b border-[#d7e8f7] px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0e2951]">
                   <div className="border-r border-[#d7e8f7] pr-4">Competitor</div>
-                  <div className="border-r border-[#d7e8f7] px-4">Strategic Relevance</div>
+                  <div className="border-r border-[#d7e8f7] px-4">Strategic Relevance: Positioning, Audience, Business Model, Scale</div>
                   <div className="border-r border-[#d7e8f7] px-4">Identified Pattern</div>
                   <div className="border-r border-[#d7e8f7] px-4">Metric Moved</div>
                   <div className="pl-4">Hypothesis / Justification</div>
@@ -3783,7 +3783,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </p>
                       </div>
                       <div>
-                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Strategic Relevance</p>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Strategic Relevance: Positioning, Audience, Business Model, Scale</p>
                         <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.relevance}</p>
                       </div>
                       <div>
