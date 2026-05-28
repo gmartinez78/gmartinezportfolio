@@ -1446,6 +1446,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     typeof taskDetailBlock.payload.heading === "string"
       ? taskDetailBlock.payload.heading
       : null;
+  const reverseTechTaskDetailHeading =
+    caseStudy.slug === "reversetech" && taskDetailHeading === "Funnel diagnosis & design improvements"
+      ? "Funnel diagnosis"
+      : taskDetailHeading;
   const taskDetailTable =
     taskDetailBlock?.payload &&
     typeof taskDetailBlock.payload === "object" &&
@@ -1876,7 +1880,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section id="rt-funnel-diagnosis" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading
             eyebrow={caseStudy.slug === "reversetech" ? undefined : taskDetailBlock.title}
-            title={taskDetailHeading ?? taskDetailBlock.title}
+            title={reverseTechTaskDetailHeading ?? taskDetailBlock.title}
             centered
             className="mb-12"
           />
