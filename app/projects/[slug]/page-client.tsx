@@ -568,7 +568,7 @@ const NAYYA_PHONE_IMAGE = "/images/projects/nayya-ai-benefits/banners/nayya-desi
 const NAYYA_IMPACT_FIGMA_EMBED =
   "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FYK1xcLLDokH5gNYAeDmNiP%2FNayya%3Fnode-id%3D20753-8774%26m%3Ddev%26t%3DOkK79FuO2xBLEwc6-1";
 const REVERSE_TECH_FLOW_EMBED =
-  "https://embed.figma.com/design/82wWga1ObOtJEZ9LyNaQTo/Reverse-Tech---Flow?node-id=15-5087&embed-host=share";
+  "https://embed.figma.com/design/82wWga1ObOtJEZ9LyNaQTo/Reverse-Tech---Flow?node-id=0-1&embed-host=share";
 const NAYYA_INSIGHTS_CLOSING =
   "Participants who completed the Nayya survey enrolled in TWICE as many benefits as those who skipped it.";
 
@@ -2124,99 +2124,32 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       </button>
       {openHypothesisIds.includes("rt-hypothesis-2") ? (
         <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-6">
-          <div className="grid gap-8 xl:grid-cols-[minmax(0,320px)_minmax(0,1fr)] xl:items-start">
-            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] px-4 py-5 shadow-[0_24px_64px_rgba(17,131,208,0.08)]">
-              <div className="mb-4 flex items-center justify-between gap-3">
-                <button
-                  type="button"
-                  onClick={() => setPrototypeIndex((current) => Math.max(0, current - 1))}
-                  disabled={prototypeIndex === 0}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d7e8f7] bg-white text-[#0e2951] transition-colors hover:text-[#1183D0] disabled:cursor-not-allowed disabled:opacity-40"
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </button>
-                <p className="font-inter text-[13px] font-medium leading-[1.5] text-[#5c7792]">
-                  Screen {prototypeIndex + 1} of {REVERSE_TECH_HYPOTHESIS_2_FLOW.length}
+          <div className="space-y-8 text-left">
+            <div className="space-y-4">
+              {hypothesisItems.map((item) => (
+                <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                  {item}
                 </p>
-                <button
-                  type="button"
-                  onClick={() =>
-                    setPrototypeIndex((current) =>
-                      Math.min(REVERSE_TECH_HYPOTHESIS_2_FLOW.length - 1, current + 1)
-                    )
-                  }
-                  disabled={prototypeIndex === REVERSE_TECH_HYPOTHESIS_2_FLOW.length - 1}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d7e8f7] bg-white text-[#0e2951] transition-colors hover:text-[#1183D0] disabled:cursor-not-allowed disabled:opacity-40"
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </button>
-              </div>
-              {(() => {
-                const src = REVERSE_TECH_HYPOTHESIS_2_FLOW[prototypeIndex];
-                const label = getReverseTechFlowLabel(src);
-
-                return (
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setLightboxImage({
-                        src: withBasePath(src),
-                        alt: label,
-                      })
-                    }
-                    className="mx-auto block w-full max-w-[260px] text-left transition-transform hover:scale-[1.01]"
-                  >
-                    <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_14px_34px_rgba(14,41,81,0.08)]">
-                      <img
-                        src={withBasePath(src)}
-                        alt={label}
-                        className="h-auto w-full"
-                      />
-                    </div>
-                    <p className="mt-3 text-center font-inter text-[13px] font-medium leading-[1.5] text-[#5c7792]">
-                      {label}
-                    </p>
-                  </button>
-                );
-              })()}
-              <div className="mt-5 flex flex-wrap justify-center gap-2">
-                {REVERSE_TECH_HYPOTHESIS_2_FLOW.map((src, index) => (
-                  <button
-                    key={src}
-                    type="button"
-                    onClick={() => setPrototypeIndex(index)}
-                    aria-label={`Go to screen ${index + 1}`}
-                    className={`h-2.5 rounded-full transition-all ${
-                      index === prototypeIndex ? "w-8 bg-[#1183D0]" : "w-2.5 bg-[#c7dff3]"
-                    }`}
-                  />
-                ))}
-              </div>
+              ))}
             </div>
-            <div className="space-y-8 text-left">
-              <div className="space-y-4">
-                {hypothesisItems.map((item) => (
-                  <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                    {item}
-                  </p>
-                ))}
-              </div>
-              <div className="space-y-4">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
-                  Prototype Portion
-                </p>
-                <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                  Browse the mobile flow portion below. Open any screen to zoom and inspect the sequence in detail.
-                </p>
-              </div>
-              <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
-                <iframe
-                  title="Reverse Tech Flow from Figma"
-                  src={REVERSE_TECH_FLOW_EMBED}
-                  className="h-[720px] w-full"
-                  allowFullScreen
-                />
-              </div>
+            <div className="space-y-4">
+              <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
+                Prototype Portion
+              </p>
+              <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                Browse the mobile flow portion below.
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
+              <iframe
+                style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
+                title="Reverse Tech Flow from Figma"
+                src={REVERSE_TECH_FLOW_EMBED}
+                width="800"
+                height="450"
+                className="w-full"
+                allowFullScreen
+              />
             </div>
           </div>
         </div>
