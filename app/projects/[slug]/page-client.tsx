@@ -2013,9 +2013,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     Array.isArray(sourcesBlock.payload.sources)
       ? (sourcesBlock.payload.sources as Array<Record<string, unknown>>)
       : [];
-  const sourceEntriesWithOverrides =
+  const sourceEntriesWithOverrides: Array<Record<string, unknown>> =
     caseStudy.slug === "reversetech"
-      ? [...sourceEntries, ...REVERSE_TECH_EXTRA_SOURCES]
+      ? [...sourceEntries, ...REVERSE_TECH_EXTRA_SOURCES.map((item) => ({ ...item }))]
       : sourceEntries;
   const ctaVariants =
     ctaVariantsBlock?.payload &&
