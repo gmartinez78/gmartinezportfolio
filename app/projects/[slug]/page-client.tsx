@@ -3851,7 +3851,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <p className="mt-1 text-[11px] font-bold text-[#1c1a17]">ANN-PLAN26</p>
                         </div>
                         <div className="rounded-[8px] border border-[#1c1a17] bg-white px-2 py-[6px] text-center">
-                          <p className="text-[8px] font-bold uppercase tracking-wide text-[#2a5cb8]">20% OFF</p>
+                          <p className="text-[8px] font-bold uppercase tracking-wide text-[#2a5cb8]">51% OFF</p>
                           <p className="mt-1 text-[10px] font-bold text-[#1c1a17]">09:53</p>
                         </div>
                       </div>
@@ -3864,12 +3864,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <p className="text-[11px] font-bold text-[#1c1a17]">WEEK PLAN</p>
                           <div className="text-[9px] text-[#4a443a]">
                             <span className="mr-1 line-through opacity-60">$10.00</span>
-                            <span className="font-bold text-[#1c1a17]">$8.00</span>
+                            <span className="font-bold text-[#1c1a17]">$4.90</span>
                           </div>
                         </div>
                         <div className="text-right">
                           <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.43</p>
-                          <p className="text-[13px] font-bold text-[#1c1a17]">$1.14</p>
+                          <p className="text-[13px] font-bold text-[#1c1a17]">$0.70</p>
                           <p className="text-[8px] text-[#4a443a]">per day</p>
                         </div>
                       </div>
@@ -3880,12 +3880,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <p className="text-[11px] font-bold text-[#1c1a17]">MONTHLY PLAN</p>
                           <div className="text-[9px] text-[#4a443a]">
                             <span className="mr-1 line-through opacity-60">$14.00</span>
-                            <span className="font-bold text-[#1c1a17]">$11.20</span>
+                            <span className="font-bold text-[#1c1a17]">$6.86</span>
                           </div>
                         </div>
                         <div className="text-right">
                           <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.50</p>
-                          <p className="text-[13px] font-bold text-[#1c1a17]">$0.40</p>
+                          <p className="text-[13px] font-bold text-[#1c1a17]">$0.25</p>
                           <p className="text-[8px] text-[#4a443a]">per day</p>
                         </div>
                       </div>
@@ -3896,22 +3896,22 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <p className="text-[11px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
                           <div className="text-[9px] text-[#4a443a]">
                             <span className="mr-1 line-through opacity-60">$18.99</span>
-                            <span className="font-bold text-[#1c1a17]">$15.19</span>
+                            <span className="font-bold text-[#1c1a17]">$9.31</span>
                           </div>
                         </div>
                         <div className="text-right">
                           <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.21</p>
-                          <p className="text-[13px] font-bold text-[#1c1a17]">$0.18</p>
+                          <p className="text-[13px] font-bold text-[#1c1a17]">$0.11</p>
                           <p className="text-[8px] text-[#4a443a]">per day</p>
                         </div>
                       </div>
                     </div>
                     {/* CTA */}
                     <div className="flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
-                      <span className="text-[11px] font-bold text-white">Continue - Save 20%</span>
+                      <span className="text-[11px] font-bold text-white">Continue - Save 51%</span>
                       <span className="text-[10px] text-white">→</span>
                     </div>
-                    <p className="mb-2 text-[8px] leading-[1.4] text-[#4a443a]">$18.99 today, then $89.99/12 wks. Cancel anytime.</p>
+                    <p className="mb-2 text-[8px] leading-[1.4] text-[#4a443a]">$9.31 today, then $89.99/12 wks. Cancel anytime.</p>
                     {/* Value stack */}
                     <div className="rounded-[10px] border border-[#1c1a17] bg-white p-[7px]">
                       <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">what&apos;s included</p>
