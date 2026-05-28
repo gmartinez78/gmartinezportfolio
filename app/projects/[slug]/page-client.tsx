@@ -3645,9 +3645,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </p>
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {[
-                ["Goal A", "Lift overall paywall conversion across any plan purchase."],
-                ["Goal B", "Shift more purchasers toward the 12-week plan to raise AOV."],
-                ["Constraint", "Keep the existing 1 / 4 / 12-week ladder and offer mechanics intact."],
+                ["Goal A", "Improve overall paywall conversion rate so more users purchase any plan."],
+                ["Goal B", "Shift plan mix toward the 12-week plan to lift AOV (average order value / average revenue per user)."],
               ].map(([label, body], index) => (
                 <div
                   key={label}
@@ -3685,7 +3684,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       strokeWidth="2"
                     />
                   </svg>
-                  <div className="relative">
+                  <div className="relative text-center">
                   <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{label}</p>
                   <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{body}</p>
                   </div>
@@ -3695,16 +3694,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
           {/* Phone frames — low-fi wireframes */}
           <div className="mt-12">
-            <div className="mx-auto mb-8 grid max-w-[980px] gap-4 md:grid-cols-2">
-              {["Experiment A", "Experiment B"].map((title) => (
-                <div
-                  key={title}
-                  className="rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] px-6 py-6 text-center shadow-[0_14px_34px_rgba(14,41,81,0.05)]"
-                >
+            <div className="mx-auto mb-8 grid max-w-[980px] gap-8 text-center md:grid-cols-2">
+              {[
+                ["Experiment A", "Placeholder text for experiment A."],
+                ["Experiment B", "This version reframes the paywall around progress toward the user’s target weight instead of per-day cost. Shorter plans are still visible, but the 12-week option is positioned as the plan that actually reaches the goal through time framing, app-value previews, trust signals, and repeated commitment points."],
+              ].map(([title, body]) => (
+                <div key={title} className="space-y-3">
                   <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{title}</p>
-                  <div className="mt-4 flex min-h-[88px] items-center justify-center rounded-[14px] border border-dashed border-[#b8d6ee] bg-white text-[13px] uppercase tracking-[0.12em] text-[#5c7792]">
-                    Placeholder
-                  </div>
+                  <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{body}</p>
                 </div>
               ))}
             </div>
@@ -3937,7 +3934,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">What&apos;s included in your plan</p>
                       <div className="mt-2 flex gap-2 overflow-hidden">
                         {[
-                          ["Plan", "12-week personalized training"],
+                          ["Plan", "personalized training"],
                           ["Coach", "1:1 coach consultation"],
                           ["Tracking", "Progress and habit tracking"],
                         ].map(([label], index) => (
@@ -3961,8 +3958,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </div>
                       <div className="mt-3 space-y-1.5">
                         {[
-                          "12-week personalized training plan printable guide",
-                          "1:1 coach consultation",
+                          "Personalized training plan printable guide",
+                          "Coach consultation included",
                           "Progress and habit tracking",
                           "Visible change phases from now to your goal",
                           "Meal guidance built around your goal",
