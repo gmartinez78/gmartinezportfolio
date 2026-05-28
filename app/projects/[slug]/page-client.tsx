@@ -3001,11 +3001,17 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task3" ? (
         <section id="rt-task-3" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title="Competitor pattern extraction" centered className="mb-8" />
+          <SectionHeading title="Analysis" centered className="mb-8" />
           <div className="mx-auto max-w-[980px] space-y-6">
+            <p className="mx-auto max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              Identify 2-3 competitor funnels you think are relevant to our category. Briefly explain why you consider them relevant based on positioning, audience, business model, scale, or whichever criteria matter most.
+            </p>
             <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+              <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-4">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Pattern discovery</p>
+              </div>
               <div className="hidden md:block">
-                <div className="grid grid-cols-[1.05fr_1.15fr_1.2fr_0.9fr_1.35fr] border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0e2951]">
+                <div className="grid grid-cols-[1.05fr_1.15fr_1.2fr_0.9fr_1.35fr] border-b border-[#d7e8f7] px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0e2951]">
                   <div className="border-r border-[#d7e8f7] pr-4">Competitor</div>
                   <div className="border-r border-[#d7e8f7] px-4">Strategic Relevance</div>
                   <div className="border-r border-[#d7e8f7] px-4">Identified Pattern</div>
@@ -3106,7 +3112,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             </div>
 
-            <div className="rounded-[24px] border border-[#d7e8f7] bg-white px-6 py-7 shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+            <div className="px-6 py-2">
               <h3 className="text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
                 Strategic Analysis Summary
               </h3>
@@ -3120,6 +3126,120 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <p>
                   <strong className="text-[#0e2951]">Identity over Instructions:</strong> Similar to Ladder, Reverse Health should transition from selling exercises to selling a calisthenics identity, which serves as a powerful stabilizer for the customer base against low-cost AI competition.
                 </p>
+              </div>
+            </div>
+
+            <div className="space-y-5 pt-4">
+              <div className="text-center">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Pattern extraction</p>
+                <h3 className="mt-3 font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
+                  Which patterns are worth testing?
+                </h3>
+                <p className="mx-auto mt-3 max-w-[760px] font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                  Two patterns below are structured as opportunities to test in our calisthenics funnel. The final row captures one pattern that should be deliberately avoided.
+                </p>
+              </div>
+
+              <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+                <div className="hidden md:block">
+                  <div className="grid grid-cols-[0.95fr_1.05fr_0.8fr_1.2fr] border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0e2951]">
+                    <div className="border-r border-[#d7e8f7] pr-4">Screenshot</div>
+                    <div className="border-r border-[#d7e8f7] px-4">Pattern</div>
+                    <div className="border-r border-[#d7e8f7] px-4">Metric Moved</div>
+                    <div className="pl-4">Hypothesis / Why</div>
+                  </div>
+                  {[
+                    {
+                      label: "Pattern 1",
+                      title: "Worth testing",
+                      pattern: "Add competitor screenshot here and describe the first pattern worth testing on the calisthenics funnel.",
+                      metric: "Add metric",
+                      hypothesis: "Write the rough hypothesis for why this pattern could improve performance.",
+                    },
+                    {
+                      label: "Pattern 2",
+                      title: "Worth testing",
+                      pattern: "Add competitor screenshot here and describe the second pattern worth testing on the calisthenics funnel.",
+                      metric: "Add metric",
+                      hypothesis: "Write the rough hypothesis for why this pattern could improve performance.",
+                    },
+                    {
+                      label: "Pattern 3",
+                      title: "Avoid",
+                      pattern: "Add competitor screenshot here and describe the pattern that should be deliberately avoided.",
+                      metric: "Add risk metric",
+                      hypothesis: "Explain why this pattern should be avoided, such as ethical concerns, poor brand fit, or wrong audience.",
+                    },
+                  ].map((row) => (
+                    <div
+                      key={row.label}
+                      className="grid grid-cols-[0.95fr_1.05fr_0.8fr_1.2fr] border-t border-[#d7e8f7] px-6 py-5 text-[15px] leading-[1.7] text-[#5c7792]"
+                    >
+                      <div className="border-r border-[#d7e8f7] pr-4">
+                        <div className="flex aspect-[4/5] items-center justify-center rounded-[20px] border border-dashed border-[#b8d7ee] bg-[#f8fbff] px-4 text-center">
+                          <div>
+                            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{row.label}</p>
+                            <p className="mt-2 font-inter text-[14px] font-semibold text-[#0e2951]">{row.title}</p>
+                            <p className="mt-3 text-[13px] leading-[1.6] text-[#7b93ab]">Add screenshot</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="border-r border-[#d7e8f7] px-4">{row.pattern}</div>
+                      <div className="border-r border-[#d7e8f7] px-4">{row.metric}</div>
+                      <div className="pl-4">{row.hypothesis}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="grid gap-4 p-5 md:hidden">
+                  {[
+                    {
+                      label: "Pattern 1",
+                      title: "Worth testing",
+                      pattern: "Add competitor screenshot here and describe the first pattern worth testing on the calisthenics funnel.",
+                      metric: "Add metric",
+                      hypothesis: "Write the rough hypothesis for why this pattern could improve performance.",
+                    },
+                    {
+                      label: "Pattern 2",
+                      title: "Worth testing",
+                      pattern: "Add competitor screenshot here and describe the second pattern worth testing on the calisthenics funnel.",
+                      metric: "Add metric",
+                      hypothesis: "Write the rough hypothesis for why this pattern could improve performance.",
+                    },
+                    {
+                      label: "Pattern 3",
+                      title: "Avoid",
+                      pattern: "Add competitor screenshot here and describe the pattern that should be deliberately avoided.",
+                      metric: "Add risk metric",
+                      hypothesis: "Explain why this pattern should be avoided, such as ethical concerns, poor brand fit, or wrong audience.",
+                    },
+                  ].map((row) => (
+                    <Card key={`pattern-mobile-${row.label}`} className="overflow-hidden">
+                      <CardContent className="space-y-4 px-5 py-5">
+                        <div className="flex aspect-[4/3] items-center justify-center rounded-[20px] border border-dashed border-[#b8d7ee] bg-[#f8fbff] px-4 text-center">
+                          <div>
+                            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{row.label}</p>
+                            <p className="mt-2 font-inter text-[14px] font-semibold text-[#0e2951]">{row.title}</p>
+                            <p className="mt-3 text-[13px] leading-[1.6] text-[#7b93ab]">Add screenshot</p>
+                          </div>
+                        </div>
+                        <div>
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Pattern</p>
+                          <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.pattern}</p>
+                        </div>
+                        <div>
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Metric Moved</p>
+                          <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.metric}</p>
+                        </div>
+                        <div>
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Hypothesis / Why</p>
+                          <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.hypothesis}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
