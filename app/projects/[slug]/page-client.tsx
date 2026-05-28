@@ -4792,7 +4792,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <span className="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#c8412a] shadow-[0_8px_20px_rgba(200,65,42,0.12)]">
                         <Plus className="h-4 w-4" />
                       </span>
-                      <span>Optimized to reduce friction and increase the number of users who complete a purchase.</span>
+                      <span>Experiment A is optimized to reduce friction and increase the number of users who complete a purchase.</span>
                     </li>
                   </ul>
                   <div className="mt-5 rounded-[18px] border border-[#f0d3cd] bg-white/80 px-4 py-4 text-left">
@@ -4818,7 +4818,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <span className="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#2a5cb8] shadow-[0_8px_20px_rgba(42,92,184,0.12)]">
                         <Plus className="h-4 w-4" />
                       </span>
-                      <span>Optimized to shift plan mix toward the 12-week option and increase AOV.</span>
+                      <span>Experiment B is optimized to shift plan mix toward the 12-week option and increase AOV.</span>
                     </li>
                   </ul>
                   <div className="mt-5 rounded-[18px] border border-[#d7e8f7] bg-white/80 px-4 py-4 text-left">
