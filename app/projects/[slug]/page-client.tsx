@@ -320,13 +320,6 @@ const REVERSE_TECH_COMPETITOR_DIMENSIONS = [
     floHealth: "Free useful insights + privacy and trust signals",
     betterMe: "Quiz to trial, pressure discounts and countdowns",
   },
-  {
-    dimension: "Role in my analysis",
-    reverseHealth: "Baseline (the funnel we're improving)",
-    muscleBooster: "TEST 1: persuasion projection",
-    floHealth: "TEST 2: value-first + trust",
-    betterMe: "AVOID source: pressure billing",
-  },
 ] as const;
 
 const REVERSE_TECH_PATTERN_ROWS = [
