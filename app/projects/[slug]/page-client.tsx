@@ -3912,22 +3912,112 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <span className="text-[10px] text-white">→</span>
                     </div>
                     <p className="mb-2 text-[8px] leading-[1.4] text-[#4a443a]">$9.31 today, then $89.99/12 wks. Cancel anytime.</p>
-                    {/* Value stack */}
-                    <div className="rounded-[10px] border border-[#1c1a17] bg-white p-[7px]">
-                      <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">what&apos;s included</p>
-                      <ul className="mt-1 list-disc pl-4 text-[10px] leading-[1.5] text-[#1c1a17]">
-                        {["Personalized 12-wk training", "1:1 coach consultation (bonus)", "Habit + weight tracker", "24/7 coach chat"].map((item) => (
-                          <li key={item}>{item}</li>
+                    <div className="px-2 py-[6px] text-center">
+                      <p className="text-[9px] leading-[1.4] text-[#1c1a17]">Visa · Mastercard · Amex · PayPal · Apple Pay</p>
+                    </div>
+                    <div className="px-2 py-[6px]">
+                      <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">What&apos;s included in your plan</p>
+                      <div className="mt-2 flex gap-2 overflow-hidden">
+                        {[
+                          ["Plan", "personalized training"],
+                          ["Coach", "1:1 coach consultation"],
+                          ["Tracking", "Progress and habit tracking"],
+                        ].map(([label], index) => (
+                          <div
+                            key={label}
+                            className={`min-w-[92px] rounded-[8px] border border-[#1c1a17] px-2 py-[6px] ${
+                              index === 0 ? "bg-[#DCEAEF]" : "opacity-70"
+                            }`}
+                          >
+                            <p className="text-[7px] uppercase tracking-wide text-[#4a443a]">{label}</p>
+                            <div className="mt-1 flex min-h-[44px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 text-[8px] uppercase tracking-wide text-[#4a443a]">
+                              app image
+                            </div>
+                          </div>
                         ))}
-                      </ul>
+                      </div>
+                      <div className="mt-2 flex justify-center gap-1">
+                        <span className="h-1.5 w-4 rounded-full bg-[#1c1a17]" />
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#1c1a17]/35" />
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#1c1a17]/35" />
+                      </div>
+                      <div className="mt-3 space-y-1.5">
+                        {[
+                          "Personalized training plan printable guide",
+                          "10-20 min workouts to get fit",
+                          "Progress and habit tracking",
+                          "Visible change phases from now to your goal",
+                          "Meal guidance built around your goal",
+                        ].map((item) => (
+                          <div key={item} className="flex items-center gap-2 text-[8px] leading-[1.35] text-[#1c1a17]">
+                            <span className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-[#1c1a17] text-[7px]">•</span>
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
+                        <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">Progress in the app</p>
+                        <div className="mt-2 flex min-h-[72px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] text-[8px] uppercase tracking-wide text-[#4a443a]">
+                          app progress image
+                        </div>
+                      </div>
                     </div>
-                    {/* Trust badges */}
-                    <div className="grid grid-cols-2 gap-[5px]">
-                      {["🛡 30-day money back", "🔒 Safe checkout"].map((b) => (
-                        <div key={b} className="rounded-[8px] border border-[#1c1a17] bg-white px-2 py-[5px] text-center text-[10px] text-[#1c1a17]">{b}</div>
-                      ))}
+                    <div className="px-2 py-[6px]">
+                      <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[10px] text-center">
+                        <p className="text-[9px] uppercase tracking-wide text-[#4a443a]">Video testimonial</p>
+                        <div className="mt-2 flex min-h-[72px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] text-[9px] uppercase tracking-wide text-[#4a443a]">
+                          ▶ before / after story
+                        </div>
+                      </div>
+                      <p className="mt-2 text-[8px] leading-[1.4] text-[#4a443a]">
+                        Results vary by individual. These images are illustrative and not a guarantee of specific outcomes.
+                        {" "}Consult a healthcare provider before beginning any weight loss program.
+                      </p>
                     </div>
-                    <div className="flex min-h-[28px] items-center justify-center rounded-[8px] border border-[#1c1a17] bg-[#fffdf6] text-[9px] uppercase text-[#4a443a]">single testimonial · 1 photo · 1 quote</div>
+                    <div className="px-2 py-[6px]">
+                      <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px]">
+                        <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">Choose your plan</p>
+                        <div className="mt-2 space-y-1.5">
+                          <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
+                            <div>
+                              <p className="text-[11px] font-bold text-[#1c1a17]">WEEK PLAN</p>
+                              <p className="text-[9px] text-[#4a443a]">$10.00 → $4.90</p>
+                            </div>
+                            <div className="text-right">
+                              <p className="text-[13px] font-bold text-[#1c1a17]">$0.70</p>
+                              <p className="text-[8px] text-[#4a443a]">per day</p>
+                            </div>
+                          </div>
+                          <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
+                            <div>
+                              <p className="text-[11px] font-bold text-[#1c1a17]">MONTHLY PLAN</p>
+                              <p className="text-[9px] text-[#4a443a]">$14.00 → $6.86</p>
+                            </div>
+                            <div className="text-right">
+                              <p className="text-[13px] font-bold text-[#1c1a17]">$0.25</p>
+                              <p className="text-[8px] text-[#4a443a]">per day</p>
+                            </div>
+                          </div>
+                          <div className="relative rounded-[10px] border-2 border-[#2a5cb8] bg-[#DCEAEF] px-2 py-[9px]">
+                            <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">GET MORE HEALTH BENEFITS</span>
+                            <div className="grid grid-cols-[1fr_68px] items-center gap-[8px]">
+                              <div>
+                                <p className="text-[12px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
+                                <p className="text-[9px] text-[#4a443a]">$18.99 → $9.31</p>
+                              </div>
+                              <div className="text-right">
+                                <p className="text-[13px] font-bold text-[#1c1a17]">$0.11</p>
+                                <p className="text-[8px] text-[#4a443a]">per day</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="mt-3 flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
+                          <span className="text-[10px] uppercase text-white">12-WK</span>
+                          <span className="text-[11px] font-bold uppercase text-white">Continue - Save 51%</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
