@@ -366,7 +366,7 @@ const REVERSE_TECH_PATTERN_ROWS = [
     hypothesis:
       "A short 7-day trial plus scarcity timers can lift top-line trial starts, but it often lowers conversion quality. It pushes the monetization moment too early, before the user has built enough habit, trust, or commitment to the product. That can hurt retention, weaken renewals, and reduce downstream LTV even if the initial conversion looks stronger.",
     note:
-      "Recent subscription-app benchmarks and trial-length research point in the same direction: shorter trials can accelerate the decision moment, but they also create more front-loaded churn and weaker long-term retention when users have not had enough time to experience value.",
+      "Recent subscription-app research suggests the same pattern: shorter trials can speed up decisions, but may increase early churn and weaken retention if users have not experienced enough value yet.",
   },
 ] as const;
 
@@ -3977,9 +3977,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <div className="pl-4">
                         <p>{row.hypothesis}</p>
                         {"note" in row && row.note ? (
-                          <p className="mt-3 text-[14px] leading-[1.6] text-[#7b93ab]">
-                            <strong className="text-[#0e2951]">Note:</strong> {row.note}
-                          </p>
+                          <div className="mt-4 rounded-[16px] border border-[#d7e8f7] bg-[#f8fbff] px-4 py-4">
+                            <p className="text-[14px] leading-[1.6] text-[#7b93ab]">
+                              <strong className="text-[#0e2951]">Note:</strong> {row.note}
+                            </p>
+                          </div>
                         ) : null}
                       </div>
                     </div>
@@ -4038,9 +4040,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Hypothesis / Why</p>
                           <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.hypothesis}</p>
                           {"note" in row && row.note ? (
-                            <p className="mt-3 text-[14px] leading-[1.6] text-[#7b93ab]">
-                              <strong className="text-[#0e2951]">Note:</strong> {row.note}
-                            </p>
+                            <div className="mt-4 rounded-[16px] border border-[#d7e8f7] bg-[#f8fbff] px-4 py-4">
+                              <p className="text-[14px] leading-[1.6] text-[#7b93ab]">
+                                <strong className="text-[#0e2951]">Note:</strong> {row.note}
+                              </p>
+                            </div>
                           ) : null}
                         </div>
                       </CardContent>
@@ -5072,7 +5076,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <button
                 type="button"
                 aria-label="Zoom out"
-                onClick={() => setExperimentModalZoom((current) => Math.max(1, Number((current - 0.25).toFixed(2))))}
+                onClick={() => setExperimentModalZoom((current) => Math.max(0.5, Number((current - 0.25).toFixed(2))))}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
               >
                 <Minus className="h-5 w-5" />
@@ -5148,7 +5152,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <button
                 type="button"
                 aria-label="Zoom out"
-                onClick={() => setLightboxZoom((current) => Math.max(1, Number((current - 0.25).toFixed(2))))}
+                onClick={() => setLightboxZoom((current) => Math.max(0.5, Number((current - 0.25).toFixed(2))))}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
               >
                 <Minus className="h-5 w-5" />
