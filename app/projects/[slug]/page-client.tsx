@@ -1776,7 +1776,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "reversetech" ? (
         <>
           {showStickyTaskTabs ? (
-            <div className="fixed inset-x-0 top-16 z-40 border-b border-[#d7e8f7] bg-white/95 backdrop-blur md:top-[72px]">
+            <div className="fixed inset-x-0 top-16 z-40 border-b border-[#d7e8f7] bg-white/95 backdrop-blur">
               <div className="mx-auto max-w-[1200px] px-6 pt-0 pb-2 md:px-10 xl:px-20">
                 <div className="mx-auto max-w-[900px]">
                   <div className="flex flex-wrap items-end justify-center gap-0">
@@ -3784,24 +3784,27 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
                   <strong className="text-[#0e2951]">What ships now. </strong>Plan ladder with two urgency timers, no pre-selection, /day pricing dominant.
                 </div>
-                <button
-                  type="button"
-                  onClick={() =>
-                    setLightboxImage({
-                      src: withBasePath("/images/projects/Reversetech/paywall.png"),
-                      alt: "Current Reversetech paywall design",
-                    })
-                  }
-                  className="block w-full rounded-[24px] border border-[#d7e8f7] bg-white p-3 text-left shadow-[0_20px_48px_rgba(17,131,208,0.08)] transition-transform hover:scale-[1.01]"
-                >
-                  <div className="relative max-h-[920px] overflow-hidden rounded-[18px]">
+                <div className="w-full rounded-[24px] border border-[#d7e8f7] bg-white p-3 text-left shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+                  <div className="relative h-[632px] overflow-hidden rounded-[18px]">
                     <img
                       src={withBasePath("/images/projects/Reversetech/paywall.png")}
                       alt="Current Reversetech paywall design"
-                      className="h-auto w-full"
+                      className="w-full object-cover object-top"
                     />
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setLightboxImage({
+                          src: withBasePath("/images/projects/Reversetech/paywall.png"),
+                          alt: "Current Reversetech paywall design",
+                        })
+                      }
+                      className="absolute bottom-4 left-1/2 inline-flex -translate-x-1/2 items-center rounded-full border border-[#d7e8f7] bg-white/95 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-colors hover:bg-white"
+                    >
+                      Expand
+                    </button>
                   </div>
-                </button>
+                </div>
               </div>
 
               {/* ── Experiment A ── */}
@@ -4309,6 +4312,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
 
           <div className="mt-12">
+            <div className="mx-auto mb-12 max-w-[900px] rounded-[24px] border border-[#d7e8f7] bg-white px-6 py-7 text-left shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
+              <h3 className="text-center font-inter text-[24px] leading-tight text-[#0e2951]">What is the tension between these two experiments?</h3>
+              <p className="mt-5 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                Experiment A is optimized to reduce friction and increase the number of users who complete a purchase. Its risk is that by emphasizing a personalized discount and a smoother path, it may improve conversion without pushing enough users toward the higher-value 12-week plan.
+              </p>
+              <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                Experiment B is optimized to shift plan mix toward the 12-week option and increase AOV. Its risk is that the stronger push toward one plan may create more friction for users who are not ready for that commitment, which could hurt overall conversion.
+              </p>
+            </div>
             <h3 className="text-center font-inter text-[28px] leading-tight text-[#0e2951]">Where the leaks probably are</h3>
             <div className="mt-8 grid gap-6 md:grid-cols-3 md:gap-0">
               {[
