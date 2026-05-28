@@ -1141,6 +1141,34 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     );
   };
 
+  const handleReverseTechTaskTabChange = (taskTab: "task1" | "task2" | "task3" | "task4") => {
+    setReversetechTaskTab(taskTab);
+
+    const targetByTask: Record<"task1" | "task2" | "task3" | "task4", string> = {
+      task1: "rt-funnel-diagnosis",
+      task2: "rt-paywall-experiment-design",
+      task3: "rt-task-3",
+      task4: "rt-hypothesis-2",
+    };
+
+    window.setTimeout(() => {
+      const stickyOffset = 88;
+      const targetElement = document.getElementById(targetByTask[taskTab]);
+
+      if (targetElement) {
+        const top = targetElement.getBoundingClientRect().top + window.scrollY - stickyOffset;
+        window.scrollTo({ top, behavior: "smooth" });
+        return;
+      }
+
+      const tabsElement = reversetechTaskTabsRef.current;
+      if (tabsElement) {
+        const top = tabsElement.getBoundingClientRect().top + window.scrollY - stickyOffset;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }, 50);
+  };
+
   useEffect(() => {
     if (!lightboxImage) {
       document.body.style.overflow = "";
@@ -1789,7 +1817,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <button
                         key={`sticky-${item.label}`}
                         type="button"
-                        onClick={() => setReversetechTaskTab(item.id)}
+                        onClick={() => handleReverseTechTaskTabChange(item.id)}
                         className={`relative min-w-[180px] border-[#d7e8f7] px-5 py-4 text-center transition-colors ${
                           reversetechTaskTab === item.id
                             ? "border-x border-t bg-white"
@@ -1819,7 +1847,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <button
                     key={item.label}
                     type="button"
-                    onClick={() => setReversetechTaskTab(item.id)}
+                    onClick={() => handleReverseTechTaskTabChange(item.id)}
                     className={`relative min-w-[180px] border-[#d7e8f7] px-5 py-4 text-center transition-colors ${
                       reversetechTaskTab === item.id
                         ? "border-x border-t bg-white"
