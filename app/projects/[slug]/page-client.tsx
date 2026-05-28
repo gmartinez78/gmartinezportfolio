@@ -1116,8 +1116,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
   const [lightboxZoom, setLightboxZoom] = useState(1);
   const [isPaywallControlExpanded, setIsPaywallControlExpanded] = useState(false);
-  const [isExperimentAExpanded, setIsExperimentAExpanded] = useState(false);
-  const [isExperimentBExpanded, setIsExperimentBExpanded] = useState(false);
   const [prototypeIndex, setPrototypeIndex] = useState(0);
   const [reversetechTaskTab, setReversetechTaskTab] = useState<"task1" | "task2" | "task3" | "task4">("task1");
   const [reversetechComparisonTab, setReversetechComparisonTab] = useState<"before" | "after">("after");
@@ -1135,8 +1133,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     setShowStickyTaskTabs(false);
     setOpenHypothesisIds([]);
     setIsPaywallControlExpanded(false);
-    setIsExperimentAExpanded(false);
-    setIsExperimentBExpanded(false);
   }, [caseStudy?.slug]);
 
   const toggleHypothesis = (hypothesisId: "content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4") => {
@@ -3889,14 +3885,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       alt="Current Reversetech paywall design"
                       className="w-full object-top"
                     />
-                    <button
-                      type="button"
-                      onClick={() => setIsPaywallControlExpanded((current) => !current)}
-                      className="absolute bottom-0 left-1/2 inline-flex -translate-x-1/2 translate-y-1/2 items-center rounded-full border border-[#d7e8f7] bg-white px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-colors hover:bg-[#f8fbff]"
-                    >
-                      {isPaywallControlExpanded ? "Close" : "Expand"}
-                    </button>
                   </div>
+                  <button
+                    type="button"
+                    onClick={() => setIsPaywallControlExpanded((current) => !current)}
+                    className="absolute bottom-3 left-1/2 z-10 inline-flex -translate-x-1/2 items-center rounded-full border border-[#d7e8f7] bg-white px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-colors hover:bg-[#f8fbff]"
+                  >
+                    {isPaywallControlExpanded ? "Close" : "Expand"}
+                  </button>
                 </div>
               </div>
 
@@ -3912,11 +3908,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <strong className="text-[#0e2951]">Primary metric: </strong>paywall → purchase rate.
                 </div>
                 {/* Phone */}
-                <div
-                  className={`relative rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17] ${
-                    isExperimentAExpanded ? "pb-8" : "h-[760px] overflow-hidden pb-8"
-                  }`}
-                >
+                <div className="relative rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17]">
                   <div className="mx-auto mb-[10px] h-[8px] w-[80px] rounded-full bg-[#1c1a17]" />
                   <div className={`${kalam.className} flex min-h-[580px] flex-col gap-[7px] rounded-[18px] p-[10px]`}>
                     {/* Timer bar */}
@@ -4165,13 +4157,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </div>
                     </div>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => setIsExperimentAExpanded((current) => !current)}
-                    className="absolute bottom-0 left-1/2 inline-flex -translate-x-1/2 translate-y-1/2 items-center rounded-full border border-[#d7e8f7] bg-white px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-colors hover:bg-[#f8fbff]"
-                  >
-                    {isExperimentAExpanded ? "Close" : "View more"}
-                  </button>
                 </div>
               </div>
 
@@ -4187,11 +4172,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <strong className="text-[#0e2951]">Primary metric: </strong>% of purchasers picking 12-wk · AOV.
                 </div>
                 {/* Phone */}
-                <div
-                  className={`relative rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17] ${
-                    isExperimentBExpanded ? "pb-8" : "h-[760px] overflow-hidden pb-8"
-                  }`}
-                >
+                <div className="relative rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17]">
                   <div className="mx-auto mb-[10px] h-[8px] w-[80px] rounded-full bg-[#1c1a17]" />
                   <div className={`${kalam.className} flex min-h-[580px] flex-col gap-[7px] rounded-[18px] p-[10px]`}>
                     {/* Sticky top */}
@@ -4413,13 +4394,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </div>
                     </div>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => setIsExperimentBExpanded((current) => !current)}
-                    className="absolute bottom-0 left-1/2 inline-flex -translate-x-1/2 translate-y-1/2 items-center rounded-full border border-[#d7e8f7] bg-white px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-colors hover:bg-[#f8fbff]"
-                  >
-                    {isExperimentBExpanded ? "Close" : "View more"}
-                  </button>
                 </div>
               </div>
 
@@ -4427,7 +4401,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
 
           <div className="mt-12">
-            <div className="mx-auto mb-12 max-w-[900px] px-6 py-2 text-left">
+            <div className="mx-auto mb-12 max-w-[900px] px-6 py-2 text-center">
               <h3 className="text-center font-inter text-[24px] leading-tight text-[#0e2951]">What is the tension between these two experiments?</h3>
               <p className="mt-5 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
                 Experiment A is optimized to reduce friction and increase the number of users who complete a purchase. Its risk is that by emphasizing a personalized discount and a smoother path, it may improve conversion without pushing enough users toward the higher-value 12-week plan.
