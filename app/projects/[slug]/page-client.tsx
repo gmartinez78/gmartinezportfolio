@@ -280,24 +280,24 @@ const CONFIDENTIAL_CONSERVATIVE_SCENARIO_ROWS = [
 const REVERSE_TECH_COMPETITOR_DIMENSIONS = [
   {
     dimension: "Funnel model",
-    reverseHealth: "Age-first 1-min quiz to personalized plan",
-    muscleBooster: "Quiz to personalized plan",
+    reverseHealth: "Age first, 1 min quiz to personalized plan",
+    muscleBooster: "Quiz to personalized plan based on your age",
     floHealth: "Quiz onboarding to freemium app",
-    betterMe: "Quiz to personalized plan",
+    betterMe: "Age first, 1 min quiz to personalized plan",
   },
   {
     dimension: "Monetization",
-    reverseHealth: "Hard paywall, recurring subscription",
-    muscleBooster: "Hard paywall + scarcity timers, subscription",
+    reverseHealth: "Hard paywall + scarcity timers, subscription",
+    muscleBooster: "Hard paywall + scarcity timers, 7-day trial then subscription, auto-renewal",
     floHealth: "Freemium (free core, Premium upsell)",
-    betterMe: "7-day trial then subscription, aggressive auto-renewal",
+    betterMe: "7-day trial then subscription, auto-renewal + scarcity timers",
   },
   {
     dimension: "Free option",
-    reverseHealth: "None, paywall right after the quiz",
-    muscleBooster: "Minimal, paywall-led",
-    floHealth: "Yes, genuine free tier",
-    betterMe: "Thin and trial-gated, not real freemium",
+    reverseHealth: "No",
+    muscleBooster: "No",
+    floHealth: "Yes",
+    betterMe: "No",
   },
   {
     dimension: "Target audience",
@@ -315,35 +315,80 @@ const REVERSE_TECH_COMPETITOR_DIMENSIONS = [
   },
   {
     dimension: "Key funnel mechanic",
-    reverseHealth: "Age-gate + women's-needs framing + FB community",
-    muscleBooster: "Target-body selector, aesthetic before/afters, projection",
-    floHealth: "Free useful insights + privacy and trust signals",
-    betterMe: "Quiz to trial, pressure discounts and countdowns",
+    reverseHealth: "Age gate + women-specific framing + personalized plan preview",
+    muscleBooster: "Age- and goal-based personalization into a personalized workout plan",
+    floHealth: "Age-group onboarding + privacy-first reassurance + personalized plan CTA",
+    betterMe: "Age gate + wellness profile + expected-result graph + social-proof loader",
   },
 ] as const;
 
 const REVERSE_TECH_MUSCLE_BOOSTER_URL = "https://plan.muscle-booster.io/onboarding";
+const REVERSE_TECH_REVERSE_HEALTH_URL = "https://tour.reverse.health/rhwc-calisthenics-2602a";
+const REVERSE_TECH_FLO_HEALTH_URL = "https://quiz.flo.health/es-ES";
+const REVERSE_TECH_BETTER_ME_URL = "https://betterme-wallpilates.com/";
 
 const REVERSE_TECH_PATTERN_ROWS = [
   {
     label: "Pattern 1 to test",
-    title: "Personalized outcome projection before the paywall",
-    source: "Muscle Booster (BetterMe runs a version of this too)",
+    title: "Informational interstitial screen in a questionnaire flow",
+    screenshotTitle: "Better Me",
+    source: "Muscle Booster (Better Me runs a version of this too)",
     screenshot: "the \"you'll reach your goal by [date]\" projection screen with the progress curve, shown right before the paywall",
-    metric: "Paywall view to purchase (conversion rate)",
+    imageSrc: "/images/projects/Reversetech/info-intertitial-screen.png",
+    metric: "questionnaire completion rate and email capture rate before the paywall",
     hypothesis:
-      "If we show a personalized outcome projection tied to the user's quiz answers right before the paywall, then paywall-to-purchase conversion goes up, because a concrete dated result reframes the subscription as the path to that result instead of an open-ended cost.",
+      "If we add an informational interstitial tied to the user's quiz answers before the paywall, questionnaire completion and email capture should increase. The screen would make the experience feel more personalized, build trust, and show users that their answers are leading to something useful, making them more comfortable sharing their email before reaching the paywall.",
   },
   {
     label: "Pattern 2 to test",
-    title: "Value-first preview and trust signals before the paywall",
+    title: "Low-friction progress stepper",
+    screenshotTitle: "Flo Health",
     source: "Flo Health",
     screenshot: "Flo's free personalized insight screen, or its privacy and data-reassurance screen during onboarding",
-    metric: "Quiz completion rate and activation (first-workout completion), with downstream 7-day conversion",
+    imageSrc: "/images/projects/Reversetech/flo-health.png",
+    metric: "quiz completion rate and step-through rate",
     hypothesis:
-      "If we give a real piece of personalized value before the paywall (a free starter session or a personalized readiness result) and pair the quiz with clear privacy reassurance, then quiz completion and activation go up, because the user gets proof of value and feels safe sharing personal data before she's asked to pay. This matters for a 40 to 60+ audience that's both value-cautious and privacy-cautious about health data.",
+      "If we add a low-friction progress stepper throughout the questionnaire, quiz completion and step-through rate should increase. The pattern makes the flow feel shorter, more manageable, and easier to finish quickly, which reduces perceived effort and helps users stay engaged until they reach the next value moment.",
     note:
-      "Flo gives two extractable signals here, the freemium value-first taste and the privacy-forward onboarding. If I want a single clean metric, I'd split them: value-first to lift activation, privacy signals to lift quiz completion.",
+      "The goal of this pattern is not to add persuasion directly. It is to reduce friction by making progress visible and by reinforcing that the questionnaire is fast to complete.",
+  },
+] as const;
+
+const REVERSE_TECH_EXTRA_SOURCES = [
+  {
+    title: "Reverse Health Calisthenics Funnel",
+    url: REVERSE_TECH_REVERSE_HEALTH_URL,
+    description: "Live Reverse Health calisthenics onboarding funnel used as the baseline reference for Task 3.",
+  },
+  {
+    title: "Muscle Booster Onboarding",
+    url: REVERSE_TECH_MUSCLE_BOOSTER_URL,
+    description: "Live Muscle Booster onboarding flow referenced for the interstitial-screen pattern and quiz-to-plan structure.",
+  },
+  {
+    title: "Flo Health Quiz",
+    url: REVERSE_TECH_FLO_HEALTH_URL,
+    description: "Live Flo onboarding experience referenced for privacy reassurance and value-first signals before monetization.",
+  },
+  {
+    title: "Better Me Wall Pilates",
+    url: REVERSE_TECH_BETTER_ME_URL,
+    description: "Live Better Me wall pilates funnel referenced for the age gate, wellness-profile steps, and onboarding comparison.",
+  },
+  {
+    title: "The role of privacy assurance mechanisms in building trust",
+    url: "https://researchdiscovery.drexel.edu/esploro/outputs/journalArticle/The-role-of-privacy-assurance-mechanisms/991014877963104721",
+    description: "Research cited to support the idea that privacy and assurance cues can increase trust and willingness to disclose personal information online.",
+  },
+  {
+    title: "Consumer Willingness to Share Personal Digital Information for Health-Related Uses",
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8787615/",
+    description: "Health-data sharing study referenced to support the role of trust and context in willingness to share personal information.",
+  },
+  {
+    title: "What Information Do Shoppers Share? The Effect of Personnel-, Retailer-, and Country-Trust on Willingness to Share Information",
+    url: "https://www.sciencedirect.com/science/article/pii/S0022435920300440",
+    description: "Trust-and-disclosure research referenced to support why reassurance can affect users' readiness to share information in a funnel.",
   },
 ] as const;
 
@@ -1968,6 +2013,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     Array.isArray(sourcesBlock.payload.sources)
       ? (sourcesBlock.payload.sources as Array<Record<string, unknown>>)
       : [];
+  const sourceEntriesWithOverrides =
+    caseStudy.slug === "reversetech"
+      ? [...sourceEntries, ...REVERSE_TECH_EXTRA_SOURCES]
+      : sourceEntries;
   const ctaVariants =
     ctaVariantsBlock?.payload &&
     typeof ctaVariantsBlock.payload === "object" &&
@@ -3720,10 +3769,46 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <div className="hidden md:block">
                 <div className="grid grid-cols-[0.9fr_1fr_1fr_1fr_1fr] border-b border-[#d7e8f7] px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0e2951]">
                   <div className="border-r border-[#d7e8f7] pr-4">Dimension</div>
-                  <div className="border-r border-[#d7e8f7] px-4">Reverse Health (us)</div>
-                  <div className="border-r border-[#d7e8f7] px-4">Muscle Booster</div>
-                  <div className="border-r border-[#d7e8f7] px-4">Flo Health</div>
-                  <div className="pl-4">BetterMe</div>
+                  <div className="border-r border-[#d7e8f7] px-4">
+                    <a
+                      href={REVERSE_TECH_REVERSE_HEALTH_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                    >
+                      Reverse Health
+                    </a>
+                  </div>
+                  <div className="border-r border-[#d7e8f7] px-4">
+                    <a
+                      href={REVERSE_TECH_MUSCLE_BOOSTER_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                    >
+                      Muscle Booster
+                    </a>
+                  </div>
+                  <div className="border-r border-[#d7e8f7] px-4">
+                    <a
+                      href={REVERSE_TECH_FLO_HEALTH_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                    >
+                      Flo Health
+                    </a>
+                  </div>
+                  <div className="pl-4">
+                    <a
+                      href={REVERSE_TECH_BETTER_ME_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                    >
+                      Better Me
+                    </a>
+                  </div>
                 </div>
                 {REVERSE_TECH_COMPETITOR_DIMENSIONS.map((row) => (
                   <div
@@ -3732,16 +3817,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   >
                     <div className="border-r border-[#d7e8f7] pr-4 font-semibold text-[#0e2951]">{row.dimension}</div>
                     <div className="border-r border-[#d7e8f7] px-4">{row.reverseHealth}</div>
-                  <div className="border-r border-[#d7e8f7] px-4">
-                    <a
-                      href={REVERSE_TECH_MUSCLE_BOOSTER_URL}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
-                    >
-                      {row.muscleBooster}
-                    </a>
-                  </div>
+                    <div className="border-r border-[#d7e8f7] px-4">{row.muscleBooster}</div>
                     <div className="border-r border-[#d7e8f7] px-4">{row.floHealth}</div>
                     <div className="pl-4">{row.betterMe}</div>
                   </div>
@@ -3759,40 +3835,61 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </p>
                       </div>
                       <div>
-                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Reverse Health (us)</p>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">
+                          <a
+                            href={REVERSE_TECH_REVERSE_HEALTH_URL}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                          >
+                            Reverse Health
+                          </a>
+                        </p>
                         <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.reverseHealth}</p>
                       </div>
                       <div>
-                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Muscle Booster</p>
-                        <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">
                           <a
                             href={REVERSE_TECH_MUSCLE_BOOSTER_URL}
                             target="_blank"
                             rel="noreferrer"
                             className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
                           >
-                            {row.muscleBooster}
+                            Muscle Booster
                           </a>
                         </p>
+                        <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.muscleBooster}</p>
                       </div>
                       <div>
-                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Flo Health</p>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">
+                          <a
+                            href={REVERSE_TECH_FLO_HEALTH_URL}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                          >
+                            Flo Health
+                          </a>
+                        </p>
                         <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.floHealth}</p>
                       </div>
                       <div>
-                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">BetterMe</p>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">
+                          <a
+                            href={REVERSE_TECH_BETTER_ME_URL}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                          >
+                            Better Me
+                          </a>
+                        </p>
                         <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.betterMe}</p>
                       </div>
                     </CardContent>
                   </Card>
                 ))}
               </div>
-            </div>
-
-            <div className="rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] px-6 py-6 text-center shadow-[0_16px_32px_rgba(17,131,208,0.06)]">
-              <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                <strong className="text-[#0e2951]">Set note:</strong> Muscle Booster and BetterMe share the same quiz-to-paywall logic, so I deliberately pull only one test pattern from that camp (projection) and source the second test from Flo (value-first), which runs a different model. That keeps my two test patterns on genuinely different logics instead of repeating conversion twice.
-              </p>
             </div>
 
             <div className="space-y-5 pt-4">
@@ -3820,11 +3917,29 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       className="grid grid-cols-[0.95fr_1.05fr_0.8fr_1.2fr] border-t border-[#d7e8f7] px-6 py-5 text-[15px] leading-[1.7] text-[#5c7792]"
                     >
                       <div className="border-r border-[#d7e8f7] pr-4">
-                        <div className="flex aspect-[4/5] items-center justify-center rounded-[20px] border border-dashed border-[#b8d7ee] bg-[#f8fbff] px-4 text-center">
-                          <div>
-                            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{row.label}</p>
-                            <p className="mt-2 font-inter text-[14px] font-semibold text-[#0e2951]">{row.source}</p>
-                            <p className="mt-3 text-[13px] leading-[1.6] text-[#7b93ab]">[SCREENSHOT: {row.screenshot}]</p>
+                        <div className="space-y-3">
+                          {row.screenshotTitle ? (
+                            <p className="text-center text-[12px] font-semibold uppercase tracking-[0.16em] text-[#0e2951]">
+                              {row.screenshotTitle}
+                            </p>
+                          ) : null}
+                          <div className="flex aspect-[4/5] items-center justify-center rounded-[20px] border border-dashed border-[#b8d7ee] bg-[#f8fbff] px-4 text-center">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setLightboxImage({
+                                src: withBasePath(row.imageSrc),
+                                alt: `${row.label} preview`,
+                              })
+                            }
+                            className="group block h-full w-full overflow-hidden rounded-[18px] text-left"
+                          >
+                            <img
+                              src={withBasePath(row.imageSrc)}
+                              alt={`${row.label} preview`}
+                              className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                            />
+                          </button>
                           </div>
                         </div>
                       </div>
@@ -3846,11 +3961,29 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   {REVERSE_TECH_PATTERN_ROWS.map((row) => (
                     <Card key={`pattern-mobile-${row.label}`} className="overflow-hidden">
                       <CardContent className="space-y-4 px-5 py-5">
-                        <div className="flex aspect-[4/3] items-center justify-center rounded-[20px] border border-dashed border-[#b8d7ee] bg-[#f8fbff] px-4 text-center">
-                          <div>
-                            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{row.label}</p>
-                            <p className="mt-2 font-inter text-[14px] font-semibold text-[#0e2951]">{row.source}</p>
-                            <p className="mt-3 text-[13px] leading-[1.6] text-[#7b93ab]">[SCREENSHOT: {row.screenshot}]</p>
+                        <div className="space-y-3">
+                          {row.screenshotTitle ? (
+                            <p className="text-center text-[12px] font-semibold uppercase tracking-[0.16em] text-[#0e2951]">
+                              {row.screenshotTitle}
+                            </p>
+                          ) : null}
+                          <div className="flex aspect-[4/3] items-center justify-center rounded-[20px] border border-dashed border-[#b8d7ee] bg-[#f8fbff] px-4 text-center">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setLightboxImage({
+                                src: withBasePath(row.imageSrc),
+                                alt: `${row.label} preview`,
+                              })
+                            }
+                            className="group block h-full w-full overflow-hidden rounded-[18px] text-left"
+                          >
+                            <img
+                              src={withBasePath(row.imageSrc)}
+                              alt={`${row.label} preview`}
+                              className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                            />
+                          </button>
                           </div>
                         </div>
                         <div>
@@ -4843,12 +4976,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {sourceItems.length || sourceEntries.length ? (
+      {sourceItems.length || sourceEntriesWithOverrides.length ? (
         <section id={caseStudy.slug === "reversetech" ? "rt-sources" : undefined} className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title={sourcesBlock?.title ?? "Sources"} centered className="mb-12" />
           <div className="mx-auto max-w-[900px] space-y-5">
-            {sourceEntries.length
-              ? sourceEntries.map((item, index) => (
+            {sourceEntriesWithOverrides.length
+              ? sourceEntriesWithOverrides.map((item, index) => (
                 <div key={`${item.title}-${index}`} className="space-y-2">
                   <p className="font-inter text-[16px] leading-[1.7] text-[#0e2951]">
                     <a
