@@ -1108,6 +1108,7 @@ function getReverseTechFlowLabel(src: string) {
 }
 
 export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
+  const EXPERIMENT_MODAL_BASE_WIDTH = 320;
   const { caseStudy, loading } = usePublicCaseStudy(slug);
   const { caseStudies } = usePublicCaseStudies();
   const [enteredPassword, setEnteredPassword] = useState("");
@@ -1118,6 +1119,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [isPaywallControlExpanded, setIsPaywallControlExpanded] = useState(false);
   const [activeExperimentModal, setActiveExperimentModal] = useState<"a" | "b" | null>(null);
   const [experimentModalZoom, setExperimentModalZoom] = useState(1);
+  const [experimentModalBaseHeight, setExperimentModalBaseHeight] = useState(0);
   const [prototypeIndex, setPrototypeIndex] = useState(0);
   const [reversetechTaskTab, setReversetechTaskTab] = useState<"task1" | "task2" | "task3" | "task4">("task1");
   const [reversetechComparisonTab, setReversetechComparisonTab] = useState<"before" | "after">("after");
@@ -1127,6 +1129,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     Array<"content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4">
   >([]);
   const reversetechTaskTabsRef = useRef<HTMLElement | null>(null);
+  const experimentModalMockupRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     setEnteredPassword("");
@@ -1672,6 +1675,36 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   }, [activeExperimentModal, lightboxImage]);
 
   useEffect(() => {
+    if (!activeExperimentModal) {
+      setExperimentModalBaseHeight(0);
+      return;
+    }
+
+    const mockupElement = experimentModalMockupRef.current;
+    if (!mockupElement) {
+      return;
+    }
+
+    const updateDimensions = () => {
+      setExperimentModalBaseHeight(mockupElement.offsetHeight);
+    };
+
+    updateDimensions();
+
+    const resizeObserver = typeof ResizeObserver !== "undefined"
+      ? new ResizeObserver(updateDimensions)
+      : null;
+
+    resizeObserver?.observe(mockupElement);
+    window.addEventListener("resize", updateDimensions);
+
+    return () => {
+      resizeObserver?.disconnect();
+      window.removeEventListener("resize", updateDimensions);
+    };
+  }, [activeExperimentModal]);
+
+  useEffect(() => {
     if (caseStudy?.slug !== "reversetech") {
       setShowStickyTaskTabs(false);
       return;
@@ -2056,6 +2089,68 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     </div>
   );
 
+  const reverseTechToolsSection = (
+    <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+      <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-5">
+        <p className="mb-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
+          Task 4
+        </p>
+        <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
+          How I used tools while completing this case
+        </h3>
+        <p className="mt-3 max-w-[820px] font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+          Which tools I used, for which tasks, and what I used them to optimize for: speed, breadth of options, quality, and learning through specific examples rather than abstract process notes.
+        </p>
+      </div>
+      <div className="grid gap-4 px-6 py-6 md:grid-cols-2">
+        {[
+          {
+            label: "Data analysis",
+            tool: "ChatGPT + spreadsheet review",
+            use: "Used to structure the funnel numbers, compare step conversion rates, and surface where drop-off was most disproportionate.",
+            optimize: "Optimized for speed and pattern detection before moving into design decisions.",
+          },
+          {
+            label: "Ideation",
+            tool: "ChatGPT",
+            use: "Used to generate multiple hypothesis directions quickly, including CTA framing, value-exchange shifts, paywall reframes, and competitor-inspired test angles.",
+            optimize: "Optimized for breadth of options so weaker ideas could be discarded early.",
+          },
+          {
+            label: "Writing",
+            tool: "ChatGPT + manual editing",
+            use: "Used to tighten rationale, rewrite sections for clarity, and translate rough notes into concise case-study explanations.",
+            optimize: "Optimized for quality and clarity while keeping the final judgment and wording curated manually.",
+          },
+          {
+            label: "Sketching",
+            tool: "Figma",
+            use: "Used to sketch the paywall experiments, compare content hierarchy, and visualize how each hypothesis would change the decision flow on mobile.",
+            optimize: "Optimized for learning and fast visual validation before committing to one direction.",
+          },
+        ].map((item) => (
+          <div
+            key={item.label}
+            className="rounded-[20px] border border-[#d7e8f7] bg-white p-5 shadow-[0_14px_34px_rgba(14,41,81,0.06)]"
+          >
+            <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">
+              {item.label}
+            </p>
+            <p className="mt-3 font-inter text-[16px] font-semibold text-[#0e2951]">
+              {item.tool}
+            </p>
+            <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+              {item.use}
+            </p>
+            <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+              <strong className="text-[#0e2951]">Optimized for:</strong> {item.optimize}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden">
       <SiteHeader active="Projects" behavior="reveal" />
@@ -2113,7 +2208,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
                 <div className="text-center">
                   <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Client</p>
-                  <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy.client_context ?? caseStudy.company}</p>
+                  <p className="mt-1 text-[14px] font-medium text-[#0e2951]">
+                    {caseStudy.slug === "reversetech" ? "Reverse Tech" : caseStudy.client_context ?? caseStudy.company}
+                  </p>
                 </div>
               </div>
             </div>
@@ -2140,50 +2237,55 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug !== "reversetech" ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading eyebrow="Overview" title="Structure" className="mb-6" />
-          {overviewBlock?.body ? (
-            <p className="mt-8 max-w-[860px] font-inter text-[18px] leading-[1.8] text-[#5c7792]">
-              {overviewBlock.body}
-            </p>
-          ) : null}
-          <div className="mt-8 grid gap-8 md:grid-cols-4 md:gap-0">
-            <div className="border-[#4d87ae]/20 pb-8 md:border-r md:pb-0 md:pr-8">
-              <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Team Members</p>
-              <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
-              <ul className="space-y-1">
-                {caseStudy.team.map((item) => (
-                  <li key={item} className="font-inter text-[16px] capitalize leading-[1.75] text-[#5c7792]">{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="border-[#4d87ae]/20 py-8 md:border-r md:px-8 md:py-0">
-              <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] font-medium text-[#3c3e3f]">My Role</p>
-              <div className="mb-5 h-[3px] w-full rounded-full bg-[#1183D0]" />
-              <ul className="space-y-1">
-                {caseStudy.my_role.map((item) => (
-                  <li key={item} className="font-inter text-[16px] capitalize leading-[1.75] font-medium text-[#3c3e3f]">{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="border-[#4d87ae]/20 py-8 md:border-r md:px-8 md:py-0">
-              <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Tools Used</p>
-              <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
-              <ul className="space-y-1">
-                {caseStudy.tools.map((item) => (
-                  <li key={item} className="font-inter text-[16px] capitalize leading-[1.75] text-[#5c7792]">{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="pt-8 md:pl-8 md:pt-0">
-              <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Timeline</p>
-              <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
-              <p className="font-inter text-[16px] capitalize leading-[1.75] text-[#5c7792]">{caseStudy.duration}</p>
-            </div>
+      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        <SectionHeading eyebrow="Overview" title="Structure" centered className="mb-6" />
+        {overviewBlock?.body ? (
+          <p className="mt-8 max-w-[860px] font-inter text-[18px] leading-[1.8] text-[#5c7792]">
+            {overviewBlock.body}
+          </p>
+        ) : null}
+        <div className="mt-8 grid gap-8 md:grid-cols-3 md:gap-0">
+          <div className="border-[#4d87ae]/20 pb-8 md:border-r md:pb-0 md:pr-8">
+            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] font-medium text-[#3c3e3f]">My Role</p>
+            <div className="mb-5 h-[3px] w-full rounded-full bg-[#1183D0]" />
+            <ul className="space-y-1">
+              {caseStudy.my_role.map((item) => (
+                <li key={item} className="font-inter text-[16px] capitalize leading-[1.75] font-medium text-[#3c3e3f]">{item}</li>
+              ))}
+            </ul>
           </div>
-        </section>
-      ) : null}
+          <div className="border-[#4d87ae]/20 py-8 md:border-r md:px-8 md:py-0">
+            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Tools Used</p>
+            <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
+            <ul className="space-y-1">
+              {(caseStudy.slug === "reversetech"
+                ? [
+                    "Figma",
+                    "Codex",
+                    "Claude Design",
+                    "Claude Code",
+                    "Open Design",
+                    "Notebook LM",
+                    "ChatGPT",
+                    "GitHub",
+                    "Copilot",
+                    "Grammarly",
+                  ]
+                : caseStudy.tools
+              ).map((item) => (
+                <li key={item} className="font-inter text-[16px] capitalize leading-[1.75] text-[#5c7792]">{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="pt-8 md:pl-8 md:pt-0">
+            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Timeline</p>
+            <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
+            <p className="font-inter text-[16px] capitalize leading-[1.75] text-[#5c7792]">
+              {caseStudy.slug === "reversetech" ? "5 to 7 days" : caseStudy.duration}
+            </p>
+          </div>
+        </div>
+      </section>
 
       {visibleStoryBlocks.length ? (
         <section id="rt-problem" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
@@ -3535,7 +3637,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <SectionHeading title="Competitor pattern extraction" centered className="mb-8" />
           <div className="mx-auto max-w-[980px] space-y-6">
             <p className="mx-auto max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              Identify 2-3 competitor funnels you think are relevant to our category. Briefly explain why you consider them relevant based on positioning, audience, business model, scale, or whichever criteria matter most.
+              Identify 2-3 competitor funnels you think are relevant to our category. Briefly explain why you consider them relevant based on positioning, audience, business model, and scale.
             </p>
             <h3 className="text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
               Discovery
@@ -3555,21 +3657,21 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 {[
                   {
                     competitor: "Muscle Boost",
-                    relevance: "Add discovery notes for why this competitor matters to the category.",
+                    relevance: "Positioning, audience, business model, scale.",
                     pattern: "Add discovery placeholder",
                     metric: "Add placeholder",
                     hypothesis: "Add discovery placeholder notes.",
                   },
                   {
                     competitor: "Ladder",
-                    relevance: "Add discovery notes for why this competitor matters to the category.",
+                    relevance: "Positioning, audience, business model, scale.",
                     pattern: "Add discovery placeholder",
                     metric: "Add placeholder",
                     hypothesis: "Add discovery placeholder notes.",
                   },
                   {
                     competitor: "BetterMe (Pattern to Avoid)",
-                    relevance: "Add discovery notes for why this competitor matters to the category.",
+                    relevance: "Positioning, audience, business model, scale.",
                     pattern: "Add discovery placeholder",
                     metric: "Add placeholder",
                     hypothesis: "Add discovery placeholder notes.",
@@ -3623,21 +3725,21 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 {[
                   {
                     competitor: "Muscle Boost",
-                    relevance: "Add discovery notes for why this competitor matters to the category.",
+                    relevance: "Positioning, audience, business model, scale.",
                     pattern: "Add discovery placeholder",
                     metric: "Add placeholder",
                     hypothesis: "Add discovery placeholder notes.",
                   },
                   {
                     competitor: "Ladder",
-                    relevance: "Add discovery notes for why this competitor matters to the category.",
+                    relevance: "Positioning, audience, business model, scale.",
                     pattern: "Add discovery placeholder",
                     metric: "Add placeholder",
                     hypothesis: "Add discovery placeholder notes.",
                   },
                   {
                     competitor: "BetterMe (Pattern to Avoid)",
-                    relevance: "Add discovery notes for why this competitor matters to the category.",
+                    relevance: "Positioning, audience, business model, scale.",
                     pattern: "Add discovery placeholder",
                     metric: "Add placeholder",
                     hypothesis: "Add discovery placeholder notes.",
@@ -3836,9 +3938,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug === "reversetech" && reversetechTaskTab === "task4" && hypothesisItems.length ? (
+      {caseStudy.slug === "reversetech" && reversetechTaskTab === "task4" ? (
         <section id="rt-hypothesis-2" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-0 md:px-10 xl:px-20">
-          {reverseTechHypothesis3Accordion}
+          {reverseTechToolsSection}
         </section>
       ) : null}
 
@@ -4842,9 +4944,26 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="overflow-hidden rounded-[24px] bg-white shadow-[0_30px_80px_rgba(0,0,0,0.28)]">
               <div className="max-h-[85vh] overflow-auto p-4">
                 <div className="flex min-h-full min-w-full items-start justify-center">
-                  <div className="max-w-none" style={{ width: `${320 * experimentModalZoom}px` }}>
-                    <div className="relative rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17]">
-                      {activeExperimentModal === "a" ? reverseTechExperimentAMockup : reverseTechExperimentBMockup}
+                  <div
+                    className="relative max-w-none"
+                    style={{
+                      width: `${EXPERIMENT_MODAL_BASE_WIDTH * experimentModalZoom}px`,
+                      height: experimentModalBaseHeight
+                        ? `${experimentModalBaseHeight * experimentModalZoom}px`
+                        : undefined,
+                    }}
+                  >
+                    <div
+                      ref={experimentModalMockupRef}
+                      className="mx-auto w-[320px] max-w-none"
+                      style={{
+                        transform: `scale(${experimentModalZoom})`,
+                        transformOrigin: "top center",
+                      }}
+                    >
+                      <div className="relative rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17]">
+                        {activeExperimentModal === "a" ? reverseTechExperimentAMockup : reverseTechExperimentBMockup}
+                      </div>
                     </div>
                   </div>
                 </div>
