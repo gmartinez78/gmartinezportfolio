@@ -3957,8 +3957,18 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </div>
                       <div className="mt-3 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
                         <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">Progress in the app</p>
-                        <div className="mt-2 flex min-h-[72px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] text-[8px] uppercase tracking-wide text-[#4a443a]">
+                        <div className="mt-2 flex min-h-[72px] items-center justify-center rounded-[6px] bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] text-[8px] uppercase tracking-wide text-[#4a443a]">
                           app progress image
+                        </div>
+                      </div>
+                      <div className="mt-3 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
+                        <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">Featured in</p>
+                        <div className="mt-2 grid grid-cols-2 gap-x-2 gap-y-1 text-[8px] uppercase tracking-wide text-[#1c1a17] opacity-80">
+                          {["Mirror", "Sky Sports", "The Guardian", "University of Oregon"].map((logo) => (
+                            <span key={logo} className="text-center">
+                              {logo}
+                            </span>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -3968,44 +3978,61 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         <div className="mt-2 flex min-h-[72px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] text-[9px] uppercase tracking-wide text-[#4a443a]">
                           ▶ before / after story
                         </div>
+                        <p className="mt-2 text-[8px] leading-[1.4] text-[#4a443a]">
+                          Results vary by individual. These images are illustrative and not a guarantee of specific outcomes.
+                          {" "}Consult a healthcare provider before beginning any weight loss program.
+                        </p>
                       </div>
-                      <p className="mt-2 text-[8px] leading-[1.4] text-[#4a443a]">
-                        Results vary by individual. These images are illustrative and not a guarantee of specific outcomes.
-                        {" "}Consult a healthcare provider before beginning any weight loss program.
-                      </p>
                     </div>
                     <div className="px-2 py-[6px]">
                       <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px]">
                         <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">Choose your plan</p>
                         <div className="mt-2 space-y-1.5">
-                          <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
+                          <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[8px] opacity-75">
+                            <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">FEEL BETTER IN A WEEK</span>
+                            <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
                             <div>
                               <p className="text-[11px] font-bold text-[#1c1a17]">WEEK PLAN</p>
-                              <p className="text-[9px] text-[#4a443a]">$10.00 → $4.90</p>
+                              <div className="text-[9px] text-[#4a443a]">
+                                <span className="mr-1 line-through opacity-60">$10.00</span>
+                                <span className="font-bold text-[#1c1a17]">$4.90</span>
+                              </div>
                             </div>
                             <div className="text-right">
+                              <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.43</p>
                               <p className="text-[13px] font-bold text-[#1c1a17]">$0.70</p>
                               <p className="text-[8px] text-[#4a443a]">per day</p>
                             </div>
                           </div>
-                          <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
+                          <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[8px] opacity-75">
+                            <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">GET VISIBLE RESULTS</span>
+                            <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
                             <div>
                               <p className="text-[11px] font-bold text-[#1c1a17]">MONTHLY PLAN</p>
-                              <p className="text-[9px] text-[#4a443a]">$14.00 → $6.86</p>
+                              <div className="text-[9px] text-[#4a443a]">
+                                <span className="mr-1 line-through opacity-60">$14.00</span>
+                                <span className="font-bold text-[#1c1a17]">$6.86</span>
+                              </div>
                             </div>
                             <div className="text-right">
+                              <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.50</p>
                               <p className="text-[13px] font-bold text-[#1c1a17]">$0.25</p>
                               <p className="text-[8px] text-[#4a443a]">per day</p>
                             </div>
                           </div>
                           <div className="relative rounded-[10px] border-2 border-[#2a5cb8] bg-[#DCEAEF] px-2 py-[9px]">
                             <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">GET MORE HEALTH BENEFITS</span>
-                            <div className="grid grid-cols-[1fr_68px] items-center gap-[8px]">
+                            <div className="grid grid-cols-[14px_1fr_auto] items-center gap-[8px]">
+                              <div className="h-[12px] w-[12px] rounded-full bg-[#2a5cb8] shadow-[inset_0_0_0_2px_white]" />
                               <div>
                                 <p className="text-[12px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
-                                <p className="text-[9px] text-[#4a443a]">$18.99 → $9.31</p>
+                                <div className="text-[9px] text-[#4a443a]">
+                                  <span className="mr-1 line-through opacity-60">$18.99</span>
+                                  <span className="font-bold text-[#1c1a17]">$9.31</span>
+                                </div>
                               </div>
                               <div className="text-right">
+                                <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.21</p>
                                 <p className="text-[13px] font-bold text-[#1c1a17]">$0.11</p>
                                 <p className="text-[8px] text-[#4a443a]">per day</p>
                               </div>
@@ -4163,6 +4190,33 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </p>
                     </div>
                     <div className="px-2 py-[6px]">
+                      <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">Featured in</p>
+                      <div className="mt-2 grid grid-cols-2 gap-x-2 gap-y-1 text-[8px] uppercase tracking-wide text-[#1c1a17] opacity-80">
+                        {["Mirror", "Sky Sports", "The Guardian", "University of Oregon"].map((logo) => (
+                          <span key={logo} className="text-center">
+                            {logo}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[6px] text-center">
+                          <p className="text-[11px] font-bold text-[#1c1a17]">4.8</p>
+                          <p className="text-[8px] text-[#4a443a]">rating</p>
+                        </div>
+                        <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[6px] text-center">
+                          <p className="text-[11px] font-bold text-[#1c1a17]">900K+</p>
+                          <p className="text-[8px] text-[#4a443a]">downloads</p>
+                        </div>
+                      </div>
+                      <p className="mt-2 text-center text-[8px] text-[#4a443a]">120K+ reviews across app stores</p>
+                      <div className="mt-2 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
+                        <p className="text-[10px] tracking-[0.12em] text-[#1c1a17]">★★★★★</p>
+                        <p className="mt-3 text-[8px] leading-[1.4] text-[#1c1a17]">
+                          “The plan finally made the next step feel clear and worth it.”
+                        </p>
+                      </div>
+                    </div>
+                    <div className="px-2 py-[6px]">
                       <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px]">
                         <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">Choose your plan</p>
                         <div className="mt-2 space-y-1.5">
@@ -4205,35 +4259,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <span className="text-[11px] font-bold uppercase text-white">Continue</span>
                         </div>
                       </div>
-                    </div>
-                    <div className="px-2 py-[6px]">
-                      <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">Featured in</p>
-                      <div className="mt-2 grid grid-cols-2 gap-x-2 gap-y-1 text-[8px] uppercase tracking-wide text-[#1c1a17] opacity-80">
-                        {["Mirror", "Sky Sports", "The Guardian", "University of Oregon"].map((logo) => (
-                          <span key={logo} className="text-center">
-                            {logo}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="mt-3 grid grid-cols-2 gap-2">
-                        <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[6px] text-center">
-                          <p className="text-[11px] font-bold text-[#1c1a17]">4.8</p>
-                          <p className="text-[8px] text-[#4a443a]">rating</p>
-                        </div>
-                        <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[6px] text-center">
-                          <p className="text-[11px] font-bold text-[#1c1a17]">900K+</p>
-                          <p className="text-[8px] text-[#4a443a]">downloads</p>
-                        </div>
-                      </div>
-                      <p className="mt-2 text-center text-[8px] text-[#4a443a]">120K+ reviews across app stores</p>
                       <div className="mt-2 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
-                        <p className="text-[10px] tracking-[0.12em] text-[#1c1a17]">★★★★★</p>
-                        <p className="mt-3 text-[8px] leading-[1.4] text-[#1c1a17]">
-                          “The plan finally made the next step feel clear and worth it.”
-                        </p>
-                      </div>
-                      <div className="mt-2 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
-                        <p className="text-[9px] font-semibold text-[#1c1a17]">30-Day Money-Back Guarantee</p>
+                        <p className="text-[9px] font-semibold text-[#1c1a17]">30 days</p>
                         <p className="mt-2 text-[8px] leading-[1.4] text-[#1c1a17]">
                           Get 100% of your money back if you don&apos;t see visible results after following our program!
                         </p>
