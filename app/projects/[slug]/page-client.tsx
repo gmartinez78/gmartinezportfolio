@@ -3959,7 +3959,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <div className="mt-3 space-y-1.5">
                         {[
                           "Personalized training plan printable guide",
-                          "Coach consultation included",
+                          "10-20 min workouts to get fit",
                           "Progress and habit tracking",
                           "Visible change phases from now to your goal",
                           "Meal guidance built around your goal",
