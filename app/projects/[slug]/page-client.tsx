@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, Fragment, useEffect, useState } from "react";
+import { FormEvent, Fragment, useEffect, useRef, useState } from "react";
 import { CircleAlert, ChevronLeft, ChevronRight, Minus, Plus, RotateCcw, X } from "lucide-react";
 import Image from "next/image";
 import { Kalam } from "next/font/google";
@@ -1118,15 +1118,18 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [prototypeIndex, setPrototypeIndex] = useState(0);
   const [reversetechTaskTab, setReversetechTaskTab] = useState<"task1" | "task2" | "task3" | "task4">("task1");
   const [reversetechComparisonTab, setReversetechComparisonTab] = useState<"before" | "after">("after");
+  const [showStickyTaskTabs, setShowStickyTaskTabs] = useState(false);
   const [openHypothesisIds, setOpenHypothesisIds] = useState<
     Array<"content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4">
   >([]);
+  const reversetechTaskTabsRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     setEnteredPassword("");
     setPasswordError(null);
     setIsUnlocked(false);
     setReversetechTaskTab("task1");
+    setShowStickyTaskTabs(false);
     setOpenHypothesisIds([]);
   }, [caseStudy?.slug]);
 
@@ -1159,10 +1162,37 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     };
   }, [lightboxImage]);
 
+  useEffect(() => {
+    if (caseStudy?.slug !== "reversetech") {
+      setShowStickyTaskTabs(false);
+      return;
+    }
+
+    const updateStickyTaskTabs = () => {
+      const tabsElement = reversetechTaskTabsRef.current;
+      if (!tabsElement) {
+        setShowStickyTaskTabs(false);
+        return;
+      }
+
+      const stickyOffset = window.innerWidth >= 768 ? 72 : 64;
+      setShowStickyTaskTabs(tabsElement.getBoundingClientRect().top <= stickyOffset);
+    };
+
+    updateStickyTaskTabs();
+    window.addEventListener("scroll", updateStickyTaskTabs, { passive: true });
+    window.addEventListener("resize", updateStickyTaskTabs);
+
+    return () => {
+      window.removeEventListener("scroll", updateStickyTaskTabs);
+      window.removeEventListener("resize", updateStickyTaskTabs);
+    };
+  }, [caseStudy?.slug]);
+
   if (loading) {
     return (
       <main className="min-h-screen bg-[#F0F7FF] text-[#3c3e3f]">
-        <SiteHeader active="Projects" />
+        <SiteHeader active="Projects" behavior="reveal" />
         <section className="mx-auto max-w-[1200px] px-6 py-20 text-sm text-[#5c7792]">Loading case study...</section>
       </main>
     );
@@ -1187,7 +1217,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   if (!caseStudy || caseStudy.status !== "published") {
     return (
       <main className="min-h-screen bg-[#F0F7FF] text-[#3c3e3f]">
-        <SiteHeader active="Projects" />
+        <SiteHeader active="Projects" behavior="reveal" />
         <section className="mx-auto flex min-h-[60vh] max-w-[1200px] flex-col items-center justify-center px-6 py-20 text-center">
           <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">
             Case Study Unavailable
@@ -1212,7 +1242,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
     return (
       <main className="min-h-screen bg-[#F0F7FF] text-[#3c3e3f]">
-        <SiteHeader active="Projects" />
+        <SiteHeader active="Projects" behavior="reveal" />
         <section
           className="relative overflow-hidden pt-8 pb-20"
           style={{ background: HOME_BANNER_GRADIENT }}
@@ -1515,7 +1545,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
   return (
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden">
-      <SiteHeader active="Projects" />
+      <SiteHeader active="Projects" behavior="reveal" />
 
       <div
         className="relative overflow-hidden"
@@ -1744,36 +1774,68 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       )}
 
       {caseStudy.slug === "reversetech" ? (
-        <section className="sticky top-16 z-40 border-b border-[#d7e8f7] bg-white/95 backdrop-blur md:top-[72px]">
-          <div className="mx-auto max-w-[1200px] px-6 py-2 md:px-10 xl:px-20">
-            <div className="mx-auto max-w-[900px]">
-              <div className="flex flex-wrap items-end justify-center gap-0">
-              {[
-                { id: "task1" as const, label: "Task 1" },
-                { id: "task2" as const, label: "Task 2" },
-                { id: "task3" as const, label: "Task 3" },
-                { id: "task4" as const, label: "Task 4" },
-              ].map((item, index) => (
-                <button
-                  key={item.label}
-                  type="button"
-                  onClick={() => setReversetechTaskTab(item.id)}
-                  className={`relative min-w-[180px] border-[#d7e8f7] px-5 py-4 text-center transition-colors ${
-                    reversetechTaskTab === item.id
-                      ? "border-x border-t bg-white"
-                      : "border-x border-t border-transparent bg-transparent hover:bg-[#f8fbff]"
-                  } ${index > 0 ? "-ml-px" : ""}`}
-                >
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{item.label}</p>
-                  {reversetechTaskTab === item.id ? (
-                    <span className="absolute inset-x-0 -bottom-px h-px bg-white" />
-                  ) : null}
-                </button>
-              ))}
+        <>
+          {showStickyTaskTabs ? (
+            <div className="fixed inset-x-0 top-16 z-40 border-b border-[#d7e8f7] bg-white/95 backdrop-blur md:top-[72px]">
+              <div className="mx-auto max-w-[1200px] px-6 pt-0 pb-2 md:px-10 xl:px-20">
+                <div className="mx-auto max-w-[900px]">
+                  <div className="flex flex-wrap items-end justify-center gap-0">
+                    {[
+                      { id: "task1" as const, label: "Task 1" },
+                      { id: "task2" as const, label: "Task 2" },
+                      { id: "task3" as const, label: "Task 3" },
+                      { id: "task4" as const, label: "Task 4" },
+                    ].map((item, index) => (
+                      <button
+                        key={`sticky-${item.label}`}
+                        type="button"
+                        onClick={() => setReversetechTaskTab(item.id)}
+                        className={`relative min-w-[180px] border-[#d7e8f7] px-5 py-4 text-center transition-colors ${
+                          reversetechTaskTab === item.id
+                            ? "border-x border-t bg-white"
+                            : "border-x border-t border-transparent bg-transparent hover:bg-[#f8fbff]"
+                        } ${index > 0 ? "-ml-px" : ""}`}
+                      >
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{item.label}</p>
+                        {reversetechTaskTab === item.id ? (
+                          <span className="absolute inset-x-0 -bottom-px h-px bg-white" />
+                        ) : null}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          ) : null}
+          <section ref={reversetechTaskTabsRef} className="mx-auto max-w-[1200px] px-6 py-2 md:px-10 xl:px-20">
+            <div className="mx-auto max-w-[900px] border-b border-[#d7e8f7]">
+              <div className="flex flex-wrap items-end justify-center gap-0">
+                {[
+                  { id: "task1" as const, label: "Task 1" },
+                  { id: "task2" as const, label: "Task 2" },
+                  { id: "task3" as const, label: "Task 3" },
+                  { id: "task4" as const, label: "Task 4" },
+                ].map((item, index) => (
+                  <button
+                    key={item.label}
+                    type="button"
+                    onClick={() => setReversetechTaskTab(item.id)}
+                    className={`relative min-w-[180px] border-[#d7e8f7] px-5 py-4 text-center transition-colors ${
+                      reversetechTaskTab === item.id
+                        ? "border-x border-t bg-white"
+                        : "border-x border-t border-transparent bg-transparent hover:bg-[#f8fbff]"
+                    } ${index > 0 ? "-ml-px" : ""}`}
+                  >
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{item.label}</p>
+                    {reversetechTaskTab === item.id ? (
+                      <span className="absolute inset-x-0 -bottom-px h-px bg-white" />
+                    ) : null}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
       ) : null}
 
       {taskDetailBlock && (caseStudy.slug !== "reversetech" || reversetechTaskTab === "task1") ? (
@@ -3645,65 +3707,49 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <p className="mx-auto max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               The experiments were framed around one conversion objective, one revenue objective, and one constraint that kept the proposed changes grounded in the existing offer structure.
             </p>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {[
-                ["Goal A", "Improve overall paywall conversion rate so more users purchase any plan."],
-                ["Goal B", "Shift plan mix toward the 12-week plan to lift AOV (average order value / average revenue per user)."],
-              ].map(([label, body], index) => (
-                <div
-                  key={label}
-                  className="relative overflow-hidden rounded-[24px] bg-white px-6 py-7 text-center shadow-[0_14px_34px_rgba(14,41,81,0.06)]"
-                >
-                  <svg
-                    className="pointer-events-none absolute inset-0 h-full w-full"
-                    viewBox="0 0 320 220"
-                    preserveAspectRatio="none"
-                    aria-hidden="true"
-                  >
-                    <rect
-                      x="8"
-                      y="8"
-                      width="304"
-                      height="204"
-                      rx="24"
-                      fill="none"
-                      stroke="#1183D0"
-                      strokeWidth="2"
-                      strokeDasharray={index === 2 ? "10 8" : undefined}
-                    />
-                    <path
-                      d="M18 28C54 12 100 16 142 24C186 33 236 31 286 18"
-                      fill="none"
-                      stroke="#1183D0"
-                      strokeOpacity="0.18"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M24 192C80 180 138 182 192 190C236 196 270 196 298 188"
-                      fill="none"
-                      stroke="#1183D0"
-                      strokeOpacity="0.16"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                  <div className="relative text-center">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{label}</p>
-                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{body}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
           {/* Phone frames — low-fi wireframes */}
           <div className="mt-12">
             <div className="mx-auto mb-8 grid max-w-[980px] gap-8 text-center md:grid-cols-2">
               {[
-                ["Experiment A", "Placeholder text for experiment A."],
-                ["Experiment B", "This version reframes the paywall around progress toward the user’s target weight loss. The 12-week option is positioned as the plan most likely to help the user reach that goal through time framing, app-value previews, trust signals, and repeated commitment points. Connecting the user’s goal to the price helps maintain engagement."],
-              ].map(([title, body]) => (
+                [
+                  "Goal A",
+                  "Improve overall paywall conversion rate so more users purchase any plan.",
+                  "Experiment A",
+                  "Placeholder text for experiment A.",
+                ],
+                [
+                  "Goal B",
+                  "Shift plan mix toward the 12-week plan to lift AOV (average order value / average revenue per user).",
+                  "Experiment B",
+                  "This version reframes the paywall around progress toward the user’s target weight loss. The 12-week option is positioned as the plan most likely to help the user reach that goal through time framing, app-value previews, trust signals, and repeated commitment points. Connecting the user’s goal to the price helps maintain engagement.",
+                ],
+              ].map(([goalLabel, goalBody, title, body]) => (
                 <div key={title} className="space-y-3">
+                  <div className="overflow-hidden rounded-[24px] bg-white px-6 py-7 text-center shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
+                    <div className="text-center">
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{goalLabel}</p>
+                      <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{goalBody}</p>
+                    </div>
+                  </div>
                   <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{title}</p>
                   <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{body}</p>
+                  {title === "Experiment A" ? (
+                    <div className="pt-2 text-left">
+                      <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#c8412a]">Δ vs control</p>
+                      <ul className="mt-3 list-disc space-y-2 pl-5 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                        {[
+                          'Replace timers w/ progress indicator ("5 of 5")',
+                          "Personalized recap above the plan",
+                          "Two plans are presented, with the 12-wk option recommended and pre-selected",
+                          '"What you get" + guarantee right beside CTA',
+                          "Cut repeated plan ladder · trim long scroll",
+                        ].map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
                   {title === "Experiment B" ? (
                     <div className="pt-2 text-left">
                       <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#2a5cb8]">Δ vs control</p>
@@ -3773,54 +3819,99 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div className="relative rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17]">
                   <div className="mx-auto mb-[10px] h-[8px] w-[80px] rounded-full bg-[#1c1a17]" />
                   <div className={`${kalam.className} flex min-h-[580px] flex-col gap-[7px] rounded-[18px] p-[10px]`}>
-                    {/* Step indicator instead of timer */}
+                    {/* Timer bar */}
                     <div className="flex items-center justify-between rounded-[10px] border border-[#1c1a17] px-2 py-1 text-[10px] text-[#1c1a17]">
-                      <span className="font-semibold">step 5 of 5</span>
-                      <span className="rounded-full bg-[#1c1a17] px-[10px] py-[4px] text-[10px] text-white">Skip to plans</span>
+                      <span className="font-semibold">⏱ 09:53</span>
+                      <span className="rounded-full bg-[#1c1a17] px-[10px] py-[4px] text-[10px] text-white">GET MY PLAN</span>
                     </div>
                     {/* Personal recap card */}
                     <div className="rounded-[10px] border border-[#1c1a17] bg-[#DCEAEF] p-[7px]">
-                      <p className="text-[7px] uppercase tracking-wide text-[#4a443a]">your plan · built from your quiz</p>
-                      <div className="mt-1 grid grid-cols-[44px_1fr_44px] items-center gap-[5px]">
-                        <div className="flex min-h-[44px] items-center justify-center rounded-[6px] border border-[#1c1a17] bg-[#fffdf6] text-[8px] text-[#4a443a]">now</div>
-                        <p className="text-center text-[12px] font-semibold text-[#1c1a17]">→ in <span className="text-[#2a5cb8]">12 weeks</span></p>
-                        <div className="flex min-h-[44px] items-center justify-center rounded-[6px] border border-[#1c1a17] bg-[#fffdf6] text-[8px] text-[#4a443a]">goal</div>
-                      </div>
-                      <div className="mt-1 grid grid-cols-3 gap-[3px] text-center text-[9px]">
-                        {[["30%", "body fat now"], ["14%", "target"], ["Aug 19", "finish date"]].map(([v, k]) => (
-                          <div key={k}>
-                            <p className="font-bold text-[#1c1a17]">{v}</p>
-                            <p className="text-[7px] text-[#4a443a]">{k}</p>
+                      <div className="grid grid-cols-2 gap-[6px]">
+                        {[["Now", "30% body fat"], ["Your goal", "14% body fat"]].map(([label, cap]) => (
+                          <div key={label}>
+                            <div className="flex min-h-[82px] items-center justify-center rounded-[8px] border border-[#1c1a17] bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] p-[4px] text-center text-[9px] uppercase tracking-wide text-[#4a443a]">
+                              {label}
+                            </div>
+                            <p className="mt-1 text-center text-[9px] text-[#1c1a17]">{cap}</p>
+                            <p className="text-center text-[8px] text-[#4a443a]">
+                              Muscle strength {label === "Now" ? "regular" : "high"}
+                            </p>
                           </div>
                         ))}
                       </div>
+                      <div className="mt-2 rounded-[8px] border border-dashed border-[#1c1a17] bg-white/60 px-2 py-[4px] text-[9px] leading-[1.25] text-[#1c1a17]">
+                        Personalized plan preview based on your current body composition and target.
+                      </div>
                     </div>
-                    <p className="text-center text-[11px] font-semibold text-[#1c1a17]">Choose your plan</p>
-                    <div className="space-y-[6px]">
+                    <p className="mt-3 text-center text-[14px] font-semibold text-[#1c1a17]">Your Calisthenics plan is ready!</p>
+                    <div className="mt-3">
+                      <div className="grid grid-cols-[1fr_84px] items-center gap-2 rounded-[10px] border border-[#2a5cb8] bg-[#cfe4ff] px-3 py-[7px] text-left">
+                        <div>
+                          <p className="text-[8px] uppercase tracking-wide text-[#2a5cb8]">New promo code applied!</p>
+                          <p className="mt-1 text-[11px] font-bold text-[#1c1a17]">ANN-PLAN26</p>
+                        </div>
+                        <div className="rounded-[8px] border border-[#1c1a17] bg-white px-2 py-[6px] text-center">
+                          <p className="text-[8px] font-bold uppercase tracking-wide text-[#2a5cb8]">20% OFF</p>
+                          <p className="mt-1 text-[10px] font-bold text-[#1c1a17]">09:53</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-4 space-y-[6px]">
+                      <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[8px] opacity-75">
+                        <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">FEEL BETTER IN A WEEK</span>
+                        <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
+                        <div>
+                          <p className="text-[11px] font-bold text-[#1c1a17]">WEEK PLAN</p>
+                          <div className="text-[9px] text-[#4a443a]">
+                            <span className="mr-1 line-through opacity-60">$10.00</span>
+                            <span className="font-bold text-[#1c1a17]">$8.00</span>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.43</p>
+                          <p className="text-[13px] font-bold text-[#1c1a17]">$1.14</p>
+                          <p className="text-[8px] text-[#4a443a]">per day</p>
+                        </div>
+                      </div>
+                      <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[8px] opacity-75">
+                        <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">GET VISIBLE RESULTS</span>
+                        <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
+                        <div>
+                          <p className="text-[11px] font-bold text-[#1c1a17]">MONTHLY PLAN</p>
+                          <div className="text-[9px] text-[#4a443a]">
+                            <span className="mr-1 line-through opacity-60">$14.00</span>
+                            <span className="font-bold text-[#1c1a17]">$11.20</span>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.50</p>
+                          <p className="text-[13px] font-bold text-[#1c1a17]">$0.40</p>
+                          <p className="text-[8px] text-[#4a443a]">per day</p>
+                        </div>
+                      </div>
                       <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border-2 border-[#2a5cb8] bg-[#DCEAEF] px-2 py-[9px]">
-                        <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">RECOMMENDED FOR YOU</span>
+                        <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">GET MORE HEALTH BENEFITS</span>
                         <div className="h-[12px] w-[12px] rounded-full bg-[#2a5cb8] shadow-[inset_0_0_0_2px_white]" />
                         <div>
                           <p className="text-[11px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
-                          <p className="text-[9px] text-[#4a443a]">$18.99 today · $0.21/day</p>
+                          <div className="text-[9px] text-[#4a443a]">
+                            <span className="mr-1 line-through opacity-60">$18.99</span>
+                            <span className="font-bold text-[#1c1a17]">$15.19</span>
+                          </div>
                         </div>
                         <div className="text-right">
-                          <p className="text-[13px] font-bold text-[#1c1a17]">$18.99</p>
-                          <p className="text-[8px] text-[#4a443a]">today</p>
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[8px] opacity-75">
-                        <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
-                        <div>
-                          <p className="text-[11px] font-bold text-[#1c1a17]">ANNUAL PLAN</p>
-                          <p className="text-[9px] text-[#4a443a]">$14.00 today · $0.50/day</p>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-[13px] font-bold text-[#1c1a17]">$14.00</p>
-                          <p className="text-[8px] text-[#4a443a]">today</p>
+                          <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.21</p>
+                          <p className="text-[13px] font-bold text-[#1c1a17]">$0.18</p>
+                          <p className="text-[8px] text-[#4a443a]">per day</p>
                         </div>
                       </div>
                     </div>
+                    {/* CTA */}
+                    <div className="flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
+                      <span className="text-[11px] font-bold text-white">Continue - Save 20%</span>
+                      <span className="text-[10px] text-white">→</span>
+                    </div>
+                    <p className="mb-2 text-[8px] leading-[1.4] text-[#4a443a]">$18.99 today, then $89.99/12 wks. Cancel anytime.</p>
                     {/* Value stack */}
                     <div className="rounded-[10px] border border-[#1c1a17] bg-white p-[7px]">
                       <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">what&apos;s included</p>
@@ -3836,28 +3927,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         <div key={b} className="rounded-[8px] border border-[#1c1a17] bg-white px-2 py-[5px] text-center text-[10px] text-[#1c1a17]">{b}</div>
                       ))}
                     </div>
-                    {/* CTA */}
-                    <div className="flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
-                      <span className="text-[11px] font-bold text-white">Continue</span>
-                      <span className="text-[10px] text-white">→</span>
-                    </div>
-                    <p className="text-[8px] leading-[1.4] text-[#4a443a]">$18.99 today, then $89.99/12 wks. Cancel anytime.</p>
                     <div className="flex min-h-[28px] items-center justify-center rounded-[8px] border border-[#1c1a17] bg-[#fffdf6] text-[9px] uppercase text-[#4a443a]">single testimonial · 1 photo · 1 quote</div>
                   </div>
-                </div>
-                <div className="mt-5">
-                  <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#c8412a]">Δ vs control</p>
-                  <ul className="mt-3 list-disc space-y-2 pl-5 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                    {[
-                      'Replace timers w/ progress indicator ("5 of 5")',
-                      "Personalized recap above the plan",
-                      "Two plans are presented, with the 12-wk option recommended and pre-selected",
-                      '"What you get" + guarantee right beside CTA',
-                      "Cut repeated plan ladder · trim long scroll",
-                    ].map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
                 </div>
               </div>
 
@@ -3939,7 +4010,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <span className="text-[10px] uppercase text-white">12-WK</span>
                       <span className="text-[11px] font-bold uppercase text-white">Continue</span>
                     </div>
-                    <div className="rounded-[8px] border border-[#1c1a17]/30 px-2 py-[6px]">
+                    <div className="mt-2 rounded-[8px] border border-[#1c1a17]/30 px-2 py-[6px]">
                       <p className="text-[8px] leading-[1.4] text-[#4a443a]">
                         Without cancellation, before the selected plan ends, I accept that Reverse Health will automatically charge
                         {" "}$89.99 every 12 weeks until I cancel. Taxes calculated at checkout. Cancel online via My Account.
