@@ -1115,6 +1115,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
   const [lightboxZoom, setLightboxZoom] = useState(1);
+  const [isPaywallControlExpanded, setIsPaywallControlExpanded] = useState(false);
+  const [isExperimentAExpanded, setIsExperimentAExpanded] = useState(false);
+  const [isExperimentBExpanded, setIsExperimentBExpanded] = useState(false);
   const [prototypeIndex, setPrototypeIndex] = useState(0);
   const [reversetechTaskTab, setReversetechTaskTab] = useState<"task1" | "task2" | "task3" | "task4">("task1");
   const [reversetechComparisonTab, setReversetechComparisonTab] = useState<"before" | "after">("after");
@@ -1131,6 +1134,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     setReversetechTaskTab("task1");
     setShowStickyTaskTabs(false);
     setOpenHypothesisIds([]);
+    setIsPaywallControlExpanded(false);
+    setIsExperimentAExpanded(false);
+    setIsExperimentBExpanded(false);
   }, [caseStudy?.slug]);
 
   const toggleHypothesis = (hypothesisId: "content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4") => {
@@ -3053,6 +3059,147 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
+      {caseStudy.slug === "reversetech" && reversetechTaskTab === "task1" && (ctaVariants.length || contentVariants.length) ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <div className="space-y-6">
+            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+              <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-5">
+                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">
+                  How I tackled the email-step metrics
+                </h3>
+                <p className="mt-2 max-w-[760px] font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                  I wanted to tackle the email-step performance by testing three hypotheses across content, CTA framing, and the pages leading up to the email gate.
+                </p>
+              </div>
+              <div className="hidden grid-cols-[0.7fr_1fr_1.2fr] gap-4 border-b border-[#d7e8f7] px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#0e2951] md:grid">
+                <div>Hypothesis</div>
+                <div>What I tested</div>
+                <div>Why it mattered</div>
+              </div>
+              <div className="divide-y divide-[#e7eef6]">
+                {[
+                  [
+                    "Hypothesis 1",
+                    "Content Variant",
+                    "Test whether the email step feels more personalized and valuable when the content reflects the user’s selected goal.",
+                  ],
+                  [
+                    "Hypothesis 2",
+                    "CTA Variant",
+                    "Test whether outcome-based CTA language reduces the feeling of generic lead capture and makes the reward clearer.",
+                  ],
+                  [
+                    "Hypothesis 3",
+                    "Personalize screens",
+                    "Test whether improving the pages before email makes the ask feel more earned by reducing fatigue and adding stronger context.",
+                  ],
+                  [
+                    "Hypothesis 4",
+                    "Exploratory hypothesis",
+                    "Check whether age segment, device, source, or step context may be influencing the email drop-off beyond the screen itself.",
+                  ],
+                ].map(([label, title, description]) => (
+                  <div key={label} className="grid gap-2 px-6 py-4 md:grid-cols-[0.7fr_1fr_1.2fr] md:gap-4">
+                    <div className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1183D0]">{label}</div>
+                    <div className="font-inter text-[14px] font-semibold text-[#0e2951]">{title}</div>
+                    <div className="font-inter text-[14px] leading-[1.7] text-[#5c7792]">{description}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {[
+              { block: contentVariantsBlock, variants: contentVariants },
+              { block: ctaVariantsBlock, variants: ctaVariants },
+            ].map(({ block, variants }) =>
+              block && variants.length ? (
+                <div key={block.id} id={caseStudy.slug === "reversetech" ? block.id : undefined} className={caseStudy.slug === "reversetech" ? "scroll-mt-24" : undefined}>
+                  <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+                    <button
+                      type="button"
+                      onClick={() => toggleHypothesis(block.id as "content-variants" | "cta-variants")}
+                      className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                    >
+                      <div>
+                        <p className="mb-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
+                          {block.id === "content-variants" ? "Hypothesis 1" : "Hypothesis 2"}
+                        </p>
+                        <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
+                          {block.title}
+                        </h3>
+                      </div>
+                      {openHypothesisIds.includes(block.id as "content-variants" | "cta-variants") ? <Minus className="h-5 w-5 text-[#1183D0]" /> : <Plus className="h-5 w-5 text-[#1183D0]" />}
+                    </button>
+                    {openHypothesisIds.includes(block.id as "content-variants" | "cta-variants") ? (
+                      <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-2">
+                        {block.body ? (
+                          <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                            {block.body}
+                          </p>
+                        ) : null}
+                        {block.id === "content-variants" &&
+                        block.payload &&
+                        typeof block.payload === "object" &&
+                        typeof block.payload.note === "string" ? (
+                          <p className="mx-auto mb-8 max-w-[760px] text-center font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                            {block.payload.note}
+                          </p>
+                        ) : null}
+                        <div className="grid gap-5 md:grid-cols-3">
+                          {variants.map((variant, index) => (
+                            (() => {
+                              const imageSrc = typeof variant.imageSrc === "string" ? variant.imageSrc : null;
+                              const variantTitle = typeof variant.title === "string" ? variant.title : "";
+                              const variantAlt = variantTitle || "Variant wireframe";
+
+                              return (
+                                <Card key={`${block.id}-${index}`} className="overflow-hidden border-transparent shadow-none">
+                                  <CardContent className="p-7">
+                                    <div className="flex flex-wrap items-center gap-2">
+                                      <span className="inline-flex rounded-full bg-[#dbeafe] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1e40af]">
+                                        {`Variant ${index + 1}`}
+                                      </span>
+                                    </div>
+                                    <h3 className="mt-4 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
+                                      {variantTitle}
+                                    </h3>
+                                    <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                                      {typeof variant.body === "string" ? variant.body : ""}
+                                    </p>
+                                    {imageSrc ? (
+                                      <button
+                                        type="button"
+                                        onClick={() =>
+                                          setLightboxImage({
+                                            src: withBasePath(imageSrc),
+                                            alt: variantAlt,
+                                          })
+                                        }
+                                        className="mt-6 block w-full overflow-hidden rounded-[18px] bg-white text-left transition-transform hover:scale-[1.01]"
+                                      >
+                                        <img
+                                          src={withBasePath(imageSrc)}
+                                          alt={variantAlt}
+                                          className="h-auto w-full"
+                                        />
+                                      </button>
+                                    ) : null}
+                                  </CardContent>
+                                </Card>
+                              );
+                            })()
+                          ))}
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+              ) : null
+            )}
+            {hypothesisItems.length ? reverseTechHypothesis3Accordion : null}
+          </div>
+        </section>
+      ) : null}
+
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task1" ? (
         <section id="rt-hypothesis-4" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-0 md:px-10 xl:px-20">
           <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
@@ -3727,24 +3874,23 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
                   <strong className="text-[#0e2951]">What ships now. </strong>Plan ladder with two urgency timers, no pre-selection, /day pricing dominant.
                 </div>
-                <div className="w-full rounded-[24px] border border-[#d7e8f7] bg-white p-3 text-left shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
-                  <div className="relative h-[632px] overflow-hidden rounded-[18px]">
+                <div className="relative w-full rounded-[24px] border border-[#d7e8f7] bg-white p-3 pb-8 text-left shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+                  <div
+                    className={`relative rounded-[18px] border border-[#d7e8f7] bg-[#f8fbff] ${
+                      isPaywallControlExpanded ? "overflow-visible" : "h-[632px] overflow-hidden"
+                    }`}
+                  >
                     <img
                       src={withBasePath("/images/projects/Reversetech/paywall.png")}
                       alt="Current Reversetech paywall design"
-                      className="w-full object-cover object-top"
+                      className="w-full object-top"
                     />
                     <button
                       type="button"
-                      onClick={() =>
-                        setLightboxImage({
-                          src: withBasePath("/images/projects/Reversetech/paywall.png"),
-                          alt: "Current Reversetech paywall design",
-                        })
-                      }
-                      className="absolute bottom-4 left-1/2 inline-flex -translate-x-1/2 items-center rounded-full border border-[#d7e8f7] bg-white/95 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-colors hover:bg-white"
+                      onClick={() => setIsPaywallControlExpanded((current) => !current)}
+                      className="absolute bottom-0 left-1/2 inline-flex -translate-x-1/2 translate-y-1/2 items-center rounded-full border border-[#d7e8f7] bg-white px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-colors hover:bg-[#f8fbff]"
                     >
-                      Expand
+                      {isPaywallControlExpanded ? "Close" : "Expand"}
                     </button>
                   </div>
                 </div>
@@ -3762,7 +3908,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <strong className="text-[#0e2951]">Primary metric: </strong>paywall → purchase rate.
                 </div>
                 {/* Phone */}
-                <div className="relative rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17]">
+                <div
+                  className={`relative rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17] ${
+                    isExperimentAExpanded ? "pb-8" : "h-[760px] overflow-hidden pb-8"
+                  }`}
+                >
                   <div className="mx-auto mb-[10px] h-[8px] w-[80px] rounded-full bg-[#1c1a17]" />
                   <div className={`${kalam.className} flex min-h-[580px] flex-col gap-[7px] rounded-[18px] p-[10px]`}>
                     {/* Timer bar */}
@@ -4011,6 +4161,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </div>
                     </div>
                   </div>
+                  <button
+                    type="button"
+                    onClick={() => setIsExperimentAExpanded((current) => !current)}
+                    className="absolute bottom-0 left-1/2 inline-flex -translate-x-1/2 translate-y-1/2 items-center rounded-full border border-[#d7e8f7] bg-white px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-colors hover:bg-[#f8fbff]"
+                  >
+                    {isExperimentAExpanded ? "Close" : "View more"}
+                  </button>
                 </div>
               </div>
 
@@ -4026,7 +4183,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <strong className="text-[#0e2951]">Primary metric: </strong>% of purchasers picking 12-wk · AOV.
                 </div>
                 {/* Phone */}
-                <div className="relative rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17]">
+                <div
+                  className={`relative rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17] ${
+                    isExperimentBExpanded ? "pb-8" : "h-[760px] overflow-hidden pb-8"
+                  }`}
+                >
                   <div className="mx-auto mb-[10px] h-[8px] w-[80px] rounded-full bg-[#1c1a17]" />
                   <div className={`${kalam.className} flex min-h-[580px] flex-col gap-[7px] rounded-[18px] p-[10px]`}>
                     {/* Sticky top */}
@@ -4248,6 +4409,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </div>
                     </div>
                   </div>
+                  <button
+                    type="button"
+                    onClick={() => setIsExperimentBExpanded((current) => !current)}
+                    className="absolute bottom-0 left-1/2 inline-flex -translate-x-1/2 translate-y-1/2 items-center rounded-full border border-[#d7e8f7] bg-white px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-colors hover:bg-[#f8fbff]"
+                  >
+                    {isExperimentBExpanded ? "Close" : "View more"}
+                  </button>
                 </div>
               </div>
 
@@ -4255,7 +4423,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
 
           <div className="mt-12">
-            <div className="mx-auto mb-12 max-w-[900px] rounded-[24px] border border-[#d7e8f7] bg-white px-6 py-7 text-left shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
+            <div className="mx-auto mb-12 max-w-[900px] px-6 py-2 text-left">
               <h3 className="text-center font-inter text-[24px] leading-tight text-[#0e2951]">What is the tension between these two experiments?</h3>
               <p className="mt-5 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
                 Experiment A is optimized to reduce friction and increase the number of users who complete a purchase. Its risk is that by emphasizing a personalized discount and a smoother path, it may improve conversion without pushing enough users toward the higher-value 12-week plan.
@@ -4263,32 +4431,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
                 Experiment B is optimized to shift plan mix toward the 12-week option and increase AOV. Its risk is that the stronger push toward one plan may create more friction for users who are not ready for that commitment, which could hurt overall conversion.
               </p>
-            </div>
-            <h3 className="text-center font-inter text-[28px] leading-tight text-[#0e2951]">Where the leaks probably are</h3>
-            <div className="mt-8 grid gap-6 md:grid-cols-3 md:gap-0">
-              {[
-                {
-                  title: "Decision overload",
-                  body: "Three plans, multiple prices, stacked urgency, bonus framing, legal copy, and a repeated ladder ask users to process too much before they feel ready to choose.",
-                },
-                {
-                  title: "Weak personalization",
-                  body: "The current paywall only lightly echoes quiz inputs. It does not connect a specific plan length to the user’s target weight, timeline, or expected outcome.",
-                },
-                {
-                  title: "Cheap-anchor trap",
-                  body: "The 12-week plan wins on per-day value, but the 1-week option looks safer on upfront price. That makes the lowest-commitment entry point a drag on AOV.",
-                },
-              ].map((item, index) => (
-                <div
-                  key={item.title}
-                  className={`text-center ${index > 0 ? "md:border-l md:border-[#d7e8f7] md:pl-6" : ""} ${index < 2 ? "md:pr-6" : ""}`}
-                >
-                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
-                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item.body}</p>
-                  {index < 2 ? <div className="mt-6 h-px bg-[#d7e8f7] md:hidden" /> : null}
-                </div>
-              ))}
             </div>
           </div>
         </section>
