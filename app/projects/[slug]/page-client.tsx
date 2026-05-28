@@ -1744,7 +1744,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       )}
 
       {caseStudy.slug === "reversetech" ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-2 md:px-10 xl:px-20">
+        <section className="sticky top-[76px] z-40 mx-auto max-w-[1200px] bg-white/90 px-6 py-2 backdrop-blur md:top-[84px] md:px-10 xl:px-20">
           <div className="mx-auto max-w-[900px] border-b border-[#d7e8f7]">
             <div className="flex flex-wrap items-end justify-center gap-0">
             {[
@@ -3697,7 +3697,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="mx-auto mb-8 grid max-w-[980px] gap-8 text-center md:grid-cols-2">
               {[
                 ["Experiment A", "Placeholder text for experiment A."],
-                ["Experiment B", "This version reframes the paywall around progress toward the user’s target weight instead of per-day cost. Shorter plans are still visible, but the 12-week option is positioned as the plan that actually reaches the goal through time framing, app-value previews, trust signals, and repeated commitment points."],
+                ["Experiment B", "This version reframes the paywall around progress toward the user’s target weight loss. The 12-week option is positioned as the plan most likely to help the user reach that goal through time framing, app-value previews, trust signals, and repeated commitment points. Connecting the user’s goal to the price helps maintain engagement."],
               ].map(([title, body]) => (
                 <div key={title} className="space-y-3">
                   <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{title}</p>
