@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, Fragment, useEffect, useRef, useState } from "react";
-import { CircleAlert, ChevronLeft, ChevronRight, Minus, Plus, RotateCcw, X } from "lucide-react";
+import { CircleAlert, ChevronLeft, ChevronRight, Menu, Minus, Plus, RotateCcw, X } from "lucide-react";
 import Image from "next/image";
 import { Kalam } from "next/font/google";
 import Link from "next/link";
@@ -1121,6 +1121,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [reversetechTaskTab, setReversetechTaskTab] = useState<"task1" | "task2" | "task3" | "task4">("task1");
   const [reversetechComparisonTab, setReversetechComparisonTab] = useState<"before" | "after">("after");
   const [showStickyTaskTabs, setShowStickyTaskTabs] = useState(false);
+  const [isReverseTechTaskMenuOpen, setIsReverseTechTaskMenuOpen] = useState(false);
   const [openHypothesisIds, setOpenHypothesisIds] = useState<
     Array<"content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4">
   >([]);
@@ -1135,6 +1136,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     setOpenHypothesisIds([]);
     setIsPaywallControlExpanded(false);
     setActiveExperimentModal(null);
+    setIsReverseTechTaskMenuOpen(false);
   }, [caseStudy?.slug]);
 
   const toggleHypothesis = (hypothesisId: "content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4") => {
@@ -1147,6 +1149,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
   const handleReverseTechTaskTabChange = (taskTab: "task1" | "task2" | "task3" | "task4") => {
     setReversetechTaskTab(taskTab);
+    setIsReverseTechTaskMenuOpen(false);
 
     const targetByTask: Record<"task1" | "task2" | "task3" | "task4", string> = {
       task1: "rt-funnel-diagnosis",
@@ -1173,8 +1176,466 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     }, 50);
   };
 
+  const reverseTechTaskTabs = [
+    { id: "task1" as const, label: "Task 1" },
+    { id: "task2" as const, label: "Task 2" },
+    { id: "task3" as const, label: "Task 3" },
+    { id: "task4" as const, label: "Task 4 (Optional)" },
+  ];
+
+  const activeReverseTechTaskLabel =
+    reverseTechTaskTabs.find((item) => item.id === reversetechTaskTab)?.label ?? "Tasks";
+
+  const reverseTechExperimentAMockup = (
+    <>
+      <div className="mx-auto mb-[10px] h-[8px] w-[80px] rounded-full bg-[#1c1a17]" />
+      <div className={`${kalam.className} flex min-h-[580px] flex-col gap-[7px] rounded-[18px] p-[10px]`}>
+        <div className="flex items-center justify-between rounded-[10px] border border-[#1c1a17] px-2 py-1 text-[10px] text-[#1c1a17]">
+          <span className="font-semibold">⏱ 09:53</span>
+          <span className="rounded-full bg-[#1c1a17] px-[10px] py-[4px] text-[10px] text-white">GET MY PLAN</span>
+        </div>
+        <div className="rounded-[10px] border border-[#1c1a17] bg-[#DCEAEF] p-[7px]">
+          <div className="grid grid-cols-2 gap-[6px]">
+            {[["Now", "30% body fat"], ["Your goal", "14% body fat"]].map(([label, cap]) => (
+              <div key={label}>
+                <div className="flex min-h-[82px] items-center justify-center rounded-[8px] border border-[#1c1a17] bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] p-[4px] text-center text-[9px] uppercase tracking-wide text-[#4a443a]">
+                  {label}
+                </div>
+                <p className="mt-1 text-center text-[9px] text-[#1c1a17]">{cap}</p>
+                <p className="text-center text-[8px] text-[#4a443a]">Muscle strength {label === "Now" ? "regular" : "high"}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-2 rounded-[8px] border border-dashed border-[#1c1a17] bg-white/60 px-2 py-[4px] text-[9px] leading-[1.25] text-[#1c1a17]">
+            Personalized plan preview based on your current body composition and target.
+          </div>
+        </div>
+        <p className="mt-3 text-center text-[14px] font-semibold text-[#1c1a17]">Your Calisthenics plan is ready!</p>
+        <div className="mt-3">
+          <div className="grid grid-cols-[1fr_84px] items-center gap-2 rounded-[10px] border border-[#2a5cb8] bg-[#cfe4ff] px-3 py-[7px] text-left">
+            <div>
+              <p className="text-[8px] uppercase tracking-wide text-[#2a5cb8]">New promo code applied!</p>
+              <p className="mt-1 text-[11px] font-bold text-[#1c1a17]">ANN-PLAN26</p>
+            </div>
+            <div className="rounded-[8px] border border-[#1c1a17] bg-white px-2 py-[6px] text-center">
+              <p className="text-[8px] font-bold uppercase tracking-wide text-[#2a5cb8]">51% OFF</p>
+              <p className="mt-1 text-[10px] font-bold text-[#1c1a17]">09:53</p>
+            </div>
+          </div>
+        </div>
+        <div className="mt-4 space-y-[6px]">
+          <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[8px] opacity-75">
+            <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">FEEL BETTER IN A WEEK</span>
+            <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
+            <div>
+              <p className="text-[11px] font-bold text-[#1c1a17]">WEEK PLAN</p>
+              <div className="text-[9px] text-[#4a443a]">
+                <span className="mr-1 line-through opacity-60">$10.00</span>
+                <span className="font-bold text-[#1c1a17]">$4.90</span>
+              </div>
+            </div>
+            <div className="text-right">
+              <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.43</p>
+              <p className="text-[13px] font-bold text-[#1c1a17]">$0.70</p>
+              <p className="text-[8px] text-[#4a443a]">per day</p>
+            </div>
+          </div>
+          <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[8px] opacity-75">
+            <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">GET VISIBLE RESULTS</span>
+            <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
+            <div>
+              <p className="text-[11px] font-bold text-[#1c1a17]">MONTHLY PLAN</p>
+              <div className="text-[9px] text-[#4a443a]">
+                <span className="mr-1 line-through opacity-60">$14.00</span>
+                <span className="font-bold text-[#1c1a17]">$6.86</span>
+              </div>
+            </div>
+            <div className="text-right">
+              <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.50</p>
+              <p className="text-[13px] font-bold text-[#1c1a17]">$0.25</p>
+              <p className="text-[8px] text-[#4a443a]">per day</p>
+            </div>
+          </div>
+          <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border-2 border-[#2a5cb8] bg-[#DCEAEF] px-2 py-[9px]">
+            <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">GET MORE HEALTH BENEFITS</span>
+            <div className="h-[12px] w-[12px] rounded-full bg-[#2a5cb8] shadow-[inset_0_0_0_2px_white]" />
+            <div>
+              <p className="text-[11px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
+              <div className="text-[9px] text-[#4a443a]">
+                <span className="mr-1 line-through opacity-60">$18.99</span>
+                <span className="font-bold text-[#1c1a17]">$9.31</span>
+              </div>
+            </div>
+            <div className="text-right">
+              <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.21</p>
+              <p className="text-[13px] font-bold text-[#1c1a17]">$0.11</p>
+              <p className="text-[8px] text-[#4a443a]">per day</p>
+            </div>
+          </div>
+        </div>
+        <div className="flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
+          <span className="text-[11px] font-bold text-white">Continue - Save 51%</span>
+          <span className="text-[10px] text-white">→</span>
+        </div>
+        <p className="mb-2 text-[8px] leading-[1.4] text-[#4a443a]">$9.31 today, then $89.99/12 wks. Cancel anytime.</p>
+        <div className="px-2 py-[6px] text-center">
+          <p className="text-[9px] leading-[1.4] text-[#1c1a17]">Visa · Mastercard · Amex · PayPal · Apple Pay</p>
+        </div>
+        <div className="px-2 py-[6px]">
+          <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">What&apos;s included in your plan</p>
+          <div className="mt-2 flex gap-2 overflow-hidden">
+            {[
+              ["Plan", "personalized training"],
+              ["Coach", "1:1 coach consultation"],
+              ["Tracking", "Progress and habit tracking"],
+            ].map(([label], index) => (
+              <div key={label} className={`min-w-[92px] rounded-[8px] border border-[#1c1a17] px-2 py-[6px] ${index === 0 ? "bg-[#DCEAEF]" : "opacity-70"}`}>
+                <p className="text-[7px] uppercase tracking-wide text-[#4a443a]">{label}</p>
+                <div className="mt-1 flex min-h-[44px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 text-[8px] uppercase tracking-wide text-[#4a443a]">
+                  app image
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-2 flex justify-center gap-1">
+            <span className="h-1.5 w-4 rounded-full bg-[#1c1a17]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-[#1c1a17]/35" />
+            <span className="h-1.5 w-1.5 rounded-full bg-[#1c1a17]/35" />
+          </div>
+          <div className="mt-3 space-y-1.5">
+            {[
+              "Personalized training plan printable guide",
+              "10-20 min workouts to get fit",
+              "Progress and habit tracking",
+              "Visible change phases from now to your goal",
+              "Meal guidance built around your goal",
+            ].map((item) => (
+              <div key={item} className="flex items-center gap-2 text-[8px] leading-[1.35] text-[#1c1a17]">
+                <span className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-[#1c1a17] text-[7px]">•</span>
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-3 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
+            <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">Featured in</p>
+            <div className="mt-2 grid grid-cols-2 gap-x-2 gap-y-1 text-[8px] uppercase tracking-wide text-[#1c1a17] opacity-80">
+              {["Mirror", "Sky Sports", "The Guardian", "University of Oregon"].map((logo) => (
+                <span key={logo} className="text-center">
+                  {logo}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="mt-3 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
+            <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">Progress in the app</p>
+            <div className="mt-2 flex min-h-[72px] items-center justify-center rounded-[6px] bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] text-[8px] uppercase tracking-wide text-[#4a443a]">
+              app progress image
+            </div>
+          </div>
+        </div>
+        <div className="px-2 py-[6px]">
+          <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[10px] text-center">
+            <p className="text-[9px] uppercase tracking-wide text-[#4a443a]">Video testimonial</p>
+            <div className="mt-2 flex min-h-[72px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] text-[9px] uppercase tracking-wide text-[#4a443a]">
+              ▶ before / after story
+            </div>
+            <p className="mt-2 text-[8px] leading-[1.4] text-[#4a443a]">
+              Results vary by individual. These images are illustrative and not a guarantee of specific outcomes. Consult a healthcare provider before beginning any weight loss program.
+            </p>
+          </div>
+        </div>
+        <div className="px-2 py-[6px]">
+          <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px]">
+            <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">Choose your plan</p>
+            <div className="mt-2 space-y-1.5">
+              <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[8px] opacity-75">
+                <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">FEEL BETTER IN A WEEK</span>
+                <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
+                <div>
+                  <p className="text-[11px] font-bold text-[#1c1a17]">WEEK PLAN</p>
+                  <div className="text-[9px] text-[#4a443a]">
+                    <span className="mr-1 line-through opacity-60">$10.00</span>
+                    <span className="font-bold text-[#1c1a17]">$4.90</span>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.43</p>
+                  <p className="text-[13px] font-bold text-[#1c1a17]">$0.70</p>
+                  <p className="text-[8px] text-[#4a443a]">per day</p>
+                </div>
+              </div>
+              <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[8px] opacity-75">
+                <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">GET VISIBLE RESULTS</span>
+                <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
+                <div>
+                  <p className="text-[11px] font-bold text-[#1c1a17]">MONTHLY PLAN</p>
+                  <div className="text-[9px] text-[#4a443a]">
+                    <span className="mr-1 line-through opacity-60">$14.00</span>
+                    <span className="font-bold text-[#1c1a17]">$6.86</span>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.50</p>
+                  <p className="text-[13px] font-bold text-[#1c1a17]">$0.25</p>
+                  <p className="text-[8px] text-[#4a443a]">per day</p>
+                </div>
+              </div>
+              <div className="relative rounded-[10px] border-2 border-[#2a5cb8] bg-[#DCEAEF] px-2 py-[9px]">
+                <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">GET MORE HEALTH BENEFITS</span>
+                <div className="grid grid-cols-[14px_1fr_auto] items-center gap-[8px]">
+                  <div className="h-[12px] w-[12px] rounded-full bg-[#2a5cb8] shadow-[inset_0_0_0_2px_white]" />
+                  <div>
+                    <p className="text-[12px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
+                    <div className="text-[9px] text-[#4a443a]">
+                      <span className="mr-1 line-through opacity-60">$18.99</span>
+                      <span className="font-bold text-[#1c1a17]">$9.31</span>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.21</p>
+                    <p className="text-[13px] font-bold text-[#1c1a17]">$0.11</p>
+                    <p className="text-[8px] text-[#4a443a]">per day</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="mt-3 flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
+              <span className="text-[11px] font-bold text-white">Continue - Save 51%</span>
+              <span className="text-[10px] text-white">→</span>
+            </div>
+          </div>
+          <div className="mt-2 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
+            <p className="text-[9px] font-semibold uppercase tracking-wide text-[#1c1a17]">30 days</p>
+            <p className="mt-1 text-[8px] leading-[1.35] text-[#4a443a]">Try the plan risk-free and request a refund within 30 days if it is not the right fit.</p>
+          </div>
+          <div className="mt-2 text-center text-[8px] leading-[1.4] text-[#4a443a]">
+            <p>All of our payments are processed through Reverse Group Inc.</p>
+            <p className="mt-2">1603 Capital Avenue</p>
+            <p>Suite 413-D179</p>
+            <p>Cheyenne, Wyoming 82001</p>
+            <p>United States</p>
+          </div>
+          <div className="mt-2 flex justify-center gap-2">
+            <button type="button" className="rounded-full border border-[#1c1a17]/20 px-3 py-[5px] text-[8px] uppercase tracking-wide text-[#4a443a]">
+              Privacy
+            </button>
+            <button type="button" className="rounded-full border border-[#1c1a17]/20 px-3 py-[5px] text-[8px] uppercase tracking-wide text-[#4a443a]">
+              Terms
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+
+  const reverseTechExperimentBMockup = (
+    <>
+      <div className="mx-auto mb-[10px] h-[8px] w-[80px] rounded-full bg-[#1c1a17]" />
+      <div className={`${kalam.className} flex min-h-[580px] flex-col gap-[7px] rounded-[18px] p-[10px]`}>
+        <div className="flex items-center justify-between rounded-[10px] border border-[#1c1a17] bg-white px-2 py-1 text-[10px] text-[#1c1a17]">
+          <span className="font-semibold uppercase tracking-[0.16em]">Reverse Health</span>
+          <span className="rounded-full bg-[#1c1a17] px-[10px] py-[4px] text-[10px] uppercase text-white">Continue</span>
+        </div>
+        <div className="grid grid-cols-2 gap-[6px]">
+          {[["Now", "30% body fat"], ["Your goal", "14% body fat"]].map(([label, cap]) => (
+            <div key={label}>
+              <div className="flex min-h-[90px] items-center justify-center rounded-[8px] border border-[#1c1a17] bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] p-[4px] text-center text-[9px] uppercase tracking-wide text-[#4a443a]">
+                {label}
+              </div>
+              <p className="mt-1 text-center text-[9px] text-[#1c1a17]">{cap}</p>
+              <p className="text-center text-[8px] text-[#4a443a]">Muscle strength {label === "Now" ? "regular" : "high"}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-3 text-center text-[16px] font-semibold text-[#1c1a17]">Pick how far you want to go</p>
+        <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
+          <div>
+            <p className="text-[11px] font-bold text-[#1c1a17]">1-week · Kick-start</p>
+            <p className="text-[9px] text-[#4a443a]">$10.5</p>
+          </div>
+          <div className="text-right">
+            <p className="text-[13px] font-bold text-[#1c1a17]">$1.5</p>
+            <p className="text-[8px] text-[#4a443a]">per day</p>
+          </div>
+        </div>
+        <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
+          <div>
+            <p className="text-[11px] font-bold text-[#1c1a17]">4-week · Build habit</p>
+            <p className="text-[9px] text-[#4a443a]">1 mo - $9.8</p>
+          </div>
+          <div className="text-right">
+            <p className="text-[13px] font-bold text-[#1c1a17]">$0.35</p>
+            <p className="text-[8px] text-[#4a443a]">per day</p>
+          </div>
+        </div>
+        <div className="relative rounded-[10px] border-2 border-[#2a5cb8] bg-[#DCEAEF] px-2 py-[9px]">
+          <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">REACHES YOUR GOAL</span>
+          <div className="grid grid-cols-[1fr_68px] items-center gap-[8px]">
+            <div>
+              <p className="text-[12px] font-bold text-[#1c1a17]">12-week · Full transformation</p>
+              <p className="text-[9px] text-[#4a443a]">3 mo - $17.64</p>
+            </div>
+            <div className="text-right">
+              <p className="text-[13px] font-bold text-[#1c1a17]">$0.21</p>
+              <p className="text-[8px] text-[#4a443a]">per day</p>
+            </div>
+          </div>
+          <div className="mt-2 rounded-[8px] border border-dashed border-[#1c1a17] bg-white/60 px-2 py-[5px] text-[10px] leading-[1.3] text-[#1c1a17]">
+            🎁 1:1 coach consultation — included with 12-wk only
+          </div>
+        </div>
+        <div className="flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
+          <span className="text-[10px] uppercase text-white">12-WK</span>
+          <span className="text-[11px] font-bold uppercase text-white">Continue</span>
+        </div>
+        <div className="mt-2 rounded-[8px] border border-[#1c1a17]/30 px-2 py-[6px]">
+          <p className="text-[8px] leading-[1.4] text-[#4a443a]">
+            Without cancellation, before the selected plan ends, I accept that Reverse Health will automatically charge $89.99 every 12 weeks until I cancel. Taxes calculated at checkout. Cancel online via My Account.
+          </p>
+        </div>
+        <div className="px-2 py-[6px] text-center">
+          <p className="text-[9px] leading-[1.4] text-[#1c1a17]">Visa · Mastercard · Amex · PayPal · Apple Pay</p>
+        </div>
+        <div className="px-2 py-[6px]">
+          <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">What&apos;s included in your plan</p>
+          <div className="mt-2 flex gap-2 overflow-hidden">
+            {[
+              ["Plan", "personalized training"],
+              ["Coach", "1:1 coach consultation"],
+              ["Tracking", "Progress and habit tracking"],
+            ].map(([label], index) => (
+              <div key={label} className={`min-w-[92px] rounded-[8px] border border-[#1c1a17] px-2 py-[6px] ${index === 0 ? "bg-[#DCEAEF]" : "opacity-70"}`}>
+                <p className="text-[7px] uppercase tracking-wide text-[#4a443a]">{label}</p>
+                <div className="mt-1 flex min-h-[44px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 text-[8px] uppercase tracking-wide text-[#4a443a]">
+                  app image
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-2 flex justify-center gap-1">
+            <span className="h-1.5 w-4 rounded-full bg-[#1c1a17]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-[#1c1a17]/35" />
+            <span className="h-1.5 w-1.5 rounded-full bg-[#1c1a17]/35" />
+          </div>
+          <div className="mt-3 space-y-1.5">
+            {[
+              "Personalized training plan printable guide",
+              "10-20 min workouts to get fit",
+              "Progress and habit tracking",
+              "Visible change phases from now to your goal",
+              "Meal guidance built around your goal",
+            ].map((item) => (
+              <div key={item} className="flex items-center gap-2 text-[8px] leading-[1.35] text-[#1c1a17]">
+                <span className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-[#1c1a17] text-[7px]">•</span>
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="px-2 py-[6px]">
+          <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[10px] text-center">
+            <p className="text-[9px] uppercase tracking-wide text-[#4a443a]">Testimonial</p>
+            <div className="mt-2 flex min-h-[72px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 text-[9px] uppercase tracking-wide text-[#4a443a]">image</div>
+          </div>
+          <p className="mt-2 text-[8px] leading-[1.4] text-[#4a443a]">
+            Results vary by individual. These images are illustrative and not a guarantee of specific outcomes. Consult a healthcare provider before beginning any weight loss program.
+          </p>
+        </div>
+        <div className="px-2 py-[6px]">
+          <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">Featured in</p>
+          <div className="mt-2 grid grid-cols-2 gap-x-2 gap-y-1 text-[8px] uppercase tracking-wide text-[#1c1a17] opacity-80">
+            {["Mirror", "Sky Sports", "The Guardian", "University of Oregon"].map((logo) => (
+              <span key={logo} className="text-center">
+                {logo}
+              </span>
+            ))}
+          </div>
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[6px] text-center">
+              <p className="text-[11px] font-bold text-[#1c1a17]">4.8</p>
+              <p className="text-[8px] text-[#4a443a]">rating</p>
+            </div>
+            <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[6px] text-center">
+              <p className="text-[11px] font-bold text-[#1c1a17]">900K+</p>
+              <p className="text-[8px] text-[#4a443a]">downloads</p>
+            </div>
+          </div>
+          <p className="mt-2 text-center text-[8px] text-[#4a443a]">120K+ reviews across app stores</p>
+          <div className="mt-2 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
+            <p className="text-[10px] tracking-[0.12em] text-[#1c1a17]">★★★★★</p>
+            <p className="mt-3 text-[8px] leading-[1.4] text-[#1c1a17]">“The plan finally made the next step feel clear and worth it.”</p>
+          </div>
+        </div>
+        <div className="px-2 py-[6px]">
+          <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px]">
+            <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">Choose your plan</p>
+            <div className="mt-2 space-y-1.5">
+              <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
+                <div>
+                  <p className="text-[11px] font-bold text-[#1c1a17]">1-week · Kick-start</p>
+                  <p className="text-[9px] text-[#4a443a]">$10.5</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-[13px] font-bold text-[#1c1a17]">$1.5</p>
+                  <p className="text-[8px] text-[#4a443a]">per day</p>
+                </div>
+              </div>
+              <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
+                <div>
+                  <p className="text-[11px] font-bold text-[#1c1a17]">4-week · Build habit</p>
+                  <p className="text-[9px] text-[#4a443a]">1 mo - $9.8</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-[13px] font-bold text-[#1c1a17]">$0.35</p>
+                  <p className="text-[8px] text-[#4a443a]">per day</p>
+                </div>
+              </div>
+              <div className="relative rounded-[10px] border-2 border-[#2a5cb8] bg-[#DCEAEF] px-2 py-[9px]">
+                <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">REACHES YOUR GOAL</span>
+                <div className="grid grid-cols-[1fr_68px] items-center gap-[8px]">
+                  <div>
+                    <p className="text-[12px] font-bold text-[#1c1a17]">12-week · Full transformation</p>
+                    <p className="text-[9px] text-[#4a443a]">3 mo - $17.64</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[13px] font-bold text-[#1c1a17]">$0.21</p>
+                    <p className="text-[8px] text-[#4a443a]">per day</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="mt-3 flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
+              <span className="text-[10px] uppercase text-white">12-WK</span>
+              <span className="text-[11px] font-bold uppercase text-white">Continue</span>
+            </div>
+          </div>
+          <div className="mt-2 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
+            <p className="text-[9px] font-semibold text-[#1c1a17]">30 days</p>
+            <p className="mt-2 text-[8px] leading-[1.4] text-[#1c1a17]">Get 100% of your money back if you don&apos;t see visible results after following our program!</p>
+            <p className="mt-3 text-[8px] underline text-[#4a443a]">Money-back policy</p>
+          </div>
+          <div className="mt-2 text-center text-[8px] leading-[1.4] text-[#4a443a]">
+            <p>All of our payments are processed through Reverse Group Inc.</p>
+            <p className="mt-2">1603 Capital Avenue</p>
+            <p>Suite 413-D179</p>
+            <p>Cheyenne, Wyoming 82001</p>
+            <p>United States</p>
+          </div>
+          <div className="mt-2 flex justify-center gap-2">
+            <button type="button" className="rounded-full border border-[#1c1a17]/20 px-3 py-[5px] text-[8px] uppercase tracking-wide text-[#4a443a]">
+              Privacy
+            </button>
+            <button type="button" className="rounded-full border border-[#1c1a17]/20 px-3 py-[5px] text-[8px] uppercase tracking-wide text-[#4a443a]">
+              Terms
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+
   useEffect(() => {
-    if (!lightboxImage) {
+    if (!lightboxImage && !activeExperimentModal) {
       document.body.style.overflow = "";
       setLightboxZoom(1);
       return;
@@ -1182,7 +1643,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
     document.body.style.overflow = "hidden";
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+      if (event.key === "Escape" && activeExperimentModal) {
+        setActiveExperimentModal(null);
+      }
+
+      if (event.key === "Escape" && lightboxImage) {
         setLightboxImage(null);
       }
     };
@@ -1192,7 +1657,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [lightboxImage]);
+  }, [activeExperimentModal, lightboxImage]);
 
   useEffect(() => {
     if (caseStudy?.slug !== "reversetech") {
@@ -1815,13 +2280,40 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="fixed inset-x-0 top-16 z-40 border-b border-[#d7e8f7] bg-white/95 backdrop-blur">
               <div className="mx-auto max-w-[1200px] px-6 pt-0 pb-2 md:px-10 xl:px-20">
                 <div className="mx-auto max-w-[900px]">
-                  <div className="flex flex-wrap items-end justify-center gap-0">
-                    {[
-                      { id: "task1" as const, label: "Task 1" },
-                      { id: "task2" as const, label: "Task 2" },
-                      { id: "task3" as const, label: "Task 3" },
-                      { id: "task4" as const, label: "Task 4 (Optional)" },
-                    ].map((item, index) => (
+                  <div className="md:hidden">
+                    <button
+                      type="button"
+                      onClick={() => setIsReverseTechTaskMenuOpen((current) => !current)}
+                      className="flex w-full items-center justify-between rounded-[18px] border border-[#d7e8f7] bg-white px-4 py-3 text-left shadow-[0_12px_28px_rgba(17,131,208,0.08)]"
+                    >
+                      <div>
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Tasks</p>
+                        <p className="mt-1 text-[14px] font-semibold text-[#0e2951]">{activeReverseTechTaskLabel}</p>
+                      </div>
+                      {isReverseTechTaskMenuOpen ? <X className="h-5 w-5 text-[#0e2951]" /> : <Menu className="h-5 w-5 text-[#0e2951]" />}
+                    </button>
+                    {isReverseTechTaskMenuOpen ? (
+                      <div className="mt-3 overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white shadow-[0_16px_32px_rgba(17,131,208,0.1)]">
+                        {reverseTechTaskTabs.map((item, index) => (
+                          <button
+                            key={`sticky-mobile-${item.label}`}
+                            type="button"
+                            onClick={() => handleReverseTechTaskTabChange(item.id)}
+                            className={`flex w-full items-center justify-between px-4 py-3 text-left transition-colors ${
+                              reversetechTaskTab === item.id ? "bg-[#f8fbff]" : "bg-white hover:bg-[#f8fbff]"
+                            } ${index > 0 ? "border-t border-[#d7e8f7]" : ""}`}
+                          >
+                            <span className="text-[13px] font-semibold text-[#0e2951]">{item.label}</span>
+                            {reversetechTaskTab === item.id ? (
+                              <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">Open</span>
+                            ) : null}
+                          </button>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="hidden flex-wrap items-end justify-center gap-0 md:flex">
+                    {reverseTechTaskTabs.map((item, index) => (
                       <button
                         key={`sticky-${item.label}`}
                         type="button"
@@ -1845,13 +2337,40 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           ) : null}
           <section ref={reversetechTaskTabsRef} className="mx-auto max-w-[1200px] px-6 py-2 md:px-10 xl:px-20">
             <div className="mx-auto max-w-[900px] border-b border-[#d7e8f7]">
-              <div className="flex flex-wrap items-end justify-center gap-0">
-                {[
-                  { id: "task1" as const, label: "Task 1" },
-                  { id: "task2" as const, label: "Task 2" },
-                  { id: "task3" as const, label: "Task 3" },
-                  { id: "task4" as const, label: "Task 4 (Optional)" },
-                ].map((item, index) => (
+              <div className="md:hidden pb-2">
+                <button
+                  type="button"
+                  onClick={() => setIsReverseTechTaskMenuOpen((current) => !current)}
+                  className="flex w-full items-center justify-between rounded-[18px] border border-[#d7e8f7] bg-white px-4 py-3 text-left shadow-[0_12px_28px_rgba(17,131,208,0.08)]"
+                >
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Tasks</p>
+                    <p className="mt-1 text-[14px] font-semibold text-[#0e2951]">{activeReverseTechTaskLabel}</p>
+                  </div>
+                  {isReverseTechTaskMenuOpen ? <X className="h-5 w-5 text-[#0e2951]" /> : <Menu className="h-5 w-5 text-[#0e2951]" />}
+                </button>
+                {isReverseTechTaskMenuOpen ? (
+                  <div className="mt-3 overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white shadow-[0_16px_32px_rgba(17,131,208,0.1)]">
+                    {reverseTechTaskTabs.map((item, index) => (
+                      <button
+                        key={`mobile-${item.label}`}
+                        type="button"
+                        onClick={() => handleReverseTechTaskTabChange(item.id)}
+                        className={`flex w-full items-center justify-between px-4 py-3 text-left transition-colors ${
+                          reversetechTaskTab === item.id ? "bg-[#f8fbff]" : "bg-white hover:bg-[#f8fbff]"
+                        } ${index > 0 ? "border-t border-[#d7e8f7]" : ""}`}
+                      >
+                        <span className="text-[13px] font-semibold text-[#0e2951]">{item.label}</span>
+                        {reversetechTaskTab === item.id ? (
+                          <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">Open</span>
+                        ) : null}
+                      </button>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+              <div className="hidden flex-wrap items-end justify-center gap-0 md:flex">
+                {reverseTechTaskTabs.map((item, index) => (
                   <button
                     key={item.label}
                     type="button"
@@ -4113,7 +4632,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   }}
                   className={`relative cursor-zoom-in rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17] transition-transform ${
                     activeExperimentModal === "a"
-                      ? "fixed left-1/2 top-1/2 z-[130] w-[min(92vw,460px)] max-h-[88vh] -translate-x-1/2 -translate-y-1/2 overflow-auto cursor-auto"
+                      ? "fixed left-1/2 top-1/2 z-[130] w-[min(72vw,320px)] -translate-x-1/2 -translate-y-1/2 cursor-auto"
                       : ""
                   }`}
                 >
@@ -4405,7 +4924,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   }}
                   className={`relative cursor-zoom-in rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17] transition-transform ${
                     activeExperimentModal === "b"
-                      ? "fixed left-1/2 top-1/2 z-[130] w-[min(92vw,460px)] max-h-[88vh] -translate-x-1/2 -translate-y-1/2 overflow-auto cursor-auto"
+                      ? "fixed left-1/2 top-1/2 z-[130] w-[min(72vw,320px)] -translate-x-1/2 -translate-y-1/2 cursor-auto"
                       : ""
                   }`}
                 >
