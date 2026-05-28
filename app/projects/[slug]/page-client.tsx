@@ -1117,6 +1117,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [lightboxZoom, setLightboxZoom] = useState(1);
   const [isPaywallControlExpanded, setIsPaywallControlExpanded] = useState(false);
   const [activeExperimentModal, setActiveExperimentModal] = useState<"a" | "b" | null>(null);
+  const [experimentModalZoom, setExperimentModalZoom] = useState(1);
   const [prototypeIndex, setPrototypeIndex] = useState(0);
   const [reversetechTaskTab, setReversetechTaskTab] = useState<"task1" | "task2" | "task3" | "task4">("task1");
   const [reversetechComparisonTab, setReversetechComparisonTab] = useState<"before" | "after">("after");
@@ -1136,6 +1137,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     setOpenHypothesisIds([]);
     setIsPaywallControlExpanded(false);
     setActiveExperimentModal(null);
+    setExperimentModalZoom(1);
     setIsReverseTechTaskMenuOpen(false);
   }, [caseStudy?.slug]);
 
@@ -1185,6 +1187,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
   const activeReverseTechTaskLabel =
     reverseTechTaskTabs.find((item) => item.id === reversetechTaskTab)?.label ?? "Tasks";
+
+  const openExperimentModal = (modal: "a" | "b") => {
+    setActiveExperimentModal(modal);
+    setExperimentModalZoom(1);
+  };
+
+  const closeExperimentModal = () => {
+    setActiveExperimentModal(null);
+    setExperimentModalZoom(1);
+  };
 
   const reverseTechExperimentAMockup = (
     <>
@@ -1644,7 +1656,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     document.body.style.overflow = "hidden";
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape" && activeExperimentModal) {
-        setActiveExperimentModal(null);
+        closeExperimentModal();
       }
 
       if (event.key === "Escape" && lightboxImage) {
@@ -3520,14 +3532,17 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task3" ? (
         <section id="rt-task-3" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title="Analysis" centered className="mb-8" />
+          <SectionHeading title="Competitor pattern extraction" centered className="mb-8" />
           <div className="mx-auto max-w-[980px] space-y-6">
             <p className="mx-auto max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               Identify 2-3 competitor funnels you think are relevant to our category. Briefly explain why you consider them relevant based on positioning, audience, business model, scale, or whichever criteria matter most.
             </p>
+            <h3 className="text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
+              Discovery
+            </h3>
             <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
               <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-4">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Pattern discovery</p>
+                <p className="text-center text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Pattern discovery</p>
               </div>
               <div className="hidden md:block">
                 <div className="grid grid-cols-[1.05fr_1.15fr_1.2fr_0.9fr_1.35fr] border-b border-[#d7e8f7] px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0e2951]">
@@ -3540,34 +3555,62 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 {[
                   {
                     competitor: "Muscle Boost",
-                    relevance: "Leader in clinical authority and muscular strength visualization.",
-                    pattern: "Anatomical Results Preview: Use of animations that highlight the specific muscle tissues activated by the calisthenics plan.",
-                    metric: "Trial Start Rate / Paid Conversion",
-                    hypothesis:
-                      "Scientific visuals break through \"vibe-coding\" and establish instant medical credibility, validating that bodyweight training is effective for hypertrophy.",
+                    relevance: "Add discovery notes for why this competitor matters to the category.",
+                    pattern: "Add discovery placeholder",
+                    metric: "Add placeholder",
+                    hypothesis: "Add discovery placeholder notes.",
                   },
                   {
                     competitor: "Ladder",
-                    relevance: "Industry standard for identity positioning and community-based retention.",
-                    pattern: "\"Squad\" Assignment by Persona: Requiring users to choose a specific role (e.g., \"Calisthenics Operator\") to generate identity alignment from the start.",
-                    metric: "Day 30 Retention / LTV",
-                    hypothesis:
-                      "Users who feel part of a group or \"team\" have higher community accountability. Completing at least 2 workouts during a trial drastically increases long-term subscription rates.",
+                    relevance: "Add discovery notes for why this competitor matters to the category.",
+                    pattern: "Add discovery placeholder",
+                    metric: "Add placeholder",
+                    hypothesis: "Add discovery placeholder notes.",
                   },
                   {
                     competitor: "BetterMe (Pattern to Avoid)",
-                    relevance: "Benchmark for massive scaling and aggressive cash-flow experimentation.",
-                    pattern: "Ultra-Short Trials (3-4 days): Shortening the trial window to accelerate the collection of conversion data and cash flow.",
-                    metric: "Day 0 Churn / Conversion Quality",
-                    hypothesis:
-                      "WHY AVOID: 55.4% of cancellations for 3-day trials occur on Day 0 due to \"fear of being charged\". Trials lasting 17-32 days convert 70% better than those under 4 days.",
+                    relevance: "Add discovery notes for why this competitor matters to the category.",
+                    pattern: "Add discovery placeholder",
+                    metric: "Add placeholder",
+                    hypothesis: "Add discovery placeholder notes.",
                   },
                 ].map((row) => (
                   <div
                     key={row.competitor}
                     className="grid grid-cols-[1.05fr_1.15fr_1.2fr_0.9fr_1.35fr] border-t border-[#d7e8f7] px-6 py-5 text-[15px] leading-[1.7] text-[#5c7792]"
                   >
-                    <div className="border-r border-[#d7e8f7] pr-4 font-semibold text-[#0e2951]">{row.competitor}</div>
+                    <div className="border-r border-[#d7e8f7] pr-4 font-semibold text-[#0e2951]">
+                      {row.competitor === "Muscle Boost" ? (
+                        <a
+                          href="https://plan.muscle-booster.io/start-today"
+                          target="_blank"
+                          rel="noreferrer"
+                          className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                        >
+                          {row.competitor}
+                        </a>
+                      ) : row.competitor === "Ladder" ? (
+                        <a
+                          href="https://www.joinladder.com/quiz?utm_medium=organic&utm_source=website&utm_campaign=homepage&utm_term=hero-cta&utm_content=homepagesurvey&variant=riddler_hybrid_og_v2&page=0"
+                          target="_blank"
+                          rel="noreferrer"
+                          className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                        >
+                          {row.competitor}
+                        </a>
+                      ) : row.competitor === "BetterMe (Pattern to Avoid)" ? (
+                        <a
+                          href="https://betterme-pilates.com/first-page-brand-palette?flow=2117"
+                          target="_blank"
+                          rel="noreferrer"
+                          className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                        >
+                          {row.competitor}
+                        </a>
+                      ) : (
+                        row.competitor
+                      )}
+                    </div>
                     <div className="border-r border-[#d7e8f7] px-4">{row.relevance}</div>
                     <div className="border-r border-[#d7e8f7] px-4">{row.pattern}</div>
                     <div className="border-r border-[#d7e8f7] px-4">{row.metric}</div>
@@ -3580,34 +3623,62 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 {[
                   {
                     competitor: "Muscle Boost",
-                    relevance: "Leader in clinical authority and muscular strength visualization.",
-                    pattern: "Anatomical Results Preview: Use of animations that highlight the specific muscle tissues activated by the calisthenics plan.",
-                    metric: "Trial Start Rate / Paid Conversion",
-                    hypothesis:
-                      "Scientific visuals break through \"vibe-coding\" and establish instant medical credibility, validating that bodyweight training is effective for hypertrophy.",
+                    relevance: "Add discovery notes for why this competitor matters to the category.",
+                    pattern: "Add discovery placeholder",
+                    metric: "Add placeholder",
+                    hypothesis: "Add discovery placeholder notes.",
                   },
                   {
                     competitor: "Ladder",
-                    relevance: "Industry standard for identity positioning and community-based retention.",
-                    pattern: "\"Squad\" Assignment by Persona: Requiring users to choose a specific role (e.g., \"Calisthenics Operator\") to generate identity alignment from the start.",
-                    metric: "Day 30 Retention / LTV",
-                    hypothesis:
-                      "Users who feel part of a group or \"team\" have higher community accountability. Completing at least 2 workouts during a trial drastically increases long-term subscription rates.",
+                    relevance: "Add discovery notes for why this competitor matters to the category.",
+                    pattern: "Add discovery placeholder",
+                    metric: "Add placeholder",
+                    hypothesis: "Add discovery placeholder notes.",
                   },
                   {
                     competitor: "BetterMe (Pattern to Avoid)",
-                    relevance: "Benchmark for massive scaling and aggressive cash-flow experimentation.",
-                    pattern: "Ultra-Short Trials (3-4 days): Shortening the trial window to accelerate the collection of conversion data and cash flow.",
-                    metric: "Day 0 Churn / Conversion Quality",
-                    hypothesis:
-                      "WHY AVOID: 55.4% of cancellations for 3-day trials occur on Day 0 due to \"fear of being charged\". Trials lasting 17-32 days convert 70% better than those under 4 days.",
+                    relevance: "Add discovery notes for why this competitor matters to the category.",
+                    pattern: "Add discovery placeholder",
+                    metric: "Add placeholder",
+                    hypothesis: "Add discovery placeholder notes.",
                   },
                 ].map((row) => (
                   <Card key={`mobile-${row.competitor}`} className="overflow-hidden">
                     <CardContent className="space-y-4 px-5 py-5">
                       <div>
                         <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Competitor</p>
-                        <p className="mt-2 text-[18px] font-semibold leading-snug text-[#0e2951]">{row.competitor}</p>
+                        <p className="mt-2 text-[18px] font-semibold leading-snug text-[#0e2951]">
+                          {row.competitor === "Muscle Boost" ? (
+                            <a
+                              href="https://plan.muscle-booster.io/start-today"
+                              target="_blank"
+                              rel="noreferrer"
+                              className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                            >
+                              {row.competitor}
+                            </a>
+                          ) : row.competitor === "Ladder" ? (
+                            <a
+                              href="https://www.joinladder.com/quiz?utm_medium=organic&utm_source=website&utm_campaign=homepage&utm_term=hero-cta&utm_content=homepagesurvey&variant=riddler_hybrid_og_v2&page=0"
+                              target="_blank"
+                              rel="noreferrer"
+                              className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                            >
+                              {row.competitor}
+                            </a>
+                          ) : row.competitor === "BetterMe (Pattern to Avoid)" ? (
+                            <a
+                              href="https://betterme-pilates.com/first-page-brand-palette?flow=2117"
+                              target="_blank"
+                              rel="noreferrer"
+                              className="underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                            >
+                              {row.competitor}
+                            </a>
+                          ) : (
+                            row.competitor
+                          )}
+                        </p>
                       </div>
                       <div>
                         <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Strategic Relevance</p>
@@ -3669,25 +3740,25 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                   {[
                     {
-                      label: "Pattern 1",
+                      label: "Muscle Boost",
                       title: "Worth testing",
-                      pattern: "Add competitor screenshot here and describe the first pattern worth testing on the calisthenics funnel.",
-                      metric: "Add metric",
-                      hypothesis: "Write the rough hypothesis for why this pattern could improve performance.",
+                      pattern: "Anatomical Results Preview: Use of animations that highlight the specific muscle tissues activated by the calisthenics plan.",
+                      metric: "Trial Start Rate / Paid Conversion",
+                      hypothesis: "Scientific visuals break through \"vibe-coding\" and establish instant medical credibility, validating that bodyweight training is effective for hypertrophy.",
                     },
                     {
-                      label: "Pattern 2",
+                      label: "Ladder",
                       title: "Worth testing",
-                      pattern: "Add competitor screenshot here and describe the second pattern worth testing on the calisthenics funnel.",
-                      metric: "Add metric",
-                      hypothesis: "Write the rough hypothesis for why this pattern could improve performance.",
+                      pattern: "\"Squad\" Assignment by Persona: Requiring users to choose a specific role (e.g., \"Calisthenics Operator\") to generate identity alignment from the start.",
+                      metric: "Day 30 Retention / LTV",
+                      hypothesis: "Users who feel part of a group or \"team\" have higher community accountability. Completing at least 2 workouts during a trial drastically increases long-term subscription rates.",
                     },
                     {
-                      label: "Pattern 3",
+                      label: "BetterMe",
                       title: "Avoid",
-                      pattern: "Add competitor screenshot here and describe the pattern that should be deliberately avoided.",
-                      metric: "Add risk metric",
-                      hypothesis: "Explain why this pattern should be avoided, such as ethical concerns, poor brand fit, or wrong audience.",
+                      pattern: "Ultra-Short Trials (3-4 days): Shortening the trial window to accelerate the collection of conversion data and cash flow.",
+                      metric: "Day 0 Churn / Conversion Quality",
+                      hypothesis: "WHY AVOID: 55.4% of cancellations for 3-day trials occur on Day 0 due to \"fear of being charged\". Trials lasting 17-32 days convert 70% better than those under 4 days.",
                     },
                   ].map((row) => (
                     <div
@@ -3713,25 +3784,25 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div className="grid gap-4 p-5 md:hidden">
                   {[
                     {
-                      label: "Pattern 1",
+                      label: "Muscle Boost",
                       title: "Worth testing",
-                      pattern: "Add competitor screenshot here and describe the first pattern worth testing on the calisthenics funnel.",
-                      metric: "Add metric",
-                      hypothesis: "Write the rough hypothesis for why this pattern could improve performance.",
+                      pattern: "Anatomical Results Preview: Use of animations that highlight the specific muscle tissues activated by the calisthenics plan.",
+                      metric: "Trial Start Rate / Paid Conversion",
+                      hypothesis: "Scientific visuals break through \"vibe-coding\" and establish instant medical credibility, validating that bodyweight training is effective for hypertrophy.",
                     },
                     {
-                      label: "Pattern 2",
+                      label: "Ladder",
                       title: "Worth testing",
-                      pattern: "Add competitor screenshot here and describe the second pattern worth testing on the calisthenics funnel.",
-                      metric: "Add metric",
-                      hypothesis: "Write the rough hypothesis for why this pattern could improve performance.",
+                      pattern: "\"Squad\" Assignment by Persona: Requiring users to choose a specific role (e.g., \"Calisthenics Operator\") to generate identity alignment from the start.",
+                      metric: "Day 30 Retention / LTV",
+                      hypothesis: "Users who feel part of a group or \"team\" have higher community accountability. Completing at least 2 workouts during a trial drastically increases long-term subscription rates.",
                     },
                     {
-                      label: "Pattern 3",
+                      label: "BetterMe",
                       title: "Avoid",
-                      pattern: "Add competitor screenshot here and describe the pattern that should be deliberately avoided.",
-                      metric: "Add risk metric",
-                      hypothesis: "Explain why this pattern should be avoided, such as ethical concerns, poor brand fit, or wrong audience.",
+                      pattern: "Ultra-Short Trials (3-4 days): Shortening the trial window to accelerate the collection of conversion data and cash flow.",
+                      metric: "Day 0 Churn / Conversion Quality",
+                      hypothesis: "WHY AVOID: 55.4% of cancellations for 3-day trials occur on Day 0 due to \"fear of being charged\". Trials lasting 17-32 days convert 70% better than those under 4 days.",
                     },
                   ].map((row) => (
                     <Card key={`pattern-mobile-${row.label}`} className="overflow-hidden">
@@ -4623,280 +4694,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div
                   role="button"
                   tabIndex={0}
-                  onClick={() => setActiveExperimentModal("a")}
+                  onClick={() => openExperimentModal("a")}
                   onKeyDown={(event) => {
                     if (event.key === "Enter" || event.key === " ") {
                       event.preventDefault();
-                      setActiveExperimentModal("a");
+                      openExperimentModal("a");
                     }
                   }}
-                  className={`relative cursor-zoom-in rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17] transition-transform ${
-                    activeExperimentModal === "a"
-                      ? "fixed left-1/2 top-1/2 z-[130] w-[min(72vw,320px)] -translate-x-1/2 -translate-y-1/2 cursor-auto"
-                      : ""
-                  }`}
+                  className="relative cursor-zoom-in rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17] transition-transform"
                 >
-                  {activeExperimentModal === "a" ? (
-                    <button
-                      type="button"
-                      aria-label="Close experiment A preview"
-                      onClick={(event) => {
-                        event.stopPropagation();
-                        setActiveExperimentModal(null);
-                      }}
-                      className="absolute right-3 top-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
-                  ) : null}
-                  <div className="mx-auto mb-[10px] h-[8px] w-[80px] rounded-full bg-[#1c1a17]" />
-                  <div className={`${kalam.className} flex min-h-[580px] flex-col gap-[7px] rounded-[18px] p-[10px]`}>
-                    {/* Timer bar */}
-                    <div className="flex items-center justify-between rounded-[10px] border border-[#1c1a17] px-2 py-1 text-[10px] text-[#1c1a17]">
-                      <span className="font-semibold">⏱ 09:53</span>
-                      <span className="rounded-full bg-[#1c1a17] px-[10px] py-[4px] text-[10px] text-white">GET MY PLAN</span>
-                    </div>
-                    {/* Personal recap card */}
-                    <div className="rounded-[10px] border border-[#1c1a17] bg-[#DCEAEF] p-[7px]">
-                      <div className="grid grid-cols-2 gap-[6px]">
-                        {[["Now", "30% body fat"], ["Your goal", "14% body fat"]].map(([label, cap]) => (
-                          <div key={label}>
-                            <div className="flex min-h-[82px] items-center justify-center rounded-[8px] border border-[#1c1a17] bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] p-[4px] text-center text-[9px] uppercase tracking-wide text-[#4a443a]">
-                              {label}
-                            </div>
-                            <p className="mt-1 text-center text-[9px] text-[#1c1a17]">{cap}</p>
-                            <p className="text-center text-[8px] text-[#4a443a]">
-                              Muscle strength {label === "Now" ? "regular" : "high"}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="mt-2 rounded-[8px] border border-dashed border-[#1c1a17] bg-white/60 px-2 py-[4px] text-[9px] leading-[1.25] text-[#1c1a17]">
-                        Personalized plan preview based on your current body composition and target.
-                      </div>
-                    </div>
-                    <p className="mt-3 text-center text-[14px] font-semibold text-[#1c1a17]">Your Calisthenics plan is ready!</p>
-                    <div className="mt-3">
-                      <div className="grid grid-cols-[1fr_84px] items-center gap-2 rounded-[10px] border border-[#2a5cb8] bg-[#cfe4ff] px-3 py-[7px] text-left">
-                        <div>
-                          <p className="text-[8px] uppercase tracking-wide text-[#2a5cb8]">New promo code applied!</p>
-                          <p className="mt-1 text-[11px] font-bold text-[#1c1a17]">ANN-PLAN26</p>
-                        </div>
-                        <div className="rounded-[8px] border border-[#1c1a17] bg-white px-2 py-[6px] text-center">
-                          <p className="text-[8px] font-bold uppercase tracking-wide text-[#2a5cb8]">51% OFF</p>
-                          <p className="mt-1 text-[10px] font-bold text-[#1c1a17]">09:53</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mt-4 space-y-[6px]">
-                      <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[8px] opacity-75">
-                        <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">FEEL BETTER IN A WEEK</span>
-                        <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
-                        <div>
-                          <p className="text-[11px] font-bold text-[#1c1a17]">WEEK PLAN</p>
-                          <div className="text-[9px] text-[#4a443a]">
-                            <span className="mr-1 line-through opacity-60">$10.00</span>
-                            <span className="font-bold text-[#1c1a17]">$4.90</span>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.43</p>
-                          <p className="text-[13px] font-bold text-[#1c1a17]">$0.70</p>
-                          <p className="text-[8px] text-[#4a443a]">per day</p>
-                        </div>
-                      </div>
-                      <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[8px] opacity-75">
-                        <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">GET VISIBLE RESULTS</span>
-                        <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
-                        <div>
-                          <p className="text-[11px] font-bold text-[#1c1a17]">MONTHLY PLAN</p>
-                          <div className="text-[9px] text-[#4a443a]">
-                            <span className="mr-1 line-through opacity-60">$14.00</span>
-                            <span className="font-bold text-[#1c1a17]">$6.86</span>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.50</p>
-                          <p className="text-[13px] font-bold text-[#1c1a17]">$0.25</p>
-                          <p className="text-[8px] text-[#4a443a]">per day</p>
-                        </div>
-                      </div>
-                      <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border-2 border-[#2a5cb8] bg-[#DCEAEF] px-2 py-[9px]">
-                        <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">GET MORE HEALTH BENEFITS</span>
-                        <div className="h-[12px] w-[12px] rounded-full bg-[#2a5cb8] shadow-[inset_0_0_0_2px_white]" />
-                        <div>
-                          <p className="text-[11px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
-                          <div className="text-[9px] text-[#4a443a]">
-                            <span className="mr-1 line-through opacity-60">$18.99</span>
-                            <span className="font-bold text-[#1c1a17]">$9.31</span>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.21</p>
-                          <p className="text-[13px] font-bold text-[#1c1a17]">$0.11</p>
-                          <p className="text-[8px] text-[#4a443a]">per day</p>
-                        </div>
-                      </div>
-                    </div>
-                    {/* CTA */}
-                    <div className="flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
-                      <span className="text-[11px] font-bold text-white">Continue - Save 51%</span>
-                      <span className="text-[10px] text-white">→</span>
-                    </div>
-                    <p className="mb-2 text-[8px] leading-[1.4] text-[#4a443a]">$9.31 today, then $89.99/12 wks. Cancel anytime.</p>
-                    <div className="px-2 py-[6px] text-center">
-                      <p className="text-[9px] leading-[1.4] text-[#1c1a17]">Visa · Mastercard · Amex · PayPal · Apple Pay</p>
-                    </div>
-                    <div className="px-2 py-[6px]">
-                      <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">What&apos;s included in your plan</p>
-                      <div className="mt-2 flex gap-2 overflow-hidden">
-                        {[
-                          ["Plan", "personalized training"],
-                          ["Coach", "1:1 coach consultation"],
-                          ["Tracking", "Progress and habit tracking"],
-                        ].map(([label], index) => (
-                          <div
-                            key={label}
-                            className={`min-w-[92px] rounded-[8px] border border-[#1c1a17] px-2 py-[6px] ${
-                              index === 0 ? "bg-[#DCEAEF]" : "opacity-70"
-                            }`}
-                          >
-                            <p className="text-[7px] uppercase tracking-wide text-[#4a443a]">{label}</p>
-                            <div className="mt-1 flex min-h-[44px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 text-[8px] uppercase tracking-wide text-[#4a443a]">
-                              app image
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="mt-2 flex justify-center gap-1">
-                        <span className="h-1.5 w-4 rounded-full bg-[#1c1a17]" />
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#1c1a17]/35" />
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#1c1a17]/35" />
-                      </div>
-                      <div className="mt-3 space-y-1.5">
-                        {[
-                          "Personalized training plan printable guide",
-                          "10-20 min workouts to get fit",
-                          "Progress and habit tracking",
-                          "Visible change phases from now to your goal",
-                          "Meal guidance built around your goal",
-                        ].map((item) => (
-                          <div key={item} className="flex items-center gap-2 text-[8px] leading-[1.35] text-[#1c1a17]">
-                            <span className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-[#1c1a17] text-[7px]">•</span>
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="mt-3 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
-                        <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">Featured in</p>
-                        <div className="mt-2 grid grid-cols-2 gap-x-2 gap-y-1 text-[8px] uppercase tracking-wide text-[#1c1a17] opacity-80">
-                          {["Mirror", "Sky Sports", "The Guardian", "University of Oregon"].map((logo) => (
-                            <span key={logo} className="text-center">
-                              {logo}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="mt-3 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
-                        <p className="text-[8px] uppercase tracking-wide text-[#4a443a]">Progress in the app</p>
-                        <div className="mt-2 flex min-h-[72px] items-center justify-center rounded-[6px] bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] text-[8px] uppercase tracking-wide text-[#4a443a]">
-                          app progress image
-                        </div>
-                      </div>
-                    </div>
-                    <div className="px-2 py-[6px]">
-                      <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[10px] text-center">
-                        <p className="text-[9px] uppercase tracking-wide text-[#4a443a]">Video testimonial</p>
-                        <div className="mt-2 flex min-h-[72px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] text-[9px] uppercase tracking-wide text-[#4a443a]">
-                          ▶ before / after story
-                        </div>
-                        <p className="mt-2 text-[8px] leading-[1.4] text-[#4a443a]">
-                          Results vary by individual. These images are illustrative and not a guarantee of specific outcomes.
-                          {" "}Consult a healthcare provider before beginning any weight loss program.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="px-2 py-[6px]">
-                      <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px]">
-                        <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">Choose your plan</p>
-                        <div className="mt-2 space-y-1.5">
-                          <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[8px] opacity-75">
-                            <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">FEEL BETTER IN A WEEK</span>
-                            <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
-                            <div>
-                              <p className="text-[11px] font-bold text-[#1c1a17]">WEEK PLAN</p>
-                              <div className="text-[9px] text-[#4a443a]">
-                                <span className="mr-1 line-through opacity-60">$10.00</span>
-                                <span className="font-bold text-[#1c1a17]">$4.90</span>
-                              </div>
-                            </div>
-                            <div className="text-right">
-                              <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.43</p>
-                              <p className="text-[13px] font-bold text-[#1c1a17]">$0.70</p>
-                              <p className="text-[8px] text-[#4a443a]">per day</p>
-                            </div>
-                          </div>
-                          <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[8px] opacity-75">
-                            <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">GET VISIBLE RESULTS</span>
-                            <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
-                            <div>
-                              <p className="text-[11px] font-bold text-[#1c1a17]">MONTHLY PLAN</p>
-                              <div className="text-[9px] text-[#4a443a]">
-                                <span className="mr-1 line-through opacity-60">$14.00</span>
-                                <span className="font-bold text-[#1c1a17]">$6.86</span>
-                              </div>
-                            </div>
-                            <div className="text-right">
-                              <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.50</p>
-                              <p className="text-[13px] font-bold text-[#1c1a17]">$0.25</p>
-                              <p className="text-[8px] text-[#4a443a]">per day</p>
-                            </div>
-                          </div>
-                          <div className="relative rounded-[10px] border-2 border-[#2a5cb8] bg-[#DCEAEF] px-2 py-[9px]">
-                            <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">GET MORE HEALTH BENEFITS</span>
-                            <div className="grid grid-cols-[14px_1fr_auto] items-center gap-[8px]">
-                              <div className="h-[12px] w-[12px] rounded-full bg-[#2a5cb8] shadow-[inset_0_0_0_2px_white]" />
-                              <div>
-                                <p className="text-[12px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
-                                <div className="text-[9px] text-[#4a443a]">
-                                  <span className="mr-1 line-through opacity-60">$18.99</span>
-                                  <span className="font-bold text-[#1c1a17]">$9.31</span>
-                                </div>
-                              </div>
-                              <div className="text-right">
-                                <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.21</p>
-                                <p className="text-[13px] font-bold text-[#1c1a17]">$0.11</p>
-                                <p className="text-[8px] text-[#4a443a]">per day</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="mt-3 flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
-                          <span className="text-[11px] font-bold text-white">Continue - Save 51%</span>
-                          <span className="text-[10px] text-white">→</span>
-                        </div>
-                      </div>
-                      <div className="mt-2 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
-                        <p className="text-[9px] font-semibold uppercase tracking-wide text-[#1c1a17]">30 days</p>
-                        <p className="mt-1 text-[8px] leading-[1.35] text-[#4a443a]">Try the plan risk-free and request a refund within 30 days if it is not the right fit.</p>
-                      </div>
-                      <div className="mt-2 text-center text-[8px] leading-[1.4] text-[#4a443a]">
-                        <p>All of our payments are processed through Reverse Group Inc.</p>
-                        <p className="mt-2">1603 Capital Avenue</p>
-                        <p>Suite 413-D179</p>
-                        <p>Cheyenne, Wyoming 82001</p>
-                        <p>United States</p>
-                      </div>
-                      <div className="mt-2 flex justify-center gap-2">
-                        <button type="button" className="rounded-full border border-[#1c1a17]/20 px-3 py-[5px] text-[8px] uppercase tracking-wide text-[#4a443a]">
-                          Privacy
-                        </button>
-                        <button type="button" className="rounded-full border border-[#1c1a17]/20 px-3 py-[5px] text-[8px] uppercase tracking-wide text-[#4a443a]">
-                          Terms
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                  {reverseTechExperimentAMockup}
                 </div>
               </div>
 
@@ -4915,253 +4722,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div
                   role="button"
                   tabIndex={0}
-                  onClick={() => setActiveExperimentModal("b")}
+                  onClick={() => openExperimentModal("b")}
                   onKeyDown={(event) => {
                     if (event.key === "Enter" || event.key === " ") {
                       event.preventDefault();
-                      setActiveExperimentModal("b");
+                      openExperimentModal("b");
                     }
                   }}
-                  className={`relative cursor-zoom-in rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17] transition-transform ${
-                    activeExperimentModal === "b"
-                      ? "fixed left-1/2 top-1/2 z-[130] w-[min(72vw,320px)] -translate-x-1/2 -translate-y-1/2 cursor-auto"
-                      : ""
-                  }`}
+                  className="relative cursor-zoom-in rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17] transition-transform"
                 >
-                  {activeExperimentModal === "b" ? (
-                    <button
-                      type="button"
-                      aria-label="Close experiment B preview"
-                      onClick={(event) => {
-                        event.stopPropagation();
-                        setActiveExperimentModal(null);
-                      }}
-                      className="absolute right-3 top-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
-                  ) : null}
-                  <div className="mx-auto mb-[10px] h-[8px] w-[80px] rounded-full bg-[#1c1a17]" />
-                  <div className={`${kalam.className} flex min-h-[580px] flex-col gap-[7px] rounded-[18px] p-[10px]`}>
-                    {/* Sticky top */}
-                    <div className="flex items-center justify-between rounded-[10px] border border-[#1c1a17] bg-white px-2 py-1 text-[10px] text-[#1c1a17]">
-                      <span className="font-semibold uppercase tracking-[0.16em]">Reverse Health</span>
-                      <span className="rounded-full bg-[#1c1a17] px-[10px] py-[4px] text-[10px] uppercase text-white">Continue</span>
-                    </div>
-                    {/* Before/after */}
-                    <div className="grid grid-cols-2 gap-[6px]">
-                      {[["Now", "30% body fat"], ["Your goal", "14% body fat"]].map(([label, cap]) => (
-                        <div key={label}>
-                          <div className="flex min-h-[90px] items-center justify-center rounded-[8px] border border-[#1c1a17] bg-[repeating-linear-gradient(45deg,transparent_0_5px,#1c1a1712_5px_6px),#fffdf6] p-[4px] text-center text-[9px] uppercase tracking-wide text-[#4a443a]">{label}</div>
-                          <p className="mt-1 text-center text-[9px] text-[#1c1a17]">{cap}</p>
-                          <p className="text-center text-[8px] text-[#4a443a]">
-                            Muscle strength {label === "Now" ? "regular" : "high"}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                    {/* Heading */}
-                    <p className="mt-3 text-center text-[16px] font-semibold text-[#1c1a17]">Pick how far you want to go</p>
-                    {/* 1-week row */}
-                    <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
-                      <div>
-                        <p className="text-[11px] font-bold text-[#1c1a17]">1-week · Kick-start</p>
-                        <p className="text-[9px] text-[#4a443a]">$10.5</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-[13px] font-bold text-[#1c1a17]">$1.5</p>
-                        <p className="text-[8px] text-[#4a443a]">per day</p>
-                      </div>
-                    </div>
-                    {/* 4-week row */}
-                    <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
-                      <div>
-                        <p className="text-[11px] font-bold text-[#1c1a17]">4-week · Build habit</p>
-                        <p className="text-[9px] text-[#4a443a]">1 mo - $9.8</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-[13px] font-bold text-[#1c1a17]">$0.35</p>
-                        <p className="text-[8px] text-[#4a443a]">per day</p>
-                      </div>
-                    </div>
-                    {/* 12-week row — highlighted */}
-                    <div className="relative rounded-[10px] border-2 border-[#2a5cb8] bg-[#DCEAEF] px-2 py-[9px]">
-                      <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">REACHES YOUR GOAL</span>
-                      <div className="grid grid-cols-[1fr_68px] items-center gap-[8px]">
-                        <div>
-                          <p className="text-[12px] font-bold text-[#1c1a17]">12-week · Full transformation</p>
-                          <p className="text-[9px] text-[#4a443a]">3 mo - $17.64</p>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-[13px] font-bold text-[#1c1a17]">$0.21</p>
-                          <p className="text-[8px] text-[#4a443a]">per day</p>
-                        </div>
-                      </div>
-                      <div className="mt-2 rounded-[8px] border border-dashed border-[#1c1a17] bg-white/60 px-2 py-[5px] text-[10px] leading-[1.3] text-[#1c1a17]">
-                        🎁 1:1 coach consultation — included with 12-wk only
-                      </div>
-                    </div>
-                    {/* CTA */}
-                    <div className="flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
-                      <span className="text-[10px] uppercase text-white">12-WK</span>
-                      <span className="text-[11px] font-bold uppercase text-white">Continue</span>
-                    </div>
-                    <div className="mt-2 rounded-[8px] border border-[#1c1a17]/30 px-2 py-[6px]">
-                      <p className="text-[8px] leading-[1.4] text-[#4a443a]">
-                        Without cancellation, before the selected plan ends, I accept that Reverse Health will automatically charge
-                        {" "}$89.99 every 12 weeks until I cancel. Taxes calculated at checkout. Cancel online via My Account.
-                      </p>
-                    </div>
-                    <div className="px-2 py-[6px] text-center">
-                      <p className="text-[9px] leading-[1.4] text-[#1c1a17]">Visa · Mastercard · Amex · PayPal · Apple Pay</p>
-                    </div>
-                    <div className="px-2 py-[6px]">
-                      <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">What&apos;s included in your plan</p>
-                      <div className="mt-2 flex gap-2 overflow-hidden">
-                        {[
-                          ["Plan", "personalized training"],
-                          ["Coach", "1:1 coach consultation"],
-                          ["Tracking", "Progress and habit tracking"],
-                        ].map(([label], index) => (
-                          <div
-                            key={label}
-                            className={`min-w-[92px] rounded-[8px] border border-[#1c1a17] px-2 py-[6px] ${
-                              index === 0 ? "bg-[#DCEAEF]" : "opacity-70"
-                            }`}
-                          >
-                            <p className="text-[7px] uppercase tracking-wide text-[#4a443a]">{label}</p>
-                            <div className="mt-1 flex min-h-[44px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 text-[8px] uppercase tracking-wide text-[#4a443a]">
-                              app image
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="mt-2 flex justify-center gap-1">
-                        <span className="h-1.5 w-4 rounded-full bg-[#1c1a17]" />
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#1c1a17]/35" />
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#1c1a17]/35" />
-                      </div>
-                      <div className="mt-3 space-y-1.5">
-                        {[
-                          "Personalized training plan printable guide",
-                          "10-20 min workouts to get fit",
-                          "Progress and habit tracking",
-                          "Visible change phases from now to your goal",
-                          "Meal guidance built around your goal",
-                        ].map((item) => (
-                          <div key={item} className="flex items-center gap-2 text-[8px] leading-[1.35] text-[#1c1a17]">
-                            <span className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-[#1c1a17] text-[7px]">•</span>
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="px-2 py-[6px]">
-                      <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[10px] text-center">
-                        <p className="text-[9px] uppercase tracking-wide text-[#4a443a]">Testimonial</p>
-                        <div className="mt-2 flex min-h-[72px] items-center justify-center rounded-[6px] border border-[#1c1a17]/30 text-[9px] uppercase tracking-wide text-[#4a443a]">
-                          image
-                        </div>
-                      </div>
-                      <p className="mt-2 text-[8px] leading-[1.4] text-[#4a443a]">
-                        Results vary by individual. These images are illustrative and not a guarantee of specific outcomes.
-                        {" "}Consult a healthcare provider before beginning any weight loss program.
-                      </p>
-                    </div>
-                    <div className="px-2 py-[6px]">
-                      <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">Featured in</p>
-                      <div className="mt-2 grid grid-cols-2 gap-x-2 gap-y-1 text-[8px] uppercase tracking-wide text-[#1c1a17] opacity-80">
-                        {["Mirror", "Sky Sports", "The Guardian", "University of Oregon"].map((logo) => (
-                          <span key={logo} className="text-center">
-                            {logo}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="mt-3 grid grid-cols-2 gap-2">
-                        <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[6px] text-center">
-                          <p className="text-[11px] font-bold text-[#1c1a17]">4.8</p>
-                          <p className="text-[8px] text-[#4a443a]">rating</p>
-                        </div>
-                        <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[6px] text-center">
-                          <p className="text-[11px] font-bold text-[#1c1a17]">900K+</p>
-                          <p className="text-[8px] text-[#4a443a]">downloads</p>
-                        </div>
-                      </div>
-                      <p className="mt-2 text-center text-[8px] text-[#4a443a]">120K+ reviews across app stores</p>
-                      <div className="mt-2 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
-                        <p className="text-[10px] tracking-[0.12em] text-[#1c1a17]">★★★★★</p>
-                        <p className="mt-3 text-[8px] leading-[1.4] text-[#1c1a17]">
-                          “The plan finally made the next step feel clear and worth it.”
-                        </p>
-                      </div>
-                    </div>
-                    <div className="px-2 py-[6px]">
-                      <div className="rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px]">
-                        <p className="text-center text-[8px] uppercase tracking-wide text-[#4a443a]">Choose your plan</p>
-                        <div className="mt-2 space-y-1.5">
-                          <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
-                            <div>
-                              <p className="text-[11px] font-bold text-[#1c1a17]">1-week · Kick-start</p>
-                              <p className="text-[9px] text-[#4a443a]">$10.5</p>
-                            </div>
-                            <div className="text-right">
-                              <p className="text-[13px] font-bold text-[#1c1a17]">$1.5</p>
-                              <p className="text-[8px] text-[#4a443a]">per day</p>
-                            </div>
-                          </div>
-                          <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
-                            <div>
-                              <p className="text-[11px] font-bold text-[#1c1a17]">4-week · Build habit</p>
-                              <p className="text-[9px] text-[#4a443a]">1 mo - $9.8</p>
-                            </div>
-                            <div className="text-right">
-                              <p className="text-[13px] font-bold text-[#1c1a17]">$0.35</p>
-                              <p className="text-[8px] text-[#4a443a]">per day</p>
-                            </div>
-                          </div>
-                          <div className="relative rounded-[10px] border-2 border-[#2a5cb8] bg-[#DCEAEF] px-2 py-[9px]">
-                            <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">REACHES YOUR GOAL</span>
-                            <div className="grid grid-cols-[1fr_68px] items-center gap-[8px]">
-                              <div>
-                                <p className="text-[12px] font-bold text-[#1c1a17]">12-week · Full transformation</p>
-                                <p className="text-[9px] text-[#4a443a]">3 mo - $17.64</p>
-                              </div>
-                              <div className="text-right">
-                                <p className="text-[13px] font-bold text-[#1c1a17]">$0.21</p>
-                                <p className="text-[8px] text-[#4a443a]">per day</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="mt-3 flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
-                          <span className="text-[10px] uppercase text-white">12-WK</span>
-                          <span className="text-[11px] font-bold uppercase text-white">Continue</span>
-                        </div>
-                      </div>
-                      <div className="mt-2 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
-                        <p className="text-[9px] font-semibold text-[#1c1a17]">30 days</p>
-                        <p className="mt-2 text-[8px] leading-[1.4] text-[#1c1a17]">
-                          Get 100% of your money back if you don&apos;t see visible results after following our program!
-                        </p>
-                        <p className="mt-3 text-[8px] underline text-[#4a443a]">Money-back policy</p>
-                      </div>
-                      <div className="mt-2 text-center text-[8px] leading-[1.4] text-[#4a443a]">
-                        <p>All of our payments are processed through Reverse Group Inc.</p>
-                        <p className="mt-2">1603 Capital Avenue</p>
-                        <p>Suite 413-D179</p>
-                        <p>Cheyenne, Wyoming 82001</p>
-                        <p>United States</p>
-                      </div>
-                      <div className="mt-2 flex justify-center gap-2">
-                        <button type="button" className="rounded-full border border-[#1c1a17]/20 px-3 py-[5px] text-[8px] uppercase tracking-wide text-[#4a443a]">
-                          Privacy
-                        </button>
-                        <button type="button" className="rounded-full border border-[#1c1a17]/20 px-3 py-[5px] text-[8px] uppercase tracking-wide text-[#4a443a]">
-                          Terms
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                  {reverseTechExperimentBMockup}
                 </div>
               </div>
 
@@ -5227,9 +4797,34 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {activeExperimentModal ? (
         <div
-          className="fixed inset-0 z-[120] bg-black/70"
+          className="fixed inset-0 z-[120] flex items-center justify-center bg-black/70 px-4 py-6"
           onClick={() => setActiveExperimentModal(null)}
-        />
+        >
+          <div
+            className="relative w-full max-w-[1200px]"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              aria-label="Close experiment preview"
+              onClick={() => setActiveExperimentModal(null)}
+              className="absolute right-3 top-3 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <div className="overflow-hidden rounded-[24px] bg-white shadow-[0_30px_80px_rgba(0,0,0,0.28)]">
+              <div className="max-h-[85vh] overflow-auto p-4">
+                <div className="flex min-h-full min-w-full items-start justify-center">
+                  <div className="w-full max-w-[320px]">
+                    <div className="relative rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17]">
+                      {activeExperimentModal === "a" ? reverseTechExperimentAMockup : reverseTechExperimentBMockup}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       ) : null}
 
       {lightboxImage ? (
