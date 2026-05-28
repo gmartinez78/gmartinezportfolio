@@ -2117,7 +2117,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             Hypothesis 3
           </p>
           <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
-            Personalize screens
+            Pattern application
           </h3>
         </div>
         {openHypothesisIds.includes("rt-hypothesis-2") ? <Minus className="h-5 w-5 text-[#1183D0]" /> : <Plus className="h-5 w-5 text-[#1183D0]" />}
@@ -4052,6 +4052,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   ))}
                 </div>
               </div>
+
+              {hypothesisItems.length ? (
+                <div id="rt-hypothesis-2" className="pt-4">
+                  {reverseTechHypothesis3Accordion}
+                </div>
+              ) : null}
             </div>
           </div>
         </section>
@@ -4094,11 +4100,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   ],
                   [
                     "Hypothesis 3",
-                    "Personalize screens",
-                    "Test whether improving the pages before email makes the ask feel more earned by reducing fatigue and adding stronger context.",
-                  ],
-                  [
-                    "Hypothesis 4",
                     "Exploratory hypothesis",
                     "Check whether age segment, device, source, or step context may be influencing the email drop-off beyond the screen itself.",
                   ],
@@ -4199,14 +4200,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
               ) : null
             )}
-            {hypothesisItems.length ? reverseTechHypothesis3Accordion : null}
           </div>
         </section>
       ) : null}
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task1" ? (
         <section id="rt-hypothesis-4" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-0 md:px-10 xl:px-20">
-          <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+              <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
             <button
               type="button"
               onClick={() => toggleHypothesis("rt-hypothesis-4")}
@@ -4214,7 +4214,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             >
               <div>
                 <p className="mb-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
-                  Hypothesis 4
+                  Hypothesis 3
                 </p>
                 <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
                   Exploratory hypothesis
@@ -4803,7 +4803,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </p>
           </div>
           {/* Phone frames — low-fi wireframes */}
-          <div className="mt-12">
+          <div className="mt-20">
             <div className="mx-auto mb-8 grid max-w-[1180px] gap-8 text-center md:grid-cols-3">
               <div className="overflow-hidden rounded-[24px] bg-white px-6 py-7 text-center shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
                 <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Control</p>
