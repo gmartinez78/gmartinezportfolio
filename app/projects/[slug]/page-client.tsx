@@ -4798,16 +4798,43 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {activeExperimentModal ? (
         <div
           className="fixed inset-0 z-[120] flex items-center justify-center bg-black/70 px-4 py-6"
-          onClick={() => setActiveExperimentModal(null)}
+          onClick={closeExperimentModal}
         >
           <div
             className="relative w-full max-w-[1200px]"
             onClick={(event) => event.stopPropagation()}
           >
+            <div className="absolute left-3 top-3 z-10 flex items-center gap-2">
+              <button
+                type="button"
+                aria-label="Zoom out"
+                onClick={() => setExperimentModalZoom((current) => Math.max(1, Number((current - 0.25).toFixed(2))))}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
+              >
+                <Minus className="h-5 w-5" />
+              </button>
+              <button
+                type="button"
+                aria-label="Zoom in"
+                onClick={() => setExperimentModalZoom((current) => Math.min(3, Number((current + 0.25).toFixed(2))))}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
+              >
+                <Plus className="h-5 w-5" />
+              </button>
+              <button
+                type="button"
+                aria-label="Reset zoom"
+                onClick={() => setExperimentModalZoom(1)}
+                className="inline-flex h-10 items-center justify-center rounded-full bg-white px-4 text-[12px] font-semibold uppercase tracking-[0.08em] text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
+              >
+                <RotateCcw className="mr-2 h-4 w-4" />
+                Reset
+              </button>
+            </div>
             <button
               type="button"
               aria-label="Close experiment preview"
-              onClick={() => setActiveExperimentModal(null)}
+              onClick={closeExperimentModal}
               className="absolute right-3 top-3 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
             >
               <X className="h-5 w-5" />
@@ -4815,7 +4842,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="overflow-hidden rounded-[24px] bg-white shadow-[0_30px_80px_rgba(0,0,0,0.28)]">
               <div className="max-h-[85vh] overflow-auto p-4">
                 <div className="flex min-h-full min-w-full items-start justify-center">
-                  <div className="w-full max-w-[320px]">
+                  <div className="max-w-none" style={{ width: `${320 * experimentModalZoom}px` }}>
                     <div className="relative rounded-[36px] border-2 border-[#1c1a17] bg-[#EAF3F6] p-[14px_12px_16px] shadow-[6px_6px_0_#1c1a17]">
                       {activeExperimentModal === "a" ? reverseTechExperimentAMockup : reverseTechExperimentBMockup}
                     </div>
