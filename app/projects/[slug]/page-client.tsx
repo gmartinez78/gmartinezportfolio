@@ -3003,53 +3003,124 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section id="rt-task-3" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title="Competitor pattern extraction" centered className="mb-8" />
           <div className="mx-auto max-w-[980px] space-y-6">
-            <p className="mx-auto max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              This task focuses on identifying relevant competitor funnels, extracting patterns worth testing, and separating useful ideas from patterns that should be avoided.
-            </p>
+            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+              <div className="hidden md:block">
+                <div className="grid grid-cols-[1.05fr_1.15fr_1.2fr_0.9fr_1.35fr] border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0e2951]">
+                  <div className="border-r border-[#d7e8f7] pr-4">Competitor</div>
+                  <div className="border-r border-[#d7e8f7] px-4">Strategic Relevance</div>
+                  <div className="border-r border-[#d7e8f7] px-4">Identified Pattern</div>
+                  <div className="border-r border-[#d7e8f7] px-4">Metric Moved</div>
+                  <div className="pl-4">Hypothesis / Justification</div>
+                </div>
+                {[
+                  {
+                    competitor: "Muscle Boost",
+                    relevance: "Leader in clinical authority and muscular strength visualization.",
+                    pattern: "Anatomical Results Preview: Use of animations that highlight the specific muscle tissues activated by the calisthenics plan.",
+                    metric: "Trial Start Rate / Paid Conversion",
+                    hypothesis:
+                      "Scientific visuals break through \"vibe-coding\" and establish instant medical credibility, validating that bodyweight training is effective for hypertrophy.",
+                  },
+                  {
+                    competitor: "Ladder",
+                    relevance: "Industry standard for identity positioning and community-based retention.",
+                    pattern: "\"Squad\" Assignment by Persona: Requiring users to choose a specific role (e.g., \"Calisthenics Operator\") to generate identity alignment from the start.",
+                    metric: "Day 30 Retention / LTV",
+                    hypothesis:
+                      "Users who feel part of a group or \"team\" have higher community accountability. Completing at least 2 workouts during a trial drastically increases long-term subscription rates.",
+                  },
+                  {
+                    competitor: "BetterMe (Pattern to Avoid)",
+                    relevance: "Benchmark for massive scaling and aggressive cash-flow experimentation.",
+                    pattern: "Ultra-Short Trials (3-4 days): Shortening the trial window to accelerate the collection of conversion data and cash flow.",
+                    metric: "Day 0 Churn / Conversion Quality",
+                    hypothesis:
+                      "WHY AVOID: 55.4% of cancellations for 3-day trials occur on Day 0 due to \"fear of being charged\". Trials lasting 17-32 days convert 70% better than those under 4 days.",
+                  },
+                ].map((row) => (
+                  <div
+                    key={row.competitor}
+                    className="grid grid-cols-[1.05fr_1.15fr_1.2fr_0.9fr_1.35fr] border-t border-[#d7e8f7] px-6 py-5 text-[15px] leading-[1.7] text-[#5c7792]"
+                  >
+                    <div className="border-r border-[#d7e8f7] pr-4 font-semibold text-[#0e2951]">{row.competitor}</div>
+                    <div className="border-r border-[#d7e8f7] px-4">{row.relevance}</div>
+                    <div className="border-r border-[#d7e8f7] px-4">{row.pattern}</div>
+                    <div className="border-r border-[#d7e8f7] px-4">{row.metric}</div>
+                    <div className="pl-4">{row.hypothesis}</div>
+                  </div>
+                ))}
+              </div>
 
-            <div className="grid gap-6 lg:grid-cols-2">
-              <Card className="overflow-hidden rounded-[24px] border border-[#d7e8f7] shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
-                <CardContent className="p-7">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">3.1</p>
-                  <h3 className="mt-3 font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">Discovery</h3>
-                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                    Identify 2-3 competitor funnels you believe are relevant to our category. Briefly explain why you consider each one relevant based on factors such as positioning, audience, business model, scale, or any other criteria you find important.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="overflow-hidden rounded-[24px] border border-[#d7e8f7] shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
-                <CardContent className="p-7">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">3.2</p>
-                  <h3 className="mt-3 font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">Pattern extraction</h3>
-                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                    After reviewing the funnels, identify the patterns that are most worth testing and the ones that should be avoided in our calisthenics funnel.
-                  </p>
-                </CardContent>
-              </Card>
+              <div className="grid gap-4 p-5 md:hidden">
+                {[
+                  {
+                    competitor: "Muscle Boost",
+                    relevance: "Leader in clinical authority and muscular strength visualization.",
+                    pattern: "Anatomical Results Preview: Use of animations that highlight the specific muscle tissues activated by the calisthenics plan.",
+                    metric: "Trial Start Rate / Paid Conversion",
+                    hypothesis:
+                      "Scientific visuals break through \"vibe-coding\" and establish instant medical credibility, validating that bodyweight training is effective for hypertrophy.",
+                  },
+                  {
+                    competitor: "Ladder",
+                    relevance: "Industry standard for identity positioning and community-based retention.",
+                    pattern: "\"Squad\" Assignment by Persona: Requiring users to choose a specific role (e.g., \"Calisthenics Operator\") to generate identity alignment from the start.",
+                    metric: "Day 30 Retention / LTV",
+                    hypothesis:
+                      "Users who feel part of a group or \"team\" have higher community accountability. Completing at least 2 workouts during a trial drastically increases long-term subscription rates.",
+                  },
+                  {
+                    competitor: "BetterMe (Pattern to Avoid)",
+                    relevance: "Benchmark for massive scaling and aggressive cash-flow experimentation.",
+                    pattern: "Ultra-Short Trials (3-4 days): Shortening the trial window to accelerate the collection of conversion data and cash flow.",
+                    metric: "Day 0 Churn / Conversion Quality",
+                    hypothesis:
+                      "WHY AVOID: 55.4% of cancellations for 3-day trials occur on Day 0 due to \"fear of being charged\". Trials lasting 17-32 days convert 70% better than those under 4 days.",
+                  },
+                ].map((row) => (
+                  <Card key={`mobile-${row.competitor}`} className="overflow-hidden">
+                    <CardContent className="space-y-4 px-5 py-5">
+                      <div>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Competitor</p>
+                        <p className="mt-2 text-[18px] font-semibold leading-snug text-[#0e2951]">{row.competitor}</p>
+                      </div>
+                      <div>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Strategic Relevance</p>
+                        <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.relevance}</p>
+                      </div>
+                      <div>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Identified Pattern</p>
+                        <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.pattern}</p>
+                      </div>
+                      <div>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Metric Moved</p>
+                        <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.metric}</p>
+                      </div>
+                      <div>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Hypothesis / Justification</p>
+                        <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.hypothesis}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
 
-            <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-              <Card className="overflow-hidden rounded-[24px] border border-[#d7e8f7] shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
-                <CardContent className="p-7">
-                  <h3 className="font-inter text-[20px] font-semibold leading-[1.35] text-[#0e2951]">2 patterns worth testing</h3>
-                  <ul className="mt-5 list-disc space-y-3 pl-5 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                    <li>Include a screenshot from the competitor funnel showing the pattern.</li>
-                    <li>Name the metric you believe the pattern could improve.</li>
-                    <li>Write a rough hypothesis for why it might work in our funnel.</li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="overflow-hidden rounded-[24px] border border-[#d7e8f7] shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
-                <CardContent className="p-7">
-                  <h3 className="font-inter text-[20px] font-semibold leading-[1.35] text-[#0e2951]">1 pattern to avoid</h3>
-                  <ul className="mt-5 list-disc space-y-3 pl-5 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                    <li>Include a screenshot of the pattern.</li>
-                    <li>Explain why you would avoid it, such as ethical concerns, poor brand fit, mismatched audience, or another reason.</li>
-                  </ul>
-                </CardContent>
-              </Card>
+            <div className="rounded-[24px] border border-[#d7e8f7] bg-white px-6 py-7 shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+              <h3 className="text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
+                Strategic Analysis Summary
+              </h3>
+              <div className="mt-6 space-y-4 text-center font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                <p>
+                  <strong className="text-[#0e2951]">The Authority Advantage:</strong> For a calisthenics product, scientifically demonstrating how tissues transform is vital to justify a high-price yearly plan, which is the gold standard for monetization in health apps with a 68% adoption rate.
+                </p>
+                <p>
+                  <strong className="text-[#0e2951]">The Risk of Immediacy:</strong> Following the trend of shortening trials risks burning out the user before they experience a real benefit. 2026 data confirms the battle for the subscriber is won or lost in the first session (Day 0), but actual conversion requires enough time to form a lasting habit.
+                </p>
+                <p>
+                  <strong className="text-[#0e2951]">Identity over Instructions:</strong> Similar to Ladder, Reverse Health should transition from selling exercises to selling a calisthenics identity, which serves as a powerful stabilizer for the customer base against low-cost AI competition.
+                </p>
+              </div>
             </div>
           </div>
         </section>
