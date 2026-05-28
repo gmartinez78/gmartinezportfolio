@@ -2124,14 +2124,25 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       </button>
       {openHypothesisIds.includes("rt-hypothesis-2") ? (
         <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-6">
-          <div className="space-y-8 text-left">
-            <div className="space-y-4">
-              {hypothesisItems.map((item) => (
-                <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                  {item}
-                </p>
-              ))}
-            </div>
+            <div className="space-y-8 text-left">
+              <div className="space-y-4">
+                {caseStudy.slug === "reversetech" ? (
+                  <>
+                    <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                      The Figma flow below translates some of the strongest findings from the benchmark review and the deeper funnel research into testable interface directions.
+                    </p>
+                    <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                      Rather than showing one final solution, it packages those findings into a set of flow variations that could be tested to see which combination best reduces friction, strengthens trust, and improves the value exchange before the email step and paywall.
+                    </p>
+                  </>
+                ) : (
+                  hypothesisItems.map((item) => (
+                    <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                      {item}
+                    </p>
+                  ))
+                )}
+              </div>
             <div className="space-y-4">
               <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
                 Prototype Portion
