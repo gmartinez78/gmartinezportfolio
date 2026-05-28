@@ -2114,7 +2114,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       >
         <div>
           <p className="mb-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
-            Hypothesis 3
+            Personalized Flow Variant
           </p>
           <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
             Pattern application
