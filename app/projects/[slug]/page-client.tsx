@@ -2502,13 +2502,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         key={`sticky-${item.label}`}
                         type="button"
                         onClick={() => handleReverseTechTaskTabChange(item.id)}
-                        className={`relative min-w-[180px] border-[#d7e8f7] px-5 py-4 text-center transition-colors ${
+                        className={`relative min-w-[180px] border-[#d7e8f7] px-5 py-4 text-center transition-all duration-200 ${
                           reversetechTaskTab === item.id
                             ? "border-x border-t bg-white"
-                            : "border-x border-t border-transparent bg-transparent hover:bg-[#f8fbff]"
+                            : "border-x border-t border-transparent bg-transparent hover:-translate-y-0.5 hover:border-[#d7e8f7] hover:bg-[#f8fbff] hover:shadow-[0_12px_28px_rgba(17,131,208,0.08)]"
                         } ${index > 0 ? "-ml-px" : ""}`}
                       >
-                        <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{item.label}</p>
+                        <p className={`text-[12px] font-semibold uppercase tracking-[0.16em] transition-colors ${
+                          reversetechTaskTab === item.id ? "text-[#1183D0]" : "text-[#5c7792] hover:text-[#1183D0]"
+                        }`}>{item.label}</p>
                         {reversetechTaskTab === item.id ? (
                           <span className="absolute inset-x-0 -bottom-px h-px bg-white" />
                         ) : null}
@@ -2559,13 +2561,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     key={item.label}
                     type="button"
                     onClick={() => handleReverseTechTaskTabChange(item.id)}
-                    className={`relative min-w-[180px] border-[#d7e8f7] px-5 py-4 text-center transition-colors ${
+                    className={`relative min-w-[180px] border-[#d7e8f7] px-5 py-4 text-center transition-all duration-200 ${
                       reversetechTaskTab === item.id
                         ? "border-x border-t bg-white"
-                        : "border-x border-t border-transparent bg-transparent hover:bg-[#f8fbff]"
+                        : "border-x border-t border-transparent bg-transparent hover:-translate-y-0.5 hover:border-[#d7e8f7] hover:bg-[#f8fbff] hover:shadow-[0_12px_28px_rgba(17,131,208,0.08)]"
                     } ${index > 0 ? "-ml-px" : ""}`}
                   >
-                    <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{item.label}</p>
+                    <p className={`text-[12px] font-semibold uppercase tracking-[0.16em] transition-colors ${
+                      reversetechTaskTab === item.id ? "text-[#1183D0]" : "text-[#5c7792] hover:text-[#1183D0]"
+                    }`}>{item.label}</p>
                     {reversetechTaskTab === item.id ? (
                       <span className="absolute inset-x-0 -bottom-px h-px bg-white" />
                     ) : null}
