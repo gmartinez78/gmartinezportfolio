@@ -2213,7 +2213,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               { label: "Codex" },
             ],
             use: "Used Figma to polish the selected direction and prepare the final prototype, then used coding tools to place the work into the case-study page and iterate on the final presentation.",
-            optimize: "Optimized for final quality and faster implementation into the portfolio.",
             imageSrc: "/images/projects/Reversetech/figma-screen.png",
           },
         ].map((item, index) => (
