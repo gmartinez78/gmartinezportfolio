@@ -4201,24 +4201,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                                     <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
                                       {typeof variant.body === "string" ? variant.body : ""}
                                     </p>
-                                    {imageSrc ? (
-                                      <button
-                                        type="button"
-                                        onClick={() =>
-                                          setLightboxImage({
-                                            src: withBasePath(imageSrc),
-                                            alt: variantAlt,
-                                          })
-                                        }
-                                        className="mt-6 block w-full overflow-hidden rounded-[18px] bg-white text-left transition-transform hover:scale-[1.01]"
-                                      >
-                                        <img
-                                          src={withBasePath(imageSrc)}
-                                          alt={variantAlt}
-                                          className="h-auto w-full"
-                                        />
-                                      </button>
-                                    ) : null}
                                     <div className="mt-6 flex flex-wrap gap-2">
                                       {index === 0 && (
                                         <>
@@ -4260,6 +4242,24 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                                         </>
                                       )}
                                     </div>
+                                    {imageSrc ? (
+                                      <button
+                                        type="button"
+                                        onClick={() =>
+                                          setLightboxImage({
+                                            src: withBasePath(imageSrc),
+                                            alt: variantAlt,
+                                          })
+                                        }
+                                        className="mt-6 block w-full overflow-hidden rounded-[18px] bg-white text-left transition-transform hover:scale-[1.01]"
+                                      >
+                                        <img
+                                          src={withBasePath(imageSrc)}
+                                          alt={variantAlt}
+                                          className="h-auto w-full"
+                                        />
+                                      </button>
+                                    ) : null}
                                   </CardContent>
                                 </Card>
                               );
