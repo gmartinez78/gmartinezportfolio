@@ -4326,7 +4326,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
             <div className="grid gap-4 md:grid-cols-3">
               <div className="rounded-[20px] border border-[#d7e8f7] bg-white p-5 shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
-                <div className="flex flex-wrap gap-2">
+                <h4 className="font-inter text-[18px] font-semibold leading-[1.35] text-[#0e2951]">
+                  Copy-only refinements
+                </h4>
+                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                  Update the CTA, subtitle, trust line, and supporting copy as parameterizable CMS fields. This is the lowest-effort path and the fastest way to validate whether stronger value framing lifts email completion.
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
                   <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
                     CMS-only
                   </span>
@@ -4337,15 +4343,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     Fast to test
                   </span>
                 </div>
-                <h4 className="mt-4 font-inter text-[18px] font-semibold leading-[1.35] text-[#0e2951]">
-                  Copy-only refinements
-                </h4>
-                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                  Update the CTA, subtitle, trust line, and supporting copy as parameterizable CMS fields. This is the lowest-effort path and the fastest way to validate whether stronger value framing lifts email completion.
-                </p>
               </div>
               <div className="rounded-[20px] border border-[#d7e8f7] bg-white p-5 shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
-                <div className="flex flex-wrap gap-2">
+                <h4 className="font-inter text-[18px] font-semibold leading-[1.35] text-[#0e2951]">
+                  Static goal-based variants
+                </h4>
+                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                  Create separate landing or email-step variants for different goals and rotate traffic through Everflow. This keeps testing lightweight while validating whether stronger goal specificity improves the value exchange.
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
                   <span className="inline-flex rounded-full bg-[#e0f2fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#0369a1]">
                     CMS + Everflow
                   </span>
@@ -4356,15 +4362,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     Medium effort
                   </span>
                 </div>
-                <h4 className="mt-4 font-inter text-[18px] font-semibold leading-[1.35] text-[#0e2951]">
-                  Static goal-based variants
-                </h4>
-                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                  Create separate landing or email-step variants for different goals and rotate traffic through Everflow. This keeps testing lightweight while validating whether stronger goal specificity improves the value exchange.
-                </p>
               </div>
               <div className="rounded-[20px] border border-[#d7e8f7] bg-white p-5 shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
-                <div className="flex flex-wrap gap-2">
+                <h4 className="font-inter text-[18px] font-semibold leading-[1.35] text-[#0e2951]">
+                  Dynamic personalization
+                </h4>
+                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                  Pass the selected main goal into the email step and swap the headline or supporting content conditionally. This requires more setup, but it becomes more justified if static variants show that goal-based personalization materially improves conversion.
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
                   <span className="inline-flex rounded-full bg-[#fee2e2] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b91c1c]">
                     Dev required
                   </span>
@@ -4375,12 +4381,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     Higher leverage
                   </span>
                 </div>
-                <h4 className="mt-4 font-inter text-[18px] font-semibold leading-[1.35] text-[#0e2951]">
-                  Dynamic personalization
-                </h4>
-                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                  Pass the selected main goal into the email step and swap the headline or supporting content conditionally. This requires more setup, but it becomes more justified if static variants show that goal-based personalization materially improves conversion.
-                </p>
               </div>
             </div>
           </div>
