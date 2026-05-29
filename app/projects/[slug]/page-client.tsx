@@ -1258,7 +1258,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [isReverseTechTaskMenuOpen, setIsReverseTechTaskMenuOpen] = useState(false);
   const [openHypothesisIds, setOpenHypothesisIds] = useState<
     Array<"content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4">
-  >([]);
+  >(caseStudy?.slug === "reversetech" ? ["rt-hypothesis-2"] : []);
   const reversetechTaskTabsRef = useRef<HTMLElement | null>(null);
   const experimentModalMockupRef = useRef<HTMLDivElement | null>(null);
 
@@ -2169,8 +2169,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   );
 
   const reverseTechToolsSection = (
-    <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
-      <div className="grid gap-4 px-6 py-6 md:grid-cols-2">
+    <div className="grid gap-4 px-0 py-6 md:grid-cols-2">
         {[
           {
             label: "Data analysis",
@@ -2195,7 +2194,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ],
             use: "I started with paper-and-pencil sketches to shape the first prototype direction. Then I used Open Design and Claude Design to create two versions, selected the stronger one, iterated on it, and moved it into Figma to refine it and prepare the prototype.",
             optimize: "Optimized for breadth of options first, then quality through iteration and visual refinement.",
-            imageSrc: "/images/projects/Reversetech/claude-code.png",
+            imageSrc: "/images/projects/Reversetech/claude-design.png",
           },
           {
             label: "Writing",
@@ -2203,6 +2202,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             logos: [{ label: "ChatGPT", src: "/images/tools/openai.svg" }, { label: "Grammarly" }],
             use: "Used ChatGPT to help structure and refine written sections, and Grammarly to tighten grammar and shorten some of the copy so the case study read more clearly and directly.",
             optimize: "Optimized for clarity, cleaner phrasing, and shorter copy.",
+            imageSrc: "/images/projects/Reversetech/claude-code.png",
           },
           {
             label: "Polish and delivery",
@@ -2214,8 +2214,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ],
             use: "Used Figma to polish the selected direction and prepare the final prototype, then used coding tools to place the work into the case-study page and iterate on the final presentation.",
             optimize: "Optimized for final quality and faster implementation into the portfolio.",
+            imageSrc: "/images/projects/Reversetech/figma-screen.png",
           },
-        ].map((item) => (
+        ].map((item, index) => (
           <div
             key={item.label}
             className="rounded-[20px] border border-[#d7e8f7] bg-white p-5 shadow-[0_14px_34px_rgba(14,41,81,0.06)]"
@@ -2230,7 +2231,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               {item.use}
             </p>
             <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-              <strong className="text-[#0e2951]">Optimized for:</strong> {item.optimize}
+              {item.optimize}
             </p>
             {"imageSrc" in item && item.imageSrc ? (
               <button
@@ -2275,7 +2276,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ) : null}
           </div>
         ))}
-      </div>
     </div>
   );
 
@@ -2517,41 +2517,38 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       )}
 
       {caseStudy.slug === "reversetech" ? (
-        <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-6 md:px-10 xl:px-20">
-          <div className="mx-auto max-w-[900px]">
-            {reversetechTaskTab === "task1" ? (
-              <div className="mx-auto max-w-[760px] text-center">
+        <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-10 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-[1200px]">
+            <div className="grid gap-8 md:grid-cols-2">
+              <div className="mx-auto max-w-[540px]">
                 <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">Task 1</p>
-                <h2 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">Funnel diagnosis & design improvements</h2>
-                <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">Funnel diagnosis & design improvements</h3>
+                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
                   Identify where users drop off across the quiz and email gate, diagnose the root cause of each churn point, and design improvements prioritized by conversion impact.
                 </p>
               </div>
-            ) : reversetechTaskTab === "task2" ? (
-              <div className="mx-auto max-w-[760px] text-center">
+              <div className="mx-auto max-w-[540px]">
                 <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">Task 2</p>
-                <h2 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">Paywall experiment design</h2>
-                <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">Paywall experiment design</h3>
+                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
                   Design a structured A/B test plan targeting the paywall conversion gap, with hypotheses covering offer framing, value exchange, and pricing presentation.
                 </p>
               </div>
-            ) : reversetechTaskTab === "task3" ? (
-              <div className="mx-auto max-w-[760px] text-center">
+              <div className="mx-auto max-w-[540px]">
                 <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">Task 3</p>
-                <h2 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">Competitor pattern extraction</h2>
-                <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">Competitor pattern extraction</h3>
+                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
                   Analyze how competing subscription fitness apps structure their onboarding and paywall flows to surface patterns worth adapting or testing against the current design.
                 </p>
               </div>
-            ) : reversetechTaskTab === "task4" ? (
-              <div className="mx-auto max-w-[760px] text-center">
+              <div className="mx-auto max-w-[540px]">
                 <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">Task 4 — Optional</p>
-                <h2 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">How I used AI tools in this case</h2>
-                <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">How I used tools while completing this case</h3>
+                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
                   A transparent breakdown of which tools I used at each stage, what I used them for, and what each one was optimized toward — speed, breadth, quality, or implementation.
                 </p>
               </div>
-            ) : null}
+            </div>
           </div>
         </div>
       ) : null}
@@ -2581,11 +2578,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             key={`sticky-mobile-${item.label}`}
                             type="button"
                             onClick={() => handleReverseTechTaskTabChange(item.id)}
-                            className={`flex w-full items-center justify-between px-4 py-3 text-left transition-colors ${
-                              reversetechTaskTab === item.id ? "bg-[#f8fbff]" : "bg-white hover:bg-[#f8fbff]"
+                            className={`flex w-full items-center justify-between px-4 py-3 text-left transition-all ${
+                              reversetechTaskTab === item.id ? "bg-[#1183D0]/15 backdrop-blur border border-[#1183D0]/30" : "bg-white hover:bg-[#f8fbff]"
                             } ${index > 0 ? "border-t border-[#d7e8f7]" : ""}`}
                           >
-                            <span className="text-[13px] font-semibold text-[#0e2951]">{item.label}</span>
+                            <span className={`text-[13px] font-semibold ${reversetechTaskTab === item.id ? "text-[#1183D0]" : "text-[#0e2951]"}`}>{item.label}</span>
                             {reversetechTaskTab === item.id ? (
                               <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">Open</span>
                             ) : null}
@@ -2602,7 +2599,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         onClick={() => handleReverseTechTaskTabChange(item.id)}
                         className={`relative min-w-[180px] border-[#d7e8f7] px-5 py-4 text-center transition-all duration-200 ${
                           reversetechTaskTab === item.id
-                            ? "border-x border-t bg-white"
+                            ? "border-x border-t border-[#1183D0]/30 bg-[#1183D0]/15 backdrop-blur"
                             : "border-x border-t border-transparent bg-transparent hover:-translate-y-0.5 hover:border-[#d7e8f7] hover:bg-[#f8fbff] hover:shadow-[0_12px_28px_rgba(17,131,208,0.08)]"
                         } ${index > 0 ? "-ml-px" : ""}`}
                       >
@@ -2610,7 +2607,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           reversetechTaskTab === item.id ? "text-[#1183D0]" : "text-[#5c7792] hover:text-[#1183D0]"
                         }`}>{item.label}</p>
                         {reversetechTaskTab === item.id ? (
-                          <span className="absolute inset-x-0 -bottom-px h-px bg-white" />
+                          <span className="absolute inset-x-0 -bottom-px h-1 bg-[#1183D0]/40" />
                         ) : null}
                       </button>
                     ))}
@@ -2640,11 +2637,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         key={`mobile-${item.label}`}
                         type="button"
                         onClick={() => handleReverseTechTaskTabChange(item.id)}
-                        className={`flex w-full items-center justify-between px-4 py-3 text-left transition-colors ${
-                          reversetechTaskTab === item.id ? "bg-[#f8fbff]" : "bg-white hover:bg-[#f8fbff]"
+                        className={`flex w-full items-center justify-between px-4 py-3 text-left transition-all ${
+                          reversetechTaskTab === item.id ? "bg-[#1183D0]/15 backdrop-blur border border-[#1183D0]/30" : "bg-white hover:bg-[#f8fbff]"
                         } ${index > 0 ? "border-t border-[#d7e8f7]" : ""}`}
                       >
-                        <span className="text-[13px] font-semibold text-[#0e2951]">{item.label}</span>
+                        <span className={`text-[13px] font-semibold ${reversetechTaskTab === item.id ? "text-[#1183D0]" : "text-[#0e2951]"}`}>{item.label}</span>
                         {reversetechTaskTab === item.id ? (
                           <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">Open</span>
                         ) : null}
@@ -2661,7 +2658,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     onClick={() => handleReverseTechTaskTabChange(item.id)}
                     className={`relative min-w-[180px] border-[#d7e8f7] px-5 py-4 text-center transition-all duration-200 ${
                       reversetechTaskTab === item.id
-                        ? "border-x border-t bg-white"
+                        ? "border-x border-t border-[#1183D0]/30 bg-[#1183D0]/15 backdrop-blur"
                         : "border-x border-t border-transparent bg-transparent hover:-translate-y-0.5 hover:border-[#d7e8f7] hover:bg-[#f8fbff] hover:shadow-[0_12px_28px_rgba(17,131,208,0.08)]"
                     } ${index > 0 ? "-ml-px" : ""}`}
                   >
@@ -2669,7 +2666,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       reversetechTaskTab === item.id ? "text-[#1183D0]" : "text-[#5c7792] hover:text-[#1183D0]"
                     }`}>{item.label}</p>
                     {reversetechTaskTab === item.id ? (
-                      <span className="absolute inset-x-0 -bottom-px h-px bg-white" />
+                      <span className="absolute inset-x-0 -bottom-px h-1 bg-[#1183D0]/40" />
                     ) : null}
                   </button>
                 ))}
@@ -3806,6 +3803,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task3" ? (
         <section id="rt-task-3" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading title="Competitor pattern extraction" centered className="mb-8" />
           <div className="mx-auto max-w-[980px] space-y-6">
             <h3 className="text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
               Discovery
@@ -4096,7 +4094,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task4" ? (
-        <section id="rt-hypothesis-2" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-0 md:px-10 xl:px-20">
+        <section id="rt-hypothesis-2" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-10 md:px-10 xl:px-20">
+          <SectionHeading title="How I used tools while completing this case" centered className="mb-8" />
           {reverseTechToolsSection}
         </section>
       ) : null}
@@ -4107,10 +4106,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
               <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-5">
                 <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">
-                  How I tackled the email-step metrics
+                  Extra: Improving email capture upstream
                 </h3>
                 <p className="mt-2 max-w-[760px] font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                  I wanted to tackle the email-step performance by testing three hypotheses across content, CTA framing, and the pages leading up to the email gate.
+                  Reducing friction before the email step would improve email capture. Three directions were tested across content clarity, CTA framing, and the quiz-to-email flow.
                 </p>
               </div>
               <div className="hidden grid-cols-[0.7fr_1fr_1.2fr] gap-4 border-b border-[#d7e8f7] px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#0e2951] md:grid">
@@ -4828,6 +4827,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task2" ? (
         <section id="rt-paywall-experiment-design" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading title="Paywall experiment design" centered className="mb-8" />
           <div className="mx-auto mt-10 max-w-[980px]">
             <p className="mx-auto max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               The experiments were framed around one conversion objective, one revenue objective, and one constraint that kept the proposed changes grounded in the existing offer structure.
