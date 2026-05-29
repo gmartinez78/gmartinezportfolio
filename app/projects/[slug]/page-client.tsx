@@ -4277,7 +4277,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task1" ? (
-        <section id="rt-hypothesis-4" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-20 md:px-10 xl:px-20">
+        <section id="rt-hypothesis-4" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-[20px] md:px-10 xl:px-20">
               <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
             <button
               type="button"
