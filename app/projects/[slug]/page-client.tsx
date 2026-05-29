@@ -2427,7 +2427,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     <div key={block.id} id={caseStudy.slug === "reversetech" ? block.id : undefined} className={caseStudy.slug === "reversetech" ? "scroll-mt-24" : undefined}>
                       {block.title !== "Situation" && block.title !== "Actions" ? (
                         <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">
-                          {block.title}
+                          {block.title === "Task" ? "Context" : block.title}
                         </p>
                       ) : null}
                       {block.body ? (
@@ -2515,6 +2515,46 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         </section>
       )}
+
+      {caseStudy.slug === "reversetech" ? (
+        <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-6 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-[900px]">
+            {reversetechTaskTab === "task1" ? (
+              <div className="mx-auto max-w-[760px] text-center">
+                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">Task 1</p>
+                <h2 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">Funnel diagnosis & design improvements</h2>
+                <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                  Identify where users drop off across the quiz and email gate, diagnose the root cause of each churn point, and design improvements prioritized by conversion impact.
+                </p>
+              </div>
+            ) : reversetechTaskTab === "task2" ? (
+              <div className="mx-auto max-w-[760px] text-center">
+                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">Task 2</p>
+                <h2 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">Paywall experiment design</h2>
+                <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                  Design a structured A/B test plan targeting the paywall conversion gap, with hypotheses covering offer framing, value exchange, and pricing presentation.
+                </p>
+              </div>
+            ) : reversetechTaskTab === "task3" ? (
+              <div className="mx-auto max-w-[760px] text-center">
+                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">Task 3</p>
+                <h2 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">Competitor pattern extraction</h2>
+                <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                  Analyze how competing subscription fitness apps structure their onboarding and paywall flows to surface patterns worth adapting or testing against the current design.
+                </p>
+              </div>
+            ) : reversetechTaskTab === "task4" ? (
+              <div className="mx-auto max-w-[760px] text-center">
+                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">Task 4 — Optional</p>
+                <h2 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">How I used AI tools in this case</h2>
+                <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                  A transparent breakdown of which tools I used at each stage, what I used them for, and what each one was optimized toward — speed, breadth, quality, or implementation.
+                </p>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
 
       {caseStudy.slug === "reversetech" ? (
         <>
@@ -3766,7 +3806,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task3" ? (
         <section id="rt-task-3" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title="Competitor pattern extraction" centered className="mb-8" />
           <div className="mx-auto max-w-[980px] space-y-6">
             <h3 className="text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
               Discovery
@@ -4789,7 +4828,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task2" ? (
         <section id="rt-paywall-experiment-design" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title="Paywall experiment design" centered className="mb-8" />
           <div className="mx-auto mt-10 max-w-[980px]">
             <p className="mx-auto max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               The experiments were framed around one conversion objective, one revenue objective, and one constraint that kept the proposed changes grounded in the existing offer structure.
