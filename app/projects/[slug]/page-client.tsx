@@ -3816,7 +3816,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       href={REVERSE_TECH_REVERSE_HEALTH_URL}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                      className="inline-flex items-center gap-1 border-b border-[#1183D0]/40 pb-0.5 transition-colors hover:text-[#1183D0] hover:border-[#1183D0]"
                     >
                       Reverse Health
                       <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -3829,7 +3829,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       href={REVERSE_TECH_MUSCLE_BOOSTER_URL}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                      className="inline-flex items-center gap-1 border-b border-[#1183D0]/40 pb-0.5 transition-colors hover:text-[#1183D0] hover:border-[#1183D0]"
                     >
                       Muscle Booster
                       <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -3842,7 +3842,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       href={REVERSE_TECH_FLO_HEALTH_URL}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                      className="inline-flex items-center gap-1 border-b border-[#1183D0]/40 pb-0.5 transition-colors hover:text-[#1183D0] hover:border-[#1183D0]"
                     >
                       Flo Health
                       <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -3855,7 +3855,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       href={REVERSE_TECH_BETTER_ME_URL}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                      className="inline-flex items-center gap-1 border-b border-[#1183D0]/40 pb-0.5 transition-colors hover:text-[#1183D0] hover:border-[#1183D0]"
                     >
                       Better Me
                       <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
