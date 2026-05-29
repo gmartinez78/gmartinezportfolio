@@ -2170,42 +2170,50 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
   const reverseTechToolsSection = (
     <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
-      <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-5">
-        <p className="mb-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
-          Task 4
-        </p>
-        <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
-          How I used tools while completing this case
-        </h3>
-        <p className="mt-3 max-w-[820px] font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-          Which tools I used, for which tasks, and what I used them to optimize for: speed, breadth of options, quality, and learning through specific examples rather than abstract process notes.
-        </p>
-      </div>
       <div className="grid gap-4 px-6 py-6 md:grid-cols-2">
         {[
           {
             label: "Data analysis",
-            tool: "ChatGPT + spreadsheet review",
-            use: "Used to structure the funnel numbers, compare step conversion rates, and surface where drop-off was most disproportionate.",
+            tool: "Notebook LM, Claude, and ChatGPT",
+            logos: [
+              { label: "Claude", src: "/images/tools/anthropic.svg" },
+              { label: "ChatGPT", src: "/images/tools/openai.svg" },
+              { label: "Notebook LM" },
+            ],
+            use: "Used Notebook LM to review links, analyze source material, and research the benchmark set. I also used Claude and ChatGPT to structure the findings into comparison tables and clearer content blocks before translating them into testing directions.",
             optimize: "Optimized for speed and pattern detection before moving into design decisions.",
+            imageSrc: "/images/projects/Reversetech/notebook-lm.png",
           },
           {
             label: "Ideation",
-            tool: "ChatGPT",
-            use: "Used to generate multiple hypothesis directions quickly, including CTA framing, value-exchange shifts, paywall reframes, and competitor-inspired test angles.",
-            optimize: "Optimized for breadth of options so weaker ideas could be discarded early.",
+            tool: "Paper, Open Design, Claude Design, and Figma",
+            logos: [
+              { label: "Claude Design", src: "/images/tools/anthropic.svg" },
+              { label: "Figma", src: "/images/tools/figma.svg" },
+              { label: "Open Design" },
+              { label: "Paper" },
+            ],
+            use: "I started with paper-and-pencil sketches to shape the first prototype direction. Then I used Open Design and Claude Design to create two versions, selected the stronger one, iterated on it, and moved it into Figma to refine it and prepare the prototype.",
+            optimize: "Optimized for breadth of options first, then quality through iteration and visual refinement.",
+            imageSrc: "/images/projects/Reversetech/claude-code.png",
           },
           {
             label: "Writing",
-            tool: "ChatGPT + manual editing",
-            use: "Used to tighten rationale, rewrite sections for clarity, and translate rough notes into concise case-study explanations.",
-            optimize: "Optimized for quality and clarity while keeping the final judgment and wording curated manually.",
+            tool: "ChatGPT + grammarly + manual editing",
+            logos: [{ label: "ChatGPT", src: "/images/tools/openai.svg" }, { label: "Grammarly" }],
+            use: "Used ChatGPT to help structure and refine written sections, and Grammarly to tighten grammar and shorten some of the copy so the case study read more clearly and directly.",
+            optimize: "Optimized for clarity, cleaner phrasing, and shorter copy.",
           },
           {
-            label: "Sketching",
-            tool: "Figma",
-            use: "Used to sketch the paywall experiments, compare content hierarchy, and visualize how each hypothesis would change the decision flow on mobile.",
-            optimize: "Optimized for learning and fast visual validation before committing to one direction.",
+            label: "Polish and delivery",
+            tool: "Figma, GitHub, and Codex",
+            logos: [
+              { label: "Figma", src: "/images/tools/figma.svg" },
+              { label: "GitHub Copilot", src: "/images/tools/githubcopilot.svg" },
+              { label: "Codex" },
+            ],
+            use: "Used Figma to polish the selected direction and prepare the final prototype, then used coding tools to place the work into the case-study page and iterate on the final presentation.",
+            optimize: "Optimized for final quality and faster implementation into the portfolio.",
           },
         ].map((item) => (
           <div
@@ -2224,6 +2232,47 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
               <strong className="text-[#0e2951]">Optimized for:</strong> {item.optimize}
             </p>
+            {"imageSrc" in item && item.imageSrc ? (
+              <button
+                type="button"
+                onClick={() =>
+                  setLightboxImage({
+                    src: withBasePath(item.imageSrc),
+                    alt: `${item.tool} preview`,
+                  })
+                }
+                className="mt-5 block w-full overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-[#f8fbff] text-left transition-transform hover:scale-[1.01]"
+              >
+                <img
+                  src={withBasePath(item.imageSrc)}
+                  alt={`${item.tool} preview`}
+                  className="h-auto w-full object-contain"
+                />
+              </button>
+            ) : null}
+            {"logos" in item && item.logos ? (
+              <div className="mt-5 flex flex-wrap items-center gap-2">
+                {item.logos.map((logo) => (
+                  <span
+                    key={logo.label}
+                    className="inline-flex items-center gap-2 rounded-full border border-[#d7e8f7] bg-[#f8fbff] px-3 py-1.5 text-[11px] font-semibold text-[#0e2951]"
+                  >
+                    {"src" in logo && logo.src ? (
+                      <img
+                        src={withBasePath(logo.src)}
+                        alt={logo.label}
+                        className="h-4 w-4 object-contain"
+                      />
+                    ) : (
+                      <span className="inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[#e0f2fe] px-1 text-[9px] font-bold text-[#0369a1]">
+                        {logo.label.slice(0, 1)}
+                      </span>
+                    )}
+                    <span>{logo.label}</span>
+                  </span>
+                ))}
+              </div>
+            ) : null}
           </div>
         ))}
       </div>
