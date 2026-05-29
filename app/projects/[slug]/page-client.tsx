@@ -5091,31 +5091,32 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {sourceItems.length || sourceEntriesWithOverrides.length ? (
         <section id={caseStudy.slug === "reversetech" ? "rt-sources" : undefined} className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title={sourcesBlock?.title ?? "Sources"} centered className="mb-12" />
-          <div className="mx-auto max-w-[900px] space-y-5">
+          <SectionHeading title={sourcesBlock?.title ?? "Sources"} centered className="mb-8" />
+          <div className="mx-auto max-w-[900px] space-y-3">
             {sourceEntriesWithOverrides.length
               ? sourceEntriesWithOverrides.map((item, index) => (
-                <div key={`${item.title}-${index}`} className="space-y-2">
-                  <p className="font-inter text-[16px] leading-[1.7] text-[#0e2951]">
+                <div key={`${item.title}-${index}`} className="space-y-1">
+                  <p className="font-inter text-[14px] leading-[1.6] text-[#0e2951]">
+                    <span className="font-semibold text-[#1183D0]">{index + 1}.</span>{" "}
                     <a
                       href={typeof item.url === "string" ? item.url : "#"}
                         target="_blank"
                         rel="noreferrer"
-                        className="font-semibold underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                        className="font-semibold underline decoration-[#1183D0]/40 underline-offset-3 transition-colors hover:text-[#1183D0]"
                       >
                         {typeof item.title === "string" ? item.title : ""}
                       </a>
                   </p>
-                  <p className="font-inter text-[15px] leading-[1.75] text-[#5c7792]">
+                  <p className="font-inter text-[13px] leading-[1.6] text-[#5c7792]">
                     {typeof item.description === "string" ? item.description : ""}
                   </p>
                   {typeof item.secondaryUrl === "string" && typeof item.secondaryTitle === "string" ? (
-                    <p className="font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                    <p className="font-inter text-[12px] leading-[1.5] text-[#5c7792]">
                       <a
                         href={item.secondaryUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="font-medium underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
+                        className="font-medium underline decoration-[#1183D0]/40 underline-offset-2 transition-colors hover:text-[#1183D0]"
                       >
                         {item.secondaryTitle}
                       </a>
@@ -5123,9 +5124,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   ) : null}
                 </div>
               ))
-              : sourceItems.map((item) => (
-                  <p key={item} className="font-inter text-[15px] leading-[1.75] text-[#5c7792]">
-                    {item}
+              : sourceItems.map((item, index) => (
+                  <p key={item} className="font-inter text-[13px] leading-[1.6] text-[#5c7792]">
+                    <span className="font-semibold text-[#1183D0]">{index + 1}.</span> {item}
                   </p>
                 ))}
           </div>
