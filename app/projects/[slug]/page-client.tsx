@@ -5292,7 +5292,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             />
           </div>
         ) : null}
-        <div className="mt-12 grid gap-10 md:grid-cols-[1fr_auto_1fr] md:items-start">
+        <div className="mt-6 grid gap-10 md:grid-cols-[1fr_auto_1fr] md:items-start">
           <div className="flex flex-col items-center gap-6">
             <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
               Tools
