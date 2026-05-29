@@ -2556,7 +2556,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <>
           {showStickyTaskTabs ? (
             <div className="fixed inset-x-0 top-16 z-40 border-b border-[#d7e8f7] bg-white/95 backdrop-blur">
-              <div className="mx-auto max-w-[1200px] px-6 pt-2 pb-2 md:px-10 xl:px-20">
+              <div className="mx-auto max-w-[1200px] px-6 pt-0 pb-0 md:px-10 xl:px-20">
                 <div className="w-full md:mx-auto md:max-w-[900px]">
                   <div className="md:hidden">
                     <button
