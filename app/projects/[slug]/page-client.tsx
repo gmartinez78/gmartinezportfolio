@@ -4168,7 +4168,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     {openHypothesisIds.includes(block.id as "content-variants" | "cta-variants") ? (
                       <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-8">
                         {block.body ? (
-                          <p className="mb-10 max-w-[760px] text-left font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                          <p className="mb-10 text-left font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                             {block.body}
                           </p>
                         ) : null}
@@ -4176,7 +4176,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         block.payload &&
                         typeof block.payload === "object" &&
                         typeof block.payload.note === "string" ? (
-                          <p className="mb-8 max-w-[760px] text-left font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                          <p className="mb-8 text-left font-inter text-[15px] leading-[1.7] text-[#5c7792]">
                             {block.payload.note}
                           </p>
                         ) : null}
