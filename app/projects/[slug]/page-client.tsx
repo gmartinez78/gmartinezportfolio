@@ -5256,7 +5256,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
-        <div className="mb-8 h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
         {caseStudy.slug === "flock-accessibility-system" ? (
           <div className="mb-10 flex flex-wrap items-center justify-center gap-8">
             <img
@@ -5293,7 +5292,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             />
           </div>
         ) : null}
-        <div className="mt-10 h-px w-full bg-[linear-gradient(90deg,rgba(9,67,106,0)_0%,rgba(17,131,208,0.4)_50%,rgba(9,67,106,0)_100%)]" />
         <div className="mt-12 grid gap-10 md:grid-cols-[1fr_auto_1fr] md:items-start">
           <div className="flex flex-col items-center gap-6">
             <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
