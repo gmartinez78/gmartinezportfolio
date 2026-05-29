@@ -4219,6 +4219,47 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                                         />
                                       </button>
                                     ) : null}
+                                    <div className="mt-6 flex flex-wrap gap-2">
+                                      {index === 0 && (
+                                        <>
+                                          <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
+                                            CMS-only
+                                          </span>
+                                          <span className="inline-flex rounded-full bg-[#e0f2fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#0369a1]">
+                                            No dev
+                                          </span>
+                                          <span className="inline-flex rounded-full bg-[#fef3c7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b45309]">
+                                            Fast to test
+                                          </span>
+                                        </>
+                                      )}
+                                      {index === 1 && (
+                                        <>
+                                          <span className="inline-flex rounded-full bg-[#e0f2fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#0369a1]">
+                                            CMS + Everflow
+                                          </span>
+                                          <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
+                                            A/B testable
+                                          </span>
+                                          <span className="inline-flex rounded-full bg-[#fef3c7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b45309]">
+                                            Medium effort
+                                          </span>
+                                        </>
+                                      )}
+                                      {index === 2 && (
+                                        <>
+                                          <span className="inline-flex rounded-full bg-[#fee2e2] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b91c1c]">
+                                            Dev required
+                                          </span>
+                                          <span className="inline-flex rounded-full bg-[#ede9fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#6d28d9]">
+                                            Variable logic
+                                          </span>
+                                          <span className="inline-flex rounded-full bg-[#dbeafe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#1d4ed8]">
+                                            Higher leverage
+                                          </span>
+                                        </>
+                                      )}
+                                    </div>
                                   </CardContent>
                                 </Card>
                               );
