@@ -4236,7 +4236,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task1" ? (
-        <section id="rt-hypothesis-4" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-0 md:px-10 xl:px-20">
+        <section id="rt-hypothesis-4" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-10 md:px-10 xl:px-20">
               <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
             <button
               type="button"
@@ -4255,9 +4255,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </button>
             {openHypothesisIds.includes("rt-hypothesis-4") ? (
               <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-6">
-                <div className="mx-auto max-w-[860px] space-y-5">
+                <div className="space-y-5">
                   <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                    This is a directional hypothesis, not a conclusion. The email drop-off may not be caused only by the email screen itself; it may also be influenced by user context that is not visible in the current data.
+                    The email drop-off may not be caused only by the email screen itself; it may also be influenced by user context that is not visible in the current data.
                   </p>
                   <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                     For example, we do not know the user&apos;s age segment or device type. Younger users may be more active in the acquisition phase, especially from social or ad-driven traffic, but also more sensitive to how their personal data is collected and used. If that is true, the email step may create trust friction before they feel enough value from the product.
