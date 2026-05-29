@@ -4272,46 +4272,43 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
               ) : null
             )}
-          </div>
-        </section>
-      ) : null}
-
-      {caseStudy.slug === "reversetech" && reversetechTaskTab === "task1" ? (
-        <section id="rt-hypothesis-4" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-[20px] md:px-10 xl:px-20">
+            <div id="rt-hypothesis-4" className="scroll-mt-24">
               <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
-            <button
-              type="button"
-              onClick={() => toggleHypothesis("rt-hypothesis-4")}
-              className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
-            >
-              <div>
-                <p className="mb-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
-                  Hypothesis 3
-                </p>
-                <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
-                  Exploratory hypothesis
-                </h3>
+                <button
+                  type="button"
+                  onClick={() => toggleHypothesis("rt-hypothesis-4")}
+                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                >
+                  <div>
+                    <p className="mb-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
+                      Hypothesis 3
+                    </p>
+                    <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
+                      Exploratory hypothesis
+                    </h3>
+                  </div>
+                  {openHypothesisIds.includes("rt-hypothesis-4") ? <Minus className="h-5 w-5 text-[#1183D0]" /> : <Plus className="h-5 w-5 text-[#1183D0]" />}
+                </button>
+                {openHypothesisIds.includes("rt-hypothesis-4") ? (
+                  <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-6">
+                    <div className="space-y-5">
+                      <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                        The email drop-off may not be caused only by the email screen itself; it may also be influenced by user context that is not visible in the current data.
+                      </p>
+                      <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                        For example, we do not know the user&apos;s age segment or device type. Younger users may be more active in the acquisition phase, especially from social or ad-driven traffic, but also more sensitive to how their personal data is collected and used. If that is true, the email step may create trust friction before they feel enough value from the product.
+                      </p>
+                      <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                        Device may also play a role. If a large share of users reach this step on mobile, the drop-off could be affected by smaller screen space, form fatigue, typing effort, or weaker visibility of reassurance copy. On desktop, the issue may be less about input friction and more about value clarity or trust.
+                      </p>
+                      <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                        Because we do not have age, device, traffic source, or interaction data, I would treat this as an exploratory hypothesis and validate it by segmenting email-step completion by age group, mobile vs. desktop, source, and time spent on the step.
+                      </p>
+                    </div>
+                  </div>
+                ) : null}
               </div>
-              {openHypothesisIds.includes("rt-hypothesis-4") ? <Minus className="h-5 w-5 text-[#1183D0]" /> : <Plus className="h-5 w-5 text-[#1183D0]" />}
-            </button>
-            {openHypothesisIds.includes("rt-hypothesis-4") ? (
-              <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-6">
-                <div className="space-y-5">
-                  <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                    The email drop-off may not be caused only by the email screen itself; it may also be influenced by user context that is not visible in the current data.
-                  </p>
-                  <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                    For example, we do not know the user&apos;s age segment or device type. Younger users may be more active in the acquisition phase, especially from social or ad-driven traffic, but also more sensitive to how their personal data is collected and used. If that is true, the email step may create trust friction before they feel enough value from the product.
-                  </p>
-                  <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                    Device may also play a role. If a large share of users reach this step on mobile, the drop-off could be affected by smaller screen space, form fatigue, typing effort, or weaker visibility of reassurance copy. On desktop, the issue may be less about input friction and more about value clarity or trust.
-                  </p>
-                  <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                    Because we do not have age, device, traffic source, or interaction data, I would treat this as an exploratory hypothesis and validate it by segmenting email-step completion by age group, mobile vs. desktop, source, and time spent on the step.
-                  </p>
-                </div>
-              </div>
-            ) : null}
+            </div>
           </div>
         </section>
       ) : null}
