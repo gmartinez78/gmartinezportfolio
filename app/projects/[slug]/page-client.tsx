@@ -1316,7 +1316,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     { id: "task1" as const, label: "Task 1" },
     { id: "task2" as const, label: "Task 2" },
     { id: "task3" as const, label: "Task 3" },
-    { id: "task4" as const, label: "Task 4 (Optional)" },
+    { id: "task4" as const, label: "Task 4 — Optional" },
   ];
 
   const activeReverseTechTaskLabel =
