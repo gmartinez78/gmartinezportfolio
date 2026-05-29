@@ -2556,7 +2556,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <>
           {showStickyTaskTabs ? (
             <div className="fixed inset-x-0 top-16 z-40 border-b border-[#d7e8f7] bg-white/95 backdrop-blur">
-              <div className="mx-auto max-w-[1200px] px-6 pt-0 pb-2 md:px-10 xl:px-20">
+              <div className="mx-auto max-w-[1200px] px-6 pt-2 pb-2 md:px-10 xl:px-20">
                 <div className="w-full md:mx-auto md:max-w-[900px]">
                   <div className="md:hidden">
                     <button
@@ -2596,7 +2596,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         key={`sticky-${item.label}`}
                         type="button"
                         onClick={() => handleReverseTechTaskTabChange(item.id)}
-                        className={`relative px-5 pt-3 pb-0 text-center transition-colors ${
+                        className={`relative px-5 py-3 text-center transition-colors ${
                           reversetechTaskTab === item.id ? "text-[#1183D0]" : "text-[#5c7792] hover:text-[#1183D0]"
                         }`}
                       >
@@ -3816,11 +3816,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       href={REVERSE_TECH_REVERSE_HEALTH_URL}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 border-b border-[#1183D0]/40 pb-0.5 transition-colors hover:text-[#1183D0] hover:border-[#1183D0]"
+                      className="inline-flex items-center gap-1 underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
                     >
                       Reverse Health
-                      <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M7 17L17 7M17 7H9M17 7V15" />
+                      <svg className="h-3 w-3 -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3v-6" />
                       </svg>
                     </a>
                   </div>
@@ -3829,11 +3829,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       href={REVERSE_TECH_MUSCLE_BOOSTER_URL}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 border-b border-[#1183D0]/40 pb-0.5 transition-colors hover:text-[#1183D0] hover:border-[#1183D0]"
+                      className="inline-flex items-center gap-1 underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
                     >
                       Muscle Booster
-                      <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M7 17L17 7M17 7H9M17 7V15" />
+                      <svg className="h-3 w-3 -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3v-6" />
                       </svg>
                     </a>
                   </div>
@@ -3842,11 +3842,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       href={REVERSE_TECH_FLO_HEALTH_URL}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 border-b border-[#1183D0]/40 pb-0.5 transition-colors hover:text-[#1183D0] hover:border-[#1183D0]"
+                      className="inline-flex items-center gap-1 underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
                     >
                       Flo Health
-                      <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M7 17L17 7M17 7H9M17 7V15" />
+                      <svg className="h-3 w-3 -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3v-6" />
                       </svg>
                     </a>
                   </div>
@@ -3855,11 +3855,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       href={REVERSE_TECH_BETTER_ME_URL}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 border-b border-[#1183D0]/40 pb-0.5 transition-colors hover:text-[#1183D0] hover:border-[#1183D0]"
+                      className="inline-flex items-center gap-1 underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#1183D0]"
                     >
                       Better Me
-                      <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M7 17L17 7M17 7H9M17 7V15" />
+                      <svg className="h-3 w-3 -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3v-6" />
                       </svg>
                     </a>
                   </div>
@@ -3869,7 +3869,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     key={row.dimension}
                     className="grid grid-cols-[0.9fr_1fr_1fr_1fr_1fr] border-t border-[#d7e8f7] px-6 py-5 text-[15px] leading-[1.7] text-[#5c7792]"
                   >
-                    <div className="border-r border-[#d7e8f7] pr-4 font-semibold text-black">{row.dimension}</div>
+                    <div className="border-r border-[#d7e8f7] pr-4 font-semibold text-[#0e2951]">{row.dimension}</div>
                     <div className="border-r border-[#d7e8f7] px-4">{row.reverseHealth}</div>
                     <div className="border-r border-[#d7e8f7] px-4">{row.muscleBooster}</div>
                     <div className="border-r border-[#d7e8f7] px-4">{row.floHealth}</div>
