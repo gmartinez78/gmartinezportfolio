@@ -4166,7 +4166,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       {openHypothesisIds.includes(block.id as "content-variants" | "cta-variants") ? <Minus className="h-5 w-5 text-[#1183D0]" /> : <Plus className="h-5 w-5 text-[#1183D0]" />}
                     </button>
                     {openHypothesisIds.includes(block.id as "content-variants" | "cta-variants") ? (
-                      <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-2">
+                      <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-8">
                         {block.body ? (
                           <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                             {block.body}
