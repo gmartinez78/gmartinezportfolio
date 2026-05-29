@@ -14,7 +14,8 @@
       "Bash(gunzip -f /tmp/paywall_experiments.pen.gz)",
       "Bash(mkdir -p paywall_design)",
       "Bash(tar -xf paywall_experiments.pen -C paywall_design)",
-      "Bash(git -C \"/Users/gred/Desktop/gmartinezportfolio-main\" diff HEAD -- \"app/projects/[slug]/page-client.tsx\")"
+      "Bash(git -C \"/Users/gred/Desktop/gmartinezportfolio-main\" diff HEAD -- \"app/projects/[slug]/page-client.tsx\")",
+      "Bash(git commit -m 'Add more space between content variant title and content *)"
     ]
   },
   "enabledPlugins": {
