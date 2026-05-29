@@ -2597,7 +2597,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         key={`sticky-${item.label}`}
                         type="button"
                         onClick={() => handleReverseTechTaskTabChange(item.id)}
-                        className={`relative px-5 py-4 text-center transition-colors ${
+                        className={`relative px-5 py-3 text-center transition-colors ${
                           reversetechTaskTab === item.id ? "text-[#1183D0]" : "text-[#5c7792] hover:text-[#1183D0]"
                         }`}
                       >
