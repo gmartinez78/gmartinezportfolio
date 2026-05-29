@@ -4093,6 +4093,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task4" ? (
         <section id="rt-hypothesis-2" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-10 md:px-10 xl:px-20">
           <SectionHeading title="How I used tools while completing this case" centered className="mb-8" />
+          <div className="mx-auto mb-8 max-w-[860px] text-center">
+            <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              A transparent breakdown of which tools I used at each stage, what I used them for, and what each one was optimized toward — speed, breadth, quality, or implementation.
+            </p>
+          </div>
           {reverseTechToolsSection}
         </section>
       ) : null}
