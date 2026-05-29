@@ -3796,6 +3796,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task3" ? (
         <section id="rt-task-3" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title="Competitor pattern extraction" centered className="mb-8" />
+          <div className="mx-auto mb-8 max-w-[860px] text-center">
+            <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              Analyze how competing subscription fitness apps structure their onboarding and paywall flows to surface patterns worth adapting or testing against the current design.
+            </p>
+          </div>
           <div className="mx-auto max-w-[980px] space-y-6">
             <h3 className="text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
               Discovery
