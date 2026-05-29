@@ -2572,42 +2572,38 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <Menu className="h-5 w-5 text-[#0e2951]" />
                     </button>
                     {isReverseTechTaskMenuOpen ? (
-                      <div className="mt-3 overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white shadow-[0_16px_32px_rgba(17,131,208,0.1)]">
-                        {reverseTechTaskTabs.map((item, index) => (
+                      <div className="mt-3 flex flex-col border-b border-[#d7e8f7]">
+                        {reverseTechTaskTabs.map((item) => (
                           <button
                             key={`sticky-mobile-${item.label}`}
                             type="button"
                             onClick={() => handleReverseTechTaskTabChange(item.id)}
-                            className={`flex w-full items-center justify-between px-4 py-3 text-left transition-all ${
-                              reversetechTaskTab === item.id ? "bg-[#1183D0]/15 backdrop-blur border border-[#1183D0]/30" : "bg-white hover:bg-[#f8fbff]"
-                            } ${index > 0 ? "border-t border-[#d7e8f7]" : ""}`}
+                            className={`relative px-4 py-3 text-left transition-colors ${
+                              reversetechTaskTab === item.id ? "text-[#1183D0]" : "text-[#0e2951] hover:text-[#1183D0]"
+                            }`}
                           >
-                            <span className={`text-[13px] font-semibold ${reversetechTaskTab === item.id ? "text-[#1183D0]" : "text-[#0e2951]"}`}>{item.label}</span>
+                            <span className="text-[13px] font-semibold">{item.label}</span>
                             {reversetechTaskTab === item.id ? (
-                              <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">Open</span>
+                              <span className="absolute inset-x-0 -bottom-px h-1 bg-[#1183D0]" />
                             ) : null}
                           </button>
                         ))}
                       </div>
                     ) : null}
                   </div>
-                  <div className="hidden flex-wrap items-end justify-center gap-0 md:flex">
-                    {reverseTechTaskTabs.map((item, index) => (
+                  <div className="hidden flex-wrap items-end justify-center gap-0 border-b border-[#d7e8f7] md:flex">
+                    {reverseTechTaskTabs.map((item) => (
                       <button
                         key={`sticky-${item.label}`}
                         type="button"
                         onClick={() => handleReverseTechTaskTabChange(item.id)}
-                        className={`relative min-w-[180px] border-[#d7e8f7] px-5 py-4 text-center transition-all duration-200 ${
-                          reversetechTaskTab === item.id
-                            ? "border-x border-t border-[#1183D0]/30 bg-[#1183D0]/15 backdrop-blur"
-                            : "border-x border-t border-transparent bg-transparent hover:-translate-y-0.5 hover:border-[#d7e8f7] hover:bg-[#f8fbff] hover:shadow-[0_12px_28px_rgba(17,131,208,0.08)]"
-                        } ${index > 0 ? "-ml-px" : ""}`}
-                      >
-                        <p className={`text-[12px] font-semibold uppercase tracking-[0.16em] transition-colors ${
+                        className={`relative px-5 py-4 text-center transition-colors ${
                           reversetechTaskTab === item.id ? "text-[#1183D0]" : "text-[#5c7792] hover:text-[#1183D0]"
-                        }`}>{item.label}</p>
+                        }`}
+                      >
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.16em]">{item.label}</p>
                         {reversetechTaskTab === item.id ? (
-                          <span className="absolute inset-x-0 -bottom-px h-1 bg-[#1183D0]/40" />
+                          <span className="absolute inset-x-0 -bottom-px h-1 bg-[#1183D0]" />
                         ) : null}
                       </button>
                     ))}
