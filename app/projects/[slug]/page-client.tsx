@@ -2472,7 +2472,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           {showStickyTaskTabs ? (
             <div className="fixed inset-x-0 top-16 z-40 border-b border-[#d7e8f7] bg-white/95 backdrop-blur">
               <div className="mx-auto max-w-[1200px] px-6 pt-0 pb-2 md:px-10 xl:px-20">
-                <div className="mx-auto max-w-[900px]">
+                <div className="w-full md:mx-auto md:max-w-[900px]">
                   <div className="md:hidden">
                     <button
                       type="button"
@@ -2483,7 +2483,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Tasks</p>
                         <p className="mt-1 text-[14px] font-semibold text-[#0e2951]">{activeReverseTechTaskLabel}</p>
                       </div>
-                      {isReverseTechTaskMenuOpen ? <X className="h-5 w-5 text-[#0e2951]" /> : <Menu className="h-5 w-5 text-[#0e2951]" />}
+                      <Menu className="h-5 w-5 text-[#0e2951]" />
                     </button>
                     {isReverseTechTaskMenuOpen ? (
                       <div className="mt-3 overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white shadow-[0_16px_32px_rgba(17,131,208,0.1)]">
@@ -2531,7 +2531,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
           ) : null}
           <section ref={reversetechTaskTabsRef} className="mx-auto max-w-[1200px] px-6 py-2 md:px-10 xl:px-20">
-            <div className="mx-auto max-w-[900px] border-b border-[#d7e8f7]">
+            <div className="w-full border-b border-[#d7e8f7] md:mx-auto md:max-w-[900px]">
               <div className="md:hidden pb-2">
                 <button
                   type="button"
@@ -2542,7 +2542,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Tasks</p>
                     <p className="mt-1 text-[14px] font-semibold text-[#0e2951]">{activeReverseTechTaskLabel}</p>
                   </div>
-                  {isReverseTechTaskMenuOpen ? <X className="h-5 w-5 text-[#0e2951]" /> : <Menu className="h-5 w-5 text-[#0e2951]" />}
+                  <Menu className="h-5 w-5 text-[#0e2951]" />
                 </button>
                 {isReverseTechTaskMenuOpen ? (
                   <div className="mt-3 overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white shadow-[0_16px_32px_rgba(17,131,208,0.1)]">
