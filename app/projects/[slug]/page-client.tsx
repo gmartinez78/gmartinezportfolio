@@ -4164,17 +4164,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     {openHypothesisIds.includes(block.id as "content-variants" | "cta-variants") ? (
                       <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-8">
                         {block.body ? (
-                          <p className="mb-10 text-left font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                            {block.body}
-                          </p>
-                        ) : null}
-                        {block.id === "content-variants" &&
-                        block.payload &&
-                        typeof block.payload === "object" &&
-                        typeof block.payload.note === "string" ? (
-                          <p className="mb-8 text-left font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                            {block.payload.note}
-                          </p>
+                          <div className="mb-10 whitespace-pre-wrap space-y-4 text-left font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                            {block.body.split('\n\n').map((paragraph, idx) => (
+                              <p key={idx}>{paragraph}</p>
+                            ))}
+                          </div>
                         ) : null}
                         <div className="grid gap-5 md:grid-cols-3">
                           {variants.map((variant, index) => (

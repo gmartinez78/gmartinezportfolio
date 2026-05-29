@@ -1059,9 +1059,8 @@
         "id": "content-variants",
         "type": "custom",
         "title": "Content Variant",
-        "body": "By this point, users have invested time in the quiz but still have not seen the product's value clearly. Because progress is not visible, the funnel can feel longer than necessary, creating fatigue even when each screen is simple. This makes the email request feel abrupt instead of earned.",
+        "body": "By this point, users have invested time in the quiz but still have not seen the product's value clearly. Because progress is not visible, the funnel can feel longer than necessary, creating fatigue even when each screen is simple. This makes the email request feel abrupt instead of earned.\n\nAs a result, the step feels more like lead capture than part of the personalized plan experience, and this is the proposed design solution. For the purpose of this task, I selected Variant 3 as the final design solution, but I think a good approach would be to A/B test a few ideas.",
         "payload": {
-          "note": "As a result, the step feels more like lead capture than part of the personalized plan experience, and this is the proposed design solution. For the purpose of this task, I selected Variant 3 as the final design solution, but I think a good approach would be to A/B test a few ideas.",
           "variants": [
             {
               "label": "Variant 3",
