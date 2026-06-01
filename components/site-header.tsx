@@ -95,8 +95,8 @@ export function SiteHeader({
               isMobileMenuOpen
                 ? "bg-[#E0EEFB] text-[#1183D0] shadow-[0_10px_24px_rgba(17,131,208,0.12)]"
                 : isTransparent
-                  ? "bg-white/70 text-[#0e2951] shadow-[0_10px_24px_rgba(14,41,81,0.08)]"
-                  : "bg-white text-[#0e2951] shadow-[0_10px_24px_rgba(14,41,81,0.08)]"
+                  ? "bg-transparent text-[#0e2951]"
+                  : "bg-transparent text-[#0e2951]"
             }`}
           >
             <span className="sr-only">{isMobileMenuOpen ? "Close menu" : "Open menu"}</span>
@@ -148,11 +148,11 @@ export function SiteHeader({
       >
         <ul className="flex w-full flex-col gap-2 rounded-[28px] bg-white/95 p-3 shadow-[0_18px_40px_rgba(14,41,81,0.12)] backdrop-blur">
           {navLinks.map((link) => (
-            <li key={link.label}>
+            <li key={link.label} className="w-full">
               <Link
                 href={withBasePath(link.href)}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`flex w-full items-center rounded-full px-3.5 py-2 text-sm transition-all duration-200 sm:px-4 ${
+                className={`flex w-full items-center justify-center rounded-full px-3.5 py-2 text-sm transition-all duration-200 sm:px-4 ${
                   active === link.label
                     ? isTransparent
                       ? "bg-white/70 text-[#0e2951] shadow-[0_10px_24px_rgba(14,41,81,0.08)]"
