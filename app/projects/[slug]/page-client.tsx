@@ -2557,8 +2557,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           {showStickyTaskTabs ? (
             <div className="fixed inset-x-0 top-16 z-40 border-b border-[#d7e8f7] bg-white/95 backdrop-blur">
               <div className="mx-auto max-w-[1200px] px-6 pt-0 pb-0 md:px-10 xl:px-20">
-                <div className="w-full md:mx-auto md:max-w-[900px]">
-                  <div className="md:hidden">
+                <div className="w-full lg:mx-auto lg:max-w-[900px]">
+                  <div className="lg:hidden">
                     <button
                       type="button"
                       onClick={() => setIsReverseTechTaskMenuOpen((current) => !current)}
@@ -2590,7 +2590,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </div>
                     ) : null}
                   </div>
-                  <div className="hidden flex-wrap items-end justify-center gap-0 border-b border-[#d7e8f7] md:flex">
+                  <div className="hidden flex-wrap items-end justify-center gap-0 border-b border-[#d7e8f7] lg:flex">
                     {reverseTechTaskTabs.map((item) => (
                       <button
                         key={`sticky-${item.label}`}
@@ -2612,8 +2612,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
           ) : null}
           <section ref={reversetechTaskTabsRef} className="mx-auto max-w-[1200px] px-6 py-2 md:px-10 xl:px-20">
-            <div className="w-full border-b border-[#d7e8f7] md:mx-auto md:max-w-[900px]">
-              <div className="md:hidden pb-2">
+            <div className="w-full border-b border-[#d7e8f7] lg:mx-auto lg:max-w-[900px]">
+              <div className="pb-2 lg:hidden">
                 <button
                   type="button"
                   onClick={() => setIsReverseTechTaskMenuOpen((current) => !current)}
@@ -2645,7 +2645,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                 ) : null}
               </div>
-              <div className="hidden flex-wrap items-end justify-center gap-0 border-b border-[#d7e8f7] md:flex">
+              <div className="hidden flex-wrap items-end justify-center gap-0 border-b border-[#d7e8f7] lg:flex">
                 {reverseTechTaskTabs.map((item) => (
                   <button
                     key={item.label}
