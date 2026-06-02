@@ -54,6 +54,7 @@ const HOME_BANNER_GRADIENT =
   "linear-gradient(90deg, #e6f1fb 0%, #eee7fb 37%, #f9e5ee 68%, #fcf0e2 100%)";
 const HOME_BANNER_GRADIENT_OVERLAY =
   "radial-gradient(circle at top,rgba(171,160,246,0.16),transparent 42%),radial-gradient(circle at 72% 26%,rgba(255,174,202,0.18),transparent 32%),radial-gradient(circle at 92% 50%,rgba(255,224,189,0.2),transparent 24%),linear-gradient(180deg,rgba(118,141,177,0.06)_0%,rgba(255,255,255,0)_58%)";
+const REVERSETECH_STICKY_HEADER_OFFSET = 88;
 
 const NAYYA_HIGHLIGHT_METRICS: HighlightMetric[] = [
   { value: "307%", label: "IRR", context: "Projected ROI,estimated return from increased plan uptake (NPV $11.4M)." },
@@ -1295,18 +1296,17 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     };
 
     window.setTimeout(() => {
-      const stickyOffset = 88;
       const targetElement = document.getElementById(targetByTask[taskTab]);
 
       if (targetElement) {
-        const top = targetElement.getBoundingClientRect().top + window.scrollY - stickyOffset;
+        const top = targetElement.getBoundingClientRect().top + window.scrollY - REVERSETECH_STICKY_HEADER_OFFSET;
         window.scrollTo({ top, behavior: "smooth" });
         return;
       }
 
       const tabsElement = reversetechTaskTabsRef.current;
       if (tabsElement) {
-        const top = tabsElement.getBoundingClientRect().top + window.scrollY - stickyOffset;
+        const top = tabsElement.getBoundingClientRect().top + window.scrollY - REVERSETECH_STICKY_HEADER_OFFSET;
         window.scrollTo({ top, behavior: "smooth" });
       }
     }, 50);
@@ -1848,8 +1848,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         return;
       }
 
-      const stickyOffset = window.innerWidth >= 768 ? 72 : 64;
-      setShowStickyTaskTabs(tabsElement.getBoundingClientRect().top <= stickyOffset);
+      setShowStickyTaskTabs(
+        tabsElement.getBoundingClientRect().top <= REVERSETECH_STICKY_HEADER_OFFSET
+      );
     };
 
     updateStickyTaskTabs();
@@ -2555,7 +2556,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "reversetech" ? (
         <>
           {showStickyTaskTabs ? (
-            <div className="fixed inset-x-0 top-16 z-40 border-b border-[#d7e8f7] bg-white/95 backdrop-blur">
+            <div
+              className="fixed inset-x-0 z-40 border-b border-[#d7e8f7] bg-white/95 backdrop-blur"
+              style={{ top: REVERSETECH_STICKY_HEADER_OFFSET }}
+            >
               <div className="mx-auto max-w-[1200px] px-6 pt-0 pb-0 md:px-10 xl:px-20">
                 <div className="w-full lg:mx-auto lg:max-w-[900px]">
                   <div className="lg:hidden">
