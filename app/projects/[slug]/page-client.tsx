@@ -4910,7 +4910,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#c8412a]">Δ vs control</p>
                         <ul className="mt-3 list-disc space-y-2 pl-5 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
                           {[
-                            "The Continue button reminds users how much they save.",
+                            "The “Get my plan” button reminds users how much they save.",
                             "Personalized recap above the plan",
                             "Three plans are presented, with the 12-wk option recommended and pre-selected.",
                             "Featured-in logos and a video testimonial reinforce trust before purchase.",
@@ -4931,7 +4931,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#2a5cb8]">Δ vs control</p>
                   <ul className="mt-3 list-disc space-y-2 pl-5 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
                     {[
-                      "Continue is used as the CTA to reduce friction and activate the payment step.",
+                      "“See my personalized plan” is used as the CTA to reduce friction and activate the payment step.",
                       "The 12-wk plan is pre-selected and reinforced with a motivational tag.",
                       "An app preview is added to connect the paywall more directly to the product value.",
                       "The content order is changed to keep the scroll active and maintain momentum.",
