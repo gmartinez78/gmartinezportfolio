@@ -332,7 +332,7 @@ const REVERSE_TECH_PATTERN_ROWS = [
   {
     label: "Pattern 1 to test",
     tag: "Worth testing",
-    title: "Informational interstitial screen in a questionnaire flow",
+    title: "Informational interstitial screen",
     screenshotTitle: "Better Me",
     source: "Muscle Booster (Better Me runs a version of this too)",
     screenshot: "the \"you'll reach your goal by [date]\" projection screen with the progress curve, shown right before the paywall",
@@ -1336,9 +1336,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     <>
       <div className="mx-auto mb-[10px] h-[8px] w-[80px] rounded-full bg-[#1c1a17]" />
       <div className={`${kalam.className} flex min-h-[580px] flex-col gap-[7px] rounded-[18px] p-[10px]`}>
-        <div className="flex items-center justify-between rounded-[10px] border border-[#1c1a17] px-2 py-1 text-[10px] text-[#1c1a17]">
-          <span className="font-semibold">⏱ 09:53</span>
-          <span className="rounded-full bg-[#1c1a17] px-[10px] py-[4px] text-[10px] text-white">GET MY PLAN</span>
+        <div className="px-3 py-3 text-center">
+          <p className="text-[20px] font-bold leading-tight text-[#1c1a17]">Get health benefits with a bigger discount!</p>
         </div>
         <div className="rounded-[10px] border border-[#1c1a17] bg-[#DCEAEF] p-[7px]">
           <div className="grid grid-cols-2 gap-[6px]">
@@ -1365,7 +1364,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
             <div className="rounded-[8px] border border-[#1c1a17] bg-white px-2 py-[6px] text-center">
               <p className="text-[8px] font-bold uppercase tracking-wide text-[#2a5cb8]">51% OFF</p>
-              <p className="mt-1 text-[10px] font-bold text-[#1c1a17]">09:53</p>
+              <p className="mt-1 text-[10px] font-bold text-[#1c1a17]">09:53 min.</p>
             </div>
           </div>
         </div>
@@ -1374,7 +1373,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">FEEL BETTER IN A WEEK</span>
             <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
             <div>
-              <p className="text-[11px] font-bold text-[#1c1a17]">WEEK PLAN</p>
+              <p className="text-[11px] font-bold text-[#1c1a17]">WEEK PLAN - 51% off</p>
               <div className="text-[9px] text-[#4a443a]">
                 <span className="mr-1 line-through opacity-60">$10.00</span>
                 <span className="font-bold text-[#1c1a17]">$4.90</span>
@@ -1390,7 +1389,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">GET VISIBLE RESULTS</span>
             <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
             <div>
-              <p className="text-[11px] font-bold text-[#1c1a17]">MONTHLY PLAN</p>
+              <p className="text-[11px] font-bold text-[#1c1a17]">MONTHLY PLAN - 51% off</p>
               <div className="text-[9px] text-[#4a443a]">
                 <span className="mr-1 line-through opacity-60">$14.00</span>
                 <span className="font-bold text-[#1c1a17]">$6.86</span>
@@ -1406,7 +1405,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">GET MORE HEALTH BENEFITS</span>
             <div className="h-[12px] w-[12px] rounded-full bg-[#2a5cb8] shadow-[inset_0_0_0_2px_white]" />
             <div>
-              <p className="text-[11px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
+              <p className="text-[11px] font-bold text-[#1c1a17]">12-WEEK PROGRAM - 51% off</p>
               <div className="text-[9px] text-[#4a443a]">
                 <span className="mr-1 line-through opacity-60">$18.99</span>
                 <span className="font-bold text-[#1c1a17]">$9.31</span>
@@ -1420,7 +1419,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         </div>
         <div className="flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
-          <span className="text-[11px] font-bold text-white">Continue - Save 51%</span>
+          <span className="text-[11px] font-bold text-white">Get my plan</span>
           <span className="text-[10px] text-white">→</span>
         </div>
         <p className="mb-2 text-[8px] leading-[1.4] text-[#4a443a]">$9.31 today, then $89.99/12 wks. Cancel anytime.</p>
@@ -1498,7 +1497,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">FEEL BETTER IN A WEEK</span>
                 <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
                 <div>
-                  <p className="text-[11px] font-bold text-[#1c1a17]">WEEK PLAN</p>
+                  <p className="text-[11px] font-bold text-[#1c1a17]">WEEK PLAN - 51% off</p>
                   <div className="text-[9px] text-[#4a443a]">
                     <span className="mr-1 line-through opacity-60">$10.00</span>
                     <span className="font-bold text-[#1c1a17]">$4.90</span>
@@ -1514,7 +1513,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">GET VISIBLE RESULTS</span>
                 <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
                 <div>
-                  <p className="text-[11px] font-bold text-[#1c1a17]">MONTHLY PLAN</p>
+                  <p className="text-[11px] font-bold text-[#1c1a17]">MONTHLY PLAN - 51% off</p>
                   <div className="text-[9px] text-[#4a443a]">
                     <span className="mr-1 line-through opacity-60">$14.00</span>
                     <span className="font-bold text-[#1c1a17]">$6.86</span>
@@ -1531,7 +1530,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div className="grid grid-cols-[14px_1fr_auto] items-center gap-[8px]">
                   <div className="h-[12px] w-[12px] rounded-full bg-[#2a5cb8] shadow-[inset_0_0_0_2px_white]" />
                   <div>
-                    <p className="text-[12px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
+                    <p className="text-[12px] font-bold text-[#1c1a17]">12-WEEK PROGRAM - 51% off</p>
                     <div className="text-[9px] text-[#4a443a]">
                       <span className="mr-1 line-through opacity-60">$18.99</span>
                       <span className="font-bold text-[#1c1a17]">$9.31</span>
@@ -1546,7 +1545,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             </div>
             <div className="mt-3 flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
-              <span className="text-[11px] font-bold text-white">Continue - Save 51%</span>
+              <span className="text-[11px] font-bold text-white">Get my plan</span>
               <span className="text-[10px] text-white">→</span>
             </div>
           </div>
@@ -1580,7 +1579,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       <div className={`${kalam.className} flex min-h-[580px] flex-col gap-[7px] rounded-[18px] p-[10px]`}>
         <div className="flex items-center justify-between rounded-[10px] border border-[#1c1a17] bg-white px-2 py-1 text-[10px] text-[#1c1a17]">
           <span className="font-semibold uppercase tracking-[0.16em]">Reverse Health</span>
-          <span className="rounded-full bg-[#1c1a17] px-[10px] py-[4px] text-[10px] uppercase text-white">Continue</span>
+          <span className="rounded-full bg-[#1c1a17] px-[10px] py-[4px] text-[10px] uppercase text-white">See my personalized plan</span>
         </div>
         <div className="grid grid-cols-2 gap-[6px]">
           {[["Now", "30% body fat"], ["Your goal", "14% body fat"]].map(([label, cap]) => (
@@ -1632,7 +1631,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </div>
         <div className="flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
           <span className="text-[10px] uppercase text-white">12-WK</span>
-          <span className="text-[11px] font-bold uppercase text-white">Continue</span>
+          <span className="text-[11px] font-bold uppercase text-white">See my personalized plan</span>
         </div>
         <div className="mt-2 rounded-[8px] border border-[#1c1a17]/30 px-2 py-[6px]">
           <p className="text-[8px] leading-[1.4] text-[#4a443a]">
@@ -1752,7 +1751,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
             <div className="mt-3 flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
               <span className="text-[10px] uppercase text-white">12-WK</span>
-              <span className="text-[11px] font-bold uppercase text-white">Continue</span>
+              <span className="text-[11px] font-bold uppercase text-white">See my personalized plan</span>
             </div>
           </div>
           <div className="mt-2 rounded-[8px] border border-[#1c1a17]/20 px-2 py-[8px] text-center">
@@ -3737,9 +3736,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                               </p>
                               <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
                                 CMS-ready
-                              </span>
-                              <span className="inline-flex rounded-full bg-[#e0f2fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#0369a1]">
-                                No engineering
                               </span>
                             </div>
                             <ul className="space-y-3">
