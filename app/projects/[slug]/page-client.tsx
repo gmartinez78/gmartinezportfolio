@@ -1581,6 +1581,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <span className="font-semibold uppercase tracking-[0.16em]">Reverse Health</span>
           <span className="rounded-full bg-[#1c1a17] px-[10px] py-[4px] text-[10px] uppercase text-white">See my personalized plan</span>
         </div>
+        <div className="px-3 py-3 text-center">
+          <p className="text-[20px] font-bold leading-tight text-[#1c1a17]">Get a full transformation in 12-weeks</p>
+        </div>
         <div className="grid grid-cols-2 gap-[6px]">
           {[["Now", "30% body fat"], ["Your goal", "14% body fat"]].map(([label, cap]) => (
             <div key={label}>
