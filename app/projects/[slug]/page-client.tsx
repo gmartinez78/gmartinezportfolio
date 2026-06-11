@@ -1363,7 +1363,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <p className="mt-1 text-[11px] font-bold text-[#1c1a17]">ANN-PLAN26</p>
             </div>
             <div className="rounded-[8px] border border-[#1c1a17] bg-white px-2 py-[6px] text-center">
-              <p className="text-[8px] font-bold uppercase tracking-wide text-[#2a5cb8]">51% OFF</p>
+              <p className="text-[8px] font-bold uppercase tracking-wide text-[#2a5cb8]">78% OFF</p>
               <p className="mt-1 text-[10px] font-bold text-[#1c1a17]">09:53 min.</p>
             </div>
           </div>
@@ -1373,15 +1373,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">FEEL BETTER IN A WEEK</span>
             <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
             <div>
-              <p className="text-[11px] font-bold text-[#1c1a17]">WEEK PLAN - 51% off</p>
+              <p className="text-[11px] font-bold text-[#1c1a17]">WEEK PLAN</p>
               <div className="text-[9px] text-[#4a443a]">
-                <span className="mr-1 line-through opacity-60">$10.00</span>
-                <span className="font-bold text-[#1c1a17]">$4.90</span>
+                <span className="mr-1 line-through opacity-60">$19.99</span>
+                <span className="font-bold text-[#1c1a17]">$4.40</span>
               </div>
             </div>
             <div className="text-right">
-              <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.43</p>
-              <p className="text-[13px] font-bold text-[#1c1a17]">$0.70</p>
+              <p className="text-[8px] text-[#4a443a] line-through opacity-60">$2.86</p>
+              <p className="text-[13px] font-bold text-[#1c1a17]">$0.63</p>
               <p className="text-[8px] text-[#4a443a]">per day</p>
             </div>
           </div>
@@ -1389,31 +1389,31 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">GET VISIBLE RESULTS</span>
             <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
             <div>
-              <p className="text-[11px] font-bold text-[#1c1a17]">MONTHLY PLAN - 51% off</p>
+              <p className="text-[11px] font-bold text-[#1c1a17]">MONTHLY PLAN</p>
               <div className="text-[9px] text-[#4a443a]">
-                <span className="mr-1 line-through opacity-60">$14.00</span>
-                <span className="font-bold text-[#1c1a17]">$6.86</span>
+                <span className="mr-1 line-through opacity-60">$39.99</span>
+                <span className="font-bold text-[#1c1a17]">$8.80</span>
               </div>
             </div>
             <div className="text-right">
-              <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.50</p>
-              <p className="text-[13px] font-bold text-[#1c1a17]">$0.25</p>
+              <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.43</p>
+              <p className="text-[13px] font-bold text-[#1c1a17]">$0.31</p>
               <p className="text-[8px] text-[#4a443a]">per day</p>
             </div>
           </div>
-          <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border-2 border-[#2a5cb8] bg-[#DCEAEF] px-2 py-[9px]">
-            <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">GET MORE HEALTH BENEFITS</span>
-            <div className="h-[12px] w-[12px] rounded-full bg-[#2a5cb8] shadow-[inset_0_0_0_2px_white]" />
+          <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[9px] opacity-75">
+            <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">GET MORE HEALTH BENEFITS</span>
+            <div className="h-[12px] w-[12px] rounded-full bg-[#6b7280] shadow-[inset_0_0_0_2px_white]" />
             <div>
-              <p className="text-[11px] font-bold text-[#1c1a17]">12-WEEK PROGRAM - 51% off</p>
+              <p className="text-[11px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
               <div className="text-[9px] text-[#4a443a]">
-                <span className="mr-1 line-through opacity-60">$18.99</span>
-                <span className="font-bold text-[#1c1a17]">$9.31</span>
+                <span className="mr-1 line-through opacity-60">$89.99</span>
+                <span className="font-bold text-[#1c1a17]">$19.80</span>
               </div>
             </div>
             <div className="text-right">
-              <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.21</p>
-              <p className="text-[13px] font-bold text-[#1c1a17]">$0.11</p>
+              <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.07</p>
+              <p className="text-[13px] font-bold text-[#1c1a17]">$0.24</p>
               <p className="text-[8px] text-[#4a443a]">per day</p>
             </div>
           </div>
@@ -1422,7 +1422,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <span className="text-[11px] font-bold text-white">Get my plan</span>
           <span className="text-[10px] text-white">→</span>
         </div>
-        <p className="mb-2 text-[8px] leading-[1.4] text-[#4a443a]">$9.31 today, then $89.99/12 wks. Cancel anytime.</p>
+        <p className="mb-2 text-[8px] leading-[1.4] text-[#4a443a]">$19.80 today, then $89.99/12 wks. Cancel anytime.</p>
         <div className="px-2 py-[6px] text-center">
           <p className="text-[9px] leading-[1.4] text-[#1c1a17]">Visa · Mastercard · Amex · PayPal · Apple Pay</p>
         </div>
@@ -1497,15 +1497,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">FEEL BETTER IN A WEEK</span>
                 <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
                 <div>
-                  <p className="text-[11px] font-bold text-[#1c1a17]">WEEK PLAN - 51% off</p>
+                  <p className="text-[11px] font-bold text-[#1c1a17]">WEEK PLAN</p>
                   <div className="text-[9px] text-[#4a443a]">
-                    <span className="mr-1 line-through opacity-60">$10.00</span>
-                    <span className="font-bold text-[#1c1a17]">$4.90</span>
+                    <span className="mr-1 line-through opacity-60">$19.99</span>
+                    <span className="font-bold text-[#1c1a17]">$4.40</span>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.43</p>
-                  <p className="text-[13px] font-bold text-[#1c1a17]">$0.70</p>
+                  <p className="text-[8px] text-[#4a443a] line-through opacity-60">$2.86</p>
+                  <p className="text-[13px] font-bold text-[#1c1a17]">$0.63</p>
                   <p className="text-[8px] text-[#4a443a]">per day</p>
                 </div>
               </div>
@@ -1513,15 +1513,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">GET VISIBLE RESULTS</span>
                 <div className="h-[12px] w-[12px] rounded-full border border-[#1c1a17]" />
                 <div>
-                  <p className="text-[11px] font-bold text-[#1c1a17]">MONTHLY PLAN - 51% off</p>
+                  <p className="text-[11px] font-bold text-[#1c1a17]">MONTHLY PLAN</p>
                   <div className="text-[9px] text-[#4a443a]">
-                    <span className="mr-1 line-through opacity-60">$14.00</span>
-                    <span className="font-bold text-[#1c1a17]">$6.86</span>
+                    <span className="mr-1 line-through opacity-60">$39.99</span>
+                    <span className="font-bold text-[#1c1a17]">$8.80</span>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.50</p>
-                  <p className="text-[13px] font-bold text-[#1c1a17]">$0.25</p>
+                  <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.43</p>
+                  <p className="text-[13px] font-bold text-[#1c1a17]">$0.31</p>
                   <p className="text-[8px] text-[#4a443a]">per day</p>
                 </div>
               </div>
@@ -1530,15 +1530,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div className="grid grid-cols-[14px_1fr_auto] items-center gap-[8px]">
                   <div className="h-[12px] w-[12px] rounded-full bg-[#2a5cb8] shadow-[inset_0_0_0_2px_white]" />
                   <div>
-                    <p className="text-[12px] font-bold text-[#1c1a17]">12-WEEK PROGRAM - 51% off</p>
+                    <p className="text-[12px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
                     <div className="text-[9px] text-[#4a443a]">
-                      <span className="mr-1 line-through opacity-60">$18.99</span>
-                      <span className="font-bold text-[#1c1a17]">$9.31</span>
+                      <span className="mr-1 line-through opacity-60">$89.99</span>
+                      <span className="font-bold text-[#1c1a17]">$19.80</span>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-[8px] text-[#4a443a] line-through opacity-60">$0.21</p>
-                    <p className="text-[13px] font-bold text-[#1c1a17]">$0.11</p>
+                    <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.07</p>
+                    <p className="text-[13px] font-bold text-[#1c1a17]">$0.24</p>
                     <p className="text-[8px] text-[#4a443a]">per day</p>
                   </div>
                 </div>
@@ -1598,21 +1598,30 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <p className="mt-3 text-center text-[16px] font-semibold text-[#1c1a17]">Pick how far you want to go</p>
         <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
           <div>
-            <p className="text-[11px] font-bold text-[#1c1a17]">1-week · Kick-start</p>
-            <p className="text-[9px] text-[#4a443a]">$10.5</p>
+            <p className="text-[11px] font-bold text-[#1c1a17]">1-week · Kick-start - 78% off</p>
+            <p className="text-[9px] text-[#4a443a]">
+              <span className="mr-1 line-through opacity-60">$19.99</span>
+              <span className="font-bold text-[#1c1a17]">$4.40</span>
+            </p>
           </div>
           <div className="text-right">
-            <p className="text-[13px] font-bold text-[#1c1a17]">$1.5</p>
+            <p className="text-[8px] text-[#4a443a] line-through opacity-60">$2.86</p>
+            <p className="text-[13px] font-bold text-[#1c1a17]">$0.63</p>
             <p className="text-[8px] text-[#4a443a]">per day</p>
           </div>
         </div>
         <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
           <div>
-            <p className="text-[11px] font-bold text-[#1c1a17]">4-week · Build habit</p>
-            <p className="text-[9px] text-[#4a443a]">1 mo - $9.8</p>
+            <p className="text-[11px] font-bold text-[#1c1a17]">4-week · Build habit - 78% off</p>
+            <p className="text-[9px] text-[#4a443a]">
+              <span className="mr-1">1 mo -</span>
+              <span className="mr-1 line-through opacity-60">$39.99</span>
+              <span className="font-bold text-[#1c1a17]">$8.80</span>
+            </p>
           </div>
           <div className="text-right">
-            <p className="text-[13px] font-bold text-[#1c1a17]">$0.35</p>
+            <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.43</p>
+            <p className="text-[13px] font-bold text-[#1c1a17]">$0.31</p>
             <p className="text-[8px] text-[#4a443a]">per day</p>
           </div>
         </div>
@@ -1620,11 +1629,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">REACHES YOUR GOAL</span>
           <div className="grid grid-cols-[1fr_68px] items-center gap-[8px]">
             <div>
-              <p className="text-[12px] font-bold text-[#1c1a17]">12-week · Full transformation</p>
-              <p className="text-[9px] text-[#4a443a]">3 mo - $17.64</p>
+              <p className="text-[12px] font-bold text-[#1c1a17]">12-week · Full transformation - 78% off</p>
+              <p className="text-[9px] text-[#4a443a]">
+                <span className="mr-1">3 mo -</span>
+                <span className="mr-1 line-through opacity-60">$89.99</span>
+                <span className="font-bold text-[#1c1a17]">$19.80</span>
+              </p>
             </div>
             <div className="text-right">
-              <p className="text-[13px] font-bold text-[#1c1a17]">$0.21</p>
+              <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.07</p>
+              <p className="text-[13px] font-bold text-[#1c1a17]">$0.24</p>
               <p className="text-[8px] text-[#4a443a]">per day</p>
             </div>
           </div>
@@ -1633,7 +1647,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         </div>
         <div className="flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
-          <span className="text-[10px] uppercase text-white">12-WK</span>
+          <span className="text-[10px] uppercase text-white">12-WK - 78% off</span>
           <span className="text-[11px] font-bold uppercase text-white">See my personalized plan</span>
         </div>
         <div className="mt-2 rounded-[8px] border border-[#1c1a17]/30 px-2 py-[6px]">
@@ -1720,21 +1734,30 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="mt-2 space-y-1.5">
               <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
                 <div>
-                  <p className="text-[11px] font-bold text-[#1c1a17]">1-week · Kick-start</p>
-                  <p className="text-[9px] text-[#4a443a]">$10.5</p>
+                  <p className="text-[11px] font-bold text-[#1c1a17]">1-week · Kick-start - 78% off</p>
+                  <p className="text-[9px] text-[#4a443a]">
+                    <span className="mr-1 line-through opacity-60">$19.99</span>
+                    <span className="font-bold text-[#1c1a17]">$4.40</span>
+                  </p>
                 </div>
                 <div className="text-right">
-                  <p className="text-[13px] font-bold text-[#1c1a17]">$1.5</p>
+                  <p className="text-[8px] text-[#4a443a] line-through opacity-60">$2.86</p>
+                  <p className="text-[13px] font-bold text-[#1c1a17]">$0.63</p>
                   <p className="text-[8px] text-[#4a443a]">per day</p>
                 </div>
               </div>
               <div className="grid grid-cols-[1fr_68px] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] px-2 py-[7px] opacity-70">
                 <div>
-                  <p className="text-[11px] font-bold text-[#1c1a17]">4-week · Build habit</p>
-                  <p className="text-[9px] text-[#4a443a]">1 mo - $9.8</p>
+                  <p className="text-[11px] font-bold text-[#1c1a17]">4-week · Build habit - 78% off</p>
+                  <p className="text-[9px] text-[#4a443a]">
+                    <span className="mr-1">1 mo -</span>
+                    <span className="mr-1 line-through opacity-60">$39.99</span>
+                    <span className="font-bold text-[#1c1a17]">$8.80</span>
+                  </p>
                 </div>
                 <div className="text-right">
-                  <p className="text-[13px] font-bold text-[#1c1a17]">$0.35</p>
+                  <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.43</p>
+                  <p className="text-[13px] font-bold text-[#1c1a17]">$0.31</p>
                   <p className="text-[8px] text-[#4a443a]">per day</p>
                 </div>
               </div>
@@ -1742,18 +1765,23 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">REACHES YOUR GOAL</span>
                 <div className="grid grid-cols-[1fr_68px] items-center gap-[8px]">
                   <div>
-                    <p className="text-[12px] font-bold text-[#1c1a17]">12-week · Full transformation</p>
-                    <p className="text-[9px] text-[#4a443a]">3 mo - $17.64</p>
+                    <p className="text-[12px] font-bold text-[#1c1a17]">12-week · Full transformation - 78% off</p>
+                    <p className="text-[9px] text-[#4a443a]">
+                      <span className="mr-1">3 mo -</span>
+                      <span className="mr-1 line-through opacity-60">$89.99</span>
+                      <span className="font-bold text-[#1c1a17]">$19.80</span>
+                    </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-[13px] font-bold text-[#1c1a17]">$0.21</p>
+                    <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.07</p>
+                    <p className="text-[13px] font-bold text-[#1c1a17]">$0.24</p>
                     <p className="text-[8px] text-[#4a443a]">per day</p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="mt-3 flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
-              <span className="text-[10px] uppercase text-white">12-WK</span>
+              <span className="text-[10px] uppercase text-white">12-WK - 78% off</span>
               <span className="text-[11px] font-bold uppercase text-white">See my personalized plan</span>
             </div>
           </div>
