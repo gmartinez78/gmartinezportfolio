@@ -1525,22 +1525,20 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <p className="text-[8px] text-[#4a443a]">per day</p>
                 </div>
               </div>
-              <div className="relative rounded-[10px] border-2 border-[#2a5cb8] bg-[#DCEAEF] px-2 py-[9px]">
-                <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#2a5cb8] px-[5px] py-[1px] text-[7px] text-white">GET MORE HEALTH BENEFITS</span>
-                <div className="grid grid-cols-[14px_1fr_auto] items-center gap-[8px]">
-                  <div className="h-[12px] w-[12px] rounded-full bg-[#2a5cb8] shadow-[inset_0_0_0_2px_white]" />
-                  <div>
-                    <p className="text-[12px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
-                    <div className="text-[9px] text-[#4a443a]">
-                      <span className="mr-1 line-through opacity-60">$89.99</span>
-                      <span className="font-bold text-[#1c1a17]">$19.80</span>
-                    </div>
+              <div className="relative grid grid-cols-[14px_1fr_auto] items-center gap-[8px] rounded-[10px] border border-[#1c1a17] bg-white px-2 py-[9px] opacity-75">
+                <span className="absolute -top-[8px] left-[8px] rounded-[4px] bg-[#1c1a17] px-[5px] py-[1px] text-[7px] text-white">GET MORE HEALTH BENEFITS</span>
+                <div className="h-[12px] w-[12px] rounded-full bg-[#6b7280] shadow-[inset_0_0_0_2px_white]" />
+                <div>
+                  <p className="text-[12px] font-bold text-[#1c1a17]">12-WEEK PROGRAM</p>
+                  <div className="text-[9px] text-[#4a443a]">
+                    <span className="mr-1 line-through opacity-60">$89.99</span>
+                    <span className="font-bold text-[#1c1a17]">$19.80</span>
                   </div>
-                  <div className="text-right">
-                    <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.07</p>
-                    <p className="text-[13px] font-bold text-[#1c1a17]">$0.24</p>
-                    <p className="text-[8px] text-[#4a443a]">per day</p>
-                  </div>
+                </div>
+                <div className="text-right">
+                  <p className="text-[8px] text-[#4a443a] line-through opacity-60">$1.07</p>
+                  <p className="text-[13px] font-bold text-[#1c1a17]">$0.24</p>
+                  <p className="text-[8px] text-[#4a443a]">per day</p>
                 </div>
               </div>
             </div>
