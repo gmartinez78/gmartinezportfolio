@@ -1,0 +1,223 @@
+{
+  "library": {
+    "name": "Greddys Portfolio UI Library",
+    "version": "1.0.0",
+    "sourceOfTruth": {
+      "tokens": "design/figma/portfolio-ui-tokens.json",
+      "audit": "docs/component-library-audit.md"
+    }
+  },
+  "foundations": [
+    {
+      "name": "Colors",
+      "source": "design/figma/portfolio-ui-tokens.json"
+    },
+    {
+      "name": "Typography",
+      "source": "design/figma/portfolio-ui-tokens.json"
+    },
+    {
+      "name": "Radius",
+      "source": "design/figma/portfolio-ui-tokens.json"
+    },
+    {
+      "name": "Shadows",
+      "source": "design/figma/portfolio-ui-tokens.json"
+    }
+  ],
+  "primitives": [
+    {
+      "name": "Button",
+      "code": "components/ui/button.tsx",
+      "variants": {
+        "variant": [
+          "default",
+          "outline",
+          "secondary",
+          "tertiary",
+          "ghost",
+          "destructive",
+          "link"
+        ],
+        "size": [
+          "default",
+          "xs",
+          "sm",
+          "lg",
+          "xl",
+          "icon",
+          "icon-xs",
+          "icon-sm",
+          "icon-lg"
+        ]
+      }
+    },
+    {
+      "name": "Badge",
+      "code": "components/ui/badge.tsx",
+      "variants": {
+        "variant": [
+          "default",
+          "secondary",
+          "destructive",
+          "outline",
+          "ghost",
+          "link"
+        ],
+        "size": [
+          "default",
+          "sm",
+          "tag",
+          "lg"
+        ]
+      }
+    },
+    {
+      "name": "Card",
+      "code": "components/ui/card.tsx",
+      "variants": {
+        "size": [
+          "default",
+          "sm"
+        ]
+      }
+    },
+    {
+      "name": "Input",
+      "code": "components/ui/input.tsx"
+    },
+    {
+      "name": "Textarea",
+      "code": "components/ui/textarea.tsx"
+    },
+    {
+      "name": "Label",
+      "code": "components/ui/label.tsx"
+    },
+    {
+      "name": "SectionHeading",
+      "code": "components/ui/section-heading.tsx",
+      "variants": {
+        "alignment": [
+          "left",
+          "centered"
+        ],
+        "tone": [
+          "default",
+          "inverse"
+        ]
+      }
+    }
+  ],
+  "patterns": [
+    {
+      "name": "ContactFormCard",
+      "code": "components/contact-form-card.tsx",
+      "variants": {
+        "showSubject": [
+          true,
+          false
+        ],
+        "state": [
+          "default",
+          "submitting",
+          "error"
+        ]
+      }
+    },
+    {
+      "name": "FormField",
+      "code": "components/form-field.tsx"
+    },
+    {
+      "name": "InfoCard",
+      "code": "components/info-card.tsx"
+    },
+    {
+      "name": "FilterPillGroup",
+      "code": "components/filter-pill-group.tsx"
+    },
+    {
+      "name": "ProjectCard",
+      "code": "components/project-card.tsx",
+      "variants": {
+        "state": [
+          "default",
+          "locked",
+          "coming-soon"
+        ],
+        "orientation": [
+          "default",
+          "reversed"
+        ]
+      }
+    },
+    {
+      "name": "ProjectTeaserCard",
+      "code": "components/project-teaser-card.tsx",
+      "variants": {
+        "variant": [
+          "carousel",
+          "grid"
+        ],
+        "state": [
+          "default",
+          "active",
+          "inactive",
+          "locked"
+        ]
+      }
+    },
+    {
+      "name": "ResumeExperienceCard",
+      "code": "components/resume-experience-card.tsx"
+    },
+    {
+      "name": "ResumeDetailCard",
+      "code": "components/resume-detail-card.tsx"
+    },
+    {
+      "name": "ChecklistStatusCard",
+      "code": "components/checklist-status-card.tsx"
+    },
+    {
+      "name": "HighlightCalloutCard",
+      "code": "components/highlight-callout-card.tsx"
+    },
+    {
+      "name": "NarrativePanelCard",
+      "code": "components/narrative-panel-card.tsx"
+    },
+    {
+      "name": "ContentPanel",
+      "code": "components/content-panel.tsx"
+    },
+    {
+      "name": "KeyValueStackCard",
+      "code": "components/key-value-stack-card.tsx"
+    },
+    {
+      "name": "MetricStatCard",
+      "code": "components/metric-stat-card.tsx"
+    },
+    {
+      "name": "DataTablePanel",
+      "code": "components/data-table-panel.tsx",
+      "variants": {
+        "layout": [
+          "2-column",
+          "3-column",
+          "4-column",
+          "custom-grid"
+        ]
+      }
+    }
+  ],
+  "screensCovered": [
+    "/",
+    "/contact",
+    "/projects",
+    "/projects/[slug]",
+    "/resume"
+  ]
+}

@@ -100,7 +100,7 @@ function ProjectsPage() {
 
       {/* Hero */}
       <section className="mx-auto max-w-[1200px] px-6 pt-16 pb-10 text-center">
-        <h1 className="font-inter text-[44px] leading-[1.05] text-[#a1a1a1]">Projects</h1>
+        <h1 className="font-inter text-[44px] leading-[1.05] text-[var(--ui-color-text-strong)]">Projects</h1>
         <p className="mx-auto max-w-xl text-lg leading-relaxed text-[#5c7792] mt-6">
           Case studies and highlights from 10+ years designing enterprise SaaS, healthtech, and nonprofit digital experiences.
         </p>
@@ -151,7 +151,7 @@ function ProjectsPage() {
 
       {/* Social proof */}
       <section className="border-t border-[#bcd2ff]/40 py-10">
-        <p className="mb-6 text-center text-[13px] font-semibold uppercase tracking-[0.45em] text-[#a1a1a1]">
+        <p className="mb-6 text-center text-[13px] font-semibold uppercase tracking-[0.45em] text-[var(--ui-color-text-strong)]">
           Companies I've worked with
         </p>
         <div className="flex items-center justify-center gap-10 flex-wrap px-6">
@@ -164,7 +164,7 @@ function ProjectsPage() {
               style={{
                 width: `${logo.w}px`,
                 height: `${logo.h}px`,
-                backgroundColor: "#a1a1a1",
+                backgroundColor: "var(--ui-color-text-strong)",
                 WebkitMaskImage: `url(${logo.src})`,
                 maskImage: `url(${logo.src})`,
                 WebkitMaskRepeat: "no-repeat",
