@@ -8,6 +8,9 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ContentPanel } from "@/components/content-panel";
+import { DataTablePanel } from "@/components/data-table-panel";
+import { KeyValueStackCard } from "@/components/key-value-stack-card";
+import { MetricStatCard } from "@/components/metric-stat-card";
 import { NarrativePanelCard } from "@/components/narrative-panel-card";
 import { ProjectTeaserCard } from "@/components/project-teaser-card";
 import { Button } from "@/components/ui/button";
@@ -4584,48 +4587,45 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ))}
           </div>
 
-          <div className="mt-10 hidden overflow-x-auto rounded-[24px] border border-[#d7e8f7] bg-white md:block">
-            <div className="grid min-w-[900px] grid-cols-[1fr_1.2fr_1.4fr_0.8fr] bg-[#f7f9fb] text-[13px] font-bold uppercase tracking-[0.16em] text-[#0e2951]">
-              <div className="px-5 py-4">Alternative</div>
-              <div className="px-5 py-4">Strength</div>
-              <div className="px-5 py-4">Tradeoff</div>
-              <div className="px-5 py-4">Decision</div>
-            </div>
-            {NAYYA_PROCESS_TRADEOFFS.map((row) => (
-              <div
-                key={row.alternative}
-                className="grid min-w-[900px] grid-cols-[1fr_1.2fr_1.4fr_0.8fr] border-t border-[#d7e8f7] text-[15px] leading-[1.6] text-[#5c7792]"
-              >
-                <div className="px-5 py-5 font-semibold text-[#0e2951]">{row.alternative}</div>
-                <div className="px-5 py-5">{row.strength}</div>
-                <div className="px-5 py-5">{row.tradeoff}</div>
-                <div className="px-5 py-5 font-semibold text-[#1183D0]">{row.decision}</div>
-              </div>
-            ))}
-          </div>
+          <DataTablePanel
+            wrapperClassName="mt-10 hidden overflow-x-auto"
+            minWidthClassName="min-w-[900px]"
+            columnsClassName="grid grid-cols-[1fr_1.2fr_1.4fr_0.8fr]"
+            headerClassName="text-[13px]"
+            rowClassName="text-[15px]"
+            headers={[
+              <div className="px-5 py-4">Alternative</div>,
+              <div className="px-5 py-4">Strength</div>,
+              <div className="px-5 py-4">Tradeoff</div>,
+              <div className="px-5 py-4">Decision</div>,
+            ]}
+            rows={NAYYA_PROCESS_TRADEOFFS.map((row) => [
+              <div className="px-5 py-5 font-semibold text-[var(--ui-color-text-strong)]">{row.alternative}</div>,
+              <div className="px-5 py-5">{row.strength}</div>,
+              <div className="px-5 py-5">{row.tradeoff}</div>,
+              <div className="px-5 py-5 font-semibold text-[var(--ui-color-brand-primary)]">{row.decision}</div>,
+            ])}
+          />
 
           <div className="mt-10 grid gap-4 md:hidden">
             {NAYYA_PROCESS_TRADEOFFS.map((row) => (
-              <Card key={row.alternative} className="overflow-hidden">
-                <CardContent className="space-y-4 px-5 py-5">
-                  <div>
-                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Alternative</p>
-                    <p className="mt-2 text-[18px] font-semibold leading-snug text-[#0e2951]">{row.alternative}</p>
-                  </div>
-                  <div>
-                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Strength</p>
-                    <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.strength}</p>
-                  </div>
-                  <div>
-                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Tradeoff</p>
-                    <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.tradeoff}</p>
-                  </div>
-                  <div>
-                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Decision</p>
-                    <p className="mt-2 text-[15px] font-semibold text-[#1183D0]">{row.decision}</p>
-                  </div>
-                </CardContent>
-              </Card>
+              <KeyValueStackCard
+                key={row.alternative}
+                items={[
+                  {
+                    label: "Alternative",
+                    value: row.alternative,
+                    valueClassName: "mt-2 text-[18px] font-semibold leading-snug text-[var(--ui-color-text-strong)]",
+                  },
+                  { label: "Strength", value: row.strength },
+                  { label: "Tradeoff", value: row.tradeoff },
+                  {
+                    label: "Decision",
+                    value: row.decision,
+                    valueClassName: "mt-2 text-[15px] font-semibold text-[var(--ui-color-brand-primary)]",
+                  },
+                ]}
+              />
             ))}
           </div>
         </section>
@@ -4642,45 +4642,36 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             guided decision modal was the concept tested, and the findings showed which parts of the
             integration felt clear and where friction still remained.
           </p>
-          <div className="hidden overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white md:block">
-            <div className="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 border-b border-[#d7e8f7] bg-[#f7f9fb] px-6 py-4 text-[13px] font-bold uppercase tracking-[0.16em] text-[#0e2951]">
-              <div>Metric</div>
-              <div>Finding</div>
-              <div>Insight</div>
-            </div>
-            {NAYYA_TESTING_RESULTS.map((row) => (
-              <div
-                key={`${row.metric}-${row.label}`}
-                className="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 border-t border-[#d7e8f7] px-5 py-5 text-[15px] leading-[1.6] text-[#5c7792]"
-              >
-                <div>
-                  <p className="text-[30px] font-semibold leading-none text-[#0e2951]">{row.metric}</p>
-                  <p className="mt-3 text-[14px] leading-[1.5] text-[#5c7792]">{row.label}</p>
-                </div>
-                <p className="font-normal text-[#5c7792]">{row.finding}</p>
-                <p className="font-normal text-[#5c7792]">{row.insight}</p>
-              </div>
-            ))}
-          </div>
+          <DataTablePanel
+            wrapperClassName="hidden md:block"
+            columnsClassName="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 px-6"
+            headerClassName="py-4"
+            rowClassName="px-0 py-5"
+            headers={[<div>Metric</div>, <div>Finding</div>, <div>Insight</div>]}
+            rows={NAYYA_TESTING_RESULTS.map((row) => [
+              <div>
+                <p className="text-[30px] font-semibold leading-none text-[var(--ui-color-text-strong)]">{row.metric}</p>
+                <p className="mt-3 text-[14px] leading-[1.5] text-[var(--ui-color-text-muted)]">{row.label}</p>
+              </div>,
+              <p className="font-normal text-[var(--ui-color-text-muted)]">{row.finding}</p>,
+              <p className="font-normal text-[var(--ui-color-text-muted)]">{row.insight}</p>,
+            ])}
+          />
 
           <div className="grid gap-4 md:hidden">
             {NAYYA_TESTING_RESULTS.map((row) => (
-              <Card key={`${row.metric}-${row.label}`} className="overflow-hidden">
-                <CardContent className="space-y-4 px-5 py-5">
-                  <div>
-                    <p className="text-[28px] font-semibold leading-none text-[#0e2951]">{row.metric}</p>
-                    <p className="mt-2 text-[14px] leading-[1.5] text-[#5c7792]">{row.label}</p>
-                  </div>
-                  <div>
-                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Finding</p>
-                    <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{row.finding}</p>
-                  </div>
-                  <div>
-                    <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Insight</p>
-                    <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{row.insight}</p>
-                  </div>
-                </CardContent>
-              </Card>
+              <KeyValueStackCard
+                key={`${row.metric}-${row.label}`}
+                items={[
+                  {
+                    label: row.metric,
+                    value: row.label,
+                    valueClassName: "mt-2 text-[14px] leading-[1.5] text-[var(--ui-color-text-muted)]",
+                  },
+                  { label: "Finding", value: row.finding, valueClassName: "mt-2 text-[14px] leading-[1.6] text-[var(--ui-color-text-muted)]" },
+                  { label: "Insight", value: row.insight, valueClassName: "mt-2 text-[14px] leading-[1.6] text-[var(--ui-color-text-muted)]" },
+                ]}
+              />
             ))}
           </div>
         </section>
@@ -4747,30 +4738,25 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title="Results & Impact" centered className="mb-12" />
           {caseStudy.slug === "flock-accessibility-system" ? (
-          <div className="mx-auto max-w-[1040px] overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white">
-            <div className="grid grid-cols-[1fr_1fr] gap-6 border-b border-[#d7e8f7] bg-[#f7f9fb] px-6 py-4 text-[13px] font-bold uppercase tracking-[0.16em] text-[#0e2951]">
-              <div>Before</div>
-              <div>After</div>
-            </div>
-            {FLOCK_RESULTS_COMPARISON.map((row) => (
-              <div
-                key={row.before}
-                className="grid grid-cols-[1fr_1fr] gap-6 border-t border-[#d7e8f7] px-6 py-5 text-[15px] leading-[1.7] text-[#5c7792]"
-              >
-                <p>{row.before}</p>
-                <p className="text-[#0e2951]">{row.after}</p>
-              </div>
-            ))}
-          </div>
+          <DataTablePanel
+            wrapperClassName="mx-auto max-w-[1040px]"
+            columnsClassName="grid grid-cols-[1fr_1fr] gap-6 px-6"
+            headerClassName="py-4"
+            rowClassName="py-5"
+            headers={[<div>Before</div>, <div>After</div>]}
+            rows={FLOCK_RESULTS_COMPARISON.map((row) => [
+              <p>{row.before}</p>,
+              <p className="text-[var(--ui-color-text-strong)]">{row.after}</p>,
+            ])}
+          />
         ) : resultRows.length ? (
           <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
             {resultRows.map((row) => (
-              <Card key={`${row.metric}-${row.value}`} className="overflow-hidden">
-                <CardContent className="px-4 py-5">
-                  <p className="text-[24px] font-bold leading-none text-[#0e2951]">{row.value}</p>
-                  <p className="mt-2 text-[13px] leading-[1.4] text-[#0e2951]">{row.metric}</p>
-                </CardContent>
-              </Card>
+              <MetricStatCard
+                key={`${row.metric}-${row.value}`}
+                value={row.value ?? ""}
+                label={row.metric ?? ""}
+              />
             ))}
           </div>
         ) : null}
@@ -4824,47 +4810,34 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         Conservative 1-Month Scenario
                       </p>
                     </div>
-                    <div className="hidden md:block">
-                      <div className="grid grid-cols-4 border-b border-[#d7e8f7] px-5 py-4 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#0e2951]">
-                        <div>Budget</div>
-                        <div>Reach</div>
-                        <div>Purchases</div>
-                        <div>Revenue</div>
-                      </div>
-                      {CONFIDENTIAL_CONSERVATIVE_SCENARIO_ROWS.map((row) => (
-                        <div
-                          key={row.budget}
-                          className="grid grid-cols-4 border-t border-[#d7e8f7] px-5 py-4 text-[15px] leading-[1.6] text-[#5c7792]"
-                        >
-                          <div className="font-semibold text-[#0e2951]">{row.budget}</div>
-                          <div>{row.reach}</div>
-                          <div>{row.purchases}</div>
-                          <div>{row.revenue}</div>
-                        </div>
-                      ))}
-                    </div>
+                  <DataTablePanel
+                    wrapperClassName="hidden md:block"
+                    columnsClassName="grid grid-cols-4 px-5"
+                    headerClassName="py-4 text-[12px] font-semibold"
+                    rowClassName="py-4"
+                    headers={[<div>Budget</div>, <div>Reach</div>, <div>Purchases</div>, <div>Revenue</div>]}
+                    rows={CONFIDENTIAL_CONSERVATIVE_SCENARIO_ROWS.map((row) => [
+                      <div className="font-semibold text-[var(--ui-color-text-strong)]">{row.budget}</div>,
+                      <div>{row.reach}</div>,
+                      <div>{row.purchases}</div>,
+                      <div>{row.revenue}</div>,
+                    ])}
+                  />
                     <div className="grid gap-3 p-4 md:hidden">
                       {CONFIDENTIAL_CONSERVATIVE_SCENARIO_ROWS.map((row) => (
-                        <Card key={`scenario-${row.budget}`} className="overflow-hidden">
-                          <CardContent className="grid grid-cols-2 gap-3 px-4 py-4 text-[14px] leading-[1.5] text-[#5c7792]">
-                            <div>
-                              <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#65676b]">Budget</p>
-                              <p className="mt-1 font-semibold text-[#0e2951]">{row.budget}</p>
-                            </div>
-                            <div>
-                              <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#65676b]">Reach</p>
-                              <p className="mt-1">{row.reach}</p>
-                            </div>
-                            <div>
-                              <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#65676b]">Purchases</p>
-                              <p className="mt-1">{row.purchases}</p>
-                            </div>
-                            <div>
-                              <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#65676b]">Revenue</p>
-                              <p className="mt-1">{row.revenue}</p>
-                            </div>
-                          </CardContent>
-                        </Card>
+                        <KeyValueStackCard
+                          key={`scenario-${row.budget}`}
+                          items={[
+                            {
+                              label: "Budget",
+                              value: row.budget,
+                              valueClassName: "mt-1 font-semibold text-[var(--ui-color-text-strong)]",
+                            },
+                            { label: "Reach", value: row.reach, valueClassName: "mt-1" },
+                            { label: "Purchases", value: row.purchases, valueClassName: "mt-1" },
+                            { label: "Revenue", value: row.revenue, valueClassName: "mt-1" },
+                          ]}
+                        />
                       ))}
                     </div>
                   </div>
