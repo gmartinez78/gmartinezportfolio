@@ -7,6 +7,7 @@ import { Kalam } from "next/font/google";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ProjectTeaserCard } from "@/components/project-teaser-card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -5366,42 +5367,17 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <h2 className="mb-8 font-inter text-[32px] text-[#0e2951]">Other Projects</h2>
         <div className="grid gap-5 md:grid-cols-3">
           {otherProjects.map((project) => (
-            <Link
+            <ProjectTeaserCard
               key={project.slug}
               id={project.cardId}
-              data-home-card-id={project.cardId}
               href={resolveProjectHref(project)}
-              className="group flex min-w-0 cursor-pointer flex-col gap-5 outline-none"
-            >
-              <div className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] shadow-[0_18px_52px_rgba(14,41,81,0.12)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(14,41,81,0.22)] group-focus-visible:-translate-y-1 group-focus-visible:shadow-[0_28px_70px_rgba(14,41,81,0.22)]">
-                <Image
-                  src={project.previewImage}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.04] group-focus-visible:scale-[1.04]"
-                />
-              </div>
-              <div className="flex flex-wrap gap-3">
-                {project.tags.map((tag) => (
-                  <Badge key={tag} size="tag">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-              <h3 className="font-inter text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200 group-hover:text-[rgb(14_41_81/var(--tw-text-opacity,1))] group-focus-visible:text-[rgb(14_41_81/var(--tw-text-opacity,1))]">
-                {project.title}
-              </h3>
-              <div className="-mt-2 h-[116px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-                <div className="flex h-full flex-col justify-between">
-                  <p className="text-[15px] leading-relaxed text-[#5c7792]">
-                    {project.tagline}
-                  </p>
-                  <span className="inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline group-focus-visible:underline">
-                    {project.external_link ? "View project" : "View case study"} →
-                  </span>
-                </div>
-              </div>
-            </Link>
+              dataCardId={project.cardId}
+              title={project.title}
+              description={project.tagline ?? ""}
+              tags={project.tags}
+              image={project.previewImage}
+              ctaLabel={project.external_link ? "View project" : "View case study"}
+            />
           ))}
         </div>
       </section>

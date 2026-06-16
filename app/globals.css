@@ -197,6 +197,29 @@
     --sidebar-accent-foreground: oklch(0.205 0 0);
     --sidebar-border: oklch(0.922 0 0);
     --sidebar-ring: oklch(0.708 0 0);
+    --ui-color-brand-primary: #1183d0;
+    --ui-color-brand-primary-hover: #0e75b8;
+    --ui-color-brand-primary-soft: #e0eefb;
+    --ui-color-brand-primary-soft-hover: #d4e9fb;
+    --ui-color-brand-primary-subtle: #eef6ff;
+    --ui-color-brand-primary-ring: rgb(17 131 208 / 0.3);
+    --ui-color-text-strong: #0e2951;
+    --ui-color-text-body: #3c3e3f;
+    --ui-color-text-muted: #5c7792;
+    --ui-color-text-subtle: #9bb7d0;
+    --ui-color-border-strong: #cfe5f8;
+    --ui-color-border-muted: #9bb9d7;
+    --ui-color-surface-base: #ffffff;
+    --ui-color-surface-soft: #f7fbff;
+    --ui-color-surface-soft-hover: #f0f7ff;
+    --ui-color-danger: #d60060;
+    --ui-color-danger-hover: #b5004e;
+    --ui-radius-field: 22px;
+    --ui-radius-button: 24px;
+    --ui-radius-card: 28px;
+    --ui-radius-pill: 999px;
+    --ui-shadow-card: 0 1px 2px rgb(14 41 81 / 0.06);
+    --ui-shadow-focus: 0 0 0 2px rgb(17 131 208 / 0.15);
   }
   .dark {
     --background: oklch(0.145 0 0);

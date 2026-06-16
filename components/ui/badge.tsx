@@ -5,19 +5,20 @@ import { Slot } from "radix-ui"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent whitespace-nowrap font-semibold transition-all focus-visible:ring-2 focus-visible:ring-[#1183D0]/30 [&>svg]:pointer-events-none",
+  "inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-[var(--ui-radius-pill)] border border-transparent whitespace-nowrap font-semibold transition-all focus-visible:ring-2 focus-visible:ring-[var(--ui-color-brand-primary-ring)] [&>svg]:pointer-events-none",
   {
     variants: {
       variant: {
-        default: "bg-[#E0EEFB] text-[#1183D0] hover:bg-[#d4e9fb]",
+        default:
+          "bg-[var(--ui-color-brand-primary-soft)] text-[var(--ui-color-brand-primary)] hover:bg-[var(--ui-color-brand-primary-soft-hover)]",
         secondary:
-          "bg-[#F0F7FF] text-[#5c7792] hover:bg-[#E0EEFB]",
+          "bg-[var(--ui-color-surface-soft-hover)] text-[var(--ui-color-text-muted)] hover:bg-[var(--ui-color-brand-primary-soft)]",
         destructive:
           "bg-destructive/10 text-destructive focus-visible:ring-destructive/20 hover:bg-destructive/20",
         outline:
-          "border-[#CFE5F8] bg-white text-[#1183D0] hover:bg-[#F0F7FF]",
+          "border-[var(--ui-color-border-strong)] bg-[var(--ui-color-surface-base)] text-[var(--ui-color-brand-primary)] hover:bg-[var(--ui-color-surface-soft-hover)]",
         ghost:
-          "bg-transparent text-[#5c7792] hover:bg-[#E0EEFB] hover:text-[#1183D0]",
+          "bg-transparent text-[var(--ui-color-text-muted)] hover:bg-[var(--ui-color-brand-primary-soft)] hover:text-[var(--ui-color-brand-primary)]",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {

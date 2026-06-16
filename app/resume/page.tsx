@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { ResumeDetailCard } from "../../components/resume-detail-card";
+import { ResumeExperienceCard } from "../../components/resume-experience-card";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
@@ -317,10 +319,6 @@ const FEATURED_CREDENTIALS = [
   },
 ];
 
-function Tag({ label }: { label: string }) {
-  return <Badge size="tag">{label}</Badge>;
-}
-
 export default function ResumePage() {
   const [collapsedSkillGroups, setCollapsedSkillGroups] = useState<Record<string, boolean>>({});
   const { siteContent } = usePublicSiteContent();
@@ -471,53 +469,15 @@ export default function ResumePage() {
         <SectionHeading eyebrow="Career" title="Experience" centered className="mb-8" />
         <div className="flex flex-col gap-5">
           {experience.map((job) => (
-            <Card
+            <ResumeExperienceCard
               key={`${job.role}-${job.company}`}
-              className="overflow-hidden rounded-[34px] border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.84)_0%,rgba(247,251,255,0.74)_100%)] p-0 py-0 shadow-[0_22px_56px_rgba(31,53,94,0.08)] backdrop-blur-xl"
-            >
-              <CardContent className="p-6 sm:p-7">
-              <div className="flex items-start justify-between gap-4 flex-wrap">
-                <div>
-                  <h3 className="text-lg font-semibold text-[#0e2951]">{job.role}</h3>
-                  <p className="text-sm text-[#5c7792] mt-0.5">{job.company}</p>
-                </div>
-                <div className="flex flex-wrap gap-2 shrink-0">
-                  <Badge variant="secondary" size="sm">{job.period}</Badge>
-                  <Badge variant="secondary" size="sm">{job.location}</Badge>
-                </div>
-              </div>
-              <ul className="mt-4 space-y-2">
-                {job.bullets.map((b) => (
-                  typeof b === "string" ? (
-                    <li key={b} className="text-sm text-[#3c3e3f] leading-relaxed flex gap-2">
-                      <span className="text-[#1183D0] mt-1 shrink-0">›</span>
-                      {b}
-                    </li>
-                  ) : (
-                    <li key={b.heading} className="text-sm text-[#3c3e3f] leading-relaxed">
-                      <div className="flex gap-2">
-                        <span className="text-[#1183D0] mt-1 shrink-0">›</span>
-                        <span className="font-inter font-semibold text-[#0e2951]">
-                          {b.heading}
-                        </span>
-                      </div>
-                      <ul className="mt-2 space-y-2 pl-5">
-                        {b.items.map((item) => (
-                          <li key={item} className="flex gap-2 text-sm text-[#3c3e3f] leading-relaxed">
-                            <span className="text-[#1183D0] mt-1 shrink-0">•</span>
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </li>
-                  )
-                ))}
-              </ul>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {job.tags.map((t) => <Tag key={t} label={t} />)}
-              </div>
-              </CardContent>
-            </Card>
+              role={job.role}
+              company={job.company}
+              period={job.period}
+              location={job.location}
+              bullets={job.bullets}
+              tags={job.tags}
+            />
           ))}
         </div>
       </section>
@@ -574,17 +534,16 @@ export default function ResumePage() {
               <SectionHeading eyebrow="Training" title="Education" />
               <div className="mt-8 flex flex-col gap-5">
                 {education.map((edu) => (
-                  <Card key={edu.degree} className="rounded-[28px] border border-white/60 bg-white/72 p-0 py-0 shadow-[0_14px_36px_rgba(31,53,94,0.06)]">
-                    <CardContent className="px-6 py-6">
-                    <Badge size="tag">
-                      {edu.year}
-                    </Badge>
-                    <h3 className="mt-4 text-[18px] font-semibold text-[#111827]">
-                      {edu.degree}
-                    </h3>
-                    <p className="mt-2 text-base text-[#3c3e3f]">{edu.school}</p>
-                    </CardContent>
-                  </Card>
+                  <ResumeDetailCard
+                    key={edu.degree}
+                    badge={edu.year}
+                    title={edu.degree}
+                    description={edu.school}
+                    className="rounded-[28px] border border-white/60 bg-white/72 shadow-[0_14px_36px_rgba(31,53,94,0.06)]"
+                    contentClassName="px-6 py-6"
+                    titleClassName="text-[#111827]"
+                    descriptionClassName="text-base text-[var(--ui-color-text-body)]"
+                  />
                 ))}
               </div>
 
@@ -633,15 +592,12 @@ export default function ResumePage() {
 
             <div className="mt-8 flex flex-col gap-5">
               {certifications.map((item) => (
-                <Card key={`${item.year}-${item.title}`} className="rounded-[30px] border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.82)_0%,rgba(247,251,255,0.76)_100%)] p-0 py-0 shadow-[0_16px_40px_rgba(31,53,94,0.07)]">
-                  <CardContent className="p-6">
-                  <Badge size="tag">
-                    {item.year}
-                  </Badge>
-                  <h3 className="mt-4 text-[18px] font-semibold text-[#0e2951]">{item.title}</h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-[#5c7792]">{item.description}</p>
-                  </CardContent>
-                </Card>
+                <ResumeDetailCard
+                  key={`${item.year}-${item.title}`}
+                  badge={item.year}
+                  title={item.title}
+                  description={item.description}
+                />
               ))}
             </div>
           </div>

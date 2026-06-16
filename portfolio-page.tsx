@@ -9,6 +9,7 @@ import { SiteHeader } from "./components/site-header";
 import { TypewriterBanner } from "./components/typewriter-banner";
 import { Badge } from "./components/ui/badge";
 import { Button } from "./components/ui/button";
+import { ProjectTeaserCard } from "./components/project-teaser-card";
 import { appendLockedNayyaPlaceholder } from "./lib/cms/locked-placeholder";
 import {
   isHiddenCaseStudySlug,
@@ -820,72 +821,26 @@ export default function PortfolioPage() {
                 (highlightedProjectIds.length > 0 && highlightedProjectIds.includes(project.cardId));
 
               return (
-                <Link
+                <ProjectTeaserCard
                   key={project.title}
                   id={project.cardId}
-                  data-home-card-id={project.cardId}
-                  data-home-slider-card
                   href={project.href}
+                  dataCardId={project.cardId}
                   onMouseEnter={() => setActiveProjectCardId(project.cardId)}
                   onFocus={() => setActiveProjectCardId(project.cardId)}
-                  className={`group flex min-w-[86%] snap-start flex-col gap-5 rounded-[30px] bg-white p-0 outline-none transition-all md:min-w-[46%] xl:min-w-[31%] ${
-                    highlightedProjectIds.length && !highlightedProjectIds.includes(project.cardId)
-                      ? "opacity-45"
-                      : ""
-                  }`}
-                >
-                  <div className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] transition-all duration-300 group-hover:-translate-y-1 sm:h-[300px] xl:h-[230px]" style={!project.image ? { background: project.background } : undefined}>
-                    {project.image ? (
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                      />
-                    ) : (
-                      <div className="flex h-full items-center justify-center px-6 text-center">
-                        <div>
-                          <div className="text-5xl font-inter font-bold text-[#1183D0]">{project.year}</div>
-                          <div className="mt-2 text-xs leading-tight text-[#5c7792]">{project.company}</div>
-                        </div>
-                      </div>
-                    )}
-                    {isActiveCard ? (
-                      <div className="pointer-events-none absolute inset-0 ring-2 ring-[#1183D0] ring-offset-4 ring-offset-white" />
-                    ) : null}
-                  </div>
-                  <div className="flex flex-wrap gap-3">
-                    {project.tags.map((tag) => (
-                      <Badge key={tag} size="tag">{tag}</Badge>
-                    ))}
-                  </div>
-                  <div className="flex min-h-[236px] flex-col justify-between">
-                    <div className="pb-4">
-                      <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
-                        <span className="text-xs font-medium text-[#5c7792]">{project.company}</span>
-                        <span className="text-[#bcd2ff]">·</span>
-                        <span className="text-xs text-[#5c7792]">{project.year}</span>
-                        {project.password ? (
-                          <>
-                            <span className="text-[#bcd2ff]">·</span>
-                            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Locked</span>
-                          </>
-                        ) : null}
-                      </div>
-                      <h3 className="font-inter text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200">
-                        {project.title}
-                      </h3>
-                    </div>
-                    <div className={`-mt-1 h-[148px] transition-all duration-300 ${isActiveCard ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"}`}>
-                      <div className="flex h-full flex-col gap-3">
-                        <p className="text-[15px] leading-relaxed text-[#5c7792]">{project.description}</p>
-                        <span className="inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline">
-                          {project.cta} →
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
+                  title={project.title}
+                  company={project.company}
+                  year={project.year}
+                  description={project.description}
+                  tags={project.tags}
+                  image={project.image}
+                  background={project.background}
+                  ctaLabel={project.cta}
+                  locked={Boolean(project.password)}
+                  variant="carousel"
+                  inactive={Boolean(highlightedProjectIds.length && !highlightedProjectIds.includes(project.cardId))}
+                  active={isActiveCard}
+                />
               );
             })()
           ))}

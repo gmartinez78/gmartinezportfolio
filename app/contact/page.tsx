@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { FormField } from "../../components/form-field";
+import { InfoCard } from "../../components/info-card";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Button } from "../../components/ui/button";
@@ -108,32 +109,32 @@ export default function ContactPage() {
             <h2 className="text-xl font-semibold text-[#0e2951] mb-6">Send a message</h2>
             <form className="flex flex-col gap-4">
               <div className="grid grid-cols-2 gap-4">
-                <div className="flex flex-col gap-1.5">
+                <FormField>
                   <Label htmlFor="contact-name">Name</Label>
                   <Input
                     id="contact-name"
                     type="text"
                     placeholder="Your name"
                   />
-                </div>
-                <div className="flex flex-col gap-1.5">
+                </FormField>
+                <FormField>
                   <Label htmlFor="contact-email">Email</Label>
                   <Input
                     id="contact-email"
                     type="email"
                     placeholder="your@email.com"
                   />
-                </div>
+                </FormField>
               </div>
-              <div className="flex flex-col gap-1.5">
+              <FormField>
                 <Label htmlFor="contact-subject">Subject</Label>
                 <Input
                   id="contact-subject"
                   type="text"
                   placeholder="What's this about?"
                 />
-              </div>
-              <div className="flex flex-col gap-1.5">
+              </FormField>
+              <FormField>
                 <Label htmlFor="contact-message">Message</Label>
                 <Textarea
                   id="contact-message"
@@ -141,7 +142,7 @@ export default function ContactPage() {
                   placeholder="Tell me about your project..."
                   className="resize-none"
                 />
-              </div>
+              </FormField>
               <Button
                 type="submit"
                 className="mt-2"
@@ -162,26 +163,13 @@ export default function ContactPage() {
               {siteContent.contact.availability}
             </p>
             {infoCards.map((card) => (
-              <Card
+              <InfoCard
                 key={card.label}
-                className="overflow-hidden rounded-[30px] border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.84)_0%,rgba(247,251,255,0.74)_100%)] p-0 py-0 shadow-[0_18px_42px_rgba(31,53,94,0.08)]"
-              >
-                <CardContent className="flex items-center gap-6 p-6">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white/78 text-[#0e2951] shadow-[0_10px_24px_rgba(31,53,94,0.06)]">
-                  {card.icon}
-                </div>
-                <div>
-                  <p className="text-base font-semibold text-[#3c3e3f]">{card.label}</p>
-                  {card.href?.startsWith("/") ? (
-                    <Link href={card.href} className="text-sm text-[#0e2951] font-medium hover:text-[#1183D0] transition-colors">{card.value}</Link>
-                  ) : card.href ? (
-                    <a href={card.href} className="text-sm text-[#0e2951] font-medium hover:text-[#1183D0] transition-colors">{card.value}</a>
-                  ) : (
-                    <p className="text-sm text-[#0e2951] font-medium">{card.value}</p>
-                  )}
-                </div>
-                </CardContent>
-              </Card>
+                icon={card.icon}
+                label={card.label}
+                value={card.value}
+                href={card.href}
+              />
             ))}
           </div>
         </div>

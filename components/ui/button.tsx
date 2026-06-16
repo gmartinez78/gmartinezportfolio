@@ -5,24 +5,24 @@ import { Slot } from "radix-ui"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center gap-5 whitespace-nowrap border-2 border-transparent bg-clip-padding font-semibold outline-none transition-all focus-visible:ring-2 focus-visible:ring-[#1183D0]/30 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  "inline-flex shrink-0 items-center justify-center gap-5 whitespace-nowrap border-2 border-transparent bg-clip-padding font-semibold outline-none transition-all focus-visible:ring-2 focus-visible:ring-[var(--ui-color-brand-primary-ring)] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         default:
-          "rounded-[24px] bg-[#1183D0] text-white shadow-none hover:bg-[#0e75b8]",
+          "rounded-[var(--ui-radius-button)] bg-[var(--ui-color-brand-primary)] text-white shadow-none hover:bg-[var(--ui-color-brand-primary-hover)]",
         outline:
-          "rounded-[24px] border-[#CFE5F8] bg-white text-[#1183D0] shadow-none hover:border-[#1183D0] hover:bg-white hover:text-[#1183D0]",
+          "rounded-[var(--ui-radius-button)] border-[var(--ui-color-border-strong)] bg-[var(--ui-color-surface-base)] text-[var(--ui-color-brand-primary)] shadow-none hover:border-[var(--ui-color-brand-primary)] hover:bg-[var(--ui-color-surface-base)] hover:text-[var(--ui-color-brand-primary)]",
         secondary:
-          "rounded-[24px] bg-[#E0EEFB] text-[#1183D0] shadow-none hover:bg-[#d4e9fb]",
+          "rounded-[var(--ui-radius-button)] bg-[var(--ui-color-brand-primary-soft)] text-[var(--ui-color-brand-primary)] shadow-none hover:bg-[var(--ui-color-brand-primary-soft-hover)]",
         tertiary:
-          "rounded-[24px] border-[#CFE5F8] bg-transparent text-[#5c7792] shadow-none hover:border-[#9bb9d7] hover:bg-white hover:text-[#0e2951]",
+          "rounded-[var(--ui-radius-button)] border-[var(--ui-color-border-strong)] bg-transparent text-[var(--ui-color-text-muted)] shadow-none hover:border-[var(--ui-color-border-muted)] hover:bg-[var(--ui-color-surface-base)] hover:text-[var(--ui-color-text-strong)]",
         ghost:
-          "rounded-[24px] bg-transparent text-[#5c7792] shadow-none hover:bg-transparent hover:text-[#1183D0]",
+          "rounded-[var(--ui-radius-button)] bg-transparent text-[var(--ui-color-text-muted)] shadow-none hover:bg-transparent hover:text-[var(--ui-color-brand-primary)]",
         destructive:
-          "rounded-[24px] bg-[#d60060] text-white shadow-none hover:bg-[#b5004e]",
+          "rounded-[var(--ui-radius-button)] bg-[var(--ui-color-danger)] text-white shadow-none hover:bg-[var(--ui-color-danger-hover)]",
         link:
-          "rounded-none bg-transparent px-0 text-[#5c7792] shadow-none underline-offset-4 hover:bg-transparent hover:text-[#1183D0] hover:underline",
+          "rounded-none bg-transparent px-0 text-[var(--ui-color-text-muted)] shadow-none underline-offset-4 hover:bg-transparent hover:text-[var(--ui-color-brand-primary)] hover:underline",
       },
       size: {
         default: "px-10 py-3 text-xl",

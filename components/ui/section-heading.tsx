@@ -21,7 +21,7 @@ export function SectionHeading({
         <p
           className={cn(
             "text-[13px] font-semibold uppercase tracking-[0.45em]",
-            inverse ? "text-white/60" : "text-[#1183D0]"
+            inverse ? "text-white/60" : "text-[var(--ui-color-brand-primary)]"
           )}
         >
           {eyebrow}
@@ -30,7 +30,7 @@ export function SectionHeading({
       <h2
         className={cn(
           "font-inter text-[44px] leading-[1.05]",
-          inverse ? "text-white" : "text-[#0e2951]"
+          inverse ? "text-white" : "text-[var(--ui-color-text-strong)]"
         )}
       >
         {title}
