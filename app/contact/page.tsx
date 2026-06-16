@@ -1,15 +1,10 @@
 "use client";
 
-import { FormField } from "../../components/form-field";
 import { InfoCard } from "../../components/info-card";
+import { ContactFormCard } from "../../components/contact-form-card";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
-import { Button } from "../../components/ui/button";
-import { Card, CardContent } from "../../components/ui/card";
-import { Input } from "../../components/ui/input";
-import { Label } from "../../components/ui/label";
 import { SectionHeading } from "../../components/ui/section-heading";
-import { Textarea } from "../../components/ui/textarea";
 import { usePublicSiteContent } from "../../lib/cms/public";
 
 
@@ -104,58 +99,11 @@ export default function ContactPage() {
       <section className="max-w-[1200px] mx-auto px-6 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Form */}
-          <Card className="overflow-hidden rounded-[34px] border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.84)_0%,rgba(247,251,255,0.74)_100%)] p-0 py-0 shadow-[0_22px_56px_rgba(31,53,94,0.08)] backdrop-blur-xl">
-            <CardContent className="p-8">
-            <h2 className="text-xl font-semibold text-[#0e2951] mb-6">Send a message</h2>
-            <form className="flex flex-col gap-4">
-              <div className="grid grid-cols-2 gap-4">
-                <FormField>
-                  <Label htmlFor="contact-name">Name</Label>
-                  <Input
-                    id="contact-name"
-                    type="text"
-                    placeholder="Your name"
-                  />
-                </FormField>
-                <FormField>
-                  <Label htmlFor="contact-email">Email</Label>
-                  <Input
-                    id="contact-email"
-                    type="email"
-                    placeholder="your@email.com"
-                  />
-                </FormField>
-              </div>
-              <FormField>
-                <Label htmlFor="contact-subject">Subject</Label>
-                <Input
-                  id="contact-subject"
-                  type="text"
-                  placeholder="What's this about?"
-                />
-              </FormField>
-              <FormField>
-                <Label htmlFor="contact-message">Message</Label>
-                <Textarea
-                  id="contact-message"
-                  rows={6}
-                  placeholder="Tell me about your project..."
-                  className="resize-none"
-                />
-              </FormField>
-              <Button
-                type="submit"
-                className="mt-2"
-              >
-                Send Message
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <line x1="22" y1="2" x2="11" y2="13"/>
-                  <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                </svg>
-              </Button>
-            </form>
-            </CardContent>
-          </Card>
+          <ContactFormCard
+            title="Send a message"
+            submitLabel="Send Message"
+            values={{ name: "", email: "", subject: "", message: "" }}
+          />
 
           {/* Info Cards */}
           <div className="flex flex-col gap-4">

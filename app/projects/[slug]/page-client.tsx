@@ -7,6 +7,8 @@ import { Kalam } from "next/font/google";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ContentPanel } from "@/components/content-panel";
+import { NarrativePanelCard } from "@/components/narrative-panel-card";
 import { ProjectTeaserCard } from "@/components/project-teaser-card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -2136,7 +2138,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ? (taskDetailBlock.payload.analyses as Array<Record<string, unknown>>)
       : [];
   const reverseTechHypothesis3Accordion = (
-    <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+    <ContentPanel>
       <button
         type="button"
         onClick={() => toggleHypothesis("rt-hypothesis-2")}
@@ -2181,7 +2183,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 Browse the mobile flow portion below.
               </p>
             </div>
-            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
+            <ContentPanel className="shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
               <iframe
                 style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
                 title="Reverse Tech Flow from Figma"
@@ -2191,11 +2193,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 className="w-full"
                 allowFullScreen
               />
-            </div>
+            </ContentPanel>
           </div>
         </div>
       ) : null}
-    </div>
+    </ContentPanel>
   );
 
   const reverseTechToolsSection = (
@@ -3834,7 +3836,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <h3 className="text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
               Discovery
             </h3>
-            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+            <ContentPanel>
               <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-4">
                 <p className="text-center text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Competitor analysis</p>
               </div>
@@ -3974,7 +3976,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </Card>
                 ))}
               </div>
-            </div>
+            </ContentPanel>
 
             <div className="space-y-5 pt-4">
               <div className="text-center">
@@ -3987,7 +3989,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </p>
               </div>
 
-              <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
+              <ContentPanel>
                 <div className="hidden md:block">
                   <div className="grid grid-cols-[0.95fr_1.05fr_0.8fr_1.2fr] border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0e2951]">
                     <div className="border-r border-[#d7e8f7] pr-4">Screenshot</div>
@@ -4119,7 +4121,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </Card>
                   ))}
                 </div>
-              </div>
+              </ContentPanel>
 
               {hypothesisItems.length ? (
                 <div id="rt-hypothesis-2" className="pt-4">
@@ -4537,14 +4539,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                 ) : null}
               </div>
-              <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.10)]">
+              <ContentPanel className="shadow-[0_20px_64px_rgba(14,41,81,0.10)]">
                 <iframe
                   title="I-9 solution design"
                   src="https://embed.figma.com/design/WKPa60cO7df7mmw8SlB2dA/OLD-PHASE-I-9---Phase-1?node-id=382-141419&embed-host=share"
                   className="h-[480px] w-full"
                   allowFullScreen
                 />
-              </div>
+              </ContentPanel>
             </div>
           </section>
         );
@@ -4714,13 +4716,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               rel="noreferrer"
               className="group block"
             >
-              <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.10)]">
+              <ContentPanel className="shadow-[0_20px_64px_rgba(14,41,81,0.10)]">
                 <img
                   src={withBasePath("/images/projects/flock-accessibility-system/banners/flock-buttons-suggestions.svg")}
                   alt="Flock button suggestions and solution example"
                   className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.01]"
                 />
-              </div>
+              </ContentPanel>
             </a>
           </div>
         </section>
@@ -4729,14 +4731,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "nayya-ai-benefits" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="max-w-[1040px] mx-auto">
-            <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
+            <ContentPanel className="shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
               <iframe
                 title="Nayya impact frame from Figma"
                 src={NAYYA_IMPACT_FIGMA_EMBED}
                 className="h-[520px] w-full"
                 allowFullScreen
               />
-            </div>
+            </ContentPanel>
           </div>
         </section>
       ) : null}
@@ -4911,67 +4913,66 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           {/* Phone frames — low-fi wireframes */}
           <div className="mt-20">
             <div className="mx-auto mb-8 grid max-w-[1180px] gap-8 text-center md:grid-cols-3">
-              <div className="overflow-hidden rounded-[24px] bg-white px-6 py-7 text-center shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Control</p>
-                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                  What ships now. The existing paywall presents a plan ladder with two urgency timers, no pre-selection, and daily pricing as the dominant framing.
-                </p>
-                <div className="mt-5 border-t border-[#d7e8f7] pt-5 text-left">
-                  <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#5c7792]">Current structure</p>
-                  <ul className="mt-3 list-disc space-y-2 pl-5 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                    {[
+              <NarrativePanelCard
+                badge="Control"
+                description="What ships now. The existing paywall presents a plan ladder with two urgency timers, no pre-selection, and daily pricing as the dominant framing."
+                sections={[
+                  {
+                    title: "Current structure",
+                    align: "left",
+                    items: [
                       "Three plan choices compete at once",
                       "Urgency timers carry most of the persuasion",
                       "Value is framed more around price than outcome",
-                    ].map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div className="overflow-hidden rounded-[24px] bg-white px-6 py-7 text-center shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Goal A</p>
-                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Improve overall paywall conversion rate so more users purchase any plan.</p>
-                <div className="mt-5 border-t border-[#d7e8f7] pt-5">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Experiment A</p>
-                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">This version highlights plan discounts based on a personal goal the user may have, creating a more guided flow. It opens with a personalized before-and-after recap, surfaces a personalized limited-time promo code, narrows the decision to three clearer plan options, and moves the primary CTA, trust signals, and guarantee closer to the point of commitment.</p>
-                </div>
-                <div className="mt-5 border-t border-[#d7e8f7] pt-5 text-left">
-                        <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#c8412a]">Δ vs control</p>
-                        <ul className="mt-3 list-disc space-y-2 pl-5 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                          {[
-                            "The “Get my plan” button reminds users how much they save.",
-                            "Personalized recap above the plan",
-                            "Three plans are presented, with the 12-wk option recommended and pre-selected.",
-                            "Featured-in logos and a video testimonial reinforce trust before purchase.",
-                          ].map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div className="overflow-hidden rounded-[24px] bg-white px-6 py-7 text-center shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Goal B</p>
-                <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">Shift plan mix toward the 12-week plan to lift AOV (average order value / average revenue per user).</p>
-                <div className="mt-5 border-t border-[#d7e8f7] pt-5">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Experiment B</p>
-                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">This version reframes the paywall around progress toward the user’s target weight loss. The 12-week option is positioned as the plan most likely to help the user reach that goal through time framing, app-value previews, trust signals, and repeated commitment points. Connecting the user’s goal to the price helps maintain engagement.</p>
-                </div>
-                <div className="mt-5 border-t border-[#d7e8f7] pt-5 text-left">
-                  <p className="font-inter text-[14px] font-semibold uppercase tracking-[0.12em] text-[#2a5cb8]">Δ vs control</p>
-                  <ul className="mt-3 list-disc space-y-2 pl-5 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                    {[
+                    ],
+                  },
+                ]}
+              />
+              <NarrativePanelCard
+                badge="Goal A"
+                description="Improve overall paywall conversion rate so more users purchase any plan."
+                sections={[
+                  {
+                    title: "Experiment A",
+                    titleClassName: "text-[var(--ui-color-brand-primary)] text-[12px] tracking-[0.16em]",
+                    text: "This version highlights plan discounts based on a personal goal the user may have, creating a more guided flow. It opens with a personalized before-and-after recap, surfaces a personalized limited-time promo code, narrows the decision to three clearer plan options, and moves the primary CTA, trust signals, and guarantee closer to the point of commitment.",
+                  },
+                  {
+                    title: "Δ vs control",
+                    titleClassName: "text-[#c8412a]",
+                    align: "left",
+                    items: [
+                      "The “Get my plan” button reminds users how much they save.",
+                      "Personalized recap above the plan",
+                      "Three plans are presented, with the 12-wk option recommended and pre-selected.",
+                      "Featured-in logos and a video testimonial reinforce trust before purchase.",
+                    ],
+                  },
+                ]}
+              />
+              <NarrativePanelCard
+                badge="Goal B"
+                description="Shift plan mix toward the 12-week plan to lift AOV (average order value / average revenue per user)."
+                sections={[
+                  {
+                    title: "Experiment B",
+                    titleClassName: "text-[var(--ui-color-brand-primary)] text-[12px] tracking-[0.16em]",
+                    text: "This version reframes the paywall around progress toward the user’s target weight loss. The 12-week option is positioned as the plan most likely to help the user reach that goal through time framing, app-value previews, trust signals, and repeated commitment points. Connecting the user’s goal to the price helps maintain engagement.",
+                  },
+                  {
+                    title: "Δ vs control",
+                    titleClassName: "text-[#2a5cb8]",
+                    align: "left",
+                    items: [
                       "“See my personalized plan” is used as the CTA to reduce friction and activate the payment step.",
                       "The 12-wk plan is pre-selected and reinforced with a motivational tag.",
                       "An app preview is added to connect the paywall more directly to the product value.",
                       "The content order is changed to keep the scroll active and maintain momentum.",
                       "A 30-day guarantee is added to strengthen trust before purchase.",
-                    ].map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+                    ],
+                  },
+                ]}
+              />
             </div>
             <div className="grid gap-8 md:grid-cols-3">
 

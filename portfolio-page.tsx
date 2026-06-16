@@ -7,6 +7,9 @@ import { ArrowLeft, ArrowRight, ArrowUp, BrainCircuit, Eye, FolderGit2, GitCommi
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { TypewriterBanner } from "./components/typewriter-banner";
+import { ChecklistStatusCard } from "./components/checklist-status-card";
+import { ContactFormCard } from "./components/contact-form-card";
+import { HighlightCalloutCard } from "./components/highlight-callout-card";
 import { Badge } from "./components/ui/badge";
 import { Button } from "./components/ui/button";
 import { ProjectTeaserCard } from "./components/project-teaser-card";
@@ -1049,34 +1052,17 @@ export default function PortfolioPage() {
             className="group rounded-[34px] bg-[#f4f2f3] p-5 transition-transform duration-300 hover:-translate-y-1 md:p-6"
           >
             <div className="mb-5 rounded-[22px] bg-white p-4 shadow-[0_14px_32px_rgba(30,38,61,0.06)]">
-              <div className="rounded-[18px] border border-[#e7edf6] bg-[#fbfcfe] p-3 shadow-[0_10px_22px_rgba(30,38,61,0.04)]">
-                <div className="mb-3 flex items-center justify-between">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#0e2951]">
-                    A11y validation
-                  </p>
-                  <span className="rounded-full bg-[#e8f8ea] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#339154]">
-                    in review
-                  </span>
-                </div>
-                <div className="space-y-2.5">
-                  <div className="flex items-center justify-between rounded-[12px] bg-white px-3 py-2">
-                    <span className="text-[12px] font-medium text-[#5c7792]">Focus order</span>
-                    <span className="rounded-full bg-[#e8f8ea] px-2 py-0.5 text-[10px] font-semibold text-[#339154]">Pass</span>
-                  </div>
-                  <div className="flex items-center justify-between rounded-[12px] bg-white px-3 py-2">
-                    <span className="text-[12px] font-medium text-[#5c7792]">Color contrast</span>
-                    <span className="rounded-full bg-[#eef7ff] px-2 py-0.5 text-[10px] font-semibold text-[#1183D0]">Check</span>
-                  </div>
-                  <div className="flex items-center justify-between rounded-[12px] bg-white px-3 py-2">
-                    <span className="text-[12px] font-medium text-[#5c7792]">Labels and roles</span>
-                    <span className="rounded-full bg-[#e8f8ea] px-2 py-0.5 text-[10px] font-semibold text-[#339154]">Pass</span>
-                  </div>
-                  <div className="flex items-center justify-between rounded-[12px] bg-white px-3 py-2">
-                    <span className="text-[12px] font-medium text-[#5c7792]">Keyboard states</span>
-                    <span className="rounded-full bg-[#fff3df] px-2 py-0.5 text-[10px] font-semibold text-[#d68524]">Audit</span>
-                  </div>
-                </div>
-              </div>
+              <ChecklistStatusCard
+                eyebrow="A11y validation"
+                badge="in review"
+                badgeClassName="bg-[#e8f8ea] text-[#339154]"
+                items={[
+                  { label: "Focus order", status: "Pass", statusClassName: "bg-[#e8f8ea] text-[#339154]" },
+                  { label: "Color contrast", status: "Check", statusClassName: "bg-[#eef7ff] text-[#1183D0]" },
+                  { label: "Labels and roles", status: "Pass", statusClassName: "bg-[#e8f8ea] text-[#339154]" },
+                  { label: "Keyboard states", status: "Audit", statusClassName: "bg-[#fff3df] text-[#d68524]" },
+                ]}
+              />
             </div>
 
             <h3 className="max-w-[320px] font-inter text-[26px] leading-[1.15] text-[#0e2951]">
@@ -1102,22 +1088,20 @@ export default function PortfolioPage() {
               </p>
 
               <div className="mt-6 grid gap-3">
-                <div className="rounded-[24px] bg-white/88 p-4 shadow-[0_18px_34px_rgba(31,53,94,0.08)]">
-                  <div className="mb-3 flex items-center gap-2">
+                <HighlightCalloutCard
+                  icon={
                     <span className="inline-flex h-9 w-9 items-center justify-center rounded-[12px] bg-[#eef4ff] text-[#4d6ff5]">
                       <LayoutTemplate className="h-4 w-4" />
                     </span>
-                    <div>
-                      <p className="text-[14px] font-semibold text-[#0e2951]">Quick design feedback</p>
-                      <p className="text-[12px] text-[#7b8598]">fast reviews, clear notes, actionable product decisions</p>
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="rounded-full bg-[#eef6ff] px-3 py-1 text-[11px] font-semibold text-[#1183D0]">Reviews</span>
-                    <span className="rounded-full bg-[#fff1df] px-3 py-1 text-[11px] font-semibold text-[#d68524]">Iteration</span>
-                    <span className="rounded-full bg-[#ebf8ef] px-3 py-1 text-[11px] font-semibold text-[#2f8c54]">Alignment</span>
-                  </div>
-                </div>
+                  }
+                  title="Quick design feedback"
+                  description="fast reviews, clear notes, actionable product decisions"
+                  tags={[
+                    { label: "Reviews", className: "rounded-full bg-[#eef6ff] px-3 py-1 text-[11px] font-semibold text-[#1183D0]" },
+                    { label: "Iteration", className: "rounded-full bg-[#fff1df] px-3 py-1 text-[11px] font-semibold text-[#d68524]" },
+                    { label: "Alignment", className: "rounded-full bg-[#ebf8ef] px-3 py-1 text-[11px] font-semibold text-[#2f8c54]" },
+                  ]}
+                />
               </div>
             </div>
           </Link>
@@ -1212,68 +1196,31 @@ export default function PortfolioPage() {
             </div>
           </div>
 
-          <div className="rounded-[32px] border border-[#e4ebf3] bg-[rgba(248,251,255,0.88)] px-8 py-10 shadow-[0_18px_44px_rgba(60,62,63,0.06)] backdrop-blur-sm md:px-12 md:py-14">
-            <form className="space-y-5" onSubmit={handleCtaSubmit} noValidate>
-              <div>
-                <label className="mb-2 block text-[14px] font-medium text-[#0e2951]" htmlFor="cta-name">Name</label>
-                <input
-                  id="cta-name"
-                  type="text"
-                  value={ctaForm.name}
-                  onChange={(event) => {
-                    setCtaForm((current) => ({ ...current, name: event.target.value }));
-                    setCtaErrors((current) => ({ ...current, name: undefined }));
-                  }}
-                  className="w-full rounded-[14px] border border-[#d7e2f0] bg-white px-4 py-4 text-[15px] text-[#0e2951] outline-none transition-colors placeholder:text-[#8a98ab] focus:border-[#1183D0]"
-                  placeholder="Hello"
-                  aria-invalid={Boolean(ctaErrors.name)}
-                />
-                {ctaErrors.name ? <p className="mt-2 text-[12px] text-[#c25b67]">{ctaErrors.name}</p> : null}
-              </div>
-              <div>
-                <label className="mb-2 block text-[14px] font-medium text-[#0e2951]" htmlFor="cta-email">Email</label>
-                <input
-                  id="cta-email"
-                  type="email"
-                  value={ctaForm.email}
-                  onChange={(event) => {
-                    setCtaForm((current) => ({ ...current, email: event.target.value }));
-                    setCtaErrors((current) => ({ ...current, email: undefined }));
-                  }}
-                  className="w-full rounded-[14px] border border-[#d7e2f0] bg-white px-4 py-4 text-[15px] text-[#0e2951] outline-none transition-colors placeholder:text-[#8a98ab] focus:border-[#1183D0]"
-                  placeholder="How should I reach you?"
-                  aria-invalid={Boolean(ctaErrors.email)}
-                />
-                {ctaErrors.email ? <p className="mt-2 text-[12px] text-[#c25b67]">{ctaErrors.email}</p> : null}
-              </div>
-              <div>
-                <label className="mb-2 block text-[14px] font-medium text-[#0e2951]" htmlFor="cta-message">Message</label>
-                <textarea
-                  id="cta-message"
-                  value={ctaForm.message}
-                  onChange={(event) => {
-                    setCtaForm((current) => ({ ...current, message: event.target.value }));
-                    setCtaErrors((current) => ({ ...current, message: undefined }));
-                  }}
-                  className="min-h-[132px] w-full rounded-[14px] border border-[#d7e2f0] bg-white px-4 py-4 text-[15px] text-[#0e2951] outline-none transition-colors placeholder:text-[#8a98ab] focus:border-[#1183D0]"
-                  placeholder="How can I help?"
-                  aria-invalid={Boolean(ctaErrors.message)}
-                />
-                {ctaErrors.message ? <p className="mt-2 text-[12px] text-[#c25b67]">{ctaErrors.message}</p> : null}
-              </div>
-              <div className="rounded-[18px] border border-[#dce7f4] bg-white px-4 py-4 text-[13px] leading-7 text-[#5c7792]">
-                Tell me about the product, the team, or the design challenge. I’ll follow up from the contact page without the extra friction.
-              </div>
-              <Button
-                type="submit"
-                size="sm"
-                disabled={ctaSubmitting}
-                className="h-12 rounded-full border border-[#c8d7ea] bg-white px-6 text-[#0e2951] hover:bg-[#0e2951] hover:text-white disabled:cursor-not-allowed disabled:opacity-70"
-              >
-                {ctaSubmitting ? "Sending..." : siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
-              </Button>
-            </form>
-          </div>
+          <ContactFormCard
+            title="Send a message"
+            submitLabel={siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
+            onSubmit={handleCtaSubmit}
+            values={ctaForm}
+            errors={ctaErrors}
+            submitting={ctaSubmitting}
+            showSubject={false}
+            helperText="Tell me about the product, the team, or the design challenge. I’ll follow up from the contact page without the extra friction."
+            className="rounded-[32px] border-[#e4ebf3] bg-[rgba(248,251,255,0.88)] shadow-[0_18px_44px_rgba(60,62,63,0.06)] backdrop-blur-sm"
+            contentClassName="px-8 py-10 md:px-12 md:py-14"
+            submitClassName="h-12 rounded-full border border-[#c8d7ea] bg-white px-6 text-[var(--ui-color-text-strong)] hover:bg-[var(--ui-color-text-strong)] hover:text-white disabled:cursor-not-allowed disabled:opacity-70"
+            onNameChange={(value) => {
+              setCtaForm((current) => ({ ...current, name: value }));
+              setCtaErrors((current) => ({ ...current, name: undefined }));
+            }}
+            onEmailChange={(value) => {
+              setCtaForm((current) => ({ ...current, email: value }));
+              setCtaErrors((current) => ({ ...current, email: undefined }));
+            }}
+            onMessageChange={(value) => {
+              setCtaForm((current) => ({ ...current, message: value }));
+              setCtaErrors((current) => ({ ...current, message: undefined }));
+            }}
+          />
       </div>
     </section>
   );
