@@ -68,6 +68,7 @@ const HERO_UI_ORBS = [
 ];
 
 const PROJECT_BACKGROUNDS: Record<string, string> = {
+  reversetech: "linear-gradient(180deg, #eef4fb 0%, #eef4fb 100%)",
   "benefits-enrollment": "radial-gradient(ellipse at 82% 50%, #b7daf1 11%, #e9f3fb 64%, #edf5fb 98%)",
   "nayya-ai-benefits": "radial-gradient(ellipse at 20% 50%, #cfe9f7 0%, #f0f7ff 72%)",
   "flock-accessibility-system": "radial-gradient(ellipse at 80% 20%, #c8f0e0 0%, #edf5fb 70%)",
