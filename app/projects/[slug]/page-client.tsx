@@ -3671,11 +3671,38 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 ) : null}
               </div>
             ) : (
-              <div className="mx-auto max-w-[820px] space-y-8 text-center">
-                {designStrategy.map((item) => (
-                  <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
-                ))}
-              </div>
+              caseStudy.slug === "protecta" ? (
+                <div className="mx-auto grid max-w-[1100px] items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+                  <a
+                    href={withBasePath("/images/projects/protecta/screenshots/protecta-home-desktop.png")}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group block"
+                  >
+                    <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.10)]">
+                      <img
+                        src={withBasePath("/images/projects/protecta/screenshots/protecta-home-desktop.png")}
+                        alt="Protecta homepage screenshot"
+                        className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.01]"
+                      />
+                    </div>
+                    <p className="mt-4 text-center font-inter text-[13px] leading-[1.6] text-[#5c7792]">
+                      Homepage screenshot
+                    </p>
+                  </a>
+                  <div className="space-y-8 text-center lg:text-left">
+                    {designStrategy.map((item) => (
+                      <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="mx-auto max-w-[820px] space-y-8 text-center">
+                  {designStrategy.map((item) => (
+                    <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+                  ))}
+                </div>
+              )
             )}
             {caseStudy.slug === "reversetech" ? (
               <div className="mx-auto mt-12 max-w-[920px]">
