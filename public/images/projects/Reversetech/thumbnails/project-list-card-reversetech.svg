@@ -79,6 +79,9 @@
   <rect x="1002" y="140" width="36" height="10" rx="5" fill="#D94D93"/>
   <rect x="1048" y="140" width="28" height="10" rx="5" fill="#7A6AF8"/>
   <rect x="1086" y="140" width="20" height="10" rx="5" fill="#73DCCB"/>
+  <text x="700" y="132" text-anchor="middle" fill="#0E2951" font-family="Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="1.2">
+    A/B testing
+  </text>
 
   <path d="M882 372C900 372 914 386 914 404C914 422 900 436 882 436C864 436 850 422 850 404C850 386 864 372 882 372Z" fill="#FFF8FC"/>
   <path d="M874 394L890 404L874 414" stroke="#D33A82" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>

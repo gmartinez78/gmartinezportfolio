@@ -38,6 +38,9 @@ const HOME_BANNER_GRADIENT =
   "linear-gradient(90deg, #e6f1fb 0%, #eee7fb 37%, #f9e5ee 68%, #fcf0e2 100%)";
 const HOME_BANNER_GRADIENT_OVERLAY =
   "radial-gradient(circle at top,rgba(171,160,246,0.16),transparent 42%),radial-gradient(circle at 72% 26%,rgba(255,174,202,0.18),transparent 32%),radial-gradient(circle at 92% 50%,rgba(255,224,189,0.2),transparent 24%),linear-gradient(180deg,rgba(118,141,177,0.06)_0%,rgba(255,255,255,0)_58%)";
+const RELATED_PROJECT_BACKGROUNDS: Record<string, string> = {
+  reversetech: "linear-gradient(180deg, #eef4fb 0%, #eef4fb 100%)",
+};
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 const TEAM_MEMBERS = [
@@ -514,6 +517,7 @@ export default function BenefitsPage() {
       ...project,
       cardId: resolveHomeCardId(project.slug),
       previewImage: resolveHomeCardImage(project.slug, project.images?.cover || project.images?.hero || ""),
+      background: RELATED_PROJECT_BACKGROUNDS[project.slug],
     }));
   const heroImage = resolveProjectHeroImage("benefits-enrollment", caseStudy?.images.hero ?? null);
   const clientLogos = caseStudy?.client_logos.length
@@ -953,7 +957,10 @@ export default function BenefitsPage() {
               href={resolveProjectHref(p)}
               className="group flex min-w-0 cursor-pointer flex-col gap-5 outline-none"
             >
-              <div className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] shadow-[0_18px_52px_rgba(14,41,81,0.12)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(14,41,81,0.22)] group-focus-visible:-translate-y-1 group-focus-visible:shadow-[0_28px_70px_rgba(14,41,81,0.22)]">
+              <div
+                className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] shadow-[0_18px_52px_rgba(14,41,81,0.12)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(14,41,81,0.22)] group-focus-visible:-translate-y-1 group-focus-visible:shadow-[0_28px_70px_rgba(14,41,81,0.22)]"
+                style={p.background ? { background: p.background } : undefined}
+              >
                 <Image
                   src={p.previewImage}
                   alt={p.title}

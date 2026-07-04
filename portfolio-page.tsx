@@ -68,7 +68,7 @@ const HERO_UI_ORBS = [
 ];
 
 const PROJECT_BACKGROUNDS: Record<string, string> = {
-  reversetech: "linear-gradient(180deg, #fff2f7 0%, #fff2f7 100%)",
+  reversetech: "linear-gradient(180deg, #eef4fb 0%, #eef4fb 100%)",
   "benefits-enrollment": "radial-gradient(ellipse at 82% 50%, #b7daf1 11%, #e9f3fb 64%, #edf5fb 98%)",
   "nayya-ai-benefits": "radial-gradient(ellipse at 20% 50%, #cfe9f7 0%, #f0f7ff 72%)",
   "flock-accessibility-system": "radial-gradient(ellipse at 80% 20%, #c8f0e0 0%, #edf5fb 70%)",
@@ -838,6 +838,44 @@ export default function PortfolioPage() {
     };
   }, [ctaToast]);
 
+  const githubActivityItems = githubActivity.length
+    ? githubActivity.slice(0, 6)
+    : [
+        {
+          id: "github-fallback",
+          kind: "repo" as const,
+          title: "GitHub profile",
+          detail: "Recent public coding activity appears here when the feed is available.",
+          repo: githubUsername,
+          timestamp: null,
+          url: `https://github.com/${githubUsername}`,
+        },
+      ];
+
+  const githubActivitySummary = useMemo(() => {
+    const counts = githubActivityItems.reduce<Record<GitHubActivityItem["kind"], number>>(
+      (acc, item) => {
+        acc[item.kind] += 1;
+        return acc;
+      },
+      {
+        commit: 0,
+        pull_request: 0,
+        issue: 0,
+        release: 0,
+        repo: 0,
+        star: 0,
+      },
+    );
+
+    return [
+      { label: "Commits", value: counts.commit },
+      { label: "PRs", value: counts.pull_request },
+      { label: "Issues", value: counts.issue },
+      { label: "Repos", value: counts.repo + counts.release },
+    ].filter((item) => item.value > 0);
+  }, [githubActivityItems]);
+
   const recentWorkSection = (
     <section key="work" id="projects" className="bg-white py-12 px-6 md:px-10 xl:px-20">
       <div className="mx-auto flex w-full flex-col items-center gap-12">
@@ -1216,17 +1254,19 @@ export default function PortfolioPage() {
         </div>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {(githubActivity.length ? githubActivity.slice(0, 4) : [
-            {
-              id: "github-fallback",
-              kind: "repo" as const,
-              title: "GitHub profile",
-              detail: "Recent public coding activity appears here when the feed is available.",
-              repo: githubUsername,
-              timestamp: null,
-              url: `https://github.com/${githubUsername}`,
-            },
-          ]).map((item) => {
+          <div className="md:col-span-2 xl:col-span-4 flex flex-wrap gap-3">
+            {githubActivitySummary.map((item) => (
+              <div
+                key={item.label}
+                className="inline-flex items-center gap-2 rounded-full border border-[#d9e5f2] bg-white/85 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#5f7392]"
+              >
+                <span className="text-[#1183D0]">{item.value}</span>
+                <span>{item.label}</span>
+              </div>
+            ))}
+          </div>
+
+          {githubActivityItems.map((item) => {
             const Icon = getGitHubActivityIcon(item.kind);
 
             return (

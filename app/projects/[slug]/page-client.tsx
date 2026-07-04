@@ -61,6 +61,9 @@ const HOME_BANNER_GRADIENT =
 const HOME_BANNER_GRADIENT_OVERLAY =
   "radial-gradient(circle at top,rgba(171,160,246,0.16),transparent 42%),radial-gradient(circle at 72% 26%,rgba(255,174,202,0.18),transparent 32%),radial-gradient(circle at 92% 50%,rgba(255,224,189,0.2),transparent 24%),linear-gradient(180deg,rgba(118,141,177,0.06)_0%,rgba(255,255,255,0)_58%)";
 const REVERSETECH_STICKY_HEADER_OFFSET = 88;
+const RELATED_PROJECT_BACKGROUNDS: Record<string, string> = {
+  reversetech: "linear-gradient(180deg, #eef4fb 0%, #eef4fb 100%)",
+};
 
 const NAYYA_HIGHLIGHT_METRICS: HighlightMetric[] = [
   { value: "307%", label: "IRR", context: "Projected ROI,estimated return from increased plan uptake (NPV $11.4M)." },
@@ -2033,6 +2036,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ...project,
       cardId: resolveHomeCardId(project.slug),
       previewImage: resolveHomeCardImage(project.slug, project.images.cover || project.images.hero || ""),
+      background: RELATED_PROJECT_BACKGROUNDS[project.slug],
     }));
   const findBlock = (id: string) => caseStudy.content_blocks?.find((block) => block.id === id);
   const overviewBlock = findBlock("overview");
@@ -5350,6 +5354,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               description={project.tagline ?? ""}
               tags={project.tags}
               image={project.previewImage}
+              background={project.background}
               ctaLabel={project.external_link ? "View project" : "View case study"}
             />
           ))}
