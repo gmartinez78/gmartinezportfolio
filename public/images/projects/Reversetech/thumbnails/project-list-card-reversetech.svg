@@ -100,7 +100,4 @@
   <path d="M874 394L890 404L874 414" stroke="#D33A82" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M891 394L907 404L891 414" stroke="#6E6CF6" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <path d="M786 866C842 824 916 806 982 826" stroke="#E6A7C8" stroke-width="10" stroke-linecap="round"/>
-  <path d="M224 262C252 244 286 242 316 256" stroke="#EDBDD6" stroke-width="10" stroke-linecap="round"/>
-  <path d="M1094 896C1130 864 1172 850 1214 854" stroke="#E8A6C7" stroke-width="10" stroke-linecap="round"/>
 </svg>
