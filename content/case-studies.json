@@ -836,7 +836,7 @@
     "status": "published",
     "featured": false,
     "order": 6,
-    "title": "Protecta Advisory | AI-Augmented End-to-End Delivery",
+    "title": "Protecta Advisory is an AI-accelerated end-to-end delivery case study.",
     "company": "Protecta Advisory",
     "client_context": "Bilingual insurance advisory website for multicultural US families",
     "role": "Design Engineer",
@@ -868,8 +868,8 @@
       "Vercel"
     ],
     "images": {
-      "cover": "/images/projects/protecta/thumbnails/project-list-card-protecta.svg",
-      "hero": "/images/projects/protecta/thumbnails/project-list-card-protecta.svg",
+      "cover": "/images/projects/protecta/thumbnails/protectabanner.png",
+      "hero": "/images/projects/protecta/thumbnails/protectabanner.png",
       "gallery": []
     },
     "client_logos": [],

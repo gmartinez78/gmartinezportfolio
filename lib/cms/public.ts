@@ -55,7 +55,7 @@ const projectImageMap: Record<string, string> = {
   "nayya-ai-benefits": withBasePath("/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png"),
   "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/thumbnails/flock.png"),
   "i9-everify-integration": withBasePath("/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png"),
-  protecta: withBasePath("/images/projects/protecta/thumbnails/project-list-card-protecta.svg"),
+  protecta: withBasePath("/images/projects/protecta/thumbnails/protectabanner.png"),
   reversetech: withBasePath("/images/projects/reversetech/thumbnails/project-list-card-reversetech.svg"),
 };
 
@@ -64,7 +64,7 @@ const projectHeroImageMap: Record<string, string> = {
   "nayya-ai-benefits": withBasePath("/images/projects/nayya-ai-benefits/hero/nayya-hero.png"),
   "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/hero/flock-hero.png"),
   "i9-everify-integration": withBasePath("/images/projects/i9-everify-integration/hero/i9-banner.png"),
-  protecta: withBasePath("/images/projects/protecta/thumbnails/project-list-card-protecta.svg"),
+  protecta: withBasePath("/images/projects/protecta/thumbnails/protectabanner.png"),
   reversetech: withBasePath("/images/projects/Reversetech/figma-screen.png"),
 };
 
@@ -93,7 +93,7 @@ const homeCardMediaMap: Record<string, { id: string; image: string }> = {
   },
   protecta: {
     id: "home-card-protecta",
-    image: withBasePath("/images/projects/protecta/thumbnails/project-list-card-protecta.svg"),
+    image: withBasePath("/images/projects/protecta/thumbnails/protectabanner.png"),
   },
   reversetech: {
     id: "home-card-reversetech",
@@ -120,7 +120,7 @@ const projectListCardMediaMap: Record<string, { id: string; image: string }> = {
   },
   protecta: {
     id: "project-list-card-protecta",
-    image: withBasePath("/images/projects/protecta/thumbnails/project-list-card-protecta.svg"),
+    image: withBasePath("/images/projects/protecta/thumbnails/protectabanner.png"),
   },
   reversetech: {
     id: "project-list-card-reversetech",

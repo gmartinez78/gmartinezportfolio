@@ -839,7 +839,7 @@ export default function PortfolioPage() {
   }, [ctaToast]);
 
   const githubActivityItems = githubActivity.length
-    ? githubActivity.slice(0, 6)
+    ? githubActivity.filter((item) => item.kind !== "release").slice(0, 6)
     : [
         {
           id: "github-fallback",
@@ -872,7 +872,7 @@ export default function PortfolioPage() {
       { label: "Commits", value: counts.commit },
       { label: "PRs", value: counts.pull_request },
       { label: "Issues", value: counts.issue },
-      { label: "Repos", value: counts.repo + counts.release },
+      { label: "Repos", value: counts.repo },
     ].filter((item) => item.value > 0);
   }, [githubActivityItems]);
 
@@ -1180,9 +1180,9 @@ export default function PortfolioPage() {
     <section
       key="tools"
       id="skills"
-      className="isolate mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center overflow-clip bg-white px-4 pb-10 pt-36 md:px-8"
+      className="isolate w-full overflow-clip bg-white px-4 pb-10 pt-36 md:px-8"
     >
-      <div className="relative mx-auto flex flex-col items-center gap-6">
+      <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center gap-6">
         <div className="pointer-events-none absolute bottom-[44px] h-[248px] w-[629px] max-w-none select-none md:bottom-[-12px] md:h-[496px] md:w-[1257px]">
           <div className="relative h-full w-full">
             {TOOL_SHOWCASE_ICONS.map((tool) => (
@@ -1230,30 +1230,8 @@ export default function PortfolioPage() {
       id="github"
       className="bg-white px-6 py-12 md:px-16 xl:px-30"
     >
-      <div className="mx-auto max-w-[1180px] rounded-[34px] border border-[#e4ebf3] bg-[linear-gradient(135deg,#f7fbff_0%,#f4f7ff_52%,#fff8f4_100%)] p-6 shadow-[0_20px_44px_rgba(60,62,63,0.05)] md:p-8">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-[640px]">
-            <p className="text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">
-              GitHub Activity
-            </p>
-            <h2 className="mt-3 font-inter text-[30px] leading-[1.05] text-[#0e2951] md:text-[40px]">
-              Recent coding activity, not just design deliverables.
-            </h2>
-            <p className="mt-4 text-[15px] leading-[1.8] text-[#5c7792]">
-              Recent public work from <span className="font-semibold text-[#0e2951]">@{githubUsername}</span>, so people can see implementation, repos, and shipping rhythm alongside the case studies.
-            </p>
-          </div>
-          <a
-            href={`https://github.com/${githubUsername}`}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex h-12 items-center justify-center rounded-full border border-[#c8d7ea] bg-white px-6 text-[14px] font-medium text-[#0e2951] transition-colors hover:bg-[#0e2951] hover:text-white"
-          >
-            View GitHub ↗
-          </a>
-        </div>
-
-        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <div className="mx-auto max-w-[1180px]">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           <div className="md:col-span-2 xl:col-span-4 flex flex-wrap gap-3">
             {githubActivitySummary.map((item) => (
               <div
@@ -1264,6 +1242,35 @@ export default function PortfolioPage() {
                 <span>{item.label}</span>
               </div>
             ))}
+          </div>
+
+          <div className="md:col-span-2 xl:col-span-4 rounded-[24px] border border-[#d9e5f2] bg-white/80 p-5">
+            <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">
+                  Contribution View
+                </p>
+                <p className="mt-2 text-[14px] leading-[1.7] text-[#5c7792]">
+                  Public contribution activity for <span className="font-semibold text-[#0e2951]">@{githubUsername}</span> since April 2026.
+                </p>
+              </div>
+              <a
+                href={`https://github.com/${githubUsername}`}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[13px] font-medium text-[#1183D0] hover:underline"
+              >
+                Open profile ↗
+              </a>
+            </div>
+            <div className="mt-4 overflow-hidden rounded-[18px] border border-[#e6edf6] bg-[#fbfdff] p-3">
+              <img
+                src={`https://ghchart.rshah.org/1183D0/${githubUsername}`}
+                alt={`${githubUsername} GitHub contributions chart`}
+                className="mx-auto h-[92px] w-full max-w-[760px] object-cover object-right"
+                loading="lazy"
+              />
+            </div>
           </div>
 
           {githubActivityItems.map((item) => {
@@ -1375,7 +1382,7 @@ export default function PortfolioPage() {
     </section>
   );
 
-  const contentSections = [impactShowcaseSection, toolsSection, githubProofSection, ctaSection];
+  const contentSections = [toolsSection, ctaSection, githubProofSection];
 
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
