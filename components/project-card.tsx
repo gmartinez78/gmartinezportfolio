@@ -54,7 +54,7 @@ export function ProjectCard({
 
         <div
           className={`relative flex h-64 w-full shrink-0 items-center justify-center overflow-hidden border-b border-white/35 bg-white/22 p-5 md:h-auto md:w-[340px] md:border-b-0 ${reversed ? "md:order-2" : ""}`}
-          style={background ? { background } : undefined}
+          style={!previewImage ? { background } : undefined}
         >
           <div
             className={`relative h-full w-full overflow-hidden rounded-[30px] border border-white/60 bg-white/55 shadow-[0_18px_42px_rgba(31,53,94,0.08)] transition-transform duration-500 group-hover:scale-[1.03] ${reversed ? "md:rotate-[1.6deg]" : "md:rotate-[-1.6deg]"}`}
