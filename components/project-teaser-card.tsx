@@ -69,7 +69,7 @@ export function ProjectTeaserCard({
             ? "h-[230px] group-hover:-translate-y-1 sm:h-[300px] xl:h-[230px]"
             : "h-[230px] shadow-[0_18px_52px_rgba(14,41,81,0.12)] group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(14,41,81,0.22)] group-focus-visible:-translate-y-1 group-focus-visible:shadow-[0_28px_70px_rgba(14,41,81,0.22)]",
         )}
-        style={!image && background ? { background } : undefined}
+        style={background ? { background } : undefined}
       >
         {image ? (
           <Image

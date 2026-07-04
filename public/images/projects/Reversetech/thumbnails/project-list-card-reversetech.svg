@@ -2,10 +2,6 @@
   <title>Reverse Health A/B testing project card</title>
   <desc>Abstract thumbnail showing flat A/B testing panels, conversion blocks, and experiment accents.</desc>
   <defs>
-    <linearGradient id="board" x1="244" y1="158" x2="1160" y2="942" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FFFDFE"/>
-      <stop offset="1" stop-color="#FFF5FA"/>
-    </linearGradient>
     <filter id="shadowLg" x="176" y="115" width="1052" height="886" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
       <feFlood flood-opacity="0" result="BackgroundImageFix"/>
       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
@@ -26,7 +22,7 @@
     </filter>
   </defs>
   <g filter="url(#shadowLg)">
-    <rect x="260" y="166" width="884" height="744" rx="52" fill="url(#board)"/>
+    <rect x="260" y="166" width="884" height="744" rx="52" fill="#FFF2F7"/>
   </g>
 
   <rect x="316" y="228" width="552" height="620" rx="38" fill="#FFFBFE"/>
