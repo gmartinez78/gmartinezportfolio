@@ -832,10 +832,224 @@
     ]
   },
   {
-    "slug": "reversetech",
+    "slug": "protecta",
     "status": "published",
     "featured": false,
     "order": 6,
+    "title": "Protecta Advisory | AI-Augmented End-to-End Delivery",
+    "company": "Protecta Advisory",
+    "client_context": "Bilingual insurance advisory website for multicultural US families",
+    "role": "Design Engineer",
+    "year": 2026,
+    "duration": "1 week, end-to-end",
+    "industry": "Insurance / Advisory",
+    "tagline": "A compressed end-to-end delivery showing how AI accelerates research, brand, copy, build, and QA without replacing design judgment.",
+    "tags": [
+      "AI Product",
+      "Product Design",
+      "Brand Strategy",
+      "Content Design",
+      "Accessibility",
+      "Localization"
+    ],
+    "filters": [
+      "AI Product",
+      "Product Design",
+      "Accessibility"
+    ],
+    "tools": [
+      "NotebookLM",
+      "Claude",
+      "Codex",
+      "Claude Code",
+      "Figma",
+      "Storybook",
+      "Grammarly",
+      "Vercel"
+    ],
+    "images": {
+      "cover": "/images/projects/protecta/thumbnails/project-list-card-protecta.svg",
+      "hero": "/images/projects/protecta/thumbnails/project-list-card-protecta.svg",
+      "gallery": []
+    },
+    "client_logos": [],
+    "metrics": [
+      {
+        "value": "7 days",
+        "label": "End-to-end delivery",
+        "context": "Brand, content, design, build, QA, and live deployment completed in one week."
+      },
+      {
+        "value": "4-6 weeks",
+        "label": "Typical solo timeline",
+        "context": "Comparable scope usually runs four to six weeks without the same AI-augmented compression."
+      },
+      {
+        "value": "2 languages",
+        "label": "Native content tracks",
+        "context": "English and Spanish content were adapted for real cultural fit rather than translated literally."
+      },
+      {
+        "value": "WCAG 2.1 AA",
+        "label": "Accessibility target",
+        "context": "Component-level accessibility checks were handled in Storybook during the build."
+      }
+    ],
+    "team": [
+      "Solo designer",
+      "Client advisors",
+      "Client founders for final approvals"
+    ],
+    "my_role": [
+      "UX/UI Designer",
+      "Brand Strategist",
+      "Content Strategist & Writer",
+      "Product Owner",
+      "Developer",
+      "QA Engineer",
+      "Bilingual Localization Lead"
+    ],
+    "problem": {
+      "admin_pain_points": [
+        "Protecta had a clear service model and strong referral engine but no brand system, no live site, and no structured content to support growth.",
+        "The referral program, advisory model, and WhatsApp contact path all needed to be explained clearly in a way that felt trustworthy for families making sensitive insurance decisions."
+      ],
+      "user_pain_points": [
+        "Prospects needed a warmer, more human alternative to the call-center experience they usually associate with insurance websites.",
+        "Spanish-speaking families needed content that felt native and culturally natural, not like a direct translation of an English-first site.",
+        "Visitors needed a clear understanding of the referral program and an easy path to contact the advisors without friction."
+      ]
+    },
+    "constraints": [
+      "One-week timeline across strategy, brand, content, design, build, QA, and deployment.",
+      "No existing brand system, no prior website, and no ready-to-publish content.",
+      "No direct user research in the timeline; advisor interviews and client knowledge acted as proxy user signal."
+    ],
+    "methodology": {
+      "name": "AI-Augmented Delivery Workflow",
+      "steps": [
+        {
+          "step": 1,
+          "label": "Capture",
+          "description": "Ran a structured client call and questionnaire to capture audience needs, sales flow, objections, referral mechanics, and tone as the source of truth."
+        },
+        {
+          "step": 2,
+          "label": "Research",
+          "description": "Used NotebookLM to synthesize industry patterns, competitive positioning, bilingual insurance norms, and structural opportunities quickly."
+        },
+        {
+          "step": 3,
+          "label": "Brand",
+          "description": "Generated logo directions with Claude, then refined the strongest routes in Figma into a usable brand system."
+        },
+        {
+          "step": 4,
+          "label": "Write",
+          "description": "Used Claude for first-pass copy drafts, then rewrote the messaging hierarchy and adapted the Spanish content natively."
+        },
+        {
+          "step": 5,
+          "label": "Design",
+          "description": "Designed the homepage, internal pages, and reusable components in Figma as a lean build blueprint."
+        },
+        {
+          "step": 6,
+          "label": "Build",
+          "description": "Generated scaffolding with Codex, finished implementation details with Claude Code, and hand-tuned the result into production-quality output."
+        },
+        {
+          "step": 7,
+          "label": "Validate",
+          "description": "Documented components in Storybook, checked accessibility against WCAG 2.1 AA, and deployed the working product to Vercel for client review."
+        }
+      ]
+    },
+    "design_strategy": [
+      "The project was structured around one core decision: use AI to compress research, copy scaffolding, and build acceleration, while reserving design judgment for brand tone, hierarchy, accessibility, and trust-building moments.",
+      "Because Protecta's differentiator is human-led, year-round advisory, the site needed to feel warm and credible rather than polished in a generic insurtech way.",
+      "The bilingual strategy was not translation-first. English and Spanish content were shaped as parallel voice systems so each audience path felt intentional.",
+      "I treated the live site, not a static Figma deck, as the review artifact. That changed client feedback quality because the client evaluated a working experience on real devices."
+    ],
+    "reflections": [
+      {
+        "title": "AI is best at compression, not authorship.",
+        "body": "The biggest gain came from compressing research synthesis, first-draft copy, and code scaffolding. Brand judgment, hierarchy, and trust signals still needed a designer making the calls."
+      },
+      {
+        "title": "Localization is a design decision.",
+        "body": "The Spanish experience needed cultural adaptation, not literal translation. That changed tone, phrasing, and how reassurance showed up in the interface."
+      },
+      {
+        "title": "A live product changes review quality.",
+        "body": "Showing the client a working site instead of frames made feedback faster and more grounded because they evaluated the real experience rather than imagining it."
+      }
+    ],
+    "nda_notice": null,
+    "password": null,
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "overview",
+        "type": "overview",
+        "title": "Project Overview",
+        "body": "This case study shows how I compress a four-to-six-week solo delivery into seven days with an AI-augmented workflow, and where human design judgment still made the decisive calls."
+      },
+      {
+        "id": "team-context",
+        "type": "custom",
+        "title": "Team",
+        "body": "I ran the engagement as a solo delivery across seven roles: UX/UI design, brand strategy, content strategy and writing, product ownership, development, QA, and bilingual localization. The client stepped in at final decision points rather than participating in every intermediate review."
+      },
+      {
+        "id": "situation",
+        "type": "custom",
+        "title": "Situation",
+        "body": "Protecta is an independent health and life insurance advisory serving multicultural US families in English and Spanish. Their value is human-led, year-round guidance, the opposite of the call-center feeling common in the category.\n\nThey already had strong word-of-mouth momentum and a referral model that pays cash incentives, but they had no brand system, no website, and no content architecture to explain that value clearly online."
+      },
+      {
+        "id": "task",
+        "type": "custom",
+        "title": "Task",
+        "body": "Deliver a full branded bilingual website in one week, including homepage, internal pages, content strategy, brand system, component structure, accessibility QA, and live deployment.\n\nThe site needed to explain the referral program, communicate trust quickly, and give prospects a low-friction path to contact the advisors through WhatsApp."
+      },
+      {
+        "id": "research",
+        "type": "custom",
+        "title": "Research",
+        "body": "I treated the client questionnaire and advisor interviews as the main source of user signal because the advisors hear the same objections, trust concerns, and first questions every day in real conversations.\n\nI paired that with NotebookLM-based desk research to map market expectations, bilingual insurance-site patterns, and positioning gaps. That combination gave me enough signal to move quickly without pretending it was a substitute for direct user testing."
+      },
+      {
+        "id": "actions",
+        "type": "custom",
+        "title": "Actions",
+        "body": "I structured the work as an AI-augmented production pipeline with human judgment at each handoff. Claude and NotebookLM accelerated ideation, research synthesis, and first-draft copy. Figma held the brand system, page designs, and components. Codex and Claude Code accelerated the build, and Storybook acted as the component documentation and accessibility QA layer.\n\nI deliberately rejected AI-generated people in the imagery because synthetic faces would undercut the brand promise of warm, human advisory. Instead, I used temporary real-human stock footage with a clear post-launch replacement plan for an advisor photo and video shoot."
+      },
+      {
+        "id": "impact",
+        "type": "results",
+        "title": "Result",
+        "body": "This project is primarily a delivery-capability case study. The site launched as a working product for review, and domain launch plus post-launch conversion measurement follow next.",
+        "payload": {
+          "insights": [
+            "A full brand system and launch-ready bilingual website were delivered in roughly a quarter of the typical solo timeline for this scope.",
+            "The English and Spanish content were written as native voice systems rather than one language being mechanically derived from the other.",
+            "The live site became the review artifact, which enabled quick approval because the client could evaluate the actual experience on real devices."
+          ],
+          "projected": [
+            "Replace stock placeholders with a real photo and video shoot featuring the advisors.",
+            "Measure referral-program engagement and WhatsApp contact conversion after launch.",
+            "Add a lightweight CMS layer for future advisor-bio and program-detail updates."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "slug": "reversetech",
+    "status": "published",
+    "featured": false,
+    "order": 7,
     "title": "Reverse Health Funnel Optimization & A/B Testing",
     "company": "Reverse Health",
     "client_context": "Paid search acquisition funnel",

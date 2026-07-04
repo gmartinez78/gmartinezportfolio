@@ -55,6 +55,7 @@ const projectImageMap: Record<string, string> = {
   "nayya-ai-benefits": withBasePath("/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png"),
   "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/thumbnails/flock.png"),
   "i9-everify-integration": withBasePath("/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png"),
+  protecta: withBasePath("/images/projects/protecta/thumbnails/project-list-card-protecta.svg"),
   reversetech: withBasePath("/images/projects/reversetech/thumbnails/project-list-card-reversetech.svg"),
 };
 
@@ -63,11 +64,13 @@ const projectHeroImageMap: Record<string, string> = {
   "nayya-ai-benefits": withBasePath("/images/projects/nayya-ai-benefits/hero/nayya-hero.png"),
   "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/hero/flock-hero.png"),
   "i9-everify-integration": withBasePath("/images/projects/i9-everify-integration/hero/i9-banner.png"),
+  protecta: withBasePath("/images/projects/protecta/thumbnails/project-list-card-protecta.svg"),
   reversetech: withBasePath("/images/projects/Reversetech/figma-screen.png"),
 };
 
 const projectHrefMap: Record<string, string> = {
   "benefits-enrollment": withBasePath("/benefits"),
+  protecta: withBasePath("/protecta"),
   reversetech: withBasePath("/reversetech"),
 };
 
@@ -87,6 +90,10 @@ const homeCardMediaMap: Record<string, { id: string; image: string }> = {
   "i9-everify-integration": {
     id: "home-card-i9-everify-integration",
     image: withBasePath("/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png"),
+  },
+  protecta: {
+    id: "home-card-protecta",
+    image: withBasePath("/images/projects/protecta/thumbnails/project-list-card-protecta.svg"),
   },
   reversetech: {
     id: "home-card-reversetech",
@@ -110,6 +117,10 @@ const projectListCardMediaMap: Record<string, { id: string; image: string }> = {
   "i9-everify-integration": {
     id: "project-list-card-i9-everify-integration",
     image: withBasePath("/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png"),
+  },
+  protecta: {
+    id: "project-list-card-protecta",
+    image: withBasePath("/images/projects/protecta/thumbnails/project-list-card-protecta.svg"),
   },
   reversetech: {
     id: "project-list-card-reversetech",
