@@ -55,6 +55,7 @@ const projectImageMap: Record<string, string> = {
   "nayya-ai-benefits": withBasePath("/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png"),
   "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/thumbnails/flock.png"),
   "i9-everify-integration": withBasePath("/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png"),
+  reversetech: withBasePath("/images/projects/reversetech/thumbnails/project-list-card-reversetech.svg"),
 };
 
 const projectHeroImageMap: Record<string, string> = {
@@ -62,6 +63,7 @@ const projectHeroImageMap: Record<string, string> = {
   "nayya-ai-benefits": withBasePath("/images/projects/nayya-ai-benefits/hero/nayya-hero.png"),
   "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/hero/flock-hero.png"),
   "i9-everify-integration": withBasePath("/images/projects/i9-everify-integration/hero/i9-banner.png"),
+  reversetech: withBasePath("/images/projects/Reversetech/figma-screen.png"),
 };
 
 const projectHrefMap: Record<string, string> = {
@@ -86,6 +88,10 @@ const homeCardMediaMap: Record<string, { id: string; image: string }> = {
     id: "home-card-i9-everify-integration",
     image: withBasePath("/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png"),
   },
+  reversetech: {
+    id: "home-card-reversetech",
+    image: withBasePath("/images/projects/reversetech/thumbnails/project-list-card-reversetech.svg"),
+  },
 };
 
 const projectListCardMediaMap: Record<string, { id: string; image: string }> = {
@@ -105,6 +111,10 @@ const projectListCardMediaMap: Record<string, { id: string; image: string }> = {
     id: "project-list-card-i9-everify-integration",
     image: withBasePath("/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png"),
   },
+  reversetech: {
+    id: "project-list-card-reversetech",
+    image: withBasePath("/images/projects/reversetech/thumbnails/project-list-card-reversetech.svg"),
+  },
 };
 
 const legacyAssetMap: Record<string, string> = {
@@ -117,7 +127,9 @@ const legacyAssetMap: Record<string, string> = {
   "/images/certs/nng-cert.png": "/images/OiSjn.png",
 };
 
-const HIDDEN_CASE_STUDY_SLUGS = new Set(["reversetech"]);
+const HIDDEN_CASE_STUDY_SLUGS = new Set<string>();
+
+const REVERSETECH_PROJECT_TITLE = "Reverse Health Funnel Optimization & A/B Testing";
 
 function resolveLegacyAssetPath(path?: string | null) {
   if (!path) {
@@ -153,6 +165,17 @@ function normalizeSiteContent(content: SiteContent): SiteContent {
         logo: resolveLegacyAssetPath(certification.logo) ?? certification.logo,
       })),
     },
+  };
+}
+
+function normalizeCaseStudy(study: CaseStudyRecord): CaseStudyRecord {
+  if (study.slug !== "reversetech") {
+    return study;
+  }
+
+  return {
+    ...study,
+    title: REVERSETECH_PROJECT_TITLE,
   };
 }
 
@@ -257,7 +280,7 @@ export function usePublicCaseStudies() {
         .order("order", { ascending: true });
 
       if (data) {
-        setCaseStudies(data as CaseStudyRecord[]);
+        setCaseStudies((data as CaseStudyRecord[]).map(normalizeCaseStudy));
       }
       setLoading(false);
     })();
@@ -301,7 +324,7 @@ export function usePublicCaseStudy(slug: string) {
         .eq("slug", slug)
         .maybeSingle();
 
-      setCaseStudy((data as CaseStudyRecord | null) ?? fallbackStudy);
+      setCaseStudy(data ? normalizeCaseStudy(data as CaseStudyRecord) : fallbackStudy);
       setLoading(false);
     })();
   }, [fallbackStudy, slug, supabase]);

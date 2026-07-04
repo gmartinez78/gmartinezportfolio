@@ -106,6 +106,8 @@ const HERO_ASSISTANT_SUGGESTIONS = [
   "Where can I see resume details?",
 ];
 
+const MAIN_VISIBLE_CASE_STUDY_SLUGS = new Set(["reversetech"]);
+
 type LocalSearchItem = {
   id: string;
   title: string;
@@ -127,6 +129,30 @@ function tokenizeSearchQuery(value: string) {
         .filter(Boolean),
     ),
   );
+}
+
+function isVisibleOnMain(slug: string) {
+  return MAIN_VISIBLE_CASE_STUDY_SLUGS.has(slug) || !isHiddenCaseStudySlug(slug);
+}
+
+function compareCaseStudyPriority<
+  T extends {
+    year?: number | null;
+    order?: number | null;
+    title?: string | null;
+  },
+>(left: T, right: T) {
+  const yearDiff = (right.year ?? 0) - (left.year ?? 0);
+  if (yearDiff !== 0) {
+    return yearDiff;
+  }
+
+  const orderDiff = (left.order ?? Number.MAX_SAFE_INTEGER) - (right.order ?? Number.MAX_SAFE_INTEGER);
+  if (orderDiff !== 0) {
+    return orderDiff;
+  }
+
+  return (left.title ?? "").localeCompare(right.title ?? "");
 }
 
 function resolveHeroAssistantQuery(
@@ -151,7 +177,7 @@ function resolveHeroAssistantQuery(
 
   const searchableItems: LocalSearchItem[] = [
     ...caseStudies
-      .filter((study) => study.status === "published" && !isHiddenCaseStudySlug(study.slug))
+      .filter((study) => study.status === "published" && isVisibleOnMain(study.slug))
       .map((study) => ({
         id: `project-${study.slug}`,
         title: study.title,
@@ -562,7 +588,8 @@ export default function PortfolioPage() {
     : ["AI product design", "UX research", "Enterprise SaaS", "Design systems"];
   const allProjects = appendLockedNayyaPlaceholder(caseStudies ?? []);
   const homeProjects = allProjects
-    .filter((study) => study?.slug && !isHiddenCaseStudySlug(study.slug))
+    .filter((study) => study?.slug && isVisibleOnMain(study.slug))
+    .sort(compareCaseStudyPriority)
     .map((study) => ({
       slug: study.slug,
       cardId: resolveHomeCardId(study.slug),
@@ -1158,6 +1185,88 @@ export default function PortfolioPage() {
     </section>
   );
 
+  const githubProofSection = (
+    <section
+      key="github-proof"
+      id="github"
+      className="bg-white px-6 py-12 md:px-16 xl:px-30"
+    >
+      <div className="mx-auto max-w-[1180px] rounded-[34px] border border-[#e4ebf3] bg-[linear-gradient(135deg,#f7fbff_0%,#f4f7ff_52%,#fff8f4_100%)] p-6 shadow-[0_20px_44px_rgba(60,62,63,0.05)] md:p-8">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-[640px]">
+            <p className="text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">
+              GitHub Activity
+            </p>
+            <h2 className="mt-3 font-inter text-[30px] leading-[1.05] text-[#0e2951] md:text-[40px]">
+              Recent coding activity, not just design deliverables.
+            </h2>
+            <p className="mt-4 text-[15px] leading-[1.8] text-[#5c7792]">
+              Recent public work from <span className="font-semibold text-[#0e2951]">@{githubUsername}</span>, so people can see implementation, repos, and shipping rhythm alongside the case studies.
+            </p>
+          </div>
+          <a
+            href={`https://github.com/${githubUsername}`}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex h-12 items-center justify-center rounded-full border border-[#c8d7ea] bg-white px-6 text-[14px] font-medium text-[#0e2951] transition-colors hover:bg-[#0e2951] hover:text-white"
+          >
+            View GitHub ↗
+          </a>
+        </div>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {(githubActivity.length ? githubActivity.slice(0, 4) : [
+            {
+              id: "github-fallback",
+              kind: "repo" as const,
+              title: "GitHub profile",
+              detail: "Recent public coding activity appears here when the feed is available.",
+              repo: githubUsername,
+              timestamp: null,
+              url: `https://github.com/${githubUsername}`,
+            },
+          ]).map((item) => {
+            const Icon = getGitHubActivityIcon(item.kind);
+
+            return (
+              <a
+                key={item.id}
+                href={item.url}
+                target="_blank"
+                rel="noreferrer"
+                className="group rounded-[24px] border border-white/70 bg-white/80 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#bfd7f4] hover:shadow-[0_18px_34px_rgba(17,131,208,0.08)]"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-[14px] bg-[#eef6ff] text-[#1183D0]">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <span className="rounded-full bg-[#f5f8fc] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6d7f97]">
+                    {formatRelativeTimestamp(item.timestamp)}
+                  </span>
+                </div>
+                <p className="mt-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">
+                  {item.kind.replace("_", " ")}
+                </p>
+                <h3 className="mt-2 font-inter text-[18px] leading-[1.3] text-[#0e2951]">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-[14px] leading-[1.7] text-[#5c7792]">
+                  {item.detail}
+                </p>
+                <div className="mt-4 flex items-center justify-between gap-3 text-[13px] text-[#4f6486]">
+                  <span className="truncate">{item.repo}</span>
+                  <span className="font-medium text-[#1183D0] group-hover:underline">
+                    Open ↗
+                  </span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+
   const ctaSection = (
     <section
       key="cta"
@@ -1225,7 +1334,7 @@ export default function PortfolioPage() {
     </section>
   );
 
-  const contentSections = [impactShowcaseSection, toolsSection, ctaSection];
+  const contentSections = [impactShowcaseSection, toolsSection, githubProofSection, ctaSection];
 
   return (
     <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
@@ -1272,83 +1381,6 @@ export default function PortfolioPage() {
             ))}
           </div>
           <div className="pointer-events-none absolute inset-0 block">
-            <div
-              className="absolute right-[3%] top-[19%] h-[226px] w-[266px] rounded-[34px] border border-white/16 hidden lg:block"
-              style={{
-                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -7, 9),
-                transition: "transform 180ms ease-out",
-                opacity: 0.38,
-              }}
-            />
-            <div
-              className="absolute right-[7%] top-[24%] h-[154px] w-[204px] rounded-[24px] border border-[#e4bdd0]/22 hidden lg:block"
-              style={{
-                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, 8),
-                transition: "transform 180ms ease-out",
-                opacity: 0.52,
-              }}
-            />
-            <div
-              className="absolute right-[28%] top-[58%] h-px w-[150px] bg-[#90a4da]/28 hidden lg:block"
-              style={{
-                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -12, -6),
-                transition: "transform 180ms ease-out",
-              }}
-            />
-            <div
-              className="absolute right-[28%] top-[58%] h-[56px] w-px bg-[#90a4da]/24 hidden lg:block"
-              style={{
-                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -12, -6),
-                transition: "transform 180ms ease-out",
-              }}
-            />
-            <div
-              className="absolute right-[12%] top-[58%] h-px w-[130px] bg-[#d6a8bc]/28 hidden lg:block"
-              style={{
-                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, 5),
-                transition: "transform 180ms ease-out",
-              }}
-            />
-            <div
-              className="absolute right-[18%] top-[46%] h-[74px] w-[74px] rounded-full border border-white/14 hidden lg:block"
-              style={{
-                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -6, 0),
-                transition: "transform 180ms ease-out",
-                opacity: 0.45,
-              }}
-            />
-            <div
-              className="absolute right-[33%] top-[14%] z-[2] rounded-full border border-white/24 bg-white/8 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#64738f] hidden lg:block"
-              style={{
-                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, 0),
-                transition: "transform 180ms ease-out",
-              }}
-            >
-              User flow
-            </div>
-            <div
-              className="absolute right-[26%] top-[50%] z-[2] rounded-full border border-white/24 bg-white/8 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#64738f] hidden lg:block"
-              style={{
-                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, 0),
-                transition: "transform 180ms ease-out",
-              }}
-            >
-              Low-fi
-            </div>
-            <div
-              className="absolute right-[18%] top-[62%] z-[1] rounded-[16px] border border-white/18 bg-white/8 px-4 py-3 hidden lg:block"
-              style={{
-                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -8, -2),
-                transition: "transform 180ms ease-out",
-                opacity: 0.72,
-              }}
-            >
-              <div className="mb-2 h-2 w-16 rounded-full bg-white/34" />
-              <div className="space-y-2">
-                <div className="h-2 w-24 rounded-full bg-white/26" />
-                <div className="h-2 w-12 rounded-full bg-white/22" />
-              </div>
-            </div>
             <div
               className="absolute right-[28%] top-[20%] z-[1] w-[194px] rounded-[26px] border border-white/30 bg-white/12 p-3.5 shadow-[0_20px_42px_rgba(42,54,92,0.06),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur-xl hidden sm:block"
               style={{
@@ -1411,22 +1443,6 @@ export default function PortfolioPage() {
                     <div className="h-2 w-[74%] rounded-full bg-white/82" />
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <div
-              className="absolute right-[18%] bottom-[26%] z-[2] hidden sm:flex items-center gap-3 rounded-full border border-white/34 bg-white/12 px-4 py-3 shadow-[0_20px_42px_rgba(42,54,92,0.08),inset_0_1px_0_rgba(255,255,255,0.42)] backdrop-blur-xl"
-              style={{
-                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -18, -6),
-                transition: "transform 180ms ease-out",
-              }}
-            >
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#ffffff]/55 text-[#3d52c6]">
-                <MousePointer2 className="h-4 w-4" />
-              </span>
-              <div className="text-left">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#5b6a89]">UI Motion</p>
-                <p className="text-[13px] font-medium text-[#22314f]">Cursor-aware interactions</p>
               </div>
             </div>
 

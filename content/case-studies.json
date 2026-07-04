@@ -836,7 +836,7 @@
     "status": "published",
     "featured": false,
     "order": 6,
-    "title": "Senior Product Designer (Growth & Monetization)",
+    "title": "Reverse Health Funnel Optimization & A/B Testing",
     "company": "Reverse Health",
     "client_context": "Paid search acquisition funnel",
     "role": "Sr. Product Designer",
@@ -863,8 +863,8 @@
       "Notion"
     ],
     "images": {
-      "cover": "/images/projects/EB.png",
-      "hero": "/images/projects/EB.png",
+      "cover": "/images/projects/reversetech/thumbnails/project-list-card-reversetech.svg",
+      "hero": "/images/projects/Reversetech/figma-screen.png",
       "gallery": []
     },
     "client_logos": [],

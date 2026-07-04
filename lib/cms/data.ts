@@ -2,6 +2,19 @@ import { fallbackCaseStudies, fallbackSiteContent } from "@/lib/cms/fallback";
 import type { CaseStudyRecord, SiteContent } from "@/lib/cms/types";
 import { getSupabasePublicClient } from "@/lib/supabase/client";
 
+const REVERSETECH_PROJECT_TITLE = "Reverse Health Funnel Optimization & A/B Testing";
+
+function normalizeCaseStudy(study: CaseStudyRecord): CaseStudyRecord {
+  if (study.slug !== "reversetech") {
+    return study;
+  }
+
+  return {
+    ...study,
+    title: REVERSETECH_PROJECT_TITLE,
+  };
+}
+
 function sortCaseStudies(studies: CaseStudyRecord[]) {
   return [...studies].sort((a, b) => a.order - b.order);
 }
@@ -42,7 +55,7 @@ export async function getCaseStudies(): Promise<CaseStudyRecord[]> {
     return sortCaseStudies(fallbackCaseStudies);
   }
 
-  return sortCaseStudies(data) as CaseStudyRecord[];
+  return sortCaseStudies((data as CaseStudyRecord[]).map(normalizeCaseStudy));
 }
 
 export async function getCaseStudyBySlug(slug: string): Promise<CaseStudyRecord | null> {
@@ -62,5 +75,5 @@ export async function getCaseStudyBySlug(slug: string): Promise<CaseStudyRecord 
     return fallbackCaseStudies.find((study) => study.slug === slug) ?? null;
   }
 
-  return data as CaseStudyRecord;
+  return normalizeCaseStudy(data as CaseStudyRecord);
 }

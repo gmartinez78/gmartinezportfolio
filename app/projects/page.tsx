@@ -25,6 +25,26 @@ const PROJECT_BACKGROUNDS: Record<string, string> = {
   "i9-everify-integration": "radial-gradient(ellipse at 50% 80%, #d9e7f5 0%, #f3f8fc 72%)",
 };
 
+function compareCaseStudyPriority<
+  T extends {
+    year?: number | null;
+    order?: number | null;
+    title?: string | null;
+  },
+>(left: T, right: T) {
+  const yearDiff = (right.year ?? 0) - (left.year ?? 0);
+  if (yearDiff !== 0) {
+    return yearDiff;
+  }
+
+  const orderDiff = (left.order ?? Number.MAX_SAFE_INTEGER) - (right.order ?? Number.MAX_SAFE_INTEGER);
+  if (orderDiff !== 0) {
+    return orderDiff;
+  }
+
+  return (left.title ?? "").localeCompare(right.title ?? "");
+}
+
 function ProjectsPage() {
   const searchParams = useSearchParams();
   const { caseStudies } = usePublicCaseStudies();
@@ -46,20 +66,23 @@ function ProjectsPage() {
     setActiveTopic(initialTopic);
   }, [initialFilter, initialTopic]);
   
-  const projects = allProjects.filter((project) => project?.slug && !isHiddenCaseStudySlug(project.slug)).map((project) => ({
-    ...project,
-    cardId: resolveProjectListCardId(project.slug),
-    title: project.title ?? "Untitled Project",
-    company: project.company ?? "",
-    year: project.year ?? 0,
-    tagline: project.tagline ?? "",
-    tags: project.tags ?? [],
-    filters: project.filters?.length ? project.filters : project.tags ?? [],
-    stat: project.metrics?.[0]?.value ?? `${project.year ?? ""}`,
-    statLabel: project.metrics?.[0]?.label ?? project.industry ?? "",
-    previewImage: resolveProjectListCardImage(project.slug, project.images?.cover || project.images?.hero || ""),
-    background: PROJECT_BACKGROUNDS[project.slug] ?? "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
-  }));
+  const projects = allProjects
+    .filter((project) => project?.slug && !isHiddenCaseStudySlug(project.slug))
+    .sort(compareCaseStudyPriority)
+    .map((project) => ({
+      ...project,
+      cardId: resolveProjectListCardId(project.slug),
+      title: project.title ?? "Untitled Project",
+      company: project.company ?? "",
+      year: project.year ?? 0,
+      tagline: project.tagline ?? "",
+      tags: project.tags ?? [],
+      filters: project.filters?.length ? project.filters : project.tags ?? [],
+      stat: project.metrics?.[0]?.value ?? `${project.year ?? ""}`,
+      statLabel: project.metrics?.[0]?.label ?? project.industry ?? "",
+      previewImage: resolveProjectListCardImage(project.slug, project.images?.cover || project.images?.hero || ""),
+      background: PROJECT_BACKGROUNDS[project.slug] ?? "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
+    }));
   const filteredProjects = useMemo(() => {
     const normalizedTopic = activeTopic?.trim().toLowerCase() ?? null;
 
