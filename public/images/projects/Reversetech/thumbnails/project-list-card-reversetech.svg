@@ -2,11 +2,6 @@
   <title>Reverse Health A/B testing project card</title>
   <desc>Abstract thumbnail showing flat A/B testing panels, conversion blocks, and experiment accents.</desc>
   <defs>
-    <linearGradient id="bg" x1="138" y1="92" x2="1248" y2="1088" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FFF3F8"/>
-      <stop offset="0.5" stop-color="#FFDCEC"/>
-      <stop offset="1" stop-color="#FFC5DE"/>
-    </linearGradient>
     <linearGradient id="board" x1="244" y1="158" x2="1160" y2="942" gradientUnits="userSpaceOnUse">
       <stop stop-color="#FFFDFE"/>
       <stop offset="1" stop-color="#FFF5FA"/>
@@ -30,13 +25,6 @@
       <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
     </filter>
   </defs>
-
-  <rect width="1400" height="1170" rx="72" fill="url(#bg)"/>
-  <circle cx="196" cy="224" r="132" fill="#FFD6E9" fill-opacity="0.9"/>
-  <circle cx="1202" cy="188" r="100" fill="#CFF4EE" fill-opacity="0.82"/>
-  <circle cx="1140" cy="980" r="166" fill="#D7CCFF" fill-opacity="0.52"/>
-  <path d="M60 830C204 752 402 734 564 780C736 828 854 932 1016 924C1136 918 1234 876 1340 802V1170H60V830Z" fill="#FFF8FC" fill-opacity="0.9"/>
-
   <g filter="url(#shadowLg)">
     <rect x="260" y="166" width="884" height="744" rx="52" fill="url(#board)"/>
   </g>
