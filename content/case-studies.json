@@ -301,7 +301,7 @@
     ],
     "nda_notice": null,
     "password": null,
-    "external_link": null,
+    "external_link": "https://protecta-nine.vercel.app/",
     "content_blocks": [
       {
         "id": "overview",
@@ -870,7 +870,10 @@
     "images": {
       "cover": "/images/projects/protecta/thumbnails/protectabanner.png",
       "hero": "/images/projects/protecta/thumbnails/protectabanner.png",
-      "gallery": []
+      "gallery": [
+        "/images/projects/protecta/screenshots/protecta-home-desktop.png",
+        "/images/projects/protecta/screenshots/protecta-home-mobile.png"
+      ]
     },
     "client_logos": [],
     "metrics": [
@@ -983,6 +986,10 @@
       {
         "title": "A live product changes review quality.",
         "body": "Showing the client a working site instead of frames made feedback faster and more grounded because they evaluated the real experience rather than imagining it."
+      },
+      {
+        "title": "Trust signals need human judgment.",
+        "body": "I deliberately rejected AI-generated people in the imagery because synthetic faces would undercut the brand promise of warm, human advisory. Instead, I used temporary real-human stock footage with a clear post-launch replacement plan for an advisor photo and video shoot."
       }
     ],
     "nda_notice": null,
@@ -1023,7 +1030,7 @@
         "id": "actions",
         "type": "custom",
         "title": "Actions",
-        "body": "I structured the work as an AI-augmented production pipeline with human judgment at each handoff. Claude and NotebookLM accelerated ideation, research synthesis, and first-draft copy. Figma held the brand system, page designs, and components. Codex and Claude Code accelerated the build, and Storybook acted as the component documentation and accessibility QA layer.\n\nI deliberately rejected AI-generated people in the imagery because synthetic faces would undercut the brand promise of warm, human advisory. Instead, I used temporary real-human stock footage with a clear post-launch replacement plan for an advisor photo and video shoot."
+        "body": "I structured the work as an AI-augmented production pipeline with human judgment at each handoff. Claude and NotebookLM accelerated ideation, research synthesis, and first-draft copy. Figma held the brand system, page designs, and components. Codex and Claude Code accelerated the build, and Storybook acted as the component documentation and accessibility QA layer."
       },
       {
         "id": "impact",

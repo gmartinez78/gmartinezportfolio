@@ -2406,7 +2406,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         <SectionHeading eyebrow="Overview" title="Structure" centered className="mb-6" />
         {overviewBlock?.body ? (
-          <p className="mt-8 max-w-[860px] font-inter text-[18px] leading-[1.8] text-[#5c7792]">
+          <p className="mx-auto mt-8 max-w-[860px] text-center font-inter text-[18px] leading-[1.8] text-[#5c7792]">
             {overviewBlock.body}
           </p>
         ) : null}
@@ -4734,6 +4734,34 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 allowFullScreen
               />
             </ContentPanel>
+          </div>
+        </section>
+      ) : null}
+
+      {caseStudy.slug === "protecta" && (caseStudy.images.gallery?.length ?? 0) > 0 ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading title="Website Screenshots" centered className="mb-12" />
+          <div className="grid gap-6 md:grid-cols-[minmax(0,1.5fr)_minmax(280px,0.7fr)]">
+            {caseStudy.images.gallery.map((imageSrc, index) => (
+              <a
+                key={imageSrc}
+                href={withBasePath(imageSrc)}
+                target="_blank"
+                rel="noreferrer"
+                className="group block"
+              >
+                <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.10)]">
+                  <img
+                    src={withBasePath(imageSrc)}
+                    alt={index === 0 ? "Protecta desktop homepage screenshot" : "Protecta mobile homepage screenshot"}
+                    className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.01]"
+                  />
+                </div>
+                <p className="mt-4 text-center font-inter text-[13px] leading-[1.6] text-[#5c7792]">
+                  {index === 0 ? "Desktop homepage" : "Mobile homepage"}
+                </p>
+              </a>
+            ))}
           </div>
         </section>
       ) : null}
