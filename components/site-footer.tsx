@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { isExternalHref, normalizeNavigableHref, withBasePath } from "../lib/site";
 import { usePublicSiteContent } from "../lib/cms/public";
+import { useTranslate } from "../lib/i18n/use-translate";
 import { LogoMark } from "./site-header";
 
 export function SiteFooter() {
   const { siteContent } = usePublicSiteContent();
-  const footerLinks = [{ label: "Home", href: "/" }, ...siteContent.nav.links];
+  const translate = useTranslate();
+  const footerLinks = [{ label: translate("footer.home"), href: "/" }, ...siteContent.nav.links];
   const footerSocial = siteContent.footer.social_links;
 
   return (
@@ -28,7 +30,7 @@ export function SiteFooter() {
 
         <div className="flex flex-col gap-3.5">
           <span className="text-[14px] font-semibold text-white">
-            Site Map
+            {translate("footer.siteMap")}
           </span>
           {footerLinks.map((link) => (
             <Link
@@ -43,7 +45,7 @@ export function SiteFooter() {
 
         <div className="flex flex-col gap-3.5">
           <span className="text-[14px] font-semibold text-white">
-            Connect
+            {translate("footer.connect")}
           </span>
           {footerSocial.map((link) => (
             <a

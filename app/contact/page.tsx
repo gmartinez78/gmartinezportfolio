@@ -6,6 +6,7 @@ import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { SectionHeading } from "../../components/ui/section-heading";
 import { usePublicSiteContent } from "../../lib/cms/public";
+import { useTranslate } from "../../lib/i18n/use-translate";
 
 
 const INFO_CARDS = [
@@ -69,9 +70,10 @@ const INFO_CARDS = [
 
 export default function ContactPage() {
   const { siteContent } = usePublicSiteContent();
+  const translate = useTranslate();
   const infoCards: Array<{ icon: (typeof INFO_CARDS)[number]["icon"]; label: string; value: string; href?: string | null }> =
-    siteContent.contact.details.map((detail) => {
-      const baseCard = INFO_CARDS.find((card) => card.label.toLowerCase() === detail.label.toLowerCase()) ?? INFO_CARDS[0];
+    siteContent.contact.details.map((detail, index) => {
+      const baseCard = INFO_CARDS[index] ?? INFO_CARDS[0];
 
       return {
         icon: baseCard.icon,
@@ -100,8 +102,8 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Form */}
           <ContactFormCard
-            title="Send a message"
-            submitLabel="Send Message"
+            title={translate("contactPage.sendAMessage")}
+            submitLabel={translate("contactForm.sendMessage")}
             values={{ name: "", email: "", subject: "", message: "" }}
           />
 

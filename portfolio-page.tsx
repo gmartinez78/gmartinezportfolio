@@ -14,6 +14,8 @@ import { Badge } from "./components/ui/badge";
 import { Button } from "./components/ui/button";
 import { ProjectTeaserCard } from "./components/project-teaser-card";
 import { appendLockedNayyaPlaceholder } from "./lib/cms/locked-placeholder";
+import { useLanguage } from "./lib/i18n/language-context";
+import { useTranslate } from "./lib/i18n/use-translate";
 import {
   isHiddenCaseStudySlug,
   resolveHomeCardId,
@@ -161,11 +163,12 @@ function resolveHeroAssistantQuery(
   caseStudies: ReturnType<typeof usePublicCaseStudies>["caseStudies"],
   siteContent: ReturnType<typeof usePublicSiteContent>["siteContent"],
   viewer: HeroVisitorType | null,
+  translate: ReturnType<typeof useTranslate>,
 ): HeroAssistantResult {
   const query = rawQuery.trim();
   if (!query) {
     return {
-      response: "Ask about projects, case studies, skills, resume, contact details, or GitHub activity on this website.",
+      response: translate("home.assistantDefaultResponse"),
       items: [],
     };
   }
@@ -227,7 +230,7 @@ function resolveHeroAssistantQuery(
     },
     {
       id: "resume",
-      title: "Resume",
+      title: translate("home.assistantResumeTitle"),
       snippet: siteContent.resume.title,
       href: withBasePath("/resume"),
       audience: ["recruiter"] as HeroVisitorType[],
@@ -245,7 +248,7 @@ function resolveHeroAssistantQuery(
     },
     {
       id: "contact",
-      title: "Contact",
+      title: translate("home.assistantContactTitle"),
       snippet: siteContent.contact.intro,
       href: withBasePath("/contact"),
       audience: ["recruiter", "client"] as HeroVisitorType[],
@@ -259,8 +262,8 @@ function resolveHeroAssistantQuery(
     },
     {
       id: "github",
-      title: "GitHub Activity",
-      snippet: "Recent public GitHub work and repository activity.",
+      title: translate("home.assistantGithubTitle"),
+      snippet: translate("home.assistantGithubSnippet"),
       href: "#github",
       sectionId: "github" as const,
       audience: ["recruiter", "client"] as HeroVisitorType[],
@@ -303,7 +306,7 @@ function resolveHeroAssistantQuery(
 
   if (!rankedItems.length) {
     return {
-      response: "I can only provide information already available on this website. I couldn't find that here.",
+      response: translate("home.assistantNoMatch"),
       items: [],
     };
   }
@@ -312,10 +315,10 @@ function resolveHeroAssistantQuery(
   return {
     response:
       projectCount > 1
-        ? `I found ${projectCount} matching projects and a few related sections on this website.`
+        ? translate("home.assistantMultipleMatches").replace("{count}", String(projectCount))
         : projectCount === 1
-          ? "I found 1 matching project on this website and a few relevant places to continue."
-          : `I found relevant information on this website for "${query}".`,
+          ? translate("home.assistantOneProjectMatch")
+          : translate("home.assistantGenericMatch").replace("{query}", query),
     items: rankedItems,
   };
 }
@@ -550,14 +553,14 @@ function HeroPrototypeOverlay({
 
 export default function PortfolioPage() {
   const heroPhase: HeroPhase = "day";
+  const { language } = useLanguage();
+  const translate = useTranslate();
   const [githubActivity, setGithubActivity] = useState<GitHubActivityItem[]>([]);
   const [githubUsername, setGithubUsername] = useState("gmartinez78");
   const [heroPointer, setHeroPointer] = useState({ x: 0, y: 0 });
   const [heroVisitorType, setHeroVisitorType] = useState<HeroVisitorType | null>(null);
   const [heroAssistantQuery, setHeroAssistantQuery] = useState("");
-  const [heroAssistantResponse, setHeroAssistantResponse] = useState(
-    "Ask about projects, UX research, design systems, resume details, contact info, or GitHub activity on this website.",
-  );
+  const [heroAssistantResponse, setHeroAssistantResponse] = useState(() => translate("home.assistantDefaultResponse"));
   const [heroAssistantResults, setHeroAssistantResults] = useState<HeroAssistantResult["items"]>([]);
   const [highlightedProjectIds, setHighlightedProjectIds] = useState<string[]>([]);
   const [activeProjectCardId, setActiveProjectCardId] = useState<string | null>(null);
@@ -603,40 +606,40 @@ export default function PortfolioPage() {
       href: resolveProjectHref(study),
       tags: study.tags.slice(0, 2),
       password: study.password,
-      cta: study.external_link ? "View project" : "View case study",
+      cta: study.external_link ? translate("home.viewProject") : translate("home.viewCaseStudy"),
     }));
   const heroRoles = [
-    "designing with AI.",
-    "a senior designer.",
-    "research that ships.",
-    "enterprise UX.",
-    "your next UX hire.",
+    translate("home.heroRole1"),
+    translate("home.heroRole2"),
+    translate("home.heroRole3"),
+    translate("home.heroRole4"),
+    translate("home.heroRole5"),
   ];
   const heroPills = [
     {
-      title: "AI Product Design",
-      subtitle: "from prompt to shipped UX",
+      title: translate("home.heroPill.aiProductTitle"),
+      subtitle: translate("home.heroPill.aiProductSubtitle"),
       href: withBasePath("/projects?filter=AI%20Product"),
       icon: BrainCircuit,
       accentClassName: "bg-[#FFC437] text-[#0e2951]",
     },
     {
-      title: "Design Systems",
-      subtitle: "patterns built to scale",
+      title: translate("home.heroPill.designSystemsTitle"),
+      subtitle: translate("home.heroPill.designSystemsSubtitle"),
       href: withBasePath("/projects?filter=Design%20Systems"),
       icon: LayoutTemplate,
       accentClassName: "bg-[#F78BE3] text-[#0e2951]",
     },
     {
-      title: "UX Research",
-      subtitle: "insight that shapes delivery",
+      title: translate("home.heroPill.uxResearchTitle"),
+      subtitle: translate("home.heroPill.uxResearchSubtitle"),
       href: withBasePath("/projects?filter=UX%20Research"),
       icon: Mic,
       accentClassName: "bg-[#25D7C4] text-[#0e2951]",
     },
     {
-      title: "Enterprise SaaS",
-      subtitle: "clear flows for complex products",
+      title: translate("home.heroPill.enterpriseSaasTitle"),
+      subtitle: translate("home.heroPill.enterpriseSaasSubtitle"),
       href: withBasePath("/projects?topic=SaaS"),
       icon: FolderGit2,
       accentClassName: "bg-[#4E8BFF] text-white",
@@ -671,14 +674,14 @@ export default function PortfolioPage() {
 
     const query = heroAssistantQuery.trim();
     if (!query) {
-      setHeroAssistantResponse("Ask about projects, skills, resume, contact details, or GitHub activity on this website.");
+      setHeroAssistantResponse(translate("home.assistantDefaultResponse"));
       setHeroAssistantResults([]);
       setHighlightedProjectIds([]);
       return;
     }
 
     try {
-      const result = resolveHeroAssistantQuery(query, caseStudies, siteContent, heroVisitorType);
+      const result = resolveHeroAssistantQuery(query, caseStudies, siteContent, heroVisitorType, translate);
       setHeroAssistantResponse(result.response);
       setHeroAssistantResults(result.items);
 
@@ -690,7 +693,7 @@ export default function PortfolioPage() {
       const firstSection = result.items.find((item) => item.sectionId)?.sectionId;
       scrollToSection(firstSection);
     } catch {
-      setHeroAssistantResponse("I couldn't search the website right now.");
+      setHeroAssistantResponse(translate("home.assistantSearchError"));
       setHeroAssistantResults([]);
       setHighlightedProjectIds([]);
     }
@@ -706,19 +709,19 @@ export default function PortfolioPage() {
     } = {};
 
     if (!ctaForm.name.trim()) {
-      nextErrors.name = "Please add your name.";
+      nextErrors.name = translate("contactForm.errorName");
     }
 
     if (!ctaForm.email.trim()) {
-      nextErrors.email = "Please add your email.";
+      nextErrors.email = translate("contactForm.errorEmail");
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ctaForm.email.trim())) {
-      nextErrors.email = "Please enter a valid email.";
+      nextErrors.email = translate("contactForm.errorEmailInvalid");
     }
 
     if (!ctaForm.message.trim()) {
-      nextErrors.message = "Please add a message.";
+      nextErrors.message = translate("contactForm.errorMessage");
     } else if (ctaForm.message.trim().length < 12) {
-      nextErrors.message = "Please add a bit more detail.";
+      nextErrors.message = translate("contactForm.errorMessageDetail");
     }
 
     setCtaErrors(nextErrors);
@@ -752,14 +755,14 @@ export default function PortfolioPage() {
         throw new Error("Email request failed");
       }
 
-      setCtaToast("Email sent. I’ll get back to you soon.");
+      setCtaToast(translate("contactForm.sentSuccess"));
       setCtaForm({
         name: "",
         email: "",
         message: "",
       });
     } catch {
-      setCtaToast("I couldn’t send the email right now. Please try again.");
+      setCtaToast(translate("contactForm.errorSendFailed"));
     } finally {
       setCtaSubmitting(false);
     }
@@ -779,6 +782,13 @@ export default function PortfolioPage() {
       scrollToSection("projects");
     }
   }
+
+  useEffect(() => {
+    if (!heroAssistantQuery.trim()) {
+      setHeroAssistantResponse(translate("home.assistantDefaultResponse"));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language]);
 
   useEffect(() => {
     if (!homeProjects.length) {
@@ -844,8 +854,8 @@ export default function PortfolioPage() {
         {
           id: "github-fallback",
           kind: "repo" as const,
-          title: "GitHub profile",
-          detail: "Recent public coding activity appears here when the feed is available.",
+          title: translate("home.githubProfile"),
+          detail: translate("home.githubEmptyState"),
           repo: githubUsername,
           timestamp: null,
           url: `https://github.com/${githubUsername}`,
@@ -869,12 +879,13 @@ export default function PortfolioPage() {
     );
 
     return [
-      { label: "Commits", value: counts.commit },
-      { label: "PRs", value: counts.pull_request },
-      { label: "Issues", value: counts.issue },
-      { label: "Repos", value: counts.repo },
+      { label: translate("home.commits"), value: counts.commit },
+      { label: translate("home.pullRequests"), value: counts.pull_request },
+      { label: translate("home.issues"), value: counts.issue },
+      { label: translate("home.repos"), value: counts.repo },
     ].filter((item) => item.value > 0);
-  }, [githubActivityItems]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [githubActivityItems, language]);
 
   const recentWorkSection = (
     <section key="work" id="projects" className="bg-white py-12 px-6 md:px-10 xl:px-20">
@@ -919,7 +930,7 @@ export default function PortfolioPage() {
             type="button"
             onClick={() => scrollProjects("left")}
             className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#cfe5f8] bg-white text-[#1183D0] transition-colors hover:border-[#1183D0] hover:bg-[#f7fbff]"
-            aria-label="Scroll projects left"
+            aria-label={translate("home.scrollProjectsLeft")}
           >
             <ArrowLeft className="h-4 w-4" />
           </button>
@@ -927,7 +938,7 @@ export default function PortfolioPage() {
             type="button"
             onClick={() => scrollProjects("right")}
             className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#cfe5f8] bg-white text-[#1183D0] transition-colors hover:border-[#1183D0] hover:bg-[#f7fbff]"
-            aria-label="Scroll projects right"
+            aria-label={translate("home.scrollProjectsRight")}
           >
             <ArrowRight className="h-4 w-4" />
           </button>
@@ -1100,10 +1111,10 @@ export default function PortfolioPage() {
                     </div>
                     <div className="flex items-center gap-2 text-[12px] text-[#5f78a0]">
                       <GitCommitHorizontal className="h-3.5 w-3.5" />
-                      Shared inputs translated into product direction
+                      {translate("home.sharedInputsNote")}
                     </div>
                     <div className="mt-3 rounded-[16px] bg-[linear-gradient(135deg,#edf5ff_0%,#f7fbff_100%)] px-3 py-3 text-[12px] leading-7 text-[#4f6486]">
-                      Collaboration helps connect user needs, business goals, and implementation tradeoffs into clearer product decisions.
+                      {translate("home.collaborationNote")}
                     </div>
                   </div>
                 </div>
@@ -1119,23 +1130,23 @@ export default function PortfolioPage() {
           >
             <div className="mb-5 rounded-[22px] bg-white p-4 shadow-[0_14px_32px_rgba(30,38,61,0.06)]">
               <ChecklistStatusCard
-                eyebrow="A11y validation"
-                badge="in review"
+                eyebrow={translate("home.a11yValidationEyebrow")}
+                badge={translate("home.a11yValidationBadge")}
                 badgeClassName="bg-[#e8f8ea] text-[#339154]"
                 items={[
-                  { label: "Focus order", status: "Pass", statusClassName: "bg-[#e8f8ea] text-[#339154]" },
-                  { label: "Color contrast", status: "Check", statusClassName: "bg-[#eef7ff] text-[#1183D0]" },
-                  { label: "Labels and roles", status: "Pass", statusClassName: "bg-[#e8f8ea] text-[#339154]" },
-                  { label: "Keyboard states", status: "Audit", statusClassName: "bg-[#fff3df] text-[#d68524]" },
+                  { label: translate("home.focusOrder"), status: translate("home.pass"), statusClassName: "bg-[#e8f8ea] text-[#339154]" },
+                  { label: translate("home.colorContrast"), status: translate("home.check"), statusClassName: "bg-[#eef7ff] text-[#1183D0]" },
+                  { label: translate("home.labelsAndRoles"), status: translate("home.pass"), statusClassName: "bg-[#e8f8ea] text-[#339154]" },
+                  { label: translate("home.keyboardStates"), status: translate("home.audit"), statusClassName: "bg-[#fff3df] text-[#d68524]" },
                 ]}
               />
             </div>
 
             <h3 className="max-w-[320px] font-inter text-[26px] leading-[1.15] text-[#0e2951]">
-              Accessibility documentation and UX validation
+              {translate("home.a11yCardTitle")}
             </h3>
             <p className="mt-3 max-w-[320px] text-[14px] leading-[1.6] text-[#5c7792] md:text-[15px]">
-              Brings accessibility thinking to product work through documentation, UX audits, and well-structured design systems that support clearer, more consistent decisions.
+              {translate("home.a11yCardDescription")}
             </p>
           </Link>
 
@@ -1147,10 +1158,10 @@ export default function PortfolioPage() {
             <div className="absolute bottom-8 right-6 h-24 w-24 rounded-full bg-[#9ec6ff]/35 blur-2xl" />
             <div className="relative">
               <h3 className="max-w-[320px] font-inter text-[26px] leading-[1.15] text-[#0e2951]">
-                Design systems and cross-functional support.
+                {translate("home.designSystemsCardTitle")}
               </h3>
               <p className="mt-3 max-w-[320px] text-[14px] leading-[1.6] text-[#5c7792] md:text-[15px]">
-                A reliable partner for quick design feedback, design systems consultation, and practical IT-related problem solving across the product workflow.
+                {translate("home.designSystemsCardDescription")}
               </p>
 
               <div className="mt-6 grid gap-3">
@@ -1160,12 +1171,12 @@ export default function PortfolioPage() {
                       <LayoutTemplate className="h-4 w-4" />
                     </span>
                   }
-                  title="Quick design feedback"
-                  description="fast reviews, clear notes, actionable product decisions"
+                  title={translate("home.quickDesignFeedback")}
+                  description={translate("home.quickDesignFeedbackDescription")}
                   tags={[
-                    { label: "Reviews", className: "rounded-full bg-[#eef6ff] px-3 py-1 text-[11px] font-semibold text-[#1183D0]" },
-                    { label: "Iteration", className: "rounded-full bg-[#fff1df] px-3 py-1 text-[11px] font-semibold text-[#d68524]" },
-                    { label: "Alignment", className: "rounded-full bg-[#ebf8ef] px-3 py-1 text-[11px] font-semibold text-[#2f8c54]" },
+                    { label: translate("home.reviews"), className: "rounded-full bg-[#eef6ff] px-3 py-1 text-[11px] font-semibold text-[#1183D0]" },
+                    { label: translate("home.iteration"), className: "rounded-full bg-[#fff1df] px-3 py-1 text-[11px] font-semibold text-[#d68524]" },
+                    { label: translate("home.alignment"), className: "rounded-full bg-[#ebf8ef] px-3 py-1 text-[11px] font-semibold text-[#2f8c54]" },
                   ]}
                 />
               </div>
@@ -1347,14 +1358,14 @@ export default function PortfolioPage() {
                   LinkedIn ↗
                 </a>
                 <Link href={withBasePath("/projects")} className="underline decoration-[#b8cadf] underline-offset-4 hover:text-[#0e2951]">
-                  Case studies
+                  {translate("home.caseStudiesLink")}
                 </Link>
               </div>
             </div>
           </div>
 
           <ContactFormCard
-            title="Send a message"
+            title={translate("contactPage.sendAMessage")}
             submitLabel={siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
             onSubmit={handleCtaSubmit}
             values={ctaForm}

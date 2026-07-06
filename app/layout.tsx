@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { inter, playfairDisplay } from "../lib/fonts";
+import { LanguageProvider } from "../lib/i18n/language-context";
 import "./globals.css";
 
 const siteUrl =
@@ -42,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${playfairDisplay.variable} ${inter.variable} font-sans`}>
       <body className={`${playfairDisplay.variable} ${inter.variable} font-inter`} suppressHydrationWarning>
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

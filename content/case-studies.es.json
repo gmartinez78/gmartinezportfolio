@@ -1,0 +1,1380 @@
+[
+  {
+    "slug": "benefits-enrollment",
+    "status": "published",
+    "featured": true,
+    "order": 2,
+    "title": "Mejora de la inscripción en beneficios",
+    "company": "Paychex & Flock",
+    "client_context": "Paychex & Flock",
+    "role": "Diseñador de Producto Senior (Crecimiento y Monetización)",
+    "year": 2025,
+    "duration": "3 meses",
+    "industry": "BENEFICIOS / SAAS DE SEGUROS",
+    "tagline": "Sustituyó un flujo de trabajo manual por una plataforma centralizada y autogestionada, reduciendo el tiempo de procesamiento en un 72%.",
+    "tags": [
+      "BENEFITS / ENSURANCE SAAS",
+      "UX Research",
+      "IA",
+      "Interaction Design",
+      "Design Systems"
+    ],
+    "tools": [
+      "Figma",
+      "Jira",
+      "Miro",
+      "Webex",
+      "Outlook",
+      "Copilot",
+      "Hotjar"
+    ],
+    "images": {
+      "cover": "/images/projects/benefits-enrollment/thumbnails/thumbnail-benefits.png",
+      "hero": "/images/projects/benefits-enrollment/hero/benefits-hero.png",
+      "gallery": [
+        "/images/benefits/figma-logo.png",
+        "/images/benefits/jira-logo.png",
+        "/images/benefits/miro-logo.png"
+      ]
+    },
+    "client_logos": [
+      {
+        "name": "Paychex",
+        "logo": "/images/c54fy.png"
+      },
+      {
+        "name": "Flock",
+        "logo": "/images/flock-logo.png"
+      },
+      {
+        "name": "IBX",
+        "logo": "/images/SNUZw.png"
+      }
+    ],
+    "metrics": [
+      {
+        "value": "72%",
+        "label": "Reducción en el tiempo de procesamiento",
+        "context": "procesamiento de beneficios"
+      },
+      {
+        "value": "500+",
+        "label": "Empleados autogestionados",
+        "context": "sin tickets de TI"
+      },
+      {
+        "value": "3 mo",
+        "label": "Diseño y entrega de extremo a extremo",
+        "context": "cronograma"
+      }
+    ],
+    "team": [
+      "Product Owner",
+      "Gerente de Programa",
+      "Analista de Negocio",
+      "Investigador",
+      "Equipo de desarrollo (12)",
+      "Gerente de UX",
+      "Líder de UX",
+      "Diseñador UX/UI",
+      "Arquitecto de Servicio",
+      "Scrum Master"
+    ],
+    "my_role": [
+      "Investigación de Usuarios",
+      "Diseño UX/UI",
+      "Pensamiento de Producto",
+      "Narrativa"
+    ],
+    "problem": {
+      "admin_pain_points": [
+        "Los cambios en beneficios requerían ejecutar múltiples ciclos de nómina y una conciliación manual.",
+        "Los administradores no tenían una forma sencilla de agregar los datos de los empleados de todos los departamentos en un solo lugar.",
+        "Cuando se producían picos de inscripción, no existía un flujo claro de escalado o alerta."
+      ],
+      "user_pain_points": [
+        "Añadir nuevos empleados requería tickets de soporte y esfuerzo de desarrollo manual.",
+        "Los datos debían recopilarse, validarse y enviarse entre equipos. Los cambios se seguían por correo electrónico.",
+        "No existía una gobernanza centralizada ni una estructura de permisos clara."
+      ]
+    },
+    "constraints": [
+      "Un cronograma muy ajustado.",
+      "Equilibrar los patrones existentes del producto con las necesidades de los usuarios sin alterar la experiencia."
+    ],
+    "methodology": {
+      "name": "Design Thinking",
+      "steps": [
+        {
+          "step": 1,
+          "label": "Empatizar",
+          "description": "Entrevistas con usuarios y sesiones con stakeholders"
+        },
+        {
+          "step": 2,
+          "label": "Definir",
+          "description": "Definición del problema y mapeo de puntos de dolor"
+        },
+        {
+          "step": 3,
+          "label": "Idear",
+          "description": "Flujos, arquitectura y wireframes"
+        },
+        {
+          "step": 4,
+          "label": "Prototipar",
+          "description": "Pantallas de alta fidelidad y prototipos interactivos"
+        },
+        {
+          "step": 5,
+          "label": "Probar",
+          "description": "Análisis con Hotjar tras el lanzamiento"
+        }
+      ]
+    },
+    "design_strategy": [
+      "Definir la arquitectura y la lógica subyacentes antes de cambiar la interfaz.",
+      "Identificar qué partes del sistema funcionan bien y construir a partir de ellas.",
+      "Al no existir un sistema de diseño, la colaboración con el equipo de desarrollo garantizó que la interfaz final se mantuviera coherente en todo momento."
+    ],
+    "reflections": [
+      {
+        "title": "La arquitectura antes que la interfaz.",
+        "body": "Invertir tiempo en mapear el modelo de permisos antes de diseñar las pantallas evitó retrabajos costosos. La lógica tenía que ser impecable antes de mover un solo píxel."
+      },
+      {
+        "title": "Confianza a través de las restricciones.",
+        "body": "Trabajar sin un sistema de diseño exigió una colaboración estrecha con los ingenieros. Las sincronizaciones constantes mantuvieron la interfaz coherente y la entrega fluida incluso bajo presión de plazos."
+      }
+    ],
+    "nda_notice": "Partes de esta presentación, incluidas algunas pantallas y detalles del proyecto, han sido ocultadas o difuminadas debido a un acuerdo de confidencialidad firmado con el cliente. El trabajo mostrado es real; se omiten los detalles completos para proteger la privacidad del cliente.",
+    "password": null,
+    "external_link": null
+  },
+  {
+    "slug": "nayya-ai-benefits",
+    "status": "published",
+    "featured": true,
+    "order": 1,
+    "title": "Integración de Nayya",
+    "company": "Nayya",
+    "client_context": "Paychex a través de ITX Corp",
+    "role": "Diseñador de Producto Sr.",
+    "year": 2025,
+    "duration": "6 meses",
+    "industry": "Beneficios con IA / SaaS de RRHH",
+    "tagline": "Diseñó la integración de Nayya como herramienta de beneficios impulsada por IA, guiando a los empleados a elegir la cobertura que mejor se ajustaba a sus necesidades.",
+    "tags": [
+      "BENEFITS / ENSURANCE SAAS",
+      "UX Research",
+      "IA",
+      "Interaction Design",
+      "Design Systems"
+    ],
+    "tools": [
+      "Figma",
+      "Jira",
+      "Miro",
+      "Webex",
+      "Outlook",
+      "Copilot",
+      "Hotjar"
+    ],
+    "filters": [
+      "UX Research",
+      "Product Design",
+      "AI Product"
+    ],
+    "images": {
+      "cover": "/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png",
+      "hero": "/images/projects/nayya-ai-benefits/hero/nayya-hero.png",
+      "gallery": []
+    },
+    "client_logos": [
+      {
+        "name": "Nayya",
+        "logo": "/images/bBw3A.png"
+      },
+      {
+        "name": "Paychex",
+        "logo": "/images/c54fy.png"
+      }
+    ],
+    "metrics": [
+      {
+        "value": "307%",
+        "label": "TIR",
+        "context": "ROI proyectado, retorno estimado por el aumento en la contratación de planes (VAN $11.4M)."
+      },
+      {
+        "value": "~115,500",
+        "label": "Beneficios Anuales",
+        "context": "Inscripciones completadas un 5% por encima del objetivo de 100K."
+      },
+      {
+        "value": "67%",
+        "label": "Tasa de Conversión",
+        "context": "Usuarios que recibieron recomendaciones de Nayya ajustadas a sus necesidades y se inscribieron en un plan."
+      }
+    ],
+    "team": [
+      "Líder de UX",
+      "Diseñador de Contenido",
+      "Product Owner",
+      "Analista de Negocio",
+      "Líderes de Solución"
+    ],
+    "my_role": [
+      "Estrategia UX",
+      "UX de Integración",
+      "Investigación de Usuarios",
+      "Pensamiento de Producto"
+    ],
+    "problem": {
+      "admin_pain_points": [
+        "Una integración embebida y fluida entre Flex y Nayya Choose no era viable dadas las limitaciones técnicas.",
+        "El equipo tenía que equilibrar el valor de negocio, las limitaciones técnicas y la confianza del usuario durante un proceso de toma de decisiones sensible."
+      ],
+      "user_pain_points": [
+        "Los empleados necesitaban más apoyo a la hora de seleccionar beneficios y elegir una cobertura acorde a sus necesidades.",
+        "Los usuarios tenían que salir de Flex y acceder a Nayya Choose en una experiencia independiente.",
+        "La transición necesitaba una comunicación más clara, más contexto y señales visuales que hicieran que el cambio se sintiera intencionado y fiable."
+      ]
+    },
+    "constraints": [
+      "Una integración embebida y fluida entre Flex y Nayya Choose no era técnicamente viable.",
+      "El proyecto avanzaba con un cronograma muy ajustado y limitaciones técnicas importantes.",
+      "La experiencia debía proteger la confianza del usuario durante la toma de decisiones sobre beneficios."
+    ],
+    "methodology": {
+      "name": "Investigación y Descubrimiento",
+      "steps": [
+        {
+          "step": 1,
+          "label": "Comprender",
+          "description": "Se clarificó el recorrido de selección de beneficios y el papel de Nayya Choose como apoyo en la decisión."
+        },
+        {
+          "step": 2,
+          "label": "Definir",
+          "description": "Se identificó la vía de integración viable entre Flex y la experiencia externa de Nayya."
+        },
+        {
+          "step": 3,
+          "label": "Alinear",
+          "description": "Colaboración con los Líderes de Solución, el Product Owner, el Analista de Negocio y el equipo de desarrollo."
+        },
+        {
+          "step": 4,
+          "label": "Validar",
+          "description": "Se recomendaron pruebas con usuarios para entender sus inquietudes antes de finalizar la transición."
+        },
+        {
+          "step": 5,
+          "label": "Medir",
+          "description": "Se utilizó el comportamiento de inscripción y las proyecciones de ingresos para evaluar el impacto."
+        }
+      ]
+    },
+    "design_strategy": [
+      "Definir una vía de integración realista en lugar de forzar una experiencia embebida que la plataforma no podía soportar.",
+      "Usar comunicación y señales visuales para explicar hacia dónde iban los usuarios, por qué importaba la transición y cómo Nayya Choose respaldaba sus decisiones de beneficios.",
+      "Proteger la continuidad entre Flex y Nayya Choose haciendo que la transición se sintiera intencionada, fiable y alineada con el recorrido de inscripción en su conjunto."
+    ],
+    "reflections": [
+      {
+        "title": "Diseñar bajo restricciones.",
+        "body": "Diseñar bajo restricciones técnicas no significa comprometer la experiencia. Significa encontrar el camino más eficaz dentro de los límites que se te dan."
+      },
+      {
+        "title": "Probar pronto, corregir pronto.",
+        "body": "Las pruebas con usuarios, incluso a pequeña escala, sacan a la luz las decisiones más importantes antes de que resulten costosas de corregir."
+      },
+      {
+        "title": "La confianza es un problema de diseño.",
+        "body": "Cuando los usuarios cruzan los límites entre plataformas, la claridad y el contexto son lo que los mantiene avanzando."
+      },
+      {
+        "title": "Las restricciones obligan a enfocarse.",
+        "body": "La imposibilidad de integrar Nayya de forma nativa llevó al equipo a invertir en el diseño de la transición, un área que suele pasarse por alto cuando la integración fluida parece la solución obvia."
+      }
+    ],
+    "nda_notice": null,
+    "password": null,
+    "external_link": "https://protecta-nine.vercel.app/",
+    "content_blocks": [
+      {
+        "id": "overview",
+        "type": "overview",
+        "title": "Resumen del Proyecto",
+        "body": ""
+      },
+      {
+        "id": "team-context",
+        "type": "custom",
+        "title": "Equipo",
+        "body": "Trabajé estrechamente con el Líder de UX y el Diseñador de Contenido para garantizar la coherencia tanto de la experiencia como de los mensajes bajo un cronograma ajustado. También colaboré con el Product Owner, el Analista de Negocio y los Líderes de Solución para alinear la experiencia propuesta con los objetivos de negocio y las realidades técnicas."
+      },
+      {
+        "id": "situation",
+        "type": "custom",
+        "title": "Situación",
+        "body": "Los empleados necesitaban más apoyo a la hora de seleccionar beneficios, y Nayya Choose ofrecía un potente motor de recomendaciones para guiarlos hacia una cobertura más relevante.\n\nEl proyecto avanzaba con un cronograma muy ajustado y presentaba limitaciones técnicas importantes. Una integración embebida y fluida entre Flex y Nayya Choose no era viable."
+      },
+      {
+        "id": "task",
+        "type": "custom",
+        "title": "Tarea",
+        "body": "Fui responsable de ayudar a definir la mejor vía de integración entre ambas plataformas, protegiendo al máximo la experiencia del usuario.\n\nEsto implicaba equilibrar el valor de negocio, las limitaciones técnicas y la confianza del usuario durante un proceso de toma de decisiones sensible."
+      },
+      {
+        "id": "actions",
+        "type": "custom",
+        "title": "Acciones",
+        "body": "Dado que una integración fluida no era posible, identificamos que los usuarios tendrían que salir de Flex y acceder a Nayya Choose en una experiencia independiente.\n\nPara reducir la fricción, ayudé a recomendar pruebas con usuarios para entender mejor sus inquietudes antes de finalizar la experiencia.\n\nLa investigación mostró que los usuarios necesitaban una comunicación más clara sobre hacia dónde se dirigían, por qué importaba la transición, y señales visuales que hicieran que el cambio se sintiera intencionado y fiable."
+      },
+      {
+        "id": "impact",
+        "type": "results",
+        "title": "Impacto",
+        "body": "La integración demostró un valor claro para los usuarios que interactuaron con Nayya Choose. Los participantes que completaron la encuesta se inscribieron en el doble de beneficios que quienes la omitieron, y el trabajo contribuyó a un crecimiento medible en los ingresos médicos, adicionales y de PEO.",
+        "payload": {
+          "rows": [
+            {
+              "metric": "Objetivo de crecimiento anual - Médico",
+              "value": "2%"
+            },
+            {
+              "metric": "Objetivo de crecimiento anual - Adicional",
+              "value": "8%"
+            },
+            {
+              "metric": "Crecimiento médico FY26",
+              "value": "$1M"
+            },
+            {
+              "metric": "Crecimiento adicional FY26",
+              "value": "$2M"
+            },
+            {
+              "metric": "Impacto anual - Flex",
+              "value": "$6M"
+            },
+            {
+              "metric": "Impacto anual - Todo PEO",
+              "value": "$10M"
+            }
+          ],
+          "insights": [
+            "Promedio base de planes por participante (2023-2025): 4.46",
+            "2026",
+            "• Participantes que \"se saltaron\" Nayya: 2.57",
+            "• Participantes que solo \"iniciaron\" Nayya: 4.43",
+            "• Participantes que recibieron recomendaciones de Nayya: 5.44"
+          ],
+          "opportunities": [
+            "Menos del 7% de los empleados elegibles completó una encuesta de Nayya, lo que deja un amplio margen de crecimiento.",
+            "Aumentar la finalización al 10% podría añadir más de 10,000 planes y generar entre $2M y $7M en ingresos incrementales de beneficios PEO.",
+            "Otras oportunidades de investigación incluyen un análisis más profundo del comportamiento en la encuesta de Nayya y los cambios de inscripción interanuales.",
+            "Las posibles áreas de expansión del producto incluyen recomendaciones de 401(k), FinFit y PayActiv."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "slug": "flock-accessibility-system",
+    "status": "published",
+    "featured": false,
+    "order": 3,
+    "title": "Auditoría de accesibilidad y unificación del sistema de diseño de Flock",
+    "company": "Flock",
+    "client_context": "Paychex a través de ITX Corp",
+    "role": "Diseñador de Producto",
+    "year": 2025,
+    "duration": "6 meses de auditoría + 1 año de construcción",
+    "industry": "Accesibilidad / Sistemas de Diseño",
+    "tagline": "Lideró una auditoría de accesibilidad y ayudó a unificar el sistema de diseño. Esto redujo la deuda de patrones, hizo el producto más coherente y mejoró la colaboración entre los equipos de diseño y desarrollo.",
+    "tags": [
+      "Accessibility",
+      "Design Systems",
+      "UX Research",
+      "Product Design",
+      "Axe",
+      "Design system",
+      "Voice Over"
+    ],
+    "filters": [
+      "Accessibility",
+      "Design Systems",
+      "Product Design"
+    ],
+    "tools": [
+      "Figma",
+      "Jira",
+      "Miro"
+    ],
+    "images": {
+      "cover": "/images/projects/flock-accessibility-system/thumbnails/flock.png",
+      "hero": "/images/projects/flock-accessibility-system/hero/flock-hero.png",
+      "gallery": []
+    },
+    "client_logos": [],
+    "metrics": [
+      {
+        "value": "6 months",
+        "label": "Auditoría y priorización",
+        "context": "revisión inicial de accesibilidad y del sistema"
+      },
+      {
+        "value": "1 system",
+        "label": "Base compartida",
+        "context": "patrones, tipografía, iconos y diálogos alineados"
+      }
+    ],
+    "team": [
+      "1 diseñador",
+      "Líder de UX",
+      "Gerente de UX",
+      "Product Owner",
+      "Analista de Negocio",
+      "3 desarrolladores",
+      "Líder de Desarrollo"
+    ],
+    "my_role": [
+      "Líder de Auditoría de Accesibilidad",
+      "Estrategia de Componentes",
+      "Sistemas de Diseño",
+      "Colaboración con Ingeniería"
+    ],
+    "problem": {
+      "admin_pain_points": [
+        "El producto tenía riesgos de accesibilidad en sus flujos principales y no contaba con una librería compartida madura para abordar los problemas de forma sistemática.",
+        "Los equipos trabajaban con patrones duplicados, nomenclatura inconsistente y un comportamiento de componentes fragmentado entre páginas.",
+        "Una documentación débil y la ambigüedad en la entrega generaban fricción en la implementación y dificultaban escalar las decisiones del sistema."
+      ],
+      "user_pain_points": [
+        "Los componentes inconsistentes hacían que la experiencia fuera menos predecible de una página a otra.",
+        "Las carencias de accesibilidad reducían la claridad y usabilidad para las personas que dependían de una jerarquía más clara, un buen tratamiento del foco y estados de interacción coherentes.",
+        "Los diálogos, iconos, la tipografía y el comportamiento responsivo carecían de reglas compartidas suficientes para sentirse coherentes en todo el producto."
+      ]
+    },
+    "constraints": [
+      "Las mejoras de accesibilidad debían realizarse con el producto ya en producción y fragmentado en múltiples páginas y patrones.",
+      "No existía un sistema de diseño totalmente maduro, por lo que el trabajo de auditoría y la definición del sistema tuvieron que avanzar en paralelo.",
+      "El sistema debía sostener restricciones reales de ingeniería, control de calidad y preparación para la implementación, en lugar de quedarse en un simple esfuerzo de limpieza en Figma."
+    ],
+    "methodology": {
+      "name": "De la Auditoría a la Sistematización",
+      "steps": [
+        {
+          "step": 1,
+          "label": "Auditar",
+          "description": "Se revisaron problemas de accesibilidad y componentes que no coincidían con el sistema."
+        },
+        {
+          "step": 2,
+          "label": "Estructurar",
+          "description": "Se agruparon los problemas por importancia para determinar qué corregir primero."
+        },
+        {
+          "step": 3,
+          "label": "Sistematizar",
+          "description": "Se crearon patrones, estados y reglas claras sobre cómo debían funcionar los componentes."
+        },
+        {
+          "step": 4,
+          "label": "Alinear",
+          "description": "Se trabajó con los desarrolladores para asegurar que los diseños pudieran construirse correctamente en React."
+        },
+        {
+          "step": 5,
+          "label": "Validar",
+          "description": "Se revisaron diseños y builds, usando el feedback para mejorar la coherencia."
+        }
+      ]
+    },
+    "design_strategy": [
+      "Clarificar las bases, componentes, patrones y módulos para que los equipos supieran cuándo usar cada patrón y cómo debía comportarse.",
+      "Se separaron las correcciones de accesibilidad de las decisiones del sistema de diseño documentando patrones, variantes, estados y reglas de uso.",
+      "Se trabajó estrechamente con los desarrolladores para adaptar las decisiones de componentes a las realidades de implementación, las necesidades de control de calidad y la claridad en la entrega.",
+      "Se utilizaron revisiones de diseño, comprobaciones de accesibilidad y feedback de implementación para reforzar la adopción y la coherencia."
+    ],
+    "reflections": [
+      {
+        "title": "La usabilidad consiste en revelar lo que importa.",
+        "body": "La usabilidad no consiste en eliminar, sino en revelar lo que importa. Este proyecto demuestra que la accesibilidad, el rendimiento y la UX se refuerzan mutuamente cuando se tratan como una sola disciplina."
+      }
+    ],
+    "nda_notice": null,
+    "password": null,
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "overview",
+        "type": "overview",
+        "title": "Resumen",
+        "body": ""
+      },
+      {
+        "id": "team-context",
+        "type": "custom",
+        "title": "Equipo",
+        "body": "Lideré el planteamiento de la auditoría, definí qué patrones necesitaban consolidarse y colaboré con ingeniería sobre cómo debían comportarse los componentes en producción. Trabajé junto a otro diseñador, en colaboración con un Líder de UX, un Gerente de UX, un Product Owner, un Analista de Negocio, tres desarrolladores y un Líder de Desarrollo."
+      },
+      {
+        "id": "situation",
+        "type": "custom",
+        "title": "Situación",
+        "body": "La falta de un sistema de diseño hizo que los iconos, la tipografía, los diálogos, los patrones de interfaz repetidos, el comportamiento inconsistente de los componentes y los patrones de UI reutilizables se fueran desviando con el tiempo.\n\nEso generaba fricción en la implementación, afectaba la preparación en accesibilidad, hacía las entregas menos fiables y aumentaba el coste de mantener la coherencia en la experiencia."
+      },
+      {
+        "id": "task",
+        "type": "custom",
+        "title": "Tarea",
+        "body": "Mi papel era convertir los hallazgos de accesibilidad y las inconsistencias de la interfaz en una dirección de sistema clara, definiendo patrones reutilizables que diseño e ingeniería pudieran adoptar.\n\nEl producto había sido adquirido recientemente, así que el objetivo era mantener su identidad visual mientras se mejoraba la coherencia y la usabilidad mediante un sistema más escalable basado en React.\n\nEl éxito significaba reducir los patrones duplicados, mejorar el producto, clarificar las expectativas de entrega y crear una guía de accesibilidad más sólida para el trabajo futuro."
+      },
+      {
+        "id": "actions",
+        "type": "custom",
+        "title": "Acciones",
+        "payload": {
+          "items": [
+            "Construí un marco de auditoría que agrupaba los problemas por gravedad, impacto en el sistema y complejidad de implementación, separando los hallazgos de accesibilidad, las inconsistencias del sistema y las restricciones de ingeniería para facilitar la toma de decisiones.",
+            "Revisé las bases y los patrones compartidos entre iconos, tipografía, diálogos y componentes para identificar dónde había que estandarizar estados, variantes, nomenclatura y comportamiento responsivo. A partir de ahí, definí patrones reutilizables y una guía más clara en Figma para reducir la ambigüedad y mejorar la coherencia en la entrega.",
+            "También colaboré estrechamente con los desarrolladores durante la revisión y el control de calidad para adaptar los patrones a restricciones técnicas reales y confirmar que las decisiones de sistema propuestas funcionaban en producción."
+          ]
+        }
+      },
+      {
+        "id": "impact",
+        "type": "results",
+        "title": "Resultados de Producto/Sistema",
+        "body": "El proyecto creó una base de sistema más clara para la accesibilidad, la reutilización de componentes y la coherencia en la implementación. Como no se conservaron métricas de negocio confirmadas, los resultados se enmarcan a través de señales de producto, sistema y entrega.",
+        "payload": {
+          "rows": [
+            {
+              "metric": "Riesgo de accesibilidad",
+              "value": "Reducido"
+            },
+            {
+              "metric": "Deuda de patrones",
+              "value": "Reducida"
+            },
+            {
+              "metric": "Claridad en la entrega",
+              "value": "Más sólida"
+            }
+          ],
+          "insights": [
+            "La auditoría hizo visible la gravedad y la priorización, lo que ayudó al equipo a abordar problemas estructurales de accesibilidad en lugar de correcciones aisladas de interfaz.",
+            "Una guía compartida para iconos, tipografía, diálogos y patrones reutilizables redujo la inconsistencia y dio al sistema una fuente de verdad más clara.",
+            "Definir estados, variantes y reglas de uso redujo la ambigüedad entre diseño e ingeniería y mejoró la calidad de las conversaciones de implementación."
+          ],
+          "projected": [
+            "Una vía de adopción más clara para componentes, patrones y módulos reutilizables.",
+            "Una entrega y control de calidad más fiables gracias a que las notas de accesibilidad y la guía de uso están documentadas.",
+            "Menor riesgo en futuras revisiones de accesibilidad al abordar los problemas de forma sistémica en lugar de página por página.",
+            "La coherencia de patrones ayuda a los usuarios a entender las interacciones en las páginas."
+          ],
+          "successMetrics": [
+            "Reducción de patrones de componentes duplicados o contradictorios.",
+            "Mejora de los estados, variantes y comportamiento responsivo de los componentes en los módulos reutilizados.",
+            "Menos preguntas de implementación durante la entrega y el control de calidad.",
+            "Problemas de accesibilidad identificados y resueltos por gravedad antes del lanzamiento."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "slug": "i9-everify-integration",
+    "status": "published",
+    "featured": false,
+    "order": 4,
+    "title": "Integración de I-9 y E-Verify para Flex",
+    "company": "Paychex Flex",
+    "client_context": "Paychex a través de ITX Corp",
+    "role": "Diseñador de Producto Sr.",
+    "year": 2024,
+    "duration": "Alrededor de 3 años",
+    "industry": "Cumplimiento de RRHH / SaaS de Onboarding",
+    "tagline": "Integró I-9 y E-Verify en el onboarding de Flex, mejorando la finalización de tareas en un 12% y la confianza del usuario de 3.2 a 4.0.",
+    "tags": [
+      "UX Research",
+      "Product Design",
+      "Workflow Design",
+      "Compliance"
+    ],
+    "filters": [
+      "UX Research",
+      "Product Design",
+      "Compliance"
+    ],
+    "tools": [
+      "Figma",
+      "Jira",
+      "Miro",
+      "Webex",
+      "Outlook",
+      "Copilot"
+    ],
+    "images": {
+      "cover": "/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png",
+      "hero": "/images/projects/i9-everify-integration/hero/i9-banner.png",
+      "gallery": []
+    },
+    "client_logos": [
+      {
+        "name": "Paychex",
+        "logo": "/images/c54fy.png"
+      }
+    ],
+    "metrics": [
+      {
+        "value": "76%",
+        "label": "de los clientes de Flex carecía de un flujo de I-9 conforme a la normativa"
+      },
+      {
+        "value": "26",
+        "label": "Rondas de exploración y pruebas"
+      },
+      {
+        "value": "2,548",
+        "label": "Respuestas de encuesta tras el primer lanzamiento"
+      }
+    ],
+    "team": [
+      "Product Owner",
+      "Gerente de Programa",
+      "Analista de Negocio",
+      "Investigador",
+      "Equipo de Desarrollo (12)",
+      "Gerente de UX",
+      "Líder de UX",
+      "Diseñador UX/UI",
+      "Arquitecto de Servicio",
+      "Scrum Master"
+    ],
+    "my_role": [
+      "Investigación de Usuarios",
+      "Diseño UX/UI",
+      "Pensamiento de Producto",
+      "Narrativa"
+    ],
+    "problem": {
+      "admin_pain_points": [
+        "Los clientes solían depender de procesos manuales o soluciones personalizadas fuera de la plataforma para gestionar los requisitos de I-9 y E-Verify.",
+        "Los administradores necesitaban un seguimiento de estado más claro, acceso a documentos, visibilidad sobre la transferencia al proveedor y facturación por transacción vinculada al onboarding.",
+        "La experiencia debía sostener múltiples roles de usuario, escalabilidad futura y flujos de trabajo orientados al cumplimiento normativo."
+      ],
+      "user_pain_points": [
+        "Los nuevos empleados debían completar la Sección 1 del Formulario I-9 como parte del onboarding sin sentirse desconectados de la experiencia de Flex.",
+        "Los usuarios necesitaban señales más claras antes de salir de Flex hacia la experiencia externa de HIREtech.",
+        "Empleados y administradores necesitaban una titularidad más clara, estados de progreso, feedback de finalización y acciones de seguimiento."
+      ]
+    },
+    "constraints": [
+      "El flujo de trabajo dependía de HIREtech, una experiencia de proveedor externo fuera de Flex.",
+      "El diseño debía contemplar los recorridos de empleados y administradores, las restricciones de cumplimiento normativo, las redirecciones al proveedor, los requisitos de facturación y el seguimiento de estado.",
+      "El producto debía escalar para trabajadores compartidos, clientes con el mismo FEIN, soporte de marca blanca y migración de documentos I-9 existentes."
+    ],
+    "methodology": {
+      "name": "Design Thinking",
+      "steps": [
+        {
+          "step": 1,
+          "label": "Investigar",
+          "description": "Se realizaron exploraciones de diseño y pruebas a lo largo de los recorridos de usuario."
+        },
+        {
+          "step": 2,
+          "label": "Mapear",
+          "description": "Se mapeó dónde debía comenzar el flujo en Flex y en qué punto los usuarios transicionarían hacia HIREtech."
+        },
+        {
+          "step": 3,
+          "label": "Alinear",
+          "description": "Se alineó I-9 con patrones de tareas de onboarding conocidos, como el W-4 y el depósito directo."
+        },
+        {
+          "step": 4,
+          "label": "Clarificar",
+          "description": "Se definieron los momentos de transferencia, la visibilidad del estado, la titularidad de la tarea y el feedback de finalización."
+        },
+        {
+          "step": 5,
+          "label": "Escalar",
+          "description": "Se consideraron necesidades futuras, incluyendo trabajadores compartidos, clientes con el mismo FEIN, soporte de marca blanca y migración de documentos."
+        }
+      ]
+    },
+    "design_strategy": [
+
+      "Usar una comunicación de transferencia más clara, estados de progreso y feedback de finalización para reducir la confusión en torno a la experiencia externa de HIREtech."
+    ],
+    "reflections": [
+      {
+        "title": "Lo que funcionó.",
+        "body": "Anclar un flujo de trabajo cargado de cumplimiento normativo a patrones de onboarding conocidos hizo que I-9 se sintiera parte nativa del producto en lugar de una tarea añadida. Una sola prueba de usabilidad con 7 usuarios bastó para cambiar una decisión de producto y proteger una mejor experiencia: los datos superan a la opinión. Combinar pruebas iterativas con una estrategia de transferencia clara creó una base más sólida tanto para la usabilidad como para el crecimiento del negocio."
+      },
+      {
+        "title": "Qué haría diferente.",
+        "body": "Establecer antes la alineación con el proveedor externo: esperar la validación de cumplimiento de HIREtech generó retrabajo y ralentizó las iteraciones de diseño. Avanzar más rápido en las decisiones de contenido de cumplimiento normativo, estableciendo puntos de aprobación más claros desde el principio en lugar de iterar en círculos, habría ahorrado tiempo."
+      },
+      {
+        "title": "Qué desbloqueó esto.",
+        "body": "El proyecto puso de manifiesto un patrón inexistente en Flex para comunicar a los usuarios las transiciones a terceros. Resolverlo aquí creó un patrón de transparencia reutilizable que abordó un problema sistémico presente en múltiples integraciones de la plataforma."
+      }
+    ],
+    "nda_notice": null,
+    "password": null,
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "situation",
+        "type": "custom",
+        "title": "Situación",
+        "body": "Los clientes de Flex completaban los requisitos de I-9 y E-Verify fuera de la plataforma, dependiendo de coordinación manual, herramientas externas y seguimiento por parte de los administradores para cerrar las brechas de cumplimiento.\n\nAlrededor del 76% de los usuarios se veían afectados, lo que generaba tasas de finalización inconsistentes, mayor riesgo de error y una carga de soporte más alta en los flujos de contratación.\n\nSin un flujo de trabajo nativo, no había forma fiable de seguir el estado, confirmar la titularidad o garantizar que el cumplimiento se completara a tiempo."
+      },
+      {
+        "id": "task",
+        "type": "custom",
+        "title": "Tarea",
+        "body": "",
+        "payload": {
+          "items": [
+            "Fui responsable de todo el proceso de UX de principio a fin como único diseñador, desde la investigación hasta la entrega final.",
+            "Diseñé tanto el recorrido del empleado (Sección 1) como el del administrador (Sección 2 y seguimiento de estado).",
+            "Integré I-9 y E-Verify en Flex sin fragmentar la experiencia de onboarding existente.",
+            "Facilité una sesión de trabajo con analistas de negocio, ingenieros y líderes de producto para identificar preguntas abiertas, restricciones de integración y brechas con el proveedor externo HIREtech."
+          ]
+        }
+      },
+      {
+        "id": "alternatives",
+        "type": "custom",
+        "title": "Alternativas exploradas",
+        "body": "",
+        "payload": {
+          "subtitle": "",
+          "items": []
+        }
+      },
+      {
+        "id": "research",
+        "type": "custom",
+        "title": "La Solución",
+        "body": "",
+        "payload": {
+          "items": [],
+          "delivery_items": [
+            "Se entregaron especificaciones de diseño detalladas para desarrollo, incluyendo comportamientos, ejemplos de contenido, definiciones de componentes y documentación de casos límite.",
+            "Se diseñaron comunicaciones por correo electrónico para anunciar la nueva integración y hacer seguimiento a los usuarios que no completaron el proceso de I-9.",
+            "Se crearon directrices de transferencia que documentaban cómo se comunicaba a los usuarios la integración de Flex con HIREtech, cubriendo los mensajes de redirección, los estados de progreso y el feedback de finalización."
+          ]
+        }
+      },
+      {
+        "id": "actions",
+        "type": "custom",
+        "title": "Acciones",
+        "body": "",
+        "payload": {
+          "items": []
+        }
+      },
+      {
+        "id": "impact",
+        "type": "results",
+        "title": "Resultado",
+        "body": "",
+        "payload": {
+          "rows": [
+            {
+              "metric": "Tasa de finalización de tareas del empleado",
+              "value": "12%"
+            },
+            {
+              "metric": "Tiempo medio en la tarea",
+              "value": "−26%"
+            },
+            {
+              "metric": "Titubeo ante la redirección",
+              "value": "−13%"
+            },
+            {
+              "metric": "Errores de interpretación del estado",
+              "value": "−9%"
+            },
+            {
+              "metric": "Puntuación de confianza del usuario",
+              "value": "0.8"
+            }
+          ],
+          "insights": [
+            "Tasa de finalización de tareas: del 69% (concepto inicial) al 81% (concepto refinado).",
+            "Tiempo medio en la tarea: de 4m 12s a 3m 06s.",
+            "El titubeo ante la redirección se redujo del 46% al 33%.",
+            "Los errores de interpretación del estado bajaron del 31% al 22%.",
+            "La puntuación de confianza del usuario mejoró de 3.2/5 a 4.0/5.",
+            "La dependencia de procesos manuales se estableció en un valor base de 60–70%; el objetivo se fijó por debajo del 25% para el seguimiento posterior al lanzamiento.",
+            "2,548 respuestas de encuesta tras el primer lanzamiento confirmaron que la dirección integrada estaba funcionando."
+          ],
+          "opportunities": [
+            "Los empleados que abandonaban el flujo a mitad de camino no tenían forma de guardar el progreso, lo que generaba riesgo de abandono y envíos de I-9 incompletos.",
+            "Añadir un estado de guardado en el formulario podría mejorar directamente las tasas de finalización y reducir el seguimiento administrativo de los casos incompletos.",
+            "Se identificó una desalineación de contenido entre HIREtech y Flex durante las pruebas; se entregaron directrices de comunicación actualizadas, pendientes de confirmación por parte de HIREtech.",
+            "El patrón de transparencia desarrollado para esta integración abre la puerta a aplicar la misma estrategia de transferencia en otros flujos de trabajo con terceros dentro de Flex."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "slug": "protecta",
+    "status": "published",
+    "featured": false,
+    "order": 6,
+    "title": "Protecta Advisory: un caso de estudio de entrega integral acelerada por IA.",
+    "company": "Protecta Advisory",
+    "client_context": "Sitio web bilingüe de asesoría de seguros para familias multiculturales en Estados Unidos",
+    "role": "Ingeniero de Diseño",
+    "year": 2026,
+    "duration": "1 semana, de principio a fin",
+    "industry": "Seguros / Asesoría",
+    "tagline": "Una entrega integral comprimida que muestra cómo la IA acelera la investigación, la marca, los textos, la construcción y el control de calidad sin sustituir el criterio de diseño.",
+    "tags": [
+      "AI Product",
+      "Product Design",
+      "Brand Strategy",
+      "Content Design",
+      "Accessibility",
+      "Localization"
+    ],
+    "filters": [
+      "AI Product",
+      "Product Design",
+      "Accessibility"
+    ],
+    "tools": [
+      "NotebookLM",
+      "Claude",
+      "Codex",
+      "Claude Code",
+      "Figma",
+      "Storybook",
+      "Grammarly",
+      "Vercel"
+    ],
+    "images": {
+      "cover": "/images/projects/protecta/thumbnails/protectabanner.png",
+      "hero": "/images/projects/protecta/thumbnails/protectabanner.png",
+      "gallery": [
+        "/images/projects/protecta/screenshots/protecta-home-desktop.png",
+        "/images/projects/protecta/screenshots/protecta-home-mobile.png"
+      ]
+    },
+    "client_logos": [],
+    "metrics": [
+      {
+        "value": "7 days",
+        "label": "Entrega de extremo a extremo",
+        "context": "Marca, contenido, diseño, construcción, control de calidad y despliegue en producción completados en una semana."
+      },
+      {
+        "value": "4-6 weeks",
+        "label": "Cronograma habitual en solitario",
+        "context": "Un alcance comparable suele llevar de cuatro a seis semanas sin la misma compresión potenciada por IA."
+      },
+      {
+        "value": "2 languages",
+        "label": "Contenidos nativos por idioma",
+        "context": "El contenido en inglés y en español se adaptó culturalmente en lugar de traducirse de forma literal."
+      },
+      {
+        "value": "WCAG 2.1 AA",
+        "label": "Objetivo de accesibilidad",
+        "context": "Las comprobaciones de accesibilidad a nivel de componente se gestionaron en Storybook durante la construcción."
+      }
+    ],
+    "team": [
+      "Diseñador en solitario",
+      "Asesores del cliente",
+      "Fundadores del cliente para las aprobaciones finales"
+    ],
+    "my_role": [
+      "Diseñador UX/UI",
+      "Estratega de Marca",
+      "Estratega y Redactor de Contenido",
+      "Product Owner",
+      "Desarrollador",
+      "Ingeniero de QA",
+      "Líder de Localización Bilingüe"
+    ],
+    "problem": {
+      "admin_pain_points": [
+        "Protecta tenía un modelo de servicio claro y un motor de referidos sólido, pero carecía de un sistema de marca, de un sitio web en producción y de contenido estructurado para respaldar el crecimiento.",
+        "El programa de referidos, el modelo de asesoría y la vía de contacto por WhatsApp debían explicarse con claridad, de forma que resultara fiable para las familias que toman decisiones sensibles sobre seguros."
+      ],
+      "user_pain_points": [
+        "Los prospectos necesitaban una alternativa más cálida y humana a la experiencia de centro de llamadas que suelen asociar con los sitios web de seguros.",
+        "Las familias hispanohablantes necesitaban contenido que se sintiera nativo y culturalmente natural, no como una traducción directa de un sitio pensado primero en inglés.",
+        "Los visitantes necesitaban entender con claridad el programa de referidos y contar con una vía sencilla para contactar con los asesores sin fricción."
+      ]
+    },
+    "constraints": [
+      "Un cronograma de una semana que abarcaba estrategia, marca, contenido, diseño, construcción, control de calidad y despliegue.",
+      "No existía un sistema de marca previo, ni un sitio web anterior, ni contenido listo para publicar.",
+      "No hubo investigación directa con usuarios dentro del cronograma; las entrevistas con asesores y el conocimiento del cliente actuaron como señal indirecta de usuario."
+    ],
+    "methodology": {
+      "name": "Flujo de Trabajo de Entrega Potenciado por IA",
+      "steps": [
+        {
+          "step": 1,
+          "label": "Capturar",
+          "description": "Se realizó una llamada estructurada con el cliente y un cuestionario para capturar las necesidades de la audiencia, el flujo de ventas, las objeciones, la mecánica de referidos y el tono, como fuente de verdad."
+        },
+        {
+          "step": 2,
+          "label": "Investigar",
+          "description": "Se utilizó NotebookLM para sintetizar rápidamente patrones de la industria, el posicionamiento competitivo, las normas de seguros bilingües y las oportunidades estructurales."
+        },
+        {
+          "step": 3,
+          "label": "Marca",
+          "description": "Se generaron direcciones de logotipo con Claude, y luego se refinaron las opciones más sólidas en Figma hasta convertirlas en un sistema de marca utilizable."
+        },
+        {
+          "step": 4,
+          "label": "Redactar",
+          "description": "Se usó Claude para los primeros borradores de texto, y después se reescribió la jerarquía de mensajes y se adaptó el contenido en español de forma nativa."
+        },
+        {
+          "step": 5,
+          "label": "Diseñar",
+          "description": "Se diseñaron la página de inicio, las páginas internas y los componentes reutilizables en Figma como plano ágil de construcción."
+        },
+        {
+          "step": 6,
+          "label": "Construir",
+          "description": "Se generó el andamiaje con Codex, se terminaron los detalles de implementación con Claude Code y se ajustó el resultado a mano hasta lograr una calidad de producción."
+        },
+        {
+          "step": 7,
+          "label": "Validar",
+          "description": "Se documentaron los componentes en Storybook, se verificó la accesibilidad conforme a WCAG 2.1 AA, y se desplegó el producto funcional en Vercel para la revisión del cliente."
+        }
+      ]
+    },
+    "design_strategy": [
+      "El proyecto se estructuró en torno a una decisión central: usar la IA para comprimir la investigación, el andamiaje de textos y la aceleración de la construcción, reservando el criterio de diseño para el tono de marca, la jerarquía, la accesibilidad y los momentos de generación de confianza.",
+      "Dado que el diferenciador de Protecta es una asesoría humana y continua durante todo el año, el sitio debía sentirse cálido y creíble, en lugar de pulido de una forma genérica propia de una insurtech.",
+      "La estrategia bilingüe no partía de la traducción. El contenido en inglés y en español se construyó como sistemas de voz paralelos, para que cada recorrido de audiencia se sintiera intencionado.",
+      "Traté el sitio en producción, y no un mazo estático en Figma, como el artefacto de revisión. Eso cambió la calidad del feedback del cliente, porque este evaluó una experiencia funcional en dispositivos reales."
+    ],
+    "reflections": [
+      {
+        "title": "La IA es mejor para comprimir que para crear.",
+        "body": "La mayor ganancia vino de comprimir la síntesis de la investigación, los primeros borradores de texto y el andamiaje de código. El criterio de marca, la jerarquía y las señales de confianza seguían necesitando que un diseñador tomara las decisiones."
+      },
+      {
+        "title": "La localización es una decisión de diseño.",
+        "body": "La experiencia en español necesitaba adaptación cultural, no traducción literal. Eso cambió el tono, la redacción y la forma en que la tranquilidad se manifestaba en la interfaz."
+      },
+      {
+        "title": "Un producto en producción cambia la calidad de la revisión.",
+        "body": "Mostrarle al cliente un sitio funcional en lugar de frames hizo que el feedback fuera más rápido y más fundamentado, porque evaluó la experiencia real en lugar de imaginarla."
+      },
+      {
+        "title": "Las señales de confianza necesitan criterio humano.",
+        "body": "Rechacé deliberadamente el uso de personas generadas por IA en las imágenes, porque los rostros sintéticos socavarían la promesa de marca de una asesoría cálida y humana. En su lugar, utilicé material de stock temporal con personas reales, con un plan claro para sustituirlo tras el lanzamiento por una sesión de fotos y vídeo con los propios asesores."
+      }
+    ],
+    "nda_notice": null,
+    "password": null,
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "overview",
+        "type": "overview",
+        "title": "Resumen del Proyecto",
+        "body": "Este caso de estudio muestra cómo comprimí una entrega en solitario de cuatro a seis semanas en siete días mediante un flujo de trabajo potenciado por IA, y en qué momentos el criterio humano de diseño siguió tomando las decisiones definitivas."
+      },
+      {
+        "id": "team-context",
+        "type": "custom",
+        "title": "Equipo",
+        "body": "Llevé el proyecto como una entrega en solitario abarcando siete roles: diseño UX/UI, estrategia de marca, estrategia y redacción de contenido, titularidad de producto, desarrollo, control de calidad y localización bilingüe. El cliente intervino en los puntos de decisión finales en lugar de participar en cada revisión intermedia."
+      },
+      {
+        "id": "situation",
+        "type": "custom",
+        "title": "Situación",
+        "body": "Protecta es una asesoría independiente de seguros de salud y vida que atiende a familias multiculturales en Estados Unidos, en inglés y en español. Su valor diferencial es un acompañamiento humano y continuo durante todo el año, lo opuesto a la sensación de centro de llamadas habitual en esta categoría.\n\nYa contaban con un fuerte impulso de boca a boca y un modelo de referidos que paga incentivos en efectivo, pero no tenían sistema de marca, ni sitio web, ni una arquitectura de contenido que explicara ese valor con claridad en internet."
+      },
+      {
+        "id": "task",
+        "type": "custom",
+        "title": "Tarea",
+        "body": "Entregar en una semana un sitio web bilingüe completo con marca propia, incluyendo página de inicio, páginas internas, estrategia de contenido, sistema de marca, estructura de componentes, control de calidad de accesibilidad y despliegue en producción.\n\nEl sitio debía explicar el programa de referidos, transmitir confianza rápidamente y ofrecer a los prospectos una vía de bajo esfuerzo para contactar con los asesores a través de WhatsApp."
+      },
+      {
+        "id": "research",
+        "type": "custom",
+        "title": "Investigación",
+        "body": "Traté el cuestionario del cliente y las entrevistas con los asesores como la principal fuente de señal de usuario, porque los asesores escuchan a diario, en conversaciones reales, las mismas objeciones, dudas de confianza y primeras preguntas.\n\nCombiné eso con una investigación documental basada en NotebookLM para mapear las expectativas del mercado, los patrones de sitios de seguros bilingües y las brechas de posicionamiento. Esa combinación me dio señal suficiente para avanzar rápido, sin pretender que sustituyera a las pruebas directas con usuarios."
+      },
+      {
+        "id": "actions",
+        "type": "custom",
+        "title": "Acciones",
+        "body": "Estructuré el trabajo como un pipeline de producción potenciado por IA, con criterio humano en cada entrega. Claude y NotebookLM aceleraron la ideación, la síntesis de la investigación y los primeros borradores de texto. Figma albergó el sistema de marca, los diseños de página y los componentes. Codex y Claude Code aceleraron la construcción, y Storybook funcionó como capa de documentación de componentes y control de calidad de accesibilidad."
+      },
+      {
+        "id": "impact",
+        "type": "results",
+        "title": "Resultado",
+        "body": "Este proyecto es, ante todo, un caso de estudio sobre capacidad de entrega. El sitio se lanzó como un producto funcional para su revisión, y a continuación siguen el lanzamiento del dominio y la medición de conversión posterior al lanzamiento.",
+        "payload": {
+          "insights": [
+            "Se entregó un sistema de marca completo y un sitio web bilingüe listo para lanzar en aproximadamente una cuarta parte del cronograma habitual en solitario para este alcance.",
+            "El contenido en inglés y en español se redactó como sistemas de voz nativos, en lugar de derivar mecánicamente un idioma del otro.",
+            "El sitio en producción se convirtió en el artefacto de revisión, lo que permitió una aprobación rápida porque el cliente pudo evaluar la experiencia real en dispositivos reales."
+          ],
+          "projected": [
+            "Sustituir las imágenes de stock provisionales por una sesión real de fotos y vídeo con los propios asesores.",
+            "Medir la interacción con el programa de referidos y la conversión de contacto por WhatsApp tras el lanzamiento.",
+            "Añadir una capa ligera de CMS para futuras actualizaciones de las biografías de los asesores y los detalles del programa."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "slug": "reversetech",
+    "status": "published",
+    "featured": false,
+    "order": 7,
+    "title": "Optimización del embudo de Reverse Health y pruebas A/B",
+    "company": "Reverse Health",
+    "client_context": "Embudo de adquisición mediante búsqueda de pago",
+    "role": "Diseñador de Producto Sr.",
+    "year": 2026,
+    "duration": "Estrategia y análisis de embudo",
+    "industry": "Salud y Fitness / Embudo de Crecimiento",
+    "tagline": "Un caso de estudio centrado en crecimiento sobre cómo interpretar datos del embudo, identificar problemas de UX y conversión, y convertir esos hallazgos en soluciones de diseño comprobables.",
+    "tags": [
+      "Growth",
+      "UX Research",
+      "Product Design",
+      "Paid Acquisition",
+      "Funnel Optimization"
+    ],
+    "filters": [
+      "UX Research",
+      "Product Design"
+    ],
+    "tools": [
+      "Figma",
+      "Google Ads",
+      "Analytics",
+      "Miro",
+      "Notion"
+    ],
+    "images": {
+      "cover": "/images/projects/reversetech/thumbnails/project-list-card-reversetech.svg",
+      "hero": "/images/projects/Reversetech/figma-screen.png",
+      "gallery": []
+    },
+    "client_logos": [],
+    "metrics": [],
+    "team": [
+      "Equipo de Crecimiento",
+      "Partes interesadas de adquisición pagada",
+      "Diseñador de producto",
+      "Socios de analítica"
+    ],
+    "my_role": [
+      "Interpretación de Datos del Embudo",
+      "Identificación de Problemas de UX y Conversión",
+      "Diseño de Experimentos de Muro de Pago",
+      "Planteamiento de Soluciones de Diseño Comprobables"
+    ],
+    "problem": {
+      "admin_pain_points": [
+        "El embudo convertía solo un 0.63% de extremo a extremo, lo que generaba presión para optimizar rápido sin evidencia clara de dónde ocurría realmente la fuga.",
+        "Como la experiencia contenía 44 pasos, el equipo podía inclinarse fácilmente por la explicación más visible, que el cuestionario simplemente era demasiado largo, sin antes comprobar si ese era realmente el problema dominante."
+      ],
+      "user_pain_points": [
+        "La mayoría de los visitantes llegaban en frío desde Google Ads, así que cada paso tenía que justificar por qué debían continuar antes de haber generado suficiente confianza.",
+        "La parte central del embudo contenía más de 37 pasos de cuestionario, lo que hacía fácil asumir que el propio coste de interacción estaba expulsando a los usuarios.",
+        "Sin un diagnóstico más preciso, cualquier rediseño corría el riesgo de pulir la parte central mientras ignoraba partes más débiles del embudo, antes o después de ella."
+      ]
+    },
+    "constraints": [],
+    "methodology": {
+      "name": "Diagnóstico del Embudo",
+      "steps": [
+        {
+          "step": 1,
+          "label": "Mapear",
+          "description": "Se documentó el embudo completo desde el clic en el anuncio de Google hasta la compra, pasando por el cuestionario de 44 pasos, identificando dónde creía el equipo que la fricción era mayor."
+        },
+        {
+          "step": 2,
+          "label": "Cuestionar",
+          "description": "Se cuestionó la suposición por defecto de que la larga parte central era el problema principal, replanteando el problema como un diagnóstico a nivel de embudo en lugar de una queja sobre el número de pasos."
+        },
+        {
+          "step": 3,
+          "label": "Desglosar",
+          "description": "Se separó la experiencia en la promesa de adquisición, la experiencia de entrada, la progresión del cuestionario y la transición posterior al cuestionario, para poder evaluar cada parte por sus propios méritos."
+        },
+        {
+          "step": 4,
+          "label": "Priorizar",
+          "description": "Se enfocó al equipo en identificar qué sección del embudo estaba realmente perdiendo intención de compra antes de comprometerse con una dirección de rediseño."
+        },
+        {
+          "step": 5,
+          "label": "Definir los próximos pasos",
+          "description": "Se definió el planteamiento central del problema que debía resolver la siguiente fase de diseño, en lugar de asumir que la respuesta era acortar el cuestionario."
+        }
+      ]
+    },
+    "design_strategy": [
+      "El paso de introducir el email se eligió para la propuesta de diseño por ser el segundo mayor punto de abandono dentro del embudo y uno de los momentos más críticos de pérdida de usuarios. El problema principal es un intercambio de valor débil: se pide a los usuarios su email y su atención antes de que vean con claridad qué van a recibir a cambio. Como resultado, el paso se percibe más como captación de leads que como parte de la experiencia de plan personalizado, y esta es la solución de diseño propuesta.",
+      "Hipótesis 3",
+      "Para reducir la fricción, las páginas anteriores al email deberían preparar mejor a los usuarios mostrando el progreso, reforzando por qué importa cada pregunta y anticipando el valor del plan final.",
+      "Añadir señales de confianza, progreso visible, vistas previas de la app e imágenes más relevantes también haría que la petición se sintiera más segura y más conectada con el producto."
+    ],
+    "reflections": [
+      {
+        "title": "El problema evidente no siempre es el real.",
+        "body": "Un cuestionario largo es fácil de culpar porque es visible. Eso no lo convierte automáticamente en el punto de mayor impacto para intervenir."
+      },
+      {
+        "title": "El tráfico frío cambia el estándar.",
+        "body": "Los visitantes que llegan desde Google Ads todavía no han generado mucha confianza, así que cada parte del embudo tiene que esforzarse más de lo que lo haría con una audiencia cálida."
+      },
+      {
+        "title": "El diagnóstico es trabajo de diseño.",
+        "body": "Antes de cambiar diseños o reducir pasos, el equipo necesitaba entender con más precisión dónde se estaba perdiendo realmente la intención de compra."
+      }
+    ],
+    "nda_notice": "Algunos detalles del embudo se han resumido para su uso en el portafolio, pero la estructura, el contexto de tráfico y el problema de conversión reflejan el proyecto real.",
+    "password": null,
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "overview",
+        "type": "overview",
+        "title": "Resumen del Proyecto",
+        "body": ""
+      },
+      {
+        "id": "team-context",
+        "type": "custom",
+        "title": "Equipo",
+        "body": "Trabajé en conversaciones de crecimiento y de producto para ayudar a definir el problema real antes de invertir esfuerzo de diseño en el lugar equivocado. El trabajo requería alinear el pensamiento de adquisición, el comportamiento del embudo y el diagnóstico de experiencia de usuario."
+      },
+      {
+        "id": "situation",
+        "type": "custom",
+        "title": "Situación",
+        "body": "Reverse Health tenía en marcha un embudo con un cuestionario de 44 pasos que vendía un programa de calistenia para mujeres. De extremo a extremo, el embudo convertía un 0.63%.\n\nEl tráfico era mayoritariamente búsqueda de pago en frío, y una visita típica comenzaba desde un anuncio de Google. Dentro del equipo, la explicación más intuitiva era que la larga parte central del cuestionario, con más de 37 pasos, tenía que ser donde los usuarios abandonaban."
+      },
+      {
+        "id": "task",
+        "type": "custom",
+        "title": "Tarea",
+        "body": "El alcance del trabajo se centraba en el diagnóstico del embudo y las mejoras de diseño, el diseño de experimentos de muro de pago y la extracción de patrones de la competencia.\n\nMi papel era interpretar los datos del embudo, identificar problemas de UX y conversión, y traducir esos hallazgos en soluciones de diseño concretas y comprobables dentro de un entorno de producto orientado al rendimiento."
+      },
+      {
+        "id": "task-1",
+        "type": "custom",
+        "title": "Tarea 1",
+        "body": "En lugar de tratar todos los pasos por igual, revisé los 44 y elegí 3 para examinar, equilibrando la fuga de usuarios, el volumen de usuarios y la influencia sobre los pasos posteriores. Después, para cada uno profundicé en dos preguntas: por qué se comporta como lo hace, y qué comportamiento de usuario, fricción o problema de claridad explica los datos.",
+        "payload": {
+          "heading": "Diagnóstico del embudo y mejoras de diseño",
+          "table": [
+            {
+              "step": "31. edad",
+              "churnCount": "7",
+              "churnPercent": "0.13%",
+              "userCount": "5,403",
+              "remainingPercent": "18.03%",
+              "dotColor": "#5ca95c"
+            },
+            {
+              "step": "4. Objetivo principal",
+              "churnCount": "224",
+              "churnPercent": "3.20%",
+              "userCount": "6,784",
+              "remainingPercent": "22.64%",
+              "dotColor": "#ffd45c"
+            },
+            {
+              "step": "34. introducir email",
+              "churnCount": "1,156",
+              "churnPercent": "21.62%",
+              "userCount": "4,190",
+              "remainingPercent": "13,99%",
+              "dotColor": "#ff2d2d",
+              "tag": "Selección de diseño"
+            }
+          ],
+          "analyses": [
+            {
+              "title": "31. Paso de la edad - Buen rendimiento",
+              "body": "Un paso claro y de bajo esfuerzo. A esta altura, abandonar el flujo se sentiría como un desperdicio, así que los usuarios continúan. La carga cognitiva y emocional es mínima, no hay ninguna decisión financiera asociada, y la mayoría entiende que la edad importa en un plan de salud.",
+              "consideration": "La edad se pregunta dos veces, en la landing y de nuevo en el paso 31. Probarlo en un único paso podría reducir el esfuerzo y acortar el embudo.",
+              "image": "/images/projects/Reversetech/age.png"
+            },
+            {
+              "title": "4. Objetivo principal - Rendimiento regular",
+              "body": "La opción de selección única lo mantiene ligero y evita sobrecargar de decisiones a los usuarios. La fricción es más sutil: este es el momento en que el usuario le dice al producto qué resultado quiere, por lo que nombrar un objetivo conlleva peso emocional. Una hipótesis, basada en la investigación, es que seleccionar un objetivo añade peso y eso puede sentirse como presión, especialmente cuando las opciones no encajan del todo con el usuario o este todavía no se ha decidido.",
+              "consideration": "Probar una versión con distintas opciones de contenido y añadir una opción de \"Ayúdame a elegir el objetivo adecuado\". Además, reducir el número de pasos antes de esta pregunta, para que los usuarios lleguen antes a su momento de definir el objetivo, mientras la intención todavía es alta.",
+              "image": "/images/projects/Reversetech/goal.png"
+            },
+            {
+              "title": "34. Introducir email - Mal rendimiento",
+              "body": "Esta es la segunda mayor fuga dentro del embudo, y es el peor lugar posible para perder gente. En este punto, los usuarios todavía no pueden ver el valor del producto, así que pedir un email sin explicar el beneficio puede sentirse como un paso de captación de marketing en lugar de parte de la experiencia de plan personalizado.",
+              "consideration": "Algunos usuarios también intuyen que se acerca el muro de pago. Entregar un email justo antes de una probable petición de pago hace que el muro se sienta más cercano, por lo que una parte abandona de forma preventiva.",
+              "image": "/images/projects/Reversetech/email.png"
+            }
+          ]
+        }
+      },
+      {
+        "id": "cta-variants",
+        "type": "custom",
+        "title": "Variante de CTA",
+        "body": "El contenido del paso de email no se siente lo bastante personalizado como para que los usuarios crean que se está construyendo un resultado a medida para ellos. La página de email debería reconectarlos con su objetivo, mostrar un adelanto de lo que van a recibir y usar textos orientados al resultado.",
+        "payload": {
+          "variants": [
+            {
+              "label": "Variante 1",
+              "title": "Ver mi plan personalizado",
+              "body": "Hace la oferta más específica al nombrar directamente el plan de Calistenia. La hipótesis es que una etiqueta de producto más clara puede hacer que el paso de email se sienta más creíble y menos como una captación de leads genérica.",
+              "imageSrc": "/images/projects/Reversetech/cta-variant-1.svg"
+            },
+            {
+              "label": "Variante 2",
+              "title": "Obtener mi plan de calistenia",
+              "body": "Presenta la petición de email de forma ligeramente más limpia. Pone a prueba si reducir el texto adicional alrededor del campo hace que el paso se sienta más rápido, sin dejar de dar a los usuarios suficiente confianza para continuar.",
+              "imageSrc": "/images/projects/Reversetech/cta-variant-2.svg"
+            },
+            {
+              "label": "Variante 3",
+              "title": "Desbloquear mi plan personalizado",
+              "body": "Es la más minimalista. Se apoya en el titular personalizado de Calistenia para hacer la mayor parte de la persuasión.",
+              "imageSrc": "/images/projects/Reversetech/cta-variant-3.svg"
+            }
+          ]
+        }
+      },
+      {
+        "id": "content-variants",
+        "type": "custom",
+        "title": "Variante de Contenido",
+        "body": "A esta altura, los usuarios ya han invertido tiempo en el cuestionario, pero todavía no han visto con claridad el valor del producto. Como el progreso no es visible, el embudo puede sentirse más largo de lo necesario, generando fatiga incluso cuando cada pantalla es sencilla. Esto hace que la petición de email se sienta abrupta en lugar de merecida.\n\nComo resultado, el paso se percibe más como captación de leads que como parte de la experiencia de plan personalizado, y esta es la solución de diseño propuesta. Para efectos de esta tarea, seleccioné la Variante 3 como solución de diseño final, aunque creo que un buen enfoque sería probar varias ideas mediante A/B testing.",
+        "payload": {
+          "variants": [
+            {
+              "label": "Variante 3",
+              "title": "Variación: Categoría, Titular, Subtítulo y Texto de Ayuda",
+              "body": "Introduce un mensaje enérgico centrado en resultados y vincula el plan a un resultado físico concreto. Es más motivadora que las demás, pero depende de una fuerte relevancia.",
+              "imageSrc": "/images/projects/Reversetech/content-variant-3.svg"
+            },
+            {
+              "label": "Variante 2",
+              "title": "Categoría, Titular, Subtítulo y Texto de Ayuda",
+              "body": "Mantiene el planteamiento de plan listo y lo combina con una garantía directa de que no habrá spam. Es la variante de contenido más segura porque aclara qué obtiene el usuario mientras reduce la ansiedad por la privacidad sin añadir demasiada explicación extra.",
+              "imageSrc": "/images/projects/Reversetech/content-variant-2.svg"
+            },
+            {
+              "label": "Variante 1",
+              "title": "Categoría y Titular",
+              "body": "Personaliza el titular según el objetivo seleccionado por el usuario. Hace que el resultado se sienta relevante y a medida, manteniendo el paso de email conectado con lo que el usuario ya eligió. La contrapartida es que estrecha la promesa antes, por lo que el objetivo principal seleccionado necesita estar aquí para mantener las motivaciones del usuario.",
+              "imageSrc": "/images/projects/Reversetech/content-variant-1.svg"
+            }
+          ]
+        }
+      },
+      {
+        "id": "impact",
+        "type": "results",
+        "title": "Impacto",
+        "body": "Esta fase afinó el planteamiento del problema: una parte central larga puede ser parte del problema, pero no debería tratarse como la respuesta antes de diagnosticar todo el embudo. El valor inmediato del trabajo fue crear un mejor marco sobre qué probar y rediseñar a continuación.",
+        "payload": {
+          "rows": [],
+          "insights": [
+            "La parte central del cuestionario parecía el problema porque era larga y muy visible.",
+            "El tráfico frío de búsqueda de pago elevó el coste de cada compromiso en el embudo, no solo el de los propios pasos del cuestionario.",
+            "El resultado más importante de esta fase fue replantear el trabajo de \"acortar el cuestionario\" a \"diagnosticar primero el cuello de botella real\"."
+          ],
+          "opportunities": [
+            "Comparar el abandono y la calidad de la intención entre la entrada desde la landing, la parte central del cuestionario y la transición de compra posterior al cuestionario.",
+            "Comprobar si la promesa del anuncio y la expectativa de la landing están lo bastante alineadas para el tráfico de búsqueda en frío, antes de pedir a los usuarios que se comprometan con un flujo largo.",
+            "Identificar qué momentos del cuestionario generan impulso y cuáles simplemente añaden coste de interacción."
+          ]
+        }
+      },
+      {
+        "id": "sources",
+        "type": "custom",
+        "title": "Fuentes",
+        "body": "",
+        "payload": {
+          "sources": [
+            {
+              "title": "Nielsen Norman Group — \"Progress Indicators Make a Slow System Less Insufferable\"",
+              "url": "https://www.nngroup.com/articles/progress-indicators/",
+              "description": "Respalda la idea de que el feedback de progreso reduce la incertidumbre y mantiene a los usuarios avanzando. Advertencia: este artículo de NN/g trata sobre el progreso de sistemas y tiempos de espera, no sobre contadores de varios pasos, por lo que funciona mejor combinado con la investigación sobre el efecto gradiente de meta citada más abajo, específicamente para el punto sobre el número de pasos."
+            },
+            {
+              "title": "Baymard Institute — \"Checkout Flows Average 5 Steps and 11+ Form Fields\"",
+              "url": "https://baymard.com/blog/checkout-flow-average-form-fields",
+              "description": "Respalda unificar preguntas en lugar de limitarse a dividir pasos: el número de campos de formulario que el usuario debe gestionar importa más para la UX del checkout que el número de pasos, y la mayoría de los flujos pueden reducirse a entre 6 y 8 campos."
+            },
+            {
+              "title": "The Manifest — \"6 Steps for Avoiding Online Form Abandonment\"",
+              "url": "https://themanifest.com/web-design/6-steps-avoiding-online-form-abandonment",
+              "description": "Se utiliza para el dato de que el 27% de los usuarios abandona un formulario por ser demasiado largo, y una vez que abandonan, rara vez regresan. Advertencia: se trata de una encuesta de 2018 con 502 personas, así que lo considero un dato desactualizado."
+            },
+            {
+              "title": "Nunes & Drèze (2006), Journal of Consumer Research — \"The Endowed Progress Effect: How Artificial Advancement Increases Effort\"",
+              "url": "https://academic.oup.com/jcr/article-abstract/32/4/504/1787425",
+              "description": "El origen exacto del término \"efecto de progreso dotado\" (endowed progress effect): las personas a las que se les da un avance artificial hacia una meta muestran mayor persistencia para alcanzarla."
+            },
+            {
+              "title": "Kivetz, Urminsky & Zheng (2006), Journal of Marketing Research — \"The Goal-Gradient Hypothesis Resurrected\"",
+              "url": "https://journals.sagepub.com/doi/abs/10.1509/jmkr.43.1.39",
+              "description": "Respalda la afirmación de que las personas aceleran su esfuerzo a medida que se acercan a una recompensa. Lo utilizo cuando hago referencia al efecto gradiente de meta (goal-gradient effect).",
+              "secondaryTitle": "Resumen de Columbia Business School",
+              "secondaryUrl": "https://business.columbia.edu/insights/chazen-global-insights/goal-gradient-hypothesis-resurrected-purchase-acceleration"
+            },
+            {
+              "title": "IBM Carbon Design System — Progress indicator, usage guidelines",
+              "url": "https://carbondesignsystem.com/components/progress-indicator/usage/",
+              "description": "Una referencia autorizada de sistema de diseño sobre cómo mostrar a los usuarios dónde se encuentran: dividir la meta final en subtareas más pequeñas aumenta la sensación de completitud, y mantener informados a los usuarios de dónde están les da sensación de control."
+            },
+            {
+              "title": "WebAIM Million 2025 report",
+              "url": "https://webaim.org/projects/million/2025",
+              "description": "Se utiliza para el ángulo de accesibilidad sobre el campo de email: las páginas de inicio tenían un promedio de 6.3 campos de formulario, y el 34.2% de esos campos no estaban correctamente etiquetados. Nota: la cifra del 48% que circula en fuentes secundarias es el porcentaje de páginas de inicio con al menos un campo sin etiquetar, que es una métrica distinta."
+            },
+            {
+              "title": "HubSpot — \"10 Form Conversion Optimization Tips\"",
+              "url": "https://blog.hubspot.com/marketing/optimize-conversion-forms",
+              "description": "Del análisis de HubSpot de más de 40,000 landing pages: los botones etiquetados como \"Submit\" tenían tasas de conversión más bajas, y los formularios de 3 campos convertían mejor, con una caída a partir de ahí. Lo utilizo para los puntos de \"el texto orientado al resultado supera a 'continuar'\" y \"mantener la petición mínima\"."
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

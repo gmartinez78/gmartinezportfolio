@@ -5,6 +5,7 @@ import Link from "next/link"
 
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
+import { useTranslateTag } from "@/lib/i18n/use-translate"
 
 type ProjectTeaserCardProps = {
   href: string
@@ -46,6 +47,7 @@ export function ProjectTeaserCard({
   onFocus,
 }: ProjectTeaserCardProps) {
   const isCarousel = variant === "carousel"
+  const translateTag = useTranslateTag()
 
   return (
     <Link
@@ -97,7 +99,7 @@ export function ProjectTeaserCard({
       <div className="flex flex-wrap gap-3">
         {tags.map((tag) => (
           <Badge key={tag} size="tag">
-            {tag}
+            {translateTag(tag)}
           </Badge>
         ))}
       </div>

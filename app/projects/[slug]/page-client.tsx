@@ -30,6 +30,7 @@ import {
 } from "@/lib/cms/public";
 import type { CaseStudyContentBlock, CaseStudyReflection } from "@/lib/cms/types";
 import { withBasePath } from "@/lib/site";
+import { useTranslate } from "@/lib/i18n/use-translate";
 
 const kalam = Kalam({
   subsets: ["latin"],
@@ -1250,6 +1251,7 @@ function getReverseTechFlowLabel(src: string) {
 
 export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const EXPERIMENT_MODAL_BASE_WIDTH = 320;
+  const translate = useTranslate();
   const { caseStudy, loading } = usePublicCaseStudy(slug);
   const { caseStudies } = usePublicCaseStudies();
   const [enteredPassword, setEnteredPassword] = useState("");
@@ -1904,7 +1906,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     return (
       <main className="min-h-screen bg-[#F0F7FF] text-[#3c3e3f]">
         <SiteHeader active="Projects" behavior="reveal" />
-        <section className="mx-auto max-w-[1200px] px-6 py-20 text-sm text-[#5c7792]">Loading case study...</section>
+        <section className="mx-auto max-w-[1200px] px-6 py-20 text-sm text-[#5c7792]">{translate("caseStudy.loading")}</section>
       </main>
     );
   }
@@ -1922,7 +1924,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       return;
     }
 
-    setPasswordError("Incorrect password.");
+    setPasswordError(translate("caseStudy.incorrectPassword"));
   }
 
   if (!caseStudy || caseStudy.status !== "published") {
@@ -1940,7 +1942,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             href={withBasePath("/projects")}
             className="mt-8 inline-flex rounded-[24px] bg-[#1183D0] px-7 py-3 text-base font-semibold text-white transition-colors hover:bg-[#0e75b8]"
           >
-            Back to Projects
+            {translate("caseStudy.backToProjects")}
           </a>
         </section>
         <SiteFooter />
@@ -1964,9 +1966,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           />
           <div className="relative mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20">
             <div className="mb-6 flex items-center gap-3 text-sm">
-              <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
+              <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">{translate("caseStudy.home")}</a>
               <span className="text-[#b8cce0]">›</span>
-              <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</a>
+              <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">{translate("caseStudy.projects")}</a>
               <span className="text-[#b8cce0]">›</span>
               <span className="font-semibold text-[#0e2951]">{caseStudy.title}</span>
             </div>
@@ -1974,7 +1976,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="relative rounded-[0]">
               <div className="relative mx-auto max-w-[640px] px-6 py-12 text-center md:px-10">
                 <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">
-                  Password Protected
+                  {translate("caseStudy.passwordProtected")}
                 </p>
                 <h1 className="mt-6 font-inter text-[40px] leading-[1.08] text-[#0e2951]">
                   {caseStudy.title}
@@ -1983,12 +1985,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   {caseStudy.tagline}
                 </p>
                 <p className="mx-auto mt-4 max-w-[540px] text-sm leading-[1.7] text-[#5c7792]">
-                  This placeholder is locked for now while the final case study data is being prepared.
+                  {translate("caseStudy.lockedPlaceholderNotice")}
                 </p>
 
                 <form onSubmit={handlePasswordSubmit} className="mx-auto mt-10 max-w-[420px] text-left">
                   <label htmlFor="project-password" className="mb-3 block text-sm font-semibold text-[#0e2951]">
-                    Enter password
+                    {translate("caseStudy.enterPassword")}
                   </label>
                   <Input
                     id="project-password"
@@ -2000,7 +2002,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         setPasswordError(null);
                       }
                     }}
-                    placeholder="Enter password"
+                    placeholder={translate("caseStudy.enterPassword")}
                     autoComplete="current-password"
                   />
                   {passwordError ? (
@@ -2008,10 +2010,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   ) : null}
                   <div className="mt-5 flex flex-wrap gap-3">
                     <Button type="submit" size="sm">
-                      Unlock case study
+                      {translate("caseStudy.unlockCaseStudy")}
                     </Button>
                     <Button asChild variant="outline" size="sm">
-                      <Link href={withBasePath("/projects")}>Back to Projects</Link>
+                      <Link href={withBasePath("/projects")}>{translate("caseStudy.backToProjects")}</Link>
                     </Button>
                   </div>
 	                </form>
@@ -2330,9 +2332,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           style={{ background: HOME_BANNER_GRADIENT_OVERLAY }}
         />
         <div className="relative mx-auto flex max-w-[1200px] items-center gap-3 px-6 pt-6 text-sm lg:px-20">
-          <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
+          <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">{translate("caseStudy.home")}</a>
           <span className="text-[#b8cce0]">›</span>
-          <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</a>
+          <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">{translate("caseStudy.projects")}</a>
           <span className="text-[#b8cce0]">›</span>
           <span className="font-semibold text-[#0e2951]">{caseStudy.title}</span>
         </div>
@@ -2365,15 +2367,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="relative mt-10 flex flex-col items-center gap-8 pt-8 text-center">
               <div className="mx-auto grid w-full max-w-[760px] justify-items-center gap-8 md:grid-cols-3 md:items-center">
                 <div className="text-center">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Year</p>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">{translate("caseStudy.year")}</p>
                   <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{projectYear ?? ""}</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Role</p>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">{translate("caseStudy.role")}</p>
                   <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy.role ?? ""}</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Client</p>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">{translate("caseStudy.client")}</p>
                   <p className="mt-1 text-[14px] font-medium text-[#0e2951]">
                     {caseStudy.slug === "reversetech" ? "Reverse Tech" : caseStudy.client_context ?? caseStudy.company}
                   </p>
@@ -2412,7 +2414,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         ) : null}
         <div className="mt-8 grid gap-8 md:grid-cols-3 md:gap-0">
           <div className="border-[#4d87ae]/20 pb-8 md:border-r md:pb-0 md:pr-8">
-            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] font-medium text-[#3c3e3f]">My Role</p>
+            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] font-medium text-[#3c3e3f]">{translate("caseStudy.myRole")}</p>
             <div className="mb-5 h-[3px] w-full rounded-full bg-[#1183D0]" />
             <ul className="space-y-1">
               {caseStudy.my_role.map((item) => (
@@ -2421,7 +2423,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </ul>
           </div>
           <div className="border-[#4d87ae]/20 py-8 md:border-r md:px-8 md:py-0">
-            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Tools Used</p>
+            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">{translate("caseStudy.toolsUsed")}</p>
             <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
             <ul className="space-y-1">
               {(caseStudy.slug === "reversetech"
@@ -2444,10 +2446,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </ul>
           </div>
           <div className="pt-8 md:pl-8 md:pt-0">
-            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Timeline</p>
+            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">{translate("caseStudy.timeline")}</p>
             <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
             <p className="font-inter text-[16px] capitalize leading-[1.75] text-[#5c7792]">
-              {caseStudy.slug === "reversetech" ? "5 to 7 days" : caseStudy.duration}
+              {caseStudy.slug === "reversetech" ? translate("caseStudy.reversetechDuration") : caseStudy.duration}
             </p>
           </div>
         </div>
@@ -2496,7 +2498,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       ) : null}
                       {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG && block.id === "task" && successMetrics.length ? (
                         <div className="mt-8">
-                          <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Success Metrics</p>
+                          <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">{translate("caseStudy.successMetrics")}</p>
                           <ul className="space-y-3">
                             {successMetrics.map((item) => (
                               <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>

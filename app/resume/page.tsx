@@ -12,6 +12,7 @@ import { Card, CardContent } from "../../components/ui/card";
 import { SectionHeading } from "../../components/ui/section-heading";
 import { resolveCertificationLogo, resolveToolIcon, usePublicSiteContent } from "../../lib/cms/public";
 import { withBasePath } from "../../lib/site";
+import { useTranslate } from "../../lib/i18n/use-translate";
 
 type ExperienceBullet = string | { heading: string; items: string[] };
 type ExperienceEntry = {
@@ -321,12 +322,13 @@ const FEATURED_CREDENTIALS = [
 
 export default function ResumePage() {
   const [collapsedSkillGroups, setCollapsedSkillGroups] = useState<Record<string, boolean>>({});
+  const translate = useTranslate();
   const { siteContent } = usePublicSiteContent();
   const resume = siteContent.resume;
   const experience = resume.experience.length
     ? resume.experience.map((job) => ({
         role: job.title,
-        company: job.client ? `${job.company} | Client: ${job.client}` : job.company,
+        company: job.client ? `${job.company} | ${translate("resume.clientLabel")}: ${job.client}` : job.company,
         period: job.period,
         location: job.location,
         bullets: job.bullets,
@@ -378,7 +380,7 @@ export default function ResumePage() {
         <div className="flex items-center justify-between gap-4 mb-6">
           <a href={withBasePath("/")} className="inline-flex items-center gap-2 text-[#5c7792] text-sm hover:text-[#1183D0] transition-colors">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            Back to Home
+            {translate("resume.backToHome")}
           </a>
           <Button
             asChild
@@ -388,13 +390,13 @@ export default function ResumePage() {
           >
             <a href={withBasePath(resume.pdf_link || "/documents/greddys-martinez-resume-2026.pdf")} download>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Download Resume
+              {translate("resume.downloadResume")}
             </a>
           </Button>
         </div>
         <div className="relative overflow-hidden px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
           <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
-            <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#0e2951]">Resume</span>
+            <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#0e2951]">{translate("resume.eyebrow")}</span>
             <h1 className="mt-8 text-5xl font-inter leading-[0.95] text-[#0e2951] sm:text-6xl lg:text-7xl">
               {resume.name}
             </h1>
@@ -466,7 +468,7 @@ export default function ResumePage() {
 
       {/* Experience */}
       <section className="max-w-[1200px] mx-auto px-6 py-10">
-        <SectionHeading eyebrow="Career" title="Experience" centered className="mb-8" />
+        <SectionHeading eyebrow={translate("resume.careerEyebrow")} title={translate("resume.experienceHeading")} centered className="mb-8" />
         <div className="flex flex-col gap-5">
           {experience.map((job) => (
             <ResumeExperienceCard
@@ -488,7 +490,7 @@ export default function ResumePage() {
           <CardContent className="px-6 py-10 sm:px-8 lg:px-12 lg:py-12">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
-              <SectionHeading eyebrow="Capabilities" title="Skills" />
+              <SectionHeading eyebrow={translate("resume.capabilitiesEyebrow")} title={translate("resume.skillsHeading")} />
               <div className="mt-8 flex flex-col gap-8">
                 {skills.map((group) => (
                   <div key={group.category}>
@@ -531,7 +533,7 @@ export default function ResumePage() {
             </div>
 
             <div>
-              <SectionHeading eyebrow="Training" title="Education" />
+              <SectionHeading eyebrow={translate("resume.trainingHeading")} title={translate("resume.educationEyebrow")} />
               <div className="mt-8 flex flex-col gap-5">
                 {education.map((edu) => (
                   <ResumeDetailCard
@@ -548,7 +550,7 @@ export default function ResumePage() {
               </div>
 
               <div className="mt-10">
-                <SectionHeading eyebrow="Stack" title="Tools" />
+                <SectionHeading eyebrow={translate("resume.stackEyebrow")} title={translate("resume.toolsHeading")} />
                 <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-4">
                   {tools.map((tool) => (
                     <div key={tool.label} className="flex flex-col items-center text-center">
@@ -572,7 +574,7 @@ export default function ResumePage() {
       <section className="max-w-[1200px] mx-auto px-6 py-10">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
-            <SectionHeading eyebrow="Recognition" title="Certifications" />
+            <SectionHeading eyebrow={translate("resume.recognitionHeading")} title={translate("resume.certificationsEyebrow")} />
             <div className="mt-8 flex items-center gap-5">
               <Image
                 src={withBasePath("/images/OiSjn.png")}
@@ -586,7 +588,7 @@ export default function ResumePage() {
                 <h3 className="text-[18px] font-semibold text-[#0e2951] sm:text-[20px]">
                   NN/Group UX Certification — Interaction Design
                 </h3>
-                <p className="mt-1 text-base text-[#5c7792]">UX Certified Professional</p>
+                <p className="mt-1 text-base text-[#5c7792]">{translate("resume.uxCertifiedProfessional")}</p>
               </div>
             </div>
 
