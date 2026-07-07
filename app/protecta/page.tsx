@@ -1,5 +1,5 @@
-import { ProjectCaseStudyPageClient } from "@/app/projects/[slug]/page-client";
+import { notFound } from "next/navigation";
 
 export default function ProtectaPage() {
-  return <ProjectCaseStudyPageClient slug="protecta" />;
+  notFound();
 }
