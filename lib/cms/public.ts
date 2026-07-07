@@ -138,7 +138,7 @@ const legacyAssetMap: Record<string, string> = {
   "/images/certs/nng-cert.png": "/images/OiSjn.png",
 };
 
-const HIDDEN_CASE_STUDY_SLUGS = new Set<string>();
+const HIDDEN_CASE_STUDY_SLUGS = new Set<string>(["protecta"]);
 
 const REVERSETECH_PROJECT_TITLE = "Reverse Health Funnel Optimization & A/B Testing";
 
