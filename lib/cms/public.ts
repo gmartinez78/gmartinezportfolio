@@ -56,7 +56,7 @@ const projectImageMap: Record<string, string> = {
   "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/thumbnails/flock.png"),
   "i9-everify-integration": withBasePath("/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png"),
   protecta: withBasePath("/images/projects/protecta/thumbnails/protectabanner.png"),
-  reversetech: withBasePath("/images/projects/reversetech/thumbnails/project-list-card-reversetech.svg"),
+  reversetech: withBasePath("/images/projects/Reversetech/thumbnails/project-list-card-reversetech.svg"),
 };
 
 const projectHeroImageMap: Record<string, string> = {
@@ -97,7 +97,7 @@ const homeCardMediaMap: Record<string, { id: string; image: string }> = {
   },
   reversetech: {
     id: "home-card-reversetech",
-    image: withBasePath("/images/projects/reversetech/thumbnails/project-list-card-reversetech.svg"),
+    image: withBasePath("/images/projects/Reversetech/thumbnails/project-list-card-reversetech.svg"),
   },
 };
 
@@ -124,7 +124,7 @@ const projectListCardMediaMap: Record<string, { id: string; image: string }> = {
   },
   reversetech: {
     id: "project-list-card-reversetech",
-    image: withBasePath("/images/projects/reversetech/thumbnails/project-list-card-reversetech.svg"),
+    image: withBasePath("/images/projects/Reversetech/thumbnails/project-list-card-reversetech.svg"),
   },
 };
 
