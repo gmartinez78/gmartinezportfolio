@@ -37,6 +37,7 @@ jobs:
       - name: Build static export
         run: npm run build
         env:
+          NEXT_PUBLIC_USE_LOCAL_CONTENT: "true"
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
 
