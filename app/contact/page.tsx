@@ -4,8 +4,12 @@ import { InfoCard } from "../../components/info-card";
 import { ContactFormCard } from "../../components/contact-form-card";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
+import { Button } from "../../components/ui/button";
+import { Card, CardContent } from "../../components/ui/card";
 import { SectionHeading } from "../../components/ui/section-heading";
 import { usePublicSiteContent } from "../../lib/cms/public";
+import { withBasePath } from "../../lib/site";
+import Link from "next/link";
 
 
 const INFO_CARDS = [
@@ -97,6 +101,27 @@ export default function ContactPage() {
 
       {/* 2-col: Form + Info */}
       <section className="max-w-[1200px] mx-auto px-6 pb-20">
+        <Card className="mb-8 overflow-hidden rounded-[34px] border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.92)_0%,rgba(246,250,255,0.84)_100%)] shadow-[0_22px_56px_rgba(31,53,94,0.08)] backdrop-blur-xl">
+          <CardContent className="flex flex-col gap-5 p-8 md:flex-row md:items-center md:justify-between md:p-10">
+            <div className="max-w-[680px]">
+              <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#1183D0]">
+                New Intake Link
+              </p>
+              <h2 className="mt-3 font-inter text-[28px] leading-[1.08] text-[#0e2951]">
+                Diagnóstico inicial de redes sociales / Social media diagnostic
+              </h2>
+              <p className="mt-3 text-[15px] leading-[1.8] text-[#5c7792]">
+                Use this bilingual form to collect client context, contact details, business goals, and marketing inputs before preparing a proposal.
+              </p>
+            </div>
+            <Button asChild size="sm" className="h-12 rounded-full px-6 text-base">
+              <Link href={withBasePath("/social-media-diagnostic")}>
+                Open diagnostic
+              </Link>
+            </Button>
+          </CardContent>
+        </Card>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Form */}
           <ContactFormCard

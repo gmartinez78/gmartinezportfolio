@@ -1313,6 +1313,9 @@ export default function PortfolioPage() {
                 <Link href={withBasePath("/projects")} className="underline decoration-[#b8cadf] underline-offset-4 hover:text-[#0e2951]">
                   Case studies
                 </Link>
+                <Link href={withBasePath("/social-media-diagnostic")} className="underline decoration-[#b8cadf] underline-offset-4 hover:text-[#0e2951]">
+                  Social media diagnostic
+                </Link>
               </div>
             </div>
           </div>
