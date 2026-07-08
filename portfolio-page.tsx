@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, ArrowUp, BrainCircuit, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Lightbulb, Mic, MousePointer2, Star, Target, Wand2 } from "lucide-react";
+import { ArrowUp, BrainCircuit, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Lightbulb, Mic, MousePointer2, Star, Target, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { TypewriterBanner } from "./components/typewriter-banner";
@@ -573,7 +573,6 @@ export default function PortfolioPage() {
     email?: string;
     message?: string;
   }>({});
-  const projectsSliderRef = useRef<HTMLDivElement | null>(null);
   const { siteContent } = usePublicSiteContent();
   const { caseStudies } = usePublicCaseStudies();
   const hero = siteContent.home.hero;
@@ -650,20 +649,6 @@ export default function PortfolioPage() {
     }
 
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  function scrollProjects(direction: "left" | "right") {
-    const container = projectsSliderRef.current;
-    if (!container) {
-      return;
-    }
-
-    const firstCard = container.querySelector<HTMLElement>("[data-home-slider-card]");
-    const scrollAmount = firstCard ? firstCard.offsetWidth + 24 : container.clientWidth * 0.9;
-    container.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
-    });
   }
 
   async function handleHeroAssistantSubmit(event: FormEvent<HTMLFormElement>) {
@@ -879,10 +864,7 @@ export default function PortfolioPage() {
   const recentWorkSection = (
     <section key="work" id="projects" className="bg-white py-12 px-6 md:px-10 xl:px-20">
       <div className="mx-auto flex w-full flex-col items-center gap-12">
-        <div
-          ref={projectsSliderRef}
-          className="flex w-full snap-x snap-mandatory gap-6 overflow-x-auto overflow-y-hidden pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
+        <div className="grid w-full gap-6 md:grid-cols-2 xl:grid-cols-3">
           {homeProjects.map((project) => (
             (() => {
               const isActiveCard =
@@ -906,31 +888,13 @@ export default function PortfolioPage() {
                   background={project.background}
                   ctaLabel={project.cta}
                   locked={Boolean(project.password)}
-                  variant="carousel"
+                  variant="grid"
                   inactive={Boolean(highlightedProjectIds.length && !highlightedProjectIds.includes(project.cardId))}
                   active={isActiveCard}
                 />
               );
             })()
           ))}
-        </div>
-        <div className="flex w-full items-center justify-end gap-3">
-          <button
-            type="button"
-            onClick={() => scrollProjects("left")}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#cfe5f8] bg-white text-[#1183D0] transition-colors hover:border-[#1183D0] hover:bg-[#f7fbff]"
-            aria-label="Scroll projects left"
-          >
-            <ArrowLeft className="h-4 w-4" />
-          </button>
-          <button
-            type="button"
-            onClick={() => scrollProjects("right")}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#cfe5f8] bg-white text-[#1183D0] transition-colors hover:border-[#1183D0] hover:bg-[#f7fbff]"
-            aria-label="Scroll projects right"
-          >
-            <ArrowRight className="h-4 w-4" />
-          </button>
         </div>
       </div>
     </section>
