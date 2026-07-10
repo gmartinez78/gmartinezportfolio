@@ -873,7 +873,7 @@ export default function PortfolioPage() {
   }, [githubActivityItems, language]);
 
   const recentWorkSection = (
-    <section key="work" id="projects" className="bg-white py-12 px-6 md:px-10 xl:px-20">
+    <section key="work" id="projects" className="bg-white pt-12 pb-24 px-6 md:px-10 xl:px-20">
       <div className="mx-auto flex w-full flex-col items-center gap-12">
         <div className="grid w-full gap-6 md:grid-cols-2 xl:grid-cols-3">
           {homeProjects.map((project) => (
