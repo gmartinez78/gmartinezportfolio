@@ -190,20 +190,20 @@
       { "year": "2017", "degree": "UX Design / Graphic Design", "institution": "Coderhouse" }
     ],
     "certifications": [
-      { "name": "Understanding LLMs: A Guide for UX Practitioners", "level": "Practical grounding in how large language models work and how to design around their capabilities and limits", "year": "2026", "logo": "/images/OiSjn.png" },
-      { "name": "Measuring UX and ROI", "level": "Quantifying design impact through analytics, A/B testing, and KPIs", "year": "2025", "logo": "/images/OiSjn.png" },
-      { "name": "Practical AI for UX Professionals", "level": "Applying AI tools responsibly and effectively across the UX design workflow", "year": "2025", "logo": "/images/OiSjn.png" },
-      { "name": "Information Architecture", "level": "Organizing and structuring content for findability and clarity", "year": "2025", "logo": "/images/OiSjn.png" },
-      { "name": "Designing Complex Apps for Specialized Domains", "level": "Advanced patterns for complex interactive systems and enterprise workflows", "year": "2023", "logo": "/images/OiSjn.png" },
-      { "name": "Writing Compelling Digital Copy", "level": "Crafting clear, persuasive UX copy that supports usability and conversion", "year": "2023", "logo": "/images/OiSjn.png" },
-      { "name": "The Human Mind and Usability", "level": "Applying cognitive science principles to usability and interaction design", "year": "2023", "logo": "/images/OiSjn.png" },
-      { "name": "Accessibility: How to Design for All", "level": "Designing inclusive experiences that meet accessibility standards for all users", "year": "2023", "logo": "/images/OiSjn.png" },
-      { "name": "Web Design for Usability", "level": "Core usability principles for effective, user-centered web design", "year": "2021", "logo": "/images/OiSjn.png" },
-      { "name": "UI Design Patterns for Successful Software", "level": "Applying evidence-based UI patterns and accessibility standards", "year": "2021", "logo": "/images/OiSjn.png" },
-      { "name": "User Research: Methods and Best Practices", "level": "Planning, conducting, and analyzing user research studies", "year": "2020", "logo": "/images/OiSjn.png" },
-      { "name": "Object-Oriented UX (OOUX) Fundamentals", "level": "Structuring complex product experiences around objects and relationships, not just flows", "year": "2024", "logo": "/images/OiSjn.png" },
-      { "name": "How to Write Great Microcopy", "level": "Writing clear, concise microcopy that guides and reassures users", "year": "2025", "logo": "/images/OiSjn.png" },
-      { "name": "Evaluating User Interfaces", "level": "Evaluating interface usability through structured heuristic and usability methods", "year": "2019", "logo": "/images/coursera.svg" }
+      { "name": "Understanding LLMs: A Guide for UX Practitioners", "level": "How LLMs are trained, and how to design responsibly and communicate AI costs and risks to stakeholders", "year": "2026", "logo": "/images/OiSjn.png" },
+      { "name": "Measuring UX and ROI", "level": "Quantitative UX evaluation and building the case for the ROI of design changes", "year": "2025", "logo": "/images/OiSjn.png" },
+      { "name": "Practical AI for UX Professionals", "level": "Prompt engineering, evaluating AI model outputs, and identifying appropriate uses of AI tools", "year": "2025", "logo": "/images/OiSjn.png" },
+      { "name": "Information Architecture", "level": "Designing and documenting a useful, usable, and extensible information architecture", "year": "2025", "logo": "/images/OiSjn.png" },
+      { "name": "Designing Complex Apps for Specialized Domains", "level": "Creating and evaluating applications for advanced decision-making and specialized, expert-level workflows", "year": "2023", "logo": "/images/OiSjn.png" },
+      { "name": "Writing Compelling Digital Copy", "level": "Research-backed UX writing: how people read digital content and what to write", "year": "2023", "logo": "/images/OiSjn.png" },
+      { "name": "The Human Mind and Usability", "level": "Designing around users' cognitive constraints to understand why some interfaces work better than others", "year": "2023", "logo": "/images/OiSjn.png" },
+      { "name": "Accessibility: How to Design for All", "level": "Designing and testing for accessibility, from image and ARIA handling to working with users with disabilities", "year": "2023", "logo": "/images/OiSjn.png" },
+      { "name": "Web Design for Usability", "level": "Usability and accessibility guidelines, user research, personas, and navigation design for the web", "year": "2021", "logo": "/images/OiSjn.png" },
+      { "name": "UI Design Patterns for Successful Software", "level": "Practical UI patterns for structure, content, navigation, forms, and social features", "year": "2021", "logo": "/images/OiSjn.png" },
+      { "name": "User Research: Methods and Best Practices", "level": "Planning and running interviews, contextual inquiries, observational studies, and usability tests", "year": "2020", "logo": "/images/OiSjn.png" },
+      { "name": "Object-Oriented UX (OOUX) Fundamentals", "level": "Structuring products around objects, their relationships, and the actions users take on them", "year": "2024", "logo": "/images/OiSjn.png" },
+      { "name": "How to Write Great Microcopy", "level": "Writing clear, helpful microcopy for buttons, forms, error states, and onboarding flows", "year": "2025", "logo": "/images/OiSjn.png" },
+      { "name": "Evaluating User Interfaces", "level": "Action analysis, heuristic evaluation, usability testing, and setting measurable usability goals", "year": "2019", "logo": "/images/coursera.svg" }
     ]
   }
 }

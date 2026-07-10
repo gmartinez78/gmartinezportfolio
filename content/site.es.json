@@ -190,20 +190,20 @@
       { "year": "2017", "degree": "Diseño UX / Diseño Gráfico", "institution": "Coderhouse" }
     ],
     "certifications": [
-      { "name": "Comprendiendo los LLMs: una guía para profesionales de UX", "level": "Base práctica sobre cómo funcionan los grandes modelos de lenguaje y cómo diseñar en torno a sus capacidades y límites", "year": "2026", "logo": "/images/OiSjn.png" },
-      { "name": "Medición de UX y ROI", "level": "Cuantificar el impacto del diseño mediante analítica, pruebas A/B y KPIs", "year": "2025", "logo": "/images/OiSjn.png" },
-      { "name": "IA práctica para profesionales de UX", "level": "Aplicar herramientas de IA de forma responsable y eficaz en todo el flujo de diseño UX", "year": "2025", "logo": "/images/OiSjn.png" },
-      { "name": "Arquitectura de la Información", "level": "Organizar y estructurar contenido para la facilidad de encontrarlo y su claridad", "year": "2025", "logo": "/images/OiSjn.png" },
-      { "name": "Diseño de aplicaciones complejas para dominios especializados", "level": "Patrones avanzados para sistemas interactivos complejos y flujos de trabajo empresariales", "year": "2023", "logo": "/images/OiSjn.png" },
-      { "name": "Redacción de textos digitales persuasivos", "level": "Redactar textos UX claros y persuasivos que apoyan la usabilidad y la conversión", "year": "2023", "logo": "/images/OiSjn.png" },
-      { "name": "La mente humana y la usabilidad", "level": "Aplicar principios de ciencia cognitiva a la usabilidad y al diseño de interacción", "year": "2023", "logo": "/images/OiSjn.png" },
-      { "name": "Accesibilidad: cómo diseñar para todos", "level": "Diseñar experiencias inclusivas que cumplen estándares de accesibilidad para todos los usuarios", "year": "2023", "logo": "/images/OiSjn.png" },
-      { "name": "Diseño web para la usabilidad", "level": "Principios fundamentales de usabilidad para un diseño web eficaz y centrado en el usuario", "year": "2021", "logo": "/images/OiSjn.png" },
-      { "name": "Patrones de diseño UI para software exitoso", "level": "Aplicar patrones de UI basados en evidencia y estándares de accesibilidad", "year": "2021", "logo": "/images/OiSjn.png" },
-      { "name": "Investigación de usuarios: métodos y buenas prácticas", "level": "Planificar, realizar y analizar estudios de investigación de usuarios", "year": "2020", "logo": "/images/OiSjn.png" },
-      { "name": "Fundamentos de UX orientada a objetos (OOUX)", "level": "Estructurar experiencias de producto complejas en torno a objetos y relaciones, no solo flujos", "year": "2024", "logo": "/images/OiSjn.png" },
-      { "name": "Cómo escribir buen microcopy", "level": "Escribir microcopy claro y conciso que guía y da confianza a los usuarios", "year": "2025", "logo": "/images/OiSjn.png" },
-      { "name": "Evaluación de interfaces de usuario", "level": "Evaluar la usabilidad de interfaces mediante métodos heurísticos y de usabilidad estructurados", "year": "2019", "logo": "/images/coursera.svg" }
+      { "name": "Comprendiendo los LLMs: una guía para profesionales de UX", "level": "Cómo se entrenan los LLMs, y cómo diseñar de forma responsable y comunicar sus costes y riesgos a stakeholders", "year": "2026", "logo": "/images/OiSjn.png" },
+      { "name": "Medición de UX y ROI", "level": "Evaluación cuantitativa de UX y cómo argumentar el ROI de los cambios de diseño", "year": "2025", "logo": "/images/OiSjn.png" },
+      { "name": "IA práctica para profesionales de UX", "level": "Prompt engineering, evaluación de resultados de modelos de IA e identificación de usos adecuados de herramientas de IA", "year": "2025", "logo": "/images/OiSjn.png" },
+      { "name": "Arquitectura de la Información", "level": "Diseñar y documentar una arquitectura de la información útil, usable y extensible", "year": "2025", "logo": "/images/OiSjn.png" },
+      { "name": "Diseño de aplicaciones complejas para dominios especializados", "level": "Crear y evaluar aplicaciones para toma de decisiones avanzada y flujos de trabajo especializados de nivel experto", "year": "2023", "logo": "/images/OiSjn.png" },
+      { "name": "Redacción de textos digitales persuasivos", "level": "Redacción UX basada en investigación: cómo lee la gente el contenido digital y qué escribir", "year": "2023", "logo": "/images/OiSjn.png" },
+      { "name": "La mente humana y la usabilidad", "level": "Diseñar en torno a las limitaciones cognitivas del usuario para entender por qué unas interfaces funcionan mejor que otras", "year": "2023", "logo": "/images/OiSjn.png" },
+      { "name": "Accesibilidad: cómo diseñar para todos", "level": "Diseñar y testear accesibilidad, desde imágenes y marcado ARIA hasta trabajar con usuarios con discapacidad", "year": "2023", "logo": "/images/OiSjn.png" },
+      { "name": "Diseño web para la usabilidad", "level": "Pautas de usabilidad y accesibilidad, investigación de usuarios, personas y diseño de navegación para la web", "year": "2021", "logo": "/images/OiSjn.png" },
+      { "name": "Patrones de diseño UI para software exitoso", "level": "Patrones de UI prácticos para estructura, contenido, navegación, formularios y funciones sociales", "year": "2021", "logo": "/images/OiSjn.png" },
+      { "name": "Investigación de usuarios: métodos y buenas prácticas", "level": "Planificar y realizar entrevistas, indagaciones contextuales, estudios observacionales y pruebas de usabilidad", "year": "2020", "logo": "/images/OiSjn.png" },
+      { "name": "Fundamentos de UX orientada a objetos (OOUX)", "level": "Estructurar productos en torno a objetos, sus relaciones y las acciones que los usuarios realizan sobre ellos", "year": "2024", "logo": "/images/OiSjn.png" },
+      { "name": "Cómo escribir buen microcopy", "level": "Escribir microcopy claro y útil para botones, formularios, estados de error y flujos de onboarding", "year": "2025", "logo": "/images/OiSjn.png" },
+      { "name": "Evaluación de interfaces de usuario", "level": "Análisis de acciones, evaluación heurística, pruebas de usabilidad y definición de objetivos de usabilidad medibles", "year": "2019", "logo": "/images/coursera.svg" }
     ]
   }
 }
