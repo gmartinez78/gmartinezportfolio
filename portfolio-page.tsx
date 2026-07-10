@@ -1238,11 +1238,11 @@ export default function PortfolioPage() {
                 Open profile ↗
               </a>
             </div>
-            <div className="mt-4 overflow-hidden rounded-[18px] border border-[#e6edf6] bg-[#fbfdff] p-3">
+            <div className="mt-4 overflow-x-auto rounded-[18px] border border-[#e6edf6] bg-[#fbfdff] p-3">
               <img
                 src={`https://ghchart.rshah.org/1183D0/${githubUsername}`}
                 alt={`${githubUsername} GitHub contributions chart`}
-                className="mx-auto h-[92px] w-full max-w-[760px] object-cover object-right"
+                className="mx-auto h-auto w-full max-w-[760px] min-w-[640px] object-contain"
                 loading="lazy"
               />
             </div>
