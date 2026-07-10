@@ -30,6 +30,9 @@ import {
 } from "@/lib/cms/public";
 import type { CaseStudyContentBlock, CaseStudyReflection } from "@/lib/cms/types";
 import { withBasePath } from "@/lib/site";
+import { useTranslate } from "@/lib/i18n/use-translate";
+import { useLanguage, type Language } from "@/lib/i18n/language-context";
+import { translate } from "@/lib/i18n/dictionary";
 
 const kalam = Kalam({
   subsets: ["latin"],
@@ -287,7 +290,7 @@ const CONFIDENTIAL_CONSERVATIVE_SCENARIO_ROWS = [
   },
 ] as const;
 
-const REVERSE_TECH_COMPETITOR_DIMENSIONS = [
+const REVERSE_TECH_COMPETITOR_DIMENSIONS_EN = [
   {
     dimension: "Funnel model",
     reverseHealth: "Age first, 1 min quiz to personalized plan",
@@ -332,12 +335,61 @@ const REVERSE_TECH_COMPETITOR_DIMENSIONS = [
   },
 ] as const;
 
+const REVERSE_TECH_COMPETITOR_DIMENSIONS_ES = [
+  {
+    dimension: "Modelo de embudo",
+    reverseHealth: "Edad primero, quiz de 1 min a plan personalizado",
+    muscleBooster: "Quiz a plan personalizado según tu edad",
+    floHealth: "Onboarding con quiz a app freemium",
+    betterMe: "Edad primero, quiz de 1 min a plan personalizado",
+  },
+  {
+    dimension: "Monetización",
+    reverseHealth: "Paywall estricto + temporizadores de escasez, suscripción",
+    muscleBooster: "Paywall estricto + temporizadores de escasez, prueba de 7 días y luego suscripción, renovación automática",
+    floHealth: "Freemium (núcleo gratis, upsell a Premium)",
+    betterMe: "Prueba de 7 días y luego suscripción, renovación automática + temporizadores de escasez",
+  },
+  {
+    dimension: "Opción gratuita",
+    reverseHealth: "No",
+    muscleBooster: "No",
+    floHealth: "Sí",
+    betterMe: "No",
+  },
+  {
+    dimension: "Público objetivo",
+    reverseHealth: "Mujeres, 40 a 60+, edad madura",
+    muscleBooster: "Amplio, con sesgo masculino",
+    floHealth: "Mujeres, edad amplia, ciclo y etapa de vida",
+    betterMe: "Con sesgo femenino, edad amplia incl. edad madura",
+  },
+  {
+    dimension: "Posicionamiento",
+    reverseHealth: "Fitness para las necesidades particulares de la mujer, calistenia",
+    muscleBooster: "Desarrollo muscular, estética",
+    floHealth: "Salud de la mujer, orientado a la privacidad, personalización por etapa de vida",
+    betterMe: "Bienestar inclusivo, enfocado en la mujer",
+  },
+  {
+    dimension: "Mecánica clave del embudo",
+    reverseHealth: "Filtro de edad + enfoque específico para mujeres + vista previa de plan personalizado",
+    muscleBooster: "Personalización por edad y objetivo en un plan de entrenamiento personalizado",
+    floHealth: "Onboarding por grupo de edad + refuerzo de privacidad + CTA de plan personalizado",
+    betterMe: "Filtro de edad + perfil de bienestar + gráfico de resultado esperado + loader de prueba social",
+  },
+] as const;
+
+function getReverseTechCompetitorDimensions(language: Language) {
+  return language === "es" ? REVERSE_TECH_COMPETITOR_DIMENSIONS_ES : REVERSE_TECH_COMPETITOR_DIMENSIONS_EN;
+}
+
 const REVERSE_TECH_MUSCLE_BOOSTER_URL = "https://plan.muscle-booster.io/onboarding";
 const REVERSE_TECH_REVERSE_HEALTH_URL = "https://tour.reverse.health/rhwc-calisthenics-2602a";
 const REVERSE_TECH_FLO_HEALTH_URL = "https://quiz.flo.health/es-ES";
 const REVERSE_TECH_BETTER_ME_URL = "https://betterme-wallpilates.com/";
 
-const REVERSE_TECH_PATTERN_ROWS = [
+const REVERSE_TECH_PATTERN_ROWS_EN = [
   {
     label: "Pattern 1 to test",
     tag: "Worth testing",
@@ -380,7 +432,54 @@ const REVERSE_TECH_PATTERN_ROWS = [
   },
 ] as const;
 
-const REVERSE_TECH_EXTRA_SOURCES = [
+const REVERSE_TECH_PATTERN_ROWS_ES = [
+  {
+    label: "Patrón 1 a testear",
+    tag: "Vale la pena testear",
+    title: "Pantalla intersticial informativa",
+    screenshotTitle: "Better Me",
+    source: "Muscle Booster (Better Me también tiene una versión de esto)",
+    screenshot: "la pantalla de proyección \"alcanzarás tu objetivo el [fecha]\" con la curva de progreso, mostrada justo antes del paywall",
+    imageSrc: "/images/projects/Reversetech/info-intertitial-screen.png",
+    metric: "tasa de finalización del cuestionario y tasa de captura de email antes del paywall",
+    hypothesis:
+      "Si añadimos un intersticial informativo vinculado a las respuestas del quiz del usuario antes del paywall, la finalización del cuestionario y la captura de email deberían aumentar. La pantalla haría que la experiencia se sintiera más personalizada, generaría confianza, y mostraría a los usuarios que sus respuestas están llevando a algo útil, haciéndolos sentir más cómodos compartiendo su email antes de llegar al paywall.",
+  },
+  {
+    label: "Patrón 2 a testear",
+    tag: "Vale la pena testear",
+    title: "Indicador de progreso de baja fricción",
+    screenshotTitle: "Flo Health",
+    source: "Flo Health",
+    screenshot: "la pantalla gratuita de insight personalizado de Flo, o su pantalla de privacidad y reafirmación de datos durante el onboarding",
+    imageSrc: "/images/projects/Reversetech/flo-health.png",
+    metric: "tasa de finalización del quiz y tasa de avance por pasos",
+    hypothesis:
+      "Si añadimos un indicador de progreso de baja fricción a lo largo del cuestionario, la finalización del quiz y la tasa de avance por pasos deberían aumentar. El patrón hace que el flujo se sienta más corto, más manejable y más fácil de terminar rápido, lo que reduce el esfuerzo percibido y ayuda a los usuarios a mantenerse comprometidos hasta llegar al siguiente momento de valor.",
+    note:
+      "El objetivo de este patrón no es añadir persuasión directamente. Es reducir la fricción haciendo visible el progreso y reforzando que el cuestionario es rápido de completar.",
+  },
+  {
+    label: "Patrón a evitar",
+    tag: "Evitar",
+    title: "Prueba corta de 7 días con presión de conversión por escasez",
+    screenshotTitle: "Muscle Booster",
+    source: "Muscle Booster / Better Me",
+    screenshot: "paywall de prueba corta con urgencia y enfoque de renovación automática",
+    imageSrc: "/images/projects/Reversetech/muscle-booster.png",
+    metric: "retención en el día 7, tasa de renovación y calidad de conversión",
+    hypothesis:
+      "Una prueba corta de 7 días junto con temporizadores de escasez puede aumentar el número total de pruebas iniciadas, pero a menudo reduce la calidad de la conversión. Adelanta el momento de monetización demasiado pronto, antes de que el usuario haya generado suficiente hábito, confianza o compromiso con el producto. Eso puede perjudicar la retención, debilitar las renovaciones y reducir el LTV posterior, incluso si la conversión inicial parece más fuerte.",
+    note:
+      "Investigación reciente sobre apps de suscripción sugiere el mismo patrón: las pruebas más cortas pueden acelerar las decisiones, pero pueden aumentar el abandono temprano y debilitar la retención si los usuarios aún no han experimentado suficiente valor.",
+  },
+] as const;
+
+function getReverseTechPatternRows(language: Language) {
+  return language === "es" ? REVERSE_TECH_PATTERN_ROWS_ES : REVERSE_TECH_PATTERN_ROWS_EN;
+}
+
+const REVERSE_TECH_EXTRA_SOURCES_EN = [
   {
     title: "Reverse Health Calisthenics Funnel",
     url: REVERSE_TECH_REVERSE_HEALTH_URL,
@@ -417,6 +516,48 @@ const REVERSE_TECH_EXTRA_SOURCES = [
     description: "Trust-and-disclosure research referenced to support why reassurance can affect users' readiness to share information in a funnel.",
   },
 ] as const;
+
+const REVERSE_TECH_EXTRA_SOURCES_ES = [
+  {
+    title: "Reverse Health Calisthenics Funnel",
+    url: REVERSE_TECH_REVERSE_HEALTH_URL,
+    description: "Embudo de onboarding en vivo de calistenia de Reverse Health, usado como referencia base para la Tarea 3.",
+  },
+  {
+    title: "Muscle Booster Onboarding",
+    url: REVERSE_TECH_MUSCLE_BOOSTER_URL,
+    description: "Flujo de onboarding en vivo de Muscle Booster, referenciado para el patrón de pantalla intersticial y la estructura quiz-a-plan.",
+  },
+  {
+    title: "Flo Health Quiz",
+    url: REVERSE_TECH_FLO_HEALTH_URL,
+    description: "Experiencia de onboarding en vivo de Flo, referenciada para la reafirmación de privacidad y señales de valor previas a la monetización.",
+  },
+  {
+    title: "Better Me Wall Pilates",
+    url: REVERSE_TECH_BETTER_ME_URL,
+    description: "Embudo en vivo de wall pilates de Better Me, referenciado para el filtro de edad, los pasos de perfil de bienestar y la comparación de onboarding.",
+  },
+  {
+    title: "The role of privacy assurance mechanisms in building trust",
+    url: "https://researchdiscovery.drexel.edu/esploro/outputs/journalArticle/The-role-of-privacy-assurance-mechanisms/991014877963104721",
+    description: "Investigación citada para respaldar la idea de que las señales de privacidad y garantía pueden aumentar la confianza y la disposición a compartir información personal online.",
+  },
+  {
+    title: "Consumer Willingness to Share Personal Digital Information for Health-Related Uses",
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8787615/",
+    description: "Estudio sobre compartir datos de salud, referenciado para respaldar el papel de la confianza y el contexto en la disposición a compartir información personal.",
+  },
+  {
+    title: "What Information Do Shoppers Share? The Effect of Personnel-, Retailer-, and Country-Trust on Willingness to Share Information",
+    url: "https://www.sciencedirect.com/science/article/pii/S0022435920300440",
+    description: "Investigación sobre confianza y divulgación, referenciada para respaldar por qué la reafirmación puede afectar la disposición de los usuarios a compartir información en un embudo.",
+  },
+] as const;
+
+function getReverseTechExtraSources(language: Language) {
+  return language === "es" ? REVERSE_TECH_EXTRA_SOURCES_ES : REVERSE_TECH_EXTRA_SOURCES_EN;
+}
 
 const NAYYA_PROCESS_ALTERNATIVES = [
   {
@@ -1131,26 +1272,26 @@ function shouldHideInsight(value: string) {
   );
 }
 
-function getReverseTechPerformanceLabel(step: unknown) {
+function getReverseTechPerformanceLabel(step: unknown, language: Language) {
   if (typeof step !== "string") {
     return null;
   }
 
   const normalized = step.toLowerCase();
   if (normalized.includes("31. age")) {
-    return { label: "Good", className: "bg-[#dcfce7] text-[#15803d]" };
+    return { label: translate("caseStudy.performanceGood", language), className: "bg-[#dcfce7] text-[#15803d]" };
   }
   if (normalized.includes("4. main goal")) {
-    return { label: "Moderate", className: "bg-[#fef3c7] text-[#b45309]" };
+    return { label: translate("caseStudy.performanceModerate", language), className: "bg-[#fef3c7] text-[#b45309]" };
   }
   if (normalized.includes("34. enter email")) {
-    return { label: "Poor", className: "bg-[#fee2e2] text-[#b91c1c]" };
+    return { label: translate("caseStudy.performancePoor", language), className: "bg-[#fee2e2] text-[#b91c1c]" };
   }
 
   return null;
 }
 
-function formatReverseTechStepTitle(step: unknown) {
+function formatReverseTechStepTitle(step: unknown, language: Language) {
   if (typeof step !== "string") {
     return "";
   }
@@ -1162,19 +1303,19 @@ function formatReverseTechStepTitle(step: unknown) {
   const normalized = cleaned.toLowerCase();
 
   if (normalized === "age" || normalized.startsWith("age step")) {
-    return "Age";
+    return translate("caseStudy.stepAge", language);
   }
   if (normalized === "main goal") {
-    return "Main Goal";
+    return translate("caseStudy.stepMainGoal", language);
   }
   if (normalized === "enter email") {
-    return "Enter Email";
+    return translate("caseStudy.stepEnterEmail", language);
   }
 
   return cleaned;
 }
 
-function getReverseTechStepTag(step: unknown) {
+function getReverseTechStepTag(step: unknown, language: Language) {
   if (typeof step !== "string") {
     return null;
   }
@@ -1182,22 +1323,22 @@ function getReverseTechStepTag(step: unknown) {
   const normalized = step.toLowerCase();
 
   if (normalized.includes("good performance")) {
-    return { label: "Good", className: "bg-[#dcfce7] text-[#15803d]" };
+    return { label: translate("caseStudy.performanceGood", language), className: "bg-[#dcfce7] text-[#15803d]" };
   }
   if (normalized.includes("moderate performance")) {
-    return { label: "Moderate", className: "bg-[#fef3c7] text-[#b45309]" };
+    return { label: translate("caseStudy.performanceModerate", language), className: "bg-[#fef3c7] text-[#b45309]" };
   }
   if (normalized.includes("poor performance")) {
-    return { label: "Poor", className: "bg-[#fee2e2] text-[#b91c1c]" };
+    return { label: translate("caseStudy.performancePoor", language), className: "bg-[#fee2e2] text-[#b91c1c]" };
   }
   if (normalized.includes("regular performance")) {
-    return { label: "Moderate", className: "bg-[#fef3c7] text-[#b45309]" };
+    return { label: translate("caseStudy.performanceModerate", language), className: "bg-[#fef3c7] text-[#b45309]" };
   }
   if (normalized.includes("bad performance")) {
-    return { label: "Poor", className: "bg-[#fee2e2] text-[#b91c1c]" };
+    return { label: translate("caseStudy.performancePoor", language), className: "bg-[#fee2e2] text-[#b91c1c]" };
   }
 
-  return getReverseTechPerformanceLabel(step);
+  return getReverseTechPerformanceLabel(step, language);
 }
 
 const REVERSE_TECH_HYPOTHESIS_2_FLOW = [
@@ -1250,6 +1391,8 @@ function getReverseTechFlowLabel(src: string) {
 
 export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const EXPERIMENT_MODAL_BASE_WIDTH = 320;
+  const translate = useTranslate();
+  const { language } = useLanguage();
   const { caseStudy, loading } = usePublicCaseStudy(slug);
   const { caseStudies } = usePublicCaseStudies();
   const [enteredPassword, setEnteredPassword] = useState("");
@@ -1322,14 +1465,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   };
 
   const reverseTechTaskTabs = [
-    { id: "task1" as const, label: "Task 1" },
-    { id: "task2" as const, label: "Task 2" },
-    { id: "task3" as const, label: "Task 3" },
-    { id: "task4" as const, label: "Task 4 — Optional" },
+    { id: "task1" as const, label: translate("caseStudy.task1") },
+    { id: "task2" as const, label: translate("caseStudy.task2") },
+    { id: "task3" as const, label: translate("caseStudy.task3") },
+    { id: "task4" as const, label: translate("caseStudy.task4Optional") },
   ];
 
   const activeReverseTechTaskLabel =
-    reverseTechTaskTabs.find((item) => item.id === reversetechTaskTab)?.label ?? "Tasks";
+    reverseTechTaskTabs.find((item) => item.id === reversetechTaskTab)?.label ?? translate("caseStudy.tasks");
 
   const openExperimentModal = (modal: "a" | "b") => {
     setActiveExperimentModal(modal);
@@ -1904,7 +2047,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     return (
       <main className="min-h-screen bg-[#F0F7FF] text-[#3c3e3f]">
         <SiteHeader active="Projects" behavior="reveal" />
-        <section className="mx-auto max-w-[1200px] px-6 py-20 text-sm text-[#5c7792]">Loading case study...</section>
+        <section className="mx-auto max-w-[1200px] px-6 py-20 text-sm text-[#5c7792]">{translate("caseStudy.loading")}</section>
       </main>
     );
   }
@@ -1922,7 +2065,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       return;
     }
 
-    setPasswordError("Incorrect password.");
+    setPasswordError(translate("caseStudy.incorrectPassword"));
   }
 
   if (!caseStudy || caseStudy.status !== "published") {
@@ -1940,7 +2083,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             href={withBasePath("/projects")}
             className="mt-8 inline-flex rounded-[24px] bg-[#1183D0] px-7 py-3 text-base font-semibold text-white transition-colors hover:bg-[#0e75b8]"
           >
-            Back to Projects
+            {translate("caseStudy.backToProjects")}
           </a>
         </section>
         <SiteFooter />
@@ -1964,9 +2107,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           />
           <div className="relative mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20">
             <div className="mb-6 flex items-center gap-3 text-sm">
-              <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
+              <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">{translate("caseStudy.home")}</a>
               <span className="text-[#b8cce0]">›</span>
-              <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</a>
+              <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">{translate("caseStudy.projects")}</a>
               <span className="text-[#b8cce0]">›</span>
               <span className="font-semibold text-[#0e2951]">{caseStudy.title}</span>
             </div>
@@ -1974,7 +2117,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="relative rounded-[0]">
               <div className="relative mx-auto max-w-[640px] px-6 py-12 text-center md:px-10">
                 <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">
-                  Password Protected
+                  {translate("caseStudy.passwordProtected")}
                 </p>
                 <h1 className="mt-6 font-inter text-[40px] leading-[1.08] text-[#0e2951]">
                   {caseStudy.title}
@@ -1983,12 +2126,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   {caseStudy.tagline}
                 </p>
                 <p className="mx-auto mt-4 max-w-[540px] text-sm leading-[1.7] text-[#5c7792]">
-                  This placeholder is locked for now while the final case study data is being prepared.
+                  {translate("caseStudy.lockedPlaceholderNotice")}
                 </p>
 
                 <form onSubmit={handlePasswordSubmit} className="mx-auto mt-10 max-w-[420px] text-left">
                   <label htmlFor="project-password" className="mb-3 block text-sm font-semibold text-[#0e2951]">
-                    Enter password
+                    {translate("caseStudy.enterPassword")}
                   </label>
                   <Input
                     id="project-password"
@@ -2000,7 +2143,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         setPasswordError(null);
                       }
                     }}
-                    placeholder="Enter password"
+                    placeholder={translate("caseStudy.enterPassword")}
                     autoComplete="current-password"
                   />
                   {passwordError ? (
@@ -2008,10 +2151,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   ) : null}
                   <div className="mt-5 flex flex-wrap gap-3">
                     <Button type="submit" size="sm">
-                      Unlock case study
+                      {translate("caseStudy.unlockCaseStudy")}
                     </Button>
                     <Button asChild variant="outline" size="sm">
-                      <Link href={withBasePath("/projects")}>Back to Projects</Link>
+                      <Link href={withBasePath("/projects")}>{translate("caseStudy.backToProjects")}</Link>
                     </Button>
                   </div>
 	                </form>
@@ -2070,7 +2213,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       : [];
   const sourceEntriesWithOverrides: Array<Record<string, unknown>> =
     caseStudy.slug === "reversetech"
-      ? [...sourceEntries, ...REVERSE_TECH_EXTRA_SOURCES.map((item) => ({ ...item }))]
+      ? [...sourceEntries, ...getReverseTechExtraSources(language).map((item) => ({ ...item }))]
       : sourceEntries;
   const ctaVariants =
     ctaVariantsBlock?.payload &&
@@ -2101,9 +2244,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const reflections = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_REFLECTIONS : caseStudy.reflections;
   const projectYear = caseStudy.year;
   const heroImage = resolveProjectHeroImage(caseStudy.slug, caseStudy.images.hero);
-  const designProposalTitle = caseStudy.slug === "reversetech" ? "Design Proposal" : "Design Proposal";
-  const hypothesisIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf("Hypothesis 3") : -1;
-  const designNotesIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf("A few notes") : -1;
+  const designProposalTitle = translate("caseStudy.designProposal");
+  const hypothesisIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf(translate("caseStudy.hypothesis3Marker")) : -1;
+  const designNotesIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf(translate("caseStudy.aFewNotes")) : -1;
   const designProposalLinks =
     caseStudy.slug === "reversetech"
       ? designStrategy.map((item) => parseStandaloneMarkdownLink(item)).filter(isMarkdownLink)
@@ -2129,8 +2272,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ? taskDetailBlock.payload.heading
       : null;
   const reverseTechTaskDetailHeading =
-    caseStudy.slug === "reversetech" && taskDetailHeading === "Funnel diagnosis & design improvements"
-      ? "Funnel diagnosis"
+    caseStudy.slug === "reversetech" && taskDetailHeading === translate("caseStudy.funnelDiagnosisFull")
+      ? translate("caseStudy.funnelDiagnosisShort")
       : taskDetailHeading;
   const taskDetailTable =
     taskDetailBlock?.payload &&
@@ -2153,10 +2296,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       >
         <div>
           <p className="mb-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
-            Personalized Flow Variant
+            {translate("caseStudy.personalizedFlowVariant")}
           </p>
           <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
-            Pattern application
+            {translate("caseStudy.patternApplication")}
           </h3>
         </div>
         {openHypothesisIds.includes("rt-hypothesis-2") ? <Minus className="h-5 w-5 text-[#1183D0]" /> : <Plus className="h-5 w-5 text-[#1183D0]" />}
@@ -2168,10 +2311,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 {caseStudy.slug === "reversetech" ? (
                   <>
                     <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                      The Figma flow below translates some of the strongest findings from the benchmark review and the deeper funnel research into testable interface directions.
+                      {translate("caseStudy.figmaFlowIntro")}
                     </p>
                     <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                      Rather than showing one final solution, it packages those findings into a set of flow variations that could be tested to see which combination best reduces friction, strengthens trust, and improves the value exchange before the email step and paywall.
+                      {translate("caseStudy.figmaFlowIntro2")}
                     </p>
                   </>
                 ) : (
@@ -2184,10 +2327,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             <div className="space-y-4">
               <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
-                Prototype Portion
+                {translate("caseStudy.prototypePortion")}
               </p>
               <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                Browse the mobile flow portion below.
+                {translate("caseStudy.browseMobileFlow")}
               </p>
             </div>
             <ContentPanel className="shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
@@ -2211,19 +2354,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     <div className="grid gap-4 px-0 py-6 md:grid-cols-2">
         {[
           {
-            label: "Data analysis",
+            label: translate("caseStudy.toolsDataAnalysis"),
             tool: "Notebook LM, Claude, and ChatGPT",
             logos: [
               { label: "Claude", src: "/images/tools/anthropic.svg" },
               { label: "ChatGPT", src: "/images/tools/openai.svg" },
               { label: "Notebook LM" },
             ],
-            use: "Used Notebook LM to review links, analyze source material, and research the benchmark set. I also used Claude and ChatGPT to structure the findings into comparison tables and clearer content blocks before translating them into testing directions.",
-            optimize: "Optimized for speed and pattern detection before moving into design decisions.",
+            use: translate("caseStudy.toolsDataAnalysisUse"),
+            optimize: translate("caseStudy.toolsDataAnalysisOptimize"),
             imageSrc: "/images/projects/Reversetech/notebook-lm.png",
           },
           {
-            label: "Ideation",
+            label: translate("caseStudy.toolsIdeation"),
             tool: "Paper, Open Design, Claude Design, and Figma",
             logos: [
               { label: "Claude Design", src: "/images/tools/anthropic.svg" },
@@ -2231,27 +2374,27 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               { label: "Open Design" },
               { label: "Paper" },
             ],
-            use: "I started with paper-and-pencil sketches to shape the first prototype direction. Then I used Open Design and Claude Design to create two versions, selected the stronger one, iterated on it, and moved it into Figma to refine it and prepare the prototype.",
-            optimize: "Optimized for breadth of options first, then quality through iteration and visual refinement.",
+            use: translate("caseStudy.toolsIdeationUse"),
+            optimize: translate("caseStudy.toolsIdeationOptimize"),
             imageSrc: "/images/projects/Reversetech/claude-design.png",
           },
           {
-            label: "Writing",
+            label: translate("caseStudy.toolsWriting"),
             tool: "ChatGPT + grammarly + manual editing",
             logos: [{ label: "ChatGPT", src: "/images/tools/openai.svg" }, { label: "Grammarly" }],
-            use: "Used ChatGPT to help structure and refine written sections, and Grammarly to tighten grammar and shorten some of the copy so the case study read more clearly and directly.",
-            optimize: "Optimized for clarity, cleaner phrasing, and shorter copy.",
+            use: translate("caseStudy.toolsWritingUse"),
+            optimize: translate("caseStudy.toolsWritingOptimize"),
             imageSrc: "/images/projects/Reversetech/claude-code.png",
           },
           {
-            label: "Polish and delivery",
+            label: translate("caseStudy.toolsPolishDelivery"),
             tool: "Figma, GitHub, and Codex",
             logos: [
               { label: "Figma", src: "/images/tools/figma.svg" },
               { label: "GitHub Copilot", src: "/images/tools/githubcopilot.svg" },
               { label: "Codex" },
             ],
-            use: "Used Figma to polish the selected direction and prepare the final prototype, then used coding tools to place the work into the case-study page and iterate on the final presentation.",
+            use: translate("caseStudy.toolsPolishDeliveryUse"),
             imageSrc: "/images/projects/Reversetech/figma-screen.png",
           },
         ].map((item, index) => (
@@ -2330,9 +2473,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           style={{ background: HOME_BANNER_GRADIENT_OVERLAY }}
         />
         <div className="relative mx-auto flex max-w-[1200px] items-center gap-3 px-6 pt-6 text-sm lg:px-20">
-          <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</a>
+          <a href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">{translate("caseStudy.home")}</a>
           <span className="text-[#b8cce0]">›</span>
-          <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</a>
+          <a href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">{translate("caseStudy.projects")}</a>
           <span className="text-[#b8cce0]">›</span>
           <span className="font-semibold text-[#0e2951]">{caseStudy.title}</span>
         </div>
@@ -2365,15 +2508,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="relative mt-10 flex flex-col items-center gap-8 pt-8 text-center">
               <div className="mx-auto grid w-full max-w-[760px] justify-items-center gap-8 md:grid-cols-3 md:items-center">
                 <div className="text-center">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Year</p>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">{translate("caseStudy.year")}</p>
                   <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{projectYear ?? ""}</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Role</p>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">{translate("caseStudy.role")}</p>
                   <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy.role ?? ""}</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Client</p>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">{translate("caseStudy.client")}</p>
                   <p className="mt-1 text-[14px] font-medium text-[#0e2951]">
                     {caseStudy.slug === "reversetech" ? "Reverse Tech" : caseStudy.client_context ?? caseStudy.company}
                   </p>
@@ -2412,7 +2555,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         ) : null}
         <div className="mt-8 grid gap-8 md:grid-cols-3 md:gap-0">
           <div className="border-[#4d87ae]/20 pb-8 md:border-r md:pb-0 md:pr-8">
-            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] font-medium text-[#3c3e3f]">My Role</p>
+            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] font-medium text-[#3c3e3f]">{translate("caseStudy.myRole")}</p>
             <div className="mb-5 h-[3px] w-full rounded-full bg-[#1183D0]" />
             <ul className="space-y-1">
               {caseStudy.my_role.map((item) => (
@@ -2421,7 +2564,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </ul>
           </div>
           <div className="border-[#4d87ae]/20 py-8 md:border-r md:px-8 md:py-0">
-            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Tools Used</p>
+            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">{translate("caseStudy.toolsUsed")}</p>
             <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
             <ul className="space-y-1">
               {(caseStudy.slug === "reversetech"
@@ -2444,10 +2587,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </ul>
           </div>
           <div className="pt-8 md:pl-8 md:pt-0">
-            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">Timeline</p>
+            <p className="mb-4 font-inter text-[15px] uppercase tracking-[1.5px] text-[#5c7792]">{translate("caseStudy.timeline")}</p>
             <div className="mb-5 h-[3px] w-full rounded-full bg-[#4d87ae]/20" />
             <p className="font-inter text-[16px] capitalize leading-[1.75] text-[#5c7792]">
-              {caseStudy.slug === "reversetech" ? "5 to 7 days" : caseStudy.duration}
+              {caseStudy.slug === "reversetech" ? translate("caseStudy.reversetechDuration") : caseStudy.duration}
             </p>
           </div>
         </div>
@@ -2496,7 +2639,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       ) : null}
                       {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG && block.id === "task" && successMetrics.length ? (
                         <div className="mt-8">
-                          <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Success Metrics</p>
+                          <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">{translate("caseStudy.successMetrics")}</p>
                           <ul className="space-y-3">
                             {successMetrics.map((item) => (
                               <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>
@@ -2559,31 +2702,31 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <div className="mx-auto max-w-[1200px]">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="mx-auto max-w-[540px]">
-                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">Task 1</p>
-                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">Funnel diagnosis & design improvements</h3>
+                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{translate("caseStudy.task1")}</p>
+                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">{translate("caseStudy.funnelDiagnosisFull")}</h3>
                 <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                  Identify where users drop off across the quiz and email gate, diagnose the root cause of each churn point, and design improvements prioritized by conversion impact.
+                  {translate("caseStudy.task1Description")}
                 </p>
               </div>
               <div className="mx-auto max-w-[540px]">
-                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">Task 2</p>
-                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">Paywall experiment design</h3>
+                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{translate("caseStudy.task2")}</p>
+                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">{translate("caseStudy.paywallExperimentDesign")}</h3>
                 <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                  Design a structured A/B test plan targeting the paywall conversion gap, with hypotheses covering offer framing, value exchange, and pricing presentation.
+                  {translate("caseStudy.task2Description")}
                 </p>
               </div>
               <div className="mx-auto max-w-[540px]">
-                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">Task 3</p>
-                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">Competitor pattern extraction</h3>
+                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{translate("caseStudy.task3")}</p>
+                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">{translate("caseStudy.competitorPatternExtraction")}</h3>
                 <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                  Analyze how competing subscription fitness apps structure their onboarding and paywall flows to surface patterns worth adapting or testing against the current design.
+                  {translate("caseStudy.task3Description")}
                 </p>
               </div>
               <div className="mx-auto max-w-[540px]">
-                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">Task 4 — Optional</p>
-                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">How I used tools while completing this case</h3>
+                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{translate("caseStudy.task4Optional")}</p>
+                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">{translate("caseStudy.howIUsedTools")}</h3>
                 <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                  A transparent breakdown of which tools I used at each stage, what I used them for, and what each one was optimized toward — speed, breadth, quality, or implementation.
+                  {translate("caseStudy.task4Description")}
                 </p>
               </div>
             </div>
@@ -2607,7 +2750,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       className="flex w-full items-center justify-between rounded-[18px] border border-[#d7e8f7] bg-white px-4 py-3 text-left shadow-[0_12px_28px_rgba(17,131,208,0.08)]"
                     >
                       <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Tasks</p>
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{translate("caseStudy.tasks")}</p>
                         <p className="mt-1 text-[14px] font-semibold text-[#0e2951]">{activeReverseTechTaskLabel}</p>
                       </div>
                       <Menu className="h-5 w-5 text-[#0e2951]" />
@@ -2662,7 +2805,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   className="flex w-full items-center justify-between rounded-[18px] border border-[#d7e8f7] bg-white px-4 py-3 text-left shadow-[0_12px_28px_rgba(17,131,208,0.08)]"
                 >
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Tasks</p>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{translate("caseStudy.tasks")}</p>
                     <p className="mt-1 text-[14px] font-semibold text-[#0e2951]">{activeReverseTechTaskLabel}</p>
                   </div>
                   <Menu className="h-5 w-5 text-[#0e2951]" />
@@ -2730,16 +2873,23 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {taskDetailTable.length ? (
               <div className="overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
                 <div className="border-b border-[#dadde1] px-6 py-5">
-                  <h3 className="text-[18px] font-semibold text-[#1c1e21]">Funnel churn snapshot</h3>
+                  <h3 className="text-[18px] font-semibold text-[#1c1e21]">{translate("caseStudy.funnelChurnSnapshot")}</h3>
                   <p className="mt-1 text-[13px] text-[#65676b]">
-                    Highest visible churn points across the quiz entry and progression flow
+                    {translate("caseStudy.funnelChurnSnapshotSubtitle")}
                   </p>
                 </div>
                 <div className="hidden overflow-x-auto md:block">
                   <table className="w-full border-collapse text-[13px]">
                     <thead>
                       <tr className="bg-[#f5f6f7] text-left text-[11px] font-medium leading-[1.4] text-[#65676b]">
-                        {["EVENT - STEP", "PERFORMANCE", "CHURN #", "CHURN %", "USER #", "REMAINING %"].map((label, index) => (
+                        {[
+                          translate("caseStudy.eventStep"),
+                          translate("caseStudy.performance"),
+                          translate("caseStudy.churnCount"),
+                          translate("caseStudy.churnPercentHeader"),
+                          translate("caseStudy.userCount"),
+                          translate("caseStudy.remainingPercentHeader"),
+                        ].map((label, index) => (
                           <th
                             key={label}
                             className={`px-4 py-3 ${index < 5 ? "border-b border-r border-[#ebedf0]" : "border-b border-[#ebedf0]"}`}
@@ -2755,7 +2905,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-[#1c1e21]">
                             <div className="flex items-center gap-3">
                               <div className="flex flex-wrap items-center gap-2">
-                                <span className="font-medium">{formatReverseTechStepTitle(row.step)}</span>
+                                <span className="font-medium">{formatReverseTechStepTitle(row.step, language)}</span>
                                 {typeof row.tag === "string" ? (
                                   <span className="inline-flex rounded-[4px] bg-[#dbeafe] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#1e40af]">
                                     {row.tag}
@@ -2766,7 +2916,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           </td>
                           <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-[#65676b]">
                             {(() => {
-                              const performance = getReverseTechPerformanceLabel(row.step);
+                              const performance = getReverseTechPerformanceLabel(row.step, language);
                               return performance ? (
                                 <span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] ${performance.className}`}>
                                   {performance.label}
@@ -2804,10 +2954,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <div>
                             <div className="flex flex-wrap items-center gap-2">
                               <p className="text-[18px] font-semibold text-[#0e2951]">
-                                {formatReverseTechStepTitle(row.step)}
+                                {formatReverseTechStepTitle(row.step, language)}
                               </p>
                               {(() => {
-                                const performance = getReverseTechPerformanceLabel(row.step);
+                                const performance = getReverseTechPerformanceLabel(row.step, language);
                                 return performance ? (
                                   <span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] ${performance.className}`}>
                                     {performance.label}
@@ -2829,19 +2979,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </div>
                         <div className="grid grid-cols-2 gap-3 text-[12px] leading-[1.5] text-[#5c7792]">
                           <div>
-                            <p className="font-semibold text-[#0e2951]">Churn #</p>
+                            <p className="font-semibold text-[#0e2951]">{translate("caseStudy.churnCountMobile")}</p>
                             <p className="mt-1">{typeof row.churnCount === "string" ? row.churnCount : ""}</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-[#0e2951]">Churn %</p>
+                            <p className="font-semibold text-[#0e2951]">{translate("caseStudy.churnPercentMobile")}</p>
                             <p className="mt-1">{typeof row.churnPercent === "string" ? row.churnPercent : ""}</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-[#0e2951]">User #</p>
+                            <p className="font-semibold text-[#0e2951]">{translate("caseStudy.userCountMobile")}</p>
                             <p className="mt-1">{typeof row.userCount === "string" ? row.userCount : ""}</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-[#0e2951]">Remaining %</p>
+                            <p className="font-semibold text-[#0e2951]">{translate("caseStudy.remainingPercentMobile")}</p>
                             <p className="mt-1">{typeof row.remainingPercent === "string" ? row.remainingPercent : ""}</p>
                           </div>
                         </div>
@@ -2850,7 +3000,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   ))}
                 </div>
                 <div className="border-t border-[#dadde1] bg-[#f5f6f7] px-6 py-4 text-[11px] text-[#65676b]">
-                  Source: funnel event snapshot focused on the most visible churn points in the quiz path.
+                  {translate("caseStudy.funnelSnapshotSource")}
                 </div>
               </div>
             ) : null}
@@ -2875,10 +3025,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     <div className="mx-auto max-w-[760px] text-center">
                       <div className="space-y-3">
                         <h3 className="text-[22px] font-semibold leading-[1.3] text-[#1c1e21]">
-                          {formatReverseTechStepTitle(item.title)}
+                          {formatReverseTechStepTitle(item.title, language)}
                         </h3>
                         {(() => {
-                          const performance = getReverseTechStepTag(item.title);
+                          const performance = getReverseTechStepTag(item.title, language);
                           return performance ? (
                             <div>
                               <span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] ${performance.className}`}>
@@ -2898,7 +3048,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <div className="mx-auto w-full max-w-[192px] overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
                             <img
                               src={withBasePath(item.image)}
-                              alt={formatReverseTechStepTitle(item.title) || "Analysis reference"}
+                              alt={formatReverseTechStepTitle(item.title, language) || translate("caseStudy.analysisReference")}
                               className="h-auto w-full"
                             />
                           </div>
@@ -3660,7 +3810,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 {designProposalNotes.length ? (
                   <div className="space-y-5">
                     <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
-                      A few notes
+                      {translate("caseStudy.aFewNotes")}
                     </p>
                     {designProposalNotes.map((item) => (
                       <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
@@ -3720,7 +3870,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                               : "text-[#5c7792]"
                           }`}
                         >
-                          Before
+                          {translate("caseStudy.before")}
                         </button>
                         <button
                           type="button"
@@ -3732,7 +3882,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                               : "text-[#5c7792]"
                           }`}
                         >
-                          After
+                          {translate("caseStudy.after")}
                         </button>
                       </div>
                     </div>
@@ -3745,7 +3895,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                               ? "/images/projects/Reversetech/email.png"
                               : "/images/projects/Reversetech/cta-variant-4.svg"
                           ),
-                          alt: reversetechComparisonTab === "before" ? "Enter Email before" : "Enter Email after",
+                          alt: reversetechComparisonTab === "before" ? translate("caseStudy.enterEmailBefore") : translate("caseStudy.enterEmailAfter"),
                         })
                       }
                       className="block w-full text-left transition-transform hover:scale-[1.01]"
@@ -3756,7 +3906,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             <div className="pointer-events-none absolute left-1/2 top-0 z-10 h-[24px] w-[120px] -translate-x-1/2 rounded-b-[18px] bg-[#151515]" />
                             <img
                               src={withBasePath("/images/projects/Reversetech/email.png")}
-                              alt="Enter Email before"
+                              alt={translate("caseStudy.enterEmailBefore")}
                               className="h-auto w-full"
                             />
                           </div>
@@ -3764,7 +3914,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       ) : (
                         <img
                           src={withBasePath("/images/projects/Reversetech/cta-variant-4.svg")}
-                          alt="Enter Email after"
+                          alt={translate("caseStudy.enterEmailAfter")}
                           className="h-auto w-full"
                         />
                       )}
@@ -3775,20 +3925,20 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <div className="px-1 py-1">
                         <div className="space-y-2">
                           <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
-                            Design direction
+                            {translate("caseStudy.designDirection")}
                           </p>
                           <ul className="space-y-3">
                             <li className="flex items-start gap-3">
                               <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#1183D0]" />
-                              <span>The design fix focuses on strengthening the value exchange before asking for the user&apos;s email.</span>
+                              <span>{translate("caseStudy.designDirectionBullet1")}</span>
                             </li>
                             <li className="flex items-start gap-3">
                               <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#1183D0]" />
-                              <span>Research shows users are more likely to complete a form when the request is tied to a clear reward.</span>
+                              <span>{translate("caseStudy.designDirectionBullet2")}</span>
                             </li>
                             <li className="flex items-start gap-3">
                               <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#1183D0]" />
-                              <span>This version reframes the page around the user&apos;s selected main goal, such as weight loss, and uses outcome-based copy like <em>&ldquo;See my plan&rdquo;</em> instead of a generic <em>&ldquo;Continue.&rdquo;</em></span>
+                              <span>{translate("caseStudy.designDirectionBullet3Pre")} <em>&ldquo;{translate("caseStudy.seeMyPlan")}&rdquo;</em> {translate("caseStudy.designDirectionBullet3Post")} <em>&ldquo;{translate("caseStudy.continue")}&rdquo;</em></span>
                             </li>
                           </ul>
                         </div>
@@ -3798,24 +3948,24 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <div className="space-y-2">
                             <div className="flex flex-wrap items-center gap-2">
                               <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0e2951]">
-                                Low-effort test path
+                                {translate("caseStudy.lowEffortTestPath")}
                               </p>
                               <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
-                                CMS-ready
+                                {translate("caseStudy.cmsReady")}
                               </span>
                             </div>
                             <ul className="space-y-3">
                               <li className="flex items-start gap-3">
                                 <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#15803d]" />
-                                <span>Because the funnel is built in a templated CMS, I would treat the CTA, subtitle, trust message, and static page copy as parameterizable changes that can be tested without engineering.</span>
+                                <span>{translate("caseStudy.lowEffortBullet1")}</span>
                               </li>
                               <li className="flex items-start gap-3">
                                 <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#15803d]" />
-                                <span>Based on that, I explored both a CTA variant and a content variant.</span>
+                                <span>{translate("caseStudy.lowEffortBullet2")}</span>
                               </li>
                               <li className="flex items-start gap-3">
                                 <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#15803d]" />
-                                <span>The main exception is dynamically changing the headline across three different goals, which would likely require conditional logic or a new CMS variable.</span>
+                                <span>{translate("caseStudy.lowEffortBullet3")}</span>
                               </li>
                             </ul>
                           </div>
@@ -3826,23 +3976,23 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <div className="space-y-2">
                             <div className="flex flex-wrap items-center gap-2">
                               <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0e2951]">
-                                Higher-effort version
+                                {translate("caseStudy.higherEffortVersion")}
                               </p>
                               <span className="inline-flex rounded-full bg-[#fee2e2] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b91c1c]">
-                                Needs dev
+                                {translate("caseStudy.needsDev")}
                               </span>
                               <span className="inline-flex rounded-full bg-[#ede9fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#6d28d9]">
-                                Conditional logic
+                                {translate("caseStudy.conditionalLogic")}
                               </span>
                             </div>
                             <ul className="space-y-3">
                               <li className="flex items-start gap-3">
                                 <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#b91c1c]" />
-                                <span>If the CMS supports duplicated pages or static page variants, I would first test one goal-based version per segment without new development and route traffic to each version.</span>
+                                <span>{translate("caseStudy.higherEffortBullet1")}</span>
                               </li>
                               <li className="flex items-start gap-3">
                                 <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#b91c1c]" />
-                                <span>If those variants improve email completion, then investing in a reusable dynamic personalization component would be easier to justify.</span>
+                                <span>{translate("caseStudy.higherEffortBullet2")}</span>
                               </li>
                             </ul>
                           </div>
@@ -3860,23 +4010,23 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task3" ? (
         <section id="rt-task-3" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title="Competitor pattern extraction" centered className="mb-8" />
+          <SectionHeading title={translate("caseStudy.competitorPatternExtraction")} centered className="mb-8" />
           <div className="mx-auto mb-8 max-w-[860px] text-center">
             <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              Analyze how competing subscription fitness apps structure their onboarding and paywall flows to surface patterns worth adapting or testing against the current design.
+              {translate("caseStudy.task3Description")}
             </p>
           </div>
           <div className="mx-auto max-w-[980px] space-y-6">
             <h3 className="text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
-              Discovery
+              {translate("caseStudy.discovery")}
             </h3>
             <ContentPanel>
               <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-4">
-                <p className="text-center text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Competitor analysis</p>
+                <p className="text-center text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{translate("caseStudy.competitorAnalysis")}</p>
               </div>
               <div className="hidden md:block">
                 <div className="grid grid-cols-[0.9fr_1fr_1fr_1fr_1fr] border-b border-[#d7e8f7] px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0e2951]">
-                  <div className="border-r border-[#d7e8f7] pr-4">Dimension</div>
+                  <div className="border-r border-[#d7e8f7] pr-4">{translate("caseStudy.dimension")}</div>
                   <div className="border-r border-[#d7e8f7] px-4">
                     <a
                       href={REVERSE_TECH_REVERSE_HEALTH_URL}
@@ -3930,7 +4080,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </a>
                   </div>
                 </div>
-                {REVERSE_TECH_COMPETITOR_DIMENSIONS.map((row) => (
+                {getReverseTechCompetitorDimensions(language).map((row) => (
                   <div
                     key={row.dimension}
                     className="grid grid-cols-[0.9fr_1fr_1fr_1fr_1fr] border-t border-[#d7e8f7] px-6 py-5 text-[15px] leading-[1.7] text-[#5c7792]"
@@ -3945,11 +4095,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
 
               <div className="grid gap-4 p-5 md:hidden">
-                {REVERSE_TECH_COMPETITOR_DIMENSIONS.map((row) => (
+                {getReverseTechCompetitorDimensions(language).map((row) => (
                   <Card key={`mobile-${row.dimension}`} className="overflow-hidden">
                     <CardContent className="space-y-4 px-5 py-5">
                       <div>
-                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Dimension</p>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">{translate("caseStudy.dimension")}</p>
                         <p className="mt-2 text-[18px] font-semibold leading-snug text-[#0e2951]">
                           {row.dimension}
                         </p>
@@ -4014,24 +4164,24 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
             <div className="space-y-5 pt-4">
               <div className="text-center">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Pattern extraction</p>
+                <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{translate("caseStudy.patternExtractionEyebrow")}</p>
                 <h3 className="mt-3 font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
-                  Which patterns are worth testing?
+                  {translate("caseStudy.whichPatternsWorthTesting")}
                 </h3>
                 <p className="mx-auto mt-3 max-w-[760px] font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                  The two test patterns sit on opposite philosophies on purpose. Pattern 1 sells the result before value. Pattern 2 proves value and earns trust before the ask. That contrast is what makes them two real patterns, not one idea twice.
+                  {translate("caseStudy.patternsIntro")}
                 </p>
               </div>
 
               <ContentPanel>
                 <div className="hidden md:block">
                   <div className="grid grid-cols-[0.95fr_1.05fr_0.8fr_1.2fr] border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0e2951]">
-                    <div className="border-r border-[#d7e8f7] pr-4">Screenshot</div>
-                    <div className="border-r border-[#d7e8f7] px-4">Pattern</div>
-                    <div className="border-r border-[#d7e8f7] px-4">Metric Moved</div>
-                    <div className="pl-4">Hypothesis / Why</div>
+                    <div className="border-r border-[#d7e8f7] pr-4">{translate("caseStudy.screenshot")}</div>
+                    <div className="border-r border-[#d7e8f7] px-4">{translate("caseStudy.pattern")}</div>
+                    <div className="border-r border-[#d7e8f7] px-4">{translate("caseStudy.metricMoved")}</div>
+                    <div className="pl-4">{translate("caseStudy.hypothesisWhy")}</div>
                   </div>
-                  {REVERSE_TECH_PATTERN_ROWS.map((row) => (
+                  {getReverseTechPatternRows(language).map((row) => (
                     <div
                       key={row.label}
                       className="grid grid-cols-[0.95fr_1.05fr_0.8fr_1.2fr] border-t border-[#d7e8f7] px-6 py-5 text-[15px] leading-[1.7] text-[#5c7792]"
@@ -4083,7 +4233,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         {"note" in row && row.note ? (
                           <div className="mt-4 rounded-[16px] border border-[#d7e8f7] bg-[#f8fbff] px-4 py-4">
                             <p className="text-[14px] leading-[1.6] text-[#7b93ab]">
-                              <strong className="text-[#0e2951]">Note:</strong> {row.note}
+                              <strong className="text-[#0e2951]">{translate("caseStudy.note")}</strong> {row.note}
                             </p>
                           </div>
                         ) : null}
@@ -4093,7 +4243,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
 
                 <div className="grid gap-4 p-5 md:hidden">
-                  {REVERSE_TECH_PATTERN_ROWS.map((row) => (
+                  {getReverseTechPatternRows(language).map((row) => (
                     <Card key={`pattern-mobile-${row.label}`} className="overflow-hidden">
                       <CardContent className="space-y-4 px-5 py-5">
                         <div className="space-y-3">
@@ -4122,7 +4272,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           </div>
                         </div>
                         <div>
-                          <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Pattern</p>
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">{translate("caseStudy.pattern")}</p>
                           {"tag" in row && row.tag ? (
                             <span
                               className={`mt-2 inline-flex rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] ${
@@ -4137,16 +4287,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.title}</p>
                         </div>
                         <div>
-                          <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Metric Moved</p>
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">{translate("caseStudy.metricMoved")}</p>
                           <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.metric}</p>
                         </div>
                         <div>
-                          <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Hypothesis / Why</p>
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">{translate("caseStudy.hypothesisWhy")}</p>
                           <p className="mt-2 text-[15px] leading-[1.6] text-[#5c7792]">{row.hypothesis}</p>
                           {"note" in row && row.note ? (
                             <div className="mt-4 rounded-[16px] border border-[#d7e8f7] bg-[#f8fbff] px-4 py-4">
                               <p className="text-[14px] leading-[1.6] text-[#7b93ab]">
-                                <strong className="text-[#0e2951]">Note:</strong> {row.note}
+                                <strong className="text-[#0e2951]">{translate("caseStudy.note")}</strong> {row.note}
                               </p>
                             </div>
                           ) : null}
@@ -4169,10 +4319,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task4" ? (
         <section id="rt-hypothesis-2" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-10 md:px-10 xl:px-20">
-          <SectionHeading title="How I used tools while completing this case" centered className="mb-8" />
+          <SectionHeading title={translate("caseStudy.howIUsedTools")} centered className="mb-8" />
           <div className="mx-auto mb-8 max-w-[860px] text-center">
             <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              A transparent breakdown of which tools I used at each stage, what I used them for, and what each one was optimized toward — speed, breadth, quality, or implementation.
+              {translate("caseStudy.task4Description")}
             </p>
           </div>
           {reverseTechToolsSection}
@@ -4185,33 +4335,33 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
               <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-5">
                 <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">
-                  Extra: Improving email capture upstream
+                  {translate("caseStudy.extraImprovingEmailCapture")}
                 </h3>
                 <p className="mt-2 max-w-[760px] font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                  Reducing friction before the email step would improve email capture. Three directions were tested across content clarity, CTA framing, and the quiz-to-email flow.
+                  {translate("caseStudy.extraImprovingEmailCaptureIntro")}
                 </p>
               </div>
               <div className="hidden grid-cols-[0.7fr_1fr_1.2fr] gap-4 border-b border-[#d7e8f7] px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#0e2951] md:grid">
-                <div>Hypothesis</div>
-                <div>What I tested</div>
-                <div>Why it mattered</div>
+                <div>{translate("caseStudy.hypothesisHeader")}</div>
+                <div>{translate("caseStudy.whatITested")}</div>
+                <div>{translate("caseStudy.whyItMattered")}</div>
               </div>
               <div className="divide-y divide-[#e7eef6]">
                 {[
                   [
-                    "Hypothesis 1",
-                    "Content Variant",
-                    "Test whether the email step feels more personalized and valuable when the content reflects the user’s selected goal.",
+                    translate("caseStudy.hypothesis1"),
+                    translate("caseStudy.contentVariant"),
+                    translate("caseStudy.hypothesis1Description"),
                   ],
                   [
-                    "Hypothesis 2",
-                    "CTA Variant",
-                    "Test whether outcome-based CTA language reduces the feeling of generic lead capture and makes the reward clearer.",
+                    translate("caseStudy.hypothesis2"),
+                    translate("caseStudy.ctaVariant"),
+                    translate("caseStudy.hypothesis2Description"),
                   ],
                   [
-                    "Hypothesis 3",
-                    "Exploratory hypothesis",
-                    "Check whether age segment, device, source, or step context may be influencing the email drop-off beyond the screen itself.",
+                    translate("caseStudy.hypothesis3Label"),
+                    translate("caseStudy.exploratoryHypothesis"),
+                    translate("caseStudy.hypothesis3Description"),
                   ],
                 ].map(([label, title, description]) => (
                   <div key={label} className="grid gap-2 px-6 py-4 md:grid-cols-[0.7fr_1fr_1.2fr] md:gap-4">
@@ -4236,7 +4386,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     >
                       <div>
                         <p className="mb-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
-                          {block.id === "content-variants" ? "Hypothesis 1" : "Hypothesis 2"}
+                          {block.id === "content-variants" ? translate("caseStudy.hypothesis1") : translate("caseStudy.hypothesis2")}
                         </p>
                         <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
                           {block.title}
@@ -4258,7 +4408,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             (() => {
                               const imageSrc = typeof variant.imageSrc === "string" ? variant.imageSrc : null;
                               const variantTitle = typeof variant.title === "string" ? variant.title : "";
-                              const variantAlt = variantTitle || "Variant wireframe";
+                              const variantAlt = variantTitle || translate("caseStudy.variantWireframe");
 
                               return (
                                 <Card key={`${block.id}-${index}`} className="overflow-hidden border-transparent shadow-none">
@@ -4278,39 +4428,39 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                                       {index === 0 && (
                                         <>
                                           <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
-                                            CMS-only
+                                            {translate("caseStudy.tagCmsOnly")}
                                           </span>
                                           <span className="inline-flex rounded-full bg-[#e0f2fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#0369a1]">
-                                            No dev
+                                            {translate("caseStudy.tagNoDev")}
                                           </span>
                                           <span className="inline-flex rounded-full bg-[#fef3c7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b45309]">
-                                            Fast to test
+                                            {translate("caseStudy.tagFastToTest")}
                                           </span>
                                         </>
                                       )}
                                       {index === 1 && (
                                         <>
                                           <span className="inline-flex rounded-full bg-[#e0f2fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#0369a1]">
-                                            CMS + Everflow
+                                            {translate("caseStudy.tagCmsEverflow")}
                                           </span>
                                           <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
-                                            A/B testable
+                                            {translate("caseStudy.tagAbTestable")}
                                           </span>
                                           <span className="inline-flex rounded-full bg-[#fef3c7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b45309]">
-                                            Medium effort
+                                            {translate("caseStudy.tagMediumEffort")}
                                           </span>
                                         </>
                                       )}
                                       {index === 2 && (
                                         <>
                                           <span className="inline-flex rounded-full bg-[#fee2e2] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b91c1c]">
-                                            Dev required
+                                            {translate("caseStudy.tagDevRequired")}
                                           </span>
                                           <span className="inline-flex rounded-full bg-[#ede9fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#6d28d9]">
-                                            Variable logic
+                                            {translate("caseStudy.tagVariableLogic")}
                                           </span>
                                           <span className="inline-flex rounded-full bg-[#dbeafe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#1d4ed8]">
-                                            Higher leverage
+                                            {translate("caseStudy.tagHigherLeverage")}
                                           </span>
                                         </>
                                       )}
@@ -4354,10 +4504,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 >
                   <div>
                     <p className="mb-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
-                      Hypothesis 3
+                      {translate("caseStudy.hypothesis3Heading")}
                     </p>
                     <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
-                      Exploratory hypothesis
+                      {translate("caseStudy.exploratoryHypothesisHeading")}
                     </h3>
                   </div>
                   {openHypothesisIds.includes("rt-hypothesis-4") ? <Minus className="h-5 w-5 text-[#1183D0]" /> : <Plus className="h-5 w-5 text-[#1183D0]" />}
@@ -4366,16 +4516,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <div className="border-t border-[#d7e8f7] px-6 pb-6 pt-6">
                     <div className="space-y-5">
                       <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                        The email drop-off may not be caused only by the email screen itself; it may also be influenced by user context that is not visible in the current data.
+                        {translate("caseStudy.emailDropoffParagraph1")}
                       </p>
                       <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                        For example, we do not know the user&apos;s age segment or device type. Younger users may be more active in the acquisition phase, especially from social or ad-driven traffic, but also more sensitive to how their personal data is collected and used. If that is true, the email step may create trust friction before they feel enough value from the product.
+                        {translate("caseStudy.emailDropoffParagraph2")}
                       </p>
                       <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                        Device may also play a role. If a large share of users reach this step on mobile, the drop-off could be affected by smaller screen space, form fatigue, typing effort, or weaker visibility of reassurance copy. On desktop, the issue may be less about input friction and more about value clarity or trust.
+                        {translate("caseStudy.emailDropoffParagraph3")}
                       </p>
                       <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                        Because we do not have age, device, traffic source, or interaction data, I would treat this as an exploratory hypothesis and validate it by segmenting email-step completion by age group, mobile vs. desktop, source, and time spent on the step.
+                        {translate("caseStudy.emailDropoffParagraph4")}
                       </p>
                     </div>
                   </div>
@@ -4391,67 +4541,67 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <div className="space-y-5 text-left">
             <div className="text-center">
               <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">
-                Implementation Feasibility
+                {translate("caseStudy.implementationFeasibility")}
               </p>
               <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                To make the proposal more actionable, I mapped each direction by implementation effort and how easily it could be tested in the current setup.
+                {translate("caseStudy.implementationFeasibilityIntro")}
               </p>
             </div>
             <div className="grid gap-4 md:grid-cols-3">
               <div className="rounded-[20px] border border-[#d7e8f7] bg-white p-5 shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
                 <h4 className="font-inter text-[18px] font-semibold leading-[1.35] text-[#0e2951]">
-                  Copy-only refinements
+                  {translate("caseStudy.copyOnlyRefinements")}
                 </h4>
                 <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                  Update the CTA, subtitle, trust line, and supporting copy as parameterizable CMS fields. This is the lowest-effort path and the fastest way to validate whether stronger value framing lifts email completion.
+                  {translate("caseStudy.copyOnlyRefinementsBody")}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
-                    CMS-only
+                    {translate("caseStudy.tagCmsOnly")}
                   </span>
                   <span className="inline-flex rounded-full bg-[#e0f2fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#0369a1]">
-                    No dev
+                    {translate("caseStudy.tagNoDev")}
                   </span>
                   <span className="inline-flex rounded-full bg-[#fef3c7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b45309]">
-                    Fast to test
+                    {translate("caseStudy.tagFastToTest")}
                   </span>
                 </div>
               </div>
               <div className="rounded-[20px] border border-[#d7e8f7] bg-white p-5 shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
                 <h4 className="font-inter text-[18px] font-semibold leading-[1.35] text-[#0e2951]">
-                  Static goal-based variants
+                  {translate("caseStudy.staticGoalBasedVariants")}
                 </h4>
                 <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                  Create separate landing or email-step variants for different goals and rotate traffic through Everflow. This keeps testing lightweight while validating whether stronger goal specificity improves the value exchange.
+                  {translate("caseStudy.staticGoalBasedVariantsBody")}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <span className="inline-flex rounded-full bg-[#e0f2fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#0369a1]">
-                    CMS + Everflow
+                    {translate("caseStudy.tagCmsEverflow")}
                   </span>
                   <span className="inline-flex rounded-full bg-[#dcfce7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#15803d]">
-                    A/B testable
+                    {translate("caseStudy.tagAbTestable")}
                   </span>
                   <span className="inline-flex rounded-full bg-[#fef3c7] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b45309]">
-                    Medium effort
+                    {translate("caseStudy.tagMediumEffort")}
                   </span>
                 </div>
               </div>
               <div className="rounded-[20px] border border-[#d7e8f7] bg-white p-5 shadow-[0_14px_34px_rgba(14,41,81,0.06)]">
                 <h4 className="font-inter text-[18px] font-semibold leading-[1.35] text-[#0e2951]">
-                  Dynamic personalization
+                  {translate("caseStudy.dynamicPersonalization")}
                 </h4>
                 <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                  Pass the selected main goal into the email step and swap the headline or supporting content conditionally. This requires more setup, but it becomes more justified if static variants show that goal-based personalization materially improves conversion.
+                  {translate("caseStudy.dynamicPersonalizationBody")}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <span className="inline-flex rounded-full bg-[#fee2e2] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#b91c1c]">
-                    Dev required
+                    {translate("caseStudy.tagDevRequired")}
                   </span>
                   <span className="inline-flex rounded-full bg-[#ede9fe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#6d28d9]">
-                    Variable logic
+                    {translate("caseStudy.tagVariableLogic")}
                   </span>
                   <span className="inline-flex rounded-full bg-[#dbeafe] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#1d4ed8]">
-                    Higher leverage
+                    {translate("caseStudy.tagHigherLeverage")}
                   </span>
                 </div>
               </div>
@@ -4936,71 +5086,71 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task2" ? (
         <section id="rt-paywall-experiment-design" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title="Paywall experiment design" centered className="mb-8" />
+          <SectionHeading title={translate("caseStudy.paywallExperimentDesign")} centered className="mb-8" />
           <div className="mx-auto mt-10 max-w-[980px]">
             <p className="mx-auto max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              The experiments were framed around one conversion objective, one revenue objective, and one constraint that kept the proposed changes grounded in the existing offer structure.
+              {translate("caseStudy.experimentsFramingIntro")}
             </p>
           </div>
           {/* Phone frames — low-fi wireframes */}
           <div className="mt-20">
             <div className="mx-auto mb-8 grid max-w-[1180px] gap-8 text-center md:grid-cols-3">
               <NarrativePanelCard
-                badge="Control"
-                description="What ships now. The existing paywall presents a plan ladder with two urgency timers, no pre-selection, and daily pricing as the dominant framing."
+                badge={translate("caseStudy.control")}
+                description={translate("caseStudy.controlDescription")}
                 sections={[
                   {
-                    title: "Current structure",
+                    title: translate("caseStudy.currentStructure"),
                     align: "left",
                     items: [
-                      "Three plan choices compete at once",
-                      "Urgency timers carry most of the persuasion",
-                      "Value is framed more around price than outcome",
+                      translate("caseStudy.currentStructureItem1"),
+                      translate("caseStudy.currentStructureItem2"),
+                      translate("caseStudy.currentStructureItem3"),
                     ],
                   },
                 ]}
               />
               <NarrativePanelCard
-                badge="Goal A"
-                description="Improve overall paywall conversion rate so more users purchase any plan."
+                badge={translate("caseStudy.goalA")}
+                description={translate("caseStudy.goalADescription")}
                 sections={[
                   {
-                    title: "Experiment A",
+                    title: translate("caseStudy.experimentA"),
                     titleClassName: "text-[var(--ui-color-brand-primary)] text-[12px] tracking-[0.16em]",
-                    text: "This version highlights plan discounts based on a personal goal the user may have, creating a more guided flow. It opens with a personalized before-and-after recap, surfaces a personalized limited-time promo code, narrows the decision to three clearer plan options, and moves the primary CTA, trust signals, and guarantee closer to the point of commitment.",
+                    text: translate("caseStudy.experimentAText"),
                   },
                   {
-                    title: "Δ vs control",
+                    title: translate("caseStudy.deltaVsControl"),
                     titleClassName: "text-[#c8412a]",
                     align: "left",
                     items: [
-                      "The “Get my plan” button reminds users how much they save.",
-                      "Personalized recap above the plan",
-                      "Three plans are presented, with the 12-wk option recommended and pre-selected.",
-                      "Featured-in logos and a video testimonial reinforce trust before purchase.",
+                      translate("caseStudy.experimentAItem1"),
+                      translate("caseStudy.experimentAItem2"),
+                      translate("caseStudy.experimentAItem3"),
+                      translate("caseStudy.experimentAItem4"),
                     ],
                   },
                 ]}
               />
               <NarrativePanelCard
-                badge="Goal B"
-                description="Shift plan mix toward the 12-week plan to lift AOV (average order value / average revenue per user)."
+                badge={translate("caseStudy.goalB")}
+                description={translate("caseStudy.goalBDescription")}
                 sections={[
                   {
-                    title: "Experiment B",
+                    title: translate("caseStudy.experimentB"),
                     titleClassName: "text-[var(--ui-color-brand-primary)] text-[12px] tracking-[0.16em]",
-                    text: "This version reframes the paywall around progress toward the user’s target weight loss. The 12-week option is positioned as the plan most likely to help the user reach that goal through time framing, app-value previews, trust signals, and repeated commitment points. Connecting the user’s goal to the price helps maintain engagement.",
+                    text: translate("caseStudy.experimentBText"),
                   },
                   {
-                    title: "Δ vs control",
+                    title: translate("caseStudy.deltaVsControl"),
                     titleClassName: "text-[#2a5cb8]",
                     align: "left",
                     items: [
-                      "“See my personalized plan” is used as the CTA to reduce friction and activate the payment step.",
-                      "The 12-wk plan is pre-selected and reinforced with a motivational tag.",
-                      "An app preview is added to connect the paywall more directly to the product value.",
-                      "The content order is changed to keep the scroll active and maintain momentum.",
-                      "A 30-day guarantee is added to strengthen trust before purchase.",
+                      translate("caseStudy.experimentBItem1"),
+                      translate("caseStudy.experimentBItem2"),
+                      translate("caseStudy.experimentBItem3"),
+                      translate("caseStudy.experimentBItem4"),
+                      translate("caseStudy.experimentBItem5"),
                     ],
                   },
                 ]}
@@ -5012,10 +5162,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <div>
                 <div className="mb-3 flex items-baseline gap-2">
                   <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#d7e8f7] bg-white text-[12px] font-semibold text-[#5c7792]">C</span>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">control</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">{translate("caseStudy.controlLabel")}</span>
                 </div>
                 <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
-                  <strong className="text-[#0e2951]">What ships now. </strong>Plan ladder with two urgency timers, no pre-selection, /day pricing dominant.
+                  <strong className="text-[#0e2951]">{translate("caseStudy.whatShipsNow")} </strong>{translate("caseStudy.controlCaption")}
                 </div>
                 <div className="relative w-full rounded-[24px] border border-[#d7e8f7] bg-white p-3 pb-8 text-left shadow-[0_20px_48px_rgba(17,131,208,0.08)]">
                   <div
@@ -5025,7 +5175,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   >
                     <img
                       src={withBasePath("/images/projects/Reversetech/paywall.png")}
-                      alt="Current Reversetech paywall design"
+                      alt={translate("caseStudy.currentReversetechPaywallAlt")}
                       className="w-full object-top"
                     />
                   </div>
@@ -5034,7 +5184,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     onClick={() => setIsPaywallControlExpanded((current) => !current)}
                     className="absolute bottom-3 left-1/2 z-10 inline-flex -translate-x-1/2 items-center rounded-full border border-[#d7e8f7] bg-white px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-colors hover:bg-[#f8fbff]"
                   >
-                    {isPaywallControlExpanded ? "Close" : "Expand"}
+                    {isPaywallControlExpanded ? translate("caseStudy.close") : translate("caseStudy.expand")}
                   </button>
                 </div>
               </div>
@@ -5043,12 +5193,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <div>
                 <div className="mb-3 flex items-baseline gap-2">
                   <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#c8412a] bg-[#c8412a] text-[12px] font-semibold text-white">A</span>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#c8412a]">experiment a</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#c8412a]">{translate("caseStudy.experimentALabel")}</span>
                 </div>
                 <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
-                  <strong className="text-[#0e2951]">Hypothesis. </strong>If we collapse the page into one focused decision, with a pre-selected plan, personalized recap, and guarantee adjacent to the CTA, overall conversion rises.
+                  <strong className="text-[#0e2951]">{translate("caseStudy.hypothesisCaptionLabel")} </strong>{translate("caseStudy.experimentAHypothesis")}
                   <br />
-                  <strong className="text-[#0e2951]">Primary metric: </strong>paywall → purchase rate.
+                  <strong className="text-[#0e2951]">{translate("caseStudy.primaryMetricLabel")} </strong>{translate("caseStudy.experimentAPrimaryMetric")}
                 </div>
                 {/* Phone */}
                 <div
@@ -5071,12 +5221,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <div>
                 <div className="mb-3 flex items-baseline gap-2">
                   <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#2a5cb8] bg-[#2a5cb8] text-[12px] font-semibold text-white">B</span>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#2a5cb8]">Experiment B</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#2a5cb8]">{translate("caseStudy.experimentB")}</span>
                 </div>
                 <div className="mb-4 rounded-[8px] border border-[#e0eaf4] bg-[#f8fbff] p-4 text-[13px] leading-[1.5] text-[#5c7792]">
-                  <strong className="text-[#0e2951]">Hypothesis. </strong>Reframing the comparison to time to reach your target weight makes 1-wk and 4-wk look insufficient and pulls mix toward 12-wk.
+                  <strong className="text-[#0e2951]">{translate("caseStudy.hypothesisCaptionLabel")} </strong>{translate("caseStudy.experimentBHypothesis")}
                   <br />
-                  <strong className="text-[#0e2951]">Primary metric: </strong>% of purchasers picking 12-wk · AOV.
+                  <strong className="text-[#0e2951]">{translate("caseStudy.primaryMetricLabel")} </strong>{translate("caseStudy.experimentBPrimaryMetric")}
                 </div>
                 {/* Phone */}
                 <div
@@ -5100,25 +5250,25 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
           <div className="mt-12">
             <div className="mx-auto mb-12 max-w-[980px] px-6 py-2 text-center">
-              <h3 className="text-center font-inter text-[24px] leading-tight text-[#0e2951]">What is the tension between these two experiments?</h3>
+              <h3 className="text-center font-inter text-[24px] leading-tight text-[#0e2951]">{translate("caseStudy.tensionHeading")}</h3>
               <div className="mt-6 grid gap-5 text-left md:grid-cols-2">
                 <div className="rounded-[24px] border border-[#f0d3cd] bg-[#fff8f6] p-6 shadow-[0_16px_32px_rgba(200,65,42,0.08)]">
                   <div className="mb-4 flex items-center gap-3">
                     <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#c8412a] text-[14px] font-semibold text-white">A</span>
-                    <p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-[#c8412a]">Experiment A</p>
+                    <p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-[#c8412a]">{translate("caseStudy.experimentA")}</p>
                   </div>
                   <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                    Experiment A is optimized to reduce friction and increase the number of users who complete a purchase.
+                    {translate("caseStudy.experimentAOptimizedFor")}
                   </p>
                   <div className="mt-5 rounded-[18px] border border-[#f0d3cd] bg-white/80 px-4 py-4 text-left">
                     <div className="flex items-center gap-3">
                       <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#c8412a] shadow-[0_8px_20px_rgba(200,65,42,0.12)]">
                         <CircleAlert className="h-4 w-4" />
                       </span>
-                      <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#c8412a]">Risk</p>
+                      <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#c8412a]">{translate("caseStudy.risk")}</p>
                     </div>
                     <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                      By emphasizing a personalized discount and a smoother path, it may improve conversion without pushing enough users toward the higher-value 12-week plan.
+                      {translate("caseStudy.experimentARisk")}
                     </p>
                   </div>
                 </div>
@@ -5126,20 +5276,20 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <div className="rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] p-6 shadow-[0_16px_32px_rgba(17,131,208,0.08)]">
                   <div className="mb-4 flex items-center gap-3">
                     <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#2a5cb8] text-[14px] font-semibold text-white">B</span>
-                    <p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-[#2a5cb8]">Experiment B</p>
+                    <p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-[#2a5cb8]">{translate("caseStudy.experimentB")}</p>
                   </div>
                   <p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                    Experiment B is optimized to shift plan mix toward the 12-week option and increase AOV.
+                    {translate("caseStudy.experimentBOptimizedFor")}
                   </p>
                   <div className="mt-5 rounded-[18px] border border-[#d7e8f7] bg-white/80 px-4 py-4 text-left">
                     <div className="flex items-center gap-3">
                       <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#2a5cb8] shadow-[0_8px_20px_rgba(42,92,184,0.12)]">
                         <CircleAlert className="h-4 w-4" />
                       </span>
-                      <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#2a5cb8]">Risk</p>
+                      <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#2a5cb8]">{translate("caseStudy.risk")}</p>
                     </div>
                     <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                      The stronger push toward one plan may create more friction for users who are not ready for that commitment, which could hurt overall conversion.
+                      {translate("caseStudy.experimentBRisk")}
                     </p>
                   </div>
                 </div>
@@ -5151,7 +5301,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {sourceItems.length || sourceEntriesWithOverrides.length ? (
         <section id={caseStudy.slug === "reversetech" ? "rt-sources" : undefined} className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title={sourcesBlock?.title ?? "Sources"} centered className="mb-8" />
+          <SectionHeading title={sourcesBlock?.title ?? translate("caseStudy.sources")} centered className="mb-8" />
           <div className="mx-auto max-w-[900px] space-y-3">
             {sourceEntriesWithOverrides.length
               ? sourceEntriesWithOverrides.map((item, index) => (
@@ -5205,7 +5355,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="absolute left-3 top-3 z-10 flex items-center gap-2">
               <button
                 type="button"
-                aria-label="Zoom out"
+                aria-label={translate("caseStudy.zoomOut")}
                 onClick={() => setExperimentModalZoom((current) => Math.max(0.5, Number((current - 0.25).toFixed(2))))}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
               >
@@ -5213,7 +5363,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </button>
               <button
                 type="button"
-                aria-label="Zoom in"
+                aria-label={translate("caseStudy.zoomIn")}
                 onClick={() => setExperimentModalZoom((current) => Math.min(3, Number((current + 0.25).toFixed(2))))}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
               >
@@ -5231,7 +5381,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
             <button
               type="button"
-              aria-label="Close experiment preview"
+              aria-label={translate("caseStudy.closeExperimentPreview")}
               onClick={closeExperimentModal}
               className="absolute right-3 top-3 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
             >
@@ -5281,7 +5431,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="absolute left-3 top-3 z-10 flex items-center gap-2">
               <button
                 type="button"
-                aria-label="Zoom out"
+                aria-label={translate("caseStudy.zoomOut")}
                 onClick={() => setLightboxZoom((current) => Math.max(0.5, Number((current - 0.25).toFixed(2))))}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
               >
@@ -5289,7 +5439,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </button>
               <button
                 type="button"
-                aria-label="Zoom in"
+                aria-label={translate("caseStudy.zoomIn")}
                 onClick={() => setLightboxZoom((current) => Math.min(3, Number((current + 0.25).toFixed(2))))}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
               >
@@ -5307,7 +5457,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
             <button
               type="button"
-              aria-label="Close image preview"
+              aria-label={translate("caseStudy.closeImagePreview")}
               onClick={() => setLightboxImage(null)}
               className="absolute right-3 top-3 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0e2951] shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-colors hover:text-[#1183D0]"
             >

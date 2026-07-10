@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { fallbackCaseStudies, fallbackSiteContent } from "@/lib/cms/fallback";
+import { fallbackCaseStudies, getFallbackCaseStudies, getFallbackSiteContent } from "@/lib/cms/fallback";
 import { buildLockedNayyaPlaceholder, LOCKED_NAYYA_PLACEHOLDER_SLUG } from "@/lib/cms/locked-placeholder";
 import type { CaseStudyRecord, SiteContent } from "@/lib/cms/types";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
 import { normalizeNavigableHref, withBasePath } from "@/lib/site";
+import { useLanguage } from "@/lib/i18n/language-context";
 
 const trustedLogoMap: Record<string, string> = {
   IBX: withBasePath("/images/SNUZw.png"),
@@ -243,13 +244,22 @@ export function isHiddenCaseStudySlug(slug: string) {
 }
 
 export function usePublicSiteContent() {
-  const [siteContent, setSiteContent] = useState<SiteContent>(fallbackSiteContent);
+  const { language } = useLanguage();
+  const [siteContent, setSiteContent] = useState<SiteContent>(() => getFallbackSiteContent(language));
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Supabase only stores English content; Spanish always renders from the local translation file.
+    if (language === "es") {
+      setSiteContent(getFallbackSiteContent("es"));
+      setLoading(false);
+      return;
+    }
+
     const supabase = getSupabaseBrowserClient();
 
     if (!supabase) {
+      setSiteContent(getFallbackSiteContent("en"));
       setLoading(false);
       return;
     }
@@ -261,24 +271,31 @@ export function usePublicSiteContent() {
         .eq("key", "site")
         .maybeSingle();
 
-      if (data?.payload) {
-        setSiteContent(normalizeSiteContent(data.payload as SiteContent));
-      }
+      setSiteContent(data?.payload ? normalizeSiteContent(data.payload as SiteContent) : getFallbackSiteContent("en"));
       setLoading(false);
     })();
-  }, []);
+  }, [language]);
 
   return { siteContent, loading };
 }
 
 export function usePublicCaseStudies() {
-  const [caseStudies, setCaseStudies] = useState<CaseStudyRecord[]>(fallbackCaseStudies);
+  const { language } = useLanguage();
+  const [caseStudies, setCaseStudies] = useState<CaseStudyRecord[]>(() => getFallbackCaseStudies(language));
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Supabase only stores English content; Spanish always renders from the local translation file.
+    if (language === "es") {
+      setCaseStudies(getFallbackCaseStudies("es"));
+      setLoading(false);
+      return;
+    }
+
     const supabase = getSupabaseBrowserClient();
 
     if (!supabase) {
+      setCaseStudies(getFallbackCaseStudies("en"));
       setLoading(false);
       return;
     }
@@ -290,34 +307,34 @@ export function usePublicCaseStudies() {
         .eq("status", "published")
         .order("order", { ascending: true });
 
-      if (data) {
-        setCaseStudies((data as CaseStudyRecord[]).map(normalizeCaseStudy));
-      }
+      setCaseStudies(data ? (data as CaseStudyRecord[]).map(normalizeCaseStudy) : getFallbackCaseStudies("en"));
       setLoading(false);
     })();
-  }, []);
+  }, [language]);
 
   return { caseStudies, loading };
 }
 
 export function usePublicCaseStudy(slug: string) {
-  const supabase = getSupabaseBrowserClient();
+  const { language } = useLanguage();
+  const supabase = language === "en" ? getSupabaseBrowserClient() : null;
   const fallbackStudy = useMemo(() => {
-    const matchingStudy = fallbackCaseStudies.find((study) => study.slug === slug) ?? null;
+    const localCaseStudies = getFallbackCaseStudies(language);
+    const matchingStudy = localCaseStudies.find((study) => study.slug === slug) ?? null;
 
     if (matchingStudy) {
       return matchingStudy;
     }
 
     if (slug === LOCKED_NAYYA_PLACEHOLDER_SLUG) {
-      const nayyaStudy = fallbackCaseStudies.find((study) => study.slug === "nayya-ai-benefits") ?? null;
-      const nextOrder = fallbackCaseStudies.reduce((maxOrder, study) => Math.max(maxOrder, study.order), 0) + 1;
+      const nayyaStudy = localCaseStudies.find((study) => study.slug === "nayya-ai-benefits") ?? null;
+      const nextOrder = localCaseStudies.reduce((maxOrder, study) => Math.max(maxOrder, study.order), 0) + 1;
 
-      return buildLockedNayyaPlaceholder(nayyaStudy, nextOrder);
+      return buildLockedNayyaPlaceholder(nayyaStudy, nextOrder, language);
     }
 
     return null;
-  }, [slug]);
+  }, [language, slug]);
   const [caseStudy, setCaseStudy] = useState<CaseStudyRecord | null>(fallbackStudy);
   const [loading, setLoading] = useState(false);
 

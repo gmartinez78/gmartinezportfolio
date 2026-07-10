@@ -16,6 +16,9 @@ import {
   usePublicCaseStudies,
   usePublicSiteContent,
 } from "../../lib/cms/public";
+import { useLanguage } from "../../lib/i18n/language-context";
+import { useTranslate } from "../../lib/i18n/use-translate";
+import type { DictionaryKey } from "../../lib/i18n/dictionary";
 
 const FILTER_PILLS = ["All", "UX Research", "Product Design", "Design Systems", "AI Product", "Compliance", "Accessibility"];
 const PROJECT_BACKGROUNDS: Record<string, string> = {
@@ -48,11 +51,13 @@ function compareCaseStudyPriority<
 
 function ProjectsPage() {
   const searchParams = useSearchParams();
+  const { language } = useLanguage();
+  const translate = useTranslate();
   const { caseStudies } = usePublicCaseStudies();
   const { siteContent } = usePublicSiteContent();
   const [activeFilter, setActiveFilter] = useState("All");
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
-  const allProjects = appendLockedNayyaPlaceholder(caseStudies ?? []);
+  const allProjects = appendLockedNayyaPlaceholder(caseStudies ?? [], language);
   const initialFilter = searchParams.get("filter");
   const initialTopic = searchParams.get("topic");
 
@@ -124,13 +129,13 @@ function ProjectsPage() {
 
       {/* Hero */}
       <section className="mx-auto max-w-[1200px] px-6 pt-16 pb-10 text-center">
-        <h1 className="font-inter text-[44px] leading-[1.05] text-[var(--ui-color-text-strong)]">Projects</h1>
+        <h1 className="font-inter text-[44px] leading-[1.05] text-[var(--ui-color-text-strong)]">{translate("projectsPage.title")}</h1>
         <p className="mx-auto max-w-xl text-lg leading-relaxed text-[#5c7792] mt-6">
-          Case studies and highlights from 10+ years designing enterprise SaaS, healthtech, and nonprofit digital experiences.
+          {translate("projectsPage.intro")}
         </p>
         {activeTopic ? (
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#1183D0]">
-            Showing projects related to <span className="font-semibold">{activeTopic}</span>.
+            {translate("projectsPage.showingRelatedTo")} <span className="font-semibold">{activeTopic}</span>.
           </p>
         ) : null}
 
@@ -139,6 +144,7 @@ function ProjectsPage() {
           <FilterPillGroup
             items={FILTER_PILLS}
             activeItem={activeFilter}
+            getLabel={(filter) => translate(`filter.${filter}` as DictionaryKey)}
             onSelect={(filter) => {
               setActiveFilter(filter);
               if (filter !== "All") {
@@ -168,7 +174,13 @@ function ProjectsPage() {
             background={project.background}
             locked={Boolean(project.password)}
             reversed={i % 2 === 1}
-            ctaLabel={project.password ? "Password required ↗" : resolveProjectHref(project) === "#" ? "Coming soon" : "View case study ↗"}
+            ctaLabel={
+              project.password
+                ? translate("projectsPage.passwordRequired")
+                : resolveProjectHref(project) === "#"
+                  ? translate("projectsPage.comingSoon")
+                  : translate("projectsPage.viewCaseStudy")
+            }
           />
         ))}
       </section>
@@ -176,7 +188,7 @@ function ProjectsPage() {
       {/* Social proof */}
       <section className="border-t border-[#bcd2ff]/40 py-10">
         <p className="mb-6 text-center text-[13px] font-semibold uppercase tracking-[0.45em] text-[var(--ui-color-text-strong)]">
-          Companies I've worked with
+          {translate("projectsPage.companiesWorkedWith")}
         </p>
         <div className="flex items-center justify-center gap-10 flex-wrap px-6">
           {socialLogos.map((logo) => (

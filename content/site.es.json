@@ -1,0 +1,202 @@
+{
+  "nav": {
+    "logo_text": "Greddys Martinez",
+    "links": [
+      { "label": "Proyectos", "href": "/projects" },
+      { "label": "Currículum", "href": "/resume" },
+      { "label": "Contacto", "href": "/contact" }
+    ],
+    "cta_label": "Ponte en contacto",
+    "cta_href": "/contact"
+  },
+  "home": {
+    "hero": {
+      "greeting": "Soy Greddys Martinez",
+      "tagline": "diseñador en Investigación de IA y UX / UI",
+      "photo": "/images/projects/benefits-enrollment/hero/benefits-hero.png",
+      "methodology_chips": [
+        "Clásica",
+        "Basada en Agile",
+        "Prototipo de producto",
+        "Prototipo digital",
+        "Revisiones de expertos"
+      ]
+    },
+    "trusted_by": {
+      "label": "He colaborado con",
+      "clients": [
+        { "name": "IBX", "logo": "/images/SNUZw.png" },
+        { "name": "Skill", "logo": "/images/IbuV3.png" },
+        { "name": "Hakuna", "logo": "/images/hakuna.avif" },
+        { "name": "Nayya", "logo": "/images/bBw3A.png" },
+        { "name": "Paychex", "logo": "/images/c54fy.png" },
+        { "name": "Paramount+", "logo": "/images/paramount-plus.svg" }
+      ]
+    },
+    "certifications": [
+      { "name": "Certificación de Upwork", "logo": "/images/iNSrn.png" },
+      { "name": "Certificación UX de NN/g", "logo": "/images/OiSjn.png" }
+    ],
+    "stat_banner": {
+      "text": "El trimestre pasado, mis clientes vieron un",
+      "value": "47%",
+      "value_label": "de aumento medio en conversiones.",
+      "cta_headline": "Tu producto también se merece eso.",
+      "cta_label": "Trabajemos juntos →",
+      "cta_href": "#contact"
+    },
+    "tools_section": {
+      "headline": "Herramientas que me encantan y con las que trabajo",
+      "description": "Me integro sin fricciones con las herramientas que tu equipo ya utiliza, creando flujos de trabajo naturales y eficientes.",
+      "cta_label": "Ver mi currículum →",
+      "cta_href": "/resume",
+      "row_1": ["Figma", "Framer", "Miro", "React", "Node", "Python", "Swift", "TS", "Vue", "Go", "SQL"],
+      "row_2": ["GitHub", "Slack", "AWS", "Vercel", "Docker", "Tailwind", "Next.js", "Rust", "Redis", "GPT", "GCP"]
+    }
+  },
+  "footer": {
+    "tagline": "Senior Product Designer creando experiencias digitales cuidadas que marcan la diferencia.",
+    "cta_headline": "Trabajemos juntos",
+    "cta_body": "Siempre estoy abierto a nuevas oportunidades y colaboraciones.",
+    "cta_label": "Ponte en contacto →",
+    "cta_href": "/contact",
+    "copyright": "© 2026 Greddys Martinez. Todos los derechos reservados.",
+    "social_links": [
+      { "label": "LinkedIn", "href": "https://linkedin.com/in/greddysmartinez" },
+      { "label": "Behance", "href": "https://www.behance.net/greddysmartinez" },
+      { "label": "UpWork", "href": "#" }
+    ]
+  },
+  "contact": {
+    "headline": "Ponte en contacto",
+    "subheadline": "Hablemos",
+    "intro": "Ya sea que tengas un proyecto en mente, una pregunta, o simplemente quieras saludar, me encantaría saber de ti.",
+    "availability": "Actualmente resido en Málaga, España y estoy disponible para trabajar en remoto en cualquier parte del mundo. Suelo responder rápido, normalmente en menos de 24 horas.",
+    "details": [
+      { "label": "Email", "value": "greddysmartinez5@gmail.com", "href": "mailto:greddysmartinez5@gmail.com" },
+      { "label": "LinkedIn", "value": "linkedin.com/in/greddysmartinez", "href": "https://linkedin.com/in/greddysmartinez" },
+      { "label": "Behance", "value": "behance.net/greddysmartinez", "href": "https://www.behance.net/greddysmartinez" },
+      { "label": "UpWork", "value": "Disponible para freelance", "href": "https://www.upwork.com/freelancers/greddysmartinez" },
+      { "label": "Ubicación", "value": "Málaga, España · Abierto a remoto", "href": null }
+    ]
+  },
+  "resume": {
+    "name": "Greddys Martínez",
+    "title": "Senior Product Designer | UX impulsada por IA | SaaS empresarial",
+    "email": "greddysmartinez5@gmail.com",
+    "location": "Málaga, España",
+    "website": "www.be.net/greddysmartinez",
+    "linkedin": "linkedin.com/in/greddysmartinez",
+    "bio": "Senior Product Designer con más de 10 años de experiencia, certificado en Experiencia de Usuario con reconocimiento en diseño de interacción por el NN/Group. Diseño experiencias B2B empresariales en FinTech, RRHH y HealthTech. Fuerte enfoque en conectar estrategia y ejecución, liderando investigación, alineando equipos multidisciplinares y entregando soluciones de alto impacto en entornos Agile.",
+    "pdf_link": "/documents/greddys-martinez-resume-2026.pdf",
+    "experience": [
+      {
+        "title": "Sr. Product Designer",
+        "company": "ITX Corp",
+        "client": "Paychex (Nayya, Flock, E-Verify, Indeed)",
+        "period": "Mar. 2021 – Presente",
+        "location": "Málaga, España (Remoto)",
+        "bullets": [
+          "Lidero la arquitectura de diseño de extremo a extremo de una plataforma SaaS de RRHH empresarial con más de 2,3 millones de usuarios, tomando decisiones de diseño basadas en datos como Staff Designer, alineando equipos multidisciplinares en torno a una visión de producto unificada en múltiples productos de alto impacto.",
+          "Aplico fundamentos de UX y rigor de accesibilidad a la visualización de datos en entornos liderados por ingeniería, elevando la usabilidad, la claridad y la consistencia visual.",
+          "Utilizo métodos basados en evidencia mediante revisiones heurísticas, feedback de usabilidad y mapas de calor con Maze, Hotjar y UserTesting.com, refinando continuamente las experiencias a partir de la investigación para rediseñar flujos y reducir el tiempo de completado de formularios en un 35%.",
+          "Defino la estrategia de diseño, la visión y la hoja de ruta para varios productos ambiguos de gran envergadura usando Jira y Confluence.",
+          "Asumo por completo la responsabilidad de las decisiones de diseño y uso Figma para presentar mejoras de producto de forma regular a stakeholders senior con una justificación clara, gestionando el feedback de forma constructiva y defendiendo mi criterio cuando es necesario.",
+          "Defino patrones y componentes UX reutilizables, mejorando la consistencia y la escalabilidad en múltiples productos de gran escala.",
+          "Identifico y reduzco la deuda de diseño, consolidando componentes duplicados y mejorando la consistencia del sistema.",
+          "Construyo e implemento un sistema de diseño escalable basado en React, definiendo patrones, componentes y documentación reutilizables para reducir la deuda de diseño y mejorar la consistencia entre plataformas.",
+          "Aplico fundamentos de layout, espaciado, tipografía y color dentro de sistemas basados en componentes para mantener la calidad del UI craft en productos de escala empresarial.",
+          "Estructuro la arquitectura de información para flujos de trabajo complejos y con mucho contenido, mejorando la claridad y la navegación.",
+          "Produzco wireframes, mockups de diseño y prototipos interactivos usando herramientas de IA como Balsamiq, Figma AI, Copilot y Framer.",
+          "Lanzo funcionalidades impulsadas por IA usando LLMs para mejorar la toma de decisiones del usuario durante la inscripción, enmarcando los problemas de forma efectiva alineando objetivos de usuario, tareas clave, restricciones, criterios de éxito y objetivos de negocio antes de la ejecución.",
+          "Uso IA como Copilot, Lovable, Claude y ChatGPT a lo largo del flujo de diseño para sintetizar investigación, generar conceptos iniciales y prototipar rápidamente, permitiendo al equipo validar y refinar experiencias mucho más rápido.",
+          "Reduzco los tickets de soporte en más de 500 y el volumen de llamadas de soporte en más de 9.000 al año mediante el rediseño de flujos de RRHH y contratación.",
+          "Juego un papel clave al superar el objetivo anual de inscripción en 5.500 usuarios, simplificando flujos de trabajo para mejorar las tasas de finalización y la confianza del usuario.",
+          "Trabajo estrechamente con equipos multidisciplinares de Producto, Ingeniería, Marketing, Finanzas, Cumplimiento normativo e Investigación para alinear la experiencia de usuario con los objetivos de negocio y de contenido.",
+          "Colaboro con equipos de ingeniería en un modelo de entrega basado en componentes, definiendo estados, variantes y comportamiento responsive para alinear estrategia UX y entrega usando Miro y Figma.",
+          "Apoyo y hago de mentor de diseñadores junior y senior mediante revisiones regulares, intercambiando feedback y contribuyendo a la calidad general del diseño.",
+          "Creo documentación de diseño, buenas prácticas y guías de uso, permitiendo la adopción de patrones compartidos entre equipos."
+        ],
+        "tags": ["B2C SaaS", "AI Features", "Design Systems", "Research", "React.js"]
+      },
+      {
+        "title": "UX/UI Designer",
+        "company": "Alquilando S.A.",
+        "client": "Marketplace PropTech",
+        "period": "Mar. 2019 – May. 2021",
+        "location": "Buenos Aires, Argentina (Remoto)",
+        "bullets": [
+          "Diseño y entrego soluciones UX/UI de extremo a extremo para una startup PropTech construyendo una plataforma inmobiliaria a gran escala para el mercado LATAM.",
+          "Establecí la base centrada en el usuario de la empresa a través de personas inspiradas en el enfoque de Alan Cooper.",
+          "Construí un sistema de componentes desde cero basado en los estándares de Google Material Design.",
+          "Entregué diseños UI de alta fidelidad y prototipos interactivos, reduciendo la ambigüedad de implementación y acelerando el traspaso a desarrollo."
+        ],
+        "tags": ["PropTech", "B2C", "Material Design", "UI Systems", "Email HTML/CSS"]
+      },
+      {
+        "title": "Freelance UX / UI Designer",
+        "company": "Studio Hakuna",
+        "client": "Paramount App LATAM",
+        "period": "Dic. 2019 – May. 2020",
+        "location": "Buenos Aires, Argentina (Remoto)",
+        "bullets": [
+          "Realicé investigación UX para entender las necesidades y comportamientos de la audiencia de Paramount App LATAM.",
+          "Rediseñé funcionalidades existentes de la plataforma, mejorando la usabilidad y el engagement general del usuario.",
+          "Desarrollé wireframes, prototipos y diseños UI de alta fidelidad equilibrando las necesidades del usuario con los objetivos de negocio."
+        ],
+        "tags": ["Streaming", "LATAM", "UX Research", "Prototyping", "UI Design"]
+      },
+      {
+        "title": "UX/UI Designer",
+        "company": "Elevation",
+        "client": "Soluciones web para ONG",
+        "period": "Ene. 2017 – Feb. 2019",
+        "location": "Buenos Aires, Argentina (Híbrido)",
+        "bullets": [
+          "Entregué diseño UX/UI de extremo a extremo para múltiples clientes sin ánimo de lucro de forma simultánea.",
+          "Diseñé y optimicé experiencias de e-commerce para plataformas de recaudación de fondos de ONG.",
+          "Creé materiales de marketing, incluyendo emails HTML/CSS, folletos y materiales de campaña."
+        ],
+        "tags": ["Nonprofits", "B2B", "B2C", "Accessibility", "Fundraising"]
+      },
+      {
+        "title": "Freelance UX / UI Designer / Graphic Designer",
+        "company": "Múltiples clientes | Web y redes sociales",
+        "client": "",
+        "period": "Feb. 2014 – Feb. 2017",
+        "location": "LATAM, España, EE. UU. (Remoto)",
+        "bullets": [
+          "Entregué diseño UX/UI de extremo a extremo para productos en etapa temprana, plataformas de e-commerce y marketplaces en múltiples industrias.",
+          "Diseñé y lancé identidades de marca y experiencias digitales desde cero, incluyendo sitios web, interfaces de producto y sistemas de diseño.",
+          "Mejoré el engagement y la conversión de usuarios mediante flujos optimizados, diseño visual y materiales de marketing.",
+          "Contribuí a iniciativas de crecimiento, incluyendo campañas sociales, landing pages y materiales de adquisición de pago (Google Ads, email, redes sociales).",
+          "Diseñé y desarrollé interfaces responsive usando HTML/CSS, asegurando consistencia entre plataformas."
+        ],
+        "tags": ["Freelance", "UX/UI Design", "Graphic Design", "E-commerce", "Social Media", "HTML/CSS"]
+      }
+    ],
+    "skills": {
+      "Design": ["Sistemas de diseño escalables", "Adopción de componentes", "Definición de patrones", "Tokens de diseño", "Librerías de Figma", "Experiencia digital", "Storyboards", "Estándares de accesibilidad", "Mapeo de Design Thinking", "Diseño de producto con IA", "UX empresarial", "Productos B2B y B2C"],
+      "Data-Heavy Interfaces": ["Diseño de flujos de trabajo complejos", "Tablas", "Filtros", "Experiencias basadas en roles", "Flujos multipaso", "Entidades interconectadas", "Diseño consciente del estado"],
+      "Research": ["Análisis competitivo", "Investigación cualitativa y cuantitativa", "Investigación de usuarios", "Pruebas de usabilidad", "Encuestas", "Evaluación heurística", "Entrevistas de usuario", "Arquitectura de la información", "Personas", "Mapeo de afinidad"],
+      "Collaboration & Delivery": ["Traspaso asíncrono", "Anotaciones en Figma", "Alineación diseño-desarrollo", "HTML", "CSS", "Colaboración multidisciplinar", "Gestión de stakeholders", "Agile / Scrum", "Defensa de la UX", "Facilitación de talleres"],
+      "AI in Design": ["Copilot", "OOUX con IA", "Síntesis de investigación", "Prototipado rápido", "Automatización del flujo diseño-frontend", "LLM"],
+      "Soft": ["Cercanía", "Flexibilidad", "Trabajo en equipo", "Comunicación", "Pensamiento estratégico", "Liderazgo", "Gestión del tiempo", "Cercanía con el equipo", "Empatía", "Atención al detalle", "Resolución de problemas", "Priorización", "Responsabilidad", "Resolución de conflictos"]
+    },
+    "tools": ["Figma", "Jira", "Miro", "Copilot", "Webex", "ClickUp", "Confluence", "Maze", "Notion", "Slack", "HTML/CSS", "React", "Claude", "VS Code", "ChatGPT"],
+    "education": [
+      { "year": "2013", "degree": "Licenciatura en Diseño Gráfico", "institution": "Universidad de las Artes · Guayaquil, Ecuador" },
+      { "year": "2020", "degree": "Certificado de Diseño UX", "institution": "Google / Coursera" }
+    ],
+    "certifications": [
+      { "name": "Especialidad en Diseño de Interacción", "level": "Patrones avanzados para sistemas interactivos complejos y flujos de trabajo empresariales", "year": "2023", "logo": "/images/OiSjn.png" },
+      { "name": "Gestión de UX: Estrategia y Tácticas", "level": "Liderazgo de equipos de diseño, alineación con stakeholders y design ops", "year": "2023", "logo": "/images/OiSjn.png" },
+      { "name": "Medición de UX y ROI", "level": "Cuantificar el impacto del diseño mediante analítica, pruebas A/B y KPIs", "year": "2022", "logo": "/images/OiSjn.png" },
+      { "name": "Mapeo de Journey", "level": "Mapear experiencias de usuario de extremo a extremo a través de puntos de contacto y canales", "year": "2022", "logo": "/images/OiSjn.png" },
+      { "name": "Arquitectura de la Información", "level": "Organizar y estructurar contenido para la facilidad de encontrarlo y su claridad", "year": "2021", "logo": "/images/OiSjn.png" },
+      { "name": "Pruebas de Usabilidad", "level": "Planificar, realizar y analizar estudios de usabilidad", "year": "2021", "logo": "/images/OiSjn.png" },
+      { "name": "Guías de Diseño de Interfaz de Usuario", "level": "Aplicar patrones de UI basados en evidencia y estándares de accesibilidad", "year": "2020", "logo": "/images/OiSjn.png" },
+      { "name": "Interacción Humano-Computadora", "level": "Principios fundamentales de la ciencia cognitiva aplicados al diseño", "year": "2020", "logo": "/images/OiSjn.png" }
+    ]
+  }
+}

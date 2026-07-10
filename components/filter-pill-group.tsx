@@ -4,12 +4,14 @@ type FilterPillGroupProps = {
   items: string[]
   activeItem: string
   onSelect: (item: string) => void
+  getLabel?: (item: string) => string
 }
 
 export function FilterPillGroup({
   items,
   activeItem,
   onSelect,
+  getLabel,
 }: FilterPillGroupProps) {
   return (
     <div className="flex flex-wrap justify-center gap-2">
@@ -25,7 +27,7 @@ export function FilterPillGroup({
             aria-pressed={activeItem === item}
             onClick={() => onSelect(item)}
           >
-            {item}
+            {getLabel ? getLabel(item) : item}
           </button>
         </Badge>
       ))}

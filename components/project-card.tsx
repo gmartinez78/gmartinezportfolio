@@ -5,6 +5,7 @@ import Link from "next/link"
 
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
+import { useTranslate, useTranslateTag } from "@/lib/i18n/use-translate"
 
 type ProjectCardProps = {
   id?: string
@@ -39,8 +40,12 @@ export function ProjectCard({
   background,
   locked = false,
   reversed = false,
-  ctaLabel = "View case study ↗",
+  ctaLabel,
 }: ProjectCardProps) {
+  const translate = useTranslate()
+  const translateTag = useTranslateTag()
+  const resolvedCtaLabel = ctaLabel ?? translate("projectsPage.viewCaseStudy")
+
   return (
     <Link
       id={id}
@@ -93,7 +98,7 @@ export function ProjectCard({
               </span>
               {locked ? (
                 <span className="rounded-full bg-[#eaf4ff] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--ui-color-brand-primary)]">
-                  Locked
+                  {translate("projectCard.locked")}
                 </span>
               ) : null}
             </div>
@@ -108,12 +113,12 @@ export function ProjectCard({
             <div className="flex flex-wrap gap-2">
               {tags.map((tag) => (
                 <Badge key={tag} size="tag">
-                  {tag}
+                  {translateTag(tag)}
                 </Badge>
               ))}
             </div>
             <span className="rounded-full bg-white/72 px-4 py-2 text-sm font-medium text-[var(--ui-color-brand-primary)] transition-colors group-hover:bg-white">
-              {ctaLabel}
+              {resolvedCtaLabel}
             </span>
           </div>
         </CardContent>

@@ -4,6 +4,37 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { withBasePath } from "../lib/site";
 import { usePublicSiteContent } from "../lib/cms/public";
+import { useLanguage } from "../lib/i18n/language-context";
+import { useTranslate } from "../lib/i18n/use-translate";
+
+function LanguageToggle() {
+  const { language, toggleLanguage } = useLanguage();
+  const translate = useTranslate();
+
+  return (
+    <button
+      type="button"
+      onClick={toggleLanguage}
+      aria-label={translate("header.languageToggleAria")}
+      className="inline-flex h-9 items-center gap-1 rounded-full border border-[#bcd2ff]/70 px-1 text-xs font-semibold text-[#5c7792] transition-colors"
+    >
+      <span
+        className={`rounded-full px-2 py-1 transition-colors ${
+          language === "en" ? "bg-[#E0EEFB] text-[#1183D0]" : "text-[#5c7792]"
+        }`}
+      >
+        EN
+      </span>
+      <span
+        className={`rounded-full px-2 py-1 transition-colors ${
+          language === "es" ? "bg-[#E0EEFB] text-[#1183D0]" : "text-[#5c7792]"
+        }`}
+      >
+        ES
+      </span>
+    </button>
+  );
+}
 
 export function LogoMark({ className = "" }: { className?: string }) {
   return (
@@ -33,6 +64,7 @@ export function SiteHeader({
   const [showStickyClone, setShowStickyClone] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement | null>(null);
+  const translate = useTranslate();
 
   useEffect(() => {
     if (behavior !== "reveal" || isTransparent) {
@@ -78,18 +110,19 @@ export function SiteHeader({
   const navContent = (
     <nav className="mx-auto max-w-[1200px] px-5 py-3 sm:px-8 lg:px-12">
       <div className="flex min-h-16 items-center justify-between gap-6">
-        <Link href={withBasePath("/")} className="flex shrink-0 items-center gap-3 text-left" aria-label="Greddys Martinez home">
+        <Link href={withBasePath("/")} className="flex shrink-0 items-center gap-3 text-left" aria-label={translate("header.homeAria")}>
           <LogoMark className="h-10 w-auto" />
           <span className="text-[17px] font-semibold leading-tight text-[#0e2951]">
             Greddys
           </span>
         </Link>
-        <div className="ml-auto flex min-w-0 items-center gap-5 lg:gap-8">
+        <div className="ml-auto flex min-w-0 items-center gap-3 lg:gap-6">
+          <LanguageToggle />
           <button
             type="button"
             aria-expanded={isMobileMenuOpen}
             aria-controls="site-mobile-nav"
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-label={isMobileMenuOpen ? translate("header.closeMenu") : translate("header.openMenu")}
             onClick={() => setIsMobileMenuOpen((open) => !open)}
             className={`inline-flex h-11 w-11 items-center justify-center rounded-2xl transition-all duration-200 lg:hidden ${
               isMobileMenuOpen
@@ -99,7 +132,7 @@ export function SiteHeader({
                   : "bg-transparent text-[#0e2951]"
             }`}
           >
-            <span className="sr-only">{isMobileMenuOpen ? "Close menu" : "Open menu"}</span>
+            <span className="sr-only">{isMobileMenuOpen ? translate("header.closeMenu") : translate("header.openMenu")}</span>
             <span className="flex h-4 w-5 flex-col justify-between">
               <span
                 className={`block h-0.5 w-full rounded-full bg-current transition-transform duration-200 ${
