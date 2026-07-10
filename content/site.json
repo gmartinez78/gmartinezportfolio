@@ -185,18 +185,25 @@
     },
     "tools": ["Figma", "Jira", "Miro", "Copilot", "Webex", "ClickUp", "Confluence", "Maze", "Notion", "Slack", "HTML/CSS", "React", "Claude", "VS Code", "ChatGPT"],
     "education": [
-      { "year": "2013", "degree": "B.F.A. Graphic Design", "institution": "Universidad de las Artes · Guayaquil, Ecuador" },
-      { "year": "2020", "degree": "UX Design Certificate", "institution": "Google / Coursera" }
+      { "year": "2014–2015", "degree": "Diploma in Web Media Design", "institution": "Universidad Rafael Belloso Chacín" },
+      { "year": "2012–2015", "degree": "Bachelor's in Graphic Design", "institution": "URBE" },
+      { "year": "2017", "degree": "UX Design / Graphic Design", "institution": "Coderhouse" }
     ],
     "certifications": [
-      { "name": "Interaction Design Specialty", "level": "Advanced patterns for complex interactive systems and enterprise workflows", "year": "2023", "logo": "/images/OiSjn.png" },
-      { "name": "UX Management: Strategy & Tactics", "level": "Leading design teams, stakeholder alignment, and design ops", "year": "2023", "logo": "/images/OiSjn.png" },
-      { "name": "Measuring UX & ROI", "level": "Quantifying design impact through analytics, A/B testing, and KPIs", "year": "2022", "logo": "/images/OiSjn.png" },
-      { "name": "Journey Mapping", "level": "Mapping end-to-end user experiences across touchpoints and channels", "year": "2022", "logo": "/images/OiSjn.png" },
-      { "name": "Information Architecture", "level": "Organizing and structuring content for findability and clarity", "year": "2021", "logo": "/images/OiSjn.png" },
-      { "name": "Usability Testing", "level": "Planning, conducting, and analyzing usability studies", "year": "2021", "logo": "/images/OiSjn.png" },
-      { "name": "User Interface Design Guidelines", "level": "Applying evidence-based UI patterns and accessibility standards", "year": "2020", "logo": "/images/OiSjn.png" },
-      { "name": "Human-Computer Interaction", "level": "Foundational principles of cognitive science applied to design", "year": "2020", "logo": "/images/OiSjn.png" }
+      { "name": "Understanding LLMs: A Guide for UX Practitioners", "level": "Practical grounding in how large language models work and how to design around their capabilities and limits", "year": "2026", "logo": "/images/OiSjn.png" },
+      { "name": "Measuring UX and ROI", "level": "Quantifying design impact through analytics, A/B testing, and KPIs", "year": "2025", "logo": "/images/OiSjn.png" },
+      { "name": "Practical AI for UX Professionals", "level": "Applying AI tools responsibly and effectively across the UX design workflow", "year": "2025", "logo": "/images/OiSjn.png" },
+      { "name": "Information Architecture", "level": "Organizing and structuring content for findability and clarity", "year": "2025", "logo": "/images/OiSjn.png" },
+      { "name": "Designing Complex Apps for Specialized Domains", "level": "Advanced patterns for complex interactive systems and enterprise workflows", "year": "2023", "logo": "/images/OiSjn.png" },
+      { "name": "Writing Compelling Digital Copy", "level": "Crafting clear, persuasive UX copy that supports usability and conversion", "year": "2023", "logo": "/images/OiSjn.png" },
+      { "name": "The Human Mind and Usability", "level": "Applying cognitive science principles to usability and interaction design", "year": "2023", "logo": "/images/OiSjn.png" },
+      { "name": "Accessibility: How to Design for All", "level": "Designing inclusive experiences that meet accessibility standards for all users", "year": "2023", "logo": "/images/OiSjn.png" },
+      { "name": "Web Design for Usability", "level": "Core usability principles for effective, user-centered web design", "year": "2021", "logo": "/images/OiSjn.png" },
+      { "name": "UI Design Patterns for Successful Software", "level": "Applying evidence-based UI patterns and accessibility standards", "year": "2021", "logo": "/images/OiSjn.png" },
+      { "name": "User Research: Methods and Best Practices", "level": "Planning, conducting, and analyzing user research studies", "year": "2020", "logo": "/images/OiSjn.png" },
+      { "name": "Object-Oriented UX (OOUX) Fundamentals", "level": "Structuring complex product experiences around objects and relationships, not just flows", "year": "2024", "logo": "/images/OiSjn.png" },
+      { "name": "How to Write Great Microcopy", "level": "Writing clear, concise microcopy that guides and reassures users", "year": "2025", "logo": "/images/OiSjn.png" },
+      { "name": "Evaluating User Interfaces", "level": "Evaluating interface usability through structured heuristic and usability methods", "year": "2019", "logo": "/images/coursera.svg" }
     ]
   }
 }
