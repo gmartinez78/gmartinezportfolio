@@ -31,7 +31,7 @@ const INFO_CARDS = [
     ),
     label: "LinkedIn",
     value: "linkedin.com/in/greddysmartinez",
-    href: "#",
+    href: "https://linkedin.com/in/greddysmartinez",
   },
   {
     icon: (
@@ -42,7 +42,7 @@ const INFO_CARDS = [
     ),
     label: "Behance",
     value: "behance.net/greddysmartinez",
-    href: "#",
+    href: "https://www.behance.net/greddysmartinez",
   },
   {
     icon: (

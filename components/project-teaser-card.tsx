@@ -15,6 +15,7 @@ type ProjectTeaserCardProps = {
   description: string
   tags: string[]
   image?: string | null
+  imageAlt?: string
   background?: string
   ctaLabel: string
   locked?: boolean
@@ -35,6 +36,7 @@ export function ProjectTeaserCard({
   description,
   tags,
   image,
+  imageAlt,
   background,
   ctaLabel,
   locked = false,
@@ -76,7 +78,7 @@ export function ProjectTeaserCard({
         {image ? (
           <Image
             src={image}
-            alt={title}
+            alt={imageAlt ?? `${title} case study preview`}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-[1.04] group-focus-visible:scale-[1.04]"
           />

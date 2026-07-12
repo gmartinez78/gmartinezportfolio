@@ -896,6 +896,7 @@ export default function PortfolioPage() {
                   description={project.description}
                   tags={project.tags}
                   image={project.image}
+                  imageAlt={`${project.title} case study preview for ${project.company}`}
                   background={project.background}
                   ctaLabel={project.cta}
                   locked={Boolean(project.password)}
@@ -1115,7 +1116,7 @@ export default function PortfolioPage() {
           </Link>
 
           <Link
-            href={withBasePath("/projects/benefits-enrollment")}
+            href={withBasePath("/benefits")}
             className="group relative overflow-hidden rounded-[34px] bg-[linear-gradient(140deg,#f7f3ff_0%,#eef8ff_46%,#fff4ea_100%)] p-5 transition-transform duration-300 hover:-translate-y-1 md:p-6"
           >
             <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#ffcf8c]/45 blur-2xl" />

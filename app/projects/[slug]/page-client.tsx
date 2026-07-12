@@ -5559,6 +5559,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               description={project.tagline ?? ""}
               tags={project.tags}
               image={project.previewImage}
+              imageAlt={`${project.title} case study preview for ${project.company}`}
               background={project.background}
               ctaLabel={project.external_link ? "View project" : "View case study"}
             />
