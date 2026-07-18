@@ -181,14 +181,21 @@ function normalizeSiteContent(content: SiteContent): SiteContent {
 }
 
 function normalizeCaseStudy(study: CaseStudyRecord): CaseStudyRecord {
-  if (study.slug !== "reversetech") {
-    return study;
+  if (study.slug === "nayya-ai-benefits") {
+    return {
+      ...study,
+      external_link: null,
+    };
   }
 
-  return {
-    ...study,
-    title: REVERSETECH_PROJECT_TITLE,
-  };
+  if (study.slug === "reversetech") {
+    return {
+      ...study,
+      title: REVERSETECH_PROJECT_TITLE,
+    };
+  }
+
+  return study;
 }
 
 export function resolveTrustedLogo(name: string, explicit?: string | null) {
