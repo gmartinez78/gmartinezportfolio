@@ -1,13 +1,4 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Privacy Policy & Terms and Conditions | Andrea Giraldo",
-  description: "Privacy Policy and Terms and Conditions for Andrea Giraldo.",
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+import { notFound } from "next/navigation";
 
 const privacySections = [
   {
@@ -69,7 +60,7 @@ const termsSections = [
   ["10. Changes", "We may update these Terms at any time. The effective date at the top reflects the latest version."],
 ];
 
-export default function TermsPage() {
+export function AndreaTermsContent() {
   return (
     <main className="min-h-screen bg-[#f7fbff] px-6 py-12 text-[#243b53] sm:py-20">
       <article className="mx-auto max-w-3xl rounded-[28px] border border-[#cfe5f8] bg-white px-6 py-10 shadow-sm sm:px-12 sm:py-14">
@@ -105,4 +96,8 @@ export default function TermsPage() {
       </article>
     </main>
   );
+}
+
+export default function RetiredTermsPage() {
+  notFound();
 }
