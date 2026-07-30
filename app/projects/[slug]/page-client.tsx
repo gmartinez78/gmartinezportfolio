@@ -2596,6 +2596,467 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </div>
       </section>
 
+      {caseStudy.slug !== "flock-accessibility-system" && caseStudy.slug !== "reversetech" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading
+            eyebrow={["nayya-ai-benefits", "i9-everify-integration"].includes(caseStudy.slug) ? methodologyName : "Methodology"}
+            title={["nayya-ai-benefits", "i9-everify-integration"].includes(caseStudy.slug) ? "Methodology" : methodologyName}
+            centered={["nayya-ai-benefits", "i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG].includes(caseStudy.slug)}
+            className="mb-12"
+          />
+          <div className="grid gap-4 md:grid-cols-5">
+            {caseStudy.methodology.steps.map((step, index) => (
+              ["nayya-ai-benefits", "i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG].includes(caseStudy.slug) ? (
+                <div key={step.step} className="flex flex-col gap-4">
+                  <div
+                    className="flex flex-1 flex-col gap-2 rounded-2xl p-5"
+                    style={{ backgroundColor: `${METHODOLOGY_COLORS[index] ?? "#87d4ac"}33` }}
+                  >
+                    <div
+                      className="w-full rounded-xl"
+                      style={{ height: 10, backgroundColor: METHODOLOGY_COLORS[index] ?? "#87d4ac" }}
+                    />
+                    <p className="mt-2 font-inter text-[15px] font-semibold text-[#3c3e3f]">
+                      {index + 1}. {step.label}
+                    </p>
+                    {caseStudy.slug !== CONFIDENTIAL_PLACEHOLDER_SLUG ? (
+                      <p className="font-inter text-[14px] leading-[1.625em] text-[#5c7792]">
+                        {step.description}
+                      </p>
+                    ) : null}
+                  </div>
+                </div>
+              ) : (
+                <Card key={step.step} className="p-0 py-0">
+                  <CardContent className="p-6">
+                    <p className="font-inter text-[15px] font-semibold text-[#3c3e3f]">{index + 1}. {step.label}</p>
+                    <p className="mt-2 font-inter text-[13px] leading-[1.5] text-[#5c7792]">{step.description}</p>
+                  </CardContent>
+                </Card>
+              )
+            ))}
+          </div>
+          {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG ? (
+            <div className="mx-auto mt-10 max-w-[860px] space-y-8">
+              {caseStudy.methodology.steps.map((step, index) => (
+                <div key={`${step.step}-detail`} className="text-center">
+                  <h2 className="mb-5 text-center font-inter text-[36px] leading-tight text-[#0e2951]">
+                    {step.label}
+                  </h2>
+                  {index === 2 ? (
+                    <div className="mt-3 grid items-start gap-8 text-left lg:grid-cols-[minmax(0,1fr)_420px]">
+                      <div className="space-y-3">
+                        {step.description.split("\n").map((line, lineIndex) => {
+                          const trimmed = line.trim();
+                          if (!trimmed) return null;
+                          return (
+                            <p key={`${step.step}-line-${lineIndex}`} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                              {trimmed}
+                            </p>
+                          );
+                        })}
+                      </div>
+                      <div className="rounded-[24px] border border-[#d7dfeb] bg-white p-3 shadow-[0_18px_40px_rgba(14,41,81,0.08)]">
+                        <div className="relative max-h-[520px] overflow-hidden rounded-[18px]">
+                          <span className="absolute left-4 top-4 z-10 inline-flex rounded-[4px] bg-[#fca5a5] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#7f1d1d]">
+                            Before
+                          </span>
+                          <img
+                            src={withBasePath("/images/projects/zapiano/banners/page-6.svg")}
+                            alt="Zapiano landing redesign reference"
+                            className="h-auto w-full"
+                          />
+                          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/92 to-white/0" />
+                        </div>
+                      </div>
+                    </div>
+                  ) : index === 3 ? (
+                    <div className="mt-3 grid items-start gap-8 text-left lg:grid-cols-[minmax(0,1fr)_420px]">
+                      <div className="rounded-[24px] border border-[#d7dfeb] bg-white p-3 shadow-[0_18px_40px_rgba(14,41,81,0.08)]">
+                        <div className="relative max-h-[520px] overflow-hidden rounded-[18px]">
+                          <span className="absolute left-4 top-4 z-10 inline-flex rounded-[4px] bg-[#16a34a] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-white">
+                            After
+                          </span>
+                          <img
+                            src={withBasePath("/images/projects/zapiano/banners/page-3.svg")}
+                            alt="Zapiano landing redesign after applying benchmark and funnel improvements"
+                            className="h-auto w-full"
+                          />
+                          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/92 to-white/0" />
+                        </div>
+                      </div>
+                      <div className="space-y-3">
+                        {step.description.split("\n").map((line, lineIndex) => {
+                          const trimmed = line.trim();
+                          if (!trimmed) return null;
+                          return (
+                            <p key={`${step.step}-line-${lineIndex}`} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                              {trimmed}
+                            </p>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="mt-3 space-y-3">
+                      {step.description.split("\n").map((line, lineIndex) => {
+                        const trimmed = line.trim();
+                        if (!trimmed) return null;
+                        if (trimmed.startsWith("- ")) {
+                          return (
+                            <p key={`${step.step}-line-${lineIndex}`} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                              {trimmed}
+                            </p>
+                          );
+                        }
+                        return (
+                          <p key={`${step.step}-line-${lineIndex}`} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                            {trimmed}
+                          </p>
+                        );
+                      })}
+                    </div>
+                  )}
+                  {index === 0 ? (
+                    <div className="mt-10 overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)] text-left">
+                      <div className="border-b border-[#dadde1] px-6 py-5">
+                        <h3 className="text-[20px] font-semibold text-[#1c1e21]">{CONFIDENTIAL_FUNNEL_ARCHITECTURE.title}</h3>
+                        <p className="mt-1 text-[13px] text-[#65676b]">{CONFIDENTIAL_FUNNEL_ARCHITECTURE.subtitle}</p>
+                      </div>
+                      <div className="grid lg:grid-cols-2">
+                        {[CONFIDENTIAL_FUNNEL_ARCHITECTURE.before, CONFIDENTIAL_FUNNEL_ARCHITECTURE.after].map((column) => {
+                          const isBefore = column.badge === "Before";
+                          return (
+                            <div
+                              key={column.badge}
+                              className={`px-6 py-8 md:px-8 ${isBefore ? "border-b border-[#dadde1] bg-[#fef5f5] lg:border-b-0 lg:border-r" : "bg-[#f0fdf4]"}`}
+                            >
+                              <div className="mb-6 flex items-center gap-3">
+                                <span
+                                  className={`inline-flex rounded-[4px] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.05em] ${
+                                    isBefore ? "bg-[#fca5a5] text-[#7f1d1d]" : "bg-[#16a34a] text-white"
+                                  }`}
+                                >
+                                  {column.badge}
+                                </span>
+                                <span className="text-[16px] font-semibold text-[#1c1e21]">{column.title}</span>
+                              </div>
+                              <p className="mb-6 text-[12px] leading-[1.6] text-[#65676b]">{column.subtitle}</p>
+                              <div className="space-y-2">
+                                {column.stages.map((stage, stageIndex) => (
+                                  <Fragment key={`${column.badge}-${stage.name}`}>
+                                    <div
+                                      className={`rounded-[8px] border bg-white px-4 py-4 ${
+                                        stage.tone === "problem"
+                                          ? "border-[#fca5a5]"
+                                          : stage.tone === "win"
+                                            ? "border-[#86efac]"
+                                            : "border-[#dadde1]"
+                                      }`}
+                                    >
+                                      <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.05em] text-[#65676b]">{stage.label}</p>
+                                      <p className="mb-1 text-[14px] font-semibold text-[#1c1e21]">{stage.name}</p>
+                                      <p className="text-[12px] leading-[1.5] text-[#65676b]">{stage.detail}</p>
+                                      {stage.tags?.length ? (
+                                        <div className="mt-3 flex flex-wrap gap-2">
+                                          {stage.tags.map((tag) => (
+                                            <span
+                                              key={tag}
+                                              className={`rounded-[3px] px-2 py-1 text-[10px] font-medium ${
+                                                isBefore ? "bg-[#fee2e2] text-[#b91c1c]" : "bg-[#dbeafe] text-[#1e40af]"
+                                              }`}
+                                            >
+                                              {tag}
+                                            </span>
+                                          ))}
+                                        </div>
+                                      ) : null}
+                                    </div>
+                                    {stageIndex === 0 || stageIndex === 1 ? (
+                                      <div className="py-1 text-center text-[18px] leading-none text-[#65676b]">↓</div>
+                                    ) : null}
+                                    {stageIndex === 1 ? (
+                                      <div
+                                        className={`rounded-[6px] border border-dashed px-4 py-2 text-center text-[13px] font-semibold ${
+                                          isBefore ? "border-[#fca5a5] bg-[#fee2e2] text-[#b91c1c]" : "border-[#86efac] bg-[#dcfce7] text-[#15803d]"
+                                        }`}
+                                      >
+                                        {column.conversion}
+                                      </div>
+                                    ) : null}
+                                  </Fragment>
+                                ))}
+                              </div>
+                              <div
+                                className={`mt-6 rounded-[4px] border-l-[3px] bg-white/70 px-4 py-4 text-[12px] leading-[1.5] text-[#1c1e21] ${
+                                  isBefore ? "border-[#b91c1c]" : "border-[#15803d]"
+                                }`}
+                              >
+                                <strong className="mb-1 block text-[11px] uppercase tracking-[0.05em]">{column.takeawayTitle}</strong>
+                                {column.takeaway}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                      <div className="border-t border-[#dadde1] bg-[#f5f6f7] px-6 py-4 text-[12px] leading-[1.5] text-[#65676b]">
+                        <strong className="text-[#1c1e21]">Impact:</strong> {CONFIDENTIAL_FUNNEL_ARCHITECTURE.footer.replace(/^Impact:\s*/, "")}
+                      </div>
+                    </div>
+                  ) : null}
+                  {index === 1 ? (
+                    <div className="mt-10 text-left">
+                      <div className="mx-auto mb-10 max-w-[860px] space-y-5 text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                        <p>
+                          Before sketching anything, I audited five direct competitors against seven conversion heuristics that matter for cold paid traffic. The pattern was clear: Zapiano was the weakest landing in the category on every dimension that drives entry conversion.
+                        </p>
+                      </div>
+
+                      <div className="overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
+                        <div className="border-b border-[#dadde1] px-6 py-5">
+                          <h3 className="text-[18px] font-semibold text-[#1c1e21]">Competitive benchmark</h3>
+                          <p className="mt-1 text-[13px] text-[#65676b]">
+                            Adult piano learning category | 5 competitors evaluated across 7 UX and conversion heuristics
+                          </p>
+                        </div>
+
+                        <div className="flex flex-wrap items-center gap-x-5 gap-y-3 border-b border-[#dadde1] bg-[#f5f6f7] px-6 py-4 text-[12px] text-[#65676b]">
+                          <div className="flex items-center gap-2">
+                            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#dcfce7] text-[12px] font-semibold text-[#15803d]">✓</span>
+                            Strong
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#fef3c7] text-[12px] font-semibold text-[#b45309]">~</span>
+                            Partial
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#fee2e2] text-[12px] font-semibold text-[#b91c1c]">✗</span>
+                            Missing
+                          </div>
+                          <div className="ml-auto">Analysis: April 2025 | Method: competitive benchmark of paid traffic landing pages</div>
+                        </div>
+
+                        <div className="hidden overflow-x-auto md:block">
+                          <table className="min-w-[1480px] w-full border-collapse text-[13px]">
+                            <thead>
+                              <tr className="bg-[#f5f6f7] text-center text-[11px] font-medium leading-[1.4] text-[#65676b]">
+                                <th className="min-w-[230px] border-b border-r border-[#ebedf0] px-4 py-3 text-left">Product</th>
+                                {CONFIDENTIAL_BENCHMARK_HEADERS.map((header) => (
+                                  <th key={header} className="border-b border-r border-[#ebedf0] px-2 py-3">
+                                    {header}
+                                  </th>
+                                ))}
+                                <th className="min-w-[220px] border-b border-[#ebedf0] px-4 py-3 text-left">Key takeaway for Zapiano</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {(["Direct competitors", "Zapiano"] as const).map((group) => (
+                                <Fragment key={group}>
+                                  <tr className="bg-[#ebedf0]">
+                                    <td colSpan={10} className="px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-[0.04em] text-[#65676b]">
+                                      {group}
+                                    </td>
+                                  </tr>
+                                  {CONFIDENTIAL_BENCHMARK_ROWS.filter((row) => row.group === group).map((row) => (
+                                    <tr
+                                      key={`${group}-${row.product}-${row.domain}`}
+                                      className={
+                                        row.badge === "After"
+                                          ? "bg-[#f0fdf4]"
+                                          : row.badge === "Before"
+                                            ? "bg-[#fef5f5]"
+                                            : "bg-white"
+                                      }
+                                    >
+                                      <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-left">
+                                        <div className="font-medium text-[#1c1e21]">
+                                          {row.product}
+                                          {row.badge === "Before" ? (
+                                            <span className="ml-2 inline-flex rounded-[4px] bg-[#fca5a5] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-[#7f1d1d]">
+                                              Before
+                                            </span>
+                                          ) : row.badge === "After" ? (
+                                            <span className="ml-2 inline-flex rounded-[4px] bg-[#16a34a] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-white">
+                                              After
+                                            </span>
+                                          ) : null}
+                                        </div>
+                                        <div className="mt-1 text-[11px] text-[#65676b]">{row.domain}</div>
+                                      </td>
+                                      {row.scores.map((score, scoreIndex) => (
+                                        <td key={`${row.product}-${scoreIndex}`} className="border-b border-r border-[#ebedf0] px-2 py-4 text-center">
+                                          <span
+                                            className={`inline-flex h-[26px] w-[26px] items-center justify-center rounded-full text-[14px] font-semibold ${
+                                              score === "strong"
+                                                ? "bg-[#dcfce7] text-[#15803d]"
+                                                : score === "partial"
+                                                  ? "bg-[#fef3c7] text-[#b45309]"
+                                                  : "bg-[#fee2e2] text-[#b91c1c]"
+                                            }`}
+                                          >
+                                            {score === "strong" ? "✓" : score === "partial" ? "~" : "✗"}
+                                          </span>
+                                        </td>
+                                      ))}
+                                      <td className="border-b border-[#ebedf0] px-4 py-4 text-left text-[12px] leading-[1.45] text-[#65676b]">
+                                        <div className="space-y-1">
+                                          {row.takeaway.split("\n").map((line, lineIndex) => (
+                                            <p key={`${row.product}-${row.domain}-takeaway-${lineIndex}`}>{line}</p>
+                                          ))}
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  ))}
+                                </Fragment>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+
+                        <div className="grid gap-4 p-5 md:hidden">
+                          {(["Direct competitors", "Zapiano"] as const).map((group) => (
+                            <div key={group} className="space-y-4">
+                              <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#65676b]">{group}</p>
+                              {CONFIDENTIAL_BENCHMARK_ROWS.filter((row) => row.group === group).map((row) => (
+                                <Card
+                                  key={`mobile-${group}-${row.product}-${row.domain}`}
+                                  className={row.badge === "After" ? "border-[#9cd99f] bg-[#f0fdf4]" : row.badge === "Before" ? "border-[#f3b2b2] bg-[#fef5f5]" : ""}
+                                >
+                                  <CardContent className="space-y-4 px-5 py-5">
+                                    <div>
+                                      <p className="text-[18px] font-semibold text-[#0e2951]">
+                                        {row.product}
+                                        {row.badge ? (
+                                          <span className={`ml-2 inline-flex rounded-[4px] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] ${row.badge === "After" ? "bg-[#16a34a] text-white" : "bg-[#fca5a5] text-[#7f1d1d]"}`}>
+                                            {row.badge}
+                                          </span>
+                                        ) : null}
+                                      </p>
+                                      <p className="mt-1 text-[13px] text-[#5c7792]">{row.domain}</p>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-3 text-[12px] leading-[1.5] text-[#5c7792]">
+                                      {CONFIDENTIAL_BENCHMARK_HEADERS.map((header, headerIndex) => (
+                                        <div key={`${row.product}-mobile-${header}`}>
+                                          <p className="font-semibold text-[#0e2951]">{header}</p>
+                                          <p className="mt-1">
+                                            {row.scores[headerIndex] === "strong" ? "Strong" : row.scores[headerIndex] === "partial" ? "Partial" : "Missing"}
+                                          </p>
+                                        </div>
+                                      ))}
+                                    </div>
+                                    <div>
+                                      <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">Key takeaway</p>
+                                      <div className="mt-2 space-y-1 text-[14px] leading-[1.6] text-[#5c7792]">
+                                        {row.takeaway.split("\n").map((line, lineIndex) => (
+                                          <p key={`mobile-${row.product}-${row.domain}-takeaway-${lineIndex}`}>{line}</p>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  </CardContent>
+                                </Card>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="border-t border-[#dadde1] bg-[#f5f6f7] px-6 py-4 text-[11px] text-[#65676b]">
+                          Score summary | Before: 0 strong, 2 partial, 5 missing of 7 dimensions. After: 7 strong of 7. Closed all 4 critical gaps versus Pianote category benchmark.
+                        </div>
+                      </div>
+                      <div className="mx-auto mt-8 max-w-[820px] text-center">
+                        <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                          The redesign brief wrote itself: close the four critical gaps of entry friction, segmentation, founder visibility, and community proof while keeping what was already working, including risk reversal and content depth.
+                        </p>
+                      </div>
+                    </div>
+                  ) : null}
+                  {index === 4 ? (
+                    <div className="mt-10 text-left">
+                      <div className="overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
+                        <div className="border-b border-[#dadde1] px-6 py-5">
+                          <h3 className="text-[18px] font-semibold text-[#1c1e21]">A/B testing comparison</h3>
+                          <p className="mt-1 text-[13px] text-[#65676b]">
+                            Same offer, same audience, two different social proof treatments.
+                          </p>
+                        </div>
+
+                        <div className="hidden overflow-x-auto md:block">
+                          <table className="w-full border-collapse text-[13px]">
+                            <thead>
+                              <tr className="bg-[#f5f6f7] text-left text-[11px] font-medium leading-[1.4] text-[#65676b]">
+                                <th className="w-[20%] border-b border-r border-[#ebedf0] px-4 py-3">Difference</th>
+                                <th className="w-[24%] border-b border-r border-[#ebedf0] px-4 py-3">Variant A</th>
+                                <th className="w-[24%] border-b border-r border-[#ebedf0] px-4 py-3">Variant B</th>
+                                <th className="w-[32%] border-b border-[#ebedf0] px-4 py-3">Why it mattered</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {CONFIDENTIAL_AB_TEST_ROWS.map((row) => (
+                                <tr key={row.metric} className={row.metric === "Conversion outcome" ? "bg-[#f0fdf4]" : "bg-white"}>
+                                  <td className="border-b border-r border-[#ebedf0] px-4 py-4 font-semibold text-[#1c1e21]">{row.metric}</td>
+                                  <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-[#65676b]">{row.variantA}</td>
+                                  <td className="border-b border-r border-[#ebedf0] px-4 py-4 text-[#65676b]">
+                                    <div className="flex items-start gap-2">
+                                      <span>{row.variantB}</span>
+                                      {row.metric === "Conversion outcome" ? (
+                                        <span className="inline-flex rounded-[4px] bg-[#16a34a] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-white">
+                                          Winner
+                                        </span>
+                                      ) : null}
+                                    </div>
+                                  </td>
+                                  <td className="border-b border-[#ebedf0] px-4 py-4 text-[#65676b]">{row.takeaway}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+
+                        <div className="grid gap-4 p-5 md:hidden">
+                          {CONFIDENTIAL_AB_TEST_ROWS.map((row) => (
+                            <Card key={`ab-mobile-${row.metric}`}>
+                              <CardContent className="space-y-4 px-5 py-5">
+                                <p className="text-[16px] font-semibold text-[#0e2951]">{row.metric}</p>
+                                <div className="space-y-3 text-[14px] leading-[1.6] text-[#5c7792]">
+                                  <div>
+                                    <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#65676b]">Variant A</p>
+                                    <p className="mt-1">{row.variantA}</p>
+                                  </div>
+                                  <div>
+                                    <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#65676b]">Variant B</p>
+                                    <p className="mt-1">
+                                      {row.variantB}
+                                      {row.metric === "Conversion outcome" ? (
+                                        <span className="ml-2 inline-flex rounded-[4px] bg-[#16a34a] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-white">
+                                          Winner
+                                        </span>
+                                      ) : null}
+                                    </p>
+                                  </div>
+                                  <div>
+                                    <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#1183D0]">Why it mattered</p>
+                                    <p className="mt-1">{row.takeaway}</p>
+                                  </div>
+                                </div>
+                              </CardContent>
+                            </Card>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="mx-auto mt-8 max-w-[820px] text-center">
+                        <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                          Once both variants had statistically meaningful data, I used Copilot to compare scroll depth, time-to-CTA, and segment behavior across variants. It compressed the slowest part of the testing cycle, synthesis, without replacing the design judgment that came before it.
+                        </p>
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          ) : null}
+        </section>
+      ) : null}
+
       {visibleStoryBlocks.length ? (
         <section id="rt-problem" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <div className={caseStudy.slug === "reversetech" ? "mx-auto max-w-[860px]" : "grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start"}>
