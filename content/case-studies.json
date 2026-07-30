@@ -1584,6 +1584,100 @@
         }
       },
       {
+        "id": "user-needs",
+        "type": "custom",
+        "title": "User Needs: Provisional User Groups",
+        "body": "Six distinct user groups emerged from research, each with specific needs, pain points, and consequences of error. These are provisional groupings, not final personas.",
+        "payload": {
+          "groups": [
+            {
+              "group": "Patients — new & existing",
+              "goal": "Make an appointment with low effort and minimal disclosure of personal data.",
+              "pain_points": [
+                "Abandon booking when forms ask for non-essential info, or in France when INS (Identifiant National de Santé) requires exact birth-registration details — high friction at registration.",
+                "Frustrated by technical failures: blank-page errors, forced logouts, inability to screenshot/copy confirmation info.",
+                "In Germany, Double Opt-In (email/SMS) can leave a slot unconfirmed and effectively lost.",
+                "Frustrated when 'no online appointments available' makes the tool feel like wasted effort.",
+                "Erosion of trust when a listed language capability (e.g., 'speaks English') doesn't hold up in person — accuracy of practitioner metadata matters for safety, not just satisfaction.",
+                "Distrust of platforms perceived to route consultation notes or data to non-EU AI providers or third parties — this is a trust-driven abandonment cause."
+              ],
+              "consequence": "Missed/duplicate bookings, abandoned funnel, or (in the language-mismatch case) a care-quality risk.",
+              "jtbd": "When I need to see a doctor, and I'm unsure of the process, I want to find and confirm a real, available slot without giving up more information than necessary, so I can trust the appointment will actually happen."
+            },
+            {
+              "group": "Caregivers / people booking for someone else",
+              "goal": "Manage appointments for a dependent (child, elderly parent) as smoothly as for themselves.",
+              "pain_points": [
+                "One-third of French appointments are booked for a relative; ~46% of patients have a linked relative account — this is not an edge case, it's a core flow.",
+                "Birthdate entry via month-by-month dropdown scrolling is a specific, named friction point for this group.",
+                "Permissions implication: the product needs a first-class 'manage on behalf of' model, not a bolt-on."
+              ]
+            },
+            {
+              "group": "Older / lower-digital-literacy patients",
+              "goal": "Access appointment booking with appropriate support for their technology comfort level.",
+              "pain_points": [
+                "5.9M French Doctolib users are 65+ (scale signal), but German patients 80+ are described as 'overwhelmed' by digital tools, many without smartphones/PCs — this is a market-specific gap, not the same problem in both countries.",
+                "Visually impaired users need accessible booking flows; all patients need clarity on physical accessibility (wheelchair access) of the practice itself."
+              ],
+              "consequence": "Exclusion from self-service, which pushes load back onto phone lines — directly connects to the receptionist pain point."
+            },
+            {
+              "group": "Receptionists / Medical Assistants (MFAs)",
+              "goal": "Keep the schedule accurate with minimal manual rework, while handling constant interruptions.",
+              "pain_points": [
+                "~30% of calls to doctors go unanswered; routine calls (insurance checks, rescheduling) bury the front desk.",
+                "German MFAs are frustrated by click-heavy TI workflows (KIM messaging, e-prescriptions) and by card-reader/system crashes after updates.",
+                "Structural difference: in Germany, the MFA is a power user — 3 years trained, performs clinical tasks (blood draws, dressings) and admin (booking, invoicing); average 3.4 per solo practice, up to 19 in MVZs. In France, only ~5% of GPs employ an MFA at all, and tasks are mostly administrative."
+              ],
+              "design_implication": "The receptionist is not one persona — Germany needs an assistant-centric, delegation-capable interface; France needs the doctor to remain the central actor. This is one of the sharpest tensions in the whole project."
+            },
+            {
+              "group": "Doctors / clinicians",
+              "goal": "Maximize clinical time, minimize administrative drag.",
+              "pain_points": [
+                "Structural difference in how doctors use time: Germany — 9.8 contacts/year, ~8 min/visit, high patient turnover, 'one-click' documentation need. France — 5.9 contacts/year, 16–18 min/visit, favors longitudinal notes and longer-form UI.",
+                "~10 hours/week lost to administrative bottlenecks (cited as the pain point Doctolib is attacking with AI call-handling)."
+              ],
+              "consequence": "Double-booking or lost time directly reduces billable clinical capacity — this group is revenue-sensitive to scheduling errors in a way patients aren't."
+            },
+            {
+              "group": "Clinic managers / administrators, and internal CX/support teams",
+              "status": "🔴 Research gap",
+              "note": "No direct evidence yet. The source material speaks to receptionists and doctors but not practice owners/managers or internal implementation teams. Flagged as an open research need rather than inventing needs."
+            }
+          ]
+        }
+      },
+      {
+        "id": "user-needs-context",
+        "type": "custom",
+        "title": "Context: Regulatory, Operational & Competitive Landscape",
+        "body": "User needs cannot be understood without the regulatory, workforce, and competitive context that shapes them.",
+        "payload": {
+          "regulatory": {
+            "title": "Regulatory & Governance Context",
+            "france": "Centralized — State + Assurance Maladie set fees, certifications, and negotiations nationally. HDS v2.0: mandatory health-data hosting certification. Transition to V2.0 by May 16, 2026; September 2026 sovereignty rules require EEA-only hosting and disclosure of non-EU legal exposure (e.g., US CLOUD Act).",
+            "germany": "Decentralized — corporatist bodies (G-BA, regional KVs) control market access; Bedarfsplanung restricts where/how physicians can even set up practice. Telematic Infrastructure (TI): mandatory closed network; ePA integration deadline October 1, 2025; authentication via physical SMC-B/eHBA cards. 50% of German doctors report weekly TI technical issues — a stated competitive opening for a more stable entrant."
+          },
+          "workforce": {
+            "title": "Workforce & Operational Context",
+            "gp_density": "France — GP-heavy (107/100k) and primary-care-volume-oriented. Germany — specialist-heavy (117/100k), with 2x the ambulatory surgeons and ~3x the gynecologists — meaning Germany's scheduling needs skew toward complex resource booking (rooms, equipment, surgical blocks), not just time slots.",
+            "consultation_rhythm": "France: 5.9 visits/year, 16–18 min/visit, favors longitudinal notes. Germany: 9.8 visits/year, ~8 min/visit, high patient turnover, 'one-click' documentation need. This drives fundamentally different information-density needs in the booking and documentation UI."
+          },
+          "competitive": {
+            "title": "Competitive Landscape",
+            "incumbent": "Doctolib is the dominant incumbent, having moved from booking tool to full practice-OS, launching its German PMS in late 2025, with AI call-handling and Adyen-based embedded payments.",
+            "trust_gaps": "MFA workload from unsecured requests, and a broader 'data sovereignty' trust crisis — named as a specific opening for a sovereign/privacy-first entrant.",
+            "pricing": "Samedi ~€35–59/user; Doctolib ~€139/practitioner."
+          },
+          "business": {
+            "title": "Business Context — Explicitly Unresolved",
+            "note": "GTM sequencing (France-first vs. Germany-first) is not decided. This matters for empathize scope: if we don't know which market launches first, we should keep our priority workflow choice defensible in both markets rather than optimizing narrowly for one. Pricing/bundling model with the existing suite is undefined."
+          }
+        }
+      },
+      {
         "id": "competitive-analysis",
         "type": "custom",
         "title": "Competitive Research: Three Market-Changing Findings",
