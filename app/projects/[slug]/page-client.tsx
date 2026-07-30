@@ -3145,6 +3145,50 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
 
             <div className="mb-12">
+              <h3 className="font-inter text-[28px] leading-tight text-[#0e2951] mb-8">Competitive Analysis</h3>
+
+              <div className="space-y-8">
+                <div>
+                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">The three findings that change the conclusions</h4>
+
+                  <div className="space-y-6">
+                    <div>
+                      <h5 className="font-inter text-[18px] font-semibold text-[#0e2951] mb-3">1. ⚠️ Doctolib has already won the French PMS market. Not "moving into" it — won it.</h5>
+                      <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-3">Doctolib is the most-used GP practice-management software in France as of March 2026, with 23.2% of electronic care-claim transmissions to GIE SESAM-Vitale, ahead of Weda (14.0%), Medistory (10.1%) and HelloDoc (8.1%). It also leads the specialist segment at 15.4%. It went from 0% to 23.2% in five years — and did it without acquisitions, purely by attaching software to its booking platform.</p>
+                      <p className="text-[16px] leading-[1.7] text-[#5c7792]">This inverts our earlier framing. In France, Doctolib now holds both patient distribution and practice distribution. Our "we're strong where they're weak" argument does not hold in France.</p>
+                    </div>
+
+                    <div>
+                      <h5 className="font-inter text-[18px] font-semibold text-[#0e2951] mb-3">2. 🔵 In Germany, the same move is barely underway — and that's a narrow, dated window.</h5>
+                      <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-3">Doctolib's German PVS launched in November 2025, initially only for GPs, pediatricians and gynecologists, with further specialties promised during the following year. In the Zi 2026 evaluation, Doctolib had insufficient sample size to produce valid usability, NPS or error-rate data.</p>
+                      <p className="text-[16px] leading-[1.7] text-[#5c7792]">Read together, findings 1 and 2 are the strongest empirical argument yet for Germany-first GTM — a decision our documents listed as 🔴 undecided. France is a market Doctolib has already taken; Germany is one it started taking nine months ago. I'd bring this to the stakeholder conversation as a recommendation with evidence, not as a design assumption.</p>
+                    </div>
+
+                    <div>
+                      <h5 className="font-inter text-[18px] font-semibold text-[#0e2951] mb-3">3. ⚠️ Samedi is a far more serious competitor than our documents implied — and it partly occupies our differentiation.</h5>
+                      <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-3">Our brief had it as a price point (€35–59/user). In fact: Samedi is a Berlin-based SaaS platform with over 43 bidirectional AIS/KIS interfaces synchronising with existing practice systems, used by more than 48,000 doctors across roughly 10,000 institutions in the DACH region, offering online booking with a waitlist, dynamic resource planning, digital forms with legally-valid e-signature and integrated payment — backed by EU-patented end-to-end encryption, TÜV certification and ISO 27001/9001.</p>
+                      <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-3">That is resource-aware scheduling plus sovereignty positioning plus waitlist/backfill, already shipped, at scale. Two of our three claimed differentiators are occupied. This is exactly the gap I flagged as "close this first," and the answer is uncomfortable — which is why it was worth checking.</p>
+                      <p className="text-[16px] leading-[1.7] text-[#5c7792]"><strong>Their real gaps:</strong> no public patient-search portal of their own (new-patient acquisition depends on jameda integration), per-doctor pricing that compounds badly for group practices and MVZs, no free entry tier, and no self-service onboarding — setup requires a consultation.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">Market displacement dynamics</h4>
+                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-4">Practices wanting to switch PVS: 33.3% in 2025 (down from 44.4% in 2024). One in three is actively shopping. The decline is attributed to perceived switching barriers, not improved satisfaction — demand is suppressed, not satisfied.</p>
+                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-4"><strong>Top blocker:</strong> 44.8% fear data won't migrate cleanly. Migration is the product problem, not features.</p>
+                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-4"><strong>Switch motives:</strong> Usability and licence fees lead; inadequate support 52%; hidden price increases and maintenance costs 46% each. Usability is the #1 stated reason — a design lever.</p>
+                  <p className="text-[16px] leading-[1.7] text-[#5c7792]"><strong>Proof displacement is possible:</strong> AxiSanté (CGM) fell from 16% in 2019 to under 0.2% by 2026 after end-of-support was announced. Incumbency collapses fast once trust breaks.</p>
+                </div>
+
+                <div>
+                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">🆕 Technical/regulatory constraint we'd missed</h4>
+                  <p className="text-[16px] leading-[1.7] text-[#5c7792]">Cloud PVS providers in Germany face §203(3–4) StGB, Art. 28 GDPR, §393 SGB V and BSI C5 attestation requirements — and a data-processing agreement alone does not remove the criminal-law professional-secrecy exposure. KBV conformity assessment and TI connection are mandatory for cloud systems too. This belongs in our technical-constraints register. It's a cloud-native entry barrier none of our four project documents captured.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mb-12">
               <h3 className="font-inter text-[28px] leading-tight text-[#0e2951] mb-8">User Needs</h3>
 
               <div className="space-y-8">
