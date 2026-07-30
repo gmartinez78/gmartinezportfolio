@@ -3210,7 +3210,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
           </div>
         </section>
-      ) : (
+
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="grid gap-16 lg:grid-cols-2">
             <div>
