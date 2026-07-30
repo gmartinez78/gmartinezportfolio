@@ -1449,7 +1449,7 @@
       "Competitor incumbency is different by market: Doctolib dominates France (23.2% PMS share); Germany shows Doctolib at 9 months in, leaving a narrow window."
     ],
     "methodology": {
-      "name": "Design Thinking + Competitive Intelligence",
+      "name": "Design Thinking",
       "steps": [
         {
           "step": 1,
@@ -1535,7 +1535,7 @@
       {
         "id": "methodology",
         "type": "custom",
-        "title": "Methodology: Design Thinking + Competitive Intelligence",
+        "title": "Methodology: Design Thinking",
         "body": "The discovery process followed a structured design thinking approach across four phases, augmented with AI tools and rigorous market research.",
         "payload": {
           "phases": [
