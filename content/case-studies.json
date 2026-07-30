@@ -1509,6 +1509,30 @@
         "body": "This case study documents a design thinking + AI-powered discovery process that uncovered the real problems in clinical scheduling. It led to a phased MVP strategy that challenges conventional wisdom about what matters first."
       },
       {
+        "id": "design-thinking-facilitation",
+        "type": "custom",
+        "title": "Design Thinking Facilitation",
+        "body": "Structured the discovery process across five phases—Empathize, Define, Ideate, and Prototype—using design thinking methodology to move from unstructured problems to actionable strategy. Each phase built on the previous, creating a chain of validated insights rather than assumptions."
+      },
+      {
+        "id": "user-research-synthesis",
+        "type": "custom",
+        "title": "User Research & Synthesis",
+        "body": "Conducted discovery across two distinct markets (France and Germany), uncovering nine distinct problem statements from different user perspectives: the Calendar Keeper (solo doctor vs. MFA), the returning patient, and the system itself. Synthesized qualitative findings into personas, affinity maps, and root-cause analyses that revealed the structural gaps competitors miss."
+      },
+      {
+        "id": "competitive-intelligence",
+        "type": "custom",
+        "title": "Competitive Intelligence",
+        "body": "Performed rigorous market analysis covering incumbent PMS vendors, new entrants, and market dynamics. Identified that Doctolib already owns France (23.2% PMS share), Samedi occupies claimed differentiators in Germany, and migration risk—not features—is the real adoption blocker. This research reframed strategy and go-to-market approach."
+      },
+      {
+        "id": "solution-strategy",
+        "type": "custom",
+        "title": "Solution Strategy",
+        "body": "Translated research into a phased MVP approach: core booking with resource dependencies (Phase 1), degraded-mode reliability (Phase 1), and onboarding/backfill (Phase 2). Repositioned from claimed differentiators (sovereignty, MFA-first) to a defensible angle: resource-aware scheduling that doesn't break when infrastructure does. Recommended Germany-first GTM based on market evidence."
+      },
+      {
         "id": "methodology",
         "type": "custom",
         "title": "Methodology: Design Thinking + Competitive Intelligence",
