@@ -1376,5 +1376,543 @@
         }
       }
     ]
+  },
+  {
+    "slug": "calendar-keeper",
+    "status": "published",
+    "featured": false,
+    "order": 8,
+    "title": "Calendar Keeper: Resource-Aware Scheduling for Healthcare",
+    "company": "HRS",
+    "client_context": "Healthcare practice management software for France and Germany",
+    "role": "Product Strategist & UX Designer",
+    "year": 2026,
+    "duration": "Design thinking process: 3 months",
+    "industry": "Healthcare / Practice Management SaaS",
+    "tagline": "A design thinking + AI-powered discovery uncovering the real problem behind clinical scheduling, leading to a phased MVP strategy that prioritizes resource dependencies over backfill.",
+    "tags": [
+      "Healthcare",
+      "Product Strategy",
+      "UX Research",
+      "Design Thinking",
+      "AI Product",
+      "Market Research"
+    ],
+    "filters": [
+      "Healthcare",
+      "Product Strategy",
+      "AI Product"
+    ],
+    "tools": [
+      "Claude",
+      "Figma",
+      "Miro",
+      "Notion",
+      "NotebookLM"
+    ],
+    "images": {
+      "cover": "/images/projects/calendar-keeper/thumbnails/calendar-keeper-cover.png",
+      "hero": "/images/projects/calendar-keeper/hero/calendar-keeper-hero.png",
+      "gallery": []
+    },
+    "client_logos": [],
+    "metrics": [],
+    "team": [
+      "Product strategist",
+      "UX researcher",
+      "Healthcare domain experts",
+      "AI research partners"
+    ],
+    "my_role": [
+      "Design Thinking Facilitation",
+      "User Research & Synthesis",
+      "Competitive Intelligence",
+      "Solution Strategy"
+    ],
+    "problem": {
+      "admin_pain_points": [
+        "Clinical staff (MFAs, solo doctors) spend hours per day managing interruptions, double-bookings, and manual calendar checks instead of patient care.",
+        "German medical assistants handle TI-mandated tasks (e-prescriptions, KIM messaging, ePA) on top of scheduling for multiple practitioners; TI failures affect them directly.",
+        "Calendar sync failures create silent desync or full-day blocks, turning technical hiccups into operational crises with no visible recovery path.",
+        "Data sovereignty concerns are regulatory requirements (GDPR, BSI C5, German §203 StGB), not nice-to-haves."
+      ],
+      "user_pain_points": [
+        "Returning patients trying to rebook or manage appointments have no fast self-service path, forcing them to call—the exact mechanism that floods staff.",
+        "Patients have no visibility that their health data stays within Europe, eroding trust in a market where data sovereignty is a regulatory mandate.",
+        "Generic scheduling platforms treat every booking as an interchangeable time slot and don't model the dependencies (room, equipment, practitioner, prep) that clinical workflows require."
+      ]
+    },
+    "constraints": [
+      "Zero network liquidity at the first clinic; waitlist and backfill algorithms need history to work.",
+      "Complex regulatory environment: France and Germany have different staffing models (5% of French GPs have assistants vs. German MFAs managing 3-19 practitioners).",
+      "High switching friction; 44.8% of German practices fear data won't migrate cleanly, suppressing demand even from dissatisfied users.",
+      "Competitor incumbency is different by market: Doctolib dominates France (23.2% PMS share); Germany shows Doctolib at 9 months in, leaving a narrow window."
+    ],
+    "methodology": {
+      "name": "Design Thinking + Competitive Intelligence",
+      "steps": [
+        {
+          "step": 1,
+          "label": "Empathize",
+          "description": "Problem discovery, user interviews, affinity mapping, and competitive market research"
+        },
+        {
+          "step": 2,
+          "label": "Define",
+          "description": "Persona synthesis, affinity-map insights, and root-cause problem statements"
+        },
+        {
+          "step": 3,
+          "label": "Ideate",
+          "description": "How-might-we questioning, hypothesis testing, and strategic alignment"
+        },
+        {
+          "step": 4,
+          "label": "Prototype",
+          "description": "Phased MVP strategy, competitive positioning, and go-to-market sequencing"
+        }
+      ]
+    },
+    "design_strategy": [
+      "Reclassify data sovereignty and MFA-first positioning as entry requirements, not differentiators; the real defensible advantage is resource-aware scheduling that doesn't break when infrastructure does.",
+      "Build the MVP around core booking with resource dependencies (room, equipment, practitioner, prep), not backfill—backfill needs a waitlist with history to be useful, which doesn't exist on day one.",
+      "Design degraded mode explicitly: when sync fails, show 'not synced' as a visible state, create a reconciliation queue, and allow appointments to be created locally with identity pending verification—turning a crisis into a known condition.",
+      "Germany-first GTM is evidence-based: Doctolib already owns France (23.2% share); Germany is 9 months into its PMS push (Nov 2025), leaving a narrow, measurable window.",
+      "Migration risk is the adoption blocker, not features; a credible, demonstrable data-migration path may matter more than calendar polish."
+    ],
+    "reflections": [
+      {
+        "title": "Competition is real, but not where you'd expect.",
+        "body": "Doctolib has already won France; Samedi is shipping our claimed differentiators in Germany. The honest insight is that we need to find an angle competitors haven't occupied yet—which turns out to be degraded-mode reliability and honest about what's Phase 1 vs. Phase 2."
+      },
+      {
+        "title": "Market structure changed the strategy.",
+        "body": "France/Germany staffing differences are not just flavors of the same problem. They need two real product variants, two go-to-market approaches, and two different win narratives. One-size-fits-all would fail."
+      },
+      {
+        "title": "Data sovereignty is table stakes now.",
+        "body": "GDPR, BSI C5, and EU AI Act compliance are regulatory, not differentiating. Consent architecture and transparency matter more than hosting location, because every competitor claims the same thing."
+      },
+      {
+        "title": "Constraints forced the better decision.",
+        "body": "Knowing we can't support backfill on day one (no liquidity) forced us to ask what actually works at the first appointment of the first clinic. The answer—resource-aware core booking—is more defensible than a wishlist feature."
+      }
+    ],
+    "nda_notice": "This is an early-stage strategy document and design thinking process. Client details and competitive data are anonymized or aggregated per market. The methodology and findings reflect real market research and user discovery.",
+    "password": null,
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "overview",
+        "type": "overview",
+        "title": "Project Overview",
+        "body": "This case study documents a design thinking + AI-powered discovery process that uncovered the real problems in clinical scheduling. It led to a phased MVP strategy that challenges conventional wisdom about what matters first."
+      },
+      {
+        "id": "empathize-intro",
+        "type": "custom",
+        "title": "Empathize: Problem Discovery & Market Research",
+        "body": "The empathize phase combined direct user discovery with rigorous competitive intelligence to understand the real shape of the market and the users' unmet needs."
+      },
+      {
+        "id": "problem-statements",
+        "type": "custom",
+        "title": "Problem Statements",
+        "body": "Nine distinct problem framings across different user roles and markets emerged from research.",
+        "payload": {
+          "problems": [
+            "The Calendar Keeper needs the schedule to reflect reality without manually re-checking it, because interruptions all day—calls, changes, no-shows—otherwise cost clinical time or cause double-booking.",
+            "The German MFA needs to complete TI-mandated tasks in fewer clicks and with fewer failure points, because half of German practices hit TI issues weekly, and those failures land on the MFA, not the doctor.",
+            "The German MFA/MVZ needs to triage and delegate scheduling across many practitioners from one view, because a single MVZ can employ up to 19 MFAs coordinating calendars that a single-doctor interface was never built to handle.",
+            "The French solo doctor needs routine calls handled without leaving the exam room, because 30% of calls already go unanswered, and every one is either a lost patient or an interrupted consultation.",
+            "Real-time, trustworthy availability serves the Calendar Keeper first, because a stale calendar is a double-booking risk for staff before it's a bad search experience for a patient.",
+            "The Calendar Keeper needs to schedule lower-acuity visits as phone or video rather than defaulting everyone into an in-person slot, because it protects in-person capacity for visits that actually need it.",
+            "Both the Calendar Keeper and the returning patient need visible proof that health data stays in Europe, because sovereignty is a named trust-breaker and a 2026 compliance requirement.",
+            "The returning patient needs to rebook or manage an existing appointment quickly using identity already on file, because deflecting that routine call is the entire mechanism by which the Calendar Keeper's workload actually drops.",
+            "A returning patient occasionally booking for a named dependent needs a minimal, manual-entry path, not full account linking."
+          ]
+        }
+      },
+      {
+        "id": "affinity-map",
+        "type": "custom",
+        "title": "Affinity Map: What Shapes the Primary Flow",
+        "body": "Research revealed deep structural differences that shape product architecture decisions.",
+        "payload": {
+          "findings": [
+            {
+              "title": "France and Germany are staffed like two different professions",
+              "details": "GP density is 107/100k in France vs. 66/100k in Germany; consultation rhythm follows the same divide — 5.9 visits/year at 16–18 minutes in France, 9.8 visits/year at ~8 minutes in Germany. This is why the Calendar Keeper needs two real variants rather than one interface with a language toggle."
+            },
+            {
+              "title": "The calendar has to be trustworthy, not just present",
+              "details": "Patients who search extensively and hit 'no appointments available' describe the tool as a waste of time. On the operations side, 81% of German practices report TI connector errors and 82% report failures reading the eGK card — meaning the calendar itself becomes unreliable before a patient ever sees it."
+            },
+            {
+              "title": "The front desk is already underwater",
+              "details": "Roughly 30% of calls to doctors go unanswered. German MFAs specifically cite click-heavy TI workflows and card-reader failures as recurring stressors. The 10 hours/week lost to administrative work is exactly what competitors are targeting with AI call-handling."
+            },
+            {
+              "title": "Data sovereignty is a trust condition, not a feature",
+              "details": "Trust breaks when consultation data appears to reach non-European AI models or third parties. This isn't segment-specific — it matters to the Calendar Keeper (compliance exposure) and the returning patient (trust) equally, and September 2026 rules make EEA-only hosting a requirement rather than a preference."
+            }
+          ]
+        }
+      },
+      {
+        "id": "competitive-analysis",
+        "type": "custom",
+        "title": "Competitive Research: Three Market-Changing Findings",
+        "body": "Market analysis revealed that conventional assumptions about our position were incorrect.",
+        "payload": {
+          "findings": [
+            {
+              "title": "⚠️ Doctolib has already won the French PMS market",
+              "body": "Doctolib is the most-used GP practice-management software in France as of March 2026, with 23.2% of electronic care-claim transmissions, ahead of Weda (14.0%), Medistory (10.1%) and HelloDoc (8.1%). It went from 0% to 23.2% in five years — and did it without acquisitions, purely by attaching software to its booking platform.\n\nThis inverts our earlier framing. In France, Doctolib now holds both patient distribution and practice distribution. Our 'we're strong where they're weak' argument does not hold."
+            },
+            {
+              "title": "🔵 In Germany, the same move is barely underway — and that's a narrow, dated window",
+              "body": "Doctolib's German PVS launched in November 2025, initially only for GPs, pediatricians and gynecologists. In the Zi 2026 evaluation, Doctolib had insufficient sample size to produce valid usability, NPS or error-rate data.\n\nRead together with the France finding, this is the strongest empirical argument for Germany-first GTM — a decision our documents listed as undecided. France is a market Doctolib has already taken; Germany is one it started taking nine months ago."
+            },
+            {
+              "title": "⚠️ Samedi occupies our claimed differentiators",
+              "body": "Samedi is a Berlin-based SaaS platform used by more than 48,000 doctors across roughly 10,000 institutions in the DACH region, offering online booking with a waitlist, dynamic resource planning, digital forms with e-signature and integrated payment — backed by EU-patented end-to-end encryption, TÜV certification and ISO 27001/9001.\n\nThat is resource-aware scheduling plus sovereignty positioning plus waitlist/backfill, already shipped, at scale. Two of our three claimed differentiators are occupied. Their real gaps: no public patient-search portal, per-doctor pricing that compounds for group practices, no free entry tier, and no self-service onboarding."
+            }
+          ]
+        }
+      },
+      {
+        "id": "market-dynamics",
+        "type": "custom",
+        "title": "Market Dynamics: The Real Displacement Lever",
+        "body": "What actually drives switching is not satisfaction—it's switching barriers and migration risk.",
+        "payload": {
+          "key_insight": "33.3% of German practices want to switch PMS (down from 44.4% in 2024). One in three is actively shopping. But the decline is not due to improved satisfaction; it's due to perceived switching barriers.",
+          "displacement_dynamics": [
+            {
+              "signal": "Practices wanting to switch PMS",
+              "figure": "33.3% in 2025 (down from 44.4% in 2024)",
+              "meaning": "Demand is suppressed, not satisfied"
+            },
+            {
+              "signal": "Top blocker",
+              "figure": "44.8% fear data won't migrate cleanly",
+              "meaning": "Migration is the product problem, not features"
+            },
+            {
+              "signal": "Switch motives",
+              "figure": "Usability (1st), fees (2nd), support (3rd)",
+              "meaning": "Usability is a design lever; incumbency has poor experience"
+            },
+            {
+              "signal": "Post-switch outcome",
+              "figure": "83.9% report significant improvement",
+              "meaning": "Switching works, but people are switching to systems already rated poorly"
+            }
+          ],
+          "proof": "AxiSanté (CGM) fell from 16% in 2019 to under 0.2% by 2026 after end-of-support was announced. Incumbency collapses fast once trust breaks."
+        }
+      },
+      {
+        "id": "sovereignty-context",
+        "type": "custom",
+        "title": "Sovereignty Claims: Properly Tiered",
+        "body": "Data sovereignty is a live, contested issue—not a differentiator we can own.",
+        "payload": {
+          "reality": "Doctolib uses AI from Google, Microsoft and Anthropic in its consultation assistant. Under scrutiny; allegations that patient data may be exposed to US tech providers. Doctolib denies misuse; OECD classifies it as a hazard rather than a realised incident. EU AI Act becomes applicable August 2, 2026.",
+          "honest_read": "The trust vector is real and currently active — but Doctolib's formal compliance posture is strong, and our own advantage would rest on consent architecture and transparency, not on hosting location. Hosting location is table stakes; every competitor claims it.",
+          "takeaway": "'We're the sovereign one' is not a defensible differentiator. 'We don't use your patients' data by default, and we can show you exactly what we do use' might be."
+        }
+      },
+      {
+        "id": "define-intro",
+        "type": "custom",
+        "title": "Define: Personas, Patterns & Root Causes",
+        "body": "The define phase synthesized research into persona models and identified the structural problems beneath the surface complaints."
+      },
+      {
+        "id": "personas",
+        "type": "custom",
+        "title": "Proto Personas",
+        "body": "Two distinct user archetypes emerged, not language variations.",
+        "payload": {
+          "primary": {
+            "title": "The Calendar Keeper",
+            "description": "One role, filled by a different person depending on the market — whoever owns the schedule and needs it to be true without constantly re-checking it.",
+            "job": "When my schedule is interrupted all day by calls, changes, and no-shows, I want the calendar to always be true without me re-checking it, so I don't lose clinical time or double-book someone.",
+            "france": {
+              "title": "Solo-practice doctor",
+              "details": "Runs the front desk personally, since only ~5% of French GPs employ an assistant. Sees patients for 16–18 minutes at a time and absorbs interruptions between consultations rather than delegating them. Needs routine calls (rescheduling, insurance questions) handled without leaving the exam room."
+            },
+            "germany": {
+              "title": "MFA (Medizinische Fachangestellte)",
+              "details": "Clinically trained over three years, manages the calendar for multiple practitioners — 3.4 on average in a solo practice, up to 19 in a larger MVZ. Sees shorter, more frequent consultations (~8 minutes, 9.8 visits/year) and spends real time on TI-mandated tasks (KIM messaging, e-prescriptions, ePA). Roughly half of German practices report weekly TI technical issues, and those failures land on the MFA. Needs to triage and delegate across many practitioners from a single view."
+            }
+          },
+          "secondary": {
+            "title": "The Returning Patient",
+            "description": "A narrow, deliberately thin surface. Its only job is to let a patient who already has a record rebook, cancel, or manage an existing appointment without calling.",
+            "scope": "Occasionally includes booking for a named dependent, entered manually for that one appointment — not a saved, linked profile. Deliberately excludes new-patient identity verification, full linked-account management, and reporting/analytics in v1."
+          }
+        }
+      },
+      {
+        "id": "root-causes",
+        "type": "custom",
+        "title": "Root Causes: What's Really Broken",
+        "body": "Research uncovered that the obvious problems mask deeper structural issues.",
+        "payload": {
+          "q_a": [
+            {
+              "q": "What are the core problems?",
+              "a": "Generic scheduling platforms treat every booking as an interchangeable time slot. A clinic appointment often depends on a room, a piece of equipment, a specific practitioner, and prep time together, and no competitor architecture models that dependency because it was built demand-side (Doctolib's lineage). Second problem: when sync fails (IT outage, eGK reader down), most systems either silently desync or block the whole day, turning a technical hiccup into an operational crisis."
+            },
+            {
+              "q": "What are the root causes?",
+              "a": "The dependency gap is structural, not a feature gap. It's baked into how the underlying data model was designed. The sync-failure problem is a design omission: no one designed for degraded mode, so failure has no visible state, no reconciliation path, and no safe default."
+            },
+            {
+              "q": "What are stakeholder perspectives?",
+              "a": "The clinic evaluates resource-aware booking during the sales demo itself, not months in. The Head of CX cares about one distinction: does a sync failure become a support ticket or a full-blown crisis. Engineering's real risk is write access and schema quality on integration, and resource dependencies are exactly what exposes a bad sync."
+            },
+            {
+              "q": "What are the current constraints?",
+              "a": "Zero liquidity at the first clinic (no history, no waitlist data), which rules out anything that needs a network effect to be useful on day one."
+            }
+          ]
+        }
+      },
+      {
+        "id": "ideate-intro",
+        "type": "custom",
+        "title": "Ideate: How-Might-We & Strategic Questioning",
+        "body": "The ideate phase used structured questioning to move from problems to actionable hypotheses."
+      },
+      {
+        "id": "hmw-questions",
+        "type": "custom",
+        "title": "How-Might-We Questions",
+        "body": "Five categories of questions scoped the solution space and tested assumptions.",
+        "payload": {
+          "categories": [
+            {
+              "type": "Amplifying",
+              "example": "How might we amplify trust in the schedule the moment sync fails?",
+              "answer": "Make 'not synced' a visible, named state rather than a silent gap, so front-desk staff see degraded mode as a known condition, not an unexplained glitch."
+            },
+            {
+              "type": "Removing",
+              "example": "How might we remove the full-day-block failure mode entirely?",
+              "answer": "Let appointments get created locally with identity pending verification when the eGK reader or IT fails, and queue them for reconciliation instead of halting the whole day's schedule."
+            },
+            {
+              "type": "Exploring",
+              "example": "How might we explore what a reconciliation queue should feel like operationally?",
+              "answer": "Prototype it as a 1-2 screen flow (status badge, queue view) and test whether front-desk staff can act on it without training, since this is what gets demoed to the Head of CX."
+            },
+            {
+              "type": "Questioning assumptions",
+              "example": "How might we challenge the assumption that 'data sovereignty' and 'MFA-first' are differentiators?",
+              "answer": "Reclassify both as entry requirements, not selling points. Every competitor already claims them, so leading with them wastes the differentiation slot that resource-aware scheduling can actually own."
+            },
+            {
+              "type": "Unexpected resource",
+              "example": "How might we use the deferred backfill feature as evidence of judgment rather than as a gap to hide?",
+              "answer": "Frame it explicitly to the clinic: backfill needs a waitlist with history to have any input, and that liquidity doesn't exist in month one, so it's Phase 2 by design, not by oversight."
+            }
+          ]
+        }
+      },
+      {
+        "id": "question-characteristics",
+        "type": "custom",
+        "title": "Question Characteristics: Testing Rigor",
+        "body": "The HMW set held up against four validity tests.",
+        "payload": {
+          "tests": [
+            {
+              "test": "Scoped",
+              "description": "Each question is scoped to the two screens that actually ship (core booking, degraded mode), not a wishlist."
+            },
+            {
+              "test": "Actionable",
+              "description": "They map directly to what gets built and demoed."
+            },
+            {
+              "test": "Positively framed",
+              "description": "Around 'what does trustworthy degraded mode look like' rather than 'how do we hide our sync problem.'"
+            },
+            {
+              "test": "Feasible",
+              "description": "None require a network effect or existing liquidity, which is why backfill sits outside this set entirely. Everything here works at the first appointment of the first clinic."
+            }
+          ]
+        }
+      },
+      {
+        "id": "strategic-alignment",
+        "type": "custom",
+        "title": "Strategic Alignment",
+        "body": "Each question connects directly to user pain, business objective, and technical risk.",
+        "payload": {
+          "alignment": [
+            {
+              "lever": "User pain",
+              "connection": "Front-desk staff lose confidence in the schedule the moment sync breaks silently. The removing and exploring questions target that directly."
+            },
+            {
+              "lever": "Business objective",
+              "connection": "The sales-evaluation moment is the resource-aware core flow, so every HMW here either strengthens that flow or protects it from the failure mode that would undermine it during a demo."
+            },
+            {
+              "lever": "Technical constraint",
+              "connection": "The questioning-assumptions HMW forces the team to test write access and schema quality early, since that's where a bad sync would surface first."
+            }
+          ]
+        }
+      },
+      {
+        "id": "prototype-intro",
+        "type": "custom",
+        "title": "Prototype: Phased MVP Strategy & Positioning",
+        "body": "The prototype phase translated discoveries into a concrete, sequenced go-to-market plan."
+      },
+      {
+        "id": "solution-strategy",
+        "type": "custom",
+        "title": "Solution: New Hero Flow",
+        "body": "A three-layer approach that prioritizes what works on day one.",
+        "payload": {
+          "layers": [
+            {
+              "tier": "Core (high fidelity)",
+              "name": "Appointment-type setup with resource dependency → booking that respects it",
+              "details": "Room + equipment + practitioner + prep, where generic platforms treat everything as time slots.",
+              "why": "Works with zero liquidity. It's useful at the very first appointment of the very first clinic. It's the real structural gap: competitors don't do this because their architecture was born on the demand side. It's the flow the clinic evaluates during the sale, not six months later. It tests the most dangerous technical assumption (write access and schema quality), because resource dependencies are exactly what a poor sync breaks."
+            },
+            {
+              "tier": "Secondary (high fidelity, 1–2 screens)",
+              "name": "Degraded mode and conflict resolution",
+              "details": "Visible 'not synced' status, reconciliation queue, appointment created locally with identity pending verification, never a full-day block.",
+              "why": "Turns the sync-failure problem into a designed response instead of an empty claim. When IT or the eGK reader fails, the schedule stays reliable and operable. This is what the Head of CX wants to hear, because it's the difference between a ticket and a crisis."
+            },
+            {
+              "tier": "Tertiary (low fidelity, Phase 2)",
+              "name": "Time-to-first-configured-schedule (onboarding)",
+              "details": "Wireframes documenting the setup flow without polish.",
+              "why": "Onboarding goes into scope, but as a wireframe. It doesn't need to be pretty; it needs to exist and be measured. Backfill moves to Phase 2 with explicit justification: backfill needs a waitlist with history to exist; we deferred it because in month 1 it has no input, and its value depends on liquidity this release doesn't create yet. This signals seniority: we know what matters first."
+            }
+          ]
+        }
+      },
+      {
+        "id": "competitive-positioning",
+        "type": "custom",
+        "title": "Repositioning: What Actually Differentiates",
+        "body": "Reframe the narrative based on what competitors can't occupy.",
+        "payload": {
+          "reframe": [
+            {
+              "claim": "Data sovereignty & MFA-first positioning",
+              "before": "Differentiators",
+              "after": "Entry requirements",
+              "reason": "Every competitor claims them; they don't set us apart."
+            },
+            {
+              "claim": "Resource-aware scheduling",
+              "status": "Partially occupied",
+              "angle": "Samedi ships it, but the real defensible differentiator that remains is narrower and more honest"
+            }
+          ],
+          "defensible_differentiator": "Resource-aware scheduling that doesn't break when the infrastructure does. It's verifiable, it's measurable, and it doesn't depend on a network effect we don't have."
+        }
+      },
+      {
+        "id": "gmt-strategy",
+        "type": "custom",
+        "title": "Go-to-Market Strategy: Germany First",
+        "body": "Evidence-based market selection shifts from undecided to recommended.",
+        "payload": {
+          "prior": "GTM sequence was undecided",
+          "evidence": "France is a market Doctolib has already taken (23.2% PMS share). Germany is one it started taking nine months ago (Nov 2025), with insufficient sample size for valid usability data. A narrow window, measurable, and favorable.",
+          "recommendation": "Germany-first GTM. Bring to stakeholder conversation as a recommendation with evidence, not as a design assumption."
+        }
+      },
+      {
+        "id": "strategic-recommendations",
+        "type": "custom",
+        "title": "Strategic Recommendations: What Changed",
+        "body": "Market research reshaped the MVP scope and positioning.",
+        "payload": {
+          "table": [
+            {
+              "prior": "Doctolib is a booking tool moving into PMS",
+              "status": "⚠️ False in France — it's #1 in PMS",
+              "action": "Rewrite the competitive slide"
+            },
+            {
+              "prior": "GTM sequence undecided",
+              "status": "🔵 Evidence now favours Germany-first",
+              "action": "Bring as a recommendation to stakeholders"
+            },
+            {
+              "prior": "Resource-aware scheduling is our differentiator",
+              "status": "⚠️ Samedi ships it at scale",
+              "action": "Necessary, not sufficient — reposition"
+            },
+            {
+              "prior": "Sovereignty is our differentiator",
+              "status": "⚠️ Occupied by both rivals",
+              "action": "Shift to consent architecture + transparency"
+            },
+            {
+              "prior": "Legacy instability is the wedge",
+              "status": "🔵 Confirmed and quantified",
+              "action": "Keep; strengthen with Zi data"
+            },
+            {
+              "prior": "Three-layer architecture",
+              "status": "✅ Unaffected",
+              "action": "Keep"
+            },
+            {
+              "prior": "Calendar Keeper MVP user",
+              "status": "✅ Unaffected — Doctolib built its PVS in close collaboration with MFAs and doctors",
+              "action": "Keep; validates that the MFA is the right target"
+            },
+            {
+              "prior": "—",
+              "status": "🆕 Migration risk as adoption blocker",
+              "action": "Add to MVP requirements; possibly more decisive than any calendar feature"
+            }
+          ]
+        }
+      },
+      {
+        "id": "new-constraints",
+        "type": "custom",
+        "title": "New Technical & Regulatory Constraints",
+        "body": "Market research surfaced compliance requirements not in the original brief.",
+        "payload": {
+          "constraint": "Cloud PVS providers in Germany face §203(3–4) StGB, Art. 28 GDPR, §393 SGB V and BSI C5 attestation requirements — and a data-processing agreement alone does not remove the criminal-law professional-secrecy exposure.",
+          "requirement": "KBV conformity assessment and TI connection are mandatory for cloud systems too.",
+          "implication": "This is a cloud-native entry barrier none of our four project documents captured. Add to technical-constraints register."
+        }
+      },
+      {
+        "id": "market-tailwinds",
+        "type": "custom",
+        "title": "Market Tailwinds & Baseline Metrics",
+        "body": "Research confirmed and quantified key demand signals.",
+        "payload": {
+          "german_infrastructure": [
+            "82% of practices report recurring problems reading the electronic health card (eGK)",
+            "81% report frequent TI connection errors",
+            "71% report regular difficulties creating e-prescriptions"
+          ],
+          "patient_adoption": "64% of Germans have booked a medical appointment online at least once, up from 36% in 2023 — strong tailwind for the patient-surface half of the MVP."
+        }
+      }
+    ]
   }
 ]
