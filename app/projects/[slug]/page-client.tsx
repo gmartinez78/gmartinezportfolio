@@ -3137,6 +3137,81 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-[860px]">
+            <div className="mb-12">
+              <h2 className="font-inter text-[36px] leading-tight text-[#0e2951] mb-3">1. Empathize</h2>
+              <p className="text-[16px] leading-[1.7] text-[#5c7792]">Problem discovery, user interviews, affinity mapping, and competitive market research</p>
+            </div>
+
+            <div className="mb-12">
+              <h3 className="font-inter text-[28px] leading-tight text-[#0e2951] mb-8">User Needs</h3>
+
+              <div className="space-y-8">
+                <div>
+                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">1. Patients — new & existing</h4>
+                  <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-3">Goal: Make an appointment with low effort and minimal disclosure of personal data.</p>
+                  <ul className="space-y-2 text-[16px] leading-[1.7] text-[#5c7792]">
+                    <li>🟡 Abandon booking when forms ask for non-essential info, or in France when INS (Identifiant National de Santé) requires exact birth-registration details — high friction at registration.</li>
+                    <li>🟡 Frustrated by technical failures: blank-page errors, forced logouts, inability to screenshot/copy confirmation info.</li>
+                    <li>🟡 In Germany, Double Opt-In (email/SMS) can leave a slot unconfirmed and effectively lost.</li>
+                    <li>🟡 Frustrated when "no online appointments available" makes the tool feel like wasted effort.</li>
+                    <li>🟡 Erosion of trust when a listed language capability (e.g., "speaks English") doesn't hold up in person — accuracy of practitioner metadata matters for safety, not just satisfaction.</li>
+                    <li>🟡 Distrust of platforms perceived to route consultation notes or data to non-EU AI providers or third parties (ad networks named in the source material) — this is a trust-driven abandonment cause.</li>
+                  </ul>
+                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mt-4"><strong>Consequence of error:</strong> missed/duplicate bookings, abandoned funnel, or (in the language-mismatch case) a care-quality risk.</p>
+                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mt-3"><strong>JTBD (provisional):</strong> "When I need to see a doctor, and I'm unsure of the process, I want to find and confirm a real, available slot without giving up more information than necessary, so I can trust the appointment will actually happen."</p>
+                </div>
+
+                <div>
+                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">2. Caregivers/people booking for someone else</h4>
+                  <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-3">Goal: Manage appointments for a dependent (child, elderly parent) as smoothly as for themselves.</p>
+                  <ul className="space-y-2 text-[16px] leading-[1.7] text-[#5c7792]">
+                    <li>🟡 One-third of French appointments are booked for a relative; ~46% of patients have a linked relative account — this is not an edge case, it's a core flow.</li>
+                    <li>🟡 Birthdate entry via month-by-month dropdown scrolling is a specific, named friction point for this group.</li>
+                  </ul>
+                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mt-4"><strong>Permissions implication:</strong> the product needs a first-class "manage on behalf of" model, not a bolt-on.</p>
+                </div>
+
+                <div>
+                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">3. Older / lower-digital-literacy patients</h4>
+                  <ul className="space-y-2 text-[16px] leading-[1.7] text-[#5c7792]">
+                    <li>🟢/🟡 5.9M French Doctolib users are 65+ (scale signal), but German patients 80+ are described as "overwhelmed" by digital tools, many without smartphones/PCs — this is a market-specific gap, not the same problem in both countries.</li>
+                    <li>🟡 Visually impaired users need accessible booking flows; all patients need clarity on physical accessibility (wheelchair access) of the practice itself.</li>
+                  </ul>
+                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mt-4"><strong>Consequence of error:</strong> exclusion from self-service, which pushes load back onto phone lines — directly connects to the receptionist pain point below.</p>
+                </div>
+
+                <div>
+                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">4. Receptionists / Medical Assistants (MFAs) — France vs. Germany are structurally different roles</h4>
+                  <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-3">Goal: Keep the schedule accurate with minimal manual rework, while handling constant interruptions.</p>
+                  <ul className="space-y-2 text-[16px] leading-[1.7] text-[#5c7792]">
+                    <li>🟡 ~30% of calls to doctors go unanswered; routine calls (insurance checks, rescheduling) bury the front desk.</li>
+                    <li>🟡 German MFAs are frustrated by click-heavy TI workflows (KIM messaging, e-prescriptions) and by card-reader/system crashes after updates.</li>
+                    <li>🟢 Structural difference: in Germany, the MFA is a power user — 3 years trained, performs clinical tasks (blood draws, dressings) and admin (booking, invoicing); average 3.4 per solo practice, up to 19 in MVZs. In France, only ~5% of GPs employ an MFA at all, and tasks are mostly administrative.</li>
+                  </ul>
+                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mt-4"><strong>Design implication (empathy-level, not yet a decision):</strong> "the receptionist" is not one persona — Germany needs an assistant-centric, delegation-capable interface; France needs the doctor to remain the central actor. This is one of the sharpest tensions in the whole project.</p>
+                </div>
+
+                <div>
+                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">5. Doctors/clinicians</h4>
+                  <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-3">Goal: Maximize clinical time, minimize administrative drag.</p>
+                  <ul className="space-y-2 text-[16px] leading-[1.7] text-[#5c7792]">
+                    <li>🟢 Structural difference in how doctors use time: Germany — 9.8 contacts/year, ~8 min/visit, high patient turnover, "one-click" documentation need. France — 5.9 contacts/year, 16–18 min/visit, favors longitudinal notes and longer-form UI.</li>
+                    <li>🟡 ~10 hours/week lost to administrative bottlenecks (cited as the pain point Doctolib is attacking with AI call-handling).</li>
+                  </ul>
+                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mt-4"><strong>Consequence of error:</strong> double-booking or lost time directly reduces billable clinical capacity — this group is revenue-sensitive to scheduling errors in a way patients aren't.</p>
+                </div>
+
+                <div>
+                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">6. Clinic managers/administrators, and internal CX/support teams</h4>
+                  <p className="text-[16px] leading-[1.7] text-[#5c7792]">🔴 Gap: we don't have direct evidence for this group yet. The source material speaks to receptionists and doctors but not practice owners/managers or internal implementation teams. Flagging this as an open research need rather than inventing needs for them.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="grid gap-16 lg:grid-cols-2">
             <div>
               <SectionHeading eyebrow="Admins' Pain" title="Points" className="mb-8" />
@@ -3647,12 +3722,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         </section>
       ) : null}
-
-      {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG && findBlock("research") ? (() => {
-        const block = findBlock("research")!;
-        const items = getPayloadList(block.payload, "items");
-
-        return (
 
       {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG && findBlock("research") ? (() => {
         const block = findBlock("research")!;
