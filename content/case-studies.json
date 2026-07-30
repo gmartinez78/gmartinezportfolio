@@ -1502,8 +1502,7 @@
       {
         "id": "overview",
         "type": "overview",
-        "title": "Project Overview",
-        "body": "This case study documents a design thinking + AI-powered discovery process that uncovered the real problems in clinical scheduling. It led to a phased MVP strategy that challenges conventional wisdom about what matters first."
+        "title": "Project Overview"
       },
       {
         "id": "design-thinking-facilitation",

@@ -3141,38 +3141,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <div className="mx-auto max-w-[860px]">
             <div className="mb-12">
               <h2 className="font-inter text-[36px] leading-tight text-[#0e2951] mb-3">1. Empathize</h2>
-              <p className="text-[16px] leading-[1.7] text-[#5c7792]">Problem discovery, user interviews, affinity mapping, and competitive market research</p>
+              <p className="text-[16px] leading-[1.7] text-[#5c7792]">I analyzed Doctolib, Samedi, and German and French incumbents to map the competitive landscape. <strong>Key findings:</strong> Doctolib dominates France (23.2% of general practitioner market), but Germany is vulnerable — Doctolib's tool launched only 9 months ago with no reliable usage data. Samedi occupies two of Calendar Keeper's claimed differentiators but lacks a patient search portal and self-service onboarding. The real blocker to switching isn't features — it's data migration fear (44.8% of practices). German incumbents are fragmented (32 systems) and weak; France is locked by three major players with government subsidy support. Any cloud solution in Germany faces strict regulatory barriers: professional confidentiality laws, data protection rules, and mandatory security certifications.</p>
             </div>
 
             <div className="mb-12">
               <h3 className="font-inter text-[28px] leading-tight text-[#0e2951] mb-8">Competitive Analysis</h3>
 
               <div className="space-y-8">
-                <div>
-                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">The three findings that change the conclusions</h4>
-
-                  <div className="space-y-6">
-                    <div>
-                      <h5 className="font-inter text-[18px] font-semibold text-[#0e2951] mb-3">1. ⚠️ Doctolib has already won the French PMS market. Not "moving into" it — won it.</h5>
-                      <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-3">Doctolib is the most-used GP practice-management software in France as of March 2026, with 23.2% of electronic care-claim transmissions to GIE SESAM-Vitale, ahead of Weda (14.0%), Medistory (10.1%) and HelloDoc (8.1%). It also leads the specialist segment at 15.4%. It went from 0% to 23.2% in five years — and did it without acquisitions, purely by attaching software to its booking platform.</p>
-                      <p className="text-[16px] leading-[1.7] text-[#5c7792]">This inverts our earlier framing. In France, Doctolib now holds both patient distribution and practice distribution. Our "we're strong where they're weak" argument does not hold in France.</p>
-                    </div>
-
-                    <div>
-                      <h5 className="font-inter text-[18px] font-semibold text-[#0e2951] mb-3">2. 🔵 In Germany, the same move is barely underway — and that's a narrow, dated window.</h5>
-                      <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-3">Doctolib's German PVS launched in November 2025, initially only for GPs, pediatricians and gynecologists, with further specialties promised during the following year. In the Zi 2026 evaluation, Doctolib had insufficient sample size to produce valid usability, NPS or error-rate data.</p>
-                      <p className="text-[16px] leading-[1.7] text-[#5c7792]">Read together, findings 1 and 2 are the strongest empirical argument yet for Germany-first GTM — a decision our documents listed as 🔴 undecided. France is a market Doctolib has already taken; Germany is one it started taking nine months ago. I'd bring this to the stakeholder conversation as a recommendation with evidence, not as a design assumption.</p>
-                    </div>
-
-                    <div>
-                      <h5 className="font-inter text-[18px] font-semibold text-[#0e2951] mb-3">3. ⚠️ Samedi is a far more serious competitor than our documents implied — and it partly occupies our differentiation.</h5>
-                      <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-3">Our brief had it as a price point (€35–59/user). In fact: Samedi is a Berlin-based SaaS platform with over 43 bidirectional AIS/KIS interfaces synchronising with existing practice systems, used by more than 48,000 doctors across roughly 10,000 institutions in the DACH region, offering online booking with a waitlist, dynamic resource planning, digital forms with legally-valid e-signature and integrated payment — backed by EU-patented end-to-end encryption, TÜV certification and ISO 27001/9001.</p>
-                      <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-3">That is resource-aware scheduling plus sovereignty positioning plus waitlist/backfill, already shipped, at scale. Two of our three claimed differentiators are occupied. This is exactly the gap I flagged as "close this first," and the answer is uncomfortable — which is why it was worth checking.</p>
-                      <p className="text-[16px] leading-[1.7] text-[#5c7792]"><strong>Their real gaps:</strong> no public patient-search portal of their own (new-patient acquisition depends on jameda integration), per-doctor pricing that compounds badly for group practices and MVZs, no free entry tier, and no self-service onboarding — setup requires a consultation.</p>
-                    </div>
-                  </div>
-                </div>
-
                 <div>
                   <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">Market displacement dynamics</h4>
                   <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-4">Practices wanting to switch PVS: 33.3% in 2025 (down from 44.4% in 2024). One in three is actively shopping. The decline is attributed to perceived switching barriers, not improved satisfaction — demand is suppressed, not satisfied.</p>
@@ -3182,8 +3157,198 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
 
                 <div>
+                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">🇩🇪 German legacy PMS (PVS) incumbents</h4>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-[14px] border-collapse">
+                      <thead>
+                        <tr className="bg-[#f5f6f7]">
+                          <th className="border border-[#d9e5f2] px-4 py-3 text-left font-semibold text-[#0e2951]">Vendor/Product</th>
+                          <th className="border border-[#d9e5f2] px-4 py-3 text-left font-semibold text-[#0e2951]">Market Share</th>
+                          <th className="border border-[#d9e5f2] px-4 py-3 text-left font-semibold text-[#0e2951]">Position</th>
+                          <th className="border border-[#d9e5f2] px-4 py-3 text-left font-semibold text-[#0e2951]">Vulnerability</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="bg-white">
+                          <td className="border border-[#d9e5f2] px-4 py-3">CompuGroup Medical (CGM) — MEDISTAR, TURBOMED, ALBIS, M1 PRO, eVitale</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">🔵 23.1% across five systems</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">Market leader by installed base; deepest module range</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">Eight largest systems steadily losing share since 2014; bottom-ranked on satisfaction</td>
+                        </tr>
+                        <tr className="bg-[#f9fbfc]">
+                          <td className="border border-[#d9e5f2] px-4 py-3">medatixx — medatixx, x.isynet, x.concept, x.comfort, EL</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">🔵 15.2% aggregate</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">#2; strongest absolute installation growth (+843 in 2023)</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">Reported to offer doctors discount for practice data for AI training</td>
+                        </tr>
+                        <tr className="bg-white">
+                          <td className="border border-[#d9e5f2] px-4 py-3">tomedo (zollsoft)</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">🟡 Sub-2% but growing (+538)</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">Apple/Mac-native; best-rated system in market</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">NPS 9.1 among switchers vs. market average 5.7</td>
+                        </tr>
+                        <tr className="bg-[#f9fbfc]">
+                          <td className="border border-[#d9e5f2] px-4 py-3">T2med</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">🟡 Growing fastest (+686/+93 per quarter)</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">Cloud-era challenger</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">Little independent evidence</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mt-4"><strong>Market structure:</strong> 32 KBV-certified systems are active, covering roughly 77% of ambulatory physicians — and 18 of those 32 would not be recommended by their own users.</p>
+                </div>
+
+                <div>
+                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">🇫🇷 French PMS incumbents</h4>
+                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-4">Share measured by transmitted electronic care claims — the most reliable indicator of real field usage.</p>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-[14px] border-collapse">
+                      <thead>
+                        <tr className="bg-[#f5f6f7]">
+                          <th className="border border-[#d9e5f2] px-4 py-3 text-left font-semibold text-[#0e2951]">Publisher / Product</th>
+                          <th className="border border-[#d9e5f2] px-4 py-3 text-left font-semibold text-[#0e2951]">GP Share (Mar 2026)</th>
+                          <th className="border border-[#d9e5f2] px-4 py-3 text-left font-semibold text-[#0e2951]">Position</th>
+                          <th className="border border-[#d9e5f2] px-4 py-3 text-left font-semibold text-[#0e2951]">Vulnerability</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="bg-white">
+                          <td className="border border-[#d9e5f2] px-4 py-3">Doctolib</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">🔵 23.2% GP, 15.4% specialist</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">#1 in both. Ségur-referenced, HDS-hosted, ~€135/month/practitioner</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">Live data-protection controversy</td>
+                        </tr>
+                        <tr className="bg-[#f9fbfc]">
+                          <td className="border border-[#d9e5f2] px-4 py-3">Cegedim Santé — Weda, Crossway, MonLogicielMedical</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">🔵 Weda 14.0%</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">Most diversified publisher; present in 8 of 14 specialties</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">2026 data breach affecting ~15 million people</td>
+                        </tr>
+                        <tr className="bg-white">
+                          <td className="border border-[#d9e5f2] px-4 py-3">Imagine Editions — HelloDoc</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">🔵 8.1%</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">Historic leader</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">Fell from 18.4% to 8.1% in seven years</td>
+                        </tr>
+                        <tr className="bg-[#f9fbfc]">
+                          <td className="border border-[#d9e5f2] px-4 py-3">Prokov — Medistory</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">🔵 10.1%</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">Long-standing Mac reference</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">No independent UX evidence</td>
+                        </tr>
+                        <tr className="bg-white">
+                          <td className="border border-[#d9e5f2] px-4 py-3">Olaqin — Stellair Integral</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">🔵 7.3%</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">Mid-tier</td>
+                          <td className="border border-[#d9e5f2] px-4 py-3">—</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mt-4"><strong>Concentration:</strong> The top five GP systems cover close to 63% of the market. <strong>Business-model fact:</strong> France's Forfait Structure reached up to €7,805 per year for a GP in 2025, materially offsetting software cost — a public subsidy partly funds this category.</p>
+                </div>
+
+                <div>
                   <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">🆕 Technical/regulatory constraint we'd missed</h4>
                   <p className="text-[16px] leading-[1.7] text-[#5c7792]">Cloud PVS providers in Germany face §203(3–4) StGB, Art. 28 GDPR, §393 SGB V and BSI C5 attestation requirements — and a data-processing agreement alone does not remove the criminal-law professional-secrecy exposure. KBV conformity assessment and TI connection are mandatory for cloud systems too. This belongs in our technical-constraints register. It's a cloud-native entry barrier none of our four project documents captured.</p>
+                </div>
+
+                <div>
+                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">📊 Feature & Capability Comparison</h4>
+                  <div className="overflow-x-auto mt-4">
+                    <table className="w-full text-[13px] border-collapse">
+                      <thead>
+                        <tr className="bg-[#f0f5fa]">
+                          <th className="border border-[#d9e5f2] px-3 py-2 text-left font-semibold text-[#0e2951]">Feature</th>
+                          <th className="border border-[#d9e5f2] px-3 py-2 text-center font-semibold text-[#0e2951]">Calendar Keeper</th>
+                          <th className="border border-[#d9e5f2] px-3 py-2 text-center font-semibold text-[#0e2951]">Doctolib</th>
+                          <th className="border border-[#d9e5f2] px-3 py-2 text-center font-semibold text-[#0e2951]">Samedi</th>
+                          <th className="border border-[#d9e5f2] px-3 py-2 text-center font-semibold text-[#0e2951]">German Incumbents</th>
+                          <th className="border border-[#d9e5f2] px-3 py-2 text-center font-semibold text-[#0e2951]">French Incumbents</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="bg-white">
+                          <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Patient Booking</td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                        </tr>
+                        <tr className="bg-[#f9fbfc]">
+                          <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Data Migration Tools</td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓ MVP</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                        </tr>
+                        <tr className="bg-white">
+                          <td className="border border-[#d9e5f2] px-3 py-2 font-medium">End-to-End Encryption</td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                        </tr>
+                        <tr className="bg-[#f9fbfc]">
+                          <td className="border border-[#d9e5f2] px-3 py-2 font-medium">EU Data Sovereignty</td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                        </tr>
+                        <tr className="bg-white">
+                          <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Waitlist / Backfill</td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                        </tr>
+                        <tr className="bg-[#f9fbfc]">
+                          <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Usability / Satisfaction</td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                        </tr>
+                        <tr className="bg-white">
+                          <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Self-Service Onboarding</td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                        </tr>
+                        <tr className="bg-[#f9fbfc]">
+                          <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Free Entry Tier</td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className="mt-4 p-4 bg-[#f0fdf4] border-l-4 border-[#16a34a] rounded">
+                    <p className="text-[15px] leading-[1.7] text-[#5c7792]"><strong>Key Finding:</strong> Data migration is the real differentiator — 44.8% of German practices fear data won't migrate cleanly. This is the #1 blocker to switching, making it a more valuable MVP feature than additional compliance certifications or payment integrations.</p>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">🎯 Empathize Phase Conclusion</h4>
+                  <div className="space-y-4">
+                    <p className="text-[16px] leading-[1.7] text-[#5c7792]"><strong>Strategic decision:</strong> Focus on Germany, not France. France is already won by Doctolib and locked by government subsidy. Germany's market is fragmented and vulnerable, with a 9-month window before Doctolib gains reliable usage data and market share.</p>
+                    <p className="text-[16px] leading-[1.7] text-[#5c7792]"><strong>Product strategy pivot:</strong> Reframe differentiators. Resource-aware scheduling and sovereignty are occupied by Samedi. Instead, lead with data migration as the first MVP feature — it addresses the #1 switching barrier and the biggest pain point practices name.</p>
+                    <p className="text-[16px] leading-[1.7] text-[#5c7792]"><strong>Positioning against Samedi:</strong> We compete on usability (Samedi requires consultative setup) and self-service onboarding (Samedi doesn't offer it). For groups and multi-practice clinics, our transparent pricing model beats Samedi's per-doctor model.</p>
+                    <p className="text-[16px] leading-[1.7] text-[#5c7792]"><strong>Regulatory requirement:</strong> Must secure BSI C5 attestation, ensure GDPR Art. 28 compliance, and address §203 StGB professional confidentiality exposure from day one — not as a roadmap item, but as a launch requirement.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -3191,66 +3356,106 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="mb-12">
               <h3 className="font-inter text-[28px] leading-tight text-[#0e2951] mb-8">User Needs</h3>
 
-              <div className="space-y-8">
-                <div>
-                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">1. Patients — new & existing</h4>
-                  <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-3">Goal: Make an appointment with low effort and minimal disclosure of personal data.</p>
-                  <ul className="space-y-2 text-[16px] leading-[1.7] text-[#5c7792]">
-                    <li>🟡 Abandon booking when forms ask for non-essential info, or in France when INS (Identifiant National de Santé) requires exact birth-registration details — high friction at registration.</li>
-                    <li>🟡 Frustrated by technical failures: blank-page errors, forced logouts, inability to screenshot/copy confirmation info.</li>
-                    <li>🟡 In Germany, Double Opt-In (email/SMS) can leave a slot unconfirmed and effectively lost.</li>
-                    <li>🟡 Frustrated when "no online appointments available" makes the tool feel like wasted effort.</li>
-                    <li>🟡 Erosion of trust when a listed language capability (e.g., "speaks English") doesn't hold up in person — accuracy of practitioner metadata matters for safety, not just satisfaction.</li>
-                    <li>🟡 Distrust of platforms perceived to route consultation notes or data to non-EU AI providers or third parties (ad networks named in the source material) — this is a trust-driven abandonment cause.</li>
-                  </ul>
-                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mt-4"><strong>Consequence of error:</strong> missed/duplicate bookings, abandoned funnel, or (in the language-mismatch case) a care-quality risk.</p>
-                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mt-3"><strong>JTBD (provisional):</strong> "When I need to see a doctor, and I'm unsure of the process, I want to find and confirm a real, available slot without giving up more information than necessary, so I can trust the appointment will actually happen."</p>
-                </div>
-
-                <div>
-                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">2. Caregivers/people booking for someone else</h4>
-                  <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-3">Goal: Manage appointments for a dependent (child, elderly parent) as smoothly as for themselves.</p>
-                  <ul className="space-y-2 text-[16px] leading-[1.7] text-[#5c7792]">
-                    <li>🟡 One-third of French appointments are booked for a relative; ~46% of patients have a linked relative account — this is not an edge case, it's a core flow.</li>
-                    <li>🟡 Birthdate entry via month-by-month dropdown scrolling is a specific, named friction point for this group.</li>
-                  </ul>
-                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mt-4"><strong>Permissions implication:</strong> the product needs a first-class "manage on behalf of" model, not a bolt-on.</p>
-                </div>
-
-                <div>
-                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">3. Older / lower-digital-literacy patients</h4>
-                  <ul className="space-y-2 text-[16px] leading-[1.7] text-[#5c7792]">
-                    <li>🟢/🟡 5.9M French Doctolib users are 65+ (scale signal), but German patients 80+ are described as "overwhelmed" by digital tools, many without smartphones/PCs — this is a market-specific gap, not the same problem in both countries.</li>
-                    <li>🟡 Visually impaired users need accessible booking flows; all patients need clarity on physical accessibility (wheelchair access) of the practice itself.</li>
-                  </ul>
-                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mt-4"><strong>Consequence of error:</strong> exclusion from self-service, which pushes load back onto phone lines — directly connects to the receptionist pain point below.</p>
-                </div>
-
-                <div>
-                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">4. Receptionists / Medical Assistants (MFAs) — France vs. Germany are structurally different roles</h4>
-                  <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-3">Goal: Keep the schedule accurate with minimal manual rework, while handling constant interruptions.</p>
-                  <ul className="space-y-2 text-[16px] leading-[1.7] text-[#5c7792]">
-                    <li>🟡 ~30% of calls to doctors go unanswered; routine calls (insurance checks, rescheduling) bury the front desk.</li>
-                    <li>🟡 German MFAs are frustrated by click-heavy TI workflows (KIM messaging, e-prescriptions) and by card-reader/system crashes after updates.</li>
-                    <li>🟢 Structural difference: in Germany, the MFA is a power user — 3 years trained, performs clinical tasks (blood draws, dressings) and admin (booking, invoicing); average 3.4 per solo practice, up to 19 in MVZs. In France, only ~5% of GPs employ an MFA at all, and tasks are mostly administrative.</li>
-                  </ul>
-                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mt-4"><strong>Design implication (empathy-level, not yet a decision):</strong> "the receptionist" is not one persona — Germany needs an assistant-centric, delegation-capable interface; France needs the doctor to remain the central actor. This is one of the sharpest tensions in the whole project.</p>
-                </div>
-
-                <div>
-                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">5. Doctors/clinicians</h4>
-                  <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-3">Goal: Maximize clinical time, minimize administrative drag.</p>
-                  <ul className="space-y-2 text-[16px] leading-[1.7] text-[#5c7792]">
-                    <li>🟢 Structural difference in how doctors use time: Germany — 9.8 contacts/year, ~8 min/visit, high patient turnover, "one-click" documentation need. France — 5.9 contacts/year, 16–18 min/visit, favors longitudinal notes and longer-form UI.</li>
-                    <li>🟡 ~10 hours/week lost to administrative bottlenecks (cited as the pain point Doctolib is attacking with AI call-handling).</li>
-                  </ul>
-                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mt-4"><strong>Consequence of error:</strong> double-booking or lost time directly reduces billable clinical capacity — this group is revenue-sensitive to scheduling errors in a way patients aren't.</p>
-                </div>
-
-                <div>
-                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">6. Clinic managers/administrators, and internal CX/support teams</h4>
-                  <p className="text-[16px] leading-[1.7] text-[#5c7792]">🔴 Gap: we don't have direct evidence for this group yet. The source material speaks to receptionists and doctors but not practice owners/managers or internal implementation teams. Flagging this as an open research need rather than inventing needs for them.</p>
-                </div>
+              <div className="space-y-3">
+                {[
+                  {
+                    id: "patients",
+                    title: "1. Patients — new & existing",
+                    goal: "Make an appointment with low effort and minimal disclosure of personal data.",
+                    needs: [
+                      "🟡 Abandon booking when forms ask for non-essential info, or in France when INS (Identifiant National de Santé) requires exact birth-registration details — high friction at registration.",
+                      "🟡 Frustrated by technical failures: blank-page errors, forced logouts, inability to screenshot/copy confirmation info.",
+                      "🟡 In Germany, Double Opt-In (email/SMS) can leave a slot unconfirmed and effectively lost.",
+                      "🟡 Frustrated when \"no online appointments available\" makes the tool feel like wasted effort.",
+                      "🟡 Erosion of trust when a listed language capability (e.g., \"speaks English\") doesn't hold up in person — accuracy of practitioner metadata matters for safety, not just satisfaction.",
+                      "🟡 Distrust of platforms perceived to route consultation notes or data to non-EU AI providers or third parties (ad networks named in the source material) — this is a trust-driven abandonment cause."
+                    ],
+                    consequence: "missed/duplicate bookings, abandoned funnel, or (in the language-mismatch case) a care-quality risk.",
+                    jtbd: "When I need to see a doctor, and I'm unsure of the process, I want to find and confirm a real, available slot without giving up more information than necessary, so I can trust the appointment will actually happen."
+                  },
+                  {
+                    id: "caregivers",
+                    title: "2. Caregivers/people booking for someone else",
+                    goal: "Manage appointments for a dependent (child, elderly parent) as smoothly as for themselves.",
+                    needs: [
+                      "🟡 One-third of French appointments are booked for a relative; ~46% of patients have a linked relative account — this is not an edge case, it's a core flow.",
+                      "🟡 Birthdate entry via month-by-month dropdown scrolling is a specific, named friction point for this group."
+                    ],
+                    consequence: "the product needs a first-class \"manage on behalf of\" model, not a bolt-on."
+                  },
+                  {
+                    id: "elderly",
+                    title: "3. Older / lower-digital-literacy patients",
+                    needs: [
+                      "🟢/🟡 5.9M French Doctolib users are 65+ (scale signal), but German patients 80+ are described as \"overwhelmed\" by digital tools, many without smartphones/PCs — this is a market-specific gap, not the same problem in both countries.",
+                      "🟡 Visually impaired users need accessible booking flows; all patients need clarity on physical accessibility (wheelchair access) of the practice itself."
+                    ],
+                    consequence: "exclusion from self-service, which pushes load back onto phone lines — directly connects to the receptionist pain point below."
+                  },
+                  {
+                    id: "receptionists",
+                    title: "4. Receptionists / Medical Assistants (MFAs) — France vs. Germany are structurally different roles",
+                    goal: "Keep the schedule accurate with minimal manual rework, while handling constant interruptions.",
+                    needs: [
+                      "🟡 ~30% of calls to doctors go unanswered; routine calls (insurance checks, rescheduling) bury the front desk.",
+                      "🟡 German MFAs are frustrated by click-heavy TI workflows (KIM messaging, e-prescriptions) and by card-reader/system crashes after updates.",
+                      "🟢 Structural difference: in Germany, the MFA is a power user — 3 years trained, performs clinical tasks (blood draws, dressings) and admin (booking, invoicing); average 3.4 per solo practice, up to 19 in MVZs. In France, only ~5% of GPs employ an MFA at all, and tasks are mostly administrative."
+                    ],
+                    consequence: "Germany needs an assistant-centric, delegation-capable interface; France needs the doctor to remain the central actor. This is one of the sharpest tensions in the whole project."
+                  },
+                  {
+                    id: "doctors",
+                    title: "5. Doctors/clinicians",
+                    goal: "Maximize clinical time, minimize administrative drag.",
+                    needs: [
+                      "🟢 Structural difference in how doctors use time: Germany — 9.8 contacts/year, ~8 min/visit, high patient turnover, \"one-click\" documentation need. France — 5.9 contacts/year, 16–18 min/visit, favors longitudinal notes and longer-form UI.",
+                      "🟡 ~10 hours/week lost to administrative bottlenecks (cited as the pain point Doctolib is attacking with AI call-handling)."
+                    ],
+                    consequence: "double-booking or lost time directly reduces billable clinical capacity — this group is revenue-sensitive to scheduling errors in a way patients aren't."
+                  },
+                  {
+                    id: "managers",
+                    title: "6. Clinic managers/administrators, and internal CX/support teams",
+                    needs: [
+                      "🔴 Gap: we don't have direct evidence for this group yet. The source material speaks to receptionists and doctors but not practice owners/managers or internal implementation teams. Flagging this as an open research need rather than inventing needs for them."
+                    ]
+                  }
+                ].map((userType) => (
+                  <div key={userType.id} className="border border-[#d9e5f2] rounded-lg overflow-hidden">
+                    <button
+                      onClick={() => setExpandedUserNeed(expandedUserNeed === userType.id ? null : userType.id)}
+                      className="w-full flex items-center justify-between p-5 bg-white hover:bg-[#f8fbff] transition-colors"
+                    >
+                      <h4 className="font-inter text-[18px] font-semibold text-[#0e2951] text-left">{userType.title}</h4>
+                      <svg
+                        className={`w-5 h-5 text-[#0e2951] transition-transform ${expandedUserNeed === userType.id ? "rotate-180" : ""}`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                      </svg>
+                    </button>
+                    {expandedUserNeed === userType.id && (
+                      <div className="px-5 pb-5 border-t border-[#d9e5f2] bg-[#fafbfc]">
+                        {userType.goal && (
+                          <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-4">Goal: {userType.goal}</p>
+                        )}
+                        <ul className="space-y-3 mb-4">
+                          {userType.needs.map((need, idx) => (
+                            <li key={idx} className="text-[15px] leading-[1.6] text-[#5c7792]">{need}</li>
+                          ))}
+                        </ul>
+                        {userType.consequence && (
+                          <p className="text-[15px] leading-[1.6] text-[#5c7792]"><strong>Consequence:</strong> {userType.consequence}</p>
+                        )}
+                        {userType.jtbd && (
+                          <p className="text-[15px] leading-[1.6] text-[#5c7792] mt-3"><strong>JTBD (provisional):</strong> "{userType.jtbd}"</p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
