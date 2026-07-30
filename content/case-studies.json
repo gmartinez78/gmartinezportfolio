@@ -1382,12 +1382,12 @@
     "status": "published",
     "featured": false,
     "order": 8,
-    "title": "Calendar Keeper: Resource-Aware Scheduling for Healthcare",
+    "title": "Calendar Keeper",
     "company": "HRS",
-    "client_context": "Healthcare practice management software for France and Germany",
-    "role": "Product Strategist & UX Designer",
+    "client_context": "HRS",
+    "role": "Sr Product Designer",
     "year": 2026,
-    "duration": "Design thinking process: 3 months",
+    "duration": "4-6 hours",
     "industry": "Healthcare / Practice Management SaaS",
     "tagline": "A design thinking + AI-powered discovery uncovering the real problem behind clinical scheduling, leading to a phased MVP strategy that prioritizes resource dependencies over backfill.",
     "tags": [
@@ -1404,11 +1404,11 @@
       "AI Product"
     ],
     "tools": [
-      "Claude",
-      "Figma",
-      "Miro",
-      "Notion",
-      "NotebookLM"
+      "Claude AI",
+      "Gemini",
+      "NotebookLM",
+      "ChatGPT",
+      "Codex"
     ],
     "images": {
       "cover": "/images/projects/calendar-keeper/thumbnails/calendar-keeper-cover.png",
@@ -1509,6 +1509,32 @@
         "body": "This case study documents a design thinking + AI-powered discovery process that uncovered the real problems in clinical scheduling. It led to a phased MVP strategy that challenges conventional wisdom about what matters first."
       },
       {
+        "id": "methodology",
+        "type": "custom",
+        "title": "Methodology: Design Thinking + Competitive Intelligence",
+        "body": "The discovery process followed a structured design thinking approach across four phases, augmented with AI tools and rigorous market research.",
+        "payload": {
+          "phases": [
+            {
+              "phase": "Empathize",
+              "description": "Problem discovery, user interviews, affinity mapping, and competitive market research"
+            },
+            {
+              "phase": "Define",
+              "description": "Persona synthesis, affinity-map insights, and root-cause problem statements"
+            },
+            {
+              "phase": "Ideate",
+              "description": "How-might-we questioning, hypothesis testing, and strategic alignment"
+            },
+            {
+              "phase": "Prototype",
+              "description": "Phased MVP strategy, competitive positioning, and go-to-market sequencing"
+            }
+          ]
+        }
+      },
+      {
         "id": "empathize-intro",
         "type": "custom",
         "title": "Empathize: Problem Discovery & Market Research",
@@ -1530,32 +1556,6 @@
             "Both the Calendar Keeper and the returning patient need visible proof that health data stays in Europe, because sovereignty is a named trust-breaker and a 2026 compliance requirement.",
             "The returning patient needs to rebook or manage an existing appointment quickly using identity already on file, because deflecting that routine call is the entire mechanism by which the Calendar Keeper's workload actually drops.",
             "A returning patient occasionally booking for a named dependent needs a minimal, manual-entry path, not full account linking."
-          ]
-        }
-      },
-      {
-        "id": "affinity-map",
-        "type": "custom",
-        "title": "Affinity Map: What Shapes the Primary Flow",
-        "body": "Research revealed deep structural differences that shape product architecture decisions.",
-        "payload": {
-          "findings": [
-            {
-              "title": "France and Germany are staffed like two different professions",
-              "details": "GP density is 107/100k in France vs. 66/100k in Germany; consultation rhythm follows the same divide — 5.9 visits/year at 16–18 minutes in France, 9.8 visits/year at ~8 minutes in Germany. This is why the Calendar Keeper needs two real variants rather than one interface with a language toggle."
-            },
-            {
-              "title": "The calendar has to be trustworthy, not just present",
-              "details": "Patients who search extensively and hit 'no appointments available' describe the tool as a waste of time. On the operations side, 81% of German practices report TI connector errors and 82% report failures reading the eGK card — meaning the calendar itself becomes unreliable before a patient ever sees it."
-            },
-            {
-              "title": "The front desk is already underwater",
-              "details": "Roughly 30% of calls to doctors go unanswered. German MFAs specifically cite click-heavy TI workflows and card-reader failures as recurring stressors. The 10 hours/week lost to administrative work is exactly what competitors are targeting with AI call-handling."
-            },
-            {
-              "title": "Data sovereignty is a trust condition, not a feature",
-              "details": "Trust breaks when consultation data appears to reach non-European AI models or third parties. This isn't segment-specific — it matters to the Calendar Keeper (compliance exposure) and the returning patient (trust) equally, and September 2026 rules make EEA-only hosting a requirement rather than a preference."
-            }
           ]
         }
       },
@@ -1629,6 +1629,32 @@
         "type": "custom",
         "title": "Define: Personas, Patterns & Root Causes",
         "body": "The define phase synthesized research into persona models and identified the structural problems beneath the surface complaints."
+      },
+      {
+        "id": "affinity-map",
+        "type": "custom",
+        "title": "Affinity Map: What Shapes the Primary Flow",
+        "body": "Research revealed deep structural differences that shape product architecture decisions.",
+        "payload": {
+          "findings": [
+            {
+              "title": "France and Germany are staffed like two different professions",
+              "details": "GP density is 107/100k in France vs. 66/100k in Germany; consultation rhythm follows the same divide — 5.9 visits/year at 16–18 minutes in France, 9.8 visits/year at ~8 minutes in Germany. This is why the Calendar Keeper needs two real variants rather than one interface with a language toggle."
+            },
+            {
+              "title": "The calendar has to be trustworthy, not just present",
+              "details": "Patients who search extensively and hit 'no appointments available' describe the tool as a waste of time. On the operations side, 81% of German practices report TI connector errors and 82% report failures reading the eGK card — meaning the calendar itself becomes unreliable before a patient ever sees it."
+            },
+            {
+              "title": "The front desk is already underwater",
+              "details": "Roughly 30% of calls to doctors go unanswered. German MFAs specifically cite click-heavy TI workflows and card-reader failures as recurring stressors. The 10 hours/week lost to administrative work is exactly what competitors are targeting with AI call-handling."
+            },
+            {
+              "title": "Data sovereignty is a trust condition, not a feature",
+              "details": "Trust breaks when consultation data appears to reach non-European AI models or third parties. This isn't segment-specific — it matters to the Calendar Keeper (compliance exposure) and the returning patient (trust) equally, and September 2026 rules make EEA-only hosting a requirement rather than a preference."
+            }
+          ]
+        }
       },
       {
         "id": "personas",

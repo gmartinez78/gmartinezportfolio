@@ -6,7 +6,7 @@ import { buildMetadata, getBreadcrumbSchema, getCaseStudySchema } from "@/lib/se
 const caseStudy = (caseStudies as CaseStudyRecord[]).find((study) => study.slug === "calendar-keeper");
 
 export const metadata = buildMetadata({
-  title: "Calendar Keeper: Design Thinking & Healthcare PMS Strategy",
+  title: "Calendar Keeper",
   description:
     "A design thinking + AI-powered discovery process uncovering real clinical scheduling problems, leading to a phased MVP strategy for healthcare practice management.",
   path: "/calendar-keeper",
@@ -42,7 +42,7 @@ export default function CalendarKeeperLayout({ children }: { children: ReactNode
             getBreadcrumbSchema([
               { name: "Home", path: "/" },
               { name: "Projects", path: "/projects" },
-              { name: "Calendar Keeper: Resource-Aware Scheduling for Healthcare", path: "/calendar-keeper" },
+              { name: "Calendar Keeper", path: "/calendar-keeper" },
             ]),
           ),
         }}
