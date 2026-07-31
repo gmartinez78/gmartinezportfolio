@@ -2597,12 +2597,22 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </div>
       </section>
 
+      {caseStudy.slug === "calendar-keeper" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-[860px] text-center space-y-6">
+            <h2 className="font-inter text-[36px] leading-tight text-[#0e2951] mb-8">Problem</h2>
+            <p className="text-[16px] leading-[1.7] text-[#5c7792]">For this case, I was tasked to design a new appointment scheduling system for clinics and medical practices in France and Germany. My role was to understand the market, identify the biggest opportunities and pain points, and define an MVP that could compete with existing solutions.</p>
+            <p className="text-[16px] leading-[1.7] text-[#5c7792]">I started by researching users, competitors, and regulatory constraints to uncover the most critical problems. From there, I translated those insights into product opportunities and designed an experience that made scheduling more efficient, reliable, and intuitive for healthcare staff and patients.</p>
+          </div>
+        </section>
+      ) : null}
+
       {caseStudy.slug !== "flock-accessibility-system" && caseStudy.slug !== "reversetech" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading
             eyebrow={["nayya-ai-benefits", "i9-everify-integration"].includes(caseStudy.slug) ? methodologyName : "Methodology"}
             title={["nayya-ai-benefits", "i9-everify-integration"].includes(caseStudy.slug) ? "Methodology" : methodologyName}
-            centered={["nayya-ai-benefits", "i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG].includes(caseStudy.slug)}
+            centered={["nayya-ai-benefits", "i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG, "calendar-keeper"].includes(caseStudy.slug)}
             className="mb-12"
           />
           <div className="grid gap-4 md:grid-cols-5">
@@ -3141,113 +3151,26 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[860px]">
             <div className="mb-12">
-              <h2 className="font-inter text-[36px] leading-tight text-[#0e2951] mb-3">1. Empathize</h2>
-              <p className="text-[16px] leading-[1.7] text-[#5c7792]">I analyzed Doctolib, Samedi, and German/French competitors to map the market. Doctolib dominates France, while Germany remains less mature. Samedi covers some key differentiators but lacks patient search and self-service onboarding. The biggest adoption barrier is data migration concerns (44.8%), not missing features. Germany's fragmented market creates opportunity, although strict healthcare regulations remain a major challenge.</p>
+              <h2 className="font-inter text-[36px] leading-tight text-[#0e2951] mb-8">Research</h2>
+              <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-6">I started by conducting a strategic research phase to understand the healthcare ecosystem in France and Germany. I analyzed the market, competitors, regulations, and care delivery models to identify the biggest opportunities and constraints. I also synthesized stakeholder and user insights to understand the needs of patients, medical assistants, doctors, and clinic managers. Based on this research, I prioritized the primary users, defined personas, problem statements, and user journeys, and identified the highest-impact MVP. This process allowed me to move from a broad market opportunity to a focused product strategy and user experience grounded in both business goals and user needs.</p>
+              <p className="text-[15px] leading-[1.6] text-[#5c7792]">
+                <a href="https://docs.google.com/document/d/1f8IdPBMvMJf_yqPTCc1hNMkU1EpcaO1OIUKFSGaVCLk/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-[#1183D0] hover:text-[#0e5a8a] underline">
+                  View detailed research insights →
+                </a>
+              </p>
             </div>
 
             <div className="mb-12">
-              <h3 className="font-inter text-[28px] leading-tight text-[#0e2951] mb-8">Competitive Analysis</h3>
-
               <div className="space-y-8">
                 <div>
-                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">Market displacement dynamics</h4>
-                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-4">Practices wanting to switch PVS: 33.3% in 2025 (down from 44.4% in 2024). One in three is actively shopping. The decline is attributed to perceived switching barriers, not improved satisfaction — demand is suppressed, not satisfied.</p>
-                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-4"><strong>Top blocker:</strong> 44.8% fear data won't migrate cleanly. Migration is the product problem, not features.</p>
-                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-4"><strong>Switch motives:</strong> Usability and licence fees lead; inadequate support 52%; hidden price increases and maintenance costs 46% each. Usability is the #1 stated reason — a design lever.</p>
-                  <p className="text-[16px] leading-[1.7] text-[#5c7792]"><strong>Proof displacement is possible:</strong> AxiSanté (CGM) fell from 16% in 2019 to under 0.2% by 2026 after end-of-support was announced. Incumbency collapses fast once trust breaks.</p>
-                </div>
-
-                <div>
-                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">🇩🇪 German legacy PMS (PVS) incumbents</h4>
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-[14px] border-collapse">
-                      <thead>
-                        <tr className="bg-[#f5f6f7]">
-                          <th className="border border-[#d9e5f2] px-4 py-3 text-left font-semibold text-[#0e2951]">Vendor/Product</th>
-                          <th className="border border-[#d9e5f2] px-4 py-3 text-left font-semibold text-[#0e2951]">Market Share</th>
-                          <th className="border border-[#d9e5f2] px-4 py-3 text-left font-semibold text-[#0e2951]">Position</th>
-                          <th className="border border-[#d9e5f2] px-4 py-3 text-left font-semibold text-[#0e2951]">Vulnerability</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr className="bg-white">
-                          <td className="border border-[#d9e5f2] px-4 py-3">CompuGroup Medical (CGM) — MEDISTAR, TURBOMED, ALBIS, M1 PRO, eVitale</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">🔵 23.1% across five systems</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">Market leader by installed base; deepest module range</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">Eight largest systems steadily losing share since 2014; bottom-ranked on satisfaction</td>
-                        </tr>
-                        <tr className="bg-[#f9fbfc]">
-                          <td className="border border-[#d9e5f2] px-4 py-3">medatixx — medatixx, x.isynet, x.concept, x.comfort, EL</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">🔵 15.2% aggregate</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">#2; strongest absolute installation growth (+843 in 2023)</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">Reported to offer doctors discount for practice data for AI training</td>
-                        </tr>
-                        <tr className="bg-white">
-                          <td className="border border-[#d9e5f2] px-4 py-3">tomedo (zollsoft)</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">🟡 Sub-2% but growing (+538)</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">Apple/Mac-native; best-rated system in market</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">NPS 9.1 among switchers vs. market average 5.7</td>
-                        </tr>
-                        <tr className="bg-[#f9fbfc]">
-                          <td className="border border-[#d9e5f2] px-4 py-3">T2med</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">🟡 Growing fastest (+686/+93 per quarter)</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">Cloud-era challenger</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">Little independent evidence</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mt-4"><strong>Market structure:</strong> 32 KBV-certified systems are active, covering roughly 77% of ambulatory physicians — and 18 of those 32 would not be recommended by their own users.</p>
-                </div>
-
-                <div>
-                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">🇫🇷 French PMS incumbents</h4>
-                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-4">Share measured by transmitted electronic care claims — the most reliable indicator of real field usage.</p>
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-[14px] border-collapse">
-                      <thead>
-                        <tr className="bg-[#f5f6f7]">
-                          <th className="border border-[#d9e5f2] px-4 py-3 text-left font-semibold text-[#0e2951]">Publisher / Product</th>
-                          <th className="border border-[#d9e5f2] px-4 py-3 text-left font-semibold text-[#0e2951]">GP Share (Mar 2026)</th>
-                          <th className="border border-[#d9e5f2] px-4 py-3 text-left font-semibold text-[#0e2951]">Position</th>
-                          <th className="border border-[#d9e5f2] px-4 py-3 text-left font-semibold text-[#0e2951]">Vulnerability</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr className="bg-white">
-                          <td className="border border-[#d9e5f2] px-4 py-3">Doctolib</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">🔵 23.2% GP, 15.4% specialist</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">#1 in both. Ségur-referenced, HDS-hosted, ~€135/month/practitioner</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">Live data-protection controversy</td>
-                        </tr>
-                        <tr className="bg-[#f9fbfc]">
-                          <td className="border border-[#d9e5f2] px-4 py-3">Cegedim Santé — Weda, Crossway, MonLogicielMedical</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">🔵 Weda 14.0%</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">Most diversified publisher; present in 8 of 14 specialties</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">2026 data breach affecting ~15 million people</td>
-                        </tr>
-                        <tr className="bg-white">
-                          <td className="border border-[#d9e5f2] px-4 py-3">Imagine Editions — HelloDoc</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">🔵 8.1%</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">Historic leader</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">Fell from 18.4% to 8.1% in seven years</td>
-                        </tr>
-                        <tr className="bg-[#f9fbfc]">
-                          <td className="border border-[#d9e5f2] px-4 py-3">Prokov — Medistory</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">🔵 10.1%</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">Long-standing Mac reference</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">No independent UX evidence</td>
-                        </tr>
-                        <tr className="bg-white">
-                          <td className="border border-[#d9e5f2] px-4 py-3">Olaqin — Stellair Integral</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">🔵 7.3%</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">Mid-tier</td>
-                          <td className="border border-[#d9e5f2] px-4 py-3">—</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <p className="text-[16px] leading-[1.7] text-[#5c7792] mt-4"><strong>Concentration:</strong> The top five GP systems cover close to 63% of the market. <strong>Business-model fact:</strong> France's Forfait Structure reached up to €7,805 per year for a GP in 2025, materially offsetting software cost — a public subsidy partly funds this category.</p>
+                  <h3 className="font-inter text-[28px] leading-tight text-[#0e2951] mb-8">Market Opportunity & Key Insights</h3>
+                  <ul className="space-y-4 text-[16px] leading-[1.7] text-[#5c7792]">
+                    <li><strong>Germany presents the strongest market opportunity.</strong> While Doctolib has already become the market leader in France by combining appointment booking with practice management, its German practice management solution is still in its early stages, creating an opportunity to enter the market before adoption accelerates.</li>
+                    <li><strong>User reviews revealed that the biggest barrier to switching is trust, not functionality.</strong> The most common concern was data migration, with practices fearing they would lose or corrupt patient data when changing systems. This made seamless migration a higher priority than introducing additional scheduling features.</li>
+                    <li><strong>User feedback consistently highlighted usability as a pain point.</strong> Healthcare professionals frequently mentioned complex workflows, poor onboarding, and difficult day-to-day interactions as reasons for considering alternative solutions, making usability a key opportunity for differentiation.</li>
+                    <li><strong>Samedi is a stronger competitor than initially expected.</strong> It already offers advanced scheduling capabilities, integrations, and compliance features, so differentiation should focus on usability, self-service onboarding, and seamless migration rather than feature parity.</li>
+                    <li><strong>Regulatory compliance is a product requirement, not a feature.</strong> Both Germany and France have strict healthcare regulations, making security, data protection, and certification essential from day one rather than future roadmap items.</li>
+                  </ul>
                 </div>
 
                 <div>
@@ -3336,106 +3259,95 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     <p className="text-[15px] leading-[1.7] text-[#5c7792]"><strong>Key Finding:</strong> Data migration is the real differentiator — 44.8% of German practices fear data won't migrate cleanly. This is the #1 blocker to switching, making it a more valuable MVP feature than additional compliance certifications or payment integrations.</p>
                   </div>
                 </div>
-
-                <div>
-                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">🎯 Empathize Phase Conclusion</h4>
-                  <div className="space-y-6">
-                    <div>
-                      <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-2">Strategic decision</p>
-                      <p className="text-[16px] leading-[1.7] text-[#5c7792]">Prioritize Germany. France is locked by Doctolib and government support, while Germany's fragmented market offers a key opportunity before Doctolib gains traction.</p>
-                    </div>
-                    <div>
-                      <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-2">Product strategy pivot</p>
-                      <p className="text-[16px] leading-[1.7] text-[#5c7792]">Reframe differentiators. Resource-aware scheduling and sovereignty are occupied by Samedi. Instead, lead with data migration as the first MVP feature — it addresses the #1 switching barrier and the biggest pain point practices name.</p>
-                    </div>
-                    <div>
-                      <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-2">Positioning against Samedi</p>
-                      <p className="text-[16px] leading-[1.7] text-[#5c7792]">We compete on usability (Samedi requires consultative setup) and self-service onboarding (Samedi doesn't offer it). For groups and multi-practice clinics, our transparent pricing model beats Samedi's per-doctor model.</p>
-                    </div>
-                    <div>
-                      <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-3">Regulatory & compliance requirements</p>
-                      <ul className="space-y-2 text-[16px] leading-[1.7] text-[#5c7792] ml-4">
-                        <li>• BSI C5 attestation required</li>
-                        <li>• GDPR Art. 28 compliance mandatory</li>
-                        <li>• §203 StGB professional confidentiality exposure must be addressed</li>
-                        <li>• KBV conformity assessment and TI connection required</li>
-                        <li>• Implement from day one as launch requirement, not roadmap item</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
 
             <div className="mb-12">
               <h3 className="font-inter text-[28px] leading-tight text-[#0e2951] mb-8">User Needs</h3>
-              <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-8">I identified six user types in the research, but concentrated on two with the strongest evidence and highest strategic impact: clinical staff (medical assistants) and returning patients. These two personas anchor the product strategy because their needs are fundamentally different between Germany and France, and solving for them unlocks the core value proposition in each market.</p>
+              <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-8">Through the research, I identified five key user groups. I prioritized clinical staff (medical assistants) and returning patients because they represented the highest business impact and had the strongest research evidence. Focusing on these two personas allowed me to address the core scheduling challenges in both Germany and France while keeping the MVP focused on the users who interact with the system most frequently.</p>
 
               <div className="space-y-3">
+                <div className="mb-6 p-4 bg-[#f0f5ff] border-l-4 border-[#1183D0] rounded">
+                  <p className="text-[14px] font-semibold text-[#0e2951]">Primary Focus</p>
+                  <p className="text-[13px] text-[#5c7792] mt-1">These two personas guided the MVP design</p>
+                </div>
                 {[
                   {
-                    id: "patients",
-                    title: "1. Patients — new & existing",
-                    goal: "Make an appointment with low effort and minimal disclosure of personal data.",
-                    needs: [
-                      "🟡 Abandon booking when forms ask for non-essential info, or in France when INS (Identifiant National de Santé) requires exact birth-registration details — high friction at registration.",
-                      "🟡 Frustrated by technical failures: blank-page errors, forced logouts, inability to screenshot/copy confirmation info.",
-                      "🟡 In Germany, Double Opt-In (email/SMS) can leave a slot unconfirmed and effectively lost.",
-                      "🟡 Frustrated when \"no online appointments available\" makes the tool feel like wasted effort.",
-                      "🟡 Erosion of trust when a listed language capability (e.g., \"speaks English\") doesn't hold up in person — accuracy of practitioner metadata matters for safety, not just satisfaction.",
-                      "🟡 Distrust of platforms perceived to route consultation notes or data to non-EU AI providers or third parties (ad networks named in the source material) — this is a trust-driven abandonment cause."
-                    ],
-                    consequence: "missed/duplicate bookings, abandoned funnel, or (in the language-mismatch case) a care-quality risk.",
-                    jtbd: "When I need to see a doctor, and I'm unsure of the process, I want to find and confirm a real, available slot without giving up more information than necessary, so I can trust the appointment will actually happen."
-                  },
-                  {
-                    id: "caregivers",
-                    title: "2. Caregivers/people booking for someone else",
-                    goal: "Manage appointments for a dependent (child, elderly parent) as smoothly as for themselves.",
-                    needs: [
-                      "🟡 One-third of French appointments are booked for a relative; ~46% of patients have a linked relative account — this is not an edge case, it's a core flow.",
-                      "🟡 Birthdate entry via month-by-month dropdown scrolling is a specific, named friction point for this group."
-                    ],
-                    consequence: "the product needs a first-class \"manage on behalf of\" model, not a bolt-on."
-                  },
-                  {
-                    id: "elderly",
-                    title: "3. Older / lower-digital-literacy patients",
-                    needs: [
-                      "🟢/🟡 5.9M French Doctolib users are 65+ (scale signal), but German patients 80+ are described as \"overwhelmed\" by digital tools, many without smartphones/PCs — this is a market-specific gap, not the same problem in both countries.",
-                      "🟡 Visually impaired users need accessible booking flows; all patients need clarity on physical accessibility (wheelchair access) of the practice itself."
-                    ],
-                    consequence: "exclusion from self-service, which pushes load back onto phone lines — directly connects to the receptionist pain point below."
-                  },
-                  {
                     id: "receptionists",
-                    title: "4. Receptionists / Medical Assistants (MFAs) — France vs. Germany are structurally different roles",
-                    goal: "Keep the schedule accurate with minimal manual rework, while handling constant interruptions.",
+                    title: "1. 🔵 Clinical Staff / Medical Assistants",
                     needs: [
-                      "🟡 ~30% of calls to doctors go unanswered; routine calls (insurance checks, rescheduling) bury the front desk.",
-                      "🟡 German MFAs are frustrated by click-heavy TI workflows (KIM messaging, e-prescriptions) and by card-reader/system crashes after updates.",
-                      "🟢 Structural difference: in Germany, the MFA is a power user — 3 years trained, performs clinical tasks (blood draws, dressings) and admin (booking, invoicing); average 3.4 per solo practice, up to 19 in MVZs. In France, only ~5% of GPs employ an MFA at all, and tasks are mostly administrative."
-                    ],
-                    consequence: "Germany needs an assistant-centric, delegation-capable interface; France needs the doctor to remain the central actor. This is one of the sharpest tensions in the whole project."
-                  },
-                  {
-                    id: "doctors",
-                    title: "5. Doctors/clinicians",
-                    goal: "Maximize clinical time, minimize administrative drag.",
-                    needs: [
-                      "🟢 Structural difference in how doctors use time: Germany — 9.8 contacts/year, ~8 min/visit, high patient turnover, \"one-click\" documentation need. France — 5.9 contacts/year, 16–18 min/visit, favors longitudinal notes and longer-form UI.",
-                      "🟡 ~10 hours/week lost to administrative bottlenecks (cited as the pain point Doctolib is attacking with AI call-handling)."
-                    ],
-                    consequence: "double-booking or lost time directly reduces billable clinical capacity — this group is revenue-sensitive to scheduling errors in a way patients aren't."
-                  },
-                  {
-                    id: "managers",
-                    title: "6. Clinic managers/administrators, and internal CX/support teams",
-                    needs: [
-                      "🔴 Gap: we don't have direct evidence for this group yet. The source material speaks to receptionists and doctors but not practice owners/managers or internal implementation teams. Flagging this as an open research need rather than inventing needs for them."
+                      "Research revealed that clinical workflows differ significantly between Germany and France. In Germany, medical assistants are highly trained power users who manage both clinical and administrative tasks, requiring a collaborative, delegation-friendly scheduling experience. In contrast, French practices are more doctor-centered, with limited assistant support. Across both markets, staff also reported high call volumes, manual scheduling work, and inefficient workflows, highlighting the need for a more reliable and efficient scheduling system."
                     ]
-                  }
+                  },
+                  {
+                    id: "patients",
+                    title: "2. 🔵 Returning Patients",
+                    needs: [
+                      "Research showed that returning patients want a fast, low-effort booking experience with minimal personal data requirements. Common frustrations included lengthy registration forms, technical errors, unavailable appointment slots, and inconsistent practitioner information, all of which reduced trust and increased abandonment. These insights highlighted the importance of providing a simple, transparent, and reliable booking experience that gives patients confidence their appointment is successfully confirmed."
+                    ]
+                  },
                 ].map((userType) => (
+                  <div key={userType.id} className="border border-[#1183D0] rounded-lg overflow-hidden bg-[#f8fbff]">
+                    <button
+                      onClick={() => setExpandedUserNeed(expandedUserNeed === userType.id ? null : userType.id)}
+                      className="w-full flex items-center justify-between p-5 bg-white hover:bg-[#f8fbff] transition-colors border-b border-[#1183D0]"
+                    >
+                      <h4 className="font-inter text-[18px] font-semibold text-[#0e2951] text-left">{userType.title}</h4>
+                      <svg
+                        className={`w-5 h-5 text-[#0e2951] transition-transform ${expandedUserNeed === userType.id ? "rotate-180" : ""}`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                      </svg>
+                    </button>
+                    {expandedUserNeed === userType.id && (
+                      <div className="px-5 pb-5 border-t border-[#1183D0] bg-[#fafbfc]">
+                        {userType.goal && (
+                          <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-4">Goal: {userType.goal}</p>
+                        )}
+                        <ul className="space-y-3 mb-4">
+                          {userType.needs.map((need, idx) => (
+                            <li key={idx} className="text-[15px] leading-[1.6] text-[#5c7792]">{need}</li>
+                          ))}
+                        </ul>
+                        {userType.consequence && (
+                          <p className="text-[15px] leading-[1.6] text-[#5c7792]"><strong>Consequence:</strong> {userType.consequence}</p>
+                        )}
+                        {userType.jtbd && (
+                          <p className="text-[15px] leading-[1.6] text-[#5c7792] mt-3"><strong>JTBD (provisional):</strong> "{userType.jtbd}"</p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ))}
+
+                <div className="mt-8 pt-6 border-t border-[#d9e5f2]">
+                  <p className="text-[14px] font-semibold text-[#0e2951] mb-4">Secondary Users</p>
+                  {[
+                    {
+                      id: "caregivers",
+                      title: "3. Caregivers",
+                      needs: [
+                        "Research showed that booking appointments for family members is a common use case, not an edge case. Caregivers need an easy way to manage appointments for dependents, but current experiences are slowed down by unnecessary friction, such as cumbersome form inputs. These insights highlighted the need to design \"booking on behalf of someone else\" as a core workflow rather than an add-on feature."
+                      ]
+                    },
+                    {
+                      id: "elderly",
+                      title: "4. Older & Low-Digital-Literacy Patients",
+                      needs: [
+                        "Research highlighted that older adults have different digital needs across markets. Many German patients struggle with digital tools, while accessibility requirements such as readable interfaces and clear information about practice accessibility are essential for all users. Designing an inclusive booking experience reduces reliance on phone support and improves access to care for a broader range of patients."
+                      ]
+                    },
+                    {
+                      id: "doctors",
+                      title: "5. Doctors & Clinicians",
+                      needs: [
+                        "Research showed that doctors want to maximize clinical time while minimizing administrative work. Although workflows differ between Germany and France, both markets experience scheduling inefficiencies and administrative burdens that reduce time with patients. These insights reinforced the need for a reliable scheduling system that minimizes errors, streamlines workflows, and protects valuable clinical capacity."
+                      ]
+                    }
+                  ].map((userType) => (
                   <div key={userType.id} className="border border-[#d9e5f2] rounded-lg overflow-hidden">
                     <button
                       onClick={() => setExpandedUserNeed(expandedUserNeed === userType.id ? null : userType.id)}
@@ -3471,8 +3383,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     )}
                   </div>
                 ))}
+                </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-[860px]">
+            <h3 className="font-inter text-[28px] leading-tight text-[#0e2951] mb-8">Research Takeaway</h3>
+            <p className="text-[16px] leading-[1.7] text-[#5c7792]">The research gave me a clear understanding of users' needs, business opportunities, and market constraints. I found that the priority was creating a scheduling experience that was efficient, reliable, and easy to use for healthcare staff. These insights helped me prioritize the target users, define the product strategy, and build proto-personas that guided the rest of the design process.</p>
           </div>
         </section>
 
@@ -4019,7 +3939,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {(caseStudy.slug === "nayya-ai-benefits" ||
         caseStudy.slug === "i9-everify-integration" ||
         caseStudy.slug === "flock-accessibility-system" ||
-        (designStrategy.length > 0 && (caseStudy.slug !== "reversetech" || reversetechTaskTab === "task1"))) ? (
+        (designStrategy.length > 0 && (caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" || reversetechTaskTab === "task1"))) ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           {caseStudy.slug === "nayya-ai-benefits" ? (
           <>
@@ -5284,7 +5204,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug !== "reversetech" ? (
+      {caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title="Results & Impact" centered className="mb-12" />
           {caseStudy.slug === "flock-accessibility-system" ? (
@@ -5411,7 +5331,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug !== "reversetech" ? (
+      {caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title="Learnings" centered className="mb-12" />
           <div className="mx-auto max-w-[820px] space-y-8 text-center">
