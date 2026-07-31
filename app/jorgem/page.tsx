@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Activity,
   CheckCircle2,
@@ -18,6 +18,7 @@ import {
   User,
   Wind,
 } from "lucide-react";
+import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
 
 const colors = {
   navy: "#152A47", blue: "#2C6DA6", blueSoft: "#EAF2FA", white: "#FFFFFF",
@@ -80,10 +81,67 @@ export default function JorgePlanPage() {
   const [tab, setTab] = useState<Tab>("summary");
   const [compact, setCompact] = useState(false);
   const [done, setDone] = useState<Record<string, boolean>>({});
+  const [exerciseMetrics, setExerciseMetrics] = useState<Record<string, { weight: string; reps: string }>>({});
   const [weekNotes, setWeekNotes] = useState<Record<number, string>>({});
+  const [userId, setUserId] = useState<string | null>(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [authMessage, setAuthMessage] = useState("");
+  const [authBusy, setAuthBusy] = useState(false);
+  const supabase = getSupabaseBrowserClient();
   const activeDay = days.find((day) => day.key === tab);
   const total = days.reduce((sum, day) => sum + day.exercises.length, 0);
   const complete = Object.values(done).filter(Boolean).length;
+
+  useEffect(() => {
+    if (!supabase) return;
+    let active = true;
+    const loadProgress = async (id: string) => {
+      const [{ data: exerciseLogs }, { data: weeklyLogs }] = await Promise.all([
+        supabase.from("jorge_exercise_logs").select("day_key, exercise_index, completed, weight_kg, repetitions").eq("user_id", id),
+        supabase.from("jorge_weekly_notes").select("week_number, notes").eq("user_id", id),
+      ]);
+      if (!active) return;
+      setDone(Object.fromEntries((exerciseLogs ?? []).map((log) => [`${log.day_key}-${log.exercise_index}`, log.completed])));
+      setExerciseMetrics(Object.fromEntries((exerciseLogs ?? []).map((log) => [`${log.day_key}-${log.exercise_index}`, { weight: log.weight_kg, reps: log.repetitions }])));
+      setWeekNotes(Object.fromEntries((weeklyLogs ?? []).map((log) => [log.week_number - 1, log.notes])));
+    };
+    void supabase.auth.getSession().then(({ data }) => {
+      const id = data.session?.user.id ?? null;
+      setUserId(id);
+      if (id) void loadProgress(id);
+    });
+    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+      const id = session?.user.id ?? null;
+      setUserId(id);
+      if (id) void loadProgress(id);
+    });
+    return () => { active = false; data.subscription.unsubscribe(); };
+  }, [supabase]);
+
+  const saveExercise = async (dayKey: string, exerciseIndex: number, patch: Partial<{ completed: boolean; weight: string; reps: string }>) => {
+    const id = `${dayKey}-${exerciseIndex}`;
+    const current = exerciseMetrics[id] ?? { weight: "", reps: "" };
+    if (patch.completed !== undefined) setDone((value) => ({ ...value, [id]: patch.completed! }));
+    if (patch.weight !== undefined || patch.reps !== undefined) setExerciseMetrics((value) => ({ ...value, [id]: { weight: patch.weight ?? current.weight, reps: patch.reps ?? current.reps } }));
+    if (!supabase || !userId) return;
+    await supabase.from("jorge_exercise_logs").upsert({ user_id: userId, day_key: dayKey, exercise_index: exerciseIndex, completed: patch.completed ?? Boolean(done[id]), weight_kg: patch.weight ?? current.weight, repetitions: patch.reps ?? current.reps });
+  };
+
+  const saveWeekNote = async (weekIndex: number, notes: string) => {
+    setWeekNotes((value) => ({ ...value, [weekIndex]: notes }));
+    if (!supabase || !userId) return;
+    await supabase.from("jorge_weekly_notes").upsert({ user_id: userId, week_number: weekIndex + 1, notes });
+  };
+
+  const submitAuth = async (mode: "signIn" | "signUp") => {
+    if (!supabase) { setAuthMessage("El guardado aún no está configurado."); return; }
+    setAuthBusy(true);
+    setAuthMessage("");
+    const result = mode === "signIn" ? await supabase.auth.signInWithPassword({ email, password }) : await supabase.auth.signUp({ email, password });
+    setAuthBusy(false);
+    setAuthMessage(result.error ? result.error.message : mode === "signUp" ? "Cuenta creada. Revisa tu correo si se solicita confirmación." : "Sesión iniciada. Tu progreso se guardará aquí.");
+  };
 
   const menu = [{ key: "summary" as const, label: "Resumen", icon: ClipboardList }, ...days.map((day) => ({ key: day.key, label: day.label, icon: Dumbbell })), { key: "progress" as const, label: "Progreso", icon: TrendingUp }, { key: "safety" as const, label: "Seguridad", icon: ShieldAlert }];
 
@@ -101,6 +159,12 @@ export default function JorgePlanPage() {
       </div>
     </header>
 
+    <section className="jorgem-no-print" style={{ maxWidth: 760, margin: "16px auto 0", padding: "0 14px" }}>
+      <Card style={{ padding: 14 }}>
+        {!supabase ? <p style={{ ...bodyText, margin: 0 }}>El guardado estará disponible cuando Supabase esté configurado para este sitio.</p> : userId ? <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 10 }}><span style={{ color: colors.success, fontSize: 13, fontWeight: 800 }}>✓ Progreso guardado en tu cuenta</span><button onClick={() => void supabase.auth.signOut()} style={{ border: `1px solid ${colors.border}`, borderRadius: 8, padding: "7px 10px", background: colors.white, color: colors.text, cursor: "pointer", fontWeight: 700 }}>Cerrar sesión</button></div> : <div><strong style={{ fontSize: 14 }}>Guardar tu progreso</strong><p style={{ ...bodyText, margin: "4px 0 10px", fontSize: 13 }}>Crea una cuenta o inicia sesión para conservar ejercicios, peso, repeticiones y notas.</p><div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "end" }}><label style={{ color: colors.text, fontSize: 12, fontWeight: 700 }}>Email<input type="email" value={email} onChange={(event) => setEmail(event.target.value)} style={metricInput} /></label><label style={{ color: colors.text, fontSize: 12, fontWeight: 700 }}>Contraseña<input type="password" value={password} onChange={(event) => setPassword(event.target.value)} style={metricInput} /></label><button disabled={authBusy || !email || !password} onClick={() => void submitAuth("signIn")} style={primaryButton}>{authBusy ? "Espera…" : "Iniciar sesión"}</button><button disabled={authBusy || !email || !password} onClick={() => void submitAuth("signUp")} style={secondaryButton}>Crear cuenta</button></div>{authMessage ? <p style={{ ...bodyText, margin: "10px 0 0", fontSize: 12 }}>{authMessage}</p> : null}</div>}
+      </Card>
+    </section>
+
     <main style={{ maxWidth: 760, margin: "auto", padding: "20px 14px 56px", display: "grid", gap: 18 }}>
       {tab === "summary" && <><Card><div style={{ display: "flex", gap: 14, alignItems: "center" }}><span style={{ display: "grid", placeItems: "center", width: 56, height: 56, borderRadius: "50%", background: colors.navy, color: colors.white }}><User size={27} /></span><div><h1 className="jorgem-title" style={{ margin: 0, fontSize: 24 }}>Plan de Jorge</h1><p style={{ margin: "3px 0", color: colors.text }}>60 años · 1.70 m · 115 kg · Nivel intermedio</p></div></div><div style={{ display: "flex", flexWrap: "wrap", gap: 7, marginTop: 16 }}><Pill tone="warning">Hipertensión</Pill><Pill tone="warning">Resistencia a la insulina</Pill><Pill tone="warning">Inflamación en el codo</Pill></div><div style={{ background: colors.blueSoft, borderRadius: 12, padding: 14, marginTop: 15 }}><strong>Objetivo principal</strong><p style={{ margin: "6px 0 0" }}>Perder grasa corporal manteniendo músculo y fuerza.</p><p style={{ color: colors.success, fontWeight: 800, margin: "8px 0 0" }}>✓ Ya perdió 9 kg este año</p></div><div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, background: colors.successBg, borderRadius: 12, padding: "11px 14px", marginTop: 15, color: colors.success, fontWeight: 800 }}><span>Progreso de sesiones</span><span>{complete}/{total}</span></div></Card>
         <Card><h2 style={sectionTitle}><ClipboardList size={19} /> Distribución semanal</h2>{days.map((day) => <button key={day.key} onClick={() => setTab(day.key)} style={{ width: "100%", border: 0, background: colors.blueSoft, color: colors.navy, textAlign: "left", borderRadius: 11, padding: "11px 12px", marginTop: 8, cursor: "pointer", fontWeight: 800 }}>{day.label} · {day.title}<span style={{ display: "block", color: colors.text, fontSize: 12, fontWeight: 400, marginTop: 3 }}>{day.subtitle}</span></button>)}</Card>
@@ -109,12 +173,12 @@ export default function JorgePlanPage() {
 
       {activeDay && <><Card><div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "start" }}><div><h1 className="jorgem-title" style={{ margin: 0, fontSize: 23 }}>{activeDay.label} · {activeDay.title}</h1><p style={{ margin: "4px 0 0", color: colors.text }}>{activeDay.subtitle}</p></div><Pill tone="success">{activeDay.exercises.filter((_, index) => done[`${activeDay.key}-${index}`]).length}/{activeDay.exercises.length} hecho</Pill></div><div style={{ display: "flex", flexWrap: "wrap", gap: 7, marginTop: 14 }}><Pill>RPE 6-8</Pill><Pill>No aguantes la respiración</Pill><Pill tone="warning">Codo: máximo 3/10</Pill></div></Card>
         <Card><h2 style={sectionTitle}><Activity size={19} /> Calentamiento · 8-10 min</h2><ul style={bodyText}><li>5 minutos de caminadora o bicicleta suave.</li><li>Movilidad de hombros, codos y escápulas.</li><li>1 serie ligera de los movimientos principales.</li></ul></Card>
-        <Card><h2 style={sectionTitle}><Dumbbell size={19} /> Ejercicios</h2><div style={{ display: "grid", gap: 10 }}>{activeDay.exercises.map(([name, sets, rest], index) => { const id = `${activeDay.key}-${index}`; const checked = Boolean(done[id]); return <article className="jorgem-card" key={id} style={{ background: checked ? colors.successBg : colors.blueSoft, border: `1px solid ${checked ? colors.success : colors.border}`, borderRadius: 14, padding: compact ? 11 : 15 }}><div style={{ display: "grid", gridTemplateColumns: compact ? "1fr" : "minmax(112px, 30%) 1fr", gap: 12 }}><ExerciseImage dayKey={activeDay.key} index={index} name={name} /><div><div style={{ display: "flex", justifyContent: "space-between", gap: 10 }}><div><strong>{index + 1}. {name}</strong><div style={{ display: "flex", gap: 7, flexWrap: "wrap", marginTop: 8 }}><Pill>{sets}</Pill><Pill tone={rest === "Opcional" ? "warning" : "blue"}>{rest}</Pill></div></div><button onClick={() => setDone((current) => ({ ...current, [id]: !checked }))} aria-pressed={checked} style={{ alignSelf: "start", display: "inline-flex", alignItems: "center", gap: 5, border: `1px solid ${checked ? colors.success : colors.border}`, borderRadius: 9, background: colors.white, color: checked ? colors.success : colors.navy, padding: "8px 10px", cursor: "pointer", fontWeight: 800, fontSize: 12 }}><CheckCircle2 size={15} />{checked ? "Hecho" : "Marcar"}</button></div>{!compact && <p style={{ margin: "11px 0 0", fontSize: 13, color: colors.text }}>Prioriza una técnica controlada y detén el ejercicio si la molestia aumenta.</p>}</div></div></article>; })}</div></Card>
+        <Card><h2 style={sectionTitle}><Dumbbell size={19} /> Ejercicios</h2><div style={{ display: "grid", gap: 10 }}>{activeDay.exercises.map(([name, sets, rest], index) => { const id = `${activeDay.key}-${index}`; const checked = Boolean(done[id]); const metrics = exerciseMetrics[id] ?? { weight: "", reps: "" }; return <article className="jorgem-card" key={id} style={{ background: checked ? colors.successBg : colors.blueSoft, border: `1px solid ${checked ? colors.success : colors.border}`, borderRadius: 14, padding: compact ? 11 : 15 }}><div style={{ display: "grid", gridTemplateColumns: compact ? "1fr" : "minmax(112px, 30%) 1fr", gap: 12 }}><ExerciseImage dayKey={activeDay.key} index={index} name={name} /><div><div style={{ display: "flex", justifyContent: "space-between", gap: 10 }}><div><strong>{index + 1}. {name}</strong><div style={{ display: "flex", gap: 7, flexWrap: "wrap", marginTop: 8 }}><Pill>{sets}</Pill><Pill tone={rest === "Opcional" ? "warning" : "blue"}>{rest}</Pill></div></div><button onClick={() => void saveExercise(activeDay.key, index, { completed: !checked })} aria-pressed={checked} style={{ alignSelf: "start", display: "inline-flex", alignItems: "center", gap: 5, border: `1px solid ${checked ? colors.success : colors.border}`, borderRadius: 9, background: colors.white, color: checked ? colors.success : colors.navy, padding: "8px 10px", cursor: "pointer", fontWeight: 800, fontSize: 12 }}><CheckCircle2 size={15} />{checked ? "Hecho" : "Marcar"}</button></div>{!compact && <><div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12 }}><label style={{ color: colors.text, fontSize: 12, fontWeight: 700 }}>Peso (kg)<input value={metrics.weight} onChange={(event) => void saveExercise(activeDay.key, index, { weight: event.target.value })} inputMode="decimal" style={metricInput} /></label><label style={{ color: colors.text, fontSize: 12, fontWeight: 700 }}>Repeticiones<input value={metrics.reps} onChange={(event) => void saveExercise(activeDay.key, index, { reps: event.target.value })} inputMode="numeric" style={metricInput} /></label></div><p style={{ margin: "11px 0 0", fontSize: 13, color: colors.text }}>Prioriza una técnica controlada y detén el ejercicio si la molestia aumenta.</p></>}</div></div></article>; })}</div></Card>
         <Card><h2 style={sectionTitle}><Flame size={19} /> Cardio post-entreno</h2><p style={bodyText}>{activeDay.cardio}</p></Card>
         <Card style={{ borderColor: colors.danger, background: colors.dangerBg }}><h2 style={{ ...sectionTitle, color: colors.danger }}><ShieldAlert size={19} /> Seguridad del día</h2><p style={{ ...bodyText, color: colors.danger }}>Evita el fallo muscular y detén o sustituye un ejercicio si aumenta la molestia del codo.</p></Card>
         <button className="jorgem-no-print" onClick={() => setDone((current) => { const next = { ...current }; activeDay.exercises.forEach((_, index) => { delete next[`${activeDay.key}-${index}`]; }); return next; })} style={{ justifySelf: "start", display: "inline-flex", alignItems: "center", gap: 8, border: `1px solid ${colors.border}`, borderRadius: 11, padding: "10px 14px", background: colors.white, color: colors.text, cursor: "pointer", fontWeight: 800 }}><RotateCcw size={16} /> Reiniciar esta sesión</button></>}
 
-      {tab === "progress" && <><Card><h1 className="jorgem-title" style={{ margin: 0, fontSize: 23 }}>Seguimiento de 8 semanas</h1><p style={{ ...bodyText, marginBottom: 0 }}>Registra tus datos al final de cada semana. El objetivo es observar tendencias, no perder una cantidad exacta de peso.</p></Card>{Array.from({ length: 8 }, (_, index) => <Card key={index}><h2 style={{ margin: 0, fontSize: 17 }}>Semana {index + 1}</h2><label style={{ display: "block", marginTop: 12, color: colors.text, fontSize: 13, fontWeight: 800 }}>Notas de la semana<textarea value={weekNotes[index] ?? ""} onChange={(event) => setWeekNotes((current) => ({ ...current, [index]: event.target.value }))} rows={3} style={{ display: "block", width: "100%", marginTop: 5, border: `1px solid ${colors.border}`, borderRadius: 10, padding: 10, color: colors.navy, font: "inherit", resize: "vertical" }} placeholder="Peso, entrenos completados, energía, molestias del codo…" /></label></Card>)}</>}
+      {tab === "progress" && <><Card><h1 className="jorgem-title" style={{ margin: 0, fontSize: 23 }}>Seguimiento de 8 semanas</h1><p style={{ ...bodyText, marginBottom: 0 }}>Registra tus datos al final de cada semana. El objetivo es observar tendencias, no perder una cantidad exacta de peso.</p></Card>{Array.from({ length: 8 }, (_, index) => <Card key={index}><h2 style={{ margin: 0, fontSize: 17 }}>Semana {index + 1}</h2><label style={{ display: "block", marginTop: 12, color: colors.text, fontSize: 13, fontWeight: 800 }}>Notas de la semana<textarea value={weekNotes[index] ?? ""} onChange={(event) => void saveWeekNote(index, event.target.value)} rows={3} style={{ display: "block", width: "100%", marginTop: 5, border: `1px solid ${colors.border}`, borderRadius: 10, padding: 10, color: colors.navy, font: "inherit", resize: "vertical" }} placeholder="Peso, entrenos completados, energía, molestias del codo…" /></label></Card>)}</>}
 
       {tab === "safety" && <><Card style={{ borderColor: colors.danger, background: colors.dangerBg }}><h1 className="jorgem-title" style={{ margin: 0, color: colors.danger, fontSize: 23 }}>Panel de seguridad</h1><ul style={{ ...bodyText, color: colors.danger, fontWeight: 700 }}>{safety.map((item) => <li key={item}>{item}</li>)}</ul></Card><Card><h2 style={sectionTitle}><HeartPulse size={19} /> Sobre el codo</h2><p style={bodyText}>El plan evita press militar, fondos y extensiones directas de tríceps. Prioriza agarres neutros, máquinas y movimientos controlados. Si la molestia persiste o empeora, solicita una evaluación médica o de fisioterapia.</p></Card><Card><h2 style={sectionTitle}><Wind size={19} /> Sobre la hipertensión</h2><p style={bodyText}>Exhala en el esfuerzo, no aguantes la respiración y evita llegar al fallo muscular. Sigue siempre las recomendaciones de tu médico.</p></Card><Card style={{ background: colors.blueSoft }}><p style={bodyText}><strong>Aviso:</strong> este plan es una guía de entrenamiento y no reemplaza el consejo de un profesional médico. Consulta a tu médico o fisioterapeuta antes de iniciar o modificar tu rutina.</p></Card></>}
     </main>
@@ -125,3 +189,6 @@ export default function JorgePlanPage() {
 const headerButton: React.CSSProperties = { display: "inline-flex", alignItems: "center", justifyContent: "center", border: "1px solid #5B93C4", background: "transparent", color: colors.white, borderRadius: 9, padding: "8px 10px", cursor: "pointer", fontWeight: 800, fontSize: 12 };
 const sectionTitle: React.CSSProperties = { display: "flex", alignItems: "center", gap: 8, color: colors.navy, margin: 0, fontSize: 17 };
 const bodyText: React.CSSProperties = { color: colors.text, fontSize: 14, lineHeight: 1.7, margin: "12px 0 0" };
+const metricInput: React.CSSProperties = { display: "block", width: 92, marginTop: 4, border: `1px solid ${colors.border}`, borderRadius: 8, padding: "7px 8px", color: colors.navy, font: "inherit" };
+const primaryButton: React.CSSProperties = { border: 0, borderRadius: 8, padding: "9px 12px", background: colors.navy, color: colors.white, cursor: "pointer", fontWeight: 800 };
+const secondaryButton: React.CSSProperties = { border: `1px solid ${colors.border}`, borderRadius: 8, padding: "8px 12px", background: colors.white, color: colors.navy, cursor: "pointer", fontWeight: 800 };
