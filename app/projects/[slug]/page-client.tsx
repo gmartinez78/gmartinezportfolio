@@ -66,6 +66,65 @@ type CalendarKeeperUserNeed = {
   jtbd?: string;
 };
 
+type LowFiFlowStep = {
+  title?: string;
+  caption?: string;
+  rows?: string[];
+  action?: string;
+  decision?: string;
+};
+
+function LowFiFlowMap({
+  persona,
+  description,
+  steps,
+}: {
+  persona: string;
+  description: string;
+  steps: LowFiFlowStep[];
+}) {
+  return (
+    <div className="mt-8 border-t border-[#d9e5f2] pt-8">
+      <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Low-fi flow mapping</p>
+          <p className="mt-1 font-inter text-[18px] font-semibold text-[#0e2951]">{persona}</p>
+        </div>
+        <p className="max-w-[520px] text-[13px] leading-[1.55] text-[#5c7792]">{description}</p>
+      </div>
+
+      <div className="overflow-x-auto rounded-[18px] border border-[#d9e5f2] bg-[linear-gradient(#edf3f8_1px,transparent_1px),linear-gradient(90deg,#edf3f8_1px,transparent_1px)] bg-[size:20px_20px] p-5">
+        <div className="flex min-w-[1080px] items-center gap-3 py-4">
+          {steps.map((step, index) => (
+            <Fragment key={`${step.title}-${index}`}>
+              {step.decision ? (
+                <div className="flex w-[104px] shrink-0 flex-col items-center gap-3">
+                  <div className="flex h-[74px] w-[74px] rotate-45 items-center justify-center rounded-[12px] border border-[#9ebcd7] bg-white shadow-[0_8px_18px_rgba(14,41,81,0.08)]">
+                    <p className="w-[60px] -rotate-45 text-center text-[10px] font-semibold leading-[1.2] text-[#0e2951]">{step.decision}</p>
+                  </div>
+                  <span className="rounded-full bg-[#fff2a8] px-2 py-1 text-[9px] font-medium text-[#6a5800]">Decision</span>
+                </div>
+              ) : (
+                <article className="w-[164px] shrink-0 overflow-hidden rounded-[10px] border border-[#b8d1e6] bg-white shadow-[0_8px_18px_rgba(14,41,81,0.08)]">
+                  <div className="bg-[#1183D0] px-3 py-2 text-[10px] font-semibold text-white">{step.title}</div>
+                  <div className="space-y-2 p-3">
+                    {step.caption ? <p className="text-[10px] leading-[1.35] text-[#5c7792]">{step.caption}</p> : null}
+                    {step.rows?.map((row) => (
+                      <div key={row} className="rounded-[4px] border border-[#d9e5f2] bg-[#f8fbff] px-2 py-1.5 text-[9px] text-[#31526e]">{row}</div>
+                    ))}
+                    {step.action ? <div className="rounded-[4px] bg-[#d31383] px-2 py-1.5 text-center text-[9px] font-semibold text-white">{step.action}</div> : null}
+                  </div>
+                </article>
+              )}
+              {index < steps.length - 1 ? <span className="shrink-0 text-[24px] font-light text-[#8ba9c1]" aria-hidden="true">→</span> : null}
+            </Fragment>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const CONFIDENTIAL_PLACEHOLDER_SLUG = "zapiano-marketing";
 
 const HOME_BANNER_GRADIENT =
@@ -3482,6 +3541,18 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                 </div>
               </div>
+              <LowFiFlowMap
+                persona="Calendar Keeper / Medical Assistant"
+                description="A low-fidelity operational flow that prioritizes visibility, constraint checking, and recovery when the schedule changes."
+                steps={[
+                  { title: "Today’s schedule", caption: "Start-of-day overview", rows: ["Sync status: check", "8 appointments", "2 pending changes"], action: "Review alerts" },
+                  { title: "Incoming request", caption: "Call, message, or walk-in", rows: ["Patient", "Request type", "Preferred time"], action: "Find availability" },
+                  { decision: "Slot + resources available?" },
+                  { title: "Schedule visit", caption: "Confirm the right setup", rows: ["Practitioner", "Room / equipment", "Visit duration"], action: "Hold slot" },
+                  { title: "Resolve exception", caption: "Make recovery visible", rows: ["Conflict reason", "Suggested alternative", "Notify patient"], action: "Apply update" },
+                  { title: "Calendar updated", caption: "Reliable shared record", rows: ["Status: confirmed", "Audit trail", "Team notified"], action: "Done" },
+                ]}
+              />
             </div>
           </section>
         ) : null}
@@ -3563,6 +3634,18 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                 </div>
               </div>
+              <LowFiFlowMap
+                persona="Returning Patient"
+                description="A low-fidelity self-service flow designed to make a familiar appointment quick to find, confirm, and manage."
+                steps={[
+                  { title: "Return to booking", caption: "Recognize the patient", rows: ["Email or mobile", "Date of birth", "Privacy reassurance"], action: "Continue" },
+                  { title: "Choose a visit", caption: "See relevant options", rows: ["Preferred practitioner", "Visit type", "Available times"], action: "Select a time" },
+                  { decision: "Suitable time available?" },
+                  { title: "Confirm details", caption: "Ask only what changed", rows: ["Contact details", "Reason for visit", "Appointment summary"], action: "Confirm booking" },
+                  { title: "Booking confirmed", caption: "Provide certainty", rows: ["Date and time", "Practice details", "Confirmation saved"], action: "Manage booking" },
+                  { title: "Manage appointment", caption: "Rebook without calling", rows: ["Change time", "Cancel visit", "Book for dependent"], action: "Save changes" },
+                ]}
+              />
             </div>
           </section>
         ) : null}
