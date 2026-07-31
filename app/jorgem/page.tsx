@@ -73,7 +73,7 @@ function ExerciseImage({ dayKey, index, name }: { dayKey: string; index: number;
   const sheet = exerciseSheets[dayKey];
   const column = index % 2;
   const row = Math.floor(index / 2);
-  return <div role="img" aria-label={`Illustration of ${name}`} style={{ width: "100%", aspectRatio: sheet.aspectRatio, borderRadius: 10, backgroundImage: `url(${sheet.src})`, backgroundSize: "200% 400%", backgroundPosition: `${column * 100}% ${row * 100}%`, backgroundRepeat: "no-repeat", backgroundColor: colors.blueSoft }} />;
+  return <div role="img" aria-label={`Illustration of ${name}`} style={{ width: "100%", aspectRatio: sheet.aspectRatio, borderRadius: 10, backgroundImage: `url(${sheet.src})`, backgroundSize: "200% 400%", backgroundPosition: `${column * 100}% ${(row / 3) * 100}%`, backgroundRepeat: "no-repeat", backgroundColor: colors.blueSoft }} />;
 }
 
 export default function JorgePlanPage() {
