@@ -3396,6 +3396,87 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         </section>
 
+        {caseStudy.slug === "calendar-keeper" ? (
+          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+            <div className="mx-auto max-w-[1080px]">
+              <SectionHeading eyebrow="Customer journey map" title="A day for the Calendar Keeper" className="mb-5" />
+              <p className="mb-8 max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                The journey shows how routine requests compound into operational pressure for a medical assistant managing a clinic schedule. Each break in the flow creates rework, interrupts care, or puts the day&apos;s capacity at risk.
+              </p>
+
+              <div className="overflow-x-auto rounded-[24px] border border-[#d9e5f2] bg-[#f8fbff] shadow-[0_12px_32px_rgba(14,41,81,0.06)]">
+                <div className="min-w-[920px] p-5 md:p-7">
+                  <div className="grid grid-cols-5 gap-3 border-b border-[#d9e5f2] pb-4">
+                    {[
+                      { step: "01", title: "Open the day", moment: "Check the calendar and prepare the clinic" },
+                      { step: "02", title: "Handle requests", moment: "Answer calls, messages, and walk-ins" },
+                      { step: "03", title: "Coordinate a visit", moment: "Find the right practitioner, room, and slot" },
+                      { step: "04", title: "Keep care moving", moment: "Balance scheduling with clinical and TI tasks" },
+                      { step: "05", title: "Recover the schedule", moment: "Resolve changes, errors, and missed availability" },
+                    ].map((stage) => (
+                      <div key={stage.step}>
+                        <p className="mb-2 text-[11px] font-semibold tracking-[0.2em] text-[#1183D0]">{stage.step}</p>
+                        <h4 className="font-inter text-[16px] font-semibold leading-[1.25] text-[#0e2951]">{stage.title}</h4>
+                        <p className="mt-2 text-[12px] leading-[1.5] text-[#5c7792]">{stage.moment}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-5 grid grid-cols-5 gap-3">
+                    {[
+                      {
+                        tension: "Calendar confidence is fragile",
+                        detail: "A sync failure or stale availability can turn the first calendar check into a day-long operational issue.",
+                        opportunity: "Make sync status and recovery actions visible.",
+                        tone: "border-[#f1c4aa] bg-[#fff8f3]",
+                      },
+                      {
+                        tension: "Routine requests pile up",
+                        detail: "Rebooking and insurance calls compete with patients already at the front desk.",
+                        opportunity: "Deflect repeat tasks through reliable self-service.",
+                        tone: "border-[#f4d89a] bg-[#fffdf5]",
+                      },
+                      {
+                        tension: "Scheduling requires constant cross-checking",
+                        detail: "Every booking may depend on practitioner, room, equipment, and patient needs.",
+                        opportunity: "Surface constraints before a slot is confirmed.",
+                        tone: "border-[#b7d8f5] bg-[#f5faff]",
+                      },
+                      {
+                        tension: "The work is interrupted, not sequential",
+                        detail: "German MFAs balance scheduling alongside clinical work and TI-mandated tasks.",
+                        opportunity: "Support handoffs and quick return-to-task moments.",
+                        tone: "border-[#c9c0f3] bg-[#f8f6ff]",
+                      },
+                      {
+                        tension: "Errors reduce clinical capacity",
+                        detail: "Double-bookings and manual fixes take time away from care and leave no room for recovery.",
+                        opportunity: "Offer clear exception handling and a trustworthy audit trail.",
+                        tone: "border-[#efbbbf] bg-[#fff7f7]",
+                      },
+                    ].map((stage) => (
+                      <article key={stage.tension} className={`rounded-[18px] border p-4 ${stage.tone}`}>
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0e2951]">Pain point</p>
+                        <h5 className="mt-2 font-inter text-[15px] font-semibold leading-[1.35] text-[#0e2951]">{stage.tension}</h5>
+                        <p className="mt-3 text-[13px] leading-[1.55] text-[#5c7792]">{stage.detail}</p>
+                        <div className="mt-4 border-t border-[#0e2951]/10 pt-3">
+                          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Design opportunity</p>
+                          <p className="mt-1 text-[13px] font-medium leading-[1.55] text-[#0e2951]">{stage.opportunity}</p>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+
+                  <div className="mt-5 flex items-center gap-3 rounded-[14px] bg-[#0e2951] px-4 py-3 text-[13px] leading-[1.5] text-white">
+                    <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#82d5ae]" aria-hidden="true" />
+                    <span><strong>Design principle:</strong> Protect clinical capacity by making availability reliable, routine tasks self-serve, and exceptions easy to resolve.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        ) : null}
+
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="grid gap-16 lg:grid-cols-2">
             <div>
