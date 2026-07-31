@@ -3486,6 +3486,87 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </section>
         ) : null}
 
+        {caseStudy.slug === "calendar-keeper" ? (
+          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+            <div className="mx-auto max-w-[1080px]">
+              <SectionHeading eyebrow="Customer journey map" title="A return visit, from search to confirmation" centered className="mb-5" />
+              <p className="mx-auto mb-8 max-w-[720px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                For returning patients, an appointment should be a quick, familiar task. Today, uncertainty at each step often sends a routine rebooking back to the phone line—adding pressure to the clinic team it was meant to help.
+              </p>
+
+              <div className="overflow-x-auto rounded-[24px] border border-[#d9e5f2] bg-[#f8fbff] shadow-[0_12px_32px_rgba(14,41,81,0.06)]">
+                <div className="min-w-[920px] p-5 md:p-7">
+                  <div className="grid grid-cols-5 gap-3 border-b border-[#d9e5f2] pb-4">
+                    {[
+                      { step: "01", title: "Find a time", moment: "Look for an available follow-up appointment" },
+                      { step: "02", title: "Choose a visit", moment: "Confirm practitioner, visit type, and location" },
+                      { step: "03", title: "Identify quickly", moment: "Use the details already on file" },
+                      { step: "04", title: "Get certainty", moment: "Receive a clear, durable confirmation" },
+                      { step: "05", title: "Manage the booking", moment: "Rebook or change plans without starting over" },
+                    ].map((stage) => (
+                      <div key={stage.step}>
+                        <p className="mb-2 text-[11px] font-semibold tracking-[0.2em] text-[#1183D0]">{stage.step}</p>
+                        <h4 className="font-inter text-[16px] font-semibold leading-[1.25] text-[#0e2951]">{stage.title}</h4>
+                        <p className="mt-2 text-[12px] leading-[1.5] text-[#5c7792]">{stage.moment}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-5 grid grid-cols-5 gap-3">
+                    {[
+                      {
+                        tension: "Availability feels like a dead end",
+                        detail: "When the right appointment is not visible, patients cannot tell whether to wait, try again, or call the practice.",
+                        opportunity: "Explain availability and offer a clear next step.",
+                        tone: "border-[#f4d89a] bg-[#fffdf5]",
+                      },
+                      {
+                        tension: "Key details are inconsistent",
+                        detail: "Unclear practitioner information or appointment options make a familiar choice feel risky.",
+                        opportunity: "Make visit details reliable and easy to compare.",
+                        tone: "border-[#b7d8f5] bg-[#f5faff]",
+                      },
+                      {
+                        tension: "Registration repeats unnecessary work",
+                        detail: "Long forms and extra data requests add effort before a returning patient can complete a simple booking.",
+                        opportunity: "Recognize returners and ask only for what changed.",
+                        tone: "border-[#c9c0f3] bg-[#f8f6ff]",
+                      },
+                      {
+                        tension: "Technical errors break trust",
+                        detail: "A blank page, logout, or unclear confirmation leaves patients unsure whether their slot is actually reserved.",
+                        opportunity: "Make status, recovery, and confirmation unmistakable.",
+                        tone: "border-[#f1c4aa] bg-[#fff8f3]",
+                      },
+                      {
+                        tension: "Changes return patients to the phone",
+                        detail: "Without a fast self-service path to rebook, routine adjustments become another front-desk call.",
+                        opportunity: "Let patients manage an existing booking in a few steps.",
+                        tone: "border-[#efbbbf] bg-[#fff7f7]",
+                      },
+                    ].map((stage) => (
+                      <article key={stage.tension} className={`rounded-[18px] border p-4 ${stage.tone}`}>
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0e2951]">Pain point</p>
+                        <h5 className="mt-2 font-inter text-[15px] font-semibold leading-[1.35] text-[#0e2951]">{stage.tension}</h5>
+                        <p className="mt-3 text-[13px] leading-[1.55] text-[#5c7792]">{stage.detail}</p>
+                        <div className="mt-4 border-t border-[#0e2951]/10 pt-3">
+                          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Design opportunity</p>
+                          <p className="mt-1 text-[13px] font-medium leading-[1.55] text-[#0e2951]">{stage.opportunity}</p>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+
+                  <div className="mt-5 flex items-center gap-3 rounded-[14px] bg-[#0e2951] px-4 py-3 text-[13px] leading-[1.5] text-white">
+                    <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#82d5ae]" aria-hidden="true" />
+                    <span><strong>Design principle:</strong> Make a return visit feel like a continuation, not a new administrative task.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        ) : null}
+
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="grid gap-16 lg:grid-cols-2">
             <div>
