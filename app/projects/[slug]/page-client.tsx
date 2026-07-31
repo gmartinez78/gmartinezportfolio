@@ -2674,7 +2674,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[860px] text-center space-y-6">
             <h2 className="font-inter text-[36px] leading-tight text-[#0e2951] mb-8">Problem</h2>
-            <p className="text-[16px] leading-[1.7] text-[#5c7792]">For this case, I was tasked to design a new appointment scheduling system for clinics and medical practices in France and Germany. My role was to understand the market, identify the biggest opportunities and pain points, and define an MVP that could compete with existing solutions.</p>
+            <p className="text-[16px] leading-[1.7] text-[#5c7792]">For this case, I was tasked to design a new appointment scheduling system for clinics and medical practices in France and Germany. My role was to understand the market, identify the biggest opportunities and pain points, and define an initial product direction that could compete with existing solutions.</p>
             <p className="text-[16px] leading-[1.7] text-[#5c7792]">I started by researching users, competitors, and regulatory constraints to uncover the most critical problems. From there, I translated those insights into product opportunities and designed an experience that made scheduling more efficient, reliable, and intuitive for healthcare staff and patients.</p>
           </div>
         </section>
@@ -3225,7 +3225,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <div className="mx-auto max-w-[860px]">
             <div className="mb-12">
               <h2 className="font-inter text-[36px] leading-tight text-[#0e2951] mb-8">Research</h2>
-              <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-6">I started by conducting a strategic research phase to understand the healthcare ecosystem in France and Germany. I analyzed the market, competitors, regulations, and care delivery models to identify the biggest opportunities and constraints. I also synthesized stakeholder and user insights to understand the needs of patients, medical assistants, doctors, and clinic managers. Based on this research, I prioritized the primary users, defined personas, problem statements, and user journeys, and identified the highest-impact MVP. This process allowed me to move from a broad market opportunity to a focused product strategy and user experience grounded in both business goals and user needs.</p>
+              <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-6">I started by conducting a strategic research phase to understand the healthcare ecosystem in France and Germany. I analyzed the market, competitors, regulations, and care delivery models to identify the biggest opportunities and constraints. I also synthesized stakeholder and user insights to understand the needs of patients, medical assistants, doctors, and clinic managers. Based on this research, I prioritized the primary users, defined personas, problem statements, and user journeys, and identified the highest-impact product direction. This process allowed me to move from a broad market opportunity to a focused product strategy and user experience grounded in both business goals and user needs.</p>
               <p className="text-[15px] leading-[1.6] text-[#5c7792]">
                 <a href="https://docs.google.com/document/d/1f8IdPBMvMJf_yqPTCc1hNMkU1EpcaO1OIUKFSGaVCLk/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-[#1183D0] hover:text-[#0e5a8a] underline">
                   View detailed research insights →
@@ -3271,7 +3271,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </tr>
                         <tr className="bg-[#f9fbfc]">
                           <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Data Migration Tools</td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓ MVP</span></td>
+                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓ Priority</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
@@ -3329,7 +3329,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </table>
                   </div>
                   <div className="mt-4 p-4 bg-[#f0fdf4] border-l-4 border-[#16a34a] rounded">
-                    <p className="text-[15px] leading-[1.7] text-[#5c7792]"><strong>Key Finding:</strong> Data migration is the real differentiator — 44.8% of German practices fear data won't migrate cleanly. This is the #1 blocker to switching, making it a more valuable MVP feature than additional compliance certifications or payment integrations.</p>
+                    <p className="text-[15px] leading-[1.7] text-[#5c7792]"><strong>Key Finding:</strong> Data migration is the real differentiator — 44.8% of German practices fear data won't migrate cleanly. This is the #1 blocker to switching, making it a higher initial priority than additional compliance certifications or payment integrations.</p>
                   </div>
                 </div>
               </div>
@@ -3337,12 +3337,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
             <div className="mb-12">
               <h3 className="font-inter text-[28px] leading-tight text-[#0e2951] mb-8">User Needs</h3>
-              <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-8">Through the research, I identified five key user groups. I prioritized clinical staff (medical assistants) and returning patients because they represented the highest business impact and had the strongest research evidence. Focusing on these two personas allowed me to address the core scheduling challenges in both Germany and France while keeping the MVP focused on the users who interact with the system most frequently.</p>
+              <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-8">Through the research, I identified five key user groups. I prioritized clinical staff (medical assistants) and returning patients because they represented the highest business impact and had the strongest research evidence. Focusing on these two personas allowed me to address the core scheduling challenges in both Germany and France while keeping the initial scope focused on the users who interact with the system most frequently.</p>
 
               <div className="space-y-3">
                 <div className="mb-6 p-4 bg-[#f0f5ff] border-l-4 border-[#1183D0] rounded">
                   <p className="text-[14px] font-semibold text-[#0e2951]">Primary Focus</p>
-                  <p className="text-[13px] text-[#5c7792] mt-1">These two personas guided the MVP design</p>
+                  <p className="text-[13px] text-[#5c7792] mt-1">These two personas guided the initial design direction</p>
                 </div>
                 {([
                   {
