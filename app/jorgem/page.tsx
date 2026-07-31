@@ -83,6 +83,7 @@ export default function JorgePlanPage() {
   const [done, setDone] = useState<Record<string, boolean>>({});
   const [exerciseMetrics, setExerciseMetrics] = useState<Record<string, { weight: string; reps: string }>>({});
   const [weekNotes, setWeekNotes] = useState<Record<number, string>>({});
+  const [selectedWeek, setSelectedWeek] = useState(1);
   const [userId, setUserId] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -98,7 +99,7 @@ export default function JorgePlanPage() {
     let active = true;
     const loadProgress = async (id: string) => {
       const [{ data: exerciseLogs }, { data: weeklyLogs }] = await Promise.all([
-        supabase.from("jorge_exercise_logs").select("day_key, exercise_index, completed, weight_kg, repetitions").eq("user_id", id),
+        supabase.from("jorge_exercise_logs").select("day_key, exercise_index, completed, weight_kg, repetitions").eq("user_id", id).eq("week_number", selectedWeek),
         supabase.from("jorge_weekly_notes").select("week_number, notes").eq("user_id", id),
       ]);
       if (!active) return;
@@ -117,7 +118,7 @@ export default function JorgePlanPage() {
       if (id) void loadProgress(id);
     });
     return () => { active = false; data.subscription.unsubscribe(); };
-  }, [supabase]);
+  }, [supabase, selectedWeek]);
 
   const saveExercise = async (dayKey: string, exerciseIndex: number, patch: Partial<{ completed: boolean; weight: string; reps: string }>) => {
     const id = `${dayKey}-${exerciseIndex}`;
@@ -125,7 +126,7 @@ export default function JorgePlanPage() {
     if (patch.completed !== undefined) setDone((value) => ({ ...value, [id]: patch.completed! }));
     if (patch.weight !== undefined || patch.reps !== undefined) setExerciseMetrics((value) => ({ ...value, [id]: { weight: patch.weight ?? current.weight, reps: patch.reps ?? current.reps } }));
     if (!supabase || !userId) return;
-    await supabase.from("jorge_exercise_logs").upsert({ user_id: userId, day_key: dayKey, exercise_index: exerciseIndex, completed: patch.completed ?? Boolean(done[id]), weight_kg: patch.weight ?? current.weight, repetitions: patch.reps ?? current.reps });
+    await supabase.from("jorge_exercise_logs").upsert({ user_id: userId, week_number: selectedWeek, day_key: dayKey, exercise_index: exerciseIndex, completed: patch.completed ?? Boolean(done[id]), weight_kg: patch.weight ?? current.weight, repetitions: patch.reps ?? current.reps });
   };
 
   const saveWeekNote = async (weekIndex: number, notes: string) => {
