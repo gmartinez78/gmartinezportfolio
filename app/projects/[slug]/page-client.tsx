@@ -2618,6 +2618,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
+      {caseStudy.slug !== "calendar-keeper" ? (
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
         <SectionHeading eyebrow="Overview" title="Structure" centered className="mb-6" />
         {overviewBlock?.body ? (
@@ -2667,6 +2668,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         </div>
       </section>
+      ) : null}
 
       {caseStudy.slug === "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
