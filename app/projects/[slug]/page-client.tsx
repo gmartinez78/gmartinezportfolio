@@ -3673,12 +3673,20 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     answer: "Allow local appointment creation with identity pending verification, then resolve it safely when systems recover.",
                   },
                   {
-                    question: "How might we sequence backfill responsibly?",
-                    answer: "Keep it as Phase 2: a waitlist needs real history before backfill can create value on day one.",
+                    question: "How might we help staff resolve exceptions without extra training?",
+                    answer: "Prototype a simple status badge and reconciliation queue that explains what happened and what action to take next.",
+                  },
+                  {
+                    question: "How might we make resource conflicts clear before they become double-bookings?",
+                    answer: "Surface conflicts at selection time, with an available alternative that preserves the clinical setup needed for the visit.",
+                  },
+                  {
+                    question: "How might we make backfill useful only when the clinic has enough context?",
+                    answer: "Avoid relying on empty waitlist data at launch, and focus the first experience on dependable core booking instead.",
                   },
                 ].map((item, index) => (
                   <article key={item.question} className="rounded-[20px] border border-[#d9e5f2] bg-[#f8fbff] p-6">
-                    <p className="text-[11px] font-semibold tracking-[0.18em] text-[#1183D0]">HMW 0{index + 1}</p>
+                    <p className="text-[11px] font-semibold tracking-[0.18em] text-[#1183D0]">HMW {String(index + 1).padStart(2, "0")}</p>
                     <h3 className="mt-3 font-inter text-[20px] font-semibold leading-[1.35] text-[#0e2951]">{item.question}</h3>
                     <p className="mt-3 text-[14px] leading-[1.65] text-[#5c7792]">{item.answer}</p>
                   </article>
