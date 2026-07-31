@@ -9,6 +9,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ContentPanel } from "@/components/content-panel";
 import { CalendarKeeperMobilePrototype } from "@/components/calendar-keeper-mobile-prototype";
+import { CalendarKeeperServiceBlueprint } from "@/components/calendar-keeper-service-blueprint";
 import { DataTablePanel } from "@/components/data-table-panel";
 import { KeyValueStackCard } from "@/components/key-value-stack-card";
 import { MetricStatCard } from "@/components/metric-stat-card";
@@ -6031,6 +6032,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
           </div>
         </div>
+      ) : null}
+
+      {caseStudy.slug === "calendar-keeper" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading eyebrow="Service blueprint" title="How the scheduling service works together" centered className="mb-5" />
+          <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+            The service blueprint connects the patient and clinic experience to the operational work and systems that keep a resource-aware schedule reliable.
+          </p>
+          <CalendarKeeperServiceBlueprint />
+        </section>
       ) : null}
 
       {caseStudy.slug === "calendar-keeper" ? (
