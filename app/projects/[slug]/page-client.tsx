@@ -3331,7 +3331,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <div className="mt-4 p-4 bg-[#f0fdf4] border-l-4 border-[#16a34a] rounded">
                     <p className="text-[15px] leading-[1.7] text-[#5c7792]"><strong>Key Finding:</strong> Data migration is the real differentiator — 44.8% of German practices fear data won't migrate cleanly. This is the #1 blocker to switching, making it a higher initial priority than additional compliance certifications or payment integrations.</p>
                   </div>
-                  <p className="mt-5 text-[14px] leading-[1.7] text-[#5c7792]">This comparison is based on a review of publicly available competitor product information, including their websites, help centers, and app listings. I also reviewed recurring feedback in Google Play and Apple App Store reviews to understand where everyday scheduling workflows create friction for patients and clinic staff.</p>
+                  <p className="mt-5 text-[14px] leading-[1.7] text-[#5c7792]">Starting with this comparison of the selected competitors, I used their product information, help centers, app listings, and recurring themes in Google Play and Apple App Store reviews to identify the gaps and friction points outlined in the Market Opportunity & Key Insights below.</p>
                 </div>
               </div>
             </div>
