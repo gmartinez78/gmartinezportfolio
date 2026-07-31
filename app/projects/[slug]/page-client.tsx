@@ -57,6 +57,15 @@ type HighlightMetric = {
   context?: string;
 };
 
+type CalendarKeeperUserNeed = {
+  id: string;
+  title: string;
+  needs: string[];
+  goal?: string;
+  consequence?: string;
+  jtbd?: string;
+};
+
 const CONFIDENTIAL_PLACEHOLDER_SLUG = "zapiano-marketing";
 
 const HOME_BANNER_GRADIENT =
@@ -3271,7 +3280,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <p className="text-[14px] font-semibold text-[#0e2951]">Primary Focus</p>
                   <p className="text-[13px] text-[#5c7792] mt-1">These two personas guided the MVP design</p>
                 </div>
-                {[
+                {([
                   {
                     id: "receptionists",
                     title: "1. 🔵 Clinical Staff / Medical Assistants",
@@ -3286,7 +3295,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       "Research showed that returning patients want a fast, low-effort booking experience with minimal personal data requirements. Common frustrations included lengthy registration forms, technical errors, unavailable appointment slots, and inconsistent practitioner information, all of which reduced trust and increased abandonment. These insights highlighted the importance of providing a simple, transparent, and reliable booking experience that gives patients confidence their appointment is successfully confirmed."
                     ]
                   },
-                ].map((userType) => (
+                ] as CalendarKeeperUserNeed[]).map((userType) => (
                   <div key={userType.id} className="border border-[#1183D0] rounded-lg overflow-hidden bg-[#f8fbff]">
                     <button
                       onClick={() => setExpandedUserNeed(expandedUserNeed === userType.id ? null : userType.id)}
@@ -3325,7 +3334,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
                 <div className="mt-8 pt-6 border-t border-[#d9e5f2]">
                   <p className="text-[14px] font-semibold text-[#0e2951] mb-4">Secondary Users</p>
-                  {[
+                  {([
                     {
                       id: "caregivers",
                       title: "3. Caregivers",
@@ -3347,7 +3356,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         "Research showed that doctors want to maximize clinical time while minimizing administrative work. Although workflows differ between Germany and France, both markets experience scheduling inefficiencies and administrative burdens that reduce time with patients. These insights reinforced the need for a reliable scheduling system that minimizes errors, streamlines workflows, and protects valuable clinical capacity."
                       ]
                     }
-                  ].map((userType) => (
+                  ] as CalendarKeeperUserNeed[]).map((userType) => (
                   <div key={userType.id} className="border border-[#d9e5f2] rounded-lg overflow-hidden">
                     <button
                       onClick={() => setExpandedUserNeed(expandedUserNeed === userType.id ? null : userType.id)}
