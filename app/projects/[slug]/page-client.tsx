@@ -6059,7 +6059,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
           <SectionHeading eyebrow="Prototype" title="Resource-aware scheduling" centered className="mb-5" />
           <p className="mx-auto mb-10 max-w-[720px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-            An interactive mobile prototype for creating appointments, working through degraded mode, and reconciling exceptions without stopping the day.
+            One product with three connected layers: a shared resource-aware scheduling core, a Calendar Keeper console, and a deliberately thin returning-patient surface. Two entrances adapt the experience to the practice shape, not the country.
           </p>
           <CalendarKeeperPrototypeViews />
         </section>
@@ -6077,7 +6077,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               {[
                 {
                   title: "Support lean, doctor-led practices",
-                  body: "Test a supervised call agent for markets where practices have limited assistant coverage. It can handle routine booking and rebooking requests, then escalate clinical or ambiguous cases to the doctor.",
+                  body: "Test a supervised, consent-aware call agent for lean practices with limited assistant coverage. It can handle routine booking and rebooking requests with EU-hosted processing, then escalate clinical or ambiguous cases to the doctor.",
                 },
                 {
                   title: "Review backfill with an agent, not autopilot",
@@ -6088,8 +6088,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   body: "Add system-health monitoring that detects a sync or eGK failure, explains its impact, and highlights the reconciliation work that needs attention when service returns.",
                 },
                 {
-                  title: "Validate the country-specific workflow",
-                  body: "Test the assistant-led German flow and doctor-led French flow separately, ensuring roles, handoffs, and automation reduce work without obscuring responsibility.",
+                  title: "Validate by practice shape",
+                  body: "Test delegation-ready team practices and lean, doctor-led practices separately, ensuring roles, handoffs, and automation reduce work without obscuring responsibility.",
                 },
               ].map((item, index) => (
                 <article key={item.title} className="rounded-[20px] border border-[#d9e5f2] bg-[#f8fbff] p-6">
