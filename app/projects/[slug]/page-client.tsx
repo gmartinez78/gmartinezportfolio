@@ -8,7 +8,7 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ContentPanel } from "@/components/content-panel";
-import { CalendarKeeperMobilePrototype } from "@/components/calendar-keeper-mobile-prototype";
+import { CalendarKeeperPrototypeViews } from "@/components/calendar-keeper-prototype-views";
 import { CalendarKeeperServiceBlueprint } from "@/components/calendar-keeper-service-blueprint";
 import { DataTablePanel } from "@/components/data-table-panel";
 import { KeyValueStackCard } from "@/components/key-value-stack-card";
@@ -6050,7 +6050,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <p className="mx-auto mb-10 max-w-[720px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
             An interactive mobile prototype for creating appointments, working through degraded mode, and reconciling exceptions without stopping the day.
           </p>
-          <CalendarKeeperMobilePrototype />
+          <CalendarKeeperPrototypeViews />
         </section>
       ) : null}
 
