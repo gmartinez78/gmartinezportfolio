@@ -6065,6 +6065,44 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
+      {caseStudy.slug === "calendar-keeper" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-[1080px]">
+            <SectionHeading eyebrow="Conclusion" title="A schedule the clinic can keep trusting" centered className="mb-5" />
+            <p className="mx-auto max-w-[780px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              The proposed experience treats scheduling as a coordination system: it protects clinical capacity by reserving the right resources together, keeps work moving during outages, and gives patients a dependable self-service path. The prototype establishes the core service; the next steps extend that reliability around the clinic.
+            </p>
+
+            <div className="mt-10 grid gap-4 md:grid-cols-2">
+              {[
+                {
+                  title: "Support lean, doctor-led practices",
+                  body: "Test a supervised call agent for markets where practices have limited assistant coverage. It can handle routine booking and rebooking requests, then escalate clinical or ambiguous cases to the doctor.",
+                },
+                {
+                  title: "Review backfill with an agent, not autopilot",
+                  body: "When a waitlist has enough history, an agent can identify viable openings and prepare a backfill recommendation for staff review before anyone is contacted.",
+                },
+                {
+                  title: "Monitor degraded mode proactively",
+                  body: "Add system-health monitoring that detects a sync or eGK failure, explains its impact, and highlights the reconciliation work that needs attention when service returns.",
+                },
+                {
+                  title: "Validate the country-specific workflow",
+                  body: "Test the assistant-led German flow and doctor-led French flow separately, ensuring roles, handoffs, and automation reduce work without obscuring responsibility.",
+                },
+              ].map((item, index) => (
+                <article key={item.title} className="rounded-[20px] border border-[#d9e5f2] bg-[#f8fbff] p-6">
+                  <p className="text-[11px] font-semibold tracking-[0.18em] text-[#1183D0]">NEXT STEP 0{index + 1}</p>
+                  <h3 className="mt-3 font-inter text-[20px] font-semibold leading-[1.35] text-[#0e2951]">{item.title}</h3>
+                  <p className="mt-3 text-[14px] leading-[1.65] text-[#5c7792]">{item.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
         {caseStudy.slug === "flock-accessibility-system" ? (
           <div className="mb-10 flex flex-wrap items-center justify-center gap-8">
