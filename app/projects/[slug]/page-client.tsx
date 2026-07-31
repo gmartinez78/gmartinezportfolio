@@ -3710,9 +3710,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 />
               </div>
 
-              <p className="mx-auto mt-6 max-w-[820px] text-center text-[14px] leading-[1.65] text-[#5c7792]">
-                <strong className="text-[#0e2951]">Strategic focus:</strong> Data sovereignty and MFA-first workflows are entry requirements. The defensible advantage is reliable, resource-aware scheduling—especially in degraded mode.
-              </p>
+              <div className="mx-auto mt-6 max-w-[820px] space-y-3 text-center text-[14px] leading-[1.65] text-[#5c7792]">
+                <p><strong className="text-[#0e2951]">Strategic focus:</strong> Data sovereignty and MFA-first workflows are entry requirements. The defensible advantage is reliable, resource-aware scheduling—especially in degraded mode.</p>
+                <p><strong className="text-[#0e2951]">Why these two users first:</strong> The Calendar Keeper owns the most complex, high-impact work: coordinating practitioners, rooms, equipment, changes, and recovery when systems fail. Returning patients create the most frequent, predictable requests. Designing a fast self-service path for them removes routine calls before they reach the clinic team.</p>
+                <p><strong className="text-[#0e2951]">Why the other users are not separate first flows:</strong> Caregivers depend on the same patient identity and appointment-management foundation, so booking for a dependent can extend the returning-patient experience. Older and lower-digital-literacy patients shape accessibility requirements across every screen—clear language, readable controls, and safe alternatives—rather than needing a disconnected product. Doctors and clinicians benefit from a reliable shared schedule, but they are not the people managing the repeated coordination work the console is designed to remove.</p>
+              </div>
               <div className="mx-auto mt-8 max-w-[820px] space-y-4 text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                 <p>
                   The design direction is a scheduling experience that feels clear, dependable, and useful for both staff and returning patients. The interface simplifies each decision by keeping availability, visit requirements, and the next best action visible at the moment they matter.
