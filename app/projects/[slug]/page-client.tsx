@@ -3650,26 +3650,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </section>
         ) : null}
 
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <div className="grid gap-16 lg:grid-cols-2">
-            <div>
-              <SectionHeading eyebrow="Admins' Pain" title="Points" className="mb-8" />
-              <div className="space-y-8">
-                {caseStudy.problem.admin_pain_points.map((item) => (
-                  <p key={item} className="font-inter text-[16px] leading-[1.9] text-[#5c7792]">{item}</p>
-                ))}
-              </div>
-            </div>
-            <div>
-              <SectionHeading eyebrow="Users' Pain" title="Points" className="mb-8" />
-              <div className="space-y-8">
-                {caseStudy.problem.user_pain_points.map((item) => (
-                  <p key={item} className="font-inter text-[16px] leading-[1.9] text-[#5c7792]">{item}</p>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
         </>
       )}
 
