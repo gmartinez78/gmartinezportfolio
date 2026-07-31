@@ -3650,6 +3650,48 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </section>
         ) : null}
 
+        {caseStudy.slug === "calendar-keeper" ? (
+          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+            <div className="mx-auto max-w-[1080px]">
+              <SectionHeading eyebrow="Ideate" title="How might we make the schedule trustworthy?" centered className="mb-5" />
+              <p className="mx-auto mb-8 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                The opportunity is not another booking interface. It is a resource-aware schedule that stays understandable and usable when the underlying infrastructure does not.
+              </p>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                {[
+                  {
+                    question: "How might we book around real clinical dependencies, not just time slots?",
+                    answer: "Model the practitioner, room, equipment, and preparation time together before an appointment is confirmed.",
+                  },
+                  {
+                    question: "How might we make a sync failure a known condition instead of a silent gap?",
+                    answer: "Show a clear “Not synced” status and give staff a visible reconciliation queue.",
+                  },
+                  {
+                    question: "How might we keep the clinic moving during an outage?",
+                    answer: "Allow local appointment creation with identity pending verification, then resolve it safely when systems recover.",
+                  },
+                  {
+                    question: "How might we sequence backfill responsibly?",
+                    answer: "Keep it as Phase 2: a waitlist needs real history before backfill can create value on day one.",
+                  },
+                ].map((item, index) => (
+                  <article key={item.question} className="rounded-[20px] border border-[#d9e5f2] bg-[#f8fbff] p-6">
+                    <p className="text-[11px] font-semibold tracking-[0.18em] text-[#1183D0]">HMW 0{index + 1}</p>
+                    <h3 className="mt-3 font-inter text-[20px] font-semibold leading-[1.35] text-[#0e2951]">{item.question}</h3>
+                    <p className="mt-3 text-[14px] leading-[1.65] text-[#5c7792]">{item.answer}</p>
+                  </article>
+                ))}
+              </div>
+
+              <p className="mx-auto mt-6 max-w-[820px] text-center text-[14px] leading-[1.65] text-[#5c7792]">
+                <strong className="text-[#0e2951]">Strategic focus:</strong> Data sovereignty and MFA-first workflows are entry requirements. The defensible advantage is reliable, resource-aware scheduling—especially in degraded mode.
+              </p>
+            </div>
+          </section>
+        ) : null}
+
         </>
       )}
 
