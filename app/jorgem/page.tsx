@@ -41,6 +41,14 @@ const progression = [
   ["Semana 8", "Cierre", "Registra pesos, repeticiones y sensaciones finales.", 75],
 ];
 
+const exerciseSheets: Record<string, { src: string; aspectRatio: string }> = {
+  d1: { src: "/images/jorgem/day-1-exercises.png", aspectRatio: "1 / 1" },
+  d2: { src: "/images/jorgem/day-2-exercises.png", aspectRatio: "0.95 / 1" },
+  d3: { src: "/images/jorgem/day-3-exercises.png", aspectRatio: "1 / 1" },
+  d4: { src: "/images/jorgem/day-4-exercises.png", aspectRatio: "4 / 3" },
+  d5: { src: "/images/jorgem/day-5-exercises.png", aspectRatio: "4 / 3" },
+};
+
 const safety = [
   "No aguantes la respiración durante el esfuerzo.",
   "No entrenes hasta el fallo muscular.",
@@ -59,6 +67,13 @@ function Card({ children, style }: { children: React.ReactNode; style?: React.CS
 function Pill({ children, tone = "blue" }: { children: React.ReactNode; tone?: "blue" | "warning" | "success" }) {
   const styles = tone === "warning" ? { background: colors.warningBg, color: colors.warning } : tone === "success" ? { background: colors.successBg, color: colors.success } : { background: colors.blueSoft, color: colors.navy };
   return <span style={{ ...styles, display: "inline-flex", alignItems: "center", gap: 5, borderRadius: 999, padding: "5px 10px", fontSize: 12, fontWeight: 800 }}>{children}</span>;
+}
+
+function ExerciseImage({ dayKey, index, name }: { dayKey: string; index: number; name: string }) {
+  const sheet = exerciseSheets[dayKey];
+  const column = index % 2;
+  const row = Math.floor(index / 2);
+  return <div role="img" aria-label={`Illustration of ${name}`} style={{ width: "100%", aspectRatio: sheet.aspectRatio, borderRadius: 10, backgroundImage: `url(${sheet.src})`, backgroundSize: "200% 400%", backgroundPosition: `${column * 100}% ${row * 100}%`, backgroundRepeat: "no-repeat", backgroundColor: colors.blueSoft }} />;
 }
 
 export default function JorgePlanPage() {
@@ -94,7 +109,7 @@ export default function JorgePlanPage() {
 
       {activeDay && <><Card><div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "start" }}><div><h1 className="jorgem-title" style={{ margin: 0, fontSize: 23 }}>{activeDay.label} · {activeDay.title}</h1><p style={{ margin: "4px 0 0", color: colors.text }}>{activeDay.subtitle}</p></div><Pill tone="success">{activeDay.exercises.filter((_, index) => done[`${activeDay.key}-${index}`]).length}/{activeDay.exercises.length} hecho</Pill></div><div style={{ display: "flex", flexWrap: "wrap", gap: 7, marginTop: 14 }}><Pill>RPE 6-8</Pill><Pill>No aguantes la respiración</Pill><Pill tone="warning">Codo: máximo 3/10</Pill></div></Card>
         <Card><h2 style={sectionTitle}><Activity size={19} /> Calentamiento · 8-10 min</h2><ul style={bodyText}><li>5 minutos de caminadora o bicicleta suave.</li><li>Movilidad de hombros, codos y escápulas.</li><li>1 serie ligera de los movimientos principales.</li></ul></Card>
-        <Card><h2 style={sectionTitle}><Dumbbell size={19} /> Ejercicios</h2><div style={{ display: "grid", gap: 10 }}>{activeDay.exercises.map(([name, sets, rest], index) => { const id = `${activeDay.key}-${index}`; const checked = Boolean(done[id]); return <article className="jorgem-card" key={id} style={{ background: checked ? colors.successBg : colors.blueSoft, border: `1px solid ${checked ? colors.success : colors.border}`, borderRadius: 14, padding: compact ? 11 : 15 }}><div style={{ display: "flex", justifyContent: "space-between", gap: 10 }}><div><strong>{index + 1}. {name}</strong><div style={{ display: "flex", gap: 7, flexWrap: "wrap", marginTop: 8 }}><Pill>{sets}</Pill><Pill tone={rest === "Opcional" ? "warning" : "blue"}>{rest}</Pill></div></div><button onClick={() => setDone((current) => ({ ...current, [id]: !checked }))} aria-pressed={checked} style={{ alignSelf: "start", display: "inline-flex", alignItems: "center", gap: 5, border: `1px solid ${checked ? colors.success : colors.border}`, borderRadius: 9, background: colors.white, color: checked ? colors.success : colors.navy, padding: "8px 10px", cursor: "pointer", fontWeight: 800, fontSize: 12 }}><CheckCircle2 size={15} />{checked ? "Hecho" : "Marcar"}</button></div>{!compact && <p style={{ margin: "11px 0 0", fontSize: 13, color: colors.text }}>Registra el peso y las repeticiones en tu libreta o aplicación de entrenamiento. Prioriza siempre una técnica controlada.</p>}</article>; })}</div></Card>
+        <Card><h2 style={sectionTitle}><Dumbbell size={19} /> Ejercicios</h2><div style={{ display: "grid", gap: 10 }}>{activeDay.exercises.map(([name, sets, rest], index) => { const id = `${activeDay.key}-${index}`; const checked = Boolean(done[id]); return <article className="jorgem-card" key={id} style={{ background: checked ? colors.successBg : colors.blueSoft, border: `1px solid ${checked ? colors.success : colors.border}`, borderRadius: 14, padding: compact ? 11 : 15 }}><div style={{ display: "grid", gridTemplateColumns: compact ? "1fr" : "minmax(112px, 30%) 1fr", gap: 12 }}><ExerciseImage dayKey={activeDay.key} index={index} name={name} /><div><div style={{ display: "flex", justifyContent: "space-between", gap: 10 }}><div><strong>{index + 1}. {name}</strong><div style={{ display: "flex", gap: 7, flexWrap: "wrap", marginTop: 8 }}><Pill>{sets}</Pill><Pill tone={rest === "Opcional" ? "warning" : "blue"}>{rest}</Pill></div></div><button onClick={() => setDone((current) => ({ ...current, [id]: !checked }))} aria-pressed={checked} style={{ alignSelf: "start", display: "inline-flex", alignItems: "center", gap: 5, border: `1px solid ${checked ? colors.success : colors.border}`, borderRadius: 9, background: colors.white, color: checked ? colors.success : colors.navy, padding: "8px 10px", cursor: "pointer", fontWeight: 800, fontSize: 12 }}><CheckCircle2 size={15} />{checked ? "Hecho" : "Marcar"}</button></div>{!compact && <p style={{ margin: "11px 0 0", fontSize: 13, color: colors.text }}>Prioriza una técnica controlada y detén el ejercicio si la molestia aumenta.</p>}</div></div></article>; })}</div></Card>
         <Card><h2 style={sectionTitle}><Flame size={19} /> Cardio post-entreno</h2><p style={bodyText}>{activeDay.cardio}</p></Card>
         <Card style={{ borderColor: colors.danger, background: colors.dangerBg }}><h2 style={{ ...sectionTitle, color: colors.danger }}><ShieldAlert size={19} /> Seguridad del día</h2><p style={{ ...bodyText, color: colors.danger }}>Evita el fallo muscular y detén o sustituye un ejercicio si aumenta la molestia del codo.</p></Card>
         <button className="jorgem-no-print" onClick={() => setDone((current) => { const next = { ...current }; activeDay.exercises.forEach((_, index) => { delete next[`${activeDay.key}-${index}`]; }); return next; })} style={{ justifySelf: "start", display: "inline-flex", alignItems: "center", gap: 8, border: `1px solid ${colors.border}`, borderRadius: 11, padding: "10px 14px", background: colors.white, color: colors.text, cursor: "pointer", fontWeight: 800 }}><RotateCcw size={16} /> Reiniciar esta sesión</button></>}
