@@ -6055,7 +6055,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading eyebrow="Service blueprint" title="How the scheduling service works together" centered className="mb-5" />
           <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-            The service blueprint connects the patient and clinic experience to the operational work and systems that keep a resource-aware schedule reliable.
+            This proposed future-state flow connects the patient and clinic experience to the operational work and systems that keep a resource-aware schedule reliable.
           </p>
           <CalendarKeeperServiceBlueprint />
         </section>

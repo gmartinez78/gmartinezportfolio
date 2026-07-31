@@ -9,7 +9,7 @@ const lanes = [
   {
     label: "Frontstage",
     tone: "bg-[#f2edff] text-[#0e2951]",
-    cells: ["Role-specific entry and clear next action", "Calendar-led availability with visit details", "Resource-aware booking summary", "Visible Not synced state and action queue", "Self-service controls with durable confirmation"],
+    cells: ["Two entrances with a clear next action", "Calendar-led availability with visit details", "Resource-aware booking summary", "Console: action queue · Patient: clear next step", "Self-service controls with durable confirmation"],
   },
   {
     label: "Backstage",
