@@ -3547,18 +3547,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                 </div>
               </div>
-              <LowFiFlowMap
-                persona="Calendar Keeper / Medical Assistant"
-                description="A low-fidelity operational flow that prioritizes visibility, constraint checking, and recovery when the schedule changes."
-                steps={[
-                  { title: "Today’s schedule", caption: "Start-of-day overview", rows: ["Sync status: check", "8 appointments", "2 pending changes"], action: "Review alerts" },
-                  { title: "Incoming request", caption: "Call, message, or walk-in", rows: ["Patient", "Request type", "Preferred time"], action: "Find availability" },
-                  { decision: "Slot + resources available?" },
-                  { title: "Schedule visit", caption: "Confirm the right setup", rows: ["Practitioner", "Room / equipment", "Visit duration"], action: "Hold slot" },
-                  { title: "Resolve exception", caption: "Make recovery visible", rows: ["Conflict reason", "Suggested alternative", "Notify patient"], action: "Apply update" },
-                  { title: "Calendar updated", caption: "Reliable shared record", rows: ["Status: confirmed", "Audit trail", "Team notified"], action: "Done" },
-                ]}
-              />
             </div>
           </section>
         ) : null}
@@ -3640,18 +3628,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                 </div>
               </div>
-              <LowFiFlowMap
-                persona="Returning Patient"
-                description="A low-fidelity self-service flow designed to make a familiar appointment quick to find, confirm, and manage."
-                steps={[
-                  { title: "Return to booking", caption: "Recognize the patient", rows: ["Email or mobile", "Date of birth", "Privacy reassurance"], action: "Continue" },
-                  { title: "Choose a visit", caption: "See relevant options", rows: ["Preferred practitioner", "Visit type", "Available times"], action: "Select a time" },
-                  { decision: "Suitable time available?" },
-                  { title: "Confirm details", caption: "Ask only what changed", rows: ["Contact details", "Reason for visit", "Appointment summary"], action: "Confirm booking" },
-                  { title: "Booking confirmed", caption: "Provide certainty", rows: ["Date and time", "Practice details", "Confirmation saved"], action: "Manage booking" },
-                  { title: "Manage appointment", caption: "Rebook without calling", rows: ["Change time", "Cancel visit", "Book for dependent"], action: "Save changes" },
-                ]}
-              />
             </div>
           </section>
         ) : null}
@@ -3705,6 +3681,33 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     {expandedHmwIndex === index ? <div className="border-t border-[#d9e5f2] bg-white px-5 py-4"><p className="text-[14px] leading-[1.65] text-[#5c7792]">{item.answer}</p></div> : null}
                   </article>
                 ))}
+              </div>
+
+              <div className="mt-10 space-y-10">
+                <LowFiFlowMap
+                  persona="Calendar Keeper / Medical Assistant"
+                  description="A low-fidelity operational flow that prioritizes visibility, constraint checking, and recovery when the schedule changes."
+                  steps={[
+                    { title: "Today’s schedule", caption: "Start-of-day overview", rows: ["Sync status: check", "8 appointments", "2 pending changes"], action: "Review alerts" },
+                    { title: "Incoming request", caption: "Call, message, or walk-in", rows: ["Patient", "Request type", "Preferred time"], action: "Find availability" },
+                    { decision: "Slot + resources available?" },
+                    { title: "Schedule visit", caption: "Confirm the right setup", rows: ["Practitioner", "Room / equipment", "Visit duration"], action: "Hold slot" },
+                    { title: "Resolve exception", caption: "Make recovery visible", rows: ["Conflict reason", "Suggested alternative", "Notify patient"], action: "Apply update" },
+                    { title: "Calendar updated", caption: "Reliable shared record", rows: ["Status: confirmed", "Audit trail", "Team notified"], action: "Done" },
+                  ]}
+                />
+                <LowFiFlowMap
+                  persona="Returning Patient"
+                  description="A low-fidelity self-service flow designed to make a familiar appointment quick to find, confirm, and manage."
+                  steps={[
+                    { title: "Return to booking", caption: "Recognize the patient", rows: ["Email or mobile", "Date of birth", "Privacy reassurance"], action: "Continue" },
+                    { title: "Choose a visit", caption: "See relevant options", rows: ["Preferred practitioner", "Visit type", "Available times"], action: "Select a time" },
+                    { decision: "Suitable time available?" },
+                    { title: "Confirm details", caption: "Ask only what changed", rows: ["Contact details", "Reason for visit", "Appointment summary"], action: "Confirm booking" },
+                    { title: "Booking confirmed", caption: "Provide certainty", rows: ["Date and time", "Practice details", "Confirmation saved"], action: "Manage booking" },
+                    { title: "Manage appointment", caption: "Rebook without calling", rows: ["Change time", "Cancel visit", "Book for dependent"], action: "Save changes" },
+                  ]}
+                />
               </div>
 
               <p className="mx-auto mt-6 max-w-[820px] text-center text-[14px] leading-[1.65] text-[#5c7792]">
