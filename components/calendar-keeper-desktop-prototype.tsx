@@ -34,16 +34,21 @@ export function CalendarKeeperDesktopPrototype() {
 
   return (
     <div className="overflow-hidden rounded-[24px] border border-[#d8e2f1] bg-[#f4f8ff] shadow-[0_20px_48px_rgba(40,99,216,0.12)]">
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#d8e2f1] bg-white px-5 py-4">
-        <div><p className="text-[11px] font-bold tracking-[0.14em] text-[#2863d8]">CLARITY SCHEDULE</p><h3 className="mt-1 font-inter text-[22px] font-semibold text-[#24324a]">{entrance === "console" ? "Calendar Keeper console" : "Returning patient"}</h3><p className="mt-1 text-[12px] text-[#667085]">{entrance === "console" ? practice.description : "A simple self-service path for a familiar appointment."}</p></div>
-        <div className="flex flex-wrap items-center gap-2">
+      <div className="border-b border-[#d8e2f1] bg-white">
+        <div className="flex items-center justify-between gap-4 border-b border-[#edf2f8] px-5 py-3">
+          <p className="text-[11px] font-bold tracking-[0.14em] text-[#2863d8]">CLARITY SCHEDULE</p>
           <div className="flex rounded-full border border-[#d8e2f1] bg-[#f4f8ff] p-1" aria-label="Prototype entrance">
             {(["console", "patient"] as const).map((option) => <button key={option} type="button" onClick={() => setEntrance(option)} className={`rounded-full px-3 py-1.5 text-[10px] font-bold ${entrance === option ? "bg-[#2863d8] text-white" : "text-[#667085]"}`}>{option === "console" ? "Console" : "Patient"}</button>)}
           </div>
+        </div>
+        <div className="flex flex-wrap items-center justify-between gap-4 px-5 py-4">
+          <div><h3 className="font-inter text-[22px] font-semibold text-[#24324a]">{entrance === "console" ? "Calendar Keeper console" : "Returning patient"}</h3><p className="mt-1 text-[12px] text-[#667085]">{entrance === "console" ? practice.description : "A simple self-service path for a familiar appointment."}</p></div>
+        <div className="flex flex-wrap items-center gap-2">
           {entrance === "console" ? <><div className="flex rounded-full border border-[#d8e2f1] bg-[#f4f8ff] p-1" aria-label="Practice shape">
             {(["team", "solo"] as const).map((shape) => <button key={shape} type="button" onClick={() => setPracticeShape(shape)} className={`rounded-full px-3 py-1.5 text-[10px] font-bold ${practiceShape === shape ? "bg-[#2863d8] text-white" : "text-[#667085]"}`}>{shape === "team" ? "Team practice" : "Solo practice"}</button>)}
           </div>
           <button type="button" onClick={() => setIsDegraded((current) => !current)} className={`rounded-full px-3 py-2 text-[11px] font-bold ${isDegraded ? "bg-[#fff3d8] text-[#895400]" : "bg-[#e7f6ee] text-[#19714e]"}`}>{isDegraded ? "● Not synced · working locally" : "● Integration healthy"}</button></> : <span className="rounded-full bg-[#e7f6ee] px-3 py-2 text-[11px] font-bold text-[#19714e]">Secure self-service</span>}
+        </div>
         </div>
       </div>
       <div className="p-5 md:p-7">
