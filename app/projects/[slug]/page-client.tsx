@@ -3399,8 +3399,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         {caseStudy.slug === "calendar-keeper" ? (
           <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
             <div className="mx-auto max-w-[1080px]">
-              <SectionHeading eyebrow="Customer journey map" title="A day for the Calendar Keeper" className="mb-5" />
-              <p className="mb-8 max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              <SectionHeading eyebrow="Customer journey map" title="A day for the Calendar Keeper" centered className="mb-5" />
+              <p className="mx-auto mb-8 max-w-[720px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                 The journey shows how routine requests compound into operational pressure for a medical assistant managing a clinic schedule. Each break in the flow creates rework, interrupts care, or puts the day&apos;s capacity at risk.
               </p>
 
