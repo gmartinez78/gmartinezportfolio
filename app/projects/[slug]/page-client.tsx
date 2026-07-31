@@ -1412,6 +1412,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [openHypothesisIds, setOpenHypothesisIds] = useState<
     Array<"content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4">
   >(caseStudy?.slug === "reversetech" ? ["rt-hypothesis-2"] : []);
+  const [expandedUserNeed, setExpandedUserNeed] = useState<string | null>(null);
   const reversetechTaskTabsRef = useRef<HTMLElement | null>(null);
   const experimentModalMockupRef = useRef<HTMLDivElement | null>(null);
 
@@ -3141,7 +3142,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <div className="mx-auto max-w-[860px]">
             <div className="mb-12">
               <h2 className="font-inter text-[36px] leading-tight text-[#0e2951] mb-3">1. Empathize</h2>
-              <p className="text-[16px] leading-[1.7] text-[#5c7792]">I analyzed Doctolib, Samedi, and German and French incumbents to map the competitive landscape. <strong>Key findings:</strong> Doctolib dominates France (23.2% of general practitioner market), but Germany is vulnerable — Doctolib's tool launched only 9 months ago with no reliable usage data. Samedi occupies two of Calendar Keeper's claimed differentiators but lacks a patient search portal and self-service onboarding. The real blocker to switching isn't features — it's data migration fear (44.8% of practices). German incumbents are fragmented (32 systems) and weak; France is locked by three major players with government subsidy support. Any cloud solution in Germany faces strict regulatory barriers: professional confidentiality laws, data protection rules, and mandatory security certifications.</p>
+              <p className="text-[16px] leading-[1.7] text-[#5c7792]">I analyzed Doctolib, Samedi, and German/French competitors to map the market. Doctolib dominates France, while Germany remains less mature. Samedi covers some key differentiators but lacks patient search and self-service onboarding. The biggest adoption barrier is data migration concerns (44.8%), not missing features. Germany's fragmented market creates opportunity, although strict healthcare regulations remain a major challenge.</p>
             </div>
 
             <div className="mb-12">
@@ -3250,11 +3251,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
 
                 <div>
-                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">🆕 Technical/regulatory constraint we'd missed</h4>
-                  <p className="text-[16px] leading-[1.7] text-[#5c7792]">Cloud PVS providers in Germany face §203(3–4) StGB, Art. 28 GDPR, §393 SGB V and BSI C5 attestation requirements — and a data-processing agreement alone does not remove the criminal-law professional-secrecy exposure. KBV conformity assessment and TI connection are mandatory for cloud systems too. This belongs in our technical-constraints register. It's a cloud-native entry barrier none of our four project documents captured.</p>
-                </div>
-
-                <div>
                   <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">📊 Feature & Capability Comparison</h4>
                   <div className="overflow-x-auto mt-4">
                     <table className="w-full text-[13px] border-collapse">
@@ -3343,11 +3339,29 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
                 <div>
                   <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">🎯 Empathize Phase Conclusion</h4>
-                  <div className="space-y-4">
-                    <p className="text-[16px] leading-[1.7] text-[#5c7792]"><strong>Strategic decision:</strong> Focus on Germany, not France. France is already won by Doctolib and locked by government subsidy. Germany's market is fragmented and vulnerable, with a 9-month window before Doctolib gains reliable usage data and market share.</p>
-                    <p className="text-[16px] leading-[1.7] text-[#5c7792]"><strong>Product strategy pivot:</strong> Reframe differentiators. Resource-aware scheduling and sovereignty are occupied by Samedi. Instead, lead with data migration as the first MVP feature — it addresses the #1 switching barrier and the biggest pain point practices name.</p>
-                    <p className="text-[16px] leading-[1.7] text-[#5c7792]"><strong>Positioning against Samedi:</strong> We compete on usability (Samedi requires consultative setup) and self-service onboarding (Samedi doesn't offer it). For groups and multi-practice clinics, our transparent pricing model beats Samedi's per-doctor model.</p>
-                    <p className="text-[16px] leading-[1.7] text-[#5c7792]"><strong>Regulatory requirement:</strong> Must secure BSI C5 attestation, ensure GDPR Art. 28 compliance, and address §203 StGB professional confidentiality exposure from day one — not as a roadmap item, but as a launch requirement.</p>
+                  <div className="space-y-6">
+                    <div>
+                      <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-2">Strategic decision</p>
+                      <p className="text-[16px] leading-[1.7] text-[#5c7792]">Prioritize Germany. France is locked by Doctolib and government support, while Germany's fragmented market offers a key opportunity before Doctolib gains traction.</p>
+                    </div>
+                    <div>
+                      <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-2">Product strategy pivot</p>
+                      <p className="text-[16px] leading-[1.7] text-[#5c7792]">Reframe differentiators. Resource-aware scheduling and sovereignty are occupied by Samedi. Instead, lead with data migration as the first MVP feature — it addresses the #1 switching barrier and the biggest pain point practices name.</p>
+                    </div>
+                    <div>
+                      <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-2">Positioning against Samedi</p>
+                      <p className="text-[16px] leading-[1.7] text-[#5c7792]">We compete on usability (Samedi requires consultative setup) and self-service onboarding (Samedi doesn't offer it). For groups and multi-practice clinics, our transparent pricing model beats Samedi's per-doctor model.</p>
+                    </div>
+                    <div>
+                      <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-3">Regulatory & compliance requirements</p>
+                      <ul className="space-y-2 text-[16px] leading-[1.7] text-[#5c7792] ml-4">
+                        <li>• BSI C5 attestation required</li>
+                        <li>• GDPR Art. 28 compliance mandatory</li>
+                        <li>• §203 StGB professional confidentiality exposure must be addressed</li>
+                        <li>• KBV conformity assessment and TI connection required</li>
+                        <li>• Implement from day one as launch requirement, not roadmap item</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -3355,6 +3369,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
             <div className="mb-12">
               <h3 className="font-inter text-[28px] leading-tight text-[#0e2951] mb-8">User Needs</h3>
+              <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-8">I identified six user types in the research, but concentrated on two with the strongest evidence and highest strategic impact: clinical staff (medical assistants) and returning patients. These two personas anchor the product strategy because their needs are fundamentally different between Germany and France, and solving for them unlocks the core value proposition in each market.</p>
 
               <div className="space-y-3">
                 {[
