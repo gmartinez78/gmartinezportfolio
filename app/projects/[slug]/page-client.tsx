@@ -6068,7 +6068,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[1080px]">
-            <SectionHeading eyebrow="Conclusion" title="A schedule the clinic can keep trusting" centered className="mb-5" />
+            <SectionHeading eyebrow="Future phases" title="A schedule the clinic can keep trusting" centered className="mb-5" />
             <p className="mx-auto max-w-[780px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               The proposed experience treats scheduling as a coordination system: it protects clinical capacity by reserving the right resources together, keeps work moving during outages, and gives patients a dependable self-service path. The prototype establishes the core service; the next steps extend that reliability around the clinic.
             </p>
