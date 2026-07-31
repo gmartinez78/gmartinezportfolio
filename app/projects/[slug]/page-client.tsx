@@ -4127,7 +4127,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </>
       ) : null}
 
-      {caseStudy.slug !== "nayya-ai-benefits" && caseStudy.slug !== "flock-accessibility-system" && caseStudy.slug !== "i9-everify-integration" && (caseStudy.constraints?.length ?? 0) > 0 ? (
+      {caseStudy.slug !== "nayya-ai-benefits" && caseStudy.slug !== "flock-accessibility-system" && caseStudy.slug !== "i9-everify-integration" && caseStudy.slug !== "calendar-keeper" && (caseStudy.constraints?.length ?? 0) > 0 ? (
         <section id="rt-design-proposal" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title="Constraints" centered className="mb-12" />
           <div className="grid gap-6 md:grid-cols-2">
