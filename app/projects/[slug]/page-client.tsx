@@ -1483,6 +1483,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     Array<"content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4">
   >(caseStudy?.slug === "reversetech" ? ["rt-hypothesis-2"] : []);
   const [expandedUserNeed, setExpandedUserNeed] = useState<string | null>(null);
+  const [expandedHmwIndex, setExpandedHmwIndex] = useState<number | null>(0);
   const reversetechTaskTabsRef = useRef<HTMLElement | null>(null);
   const experimentModalMockupRef = useRef<HTMLDivElement | null>(null);
 
@@ -3660,7 +3661,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 The opportunity is not another booking interface. It is a resource-aware schedule that stays understandable and usable when the underlying infrastructure does not.
               </p>
 
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="mx-auto max-w-[880px] space-y-3">
                 {[
                   {
                     question: "How might we book around real clinical dependencies, not just time slots?",
@@ -3687,10 +3688,18 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     answer: "Avoid relying on empty waitlist data at launch, and focus the first experience on dependable core booking instead.",
                   },
                 ].map((item, index) => (
-                  <article key={item.question} className="rounded-[20px] border border-[#d9e5f2] bg-[#f8fbff] p-6">
-                    <p className="text-[11px] font-semibold tracking-[0.18em] text-[#1183D0]">HMW {String(index + 1).padStart(2, "0")}</p>
-                    <h3 className="mt-3 font-inter text-[20px] font-semibold leading-[1.35] text-[#0e2951]">{item.question}</h3>
-                    <p className="mt-3 text-[14px] leading-[1.65] text-[#5c7792]">{item.answer}</p>
+                  <article key={item.question} className="overflow-hidden rounded-[18px] border border-[#d9e5f2] bg-[#f8fbff]">
+                    <button
+                      type="button"
+                      onClick={() => setExpandedHmwIndex((current) => current === index ? null : index)}
+                      aria-expanded={expandedHmwIndex === index}
+                      className="flex w-full items-center gap-4 px-5 py-4 text-left transition-colors hover:bg-white"
+                    >
+                      <span className="shrink-0 text-[11px] font-semibold tracking-[0.18em] text-[#1183D0]">HMW {String(index + 1).padStart(2, "0")}</span>
+                      <h3 className="flex-1 font-inter text-[17px] font-semibold leading-[1.35] text-[#0e2951]">{item.question}</h3>
+                      <ChevronRight className={`h-5 w-5 shrink-0 text-[#1183D0] transition-transform ${expandedHmwIndex === index ? "rotate-90" : ""}`} />
+                    </button>
+                    {expandedHmwIndex === index ? <div className="border-t border-[#d9e5f2] bg-white px-5 py-4"><p className="text-[14px] leading-[1.65] text-[#5c7792]">{item.answer}</p></div> : null}
                   </article>
                 ))}
               </div>
