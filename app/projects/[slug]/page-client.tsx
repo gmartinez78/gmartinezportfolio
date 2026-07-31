@@ -3234,8 +3234,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
 
             <div className="mb-12">
-              <div className="space-y-8">
-                <div>
+              <div className="flex flex-col gap-8">
+                <div className="order-2">
                   <h3 className="font-inter text-[28px] leading-tight text-[#0e2951] mb-8">Market Opportunity & Key Insights</h3>
                   <ul className="space-y-4 text-[16px] leading-[1.7] text-[#5c7792]">
                     <li><strong>Germany presents the strongest market opportunity.</strong> While Doctolib has already become the market leader in France by combining appointment booking with practice management, its German practice management solution is still in its early stages, creating an opportunity to enter the market before adoption accelerates.</li>
@@ -3246,7 +3246,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </ul>
                 </div>
 
-                <div>
+                <div className="order-1">
                   <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">📊 Feature & Capability Comparison</h4>
                   <div className="overflow-x-auto mt-4">
                     <table className="w-full text-[13px] border-collapse">
