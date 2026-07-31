@@ -3650,18 +3650,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </section>
         ) : null}
 
-        {caseStudy.slug === "calendar-keeper" ? (
-          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-            <div className="mx-auto max-w-[860px] rounded-[24px] border border-[#d9e5f2] bg-[#f8fbff] px-6 py-10 text-center md:px-12">
-              <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">Conclusion</p>
-              <h2 className="mt-3 font-inter text-[30px] leading-tight text-[#0e2951] md:text-[36px]">One scheduling system, two connected needs</h2>
-              <p className="mx-auto mt-5 max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                The two journeys reveal the same underlying problem: scheduling is a coordination system, not just a calendar. Clinical staff need trustworthy availability and clear recovery when infrastructure fails; returning patients need a fast, confident way to manage familiar appointments. Designing for both protects clinical capacity while making self-service genuinely useful.
-              </p>
-            </div>
-          </section>
-        ) : null}
-
         </>
       )}
 
