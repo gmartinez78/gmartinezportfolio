@@ -3635,7 +3635,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         {caseStudy.slug === "calendar-keeper" ? (
           <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
             <div className="mx-auto max-w-[1080px]">
-              <SectionHeading eyebrow="Ideate" title="How Might We Questions" centered className="mb-5" />
+              <SectionHeading eyebrow="How Might We Questions" title="How might we make the schedule trustworthy?" centered className="mb-5" />
               <p className="mx-auto mb-8 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                 The opportunity is not another booking interface. It is a resource-aware schedule that stays understandable and usable when the underlying infrastructure does not.
               </p>
