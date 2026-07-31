@@ -3696,6 +3696,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <p className="mx-auto mt-6 max-w-[820px] text-center text-[14px] leading-[1.65] text-[#5c7792]">
                 <strong className="text-[#0e2951]">Strategic focus:</strong> Data sovereignty and MFA-first workflows are entry requirements. The defensible advantage is reliable, resource-aware scheduling—especially in degraded mode.
               </p>
+              <div className="mx-auto mt-8 max-w-[820px] space-y-4 text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                <p>
+                  The design direction is a scheduling experience that feels clear, dependable, and useful for both staff and returning patients. The interface simplifies each decision by keeping availability, visit requirements, and the next best action visible at the moment they matter.
+                </p>
+                <p>
+                  The low-fi flows establish a calendar-led experience with clear status signals and contextual action panels. Staff can see whether the schedule is healthy, resolve exceptions without losing their place, and keep appointments moving; patients can book, confirm, and manage a familiar visit without breaking the flow or returning to the phone.
+                </p>
+              </div>
             </div>
           </section>
         ) : null}
