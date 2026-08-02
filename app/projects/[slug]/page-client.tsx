@@ -6158,6 +6158,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </Badge>
               ))}
             </div>
+            {caseStudy.slug === "calendar-keeper" ? (
+              <Link
+                href="/calendar-keeper/presentation"
+                className="inline-flex items-center rounded-full border border-[#1183D0] bg-[#f1f8fe] px-4 py-2 text-[12px] font-semibold text-[#0e5f9f] transition-colors hover:bg-[#1183D0] hover:text-white"
+              >
+                View stakeholder presentation <span className="ml-2" aria-hidden="true">↗</span>
+              </Link>
+            ) : null}
           </div>
           <div className="hidden w-px self-stretch bg-[#d7e8f7] md:block" />
           <div className="flex flex-col items-center gap-6">
