@@ -3224,9 +3224,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[860px]">
             <div className="mb-12">
-              <h2 className="font-inter text-[36px] leading-tight text-[#0e2951] mb-8">Research</h2>
-              <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-6">I started by conducting a strategic research phase to understand the healthcare ecosystem in France and Germany. I analyzed the market, competitors, regulations, and care delivery models to identify the biggest opportunities and constraints. I also synthesized stakeholder and user insights to understand the needs of patients, medical assistants, doctors, and clinic managers. Based on this research, I prioritized the primary users, defined personas, problem statements, and user journeys, and identified the highest-impact product direction. This process allowed me to move from a broad market opportunity to a focused product strategy and user experience grounded in both business goals and user needs.</p>
-              <p className="text-[15px] leading-[1.6] text-[#5c7792]">
+              <SectionHeading eyebrow="Research" title="Behind the schedule" centered className="mb-5" />
+              <p className="mx-auto mb-6 max-w-[760px] text-center text-[16px] leading-[1.7] text-[#5c7792]">I started by conducting a strategic research phase to understand the healthcare ecosystem in France and Germany. I analyzed the market, competitors, regulations, and care delivery models to identify the biggest opportunities and constraints. I also synthesized stakeholder and user insights to understand the needs of patients, medical assistants, doctors, and clinic managers. Based on this research, I prioritized the primary users, defined personas, problem statements, and user journeys, and identified the highest-impact product direction. This process allowed me to move from a broad market opportunity to a focused product strategy and user experience grounded in both business goals and user needs.</p>
+              <p className="text-center text-[15px] leading-[1.6] text-[#5c7792]">
                 <a href="https://docs.google.com/document/d/1f8IdPBMvMJf_yqPTCc1hNMkU1EpcaO1OIUKFSGaVCLk/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-[#1183D0] hover:text-[#0e5a8a] underline">
                   View detailed research insights →
                 </a>
@@ -6157,15 +6157,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   {tool}
                 </Badge>
               ))}
+              {caseStudy.slug === "calendar-keeper" ? (
+                <Badge asChild size="tag">
+                  <Link href="/calendar-keeper/presentation/">
+                    Stakeholder presentation <span aria-hidden="true">↗</span>
+                  </Link>
+                </Badge>
+              ) : null}
             </div>
-            {caseStudy.slug === "calendar-keeper" ? (
-              <Link
-                href="/calendar-keeper/presentation/"
-                className="inline-flex items-center rounded-full border border-[#1183D0] bg-[#f1f8fe] px-4 py-2 text-[12px] font-semibold text-[#0e5f9f] transition-colors hover:bg-[#1183D0] hover:text-white"
-              >
-                View stakeholder presentation <span className="ml-2" aria-hidden="true">↗</span>
-              </Link>
-            ) : null}
           </div>
           <div className="hidden w-px self-stretch bg-[#d7e8f7] md:block" />
           <div className="flex flex-col items-center gap-6">
