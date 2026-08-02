@@ -1,0 +1,131 @@
+{"kind":"deck","id":"pr/ebgu9t","name":"Deck"}
+{"kind":"layout","layoutId":"a1476fb4-04ad-4312-89ce-1ba6a2a16152","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"48ea3eca-3c54-48ce-b90c-584f77d10eef","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/tedpas","slide":1,"title":"STAKEHOLDER PRESENTATION","textShapes":4}
+{"kind":"shape","id":"sh/v6p47upw","slide":1,"bbox":[820,-150,550,1000]}
+{"kind":"shape","id":"sh/w7yl0z6h","slide":1,"bbox":[950,60,300,300]}
+{"kind":"textbox","id":"sh/h87m9472","slide":1,"text":"STAKEHOLDER PRESENTATION","textPreview":"STAKEHOLDER PRESENTATION","textChars":24,"textLines":1,"bbox":[68,82,500,18]}
+{"kind":"textbox","id":"sh/mhg3upof","slide":1,"text":"A reliable schedule\nwhen the clinic\ncannot pause.","textPreview":"A reliable schedule | when the clinic | cannot pause.","textChars":49,"textLines":3,"bbox":[68,185,760,250]}
+{"kind":"textbox","id":"sh/7ipk3up0","slide":1,"text":"Calendar Keeper turns clinic scheduling into a resource-aware service that stays useful when infrastructure does not.","textPreview":"Calendar Keeper turns clinic scheduling into a resource-aware service that stays useful when infrastructure does not.","textChars":117,"textLines":1,"bbox":[72,492,600,72]}
+{"kind":"shape","id":"sh/8jylwz6l","slide":1,"bbox":[72,610,180,4]}
+{"kind":"textbox","id":"sh/9k7m5k76","slide":1,"text":"Product strategy · Experience design · AI-assisted process","textPreview":"Product strategy · Experience design · AI-assisted process","textChars":58,"textLines":1,"bbox":[72,632,680,22]}
+{"kind":"notes","id":"nt/tedpas","slide":1,"text":""}
+{"kind":"slide","id":"sl/kfto73","slide":2,"title":"CALENDAR KEEPER  /  02","textShapes":11}
+{"kind":"textbox","id":"sh/87a1c3i9","slide":2,"text":"CALENDAR KEEPER  /  02","textPreview":"CALENDAR KEEPER  /  02","textChars":22,"textLines":1,"bbox":[64,42,420,18]}
+{"kind":"textbox","id":"sh/n6103i1o","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1160,40,56,22]}
+{"kind":"textbox","id":"sh/m5sjad03","slide":2,"text":"The problem","textPreview":"The problem","textChars":11,"textLines":1,"bbox":[64,666,900,16]}
+{"kind":"textbox","id":"sh/xc3i9sjq","slide":2,"text":"A clinic appointment\nis more than a time slot.","textPreview":"A clinic appointment | is more than a time slot.","textChars":46,"textLines":2,"bbox":[64,105,560,138]}
+{"kind":"textbox","id":"sh/wba1gnil","slide":2,"text":"Generic calendars treat every booking alike. In a clinic, the practitioner, room, equipment, and preparation have to work together.","textPreview":"Generic calendars treat every booking alike. In a clinic, the practitioner, room, equipment, and preparation have to work together.","textChars":131,"textLines":1,"bbox":[68,270,520,100]}
+{"kind":"shape","id":"sh/va107i10","slide":2,"bbox":[720,144,190,108]}
+{"kind":"shape","id":"sh/a9sjed0f","slide":2,"bbox":[740,164,16,16]}
+{"kind":"textbox","id":"sh/5032dsz2","slide":2,"text":"Practitioner","textPreview":"Practitioner","textChars":12,"textLines":1,"bbox":[740,198,148,28]}
+{"kind":"shape","id":"sh/kzu1k7ih","slide":2,"bbox":[963,144,190,108]}
+{"kind":"shape","id":"sh/ids76lkf","slide":2,"bbox":[983,164,16,16]}
+{"kind":"textbox","id":"sh/je1ozq10","slide":2,"text":"Room","textPreview":"Room","textChars":4,"textLines":1,"bbox":[983,198,148,28]}
+{"kind":"shape","id":"sh/4fap8b25","slide":2,"bbox":[720,326,190,108]}
+{"kind":"shape","id":"sh/5gj61gjq","slide":2,"bbox":[740,346,16,16]}
+{"kind":"textbox","id":"sh/6hs7alkb","slide":2,"text":"Equipment","textPreview":"Equipment","textChars":9,"textLines":1,"bbox":[740,380,148,28]}
+{"kind":"shape","id":"sh/ri1o3q1w","slide":2,"bbox":[963,326,190,108]}
+{"kind":"shape","id":"sh/sjupcv2h","slide":2,"bbox":[983,346,16,16]}
+{"kind":"textbox","id":"sh/tk3650j2","slide":2,"text":"Prep time","textPreview":"Prep time","textChars":9,"textLines":1,"bbox":[983,380,148,28]}
+{"kind":"shape","id":"sh/ml8ny1k7","slide":2,"bbox":[825,252,142,2]}
+{"kind":"shape","id":"sh/7mhorm1s","slide":2,"bbox":[815,302,2,32]}
+{"kind":"shape","id":"sh/bqd4z2hk","slide":2,"bbox":[1059,252,2,32]}
+{"kind":"textbox","id":"sh/ap436x0z","slide":2,"text":"One coordinated appointment","textPreview":"One coordinated appointment","textChars":27,"textLines":1,"bbox":[770,516,380,32]}
+{"kind":"shape","id":"sh/xsfm1sza","slide":2,"bbox":[718,565,450,54]}
+{"kind":"textbox","id":"sh/crml8ni5","slide":2,"text":"The opportunity: scheduling that respects real clinical dependencies.","textPreview":"The opportunity: scheduling that respects real clinical dependencies.","textChars":69,"textLines":1,"bbox":[742,580,402,24]}
+{"kind":"notes","id":"nt/kfto73","slide":2,"text":""}
+{"kind":"slide","id":"sl/xe8pjd","slide":3,"title":"CALENDAR KEEPER  /  03","textShapes":14}
+{"kind":"textbox","id":"sh/dsj61kvi","slide":3,"text":"CALENDAR KEEPER  /  03","textPreview":"CALENDAR KEEPER  /  03","textChars":22,"textLines":1,"bbox":[64,42,420,18]}
+{"kind":"textbox","id":"sh/q5s7q5cr","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1160,40,56,22]}
+{"kind":"textbox","id":"sh/r61ozadc","slide":3,"text":"The strategy","textPreview":"The strategy","textChars":12,"textLines":1,"bbox":[64,666,900,16]}
+{"kind":"textbox","id":"sh/43apovul","slide":3,"text":"One product, three layers,\ntwo entrances.","textPreview":"One product, three layers, | two entrances.","textChars":41,"textLines":2,"bbox":[64,105,750,132]}
+{"kind":"textbox","id":"sh/p4j6x0v6","slide":3,"text":"Configure by practice shape—not by nationality.","textPreview":"Configure by practice shape—not by nationality.","textChars":47,"textLines":1,"bbox":[68,258,520,28]}
+{"kind":"shape","id":"sh/2187mlcv","slide":3,"bbox":[68,352,800,66]}
+{"kind":"shape","id":"sh/321ovqd0","slide":3,"bbox":[68,352,8,66]}
+{"kind":"textbox","id":"sh/gzqpkvup","slide":3,"text":"RETURNING PATIENT","textPreview":"RETURNING PATIENT","textChars":17,"textLines":1,"bbox":[98,366,235,16]}
+{"kind":"textbox","id":"sh/h0z6tgva","slide":3,"text":"Fast self-service for routine changes","textPreview":"Fast self-service for routine changes","textChars":37,"textLines":1,"bbox":[345,365,390,28]}
+{"kind":"shape","id":"sh/14jahgfy","slide":3,"bbox":[68,436,755,66]}
+{"kind":"shape","id":"sh/g3a98bed","slide":3,"bbox":[68,436,8,66]}
+{"kind":"textbox","id":"sh/fi1sf6xs","slide":3,"text":"CALENDAR KEEPER","textPreview":"CALENDAR KEEPER","textChars":15,"textLines":1,"bbox":[98,450,235,16]}
+{"kind":"textbox","id":"sh/eh8r6lw7","slide":3,"text":"Operational visibility and recovery","textPreview":"Operational visibility and recovery","textChars":35,"textLines":1,"bbox":[345,449,390,28]}
+{"kind":"shape","id":"sh/tgzadgf2","slide":3,"bbox":[68,520,710,66]}
+{"kind":"shape","id":"sh/sfq94beh","slide":3,"bbox":[68,520,8,66]}
+{"kind":"textbox","id":"sh/rehsb6xw","slide":3,"text":"SHARED CORE","textPreview":"SHARED CORE","textChars":11,"textLines":1,"bbox":[98,534,235,16]}
+{"kind":"textbox","id":"sh/6d8r21wb","slide":3,"text":"Resource-aware appointments","textPreview":"Resource-aware appointments","textChars":27,"textLines":1,"bbox":[345,533,390,28]}
+{"kind":"textbox","id":"sh/5cza9wfq","slide":3,"text":"Why this structure?","textPreview":"Why this structure?","textChars":19,"textLines":1,"bbox":[912,350,260,30]}
+{"kind":"shape","id":"sh/4bq90re5","slide":3,"bbox":[912,412,8,8]}
+{"kind":"textbox","id":"sh/w7u1cvqd","slide":3,"text":"The shared core protects the booking logic across both experiences.","textPreview":"The shared core protects the booking logic across both experiences.","textChars":67,"textLines":1,"bbox":[934,402,238,56]}
+{"kind":"shape","id":"sh/h83250ry","slide":3,"bbox":[912,524,8,8]}
+{"kind":"textbox","id":"sh/u5cjal87","slide":3,"text":"Resource awareness cannot be added safely after the fact.","textPreview":"Resource awareness cannot be added safely after the fact.","textChars":57,"textLines":1,"bbox":[934,514,238,56]}
+{"kind":"notes","id":"nt/xe8pjd","slide":3,"text":""}
+{"kind":"slide","id":"sl/rmcr9v","slide":4,"title":"CALENDAR KEEPER  /  04","textShapes":12}
+{"kind":"textbox","id":"sh/zel436dk","slide":4,"text":"CALENDAR KEEPER  /  04","textPreview":"CALENDAR KEEPER  /  04","textChars":22,"textLines":1,"bbox":[64,42,420,18]}
+{"kind":"textbox","id":"sh/0fulcbe5","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1160,40,56,22]}
+{"kind":"textbox","id":"sh/l03m5wvq","slide":4,"text":"Where we start","textPreview":"Where we start","textChars":14,"textLines":1,"bbox":[64,666,900,16]}
+{"kind":"textbox","id":"sh/q9s36hw3","slide":4,"text":"Start where the work\ncompounds.","textPreview":"Start where the work | compounds.","textChars":31,"textLines":2,"bbox":[64,106,520,130]}
+{"kind":"textbox","id":"sh/ba14zmdo","slide":4,"text":"We prioritized two users whose friction is immediate, frequent, and solvable without network effects.","textPreview":"We prioritized two users whose friction is immediate, frequent, and solvable without network effects.","textChars":101,"textLines":1,"bbox":[68,264,486,72]}
+{"kind":"shape","id":"sh/cbal8re9","slide":4,"bbox":[642,120,520,202]}
+{"kind":"textbox","id":"sh/dcjm1wvu","slide":4,"text":"THE CALENDAR KEEPER","textPreview":"THE CALENDAR KEEPER","textChars":19,"textLines":1,"bbox":[682,154,370,16]}
+{"kind":"textbox","id":"sh/a5wnilc7","slide":4,"text":"Keep the day moving.","textPreview":"Keep the day moving.","textChars":20,"textLines":1,"bbox":[682,190,360,34]}
+{"kind":"textbox","id":"sh/v654bqds","slide":4,"text":"Staff need visibility into exceptions, dependencies, and the next safe action.","textPreview":"Staff need visibility into exceptions, dependencies, and the next safe action.","textChars":78,"textLines":1,"bbox":[682,242,400,45]}
+{"kind":"shape","id":"sh/3yl8b25w","slide":4,"bbox":[642,360,520,202]}
+{"kind":"textbox","id":"sh/2xcr2xob","slide":4,"text":"RETURNING PATIENT","textPreview":"RETURNING PATIENT","textChars":17,"textLines":1,"bbox":[682,394,370,16]}
+{"kind":"textbox","id":"sh/p0nqdcn2","slide":4,"text":"Avoid the routine phone call.","textPreview":"Avoid the routine phone call.","textChars":29,"textLines":1,"bbox":[682,430,415,34]}
+{"kind":"textbox","id":"sh/ozu9476h","slide":4,"text":"Patients need a focused path to rebook, cancel, and check appointment status.","textPreview":"Patients need a focused path to rebook, cancel, and check appointment status.","textChars":77,"textLines":1,"bbox":[682,482,410,45]}
+{"kind":"textbox","id":"sh/b258f258","slide":4,"text":"We did not lead with backfill or a broad marketplace: neither creates value at the first clinic without history or waitlist liquidity.","textPreview":"We did not lead with backfill or a broad marketplace: neither creates value at the first clinic without history or waitlist liquidity.","textChars":134,"textLines":1,"bbox":[68,566,840,48]}
+{"kind":"notes","id":"nt/rmcr9v","slide":4,"text":""}
+{"kind":"slide","id":"sl/rp0c4j","slide":5,"title":"CALENDAR KEEPER  /  05","textShapes":8}
+{"kind":"textbox","id":"sh/1cfqt87u","slide":5,"text":"CALENDAR KEEPER  /  05","textPreview":"CALENDAR KEEPER  /  05","textChars":22,"textLines":1,"bbox":[64,42,420,18]}
+{"kind":"textbox","id":"sh/e94rit8j","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1160,40,56,22]}
+{"kind":"textbox","id":"sh/zad8ry94","slide":5,"text":"The service and experience","textPreview":"The service and experience","textChars":26,"textLines":1,"bbox":[64,666,900,16]}
+{"kind":"textbox","id":"sh/c7m9gjqd","slide":5,"text":"Make both paths\nlegible.","textPreview":"Make both paths | legible.","textChars":24,"textLines":2,"bbox":[64,105,450,120]}
+{"kind":"textbox","id":"sh/d8vqpory","slide":5,"text":"The same service coordinates resources. Each user sees the part that helps them act.","textPreview":"The same service coordinates resources. Each user sees the part that helps them act.","textChars":84,"textLines":1,"bbox":[68,244,430,64]}
+{"kind":"shape","id":"sh/r6d8ne9s","slide":5,"bbox":[68,378,385,126]}
+{"kind":"textbox","id":"sh/432pcjqh","slide":5,"text":"Visible degraded mode","textPreview":"Visible degraded mode","textChars":21,"textLines":1,"bbox":[92,405,250,26]}
+{"kind":"textbox","id":"sh/p4bqlor2","slide":5,"text":"A named status and reconciliation queue replace silent desynchronization.","textPreview":"A named status and reconciliation queue replace silent desynchronization.","textChars":73,"textLines":1,"bbox":[92,442,320,46]}
+{"kind":"textbox","id":"sh/1kbuhwju","slide":5,"text":"Prototype capture from the local Calendar Keeper concept","textPreview":"Prototype capture from the local Calendar Keeper concept","textChars":56,"textLines":1,"bbox":[547,620,400,16]}
+{"kind":"image","id":"im/3adwfilg","slide":5,"name":"","geometry":"roundRect","alt":"Calendar Keeper prototype showing service blueprint and experience concepts","bbox":[545,88,660,515]}
+{"kind":"notes","id":"nt/rp0c4j","slide":5,"text":""}
+{"kind":"slide","id":"sl/7u8evr","slide":6,"title":"CALENDAR KEEPER  /  06","textShapes":16}
+{"kind":"textbox","id":"sh/7ilkbax8","slide":6,"text":"CALENDAR KEEPER  /  06","textPreview":"CALENDAR KEEPER  /  06","textChars":22,"textLines":1,"bbox":[64,42,420,18]}
+{"kind":"textbox","id":"sh/8jul4fet","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1160,40,56,22]}
+{"kind":"textbox","id":"sh/tk32dkfe","slide":6,"text":"AI-assisted, human-directed","textPreview":"AI-assisted, human-directed","textChars":27,"textLines":1,"bbox":[64,666,900,16]}
+{"kind":"textbox","id":"sh/yts3ylwr","slide":6,"text":"AI accelerated the work.\nIt did not make the\nproduct choices.","textPreview":"AI accelerated the work. | It did not make the | product choices.","textChars":61,"textLines":3,"bbox":[64,105,660,190]}
+{"kind":"textbox","id":"sh/julk7qxc","slide":6,"text":"I used AI as a research, synthesis, writing, and prototyping partner. Its output was treated as material to interrogate—not evidence to accept uncritically.","textPreview":"I used AI as a research, synthesis, writing, and prototyping partner. Its output was treated as material to interrogate—not evidence to a...","textChars":156,"textLines":1,"bbox":[68,330,600,86]}
+{"kind":"shape","id":"sh/kvul0vex","slide":6,"bbox":[736,122,205,160]}
+{"kind":"textbox","id":"sh/lw3290f2","slide":6,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[758,144,40,18]}
+{"kind":"textbox","id":"sh/aps3ulwf","slide":6,"text":"Synthesize","textPreview":"Synthesize","textChars":10,"textLines":1,"bbox":[758,176,150,28]}
+{"kind":"textbox","id":"sh/bq1k3qx0","slide":6,"text":"Clustered competitor signals, reviews, and research notes.","textPreview":"Clustered competitor signals, reviews, and research notes.","textChars":58,"textLines":1,"bbox":[758,213,160,50]}
+{"kind":"shape","id":"sh/nupkjilo","slide":6,"bbox":[966,122,205,160]}
+{"kind":"textbox","id":"sh/mtgjqdk3","slide":6,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[988,144,40,18]}
+{"kind":"textbox","id":"sh/9wr2l83u","slide":6,"text":"Expand","textPreview":"Expand","textChars":6,"textLines":1,"bbox":[988,176,150,28]}
+{"kind":"textbox","id":"sh/ovi1s329","slide":6,"text":"Generated alternative HMW directions and edge cases.","textPreview":"Generated alternative HMW directions and edge cases.","textChars":52,"textLines":1,"bbox":[988,213,160,50]}
+{"kind":"shape","id":"sh/by9knilk","slide":6,"bbox":[736,327,205,160]}
+{"kind":"textbox","id":"sh/ax0judkf","slide":6,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[758,349,40,18]}
+{"kind":"textbox","id":"sh/x0r2ps3q","slide":6,"text":"Accelerate","textPreview":"Accelerate","textChars":10,"textLines":1,"bbox":[758,381,150,28]}
+{"kind":"textbox","id":"sh/wzi1wn25","slide":6,"text":"Supported copy exploration and prototype iteration.","textPreview":"Supported copy exploration and prototype iteration.","textChars":51,"textLines":1,"bbox":[758,418,160,50]}
+{"kind":"shape","id":"sh/r250bylg","slide":6,"bbox":[736,531,440,92]}
+{"kind":"textbox","id":"sh/q1wjit4v","slide":6,"text":"Designer decision","textPreview":"Designer decision","textChars":17,"textLines":1,"bbox":[764,550,210,18]}
+{"kind":"textbox","id":"sh/uh4nq14j","slide":6,"text":"Priorities, safety boundaries, and the shared-core architecture remained human calls.","textPreview":"Priorities, safety boundaries, and the shared-core architecture remained human calls.","textChars":85,"textLines":1,"bbox":[764,578,364,26]}
+{"kind":"notes","id":"nt/7u8evr","slide":6,"text":""}
+{"kind":"slide","id":"sl/ixa6wx","slide":7,"title":"CALENDAR KEEPER  /  07","textShapes":13}
+{"kind":"textbox","id":"sh/loja503q","slide":7,"text":"CALENDAR KEEPER  /  07","textPreview":"CALENDAR KEEPER  /  07","textChars":22,"textLines":1,"bbox":[64,42,420,18]}
+{"kind":"textbox","id":"sh/ylsrul4z","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1160,40,56,22]}
+{"kind":"textbox","id":"sh/zm1s3qlk","slide":7,"text":"What we validate next","textPreview":"What we validate next","textChars":21,"textLines":1,"bbox":[64,666,900,16]}
+{"kind":"textbox","id":"sh/8bu90fmh","slide":7,"text":"A calm schedule is the outcome—\nnot just a polished calendar.","textPreview":"A calm schedule is the outcome— | not just a polished calendar.","textChars":61,"textLines":2,"bbox":[64,112,820,130]}
+{"kind":"shape","id":"sh/9c3a9k32","slide":7,"bbox":[70,318,20,20]}
+{"kind":"textbox","id":"sh/mpsry54b","slide":7,"text":"✓","textPreview":"✓","textChars":1,"textLines":1,"bbox":[73,319,14,14]}
+{"kind":"textbox","id":"sh/nq1s7alw","slide":7,"text":"Can staff resolve a sync exception without training?","textPreview":"Can staff resolve a sync exception without training?","textChars":52,"textLines":1,"bbox":[110,316,880,30]}
+{"kind":"shape","id":"sh/ofq9obmx","slide":7,"bbox":[70,380,20,20]}
+{"kind":"textbox","id":"sh/pgzqxg3i","slide":7,"text":"✓","textPreview":"✓","textChars":1,"textLines":1,"bbox":[73,381,14,14]}
+{"kind":"textbox","id":"sh/p8neds3y","slide":7,"text":"Do resource rules prevent rework before a booking is created?","textPreview":"Do resource rules prevent rework before a booking is created?","textChars":61,"textLines":1,"bbox":[110,378,880,30]}
+{"kind":"shape","id":"sh/o7ud4n2d","slide":7,"bbox":[70,442,20,20]}
+{"kind":"textbox","id":"sh/n6lcbils","slide":7,"text":"✓","textPreview":"✓","textChars":1,"textLines":1,"bbox":[73,443,14,14]}
+{"kind":"textbox","id":"sh/25cv2dkn","slide":7,"text":"Can returning patients complete routine changes without calling?","textPreview":"Can returning patients complete routine changes without calling?","textChars":64,"textLines":1,"bbox":[110,440,880,30]}
+{"kind":"shape","id":"sh/xcnehs3a","slide":7,"bbox":[70,504,20,20]}
+{"kind":"textbox","id":"sh/cbed872p","slide":7,"text":"✓","textPreview":"✓","textChars":1,"textLines":1,"bbox":[73,505,14,14]}
+{"kind":"textbox","id":"sh/ba5wf2l4","slide":7,"text":"Does the experience scale from a team practice to a solo practitioner?","textPreview":"Does the experience scale from a team practice to a solo practitioner?","textChars":70,"textLines":1,"bbox":[110,502,880,30]}
+{"kind":"shape","id":"sh/a9wv6xkj","slide":7,"bbox":[72,602,180,4]}
+{"kind":"textbox","id":"sh/lg7elc36","slide":7,"text":"Calendar Keeper · Stakeholder presentation","textPreview":"Calendar Keeper · Stakeholder presentation","textChars":42,"textLines":1,"bbox":[72,624,600,20]}
+{"kind":"notes","id":"nt/ixa6wx","slide":7,"text":""}
