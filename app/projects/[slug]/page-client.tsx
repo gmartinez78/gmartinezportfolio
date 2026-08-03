@@ -6157,13 +6157,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   {tool}
                 </Badge>
               ))}
-              {caseStudy.slug === "calendar-keeper" ? (
-                <Badge asChild size="tag">
-                  <Link href="/calendar-keeper/presentation/">
-                    Stakeholder presentation <span aria-hidden="true">↗</span>
-                  </Link>
-                </Badge>
-              ) : null}
             </div>
           </div>
           <div className="hidden w-px self-stretch bg-[#d7e8f7] md:block" />
@@ -6180,6 +6173,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
           </div>
         </div>
+        {caseStudy.slug === "calendar-keeper" ? (
+          <div className="mt-8 flex justify-center">
+            <Link
+              href="/calendar-keeper/presentation/"
+              className="inline-flex items-center rounded-full bg-[#1183D0] px-5 py-3 text-[13px] font-semibold text-white transition-colors hover:bg-[#0e5f9f]"
+            >
+              View presentation <span className="ml-2" aria-hidden="true">↗</span>
+            </Link>
+          </div>
+        ) : null}
       </section>
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
