@@ -2599,7 +2599,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       </div>
 
-      {caseStudy.slug !== "flock-accessibility-system" && caseStudy.slug !== "reversetech" ? (
+      {caseStudy.slug !== "flock-accessibility-system" && caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[1040px]">
             <div className="grid gap-12 text-center md:grid-cols-3">
@@ -2688,7 +2688,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             centered={["nayya-ai-benefits", "i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG, "calendar-keeper"].includes(caseStudy.slug)}
             className="mb-12"
           />
-          <div className="grid gap-4 md:grid-cols-5">
+          <div className={caseStudy.slug === "calendar-keeper" ? "mx-auto grid max-w-[1000px] gap-4 md:grid-cols-4" : "grid gap-4 md:grid-cols-5"}>
             {caseStudy.methodology.steps.map((step, index) => (
               ["nayya-ai-benefits", "i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG].includes(caseStudy.slug) ? (
                 <div key={step.step} className="flex flex-col gap-4">
@@ -2712,7 +2712,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
               ) : (
                 <Card key={step.step} className="p-0 py-0">
-                  <CardContent className="p-6">
+                  <CardContent className={`p-6 ${caseStudy.slug === "calendar-keeper" ? "text-center" : ""}`}>
                     <p className="font-inter text-[15px] font-semibold text-[#3c3e3f]">{index + 1}. {step.label}</p>
                     <p className="mt-2 font-inter text-[13px] leading-[1.5] text-[#5c7792]">{step.description}</p>
                   </CardContent>
