@@ -162,6 +162,7 @@ function ProjectsPage() {
             tagline={project.tagline}
             tags={project.tags ?? []}
             previewImage={project.previewImage}
+            squarePreview={project.slug === "calendar-keeper"}
             previewAlt={`${project.title} case study preview for ${project.company}`}
             stat={project.stat}
             statLabel={project.statLabel}

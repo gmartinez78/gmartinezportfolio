@@ -23,6 +23,7 @@ type ProjectCardProps = {
   locked?: boolean
   reversed?: boolean
   ctaLabel?: string
+  squarePreview?: boolean
 }
 
 export function ProjectCard({
@@ -41,6 +42,7 @@ export function ProjectCard({
   locked = false,
   reversed = false,
   ctaLabel,
+  squarePreview = false,
 }: ProjectCardProps) {
   const translate = useTranslate()
   const translateTag = useTranslateTag()
@@ -58,7 +60,7 @@ export function ProjectCard({
         <div className="pointer-events-none absolute bottom-0 right-0 h-48 w-48 rounded-full bg-[#ffe7c7]/60 blur-3xl" />
 
         <div
-          className={`relative flex h-64 w-full shrink-0 items-center justify-center overflow-hidden border-b border-white/35 bg-white/22 p-5 md:h-auto md:w-[340px] md:border-b-0 ${reversed ? "md:order-2" : ""}`}
+          className={`relative flex h-64 w-full shrink-0 items-center justify-center overflow-hidden border-b border-white/35 bg-white/22 p-5 md:w-[340px] md:border-b-0 ${squarePreview ? "md:h-[340px]" : "md:h-auto"} ${reversed ? "md:order-2" : ""}`}
           style={!previewImage ? { background } : undefined}
         >
           <div

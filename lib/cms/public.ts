@@ -103,6 +103,10 @@ const homeCardMediaMap: Record<string, { id: string; image: string }> = {
 };
 
 const projectListCardMediaMap: Record<string, { id: string; image: string }> = {
+  "calendar-keeper": {
+    id: "project-list-card-calendar-keeper",
+    image: withBasePath("/images/projects/calendar-keeper/thumbnails/calendar-keeper-cover-square.png"),
+  },
   "benefits-enrollment": {
     id: "project-list-card-benefits-enrollment",
     image: withBasePath("/images/projects/benefits-enrollment/thumbnails/thumbnail-benefits.png"),
