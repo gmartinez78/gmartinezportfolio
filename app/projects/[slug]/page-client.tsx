@@ -867,6 +867,35 @@ const PROTECTA_BRAND_COPY: Record<Language, { eyebrow: string; title: string; bo
     palette: "Paleta de color",
   },
 };
+
+const PROTECTA_COMPONENT_COPY: Record<Language, { eyebrow: string; title: string; body: string; labels: string[]; libraryTitle: string; libraryGroups: Array<{ title: string; items: string }> }> = {
+  en: {
+    eyebrow: "Component library",
+    title: "Reusable patterns, documented in Storybook",
+    body: "I built and documented the core interface patterns in Storybook so they could be reviewed in isolation, checked for accessible states, and reused consistently across the bilingual site.",
+    labels: ["Primary CTA", "Coverage card", "Language switch", "Advisor contact"],
+    libraryTitle: "Component library coverage",
+    libraryGroups: [
+      { title: "Foundations", items: "Color · Type · Spacing" },
+      { title: "Navigation", items: "Header · Language switch · Mobile menu" },
+      { title: "Conversion", items: "CTA buttons · Coverage cards · Advisor contact" },
+      { title: "Quality", items: "Focus states · Mobile behavior · EN/ES copy" },
+    ],
+  },
+  es: {
+    eyebrow: "Biblioteca de componentes",
+    title: "Patrones reutilizables, documentados en Storybook",
+    body: "Construí y documenté los patrones principales de la interfaz en Storybook para revisarlos de forma aislada, comprobar sus estados accesibles y reutilizarlos de manera consistente en todo el sitio bilingüe.",
+    labels: ["CTA principal", "Tarjeta de cobertura", "Selector de idioma", "Contacto con asesor"],
+    libraryTitle: "Cobertura de la biblioteca de componentes",
+    libraryGroups: [
+      { title: "Fundamentos", items: "Color · Tipografía · Espaciado" },
+      { title: "Navegación", items: "Encabezado · Selector de idioma · Menú móvil" },
+      { title: "Conversión", items: "Botones CTA · Tarjetas de cobertura · Contacto con asesor" },
+      { title: "Calidad", items: "Estados de foco · Comportamiento móvil · Textos EN/ES" },
+    ],
+  },
+};
 const FLOCK_AUDIT_LABELS = [
   { color: "#50A8FF", label: "Navigation", note: "Top-level hierarchy and route clarity." },
   { color: "#AD86FF", label: "Typography", note: "Heading scale, weight, and readability drift." },
@@ -2792,6 +2821,66 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
                 <p className="border-l-2 border-[#90af7a] pl-4 font-inter text-[15px] leading-[1.65] text-[#526863]">{PROTECTA_BRAND_COPY[language].rationale}</p>
               </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {caseStudy.slug === "protecta" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-[860px] text-center">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#63826c]">{PROTECTA_COMPONENT_COPY[language].eyebrow}</p>
+            <h2 className="mt-3 font-playfair-display text-[36px] leading-tight text-[#154f4d] md:text-[46px]">{PROTECTA_COMPONENT_COPY[language].title}</h2>
+            <p className="mt-5 font-inter text-[16px] leading-[1.7] text-[#526863]">{PROTECTA_COMPONENT_COPY[language].body}</p>
+          </div>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <article className="overflow-hidden rounded-[20px] border border-[#d7e5de] bg-white shadow-[0_12px_30px_rgba(21,79,77,0.07)]">
+              <div className="min-h-[168px] bg-[#f5f7ef] p-5">
+                <div className="flex justify-between text-[11px] font-semibold text-[#47675f]"><span>Protecta</span><span>EN · ES</span></div>
+                <p className="mt-6 font-playfair-display text-[22px] leading-[1.05] text-[#154f4d]">Coverage that shows up for you.</p>
+                <button type="button" className="mt-5 rounded-full bg-[#d96c4b] px-4 py-2 text-[11px] font-semibold text-white">Get free quote</button>
+              </div>
+              <p className="border-t border-[#d7e5de] px-4 py-3 text-center font-inter text-[12px] font-semibold text-[#154f4d]">{PROTECTA_COMPONENT_COPY[language].labels[0]}</p>
+            </article>
+            <article className="overflow-hidden rounded-[20px] border border-[#d7e5de] bg-white shadow-[0_12px_30px_rgba(21,79,77,0.07)]">
+              <div className="min-h-[168px] p-5">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#dceac8] text-[20px] text-[#154f4d]">♡</div>
+                <p className="mt-5 font-inter text-[15px] font-semibold text-[#154f4d]">Health</p>
+                <p className="mt-1 font-inter text-[11px] leading-[1.5] text-[#63826c]">Guidance for the coverage that fits your family.</p>
+              </div>
+              <p className="border-t border-[#d7e5de] px-4 py-3 text-center font-inter text-[12px] font-semibold text-[#154f4d]">{PROTECTA_COMPONENT_COPY[language].labels[1]}</p>
+            </article>
+            <article className="overflow-hidden rounded-[20px] border border-[#d7e5de] bg-white shadow-[0_12px_30px_rgba(21,79,77,0.07)]">
+              <div className="min-h-[168px] p-5">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-[#63826c]">Language</p>
+                <div className="mt-6 inline-flex rounded-full bg-[#edf2e8] p-1 font-inter text-[12px]">
+                  <span className="rounded-full bg-[#154f4d] px-4 py-2 font-semibold text-white">English</span>
+                  <span className="px-4 py-2 text-[#47675f]">Español</span>
+                </div>
+                <p className="mt-5 font-inter text-[11px] leading-[1.5] text-[#63826c]">Parallel language paths, not literal translation.</p>
+              </div>
+              <p className="border-t border-[#d7e5de] px-4 py-3 text-center font-inter text-[12px] font-semibold text-[#154f4d]">{PROTECTA_COMPONENT_COPY[language].labels[2]}</p>
+            </article>
+            <article className="overflow-hidden rounded-[20px] border border-[#d7e5de] bg-white shadow-[0_12px_30px_rgba(21,79,77,0.07)]">
+              <div className="min-h-[168px] p-5">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#154f4d] text-[13px] font-bold text-[#dceac8]">PA</div>
+                  <div><p className="font-inter text-[13px] font-semibold text-[#154f4d]">Your Protecta advisor</p><p className="font-inter text-[10px] text-[#63826c]">Here when you need us</p></div>
+                </div>
+                <button type="button" className="mt-7 w-full rounded-full border border-[#80a76d] px-3 py-2 text-[11px] font-semibold text-[#154f4d]">Message on WhatsApp</button>
+              </div>
+              <p className="border-t border-[#d7e5de] px-4 py-3 text-center font-inter text-[12px] font-semibold text-[#154f4d]">{PROTECTA_COMPONENT_COPY[language].labels[3]}</p>
+            </article>
+          </div>
+          <div className="mt-8 rounded-[22px] border border-[#d7e5de] bg-[#f5f7ef] p-6 md:p-8">
+            <p className="text-center text-[12px] font-semibold uppercase tracking-[0.2em] text-[#63826c]">{PROTECTA_COMPONENT_COPY[language].libraryTitle}</p>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {PROTECTA_COMPONENT_COPY[language].libraryGroups.map((group) => (
+                <div key={group.title} className="rounded-[16px] border border-[#d7e5de] bg-white px-4 py-4">
+                  <p className="font-inter text-[13px] font-semibold text-[#154f4d]">{group.title}</p>
+                  <p className="mt-2 font-inter text-[11px] leading-[1.5] text-[#63826c]">{group.items}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
