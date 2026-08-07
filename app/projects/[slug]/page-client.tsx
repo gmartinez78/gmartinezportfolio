@@ -2906,11 +2906,24 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           />
           {caseStudy.slug === "protecta" ? (
             <div className="overflow-x-auto pb-4">
-              <div className="relative mx-auto min-w-[1120px] px-3">
-                <div className="absolute left-[7.4%] right-[7.4%] top-4 h-px bg-[#8badc7]" aria-hidden="true" />
-                <div className="grid grid-cols-7 gap-4">
+              <div className="relative mx-auto min-w-[840px] px-3">
+                <div className="absolute left-[12.5%] right-[12.5%] top-4 h-px bg-[#8badc7]" aria-hidden="true" />
+                <div className="absolute right-[12.5%] top-4 h-[calc(50%_-_4px)] w-px bg-[#8badc7]" aria-hidden="true" />
+                <div className="absolute left-[12.5%] right-[37.5%] top-[calc(50%_+_18px)] h-px bg-[#8badc7]" aria-hidden="true" />
+                <div className="grid grid-cols-4 gap-x-4 gap-y-10">
                 {caseStudy.methodology.steps.map((step, index) => (
-                  <div key={step.step} className="relative flex flex-col items-center">
+                  <div
+                    key={step.step}
+                    className={`relative flex flex-col items-center ${
+                      index === 4
+                        ? "col-start-1 row-start-2"
+                        : index === 5
+                          ? "col-start-2 row-start-2"
+                          : index === 6
+                            ? "col-start-3 row-start-2"
+                            : ""
+                    }`}
+                  >
                     <div className="relative z-10 flex flex-col items-center">
                       <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white text-[12px] font-bold text-[#0e2951] shadow-[0_3px_8px_rgba(14,41,81,0.12)]" style={{ backgroundColor: METHODOLOGY_COLORS[index] ?? "#87d4ac" }}>
                         {step.step}
