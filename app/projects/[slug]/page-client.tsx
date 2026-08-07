@@ -4797,7 +4797,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       ))}
                     </div>
                   </div>
-                  <div className="mx-auto mt-12 max-w-[1040px] rounded-[24px] border border-[#d7e5de] bg-[#f5f7ef] p-6 md:p-8">
+                  <div className="mx-auto mt-12 max-w-[1040px]">
                     <div className="mx-auto max-w-[760px] text-center">
                       <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#63826c]">{PROTECTA_AGENT_COPY[language].eyebrow}</p>
                       <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#154f4d] md:text-[42px]">{PROTECTA_AGENT_COPY[language].title}</h3>
@@ -4813,11 +4813,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </div>
                     <p className="mx-auto mt-6 max-w-[760px] border-l-2 border-[#90af7a] pl-4 font-inter text-[14px] leading-[1.65] text-[#526863]">{PROTECTA_AGENT_COPY[language].note}</p>
                   </div>
-                  <div className="mx-auto mt-12 grid max-w-[1100px] items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-                    <a href={withBasePath("/images/projects/protecta/screenshots/protecta-home-desktop.png")} target="_blank" rel="noreferrer" className="group block">
-                      <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.10)]"><img src={withBasePath("/images/projects/protecta/screenshots/protecta-home-desktop.png")} alt="Protecta homepage screenshot" className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.01]" /></div>
-                      <p className="mt-4 text-center font-inter text-[13px] leading-[1.6] text-[#5c7792]">Homepage screenshot</p>
-                    </a>
+                  <div className="mx-auto mt-12 grid max-w-[960px] items-center gap-10 lg:grid-cols-2">
+                    <button
+                      type="button"
+                      onClick={() => setLightboxImage({ src: withBasePath("/images/projects/protecta/screenshots/protecta-home-desktop.png"), alt: "Protecta homepage screenshot" })}
+                      className="group block text-left"
+                      aria-label="Expand Protecta homepage screenshot"
+                    >
+                      <div className="h-[270px] overflow-hidden rounded-[20px] border border-[#d7e8f7] bg-white shadow-[0_16px_38px_rgba(14,41,81,0.10)]"><img src={withBasePath("/images/projects/protecta/screenshots/protecta-home-desktop.png")} alt="Protecta homepage screenshot" className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" /></div>
+                      <p className="mt-3 text-center font-inter text-[12px] font-semibold leading-[1.6] text-[#5c7792]">Click to expand</p>
+                    </button>
                     <div className="space-y-8 text-center lg:text-left">{designStrategy.map((item) => (<p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>))}</div>
                   </div>
                 </>
