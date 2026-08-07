@@ -880,17 +880,17 @@
       {
         "value": "7 days",
         "label": "Entrega de extremo a extremo",
-        "context": "Marca, contenido, diseño, construcción, control de calidad y despliegue en producción completados en una semana."
+        "context": "Marca, contenido bilingüe, diseño y desarrollo web, QA y lanzamiento en una semana."
       },
       {
         "value": "4-6 weeks",
-        "label": "Cronograma habitual en solitario",
-        "context": "Un alcance comparable suele llevar de cuatro a seis semanas sin la misma compresión potenciada por IA."
+        "label": "Cronograma habitual de equipo",
+        "context": "Entregado en solitario en 7 días con apoyo de IA."
       },
       {
-        "value": "2 languages",
-        "label": "Contenidos nativos por idioma",
-        "context": "El contenido en inglés y en español se adaptó culturalmente en lugar de traducirse de forma literal."
+        "value": "98%",
+        "label": "Alcance de nueva audiencia",
+        "context": "Visualizaciones de personas que no seguían la página durante los primeros 28 días de la campaña."
       },
       {
         "value": "WCAG 2.1 AA",
