@@ -944,7 +944,7 @@
         {
           "step": 3,
           "label": "Brand",
-          "description": "Generated logo directions with Claude, then refined the strongest routes in Figma into a usable brand system."
+          "description": "Used Claude Design to explore logo directions, then selected and refined the strongest route in Figma based on research and design judgment."
         },
         {
           "step": 4,

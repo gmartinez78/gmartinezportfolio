@@ -827,6 +827,46 @@ const NAYYA_INSIGHTS_CLOSING =
   "Participants who completed the Nayya survey enrolled in TWICE as many benefits as those who skipped it.";
 
 const METHODOLOGY_COLORS = ["#87d4ac", "#f5e692", "#d9b8ff", "#68c7c1", "#d1f090", "#f7b6c8", "#a9c6ff"];
+
+const PROTECTA_WORKFLOW_SUMMARIES: Record<Language, string[]> = {
+  en: [
+    "Capture audience needs, objections, and the service model.",
+    "Map bilingual patterns and positioning opportunities.",
+    "Create and refine a usable visual system.",
+    "Shape clear English and Spanish messaging.",
+    "Turn the strategy into page and component blueprints.",
+    "Ship the production-ready website.",
+    "Check accessibility and prepare the launch.",
+  ],
+  es: [
+    "Capturar necesidades, objeciones y el modelo de servicio.",
+    "Mapear patrones bilingües y oportunidades de posicionamiento.",
+    "Crear y refinar un sistema visual utilizable.",
+    "Definir mensajes claros en inglés y español.",
+    "Convertir la estrategia en páginas y componentes.",
+    "Lanzar el sitio web listo para producción.",
+    "Comprobar accesibilidad y preparar el lanzamiento.",
+  ],
+};
+
+const PROTECTA_BRAND_COPY: Record<Language, { eyebrow: string; title: string; body: string; rationale: string; type: string; palette: string }> = {
+  en: {
+    eyebrow: "Visual system",
+    title: "A brand built for clarity and care",
+    body: "Claude Design accelerated visual exploration. Research into family trust, bilingual insurance expectations, and Protecta's advisor-led model shaped the final direction; I made the brand, hierarchy, and usability decisions.",
+    rationale: "Warm, credible, and human - not generic insurtech.",
+    type: "Typography",
+    palette: "Color palette",
+  },
+  es: {
+    eyebrow: "Sistema visual",
+    title: "Una marca creada para la claridad y el cuidado",
+    body: "Claude Design aceleró la exploración visual. La investigación sobre la confianza de las familias, las expectativas de seguros bilingües y el modelo de asesoría de Protecta orientó la dirección final; yo tomé las decisiones de marca, jerarquía y usabilidad.",
+    rationale: "Cálida, creíble y humana; no una insurtech genérica.",
+    type: "Tipografía",
+    palette: "Paleta de color",
+  },
+};
 const FLOCK_AUDIT_LABELS = [
   { color: "#50A8FF", label: "Navigation", note: "Top-level hierarchy and route clarity." },
   { color: "#AD86FF", label: "Typography", note: "Heading scale, weight, and readability drift." },
@@ -2703,6 +2743,60 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       </section>
       ) : null}
 
+      {caseStudy.slug === "protecta" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-14 md:px-10 xl:px-20">
+          <div className="overflow-hidden rounded-[32px] border border-[#d7e5de] bg-[#f8f8f4] px-6 py-10 md:px-12 md:py-14">
+            <div className="mx-auto max-w-[760px] text-center">
+              <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#63826c]">{PROTECTA_BRAND_COPY[language].eyebrow}</p>
+              <h2 className="mt-3 font-playfair-display text-[36px] leading-tight text-[#154f4d] md:text-[48px]">{PROTECTA_BRAND_COPY[language].title}</h2>
+              <p className="mx-auto mt-5 max-w-[700px] font-inter text-[16px] leading-[1.7] text-[#526863]">{PROTECTA_BRAND_COPY[language].body}</p>
+            </div>
+
+            <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+              <div className="overflow-hidden rounded-[24px] bg-[#154f4d] shadow-[0_18px_48px_rgba(21,79,77,0.18)]">
+                <img
+                  src={withBasePath("/images/projects/protecta/protecta-logo.svg")}
+                  alt="Protecta logo"
+                  className="h-auto w-full"
+                />
+              </div>
+              <div className="space-y-8">
+                <div>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#63826c]">{PROTECTA_BRAND_COPY[language].type}</p>
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                    <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5">
+                      <p className="font-playfair-display text-[28px] text-[#154f4d]">Playfair Display</p>
+                      <p className="mt-2 font-inter text-[12px] text-[#69807a]">Editorial warmth for key moments</p>
+                    </div>
+                    <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5">
+                      <p className="font-inter text-[27px] font-semibold text-[#154f4d]">Inter</p>
+                      <p className="mt-2 font-inter text-[12px] text-[#69807a]">Clear, accessible interface text</p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#63826c]">{PROTECTA_BRAND_COPY[language].palette}</p>
+                  <div className="mt-4 grid grid-cols-4 overflow-hidden rounded-[18px]">
+                    {[
+                      ["#154F4D", "Deep green"],
+                      ["#CFE3AD", "Soft lime"],
+                      ["#DDE3C7", "Sage"],
+                      ["#FDFCFE", "Warm white"],
+                    ].map(([color, name]) => (
+                      <div key={color} className="min-h-[108px] p-3" style={{ backgroundColor: color }}>
+                        <p className={`text-[11px] font-semibold ${color === "#154F4D" ? "text-white" : "text-[#154f4d]"}`}>{name}</p>
+                        <p className={`mt-1 text-[10px] ${color === "#154F4D" ? "text-white/80" : "text-[#154f4d]/70"}`}>{color}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <p className="border-l-2 border-[#90af7a] pl-4 font-inter text-[15px] leading-[1.65] text-[#526863]">{PROTECTA_BRAND_COPY[language].rationale}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       {caseStudy.slug === "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[860px] text-center space-y-6">
@@ -2721,6 +2815,31 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             centered={["nayya-ai-benefits", "i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG, "calendar-keeper"].includes(caseStudy.slug)}
             className="mb-12"
           />
+          {caseStudy.slug === "protecta" ? (
+            <div className="overflow-x-auto pb-4">
+              <div className="mx-auto flex min-w-[1120px] items-stretch justify-center gap-0 px-1">
+                {caseStudy.methodology.steps.map((step, index) => (
+                  <Fragment key={step.step}>
+                    <article className="flex w-[142px] shrink-0 flex-col rounded-[20px] border border-[#d7e8f7] bg-white p-4 shadow-[0_12px_30px_rgba(14,41,81,0.07)]">
+                      <div className="mb-4 flex h-8 w-8 items-center justify-center rounded-full text-[12px] font-bold text-[#0e2951]" style={{ backgroundColor: `${METHODOLOGY_COLORS[index] ?? "#87d4ac"}77` }}>
+                        {step.step}
+                      </div>
+                      <p className="font-inter text-[14px] font-semibold text-[#0e2951]">{step.label}</p>
+                      <p className="mt-2 font-inter text-[12px] leading-[1.5] text-[#5c7792]">
+                        {PROTECTA_WORKFLOW_SUMMARIES[language][index] ?? step.description}
+                      </p>
+                    </article>
+                    {index < caseStudy.methodology.steps.length - 1 ? (
+                      <div className="flex w-[21px] shrink-0 items-center" aria-hidden="true">
+                        <span className="h-px w-full bg-[#8badc7]" />
+                        <span className="-ml-1 text-[17px] leading-none text-[#5b89a8]">›</span>
+                      </div>
+                    ) : null}
+                  </Fragment>
+                ))}
+              </div>
+            </div>
+          ) : (
           <div className={caseStudy.slug === "calendar-keeper" ? "mx-auto grid max-w-[1000px] gap-4 md:grid-cols-4" : "grid gap-4 md:grid-cols-5"}>
             {caseStudy.methodology.steps.map((step, index) => (
               ["nayya-ai-benefits", "i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG].includes(caseStudy.slug) ? (
@@ -2753,6 +2872,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               )
             ))}
           </div>
+          )}
           {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG ? (
             <div className="mx-auto mt-10 max-w-[860px] space-y-8">
               {caseStudy.methodology.steps.map((step, index) => (

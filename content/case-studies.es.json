@@ -944,7 +944,7 @@
         {
           "step": 3,
           "label": "Marca",
-          "description": "Se generaron direcciones de logotipo con Claude, y luego se refinaron las opciones más sólidas en Figma hasta convertirlas en un sistema de marca utilizable."
+          "description": "Se usó Claude Design para explorar direcciones de logotipo, y luego se seleccionó y refinó la opción más sólida en Figma a partir de la investigación y el criterio de diseño."
         },
         {
           "step": 4,
