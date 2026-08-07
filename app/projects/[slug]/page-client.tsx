@@ -2906,26 +2906,26 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           />
           {caseStudy.slug === "protecta" ? (
             <div className="overflow-x-auto pb-4">
-              <div className="mx-auto flex min-w-[1120px] items-stretch justify-center gap-0 px-1">
+              <div className="relative mx-auto min-w-[1120px] px-3">
+                <div className="absolute left-[7.4%] right-[7.4%] top-4 h-px bg-[#8badc7]" aria-hidden="true" />
+                <div className="grid grid-cols-7 gap-4">
                 {caseStudy.methodology.steps.map((step, index) => (
-                  <Fragment key={step.step}>
-                    <article className="flex w-[142px] shrink-0 flex-col rounded-[20px] border border-[#d7e8f7] bg-white p-4 shadow-[0_12px_30px_rgba(14,41,81,0.07)]">
-                      <div className="mb-4 flex h-8 w-8 items-center justify-center rounded-full text-[12px] font-bold text-[#0e2951]" style={{ backgroundColor: `${METHODOLOGY_COLORS[index] ?? "#87d4ac"}77` }}>
+                  <div key={step.step} className="relative flex flex-col items-center">
+                    <div className="relative z-10 flex flex-col items-center">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white text-[12px] font-bold text-[#0e2951] shadow-[0_3px_8px_rgba(14,41,81,0.12)]" style={{ backgroundColor: METHODOLOGY_COLORS[index] ?? "#87d4ac" }}>
                         {step.step}
                       </div>
+                      <span className="h-6 w-px bg-[#8badc7]" aria-hidden="true" />
+                    </div>
+                    <article className="flex min-h-[172px] w-full flex-col rounded-[20px] border border-[#d7e8f7] bg-white p-4 shadow-[0_12px_30px_rgba(14,41,81,0.07)]">
                       <p className="font-inter text-[14px] font-semibold text-[#0e2951]">{step.label}</p>
                       <p className="mt-2 font-inter text-[12px] leading-[1.5] text-[#5c7792]">
                         {PROTECTA_WORKFLOW_SUMMARIES[language][index] ?? step.description}
                       </p>
                     </article>
-                    {index < caseStudy.methodology.steps.length - 1 ? (
-                      <div className="flex w-[21px] shrink-0 items-center" aria-hidden="true">
-                        <span className="h-px w-full bg-[#8badc7]" />
-                        <span className="-ml-1 text-[17px] leading-none text-[#5b89a8]">›</span>
-                      </div>
-                    ) : null}
-                  </Fragment>
+                  </div>
                 ))}
+                </div>
               </div>
             </div>
           ) : (
