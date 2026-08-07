@@ -2863,7 +2863,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug === "protecta" ? (
+      {caseStudy.slug === "protecta" && false ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[860px] text-center">
             <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#63826c]">{PROTECTA_COMPONENT_COPY[language].eyebrow}</p>
@@ -4741,6 +4741,31 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </div>
                         <p className="border-l-2 border-[#90af7a] pl-4 font-inter text-[15px] leading-[1.65] text-[#526863]">{PROTECTA_BRAND_COPY[language].rationale}</p>
                       </div>
+                    </div>
+                  </div>
+                  <div className="mx-auto mt-12 max-w-[1040px]">
+                    <div className="text-center">
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#63826c]">{PROTECTA_COMPONENT_COPY[language].eyebrow}</p>
+                      <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#154f4d] md:text-[42px]">{PROTECTA_COMPONENT_COPY[language].title}</h3>
+                      <p className="mx-auto mt-5 max-w-[760px] font-inter text-[16px] leading-[1.7] text-[#526863]">{PROTECTA_COMPONENT_COPY[language].body}</p>
+                    </div>
+                    <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                      {[
+                        ["Primary CTA", "Get free quote", "bg-[#d96c4b] text-white"],
+                        ["Coverage card", "Health", "border border-[#80a76d] text-[#154f4d]"],
+                        ["Language switch", "English · Español", "bg-[#154f4d] text-white"],
+                        ["Advisor contact", "Message on WhatsApp", "border border-[#80a76d] text-[#154f4d]"],
+                      ].map(([name, sample, style]) => (
+                        <article key={name} className="overflow-hidden rounded-[20px] border border-[#d7e5de] bg-white shadow-[0_12px_30px_rgba(21,79,77,0.07)]">
+                          <div className="flex min-h-[138px] items-center justify-center bg-[#f5f7ef] p-5"><span className={`rounded-full px-4 py-2 text-[12px] font-semibold ${style}`}>{sample}</span></div>
+                          <p className="border-t border-[#d7e5de] px-4 py-3 text-center font-inter text-[12px] font-semibold text-[#154f4d]">{name}</p>
+                        </article>
+                      ))}
+                    </div>
+                    <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                      {PROTECTA_COMPONENT_COPY[language].libraryGroups.map((group) => (
+                        <div key={group.title} className="rounded-[16px] border border-[#d7e5de] bg-[#f5f7ef] px-4 py-4"><p className="font-inter text-[13px] font-semibold text-[#154f4d]">{group.title}</p><p className="mt-2 font-inter text-[11px] leading-[1.5] text-[#63826c]">{group.items}</p></div>
+                      ))}
                     </div>
                   </div>
                   <div className="mx-auto mt-12 grid max-w-[1100px] items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
