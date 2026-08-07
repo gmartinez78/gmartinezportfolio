@@ -896,6 +896,43 @@ const PROTECTA_COMPONENT_COPY: Record<Language, { eyebrow: string; title: string
     ],
   },
 };
+
+const PROTECTA_PROBLEM_TO_OUTCOME: Record<Language, Array<{ problem: string; change: string; result: string }>> = {
+  en: [
+    {
+      problem: "No brand system or live website to explain the advisory model.",
+      change: "Created the brand, bilingual content strategy, and production website.",
+      result: "Launch-ready experience delivered in 7 days.",
+    },
+    {
+      problem: "Insurance felt complex and impersonal for families navigating coverage.",
+      change: "Turned coverage topics into calm, family-centered educational content.",
+      result: "3.3K views; 98% came from non-followers.",
+    },
+    {
+      problem: "Prospects lacked a simple, trustworthy path to an advisor.",
+      change: "Designed clear conversion paths and trackable contact links.",
+      result: "34 link clicks and 55 Facebook visits in 28 days.",
+    },
+  ],
+  es: [
+    {
+      problem: "No había sistema de marca ni sitio web para explicar el modelo de asesoría.",
+      change: "Creé la marca, la estrategia de contenido bilingüe y el sitio web en producción.",
+      result: "Experiencia lista para el lanzamiento en 7 días.",
+    },
+    {
+      problem: "Los seguros se sentían complejos e impersonales para las familias que buscaban cobertura.",
+      change: "Convertí los temas de cobertura en contenido educativo, calmado y centrado en las familias.",
+      result: "3.3K visualizaciones; el 98% provino de personas que no seguían la página.",
+    },
+    {
+      problem: "Los prospectos no tenían una vía simple y fiable para contactar con un asesor.",
+      change: "Diseñé rutas de conversión claras y enlaces de contacto medibles.",
+      result: "34 clics en enlaces y 55 visitas a Facebook en 28 días.",
+    },
+  ],
+};
 const FLOCK_AUDIT_LABELS = [
   { color: "#50A8FF", label: "Navigation", note: "Top-level hierarchy and route clarity." },
   { color: "#AD86FF", label: "Typography", note: "Heading scale, weight, and readability drift." },
@@ -2772,7 +2809,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       </section>
       ) : null}
 
-      {caseStudy.slug === "protecta" ? (
+      {caseStudy.slug === "protecta" && false ? (
         <section className="mx-auto max-w-[1200px] px-6 py-14 md:px-10 xl:px-20">
           <div className="overflow-hidden rounded-[32px] border border-[#d7e5de] bg-[#f8f8f4] px-6 py-10 md:px-12 md:py-14">
             <div className="mx-auto max-w-[760px] text-center">
@@ -2908,8 +2945,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="overflow-x-auto pb-4">
               <div className="relative mx-auto min-w-[840px] px-3">
                 <div className="absolute left-[12.5%] right-[12.5%] top-4 h-px bg-[#8badc7]" aria-hidden="true" />
-                <div className="absolute right-[12.5%] top-4 h-[calc(50%_-_4px)] w-px bg-[#8badc7]" aria-hidden="true" />
-                <div className="absolute left-[12.5%] right-[37.5%] top-[calc(50%_+_18px)] h-px bg-[#8badc7]" aria-hidden="true" />
+                <div className="absolute right-[12.5%] top-4 h-[calc(50%_+_2px)] w-px bg-[#8badc7]" aria-hidden="true" />
+                <div className="absolute left-[12.5%] right-[12.5%] top-[calc(50%_+_18px)] h-px bg-[#8badc7]" aria-hidden="true" />
                 <div className="grid grid-cols-4 gap-x-4 gap-y-10">
                 {caseStudy.methodology.steps.map((step, index) => (
                   <div
@@ -3398,7 +3435,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {visibleStoryBlocks.length ? (
         <section id="rt-problem" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <div className={caseStudy.slug === "reversetech" ? "mx-auto max-w-[860px]" : "grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start"}>
+          <div className={caseStudy.slug === "reversetech" || caseStudy.slug === "protecta" ? "mx-auto max-w-[860px]" : "grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start"}>
             <div className={caseStudy.slug === "reversetech" ? "text-center" : ""}>
               <SectionHeading eyebrow="Case Study" title="The problem" className="mb-12" />
               <div className="space-y-10">
@@ -3453,7 +3490,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             </div>
 
-            {caseStudy.slug !== "reversetech" ? (
+            {caseStudy.slug !== "reversetech" && caseStudy.slug !== "protecta" ? (
             <div className="grid gap-4">
               {
                 problemMetrics.map((metric) => (
@@ -3984,6 +4021,32 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
         </>
       )}
+
+      {caseStudy.slug === "protecta" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading eyebrow="Traceability" title="From problem to outcome" centered className="mb-12" />
+          <div className="mx-auto max-w-[1040px] space-y-5">
+            {PROTECTA_PROBLEM_TO_OUTCOME[language].map((item, index) => (
+              <div key={item.problem} className="grid items-stretch gap-3 md:grid-cols-[1fr_44px_1fr_44px_1fr] md:gap-0">
+                <article className="rounded-[18px] border border-[#e2ded1] bg-[#fbfaf5] p-5">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8b7650]">{language === "es" ? "Problema" : "Problem"}</p>
+                  <p className="mt-3 font-inter text-[14px] leading-[1.6] text-[#4a4b47]">{item.problem}</p>
+                </article>
+                <div className="flex items-center justify-center text-[#95a784]" aria-hidden="true"><span className="hidden h-px flex-1 bg-[#b7c5ad] md:block" /><span className="text-[22px] leading-none">›</span></div>
+                <article className="rounded-[18px] border border-[#cddfc8] bg-[#f4f8f1] p-5">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#63826c]">{language === "es" ? "Cambio de diseño" : "Design change"}</p>
+                  <p className="mt-3 font-inter text-[14px] leading-[1.6] text-[#31594d]">{item.change}</p>
+                </article>
+                <div className="flex items-center justify-center text-[#95a784]" aria-hidden="true"><span className="hidden h-px flex-1 bg-[#b7c5ad] md:block" /><span className="text-[22px] leading-none">›</span></div>
+                <article className="rounded-[18px] border border-[#b9d5c6] bg-[#154f4d] p-5">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#cfe3ad]">{language === "es" ? "Resultado" : "Result"}</p>
+                  <p className="mt-3 font-inter text-[14px] leading-[1.6] text-white">{item.result}</p>
+                </article>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       {caseStudy.slug === "reversetech" ? (
         <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-10 md:px-10 xl:px-20">
@@ -4649,30 +4712,45 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             ) : (
               caseStudy.slug === "protecta" ? (
-                <div className="mx-auto grid max-w-[1100px] items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-                  <a
-                    href={withBasePath("/images/projects/protecta/screenshots/protecta-home-desktop.png")}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group block"
-                  >
-                    <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.10)]">
-                      <img
-                        src={withBasePath("/images/projects/protecta/screenshots/protecta-home-desktop.png")}
-                        alt="Protecta homepage screenshot"
-                        className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.01]"
-                      />
+                <>
+                  <div className="overflow-hidden rounded-[32px] border border-[#d7e5de] bg-[#f8f8f4] px-6 py-10 md:px-12 md:py-14">
+                    <div className="mx-auto max-w-[760px] text-center">
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#63826c]">{PROTECTA_BRAND_COPY[language].eyebrow}</p>
+                      <h3 className="mt-3 font-playfair-display text-[36px] leading-tight text-[#154f4d] md:text-[48px]">{PROTECTA_BRAND_COPY[language].title}</h3>
+                      <p className="mx-auto mt-5 max-w-[700px] font-inter text-[16px] leading-[1.7] text-[#526863]">{PROTECTA_BRAND_COPY[language].body}</p>
                     </div>
-                    <p className="mt-4 text-center font-inter text-[13px] leading-[1.6] text-[#5c7792]">
-                      Homepage screenshot
-                    </p>
-                  </a>
-                  <div className="space-y-8 text-center lg:text-left">
-                    {designStrategy.map((item) => (
-                      <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
-                    ))}
+                    <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+                      <div className="overflow-hidden rounded-[24px] bg-[#154f4d] shadow-[0_18px_48px_rgba(21,79,77,0.18)]">
+                        <img src={withBasePath("/images/projects/protecta/protecta-logo.svg")} alt="Protecta logo" className="h-auto w-full" />
+                      </div>
+                      <div className="space-y-8">
+                        <div>
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#63826c]">{PROTECTA_BRAND_COPY[language].type}</p>
+                          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-playfair-display text-[28px] text-[#154f4d]">Playfair Display</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">Editorial warmth for key moments</p></div>
+                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-inter text-[27px] font-semibold text-[#154f4d]">Inter</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">Clear, accessible interface text</p></div>
+                          </div>
+                        </div>
+                        <div>
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#63826c]">{PROTECTA_BRAND_COPY[language].palette}</p>
+                          <div className="mt-4 grid grid-cols-4 overflow-hidden rounded-[18px]">
+                            {[["#154F4D", "Deep green"], ["#CFE3AD", "Soft lime"], ["#DDE3C7", "Sage"], ["#FDFCFE", "Warm white"]].map(([color, name]) => (
+                              <div key={color} className="min-h-[108px] p-3" style={{ backgroundColor: color }}><p className={`text-[11px] font-semibold ${color === "#154F4D" ? "text-white" : "text-[#154f4d]"}`}>{name}</p><p className={`mt-1 text-[10px] ${color === "#154F4D" ? "text-white/80" : "text-[#154f4d]/70"}`}>{color}</p></div>
+                            ))}
+                          </div>
+                        </div>
+                        <p className="border-l-2 border-[#90af7a] pl-4 font-inter text-[15px] leading-[1.65] text-[#526863]">{PROTECTA_BRAND_COPY[language].rationale}</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                  <div className="mx-auto mt-12 grid max-w-[1100px] items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+                    <a href={withBasePath("/images/projects/protecta/screenshots/protecta-home-desktop.png")} target="_blank" rel="noreferrer" className="group block">
+                      <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.10)]"><img src={withBasePath("/images/projects/protecta/screenshots/protecta-home-desktop.png")} alt="Protecta homepage screenshot" className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.01]" /></div>
+                      <p className="mt-4 text-center font-inter text-[13px] leading-[1.6] text-[#5c7792]">Homepage screenshot</p>
+                    </a>
+                    <div className="space-y-8 text-center lg:text-left">{designStrategy.map((item) => (<p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>))}</div>
+                  </div>
+                </>
               ) : (
                 <div className="mx-auto max-w-[820px] space-y-8 text-center">
                   {designStrategy.map((item) => (
