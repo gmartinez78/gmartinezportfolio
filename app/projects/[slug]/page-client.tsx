@@ -138,6 +138,39 @@ const RELATED_PROJECT_BACKGROUNDS: Record<string, string> = {
   reversetech: "linear-gradient(180deg, #eef4fb 0%, #eef4fb 100%)",
 };
 
+const PROTECTA_CAMPAIGN_CREATIVE = [
+  {
+    src: "/images/projects/protecta/campaign/Post 1.png",
+    alt: "Protecta campaign creative explaining everyday medical coverage",
+    label: "Coverage awareness",
+  },
+  {
+    src: "/images/projects/protecta/campaign/Post 5.png",
+    alt: "Protecta campaign creative promoting preventative checkups",
+    label: "Preventive care",
+  },
+  {
+    src: "/images/projects/protecta/campaign/Post 6.png",
+    alt: "Protecta campaign creative explaining telemedicine",
+    label: "Telemedicine",
+  },
+  {
+    src: "/images/projects/protecta/campaign/Post 7.png",
+    alt: "Protecta campaign creative about back-to-school benefits",
+    label: "Back to school",
+  },
+  {
+    src: "/images/projects/protecta/campaign/Post 8.png",
+    alt: "Protecta campaign creative promoting pediatric checkups",
+    label: "Family health",
+  },
+  {
+    src: "/images/projects/protecta/campaign/Post 9.png",
+    alt: "Protecta campaign creative about preventive vaccines",
+    label: "Vaccines",
+  },
+];
+
 const NAYYA_HIGHLIGHT_METRICS: HighlightMetric[] = [
   { value: "307%", label: "IRR", context: "Projected ROI,estimated return from increased plan uptake (NPV $11.4M)." },
   { value: "~115,500", label: "Annual Benefits", context: "Enrollments completed 5% above the 100K goal." },
@@ -5483,6 +5516,35 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 allowFullScreen
               />
             </ContentPanel>
+          </div>
+        </section>
+      ) : null}
+
+      {caseStudy.slug === "protecta" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading title="Campaign System" centered className="mb-6" />
+          <p className="mx-auto mb-12 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+            The launch campaign translated complex health-benefit topics into calm, family-centered education. Each post uses the same visual language while giving families one clear, timely reason to understand and use their coverage.
+          </p>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {PROTECTA_CAMPAIGN_CREATIVE.map((creative) => (
+              <a
+                key={creative.src}
+                href={withBasePath(creative.src)}
+                target="_blank"
+                rel="noreferrer"
+                className="group block"
+              >
+                <div className="overflow-hidden rounded-[20px] border border-[#d7e8f7] bg-white shadow-[0_14px_42px_rgba(14,41,81,0.08)]">
+                  <img
+                    src={withBasePath(creative.src)}
+                    alt={creative.alt}
+                    className="aspect-square h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                  />
+                </div>
+                <p className="mt-3 text-center font-inter text-[13px] font-semibold text-[#0e2951]">{creative.label}</p>
+              </a>
+            ))}
           </div>
         </section>
       ) : null}

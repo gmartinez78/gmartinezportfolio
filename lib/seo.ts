@@ -30,7 +30,7 @@ const caseStudyPathOverrides: Record<string, string> = {
   "benefits-enrollment": "/benefits",
   reversetech: "/reversetech",
 };
-const nonIndexedCaseStudySlugs = new Set(["protecta"]);
+const nonIndexedCaseStudySlugs = new Set<string>();
 
 type BuildMetadataInput = {
   title: string;

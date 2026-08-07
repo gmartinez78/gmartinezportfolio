@@ -836,14 +836,14 @@
     "status": "published",
     "featured": false,
     "order": 6,
-    "title": "Protecta Advisory | AI-Accelerated Website Launch",
+    "title": "Protecta Advisory | Brand, Website & Campaign Launch",
     "company": "Protecta Advisory",
     "client_context": "Protecta Advisory",
     "role": "Design Engineer",
     "year": 2026,
     "duration": "1 week, end-to-end",
     "industry": "Insurance / Advisory",
-    "tagline": "A compressed end-to-end delivery showing how AI accelerates research, brand, copy, build, and QA without replacing design judgment.",
+    "tagline": "Building a warm bilingual insurance brand, launch-ready website, and educational social campaign for multicultural US families.",
     "tags": [
       "AI Product",
       "Product Design",
@@ -869,7 +869,7 @@
     ],
     "images": {
       "cover": "/images/projects/protecta/thumbnails/protectabanner.png",
-      "hero": "/images/projects/protecta/thumbnails/protectabanner.png",
+      "hero": "/images/projects/protecta/hero-banner.png",
       "gallery": [
         "/images/projects/protecta/screenshots/protecta-home-desktop.png",
         "/images/projects/protecta/screenshots/protecta-home-mobile.png"
@@ -1036,17 +1036,27 @@
         "id": "impact",
         "type": "results",
         "title": "Result",
-        "body": "This project is primarily a delivery-capability case study. The site launched as a working product for review, and domain launch plus post-launch conversion measurement follow next.",
+        "body": "The outcome pairs a launch-ready bilingual website with an educational campaign designed to make medical coverage understandable and actionable for families. In its first 28 days, the campaign built meaningful organic discovery, interaction, and traffic from an audience that was almost entirely new to the page.",
         "payload": {
+          "rows": [
+            { "metric": "Content views", "value": "3.3K" },
+            { "metric": "Unique viewers", "value": "1,436" },
+            { "metric": "Content interactions", "value": "129" },
+            { "metric": "Link clicks", "value": "34" },
+            { "metric": "Facebook visits", "value": "55" },
+            { "metric": "Net new follows", "value": "+12" }
+          ],
           "insights": [
-            "A full brand system and launch-ready bilingual website were delivered in roughly a quarter of the typical solo timeline for this scope.",
-            "The English and Spanish content were written as native voice systems rather than one language being mechanically derived from the other.",
-            "The live site became the review artifact, which enabled quick approval because the client could evaluate the actual experience on real devices."
+            "Reporting period: July 10-August 6, 2026 (28 days).",
+            "98% of views came from non-followers, showing the educational creative reached well beyond the existing audience.",
+            "115 of 129 content interactions (89%) came from non-followers, reinforcing that the campaign generated engagement from new audiences rather than only the page's current followers.",
+            "The initial reach goals were exceeded: Facebook reached 1.5K against a goal of 208 (707%), while Instagram reached 567 against a goal of 169 (336%).",
+            "The reporting chart shows the strongest gains after the scheduled August rollout, an early signal that the organized bilingual publishing cadence is working."
           ],
           "projected": [
-            "Replace stock placeholders with a real photo and video shoot featuring the advisors.",
-            "Measure referral-program engagement and WhatsApp contact conversion after launch.",
-            "Add a lightweight CMS layer for future advisor-bio and program-detail updates."
+            "Connect link clicks and WhatsApp inquiries to a lead source so the next reporting cycle can measure qualified conversations and conversion, not only awareness.",
+            "Continue the bilingual content cadence around seasonal family-health moments and compare formats, messages, and posting times.",
+            "Replace stock placeholders with a real photo and video shoot featuring the advisors."
           ]
         }
       }

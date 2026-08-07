@@ -836,14 +836,14 @@
     "status": "published",
     "featured": false,
     "order": 6,
-    "title": "Protecta Advisory: un caso de estudio de entrega integral acelerada por IA.",
+    "title": "Protecta Advisory: marca, sitio web y lanzamiento de campaña.",
     "company": "Protecta Advisory",
     "client_context": "Sitio web bilingüe de asesoría de seguros para familias multiculturales en Estados Unidos",
     "role": "Ingeniero de Diseño",
     "year": 2026,
     "duration": "1 semana, de principio a fin",
     "industry": "Seguros / Asesoría",
-    "tagline": "Una entrega integral comprimida que muestra cómo la IA acelera la investigación, la marca, los textos, la construcción y el control de calidad sin sustituir el criterio de diseño.",
+    "tagline": "Una marca de seguros cálida y bilingüe, un sitio web listo para el lanzamiento y una campaña educativa para familias multiculturales en Estados Unidos.",
     "tags": [
       "AI Product",
       "Product Design",
@@ -869,7 +869,7 @@
     ],
     "images": {
       "cover": "/images/projects/protecta/thumbnails/protectabanner.png",
-      "hero": "/images/projects/protecta/thumbnails/protectabanner.png",
+      "hero": "/images/projects/protecta/hero-banner.png",
       "gallery": [
         "/images/projects/protecta/screenshots/protecta-home-desktop.png",
         "/images/projects/protecta/screenshots/protecta-home-mobile.png"
@@ -1036,17 +1036,27 @@
         "id": "impact",
         "type": "results",
         "title": "Resultado",
-        "body": "Este proyecto es, ante todo, un caso de estudio sobre capacidad de entrega. El sitio se lanzó como un producto funcional para su revisión, y a continuación siguen el lanzamiento del dominio y la medición de conversión posterior al lanzamiento.",
+        "body": "El resultado combina un sitio web bilingüe listo para el lanzamiento con una campaña educativa diseñada para hacer que la cobertura médica se sienta comprensible y accionable para las familias. En sus primeros 28 días, la campaña generó descubrimiento orgánico, interacción y tráfico de una audiencia compuesta casi por completo por personas nuevas para la página.",
         "payload": {
+          "rows": [
+            { "metric": "Visualizaciones de contenido", "value": "3.3K" },
+            { "metric": "Espectadores únicos", "value": "1,436" },
+            { "metric": "Interacciones de contenido", "value": "129" },
+            { "metric": "Clics en enlaces", "value": "34" },
+            { "metric": "Visitas a Facebook", "value": "55" },
+            { "metric": "Nuevos seguidores netos", "value": "+12" }
+          ],
           "insights": [
-            "Se entregó un sistema de marca completo y un sitio web bilingüe listo para lanzar en aproximadamente una cuarta parte del cronograma habitual en solitario para este alcance.",
-            "El contenido en inglés y en español se redactó como sistemas de voz nativos, en lugar de derivar mecánicamente un idioma del otro.",
-            "El sitio en producción se convirtió en el artefacto de revisión, lo que permitió una aprobación rápida porque el cliente pudo evaluar la experiencia real en dispositivos reales."
+            "Periodo analizado: del 10 de julio al 6 de agosto de 2026 (28 días).",
+            "El 98% de las visualizaciones provino de personas que no seguían la página, lo que demuestra que el contenido educativo llegó mucho más allá de la audiencia existente.",
+            "115 de las 129 interacciones de contenido (89%) provinieron de personas que no seguían la página, lo que confirma que la campaña generó interacción de nuevas audiencias y no solo de seguidores actuales.",
+            "Se superaron los objetivos iniciales de alcance: Facebook alcanzó 1.5K frente a una meta de 208 (707%), e Instagram alcanzó 567 frente a una meta de 169 (336%).",
+            "El gráfico de resultados muestra las mayores ganancias después del despliegue programado de agosto, una primera señal de que la cadencia de publicación bilingüe y organizada está funcionando."
           ],
           "projected": [
-            "Sustituir las imágenes de stock provisionales por una sesión real de fotos y vídeo con los propios asesores.",
-            "Medir la interacción con el programa de referidos y la conversión de contacto por WhatsApp tras el lanzamiento.",
-            "Añadir una capa ligera de CMS para futuras actualizaciones de las biografías de los asesores y los detalles del programa."
+            "Conectar los clics en enlaces y las consultas por WhatsApp con una fuente de leads para que el siguiente ciclo de reportes mida conversaciones cualificadas y conversión, no solo reconocimiento.",
+            "Mantener la cadencia de contenido bilingüe en torno a momentos estacionales de salud familiar y comparar formatos, mensajes y horarios de publicación.",
+            "Sustituir las imágenes de stock provisionales por una sesión real de fotos y vídeo con los propios asesores."
           ]
         }
       }
