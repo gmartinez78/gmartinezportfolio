@@ -171,6 +171,8 @@ const PROTECTA_CAMPAIGN_CREATIVE = [
   },
 ];
 
+const PROTECTA_WEBSITE_URL = "https://protecta-nine.vercel.app/";
+
 const NAYYA_HIGHLIGHT_METRICS: HighlightMetric[] = [
   { value: "307%", label: "IRR", context: "Projected ROI,estimated return from increased plan uptake (NPV $11.4M)." },
   { value: "~115,500", label: "Annual Benefits", context: "Enrollments completed 5% above the 100K goal." },
@@ -932,6 +934,31 @@ const PROTECTA_PROBLEM_TO_OUTCOME: Record<Language, Array<{ problem: string; cha
       result: "34 clics en enlaces y 55 visitas a Facebook en 28 días.",
     },
   ],
+};
+
+const PROTECTA_AGENT_COPY: Record<Language, { eyebrow: string; title: string; body: string; roles: Array<{ title: string; body: string }>; note: string }> = {
+  en: {
+    eyebrow: "AI collaboration model",
+    title: "Role-based agents, guided by design judgment",
+    body: "I built task-specific agents to challenge the work from the perspective needed at each stage, including a project manager, client stakeholder, researcher, content strategist, engineer, and QA reviewer.",
+    roles: [
+      { title: "PM agent", body: "Clarified scope, priorities, dependencies, and delivery risks." },
+      { title: "Stakeholder agent", body: "Pressure-tested decisions against client goals, trust, and business needs." },
+      { title: "Craft agents", body: "Accelerated research synthesis, content drafts, implementation, and QA checks." },
+    ],
+    note: "Agents expanded the perspectives available in the process; I remained accountable for the decisions, trade-offs, and final product.",
+  },
+  es: {
+    eyebrow: "Modelo de colaboración con IA",
+    title: "Agentes basados en roles, guiados por criterio de diseño",
+    body: "Creé agentes específicos por tarea para cuestionar el trabajo desde la perspectiva necesaria en cada etapa: project manager, stakeholder del cliente, investigador, estratega de contenido, ingeniero y revisor de QA.",
+    roles: [
+      { title: "Agente de PM", body: "Aclaró alcance, prioridades, dependencias y riesgos de entrega." },
+      { title: "Agente stakeholder", body: "Contrastó decisiones con los objetivos del cliente, la confianza y las necesidades del negocio." },
+      { title: "Agentes de ejecución", body: "Aceleraron la síntesis de investigación, borradores de contenido, implementación y revisiones de QA." },
+    ],
+    note: "Los agentes ampliaron las perspectivas disponibles en el proceso; yo mantuve la responsabilidad de las decisiones, los trade-offs y el producto final.",
+  },
 };
 const FLOCK_AUDIT_LABELS = [
   { color: "#50A8FF", label: "Navigation", note: "Top-level hierarchy and route clarity." },
@@ -2412,6 +2439,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const contentVariantsBlock = findBlock("content-variants");
   const resultRows = getPayloadRows(resultBlock?.payload, "rows");
   const resultInsights = getPayloadList(resultBlock?.payload, "insights");
+  const primaryResultInsights = caseStudy.slug === "protecta" ? resultInsights.slice(0, 3) : resultInsights;
+  const protectaMomentumInsights = caseStudy.slug === "protecta" ? resultInsights.slice(3) : [];
   const resultOpportunities = getPayloadList(resultBlock?.payload, "opportunities");
   const projectedImprovements = getPayloadList(resultBlock?.payload, "projected");
   const successMetrics = getPayloadList(resultBlock?.payload, "successMetrics");
@@ -4768,6 +4797,22 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       ))}
                     </div>
                   </div>
+                  <div className="mx-auto mt-12 max-w-[1040px] rounded-[24px] border border-[#d7e5de] bg-[#f5f7ef] p-6 md:p-8">
+                    <div className="mx-auto max-w-[760px] text-center">
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#63826c]">{PROTECTA_AGENT_COPY[language].eyebrow}</p>
+                      <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#154f4d] md:text-[42px]">{PROTECTA_AGENT_COPY[language].title}</h3>
+                      <p className="mt-5 font-inter text-[16px] leading-[1.7] text-[#526863]">{PROTECTA_AGENT_COPY[language].body}</p>
+                    </div>
+                    <div className="mt-8 grid gap-4 md:grid-cols-3">
+                      {PROTECTA_AGENT_COPY[language].roles.map((role) => (
+                        <article key={role.title} className="rounded-[18px] border border-[#d7e5de] bg-white p-5">
+                          <p className="font-inter text-[15px] font-semibold text-[#154f4d]">{role.title}</p>
+                          <p className="mt-3 font-inter text-[13px] leading-[1.6] text-[#63826c]">{role.body}</p>
+                        </article>
+                      ))}
+                    </div>
+                    <p className="mx-auto mt-6 max-w-[760px] border-l-2 border-[#90af7a] pl-4 font-inter text-[14px] leading-[1.65] text-[#526863]">{PROTECTA_AGENT_COPY[language].note}</p>
+                  </div>
                   <div className="mx-auto mt-12 grid max-w-[1100px] items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
                     <a href={withBasePath("/images/projects/protecta/screenshots/protecta-home-desktop.png")} target="_blank" rel="noreferrer" className="group block">
                       <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.10)]"><img src={withBasePath("/images/projects/protecta/screenshots/protecta-home-desktop.png")} alt="Protecta homepage screenshot" className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.01]" /></div>
@@ -5876,25 +5921,33 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "protecta" && (caseStudy.images.gallery?.length ?? 0) > 0 ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title="Website Screenshots" centered className="mb-12" />
-          <div className="grid gap-6 md:grid-cols-[minmax(0,1.5fr)_minmax(280px,0.7fr)]">
+          <SectionHeading title="Website Preview" centered className="mb-5" />
+          <p className="mx-auto max-w-[640px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+            A responsive bilingual experience designed to bring families from questions to a trusted advisor.
+          </p>
+          <div className="mt-8 flex justify-center">
+            <a href={PROTECTA_WEBSITE_URL} target="_blank" rel="noreferrer" className="inline-flex rounded-full bg-[#154f4d] px-5 py-3 font-inter text-[13px] font-semibold text-white transition-transform hover:-translate-y-0.5">
+              Visit the live website ↗
+            </a>
+          </div>
+          <div className="mt-10 flex flex-wrap justify-center gap-8">
             {caseStudy.images.gallery.map((imageSrc, index) => (
               <a
                 key={imageSrc}
-                href={withBasePath(imageSrc)}
+                href={PROTECTA_WEBSITE_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="group block"
+                className="group block w-[220px]"
               >
-                <div className="overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.10)]">
-                  <img
-                    src={withBasePath(imageSrc)}
-                    alt={index === 0 ? "Protecta desktop homepage screenshot" : "Protecta mobile homepage screenshot"}
-                    className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.01]"
-                  />
+                <div className="rounded-[32px] border-[7px] border-[#17302d] bg-[#17302d] p-[5px] shadow-[0_20px_50px_rgba(21,79,77,0.18)] transition-transform duration-300 group-hover:-translate-y-1">
+                  <div className="mx-auto mb-2 h-4 w-20 rounded-full bg-[#17302d]" />
+                  <div className="h-[350px] overflow-hidden rounded-[20px] bg-white">
+                    <img src={withBasePath(imageSrc)} alt={index === 0 ? "Protecta website desktop layout" : "Protecta website mobile layout"} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" />
+                  </div>
+                  <div className="mx-auto mt-2 h-1 w-12 rounded-full bg-[#49615c]" />
                 </div>
                 <p className="mt-4 text-center font-inter text-[13px] leading-[1.6] text-[#5c7792]">
-                  {index === 0 ? "Desktop homepage" : "Mobile homepage"}
+                  {index === 0 ? "Desktop layout" : "Mobile layout"}
                 </p>
               </a>
             ))}
@@ -5930,12 +5983,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         ) : null}
         {caseStudy.slug !== "flock-accessibility-system" && [resultInsights, resultOpportunities, projectedImprovements, successMetrics].some((items) => items.length) ? (
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {resultInsights.length ? (
+            {primaryResultInsights.length ? (
               <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
                 <CardContent className="p-8">
                   <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{caseStudy.slug === "i9-everify-integration" ? "Key Results" : "Enrollment Behavior Insights"}</h3>
                   <ul className="mt-5 list-disc space-y-3 pl-5">
-                    {resultInsights.filter((item) => !shouldHideInsight(item)).map((item) => (
+                    {primaryResultInsights.filter((item) => !shouldHideInsight(item)).map((item) => (
                       /^2026(?:\s+data)?$/i.test(stripLeadingBullet(item)) ? (
                         <li key={item} className="list-none mt-6 mb-3 pl-1 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">{normalizeInsightHeading(item)}</li>
                       ) : (
@@ -5948,6 +6001,18 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       {NAYYA_INSIGHTS_CLOSING}
                     </p>
                   ) : null}
+                </CardContent>
+              </Card>
+            ) : null}
+            {protectaMomentumInsights.length ? (
+              <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
+                <CardContent className="p-8">
+                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Campaign momentum</h3>
+                  <ul className="mt-5 list-disc space-y-3 pl-5">
+                    {protectaMomentumInsights.map((item) => (
+                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>
+                    ))}
+                  </ul>
                 </CardContent>
               </Card>
             ) : null}
