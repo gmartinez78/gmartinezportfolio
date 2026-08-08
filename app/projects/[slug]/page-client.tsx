@@ -851,6 +851,16 @@ const PROTECTA_WORKFLOW_SUMMARIES: Record<Language, string[]> = {
   ],
 };
 
+const PROTECTA_WORKFLOW_TOOLS = [
+  ["Gemini NotebookLM"],
+  ["Claude Skills"],
+  ["Claude Design"],
+  ["ChatGPT"],
+  ["Claude Design", "Codex"],
+  ["Codex"],
+  ["Codex", "Storybook", "QA manual"],
+];
+
 const PROTECTA_BRAND_COPY: Record<Language, { eyebrow: string; title: string; body: string; rationale: string; type: string; palette: string }> = {
   en: {
     eyebrow: "Visual system",
@@ -969,8 +979,8 @@ const PROTECTA_CAPABILITIES: Record<Language, { title: string; items: string[] }
       "Claude Design exploration",
       "PM + stakeholder agents",
       "Bilingual content system",
-      "Code-first website build",
-      "Storybook + QA",
+      "Codex implementation",
+      "GitHub + Vercel delivery",
     ],
   },
   es: {
@@ -980,8 +990,113 @@ const PROTECTA_CAPABILITIES: Record<Language, { title: string; items: string[] }
       "Exploración con Claude Design",
       "Agentes de PM y stakeholder",
       "Sistema de contenido bilingüe",
-      "Construcción web en código",
-      "Storybook y QA",
+      "Implementación con Codex",
+      "Entrega con GitHub y Vercel",
+    ],
+  },
+};
+
+const PROTECTA_PRACTICAL_IMPLICATIONS: Record<Language, { eyebrow: string; title: string; items: Array<{ title: string; body: string }> }> = {
+  en: {
+    eyebrow: "Practical implications",
+    title: "What the workflow changed",
+    items: [
+      {
+        title: "Exploration moved at the speed of judgment.",
+        body: "Claude Design made early directions faster to generate and compare. The constraint was no longer producing screens; it was evaluating the research, choosing the strongest direction, and refining it with intent.",
+      },
+      {
+        title: "Code became the source of truth.",
+        body: "The interface was designed and validated in the live product. Codex accelerated implementation, while GitHub and Vercel supported a code-first delivery path. Storybook documents the reusable patterns and states that the code established.",
+      },
+      {
+        title: "Figma was not required for this delivery.",
+        body: "The first visual draft came from Claude Design, then the system evolved through research-led decisions and implementation in code. The outcome was a working bilingual experience, not a static design file.",
+      },
+    ],
+  },
+  es: {
+    eyebrow: "Implicaciones prácticas",
+    title: "Lo que cambió con este flujo",
+    items: [
+      {
+        title: "La exploración avanzó a la velocidad del criterio.",
+        body: "Claude Design hizo más rápido generar y comparar direcciones iniciales. El límite ya no era producir pantallas; era evaluar la investigación, elegir la mejor dirección y refinarla con intención.",
+      },
+      {
+        title: "El código se convirtió en la fuente de verdad.",
+        body: "La interfaz se diseñó y validó en el producto real. Codex aceleró la implementación, mientras GitHub y Vercel respaldaron una entrega basada en código. Storybook documenta los patrones y estados reutilizables que el código definió.",
+      },
+      {
+        title: "Figma no fue necesario para esta entrega.",
+        body: "El primer borrador visual se creó con Claude Design; después, el sistema evolucionó con decisiones guiadas por investigación e implementación en código. El resultado fue una experiencia bilingüe funcional, no un archivo de diseño estático.",
+      },
+    ],
+  },
+};
+
+const PROTECTA_KEY_LEARNINGS: Record<Language, { eyebrow: string; title: string; items: Array<{ title: string; body: string }> }> = {
+  en: {
+    eyebrow: "Key learnings",
+    title: "What this project reinforced",
+    items: [
+      {
+        title: "Build the product before the system.",
+        body: "Starting in code created a system based on real bilingual pages, responsive behavior, and conversion paths. Each reusable pattern earned its place by solving a need in the product.",
+      },
+      {
+        title: "AI needs a clear decision model.",
+        body: "AI was most useful when guided by source research, working definitions, brand guardrails, and a defined role. It accelerated exploration and critique; it did not replace product judgment.",
+      },
+      {
+        title: "Bilingual content is adaptation, not translation.",
+        body: "English and Spanish needed independent messaging choices to remain clear, credible, and natural for the families Protecta serves.",
+      },
+      {
+        title: "Component QA makes speed repeatable.",
+        body: "Documenting patterns in Storybook made it easier to review states, mobile behavior, and language variations before launch.",
+      },
+    ],
+  },
+  es: {
+    eyebrow: "Aprendizajes clave",
+    title: "Lo que reforzó este proyecto",
+    items: [
+      {
+        title: "Construye el producto antes que el sistema.",
+        body: "Comenzar en código produjo un sistema basado en páginas bilingües reales, comportamiento responsive y rutas de conversión. Cada patrón reutilizable ganó su lugar al resolver una necesidad del producto.",
+      },
+      {
+        title: "La IA necesita un modelo de decisión claro.",
+        body: "La IA fue más útil cuando estuvo guiada por la investigación fuente, definiciones de trabajo, reglas de marca y un rol definido. Aceleró la exploración y la crítica; no reemplazó el criterio de producto.",
+      },
+      {
+        title: "El contenido bilingüe es adaptación, no traducción.",
+        body: "El inglés y el español necesitaron decisiones de mensaje independientes para ser claros, creíbles y naturales para las familias a las que sirve Protecta.",
+      },
+      {
+        title: "El QA de componentes hace que la velocidad sea repetible.",
+        body: "Documentar patrones en Storybook facilitó revisar estados, comportamiento móvil y variaciones de idioma antes del lanzamiento.",
+      },
+    ],
+  },
+};
+
+const PROTECTA_KEY_RESULTS: Record<Language, { title: string; items: string[] }> = {
+  en: {
+    title: "Key Results",
+    items: [
+      "Bilingual English + Spanish content and conversion paths launched together",
+      "Brand, website, campaign, and QA delivered solo in 7 days",
+      "98% of 3.3K views came from people who did not follow the page",
+    ],
+  },
+  es: {
+    title: "Resultados clave",
+    items: [
+      "Contenido y rutas de conversión en inglés y español lanzados en conjunto",
+      "Marca, web, campaña y QA entregados de forma individual en 7 días",
+      "El 98% de las 3.3K visualizaciones provino de personas que no seguían la página",
     ],
   },
 };
@@ -3022,11 +3137,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </div>
                       <span className="h-6 w-px bg-[#8badc7]" aria-hidden="true" />
                     </div>
-                    <article className="flex min-h-[172px] w-full flex-col rounded-[20px] border border-[#d7e8f7] bg-white p-4 shadow-[0_12px_30px_rgba(14,41,81,0.07)]">
+                    <article className="flex min-h-[190px] w-full flex-col rounded-[20px] border border-[#d7e8f7] bg-white p-4 shadow-[0_12px_30px_rgba(14,41,81,0.07)]">
                       <p className="font-inter text-[14px] font-semibold text-[#0e2951]">{step.label}</p>
                       <p className="mt-2 font-inter text-[12px] leading-[1.5] text-[#5c7792]">
                         {PROTECTA_WORKFLOW_SUMMARIES[language][index] ?? step.description}
                       </p>
+                      <div className="mt-auto flex flex-wrap gap-1.5 pt-4">
+                        {(PROTECTA_WORKFLOW_TOOLS[index] ?? []).map((tool) => (
+                          <span key={tool} className="rounded-full bg-[#edf4ee] px-2 py-1 font-inter text-[10px] font-semibold text-[#31594d]">{tool}</span>
+                        ))}
+                      </div>
                     </article>
                   </div>
                 ))}
@@ -4077,32 +4197,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </>
       )}
 
-      {caseStudy.slug === "protecta" ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading eyebrow="Traceability" title="From problem to outcome" centered className="mb-12" />
-          <div className="mx-auto max-w-[1040px] space-y-5">
-            {PROTECTA_PROBLEM_TO_OUTCOME[language].map((item, index) => (
-              <div key={item.problem} className="grid items-stretch gap-3 md:grid-cols-[1fr_44px_1fr_44px_1fr] md:gap-0">
-                <article className="rounded-[18px] border border-[#e2ded1] bg-[#fbfaf5] p-5">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8b7650]">{language === "es" ? "Problema" : "Problem"}</p>
-                  <p className="mt-3 font-inter text-[14px] leading-[1.6] text-[#4a4b47]">{item.problem}</p>
-                </article>
-                <div className="flex items-center justify-center text-[#95a784]" aria-hidden="true"><span className="hidden h-px flex-1 bg-[#b7c5ad] md:block" /><span className="text-[22px] leading-none">›</span></div>
-                <article className="rounded-[18px] border border-[#cddfc8] bg-[#f4f8f1] p-5">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#63826c]">{language === "es" ? "Cambio de diseño" : "Design change"}</p>
-                  <p className="mt-3 font-inter text-[14px] leading-[1.6] text-[#31594d]">{item.change}</p>
-                </article>
-                <div className="flex items-center justify-center text-[#95a784]" aria-hidden="true"><span className="hidden h-px flex-1 bg-[#b7c5ad] md:block" /><span className="text-[22px] leading-none">›</span></div>
-                <article className="rounded-[18px] border border-[#b9d5c6] bg-[#154f4d] p-5">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#cfe3ad]">{language === "es" ? "Resultado" : "Result"}</p>
-                  <p className="mt-3 font-inter text-[14px] leading-[1.6] text-white">{item.result}</p>
-                </article>
-              </div>
-            ))}
-          </div>
-        </section>
-      ) : null}
-
       {caseStudy.slug === "reversetech" ? (
         <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[1200px]">
@@ -4856,6 +4950,50 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#f7f6f2] font-inter text-[24px] font-semibold text-[#111514]">{index + 1}</span>
                           <p className="mt-4 max-w-[140px] font-inter text-[14px] leading-[1.25] text-[#b9c7dd]">{item}</p>
                         </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mx-auto mt-12 max-w-[1040px]">
+                    <div className="max-w-[660px]">
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#63826c]">{PROTECTA_PRACTICAL_IMPLICATIONS[language].eyebrow}</p>
+                      <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#154f4d] md:text-[42px]">{PROTECTA_PRACTICAL_IMPLICATIONS[language].title}</h3>
+                    </div>
+                    <div className="mt-8 grid gap-4 md:grid-cols-3">
+                      {PROTECTA_PRACTICAL_IMPLICATIONS[language].items.map((item, index) => (
+                        <article key={item.title} className="rounded-[20px] border border-[#d7e5de] bg-[#f8f8f4] p-6">
+                          <span className="font-inter text-[12px] font-semibold text-[#6a9e42]">0{index + 1}</span>
+                          <h4 className="mt-5 font-inter text-[18px] font-semibold leading-[1.2] tracking-[-0.03em] text-[#154f4d]">{item.title}</h4>
+                          <p className="mt-4 font-inter text-[14px] leading-[1.65] text-[#63826c]">{item.body}</p>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mx-auto mt-12 max-w-[1040px]">
+                    <div className="text-center">
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#63826c]">{PROTECTA_PRACTICAL_IMPLICATIONS[language].eyebrow}</p>
+                      <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#154f4d] md:text-[42px]">{PROTECTA_PRACTICAL_IMPLICATIONS[language].title}</h3>
+                    </div>
+                    <div className="mt-8 grid gap-4 md:grid-cols-3">
+                      {PROTECTA_PRACTICAL_IMPLICATIONS[language].items.map((item, index) => (
+                        <article key={item.title} className="rounded-[20px] border border-[#d7e5de] bg-[#f8f8f4] p-6">
+                          <span className="font-inter text-[12px] font-semibold text-[#6a9e42]">0{index + 1}</span>
+                          <h4 className="mt-5 font-inter text-[18px] font-semibold leading-[1.2] tracking-[-0.03em] text-[#154f4d]">{item.title}</h4>
+                          <p className="mt-4 font-inter text-[14px] leading-[1.65] text-[#526863]">{item.body}</p>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mx-auto mt-12 max-w-[1040px]">
+                    <div className="text-center">
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#63826c]">{PROTECTA_KEY_LEARNINGS[language].eyebrow}</p>
+                      <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#154f4d] md:text-[42px]">{PROTECTA_KEY_LEARNINGS[language].title}</h3>
+                    </div>
+                    <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                      {PROTECTA_KEY_LEARNINGS[language].items.map((item) => (
+                        <article key={item.title} className="rounded-[20px] border border-[#d7e5de] bg-white p-6 shadow-[0_10px_24px_rgba(21,79,77,0.05)]">
+                          <h4 className="font-inter text-[18px] font-semibold leading-[1.25] tracking-[-0.03em] text-[#154f4d]">{item.title}</h4>
+                          <p className="mt-4 font-inter text-[14px] leading-[1.65] text-[#526863]">{item.body}</p>
+                        </article>
                       ))}
                     </div>
                   </div>
@@ -6102,6 +6240,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title="Results & Impact" centered className="mb-12" />
+          {caseStudy.slug === "protecta" ? (
+            <div className="mb-6 grid gap-4 md:grid-cols-3">
+              {PROTECTA_KEY_RESULTS[language].items.map((item, index) => (
+                <article key={item} className="min-h-[190px] rounded-[22px] border border-[#d7e5de] bg-[#f5f7ef] p-6 sm:p-7">
+                  <span className="inline-flex h-9 min-w-9 items-center justify-center rounded-full bg-[#e3edda] px-2 font-inter text-[12px] font-semibold text-[#315448]">0{index + 1}</span>
+                  <p className="mt-7 font-inter text-[18px] font-semibold leading-[1.45] tracking-[-0.025em] text-[#154f4d]">{item}</p>
+                </article>
+              ))}
+            </div>
+          ) : null}
           {caseStudy.slug === "flock-accessibility-system" ? (
           <DataTablePanel
             wrapperClassName="mx-auto max-w-[1040px]"
