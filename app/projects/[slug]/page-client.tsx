@@ -3611,8 +3611,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {visibleStoryBlocks.length ? (
         <section id="rt-problem" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <div className={caseStudy.slug === "reversetech" || caseStudy.slug === "protecta" ? "mx-auto max-w-[860px]" : "grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start"}>
-            <div className={caseStudy.slug === "reversetech" ? "text-center" : ""}>
-              <SectionHeading eyebrow="Case Study" title="The problem" className="mb-12" />
+            <div className={["reversetech", "protecta"].includes(caseStudy.slug) ? "text-center" : ""}>
+              <SectionHeading eyebrow="Case Study" title="The problem" centered={["reversetech", "protecta"].includes(caseStudy.slug)} className="mb-12" />
               <div className="space-y-10">
                 {visibleStoryBlocks.map((block) => {
                   const items = getPayloadList(block.payload, "items");
@@ -3628,7 +3628,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <p
                             key={idx}
                             className={`font-inter text-[16px] leading-[1.7] text-[#5c7792] mb-4 last:mb-0 ${
-                              caseStudy.slug === "reversetech" ? "mx-auto max-w-[760px]" : "max-w-[720px]"
+                              ["reversetech", "protecta"].includes(caseStudy.slug) ? "mx-auto max-w-[760px]" : "max-w-[720px]"
                             }`}
                           >
                             {paragraph.trim()}
@@ -3641,7 +3641,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             <p
                               key={item}
                               className={`font-inter text-[16px] leading-[1.7] text-[#5c7792] ${
-                                caseStudy.slug === "reversetech" ? "mx-auto max-w-[760px]" : "max-w-[720px]"
+                                ["reversetech", "protecta"].includes(caseStudy.slug) ? "mx-auto max-w-[760px]" : "max-w-[720px]"
                               }`}
                             >
                               {item}
