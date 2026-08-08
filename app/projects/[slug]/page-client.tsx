@@ -2824,6 +2824,20 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         campaignBody: "Research on trust barriers, recurring family questions, and bilingual needs shaped a Facebook and Instagram campaign built to generate qualified advisor leads. Each calm, family-centered post translated a coverage question into a clear reason to visit the website, learn more, and contact an advisor.",
         open: "Open",
       };
+  const getProtectaCreativeAlt = (creative: (typeof PROTECTA_CAMPAIGN_CREATIVE)[number]) => {
+    if (language !== "es") return creative.alt;
+
+    const spanishAlts = [
+      "Creatividad de campaña de Protecta sobre la cobertura médica cotidiana",
+      "Creatividad de campaña de Protecta sobre chequeos preventivos",
+      "Creatividad de campaña de Protecta sobre telemedicina",
+      "Creatividad de campaña de Protecta sobre beneficios para el regreso a clases",
+      "Creatividad de campaña de Protecta sobre chequeos pediátricos",
+      "Creatividad de campaña de Protecta sobre vacunas escolares",
+    ];
+
+    return spanishAlts[PROTECTA_CAMPAIGN_CREATIVE.indexOf(creative)] ?? creative.alt;
+  };
   const designProposalTitle = translate("caseStudy.designProposal");
   const activeProtectaStorybookComponent =
     PROTECTA_STORYBOOK[language].components.find((component) => component.url === activeProtectaStorybookUrl) ??
@@ -5326,11 +5340,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <button
                             key={`${creative.src}-${index}`}
                             type="button"
-                            onClick={() => setLightboxImage({ src: withBasePath(creative.src), alt: creative.alt })}
+                            onClick={() => setLightboxImage({ src: withBasePath(creative.src), alt: getProtectaCreativeAlt(creative) })}
                             className="group h-[184px] w-[184px] shrink-0 overflow-hidden rounded-[20px] border border-[#d7e8f7] bg-white text-left shadow-[0_10px_24px_rgba(17,131,208,0.10)] transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0] focus-visible:ring-offset-2"
-                            aria-label={`${protectaUi.open} ${creative.alt}`}
+                            aria-label={`${protectaUi.open} ${getProtectaCreativeAlt(creative)}`}
                           >
-                            <img src={withBasePath(creative.src)} alt={creative.alt} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]" />
+                            <img src={withBasePath(creative.src)} alt={getProtectaCreativeAlt(creative)} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]" />
                           </button>
                         ))}
                       </div>
