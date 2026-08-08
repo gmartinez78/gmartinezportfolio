@@ -1204,88 +1204,25 @@ export default function PortfolioPage() {
     <section
       key="github-proof"
       id="github"
-      className="bg-white px-6 py-12 md:px-16 xl:px-30"
+      className="bg-white px-6 py-20 md:px-16 xl:px-30"
     >
       <div className="mx-auto max-w-[1180px]">
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <div className="md:col-span-2 xl:col-span-4 flex flex-wrap gap-3">
-            {githubActivitySummary.map((item) => (
-              <div
-                key={item.label}
-                className="inline-flex items-center gap-2 rounded-full border border-[#d9e5f2] bg-white/85 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#5f7392]"
-              >
-                <span className="text-[#1183D0]">{item.value}</span>
-                <span>{item.label}</span>
-              </div>
-            ))}
+        <div className="rounded-[24px] border border-[#d9e5f2] bg-white/80 p-6 md:p-8">
+          <div>
+            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">
+              Contribution View
+            </p>
           </div>
-
-          <div className="md:col-span-2 xl:col-span-4 rounded-[24px] border border-[#d9e5f2] bg-white/80 p-5">
-            <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-              <div>
-                <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">
-                  Contribution View
-                </p>
-                <p className="mt-2 text-[14px] leading-[1.7] text-[#5c7792]">
-                  Public contribution activity for <span className="font-semibold text-[#0e2951]">@{githubUsername}</span> since April 2026.
-                </p>
-              </div>
-              <a
-                href={`https://github.com/${githubUsername}`}
-                target="_blank"
-                rel="noreferrer"
-                className="text-[13px] font-medium text-[#1183D0] hover:underline"
-              >
-                Open profile ↗
-              </a>
-            </div>
-            <div className="mt-4 overflow-x-auto rounded-[18px] border border-[#e6edf6] bg-[#fbfdff] p-3">
+          <div className="mt-6 overflow-x-auto rounded-[18px] border border-[#e6edf6] bg-[#fbfdff] p-5 md:p-8">
+            <div className="flex min-h-[220px] items-center">
               <img
                 src={`https://ghchart.rshah.org/1183D0/${githubUsername}`}
                 alt={`${githubUsername} GitHub contributions chart`}
-                className="mx-auto h-auto w-full max-w-[760px] min-w-[640px] object-contain"
+                className="mx-auto translate-y-4 h-auto w-full min-w-[880px] object-contain"
                 loading="lazy"
               />
             </div>
           </div>
-
-          {githubActivityItems.map((item) => {
-            const Icon = getGitHubActivityIcon(item.kind);
-
-            return (
-              <a
-                key={item.id}
-                href={item.url}
-                target="_blank"
-                rel="noreferrer"
-                className="group rounded-[24px] border border-white/70 bg-white/80 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#bfd7f4] hover:shadow-[0_18px_34px_rgba(17,131,208,0.08)]"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-[14px] bg-[#eef6ff] text-[#1183D0]">
-                    <Icon className="h-5 w-5" />
-                  </span>
-                  <span className="rounded-full bg-[#f5f8fc] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6d7f97]">
-                    {formatRelativeTimestamp(item.timestamp)}
-                  </span>
-                </div>
-                <p className="mt-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">
-                  {item.kind.replace("_", " ")}
-                </p>
-                <h3 className="mt-2 font-inter text-[18px] leading-[1.3] text-[#0e2951]">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-[14px] leading-[1.7] text-[#5c7792]">
-                  {item.detail}
-                </p>
-                <div className="mt-4 flex items-center justify-between gap-3 text-[13px] text-[#4f6486]">
-                  <span className="truncate">{item.repo}</span>
-                  <span className="font-medium text-[#1183D0] group-hover:underline">
-                    Open ↗
-                  </span>
-                </div>
-              </a>
-            );
-          })}
         </div>
       </div>
     </section>

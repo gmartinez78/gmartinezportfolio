@@ -5170,13 +5170,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <figcaption className="mt-2 font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{language === "es" ? "Diseño de logotipo" : "Logo design"}</figcaption>
                           <div className="mt-4 grid grid-cols-3 gap-2">
                             {[
-                              ["/images/projects/protecta/protecta-imagotype.svg", language === "es" ? "Imagotipo" : "Imagotype", "bg-[#154f4d]"],
-                              ["/images/projects/protecta/protecta-isotype-pine.svg", language === "es" ? "Isotipo pino" : "Pine isotype", "bg-[#f8f8f4]"],
-                              ["/images/projects/protecta/protecta-isotype-sage.svg", language === "es" ? "Isotipo salvia" : "Sage isotype", "bg-[#154f4d]"],
-                            ].map(([src, label, background]) => (
-                              <div key={src} className="min-w-0">
+                              ["/images/projects/protecta/protecta-imagotype.svg", language === "es" ? "Imagotipo" : "Imagotype", "bg-[#154f4d]", ""],
+                              ["/images/projects/protecta/protecta-isotype-pine.svg", language === "es" ? "Isotipo pino" : "Pine isotype", "bg-[#f8f8f4]", ""],
+                              ["/images/projects/protecta/protecta-isotype-pine.svg", language === "es" ? "Isotipo blanco" : "White isotype", "bg-[#154f4d]", "brightness-0 invert"],
+                            ].map(([src, label, background, logoClass]) => (
+                              <div key={`${src}-${label}`} className="min-w-0">
                                 <div className={`flex aspect-square items-center justify-center rounded-[14px] border border-[#d7e5de] p-3 ${background}`}>
-                                  <img src={withBasePath(src)} alt={language === "es" ? `Variación del logotipo de Protecta: ${label}` : `${label} Protecta logo variation`} className="h-full w-full object-contain" />
+                                  <img src={withBasePath(src)} alt={language === "es" ? `Variación del logotipo de Protecta: ${label}` : `${label} Protecta logo variation`} className={`h-full w-full object-contain ${logoClass}`} />
                                 </div>
                                 <p className="mt-1.5 text-center font-inter text-[10px] font-semibold text-[#5c7792]">{label}</p>
                               </div>
@@ -5332,6 +5332,23 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         ))}
                       </div>
                     </div>
+                    <style>{`
+                      @keyframes protecta-campaign-scroll {
+                        from { transform: translateX(0); }
+                        to { transform: translateX(-50%); }
+                      }
+                      .protecta-campaign-track {
+                        animation: protecta-campaign-scroll 24s linear infinite;
+                        animation-play-state: paused;
+                      }
+                      .protecta-campaign-rail:hover .protecta-campaign-track,
+                      .protecta-campaign-rail:focus-within .protecta-campaign-track {
+                        animation-play-state: running;
+                      }
+                      @media (prefers-reduced-motion: reduce) {
+                        .protecta-campaign-track { animation: none; }
+                      }
+                    `}</style>
                     <div className="protecta-campaign-rail relative mt-8 overflow-hidden py-2">
                       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white via-white/85 to-transparent sm:w-24" aria-hidden="true" />
                       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white via-white/85 to-transparent sm:w-24" aria-hidden="true" />
@@ -6623,7 +6640,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading eyebrow={caseStudy.slug === "protecta" ? "Measured impact" : undefined} title="Results & Impact" centered className="mb-12" />
+          <SectionHeading eyebrow={caseStudy.slug === "protecta" ? (language === "es" ? "Impacto medido" : "Measured impact") : undefined} title={language === "es" ? "Resultados e impacto" : "Results & Impact"} centered className="mb-12" />
           {caseStudy.slug === "protecta" ? (
             <div className="mb-6 grid gap-4 md:grid-cols-2">
               {PROTECTA_KEY_RESULTS[language].items.map((item, index) => (
@@ -6678,7 +6695,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {primaryResultInsights.length ? (
               <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
                 <CardContent className="p-8">
-                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{caseStudy.slug === "i9-everify-integration" ? "Key Results" : "Enrollment Behavior Insights"}</h3>
+                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{caseStudy.slug === "i9-everify-integration" ? (language === "es" ? "Resultados clave" : "Key Results") : (language === "es" ? "Hallazgos sobre el comportamiento de inscripción" : "Enrollment Behavior Insights")}</h3>
                   <ul className="mt-5 list-disc space-y-3 pl-5">
                     {primaryResultInsights.filter((item) => !shouldHideInsight(item)).map((item) => (
                       /^2026(?:\s+data)?$/i.test(stripLeadingBullet(item)) ? (
@@ -6699,7 +6716,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {protectaMomentumInsights.length ? (
               <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
                 <CardContent className="p-8">
-                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Campaign momentum</h3>
+                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{language === "es" ? "Impulso de la campaña" : "Campaign momentum"}</h3>
                   <ul className="mt-5 list-disc space-y-3 pl-5">
                     {protectaMomentumInsights.map((item) => (
                       <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>
@@ -6788,7 +6805,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title="Learnings" centered className="mb-12" />
+          <SectionHeading title={language === "es" ? "Aprendizajes" : "Learnings"} centered className="mb-12" />
           <div className="mx-auto max-w-[820px] space-y-8 text-center">
             {reflections.map((reflection) => (
               <p key={reflection.title} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
