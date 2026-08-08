@@ -899,7 +899,7 @@ const PROTECTA_GUIDELINE_CALLOUTS: Record<Language, Array<{ title: string; body:
   ],
   es: [
     { title: "Voz", body: "Un asesor de confianza en la mesa de la cocina: educar primero, vender después, sin exageración ni mensajes de miedo." },
-    { title: "Bilingüe desde el diseño", body: "Inglés y español son ciudadanos iguales de la experiencia, con fluidez cultural y no traducción literal." },
+    { title: "Bilingüe desde el diseño", body: "El inglés y el español tienen el mismo peso en la experiencia y se adaptan con fluidez cultural, no con traducción literal." },
     { title: "Comportamiento visual", body: "Pino y crema crean la base; arcilla y miel son acentos intencionales. La fotografía usa luz natural, familias reales y esquinas redondeadas." },
   ],
 };
@@ -1015,10 +1015,10 @@ const PROTECTA_CAPABILITIES: Record<Language, { title: string; subtitle: string;
     items: [
       "NotebookLM · Síntesis de investigación",
       "Claude Design · Primera dirección visual",
-      "ChatGPT · Definiciones de trabajo + copy",
+      "ChatGPT · Definiciones de trabajo + texto",
       "Codex · Soporte de implementación",
       "GitHub · Control de versiones",
-      "Vercel · Despliegue en vivo",
+      "Vercel · Despliegue en producción",
       "Storybook · Documentación de componentes + QA",
     ],
   },
@@ -3068,7 +3068,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="mb-6 text-center">
               <div className="relative mx-auto max-w-[760px] px-5 py-6 sm:px-8">
                 <p className="mb-3 font-inter text-[13px] uppercase tracking-[3px] text-[#5c7792]">
-                  {caseStudy.industry ?? "Case Study"}
+                  {caseStudy.industry ?? protectaUi.caseStudy}
                 </p>
                 <h1 className="mb-5 font-inter text-[36px] font-bold leading-[1.15] text-[#0e2951] md:text-[44px]">
                   {caseStudy.title}
@@ -3131,7 +3131,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug !== "calendar-keeper" ? (
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        <SectionHeading eyebrow="Overview" title="Structure" centered className="mb-6" />
+        <SectionHeading eyebrow={protectaUi.overview} title={protectaUi.structure} centered className="mb-6" />
         {overviewBlock?.body ? (
           <p className="mx-auto mt-8 max-w-[860px] text-center font-inter text-[18px] leading-[1.8] text-[#5c7792]">
             {overviewBlock.body}
@@ -3820,7 +3820,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section id="rt-problem" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <div className={caseStudy.slug === "reversetech" ? "mx-auto max-w-[860px]" : "grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start"}>
             <div className={caseStudy.slug === "reversetech" ? "text-center" : ""}>
-              <SectionHeading eyebrow="Case Study" title="The problem" centered={caseStudy.slug === "reversetech"} className="mb-12" />
+              <SectionHeading eyebrow={protectaUi.caseStudy} title={protectaUi.problem} centered={caseStudy.slug === "reversetech"} className="mb-12" />
               <div className="space-y-10">
                 {visibleStoryBlocks.map((block) => {
                   const items = getPayloadList(block.payload, "items");
@@ -4431,7 +4431,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "protecta" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading eyebrow="Methodology" title={methodologyName} centered className="mb-12" />
+          <SectionHeading eyebrow={protectaUi.methodology} title={methodologyName} centered className="mb-12" />
           <div className="mx-auto mb-10 max-w-[820px] text-center">
             <p className="mt-4 font-inter text-[16px] leading-[1.7] text-[#5c7792]">{PROTECTA_DECISION_MODEL[language].body}</p>
           </div>
@@ -5162,7 +5162,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             ].map(([src, label, background]) => (
                               <div key={src} className="min-w-0">
                                 <div className={`flex aspect-square items-center justify-center rounded-[14px] border border-[#d7e5de] p-3 ${background}`}>
-                                  <img src={withBasePath(src)} alt={`${label} Protecta logo variation`} className="h-full w-full object-contain" />
+                                  <img src={withBasePath(src)} alt={language === "es" ? `Variación del logotipo de Protecta: ${label}` : `${label} Protecta logo variation`} className="h-full w-full object-contain" />
                                 </div>
                                 <p className="mt-1.5 text-center font-inter text-[10px] font-semibold text-[#5c7792]">{label}</p>
                               </div>
@@ -5171,29 +5171,29 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </figure>
                         <figure>
                           <div className="overflow-hidden rounded-[20px] border border-[#d7e5de] bg-[#154f4d] shadow-[0_14px_34px_rgba(21,79,77,0.14)]">
-                            <img src={withBasePath("/images/projects/protecta/facebook-cover.png")} alt="Protecta Facebook cover featuring the message La protección que te acompaña siempre" className="aspect-[2.4/1] h-auto w-full object-cover" />
+                            <img src={withBasePath("/images/projects/protecta/facebook-cover.png")} alt={language === "es" ? "Portada de Facebook de Protecta con el mensaje La protección que te acompaña siempre" : "Protecta Facebook cover featuring the message La protección que te acompaña siempre"} className="aspect-[2.4/1] h-auto w-full object-cover" />
                           </div>
-                          <figcaption className="mt-2 font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">Facebook cover</figcaption>
+                          <figcaption className="mt-2 font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{protectaUi.facebookCover}</figcaption>
                         </figure>
                       </div>
                       <div className="space-y-8">
                         <div>
                           <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{PROTECTA_BRAND_COPY[language].type}</p>
                           <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-playfair-display text-[28px] text-[#154f4d]">Newsreader</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">Warm editorial display and headlines</p></div>
-                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-inter text-[27px] font-semibold text-[#154f4d]">Geist</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">Clear, modern body and UI text</p></div>
-                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-mono text-[18px] font-semibold text-[#154f4d]">JetBrains Mono</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">Eyebrows, labels, and data</p></div>
+                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-playfair-display text-[28px] text-[#154f4d]">Newsreader</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">{language === "es" ? "Titulares y textos editoriales cálidos" : "Warm editorial display and headlines"}</p></div>
+                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-inter text-[27px] font-semibold text-[#154f4d]">Geist</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">{language === "es" ? "Texto de interfaz y cuerpo claro y moderno" : "Clear, modern body and UI text"}</p></div>
+                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-mono text-[18px] font-semibold text-[#154f4d]">JetBrains Mono</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">{language === "es" ? "Antetítulos, etiquetas y datos" : "Eyebrows, labels, and data"}</p></div>
                           </div>
                           <div className="mt-4 overflow-hidden rounded-[18px] border border-[#d7e5de] bg-white">
-                            <div className="border-b border-[#d7e5de] px-4 py-3"><p className="font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">Website type scale</p></div>
+                            <div className="border-b border-[#d7e5de] px-4 py-3"><p className="font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{protectaUi.typeScale}</p></div>
                             <div className="divide-y divide-[#e5ece5]">
                               {[
                                 ["Display", "Newsreader", "48–84px · 400"],
                                 ["H1", "Newsreader", "38–60px · 400"],
                                 ["H2", "Newsreader", "30–42px · 400"],
                                 ["H3 / H4", "Geist", "21–26px · 600"],
-                                ["Body", "Geist", "17–19px · 400"],
-                                ["Eyebrow", "JetBrains Mono", "12–13px · 500"],
+                                [language === "es" ? "Cuerpo" : "Body", "Geist", "17–19px · 400"],
+                                [language === "es" ? "Antetítulo" : "Eyebrow", "JetBrains Mono", "12–13px · 500"],
                               ].map(([level, font, scale]) => (
                                 <div key={level} className="grid grid-cols-[52px_1fr_auto] items-center gap-3 px-4 py-2.5">
                                   <span className="font-inter text-[12px] font-semibold text-[#154f4d]">{level}</span>
@@ -5208,7 +5208,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{PROTECTA_BRAND_COPY[language].palette}</p>
                           <p className="mt-3 font-inter text-[15px] leading-[1.65] text-[#5c7792]">{PROTECTA_BRAND_COPY[language].rationale}</p>
                           <div className="mt-4 grid grid-cols-5 overflow-hidden rounded-[18px]">
-                            {[["#154F4D", "Deep pine"], ["#CFE3AD", "Soft sage"], ["#FDFCFE", "Cream"], ["#D96C4B", "Clay"], ["#E6BE63", "Honey"]].map(([color, name]) => (
+                            {(language === "es"
+                              ? [["#154F4D", "Pino profundo"], ["#CFE3AD", "Salvia suave"], ["#FDFCFE", "Crema"], ["#D96C4B", "Arcilla"], ["#E6BE63", "Miel"]]
+                              : [["#154F4D", "Deep pine"], ["#CFE3AD", "Soft sage"], ["#FDFCFE", "Cream"], ["#D96C4B", "Clay"], ["#E6BE63", "Honey"]]
+                            ).map(([color, name]) => (
                               <div key={color} className="min-h-[108px] p-3" style={{ backgroundColor: color }}><p className={`text-[11px] font-semibold ${color === "#154F4D" ? "text-white" : "text-[#154f4d]"}`}>{name}</p><p className={`mt-1 text-[10px] ${color === "#154F4D" ? "text-white/80" : "text-[#154f4d]/70"}`}>{color}</p></div>
                             ))}
                           </div>
@@ -5259,7 +5262,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <span className="h-2 w-2 rounded-full bg-[#1183D0]" /><span className="h-2 w-2 rounded-full bg-[#83cef8]" /><span className="h-2 w-2 rounded-full bg-[#cfe5f8]" />
                           <span className="ml-2 font-inter text-[10px] font-semibold uppercase tracking-[0.12em] text-[#5c7792]">Protecta Storybook · {activeProtectaStorybookComponent.title}</span>
                         </div>
-                        <iframe title={`Protecta Storybook ${activeProtectaStorybookComponent.title} documentation`} src={activeProtectaStorybookUrl} className="h-[520px] w-full bg-white" loading="lazy" />
+                        <iframe title={language === "es" ? `Documentación de Protecta Storybook: ${activeProtectaStorybookComponent.title}` : `Protecta Storybook ${activeProtectaStorybookComponent.title} documentation`} src={activeProtectaStorybookUrl} className="h-[520px] w-full bg-white" loading="lazy" />
                       </div>
                     </div>
                   </div>
@@ -5274,35 +5277,35 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                                 <span className="ml-2 truncate rounded bg-white/10 px-2 py-0.5 font-inter text-[9px] text-white/70">www.protecta.today</span>
                               </div>
                               <div className="aspect-[16/9] overflow-hidden bg-white">
-                                <img src={withBasePath(imageSrc)} alt="Protecta website desktop layout" className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" />
+                                <img src={withBasePath(imageSrc)} alt={language === "es" ? "Vista de escritorio del sitio web de Protecta" : "Protecta website desktop layout"} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" />
                               </div>
                             </div>
-                            <p className="mt-4 text-center font-inter text-[13px] leading-[1.6] text-[#5c7792]">Desktop layout</p>
+                            <p className="mt-4 text-center font-inter text-[13px] leading-[1.6] text-[#5c7792]">{protectaUi.desktopLayout}</p>
                           </a>
                         ) : (
                           <a key={imageSrc} href={PROTECTA_WEBSITE_URL} target="_blank" rel="noreferrer" className="group block w-[220px]">
                             <div className="rounded-[36px] border-[8px] border-[#17302d] bg-[#17302d] p-[5px] shadow-[0_20px_50px_rgba(21,79,77,0.18)] transition-transform duration-300 group-hover:-translate-y-1">
                               <div className="mx-auto mb-2 h-5 w-24 rounded-full bg-[#0d1b19]" />
                               <div className="h-[350px] overflow-hidden rounded-[23px] bg-white">
-                                <img src={withBasePath(imageSrc)} alt="Protecta website mobile layout" className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" />
+                                <img src={withBasePath(imageSrc)} alt={language === "es" ? "Vista móvil del sitio web de Protecta" : "Protecta website mobile layout"} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" />
                               </div>
                               <div className="mx-auto mt-2 h-1 w-12 rounded-full bg-[#49615c]" />
                             </div>
-                            <p className="mt-4 text-center font-inter text-[13px] leading-[1.6] text-[#5c7792]">Mobile layout</p>
+                            <p className="mt-4 text-center font-inter text-[13px] leading-[1.6] text-[#5c7792]">{protectaUi.mobileLayout}</p>
                           </a>
                         ))}
                       </div>
                       <div className="mt-6 flex justify-center">
                         <a href={PROTECTA_WEBSITE_URL} target="_blank" rel="noreferrer" className="inline-flex items-center font-inter text-[14px] font-semibold text-[#1183D0] underline decoration-[#1183D0]/35 underline-offset-4 transition-colors hover:text-[#0e5a8a] hover:decoration-[#0e5a8a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0] focus-visible:ring-offset-4">
-                          Visit the live website ↗
+                          {protectaUi.liveWebsite}
                         </a>
                       </div>
                     </div>
                   ) : null}
                   <section className="mx-auto mt-14 max-w-[1200px]">
-                    <SectionHeading title="Campaign content architecture" centered className="mb-6" />
+                    <SectionHeading title={protectaUi.campaignTitle} centered className="mb-6" />
                     <p className="mx-auto max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                      Research on trust barriers, recurring family questions, and bilingual needs shaped a Facebook and Instagram campaign built to generate qualified advisor leads. Each calm, family-centered post translated a coverage question into a clear reason to visit the website, learn more, and contact an advisor.
+                      {protectaUi.campaignBody}
                     </p>
                     <div className="mx-auto mt-10 max-w-[1040px]">
                       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
@@ -5325,7 +5328,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             type="button"
                             onClick={() => setLightboxImage({ src: withBasePath(creative.src), alt: creative.alt })}
                             className="group h-[184px] w-[184px] shrink-0 overflow-hidden rounded-[20px] border border-[#d7e8f7] bg-white text-left shadow-[0_10px_24px_rgba(17,131,208,0.10)] transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0] focus-visible:ring-offset-2"
-                            aria-label={`Open ${creative.alt}`}
+                            aria-label={`${protectaUi.open} ${creative.alt}`}
                           >
                             <img src={withBasePath(creative.src)} alt={creative.alt} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]" />
                           </button>

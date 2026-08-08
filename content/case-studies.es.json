@@ -877,12 +877,12 @@
     "metrics": [
       {
         "value": "5 días",
-        "label": "Entrega de extremo a extremo",
+        "label": "Entrega integral",
         "context": "Marca, contenido bilingüe, diseño y desarrollo web, QA y lanzamiento en cinco días."
       },
       {
         "value": "4-6 semanas",
-        "label": "Cronograma habitual de equipo",
+        "label": "Plazo habitual de un equipo",
         "context": "Entregado en solitario en 5 días con apoyo de IA."
       },
       {
@@ -912,8 +912,8 @@
     ],
     "problem": {
       "admin_pain_points": [
-        "Protecta tenía un modelo de servicio claro y un motor de referidos sólido, pero carecía de un sistema de marca, de un sitio web en producción y de contenido estructurado para respaldar el crecimiento.",
-        "El programa de referidos, el modelo de asesoría y la vía de contacto por WhatsApp debían explicarse con claridad, de forma que resultara fiable para las familias que toman decisiones sensibles sobre seguros."
+        "Protecta tenía un modelo de servicio claro y un programa de referidos sólido, pero carecía de un sistema de marca, un sitio web en producción y contenido estructurado para respaldar el crecimiento.",
+        "El programa de referidos, el modelo de asesoría y la vía de contacto por WhatsApp debían explicarse con claridad y resultar confiables para las familias que toman decisiones sensibles sobre seguros."
       ],
       "user_pain_points": [
         "Los prospectos necesitaban una alternativa más cálida y humana a la experiencia de centro de llamadas que suelen asociar con los sitios web de seguros.",
@@ -983,7 +983,7 @@
       },
       {
         "title": "Un producto en producción cambia la calidad de la revisión.",
-        "body": "Mostrarle al cliente un sitio funcional en lugar de frames hizo que el feedback fuera más rápido y más fundamentado, porque evaluó la experiencia real en lugar de imaginarla."
+        "body": "Mostrar al cliente un sitio funcional, en lugar de pantallas estáticas, hizo que el feedback fuera más rápido y fundamentado, porque pudo evaluar la experiencia real en vez de imaginarla."
       }
     ],
     "nda_notice": null,
@@ -1012,19 +1012,19 @@
         "id": "research",
         "type": "custom",
         "title": "Investigación",
-        "body": "Fundamenté el trabajo en el 2026 Hispanic Insurance Growth Blueprint, el cuestionario del cliente y las entrevistas con los asesores, con foco en adquisición para ACA, vida y canales digitales. Los asesores revelaron objeciones recurrentes, dudas de confianza y preguntas reales de las familias.\n\nLa IA aceleró la síntesis de investigación, las definiciones de trabajo y el análisis de patrones bilingües y brechas de posicionamiento. Convertí esos hallazgos en decisiones de audiencia, mensaje, canales y medición; validé los resultados frente al material fuente y tomé las decisiones finales de marca y producto."
+        "body": "Fundamenté el trabajo en el 2026 Hispanic Insurance Growth Blueprint, el cuestionario del cliente y las entrevistas con los asesores, con foco en adquisición para ACA, vida y canales digitales. Los asesores revelaron objeciones recurrentes, inquietudes de confianza y preguntas reales de las familias.\n\nLa IA aceleró la síntesis de investigación, las definiciones de trabajo y el análisis de patrones bilingües y brechas de posicionamiento. Convertí esos hallazgos en decisiones de audiencia, mensaje, canales y medición; validé los resultados frente al material fuente y tomé las decisiones finales de marca y producto."
       },
       {
         "id": "actions",
         "type": "custom",
         "title": "Alineación con IA",
-        "body": "Estructuré el trabajo como un pipeline de producción potenciado por IA, con criterio humano en cada entrega. Claude y NotebookLM aceleraron la ideación, la síntesis de la investigación y los primeros borradores de texto.\n\nClaude Design creó la dirección visual inicial; después seleccioné, estructuré e iteré las ideas más sólidas del análisis. Codex y Claude Code aceleraron la construcción, y Storybook funcionó como capa de documentación de componentes y control de calidad de accesibilidad."
+        "body": "Estructuré el trabajo como un flujo de producción potenciado por IA, con criterio humano en cada entrega. Claude y NotebookLM aceleraron la ideación, la síntesis de la investigación y los primeros borradores de texto.\n\nClaude Design creó la dirección visual inicial; después seleccioné, estructuré e iteré las ideas más sólidas del análisis. Codex y Claude Code aceleraron la construcción, y Storybook funcionó como capa de documentación de componentes y control de calidad de accesibilidad."
       },
       {
         "id": "impact",
         "type": "results",
         "title": "Resultado",
-        "body": "El resultado combina un sitio web bilingüe listo para el lanzamiento con una campaña educativa diseñada para hacer que la cobertura médica se sienta comprensible y accionable para las familias. En sus primeros 28 días, la campaña generó descubrimiento orgánico, interacción y tráfico de una audiencia compuesta casi por completo por personas nuevas para la página.",
+        "body": "El resultado combina un sitio web bilingüe listo para el lanzamiento con una campaña educativa diseñada para hacer que la cobertura médica sea fácil de entender y de aplicar para las familias. En sus primeros 28 días, la campaña generó descubrimiento orgánico, interacción y tráfico de una audiencia compuesta casi por completo por personas nuevas para la página.",
         "payload": {
           "rows": [
             { "metric": "Visualizaciones de contenido", "value": "3.3K" },
