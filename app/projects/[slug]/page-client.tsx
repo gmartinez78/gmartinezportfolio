@@ -861,43 +861,54 @@ const PROTECTA_WORKFLOW_TOOLS = [
   ["Codex", "Storybook", "QA manual"],
 ];
 
-const PROTECTA_DECISION_MODEL: Record<Language, { title: string; body: string; criteria: string[] }> = {
+const PROTECTA_DECISION_MODEL: Record<Language, { title: string; body: string }> = {
   en: {
     title: "Human-led decision model",
     body: "AI expanded the option set; I set the criteria. At every stage, I evaluated outputs against source research, bilingual user needs, brand trust, business goals, feasibility, and accessibility—then selected the direction and made the final call.",
-    criteria: ["Source research", "Bilingual user needs", "Brand trust", "Feasibility + accessibility"],
   },
   es: {
     title: "Modelo de decisión guiado por una persona",
     body: "La IA amplió el conjunto de opciones; yo definí los criterios. En cada etapa evalué los resultados frente a la investigación fuente, las necesidades bilingües, la confianza de marca, los objetivos de negocio, la viabilidad y la accesibilidad; después seleccioné la dirección y tomé la decisión final.",
-    criteria: ["Investigación fuente", "Necesidades bilingües", "Confianza de marca", "Viabilidad y accesibilidad"],
   },
 };
 
 const PROTECTA_BRAND_COPY: Record<Language, { eyebrow: string; title: string; body: string; rationale: string; type: string; palette: string }> = {
   en: {
-    eyebrow: "Visual system",
+    eyebrow: "Design Proposal",
     title: "A brand built for clarity and care",
-    body: "Claude Design accelerated visual exploration. Research into family trust, bilingual insurance expectations, and Protecta's advisor-led model shaped the final direction; I made the brand, hierarchy, and usability decisions.",
+    body: "The brand guide translated Protecta's advisor-led promise into a premium, emotionally warm system. Claude Design accelerated visual exploration; research into family trust, bilingual expectations, and the advisor model shaped the final direction, hierarchy, and usability decisions.",
     rationale: "Warm, credible, and human - not generic insurtech.",
     type: "Typography",
     palette: "Color palette",
   },
   es: {
-    eyebrow: "Sistema visual",
+    eyebrow: "Propuesta de diseño",
     title: "Una marca creada para la claridad y el cuidado",
-    body: "Claude Design aceleró la exploración visual. La investigación sobre la confianza de las familias, las expectativas de seguros bilingües y el modelo de asesoría de Protecta orientó la dirección final; yo tomé las decisiones de marca, jerarquía y usabilidad.",
+    body: "La guía de marca tradujo la propuesta de asesoría de Protecta en un sistema premium y emocionalmente cálido. Claude Design aceleró la exploración visual; la investigación sobre la confianza de las familias, las expectativas bilingües y el modelo de asesoría definió la dirección final, la jerarquía y las decisiones de usabilidad.",
     rationale: "Cálida, creíble y humana; no una insurtech genérica.",
     type: "Tipografía",
     palette: "Paleta de color",
   },
 };
 
+const PROTECTA_GUIDELINE_CALLOUTS: Record<Language, Array<{ title: string; body: string }>> = {
+  en: [
+    { title: "Voice", body: "A trusted advisor at the kitchen table: educate first, sell second, and avoid hype or fear-based language." },
+    { title: "Bilingual by design", body: "English and Spanish are equal citizens of the experience, built for cultural fluency rather than literal translation." },
+    { title: "Visual behavior", body: "Pine and cream create the base; clay and honey stay deliberate accents. Photography uses natural light, real families, and rounded corners." },
+  ],
+  es: [
+    { title: "Voz", body: "Un asesor de confianza en la mesa de la cocina: educar primero, vender después, sin exageración ni mensajes de miedo." },
+    { title: "Bilingüe desde el diseño", body: "Inglés y español son ciudadanos iguales de la experiencia, con fluidez cultural y no traducción literal." },
+    { title: "Comportamiento visual", body: "Pino y crema crean la base; arcilla y miel son acentos intencionales. La fotografía usa luz natural, familias reales y esquinas redondeadas." },
+  ],
+};
+
 const PROTECTA_COMPONENT_COPY: Record<Language, { eyebrow: string; title: string; body: string; labels: string[]; libraryTitle: string; libraryGroups: Array<{ title: string; items: string }> }> = {
   en: {
     eyebrow: "Component library",
-    title: "Reusable patterns, documented in Storybook",
-    body: "I built and documented the core interface patterns in Storybook so they could be reviewed in isolation, checked for accessible states, and reused consistently across the bilingual site.",
+    title: "Built in code, documented to scale",
+    body: "I built the reusable interface in code with AI-assisted implementation, then documented its patterns and states in Storybook. This created a practical reference for consistent bilingual reuse, accessibility review, and future iteration.",
     labels: ["Primary CTA", "Coverage card", "Language switch", "Advisor contact"],
     libraryTitle: "Component library coverage",
     libraryGroups: [
@@ -909,8 +920,8 @@ const PROTECTA_COMPONENT_COPY: Record<Language, { eyebrow: string; title: string
   },
   es: {
     eyebrow: "Biblioteca de componentes",
-    title: "Patrones reutilizables, documentados en Storybook",
-    body: "Construí y documenté los patrones principales de la interfaz en Storybook para revisarlos de forma aislada, comprobar sus estados accesibles y reutilizarlos de manera consistente en todo el sitio bilingüe.",
+    title: "Creado en código, documentado para escalar",
+    body: "Construí la interfaz reutilizable en código con implementación asistida por IA y después documenté sus patrones y estados en Storybook. Esto creó una referencia práctica para reutilización bilingüe consistente, revisión de accesibilidad e iteración futura.",
     labels: ["CTA principal", "Tarjeta de cobertura", "Selector de idioma", "Contacto con asesor"],
     libraryTitle: "Cobertura de la biblioteca de componentes",
     libraryGroups: [
@@ -1210,18 +1221,18 @@ const PROTECTA_LAUNCH_STACK: Record<Language, { eyebrow: string; title: string; 
 
 const PROTECTA_STORYBOOK_URL = "https://protecta.today/storybook?path=/docs/components-accordion--docs";
 
-const PROTECTA_STORYBOOK: Record<Language, { eyebrow: string; title: string; body: string; link: string; components: Array<{ title: string; note: string }> }> = {
+const PROTECTA_STORYBOOK: Record<Language, { eyebrow: string; title: string; body: string; link: string; components: Array<{ title: string; note: string; url: string }> }> = {
   en: {
     eyebrow: "Live component documentation",
     title: "Protecta Storybook: built in code, documented to scale",
     body: "I built the reusable interface in code with AI-assisted implementation, then documented its patterns and states in Storybook. This created a practical reference for consistency, accessibility review, and future iteration.",
     link: "Open Protecta Storybook ↗",
     components: [
-      { title: "Accordion", note: "Clear answers to coverage questions" },
-      { title: "Buttons", note: "Primary, secondary, and contact actions" },
-      { title: "Coverage cards", note: "Scannable plan categories and benefits" },
-      { title: "Language switch", note: "Parallel English and Spanish paths" },
-      { title: "Advisor contact", note: "Low-friction WhatsApp conversion path" },
+      { title: "Accordion", note: "FAQ states for health, dental, billing, and product questions.", url: "https://protecta.today/storybook?path=/docs/components-accordion--docs" },
+      { title: "Button", note: "Primary, secondary, size, and Protecta color variants.", url: "https://protecta.today/storybook?path=/docs/components-button--docs" },
+      { title: "Card", note: "Health, dental, vision, life, and supplemental coverage variants.", url: "https://protecta.today/storybook?path=/docs/components-card--docs" },
+      { title: "Header", note: "Default, minimal, sticky, and full-featured navigation states.", url: "https://protecta.today/storybook?path=/docs/layout-header--docs" },
+      { title: "Contact info card", note: "Contact details, offices, and department layouts.", url: "https://protecta.today/storybook?path=/docs/components-contactinfocard--docs" },
     ],
   },
   es: {
@@ -1230,11 +1241,11 @@ const PROTECTA_STORYBOOK: Record<Language, { eyebrow: string; title: string; bod
     body: "Construí la interfaz reutilizable en código con implementación asistida por IA y después documenté sus patrones y estados en Storybook. Esto creó una referencia práctica para mantener consistencia, revisar accesibilidad e iterar en el futuro.",
     link: "Abrir Storybook de Protecta ↗",
     components: [
-      { title: "Acordeón", note: "Respuestas claras a preguntas sobre cobertura" },
-      { title: "Botones", note: "Acciones primarias, secundarias y de contacto" },
-      { title: "Tarjetas de cobertura", note: "Categorías y beneficios fáciles de escanear" },
-      { title: "Selector de idioma", note: "Rutas paralelas en inglés y español" },
-      { title: "Contacto con asesor", note: "Ruta de conversión de baja fricción por WhatsApp" },
+      { title: "Acordeón", note: "Estados de FAQ para preguntas de salud, dental, pagos y producto.", url: "https://protecta.today/storybook?path=/docs/components-accordion--docs" },
+      { title: "Botón", note: "Variantes primarias, secundarias, de tamaño y color Protecta.", url: "https://protecta.today/storybook?path=/docs/components-button--docs" },
+      { title: "Tarjeta", note: "Variantes de cobertura de salud, dental, visión, vida y suplementaria.", url: "https://protecta.today/storybook?path=/docs/components-card--docs" },
+      { title: "Header", note: "Estados de navegación estándar, mínimo, sticky y completo.", url: "https://protecta.today/storybook?path=/docs/layout-header--docs" },
+      { title: "Tarjeta de contacto", note: "Datos de contacto, oficinas y distribuciones por departamento.", url: "https://protecta.today/storybook?path=/docs/components-contactinfocard--docs" },
     ],
   },
 };
@@ -1924,6 +1935,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [reversetechComparisonTab, setReversetechComparisonTab] = useState<"before" | "after">("after");
   const [showStickyTaskTabs, setShowStickyTaskTabs] = useState(false);
   const [isReverseTechTaskMenuOpen, setIsReverseTechTaskMenuOpen] = useState(false);
+  const [activeProtectaStorybookUrl, setActiveProtectaStorybookUrl] = useState(PROTECTA_STORYBOOK_URL);
   const [openHypothesisIds, setOpenHypothesisIds] = useState<
     Array<"content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4">
   >(caseStudy?.slug === "reversetech" ? ["rt-hypothesis-2"] : []);
@@ -2764,6 +2776,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const projectYear = caseStudy.year;
   const heroImage = resolveProjectHeroImage(caseStudy.slug, caseStudy.images.hero);
   const designProposalTitle = translate("caseStudy.designProposal");
+  const activeProtectaStorybookComponent =
+    PROTECTA_STORYBOOK[language].components.find((component) => component.url === activeProtectaStorybookUrl) ??
+    PROTECTA_STORYBOOK[language].components[0];
   const hypothesisIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf(translate("caseStudy.hypothesis3Marker")) : -1;
   const designNotesIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf(translate("caseStudy.aFewNotes")) : -1;
   const designProposalLinks =
@@ -3122,8 +3137,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <div className="overflow-hidden rounded-[32px] border border-[#d7e5de] bg-[#f8f8f4] px-6 py-10 md:px-12 md:py-14">
             <div className="mx-auto max-w-[760px] text-center">
               <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#63826c]">{PROTECTA_BRAND_COPY[language].eyebrow}</p>
-              <h2 className="mt-3 font-playfair-display text-[36px] leading-tight text-[#154f4d] md:text-[48px]">{PROTECTA_BRAND_COPY[language].title}</h2>
-              <p className="mx-auto mt-5 max-w-[700px] font-inter text-[16px] leading-[1.7] text-[#526863]">{PROTECTA_BRAND_COPY[language].body}</p>
+              <p className="mx-auto mt-4 max-w-[700px] font-inter text-[16px] leading-[1.7] text-[#526863]">{PROTECTA_BRAND_COPY[language].body}</p>
             </div>
 
             <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr]">
@@ -3253,11 +3267,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <>
               <div className="mx-auto mb-10 max-w-[820px] text-center">
                 <p className="mt-4 font-inter text-[16px] leading-[1.7] text-[#5c7792]">{PROTECTA_DECISION_MODEL[language].body}</p>
-                <div className="mt-5 flex flex-wrap justify-center gap-2">
-                  {PROTECTA_DECISION_MODEL[language].criteria.map((criterion) => (
-                    <span key={criterion} className="rounded-full border border-[#d7e5de] bg-[#f5f7ef] px-3 py-1.5 font-inter text-[11px] font-semibold text-[#31594d]">{criterion}</span>
-                  ))}
-                </div>
               </div>
               <div className="overflow-x-auto pb-4">
                 <div className="relative mx-auto min-w-[840px] px-3">
@@ -3293,7 +3302,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </p>
                       <div className="mt-auto flex flex-wrap gap-1.5 pt-4">
                         {(PROTECTA_WORKFLOW_TOOLS[index] ?? []).map((tool) => (
-                          <span key={tool} className="rounded-full bg-[#edf4ee] px-2 py-1 font-inter text-[10px] font-semibold text-[#31594d]">{tool}</span>
+                          <span key={tool} className="rounded-full bg-[#E0EEFB] px-2 py-1 font-inter text-[10px] font-semibold text-[#1183D0]">{tool}</span>
                         ))}
                       </div>
                     </article>
@@ -3790,7 +3799,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           href="https://notebook.google.com/notebook/4ce934be-90fa-44ad-9770-9b2bef5ffbb2"
                           target="_blank"
                           rel="noreferrer"
-                          className="mt-6 inline-flex items-center rounded-[24px] bg-[#1183D0] px-5 py-3 font-inter text-[14px] font-semibold text-white transition-colors hover:bg-[#0e75b8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0] focus-visible:ring-offset-2"
+                          className="mt-6 inline-flex items-center font-inter text-[14px] font-semibold text-[#1183D0] underline decoration-[#1183D0]/35 underline-offset-4 transition-colors hover:text-[#0e5a8a] hover:decoration-[#0e5a8a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0] focus-visible:ring-offset-4"
                         >
                           {language === "es" ? "Abrir investigación en Notebook ↗" : "Open Notebook research ↗"}
                         </a>
@@ -4376,16 +4385,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <SectionHeading eyebrow="Methodology" title={methodologyName} centered className="mb-12" />
           <div className="mx-auto mb-10 max-w-[820px] text-center">
             <p className="mt-4 font-inter text-[16px] leading-[1.7] text-[#5c7792]">{PROTECTA_DECISION_MODEL[language].body}</p>
-            <div className="mt-5 flex flex-wrap justify-center gap-2">
-              {PROTECTA_DECISION_MODEL[language].criteria.map((criterion) => (
-                <span key={criterion} className="rounded-full border border-[#d7e5de] bg-[#f5f7ef] px-3 py-1.5 font-inter text-[11px] font-semibold text-[#31594d]">{criterion}</span>
-              ))}
-            </div>
           </div>
           <div className="overflow-x-auto pb-4">
             <div className="relative mx-auto min-w-[840px] px-3">
-              <div className="absolute left-[12.5%] right-[12.5%] top-4 h-px bg-[#8badc7]" aria-hidden="true" />
-              <div className="absolute right-[12.5%] top-4 h-[calc(50%_+_2px)] w-px bg-[#8badc7]" aria-hidden="true" />
+              <div className="absolute right-[12.5%] top-4 h-[298px] w-px bg-[#8badc7]" aria-hidden="true" />
               <div className="grid grid-cols-4 gap-x-4 gap-y-10">
                 {caseStudy.methodology.steps.map((step, index) => (
                   <div
@@ -4400,9 +4403,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             : ""
                     }`}
                   >
-                    {index === 4 || index === 5 ? (
-                      <span className="absolute left-1/2 top-4 z-0 h-px w-[calc(100%+1rem)] bg-[#8badc7]" aria-hidden="true" />
-                    ) : null}
                     <div className="relative z-10 flex flex-col items-center">
                       <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white text-[12px] font-bold text-[#0e2951] shadow-[0_3px_8px_rgba(14,41,81,0.12)]" style={{ backgroundColor: METHODOLOGY_COLORS[index] ?? "#87d4ac" }}>
                         {step.step}
@@ -4414,7 +4414,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <p className="mt-2 font-inter text-[12px] leading-[1.5] text-[#5c7792]">{PROTECTA_WORKFLOW_SUMMARIES[language][index] ?? step.description}</p>
                       <div className="mt-auto flex flex-wrap gap-1.5 pt-4">
                         {(PROTECTA_WORKFLOW_TOOLS[index] ?? []).map((tool) => (
-                          <span key={tool} className="rounded-full bg-[#edf4ee] px-2 py-1 font-inter text-[10px] font-semibold text-[#31594d]">{tool}</span>
+                          <span key={tool} className="rounded-full bg-[#E0EEFB] px-2 py-1 font-inter text-[10px] font-semibold text-[#1183D0]">{tool}</span>
                         ))}
                       </div>
                     </article>
@@ -5031,11 +5031,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </>
           ) : (
           <>
-            <SectionHeading
-              title={designProposalTitle}
-              centered
-              className={caseStudy.slug === "reversetech" ? "mb-5" : "mb-12"}
-            />
+            {caseStudy.slug !== "protecta" ? (
+              <SectionHeading
+                title={designProposalTitle}
+                centered
+                className={caseStudy.slug === "reversetech" ? "mb-5" : "mb-12"}
+              />
+            ) : null}
             {caseStudy.slug === "reversetech" ? (
               <div className="mx-auto max-w-[820px] space-y-8 text-center">
                 {designProposalLinks.length ? (
@@ -5091,44 +5093,63 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ) : (
               caseStudy.slug === "protecta" ? (
                 <>
-                  <div className="overflow-hidden rounded-[32px] border border-[#d7e5de] bg-[#f8f8f4] px-6 py-10 md:px-12 md:py-14">
+                  <div>
                     <div className="mx-auto max-w-[760px] text-center">
-                      <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#63826c]">{PROTECTA_BRAND_COPY[language].eyebrow}</p>
-                      <h3 className="mt-3 font-playfair-display text-[36px] leading-tight text-[#154f4d] md:text-[48px]">{PROTECTA_BRAND_COPY[language].title}</h3>
-                      <p className="mx-auto mt-5 max-w-[700px] font-inter text-[16px] leading-[1.7] text-[#526863]">{PROTECTA_BRAND_COPY[language].body}</p>
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#1183D0]">{PROTECTA_BRAND_COPY[language].eyebrow}</p>
+                      <h3 className="mt-3 font-playfair-display text-[36px] leading-tight text-[#0e2951] md:text-[48px]">{PROTECTA_BRAND_COPY[language].title}</h3>
+                      <p className="mx-auto mt-5 max-w-[700px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">{PROTECTA_BRAND_COPY[language].body}</p>
                     </div>
                     <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr]">
                       <div className="space-y-4">
-                        <div className="overflow-hidden rounded-[24px] bg-[#154f4d] shadow-[0_18px_48px_rgba(21,79,77,0.18)]">
-                          <img src={withBasePath("/images/projects/protecta/protecta-logo.svg")} alt="Protecta logo" className="h-auto w-full" />
-                        </div>
+                        <figure>
+                          <div className="overflow-hidden rounded-[24px] bg-[#154f4d] shadow-[0_18px_48px_rgba(21,79,77,0.18)]">
+                            <img src={withBasePath("/images/projects/protecta/protecta-logo.svg")} alt="Protecta logo" className="h-auto w-full" />
+                          </div>
+                          <figcaption className="mt-2 font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{language === "es" ? "Diseño de logotipo" : "Logo design"}</figcaption>
+                          <div className="mt-4 grid grid-cols-3 gap-2">
+                            {[
+                              ["/images/projects/protecta/protecta-imagotype.svg", language === "es" ? "Imagotipo" : "Imagotype", "bg-[#154f4d]"],
+                              ["/images/projects/protecta/protecta-isotype-pine.svg", language === "es" ? "Isotipo pino" : "Pine isotype", "bg-[#f8f8f4]"],
+                              ["/images/projects/protecta/protecta-isotype-sage.svg", language === "es" ? "Isotipo salvia" : "Sage isotype", "bg-[#154f4d]"],
+                            ].map(([src, label, background]) => (
+                              <div key={src} className="min-w-0">
+                                <div className={`flex aspect-square items-center justify-center rounded-[14px] border border-[#d7e5de] p-3 ${background}`}>
+                                  <img src={withBasePath(src)} alt={`${label} Protecta logo variation`} className="h-full w-full object-contain" />
+                                </div>
+                                <p className="mt-1.5 text-center font-inter text-[10px] font-semibold text-[#5c7792]">{label}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </figure>
                         <figure>
                           <div className="overflow-hidden rounded-[20px] border border-[#d7e5de] bg-[#154f4d] shadow-[0_14px_34px_rgba(21,79,77,0.14)]">
                             <img src={withBasePath("/images/projects/protecta/facebook-cover.png")} alt="Protecta Facebook cover featuring the message La protección que te acompaña siempre" className="aspect-[2.4/1] h-auto w-full object-cover" />
                           </div>
-                          <figcaption className="mt-2 font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#63826c]">Facebook cover</figcaption>
+                          <figcaption className="mt-2 font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">Facebook cover</figcaption>
                         </figure>
                       </div>
                       <div className="space-y-8">
                         <div>
-                          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#63826c]">{PROTECTA_BRAND_COPY[language].type}</p>
-                          <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-playfair-display text-[28px] text-[#154f4d]">Playfair Display</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">Editorial warmth for key moments</p></div>
-                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-inter text-[27px] font-semibold text-[#154f4d]">Inter</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">Clear, accessible interface text</p></div>
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{PROTECTA_BRAND_COPY[language].type}</p>
+                          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-playfair-display text-[28px] text-[#154f4d]">Newsreader</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">Warm editorial display and headlines</p></div>
+                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-inter text-[27px] font-semibold text-[#154f4d]">Geist</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">Clear, modern body and UI text</p></div>
+                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-mono text-[18px] font-semibold text-[#154f4d]">JetBrains Mono</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">Eyebrows, labels, and data</p></div>
                           </div>
                           <div className="mt-4 overflow-hidden rounded-[18px] border border-[#d7e5de] bg-white">
-                            <div className="border-b border-[#d7e5de] px-4 py-3"><p className="font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#63826c]">Website type scale</p></div>
+                            <div className="border-b border-[#d7e5de] px-4 py-3"><p className="font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">Website type scale</p></div>
                             <div className="divide-y divide-[#e5ece5]">
                               {[
-                                ["H1", "Playfair Display", "64px · 1.05"],
-                                ["H2", "Playfair Display", "48px · 1.12"],
-                                ["H3", "Inter", "28px · 1.2"],
-                                ["Body", "Inter", "16px · 1.7"],
-                                ["Label", "Inter", "12px · tracking"],
+                                ["Display", "Newsreader", "48–84px · 400"],
+                                ["H1", "Newsreader", "38–60px · 400"],
+                                ["H2", "Newsreader", "30–42px · 400"],
+                                ["H3 / H4", "Geist", "21–26px · 600"],
+                                ["Body", "Geist", "17–19px · 400"],
+                                ["Eyebrow", "JetBrains Mono", "12–13px · 500"],
                               ].map(([level, font, scale]) => (
                                 <div key={level} className="grid grid-cols-[52px_1fr_auto] items-center gap-3 px-4 py-2.5">
                                   <span className="font-inter text-[12px] font-semibold text-[#154f4d]">{level}</span>
-                                  <span className={font === "Playfair Display" ? "font-playfair-display text-[17px] text-[#154f4d]" : "font-inter text-[13px] font-semibold text-[#154f4d]"}>{font}</span>
+                                  <span className={font === "Newsreader" ? "font-playfair-display text-[17px] text-[#154f4d]" : font === "JetBrains Mono" ? "font-mono text-[12px] font-semibold text-[#154f4d]" : "font-inter text-[13px] font-semibold text-[#154f4d]"}>{font}</span>
                                   <span className="font-inter text-[11px] text-[#69807a]">{scale}</span>
                                 </div>
                               ))}
@@ -5136,64 +5157,96 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           </div>
                         </div>
                         <div>
-                          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#63826c]">{PROTECTA_BRAND_COPY[language].palette}</p>
-                          <div className="mt-4 grid grid-cols-4 overflow-hidden rounded-[18px]">
-                            {[["#154F4D", "Deep green"], ["#CFE3AD", "Soft lime"], ["#DDE3C7", "Sage"], ["#FDFCFE", "Warm white"]].map(([color, name]) => (
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{PROTECTA_BRAND_COPY[language].palette}</p>
+                          <p className="mt-3 font-inter text-[15px] leading-[1.65] text-[#5c7792]">{PROTECTA_BRAND_COPY[language].rationale}</p>
+                          <div className="mt-4 grid grid-cols-5 overflow-hidden rounded-[18px]">
+                            {[["#154F4D", "Deep pine"], ["#CFE3AD", "Soft sage"], ["#FDFCFE", "Cream"], ["#D96C4B", "Clay"], ["#E6BE63", "Honey"]].map(([color, name]) => (
                               <div key={color} className="min-h-[108px] p-3" style={{ backgroundColor: color }}><p className={`text-[11px] font-semibold ${color === "#154F4D" ? "text-white" : "text-[#154f4d]"}`}>{name}</p><p className={`mt-1 text-[10px] ${color === "#154F4D" ? "text-white/80" : "text-[#154f4d]/70"}`}>{color}</p></div>
                             ))}
                           </div>
                         </div>
-                        <p className="border-l-2 border-[#90af7a] pl-4 font-inter text-[15px] leading-[1.65] text-[#526863]">{PROTECTA_BRAND_COPY[language].rationale}</p>
                       </div>
+                    </div>
+                    <div className="mt-10 grid gap-4 md:grid-cols-3">
+                      {PROTECTA_GUIDELINE_CALLOUTS[language].map((item) => (
+                        <article key={item.title} className="border-l-2 border-[#1183D0] pl-4">
+                          <p className="font-inter text-[14px] font-semibold text-[#0e2951]">{item.title}</p>
+                          <p className="mt-2 font-inter text-[13px] leading-[1.6] text-[#5c7792]">{item.body}</p>
+                        </article>
+                      ))}
                     </div>
                   </div>
                   <div className="mx-auto mt-12 max-w-[1040px]">
                     <div className="text-center">
-                      <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#63826c]">{PROTECTA_COMPONENT_COPY[language].eyebrow}</p>
-                      <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#154f4d] md:text-[42px]">{PROTECTA_COMPONENT_COPY[language].title}</h3>
-                      <p className="mx-auto mt-5 max-w-[760px] font-inter text-[16px] leading-[1.7] text-[#526863]">{PROTECTA_COMPONENT_COPY[language].body}</p>
-                    </div>
-                    <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                      {[
-                        ["Primary CTA", "Get free quote", "bg-[#d96c4b] text-white"],
-                        ["Coverage card", "Health", "border border-[#80a76d] text-[#154f4d]"],
-                        ["Language switch", "English · Español", "bg-[#154f4d] text-white"],
-                        ["Advisor contact", "Message on WhatsApp", "border border-[#80a76d] text-[#154f4d]"],
-                      ].map(([name, sample, style]) => (
-                        <article key={name} className="overflow-hidden rounded-[20px] border border-[#d7e5de] bg-white shadow-[0_12px_30px_rgba(21,79,77,0.07)]">
-                          <div className="flex min-h-[138px] items-center justify-center bg-[#f5f7ef] p-5"><span className={`rounded-full px-4 py-2 text-[12px] font-semibold ${style}`}>{sample}</span></div>
-                          <p className="border-t border-[#d7e5de] px-4 py-3 text-center font-inter text-[12px] font-semibold text-[#154f4d]">{name}</p>
-                        </article>
-                      ))}
-                    </div>
-                    <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                      {PROTECTA_COMPONENT_COPY[language].libraryGroups.map((group) => (
-                        <div key={group.title} className="rounded-[16px] border border-[#d7e5de] bg-[#f5f7ef] px-4 py-4"><p className="font-inter text-[13px] font-semibold text-[#154f4d]">{group.title}</p><p className="mt-2 font-inter text-[11px] leading-[1.5] text-[#63826c]">{group.items}</p></div>
-                      ))}
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#1183D0]">{PROTECTA_COMPONENT_COPY[language].eyebrow}</p>
+                      <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#0e2951] md:text-[42px]">{PROTECTA_COMPONENT_COPY[language].title}</h3>
+                      <p className="mx-auto mt-5 max-w-[760px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">{PROTECTA_COMPONENT_COPY[language].body}</p>
                     </div>
                   </div>
-                  <div className="mx-auto mt-12 max-w-[1040px] rounded-[28px] border border-[#d7e5de] bg-[#f5f7ef] p-6 sm:p-8">
+                  {caseStudy.images.gallery?.length ? (
+                    <div className="mx-auto mt-12 max-w-[1200px]">
+                      <SectionHeading title="Website Preview" centered className="mb-5" />
+                      <p className="mx-auto max-w-[640px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                        A responsive bilingual experience designed to bring families from questions to a trusted advisor.
+                      </p>
+                      <div className="mt-8 flex justify-center">
+                        <a href={PROTECTA_WEBSITE_URL} target="_blank" rel="noreferrer" className="inline-flex rounded-full bg-[#154f4d] px-5 py-3 font-inter text-[13px] font-semibold text-white transition-transform hover:-translate-y-0.5">
+                          Visit the live website ↗
+                        </a>
+                      </div>
+                      <div className="mt-10 flex flex-wrap justify-center gap-8">
+                        {caseStudy.images.gallery.map((imageSrc, index) => (
+                          <a
+                            key={imageSrc}
+                            href={PROTECTA_WEBSITE_URL}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="group block w-[220px]"
+                          >
+                            <div className="rounded-[32px] border-[7px] border-[#17302d] bg-[#17302d] p-[5px] shadow-[0_20px_50px_rgba(21,79,77,0.18)] transition-transform duration-300 group-hover:-translate-y-1">
+                              <div className="mx-auto mb-2 h-4 w-20 rounded-full bg-[#17302d]" />
+                              <div className="h-[350px] overflow-hidden rounded-[20px] bg-white">
+                                <img src={withBasePath(imageSrc)} alt={index === 0 ? "Protecta website desktop layout" : "Protecta website mobile layout"} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" />
+                              </div>
+                              <div className="mx-auto mt-2 h-1 w-12 rounded-full bg-[#49615c]" />
+                            </div>
+                            <p className="mt-4 text-center font-inter text-[13px] leading-[1.6] text-[#5c7792]">
+                              {index === 0 ? "Desktop layout" : "Mobile layout"}
+                            </p>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+                  <div className="mx-auto mt-12 max-w-[1040px]">
                     <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
                       <div>
-                        <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.2em] text-[#63826c]">{PROTECTA_STORYBOOK[language].eyebrow}</p>
-                        <h3 className="mt-3 font-playfair-display text-[32px] leading-tight text-[#154f4d] sm:text-[40px]">{PROTECTA_STORYBOOK[language].title}</h3>
-                        <p className="mt-5 font-inter text-[15px] leading-[1.7] text-[#526863]">{PROTECTA_STORYBOOK[language].body}</p>
-                        <a href={PROTECTA_STORYBOOK_URL} target="_blank" rel="noreferrer" className="mt-6 inline-flex rounded-full bg-[#154f4d] px-5 py-3 font-inter text-[12px] font-semibold text-white transition-transform hover:-translate-y-0.5">{PROTECTA_STORYBOOK[language].link}</a>
-                        <div className="mt-7 grid gap-2 sm:grid-cols-2">
+                        <div className="grid gap-2 sm:grid-cols-2">
                           {PROTECTA_STORYBOOK[language].components.map((component) => (
-                            <div key={component.title} className="rounded-[14px] border border-[#d7e5de] bg-white px-3.5 py-3">
-                              <p className="font-inter text-[12px] font-semibold text-[#154f4d]">{component.title}</p>
-                              <p className="mt-1 font-inter text-[11px] leading-[1.45] text-[#63826c]">{component.note}</p>
-                            </div>
+                            <button
+                              key={component.title}
+                              type="button"
+                              onClick={() => setActiveProtectaStorybookUrl(component.url)}
+                              aria-pressed={component.url === activeProtectaStorybookUrl}
+                              className={`rounded-[14px] border px-3.5 py-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0] focus-visible:ring-offset-2 ${
+                                component.url === activeProtectaStorybookUrl
+                                  ? "border-[#1183D0] bg-[#E0EEFB]"
+                                  : "border-[#d7e8f7] bg-white hover:border-[#1183D0]/50 hover:bg-[#f8fbff]"
+                              }`}
+                            >
+                              <p className="font-inter text-[12px] font-semibold text-[#0e2951]">{component.title}</p>
+                              <p className="mt-1 font-inter text-[11px] leading-[1.45] text-[#5c7792]">{component.note}</p>
+                            </button>
                           ))}
                         </div>
+                        <a href={PROTECTA_STORYBOOK_URL} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center font-inter text-[14px] font-semibold text-[#1183D0] underline decoration-[#1183D0]/35 underline-offset-4 transition-colors hover:text-[#0e5a8a] hover:decoration-[#0e5a8a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0] focus-visible:ring-offset-4">{PROTECTA_STORYBOOK[language].link}</a>
                       </div>
-                      <div className="overflow-hidden rounded-[20px] border border-[#cddfc8] bg-white shadow-[0_14px_34px_rgba(21,79,77,0.10)]">
-                        <div className="flex items-center gap-2 border-b border-[#d7e5de] bg-[#fbfdf9] px-4 py-3">
-                          <span className="h-2 w-2 rounded-full bg-[#b9d1b2]" /><span className="h-2 w-2 rounded-full bg-[#dce8ce]" /><span className="h-2 w-2 rounded-full bg-[#e6d5bf]" />
-                          <span className="ml-2 font-inter text-[10px] font-semibold uppercase tracking-[0.12em] text-[#63826c]">Protecta Storybook · Accordion</span>
+                      <div className="overflow-hidden rounded-[20px] border border-[#d7e8f7] bg-white shadow-[0_14px_34px_rgba(17,131,208,0.10)]">
+                        <div className="flex items-center gap-2 border-b border-[#d7e8f7] bg-[#f8fbff] px-4 py-3">
+                          <span className="h-2 w-2 rounded-full bg-[#1183D0]" /><span className="h-2 w-2 rounded-full bg-[#83cef8]" /><span className="h-2 w-2 rounded-full bg-[#cfe5f8]" />
+                          <span className="ml-2 font-inter text-[10px] font-semibold uppercase tracking-[0.12em] text-[#5c7792]">Protecta Storybook · {activeProtectaStorybookComponent.title}</span>
                         </div>
-                        <iframe title="Protecta Storybook Accordion documentation" src={PROTECTA_STORYBOOK_URL} className="h-[520px] w-full bg-white" loading="lazy" />
+                        <iframe title={`Protecta Storybook ${activeProtectaStorybookComponent.title} documentation`} src={activeProtectaStorybookUrl} className="h-[520px] w-full bg-white" loading="lazy" />
                       </div>
                     </div>
                   </div>
