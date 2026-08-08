@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Protecta Advisory | Brand, Website & Campaign Launch",
+  title: "Brand, Website & Campaign Launch",
   description:
     "Case study: building a bilingual insurance brand, launch-ready website, and educational social campaign for Protecta Advisory.",
   path: "/protecta",
