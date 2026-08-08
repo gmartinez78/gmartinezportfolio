@@ -2967,7 +2967,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <SectionHeading
             eyebrow={["nayya-ai-benefits", "i9-everify-integration"].includes(caseStudy.slug) ? methodologyName : "Methodology"}
             title={["nayya-ai-benefits", "i9-everify-integration"].includes(caseStudy.slug) ? "Methodology" : methodologyName}
-            centered={["nayya-ai-benefits", "i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG, "calendar-keeper"].includes(caseStudy.slug)}
+            centered={["nayya-ai-benefits", "i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG, "calendar-keeper", "protecta"].includes(caseStudy.slug)}
             className="mb-12"
           />
           {caseStudy.slug === "protecta" ? (
@@ -4551,7 +4551,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </>
       ) : null}
 
-      {caseStudy.slug !== "nayya-ai-benefits" && caseStudy.slug !== "flock-accessibility-system" && caseStudy.slug !== "i9-everify-integration" && caseStudy.slug !== "calendar-keeper" && (caseStudy.constraints?.length ?? 0) > 0 ? (
+      {caseStudy.slug !== "nayya-ai-benefits" && caseStudy.slug !== "flock-accessibility-system" && caseStudy.slug !== "i9-everify-integration" && caseStudy.slug !== "calendar-keeper" && caseStudy.slug !== "protecta" && (caseStudy.constraints?.length ?? 0) > 0 ? (
         <section id="rt-design-proposal" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title="Constraints" centered className="mb-12" />
           <div className="grid gap-6 md:grid-cols-2">
@@ -5901,26 +5901,128 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <p className="mx-auto mb-12 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
             The launch campaign translated complex health-benefit topics into calm, family-centered education. Each post uses the same visual language while giving families one clear, timely reason to understand and use their coverage.
           </p>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {PROTECTA_CAMPAIGN_CREATIVE.map((creative) => (
-              <a
-                key={creative.src}
-                href={withBasePath(creative.src)}
-                target="_blank"
-                rel="noreferrer"
-                className="group block"
-              >
-                <div className="overflow-hidden rounded-[20px] border border-[#d7e8f7] bg-white shadow-[0_14px_42px_rgba(14,41,81,0.08)]">
-                  <img
-                    src={withBasePath(creative.src)}
-                    alt={creative.alt}
-                    className="aspect-square h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.025]"
-                  />
+          <>
+          <div className="hidden rounded-[30px] bg-[#171b1a] p-3 sm:p-6 lg:p-8">
+            <div className="overflow-hidden rounded-[24px] bg-[#fbfbf9] px-5 py-7 sm:px-9 sm:py-10 lg:px-14 lg:py-12">
+              <header className="flex items-center justify-between gap-5">
+                <span className="font-playfair text-[22px] font-semibold tracking-[-0.03em] text-[#17302d]">Protecta</span>
+                <nav className="hidden items-center gap-7 font-inter text-[12px] font-medium text-[#263431] lg:flex">
+                  <span>Coverage</span><span>For families</span><span>How it works</span><span>Our advisors</span><span>Resources</span>
+                </nav>
+                <div className="flex items-center gap-3 font-inter text-[12px] text-[#263431]">
+                  <span className="hidden text-[18px] sm:block">⌕</span>
+                  <span className="hidden text-[16px] sm:block">◌</span>
+                  <span className="rounded-full border border-[#263431] px-3.5 py-2 font-semibold">Sign In</span>
                 </div>
-                <p className="mt-3 text-center font-inter text-[13px] font-semibold text-[#0e2951]">{creative.label}</p>
-              </a>
-            ))}
+              </header>
+
+              <div className="relative mx-auto mt-14 max-w-[820px] text-center sm:mt-16">
+                <div className="absolute -left-2 -top-7 flex h-[68px] w-[68px] items-center justify-center rounded-full border border-[#b9ccba] bg-[#eef4e9] text-[20px] text-[#154f4d] sm:-left-10 sm:-top-3 sm:h-[86px] sm:w-[86px]">
+                  <span className="relative z-10 ml-0.5">▶</span>
+                  <span className="absolute inset-[5px] rounded-full border border-dashed border-[#8caa89]" />
+                </div>
+                <div className="absolute -right-1 -top-6 flex -space-x-3 sm:right-0">
+                  {PROTECTA_CAMPAIGN_CREATIVE.slice(0, 3).map((creative) => (
+                    <img key={creative.src} src={withBasePath(creative.src)} alt="" className="h-9 w-9 rounded-full border-2 border-[#fbfbf9] object-cover" />
+                  ))}
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-[#fbfbf9] bg-[#17302d] text-[16px] text-white">+</span>
+                </div>
+                <p className="font-inter text-[10px] font-semibold uppercase tracking-[0.2em] text-[#6a9e42]">Protecta health education</p>
+                <h3 className="mx-auto mt-4 max-w-[650px] font-inter text-[clamp(38px,6vw,68px)] font-bold leading-[0.95] tracking-[-0.065em] text-[#141918]">
+                  Coverage that feels clear, human, and close to home.
+                </h3>
+              </div>
+
+              <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_0.9fr_1fr_1fr] lg:gap-4">
+                <div className="grid gap-4 lg:grid-rows-[minmax(0,1fr)_120px]">
+                  {[PROTECTA_CAMPAIGN_CREATIVE[0], PROTECTA_CAMPAIGN_CREATIVE[1]].map((creative) => (
+                    <a key={creative.src} href={withBasePath(creative.src)} target="_blank" rel="noreferrer" className="group overflow-hidden rounded-[20px] bg-[#e8efe4]">
+                      <img src={withBasePath(creative.src)} alt={creative.alt} className="h-full min-h-[245px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.035] lg:min-h-0" />
+                    </a>
+                  ))}
+                </div>
+                <a href={withBasePath(PROTECTA_CAMPAIGN_CREATIVE[2].src)} target="_blank" rel="noreferrer" className="group overflow-hidden rounded-[20px] bg-[#e8efe4] lg:h-[540px]">
+                  <img src={withBasePath(PROTECTA_CAMPAIGN_CREATIVE[2].src)} alt={PROTECTA_CAMPAIGN_CREATIVE[2].alt} className="h-full min-h-[360px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.035] lg:min-h-0" />
+                </a>
+                <div className="flex flex-col gap-4 lg:h-[540px]">
+                  <div className="relative flex-1 overflow-hidden rounded-[20px] bg-[#e8efe4]">
+                    <span className="absolute left-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-[#fbfbf9] font-inter text-[13px] text-[#154f4d] shadow-sm">✦</span>
+                    <img src={withBasePath(PROTECTA_CAMPAIGN_CREATIVE[3].src)} alt={PROTECTA_CAMPAIGN_CREATIVE[3].alt} className="h-full min-h-[330px] w-full object-cover" />
+                  </div>
+                  <a href={withBasePath(PROTECTA_CAMPAIGN_CREATIVE[3].src)} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center rounded-full bg-[#171b1a] px-4 py-3 font-inter text-[11px] font-semibold text-white">Explore posts <span className="ml-2">→</span></a>
+                </div>
+                <a href={withBasePath(PROTECTA_CAMPAIGN_CREATIVE[4].src)} target="_blank" rel="noreferrer" className="group overflow-hidden rounded-[20px] bg-[#e8efe4] lg:h-[540px]">
+                  <img src={withBasePath(PROTECTA_CAMPAIGN_CREATIVE[4].src)} alt={PROTECTA_CAMPAIGN_CREATIVE[4].alt} className="h-full min-h-[360px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.035] lg:min-h-0" />
+                </a>
+                <div className="grid gap-4 lg:grid-rows-[minmax(0,1fr)_120px]">
+                  <a href={withBasePath(PROTECTA_CAMPAIGN_CREATIVE[5].src)} target="_blank" rel="noreferrer" className="group overflow-hidden rounded-[20px] bg-[#e8efe4]">
+                    <img src={withBasePath(PROTECTA_CAMPAIGN_CREATIVE[5].src)} alt={PROTECTA_CAMPAIGN_CREATIVE[5].alt} className="h-full min-h-[245px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.035] lg:min-h-0" />
+                  </a>
+                  <div className="flex items-end rounded-[20px] bg-[#dfe9d8] p-5 font-inter text-[12px] leading-[1.45] text-[#315448]">
+                    One helpful message at a time.
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-10 flex flex-col justify-between gap-8 border-t border-[#e3e8e2] pt-8 md:flex-row md:items-start">
+                <div className="max-w-[380px]">
+                  <span className="font-playfair text-[48px] leading-none text-[#c5cec2]">“</span>
+                  <p className="mt-1 font-inter text-[14px] italic leading-[1.65] text-[#64706a]">The campaign made insurance education feel less intimidating by speaking to everyday family moments with care and clarity.</p>
+                  <p className="mt-3 font-playfair text-[17px] italic text-[#315448]">Protecta campaign direction</p>
+                </div>
+                <div className="flex max-w-[280px] items-start gap-4 md:text-right">
+                  <span className="font-inter text-[46px] font-light leading-none tracking-[-0.06em] text-[#263431]">01</span>
+                  <div>
+                    <div className="flex items-center gap-2 md:justify-end"><p className="font-inter text-[10px] font-semibold uppercase tracking-[0.16em] text-[#6a9e42]">Lifestyle</p><span className="text-[#263431]">→</span></div>
+                    <p className="mt-3 font-inter text-[18px] font-bold leading-[1.1] tracking-[-0.04em] text-[#141918]">Education designed around real family decisions.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+          <style>{`
+            @keyframes protecta-campaign-scroll {
+              from { transform: translateX(0); }
+              to { transform: translateX(-50%); }
+            }
+            .protecta-campaign-track {
+              animation: protecta-campaign-scroll 24s linear infinite;
+              animation-play-state: paused;
+            }
+            .protecta-campaign-rail:hover .protecta-campaign-track {
+              animation-play-state: running;
+            }
+            @media (prefers-reduced-motion: reduce) {
+              .protecta-campaign-track { animation: none; }
+            }
+          `}</style>
+          <div className="protecta-campaign-rail overflow-hidden rounded-[24px] border border-[#d7e5de] bg-[#f5f7ef] px-4 py-4 sm:px-5">
+            <div className="mb-4 flex items-center justify-between px-1">
+              <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.16em] text-[#63826c]">Campaign posts</p>
+              <p className="font-inter text-[11px] text-[#63826c]">Hover to explore →</p>
+            </div>
+            <div className="protecta-campaign-track flex w-max gap-3">
+              {[...PROTECTA_CAMPAIGN_CREATIVE, ...PROTECTA_CAMPAIGN_CREATIVE].map((creative, index) => (
+                <a
+                  key={`${creative.src}-${index}`}
+                  href={withBasePath(creative.src)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex h-[142px] w-[276px] shrink-0 overflow-hidden rounded-[16px] border border-[#d7e5de] bg-white shadow-[0_8px_20px_rgba(21,79,77,0.06)] transition-transform duration-300 hover:-translate-y-1"
+                >
+                  <img src={withBasePath(creative.src)} alt={creative.alt} className="h-full w-[112px] object-cover" />
+                  <div className="flex min-w-0 flex-1 flex-col justify-between p-3.5">
+                    <div>
+                      <p className="font-inter text-[9px] font-semibold uppercase tracking-[0.14em] text-[#6a9e42]">Social education</p>
+                      <p className="mt-2 font-inter text-[14px] font-semibold leading-[1.2] text-[#154f4d]">{creative.label}</p>
+                    </div>
+                    <span className="font-inter text-[11px] font-semibold text-[#0e2951]">Open post ↗</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+          </>
         </section>
       ) : null}
 
