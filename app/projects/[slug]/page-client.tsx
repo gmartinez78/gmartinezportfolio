@@ -4887,6 +4887,24 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-playfair-display text-[28px] text-[#154f4d]">Playfair Display</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">Editorial warmth for key moments</p></div>
                             <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-inter text-[27px] font-semibold text-[#154f4d]">Inter</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">Clear, accessible interface text</p></div>
                           </div>
+                          <div className="mt-4 overflow-hidden rounded-[18px] border border-[#d7e5de] bg-white">
+                            <div className="border-b border-[#d7e5de] px-4 py-3"><p className="font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#63826c]">Website type scale</p></div>
+                            <div className="divide-y divide-[#e5ece5]">
+                              {[
+                                ["H1", "Playfair Display", "64px · 1.05"],
+                                ["H2", "Playfair Display", "48px · 1.12"],
+                                ["H3", "Inter", "28px · 1.2"],
+                                ["Body", "Inter", "16px · 1.7"],
+                                ["Label", "Inter", "12px · tracking"],
+                              ].map(([level, font, scale]) => (
+                                <div key={level} className="grid grid-cols-[52px_1fr_auto] items-center gap-3 px-4 py-2.5">
+                                  <span className="font-inter text-[12px] font-semibold text-[#154f4d]">{level}</span>
+                                  <span className={font === "Playfair Display" ? "font-playfair-display text-[17px] text-[#154f4d]" : "font-inter text-[13px] font-semibold text-[#154f4d]"}>{font}</span>
+                                  <span className="font-inter text-[11px] text-[#69807a]">{scale}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
                         </div>
                         <div>
                           <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#63826c]">{PROTECTA_BRAND_COPY[language].palette}</p>
