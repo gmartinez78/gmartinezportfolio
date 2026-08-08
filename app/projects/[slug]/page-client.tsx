@@ -960,6 +960,32 @@ const PROTECTA_AGENT_COPY: Record<Language, { eyebrow: string; title: string; bo
     note: "La IA aceleró la síntesis y la crítica basada en roles. Evalué sus resultados frente a la investigación fuente y mantuve la responsabilidad de las decisiones, los trade-offs y el producto final.",
   },
 };
+
+const PROTECTA_CAPABILITIES: Record<Language, { title: string; items: string[] }> = {
+  en: {
+    title: "Capabilities Applied",
+    items: [
+      "Research synthesis",
+      "Claude Design exploration",
+      "PM + stakeholder agents",
+      "Bilingual content system",
+      "Code-first website build",
+      "Storybook + QA",
+    ],
+  },
+  es: {
+    title: "Capacidades aplicadas",
+    items: [
+      "Síntesis de investigación",
+      "Exploración con Claude Design",
+      "Agentes de PM y stakeholder",
+      "Sistema de contenido bilingüe",
+      "Construcción web en código",
+      "Storybook y QA",
+    ],
+  },
+};
+
 const FLOCK_AUDIT_LABELS = [
   { color: "#50A8FF", label: "Navigation", note: "Top-level hierarchy and route clarity." },
   { color: "#AD86FF", label: "Typography", note: "Heading scale, weight, and readability drift." },
@@ -4749,8 +4775,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <p className="mx-auto mt-5 max-w-[700px] font-inter text-[16px] leading-[1.7] text-[#526863]">{PROTECTA_BRAND_COPY[language].body}</p>
                     </div>
                     <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-                      <div className="overflow-hidden rounded-[24px] bg-[#154f4d] shadow-[0_18px_48px_rgba(21,79,77,0.18)]">
-                        <img src={withBasePath("/images/projects/protecta/protecta-logo.svg")} alt="Protecta logo" className="h-auto w-full" />
+                      <div className="space-y-4">
+                        <div className="overflow-hidden rounded-[24px] bg-[#154f4d] shadow-[0_18px_48px_rgba(21,79,77,0.18)]">
+                          <img src={withBasePath("/images/projects/protecta/protecta-logo.svg")} alt="Protecta logo" className="h-auto w-full" />
+                        </div>
+                        <figure>
+                          <div className="overflow-hidden rounded-[20px] border border-[#d7e5de] bg-[#154f4d] shadow-[0_14px_34px_rgba(21,79,77,0.14)]">
+                            <img src={withBasePath("/images/projects/protecta/facebook-cover.png")} alt="Protecta Facebook cover featuring the message La protección que te acompaña siempre" className="aspect-[2.4/1] h-auto w-full object-cover" />
+                          </div>
+                          <figcaption className="mt-2 font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#63826c]">Facebook cover</figcaption>
+                        </figure>
                       </div>
                       <div className="space-y-8">
                         <div>
@@ -4812,6 +4846,18 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       ))}
                     </div>
                     <p className="mx-auto mt-6 max-w-[760px] border-l-2 border-[#90af7a] pl-4 font-inter text-[14px] leading-[1.65] text-[#526863]">{PROTECTA_AGENT_COPY[language].note}</p>
+                  </div>
+                  <div className="mx-auto mt-12 max-w-[1040px] rounded-[24px] bg-[#111514] px-6 py-8 sm:px-9 sm:py-10">
+                    <h3 className="font-inter text-[28px] font-bold tracking-[-0.04em] text-white sm:text-[34px]">{PROTECTA_CAPABILITIES[language].title}</h3>
+                    <div className="relative mt-9 grid gap-7 sm:grid-cols-2 lg:grid-cols-6 lg:gap-3">
+                      <div className="absolute left-[8.33%] right-[8.33%] top-8 hidden h-px bg-white/25 lg:block" aria-hidden="true" />
+                      {PROTECTA_CAPABILITIES[language].items.map((item, index) => (
+                        <div key={item} className="relative z-10 flex flex-col items-center text-center">
+                          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#f7f6f2] font-inter text-[24px] font-semibold text-[#111514]">{index + 1}</span>
+                          <p className="mt-4 max-w-[140px] font-inter text-[14px] leading-[1.25] text-[#b9c7dd]">{item}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                   <div className="mx-auto mt-12 grid max-w-[960px] items-center gap-10 lg:grid-cols-2">
                     <button
@@ -5996,11 +6042,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               .protecta-campaign-track { animation: none; }
             }
           `}</style>
-          <div className="protecta-campaign-rail overflow-hidden rounded-[24px] border border-[#d7e5de] bg-[#f5f7ef] px-4 py-4 sm:px-5">
-            <div className="mb-4 flex items-center justify-between px-1">
-              <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.16em] text-[#63826c]">Campaign posts</p>
-              <p className="font-inter text-[11px] text-[#63826c]">Hover to explore →</p>
-            </div>
+          <div className="protecta-campaign-rail relative overflow-hidden py-2">
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white via-white/85 to-transparent sm:w-24" aria-hidden="true" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white via-white/85 to-transparent sm:w-24" aria-hidden="true" />
             <div className="protecta-campaign-track flex w-max gap-3">
               {[...PROTECTA_CAMPAIGN_CREATIVE, ...PROTECTA_CAMPAIGN_CREATIVE].map((creative, index) => (
                 <a
@@ -6008,16 +6052,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   href={withBasePath(creative.src)}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex h-[142px] w-[276px] shrink-0 overflow-hidden rounded-[16px] border border-[#d7e5de] bg-white shadow-[0_8px_20px_rgba(21,79,77,0.06)] transition-transform duration-300 hover:-translate-y-1"
+                  className="group h-[184px] w-[184px] shrink-0 overflow-hidden rounded-[20px] border border-[#d7e5de] bg-white shadow-[0_10px_24px_rgba(21,79,77,0.10)] transition-transform duration-300 hover:-translate-y-1"
                 >
-                  <img src={withBasePath(creative.src)} alt={creative.alt} className="h-full w-[112px] object-cover" />
-                  <div className="flex min-w-0 flex-1 flex-col justify-between p-3.5">
-                    <div>
-                      <p className="font-inter text-[9px] font-semibold uppercase tracking-[0.14em] text-[#6a9e42]">Social education</p>
-                      <p className="mt-2 font-inter text-[14px] font-semibold leading-[1.2] text-[#154f4d]">{creative.label}</p>
-                    </div>
-                    <span className="font-inter text-[11px] font-semibold text-[#0e2951]">Open post ↗</span>
-                  </div>
+                  <img src={withBasePath(creative.src)} alt={creative.alt} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]" />
                 </a>
               ))}
             </div>
