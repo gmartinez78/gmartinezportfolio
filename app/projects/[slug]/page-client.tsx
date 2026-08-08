@@ -3096,7 +3096,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <img
                   src={withBasePath(heroImage)}
                   alt={`${caseStudy.title} banner`}
-                  className="h-full w-full object-cover object-center"
+                  className={`h-full w-full object-cover ${caseStudy.slug === "protecta" ? "object-[center_30%]" : "object-center"}`}
                 />
                 <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(14,41,81,0.05)_0%,rgba(14,41,81,0.16)_100%)]" />
               </div>
@@ -3311,7 +3311,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[860px] text-center space-y-6">
-            <h2 className="font-inter text-[36px] leading-tight text-[#0e2951] mb-8">Problem</h2>
+            <SectionHeading eyebrow="Case Study" title="The problem" centered className="mb-8" />
             <p className="text-[16px] leading-[1.7] text-[#5c7792]">For this case, I was tasked to design a new appointment scheduling system for clinics and medical practices in France and Germany. My role was to understand the market, identify the biggest opportunities and pain points, and define an initial product direction that could compete with existing solutions.</p>
             <p className="text-[16px] leading-[1.7] text-[#5c7792]">I started by researching users, competitors, and regulatory constraints to uncover the most critical problems. From there, I translated those insights into product opportunities and designed an experience that made scheduling more efficient, reliable, and intuitive for healthcare staff and patients.</p>
           </div>
@@ -3938,7 +3938,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <div className="mx-auto max-w-[860px]">
             <div className="mb-12">
               <SectionHeading eyebrow="Research" title="Behind the schedule" centered className="mb-5" />
-              <p className="mx-auto mb-6 max-w-[760px] text-center text-[16px] leading-[1.7] text-[#5c7792]">I started by conducting a strategic research phase to understand the healthcare ecosystem in France and Germany. I analyzed the market, competitors, regulations, and care delivery models to identify the biggest opportunities and constraints. I also synthesized stakeholder and user insights to understand the needs of patients, medical assistants, doctors, and clinic managers. Based on this research, I prioritized the primary users, defined personas, problem statements, and user journeys, and identified the highest-impact product direction. This process allowed me to move from a broad market opportunity to a focused product strategy and user experience grounded in both business goals and user needs.</p>
+              <div className="mx-auto mb-6 max-w-[760px] space-y-5 text-center text-[16px] leading-[1.7] text-[#5c7792]">
+                <p>I started by conducting a strategic research phase to understand the healthcare ecosystem in France and Germany. I analyzed the market, competitors, regulations, and care delivery models to identify the biggest opportunities and constraints. I also synthesized stakeholder and user insights to understand the needs of patients, medical assistants, doctors, and clinic managers.</p>
+                <p>Based on this research, I prioritized the primary users, defined personas, problem statements, and user journeys, and identified the highest-impact product direction. This process allowed me to move from a broad market opportunity to a focused product strategy and user experience grounded in both business goals and user needs.</p>
+              </div>
               <p className="text-center text-[15px] leading-[1.6] text-[#5c7792]">
                 <a href="https://docs.google.com/document/d/1f8IdPBMvMJf_yqPTCc1hNMkU1EpcaO1OIUKFSGaVCLk/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-[#1183D0] hover:text-[#0e5a8a] underline">
                   View detailed research insights →
@@ -3949,7 +3952,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="mb-12">
               <div className="flex flex-col gap-8">
                 <div className="order-2">
-                  <h3 className="font-inter text-[28px] leading-tight text-[#0e2951] mb-8">Market Opportunity & Key Insights</h3>
+                  <h3 className="mb-8 text-center font-inter text-[28px] leading-tight text-[#0e2951]">Market Opportunity & Key Insights</h3>
                   <ul className="space-y-4 text-[16px] leading-[1.7] text-[#5c7792]">
                     <li><strong>Germany presents the strongest market opportunity.</strong> While Doctolib has already become the market leader in France by combining appointment booking with practice management, its German practice management solution is still in its early stages, creating an opportunity to enter the market before adoption accelerates.</li>
                     <li><strong>User reviews revealed that the biggest barrier to switching is trust, not functionality.</strong> The most common concern was data migration, with practices fearing they would lose or corrupt patient data when changing systems. This made seamless migration a higher priority than introducing additional scheduling features.</li>
@@ -3960,7 +3963,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
 
                 <div className="order-1">
-                  <h4 className="font-inter text-[20px] font-semibold text-[#0e2951] mb-4">📊 Feature & Capability Comparison</h4>
+                  <h4 className="mb-4 text-center font-inter text-[20px] font-semibold text-[#0e2951]">📊 Feature & Capability Comparison</h4>
                   <div className="overflow-x-auto mt-4">
                     <table className="w-full text-[13px] border-collapse">
                       <thead>
@@ -4050,7 +4053,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
 
             <div className="mb-12">
-              <h3 className="font-inter text-[28px] leading-tight text-[#0e2951] mb-8">User Needs</h3>
+              <h3 className="mb-8 text-center font-inter text-[28px] leading-tight text-[#0e2951]">User Needs</h3>
               <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-8">Through the research, I identified five key user groups. I prioritized clinical staff (medical assistants) and returning patients because they represented the highest business impact and had the strongest research evidence. Focusing on these two personas allowed me to address the core scheduling challenges in both Germany and France while keeping the initial scope focused on the users who interact with the system most frequently.</p>
 
               <div className="space-y-3">
@@ -4178,7 +4181,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[860px]">
-            <h3 className="font-inter text-[28px] leading-tight text-[#0e2951] mb-8">Research Takeaway</h3>
+            <h3 className="mb-8 text-center font-inter text-[28px] leading-tight text-[#0e2951]">Research Takeaway</h3>
             <p className="text-[16px] leading-[1.7] text-[#5c7792]">The research gave me a clear understanding of users' needs, business opportunities, and market constraints. I found that the priority was creating a scheduling experience that was efficient, reliable, and easy to use for healthcare staff. These insights helped me prioritize the target users, define the product strategy, and build proto-personas that guided the rest of the design process.</p>
           </div>
         </section>
