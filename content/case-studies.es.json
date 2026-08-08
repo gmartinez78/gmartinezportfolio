@@ -876,14 +876,14 @@
     "client_logos": [],
     "metrics": [
       {
-        "value": "7 days",
+        "value": "5 days",
         "label": "Entrega de extremo a extremo",
-        "context": "Marca, contenido bilingüe, diseño y desarrollo web, QA y lanzamiento en una semana."
+        "context": "Marca, contenido bilingüe, diseño y desarrollo web, QA y lanzamiento en cinco días."
       },
       {
         "value": "4-6 weeks",
         "label": "Cronograma habitual de equipo",
-        "context": "Entregado en solitario en 7 días con apoyo de IA."
+        "context": "Entregado en solitario en 5 días con apoyo de IA."
       },
       {
         "value": "98%",
@@ -922,7 +922,7 @@
       ]
     },
     "constraints": [
-      "Un cronograma de una semana que abarcaba estrategia, marca, contenido, diseño, construcción, control de calidad y despliegue.",
+      "Un cronograma de cinco días que abarcaba estrategia, marca, contenido, diseño, construcción, control de calidad y despliegue.",
       "No existía un sistema de marca previo, ni un sitio web anterior, ni contenido listo para publicar.",
       "No hubo investigación directa con usuarios dentro del cronograma; las entrevistas con asesores y el conocimiento del cliente actuaron como señal indirecta de usuario."
     ],
@@ -995,12 +995,6 @@
     "external_link": null,
     "content_blocks": [
       {
-        "id": "overview",
-        "type": "overview",
-        "title": "Resumen del Proyecto",
-        "body": "Este caso de estudio muestra cómo comprimí una entrega en solitario de cuatro a seis semanas en siete días mediante un flujo de trabajo potenciado por IA, y en qué momentos el criterio humano de diseño siguió tomando las decisiones definitivas."
-      },
-      {
         "id": "team-context",
         "type": "custom",
         "title": "Equipo",
@@ -1016,19 +1010,19 @@
         "id": "task",
         "type": "custom",
         "title": "Tarea",
-        "body": "Entregar en una semana un sitio web bilingüe completo con marca propia, incluyendo página de inicio, páginas internas, estrategia de contenido, sistema de marca, estructura de componentes, control de calidad de accesibilidad y despliegue en producción.\n\nEl sitio debía explicar el programa de referidos, transmitir confianza rápidamente y ofrecer a los prospectos una vía de bajo esfuerzo para contactar con los asesores a través de WhatsApp."
+        "body": "Entregar en cinco días un sitio web bilingüe completo con marca propia, incluyendo página de inicio, páginas internas, estrategia de contenido, sistema de marca, estructura de componentes, control de calidad de accesibilidad y despliegue en producción.\n\nEl sitio debía explicar el programa de referidos, transmitir confianza rápidamente y ofrecer a los prospectos una vía de bajo esfuerzo para contactar con los asesores a través de WhatsApp."
       },
       {
         "id": "research",
         "type": "custom",
         "title": "Investigación",
-        "body": "Fundamenté las decisiones en el 2026 Insurance Growth Blueprint, centrado en la adquisición del mercado hispano en ACA, vida y canales digitales, junto con el cuestionario del cliente y las entrevistas con los asesores. Los asesores aportaron señal directa sobre las objeciones, dudas de confianza y primeras preguntas recurrentes en conversaciones reales con las familias.\n\nUsé IA para sintetizar la investigación, desarrollar definiciones de trabajo y mapear expectativas del mercado, patrones de sitios de seguros bilingües y brechas de posicionamiento. Después construí marcos de estrategia de campaña para convertir esos hallazgos en decisiones de audiencia, mensaje, canal y medición. Evalué los resultados de la IA frente al material fuente y tomé las decisiones finales de producto y marca."
+        "body": "Fundamenté el trabajo en el 2026 Hispanic Insurance Growth Blueprint, el cuestionario del cliente y las entrevistas con los asesores, con foco en adquisición para ACA, vida y canales digitales. Los asesores revelaron objeciones recurrentes, dudas de confianza y preguntas reales de las familias.\n\nLa IA aceleró la síntesis de investigación, las definiciones de trabajo y el análisis de patrones bilingües y brechas de posicionamiento. Convertí esos hallazgos en decisiones de audiencia, mensaje, canales y medición; validé los resultados frente al material fuente y tomé las decisiones finales de marca y producto."
       },
       {
         "id": "actions",
         "type": "custom",
-        "title": "Acciones",
-        "body": "Estructuré el trabajo como un pipeline de producción potenciado por IA, con criterio humano en cada entrega. Claude y NotebookLM aceleraron la ideación, la síntesis de la investigación y los primeros borradores de texto. Claude Design creó la dirección visual inicial; después seleccioné, estructuré e iteré las ideas más sólidas del análisis. Codex y Claude Code aceleraron la construcción, y Storybook funcionó como capa de documentación de componentes y control de calidad de accesibilidad."
+        "title": "Alineación con IA",
+        "body": "Estructuré el trabajo como un pipeline de producción potenciado por IA, con criterio humano en cada entrega. Claude y NotebookLM aceleraron la ideación, la síntesis de la investigación y los primeros borradores de texto.\n\nClaude Design creó la dirección visual inicial; después seleccioné, estructuré e iteré las ideas más sólidas del análisis. Codex y Claude Code aceleraron la construcción, y Storybook funcionó como capa de documentación de componentes y control de calidad de accesibilidad."
       },
       {
         "id": "impact",

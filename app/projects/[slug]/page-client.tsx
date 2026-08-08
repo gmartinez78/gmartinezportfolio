@@ -861,6 +861,19 @@ const PROTECTA_WORKFLOW_TOOLS = [
   ["Codex", "Storybook", "QA manual"],
 ];
 
+const PROTECTA_DECISION_MODEL: Record<Language, { title: string; body: string; criteria: string[] }> = {
+  en: {
+    title: "Human-led decision model",
+    body: "AI expanded the option set; I set the criteria. At every stage, I evaluated outputs against source research, bilingual user needs, brand trust, business goals, feasibility, and accessibility—then selected the direction and made the final call.",
+    criteria: ["Source research", "Bilingual user needs", "Brand trust", "Feasibility + accessibility"],
+  },
+  es: {
+    title: "Modelo de decisión guiado por una persona",
+    body: "La IA amplió el conjunto de opciones; yo definí los criterios. En cada etapa evalué los resultados frente a la investigación fuente, las necesidades bilingües, la confianza de marca, los objetivos de negocio, la viabilidad y la accesibilidad; después seleccioné la dirección y tomé la decisión final.",
+    criteria: ["Investigación fuente", "Necesidades bilingües", "Confianza de marca", "Viabilidad y accesibilidad"],
+  },
+};
+
 const PROTECTA_BRAND_COPY: Record<Language, { eyebrow: string; title: string; body: string; rationale: string; type: string; palette: string }> = {
   en: {
     eyebrow: "Visual system",
@@ -914,7 +927,7 @@ const PROTECTA_PROBLEM_TO_OUTCOME: Record<Language, Array<{ problem: string; cha
     {
       problem: "No brand system or live website to explain the advisory model.",
       change: "Created the brand, bilingual content strategy, and production website.",
-      result: "Launch-ready experience delivered in 7 days.",
+      result: "Launch-ready experience delivered in 5 days.",
     },
     {
       problem: "Insurance felt complex and impersonal for families navigating coverage.",
@@ -1087,7 +1100,7 @@ const PROTECTA_KEY_RESULTS: Record<Language, { title: string; items: string[] }>
     title: "Key Results",
     items: [
       "Bilingual English + Spanish content and conversion paths launched together",
-      "Brand, website, campaign, and QA delivered solo in 7 days",
+      "Brand, website, campaign, and QA delivered solo in 5 days",
       "98% of 3.3K views came from people who did not follow the page",
     ],
   },
@@ -3228,7 +3241,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug !== "flock-accessibility-system" && caseStudy.slug !== "reversetech" ? (
+      {caseStudy.slug !== "flock-accessibility-system" && caseStudy.slug !== "reversetech" && caseStudy.slug !== "protecta" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading
             eyebrow={["nayya-ai-benefits", "i9-everify-integration"].includes(caseStudy.slug) ? methodologyName : "Methodology"}
@@ -3237,11 +3250,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             className="mb-12"
           />
           {caseStudy.slug === "protecta" ? (
-            <div className="overflow-x-auto pb-4">
-              <div className="relative mx-auto min-w-[840px] px-3">
+            <>
+              <div className="mx-auto mb-10 max-w-[820px] text-center">
+                <p className="mt-4 font-inter text-[16px] leading-[1.7] text-[#5c7792]">{PROTECTA_DECISION_MODEL[language].body}</p>
+                <div className="mt-5 flex flex-wrap justify-center gap-2">
+                  {PROTECTA_DECISION_MODEL[language].criteria.map((criterion) => (
+                    <span key={criterion} className="rounded-full border border-[#d7e5de] bg-[#f5f7ef] px-3 py-1.5 font-inter text-[11px] font-semibold text-[#31594d]">{criterion}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="overflow-x-auto pb-4">
+                <div className="relative mx-auto min-w-[840px] px-3">
                 <div className="absolute left-[12.5%] right-[12.5%] top-4 h-px bg-[#8badc7]" aria-hidden="true" />
                 <div className="absolute right-[12.5%] top-4 h-[calc(50%_+_2px)] w-px bg-[#8badc7]" aria-hidden="true" />
-                <div className="absolute left-[12.5%] right-[12.5%] top-[calc(50%_+_18px)] h-px bg-[#8badc7]" aria-hidden="true" />
                 <div className="grid grid-cols-4 gap-x-4 gap-y-10">
                 {caseStudy.methodology.steps.map((step, index) => (
                   <div
@@ -3256,6 +3277,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             : ""
                     }`}
                   >
+                    {index === 4 || index === 5 ? (
+                      <span className="absolute left-1/2 top-4 z-0 h-px w-[calc(100%+1rem)] bg-[#8badc7]" aria-hidden="true" />
+                    ) : null}
                     <div className="relative z-10 flex flex-col items-center">
                       <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white text-[12px] font-bold text-[#0e2951] shadow-[0_3px_8px_rgba(14,41,81,0.12)]" style={{ backgroundColor: METHODOLOGY_COLORS[index] ?? "#87d4ac" }}>
                         {step.step}
@@ -3277,7 +3301,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 ))}
                 </div>
               </div>
-            </div>
+              </div>
+            </>
           ) : (
           <div className={caseStudy.slug === "calendar-keeper" ? "mx-auto grid max-w-[1000px] gap-4 md:grid-cols-4" : "grid gap-4 md:grid-cols-5"}>
             {caseStudy.methodology.steps.map((step, index) => (
@@ -3735,9 +3760,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {visibleStoryBlocks.length ? (
         <section id="rt-problem" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <div className={caseStudy.slug === "reversetech" || caseStudy.slug === "protecta" ? "mx-auto max-w-[860px]" : "grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start"}>
-            <div className={["reversetech", "protecta"].includes(caseStudy.slug) ? "text-center" : ""}>
-              <SectionHeading eyebrow="Case Study" title="The problem" centered={["reversetech", "protecta"].includes(caseStudy.slug)} className="mb-12" />
+          <div className={caseStudy.slug === "reversetech" ? "mx-auto max-w-[860px]" : "grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start"}>
+            <div className={caseStudy.slug === "reversetech" ? "text-center" : ""}>
+              <SectionHeading eyebrow="Case Study" title="The problem" centered={caseStudy.slug === "reversetech"} className="mb-12" />
               <div className="space-y-10">
                 {visibleStoryBlocks.map((block) => {
                   const items = getPayloadList(block.payload, "items");
@@ -3753,12 +3778,22 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <p
                             key={idx}
                             className={`font-inter text-[16px] leading-[1.7] text-[#5c7792] mb-4 last:mb-0 ${
-                              ["reversetech", "protecta"].includes(caseStudy.slug) ? "mx-auto max-w-[760px]" : "max-w-[720px]"
+                              caseStudy.slug === "reversetech" ? "mx-auto max-w-[760px]" : "max-w-[720px]"
                             }`}
                           >
                             {paragraph.trim()}
                           </p>
                         ))
+                      ) : null}
+                      {caseStudy.slug === "protecta" && block.id === "research" ? (
+                        <a
+                          href="https://notebook.google.com/notebook/4ce934be-90fa-44ad-9770-9b2bef5ffbb2"
+                          target="_blank"
+                          rel="noreferrer"
+                          className="mt-6 inline-flex items-center rounded-[24px] bg-[#1183D0] px-5 py-3 font-inter text-[14px] font-semibold text-white transition-colors hover:bg-[#0e75b8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0] focus-visible:ring-offset-2"
+                        >
+                          {language === "es" ? "Abrir investigación en Notebook ↗" : "Open Notebook research ↗"}
+                        </a>
                       ) : null}
                       {items.length ? (
                         <div className="mt-5 space-y-3">
@@ -3766,7 +3801,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             <p
                               key={item}
                               className={`font-inter text-[16px] leading-[1.7] text-[#5c7792] ${
-                                ["reversetech", "protecta"].includes(caseStudy.slug) ? "mx-auto max-w-[760px]" : "max-w-[720px]"
+                                caseStudy.slug === "reversetech" ? "mx-auto max-w-[760px]" : "max-w-[720px]"
                               }`}
                             >
                               {item}
@@ -3810,15 +3845,18 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
             ) : null}
             {caseStudy.slug === "protecta" ? (
-              <div className="mx-auto mt-12 max-w-[1040px] rounded-[26px] border border-[#d7e5de] bg-[#f5f7ef] px-6 py-8 text-center sm:px-9">
-                <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.2em] text-[#63826c]">{PROTECTA_DELIVERABLES[language].eyebrow}</p>
-                <h3 className="mt-3 font-playfair-display text-[30px] leading-tight text-[#154f4d] sm:text-[38px]">{PROTECTA_DELIVERABLES[language].title}</h3>
-                <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {PROTECTA_DELIVERABLES[language].items.map((item) => (
-                    <div key={item} className="rounded-[16px] border border-[#d7e5de] bg-white px-4 py-3 font-inter text-[13px] font-semibold text-[#154f4d]">{item}</div>
+              <aside className="lg:sticky lg:top-24">
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                  {PROTECTA_DELIVERABLES[language].items.map((item, index) => (
+                    <Card key={item} className="gap-0">
+                      <CardContent className="px-7 py-6">
+                        <p className="text-[30px] font-bold leading-none text-[#0e2951]">{String(index + 1).padStart(2, "0")}</p>
+                        <p className="mt-3 text-[16px] leading-[1.625em] text-[#0e2951]">{item}</p>
+                      </CardContent>
+                    </Card>
                   ))}
                 </div>
-              </div>
+              </aside>
             ) : null}
           </div>
         </section>
@@ -4332,6 +4370,61 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
         </>
       )}
+
+      {caseStudy.slug === "protecta" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading eyebrow="Methodology" title={methodologyName} centered className="mb-12" />
+          <div className="mx-auto mb-10 max-w-[820px] text-center">
+            <p className="mt-4 font-inter text-[16px] leading-[1.7] text-[#5c7792]">{PROTECTA_DECISION_MODEL[language].body}</p>
+            <div className="mt-5 flex flex-wrap justify-center gap-2">
+              {PROTECTA_DECISION_MODEL[language].criteria.map((criterion) => (
+                <span key={criterion} className="rounded-full border border-[#d7e5de] bg-[#f5f7ef] px-3 py-1.5 font-inter text-[11px] font-semibold text-[#31594d]">{criterion}</span>
+              ))}
+            </div>
+          </div>
+          <div className="overflow-x-auto pb-4">
+            <div className="relative mx-auto min-w-[840px] px-3">
+              <div className="absolute left-[12.5%] right-[12.5%] top-4 h-px bg-[#8badc7]" aria-hidden="true" />
+              <div className="absolute right-[12.5%] top-4 h-[calc(50%_+_2px)] w-px bg-[#8badc7]" aria-hidden="true" />
+              <div className="grid grid-cols-4 gap-x-4 gap-y-10">
+                {caseStudy.methodology.steps.map((step, index) => (
+                  <div
+                    key={step.step}
+                    className={`relative flex flex-col items-center ${
+                      index === 4
+                        ? "col-start-1 row-start-2"
+                        : index === 5
+                          ? "col-start-2 row-start-2"
+                          : index === 6
+                            ? "col-start-3 row-start-2"
+                            : ""
+                    }`}
+                  >
+                    {index === 4 || index === 5 ? (
+                      <span className="absolute left-1/2 top-4 z-0 h-px w-[calc(100%+1rem)] bg-[#8badc7]" aria-hidden="true" />
+                    ) : null}
+                    <div className="relative z-10 flex flex-col items-center">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white text-[12px] font-bold text-[#0e2951] shadow-[0_3px_8px_rgba(14,41,81,0.12)]" style={{ backgroundColor: METHODOLOGY_COLORS[index] ?? "#87d4ac" }}>
+                        {step.step}
+                      </div>
+                      <span className="h-6 w-px bg-[#8badc7]" aria-hidden="true" />
+                    </div>
+                    <article className="flex min-h-[190px] w-full flex-col rounded-[20px] border border-[#d7e8f7] bg-white p-4 shadow-[0_12px_30px_rgba(14,41,81,0.07)]">
+                      <p className="font-inter text-[14px] font-semibold text-[#0e2951]">{step.label}</p>
+                      <p className="mt-2 font-inter text-[12px] leading-[1.5] text-[#5c7792]">{PROTECTA_WORKFLOW_SUMMARIES[language][index] ?? step.description}</p>
+                      <div className="mt-auto flex flex-wrap gap-1.5 pt-4">
+                        {(PROTECTA_WORKFLOW_TOOLS[index] ?? []).map((tool) => (
+                          <span key={tool} className="rounded-full bg-[#edf4ee] px-2 py-1 font-inter text-[10px] font-semibold text-[#31594d]">{tool}</span>
+                        ))}
+                      </div>
+                    </article>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {caseStudy.slug === "reversetech" ? (
         <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-10 md:px-10 xl:px-20">
@@ -5120,14 +5213,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </div>
                     <p className="mx-auto mt-6 max-w-[760px] border-l-2 border-[#90af7a] pl-4 font-inter text-[14px] leading-[1.65] text-[#526863]">{PROTECTA_AGENT_COPY[language].note}</p>
                   </div>
-                  <div className="mx-auto mt-12 max-w-[1040px] rounded-[24px] bg-[#111514] px-6 py-8 sm:px-9 sm:py-10">
-                    <h3 className="font-inter text-[28px] font-bold tracking-[-0.04em] text-white sm:text-[34px]">{PROTECTA_CAPABILITIES[language].title}</h3>
+                  <div className="mx-auto mt-12 max-w-[1040px] rounded-[26px] border border-[#d7e5de] bg-[#f5f7ef] px-6 py-8 sm:px-9 sm:py-10">
+                    <h3 className="font-playfair-display text-[32px] leading-tight text-[#154f4d] sm:text-[40px]">{PROTECTA_CAPABILITIES[language].title}</h3>
                     <div className="relative mt-9 grid gap-7 sm:grid-cols-2 lg:grid-cols-6 lg:gap-3">
-                      <div className="absolute left-[8.33%] right-[8.33%] top-8 hidden h-px bg-white/25 lg:block" aria-hidden="true" />
+                      <div className="absolute left-[8.33%] right-[8.33%] top-8 hidden h-px bg-[#b7cbb1] lg:block" aria-hidden="true" />
                       {PROTECTA_CAPABILITIES[language].items.map((item, index) => (
                         <div key={item} className="relative z-10 flex flex-col items-center text-center">
-                          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#f7f6f2] font-inter text-[24px] font-semibold text-[#111514]">{index + 1}</span>
-                          <p className="mt-4 max-w-[140px] font-inter text-[14px] leading-[1.25] text-[#b9c7dd]">{item}</p>
+                          <span className="flex h-16 w-16 items-center justify-center rounded-full border border-[#b7cbb1] bg-white font-inter text-[24px] font-semibold text-[#154f4d] shadow-[0_6px_16px_rgba(21,79,77,0.08)]">{index + 1}</span>
+                          <p className="mt-4 max-w-[140px] font-inter text-[14px] leading-[1.25] text-[#31594d]">{item}</p>
                         </div>
                       ))}
                     </div>
@@ -6262,7 +6355,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title="Campaign System" centered className="mb-6" />
           <p className="mx-auto mb-12 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-            The launch campaign translated complex health-benefit topics into calm, family-centered education. Each post uses the same visual language while giving families one clear, timely reason to understand and use their coverage.
+            The launch campaign was published across Facebook and Instagram to build awareness and generate qualified advisor leads. It translated complex health-benefit topics into calm, family-centered education, giving families one clear, timely reason to understand their coverage and take the next step.
           </p>
           <div className="mx-auto mb-10 max-w-[1040px] rounded-[24px] border border-[#d7e5de] bg-[#f5f7ef] p-6 sm:p-8">
             <div className="text-center">

@@ -840,7 +840,7 @@
     "client_context": "Protecta Advisory",
     "role": "Design Engineer",
     "year": 2026,
-    "duration": "1 week, end-to-end",
+    "duration": "5 days, end-to-end",
     "industry": "Insurance / Advisory",
     "tagline": "Building a warm bilingual insurance brand, launch-ready website, and educational social campaign for multicultural US families.",
     "tags": [
@@ -876,14 +876,14 @@
     "client_logos": [],
     "metrics": [
       {
-        "value": "7 days",
+        "value": "5 days",
         "label": "End-to-end delivery",
-        "context": "Brand, bilingual content, website design and build, QA, and launch in one week."
+        "context": "Brand, bilingual content, website design and build, QA, and launch."
       },
       {
         "value": "4-6 weeks",
         "label": "Typical team timeline",
-        "context": "Delivered solo in 7 days with AI support."
+        "context": "Delivered solo in 5 days with AI support."
       },
       {
         "value": "98%",
@@ -922,7 +922,7 @@
       ]
     },
     "constraints": [
-      "One-week timeline across strategy, brand, content, design, build, QA, and deployment.",
+      "Five-day timeline across strategy, brand, content, design, build, QA, and deployment.",
       "No existing brand system, no prior website, and no ready-to-publish content.",
       "No direct user research in the timeline; advisor interviews and client knowledge acted as proxy user signal."
     ],
@@ -995,12 +995,6 @@
     "external_link": null,
     "content_blocks": [
       {
-        "id": "overview",
-        "type": "overview",
-        "title": "Project Overview",
-        "body": "This case study shows how I compress a four-to-six-week solo delivery into seven days with an AI-augmented workflow, and where human design judgment still made the decisive calls."
-      },
-      {
         "id": "team-context",
         "type": "custom",
         "title": "Team",
@@ -1016,19 +1010,19 @@
         "id": "task",
         "type": "custom",
         "title": "Task",
-        "body": "Deliver a full branded bilingual website in one week, including homepage, internal pages, content strategy, brand system, component structure, accessibility QA, and live deployment.\n\nThe site needed to explain the referral program, communicate trust quickly, and give prospects a low-friction path to contact the advisors through WhatsApp."
+        "body": "Deliver a full branded bilingual website in five days, including homepage, internal pages, content strategy, brand system, component structure, accessibility QA, and live deployment.\n\nThe site needed to explain the referral program, communicate trust quickly, and give prospects a low-friction path to contact the advisors through WhatsApp."
       },
       {
         "id": "research",
         "type": "custom",
         "title": "Research",
-        "body": "I grounded decisions in the 2026 Insurance Growth Blueprint, focused on Hispanic-market acquisition across ACA, life, and digital channels, alongside the client questionnaire and advisor interviews. The advisors supplied direct signal on recurring objections, trust concerns, and first questions from real family conversations.\n\nI used AI to synthesize the research, develop working definitions, and map market expectations, bilingual insurance-site patterns, and positioning gaps. I then built campaign-strategy frameworks to turn those insights into audience, message, channel, and measurement decisions. I evaluated AI outputs against the source material and made the final product and brand decisions."
+        "body": "I grounded the work in the 2026 Hispanic Insurance Growth Blueprint, client questionnaire, and advisor interviews—focusing on ACA, life, and digital acquisition. Advisor input surfaced recurring objections, trust concerns, and family questions.\n\nAI accelerated research synthesis, working definitions, and analysis of bilingual patterns and positioning gaps. I turned those insights into campaign decisions across audience, message, channels, and measurement, validated outputs against source material, and made the final brand and product calls."
       },
       {
         "id": "actions",
         "type": "custom",
-        "title": "Actions",
-        "body": "I structured the work as an AI-augmented production pipeline with human judgment at each handoff. Claude and NotebookLM accelerated ideation, research synthesis, and first-draft copy. Claude Design created the initial visual direction; I then selected, structured, and iterated the strongest ideas from the analysis. Codex and Claude Code accelerated the build, and Storybook acted as the component documentation and accessibility QA layer."
+        "title": "AI alignment",
+        "body": "I structured the work as an AI-augmented production pipeline with human judgment at each handoff. Claude and NotebookLM accelerated ideation, research synthesis, and first-draft copy.\n\nClaude Design created the initial visual direction; I then selected, structured, and iterated the strongest ideas from the analysis. Codex and Claude Code accelerated the build, and Storybook acted as the component documentation and accessibility QA layer."
       },
       {
         "id": "impact",
