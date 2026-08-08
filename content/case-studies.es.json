@@ -835,12 +835,12 @@
     "status": "published",
     "featured": false,
     "order": 6,
-    "title": "Protecta Advisory: marca, sitio web y lanzamiento de campaña.",
+    "title": "Marca, sitio web y lanzamiento de campaña",
     "company": "Protecta Advisory",
     "client_context": "Sitio web bilingüe de asesoría de seguros para familias multiculturales en Estados Unidos",
     "role": "Ingeniero de Diseño",
     "year": 2026,
-    "duration": "1 semana, de principio a fin",
+    "duration": "5 días, de principio a fin",
     "industry": "Seguros / Asesoría",
     "tagline": "Una marca de seguros cálida y bilingüe, un sitio web listo para el lanzamiento y una campaña educativa para familias multiculturales en Estados Unidos.",
     "tags": [
@@ -876,12 +876,12 @@
     "client_logos": [],
     "metrics": [
       {
-        "value": "5 days",
+        "value": "5 días",
         "label": "Entrega de extremo a extremo",
         "context": "Marca, contenido bilingüe, diseño y desarrollo web, QA y lanzamiento en cinco días."
       },
       {
-        "value": "4-6 weeks",
+        "value": "4-6 semanas",
         "label": "Cronograma habitual de equipo",
         "context": "Entregado en solitario en 5 días con apoyo de IA."
       },
@@ -984,10 +984,6 @@
       {
         "title": "Un producto en producción cambia la calidad de la revisión.",
         "body": "Mostrarle al cliente un sitio funcional en lugar de frames hizo que el feedback fuera más rápido y más fundamentado, porque evaluó la experiencia real en lugar de imaginarla."
-      },
-      {
-        "title": "Las señales de confianza necesitan criterio humano.",
-        "body": "Rechacé deliberadamente el uso de personas generadas por IA en las imágenes, porque los rostros sintéticos socavarían la promesa de marca de una asesoría cálida y humana. En su lugar, utilicé material de stock temporal con personas reales, con un plan claro para sustituirlo tras el lanzamiento por una sesión de fotos y vídeo con los propios asesores."
       }
     ],
     "nda_notice": null,

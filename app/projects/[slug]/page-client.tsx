@@ -955,7 +955,7 @@ const PROTECTA_PROBLEM_TO_OUTCOME: Record<Language, Array<{ problem: string; cha
     {
       problem: "No había sistema de marca ni sitio web para explicar el modelo de asesoría.",
       change: "Creé la marca, la estrategia de contenido bilingüe y el sitio web en producción.",
-      result: "Experiencia lista para el lanzamiento en 7 días.",
+      result: "Experiencia lista para el lanzamiento en 5 días.",
     },
     {
       problem: "Los seguros se sentían complejos e impersonales para las familias que buscaban cobertura.",
@@ -984,8 +984,8 @@ const PROTECTA_AGENT_COPY: Record<Language, { eyebrow: string; title: string; bo
   },
   es: {
     eyebrow: "Modelo de colaboración con IA",
-    title: "Agentes basados en roles, guiados por criterio de diseño",
-    body: "El 2026 Insurance Growth Blueprint fue la base para tomar decisiones. Creé agentes específicos por tarea para sintetizar la investigación, desarrollar definiciones de trabajo y cuestionar el trabajo desde cada perspectiva necesaria: project manager, stakeholder del cliente, investigador, estratega de contenido, ingeniero y revisor de QA.\n\nLa IA aceleró la síntesis y la crítica basada en roles; evalué sus resultados frente a la investigación fuente y mantuve la responsabilidad de las decisiones, los trade-offs y el producto final.",
+    title: "Agentes de IA, dirigidos por el criterio humano",
+    body: "El 2026 Insurance Growth Blueprint fue la base para tomar decisiones. Creé agentes específicos por tarea para sintetizar la investigación, desarrollar definiciones de trabajo y cuestionar el trabajo desde cada perspectiva necesaria: gestión de proyecto, parte interesada del cliente, investigación, estrategia de contenido, ingeniería y QA.\n\nLa IA aceleró la síntesis y la crítica basada en roles; evalué sus resultados frente a la investigación fuente y mantuve la responsabilidad de las decisiones, las compensaciones y el producto final.",
     roles: [
       { title: "Agente de PM", body: "Aclaró alcance, prioridades, dependencias y riesgos de entrega." },
       { title: "Agente stakeholder", body: "Contrastó decisiones con los objetivos del cliente, la confianza y las necesidades del negocio." },
@@ -1049,7 +1049,7 @@ const PROTECTA_PRACTICAL_IMPLICATIONS: Record<Language, { eyebrow: string; title
     items: [
       {
         title: "La exploración avanzó a la velocidad del criterio.",
-        body: "Claude Design hizo más rápido generar y comparar direcciones iniciales. El límite ya no era producir pantallas; era evaluar la investigación, elegir la mejor dirección y refinarla con intención.",
+        body: "Claude Design hizo más rápido generar y comparar direcciones iniciales. El límite ya no era producir pantallas; era evaluar la investigación de NotebookLM, elegir la mejor dirección y refinarla con intención.",
       },
       {
         title: "El código se convirtió en la fuente de verdad.",
@@ -1057,7 +1057,7 @@ const PROTECTA_PRACTICAL_IMPLICATIONS: Record<Language, { eyebrow: string; title
       },
       {
         title: "Figma no fue necesario para esta entrega.",
-        body: "El primer borrador visual se creó con Claude Design; después, el sistema evolucionó con decisiones guiadas por investigación e implementación en código. El resultado fue una experiencia bilingüe funcional, no un archivo de diseño estático.",
+        body: "El primer borrador visual se creó con Claude Design; después, iteré cada sección con mis propias ideas y criterio guiado por la investigación para reforzar la estructura en código.",
       },
     ],
   },
@@ -1117,14 +1117,16 @@ const PROTECTA_KEY_RESULTS: Record<Language, { title: string; items: string[] }>
       "Bilingual English + Spanish content and conversion paths launched together",
       "Brand, website, campaign, and QA delivered solo in 5 days",
       "98% of 3.3K views came from people who did not follow the page",
+      "26 website form leads tracked in the first week",
     ],
   },
   es: {
     title: "Resultados clave",
     items: [
       "Contenido y rutas de conversión en inglés y español lanzados en conjunto",
-      "Marca, web, campaña y QA entregados de forma individual en 7 días",
+      "Marca, web, campaña y QA entregados de forma individual en 5 días",
       "El 98% de las 3.3K visualizaciones provino de personas que no seguían la página",
+      "26 leads del formulario web registrados en la primera semana",
     ],
   },
 };
@@ -2791,6 +2793,37 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const reflections = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_REFLECTIONS : caseStudy.reflections;
   const projectYear = caseStudy.year;
   const heroImage = resolveProjectHeroImage(caseStudy.slug, caseStudy.images.hero);
+  const protectaUi = language === "es"
+    ? {
+        caseStudy: "Caso de estudio",
+        overview: "Resumen",
+        structure: "Estructura",
+        problem: "El problema",
+        methodology: "Metodología",
+        facebookCover: "Portada de Facebook",
+        typeScale: "Escala tipográfica del sitio web",
+        desktopLayout: "Vista de escritorio",
+        mobileLayout: "Vista móvil",
+        liveWebsite: "Visitar el sitio web ↗",
+        campaignTitle: "Arquitectura de contenido de campaña",
+        campaignBody: "La investigación sobre barreras de confianza, preguntas recurrentes de las familias y necesidades bilingües dio forma a una campaña en Facebook e Instagram para generar leads cualificados para los asesores. Cada publicación, tranquila y centrada en la familia, convertía una duda sobre cobertura en una razón clara para visitar el sitio, conocer más y contactar a un asesor.",
+        open: "Abrir",
+      }
+    : {
+        caseStudy: "Case Study",
+        overview: "Overview",
+        structure: "Structure",
+        problem: "The problem",
+        methodology: "Methodology",
+        facebookCover: "Facebook cover",
+        typeScale: "Website type scale",
+        desktopLayout: "Desktop layout",
+        mobileLayout: "Mobile layout",
+        liveWebsite: "Visit the live website ↗",
+        campaignTitle: "Campaign content architecture",
+        campaignBody: "Research on trust barriers, recurring family questions, and bilingual needs shaped a Facebook and Instagram campaign built to generate qualified advisor leads. Each calm, family-centered post translated a coverage question into a clear reason to visit the website, learn more, and contact an advisor.",
+        open: "Open",
+      };
   const designProposalTitle = translate("caseStudy.designProposal");
   const activeProtectaStorybookComponent =
     PROTECTA_STORYBOOK[language].components.find((component) => component.url === activeProtectaStorybookUrl) ??
@@ -3044,7 +3077,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             </div>
 
-            {heroImage && caseStudy.slug === "nayya-ai-benefits" ? (
+            {heroImage && ["nayya-ai-benefits", "protecta"].includes(caseStudy.slug) ? (
               <div className="relative mx-auto mb-10 h-[150px] w-full max-w-[840px] overflow-hidden rounded-[24px] shadow-[0_20px_64px_rgba(14,41,81,0.12)]">
                 <img
                   src={withBasePath(heroImage)}
@@ -5350,7 +5383,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       ))}
                     </div>
                   </div>
-                  <div className="mx-auto mt-12 max-w-[1040px]">
+                  <div className="mx-auto mt-8 max-w-[1040px]">
                     <div className="text-center">
                       <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{PROTECTA_KEY_LEARNINGS[language].eyebrow}</p>
                       <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#0e2951] md:text-[42px]">{PROTECTA_KEY_LEARNINGS[language].title}</h3>
@@ -6573,9 +6606,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title="Results & Impact" centered className="mb-12" />
+          <SectionHeading eyebrow={caseStudy.slug === "protecta" ? "Measured impact" : undefined} title="Results & Impact" centered className="mb-12" />
           {caseStudy.slug === "protecta" ? (
-            <div className="mb-6 grid gap-4 md:grid-cols-3">
+            <div className="mb-6 grid gap-4 md:grid-cols-2">
               {PROTECTA_KEY_RESULTS[language].items.map((item, index) => (
                 <article key={item} className="min-h-[190px] rounded-[22px] border border-[#d7e8f7] bg-[#f8fbff] p-6 sm:p-7">
                   <span className="inline-flex h-9 min-w-9 items-center justify-center rounded-full bg-[#e0eefb] px-2 font-inter text-[12px] font-semibold text-[#1183D0]">0{index + 1}</span>
@@ -6611,7 +6644,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <div className="mt-10 overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] p-6 sm:p-8">
             <div className="text-center">
               <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{PROTECTA_FUNNEL[language].eyebrow}</p>
-              <h3 className="mt-3 font-playfair-display text-[30px] leading-tight text-[#0e2951] sm:text-[38px]">{PROTECTA_FUNNEL[language].title}</h3>
             </div>
             <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6 lg:gap-0">
               {PROTECTA_FUNNEL[language].items.map((item, index) => (
