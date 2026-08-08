@@ -20,7 +20,6 @@
       "Design Systems"
     ],
     "tools": [
-      "Figma",
       "Jira",
       "Miro",
       "Webex",
@@ -862,7 +861,6 @@
       "Claude",
       "Codex",
       "Claude Code",
-      "Figma",
       "Storybook",
       "Grammarly",
       "Vercel"
@@ -944,7 +942,7 @@
         {
           "step": 3,
           "label": "Brand",
-          "description": "Used Claude Design to explore logo directions, then selected and refined the strongest route in Figma based on research and design judgment."
+          "description": "Used Claude Design for the first visual draft, then selected and iterated the strongest directions based on research, structure, and design judgment."
         },
         {
           "step": 4,
@@ -954,7 +952,7 @@
         {
           "step": 5,
           "label": "Design",
-          "description": "Designed the homepage, internal pages, and reusable components in Figma as a lean build blueprint."
+          "description": "Iterated the homepage, internal pages, and reusable components directly from the strongest research-backed structural ideas."
         },
         {
           "step": 6,
@@ -972,7 +970,7 @@
       "The project was structured around one core decision: use AI to compress research, copy scaffolding, and build acceleration, while reserving design judgment for brand tone, hierarchy, accessibility, and trust-building moments.",
       "Because Protecta's differentiator is human-led, year-round advisory, the site needed to feel warm and credible rather than polished in a generic insurtech way.",
       "The bilingual strategy was not translation-first. English and Spanish content were shaped as parallel voice systems so each audience path felt intentional.",
-      "I treated the live site, not a static Figma deck, as the review artifact. That changed client feedback quality because the client evaluated a working experience on real devices."
+      "I treated the live site, not a static design deck, as the review artifact. That changed client feedback quality because the client evaluated a working experience on real devices."
     ],
     "reflections": [
       {
@@ -1024,13 +1022,13 @@
         "id": "research",
         "type": "custom",
         "title": "Research",
-        "body": "I treated the client questionnaire and advisor interviews as the main source of user signal because the advisors hear the same objections, trust concerns, and first questions every day in real conversations.\n\nI paired that with NotebookLM-based desk research to map market expectations, bilingual insurance-site patterns, and positioning gaps. That combination gave me enough signal to move quickly without pretending it was a substitute for direct user testing."
+        "body": "I grounded decisions in the 2026 Insurance Growth Blueprint, focused on Hispanic-market acquisition across ACA, life, and digital channels, alongside the client questionnaire and advisor interviews. The advisors supplied direct signal on recurring objections, trust concerns, and first questions from real family conversations.\n\nI used AI to synthesize the research, develop working definitions, and map market expectations, bilingual insurance-site patterns, and positioning gaps. I then built campaign-strategy frameworks to turn those insights into audience, message, channel, and measurement decisions. I evaluated AI outputs against the source material and made the final product and brand decisions."
       },
       {
         "id": "actions",
         "type": "custom",
         "title": "Actions",
-        "body": "I structured the work as an AI-augmented production pipeline with human judgment at each handoff. Claude and NotebookLM accelerated ideation, research synthesis, and first-draft copy. Figma held the brand system, page designs, and components. Codex and Claude Code accelerated the build, and Storybook acted as the component documentation and accessibility QA layer."
+        "body": "I structured the work as an AI-augmented production pipeline with human judgment at each handoff. Claude and NotebookLM accelerated ideation, research synthesis, and first-draft copy. Claude Design created the initial visual direction; I then selected, structured, and iterated the strongest ideas from the analysis. Codex and Claude Code accelerated the build, and Storybook acted as the component documentation and accessibility QA layer."
       },
       {
         "id": "impact",

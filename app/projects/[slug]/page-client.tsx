@@ -940,24 +940,24 @@ const PROTECTA_AGENT_COPY: Record<Language, { eyebrow: string; title: string; bo
   en: {
     eyebrow: "AI collaboration model",
     title: "Role-based agents, guided by design judgment",
-    body: "I built task-specific agents to challenge the work from the perspective needed at each stage, including a project manager, client stakeholder, researcher, content strategist, engineer, and QA reviewer.",
+    body: "The 2026 Insurance Growth Blueprint was the decision foundation. I built task-specific agents to synthesize that research, create working definitions, and challenge the work from the perspective needed at each stage: project manager, client stakeholder, researcher, content strategist, engineer, and QA reviewer.",
     roles: [
       { title: "PM agent", body: "Clarified scope, priorities, dependencies, and delivery risks." },
       { title: "Stakeholder agent", body: "Pressure-tested decisions against client goals, trust, and business needs." },
       { title: "Craft agents", body: "Accelerated research synthesis, content drafts, implementation, and QA checks." },
     ],
-    note: "Agents expanded the perspectives available in the process; I remained accountable for the decisions, trade-offs, and final product.",
+    note: "AI accelerated synthesis and role-based critique. I evaluated its output against the source research and remained accountable for the decisions, trade-offs, and final product.",
   },
   es: {
     eyebrow: "Modelo de colaboración con IA",
     title: "Agentes basados en roles, guiados por criterio de diseño",
-    body: "Creé agentes específicos por tarea para cuestionar el trabajo desde la perspectiva necesaria en cada etapa: project manager, stakeholder del cliente, investigador, estratega de contenido, ingeniero y revisor de QA.",
+    body: "El 2026 Insurance Growth Blueprint fue la base para tomar decisiones. Creé agentes específicos por tarea para sintetizar esa investigación, desarrollar definiciones de trabajo y cuestionar el trabajo desde la perspectiva necesaria en cada etapa: project manager, stakeholder del cliente, investigador, estratega de contenido, ingeniero y revisor de QA.",
     roles: [
       { title: "Agente de PM", body: "Aclaró alcance, prioridades, dependencias y riesgos de entrega." },
       { title: "Agente stakeholder", body: "Contrastó decisiones con los objetivos del cliente, la confianza y las necesidades del negocio." },
       { title: "Agentes de ejecución", body: "Aceleraron la síntesis de investigación, borradores de contenido, implementación y revisiones de QA." },
     ],
-    note: "Los agentes ampliaron las perspectivas disponibles en el proceso; yo mantuve la responsabilidad de las decisiones, los trade-offs y el producto final.",
+    note: "La IA aceleró la síntesis y la crítica basada en roles. Evalué sus resultados frente a la investigación fuente y mantuve la responsabilidad de las decisiones, los trade-offs y el producto final.",
   },
 };
 const FLOCK_AUDIT_LABELS = [

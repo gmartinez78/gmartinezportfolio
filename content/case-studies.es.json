@@ -20,7 +20,6 @@
       "Design Systems"
     ],
     "tools": [
-      "Figma",
       "Jira",
       "Miro",
       "Webex",
@@ -862,7 +861,6 @@
       "Claude",
       "Codex",
       "Claude Code",
-      "Figma",
       "Storybook",
       "Grammarly",
       "Vercel"
@@ -944,7 +942,7 @@
         {
           "step": 3,
           "label": "Marca",
-          "description": "Se usó Claude Design para explorar direcciones de logotipo, y luego se seleccionó y refinó la opción más sólida en Figma a partir de la investigación y el criterio de diseño."
+          "description": "Se usó Claude Design para el primer borrador visual, y luego se seleccionaron e iteraron las direcciones más sólidas a partir de la investigación, la estructura y el criterio de diseño."
         },
         {
           "step": 4,
@@ -954,7 +952,7 @@
         {
           "step": 5,
           "label": "Diseñar",
-          "description": "Se diseñaron la página de inicio, las páginas internas y los componentes reutilizables en Figma como plano ágil de construcción."
+          "description": "Se iteraron la página de inicio, las páginas internas y los componentes reutilizables a partir de las ideas estructurales más sólidas respaldadas por la investigación."
         },
         {
           "step": 6,
@@ -972,7 +970,7 @@
       "El proyecto se estructuró en torno a una decisión central: usar la IA para comprimir la investigación, el andamiaje de textos y la aceleración de la construcción, reservando el criterio de diseño para el tono de marca, la jerarquía, la accesibilidad y los momentos de generación de confianza.",
       "Dado que el diferenciador de Protecta es una asesoría humana y continua durante todo el año, el sitio debía sentirse cálido y creíble, en lugar de pulido de una forma genérica propia de una insurtech.",
       "La estrategia bilingüe no partía de la traducción. El contenido en inglés y en español se construyó como sistemas de voz paralelos, para que cada recorrido de audiencia se sintiera intencionado.",
-      "Traté el sitio en producción, y no un mazo estático en Figma, como el artefacto de revisión. Eso cambió la calidad del feedback del cliente, porque este evaluó una experiencia funcional en dispositivos reales."
+      "Traté el sitio en producción, y no un mazo estático de diseño, como el artefacto de revisión. Eso cambió la calidad del feedback del cliente, porque este evaluó una experiencia funcional en dispositivos reales."
     ],
     "reflections": [
       {
@@ -1024,13 +1022,13 @@
         "id": "research",
         "type": "custom",
         "title": "Investigación",
-        "body": "Traté el cuestionario del cliente y las entrevistas con los asesores como la principal fuente de señal de usuario, porque los asesores escuchan a diario, en conversaciones reales, las mismas objeciones, dudas de confianza y primeras preguntas.\n\nCombiné eso con una investigación documental basada en NotebookLM para mapear las expectativas del mercado, los patrones de sitios de seguros bilingües y las brechas de posicionamiento. Esa combinación me dio señal suficiente para avanzar rápido, sin pretender que sustituyera a las pruebas directas con usuarios."
+        "body": "Fundamenté las decisiones en el 2026 Insurance Growth Blueprint, centrado en la adquisición del mercado hispano en ACA, vida y canales digitales, junto con el cuestionario del cliente y las entrevistas con los asesores. Los asesores aportaron señal directa sobre las objeciones, dudas de confianza y primeras preguntas recurrentes en conversaciones reales con las familias.\n\nUsé IA para sintetizar la investigación, desarrollar definiciones de trabajo y mapear expectativas del mercado, patrones de sitios de seguros bilingües y brechas de posicionamiento. Después construí marcos de estrategia de campaña para convertir esos hallazgos en decisiones de audiencia, mensaje, canal y medición. Evalué los resultados de la IA frente al material fuente y tomé las decisiones finales de producto y marca."
       },
       {
         "id": "actions",
         "type": "custom",
         "title": "Acciones",
-        "body": "Estructuré el trabajo como un pipeline de producción potenciado por IA, con criterio humano en cada entrega. Claude y NotebookLM aceleraron la ideación, la síntesis de la investigación y los primeros borradores de texto. Figma albergó el sistema de marca, los diseños de página y los componentes. Codex y Claude Code aceleraron la construcción, y Storybook funcionó como capa de documentación de componentes y control de calidad de accesibilidad."
+        "body": "Estructuré el trabajo como un pipeline de producción potenciado por IA, con criterio humano en cada entrega. Claude y NotebookLM aceleraron la ideación, la síntesis de la investigación y los primeros borradores de texto. Claude Design creó la dirección visual inicial; después seleccioné, estructuré e iteré las ideas más sólidas del análisis. Codex y Claude Code aceleraron la construcción, y Storybook funcionó como capa de documentación de componentes y control de calidad de accesibilidad."
       },
       {
         "id": "impact",
