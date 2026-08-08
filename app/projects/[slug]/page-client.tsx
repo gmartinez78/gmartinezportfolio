@@ -4054,7 +4054,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
             <div className="mb-12">
               <h3 className="mb-8 text-center font-inter text-[28px] leading-tight text-[#0e2951]">User Needs</h3>
-              <p className="text-[16px] leading-[1.7] text-[#5c7792] mb-8">Through the research, I identified five key user groups. I prioritized clinical staff (medical assistants) and returning patients because they represented the highest business impact and had the strongest research evidence. Focusing on these two personas allowed me to address the core scheduling challenges in both Germany and France while keeping the initial scope focused on the users who interact with the system most frequently.</p>
+              <div className="mb-8 space-y-5 text-center text-[16px] leading-[1.7] text-[#5c7792]">
+                <p>Through the research, I identified five key user groups. I prioritized clinical staff (medical assistants) and returning patients because they represented the highest business impact and had the strongest research evidence.</p>
+                <p>Focusing on these two personas allowed me to address the core scheduling challenges in both Germany and France while keeping the initial scope focused on the users who interact with the system most frequently.</p>
+              </div>
 
               <div className="space-y-3">
                 <div className="mb-6 p-4 bg-[#f0f5ff] border-l-4 border-[#1183D0] rounded">
@@ -4182,7 +4185,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[860px]">
             <h3 className="mb-8 text-center font-inter text-[28px] leading-tight text-[#0e2951]">Research Takeaway</h3>
-            <p className="text-[16px] leading-[1.7] text-[#5c7792]">The research gave me a clear understanding of users' needs, business opportunities, and market constraints. I found that the priority was creating a scheduling experience that was efficient, reliable, and easy to use for healthcare staff. These insights helped me prioritize the target users, define the product strategy, and build proto-personas that guided the rest of the design process.</p>
+            <p className="text-center text-[16px] leading-[1.7] text-[#5c7792]">The research gave me a clear understanding of users' needs, business opportunities, and market constraints. I found that the priority was creating a scheduling experience that was efficient, reliable, and easy to use for healthcare staff. These insights helped me prioritize the target users, define the product strategy, and build proto-personas that guided the rest of the design process.</p>
           </div>
         </section>
 
@@ -4426,10 +4429,30 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 />
               </div>
 
-              <div className="mx-auto mt-6 max-w-[820px] space-y-3 text-center text-[14px] leading-[1.65] text-[#5c7792]">
+              <div className="mx-auto mt-6 max-w-[820px] text-center text-[14px] leading-[1.65] text-[#5c7792]">
                 <p><strong className="text-[#0e2951]">Strategic focus:</strong> Data sovereignty and MFA-first workflows are entry requirements. The defensible advantage is reliable, resource-aware scheduling—especially in degraded mode.</p>
-                <p><strong className="text-[#0e2951]">Why these two users first:</strong> The Calendar Keeper owns the most complex, high-impact work: coordinating practitioners, rooms, equipment, changes, and recovery when systems fail. Returning patients create the most frequent, predictable requests. Designing a fast self-service path for them removes routine calls before they reach the clinic team.</p>
-                <p><strong className="text-[#0e2951]">Why the other users are not separate first flows:</strong> Caregivers depend on the same patient identity and appointment-management foundation, so booking for a dependent can extend the returning-patient experience. Older and lower-digital-literacy patients shape accessibility requirements across every screen—clear language, readable controls, and safe alternatives—rather than needing a disconnected product. Doctors and clinicians benefit from a reliable shared schedule, but they are not the people managing the repeated coordination work the console is designed to remove.</p>
+              </div>
+              <div className="mx-auto mt-12 max-w-[820px]">
+                <div className="text-center">
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.3em] text-[#1183D0]">Design rationale</p>
+                  <h3 className="mt-3 font-inter text-[28px] leading-tight text-[#0e2951]">Prioritizing the first flows</h3>
+                </div>
+                <div className="mt-7 grid gap-4 md:grid-cols-2">
+                  <article className="rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] p-6">
+                    <h4 className="font-inter text-[15px] font-semibold leading-[1.4] text-[#1183D0]">Why these two users first</h4>
+                    <div className="mt-3 space-y-3 text-[14px] leading-[1.7] text-[#5c7792]">
+                      <p>The Calendar Keeper owns the most complex, high-impact work: coordinating practitioners, rooms, equipment, changes, and recovery when systems fail.</p>
+                      <p>Returning patients create the most frequent, predictable requests. Designing a fast self-service path for them removes routine calls before they reach the clinic team.</p>
+                    </div>
+                  </article>
+                  <article className="rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] p-6">
+                    <h4 className="font-inter text-[15px] font-semibold leading-[1.4] text-[#1183D0]">Why the other users are not separate first flows</h4>
+                    <div className="mt-3 space-y-3 text-[14px] leading-[1.7] text-[#5c7792]">
+                      <p>Caregivers can extend the returning-patient experience through the same identity and appointment-management foundation.</p>
+                      <p>Older and lower-digital-literacy patients shape accessibility across every screen, while doctors and clinicians benefit from a reliable shared schedule but do not manage the repeated coordination work this console removes.</p>
+                    </div>
+                  </article>
+                </div>
               </div>
               <div className="mx-auto mt-8 max-w-[820px] space-y-4 text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                 <p>
