@@ -3969,7 +3969,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <thead>
                         <tr className="bg-[#f0f5fa]">
                           <th className="border border-[#d9e5f2] px-3 py-2 text-left font-semibold text-[#0e2951]">Feature</th>
-                          <th className="border border-[#d9e5f2] px-3 py-2 text-center font-semibold text-[#0e2951]">Calendar Keeper</th>
                           <th className="border border-[#d9e5f2] px-3 py-2 text-center font-semibold text-[#0e2951]">Doctolib</th>
                           <th className="border border-[#d9e5f2] px-3 py-2 text-center font-semibold text-[#0e2951]">Samedi</th>
                           <th className="border border-[#d9e5f2] px-3 py-2 text-center font-semibold text-[#0e2951]">German Incumbents</th>
@@ -3981,13 +3980,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Patient Booking</td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
                         </tr>
                         <tr className="bg-[#f9fbfc]">
                           <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Data Migration Tools</td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓ Priority</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
@@ -3995,7 +3992,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </tr>
                         <tr className="bg-white">
                           <td className="border border-[#d9e5f2] px-3 py-2 font-medium">End-to-End Encryption</td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
@@ -4003,7 +3999,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </tr>
                         <tr className="bg-[#f9fbfc]">
                           <td className="border border-[#d9e5f2] px-3 py-2 font-medium">EU Data Sovereignty</td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
@@ -4011,7 +4006,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </tr>
                         <tr className="bg-white">
                           <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Waitlist / Backfill</td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
@@ -4019,7 +4013,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </tr>
                         <tr className="bg-[#f9fbfc]">
                           <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Usability / Satisfaction</td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
@@ -4028,14 +4021,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         <tr className="bg-white">
                           <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Self-Service Onboarding</td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
                         </tr>
                         <tr className="bg-[#f9fbfc]">
                           <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Free Entry Tier</td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
                           <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
