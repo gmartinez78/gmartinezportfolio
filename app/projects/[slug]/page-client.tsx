@@ -938,7 +938,7 @@ const PROTECTA_PROBLEM_TO_OUTCOME: Record<Language, Array<{ problem: string; cha
     {
       problem: "No brand system or live website to explain the advisory model.",
       change: "Created the brand, bilingual content strategy, and production website.",
-      result: "Launch-ready experience delivered in 5 days.",
+      result: "Website build time reduced by 72%.",
     },
     {
       problem: "Insurance felt complex and impersonal for families navigating coverage.",
@@ -955,7 +955,7 @@ const PROTECTA_PROBLEM_TO_OUTCOME: Record<Language, Array<{ problem: string; cha
     {
       problem: "No había sistema de marca ni sitio web para explicar el modelo de asesoría.",
       change: "Creé la marca, la estrategia de contenido bilingüe y el sitio web en producción.",
-      result: "Experiencia lista para el lanzamiento en 5 días.",
+      result: "Tiempo de construcción web reducido en un 72%.",
     },
     {
       problem: "Los seguros se sentían complejos e impersonales para las familias que buscaban cobertura.",
@@ -1115,7 +1115,7 @@ const PROTECTA_KEY_RESULTS: Record<Language, { title: string; items: string[] }>
     title: "Key Results",
     items: [
       "Bilingual English + Spanish content and conversion paths launched together",
-      "Brand, website, campaign, and QA delivered solo in 5 days",
+      "Website build time reduced by 72% with an AI-assisted workflow",
       "98% of 3.3K views came from people who did not follow the page",
       "26 website form leads tracked in the first week",
     ],
@@ -1124,7 +1124,7 @@ const PROTECTA_KEY_RESULTS: Record<Language, { title: string; items: string[] }>
     title: "Resultados clave",
     items: [
       "Contenido y rutas de conversión en inglés y español lanzados en conjunto",
-      "Marca, web, campaña y QA entregados de forma individual en 5 días",
+      "Tiempo de construcción web reducido en un 72% con un flujo asistido por IA",
       "El 98% de las 3.3K visualizaciones provino de personas que no seguían la página",
       "26 leads del formulario web registrados en la primera semana",
     ],

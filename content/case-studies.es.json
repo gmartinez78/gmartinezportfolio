@@ -840,7 +840,7 @@
     "client_context": "Sitio web bilingüe de asesoría de seguros para familias multiculturales en Estados Unidos",
     "role": "Ingeniero de Diseño",
     "year": 2026,
-    "duration": "5 días, de principio a fin",
+    "duration": "72% más rápido en la creación web",
     "industry": "Seguros / Asesoría",
     "tagline": "Una marca de seguros cálida y bilingüe, un sitio web listo para el lanzamiento y una campaña educativa para familias multiculturales en Estados Unidos.",
     "tags": [
@@ -876,14 +876,14 @@
     "client_logos": [],
     "metrics": [
       {
-        "value": "5 días",
-        "label": "Entrega integral",
-        "context": "Marca, contenido bilingüe, diseño y desarrollo web, QA y lanzamiento en cinco días."
+        "value": "72%",
+        "label": "Entrega web más rápida",
+        "context": "Flujo de trabajo asistido por IA para la marca, el contenido bilingüe, el diseño y desarrollo web, QA y lanzamiento."
       },
       {
         "value": "4-6 semanas",
         "label": "Plazo habitual de un equipo",
-        "context": "Entregado en solitario en 5 días con apoyo de IA."
+        "context": "El flujo de trabajo asistido por IA redujo el tiempo de construcción web en un 72%."
       },
       {
         "value": "98%",
@@ -922,7 +922,7 @@
       ]
     },
     "constraints": [
-      "Un cronograma de cinco días que abarcaba estrategia, marca, contenido, diseño, construcción, control de calidad y despliegue.",
+      "Un cronograma comprimido que abarcaba estrategia, marca, contenido, diseño, construcción, control de calidad y despliegue.",
       "No existía un sistema de marca previo, ni un sitio web anterior, ni contenido listo para publicar.",
       "No hubo investigación directa con usuarios dentro del cronograma; las entrevistas con asesores y el conocimiento del cliente actuaron como señal indirecta de usuario."
     ],
@@ -1006,7 +1006,7 @@
         "id": "task",
         "type": "custom",
         "title": "Tarea",
-        "body": "Entregar en cinco días un sitio web bilingüe completo con marca propia, incluyendo página de inicio, páginas internas, estrategia de contenido, sistema de marca, estructura de componentes, control de calidad de accesibilidad y despliegue en producción.\n\nEl sitio debía explicar el programa de referidos, transmitir confianza rápidamente y ofrecer a los prospectos una vía de bajo esfuerzo para contactar con los asesores a través de WhatsApp."
+        "body": "Entregar un sitio web bilingüe completo con marca propia, incluyendo página de inicio, páginas internas, estrategia de contenido, sistema de marca, estructura de componentes, control de calidad de accesibilidad y despliegue en producción.\n\nEl sitio debía explicar el programa de referidos, transmitir confianza rápidamente y ofrecer a los prospectos una vía de bajo esfuerzo para contactar con los asesores a través de WhatsApp."
       },
       {
         "id": "research",
