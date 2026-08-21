@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowUp, BrainCircuit, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Lightbulb, Mic, MousePointer2, Star, Target, Wand2 } from "lucide-react";
+import { ArrowUp, BrainCircuit, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, Heart, LayoutTemplate, Lightbulb, MessageCircle, Mic, MousePointer2, Paperclip, Repeat2, Star, Target, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { ChecklistStatusCard } from "./components/checklist-status-card";
@@ -470,6 +470,8 @@ export default function PortfolioPage() {
   });
   const [ctaToast, setCtaToast] = useState<string | null>(null);
   const [ctaSubmitting, setCtaSubmitting] = useState(false);
+  const [heroParallax, setHeroParallax] = useState(0);
+  const heroScrollRef = useRef<HTMLDivElement | null>(null);
   const [ctaErrors, setCtaErrors] = useState<{
     name?: string;
     email?: string;
@@ -536,7 +538,13 @@ export default function PortfolioPage() {
       accentClassName: "bg-[#4E8BFF] text-white",
     },
   ];
+  const heroSelectedProjects = [
+    homeProjects[0],
+    homeProjects.find((project) => project.slug === "nayya-ai-benefits"),
+    homeProjects.find((project) => project.slug === "flock-accessibility-system"),
+  ].filter((project) => project !== undefined);
   const heroPhaseStyles = useMemo(() => HERO_PHASE_STYLES[heroPhase], [heroPhase]);
+  const heroProjectProgress = Math.min(1, Math.max(0, (heroParallax - 105) / 45));
 
   function scrollToSection(sectionId?: "projects" | "skills" | "github") {
     if (!sectionId || typeof document === "undefined") {
@@ -724,6 +732,44 @@ export default function PortfolioPage() {
       window.clearTimeout(timeoutId);
     };
   }, [ctaToast]);
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const desktop = window.matchMedia("(min-width: 1025px)");
+    if (reducedMotion.matches || !desktop.matches) {
+      setHeroParallax(0);
+    }
+
+    return () => {
+    };
+  }, []);
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const desktop = window.matchMedia("(min-width: 1025px)");
+
+    const handleWheel = (event: WheelEvent) => {
+      const heroBounds = heroScrollRef.current?.getBoundingClientRect();
+      const heroIsPinned = heroBounds && heroBounds.top <= 2 && heroBounds.bottom >= window.innerHeight - 2;
+
+      if (!heroIsPinned || reducedMotion.matches || !desktop.matches) {
+        return;
+      }
+
+      if (event.deltaY > 0 && heroParallax < 150) {
+        event.preventDefault();
+        setHeroParallax((current) => Math.min(150, current + event.deltaY * 0.28));
+      }
+
+      if (event.deltaY < 0 && heroParallax > 0) {
+        event.preventDefault();
+        setHeroParallax((current) => Math.max(0, current + event.deltaY * 0.28));
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, [heroParallax]);
 
   const githubActivityItems = githubActivity.length
     ? githubActivity.filter((item) => item.kind !== "release").slice(0, 6)
@@ -1203,40 +1249,36 @@ export default function PortfolioPage() {
 
       {/* ── Hero ── */}
       <section className="bg-white">
-        <div className="relative isolate overflow-hidden bg-[#fff8f3] px-6 pb-10 pt-[8.25rem] sm:px-10 lg:px-16 lg:pb-14">
+        <div ref={heroScrollRef} className="min-[1025px]:h-[100svh]">
+        <div className="relative isolate overflow-hidden bg-[#fff8f3] px-6 pb-10 pt-[8.25rem] sm:px-10 lg:px-16 lg:pb-14 min-[1025px]:sticky min-[1025px]:top-0 min-[1025px]:h-[100svh] min-[1025px]:overflow-hidden">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_24%,rgba(255,255,255,0.95),transparent_25%),radial-gradient(circle_at_72%_58%,rgba(255,212,193,0.38),transparent_28%),linear-gradient(112deg,#fffaf5_0%,#fff3ea_54%,#fff9f6_100%)]" />
-          <div className="pointer-events-none absolute left-[47%] top-[18%] hidden h-24 w-36 -rotate-[28deg] lg:block">
-            <span className="absolute left-0 top-7 h-[3px] w-[108px] rounded-full bg-[#1183d0]" />
-            <span className="absolute left-0 top-[19px] h-[3px] w-11 rotate-[-44deg] rounded-full bg-[#1183d0]" />
-            <span className="absolute left-[97px] top-[20px] h-[3px] w-11 rotate-[44deg] rounded-full bg-[#1183d0]" />
-          </div>
-          <div className="pointer-events-none absolute right-[7%] top-[16%] hidden h-14 w-14 rotate-12 lg:block">
+          <div className="pointer-events-none absolute right-[7%] top-[16%] hidden h-14 w-14 rotate-12 xl:block">
             <span className="absolute left-6 top-0 h-full w-[3px] rotate-45 rounded-full bg-[#f06d96]" />
             <span className="absolute left-6 top-0 h-full w-[3px] -rotate-45 rounded-full bg-[#f06d96]" />
             <span className="absolute left-0 top-6 h-[3px] w-full rotate-45 rounded-full bg-[#f06d96]" />
             <span className="absolute left-0 top-6 h-[3px] w-full -rotate-45 rounded-full bg-[#f06d96]" />
           </div>
-          <div className="pointer-events-none absolute bottom-[11%] right-[3%] hidden h-20 w-20 lg:block">
+          <div className="pointer-events-none absolute bottom-[11%] right-[3%] hidden h-20 w-20 xl:block">
             <span className="absolute left-[31px] top-0 h-12 w-9 rotate-[-36deg] rounded-t-full border-[3px] border-b-0 border-[#1183d0]" />
             <span className="absolute left-[13px] top-3 h-12 w-9 rotate-[36deg] rounded-t-full border-[3px] border-b-0 border-[#1183d0]" />
           </div>
-          <svg className="pointer-events-none absolute left-[1.5%] top-[36%] hidden h-16 w-16 -rotate-12 lg:block" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <svg className="pointer-events-none absolute left-[1.5%] top-[36%] hidden h-16 w-16 -rotate-12 xl:block" viewBox="0 0 64 64" fill="none" aria-hidden="true">
             <path d="M32 6 37 25 57 18 43 33 59 43 39 41 36 60 28 42 10 53 22 35 5 26 26 27Z" stroke="#16A7DF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          <svg className="pointer-events-none absolute bottom-[18%] left-[49%] hidden h-20 w-24 rotate-[-12deg] lg:block" viewBox="0 0 96 80" fill="none" aria-hidden="true">
+          <svg className="pointer-events-none absolute bottom-[18%] left-[49%] hidden h-20 w-24 rotate-[-12deg] xl:block" viewBox="0 0 96 80" fill="none" aria-hidden="true">
             <path d="M14 56 22 24 40 42 49 13 65 39 80 24 76 58 14 56Z" stroke="#F0A51B" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M18 62c18 5 39 5 58-1" stroke="#F0A51B" strokeWidth="3" strokeLinecap="round" />
           </svg>
-          <svg className="pointer-events-none absolute left-[48%] top-[52%] hidden h-24 w-28 rotate-[14deg] lg:block" viewBox="0 0 112 96" fill="none" aria-hidden="true">
-            <path d="M15 18c24 2 47 14 59 35 8 13 7 25-3 35" stroke="#16A7DF" strokeWidth="3.5" strokeLinecap="round" />
-            <path d="m58 72 13 17 16-14" stroke="#16A7DF" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[45%] bg-[linear-gradient(180deg,rgba(247,224,211,0)_0%,rgba(242,218,202,0.7)_26%,#e8cdbb_100%)]" />
-          <div className="relative mx-auto grid min-h-[570px] max-w-[1280px] items-center gap-10 lg:min-h-[650px] lg:grid-cols-[1.08fr_0.92fr] lg:gap-4">
-            <div className="relative z-10 max-w-[800px] pb-4 lg:-translate-x-12 lg:pb-12 xl:-translate-x-20">
-              <div className="relative mb-7 inline-flex -rotate-[5deg] bg-[#39b8e7] px-5 py-2.5 text-[11px] font-medium tracking-[0.04em] text-[#163143] shadow-[0_5px_10px_rgba(18,111,148,0.16)] sm:px-7 sm:text-sm">
-                <span className="absolute inset-x-1 top-0 h-px bg-white/35" />
-                designer <span className="px-2 text-[#f8eff0]">·</span> I solve problems <span className="px-2 text-[#f8eff0]">·</span> I organize ideas
+          <div className="pointer-events-none absolute -bottom-[23%] -left-[12%] -right-[12%] z-0 h-[60%] overflow-hidden rounded-[50%]">
+            <Image src="/images/home-hero-table.png" alt="" fill sizes="100vw" className="object-cover object-center" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,248,243,0.32)_0%,rgba(255,248,243,0.04)_30%,rgba(215,181,154,0.12)_100%)]" />
+          </div>
+          <div className="relative mx-auto grid min-h-[570px] max-w-[1280px] items-center gap-10 xl:min-h-[650px] xl:grid-cols-[1.08fr_0.92fr] xl:gap-4 2xl:min-h-[720px] 2xl:max-w-[1440px]">
+            <div className="relative z-40 max-w-[800px] pb-4 xl:translate-x-12 xl:pb-12 2xl:translate-y-8">
+              <div className="relative mb-7 inline-flex -rotate-[5deg] overflow-hidden bg-[#39b8e7] px-5 py-2.5 text-[11px] font-medium tracking-[0.04em] text-[#163143] shadow-[0_5px_10px_rgba(18,111,148,0.16)] [clip-path:polygon(0_9%,2%_1%,7%_4%,12%_0,18%_3%,25%_0,31%_4%,38%_1%,45%_4%,52%_0,59%_3%,66%_0,74%_4%,81%_1%,88%_4%,96%_0,100%_9%,98%_21%,100%_36%,98%_51%,100%_67%,98%_83%,100%_94%,95%_100%,89%_96%,83%_100%,75%_96%,68%_100%,61%_97%,54%_100%,47%_96%,40%_100%,33%_97%,26%_100%,18%_96%,11%_100%,4%_96%,0_87%,2%_72%,0_56%,2%_41%,0_25%)] sm:px-7 sm:text-sm xl:-translate-x-12">
+                <span className="absolute inset-0 opacity-20 [background-image:linear-gradient(30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%),linear-gradient(-30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%)] [background-size:18px_16px]" />
+                <span className="absolute inset-x-2 top-1 h-px bg-white/45" />
+                <span className="relative z-10 font-mono">designer <span className="px-2 text-[#f8eff0]">·</span> I solve problems <span className="px-2 text-[#f8eff0]">·</span> I organize ideas</span>
               </div>
               <h1 className="font-serif-display text-[clamp(2.35rem,4.55vw,4.7rem)] font-medium leading-[0.86] tracking-[-0.075em] text-[#141114]">
                 I MAKE
@@ -1246,9 +1288,9 @@ export default function PortfolioPage() {
               <div className="mt-9 max-w-[610px]">
                 <div className="mb-2 h-1.5 w-36 -rotate-2 rounded-full bg-[#25aee1]" />
                 <p className="text-[13px] font-bold uppercase leading-relaxed tracking-[0.04em] text-[#159bd0] sm:text-sm">
-                  Websites, social media, experiences...
+                  Products, websites, social media
                 </p>
-                <p className="mt-1 font-serif-display text-base italic leading-relaxed text-[#3d3438] sm:text-lg">I bring order to chaos.</p>
+                <p className="mt-1 font-serif-display text-base italic leading-relaxed text-[#3d3438] sm:text-lg">And most of the time, I bring order to chaos.</p>
               </div>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href="#projects" className="inline-flex items-center justify-center rounded-full bg-[#ee668a] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-white shadow-[0_12px_24px_rgba(238,102,138,0.25)] transition hover:-translate-y-0.5 hover:bg-[#dc5278]">
@@ -1259,51 +1301,76 @@ export default function PortfolioPage() {
                 </Link>
               </div>
             </div>
-            <div className="relative mx-auto h-[330px] w-full max-w-[430px] self-end sm:h-[460px] lg:h-[650px] lg:max-w-[510px]">
-              <div className="absolute bottom-0 left-[-6%] right-[-15%] top-[54px] z-30 lg:translate-x-[20%]">
-                <Image src="/images/home-hero-portrait-white.png" alt="Greddys Martinez seated at a laptop" fill priority sizes="(max-width: 1024px) 470px, 590px" className="object-contain object-bottom" />
+            <div className="relative mx-auto h-[330px] w-full max-w-[430px] self-end sm:h-[460px] xl:h-[650px] xl:max-w-[510px] 2xl:-translate-y-20">
+              <div className="absolute bottom-0 left-[-6%] right-[-15%] top-[54px] z-30 origin-bottom-left xl:-translate-x-[60%] xl:scale-[1.08]" style={{ translate: `${heroParallax}px 0` }}>
+                <Image src="/images/home-hero-portrait-clean-v3.png" alt="Greddys Martinez seated at a laptop" fill priority sizes="(max-width: 1024px) 470px, 590px" className="object-contain object-bottom" />
+                <svg className="pointer-events-none absolute left-[57%] -top-[10%] h-20 w-24 rotate-[12deg] overflow-visible" viewBox="0 0 96 80" fill="none" aria-hidden="true">
+                  <path d="M16 59 24 20 42 43 51 12 67 42 82 25 76 61 16 59Z" stroke="#F0A51B" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M19 65c18 5 39 5 58-1" stroke="#F0A51B" strokeWidth="3.5" strokeLinecap="round" />
+                  <path d="m14 14-3-11M39 9V-3M71 17l6-9" stroke="#171417" strokeWidth="3.5" strokeLinecap="round" />
+                </svg>
               </div>
-              <div className="absolute right-[-11%] top-[3%] z-20 hidden w-[184px] bg-[#fffdf9] px-4 pb-4 pt-6 text-[#2a2528] shadow-[0_18px_34px_rgba(84,53,58,0.18)] sm:block lg:w-[205px] animate-[hero-paper-float_5.8s_ease-in-out_infinite]" style={{ ["--paper-rotate" as string]: "5deg" }}>
-                <span className="absolute -top-3 left-1/2 h-7 w-[106px] -translate-x-1/2 -rotate-[2deg] bg-[#ed7195]/90" />
+              <div className="absolute right-[-11%] -top-[3%] z-20 hidden w-[184px] bg-[#fffdf9] px-4 pb-4 pt-6 text-[#2a2528] shadow-[0_18px_34px_rgba(84,53,58,0.18)] xl:block xl:w-[205px] animate-[hero-paper-float_5.8s_ease-in-out_infinite]" style={{ ["--paper-rotate" as string]: "5deg", translate: `0 -${heroParallax * 0.7}px` }}>
+                <span className="absolute -top-3 left-1/2 h-7 w-[106px] -translate-x-1/2 -rotate-[2deg] overflow-hidden bg-[#ed7195] [clip-path:polygon(0_8%,3%_0,14%_4%,25%_0,39%_3%,51%_0,64%_4%,76%_0,90%_4%,100%_0,98%_22%,100%_39%,98%_56%,100%_75%,98%_94%,88%_100%,75%_96%,62%_100%,48%_96%,35%_100%,20%_96%,8%_100%,0_92%,2%_76%,0_58%,2%_40%,0_22%)]">
+                  <span className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_25%_35%,transparent_0_8px,rgba(255,255,255,0.85)_9px_10px,transparent_11px),radial-gradient(circle_at_76%_70%,transparent_0_8px,rgba(255,255,255,0.85)_9px_10px,transparent_11px)] [background-size:30px_28px]" />
+                  <span className="absolute inset-x-1 top-1 h-px bg-white/35" />
+                </span>
                 <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#e05f88]">How I can help</p>
-                <ul className="space-y-3 text-[13px] font-medium leading-tight lg:text-sm">
+                <ul className="space-y-3 text-[13px] font-medium leading-tight xl:text-sm">
                   <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#2eb4e7] text-[11px]">▣</span> Website design</li>
                   <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f181a4] text-[11px]">♡</span> Social media</li>
                   <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f7b93b] text-[11px]">✎</span> Brand identity</li>
                   <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#2eb4e7] text-[11px]">▯</span> User experience</li>
-                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f181a4] text-[11px]">✦</span> Creative direction</li>
+                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f181a4] text-[11px]">✦</span> AI product design</li>
                 </ul>
               </div>
-              <div className="absolute -right-[16%] top-[29%] z-20 hidden w-[210px] bg-[#32b9e8] px-5 py-6 text-[#102a36] shadow-[0_18px_34px_rgba(31,122,157,0.25)] sm:block lg:w-[232px] animate-[hero-paper-float_6.6s_ease-in-out_0.8s_infinite]" style={{ ["--paper-rotate" as string]: "-4deg" }}>
-                <span className="absolute right-5 top-4 text-xl text-white/80">⌇</span>
-                <p className="font-serif-display text-[23px] italic leading-[1.1] lg:text-[27px]">You have the idea.</p>
-                <p className="mt-2 font-serif-display text-[23px] italic leading-[1.1] lg:text-[27px]">I make it work.</p>
+              <div className="absolute right-[22%] top-[22%] z-20 hidden w-[210px] bg-[#32b9e8] px-5 py-6 text-[#102a36] shadow-[0_18px_34px_rgba(31,122,157,0.25)] xl:block xl:w-[232px] animate-[hero-paper-float_6.6s_ease-in-out_0.8s_infinite]" style={{ ["--paper-rotate" as string]: "-4deg", translate: `0 -${heroParallax * 0.7}px` }}>
+                <Paperclip aria-hidden="true" className="absolute -top-6 right-6 h-12 w-12 rotate-[10deg] stroke-[1.05] text-[#1e2527] drop-shadow-[0_2px_1px_rgba(255,255,255,0.45)]" />
+                <svg className="absolute bottom-5 right-6 h-8 w-7 rotate-[8deg]" viewBox="0 0 28 32" fill="none" aria-hidden="true">
+                  <path d="M14 28C6 22 3 17 3 11c0-4 2-7 5-7 3 0 5 3 6 5 1-2 3-5 6-5 3 0 5 3 5 7 0 6-3 11-11 17Z" stroke="#087DCE" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <p className="font-serif-display text-[23px] italic leading-[1.1] xl:text-[27px]">You have the idea.</p>
+                <p className="mt-2 font-serif-display text-[23px] italic leading-[1.1] xl:text-[27px]">I make it work.</p>
                 <div className="mt-5 h-[3px] w-24 bg-[#087da9]" />
                 <p className="mt-4 text-[10px] font-bold uppercase leading-relaxed tracking-[0.12em]">Beautiful, useful, and ready for real people.</p>
               </div>
-              <div className="absolute -right-[15%] bottom-[14%] z-20 hidden w-[205px] rounded-[24px] bg-[#fffdf9] p-4 text-[#261f21] shadow-[0_18px_34px_rgba(84,53,58,0.22)] sm:block lg:w-[230px] animate-[hero-paper-float_6.6s_ease-in-out_0.8s_infinite]" style={{ ["--paper-rotate" as string]: "-4deg" }}>
-                <div className="flex items-center gap-2 text-[9px] font-bold"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f8d6ca] text-[#e06b91]">G</span><span>Studio Greddys<br /><span className="font-normal text-[#766568]">@randomlygreddys</span></span><span className="ml-auto text-base">•••</span></div>
+              <div className="absolute -right-[15%] bottom-[22%] z-20 hidden w-[205px] rounded-[24px] bg-[#fffdf9] p-4 text-[#261f21] shadow-[0_18px_34px_rgba(84,53,58,0.22)] xl:block xl:w-[230px] animate-[hero-paper-float_6.6s_ease-in-out_0.8s_infinite]" style={{ ["--paper-rotate" as string]: "-4deg", translate: `0 -${heroParallax * 0.7}px` }}>
+                <div className="flex items-center gap-2 text-[9px] font-bold"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f8d6ca] text-[#e06b91]">G</span><span>Greddys Martinez<br /><span className="font-normal text-[#766568]">@randomlygreddys</span></span><span className="ml-auto text-base">•••</span></div>
                 <p className="mt-4 text-xs">New brand, new era. <span className="text-[#eaa223]">✦</span></p>
                 <div className="mt-3 grid grid-cols-[1fr_0.72fr] gap-2">
                   <p className="font-serif-display text-[26px] font-semibold leading-[0.9]">DESIGN<br />HAS<br />POWER.</p>
-                  <div className="rounded-[10px] bg-[radial-gradient(circle_at_65%_25%,#ffd37b_0_7%,transparent_8%),radial-gradient(circle_at_44%_40%,#f5a54e_0_17%,transparent_18%),linear-gradient(135deg,#f9c3a5,#c76c38)]" />
+                  <div className="relative aspect-square overflow-hidden rounded-[10px]">
+                    <Image src="/images/home-card-flower-vase.png" alt="Yellow flower in a black vase" fill sizes="120px" className="object-cover" />
+                  </div>
                 </div>
-                <div className="mt-3 flex items-center gap-3 text-[10px]"><span className="text-[#e23f46]">♥</span> 128 <span className="text-base">○</span> 12 <span>↻ 8</span></div>
+                <div className="mt-3 flex items-center gap-3 text-[10px] font-medium"><span className="inline-flex items-center gap-1"><Heart className="h-4 w-4 fill-[#e7232a] text-[#e7232a]" />128</span><span className="inline-flex items-center gap-1"><MessageCircle className="h-4 w-4 stroke-[1.8]" />12</span><span className="inline-flex items-center gap-1"><Repeat2 className="h-4 w-4 stroke-[1.8]" />8</span></div>
               </div>
-              <div className="absolute -right-[18%] -bottom-[5%] z-20 hidden w-[210px] overflow-hidden rounded-[8px] bg-[#96e4d8] text-[#102a36] shadow-[0_18px_34px_rgba(31,122,157,0.25)] sm:block lg:w-[235px] animate-[hero-paper-float_5.8s_ease-in-out_infinite]" style={{ ["--paper-rotate" as string]: "4deg" }}>
-                <div className="flex h-6 items-center justify-between bg-[#11b9a7] px-3 text-[7px] font-bold"><span>◌ ◌ ◌</span><span>SHOP · ABOUT · JOURNAL · CART (0)</span></div>
-                <div className="p-4"><p className="font-serif-display text-[28px] leading-[0.88]">Glow<br />from<br />within.</p><button className="mt-3 bg-[#172423] px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.12em] text-white">Buy</button></div>
+              <div className="absolute right-[4%] bottom-[3%] z-20 hidden w-[210px] overflow-hidden rounded-[8px] bg-[#96e4d8] text-[#102a36] shadow-[0_18px_34px_rgba(31,122,157,0.25)] xl:block xl:w-[235px] animate-[hero-paper-float_5.8s_ease-in-out_infinite]" style={{ ["--paper-rotate" as string]: "4deg", translate: `0 -${heroParallax * 0.7}px` }}>
+                <div className="flex h-6 items-center justify-between bg-[#11b9a7] px-3 text-[7px] font-bold"><span className="flex items-center gap-1"><i className="h-2 w-2 rounded-full bg-[#ff5f57]" /><i className="h-2 w-2 rounded-full bg-[#febc2e]" /><i className="h-2 w-2 rounded-full bg-[#28c840]" /></span><span>SHOP · ABOUT · JOURNAL · CART (0)</span></div>
+                <div className="grid grid-cols-[0.88fr_1.12fr] gap-2 p-4"><div><p className="font-serif-display text-[28px] leading-[0.88]">Glow<br />from<br />within.</p><button className="mt-3 bg-[#172423] px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.12em] text-white">Buy</button></div><div className="relative min-h-[115px] overflow-hidden rounded-sm"><Image src="/images/home-card-perfume.png" alt="Amber perfume bottle on pink satin" fill sizes="125px" className="object-cover object-[62%_50%]" /></div></div>
               </div>
-              <div className="absolute left-[-31%] top-[18%] z-20 hidden w-[150px] scale-[0.82] bg-[#f6ddea] px-5 pb-5 pt-8 text-[#3c3035] shadow-[0_16px_28px_rgba(85,53,65,0.15)] lg:block animate-[hero-paper-float_6.6s_ease-in-out_0.8s_infinite]" style={{ ["--paper-rotate" as string]: "-8deg" }}>
-                <span className="absolute -top-3 left-8 h-7 w-[82px] -rotate-[4deg] bg-[#46bfea]/85" />
-                <span className="absolute left-5 top-7 text-xl">✧</span>
-                <p className="mt-4 font-serif-display text-lg italic leading-snug">“She understood my vision and turned it into a brand that feels like me.”</p>
-                <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.12em]">— Maria</p>
-              </div>
-              <div className="absolute bottom-5 -left-2 rounded-full border border-white/70 bg-white/80 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-[#6b4560] shadow-[0_10px_22px_rgba(89,55,63,0.12)] backdrop-blur sm:left-2">Designing for people</div>
             </div>
           </div>
-          <div className="relative z-10 mx-auto mt-8 grid w-full max-w-[1180px] gap-4 px-6 text-left md:mt-10 md:grid-cols-2 md:px-10 lg:grid-cols-4 lg:px-16">
+          <div className="absolute inset-0 z-40 hidden h-full bg-white px-10 pb-12 pt-28 min-[1025px]:block" style={{ translate: `0 ${100 - heroProjectProgress * 100}%` }}>
+            <div className="mx-auto h-full max-w-[1280px]">
+              <p className="mb-6 text-sm font-bold uppercase tracking-[0.18em] text-[#e05f88]">Selected projects</p>
+              <div className="grid h-[calc(100%-2.5rem)] grid-cols-3 gap-5">
+                {heroSelectedProjects.map((project) => (
+                  <Link key={`hero-project-${project.cardId}`} href={project.href} className="group relative overflow-hidden rounded-[22px] bg-[#f6f1ed] p-6 shadow-[0_18px_38px_rgba(58,39,47,0.12)]">
+                    <div className="absolute inset-0" style={{ background: project.background }} />
+                    {project.image ? <Image src={project.image} alt="" fill sizes="33vw" className="object-cover transition duration-500 group-hover:scale-105" /> : null}
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_30%,rgba(255,255,255,0.94)_77%)]" />
+                    <div className="relative flex h-full flex-col justify-end">
+                      <span className="text-xs font-bold uppercase tracking-[0.14em] text-[#5d5260]">{project.company}</span>
+                      <span className="mt-2 font-serif-display text-3xl leading-none text-[#171315]">{project.title}</span>
+                      <span className="mt-4 text-sm font-semibold text-[#e05f88] transition group-hover:translate-x-1">View project →</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="relative z-10 mx-auto mt-8 grid w-full max-w-[1180px] gap-4 px-6 text-left md:mt-10 md:grid-cols-2 md:px-10 lg:grid-cols-4 lg:px-16 xl:hidden">
             {heroPills.map((pill) => (
               <Link
                 key={pill.title}
@@ -1324,6 +1391,7 @@ export default function PortfolioPage() {
               </Link>
             ))}
           </div>
+        </div>
         </div>
 
         {/* Social Proof Bar */}
