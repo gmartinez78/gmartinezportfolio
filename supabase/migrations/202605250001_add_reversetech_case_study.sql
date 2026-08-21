@@ -41,7 +41,7 @@ values (
   2026,
   'Strategy and funnel analysis',
   'Health & Fitness / Growth Funnel',
-  'A growth-focused case study about interpreting funnel data, identifying UX and conversion problems, and turning those insights into testable design solutions.',
+  'A growth case study turning funnel insights into testable design solutions.',
   array['Growth','UX Research','Product Design','Paid Acquisition','Funnel Optimization'],
   array['UX Research','Product Design'],
   array['Figma','Google Ads','Analytics','Miro','Notion'],

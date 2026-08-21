@@ -502,6 +502,7 @@ export default function PortfolioPage() {
       company: study.company ?? "",
       year: study.year ?? 0,
       image: resolveProjectListCardImage(study.slug, study.images?.cover || study.images?.hero || ""),
+      video: study.slug === "protecta" ? "/images/projects/protecta/hero-banner.mp4" : undefined,
       background: PROJECT_BACKGROUNDS[study.slug] ?? "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
       href: resolveProjectHref(study),
       tags: study.tags.slice(0, 2),
@@ -543,6 +544,7 @@ export default function PortfolioPage() {
     homeProjects.find((project) => project.slug === "nayya-ai-benefits"),
     homeProjects.find((project) => project.slug === "flock-accessibility-system"),
   ].filter((project) => project !== undefined);
+  const projectGridProjects = homeProjects.filter((project) => !["protecta", "nayya-ai-benefits", "flock-accessibility-system"].includes(project.slug));
   const heroPhaseStyles = useMemo(() => HERO_PHASE_STYLES[heroPhase], [heroPhase]);
   const heroProjectProgress = Math.min(1, Math.max(0, (heroParallax - 105) / 45));
 
@@ -811,10 +813,10 @@ export default function PortfolioPage() {
   }, [githubActivityItems, language]);
 
   const recentWorkSection = (
-    <section key="work" id="projects" className="bg-white pt-12 pb-24 px-6 md:px-10 xl:px-20">
+    <section key="work" id="projects" className="bg-[#fff8f3] pt-12 pb-24 px-6 md:px-10 xl:px-20">
       <div className="mx-auto flex w-full flex-col items-center gap-12">
         <div className="grid w-full gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {homeProjects.map((project) => (
+          {projectGridProjects.map((project) => (
             (() => {
               const isActiveCard =
                 activeProjectCardId === project.cardId ||
@@ -834,6 +836,7 @@ export default function PortfolioPage() {
                   description={project.description}
                   tags={project.tags}
                   image={project.image}
+                  video={project.video}
                   imageAlt={`${project.title} case study preview for ${project.company}`}
                   background={project.background}
                   ctaLabel={project.cta}
@@ -851,7 +854,7 @@ export default function PortfolioPage() {
   );
 
   const impactShowcaseSection = (
-    <section key="impact-showcase" className="bg-white px-6 pb-8 md:px-10 xl:px-20">
+    <section key="impact-showcase" className="bg-[#fff8f3] px-6 pb-8 md:px-10 xl:px-20">
       <div className="mx-auto grid w-full max-w-[1280px] gap-5 lg:grid-cols-[minmax(0,1.65fr)_minmax(320px,0.9fr)]">
         <Link
           href={withBasePath("/projects/nayya-ai-benefits")}
@@ -1094,7 +1097,7 @@ export default function PortfolioPage() {
     <section
       key="tools"
       id="skills"
-      className="isolate w-full overflow-clip bg-white px-4 pb-10 pt-36 md:px-8"
+      className="isolate w-full overflow-clip bg-[#fff8f3] px-4 pb-10 pt-36 md:px-8"
     >
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center gap-6">
         <div className="pointer-events-none absolute bottom-[44px] h-[248px] w-[629px] max-w-none select-none md:bottom-[-12px] md:h-[496px] md:w-[1257px]">
@@ -1118,18 +1121,20 @@ export default function PortfolioPage() {
           </div>
         </div>
 
-        <div className="relative z-10 flex flex-col items-center gap-6">
-          <p className="text-center text-[13px] font-semibold uppercase tracking-[0.3em] text-[#1183D0]">
+        <div className="relative z-10 flex flex-col items-center gap-4">
+          <p className="rotate-[-3deg] bg-[#32b9e8] px-5 py-2 font-mono text-[11px] font-semibold tracking-[0.08em] text-[#102a36] shadow-[0_7px_14px_rgba(31,122,157,0.14)]">
             Experience & Skills
           </p>
-          <h2 className="max-w-[320px] whitespace-pre-line text-center font-inter text-[30px] leading-[1.05] text-[#0e2951] md:max-w-[620px] md:text-[44px]">
-            {siteContent.home.tools_section.headline.replace(" Work With", "\nWork With")}
+          <h2 className="max-w-[340px] text-center font-serif-display text-[46px] leading-[0.9] text-[#141114] md:max-w-[680px] md:text-[74px]">
+            Tools I Love <span className="text-[#e9608a]">&</span><br />
+            <span className="text-[#e9608a]">Work With.</span>
           </h2>
+          <span className="h-[5px] w-28 -rotate-1 rounded-full bg-[#26aee2]" />
         </div>
-        <p className="relative z-10 mb-4 max-w-[320px] text-center text-[14px] leading-[1.8] text-[#5c7792] md:max-w-[560px] md:text-[17px]">
+        <p className="relative z-10 mb-4 max-w-[320px] text-center font-serif-display text-[17px] italic leading-[1.55] text-[#4c3b42] md:max-w-[560px] md:text-[21px]">
           {siteContent.home.tools_section.description}
         </p>
-        <Button asChild variant="secondary" className="relative z-10 h-12 rounded-xl px-6 text-base">
+        <Button asChild className="relative z-10 h-12 rounded-full border-0 bg-[#ec638d] px-7 text-base font-bold uppercase tracking-[0.08em] text-white shadow-[0_14px_24px_rgba(236,99,141,0.22)] hover:bg-[#dc4f7c]">
           <Link href={withBasePath(siteContent.home.tools_section.cta_href)}>
             {siteContent.home.tools_section.cta_label.replace("→", "").trim()}
           </Link>
@@ -1142,7 +1147,7 @@ export default function PortfolioPage() {
     <section
       key="github-proof"
       id="github"
-      className="bg-white px-6 py-20 md:px-16 xl:px-30"
+      className="bg-[#fff8f3] px-6 py-20 md:px-16 xl:px-30"
     >
       <div className="mx-auto max-w-[1180px]">
         <div className="rounded-[24px] border border-[#d9e5f2] bg-white/80 p-6 md:p-8">
@@ -1171,7 +1176,7 @@ export default function PortfolioPage() {
       key="cta"
       className="px-6 py-[80px] md:px-16 xl:px-30"
       style={{
-        backgroundImage: `linear-gradient(180deg, #ffffff 0%, #ffffff 18%, rgba(255,255,255,0) 42%), ${heroPhaseStyles.background}`,
+        backgroundImage: `linear-gradient(180deg, #fff8f3 0%, #fff8f3 18%, rgba(255,248,243,0) 42%), ${heroPhaseStyles.background}`,
       }}
     >
       <div className="mx-auto grid max-w-[1180px] gap-8 text-[#0e2951] lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
@@ -1236,19 +1241,19 @@ export default function PortfolioPage() {
     </section>
   );
 
-  const contentSections = [toolsSection, ctaSection, githubProofSection];
+  const contentSections = [toolsSection, ctaSection];
 
   return (
-    <main className="bg-[#F0F7FF] text-[#3c3e3f] overflow-x-hidden">
+    <main className="bg-[#fff8f3] text-[#3c3e3f] overflow-x-hidden">
       {ctaToast ? (
         <div className="fixed right-4 top-24 z-[80] max-w-[320px] rounded-[18px] border border-white/60 bg-[linear-gradient(135deg,rgba(247,241,249,0.96)_0%,rgba(243,247,255,0.94)_45%,rgba(255,247,239,0.92)_100%)] px-4 py-3 text-sm font-medium text-[#0e2951] shadow-[0_18px_40px_rgba(31,53,94,0.16)] backdrop-blur-xl">
           {ctaToast}
         </div>
       ) : null}
-      <SiteHeader variant="transparent" />
+      <SiteHeader variant="transparent" forceSticky={heroProjectProgress >= 1} />
 
       {/* ── Hero ── */}
-      <section className="bg-white">
+      <section className="bg-[#fff8f3]">
         <div ref={heroScrollRef} className="min-[1025px]:h-[100svh]">
         <div className="relative isolate overflow-hidden bg-[#fff8f3] px-6 pb-10 pt-[8.25rem] sm:px-10 lg:px-16 lg:pb-14 min-[1025px]:sticky min-[1025px]:top-0 min-[1025px]:h-[100svh] min-[1025px]:overflow-hidden">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_24%,rgba(255,255,255,0.95),transparent_25%),radial-gradient(circle_at_72%_58%,rgba(255,212,193,0.38),transparent_28%),linear-gradient(112deg,#fffaf5_0%,#fff3ea_54%,#fff9f6_100%)]" />
@@ -1269,7 +1274,7 @@ export default function PortfolioPage() {
             <path d="M14 56 22 24 40 42 49 13 65 39 80 24 76 58 14 56Z" stroke="#F0A51B" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M18 62c18 5 39 5 58-1" stroke="#F0A51B" strokeWidth="3" strokeLinecap="round" />
           </svg>
-          <div className="pointer-events-none absolute -bottom-[23%] -left-[12%] -right-[12%] z-0 h-[60%] overflow-hidden rounded-[50%]">
+          <div className="pointer-events-none absolute -bottom-[34%] -left-[12%] -right-[12%] z-0 h-[60%] overflow-hidden rounded-[50%]">
             <Image src="/images/home-hero-table.png" alt="" fill sizes="100vw" className="object-cover object-center" />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,248,243,0.32)_0%,rgba(255,248,243,0.04)_30%,rgba(215,181,154,0.12)_100%)]" />
           </div>
@@ -1286,7 +1291,10 @@ export default function PortfolioPage() {
                 <span className="mt-[0.16em] block">WORK <em className="font-serif-display font-medium text-[#e7688f]">&amp; WOW.</em></span>
               </h1>
               <div className="mt-9 max-w-[610px]">
-                <div className="mb-2 h-1.5 w-36 -rotate-2 rounded-full bg-[#25aee1]" />
+                <svg className="mb-2 h-7 w-40 -rotate-2" viewBox="0 0 160 28" fill="none" aria-hidden="true">
+                  <path d="M4 10c31-7 88-9 148-2" stroke="#25aee1" strokeWidth="3.5" strokeLinecap="round" />
+                  <path d="M8 20c42-7 100-5 148 1" stroke="#25aee1" strokeWidth="3.5" strokeLinecap="round" />
+                </svg>
                 <p className="text-[13px] font-bold uppercase leading-relaxed tracking-[0.04em] text-[#159bd0] sm:text-sm">
                   Products, websites, social media
                 </p>
@@ -1351,19 +1359,38 @@ export default function PortfolioPage() {
               </div>
             </div>
           </div>
-          <div className="absolute inset-0 z-40 hidden h-full bg-white px-10 pb-12 pt-28 min-[1025px]:block" style={{ translate: `0 ${100 - heroProjectProgress * 100}%` }}>
-            <div className="mx-auto h-full max-w-[1280px]">
-              <p className="mb-6 text-sm font-bold uppercase tracking-[0.18em] text-[#e05f88]">Selected projects</p>
-              <div className="grid h-[calc(100%-2.5rem)] grid-cols-3 gap-5">
+          <div className="absolute inset-0 z-40 hidden h-full bg-[#fff8f3] px-10 pb-12 pt-28 min-[1025px]:block" style={{ translate: `0 ${100 - heroProjectProgress * 100}%` }}>
+            <div className="mx-auto h-full max-w-[1080px]">
+              <p className="mb-6 text-center text-sm font-bold uppercase tracking-[0.18em] text-[#e05f88]">Selected projects</p>
+              <div className="mx-auto grid h-[min(62vh,590px)] max-w-[1040px] grid-cols-3 gap-5">
                 {heroSelectedProjects.map((project) => (
-                  <Link key={`hero-project-${project.cardId}`} href={project.href} className="group relative overflow-hidden rounded-[22px] bg-[#f6f1ed] p-6 shadow-[0_18px_38px_rgba(58,39,47,0.12)]">
+                  <Link
+                    key={`hero-project-${project.cardId}`}
+                    href={project.href}
+                    className="group relative overflow-hidden rounded-[22px] bg-[#f6f1ed] p-6 shadow-[0_18px_38px_rgba(58,39,47,0.12)]"
+                    onMouseEnter={(event) => {
+                      const video = event.currentTarget.querySelector("video");
+                      void video?.play();
+                    }}
+                    onMouseLeave={(event) => {
+                      const video = event.currentTarget.querySelector("video");
+                      if (video) {
+                        video.pause();
+                        video.currentTime = 0;
+                      }
+                    }}
+                  >
                     <div className="absolute inset-0" style={{ background: project.background }} />
-                    {project.image ? <Image src={project.image} alt="" fill sizes="33vw" className="object-cover transition duration-500 group-hover:scale-105" /> : null}
+                    {project.slug === "nayya-ai-benefits" ? (
+                      <Image src="/images/projects/nayya-ai-benefits/thumbnails/nayya-selected-project.png" alt="" fill sizes="33vw" className="object-cover transition duration-500 group-hover:scale-105" />
+                    ) : project.slug === "protecta" ? (
+                      <video src="/images/projects/protecta/hero-banner.mp4" muted loop playsInline preload="metadata" className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                    ) : project.image ? <Image src={project.image} alt="" fill sizes="33vw" className="object-cover transition duration-500 group-hover:scale-105" /> : null}
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_30%,rgba(255,255,255,0.94)_77%)]" />
                     <div className="relative flex h-full flex-col justify-end">
                       <span className="text-xs font-bold uppercase tracking-[0.14em] text-[#5d5260]">{project.company}</span>
                       <span className="mt-2 font-serif-display text-3xl leading-none text-[#171315]">{project.title}</span>
-                      <span className="mt-4 text-sm font-semibold text-[#e05f88] transition group-hover:translate-x-1">View project →</span>
+                      <span className="mt-4 translate-y-2 text-sm font-semibold text-[#e05f88] opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">View project →</span>
                     </div>
                   </Link>
                 ))}
@@ -1394,11 +1421,33 @@ export default function PortfolioPage() {
         </div>
         </div>
 
+        <section className="relative isolate overflow-hidden bg-[#fff8f3] px-6 py-16 text-center md:px-10 md:py-20 lg:px-20">
+          <div className="relative mx-auto max-w-4xl">
+            <div className="relative mx-auto mb-5 w-fit -rotate-[5deg] overflow-hidden bg-[#39b8e7] px-5 py-2 text-[10px] font-medium tracking-[0.04em] text-[#163143] shadow-[0_5px_10px_rgba(18,111,148,0.16)] [clip-path:polygon(0_9%,2%_1%,7%_4%,12%_0,18%_3%,25%_0,31%_4%,38%_1%,45%_4%,52%_0,59%_3%,66%_0,74%_4%,81%_1%,88%_4%,96%_0,100%_9%,98%_21%,100%_36%,98%_51%,100%_67%,98%_83%,100%_94%,95%_100%,89%_96%,83%_100%,75%_96%,68%_100%,61%_97%,54%_100%,47%_96%,40%_100%,33%_97%,26%_100%,18%_96%,11%_100%,4%_96%,0_87%,2%_72%,0_56%,2%_41%,0_25%)]">
+              <span className="absolute inset-0 opacity-20 [background-image:linear-gradient(30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%),linear-gradient(-30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%)] [background-size:18px_16px]" />
+              <span className="absolute inset-x-2 top-1 h-px bg-white/45" />
+              <span className="relative z-10 font-mono">A few things I&apos;ve made</span>
+            </div>
+            <h2 className="font-serif-display text-[40px] leading-[0.88] text-[#141114] md:text-[64px]">FROM IDEA TO <span className="text-[#e9608a]">IMPACT.</span></h2>
+            <div className="mx-auto mt-6 h-[5px] w-28 -rotate-1 rounded-full bg-[#26aee2]" />
+            <div className="mt-9 flex flex-wrap justify-center gap-2">
+              {heroPills.map((pill) => (
+                <Link key={`project-filter-${pill.title}`} href={pill.href} className="inline-flex items-center gap-2 rounded-full border border-[#141114]/15 bg-white/80 px-4 py-2 text-xs font-semibold text-[#141114] transition hover:-translate-y-0.5 hover:border-[#159bd0] hover:text-[#159bd0]">
+                  <pill.icon className="h-3.5 w-3.5" />
+                  {pill.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {recentWorkSection}
+
         {/* Social Proof Bar */}
         <div>
           <div className="flex min-h-[160px] flex-col items-center gap-6 px-6 py-10 text-center md:px-10 lg:px-20">
             <div className="flex shrink-0 items-center justify-center">
-              <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#5c7792]">
+              <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#141114]">
                 {siteContent.home.trusted_by.label}
               </span>
             </div>
@@ -1413,17 +1462,13 @@ export default function PortfolioPage() {
                     height={logo.h}
                     aria-hidden={index >= socialProofLogos.length}
                     className={`w-auto shrink-0 object-contain opacity-80 transition-all hover:opacity-100 ${logo.alt === "Hakuna" ? "max-h-[28px]" : logo.alt === "Paramount+" ? "max-h-[22px]" : "max-h-[46px]"}`}
-                    style={{
-                      filter: "brightness(0) saturate(100%) invert(42%) sepia(14%) saturate(954%) hue-rotate(170deg) brightness(94%) contrast(88%)",
-                    }}
+                    style={{ filter: "brightness(0) saturate(100%)" }}
                   />
                 ))}
               </div>
             </div>
           </div>
         </div>
-
-        {recentWorkSection}
       </section>
 
       {contentSections}

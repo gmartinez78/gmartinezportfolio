@@ -15,6 +15,7 @@ type ProjectTeaserCardProps = {
   description: string
   tags: string[]
   image?: string | null
+  video?: string | null
   imageAlt?: string
   background?: string
   ctaLabel: string
@@ -36,6 +37,7 @@ export function ProjectTeaserCard({
   description,
   tags,
   image,
+  video,
   imageAlt,
   background,
   ctaLabel,
@@ -56,7 +58,18 @@ export function ProjectTeaserCard({
       id={id}
       data-home-card-id={dataCardId}
       href={href}
-      onMouseEnter={onMouseEnter}
+      onMouseEnter={(event) => {
+        onMouseEnter?.()
+        const video = event.currentTarget.querySelector("video")
+        void video?.play()
+      }}
+      onMouseLeave={(event) => {
+        const video = event.currentTarget.querySelector("video")
+        if (video) {
+          video.pause()
+          video.currentTime = 0
+        }
+      }}
       onFocus={onFocus}
       className={cn(
         "group flex min-w-0 flex-col gap-5 outline-none",
@@ -75,7 +88,16 @@ export function ProjectTeaserCard({
         )}
         style={background ? { background } : undefined}
       >
-        {image ? (
+        {video ? (
+          <video
+            src={video}
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04] group-focus-visible:scale-[1.04]"
+          />
+        ) : image ? (
           <Image
             src={image}
             alt={imageAlt ?? `${title} case study preview`}

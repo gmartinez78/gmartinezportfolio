@@ -53,10 +53,12 @@ export function SiteHeader({
   active,
   variant = "default",
   behavior = "sticky",
+  forceSticky = false,
 }: {
   active?: "Projects" | "Resume" | "Contact";
   variant?: "default" | "transparent";
   behavior?: "sticky" | "reveal";
+  forceSticky?: boolean;
 }) {
   const { siteContent } = usePublicSiteContent();
   const navLinks = siteContent.nav.links;
@@ -224,7 +226,9 @@ export function SiteHeader({
       ref={headerRef}
       className={
         isTransparent
-          ? "absolute inset-x-0 top-0 z-50 border-b border-transparent bg-transparent"
+          ? forceSticky
+            ? "fixed inset-x-0 top-0 z-[60] border-b border-[#bcd2ff]/60 bg-white/85 backdrop-blur"
+            : "absolute inset-x-0 top-0 z-50 border-b border-transparent bg-transparent"
           : "sticky top-0 z-50 border-b border-[#bcd2ff]/60 bg-white/85 backdrop-blur"
       }
     >
