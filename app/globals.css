@@ -66,6 +66,17 @@
   }
 }
 
+@keyframes hero-paper-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--paper-rotate, 0deg));
+  }
+
+  50% {
+    transform: translate3d(0, -12px, 0) rotate(var(--paper-rotate, 0deg));
+  }
+}
+
 @keyframes impact-flow-float {
   0%,
   100% {
@@ -156,6 +167,11 @@
   .animate-\[collab-cursor-drift_5\.8s_ease-in-out_infinite\],
   .animate-\[collab-cursor-drift_6\.6s_ease-in-out_1\.2s_infinite\],
   .animate-\[collab-cursor-drift_6\.2s_ease-in-out_2\.1s_infinite\] {
+    animation: none;
+  }
+
+  .animate-\[hero-paper-float_5\.8s_ease-in-out_infinite\],
+  .animate-\[hero-paper-float_6\.6s_ease-in-out_0\.8s_infinite\] {
     animation: none;
   }
 }

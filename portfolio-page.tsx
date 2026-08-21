@@ -6,7 +6,6 @@ import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowUp, BrainCircuit, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Lightbulb, Mic, MousePointer2, Star, Target, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
-import { TypewriterBanner } from "./components/typewriter-banner";
 import { ChecklistStatusCard } from "./components/checklist-status-card";
 import { ContactFormCard } from "./components/contact-form-card";
 import { HighlightCalloutCard } from "./components/highlight-callout-card";
@@ -43,31 +42,6 @@ const TOOL_SHOWCASE_ICONS = [
   { label: "Copilot", className: "absolute top-[75%] left-[93%] w-[15px] md:w-[30px]", duration: "6.6s", delay: "1.6s" },
   { label: "Maze", className: "absolute top-[80%] left-[10%] w-[15px] md:w-[30px]", duration: "6.0s", delay: "1.0s" },
 ] as const;
-
-const HERO_STARS = [
-  { left: "8%", top: "18%", size: 4, duration: "5.8s", delay: "0.2s" },
-  { left: "16%", top: "30%", size: 3, duration: "4.9s", delay: "1.1s" },
-  { left: "24%", top: "12%", size: 2, duration: "6.4s", delay: "2.1s" },
-  { left: "33%", top: "24%", size: 4, duration: "5.4s", delay: "0.8s" },
-  { left: "41%", top: "10%", size: 3, duration: "6.1s", delay: "1.9s" },
-  { left: "52%", top: "18%", size: 4, duration: "5.1s", delay: "1.3s" },
-  { left: "61%", top: "28%", size: 2, duration: "6.6s", delay: "0.5s" },
-  { left: "70%", top: "14%", size: 3, duration: "5.7s", delay: "2.2s" },
-  { left: "78%", top: "22%", size: 4, duration: "4.8s", delay: "0.4s" },
-  { left: "87%", top: "16%", size: 2, duration: "6.2s", delay: "1.6s" },
-  { left: "13%", top: "48%", size: 2, duration: "5.9s", delay: "2.8s" },
-  { left: "29%", top: "56%", size: 3, duration: "5.2s", delay: "1.4s" },
-  { left: "47%", top: "46%", size: 2, duration: "6.8s", delay: "0.6s" },
-  { left: "66%", top: "52%", size: 3, duration: "5.5s", delay: "2.4s" },
-  { left: "82%", top: "44%", size: 2, duration: "6.3s", delay: "1.7s" },
-];
-
-const HERO_UI_ORBS = [
-  { left: "9%", top: "28%", width: 132, height: 132, rotate: -18, depth: -18, fill: "linear-gradient(135deg, rgba(86,72,228,0.92) 0%, rgba(60,72,221,0.74) 100%)" },
-  { left: "77%", top: "22%", width: 88, height: 88, rotate: 12, depth: -12, fill: "linear-gradient(135deg, rgba(255,178,48,0.96) 0%, rgba(255,153,0,0.74) 100%)" },
-  { left: "73%", top: "54%", width: 154, height: 110, rotate: -14, depth: -22, fill: "linear-gradient(135deg, rgba(20,209,140,0.88) 0%, rgba(26,148,116,0.7) 100%)" },
-  { left: "21%", top: "64%", width: 160, height: 118, rotate: -22, depth: -28, fill: "linear-gradient(135deg, rgba(72,79,248,0.88) 0%, rgba(59,73,208,0.68) 100%)" },
-];
 
 const PROJECT_BACKGROUNDS: Record<string, string> = {
   reversetech: "linear-gradient(180deg, #eef4fb 0%, #eef4fb 100%)",
@@ -477,87 +451,12 @@ function getGitHubActivityIcon(kind: GitHubActivityItem["kind"]) {
   return GitFork;
 }
 
-function getParallaxTransform(x: number, y: number, depth: number, rotate = 0) {
-  return `translate3d(${x * depth}px, ${y * depth}px, 0) rotate(${rotate}deg)`;
-}
-
-function HeroPrototypeOverlay({
-  heroPointer,
-}: {
-  heroPointer: { x: number; y: number };
-}) {
-  return (
-    <div className="pointer-events-none absolute inset-0 hidden lg:block">
-      <div
-        className="absolute right-[8%] top-[16%] h-[76px] w-[76px] rounded-[20px] border border-dashed border-white/22"
-        style={{
-          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, 0),
-          transition: "transform 180ms ease-out",
-        }}
-      />
-      <div
-        className="absolute right-[24%] top-[35%] h-px w-[18%] border-t border-dashed border-white/20"
-        style={{
-          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -9, 0),
-          transition: "transform 180ms ease-out",
-        }}
-      />
-      <div
-        className="absolute right-[38%] top-[27%] h-px w-[16%] border-t border-dashed border-white/18"
-        style={{
-          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -9, 0),
-          transition: "transform 180ms ease-out",
-        }}
-      />
-      <div
-        className="absolute right-[40%] top-[19%] h-8 w-8 border-l border-t border-white/24"
-        style={{
-          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -7, 0),
-          transition: "transform 180ms ease-out",
-        }}
-      />
-      <div
-        className="absolute right-[24%] top-[58%] h-9 w-9 border-r border-b border-white/20"
-        style={{
-          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -7, 0),
-          transition: "transform 180ms ease-out",
-        }}
-      />
-      <div
-        className="absolute right-[10%] bottom-[14%] flex items-center gap-2 rounded-full border border-white/24 bg-white/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-[#5f708f]"
-        style={{
-          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -10, 0),
-          transition: "transform 180ms ease-out",
-        }}
-      >
-        <span className="h-1.5 w-1.5 rounded-full bg-[#13bf85]/65" />
-        handoff
-      </div>
-      <div
-        className="absolute inset-x-[30%] top-[27%] h-px bg-[linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.32),rgba(255,255,255,0))]"
-        style={{
-          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -6, 0),
-          transition: "transform 180ms ease-out",
-        }}
-      />
-      <div
-        className="absolute inset-x-[34%] bottom-[26%] h-px bg-[linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.24),rgba(255,255,255,0))]"
-        style={{
-          transform: getParallaxTransform(heroPointer.x, heroPointer.y, -6, 0),
-          transition: "transform 180ms ease-out",
-        }}
-      />
-    </div>
-  );
-}
-
 export default function PortfolioPage() {
   const heroPhase: HeroPhase = "day";
   const { language } = useLanguage();
   const translate = useTranslate();
   const [githubActivity, setGithubActivity] = useState<GitHubActivityItem[]>([]);
   const [githubUsername, setGithubUsername] = useState("gmartinez78");
-  const [heroPointer, setHeroPointer] = useState({ x: 0, y: 0 });
   const [heroVisitorType, setHeroVisitorType] = useState<HeroVisitorType | null>(null);
   const [heroAssistantQuery, setHeroAssistantQuery] = useState("");
   const [heroAssistantResponse, setHeroAssistantResponse] = useState(() => translate("home.assistantDefaultResponse"));
@@ -607,13 +506,6 @@ export default function PortfolioPage() {
       password: study.password,
       cta: study.external_link ? translate("home.viewProject") : translate("home.viewCaseStudy"),
     }));
-  const heroRoles = [
-    translate("home.heroRole1"),
-    translate("home.heroRole2"),
-    translate("home.heroRole3"),
-    translate("home.heroRole4"),
-    translate("home.heroRole5"),
-  ];
   const heroPills = [
     {
       title: translate("home.heroPill.aiProductTitle"),
@@ -1311,131 +1203,104 @@ export default function PortfolioPage() {
 
       {/* ── Hero ── */}
       <section className="bg-white">
-        <div
-          className="relative overflow-hidden px-6 pt-[8.5rem] pb-[3rem] sm:px-10 lg:px-16"
-          style={{ background: heroPhaseStyles.background }}
-          onMouseMove={(event) => {
-            const bounds = event.currentTarget.getBoundingClientRect();
-            const normalizedX = (event.clientX - bounds.left) / bounds.width - 0.5;
-            const normalizedY = (event.clientY - bounds.top) / bounds.height - 0.5;
-            setHeroPointer({ x: normalizedX, y: normalizedY });
-          }}
-          onMouseLeave={() => setHeroPointer({ x: 0, y: 0 })}
-        >
-          <div className="pointer-events-none absolute inset-0" style={{ background: heroPhaseStyles.overlay }} />
-          <div
-            className="pointer-events-none absolute inset-0 opacity-90"
-            style={{ background: heroPhaseStyles.cone }}
-          />
-          <HeroPrototypeOverlay heroPointer={heroPointer} />
-          <div className="pointer-events-none absolute inset-0" style={{ opacity: heroPhaseStyles.starOpacity }}>
-            {HERO_STARS.map((star, index) => (
-              <span
-                key={`hero-star-${index}`}
-                className="absolute rounded-full bg-white/85 shadow-[0_0_10px_rgba(255,255,255,0.45)] animate-[hero-star-twinkle_var(--twinkle-duration)_ease-in-out_infinite]"
-                style={{
-                  left: star.left,
-                  top: star.top,
-                  width: `${star.size}px`,
-                  height: `${star.size}px`,
-                  animationDelay: star.delay,
-                  ["--twinkle-duration" as string]: star.duration,
-                }}
-              />
-            ))}
+        <div className="relative isolate overflow-hidden bg-[#fff8f3] px-6 pb-10 pt-[8.25rem] sm:px-10 lg:px-16 lg:pb-14">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_24%,rgba(255,255,255,0.95),transparent_25%),radial-gradient(circle_at_72%_58%,rgba(255,212,193,0.38),transparent_28%),linear-gradient(112deg,#fffaf5_0%,#fff3ea_54%,#fff9f6_100%)]" />
+          <div className="pointer-events-none absolute left-[47%] top-[18%] hidden h-24 w-36 -rotate-[28deg] lg:block">
+            <span className="absolute left-0 top-7 h-[3px] w-[108px] rounded-full bg-[#1183d0]" />
+            <span className="absolute left-0 top-[19px] h-[3px] w-11 rotate-[-44deg] rounded-full bg-[#1183d0]" />
+            <span className="absolute left-[97px] top-[20px] h-[3px] w-11 rotate-[44deg] rounded-full bg-[#1183d0]" />
           </div>
-          <div className="pointer-events-none absolute inset-0 block">
-            <div
-              className="absolute right-[28%] top-[20%] z-[1] w-[194px] rounded-[26px] border border-white/30 bg-white/12 p-3.5 shadow-[0_20px_42px_rgba(42,54,92,0.06),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur-xl hidden sm:block"
-              style={{
-                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -26, -10),
-                transition: "transform 180ms ease-out",
-              }}
-            >
-              <div className="mb-3 flex items-center justify-between">
-                <span className="inline-flex items-center gap-2 rounded-full bg-white/45 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#3f4a67]">
-                  <LayoutTemplate className="h-3.5 w-3.5" />
-                  Wireframe
-                </span>
-                <span className="h-2.5 w-2.5 rounded-full bg-[#6d79ff]" />
+          <div className="pointer-events-none absolute right-[7%] top-[16%] hidden h-14 w-14 rotate-12 lg:block">
+            <span className="absolute left-6 top-0 h-full w-[3px] rotate-45 rounded-full bg-[#f06d96]" />
+            <span className="absolute left-6 top-0 h-full w-[3px] -rotate-45 rounded-full bg-[#f06d96]" />
+            <span className="absolute left-0 top-6 h-[3px] w-full rotate-45 rounded-full bg-[#f06d96]" />
+            <span className="absolute left-0 top-6 h-[3px] w-full -rotate-45 rounded-full bg-[#f06d96]" />
+          </div>
+          <div className="pointer-events-none absolute bottom-[11%] right-[3%] hidden h-20 w-20 lg:block">
+            <span className="absolute left-[31px] top-0 h-12 w-9 rotate-[-36deg] rounded-t-full border-[3px] border-b-0 border-[#1183d0]" />
+            <span className="absolute left-[13px] top-3 h-12 w-9 rotate-[36deg] rounded-t-full border-[3px] border-b-0 border-[#1183d0]" />
+          </div>
+          <svg className="pointer-events-none absolute left-[1.5%] top-[36%] hidden h-16 w-16 -rotate-12 lg:block" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M32 6 37 25 57 18 43 33 59 43 39 41 36 60 28 42 10 53 22 35 5 26 26 27Z" stroke="#16A7DF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <svg className="pointer-events-none absolute bottom-[18%] left-[49%] hidden h-20 w-24 rotate-[-12deg] lg:block" viewBox="0 0 96 80" fill="none" aria-hidden="true">
+            <path d="M14 56 22 24 40 42 49 13 65 39 80 24 76 58 14 56Z" stroke="#F0A51B" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M18 62c18 5 39 5 58-1" stroke="#F0A51B" strokeWidth="3" strokeLinecap="round" />
+          </svg>
+          <svg className="pointer-events-none absolute left-[48%] top-[52%] hidden h-24 w-28 rotate-[14deg] lg:block" viewBox="0 0 112 96" fill="none" aria-hidden="true">
+            <path d="M15 18c24 2 47 14 59 35 8 13 7 25-3 35" stroke="#16A7DF" strokeWidth="3.5" strokeLinecap="round" />
+            <path d="m58 72 13 17 16-14" stroke="#16A7DF" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[45%] bg-[linear-gradient(180deg,rgba(247,224,211,0)_0%,rgba(242,218,202,0.7)_26%,#e8cdbb_100%)]" />
+          <div className="relative mx-auto grid min-h-[570px] max-w-[1280px] items-center gap-10 lg:min-h-[650px] lg:grid-cols-[1.08fr_0.92fr] lg:gap-4">
+            <div className="relative z-10 max-w-[800px] pb-4 lg:-translate-x-12 lg:pb-12 xl:-translate-x-20">
+              <div className="relative mb-7 inline-flex -rotate-[5deg] bg-[#39b8e7] px-5 py-2.5 text-[11px] font-medium tracking-[0.04em] text-[#163143] shadow-[0_5px_10px_rgba(18,111,148,0.16)] sm:px-7 sm:text-sm">
+                <span className="absolute inset-x-1 top-0 h-px bg-white/35" />
+                designer <span className="px-2 text-[#f8eff0]">·</span> I solve problems <span className="px-2 text-[#f8eff0]">·</span> I organize ideas
               </div>
-              <div className="space-y-2">
-                <div className="h-4 w-[62%] rounded-full bg-[#ffffff]/70" />
-                <div className="grid grid-cols-[1.25fr_0.9fr] gap-2">
-                  <div className="h-20 rounded-[18px] bg-[#dbe6ff]/75" />
-                  <div className="space-y-2">
-                    <div className="h-9 rounded-[14px] bg-[#ffffff]/70" />
-                    <div className="h-9 rounded-[14px] bg-[#f6d6ff]/60" />
-                  </div>
-                </div>
-                <div className="h-3 w-[48%] rounded-full bg-[#ffffff]/62" />
+              <h1 className="font-serif-display text-[clamp(2.35rem,4.55vw,4.7rem)] font-medium leading-[0.86] tracking-[-0.075em] text-[#141114]">
+                I MAKE
+                <span className="mt-[0.16em] block text-[#e7688f]">PRODUCTS</span>
+                <span className="mt-[0.16em] block">WORK <em className="font-serif-display font-medium text-[#e7688f]">&amp; WOW.</em></span>
+              </h1>
+              <div className="mt-9 max-w-[610px]">
+                <div className="mb-2 h-1.5 w-36 -rotate-2 rounded-full bg-[#25aee1]" />
+                <p className="text-[13px] font-bold uppercase leading-relaxed tracking-[0.04em] text-[#159bd0] sm:text-sm">
+                  Websites, social media, experiences...
+                </p>
+                <p className="mt-1 font-serif-display text-base italic leading-relaxed text-[#3d3438] sm:text-lg">I bring order to chaos.</p>
+              </div>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link href="#projects" className="inline-flex items-center justify-center rounded-full bg-[#ee668a] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-white shadow-[0_12px_24px_rgba(238,102,138,0.25)] transition hover:-translate-y-0.5 hover:bg-[#dc5278]">
+                  Explore my work
+                </Link>
+                <Link href={withBasePath("/contact")} className="inline-flex items-center justify-center rounded-full border border-[#31252a]/20 bg-white/60 px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-[#31252a] transition hover:-translate-y-0.5 hover:bg-white">
+                  Let&apos;s talk
+                </Link>
               </div>
             </div>
-
-            <div
-              className="absolute right-[10%] top-[18%] z-[1] w-[166px] rounded-[24px] border border-white/30 bg-white/12 p-3.5 shadow-[0_20px_42px_rgba(42,54,92,0.06),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur-xl hidden sm:block"
-              style={{
-                transform: getParallaxTransform(heroPointer.x, heroPointer.y, -20, 9),
-                transition: "transform 180ms ease-out",
-              }}
-            >
-              <div className="mb-3 flex items-center justify-between">
-                <span className="inline-flex items-center gap-2 rounded-full bg-white/45 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#3f4a67]">
-                  <BrainCircuit className="h-3.5 w-3.5" />
-                  AI Assist
-                </span>
-                <span className="rounded-full border border-[#7f8fff]/30 bg-[#6f7cff]/16 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#4e5fc7]">
-                  live
-                </span>
+            <div className="relative mx-auto h-[330px] w-full max-w-[430px] self-end sm:h-[460px] lg:h-[650px] lg:max-w-[510px]">
+              <div className="absolute bottom-0 left-[-6%] right-[-15%] top-[54px] z-30 lg:translate-x-[20%]">
+                <Image src="/images/home-hero-portrait-white.png" alt="Greddys Martinez seated at a laptop" fill priority sizes="(max-width: 1024px) 470px, 590px" className="object-contain object-bottom" />
               </div>
-              <div className="rounded-[16px] bg-[#f8fbff]/56 p-2.5">
-                <div className="mb-2 flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-[#6d79ff]" />
-                  <div className="h-2 w-[56%] rounded-full bg-[#d9e2ff]" />
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <span className="h-5 w-5 rounded-full bg-[#e7ecff]" />
-                    <div className="h-2 w-[68%] rounded-full bg-white/80" />
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="h-5 w-5 rounded-full bg-[#ffe6d0]" />
-                    <div className="h-2 w-[54%] rounded-full bg-white/72" />
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="h-5 w-5 rounded-full bg-[#d8f3e7]" />
-                    <div className="h-2 w-[74%] rounded-full bg-white/82" />
-                  </div>
-                </div>
+              <div className="absolute right-[-11%] top-[3%] z-20 hidden w-[184px] bg-[#fffdf9] px-4 pb-4 pt-6 text-[#2a2528] shadow-[0_18px_34px_rgba(84,53,58,0.18)] sm:block lg:w-[205px] animate-[hero-paper-float_5.8s_ease-in-out_infinite]" style={{ ["--paper-rotate" as string]: "5deg" }}>
+                <span className="absolute -top-3 left-1/2 h-7 w-[106px] -translate-x-1/2 -rotate-[2deg] bg-[#ed7195]/90" />
+                <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#e05f88]">How I can help</p>
+                <ul className="space-y-3 text-[13px] font-medium leading-tight lg:text-sm">
+                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#2eb4e7] text-[11px]">▣</span> Website design</li>
+                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f181a4] text-[11px]">♡</span> Social media</li>
+                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f7b93b] text-[11px]">✎</span> Brand identity</li>
+                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#2eb4e7] text-[11px]">▯</span> User experience</li>
+                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f181a4] text-[11px]">✦</span> Creative direction</li>
+                </ul>
               </div>
-            </div>
-
-          </div>
-          <div
-            className="pointer-events-none absolute left-[12%] top-[12%] h-px w-[160px] animate-[hero-shooting-star_11s_linear_infinite] opacity-0"
-            style={{ opacity: heroPhaseStyles.shootingOpacity }}
-          >
-            <span className="absolute inset-0 rounded-full bg-[linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.95)_45%,rgba(255,255,255,0))] shadow-[0_0_14px_rgba(255,255,255,0.55)]" />
-            <span className="absolute right-0 top-1/2 h-[6px] w-[6px] -translate-y-1/2 rounded-full bg-white shadow-[0_0_16px_rgba(255,255,255,0.95)]" />
-          </div>
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.58)_42%,#ffffff_100%)]" />
-          <div className="relative mx-auto flex min-h-[340px] w-full max-w-[1200px] flex-col items-start justify-center gap-8 px-5 text-left sm:px-8 lg:px-12">
-            <div className="flex w-full max-w-[760px] flex-col items-start justify-center">
-              <TypewriterBanner
-                greeting={(
-                  <>
-                    <span className="font-inter text-[2.05em] leading-none text-[#0e2951]">
-                      Greddys Martinez
-                    </span>
-                  </>
-                )}
-                roles={heroRoles}
-                description=""
-                greetingClassName="text-[#0e2951]"
-                roleClassName="text-[#1183D0]"
-                descriptionClassName="text-[#0e2951]"
-                align="left"
-              />
+              <div className="absolute -right-[16%] top-[29%] z-20 hidden w-[210px] bg-[#32b9e8] px-5 py-6 text-[#102a36] shadow-[0_18px_34px_rgba(31,122,157,0.25)] sm:block lg:w-[232px] animate-[hero-paper-float_6.6s_ease-in-out_0.8s_infinite]" style={{ ["--paper-rotate" as string]: "-4deg" }}>
+                <span className="absolute right-5 top-4 text-xl text-white/80">⌇</span>
+                <p className="font-serif-display text-[23px] italic leading-[1.1] lg:text-[27px]">You have the idea.</p>
+                <p className="mt-2 font-serif-display text-[23px] italic leading-[1.1] lg:text-[27px]">I make it work.</p>
+                <div className="mt-5 h-[3px] w-24 bg-[#087da9]" />
+                <p className="mt-4 text-[10px] font-bold uppercase leading-relaxed tracking-[0.12em]">Beautiful, useful, and ready for real people.</p>
+              </div>
+              <div className="absolute -right-[15%] bottom-[14%] z-20 hidden w-[205px] rounded-[24px] bg-[#fffdf9] p-4 text-[#261f21] shadow-[0_18px_34px_rgba(84,53,58,0.22)] sm:block lg:w-[230px] animate-[hero-paper-float_6.6s_ease-in-out_0.8s_infinite]" style={{ ["--paper-rotate" as string]: "-4deg" }}>
+                <div className="flex items-center gap-2 text-[9px] font-bold"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f8d6ca] text-[#e06b91]">G</span><span>Studio Greddys<br /><span className="font-normal text-[#766568]">@randomlygreddys</span></span><span className="ml-auto text-base">•••</span></div>
+                <p className="mt-4 text-xs">New brand, new era. <span className="text-[#eaa223]">✦</span></p>
+                <div className="mt-3 grid grid-cols-[1fr_0.72fr] gap-2">
+                  <p className="font-serif-display text-[26px] font-semibold leading-[0.9]">DESIGN<br />HAS<br />POWER.</p>
+                  <div className="rounded-[10px] bg-[radial-gradient(circle_at_65%_25%,#ffd37b_0_7%,transparent_8%),radial-gradient(circle_at_44%_40%,#f5a54e_0_17%,transparent_18%),linear-gradient(135deg,#f9c3a5,#c76c38)]" />
+                </div>
+                <div className="mt-3 flex items-center gap-3 text-[10px]"><span className="text-[#e23f46]">♥</span> 128 <span className="text-base">○</span> 12 <span>↻ 8</span></div>
+              </div>
+              <div className="absolute -right-[18%] -bottom-[5%] z-20 hidden w-[210px] overflow-hidden rounded-[8px] bg-[#96e4d8] text-[#102a36] shadow-[0_18px_34px_rgba(31,122,157,0.25)] sm:block lg:w-[235px] animate-[hero-paper-float_5.8s_ease-in-out_infinite]" style={{ ["--paper-rotate" as string]: "4deg" }}>
+                <div className="flex h-6 items-center justify-between bg-[#11b9a7] px-3 text-[7px] font-bold"><span>◌ ◌ ◌</span><span>SHOP · ABOUT · JOURNAL · CART (0)</span></div>
+                <div className="p-4"><p className="font-serif-display text-[28px] leading-[0.88]">Glow<br />from<br />within.</p><button className="mt-3 bg-[#172423] px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.12em] text-white">Buy</button></div>
+              </div>
+              <div className="absolute left-[-31%] top-[18%] z-20 hidden w-[150px] scale-[0.82] bg-[#f6ddea] px-5 pb-5 pt-8 text-[#3c3035] shadow-[0_16px_28px_rgba(85,53,65,0.15)] lg:block animate-[hero-paper-float_6.6s_ease-in-out_0.8s_infinite]" style={{ ["--paper-rotate" as string]: "-8deg" }}>
+                <span className="absolute -top-3 left-8 h-7 w-[82px] -rotate-[4deg] bg-[#46bfea]/85" />
+                <span className="absolute left-5 top-7 text-xl">✧</span>
+                <p className="mt-4 font-serif-display text-lg italic leading-snug">“She understood my vision and turned it into a brand that feels like me.”</p>
+                <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.12em]">— Maria</p>
+              </div>
+              <div className="absolute bottom-5 -left-2 rounded-full border border-white/70 bg-white/80 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-[#6b4560] shadow-[0_10px_22px_rgba(89,55,63,0.12)] backdrop-blur sm:left-2">Designing for people</div>
             </div>
           </div>
           <div className="relative z-10 mx-auto mt-8 grid w-full max-w-[1180px] gap-4 px-6 text-left md:mt-10 md:grid-cols-2 md:px-10 lg:grid-cols-4 lg:px-16">
