@@ -13,30 +13,30 @@ export function SiteFooter() {
   const footerSocial = siteContent.footer.social_links;
 
   return (
-    <footer className="bg-black text-white">
-      <div className="border-t border-white/15" />
+    <footer className="bg-white text-[#141114]">
+      <div className="border-t border-[#141114]/10" />
       <div className="max-w-[1200px] mx-auto px-6 py-12 md:px-10 lg:px-20 grid gap-10 md:grid-cols-2 xl:grid-cols-4">
         <div className="flex flex-col gap-3">
           <Link href={withBasePath("/")} className="flex items-center gap-3">
             <LogoMark className="h-12 w-auto" />
-            <span className="text-[18px] font-semibold leading-tight text-white">
+            <span className="text-[18px] font-semibold leading-tight text-[#141114]">
               {siteContent.nav.logo_text}
             </span>
           </Link>
-          <p className="max-w-[280px] text-[14px] leading-[1.6] text-white/78">
+          <p className="max-w-[280px] text-[14px] leading-[1.6] text-[#5e5156]">
             {siteContent.footer.tagline}
           </p>
         </div>
 
         <div className="flex flex-col gap-3.5">
-          <span className="text-[14px] font-semibold text-white">
+          <span className="text-[14px] font-semibold text-[#141114]">
             {translate("footer.siteMap")}
           </span>
           {footerLinks.map((link) => (
             <Link
               key={link.label}
               href={withBasePath(link.href)}
-              className="text-[14px] text-white/78 transition-colors hover:text-white"
+              className="text-[14px] text-[#5e5156] transition-colors hover:text-[#e9608a]"
             >
               {link.label}
             </Link>
@@ -44,7 +44,7 @@ export function SiteFooter() {
         </div>
 
         <div className="flex flex-col gap-3.5">
-          <span className="text-[14px] font-semibold text-white">
+          <span className="text-[14px] font-semibold text-[#141114]">
             {translate("footer.connect")}
           </span>
           {footerSocial.map((link) => (
@@ -53,7 +53,7 @@ export function SiteFooter() {
               href={normalizeNavigableHref(link.href)}
               target={isExternalHref(link.href) ? "_blank" : undefined}
               rel={isExternalHref(link.href) ? "noreferrer" : undefined}
-              className="text-[14px] text-white/78 transition-colors hover:text-white"
+              className="text-[14px] text-[#5e5156] transition-colors hover:text-[#e9608a]"
             >
               {link.label}
             </a>
@@ -61,28 +61,28 @@ export function SiteFooter() {
         </div>
 
         <div className="flex flex-col gap-3.5">
-          <span className="text-[14px] font-semibold text-white">
+          <span className="text-[14px] font-semibold text-[#141114]">
             {siteContent.footer.cta_headline}
           </span>
-          <p className="text-[14px] leading-[1.6] text-white/78">
+          <p className="text-[14px] leading-[1.6] text-[#5e5156]">
             {siteContent.footer.cta_body}
           </p>
           <Link
             href={withBasePath(siteContent.footer.cta_href)}
-            className="text-[14px] font-medium text-white transition-colors hover:text-white/78"
+            className="text-[14px] font-medium text-[#e9608a] transition-colors hover:text-[#c94c75]"
           >
             {siteContent.footer.cta_label}
           </Link>
         </div>
       </div>
 
-      <div className="border-t border-white/15" />
+      <div className="border-t border-[#141114]/10" />
 
       <div className="max-w-[1200px] mx-auto px-6 py-5 md:px-10 lg:px-20 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <span className="text-[13px] text-white/55">
+        <span className="text-[13px] text-[#74666c]">
           {siteContent.footer.copyright}
         </span>
-        <div className="flex items-center gap-4 text-white">
+        <div className="flex items-center gap-4 text-[#141114]">
           <a
             href={normalizeNavigableHref(footerSocial[0]?.href ?? "#")}
             target={isExternalHref(footerSocial[0]?.href ?? "#") ? "_blank" : undefined}

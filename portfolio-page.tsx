@@ -1174,38 +1174,39 @@ export default function PortfolioPage() {
   const ctaSection = (
     <section
       key="cta"
-      className="px-6 py-[80px] md:px-16 xl:px-30"
-      style={{
-        backgroundImage: `linear-gradient(180deg, #fff8f3 0%, #fff8f3 18%, rgba(255,248,243,0) 42%), ${heroPhaseStyles.background}`,
-      }}
+      className="relative isolate overflow-hidden bg-[#fff8f3] px-6 py-[96px] md:px-16 xl:px-30"
     >
-      <div className="mx-auto grid max-w-[1180px] gap-8 text-[#0e2951] lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+      <div className="pointer-events-none absolute left-[8%] top-[14%] h-16 w-16 rotate-[-12deg] rounded-full border-[3px] border-[#25aee1] opacity-70" />
+      <div className="pointer-events-none absolute bottom-[12%] right-[8%] h-12 w-12 rotate-12 border-[3px] border-[#e9608a] opacity-60" />
+      <div className="relative mx-auto grid max-w-[1180px] gap-12 text-[#141114] lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="relative px-2 py-2 md:px-4 md:py-4">
-            <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-[#1183D0]/14 blur-3xl" />
-            <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-[#ffcf8c]/10 blur-3xl" />
             <div className="relative">
-              <h2 className="max-w-[620px] font-inter text-[42px] font-normal leading-[1.02] text-[#0e2951] md:text-[58px]">
+              <p className="mb-5 inline-block -rotate-[3deg] bg-[#32b9e8] px-4 py-2 font-mono text-[11px] font-medium tracking-[0.06em] text-[#102a36] shadow-[0_5px_10px_rgba(18,111,148,0.16)]">
+                LET&apos;S MAKE IT WORK
+              </p>
+              <h2 className="max-w-[620px] font-serif-display text-[48px] leading-[0.92] tracking-[-0.04em] text-[#141114] md:text-[68px]">
                 Let’s work together, or explore my projects first.
               </h2>
-              <p className="mt-5 max-w-[620px] text-[16px] leading-[1.8] text-[#5c7792]">
+              <div className="mt-6 h-[5px] w-28 -rotate-1 rounded-full bg-[#25aee1]" />
+              <p className="mt-6 max-w-[620px] font-serif-display text-[18px] italic leading-[1.55] text-[#55434a] md:text-[21px]">
                 Browse case studies, share what your team is working on, or reach out directly to start a conversation.
               </p>
-              <div className="mt-8 flex flex-wrap gap-3 text-[14px] text-[#4f6486]">
-                <a href="mailto:greddysmartinez5@gmail.com" className="underline decoration-[#b8cadf] underline-offset-4 hover:text-[#0e2951]">
+              <div className="mt-8 flex flex-wrap gap-2 text-[13px] font-semibold text-[#3f3338]">
+                <a href="mailto:greddysmartinez5@gmail.com" className="rounded-full border border-[#141114]/15 bg-white/70 px-4 py-2 transition hover:-translate-y-0.5 hover:border-[#e9608a] hover:text-[#e9608a]">
                   Email
                 </a>
                 <a
                   href="https://linkedin.com/in/greddysmartinez"
                   target="_blank"
                   rel="noreferrer"
-                  className="underline decoration-[#b8cadf] underline-offset-4 hover:text-[#0e2951]"
+                  className="rounded-full border border-[#141114]/15 bg-white/70 px-4 py-2 transition hover:-translate-y-0.5 hover:border-[#e9608a] hover:text-[#e9608a]"
                 >
                   LinkedIn ↗
                 </a>
-                <Link href={withBasePath("/projects")} className="underline decoration-[#b8cadf] underline-offset-4 hover:text-[#0e2951]">
+                <Link href={withBasePath("/projects")} className="rounded-full border border-[#141114]/15 bg-white/70 px-4 py-2 transition hover:-translate-y-0.5 hover:border-[#e9608a] hover:text-[#e9608a]">
                   {translate("home.caseStudiesLink")}
                 </Link>
-                <Link href={withBasePath("/social-media-diagnostic")} className="underline decoration-[#b8cadf] underline-offset-4 hover:text-[#0e2951]">
+                <Link href={withBasePath("/social-media-diagnostic")} className="rounded-full border border-[#141114]/15 bg-white/70 px-4 py-2 transition hover:-translate-y-0.5 hover:border-[#e9608a] hover:text-[#e9608a]">
                   Social media diagnostic
                 </Link>
               </div>
@@ -1221,9 +1222,9 @@ export default function PortfolioPage() {
             submitting={ctaSubmitting}
             showSubject={false}
             helperText="Tell me about the product, the team, or the design challenge. I’ll follow up from the contact page without the extra friction."
-            className="rounded-[32px] border-[#e4ebf3] bg-[rgba(248,251,255,0.88)] shadow-[0_18px_44px_rgba(60,62,63,0.06)] backdrop-blur-sm"
-            contentClassName="px-8 py-10 md:px-12 md:py-14"
-            submitClassName="h-12 rounded-full border border-[#c8d7ea] bg-white px-6 text-[var(--ui-color-text-strong)] hover:bg-[var(--ui-color-text-strong)] hover:text-white disabled:cursor-not-allowed disabled:opacity-70"
+            className="rounded-[28px] border-[#141114]/10 bg-white shadow-[0_20px_42px_rgba(95,63,69,0.12)]"
+            contentClassName="px-7 py-9 md:px-10 md:py-11 [&_input]:border-[#141114]/15 [&_input]:bg-[#fffaf7] [&_textarea]:border-[#141114]/15 [&_textarea]:bg-[#fffaf7] [&_label]:text-[#55434a]"
+            submitClassName="h-12 rounded-full border-0 bg-[#e9608a] px-6 font-bold uppercase tracking-[0.08em] text-white hover:bg-[#cf4f78] disabled:cursor-not-allowed disabled:opacity-70"
             onNameChange={(value) => {
               setCtaForm((current) => ({ ...current, name: value }));
               setCtaErrors((current) => ({ ...current, name: undefined }));
