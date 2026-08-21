@@ -1275,7 +1275,7 @@ export default function PortfolioPage() {
             <path d="M14 56 22 24 40 42 49 13 65 39 80 24 76 58 14 56Z" stroke="#F0A51B" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M18 62c18 5 39 5 58-1" stroke="#F0A51B" strokeWidth="3" strokeLinecap="round" />
           </svg>
-          <div className="pointer-events-none absolute -bottom-[14%] -left-[12%] -right-[12%] z-0 h-[36%] overflow-hidden rounded-[50%] min-[1025px]:-bottom-[34%] min-[1025px]:h-[60%]">
+          <div className="pointer-events-none absolute -bottom-[34%] -left-[12%] -right-[12%] z-0 hidden h-[60%] overflow-hidden rounded-[50%] min-[1025px]:block">
             <Image src="/images/home-hero-table.png" alt="" fill sizes="100vw" className="object-cover object-center" />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,248,243,0.32)_0%,rgba(255,248,243,0.04)_30%,rgba(215,181,154,0.12)_100%)]" />
           </div>
