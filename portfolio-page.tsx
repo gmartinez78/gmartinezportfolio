@@ -1255,7 +1255,7 @@ export default function PortfolioPage() {
       {/* ── Hero ── */}
       <section className="bg-[#fff8f3]">
         <div ref={heroScrollRef} className="min-[1025px]:h-[100svh]">
-        <div className="relative isolate overflow-hidden bg-[#fff8f3] px-6 pb-10 pt-[8.25rem] sm:px-10 lg:px-16 lg:pb-14 min-[1025px]:sticky min-[1025px]:top-0 min-[1025px]:h-[100svh] min-[1025px]:overflow-hidden">
+        <div className="relative isolate overflow-hidden bg-[#fff8f3] px-5 pb-8 pt-24 sm:px-10 sm:pt-[8.25rem] lg:px-16 lg:pb-14 min-[1025px]:sticky min-[1025px]:top-0 min-[1025px]:h-[100svh] min-[1025px]:overflow-hidden">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_24%,rgba(255,255,255,0.95),transparent_25%),radial-gradient(circle_at_72%_58%,rgba(255,212,193,0.38),transparent_28%),linear-gradient(112deg,#fffaf5_0%,#fff3ea_54%,#fff9f6_100%)]" />
           <div className="pointer-events-none absolute right-[7%] top-[16%] hidden h-14 w-14 rotate-12 xl:block">
             <span className="absolute left-6 top-0 h-full w-[3px] rotate-45 rounded-full bg-[#f06d96]" />
@@ -1274,23 +1274,23 @@ export default function PortfolioPage() {
             <path d="M14 56 22 24 40 42 49 13 65 39 80 24 76 58 14 56Z" stroke="#F0A51B" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M18 62c18 5 39 5 58-1" stroke="#F0A51B" strokeWidth="3" strokeLinecap="round" />
           </svg>
-          <div className="pointer-events-none absolute -bottom-[34%] -left-[12%] -right-[12%] z-0 h-[60%] overflow-hidden rounded-[50%]">
+          <div className="pointer-events-none absolute -bottom-[14%] -left-[12%] -right-[12%] z-0 h-[36%] overflow-hidden rounded-[50%] min-[1025px]:-bottom-[34%] min-[1025px]:h-[60%]">
             <Image src="/images/home-hero-table.png" alt="" fill sizes="100vw" className="object-cover object-center" />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,248,243,0.32)_0%,rgba(255,248,243,0.04)_30%,rgba(215,181,154,0.12)_100%)]" />
           </div>
-          <div className="relative mx-auto grid min-h-[570px] max-w-[1280px] items-center gap-10 xl:min-h-[650px] xl:grid-cols-[1.08fr_0.92fr] xl:gap-4 2xl:min-h-[720px] 2xl:max-w-[1440px]">
-            <div className="relative z-40 max-w-[800px] pb-4 xl:translate-x-12 xl:pb-12 2xl:translate-y-8">
-              <div className="relative mb-7 inline-flex -rotate-[5deg] overflow-hidden bg-[#39b8e7] px-5 py-2.5 text-[11px] font-medium tracking-[0.04em] text-[#163143] shadow-[0_5px_10px_rgba(18,111,148,0.16)] [clip-path:polygon(0_9%,2%_1%,7%_4%,12%_0,18%_3%,25%_0,31%_4%,38%_1%,45%_4%,52%_0,59%_3%,66%_0,74%_4%,81%_1%,88%_4%,96%_0,100%_9%,98%_21%,100%_36%,98%_51%,100%_67%,98%_83%,100%_94%,95%_100%,89%_96%,83%_100%,75%_96%,68%_100%,61%_97%,54%_100%,47%_96%,40%_100%,33%_97%,26%_100%,18%_96%,11%_100%,4%_96%,0_87%,2%_72%,0_56%,2%_41%,0_25%)] sm:px-7 sm:text-sm xl:-translate-x-12">
+          <div className="relative mx-auto grid min-h-0 max-w-[1280px] items-center gap-2 xl:min-h-[650px] xl:grid-cols-[1.08fr_0.92fr] xl:gap-4 2xl:min-h-[720px] 2xl:max-w-[1440px]">
+            <div className="relative z-40 max-w-[800px] pb-2 xl:translate-x-12 xl:pb-12 2xl:translate-y-8">
+              <div className="relative mb-5 inline-flex max-w-full -rotate-[5deg] overflow-hidden bg-[#39b8e7] px-3 py-2 text-[9px] font-medium tracking-[0.04em] text-[#163143] shadow-[0_5px_10px_rgba(18,111,148,0.16)] [clip-path:polygon(0_9%,2%_1%,7%_4%,12%_0,18%_3%,25%_0,31%_4%,38%_1%,45%_4%,52%_0,59%_3%,66%_0,74%_4%,81%_1%,88%_4%,96%_0,100%_9%,98%_21%,100%_36%,98%_51%,100%_67%,98%_83%,100%_94%,95%_100%,89%_96%,83%_100%,75%_96%,68%_100%,61%_97%,54%_100%,47%_96%,40%_100%,33%_97%,26%_100%,18%_96%,11%_100%,4%_96%,0_87%,2%_72%,0_56%,2%_41%,0_25%)] sm:mb-7 sm:px-7 sm:py-2.5 sm:text-sm xl:-translate-x-12">
                 <span className="absolute inset-0 opacity-20 [background-image:linear-gradient(30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%),linear-gradient(-30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%)] [background-size:18px_16px]" />
                 <span className="absolute inset-x-2 top-1 h-px bg-white/45" />
-                <span className="relative z-10 font-mono">designer <span className="px-2 text-[#f8eff0]">·</span> I solve problems <span className="px-2 text-[#f8eff0]">·</span> I organize ideas</span>
+                <span className="relative z-10 whitespace-nowrap font-mono">designer <span className="px-1 sm:px-2 text-[#f8eff0]">·</span> I solve problems <span className="px-1 sm:px-2 text-[#f8eff0]">·</span> I organize ideas</span>
               </div>
               <h1 className="font-serif-display text-[clamp(2.35rem,4.55vw,4.7rem)] font-medium leading-[0.86] tracking-[-0.075em] text-[#141114]">
                 I MAKE
                 <span className="mt-[0.16em] block text-[#e7688f]">PRODUCTS</span>
                 <span className="mt-[0.16em] block">WORK <em className="font-serif-display font-medium text-[#e7688f]">&amp; WOW.</em></span>
               </h1>
-              <div className="mt-9 max-w-[610px]">
+              <div className="mt-6 max-w-[610px] sm:mt-9">
                 <svg className="mb-2 h-7 w-40 -rotate-2" viewBox="0 0 160 28" fill="none" aria-hidden="true">
                   <path d="M4 10c31-7 88-9 148-2" stroke="#25aee1" strokeWidth="3.5" strokeLinecap="round" />
                   <path d="M8 20c42-7 100-5 148 1" stroke="#25aee1" strokeWidth="3.5" strokeLinecap="round" />
@@ -1300,7 +1300,7 @@ export default function PortfolioPage() {
                 </p>
                 <p className="mt-1 font-serif-display text-base italic leading-relaxed text-[#3d3438] sm:text-lg">And most of the time, I bring order to chaos.</p>
               </div>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-wrap gap-3 sm:mt-8">
                 <Link href="#projects" className="inline-flex items-center justify-center rounded-full bg-[#ee668a] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-white shadow-[0_12px_24px_rgba(238,102,138,0.25)] transition hover:-translate-y-0.5 hover:bg-[#dc5278]">
                   Explore my work
                 </Link>
@@ -1309,8 +1309,8 @@ export default function PortfolioPage() {
                 </Link>
               </div>
             </div>
-            <div className="relative mx-auto h-[330px] w-full max-w-[430px] self-end sm:h-[460px] xl:h-[650px] xl:max-w-[510px] 2xl:-translate-y-20">
-              <div className="absolute bottom-0 left-[-6%] right-[-15%] top-[54px] z-30 origin-bottom-left xl:-translate-x-[60%] xl:scale-[1.08]" style={{ translate: `${heroParallax}px 0` }}>
+            <div className="relative mx-auto h-[350px] w-full max-w-[380px] self-end sm:h-[460px] sm:max-w-[430px] xl:h-[650px] xl:max-w-[510px] 2xl:-translate-y-20">
+              <div className="absolute bottom-0 left-[-3%] right-[-10%] top-[22px] z-30 origin-bottom-left sm:left-[-6%] sm:right-[-15%] sm:top-[54px] xl:-translate-x-[60%] xl:scale-[1.08]" style={{ translate: `${heroParallax}px 0` }}>
                 <Image src="/images/home-hero-portrait-clean-v3.png" alt="Greddys Martinez seated at a laptop" fill priority sizes="(max-width: 1024px) 470px, 590px" className="object-contain object-bottom" />
                 <svg className="pointer-events-none absolute left-[57%] -top-[10%] h-20 w-24 rotate-[12deg] overflow-visible" viewBox="0 0 96 80" fill="none" aria-hidden="true">
                   <path d="M16 59 24 20 42 43 51 12 67 42 82 25 76 61 16 59Z" stroke="#F0A51B" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -1397,7 +1397,7 @@ export default function PortfolioPage() {
               </div>
             </div>
           </div>
-          <div className="relative z-10 mx-auto mt-8 grid w-full max-w-[1180px] gap-4 px-6 text-left md:mt-10 md:grid-cols-2 md:px-10 lg:grid-cols-4 lg:px-16 xl:hidden">
+          <div className="relative z-10 mx-auto mt-8 hidden w-full max-w-[1180px] gap-4 px-6 text-left md:mt-10 md:grid-cols-2 md:px-10 lg:grid-cols-4 lg:px-16">
             {heroPills.map((pill) => (
               <Link
                 key={pill.title}
