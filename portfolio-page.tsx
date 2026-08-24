@@ -1122,9 +1122,11 @@ export default function PortfolioPage() {
         </div>
 
         <div className="relative z-10 flex flex-col items-center gap-4">
-          <p className="rotate-[-3deg] bg-[#32b9e8] px-5 py-2 font-mono text-[11px] font-semibold tracking-[0.08em] text-[#102a36] shadow-[0_7px_14px_rgba(31,122,157,0.14)]">
-            Experience & Skills
-          </p>
+          <div className="relative w-fit min-w-[218px] -rotate-[5deg] overflow-hidden bg-[#39b8e7] px-5 py-2.5 text-center text-[12px] font-medium tracking-[0.06em] text-[#163143] shadow-[0_5px_10px_rgba(18,111,148,0.16)] [clip-path:polygon(0_9%,2%_1%,7%_4%,12%_0,18%_3%,25%_0,31%_4%,38%_1%,45%_4%,52%_0,59%_3%,66%_0,74%_4%,81%_1%,88%_4%,96%_0,100%_9%,98%_21%,100%_36%,98%_51%,100%_67%,98%_83%,100%_94%,95%_100%,89%_96%,83%_100%,75%_96%,68%_100%,61%_97%,54%_100%,47%_96%,40%_100%,33%_97%,26%_100%,18%_96%,11%_100%,4%_96%,0_87%,2%_72%,0_56%,2%_41%,0_25%)] md:min-w-[270px] md:px-7 md:py-3 md:text-sm">
+            <span className="absolute inset-0 opacity-20 [background-image:linear-gradient(30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%),linear-gradient(-30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%)] [background-size:18px_16px]" />
+            <span className="absolute inset-x-2 top-1 h-px bg-white/45" />
+            <span className="relative z-10 font-mono">Experience &amp; Skills</span>
+          </div>
           <h2 className="max-w-[340px] text-center font-serif-display text-[46px] leading-[0.9] text-[#141114] md:max-w-[680px] md:text-[74px]">
             Tools I Love <span className="text-[#e9608a]">&</span><br />
             <span className="text-[#e9608a]">Work With.</span>

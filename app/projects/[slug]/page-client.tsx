@@ -7252,6 +7252,53 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[1080px]">
+            <SectionHeading eyebrow="Success criteria" title="How we would know it is working" centered className="mb-5" />
+            <p className="mx-auto max-w-[780px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              This is a proposed direction, not a claimed outcome. A pilot would establish a baseline first, then measure whether the new scheduling service reduces coordination work while protecting patient confidence and clinical capacity.
+            </p>
+
+            <div className="mt-10 grid gap-4 md:grid-cols-2">
+              {[
+                {
+                  metric: "Faster schedule recovery",
+                  signal: "Staff can handle changes without lengthy back-and-forth or escalation.",
+                  measure: "Median time to schedule or reschedule, plus the share of changes resolved without escalation.",
+                },
+                {
+                  metric: "A more reliable schedule",
+                  signal: "The right practitioner, room, equipment, and timing stay aligned more often.",
+                  measure: "Scheduling conflicts and manual corrections per 100 appointments.",
+                },
+                {
+                  metric: "More routine requests handled by patients",
+                  signal: "Returning patients complete simple booking tasks independently.",
+                  measure: "Self-service booking completion rate and scheduling-related inbound calls per week.",
+                },
+                {
+                  metric: "Staff trust the system",
+                  signal: "Calendar Keepers use the console as their dependable source of truth.",
+                  measure: "Weekly active staff users, task-completion success, and a short post-task confidence score.",
+                },
+              ].map((criterion, index) => (
+                <article key={criterion.metric} className="rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] p-6">
+                  <p className="text-[11px] font-semibold tracking-[0.18em] text-[#1183D0]">SUCCESS SIGNAL 0{index + 1}</p>
+                  <h3 className="mt-3 font-inter text-[20px] font-semibold leading-[1.35] text-[#0e2951]">{criterion.metric}</h3>
+                  <p className="mt-3 text-[14px] leading-[1.65] text-[#5c7792]">{criterion.signal}</p>
+                  <p className="mt-5 border-t border-[#d7e8f7] pt-4 text-[13px] font-medium leading-[1.6] text-[#385b7a]">Measure: {criterion.measure}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-5 rounded-[20px] border border-[#d7e8f7] bg-white px-6 py-5 text-center text-[14px] leading-[1.7] text-[#5c7792]">
+              <span className="font-semibold text-[#0e2951]">Pilot approach:</span> compare a 4–6 week baseline with a limited clinic rollout, then pair behavioural data with short staff interviews to understand why a metric moved.
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {caseStudy.slug === "calendar-keeper" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-[1080px]">
             <SectionHeading eyebrow="Future phases" title="A schedule the clinic can keep trusting" centered className="mb-5" />
             <p className="mx-auto max-w-[780px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               The proposed experience treats scheduling as a coordination system: it protects clinical capacity by reserving the right resources together, keeps work moving during outages, and gives patients a dependable self-service path. The prototype establishes the core service; the next steps extend that reliability around the clinic.
@@ -7351,16 +7398,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
           </div>
         </div>
-        {caseStudy.slug === "calendar-keeper" ? (
-          <div className="mt-8 flex justify-center">
-            <Link
-              href="/calendar-keeper/presentation/"
-              className="inline-flex items-center rounded-full bg-[#1183D0] px-5 py-3 text-[13px] font-semibold text-white transition-colors hover:bg-[#0e5f9f]"
-            >
-              View presentation <span className="ml-2" aria-hidden="true">↗</span>
-            </Link>
-          </div>
-        ) : null}
       </section>
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
