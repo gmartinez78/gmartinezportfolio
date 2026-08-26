@@ -1949,7 +1949,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [experimentModalZoom, setExperimentModalZoom] = useState(1);
   const [experimentModalBaseHeight, setExperimentModalBaseHeight] = useState(0);
   const [prototypeIndex, setPrototypeIndex] = useState(0);
-  const [reversetechTaskTab, setReversetechTaskTab] = useState<"task1" | "task2" | "task3" | "task4">("task1");
+  const [reversetechTaskTab, setReversetechTaskTab] = useState<"task1" | "task2" | "task3" | "task4" | "task5">("task1");
   const [reversetechComparisonTab, setReversetechComparisonTab] = useState<"before" | "after">("after");
   const [showStickyTaskTabs, setShowStickyTaskTabs] = useState(false);
   const [isReverseTechTaskMenuOpen, setIsReverseTechTaskMenuOpen] = useState(false);
@@ -1983,15 +1983,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     );
   };
 
-  const handleReverseTechTaskTabChange = (taskTab: "task1" | "task2" | "task3" | "task4") => {
+  const handleReverseTechTaskTabChange = (taskTab: "task1" | "task2" | "task3" | "task4" | "task5") => {
     setReversetechTaskTab(taskTab);
     setIsReverseTechTaskMenuOpen(false);
 
-    const targetByTask: Record<"task1" | "task2" | "task3" | "task4", string> = {
+    const targetByTask: Record<"task1" | "task2" | "task3" | "task4" | "task5", string> = {
       task1: "rt-funnel-diagnosis",
       task2: "rt-paywall-experiment-design",
       task3: "rt-task-3",
-      task4: "rt-hypothesis-2",
+      task4: "rt-impact-metrics",
+      task5: "rt-ai-implementation",
     };
 
     window.setTimeout(() => {
@@ -2016,6 +2017,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     { id: "task2" as const, label: translate("caseStudy.task2") },
     { id: "task3" as const, label: translate("caseStudy.task3") },
     { id: "task4" as const, label: translate("caseStudy.task4Optional") },
+    { id: "task5" as const, label: translate("caseStudy.task5") },
   ];
 
   const activeReverseTechTaskLabel =
@@ -5921,8 +5923,68 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task4" ? (
-        <section id="rt-hypothesis-2" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-10 md:px-10 xl:px-20">
-          <SectionHeading title={translate("caseStudy.howIUsedTools")} centered className="mb-8" />
+        <section id="rt-impact-metrics" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-10 md:px-10 xl:px-20">
+          <SectionHeading eyebrow="Task 4" title={translate("caseStudy.impactMetrics")} centered className="mb-8" />
+          <div className="mx-auto mb-8 max-w-[860px] text-center">
+            <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              {translate("caseStudy.impactMetricsDescription")}
+            </p>
+          </div>
+          <div className="mx-auto grid max-w-[1040px] gap-4 md:grid-cols-2">
+            {[
+              {
+                metric: "End-to-end purchase conversion",
+                baseline: "0.63% current funnel baseline",
+                signal: "More qualified visitors complete the full journey from paid click to purchase.",
+              },
+              {
+                metric: "Email-gate progression",
+                baseline: "Establish step-level baseline before launch",
+                signal: "The value exchange earns more visitors through the highest-leverage in-funnel drop-off.",
+              },
+              {
+                metric: "Cost per purchase",
+                baseline: "Compare against paid-media control",
+                signal: "A clearer entry offer increases conversion efficiency without requiring more acquisition spend.",
+              },
+              {
+                metric: "Decision confidence",
+                baseline: "Capture with short post-purchase feedback",
+                signal: "Visitors understand the first action and feel ready to commit before choosing a longer-term plan.",
+              },
+            ].map((item, index) => (
+              <article key={item.metric} className="rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] p-6">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">MEASURE 0{index + 1}</p>
+                <h3 className="mt-3 font-inter text-[20px] font-semibold leading-[1.35] text-[#0e2951]">{item.metric}</h3>
+                <p className="mt-3 text-[14px] leading-[1.65] text-[#5c7792]">{item.signal}</p>
+                <p className="mt-5 border-t border-[#d7e8f7] pt-4 text-[13px] font-medium leading-[1.6] text-[#385b7a]">Baseline: {item.baseline}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mx-auto mt-6 max-w-[1040px] rounded-[20px] border border-[#d7e8f7] bg-white p-6 md:p-7">
+            <p className="text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">How impact would be read</p>
+            <div className="mt-5 grid gap-5 text-center md:grid-cols-3 md:text-left">
+              <div>
+                <p className="font-inter text-[15px] font-semibold text-[#0e2951]">1. Compare like with like</p>
+                <p className="mt-2 text-[13px] leading-[1.65] text-[#5c7792]">Run the control and proposed entry experience against comparable paid traffic, audiences, and spend.</p>
+              </div>
+              <div>
+                <p className="font-inter text-[15px] font-semibold text-[#0e2951]">2. Read the funnel, not one number</p>
+                <p className="mt-2 text-[13px] leading-[1.65] text-[#5c7792]">A conversion lift only matters if email progression and purchase quality move with it, rather than shifting drop-off downstream.</p>
+              </div>
+              <div>
+                <p className="font-inter text-[15px] font-semibold text-[#0e2951]">3. Pair data with confidence</p>
+                <p className="mt-2 text-[13px] leading-[1.65] text-[#5c7792]">Use short feedback prompts to verify that a lower-friction offer also leaves visitors clear about what they bought and what comes next.</p>
+              </div>
+            </div>
+          </div>
+          <p className="mx-auto mt-5 max-w-[920px] text-center text-[13px] leading-[1.65] text-[#5c7792]">These are proposed success criteria for an A/B test or controlled rollout, not claimed results from the concept work.</p>
+        </section>
+      ) : null}
+
+      {caseStudy.slug === "reversetech" && reversetechTaskTab === "task5" ? (
+        <section id="rt-ai-implementation" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-10 md:px-10 xl:px-20">
+          <SectionHeading title={translate("caseStudy.aiImplementation")} centered className="mb-8" />
           <div className="mx-auto mb-8 max-w-[860px] text-center">
             <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               {translate("caseStudy.task4Description")}
