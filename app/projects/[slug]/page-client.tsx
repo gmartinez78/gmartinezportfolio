@@ -6852,22 +6852,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ))}
           </div>
         ) : null}
-        {caseStudy.slug === "protecta" ? (
-          <div className="mt-10 overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] p-6 sm:p-8">
-            <div className="text-center">
-              <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">{PROTECTA_FUNNEL[language].eyebrow}</p>
-            </div>
-            <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6 lg:gap-0">
-              {PROTECTA_FUNNEL[language].items.map((item, index) => (
-                <div key={item.label} className="relative text-center lg:px-3">
-                  {index < PROTECTA_FUNNEL[language].items.length - 1 ? <span className="absolute right-0 top-8 hidden h-px w-4 translate-x-1/2 bg-[#b8d1e6] lg:block" aria-hidden="true" /> : null}
-                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-[#b8d1e6] bg-white font-inter text-[18px] font-semibold tracking-[-0.04em] text-[#0e2951]">{item.value}</div>
-                  <p className="mt-3 font-inter text-[12px] font-semibold text-[#5c7792]">{item.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        ) : null}
         {caseStudy.slug !== "flock-accessibility-system" && [resultInsights, resultOpportunities, projectedImprovements, successMetrics].some((items) => items.length) ? (
           <div className="mx-auto mt-10 max-w-[820px]">
             {primaryResultInsights.length ? (
