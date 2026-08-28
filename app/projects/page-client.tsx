@@ -168,12 +168,12 @@ function ProjectsPage() {
       </section>
 
       {/* Project Grid */}
-      <section className="max-w-[1200px] mx-auto px-6 pb-20 flex flex-col gap-16">
-        {projectGroups.map((group) => (
-          <div key={group.title}>
-            <div className="mb-7 border-b border-[#bcd2ff]/60 pb-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Project type</p>
-              <h2 className="mt-2 font-inter text-[30px] font-semibold leading-tight text-[#0e2951]">{group.title}</h2>
+      <section className="max-w-[1200px] mx-auto px-6 pb-20 pt-6 flex flex-col gap-16">
+        {projectGroups.map((group, index) => (
+          <div key={group.title} className={index > 0 ? "pt-16" : undefined}>
+            <div className="mb-7 border-b border-[#141114]/15 pb-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e9608a]">Project type</p>
+              <h2 className="mt-2 font-serif-display text-[32px] leading-none text-[#141114]">{group.title}</h2>
               <p className="mt-2 max-w-3xl text-[15px] leading-relaxed text-[#5c7792]">{group.description}</p>
             </div>
             <div className="flex flex-col gap-6">
