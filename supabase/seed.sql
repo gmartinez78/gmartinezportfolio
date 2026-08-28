@@ -145,7 +145,7 @@ values
   'published',
   true,
   2,
-  'Enhancing Benefits Enrollment',
+  'Self-Service Access and Role Management',
   'Paychex & Flock',
   'Paychex & Flock',
   'Sr. Product Designer',

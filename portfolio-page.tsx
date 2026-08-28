@@ -84,6 +84,16 @@ const HERO_ASSISTANT_SUGGESTIONS = [
 ];
 
 const MAIN_VISIBLE_CASE_STUDY_SLUGS = new Set(["reversetech"]);
+const INDEPENDENT_CLIENT_WORK_SLUGS = new Set([
+  "protecta",
+  "reversetech",
+  "calendar-keeper",
+  "zapiano-marketing",
+]);
+
+function getProjectWorkContext(slug: string) {
+  return INDEPENDENT_CLIENT_WORK_SLUGS.has(slug) ? "Freelance Work" : "Embedded Product Teams";
+}
 
 type LocalSearchItem = {
   id: string;
@@ -505,7 +515,9 @@ export default function PortfolioPage() {
       video: study.slug === "protecta" ? "/images/projects/protecta/hero-banner.mp4" : undefined,
       background: PROJECT_BACKGROUNDS[study.slug] ?? "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
       href: resolveProjectHref(study),
-      tags: study.tags.slice(0, 2),
+      // Put work context first so visitors can immediately distinguish embedded
+      // company-team work from independent client engagements.
+      tags: [getProjectWorkContext(study.slug), ...study.tags.slice(0, 2)],
       password: study.password,
       cta: study.external_link ? translate("home.viewProject") : translate("home.viewCaseStudy"),
     }));
@@ -540,11 +552,13 @@ export default function PortfolioPage() {
     },
   ];
   const heroSelectedProjects = [
-    homeProjects[0],
-    homeProjects.find((project) => project.slug === "nayya-ai-benefits"),
-    homeProjects.find((project) => project.slug === "flock-accessibility-system"),
-  ].filter((project) => project !== undefined);
-  const projectGridProjects = homeProjects.filter((project) => !["protecta", "nayya-ai-benefits", "flock-accessibility-system"].includes(project.slug));
+    "nayya-ai-benefits",
+    "flock-accessibility-system",
+    "benefits-enrollment",
+  ]
+    .map((slug) => homeProjects.find((project) => project.slug === slug))
+    .filter((project) => project !== undefined);
+  const projectGridProjects = homeProjects;
   const heroPhaseStyles = useMemo(() => HERO_PHASE_STYLES[heroPhase], [heroPhase]);
   const heroProjectProgress = Math.min(1, Math.max(0, (heroParallax - 105) / 45));
 
@@ -814,41 +828,59 @@ export default function PortfolioPage() {
 
   const recentWorkSection = (
     <section key="work" id="projects" className="bg-[#fff8f3] pt-12 pb-24 px-6 md:px-10 xl:px-20">
-      <div className="mx-auto flex w-full flex-col items-center gap-12">
-        <div className="grid w-full gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {projectGridProjects.map((project) => (
-            (() => {
-              const isActiveCard =
-                activeProjectCardId === project.cardId ||
-                (highlightedProjectIds.length > 0 && highlightedProjectIds.includes(project.cardId));
+      <div className="mx-auto flex w-full flex-col gap-16">
+        {[
+          {
+            title: "Embedded Product Teams",
+            description: "Product work delivered as part of established company teams.",
+            projects: projectGridProjects.filter((project) => !INDEPENDENT_CLIENT_WORK_SLUGS.has(project.slug)),
+          },
+          {
+            title: "Freelance Work",
+            description: "Independent client engagements, from strategy through delivery.",
+            projects: projectGridProjects.filter((project) => INDEPENDENT_CLIENT_WORK_SLUGS.has(project.slug)),
+          },
+        ].map((group) => (
+          <div key={group.title}>
+            <div className="mb-7 border-b border-[#141114]/15 pb-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e9608a]">Project type</p>
+              <h3 className="mt-2 font-serif-display text-[32px] leading-none text-[#141114]">{group.title}</h3>
+              <p className="mt-2 text-[14px] leading-relaxed text-[#5c7792]">{group.description}</p>
+            </div>
+            <div className="grid w-full gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {group.projects.map((project) => {
+                const isActiveCard =
+                  activeProjectCardId === project.cardId ||
+                  (highlightedProjectIds.length > 0 && highlightedProjectIds.includes(project.cardId));
 
-              return (
-                <ProjectTeaserCard
-                  key={project.title}
-                  id={project.cardId}
-                  href={project.href}
-                  dataCardId={project.cardId}
-                  onMouseEnter={() => setActiveProjectCardId(project.cardId)}
-                  onFocus={() => setActiveProjectCardId(project.cardId)}
-                  title={project.title}
-                  company={project.company}
-                  year={project.year}
-                  description={project.description}
-                  tags={project.tags}
-                  image={project.image}
-                  video={project.video}
-                  imageAlt={`${project.title} case study preview for ${project.company}`}
-                  background={project.background}
-                  ctaLabel={project.cta}
-                  locked={Boolean(project.password)}
-                  variant="grid"
-                  inactive={Boolean(highlightedProjectIds.length && !highlightedProjectIds.includes(project.cardId))}
-                  active={isActiveCard}
-                />
-              );
-            })()
-          ))}
-        </div>
+                return (
+                  <ProjectTeaserCard
+                    key={project.title}
+                    id={project.cardId}
+                    href={project.href}
+                    dataCardId={project.cardId}
+                    onMouseEnter={() => setActiveProjectCardId(project.cardId)}
+                    onFocus={() => setActiveProjectCardId(project.cardId)}
+                    title={project.title}
+                    company={project.company}
+                    year={project.year}
+                    description={project.description}
+                    tags={project.tags}
+                    image={project.image}
+                    video={project.video}
+                    imageAlt={`${project.title} case study preview for ${project.company}`}
+                    background={project.background}
+                    ctaLabel={project.cta}
+                    locked={Boolean(project.password)}
+                    variant="grid"
+                    inactive={Boolean(highlightedProjectIds.length && !highlightedProjectIds.includes(project.cardId))}
+                    active={isActiveCard}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

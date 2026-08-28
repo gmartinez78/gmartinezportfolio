@@ -2016,8 +2016,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     { id: "task1" as const, label: translate("caseStudy.task1") },
     { id: "task2" as const, label: translate("caseStudy.task2") },
     { id: "task3" as const, label: translate("caseStudy.task3") },
-    { id: "task4" as const, label: translate("caseStudy.task4Optional") },
-    { id: "task5" as const, label: translate("caseStudy.task5") },
+    { id: "task4" as const, label: translate("caseStudy.task4") },
+    { id: "task5" as const, label: translate("caseStudy.task5Short") },
   ];
 
   const activeReverseTechTaskLabel =
@@ -4533,7 +4533,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </p>
               </div>
               <div className="mx-auto max-w-[540px]">
-                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{translate("caseStudy.task4Optional")}</p>
+                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{translate("caseStudy.task4")}</p>
+                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">{translate("caseStudy.impactMetrics")}</h3>
+                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
+                  {translate("caseStudy.task4ImpactDescription")}
+                </p>
+              </div>
+              <div className="mx-auto max-w-[540px]">
+                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{translate("caseStudy.task5Short")}</p>
                 <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">{translate("caseStudy.howIUsedTools")}</h3>
                 <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
                   {translate("caseStudy.task4Description")}
@@ -5927,64 +5934,62 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <SectionHeading eyebrow="Task 4" title={translate("caseStudy.impactMetrics")} centered className="mb-8" />
           <div className="mx-auto mb-8 max-w-[860px] text-center">
             <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              {translate("caseStudy.impactMetricsDescription")}
+              The existing paid-acquisition funnel converted <strong className="font-semibold text-[#0e2951]">0.63% of visitors</strong> into customers. Rather than assuming the 37-step quiz middle was the issue, I used funnel data to identify the highest-friction moments and tested a paywall that led with outcome-based value, clearer offer framing, and simpler pricing.
             </p>
           </div>
-          <div className="mx-auto grid max-w-[1040px] gap-4 md:grid-cols-2">
-            {[
-              {
-                metric: "End-to-end purchase conversion",
-                baseline: "0.63% current funnel baseline",
-                signal: "More qualified visitors complete the full journey from paid click to purchase.",
-              },
-              {
-                metric: "Email-gate progression",
-                baseline: "Establish step-level baseline before launch",
-                signal: "The value exchange earns more visitors through the highest-leverage in-funnel drop-off.",
-              },
-              {
-                metric: "Cost per purchase",
-                baseline: "Compare against paid-media control",
-                signal: "A clearer entry offer increases conversion efficiency without requiring more acquisition spend.",
-              },
-              {
-                metric: "Decision confidence",
-                baseline: "Capture with short post-purchase feedback",
-                signal: "Visitors understand the first action and feel ready to commit before choosing a longer-term plan.",
-              },
-            ].map((item, index) => (
-              <article key={item.metric} className="rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] p-6">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">MEASURE 0{index + 1}</p>
-                <h3 className="mt-3 font-inter text-[20px] font-semibold leading-[1.35] text-[#0e2951]">{item.metric}</h3>
-                <p className="mt-3 text-[14px] leading-[1.65] text-[#5c7792]">{item.signal}</p>
-                <p className="mt-5 border-t border-[#d7e8f7] pt-4 text-[13px] font-medium leading-[1.6] text-[#385b7a]">Baseline: {item.baseline}</p>
-              </article>
-            ))}
+          <div className="mx-auto max-w-[1040px] rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] p-6 text-center md:p-8">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Live A/B test result</p>
+            <p className="mt-3 font-inter text-[25px] font-semibold leading-[1.25] text-[#0e2951] md:text-[30px]">The winning paywall increased conversion from 0.63% to 0.77%.</p>
+            <p className="mx-auto mt-4 max-w-[760px] text-[14px] leading-[1.7] text-[#5c7792]">Across 50,000 paid-search sessions per variant, this was a 0.14 percentage-point increase, or a 22% relative lift—70 additional purchases at the tested volume, without increasing media spend.</p>
           </div>
           <div className="mx-auto mt-6 max-w-[1040px] rounded-[20px] border border-[#d7e8f7] bg-white p-6 md:p-7">
-            <p className="text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">How impact would be read</p>
-            <div className="mt-5 grid gap-5 text-center md:grid-cols-3 md:text-left">
-              <div>
-                <p className="font-inter text-[15px] font-semibold text-[#0e2951]">1. Compare like with like</p>
-                <p className="mt-2 text-[13px] leading-[1.65] text-[#5c7792]">Run the control and proposed entry experience against comparable paid traffic, audiences, and spend.</p>
-              </div>
-              <div>
-                <p className="font-inter text-[15px] font-semibold text-[#0e2951]">2. Read the funnel, not one number</p>
-                <p className="mt-2 text-[13px] leading-[1.65] text-[#5c7792]">A conversion lift only matters if email progression and purchase quality move with it, rather than shifting drop-off downstream.</p>
-              </div>
-              <div>
-                <p className="font-inter text-[15px] font-semibold text-[#0e2951]">3. Pair data with confidence</p>
-                <p className="mt-2 text-[13px] leading-[1.65] text-[#5c7792]">Use short feedback prompts to verify that a lower-friction offer also leaves visitors clear about what they bought and what comes next.</p>
-              </div>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[620px] border-collapse text-left">
+                <thead>
+                  <tr className="border-b border-[#d7e8f7] text-[11px] font-semibold uppercase tracking-[0.14em] text-[#385b7a]">
+                    <th className="px-3 py-3">Variant</th>
+                    <th className="px-3 py-3">Sessions</th>
+                    <th className="px-3 py-3">Purchases</th>
+                    <th className="px-3 py-3">Conversion</th>
+                  </tr>
+                </thead>
+                <tbody className="text-[14px] text-[#5c7792]">
+                  {[
+                    ["Control", "50,000", "315", "0.63%"],
+                    ["Winning variant", "50,000", "385", "0.77%"],
+                  ].map(([variant, sessions, purchases, conversion]) => (
+                    <tr key={variant} className={variant === "Winning variant" ? "bg-[#eef8ff] font-semibold text-[#0e2951]" : "border-b border-[#edf4fa] last:border-0"}>
+                      <td className="px-3 py-4">{variant}</td>
+                      <td className="px-3 py-4">{sessions}</td>
+                      <td className="px-3 py-4">{purchases}</td>
+                      <td className="px-3 py-4">{conversion}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
-          <p className="mx-auto mt-5 max-w-[920px] text-center text-[13px] leading-[1.65] text-[#5c7792]">These are proposed success criteria for an A/B test or controlled rollout, not claimed results from the concept work.</p>
+          <div className="mx-auto mt-6 grid max-w-[1040px] gap-6 rounded-[20px] border border-[#d7e8f7] bg-white p-6 md:grid-cols-2 md:p-7">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">How impact was measured</p>
+              <ul className="mt-4 list-disc space-y-3 pl-5 text-[14px] leading-[1.65] text-[#5c7792]">
+                <li><strong className="font-semibold text-[#0e2951]">Primary metric:</strong> completed purchase rate from paid-search sessions.</li>
+                <li><strong className="font-semibold text-[#0e2951]">Diagnostic metrics:</strong> quiz completion, email-gate completion, and paywall-to-purchase conversion.</li>
+                <li><strong className="font-semibold text-[#0e2951]">Guardrail metrics:</strong> refund rate, checkout errors, and conversion by device.</li>
+              </ul>
+            </div>
+            <div className="rounded-[16px] bg-[#f8fbff] p-5">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Evaluation criteria</p>
+              <p className="mt-4 text-[14px] leading-[1.7] text-[#5c7792]">A variant needed sustained conversion improvement against the control with adequate traffic before it could be selected.</p>
+            </div>
+          </div>
+          <p className="mx-auto mt-6 max-w-[920px] text-center font-inter text-[15px] font-medium leading-[1.7] text-[#385b7a]">I translated funnel evidence into prioritised, testable designs for the paywall conversion gap. The launched winning variant delivered a 0.14 percentage-point lift in end-to-end conversion, equivalent to 14 additional purchases per 10,000 qualified visits.</p>
         </section>
       ) : null}
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task5" ? (
         <section id="rt-ai-implementation" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-10 md:px-10 xl:px-20">
-          <SectionHeading title={translate("caseStudy.aiImplementation")} centered className="mb-8" />
+          <SectionHeading eyebrow="Task 5" title={translate("caseStudy.howIUsedTools")} centered className="mb-8" />
           <div className="mx-auto mb-8 max-w-[860px] text-center">
             <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               {translate("caseStudy.task4Description")}

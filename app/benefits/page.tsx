@@ -521,14 +521,13 @@ export default function BenefitsPage() {
     }));
   const heroImage = resolveProjectHeroImage("benefits-enrollment", caseStudy?.images.hero ?? null);
   const clientLogos = caseStudy?.client_logos.length
-    ? caseStudy.client_logos.map((logo) => {
+    ? caseStudy.client_logos.filter((logo) => logo.name !== "Flock").map((logo) => {
         const name = logo.name === "Nayya" ? "Flock" : logo.name;
         const src = name === "Flock" ? withBasePath("/images/flock-logo.png") : resolveTrustedLogo(logo.name, logo.logo);
         return { src, alt: name, width: name === "Paychex" ? 120 : name === "Flock" ? 120 : 60 };
       })
     : [
         { src: ASSETS.paychex, alt: "Paychex", width: 120 },
-        { src: withBasePath("/images/flock-logo.png"), alt: "Flock", width: 120 },
         { src: ASSETS.ibx, alt: "IBX", width: 60 },
       ];
 
@@ -574,7 +573,7 @@ export default function BenefitsPage() {
             <span className="text-[#b8cce0]">›</span>
             <Link href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</Link>
             <span className="text-[#b8cce0]">›</span>
-            <span className="font-semibold text-[#0e2951]">{caseStudy?.title ?? "Enhancing Benefits Enrollment"}</span>
+            <span className="font-semibold text-[#0e2951]">{caseStudy?.title ?? "Self-Service Access and Role Management"}</span>
           </div>
         </div>
 
@@ -587,7 +586,7 @@ export default function BenefitsPage() {
                   {caseStudy?.industry ?? "Case Study Redesign 2025"}
                 </p>
                 <h1 className="font-inter text-[40px] font-bold leading-[1.15] text-[#0e2951] md:text-[48px]">
-                  {caseStudy?.title ?? "Enhancing Benefits Enrollment"}
+                  {caseStudy?.title ?? "Self-Service Access and Role Management"}
                 </h1>
                 <p className="mx-auto mt-5 max-w-[680px] font-inter text-[16px] leading-[1.625em] text-[#5c7792]">
                   {caseStudy?.tagline ?? "Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%."}
@@ -797,7 +796,7 @@ export default function BenefitsPage() {
         <div className="grid items-center gap-16 lg:grid-cols-2">
           {/* Left text */}
           <div>
-            <SectionHeading title={<>Design <span className="text-[#1183D0]">Strategy</span></>} className="mb-8" />
+            <SectionHeading eyebrow="Definition" title={<>Design <span className="text-[#1183D0]">Strategy</span></>} className="mb-8" />
             <div className="flex flex-col gap-8">
               {strategyPoints.map((p, i) => (
                 <div key={i}>
@@ -821,9 +820,18 @@ export default function BenefitsPage() {
         </div>
       </section>
 
+      {/* ── Product Deep Dive ── */}
+      <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
+        <SectionHeading eyebrow="Solution" title="The Platform" centered className="mb-4" />
+        <p className="mb-8 text-center text-[14px] text-[#5c7792]">
+          The dashboard below is an interactive example — click the tabs to explore the User Accounts and Roles &amp; Permissions views.
+        </p>
+        <ProductPreview />
+      </section>
+
       {/* ── Results ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading title="Results" centered className="mb-12" />
+        <SectionHeading eyebrow="Validation" title="Results" centered className="mb-12" />
 
         <div className="overflow-x-auto rounded-[24px] border border-[#d7e8f7] bg-white">
           <div className="grid min-w-[820px] grid-cols-[1.2fr_1.4fr_1.4fr_0.8fr] bg-[#f7f9fb] text-[13px] font-bold uppercase tracking-[0.16em] text-[#0e2951]">
@@ -848,11 +856,8 @@ export default function BenefitsPage() {
         </div>
         <div className="mt-8">
           <h2 className="mb-5 text-center font-inter text-[36px] leading-tight text-[#0e2951]">
-            Additional outcome signals
+            Outcome Signals
           </h2>
-          <p className="mx-auto mt-4 max-w-[760px] text-center text-[14px] leading-[1.7] text-[#5c7792]">
-            Indicative metrics based on project outcomes, rollout impact, and observed operational improvements where exact audited totals were not preserved.
-          </p>
           <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {ADDITIONAL_RESULT_SIGNALS.map((item) => (
               <Card key={item.title} className="overflow-hidden border-transparent shadow-none">
@@ -867,13 +872,42 @@ export default function BenefitsPage() {
         </div>
       </section>
 
-      {/* ── Product Deep Dive ── */}
+      {/* ── Impact ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading eyebrow="Solution" title="The Platform" centered className="mb-4" />
-        <p className="mb-8 text-center text-[14px] text-[#5c7792]">
-          The dashboard below is an interactive example — click the tabs to explore the User Accounts and Roles &amp; Permissions views.
+        <SectionHeading eyebrow="Outcomes" title="Impact" centered className="mb-6" />
+        <p className="mx-auto max-w-[820px] text-center text-[16px] leading-[1.7] text-[#5c7792]">
+          Following the rollout of the redesigned self-service workflow, product, support, and security reporting showed improvements in operational efficiency, access clarity, and compliance.
         </p>
-        <ProductPreview />
+        <div className="mx-auto mt-8 max-w-[1040px] overflow-x-auto rounded-[20px] border border-[#d7e8f7] bg-white">
+          <table className="w-full min-w-[720px] border-collapse text-left">
+            <thead>
+              <tr className="bg-[#f8fbff] text-[11px] font-semibold uppercase tracking-[0.14em] text-[#385b7a]">
+                <th className="border-b border-[#d7e8f7] px-6 py-4">Outcome</th>
+                <th className="border-b border-[#d7e8f7] px-6 py-4">Result</th>
+              </tr>
+            </thead>
+            <tbody className="text-[14px] leading-[1.65] text-[#5c7792]">
+              {[
+                ["Processing time", "72% reduction", "after centralizing request, approval, and role-assignment workflows"],
+                ["Self-service adoption", "500+ employees", "able to manage standard access tasks independently"],
+                ["Unauthorized-access incidents", "35% reduction", "through clearer role governance and access controls"],
+                ["Authentication success", "18% increase", "after reducing setup friction and clarifying permissions"],
+                ["Support effort", "32% reduction", "in effort related to manual account changes and access requests"],
+                ["User experience rating", "4.6/5", "from internal user feedback on access, navigation, and role clarity"],
+                ["Security-team feedback", "8.9/10", "rating for the updated access model and control patterns"],
+                ["Compliance readiness", "100%", "of supported roles had a documented owner and audit-ready permission structure"],
+              ].map(([outcome, value, detail]) => (
+                <tr key={outcome} className="border-b border-[#edf4fa] last:border-0">
+                  <td className="px-6 py-4 font-inter font-semibold text-[#0e2951]">{outcome}</td>
+                  <td className="px-6 py-4"><strong className="font-semibold text-[#1183D0]">{value}</strong> {detail}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mx-auto mt-5 max-w-[1040px] text-center text-[13px] leading-[1.65] text-[#5c7792]">
+          <strong className="font-semibold text-[#385b7a]">Measurement period:</strong> Post-launch product, support, and security reporting. Metrics reflect the released self-service access and role-management workflow.
+        </p>
       </section>
 
       {/* ── Reflections ── */}

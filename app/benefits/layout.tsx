@@ -6,7 +6,7 @@ import { buildMetadata, getBreadcrumbSchema, getCaseStudySchema } from "@/lib/se
 const caseStudy = (caseStudies as CaseStudyRecord[]).find((study) => study.slug === "benefits-enrollment");
 
 export const metadata = buildMetadata({
-  title: "Enhancing Benefits Enrollment Case Study",
+  title: "Self-Service Access and Role Management Case Study",
   description:
     "Case study on redesigning benefits enrollment workflows for Paychex and Flock, reducing processing time and improving self-service experiences.",
   path: "/benefits",
@@ -41,7 +41,7 @@ export default function BenefitsLayout({ children }: { children: ReactNode }) {
             getBreadcrumbSchema([
               { name: "Home", path: "/" },
               { name: "Projects", path: "/projects" },
-              { name: "Enhancing Benefits Enrollment", path: "/benefits" },
+              { name: "Self-Service Access and Role Management", path: "/benefits" },
             ]),
           ),
         }}
