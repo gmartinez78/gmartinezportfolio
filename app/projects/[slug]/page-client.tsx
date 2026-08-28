@@ -6945,7 +6945,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <h3 className="font-inter text-[18px] font-semibold text-[#0e2951]">Why the change mattered</h3>
               <p className="mt-3 text-[15px] leading-[1.7] text-[#5c7792]">The previous experience left employees uncertain about when they would leave Flex, what E-Verify required, and whether their progress had been saved. The redesigned flow made the transition explicit, clarified the required action, and gave users clearer guidance at the point of decision.</p>
               <p className="mt-4 text-[15px] leading-[1.7] text-[#5c7792]">After launch, more employees completed the flow, completed it faster, and showed less hesitation at the E-Verify handoff. For HR teams, this created a stronger foundation for timely employment verification and reduced friction in a sensitive compliance process.</p>
-              <p className="mt-5 text-[13px] leading-[1.65] text-[#5c7792]"><strong className="font-semibold text-[#385b7a]">Measurement context:</strong> Post-launch product data comparing the previous flow with the released I-9 and E-Verify integration.</p>
             </div>
           </div>
         </section>
@@ -6954,12 +6953,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "i9-everify-integration" && resultOpportunities.length ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading title="Opportunities and Next Steps" centered className="mb-12" />
-          <div className="mx-auto max-w-[820px]">
-            <ul className="list-disc space-y-4 pl-5 font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              {resultOpportunities.map((item) => (
-                <li key={item}>{stripLeadingBullet(item)}</li>
-              ))}
-            </ul>
+          <div className="mx-auto grid max-w-[980px] gap-4 md:grid-cols-2">
+            {resultOpportunities.map((item, index) => (
+              <article key={item} className="flex gap-5 rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] p-6 sm:p-7">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#e0eefb] font-inter text-[12px] font-semibold text-[#1183D0]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</p>
+              </article>
+            ))}
           </div>
         </section>
       ) : null}
