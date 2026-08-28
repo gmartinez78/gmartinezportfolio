@@ -171,6 +171,24 @@ const PROTECTA_CAMPAIGN_CREATIVE = [
   },
 ];
 
+const PROTECTA_CONVERSION_FUNNEL = [
+  ["Campaign impressions", "100,000", "—"],
+  ["Unique reach", "77,000 people", "Average frequency: 1.3"],
+  ["Link clicks / landing-page visits", "1,000", "1.0% click-through rate"],
+  ["WhatsApp inquiries started", "120", "12% of landing-page visitors"],
+  ["Qualified leads", "40", "33% of WhatsApp inquiries"],
+  ["Consultations booked", "10", "25% of qualified leads"],
+  ["New customers or policies", "3", "30% of consultations"],
+] as const;
+
+const PROTECTA_EXPERIENCE_DECISIONS = [
+  "Made the value proposition easy to understand before users clicked.",
+  "Used a clear, prominent WhatsApp call to action for low-friction contact.",
+  "Reduced uncertainty by explaining what users could expect from an advisor.",
+  "Structured campaign and landing-page content around the questions customers need answered before requesting insurance guidance.",
+  "Created a clearer connection between campaign messaging, landing-page information, and the first consultation.",
+];
+
 const PROTECTA_WEBSITE_URL = "https://www.protecta.today/";
 
 const NAYYA_HIGHLIGHT_METRICS: HighlightMetric[] = [
@@ -5358,15 +5376,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         ))}
                       </div>
                     </div>
-                    <div className="mx-auto mt-12 max-w-[1040px] rounded-[24px] border border-[#d7e5de] bg-[#f5f7ef] p-6 sm:p-8">
+                    {false ? <div className="mx-auto mt-12 max-w-[1040px] rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] p-6 sm:p-8">
                       <div className="mx-auto max-w-[820px] text-center">
-                        <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6a9e42]">Benchmark-based model</p>
-                        <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#154f4d] sm:text-[40px]">Conversion-path impact</h3>
-                        <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#63826c]">The campaign was designed to do more than build awareness. It created a direct path from social-media discovery to a personal conversation, helping potential customers move from interest to a qualified insurance consultation.</p>
+                        <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Benchmark-based model</p>
+                        <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#0e2951] sm:text-[40px]">Conversion-path impact</h3>
+                        <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">The campaign was designed to do more than build awareness. It created a direct path from social-media discovery to a personal conversation, helping potential customers move from interest to a qualified insurance consultation.</p>
                       </div>
 
-                      <div className="mt-8 hidden overflow-hidden rounded-[18px] border border-[#d7e5de] bg-white md:block">
-                        <div className="grid grid-cols-[1.4fr_0.9fr_1.35fr] border-b border-[#d7e5de] bg-[#edf3e8] px-6 py-4 font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#47675f]">
+                      <div className="mt-8 hidden overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white md:block">
+                        <div className="grid grid-cols-[1.4fr_0.9fr_1.35fr] border-b border-[#d7e8f7] bg-[#eef6fc] px-6 py-4 font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#385b7a]">
                           <div>Funnel stage</div><div>Results</div><div>Conversion</div>
                         </div>
                         {[
@@ -5378,9 +5396,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           ["Consultations booked", "10", "25% of qualified leads"],
                           ["New customers or policies", "3", "30% of consultations"],
                         ].map(([stage, result, conversion]) => (
-                          <div key={stage} className={`grid grid-cols-[1.4fr_0.9fr_1.35fr] px-6 py-5 font-inter text-[14px] leading-[1.6] text-[#63826c] ${stage === "WhatsApp inquiries started" ? "border-y border-[#cfe3ad] bg-[#eef4e9]" : "border-b border-[#edf1ec] last:border-0"}`}>
-                            <div className="font-semibold text-[#154f4d]">{stage}</div>
-                            <div className={`font-semibold ${stage === "WhatsApp inquiries started" ? "text-[#4c7d24]" : "text-[#154f4d]"}`}>{result}</div>
+                          <div key={stage} className={`grid grid-cols-[1.4fr_0.9fr_1.35fr] px-6 py-5 font-inter text-[14px] leading-[1.6] text-[#5c7792] ${stage === "WhatsApp inquiries started" ? "border-y border-[#b8d9f2] bg-[#e0eefb]" : "border-b border-[#edf4fa] last:border-0"}`}>
+                            <div className="font-semibold text-[#0e2951]">{stage}</div>
+                            <div className={`font-semibold ${stage === "WhatsApp inquiries started" ? "text-[#1183D0]" : "text-[#0e2951]"}`}>{result}</div>
                             <div>{conversion}</div>
                           </div>
                         ))}
@@ -5396,22 +5414,22 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           ["Consultations booked", "10", "25% of qualified leads"],
                           ["New customers or policies", "3", "30% of consultations"],
                         ].map(([stage, result, conversion]) => (
-                          <article key={stage} className={`rounded-[16px] border p-5 ${stage === "WhatsApp inquiries started" ? "border-[#cfe3ad] bg-[#eef4e9]" : "border-[#d7e5de] bg-white"}`}>
-                            <p className="font-inter text-[15px] font-semibold text-[#154f4d]">{stage}</p>
-                            <div className="mt-3 grid grid-cols-2 gap-4"><div><p className="font-inter text-[10px] font-semibold uppercase tracking-[0.12em] text-[#69807a]">Results</p><p className="mt-1 font-inter text-[16px] font-semibold text-[#154f4d]">{result}</p></div><div><p className="font-inter text-[10px] font-semibold uppercase tracking-[0.12em] text-[#69807a]">Conversion</p><p className="mt-1 font-inter text-[13px] leading-[1.5] text-[#63826c]">{conversion}</p></div></div>
+                          <article key={stage} className={`rounded-[16px] border p-5 ${stage === "WhatsApp inquiries started" ? "border-[#b8d9f2] bg-[#e0eefb]" : "border-[#d7e8f7] bg-white"}`}>
+                            <p className="font-inter text-[15px] font-semibold text-[#0e2951]">{stage}</p>
+                            <div className="mt-3 grid grid-cols-2 gap-4"><div><p className="font-inter text-[10px] font-semibold uppercase tracking-[0.12em] text-[#5c7792]">Results</p><p className="mt-1 font-inter text-[16px] font-semibold text-[#0e2951]">{result}</p></div><div><p className="font-inter text-[10px] font-semibold uppercase tracking-[0.12em] text-[#5c7792]">Conversion</p><p className="mt-1 font-inter text-[13px] leading-[1.5] text-[#5c7792]">{conversion}</p></div></div>
                           </article>
                         ))}
                       </div>
 
-                      <div className="mx-auto mt-8 max-w-[820px] border-t border-[#d7e5de] pt-7">
-                        <h4 className="text-center font-playfair-display text-[26px] text-[#154f4d]">What this means</h4>
-                        <p className="mt-4 text-center font-inter text-[15px] leading-[1.7] text-[#63826c]">The campaign converted awareness into a measurable conversation path:</p>
-                        <p className="mx-auto mt-5 max-w-[760px] rounded-[16px] bg-[#154f4d] px-5 py-4 text-center font-inter text-[15px] font-semibold leading-[1.7] text-white">100,000 impressions → 1,000 landing-page visits → <span className="text-[#cfe3ad]">120 WhatsApp inquiries</span> → 40 qualified leads → 10 consultations → 3 new customers</p>
-                        <p className="mt-5 text-center font-inter text-[15px] leading-[1.7] text-[#63826c]">By making WhatsApp the primary call to action, the experience reduced the effort required to ask questions, understand coverage options, and speak directly with an advisor. This gave Protecta a more useful measure of campaign value than reach alone: qualified demand and consultation opportunities.</p>
+                      <div className="mx-auto mt-8 max-w-[820px] border-t border-[#d7e8f7] pt-7">
+                        <h4 className="text-center font-playfair-display text-[26px] text-[#0e2951]">What this means</h4>
+                        <p className="mt-4 text-center font-inter text-[15px] leading-[1.7] text-[#5c7792]">The campaign converted awareness into a measurable conversation path:</p>
+                        <p className="mx-auto mt-5 max-w-[760px] rounded-[16px] bg-[#0e2951] px-5 py-4 text-center font-inter text-[15px] font-semibold leading-[1.7] text-white">100,000 impressions → 1,000 landing-page visits → <span className="text-[#83cef8]">120 WhatsApp inquiries</span> → 40 qualified leads → 10 consultations → 3 new customers</p>
+                        <p className="mt-5 text-center font-inter text-[15px] leading-[1.7] text-[#5c7792]">By making WhatsApp the primary call to action, the experience reduced the effort required to ask questions, understand coverage options, and speak directly with an advisor. This gave Protecta a more useful measure of campaign value than reach alone: qualified demand and consultation opportunities.</p>
                       </div>
 
-                      <div className="mx-auto mt-8 max-w-[820px] border-t border-[#d7e5de] pt-7">
-                        <h4 className="text-center font-playfair-display text-[26px] text-[#154f4d]">Key experience decisions</h4>
+                      <div className="mx-auto mt-8 max-w-[820px] border-t border-[#d7e8f7] pt-7">
+                        <h4 className="text-center font-playfair-display text-[26px] text-[#0e2951]">Key experience decisions</h4>
                         <div className="mt-5 grid gap-3 sm:grid-cols-2">
                           {[
                             "Made the value proposition easy to understand before users clicked.",
@@ -5420,14 +5438,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             "Structured campaign and landing-page content around the questions customers need answered before requesting insurance guidance.",
                             "Created a clearer connection between campaign messaging, landing-page information, and the first consultation.",
                           ].map((decision, index) => (
-                            <div key={decision} className="flex gap-3 rounded-[14px] bg-white p-4 font-inter text-[13px] leading-[1.6] text-[#63826c]">
-                              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#e5efdc] text-[10px] font-semibold text-[#4c7d24]">0{index + 1}</span>{decision}
+                            <div key={decision} className="flex gap-3 rounded-[14px] bg-white p-4 font-inter text-[13px] leading-[1.6] text-[#5c7792]">
+                              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#e0eefb] text-[10px] font-semibold text-[#1183D0]">0{index + 1}</span>{decision}
                             </div>
                           ))}
                         </div>
-                        <p className="mt-6 font-inter text-[12px] leading-[1.65] text-[#69807a]"><strong className="font-semibold text-[#47675f]">Measurement note:</strong> This is a benchmark-based model using a 1.0% click-through rate and estimated conversion rates through the inquiry and consultation journey.</p>
+                        <p className="mt-6 font-inter text-[12px] leading-[1.65] text-[#5c7792]"><strong className="font-semibold text-[#385b7a]">Measurement note:</strong> This is a benchmark-based model using a 1.0% click-through rate and estimated conversion rates through the inquiry and consultation journey.</p>
                       </div>
-                    </div>
+                    </div> : null}
                     <style>{`
                       @keyframes protecta-campaign-scroll {
                         from { transform: translateX(0); }
@@ -6796,14 +6814,20 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading eyebrow={caseStudy.slug === "protecta" ? (language === "es" ? "Impacto medido" : "Measured impact") : undefined} title={language === "es" ? "Resultados e impacto" : "Results & Impact"} centered className="mb-12" />
           {caseStudy.slug === "protecta" ? (
-            <div className="mb-6 grid gap-4 md:grid-cols-2">
-              {PROTECTA_KEY_RESULTS[language].items.map((item, index) => (
-                <article key={item} className="min-h-[190px] rounded-[22px] border border-[#d7e8f7] bg-[#f8fbff] p-6 sm:p-7">
-                  <span className="inline-flex h-9 min-w-9 items-center justify-center rounded-full bg-[#e0eefb] px-2 font-inter text-[12px] font-semibold text-[#1183D0]">0{index + 1}</span>
-                  <p className="mt-7 font-inter text-[18px] font-semibold leading-[1.45] tracking-[-0.025em] text-[#0e2951]">{item}</p>
-                </article>
-              ))}
-            </div>
+            <>
+              <div className="mx-auto max-w-[1040px] rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] p-6 sm:p-8">
+                <p className="mx-auto max-w-[820px] text-center font-inter text-[15px] leading-[1.7] text-[#5c7792]">The campaign was designed to do more than build awareness. It created a direct path from social-media discovery to a personal conversation, helping potential customers move from interest to a qualified insurance consultation.</p>
+                <div className="mt-8 hidden overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white md:block">
+                  <div className="grid grid-cols-[1.4fr_0.9fr_1.35fr] border-b border-[#d7e8f7] bg-[#eef6fc] px-6 py-4 font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#385b7a]"><div>Funnel stage</div><div>Results</div><div>Conversion</div></div>
+                  {PROTECTA_CONVERSION_FUNNEL.map(([stage, result, conversion]) => <div key={stage} className={`grid grid-cols-[1.4fr_0.9fr_1.35fr] px-6 py-5 font-inter text-[14px] leading-[1.6] text-[#5c7792] ${stage === "WhatsApp inquiries started" ? "border-y border-[#b8d9f2] bg-[#e0eefb]" : "border-b border-[#edf4fa] last:border-0"}`}><div className="font-semibold text-[#0e2951]">{stage}</div><div className={`font-semibold ${stage === "WhatsApp inquiries started" ? "text-[#1183D0]" : "text-[#0e2951]"}`}>{result}</div><div>{conversion}</div></div>)}
+                </div>
+                <div className="mt-6 grid gap-3 md:hidden">
+                  {PROTECTA_CONVERSION_FUNNEL.map(([stage, result, conversion]) => <article key={stage} className={`rounded-[16px] border p-5 ${stage === "WhatsApp inquiries started" ? "border-[#b8d9f2] bg-[#e0eefb]" : "border-[#d7e8f7] bg-white"}`}><p className="font-inter text-[15px] font-semibold text-[#0e2951]">{stage}</p><div className="mt-3 grid grid-cols-2 gap-4"><div><p className="font-inter text-[10px] font-semibold uppercase tracking-[0.12em] text-[#5c7792]">Results</p><p className="mt-1 font-inter text-[16px] font-semibold text-[#0e2951]">{result}</p></div><div><p className="font-inter text-[10px] font-semibold uppercase tracking-[0.12em] text-[#5c7792]">Conversion</p><p className="mt-1 font-inter text-[13px] leading-[1.5] text-[#5c7792]">{conversion}</p></div></div></article>)}
+                </div>
+                <div className="mx-auto mt-8 max-w-[820px] border-t border-[#d7e8f7] pt-7 text-center"><p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">The campaign converted awareness into a measurable conversation path:</p><p className="mx-auto mt-5 max-w-[760px] rounded-[16px] bg-[#0e2951] px-5 py-4 font-inter text-[15px] font-semibold leading-[1.7] text-white">100,000 impressions → 1,000 landing-page visits → <span className="text-[#83cef8]">120 WhatsApp inquiries</span> → 40 qualified leads → 10 consultations → 3 new customers</p><p className="mt-5 font-inter text-[15px] leading-[1.7] text-[#5c7792]">By making WhatsApp the primary call to action, the experience reduced the effort required to ask questions, understand coverage options, and speak directly with an advisor. This gave Protecta a more useful measure of campaign value than reach alone: qualified demand and consultation opportunities.</p></div>
+                <div className="mx-auto mt-8 max-w-[820px] border-t border-[#d7e8f7] pt-7"><h3 className="text-center font-inter text-[20px] font-semibold text-[#0e2951]">Key experience decisions</h3><div className="mt-5 grid gap-3 sm:grid-cols-2">{PROTECTA_EXPERIENCE_DECISIONS.map((decision, index) => <div key={decision} className="flex gap-3 rounded-[14px] bg-white p-4 font-inter text-[13px] leading-[1.6] text-[#5c7792]"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#e0eefb] text-[10px] font-semibold text-[#1183D0]">0{index + 1}</span>{decision}</div>)}</div><p className="mt-6 font-inter text-[12px] leading-[1.65] text-[#5c7792]"><strong className="font-semibold text-[#385b7a]">Measurement note:</strong> This is a benchmark-based model using a 1.0% click-through rate and estimated conversion rates through the inquiry and consultation journey.</p></div>
+              </div>
+            </>
           ) : null}
           {caseStudy.slug === "flock-accessibility-system" ? (
           <DataTablePanel
