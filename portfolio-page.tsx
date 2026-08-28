@@ -92,7 +92,7 @@ const INDEPENDENT_CLIENT_WORK_SLUGS = new Set([
 ]);
 
 function getProjectWorkContext(slug: string) {
-  return INDEPENDENT_CLIENT_WORK_SLUGS.has(slug) ? "Freelance Work" : "Embedded Product Teams";
+  return INDEPENDENT_CLIENT_WORK_SLUGS.has(slug) ? "Freelance Projects" : "Company Projects";
 }
 
 type LocalSearchItem = {
@@ -831,12 +831,12 @@ export default function PortfolioPage() {
       <div className="mx-auto flex w-full flex-col gap-16">
         {[
           {
-            title: "Embedded Product Teams",
-            description: "Product work delivered as part of established company teams.",
+            title: "Company Projects",
+            description: "Projects completed while embedded in company product teams, driving UX outcomes through research, collaboration, and iterative design.",
             projects: projectGridProjects.filter((project) => !INDEPENDENT_CLIENT_WORK_SLUGS.has(project.slug)),
           },
           {
-            title: "Freelance Work",
+            title: "Freelance Projects",
             description: "Independent client engagements, from strategy through delivery.",
             projects: projectGridProjects.filter((project) => INDEPENDENT_CLIENT_WORK_SLUGS.has(project.slug)),
           },

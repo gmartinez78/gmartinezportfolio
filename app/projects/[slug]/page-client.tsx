@@ -6722,7 +6722,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" ? (
+      {caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" && caseStudy.slug !== "i9-everify-integration" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading eyebrow={caseStudy.slug === "protecta" ? (language === "es" ? "Impacto medido" : "Measured impact") : undefined} title={language === "es" ? "Resultados e impacto" : "Results & Impact"} centered className="mb-12" />
           {caseStudy.slug === "protecta" ? (
@@ -6775,7 +6775,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         ) : null}
         {caseStudy.slug !== "flock-accessibility-system" && [resultInsights, resultOpportunities, projectedImprovements, successMetrics].some((items) => items.length) ? (
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <div className="mx-auto mt-10 max-w-[820px]">
             {primaryResultInsights.length ? (
               <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
                 <CardContent className="p-8">
@@ -6884,6 +6884,83 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ) : null}
           </div>
           ) : null}
+        </section>
+      ) : null}
+
+      {caseStudy.slug === "i9-everify-integration" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-[1040px] rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] p-6 sm:p-8">
+            <div className="mx-auto max-w-[820px] text-center">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Released product results</p>
+              <h2 className="mt-3 font-inter text-[30px] font-semibold leading-tight text-[#0e2951]">Post-launch impact</h2>
+              <p className="mt-4 text-[15px] leading-[1.7] text-[#5c7792]">
+                The released I-9 and E-Verify integration made a compliance-critical onboarding step clearer and easier to complete. By improving the handoff, next-step guidance, and expectations around the external verification experience, the flow reduced friction for employees while creating a more reliable path for HR teams.
+              </p>
+            </div>
+            <div className="mt-8 hidden overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white md:block">
+              <div className="grid grid-cols-[1.55fr_0.7fr_0.7fr_1.25fr] border-b border-[#d7e8f7] bg-[#eef6fc] px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#385b7a]">
+                <div>Post-launch measure</div>
+                <div>Before</div>
+                <div>After</div>
+                <div>Impact</div>
+              </div>
+              {[
+                  ["I-9 and E-Verify flow completion", "69%", "81%", "+12 percentage points"],
+                  ["Average time to complete the flow", "4 min 12 sec", "3 min 6 sec", "26% faster"],
+                  ["Hesitation at the E-Verify redirect", "46%", "33%", "13 percentage-point reduction"],
+                  ["Status interpretation errors", "31%", "22%", "9 percentage-point reduction"],
+                  ["User confidence score", "3.2/5", "4.0/5", "+0.8 points"],
+                  ["Manual process dependency", "60–70% baseline", "Target: under 25%", "Post-launch tracking target"],
+                  ["Survey responses after first release", "—", "2,548 responses", "Confirmed the integrated direction was working"],
+              ].map(([measure, before, after, impact]) => (
+                <div key={measure} className="grid grid-cols-[1.55fr_0.7fr_0.7fr_1.25fr] border-b border-[#edf4fa] px-6 py-5 text-[14px] leading-[1.6] text-[#5c7792] last:border-0">
+                  <div className="font-inter font-semibold text-[#0e2951]">{measure}</div>
+                  <div>{before}</div>
+                  <div className="font-semibold text-[#0e2951]">{after}</div>
+                  <div className="font-semibold text-[#1183D0]">{impact}</div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 grid gap-4 md:hidden">
+              {[
+                  ["I-9 and E-Verify flow completion", "69%", "81%", "+12 percentage points"],
+                  ["Average time to complete the flow", "4 min 12 sec", "3 min 6 sec", "26% faster"],
+                  ["Hesitation at the E-Verify redirect", "46%", "33%", "13 percentage-point reduction"],
+                  ["Status interpretation errors", "31%", "22%", "9 percentage-point reduction"],
+                  ["User confidence score", "3.2/5", "4.0/5", "+0.8 points"],
+                  ["Manual process dependency", "60–70% baseline", "Target: under 25%", "Post-launch tracking target"],
+                  ["Survey responses after first release", "—", "2,548 responses", "Confirmed the integrated direction was working"],
+              ].map(([measure, before, after, impact]) => (
+                <div key={measure} className="rounded-[18px] border border-[#d7e8f7] bg-white p-5">
+                  <p className="font-inter text-[16px] font-semibold leading-snug text-[#0e2951]">{measure}</p>
+                  <div className="mt-4 grid grid-cols-3 gap-3 text-[13px] leading-[1.5]">
+                    <div><p className="uppercase tracking-[0.12em] text-[#5c7792]">Before</p><p className="mt-1 font-semibold text-[#0e2951]">{before}</p></div>
+                    <div><p className="uppercase tracking-[0.12em] text-[#5c7792]">After</p><p className="mt-1 font-semibold text-[#0e2951]">{after}</p></div>
+                    <div><p className="uppercase tracking-[0.12em] text-[#5c7792]">Impact</p><p className="mt-1 font-semibold text-[#1183D0]">{impact}</p></div>
+                  </div>
+                </div>
+                ))}
+            </div>
+            <div className="mx-auto mt-8 max-w-[820px] border-t border-[#d7e8f7] pt-7 text-center">
+              <h3 className="font-inter text-[18px] font-semibold text-[#0e2951]">Why the change mattered</h3>
+              <p className="mt-3 text-[15px] leading-[1.7] text-[#5c7792]">The previous experience left employees uncertain about when they would leave Flex, what E-Verify required, and whether their progress had been saved. The redesigned flow made the transition explicit, clarified the required action, and gave users clearer guidance at the point of decision.</p>
+              <p className="mt-4 text-[15px] leading-[1.7] text-[#5c7792]">After launch, more employees completed the flow, completed it faster, and showed less hesitation at the E-Verify handoff. For HR teams, this created a stronger foundation for timely employment verification and reduced friction in a sensitive compliance process.</p>
+              <p className="mt-5 text-[13px] leading-[1.65] text-[#5c7792]"><strong className="font-semibold text-[#385b7a]">Measurement context:</strong> Post-launch product data comparing the previous flow with the released I-9 and E-Verify integration.</p>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {caseStudy.slug === "i9-everify-integration" && resultOpportunities.length ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <SectionHeading title="Opportunities and Next Steps" centered className="mb-12" />
+          <div className="mx-auto max-w-[820px]">
+            <ul className="list-disc space-y-4 pl-5 font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              {resultOpportunities.map((item) => (
+                <li key={item}>{stripLeadingBullet(item)}</li>
+              ))}
+            </ul>
+          </div>
         </section>
       ) : null}
 
