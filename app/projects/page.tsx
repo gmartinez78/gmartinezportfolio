@@ -28,6 +28,12 @@ const PROJECT_BACKGROUNDS: Record<string, string> = {
   "flock-accessibility-system": "radial-gradient(ellipse at 80% 20%, #c8f0e0 0%, #edf5fb 70%)",
   "i9-everify-integration": "radial-gradient(ellipse at 50% 80%, #d9e7f5 0%, #f3f8fc 72%)",
 };
+const FREELANCE_PROJECT_SLUGS = new Set([
+  "protecta",
+  "reversetech",
+  "calendar-keeper",
+  "zapiano-marketing",
+]);
 
 function compareCaseStudyPriority<
   T extends {
@@ -115,6 +121,18 @@ function ProjectsPage() {
       return searchableValues.some((value) => value.includes(normalizedTopic));
     });
   }, [activeFilter, activeTopic, projects]);
+  const projectGroups = [
+    {
+      title: "Company Projects",
+      description: "Projects completed while embedded in company product teams, driving UX outcomes through research, collaboration, and iterative design.",
+      projects: filteredProjects.filter((project) => !FREELANCE_PROJECT_SLUGS.has(project.slug)),
+    },
+    {
+      title: "Freelance Projects",
+      description: "Independent client engagements, from strategy through delivery.",
+      projects: filteredProjects.filter((project) => FREELANCE_PROJECT_SLUGS.has(project.slug)),
+    },
+  ].filter((group) => group.projects.length > 0);
   const socialLogos = siteContent?.home?.trusted_by?.clients?.map((client) => ({
     src: resolveTrustedLogo(client.name, client.logo),
     alt: client.name,
@@ -127,62 +145,66 @@ function ProjectsPage() {
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden min-h-screen">
       <SiteHeader active="Projects" />
 
-      {/* Hero */}
-      <section className="mx-auto max-w-[1200px] px-6 pt-16 pb-10 text-center">
-        <h1 className="font-inter text-[44px] leading-[1.05] text-[var(--ui-color-text-strong)]">{translate("projectsPage.title")}</h1>
-        <p className="mx-auto max-w-xl text-lg leading-relaxed text-[#5c7792] mt-6">
-          {translate("projectsPage.intro")}
-        </p>
-        {activeTopic ? (
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#1183D0]">
-            {translate("projectsPage.showingRelatedTo")} <span className="font-semibold">{activeTopic}</span>.
-          </p>
-        ) : null}
-
-        {/* Filter Pills */}
-        <div className="mt-8">
-          <FilterPillGroup
-            items={FILTER_PILLS}
-            activeItem={activeFilter}
-            getLabel={(filter) => translate(`filter.${filter}` as DictionaryKey)}
-            onSelect={(filter) => {
-              setActiveFilter(filter);
-              if (filter !== "All") {
-                setActiveTopic(null);
-              }
-            }}
-          />
-        </div>
-      </section>
-
       {/* Project Grid */}
-      <section className="max-w-[1200px] mx-auto px-6 pb-20 flex flex-col gap-6">
-        {filteredProjects.map((project, i) => (
-          <ProjectCard
-            key={project.title}
-            id={project.cardId}
-            href={resolveProjectHref(project)}
-            title={project.title}
-            company={project.company}
-            year={project.year}
-            tagline={project.tagline}
-            tags={project.tags ?? []}
-            previewImage={project.previewImage}
-            squarePreview={project.slug === "calendar-keeper"}
-            previewAlt={`${project.title} preview`}
-            stat={project.stat}
-            statLabel={project.statLabel}
-            background={project.background}
-            locked={Boolean(project.password)}
-            reversed={i % 2 === 1}
-            ctaLabel={
-              project.password
-                ? translate("projectsPage.passwordRequired")
-                : resolveProjectHref(project) === "#"
-                  ? translate("projectsPage.comingSoon")
-                  : translate("projectsPage.viewCaseStudy")
-            }
-          />
+      <section className="max-w-[1200px] mx-auto px-6 pb-24 pt-16 flex flex-col gap-20">
+        {projectGroups.map((group, index) => (
+          <section key={group.title} className={index === 0 ? undefined : "border-t-2 border-[#e9608a] pt-16"}>
+            <div className="mb-9 border-b border-[#141114]/15 pb-5">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e9608a]">Project type</p>
+              <h2 className="mt-3 font-serif-display text-[clamp(32px,4vw,46px)] leading-none text-[#141114]">{group.title}</h2>
+              <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-[#5c7792]">{group.description}</p>
+            </div>
+            {index === 0 ? (
+              <div className="mb-9">
+                <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e9608a]">Filter projects by</p>
+                <FilterPillGroup
+                  items={FILTER_PILLS}
+                  activeItem={activeFilter}
+                  getLabel={(filter) => translate(`filter.${filter}` as DictionaryKey)}
+                  onSelect={(filter) => {
+                    setActiveFilter(filter);
+                    if (filter !== "All") {
+                      setActiveTopic(null);
+                    }
+                  }}
+                />
+                {activeTopic ? (
+                  <p className="mt-4 text-sm leading-relaxed text-[#1183D0]">
+                    {translate("projectsPage.showingRelatedTo")} <span className="font-semibold">{activeTopic}</span>.
+                  </p>
+                ) : null}
+              </div>
+            ) : null}
+            <div className="flex flex-col gap-6">
+              {group.projects.map((project, i) => (
+                <ProjectCard
+                  key={project.title}
+                  id={project.cardId}
+                  href={resolveProjectHref(project)}
+                  title={project.title}
+                  company={project.company}
+                  year={project.year}
+                  tagline={project.tagline}
+                  tags={project.tags ?? []}
+                  previewImage={project.previewImage}
+                  squarePreview={project.slug === "calendar-keeper"}
+                  previewAlt={`${project.title} preview`}
+                  stat={project.stat}
+                  statLabel={project.statLabel}
+                  background={project.background}
+                  locked={Boolean(project.password)}
+                  reversed={i % 2 === 1}
+                  ctaLabel={
+                    project.password
+                      ? translate("projectsPage.passwordRequired")
+                      : resolveProjectHref(project) === "#"
+                        ? translate("projectsPage.comingSoon")
+                        : translate("projectsPage.viewCaseStudy")
+                  }
+                />
+              ))}
+            </div>
+          </section>
         ))}
       </section>
 
