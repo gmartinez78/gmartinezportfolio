@@ -3331,9 +3331,32 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[860px] text-center space-y-6">
-            <SectionHeading eyebrow="Case Study" title="The problem" centered className="mb-8" />
+            <SectionHeading eyebrow="Independent AI-assisted discovery sprint" title="The problem" centered className="mb-8" />
             <p className="text-[16px] leading-[1.7] text-[#5c7792]">For this case, I was tasked to design a new appointment scheduling system for clinics and medical practices in France and Germany. My role was to understand the market, identify the biggest opportunities and pain points, and define an initial product direction that could compete with existing solutions.</p>
             <p className="text-[16px] leading-[1.7] text-[#5c7792]">I started by researching users, competitors, and regulatory constraints to uncover the most critical problems. From there, I translated those insights into product opportunities and designed an experience that made scheduling more efficient, reliable, and intuitive for healthcare staff and patients.</p>
+          </div>
+        </section>
+      ) : null}
+
+      {caseStudy.slug === "calendar-keeper" ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-[1080px] rounded-[28px] border border-[#d9e5f2] bg-[#f8fbff] px-6 py-9 shadow-[0_12px_32px_rgba(14,41,81,0.06)] md:px-10 md:py-11">
+            <SectionHeading eyebrow="AI-assisted design workflow" title="From evidence to a testable direction" centered className="mb-5" />
+            <p className="mx-auto max-w-[760px] text-center text-[16px] leading-[1.7] text-[#5c7792]">AI helped compress the research and exploration cycle. I remained accountable for framing the problem, judging the trade-offs, defining the product strategy, and deciding what the prototype needed to prove.</p>
+            <div className="mt-9 grid gap-4 md:grid-cols-4">
+              {[
+                { step: "01", title: "Research signals", body: "Gathered market, user, regulatory, and competitive evidence." },
+                { step: "02", title: "AI-supported synthesis", body: "Clustered signals, expanded hypotheses, and surfaced edge cases." },
+                { step: "03", title: "Human-led decisions", body: "Prioritized the resource-aware core and safe degraded-mode strategy." },
+                { step: "04", title: "Prototype to validate", body: "Translated decisions into a scheduling service and console to test." },
+              ].map((stage) => (
+                <article key={stage.step} className="relative rounded-[18px] border border-[#d9e5f2] bg-white p-5">
+                  <p className="text-[11px] font-semibold tracking-[0.2em] text-[#1183D0]">STEP {stage.step}</p>
+                  <h3 className="mt-3 font-inter text-[18px] font-semibold leading-[1.25] text-[#0e2951]">{stage.title}</h3>
+                  <p className="mt-3 text-[13px] leading-[1.6] text-[#5c7792]">{stage.body}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
       ) : null}

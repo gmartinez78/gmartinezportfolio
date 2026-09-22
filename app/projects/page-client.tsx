@@ -125,7 +125,13 @@ function ProjectsPage() {
     {
       title: "Freelance Projects",
       description: "Independent client engagements, from strategy through delivery.",
-      projects: filteredProjects.filter((project) => FREELANCE_PROJECT_SLUGS.has(project.slug)),
+      projects: filteredProjects
+        .filter((project) => FREELANCE_PROJECT_SLUGS.has(project.slug))
+        .sort((left, right) => {
+          if (left.slug === "calendar-keeper") return -1;
+          if (right.slug === "calendar-keeper") return 1;
+          return 0;
+        }),
     },
   ].filter((group) => group.projects.length > 0);
   const socialLogos = siteContent?.home?.trusted_by?.clients?.map((client) => ({

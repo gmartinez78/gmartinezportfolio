@@ -553,8 +553,8 @@ export default function PortfolioPage() {
   ];
   const heroSelectedProjects = [
     "nayya-ai-benefits",
+    "calendar-keeper",
     "flock-accessibility-system",
-    "benefits-enrollment",
   ]
     .map((slug) => homeProjects.find((project) => project.slug === slug))
     .filter((project) => project !== undefined);
@@ -838,7 +838,13 @@ export default function PortfolioPage() {
           {
             title: "Freelance Projects",
             description: "Independent client engagements, from strategy through delivery.",
-            projects: projectGridProjects.filter((project) => INDEPENDENT_CLIENT_WORK_SLUGS.has(project.slug)),
+            projects: projectGridProjects
+              .filter((project) => INDEPENDENT_CLIENT_WORK_SLUGS.has(project.slug))
+              .sort((left, right) => {
+                if (left.slug === "calendar-keeper") return -1;
+                if (right.slug === "calendar-keeper") return 1;
+                return 0;
+              }),
           },
         ].map((group) => (
           <div key={group.title}>
@@ -1331,9 +1337,9 @@ export default function PortfolioPage() {
                   <path d="M8 20c42-7 100-5 148 1" stroke="#25aee1" strokeWidth="3.5" strokeLinecap="round" />
                 </svg>
                 <p className="text-[13px] font-bold uppercase leading-relaxed tracking-[0.04em] text-[#159bd0] sm:text-sm">
-                  Products, websites, social media
+                  Enterprise UX · AI-assisted design · Digital products
                 </p>
-                <p className="mt-1 font-serif-display text-base italic leading-relaxed text-[#3d3438] sm:text-lg">And most of the time, I bring order to chaos.</p>
+                <p className="mt-1 font-serif-display text-base italic leading-relaxed text-[#3d3438] sm:text-lg">I turn complex workflows and data-rich systems into clear, usable products.</p>
               </div>
               <div className="mt-6 flex flex-wrap justify-center gap-3 sm:mt-8 xl:justify-start">
                 <Link href="#projects" className="inline-flex items-center justify-center rounded-full bg-[#ee668a] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-white shadow-[0_12px_24px_rgba(238,102,138,0.25)] transition hover:-translate-y-0.5 hover:bg-[#dc5278]">
@@ -1455,6 +1461,23 @@ export default function PortfolioPage() {
           </div>
         </div>
         </div>
+
+        <section className="relative overflow-hidden border-y border-[#141114]/10 bg-[#fffaf7] px-6 py-10 md:px-10 lg:px-20">
+          <div className="mx-auto grid max-w-[1180px] items-center gap-7 lg:grid-cols-[0.78fr_1.22fr] lg:gap-12">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#e05f88]">AI-assisted, human-led</p>
+              <h2 className="mt-3 font-serif-display text-[32px] leading-[0.95] text-[#141114] md:text-[42px]">AI speeds up the work. I own the decisions.</h2>
+            </div>
+            <div>
+              <p className="max-w-[690px] text-[15px] leading-[1.75] text-[#55434a] md:text-[16px]">I use AI to accelerate research synthesis, concept exploration, prototyping, and delivery—while keeping product judgment, UX decisions, validation, and accessibility firmly human-led.</p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {["Claude", "ChatGPT", "Gemini", "Figma AI", "Copilot"].map((tool) => (
+                  <span key={tool} className="rounded-full border border-[#141114]/15 bg-white px-3 py-1.5 text-[12px] font-semibold text-[#3d3438]">{tool}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="relative isolate overflow-hidden bg-[#fff8f3] px-6 py-16 text-center md:px-10 md:py-20 lg:px-20">
           <div className="relative mx-auto max-w-4xl">
