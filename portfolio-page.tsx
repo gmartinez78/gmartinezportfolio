@@ -553,7 +553,7 @@ export default function PortfolioPage() {
   ];
   const heroSelectedProjects = [
     "nayya-ai-benefits",
-    "calendar-keeper",
+    "i9-everify-integration",
     "flock-accessibility-system",
   ]
     .map((slug) => homeProjects.find((project) => project.slug === slug))
