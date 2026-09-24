@@ -859,6 +859,7 @@
     "tools": [
       "NotebookLM",
       "Claude",
+      "Figma AI",
       "Codex",
       "Claude Code",
       "Storybook",
@@ -947,17 +948,17 @@
         {
           "step": 5,
           "label": "Design",
-          "description": "Iterated the homepage, internal pages, and reusable components directly from the strongest research-backed structural ideas."
+          "description": "Used Figma AI to turn the selected direction into a reusable component library, then iterated the homepage and internal pages with those components, variants, and bilingual states."
         },
         {
           "step": 6,
           "label": "Build",
-          "description": "Generated scaffolding with Codex, finished implementation details with Claude Code, and hand-tuned the result into production-quality output."
+          "description": "Used the Figma component library as the implementation reference. Generated scaffolding with Codex, finished implementation details with Claude Code, and hand-tuned the result into production-quality output."
         },
         {
           "step": 7,
           "label": "Validate",
-          "description": "Documented components in Storybook, checked accessibility against WCAG 2.1 AA, and deployed the working product to Vercel for client review."
+          "description": "Kept the Figma library and coded components aligned, documented implementation states in Storybook, checked accessibility against WCAG 2.1 AA, and deployed the working product to Vercel for client review."
         }
       ]
     },
@@ -1013,7 +1014,7 @@
         "id": "actions",
         "type": "custom",
         "title": "AI alignment",
-        "body": "I structured the work as an AI-augmented production pipeline with human judgment at each handoff. Claude and NotebookLM accelerated ideation, research synthesis, and first-draft copy.\n\nClaude Design created the initial visual direction; I then selected, structured, and iterated the strongest ideas from the analysis. Codex and Claude Code accelerated the build, and Storybook acted as the component documentation and accessibility QA layer."
+        "body": "I structured the work as an AI-augmented production pipeline with human judgment at each handoff. Claude and NotebookLM accelerated ideation, research synthesis, and first-draft copy.\n\nClaude Design created the initial visual direction; I then selected and refined the strongest ideas in Figma. With Figma AI, I built the reusable component library and its variants before using it as the reference for the coded interface. Codex and Claude Code accelerated implementation, while Storybook documented the implemented components and supported accessibility QA."
       },
       {
         "id": "impact",

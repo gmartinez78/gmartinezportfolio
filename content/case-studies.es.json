@@ -859,6 +859,7 @@
     "tools": [
       "NotebookLM",
       "Claude",
+      "Figma AI",
       "Codex",
       "Claude Code",
       "Storybook",
@@ -947,17 +948,17 @@
         {
           "step": 5,
           "label": "Diseñar",
-          "description": "Se iteraron la página de inicio, las páginas internas y los componentes reutilizables a partir de las ideas estructurales más sólidas respaldadas por la investigación."
+          "description": "Se usó Figma AI para convertir la dirección seleccionada en una biblioteca de componentes reutilizables y después se iteraron la página de inicio y las páginas internas con esos componentes, variantes y estados bilingües."
         },
         {
           "step": 6,
           "label": "Construir",
-          "description": "Se generó el andamiaje con Codex, se terminaron los detalles de implementación con Claude Code y se ajustó el resultado a mano hasta lograr una calidad de producción."
+          "description": "Se usó la biblioteca de componentes de Figma como referencia de implementación. Se generó el andamiaje con Codex, se terminaron los detalles con Claude Code y se ajustó el resultado a mano hasta lograr una calidad de producción."
         },
         {
           "step": 7,
           "label": "Validar",
-          "description": "Se documentaron los componentes en Storybook, se verificó la accesibilidad conforme a WCAG 2.1 AA, y se desplegó el producto funcional en Vercel para la revisión del cliente."
+          "description": "Se mantuvieron alineadas la biblioteca de Figma y los componentes en código, se documentaron los estados de implementación en Storybook, se verificó la accesibilidad conforme a WCAG 2.1 AA y se desplegó el producto funcional en Vercel."
         }
       ]
     },
@@ -1013,7 +1014,7 @@
         "id": "actions",
         "type": "custom",
         "title": "Alineación con IA",
-        "body": "Estructuré el trabajo como un flujo de producción potenciado por IA, con criterio humano en cada entrega. Claude y NotebookLM aceleraron la ideación, la síntesis de la investigación y los primeros borradores de texto.\n\nClaude Design creó la dirección visual inicial; después seleccioné, estructuré e iteré las ideas más sólidas del análisis. Codex y Claude Code aceleraron la construcción, y Storybook funcionó como capa de documentación de componentes y control de calidad de accesibilidad."
+        "body": "Estructuré el trabajo como un flujo de producción potenciado por IA, con criterio humano en cada entrega. Claude y NotebookLM aceleraron la ideación, la síntesis de la investigación y los primeros borradores de texto.\n\nClaude Design creó la dirección visual inicial; después seleccioné y refiné las ideas más sólidas en Figma. Con Figma AI, construí la biblioteca de componentes reutilizables y sus variantes antes de usarla como referencia para la interfaz en código. Codex y Claude Code aceleraron la implementación, mientras Storybook documentó los componentes implementados y ayudó al control de calidad de accesibilidad."
       },
       {
         "id": "impact",

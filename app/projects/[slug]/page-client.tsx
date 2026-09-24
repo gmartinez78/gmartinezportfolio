@@ -854,18 +854,18 @@ const PROTECTA_WORKFLOW_SUMMARIES: Record<Language, string[]> = {
     "Map bilingual patterns and positioning opportunities.",
     "Create and refine a usable visual system.",
     "Shape clear English and Spanish messaging.",
-    "Turn the strategy into page and component blueprints.",
-    "Ship the production-ready website.",
-    "Check accessibility and prepare the launch.",
+    "Build the Figma component library, pages, and bilingual variants.",
+    "Use those components as the reference for the production website.",
+    "Document coded states, check accessibility, and prepare launch.",
   ],
   es: [
     "Capturar necesidades, objeciones y el modelo de servicio.",
     "Mapear patrones bilingües y oportunidades de posicionamiento.",
     "Crear y refinar un sistema visual utilizable.",
     "Definir mensajes claros en inglés y español.",
-    "Convertir la estrategia en páginas y componentes.",
-    "Lanzar el sitio web listo para producción.",
-    "Comprobar accesibilidad y preparar el lanzamiento.",
+    "Crear la biblioteca de Figma, las páginas y las variantes bilingües.",
+    "Usar esos componentes como referencia para el sitio en producción.",
+    "Documentar los estados en código, comprobar accesibilidad y preparar el lanzamiento.",
   ],
 };
 
@@ -874,9 +874,9 @@ const PROTECTA_WORKFLOW_TOOLS = [
   ["Claude Skills"],
   ["Claude Design"],
   ["ChatGPT"],
-  ["Claude Design", "Codex"],
-  ["Codex"],
-  ["Codex", "Storybook", "QA manual"],
+  ["Figma AI", "Claude Design"],
+  ["Figma AI", "Codex", "Claude Code"],
+  ["Figma AI", "Storybook", "QA manual"],
 ];
 
 const PROTECTA_DECISION_MODEL: Record<Language, { title: string; body: string }> = {
@@ -926,7 +926,7 @@ const PROTECTA_COMPONENT_COPY: Record<Language, { eyebrow: string; title: string
   en: {
     eyebrow: "Component library",
     title: "Built in code, documented to scale",
-    body: "I built the reusable interface in code with AI-assisted implementation, then documented its patterns and states in Storybook. This created a practical reference for consistent bilingual reuse, accessibility review, and future iteration.",
+    body: "I built the design-system components in Figma with Figma AI, then implemented their coded counterparts with AI-assisted development. Storybook documents the implementation states, keeping bilingual reuse, accessibility review, and future iteration visible in one place.",
     labels: ["Primary CTA", "Coverage card", "Language switch", "Advisor contact"],
     libraryTitle: "Component library coverage",
     libraryGroups: [
@@ -939,7 +939,7 @@ const PROTECTA_COMPONENT_COPY: Record<Language, { eyebrow: string; title: string
   es: {
     eyebrow: "Biblioteca de componentes",
     title: "Creado en código, documentado para escalar",
-    body: "Construí la interfaz reutilizable en código con implementación asistida por IA y después documenté sus patrones y estados en Storybook. Esto creó una referencia práctica para reutilización bilingüe consistente, revisión de accesibilidad e iteración futura.",
+    body: "Construí los componentes del sistema de diseño en Figma con Figma AI y después implementé sus equivalentes en código con desarrollo asistido por IA. Storybook documenta los estados de implementación para mantener visible en un solo lugar la reutilización bilingüe, la revisión de accesibilidad y la iteración futura.",
     labels: ["CTA principal", "Tarjeta de cobertura", "Selector de idioma", "Contacto con asesor"],
     libraryTitle: "Cobertura de la biblioteca de componentes",
     libraryGroups: [
@@ -948,6 +948,31 @@ const PROTECTA_COMPONENT_COPY: Record<Language, { eyebrow: string; title: string
       { title: "Conversión", items: "Botones CTA · Tarjetas de cobertura · Contacto con asesor" },
       { title: "Calidad", items: "Estados de foco · Comportamiento móvil · Textos EN/ES" },
     ],
+  },
+};
+
+const PROTECTA_HANDOFF_COPY: Record<Language, { eyebrow: string; title: string; body: string; stages: Array<{ label: string; title: string; body: string }>; note: string }> = {
+  en: {
+    eyebrow: "The visual handoff",
+    title: "From Claude Design direction to a coded component",
+    body: "These are the three working surfaces behind the finished website: an exploratory Claude Design screen, the Figma AI component work that made the direction reusable, and the coded state documented in Storybook.",
+    stages: [
+      { label: "01 · Claude Design", title: "Explore the visual direction", body: "A fast first screen to compare tone, hierarchy, and brand character—not the final UI." },
+      { label: "02 · Figma AI", title: "Turn the direction into a system", body: "I built the components, variants, and bilingual states that the pages would reuse." },
+      { label: "03 · Code + Storybook", title: "Implement and verify", body: "The coded counterpart is reviewed in Storybook for behavior, responsive states, and accessibility." },
+    ],
+    note: "A Figma change does not publish itself to the site. I use the component mapping to make the code change intentionally, then verify the result in Storybook.",
+  },
+  es: {
+    eyebrow: "El traspaso visual",
+    title: "De una dirección de Claude Design a un componente en código",
+    body: "Estas son las tres superficies de trabajo detrás del sitio terminado: una pantalla exploratoria de Claude Design, el trabajo de componentes en Figma AI que hizo reutilizable la dirección y el estado en código documentado en Storybook.",
+    stages: [
+      { label: "01 · Claude Design", title: "Explorar la dirección visual", body: "Una primera pantalla rápida para comparar tono, jerarquía y carácter de marca; no la UI final." },
+      { label: "02 · Figma AI", title: "Convertir la dirección en sistema", body: "Construí los componentes, variantes y estados bilingües que reutilizarían las páginas." },
+      { label: "03 · Código + Storybook", title: "Implementar y verificar", body: "El equivalente en código se revisa en Storybook para validar comportamiento, estados responsive y accesibilidad." },
+    ],
+    note: "Un cambio en Figma no se publica solo en el sitio. Uso el mapeo de componentes para hacer el cambio de código de forma intencional y después verifico el resultado en Storybook.",
   },
 };
 
@@ -1020,8 +1045,9 @@ const PROTECTA_CAPABILITIES: Record<Language, { title: string; subtitle: string;
     items: [
       "NotebookLM · Research synthesis",
       "Claude Design · First visual direction",
+      "Figma AI · Component library and page iteration",
       "ChatGPT · Working definitions + copy",
-      "Codex · Implementation support",
+      "Codex + Claude Code · Implementation support",
       "GitHub · Version control",
       "Vercel · Live deployment",
       "Storybook · Component documentation + QA",
@@ -1033,8 +1059,9 @@ const PROTECTA_CAPABILITIES: Record<Language, { title: string; subtitle: string;
     items: [
       "NotebookLM · Síntesis de investigación",
       "Claude Design · Primera dirección visual",
+      "Figma AI · Biblioteca de componentes e iteración de páginas",
       "ChatGPT · Definiciones de trabajo + texto",
-      "Codex · Soporte de implementación",
+      "Codex + Claude Code · Soporte de implementación",
       "GitHub · Control de versiones",
       "Vercel · Despliegue en producción",
       "Storybook · Documentación de componentes + QA",
@@ -1052,12 +1079,12 @@ const PROTECTA_PRACTICAL_IMPLICATIONS: Record<Language, { eyebrow: string; title
         body: "Claude Design made early directions faster to generate and compare. The constraint was no longer producing screens; it was evaluating NotebookLM research, choosing the strongest direction, and refining it with intent.",
       },
       {
-        title: "Code became the source of truth.",
-        body: "The interface was designed and validated in the live product. Codex accelerated implementation, while GitHub and Vercel supported a code-first delivery path. Storybook documents the reusable patterns and states that the code established.",
+        title: "Figma and code stayed connected by component.",
+        body: "Figma was the design-system source for component anatomy, variants, and bilingual states. I used it as the implementation reference, then documented the coded equivalent in Storybook for QA. Changes were reviewed and applied deliberately; this was an aligned workflow, not an automatic two-way sync.",
       },
       {
-        title: "Figma was not required for this delivery.",
-        body: "The first visual draft came from Claude Design, then I iterated on each section with my own ideas and research-led judgment to strengthen the structure in code.",
+        title: "Figma AI made system work faster.",
+        body: "After Claude Design established the first visual direction, I used Figma AI to create and refine the component library. This let me test page compositions quickly while preserving a reusable system for the website build.",
       },
     ],
   },
@@ -1070,12 +1097,12 @@ const PROTECTA_PRACTICAL_IMPLICATIONS: Record<Language, { eyebrow: string; title
         body: "Claude Design hizo más rápido generar y comparar direcciones iniciales. El límite ya no era producir pantallas; era evaluar la investigación de NotebookLM, elegir la mejor dirección y refinarla con intención.",
       },
       {
-        title: "El código se convirtió en la fuente de verdad.",
-        body: "La interfaz se diseñó y validó en el producto real. Codex aceleró la implementación, mientras GitHub y Vercel respaldaron una entrega basada en código. Storybook documenta los patrones y estados reutilizables que el código definió.",
+        title: "Figma y el código se mantuvieron conectados por componente.",
+        body: "Figma fue la fuente del sistema de diseño para la anatomía de componentes, las variantes y los estados bilingües. Lo usé como referencia de implementación y documenté el equivalente en código en Storybook para QA. Los cambios se revisaron y aplicaron de forma intencional; era un flujo alineado, no una sincronización automática bidireccional.",
       },
       {
-        title: "Figma no fue necesario para esta entrega.",
-        body: "El primer borrador visual se creó con Claude Design; después, iteré cada sección con mis propias ideas y criterio guiado por la investigación para reforzar la estructura en código.",
+        title: "Figma AI aceleró el trabajo de sistema.",
+        body: "Después de que Claude Design definiera la primera dirección visual, utilicé Figma AI para crear y refinar la biblioteca de componentes. Eso me permitió probar composiciones de página rápidamente y mantener un sistema reutilizable para la construcción del sitio.",
       },
     ],
   },
@@ -1249,7 +1276,7 @@ const PROTECTA_STORYBOOK: Record<Language, { eyebrow: string; title: string; bod
   en: {
     eyebrow: "Live component documentation",
     title: "Protecta Storybook: built in code, documented to scale",
-    body: "I built the reusable interface in code with AI-assisted implementation, then documented its patterns and states in Storybook. This created a practical reference for consistency, accessibility review, and future iteration.",
+    body: "I built the design-system components in Figma with Figma AI, then implemented their coded counterparts with AI-assisted development. Storybook documents the implementation states for consistency, accessibility review, and future iteration.",
     link: "Open Protecta Storybook ↗",
     components: [
       { title: "Accordion", note: "FAQ states for health, dental, billing, and product questions.", url: "https://protecta.today/storybook?path=/docs/components-accordion--docs" },
@@ -1267,8 +1294,8 @@ const PROTECTA_STORYBOOK: Record<Language, { eyebrow: string; title: string; bod
   },
   es: {
     eyebrow: "Documentación de componentes en vivo",
-    title: "Storybook de Protecta: creado en código, documentado para escalar",
-    body: "Construí la interfaz reutilizable en código con implementación asistida por IA y después documenté sus patrones y estados en Storybook. Esto creó una referencia práctica para mantener consistencia, revisar accesibilidad e iterar en el futuro.",
+    title: "Storybook de Protecta: componentes de Figma, implementados en código",
+    body: "Construí los componentes del sistema de diseño en Figma con Figma AI y después implementé sus equivalentes en código con desarrollo asistido por IA. Storybook documenta los estados de implementación para mantener consistencia, revisar accesibilidad e iterar en el futuro.",
     link: "Abrir Storybook de Protecta ↗",
     components: [
       { title: "Acordeón", note: "Estados de FAQ para preguntas de salud, dental, pagos y producto.", url: "https://protecta.today/storybook?path=/docs/components-accordion--docs" },
@@ -5309,6 +5336,47 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </div>
                   </div>
                   <div className="mx-auto mt-8 max-w-[1040px]">
+                    <div className="rounded-[28px] border border-[#d7e8f7] bg-[#f8fbff] p-5 shadow-[0_14px_34px_rgba(17,131,208,0.08)] md:p-8">
+                      <div className="mx-auto max-w-[760px] text-center">
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#1183D0]">{PROTECTA_HANDOFF_COPY[language].eyebrow}</p>
+                        <h3 className="mt-3 font-playfair-display text-[32px] leading-tight text-[#0e2951] md:text-[42px]">{PROTECTA_HANDOFF_COPY[language].title}</h3>
+                        <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[language].body}</p>
+                      </div>
+                      <div className="mt-8 grid gap-5 lg:grid-cols-3">
+                        <article className="overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
+                          <div className="min-h-[224px] bg-[#17302d] p-4">
+                            <div className="flex items-center justify-between text-[9px] font-semibold uppercase tracking-[0.14em] text-white/60"><span>Claude Design</span><span>Exploration</span></div>
+                            <div className="mt-4 rounded-[14px] bg-[#f8f5ed] p-4 shadow-[0_12px_28px_rgba(0,0,0,0.16)]">
+                              <div className="flex items-center justify-between"><span className="font-playfair-display text-[15px] text-[#154f4d]">Protecta</span><span className="rounded-full border border-[#c9dacb] px-2 py-1 text-[7px] font-semibold text-[#47675f]">EN&nbsp; / &nbsp;ES</span></div>
+                              <p className="mt-5 max-w-[180px] font-playfair-display text-[22px] leading-[1.05] text-[#154f4d]">Coverage that shows up for you.</p>
+                              <div className="mt-4 h-2 w-full rounded-full bg-[#d8e1d2]" /><div className="mt-2 h-2 w-4/5 rounded-full bg-[#d8e1d2]" />
+                              <span className="mt-5 inline-flex rounded-full bg-[#d96c4b] px-3 py-2 text-[8px] font-semibold text-white">Get a free quote</span>
+                            </div>
+                          </div>
+                          <div className="p-4"><p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{PROTECTA_HANDOFF_COPY[language].stages[0].label}</p><h4 className="mt-2 font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[language].stages[0].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[language].stages[0].body}</p></div>
+                        </article>
+                        <article className="overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
+                          <div className="min-h-[224px] bg-[#f1f4f8] p-4">
+                            <div className="flex items-center justify-between text-[9px] font-semibold uppercase tracking-[0.14em] text-[#5c7792]"><span>Figma AI</span><span>Components</span></div>
+                            <div className="mt-4 grid grid-cols-[1.15fr_.85fr] gap-3">
+                              <div className="rounded-[12px] border border-[#b6d7f1] bg-white p-3 shadow-sm"><p className="text-[8px] font-semibold text-[#0e2951]">Hero / Default</p><p className="mt-3 font-playfair-display text-[17px] leading-[1.05] text-[#154f4d]">Care that stays with you.</p><span className="mt-4 inline-flex rounded-full bg-[#d96c4b] px-2.5 py-1.5 text-[7px] font-semibold text-white">Quote</span></div>
+                              <div className="space-y-2"><div className="rounded-[10px] border border-dashed border-[#1183D0] bg-[#e8f4fd] p-2"><p className="text-[7px] font-semibold text-[#1183D0]">Button</p><div className="mt-2 rounded-full bg-[#154f4d] px-2 py-1.5 text-center text-[7px] font-semibold text-white">Primary</div></div><div className="rounded-[10px] border border-dashed border-[#1183D0] bg-[#e8f4fd] p-2"><p className="text-[7px] font-semibold text-[#1183D0]">Language</p><div className="mt-2 flex rounded-full bg-white p-0.5 text-[7px]"><span className="rounded-full bg-[#154f4d] px-1.5 py-1 text-white">EN</span><span className="px-1.5 py-1 text-[#47675f]">ES</span></div></div></div>
+                            </div>
+                          </div>
+                          <div className="p-4"><p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{PROTECTA_HANDOFF_COPY[language].stages[1].label}</p><h4 className="mt-2 font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[language].stages[1].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[language].stages[1].body}</p></div>
+                        </article>
+                        <article className="overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
+                          <div className="min-h-[224px] bg-[#0e2951] p-4">
+                            <div className="flex items-center justify-between text-[9px] font-semibold uppercase tracking-[0.14em] text-[#b8dfff]"><span>Storybook</span><span>Button / Docs</span></div>
+                            <div className="mt-4 rounded-[12px] bg-white p-3 shadow-[0_10px_24px_rgba(0,0,0,.18)]"><div className="flex gap-1.5 border-b border-[#e6eef5] pb-2"><span className="h-1.5 w-1.5 rounded-full bg-[#1183D0]" /><span className="h-1.5 w-1.5 rounded-full bg-[#83cef8]" /><span className="ml-1 text-[7px] font-semibold text-[#5c7792]">Components / Button</span></div><div className="mt-4 rounded-[10px] bg-[#f6f9fb] p-3"><button type="button" className="rounded-full bg-[#d96c4b] px-3 py-2 text-[8px] font-semibold text-white">Get a free quote</button><p className="mt-3 text-[7px] text-[#5c7792]">Default · hover · focus · disabled</p></div></div>
+                          </div>
+                          <div className="p-4"><p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{PROTECTA_HANDOFF_COPY[language].stages[2].label}</p><h4 className="mt-2 font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[language].stages[2].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[language].stages[2].body}</p></div>
+                        </article>
+                      </div>
+                      <p className="mx-auto mt-6 max-w-[850px] rounded-[14px] border border-[#b6d7f1] bg-white px-4 py-3 text-center font-inter text-[12px] leading-[1.6] text-[#36566b]">{PROTECTA_HANDOFF_COPY[language].note}</p>
+                    </div>
+                  </div>
+                  <div className="mx-auto mt-12 max-w-[1040px]">
                     <div className="text-center">
                       <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#1183D0]">{PROTECTA_COMPONENT_COPY[language].eyebrow}</p>
                       <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#0e2951] md:text-[42px]">{PROTECTA_COMPONENT_COPY[language].title}</h3>
