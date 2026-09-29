@@ -27,7 +27,7 @@ header.nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);
 .resource-mark{width:30px;height:30px}
 
 /* Founder bios and tertiary conversion links */
-.person{flex-direction:row;align-items:center}.person-copy{order:-1;min-width:0}.person .person-role{margin-top:5px;color:var(--accent);font-weight:800}.person:first-child .person-role{color:#d9d2ff}.person-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:18px}.person .tertiary{font-size:14px}.person:first-child .tertiary{color:#fff}.person:first-child .tertiary:hover{color:#d9d2ff}
+.person{flex-direction:row;align-items:center}.person-copy{min-width:0}.person .person-role{margin-top:5px;color:var(--accent);font-weight:800}.person:first-child .person-role{color:#d9d2ff}.person-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:18px}.person .tertiary{font-size:14px}.person:first-child .tertiary{color:#fff}.person:first-child .tertiary:hover{color:#d9d2ff}
 
 /* The Flex and Base360 operator marks */
 .operator-logos{display:flex;align-items:center;gap:14px;margin-top:28px}.operator-logos img{display:block;width:auto;height:31px;max-width:140px;object-fit:contain}
