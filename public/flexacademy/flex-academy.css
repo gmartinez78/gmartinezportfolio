@@ -64,3 +64,6 @@ header.nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);
 
 /* Slightly smaller real-systems tiles with more space around the grid */
 .method-grid{max-width:1100px;margin:0 auto;padding:12px 0;gap:18px}.method-tile{min-height:300px}
+
+/* Rotating hero promise */
+.hero-rotating{display:inline-block;transition:opacity .22s ease,transform .22s ease}.hero-rotating.is-swapping{opacity:0;transform:translateY(8px)}
