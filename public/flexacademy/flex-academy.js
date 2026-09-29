@@ -26,7 +26,7 @@
     if(flow==='launch'&&step===0)bindLaunchValidation();
   }
   function launch(){
-    if(step===0)return progress(2)+'<h3 id="mt">Register for the free webinar</h3><p class="sub">Learn the operator-led route to launching a short-term rental business.</p><div class="fields">'+field('name','Full name','text',state.name,true)+field('email','Email','email',state.email,true)+field('country','Country','text',state.country,true)+'</div><div class="errmsg" role="alert"></div>'+actions(false,'Reserve my free place')+'<p class="hint">We will email your confirmation and webinar details.</p>';
+    if(step===0)return progress(2)+'<h3 id="mt">Register for the free webinar</h3><p class="sub">Learn the operator-led route to launching a short-term rental business. We’ll email your confirmation and webinar details.</p><div class="fields">'+field('name','Full name','text',state.name,true)+field('email','Email','email',state.email,true)+field('country','Country','text',state.country,true)+'</div><div class="errmsg" role="alert"></div>'+actions(false,'Reserve my free place');
     return '<div class="tick" aria-hidden="true">✓</div><h3 id="mt">You’re registered.</h3><p class="sub">Your place is reserved for the free Flex Academy webinar.</p><div class="summary-card"><div><span>Webinar date</span><b>To be confirmed</b></div><div><span>Sent to</span><b>'+escapeHtml(state.email)+'</b></div></div><button class="btn" type="button" disabled>Add to calendar when confirmed</button><p class="hint">We’ll send the date, time and calendar link by email as soon as they are confirmed.</p><div class="acts"><span></span><button class="btn ghost" type="button" data-close>Done</button></div>';
   }
   function scale(){
