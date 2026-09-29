@@ -41,7 +41,7 @@ header.nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);
 .course-details .offer-bottom>p{display:none}.course-details .offer-bottom{padding-top:0;border-top:0}
 
 /* Accessible inline form validation */
-.field-error{display:none;margin:2px 0 0;color:#b4233f;font-size:13px;font-weight:650;line-height:1.3}.field.is-invalid .field-error{display:block}.field.is-invalid input{border-color:#b4233f;box-shadow:0 0 0 3px rgba(180,35,63,.14)}
+.field-error{display:none;margin:2px 0 0;color:#b4233f;font-size:13px;font-weight:650;line-height:1.3}.field.is-invalid .field-error{display:block}.field.is-invalid input,.field.is-invalid select{border-color:#b4233f;box-shadow:0 0 0 3px rgba(180,35,63,.14)}.field.is-invalid .opts{padding:6px;border-radius:12px;outline:2px solid #b4233f;outline-offset:2px}
 
 /* Text-only opening tile in the real-systems grid */
 .learn-system{display:flex;align-items:center;justify-content:center;background:var(--teal);color:#fff}.learn-system .method-screen{display:none}.learn-system .method-tile-copy{padding:34px;text-align:center}.learn-system .method-tile-copy>span{margin-bottom:16px;color:#cfc6f5;font-size:12px;letter-spacing:.13em}.learn-system .method-tile-copy h3{max-width:13ch;margin:0 auto;color:#fff;font-size:clamp(32px,3.3vw,48px);font-weight:800;letter-spacing:-.035em}.learn-system .method-tile-copy p{max-width:35ch;margin:20px auto 0;color:rgba(255,255,255,.8);font-size:16px;line-height:1.5}
