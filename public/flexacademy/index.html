@@ -48,16 +48,12 @@ header.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--b
 .hero .btn.ghost{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.92);box-shadow:0 8px 24px rgba(0,0,0,.16)}
 .hero .btn.ghost:hover{background:rgba(255,255,255,.2);border-color:#fff}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-proof{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,.32);text-shadow:0 4px 18px rgba(0,0,0,.7)}
+.hero-proof strong{display:block;font-size:28px;line-height:1;font-weight:700;letter-spacing:-.03em;color:#fff}
+.hero-proof span{display:block;margin-top:6px;font-size:12px;line-height:1.25;color:rgba(255,255,255,.82)}
 .micro{font-size:14px;margin-top:14px}
 .visual{position:absolute;inset:0;z-index:0}
 .hero-video{display:block;width:100%;height:100%;object-fit:cover;background:var(--teal)}
-/* proof */
-.proof{padding:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
-.proof .w{display:grid;grid-template-columns:repeat(4,1fr)}
-.proof .w>div{padding:28px 20px;border-right:1px solid var(--line)}.proof .w>div:last-child{border:0}
-.proof strong{display:block;font-size:34px;font-weight:800;letter-spacing:-.03em}
-.proof span{font-size:14px;color:var(--slate)}
-.src{font-size:12px;color:var(--slate);padding:10px 24px;max-width:1200px;margin:0 auto}
 /* problem */
 .two{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 .pain{display:grid;gap:14px}
@@ -159,7 +155,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  section{padding:64px 0}.nav nav{display:none}
  .hero{width:calc(100% - 32px);min-height:0;margin:16px auto 0;padding:72px 0 80px;border-radius:20px}.two,.pcard,.fit,.people{grid-template-columns:1fr;gap:32px}
  .hero::after{background:linear-gradient(90deg,rgba(5,19,21,.78),rgba(5,19,21,.46)),linear-gradient(0deg,rgba(5,19,21,.5),transparent 55%)}
- .proof .w{grid-template-columns:1fr 1fr}.proof .w>div{border-bottom:1px solid var(--line)}
+ .hero-proof{grid-template-columns:repeat(2,1fr);gap:18px}
  .steps{grid-template-columns:1fr 1fr}.inc,.quotes{grid-template-columns:1fr}
  .w{padding:0 16px}
  .sticky{display:block;position:fixed;left:0;right:0;bottom:0;z-index:15;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line)}
@@ -193,16 +189,15 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
    <button class="btn" data-open>Book a free call</button>
    <a class="btn ghost" href="#checklist" data-checklist>Get the free rental growth checklist</a>
   </div>
+  <div class="hero-proof" aria-label="The Flex network at a glance">
+   <div><strong>7</strong><span>cities across The Flex network</span></div>
+   <div><strong>150+</strong><span>corporate partners</span></div>
+   <div><strong>130+</strong><span>distribution channels</span></div>
+   <div><strong>2019</strong><span>operating since</span></div>
+  </div>
  </div>
  </div>
 </section>
-
-<div class="proof"><div class="w">
- <div><strong>7</strong><span>cities across The Flex network</span></div>
- <div><strong>150+</strong><span>corporate partners</span></div>
- <div><strong>130+</strong><span>distribution channels</span></div>
- <div><strong>2019</strong><span>operating since</span></div>
-</div></div>
 
 <section id="problem"><div class="w two">
  <div><div class="eyebrow">The growth problem</div><h2>More units shouldn't mean more chaos.</h2>
