@@ -37,11 +37,11 @@ header.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--b
 .nav nav a{text-decoration:none;color:var(--slate)}.nav nav a:hover{color:var(--ink)}
 .nav .btn{min-height:44px;padding:0 20px;font-size:15px}
 /* hero */
-.hero{position:relative;isolation:isolate;min-height:620px;padding:112px 0 104px;background:var(--teal);overflow:hidden}
+.hero{position:relative;isolation:isolate;max-width:1440px;min-height:620px;margin:0 auto;padding:112px 0 104px;background:var(--teal);overflow:hidden}
 .hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(5,19,21,.78) 0%,rgba(5,19,21,.62) 42%,rgba(5,19,21,.25) 100%);box-shadow:inset 0 0 110px rgba(0,0,0,.38)}
 .hero .w{position:relative;z-index:2}
 .hero .w>div{max-width:680px}
-.hero h1{color:#fff;text-shadow:0 4px 22px rgba(0,0,0,.55)}
+.hero h1{font-size:clamp(38px,4.8vw,60px);color:#fff;text-shadow:0 4px 22px rgba(0,0,0,.55)}
 .hero .eyebrow{color:#e3dcff;text-shadow:0 2px 12px rgba(0,0,0,.65)}
 .hero .lead,.hero .micro{color:rgba(255,255,255,.92);text-shadow:0 2px 14px rgba(0,0,0,.65)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
@@ -182,9 +182,8 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  </div>
  <div class="w">
  <div>
-  <div class="eyebrow">For operators with 5–30 units</div>
   <h1>Scale your rentals into a company that runs without you.</h1>
-  <p class="lead">Flex Academy is the operator-led programme from the team behind The Flex and Base360. You get the playbook, systems and software we use to run short-term rentals — not a course about theory.</p>
+  <p class="lead">The Flex and Base360 playbook, systems and software for scaling short-term rentals.</p>
   <div class="hero-cta">
    <button class="btn" data-open>Book a free strategy call</button>
    <a class="btn ghost" href="#checklist" data-checklist>Get the STR scaling checklist</a>
