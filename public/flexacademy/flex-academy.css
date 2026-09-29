@@ -27,4 +27,7 @@ header.nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);
 .resource-mark{width:30px;height:30px}
 
 /* Founder bios and tertiary conversion links */
-.person-copy{min-width:0}.person .person-role{margin-top:5px;color:var(--accent);font-weight:800}.person:first-child .person-role{color:#d9d2ff}.person-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:18px}.person .tertiary{font-size:14px}.person:first-child .tertiary{color:#fff}.person:first-child .tertiary:hover{color:#d9d2ff}
+.person{flex-direction:column;align-items:flex-start}.person-copy{order:-1;min-width:0}.person .person-role{margin-top:5px;color:var(--accent);font-weight:800}.person:first-child .person-role{color:#d9d2ff}.person-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:18px}.person .tertiary{font-size:14px}.person:first-child .tertiary{color:#fff}.person:first-child .tertiary:hover{color:#d9d2ff}
+
+/* The Flex and Base360 operator marks */
+.operator-logos{display:flex;align-items:center;gap:14px;margin-top:28px}.operator-logos>span{display:inline-flex;align-items:center;min-height:46px;padding:0 16px;border:1px solid rgba(255,255,255,.28);border-radius:9px;color:#fff;background:rgba(255,255,255,.06)}.the-flex-logo{gap:7px;font-family:Manrope,sans-serif;font-size:18px;font-weight:800;letter-spacing:-.05em}.the-flex-logo i{color:#d9d2ff;font-family:Georgia,serif;font-size:27px;font-style:normal;line-height:1}.base360-logo{font-size:18px;font-weight:700;letter-spacing:-.06em}.base360-logo span{color:#d9d2ff}

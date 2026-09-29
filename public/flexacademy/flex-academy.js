@@ -45,4 +45,24 @@
     if(flow==='scale'&&step===2){state.name=document.getElementById('name').value.trim();state.email=document.getElementById('email').value.trim();if(!state.name)return error('Enter your name to continue.','name');if(!emailValid(state.email))return error('Enter a valid email address.','email');step++;render();focusFirst();return}
     if(flow==='checklist'&&step===0){state.name=document.getElementById('name').value.trim();state.email=document.getElementById('email').value.trim();if(!state.name)return error('Enter your name to continue.','name');if(!emailValid(state.email))return error('Enter a valid email address.','email');step++;render();focusFirst()}
   }
+  var counters=document.querySelectorAll('.count-up');
+  function countUp(counter){
+    var target=Number(counter.dataset.count), suffix=counter.dataset.suffix||'', duration=650, startedAt=null;
+    counter.textContent='0'+suffix;
+    function tick(now){
+      if(!startedAt)startedAt=now;
+      var progress=Math.min((now-startedAt)/duration,1), eased=1-Math.pow(1-progress,3);
+      counter.textContent=Math.round(target*eased)+suffix;
+      if(progress<1)requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if(counters.length){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      counters.forEach(function(counter){counter.textContent=counter.dataset.count+(counter.dataset.suffix||'')});
+    }else if('IntersectionObserver' in window){
+      var counterObserver=new IntersectionObserver(function(entries,observer){entries.forEach(function(entry){if(entry.isIntersecting){countUp(entry.target);observer.unobserve(entry.target)}})},{threshold:.55});
+      counters.forEach(function(counter){counterObserver.observe(counter)});
+    }else{counters.forEach(countUp)}
+  }
 })();
