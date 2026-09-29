@@ -97,7 +97,7 @@
   }
   var rotatingPromise=document.querySelector('.hero-rotating');
   if(rotatingPromise&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    var promisePhrases=['life you own.','business that runs.','freedom you built.','future on your terms.'], promiseIndex=0;
+    var promisePhrases=window.matchMedia('(max-width: 520px)').matches?['life you own.','business that runs.','freedom you built.']:['life you own.','business that runs.','freedom you built.','future on your terms.'], promiseIndex=0;
     window.setInterval(function(){
       rotatingPromise.classList.add('is-swapping');
       window.setTimeout(function(){
