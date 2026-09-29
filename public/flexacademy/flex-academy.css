@@ -22,3 +22,9 @@ header.nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);
 /* Official corporate partner marks */
 .partner-logos img{display:block;width:100%;max-width:110px;height:34px;margin:0 auto;object-fit:contain;filter:brightness(0)}
 @media (max-width:900px){.partner-logos img{max-width:85px;height:28px}}
+
+/* Compact Free resource mark */
+.resource-mark{width:30px;height:30px}
+
+/* Founder bios and tertiary conversion links */
+.person-copy{min-width:0}.person .person-role{margin-top:5px;color:var(--accent);font-weight:800}.person:first-child .person-role{color:#d9d2ff}.person-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:18px}.person .tertiary{font-size:14px}.person:first-child .tertiary{color:#fff}.person:first-child .tertiary:hover{color:#d9d2ff}
