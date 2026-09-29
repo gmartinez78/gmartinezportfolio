@@ -37,6 +37,9 @@ header.nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);
 @media (min-width:521px){.person-bio{max-height:0;margin-top:0!important;overflow:hidden;opacity:0;transition:max-height .3s ease,margin .3s ease,opacity .2s ease}.person:hover .person-bio,.person:focus-within .person-bio{max-height:180px;margin-top:10px!important;opacity:1}}
 @media (max-width:520px){.person{flex-direction:column;align-items:center;text-align:center}.person .avatar{margin:0 auto}.person-copy{width:100%}.person-actions{justify-content:center}}
 
+/* Keep the offer cards focused on their CTAs */
+.course-details .offer-bottom>p{display:none}.course-details .offer-bottom{padding-top:0;border-top:0}
+
 /* Founder bios and tertiary conversion links */
 .person{flex-direction:row;align-items:center}.person-copy{min-width:0}.person .person-role{margin-top:5px;color:var(--accent);font-weight:800}.person:first-child .person-role{color:#d9d2ff}.person-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:18px}.person .tertiary{font-size:14px}.person:first-child .tertiary{color:#fff}.person:first-child .tertiary:hover{color:#d9d2ff}
 
