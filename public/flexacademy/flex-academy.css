@@ -40,6 +40,9 @@ header.nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);
 /* Keep the offer cards focused on their CTAs */
 .course-details .offer-bottom>p{display:none}.course-details .offer-bottom{padding-top:0;border-top:0}
 
+/* Text-only opening tile in the real-systems grid */
+.learn-system{background:rgba(255,255,255,.055);color:#fff}.learn-system .method-screen{display:none}.learn-system .method-tile-copy>span{color:#cfc6f5}.learn-system .method-tile-copy h3{color:#fff}.learn-system .method-tile-copy p{color:rgba(255,255,255,.8)}
+
 /* Founder bios and tertiary conversion links */
 .person{flex-direction:row;align-items:center}.person-copy{min-width:0}.person .person-role{margin-top:5px;color:var(--accent);font-weight:800}.person:first-child .person-role{color:#d9d2ff}.person-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:18px}.person .tertiary{font-size:14px}.person:first-child .tertiary{color:#fff}.person:first-child .tertiary:hover{color:#d9d2ff}
 
