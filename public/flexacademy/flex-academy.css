@@ -67,3 +67,6 @@ header.nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);
 
 /* Rotating hero promise */
 .hero-rotating{display:inline-block;transition:opacity .22s ease,transform .22s ease}.hero-rotating.is-swapping{opacity:0;transform:translateY(8px)}
+
+/* Floating navigation after the visitor begins to scroll */
+header.nav{transition:width .22s ease,margin .22s ease,top .22s ease,border-radius .22s ease,box-shadow .22s ease,background .22s ease}@media (min-width:901px){header.nav.is-scrolled{top:12px;width:calc(100% - 48px);max-width:1200px;margin:0 auto;border:1px solid rgba(17,17,17,.09);border-radius:16px;background:rgba(255,255,255,.96);box-shadow:0 12px 28px rgba(17,17,17,.14)}.nav.is-scrolled .w{height:56px}}
