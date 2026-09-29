@@ -122,3 +122,6 @@ header.nav{transition:width .22s ease,margin .22s ease,top .22s ease,border-radi
 
 /* Keep the product labels on mobile while removing their supporting copy. */
 @media (max-width:720px){.operations-system .method-tile-copy p,.growth-system .method-tile-copy p,.software-system .method-tile-copy p{display:none}}
+
+/* Founder cards use the same static, mobile-style layout at every viewport. */
+@media (min-width:521px){.people .person{min-height:0;flex-direction:column;align-items:center;text-align:center}.people .avatar{margin:0 auto}.people .person-copy{display:block;align-self:auto;width:100%;text-align:center}.people .person-summary{display:flex;align-items:center;justify-content:flex-start;text-align:center;transition:none}.people .person-copy .person-bio,.people .person:hover .person-bio,.people .person:focus-within .person-bio{position:static;width:auto;max-height:none!important;min-height:0;margin:12px 0 0!important;overflow:visible;visibility:visible;opacity:1;text-align:center;transform:none;transition:none}.people .person:hover .person-summary{opacity:1;transform:none;pointer-events:auto}.people .person-actions,.person-summary .person-actions{justify-content:center;margin:16px 0 0;padding:0;transition:none}}
