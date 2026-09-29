@@ -77,6 +77,24 @@
     window.addEventListener('resize',updateStickyCta);
     updateStickyCta();
   }
+  var inlineChecklistForm=document.getElementById('inline-checklist-form');
+  if(inlineChecklistForm){
+    var inlineChecklistName=document.getElementById('checklist-name'), inlineChecklistEmail=document.getElementById('checklist-email'), inlineChecklistConfirmation=document.getElementById('inline-checklist-confirmation');
+    function validateInlineChecklistField(input){
+      var message='', errorBox=document.getElementById(input.id+'-error'), fieldWrap=input.closest('.inline-field');
+      if(input.id==='checklist-name'&&!input.value.trim())message='Enter your full name.';
+      if(input.id==='checklist-email'&&!input.value.trim())message='Enter your email address.';
+      else if(input.id==='checklist-email'&&!emailValid(input.value.trim()))message='Enter a valid email address.';
+      fieldWrap.classList.toggle('invalid',!!message);input.setAttribute('aria-invalid',message?'true':'false');errorBox.textContent=message;
+      return !message;
+    }
+    [inlineChecklistName,inlineChecklistEmail].forEach(function(input){input.addEventListener('blur',function(){validateInlineChecklistField(input)});input.addEventListener('input',function(){if(input.getAttribute('aria-invalid')==='true')validateInlineChecklistField(input)})});
+    inlineChecklistForm.addEventListener('submit',function(event){
+      event.preventDefault();var nameValid=validateInlineChecklistField(inlineChecklistName), inlineEmailIsValid=validateInlineChecklistField(inlineChecklistEmail);
+      if(!nameValid||!inlineEmailIsValid){(!nameValid?inlineChecklistName:inlineChecklistEmail).focus();return}
+      document.getElementById('checklist-confirmation-email').textContent=inlineChecklistEmail.value.trim();inlineChecklistForm.hidden=true;inlineChecklistConfirmation.hidden=false;inlineChecklistConfirmation.focus();
+    });
+  }
   var rotatingPromise=document.querySelector('.hero-rotating');
   if(rotatingPromise&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     var promisePhrases=['life you own.','business that runs.','freedom you built.','future on your terms.'], promiseIndex=0;
