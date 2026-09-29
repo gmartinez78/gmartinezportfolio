@@ -37,12 +37,17 @@ header.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--b
 .nav nav a{text-decoration:none;color:var(--slate)}.nav nav a:hover{color:var(--ink)}
 .nav .btn{min-height:44px;padding:0 20px;font-size:15px}
 /* hero */
-.hero{padding:64px 0 88px;background:linear-gradient(180deg,var(--cream) 0%,var(--bg) 100%)}
-.hero .w{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.hero{position:relative;isolation:isolate;min-height:620px;padding:112px 0 104px;background:var(--teal);overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(5,19,21,.78) 0%,rgba(5,19,21,.62) 42%,rgba(5,19,21,.25) 100%);box-shadow:inset 0 0 110px rgba(0,0,0,.38)}
+.hero .w{position:relative;z-index:2}
+.hero .w>div{max-width:680px}
+.hero h1{color:#fff;text-shadow:0 4px 22px rgba(0,0,0,.55)}
+.hero .eyebrow{color:#e3dcff;text-shadow:0 2px 12px rgba(0,0,0,.65)}
+.hero .lead,.hero .micro{color:rgba(255,255,255,.92);text-shadow:0 2px 14px rgba(0,0,0,.65)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.micro{font-size:14px;color:var(--slate);margin-top:14px}
-.visual{position:relative;min-height:520px}
-.hero-video{display:block;width:100%;height:520px;object-fit:cover;border-radius:20px;background:var(--teal);box-shadow:0 24px 60px rgba(14,21,38,.18)}
+.micro{font-size:14px;margin-top:14px}
+.visual{position:absolute;inset:0;z-index:0}
+.hero-video{display:block;width:100%;height:100%;object-fit:cover;background:var(--teal)}
 /* proof */
 .proof{padding:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
 .proof .w{display:grid;grid-template-columns:repeat(4,1fr)}
@@ -147,8 +152,8 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .btn.s-focus{outline:3px solid var(--accent);outline-offset:3px}
 @media (max-width:900px){
  section{padding:64px 0}.nav nav{display:none}
- .hero{padding:32px 0 56px}.hero .w,.two,.pcard,.fit,.people{grid-template-columns:1fr;gap:32px}
- .visual{min-height:380px}.hero-video{height:380px}
+ .hero{min-height:0;padding:72px 0 80px}.two,.pcard,.fit,.people{grid-template-columns:1fr;gap:32px}
+ .hero::after{background:linear-gradient(90deg,rgba(5,19,21,.78),rgba(5,19,21,.5))}
  .proof .w{grid-template-columns:1fr 1fr}.proof .w>div{border-bottom:1px solid var(--line)}
  .steps{grid-template-columns:1fr 1fr}.inc,.quotes{grid-template-columns:1fr}
  .w{padding:0 16px}
@@ -169,7 +174,13 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </div></header>
 
 <main id="top">
-<section class="hero"><div class="w">
+<section class="hero">
+ <div class="visual" aria-hidden="true">
+  <video class="hero-video" autoplay muted loop playsinline>
+   <source src="assets/flex-academy-hero.mp4" type="video/mp4">
+  </video>
+ </div>
+ <div class="w">
  <div>
   <div class="eyebrow">For operators with 5–30 units</div>
   <h1>Scale your rentals into a company that runs without you.</h1>
@@ -180,12 +191,8 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
   <p class="micro">20–30 minutes · We'll tell you honestly if it's not the right fit yet.</p>
  </div>
- <div class="visual">
-  <video class="hero-video" autoplay muted loop playsinline aria-label="Flex Academy hero video">
-   <source src="assets/flex-academy-hero.mp4" type="video/mp4">
-  </video>
  </div>
-</div></section>
+</section>
 
 <div class="proof"><div class="w">
  <div><strong>7</strong><span>cities across The Flex network</span></div>
