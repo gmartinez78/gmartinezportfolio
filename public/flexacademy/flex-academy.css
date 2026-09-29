@@ -41,13 +41,17 @@ header.nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);
 .course-details .offer-bottom>p{display:none}.course-details .offer-bottom{padding-top:0;border-top:0}
 
 /* Text-only opening tile in the real-systems grid */
-.learn-system{display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.055);color:#fff}.learn-system .method-screen{display:none}.learn-system .method-tile-copy{padding:34px;text-align:center}.learn-system .method-tile-copy>span{margin-bottom:16px;color:#cfc6f5;font-size:12px;letter-spacing:.13em}.learn-system .method-tile-copy h3{max-width:13ch;margin:0 auto;color:#fff;font-size:clamp(32px,3.3vw,48px);font-weight:800;letter-spacing:-.035em}.learn-system .method-tile-copy p{max-width:35ch;margin:20px auto 0;color:rgba(255,255,255,.8);font-size:16px;line-height:1.5}
+.learn-system{display:flex;align-items:center;justify-content:center;background:var(--teal);color:#fff}.learn-system .method-screen{display:none}.learn-system .method-tile-copy{padding:34px;text-align:center}.learn-system .method-tile-copy>span{margin-bottom:16px;color:#cfc6f5;font-size:12px;letter-spacing:.13em}.learn-system .method-tile-copy h3{max-width:13ch;margin:0 auto;color:#fff;font-size:clamp(32px,3.3vw,48px);font-weight:800;letter-spacing:-.035em}.learn-system .method-tile-copy p{max-width:35ch;margin:20px auto 0;color:rgba(255,255,255,.8);font-size:16px;line-height:1.5}
 
 /* Founder card: reveal in the middle, identity and CTA anchored below */
 @media (min-width:521px){.person-copy{display:grid;align-self:stretch;width:100%;grid-template-rows:1fr auto auto auto}.person-copy h3{grid-row:2}.person-copy .person-role{grid-row:3}.person-copy .person-bio{grid-row:1;align-self:center;min-height:0;margin:0 0 16px!important}.person-copy .person-actions{grid-row:4;margin-top:16px}}
 
 /* Give the hero's secondary guide link more breathing room */
 .checklist-link{margin-top:38px}
+
+/* Keep the desktop product screens clear of their card copy */
+@media (min-width:721px){.screen-pricing{right:-46%;bottom:-32%}.screen-ai{right:-42%;bottom:-26%}}
+@media (max-width:720px){.screen-pricing{right:-13%;bottom:-20%}.screen-ai{right:-9%;bottom:-14%}}
 
 /* Founder bios and tertiary conversion links */
 .person{flex-direction:row;align-items:center}.person-copy{min-width:0}.person .person-role{margin-top:5px;color:var(--accent);font-weight:800}.person:first-child .person-role{color:#d9d2ff}.person-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:18px}.person .tertiary{font-size:14px}.person:first-child .tertiary{color:#fff}.person:first-child .tertiary:hover{color:#d9d2ff}
