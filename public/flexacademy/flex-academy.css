@@ -61,3 +61,6 @@ header.nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);
 
 /* The Flex and Base360 operator marks */
 .operator-logos{display:flex;align-items:center;gap:14px;margin-top:28px}.operator-logo-card{display:flex;align-items:center;justify-content:center;width:168px;height:64px;padding:16px 20px;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,.16);text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}.operator-logo-card:hover{box-shadow:0 12px 26px rgba(0,0,0,.24);transform:translateY(-2px)}.operator-logo-card:focus-visible{outline:3px solid #fff;outline-offset:3px}.operator-logo-card img{display:block;width:auto;max-width:100%;height:31px;object-fit:contain}.flex-logo-card{background:#111}.base-logo-card{background:#fff}
+
+/* Slightly smaller real-systems tiles with more space around the grid */
+.method-grid{max-width:1100px;margin:0 auto;padding:12px 0;gap:18px}.method-tile{min-height:300px}
