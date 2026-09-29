@@ -60,9 +60,11 @@ header.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--b
 /* problem */
 .two{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 .pain{display:grid;gap:14px}
-.pain div{padding:20px 22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
-.pain b{display:block;margin-bottom:4px}
-.pain span{color:var(--slate);font-size:15px}
+.pain-item{display:flex;align-items:flex-start;gap:16px;padding:20px 22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.pain-icon{display:grid;flex:none;place-items:center;width:40px;height:40px;border-radius:10px;background:var(--sky);color:var(--teal)}
+.pain-icon svg{width:21px;height:21px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.pain-item b{display:block;margin-bottom:4px}
+.pain-item>div>span{color:var(--slate);font-size:15px}
 /* method */
 .method{background:var(--teal);color:var(--on-teal)}
 .method .eyebrow{color:#CFC6F5}
@@ -199,15 +201,15 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  <div><strong>150+</strong><span>corporate partners</span></div>
  <div><strong>130+</strong><span>distribution channels</span></div>
  <div><strong>2019</strong><span>operating since</span></div>
-</div><div class="src">Source: theflex.global and base360.ai (public sites), verified Sep 2026. Sibling-brand proof — not Flex Academy student results.</div></div>
+</div></div>
 
 <section id="problem"><div class="w two">
  <div><div class="eyebrow">The growth problem</div><h2>More units shouldn't mean more chaos.</h2>
  <p class="lead">Most operators hit a ceiling between 5 and 30 units. The bottleneck is rarely demand — it's the operating system behind the listings.</p></div>
  <div class="pain">
-  <div><b>You're the bottleneck</b><span>Guest messages, turnovers and pricing all route through you.</span></div>
-  <div><b>Margins are thin</b><span>Ad-hoc pricing and vendors quietly eat the upside.</span></div>
-  <div><b>Growth feels risky</b><span>Every new unit adds complexity you can't yet absorb.</span></div>
+  <div class="pain-item"><span class="pain-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H7l-3 3z"/><path d="M8 9h8M8 12h5"/></svg></span><div><b>You're the bottleneck</b><span>Guest messages, turnovers and pricing all route through you.</span></div></div>
+  <div class="pain-item"><span class="pain-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16"/><path d="m7 15 4-4 3 2 5-6"/></svg></span><div><b>Margins are thin</b><span>Ad-hoc pricing and vendors quietly eat the upside.</span></div></div>
+  <div class="pain-item"><span class="pain-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 3 20h18z"/><path d="M12 9v4M12 17h.01"/></svg></span><div><b>Growth feels risky</b><span>Every new unit adds complexity you can't yet absorb.</span></div></div>
  </div>
 </div></section>
 
