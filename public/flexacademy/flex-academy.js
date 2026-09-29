@@ -10,7 +10,7 @@
   function progress(total){var output='<div class="prog" aria-hidden="true">';for(var i=0;i<total;i++)output+='<i class="'+(i<=step?'on':'')+'"></i>';return output+'</div>'}
   function actions(back,label){return '<div class="acts">'+(back?'<button class="btn ghost" type="button" data-back>Back</button>':'<span></span>')+'<button class="btn" type="button" data-next>'+label+'</button></div>'}
   function error(message,id){var errorBox=body.querySelector('.errmsg');if(errorBox)errorBox.textContent=message;if(id){var field=document.getElementById(id);if(field){field.closest('.field').classList.add('err');field.focus()}}}
-  function field(id,label,type,value,wide){return '<div class="field '+(wide?'full':'')+'"><label for="'+id+'">'+label+'</label><input id="'+id+'" type="'+(type||'text')+'" value="'+escapeHtml(value)+'" autocomplete="'+(id==='name'?'name':id==='email'?'email':'off')+'"></div>'}
+  function field(id,label,type,value,wide){return '<div class="field '+(wide?'full':'')+'"><label for="'+id+'">'+label+'</label><input id="'+id+'" type="'+(type||'text')+'" value="'+escapeHtml(value)+'" autocomplete="'+(id==='name'?'name':id==='email'?'email':'off')+'" aria-describedby="'+id+'-error" required><p class="field-error" id="'+id+'-error" aria-live="polite"></p></div>'}
   function radio(name,label,options){return '<div class="field full"><label>'+label+'</label><div class="opts" role="radiogroup">'+options.map(function(option){return '<label class="opt"><input type="radio" name="'+name+'" value="'+option+'"'+(state[name]===option?' checked':'')+'>'+option+'</label>'}).join('')+'</div></div>'}
   function render(){
     var output='';
@@ -22,6 +22,7 @@
     body.querySelectorAll('[data-next]').forEach(function(button){button.addEventListener('click',next)});
     body.querySelectorAll('[data-slot]').forEach(function(button){button.addEventListener('click',function(){state.slot=button.dataset.slot;render()})});
     body.querySelectorAll('[data-close]').forEach(function(button){button.addEventListener('click',close)});
+    if(flow==='launch'&&step===0)bindLaunchValidation();
   }
   function launch(){
     if(step===0)return progress(2)+'<h3 id="mt">Register for the free webinar</h3><p class="sub">Learn the operator-led route to launching a short-term rental business.</p><div class="fields">'+field('name','Full name','text',state.name,true)+field('email','Email','email',state.email,true)+field('country','Country','text',state.country,true)+'</div><div class="errmsg" role="alert"></div>'+actions(false,'Reserve my free place')+'<p class="hint">We will email your confirmation and webinar details.</p>';
@@ -38,8 +39,13 @@
     return '<div class="tick" aria-hidden="true">✓</div><h3 id="mt">The checklist is on its way.</h3><p class="sub">We’ll send it to '+escapeHtml(state.email)+'. You can come back whenever you are ready to take the next step.</p><div class="acts"><span></span><button class="btn" type="button" data-close>Done</button></div>';
   }
   function emailValid(value){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value)}
+  function setFieldError(input,message){var wrap=input.closest('.field'), messageBox=wrap.querySelector('.field-error');wrap.classList.add('is-invalid');input.setAttribute('aria-invalid','true');messageBox.textContent=message}
+  function clearFieldError(input){var wrap=input.closest('.field'), messageBox=wrap.querySelector('.field-error');wrap.classList.remove('is-invalid');input.removeAttribute('aria-invalid');messageBox.textContent=''}
+  function validateLaunchField(input){var value=input.value.trim(), message='';if(input.id==='name'&&!value)message='Enter your full name.';if(input.id==='email'&&!value)message='Enter your email address.';else if(input.id==='email'&&!emailValid(value))message='Enter a valid email address.';if(input.id==='country'&&!value)message='Enter your country.';if(message){setFieldError(input,message);return false}clearFieldError(input);return true}
+  function validateLaunchForm(){var valid=true, firstInvalid=null;['name','email','country'].forEach(function(id){var input=document.getElementById(id);if(!validateLaunchField(input)){valid=false;if(!firstInvalid)firstInvalid=input}});if(firstInvalid)firstInvalid.focus();return valid}
+  function bindLaunchValidation(){body.querySelectorAll('#name,#email,#country').forEach(function(input){input.addEventListener('blur',function(){validateLaunchField(input)});input.addEventListener('input',function(){if(input.getAttribute('aria-invalid')==='true')validateLaunchField(input)})})}
   function next(){
-    if(flow==='launch'&&step===0){state.name=document.getElementById('name').value.trim();state.email=document.getElementById('email').value.trim();state.country=document.getElementById('country').value.trim();if(!state.name)return error('Enter your name to continue.','name');if(!emailValid(state.email))return error('Enter a valid email address.','email');if(!state.country)return error('Enter your country to continue.','country');step++;render();focusFirst();return}
+    if(flow==='launch'&&step===0){state.name=document.getElementById('name').value.trim();state.email=document.getElementById('email').value.trim();state.country=document.getElementById('country').value.trim();if(!validateLaunchForm())return;step++;render();focusFirst();return}
     if(flow==='scale'&&step===0){state.units=(body.querySelector('input[name="units"]:checked')||{}).value;state.target=(body.querySelector('input[name="target"]:checked')||{}).value;state.city=document.getElementById('city').value.trim();state.budget=(body.querySelector('input[name="budget"]:checked')||{}).value;if(!state.units||!state.target||!state.city||!state.budget)return error('Complete each field to continue.');step++;render();focusFirst();return}
     if(flow==='scale'&&step===1){if(!state.slot)return error('Choose a time to continue.');step++;render();focusFirst();return}
     if(flow==='scale'&&step===2){state.name=document.getElementById('name').value.trim();state.email=document.getElementById('email').value.trim();if(!state.name)return error('Enter your name to continue.','name');if(!emailValid(state.email))return error('Enter a valid email address.','email');step++;render();focusFirst();return}
