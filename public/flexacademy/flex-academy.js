@@ -70,6 +70,13 @@
     window.addEventListener('scroll',updateNav,{passive:true});
     updateNav();
   }
+  var stickyCta=document.querySelector('.sticky'), hero=document.querySelector('.hero');
+  if(stickyCta&&hero){
+    function updateStickyCta(){stickyCta.classList.toggle('is-visible',hero.getBoundingClientRect().bottom<=0)}
+    window.addEventListener('scroll',updateStickyCta,{passive:true});
+    window.addEventListener('resize',updateStickyCta);
+    updateStickyCta();
+  }
   var rotatingPromise=document.querySelector('.hero-rotating');
   if(rotatingPromise&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     var promisePhrases=['life you own.','business that runs.','freedom you built.','future on your terms.'], promiseIndex=0;

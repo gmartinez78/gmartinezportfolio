@@ -77,3 +77,6 @@ header.nav{transition:width .22s ease,margin .22s ease,top .22s ease,border-radi
 
 /* Founder cards: centred summary, then centred bio on hover */
 @media (min-width:521px){.people .person{min-height:286px}.people .person-copy{position:relative;display:grid;flex:1;align-self:stretch;min-width:0;place-items:center;text-align:center}.person-summary{display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .22s ease,transform .28s ease}.person-summary .person-actions{margin:16px 0 0;padding:0}.people .person-copy .person-bio{position:absolute;top:50%;left:50%;width:min(100%,36ch);max-height:none!important;min-height:0;margin:0!important;overflow:visible;visibility:hidden;opacity:0;text-align:center;transform:translate(-50%,-42%);transition:opacity .22s ease,transform .28s ease}.people .person:hover .person-summary{opacity:0;transform:translateY(-10px);pointer-events:none}.people .person:hover .person-bio{visibility:visible;opacity:1;transform:translate(-50%,-50%)}}
+
+/* Mobile CTA timing and guide alignment */
+@media (max-width:900px){.sticky{display:none}.sticky.is-visible{display:grid}}@media (max-width:520px){.hero .checklist-link{display:block;text-align:center}}
