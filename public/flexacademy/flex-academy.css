@@ -49,8 +49,8 @@ header.nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);
 /* Founder card: reveal the bio directly after each founder's role */
 @media (min-width:521px){.person-copy{display:flex;align-self:stretch;width:100%;flex-direction:column}.person-copy .person-bio{max-height:0;min-height:0;margin:0!important;overflow:hidden;visibility:hidden;opacity:0;transform:translateY(-8px);transition:max-height .28s ease,margin .28s ease,opacity .2s ease,transform .28s ease}.person:hover .person-bio,.person:focus-within .person-bio{max-height:112px;margin:10px 0 0!important;visibility:visible;opacity:1;transform:translateY(0)}.person-copy .person-actions{margin-top:auto;padding-top:16px}}
 
-/* Give the hero's secondary guide link more breathing room */
-.checklist-link{margin-top:38px}
+/* Keep the secondary guide link clearly separated from the primary hero actions */
+.checklist-link{margin-top:64px}
 
 /* Keep the desktop product screens clear of their card copy */
 @media (min-width:721px){.screen-pricing{right:-46%;bottom:-32%}.screen-ai{right:-42%;bottom:-26%}}
