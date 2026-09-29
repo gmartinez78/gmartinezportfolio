@@ -46,6 +46,9 @@ header.nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);
 /* Founder card: reveal in the middle, identity and CTA anchored below */
 @media (min-width:521px){.person-copy{display:grid;align-self:stretch;width:100%;grid-template-rows:1fr auto auto auto}.person-copy h3{grid-row:2}.person-copy .person-role{grid-row:3}.person-copy .person-bio{grid-row:1;align-self:center;min-height:0;margin:0 0 16px!important}.person-copy .person-actions{grid-row:4;margin-top:16px}}
 
+/* Give the hero's secondary guide link more breathing room */
+.checklist-link{margin-top:38px}
+
 /* Founder bios and tertiary conversion links */
 .person{flex-direction:row;align-items:center}.person-copy{min-width:0}.person .person-role{margin-top:5px;color:var(--accent);font-weight:800}.person:first-child .person-role{color:#d9d2ff}.person-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:18px}.person .tertiary{font-size:14px}.person:first-child .tertiary{color:#fff}.person:first-child .tertiary:hover{color:#d9d2ff}
 
