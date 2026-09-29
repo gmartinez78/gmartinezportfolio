@@ -37,15 +37,15 @@ header.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--b
 .nav nav a{text-decoration:none;color:var(--slate)}.nav nav a:hover{color:var(--ink)}
 .nav .btn{min-height:44px;padding:0 20px;font-size:15px}
 /* hero */
-.hero{position:relative;isolation:isolate;max-width:1440px;min-height:620px;margin:0 auto;padding:112px 0 104px;background:var(--teal);overflow:hidden}
-.hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(5,19,21,.78) 0%,rgba(5,19,21,.62) 42%,rgba(5,19,21,.25) 100%);box-shadow:inset 0 0 110px rgba(0,0,0,.38)}
+.hero{position:relative;isolation:isolate;width:calc(100% - 48px);max-width:1440px;min-height:620px;margin:24px auto 0;padding:112px 0 104px;background:var(--teal);border-radius:28px;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(5,19,21,.76) 0%,rgba(5,19,21,.57) 43%,rgba(5,19,21,.18) 100%),linear-gradient(0deg,rgba(5,19,21,.58) 0%,rgba(5,19,21,.08) 48%,rgba(5,19,21,.18) 100%);box-shadow:inset 0 -92px 100px rgba(0,0,0,.42)}
 .hero .w{position:relative;z-index:2}
 .hero .w>div{max-width:680px}
-.hero h1{font-size:clamp(38px,4.8vw,60px);color:#fff;text-shadow:0 4px 22px rgba(0,0,0,.55)}
+.hero h1{font-size:clamp(38px,4.8vw,60px);font-weight:700;color:#fff;text-shadow:0 8px 28px rgba(0,0,0,.58)}
 .hero .eyebrow{color:#e3dcff;text-shadow:0 2px 12px rgba(0,0,0,.65)}
-.hero .lead,.hero .micro{color:rgba(255,255,255,.92);text-shadow:0 2px 14px rgba(0,0,0,.65)}
-.hero .btn.ghost{background:#fff;color:#10393C;border-color:#fff}
-.hero .btn.ghost:hover{background:#f1efff;border-color:#f1efff}
+.hero .lead,.hero .micro{font-weight:500;color:rgba(255,255,255,.86);text-shadow:0 5px 20px rgba(0,0,0,.68)}
+.hero .btn.ghost{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.92);box-shadow:0 8px 24px rgba(0,0,0,.16)}
+.hero .btn.ghost:hover{background:rgba(255,255,255,.2);border-color:#fff}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 .micro{font-size:14px;margin-top:14px}
 .visual{position:absolute;inset:0;z-index:0}
@@ -156,8 +156,8 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .btn.s-focus{outline:3px solid var(--accent);outline-offset:3px}
 @media (max-width:900px){
  section{padding:64px 0}.nav nav{display:none}
- .hero{min-height:0;padding:72px 0 80px}.two,.pcard,.fit,.people{grid-template-columns:1fr;gap:32px}
- .hero::after{background:linear-gradient(90deg,rgba(5,19,21,.78),rgba(5,19,21,.5))}
+ .hero{width:calc(100% - 32px);min-height:0;margin:16px auto 0;padding:72px 0 80px;border-radius:20px}.two,.pcard,.fit,.people{grid-template-columns:1fr;gap:32px}
+ .hero::after{background:linear-gradient(90deg,rgba(5,19,21,.78),rgba(5,19,21,.46)),linear-gradient(0deg,rgba(5,19,21,.5),transparent 55%)}
  .proof .w{grid-template-columns:1fr 1fr}.proof .w>div{border-bottom:1px solid var(--line)}
  .steps{grid-template-columns:1fr 1fr}.inc,.quotes{grid-template-columns:1fr}
  .w{padding:0 16px}
