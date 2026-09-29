@@ -80,3 +80,5 @@ header.nav{transition:width .22s ease,margin .22s ease,top .22s ease,border-radi
 
 /* Mobile CTA timing and guide alignment */
 @media (max-width:900px){.sticky{display:none}.sticky.is-visible{display:grid}}@media (max-width:520px){.hero .checklist-link{display:block;text-align:center}}
+
+@media (max-width:520px){.network-proof-top>p{margin-right:auto;margin-left:auto;text-align:center}}
