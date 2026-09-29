@@ -27,7 +27,7 @@ header.nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);
 .resource-mark{width:30px;height:30px}
 
 /* Find your fit */
-.fit-section{background:linear-gradient(180deg,#fff 0%,var(--cream) 58%,var(--cream) 100%)}
+.fit-section{background:linear-gradient(180deg,#fff 0%,#efeaff 58%,#e4dcff 100%)}
 .fit-section>.w>.eyebrow,.fit-section>.w>h2{text-align:center}.fit-section>.w>h2{margin-right:auto;margin-left:auto}
 
 /* Built from the real thing: composed product-card grid */
