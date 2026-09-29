@@ -41,7 +41,7 @@ header.nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);
 .course-details .offer-bottom>p{display:none}.course-details .offer-bottom{padding-top:0;border-top:0}
 
 /* Text-only opening tile in the real-systems grid */
-.learn-system{background:rgba(255,255,255,.055);color:#fff}.learn-system .method-screen{display:none}.learn-system .method-tile-copy>span{color:#cfc6f5}.learn-system .method-tile-copy h3{color:#fff}.learn-system .method-tile-copy p{color:rgba(255,255,255,.8)}
+.learn-system{display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.055);color:#fff}.learn-system .method-screen{display:none}.learn-system .method-tile-copy{padding:34px;text-align:center}.learn-system .method-tile-copy>span{margin-bottom:16px;color:#cfc6f5;font-size:12px;letter-spacing:.13em}.learn-system .method-tile-copy h3{max-width:13ch;margin:0 auto;color:#fff;font-size:clamp(32px,3.3vw,48px);font-weight:800;letter-spacing:-.035em}.learn-system .method-tile-copy p{max-width:35ch;margin:20px auto 0;color:rgba(255,255,255,.8);font-size:16px;line-height:1.5}
 
 /* Founder card: reveal in the middle, identity and CTA anchored below */
 @media (min-width:521px){.person-copy{display:grid;align-self:stretch;width:100%;grid-template-rows:1fr auto auto auto}.person-copy h3{grid-row:2}.person-copy .person-role{grid-row:3}.person-copy .person-bio{grid-row:1;align-self:center;min-height:0;margin:0 0 16px!important}.person-copy .person-actions{grid-row:4;margin-top:16px}}
