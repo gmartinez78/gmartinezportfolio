@@ -102,3 +102,5 @@ header.nav{transition:width .22s ease,margin .22s ease,top .22s ease,border-radi
 
 /* Keep supporting system-copy legible and clear of the screenshots */
 .operations-system .method-tile-copy p,.growth-system .method-tile-copy p,.software-system .method-tile-copy p{max-width:18ch;font-size:15px;line-height:1.4}
+
+@media (max-width:900px){.course-details .offer-bottom{margin-top:32px}}
