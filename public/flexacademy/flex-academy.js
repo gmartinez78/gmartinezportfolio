@@ -6,6 +6,7 @@
   function open(nextFlow){flow=nextFlow;step=0;state={};lastFocus=document.activeElement;render();overlay.classList.add('on');document.body.style.overflow='hidden';setTimeout(focusFirst,20)}
   function close(){overlay.classList.remove('on');document.body.style.overflow='';if(lastFocus)lastFocus.focus()}
   document.querySelectorAll('[data-flow]').forEach(function(button){button.addEventListener('click',function(event){event.preventDefault();open(button.dataset.flow)})});
+  document.querySelectorAll('.offer.launch').forEach(function(card){function startLaunch(event){if(event&&event.target.closest('button,a,input,select,textarea'))return;open('launch')}card.addEventListener('click',startLaunch);card.addEventListener('keydown',function(event){if(event.key==='Enter'||event.key===' '){event.preventDefault();startLaunch(event)}})});
   closeButton.addEventListener('click',close);overlay.addEventListener('click',function(event){if(event.target===overlay)close()});document.addEventListener('keydown',function(event){if(event.key==='Escape'&&overlay.classList.contains('on'))close()});
   function focusFirst(){var item=body.querySelector('input,select,button');if(item)item.focus()}
   function progress(total){var output='<div class="prog" aria-hidden="true">';for(var i=0;i<total;i++)output+='<i class="'+(i<=step?'on':'')+'"></i>';return output+'</div>'}
