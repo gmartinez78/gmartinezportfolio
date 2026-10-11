@@ -52,6 +52,7 @@ const toolIconMap: Record<string, string> = {
 };
 
 const projectImageMap: Record<string, string> = {
+  "classical-word": withBasePath("/images/projects/classical-word/trifold-outside.png"),
   "benefits-enrollment": withBasePath("/images/projects/benefits-enrollment/thumbnails/thumbnail-benefits.png"),
   "nayya-ai-benefits": withBasePath("/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png"),
   "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/thumbnails/flock.png"),
@@ -61,6 +62,7 @@ const projectImageMap: Record<string, string> = {
 };
 
 const projectHeroImageMap: Record<string, string> = {
+  "classical-word": withBasePath("/images/projects/classical-word/trifold-outside.png"),
   "benefits-enrollment": withBasePath("/images/projects/benefits-enrollment/hero/benefits-hero.png"),
   "nayya-ai-benefits": withBasePath("/images/projects/nayya-ai-benefits/hero/nayya-hero.png"),
   "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/hero/flock-hero.png"),
@@ -70,6 +72,7 @@ const projectHeroImageMap: Record<string, string> = {
 };
 
 const projectHrefMap: Record<string, string> = {
+  "classical-word": withBasePath("/classical-word"),
   "benefits-enrollment": withBasePath("/benefits"),
   protecta: withBasePath("/protecta"),
   reversetech: withBasePath("/reversetech"),

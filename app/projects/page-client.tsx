@@ -26,6 +26,7 @@ const PROJECT_BACKGROUNDS: Record<string, string> = {
   "i9-everify-integration": "radial-gradient(ellipse at 50% 80%, #d9e7f5 0%, #f3f8fc 72%)",
 };
 const FREELANCE_PROJECT_SLUGS = new Set([
+  "classical-word",
   "protecta",
   "reversetech",
   "calendar-keeper",

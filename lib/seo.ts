@@ -66,7 +66,7 @@ export function getCaseStudyPath(caseStudy: Pick<CaseStudyRecord, "slug" | "exte
     return caseStudy.external_link;
   }
 
-  return caseStudyPathOverrides[caseStudy.slug] ?? `/projects/${caseStudy.slug}`;
+  return caseStudyPathOverrides[caseStudy.slug] ?? (caseStudy.slug === "classical-word" ? "/classical-word" : `/projects/${caseStudy.slug}`);
 }
 
 export function shouldIndexCaseStudy(
