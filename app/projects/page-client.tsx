@@ -33,6 +33,18 @@ const FREELANCE_PROJECT_SLUGS = new Set([
   "zapiano-marketing",
 ]);
 
+function isFreelanceProject(project: { slug?: string | null; title?: string | null; company?: string | null }) {
+  const slug = project.slug?.trim().toLowerCase();
+  const title = project.title?.trim().toLowerCase();
+  const company = project.company?.trim().toLowerCase();
+
+  return (
+    (slug ? FREELANCE_PROJECT_SLUGS.has(slug) : false) ||
+    title === "classical word arabic institute" ||
+    company === "classical word"
+  );
+}
+
 function compareCaseStudyPriority<
   T extends {
     year?: number | null;
@@ -121,13 +133,13 @@ function ProjectsPage() {
     {
       title: "Company Projects",
       description: "Projects completed while embedded in company product teams, driving UX outcomes through research, collaboration, and iterative design.",
-      projects: filteredProjects.filter((project) => !FREELANCE_PROJECT_SLUGS.has(project.slug)),
+      projects: filteredProjects.filter((project) => !isFreelanceProject(project)),
     },
     {
       title: "Freelance Projects",
       description: "Independent client engagements, from strategy through delivery.",
       projects: filteredProjects
-        .filter((project) => FREELANCE_PROJECT_SLUGS.has(project.slug))
+        .filter((project) => isFreelanceProject(project))
         .sort((left, right) => {
           if (left.slug === "calendar-keeper") return -1;
           if (right.slug === "calendar-keeper") return 1;
