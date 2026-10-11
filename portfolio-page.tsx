@@ -85,6 +85,7 @@ const HERO_ASSISTANT_SUGGESTIONS = [
 
 const MAIN_VISIBLE_CASE_STUDY_SLUGS = new Set(["reversetech"]);
 const INDEPENDENT_CLIENT_WORK_SLUGS = new Set([
+  "classical-word",
   "protecta",
   "reversetech",
   "calendar-keeper",
