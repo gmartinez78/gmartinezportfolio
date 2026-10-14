@@ -12,6 +12,7 @@ const staticRoutes = [
   { path: "/contact", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/classical-word", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/social-media-diagnostic", priority: 0.4, changeFrequency: "monthly" as const },
+  { path: "/social-growth-agent", priority: 0.4, changeFrequency: "monthly" as const },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
