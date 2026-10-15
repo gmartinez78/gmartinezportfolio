@@ -1277,7 +1277,17 @@ export default function PortfolioPage() {
                     {project.slug === "nayya-ai-benefits" ? (
                       <Image src="/images/projects/nayya-ai-benefits/thumbnails/nayya-selected-project.png" alt="" fill sizes="33vw" className="object-cover transition duration-500 group-hover:scale-105" />
                     ) : project.slug === "protecta" ? (
-                      <video src="/images/projects/protecta/hero-banner.mp4" muted loop playsInline preload="metadata" className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                      <>
+                        <video src="/images/projects/protecta/hero-banner.mp4" muted loop playsInline preload="metadata" className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                        <Image
+                          src="/images/projects/protecta/protecta-isotype-pine.svg"
+                          alt=""
+                          aria-hidden="true"
+                          width={170}
+                          height={192}
+                          className="pointer-events-none absolute left-1/2 top-6 z-10 w-16 -translate-x-1/2 brightness-0 invert drop-shadow-[0_3px_8px_rgba(0,0,0,0.3)] sm:w-[72px]"
+                        />
+                      </>
                     ) : project.image ? <Image src={project.image} alt="" fill sizes="33vw" className="object-cover transition duration-500 group-hover:scale-105" /> : null}
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_30%,rgba(255,255,255,0.94)_77%)]" />
                     <div className="relative flex h-full flex-col justify-end">
@@ -1300,7 +1310,7 @@ export default function PortfolioPage() {
             </span>
           </div>
           <div className="relative w-full max-w-[1200px] overflow-hidden md:py-2">
-            <div className="flex w-max animate-[logo-marquee_22s_linear_infinite] items-center gap-14 pr-14 hover:[animation-play-state:paused]">
+            <div className="flex w-max animate-[logo-marquee_22s_linear_infinite] items-center gap-8 pr-8 will-change-transform">
               {logoCarousel.map((logo, index) => (
                 <Image
                   key={`${logo.alt}-${index}`}
@@ -1309,7 +1319,7 @@ export default function PortfolioPage() {
                   width={logo.w}
                   height={logo.h}
                   aria-hidden={index >= socialProofLogos.length}
-                    className={`w-auto shrink-0 object-contain opacity-80 transition-all hover:opacity-100 ${logo.alt === "Zapiano" || logo.alt === "Habitat for Humanity" || logo.alt === "Elevation" || logo.alt === "Indeed" ? "max-h-[36px]" : logo.alt === "Hakuna" ? "max-h-[28px]" : logo.alt === "Paramount+" ? "max-h-[22px]" : "max-h-[46px]"}`}
+                    className={`w-auto shrink-0 object-contain opacity-80 ${logo.alt === "Zapiano" ? "-mr-7" : ""} ${logo.alt === "Zapiano" || logo.alt === "Habitat for Humanity" || logo.alt === "Elevation" || logo.alt === "Indeed" ? "max-h-[36px]" : logo.alt === "Hakuna" ? "max-h-[28px]" : logo.alt === "Paramount+" ? "max-h-[22px]" : "max-h-[46px]"}`}
                   style={{ filter: "brightness(0) saturate(100%)" }}
                 />
               ))}
