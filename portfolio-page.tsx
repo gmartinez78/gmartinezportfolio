@@ -616,12 +616,6 @@ export default function PortfolioPage() {
       description: translate("home.productStrengths.systems.description"),
     },
   ];
-  const impactMetrics = [
-    { value: "4.9/5", label: translate("home.impact.upworkRating"), className: "bg-white shadow-[var(--ui-shadow-panel)]" },
-    { value: "72%", label: translate("home.impact.processingTime"), className: "bg-[var(--ui-color-brand-primary-soft)]" },
-    { value: "5,500", label: translate("home.impact.enrollment"), className: "bg-[var(--ui-color-surface-soft)]" },
-    { value: "9,000+", label: translate("home.impact.supportCalls"), className: "bg-[#fae1ec]" },
-  ];
   const heroPhaseStyles = useMemo(() => HERO_PHASE_STYLES[heroPhase], [heroPhase]);
   const heroProjectProgress = Math.min(1, Math.max(0, (heroParallax - 105) / 45));
 
@@ -860,16 +854,18 @@ export default function PortfolioPage() {
       >
         <div className="relative mx-auto max-w-[650px] lg:ml-[15%]">
           <div>
-            <p className="text-[11px] font-semibold tracking-[0.04em] text-white/80">
-              <span aria-hidden="true" className="mr-2 inline-block size-1.5 rounded-full bg-[#d5f0ff] align-middle" />
-              {translate("home.productStrengths.eyebrow")}
-            </p>
-            <Heading id="product-strengths-title" as="h2" variant="feature" tone="inverse" className="mt-4 max-w-[620px] text-[clamp(2rem,4vw,3.35rem)] leading-[1.04]">
+            <Heading id="product-strengths-title" as="h2" variant="feature" tone="inverse" className="max-w-[620px] text-[clamp(2rem,4vw,3.35rem)] leading-[1.04]">
               {translate("home.productStrengths.title")}
             </Heading>
             <p className="mt-5 max-w-[610px] text-[16px] leading-[1.5] text-white/85 md:text-[18px]">
               {translate("home.productStrengths.intro")}
             </p>
+            <Button asChild variant="editorial-outline" size="sm" className="mt-6 border-white/65 bg-white text-[var(--ui-color-text-strong)] hover:bg-white/90">
+              <Link href={withBasePath("/resume")}>
+                {translate("home.productStrengths.cta")}
+                <ArrowUpRight aria-hidden="true" className="size-4" strokeWidth={2.25} />
+              </Link>
+            </Button>
           </div>
           <ol className="mt-10">
             {productStrengths.map((strength, index) => (
@@ -909,10 +905,10 @@ export default function PortfolioPage() {
           </p>
         </div>
 
-        <div className="mx-auto mt-8 grid max-w-[1120px] gap-3 md:auto-rows-[120px] md:grid-cols-12 md:gap-4">
+        <div className="mx-auto mt-8 grid max-w-[1120px] gap-4 md:grid-cols-12 md:grid-rows-[252px_216px_210px]">
           <Link
             href={withBasePath("/projects/nayya-ai-benefits")}
-            className="group relative min-h-[238px] overflow-hidden rounded-xl md:col-span-4 md:row-span-2 md:min-h-0"
+            className="group relative min-h-[252px] overflow-hidden rounded-xl md:col-span-4 md:min-h-0"
           >
             <Image
               src="/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png"
@@ -930,42 +926,83 @@ export default function PortfolioPage() {
             </div>
           </Link>
 
-          <article className="flex min-h-[216px] flex-col justify-between rounded-xl bg-[#f8eef3] p-5 text-[#141114] md:col-span-4 md:row-span-2 md:min-h-0">
+          <Link
+            href={withBasePath("/projects/flock-accessibility-system")}
+            className="group relative min-h-[252px] overflow-hidden rounded-xl md:col-span-5 md:min-h-0"
+          >
+            <Image
+              src="/images/projects/flock-accessibility-system/thumbnails/flock.png"
+              alt={translate("home.impact.flockImageAlt")}
+              fill
+              sizes="(max-width: 767px) 100vw, 42vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_36%,rgba(14,41,81,0.78)_100%)]" />
+            <div className="absolute inset-x-4 bottom-4 text-white">
+              <span className="inline-flex rounded-full bg-[var(--ui-color-brand-amber)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#141114]">
+                {translate("home.impact.featuredProject")}
+              </span>
+              <p className="mt-2 text-[18px] font-semibold leading-tight">{translate("home.impact.flockTitle")}</p>
+            </div>
+          </Link>
+
+          <article className="flex min-h-[202px] flex-col justify-between rounded-xl bg-[var(--ui-color-brand-primary-soft)] p-5 text-[#141114] md:col-span-3 md:min-h-0">
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#141114]/70">
-                {translate("home.impact.clientReview")}
-              </p>
-              <blockquote className="mt-4 text-[17px] font-medium leading-[1.42]">
-                “{translate("home.impact.upworkQuote")}”
-              </blockquote>
+              <p className="text-[11px] font-medium">{translate("home.impact.enrollment")}</p>
+              <strong className="mt-1 block text-[clamp(3.5rem,5vw,4.4rem)] font-semibold leading-none tracking-[-0.07em]">5,500</strong>
             </div>
-            <div className="mt-5 border-t border-[#141114]/10 pt-3 text-xs font-semibold text-[#141114]/75">
-              {translate("home.impact.upworkAttribution")}
-            </div>
+            <p className="max-w-[180px] text-[13px] leading-snug text-[#141114]/78">{translate("home.impact.enrollmentContext")}</p>
           </article>
 
-          <article className="flex min-h-[168px] flex-col justify-between rounded-xl bg-[#e2f3f7] p-5 text-[#141114] md:col-span-4 md:row-span-2 md:min-h-0">
-            <p className="max-w-[180px] text-[13px] font-medium leading-snug">
-              {translate("home.impact.selfService")}
-            </p>
+          <article className="flex min-h-[180px] flex-col justify-between rounded-xl bg-white p-5 text-[#141114] shadow-[var(--ui-shadow-panel)] md:col-span-3 md:min-h-0">
+            <p className="max-w-[150px] text-[13px] font-medium leading-snug">{translate("home.impact.formCompletion")}</p>
             <div className="flex items-end justify-between gap-3">
-              <strong className="text-[clamp(3rem,5vw,4.3rem)] font-semibold leading-none tracking-[-0.07em]">500+</strong>
+              <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">35%</strong>
               <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
             </div>
           </article>
 
-          {impactMetrics.map((metric) => (
-            <article
-              key={metric.label}
-              className={`flex min-h-[130px] flex-col justify-between rounded-xl p-5 text-[#141114] md:col-span-3 md:min-h-0 ${metric.className}`}
-            >
-              <p className="max-w-[160px] text-[13px] font-medium leading-snug">{metric.label}</p>
-              <div className="flex items-end justify-between gap-3">
-                <strong className="text-[clamp(2.55rem,4vw,3.6rem)] font-semibold leading-none tracking-[-0.07em]">{metric.value}</strong>
-                <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
-              </div>
-            </article>
-          ))}
+          <article className="flex min-h-[180px] flex-col justify-between rounded-xl bg-[var(--ui-color-brand-amber)] p-5 text-[#141114] md:col-span-3 md:min-h-0">
+            <p className="max-w-[160px] text-[13px] font-medium leading-snug">{translate("home.impact.processingTime")}</p>
+            <div className="flex items-end justify-between gap-3">
+              <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">72%</strong>
+              <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
+            </div>
+          </article>
+
+          <article className="flex min-h-[180px] flex-col justify-between rounded-xl bg-[var(--ui-color-surface-soft)] p-5 text-[#141114] md:col-span-4 md:min-h-0">
+            <p className="max-w-[190px] text-[13px] font-medium leading-snug">{translate("home.impact.selfService")}</p>
+            <div className="flex items-end justify-between gap-3">
+              <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">500+</strong>
+              <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
+            </div>
+          </article>
+
+          <div aria-hidden="true" className="relative hidden overflow-hidden md:col-span-2 md:block">
+            <span className="absolute left-2 top-3 size-12 rounded-br-full bg-[var(--ui-color-brand-amber)]" />
+            <span className="absolute bottom-4 right-2 size-11 rotate-45 bg-[var(--ui-color-brand-editorial)]/35" />
+          </div>
+
+          <article className="flex min-h-[180px] flex-col justify-between rounded-xl bg-[#edf6f9] p-5 text-[#141114] md:col-span-4 md:min-h-0">
+            <p className="max-w-[190px] text-[13px] font-medium leading-snug">{translate("home.impact.supportCalls")}</p>
+            <div className="flex items-end justify-between gap-3">
+              <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">9,000+</strong>
+              <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
+            </div>
+          </article>
+
+          <article className="flex min-h-[180px] flex-col justify-between rounded-xl bg-[#f8d7ec] p-5 text-[#141114] md:col-span-5 md:min-h-0">
+            <p className="max-w-[220px] text-[13px] font-medium leading-snug">{translate("home.impact.ticketReduction")}</p>
+            <div className="flex items-end justify-between gap-3">
+              <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">500+</strong>
+              <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
+            </div>
+          </article>
+
+          <article className="flex min-h-[180px] flex-col rounded-xl bg-[#e7ecff] p-5 text-[#141114] md:col-span-3 md:min-h-0">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#141114]/70">{translate("home.impact.clientReview")}</p>
+            <blockquote className="mt-3 text-[13px] font-medium leading-[1.42]">“{translate("home.impact.upworkQuote")}”</blockquote>
+          </article>
         </div>
       </Container>
     </section>

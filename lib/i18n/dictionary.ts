@@ -695,6 +695,11 @@ export const dictionary = {
     es: "Para productos empresariales, de IA y operativos donde las decisiones, y sus consecuencias, son reales.",
     de: "Für Enterprise-, KI- und operative Produkte, bei denen Entscheidungen und ihre Folgen real sind.",
   },
+  "home.productStrengths.cta": {
+    en: "See my experience",
+    es: "Ver mi experiencia",
+    de: "Meine Erfahrung ansehen",
+  },
   "home.productStrengths.endToEnd.title": {
     en: "End-to-end, not handoff-only.",
     es: "De principio a fin, no solo hasta el handoff.",
@@ -743,6 +748,9 @@ export const dictionary = {
   "home.impact.caseStudy": { en: "Case study", es: "Caso de estudio", de: "Fallstudie" },
   "home.impact.nayyaTitle": { en: "AI Benefits Integration", es: "Integración de beneficios con IA", de: "Integration von KI-gestützten Benefits" },
   "home.impact.nayyaImageAlt": { en: "Nayya AI benefits integration case study", es: "Caso de estudio de la integración de beneficios con IA de Nayya", de: "Fallstudie zur KI-gestützten Benefits-Integration von Nayya" },
+  "home.impact.featuredProject": { en: "Featured project", es: "Proyecto destacado", de: "Ausgewähltes Projekt" },
+  "home.impact.flockTitle": { en: "Accessibility system", es: "Sistema de accesibilidad", de: "Barrierefreiheitssystem" },
+  "home.impact.flockImageAlt": { en: "Flock accessibility system project", es: "Proyecto de sistema de accesibilidad Flock", de: "Flock-Projekt für ein Barrierefreiheitssystem" },
   "home.impact.clientReview": { en: "Client review", es: "Reseña de cliente", de: "Kundenbewertung" },
   "home.impact.upworkQuote": {
     en: "Thanks Greddys for your great work. Greddys did a great job on many things, she surprised me often with some new and fresh ideas.",
@@ -751,9 +759,12 @@ export const dictionary = {
   },
   "home.impact.upworkAttribution": { en: "Upwork client · Graphic Design / Design Tasks", es: "Cliente de Upwork · Diseño gráfico / tareas de diseño", de: "Upwork-Kunde · Grafikdesign / Designaufgaben" },
   "home.impact.upworkRating": { en: "Upwork rating", es: "Valoración en Upwork", de: "Upwork-Bewertung" },
+  "home.impact.formCompletion": { en: "Less time to complete forms", es: "Menos tiempo para completar formularios", de: "Weniger Zeit zum Ausfüllen von Formularen" },
   "home.impact.processingTime": { en: "Less processing time", es: "Menos tiempo de procesamiento", de: "Weniger Bearbeitungszeit" },
   "home.impact.selfService": { en: "Employees self-managing access", es: "Empleados autogestionando accesos", de: "Mitarbeitende verwalten Zugriffe selbst" },
   "home.impact.enrollment": { en: "Annual enrollment goal exceeded", es: "Objetivo anual de inscripciones superado", de: "Jährliches Einschreibeziel übertroffen" },
+  "home.impact.enrollmentContext": { en: "More people completed enrollment with confidence.", es: "Más personas completaron la inscripción con confianza.", de: "Mehr Menschen schlossen die Anmeldung mit Zuversicht ab." },
+  "home.impact.ticketReduction": { en: "Fewer support tickets", es: "Menos tickets de soporte", de: "Weniger Support-Tickets" },
   "home.impact.supportCalls": { en: "Fewer support calls a year", es: "Menos llamadas de soporte al año", de: "Weniger Supportanrufe pro Jahr" },
   "home.ideaToImpact": {
     en: "From idea to impact.",
