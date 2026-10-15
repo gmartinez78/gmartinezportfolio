@@ -7,10 +7,11 @@ import { ArrowUp, BrainCircuit, Eye, FolderGit2, GitCommitHorizontal, GitFork, G
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { ChecklistStatusCard } from "./components/checklist-status-card";
-import { ContactFormCard } from "./components/contact-form-card";
 import { HighlightCalloutCard } from "./components/highlight-callout-card";
 import { Badge } from "./components/ui/badge";
 import { Button } from "./components/ui/button";
+import { Container } from "./components/ui/container";
+import { Heading } from "./components/ui/heading";
 import { ProjectTeaserCard } from "./components/project-teaser-card";
 import { appendLockedNayyaPlaceholder } from "./lib/cms/locked-placeholder";
 import { useLanguage } from "./lib/i18n/language-context";
@@ -474,28 +475,27 @@ export default function PortfolioPage() {
   const [heroAssistantResults, setHeroAssistantResults] = useState<HeroAssistantResult["items"]>([]);
   const [highlightedProjectIds, setHighlightedProjectIds] = useState<string[]>([]);
   const [activeProjectCardId, setActiveProjectCardId] = useState<string | null>(null);
-  const [ctaForm, setCtaForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [ctaToast, setCtaToast] = useState<string | null>(null);
-  const [ctaSubmitting, setCtaSubmitting] = useState(false);
   const [heroParallax, setHeroParallax] = useState(0);
   const heroScrollRef = useRef<HTMLDivElement | null>(null);
-  const [ctaErrors, setCtaErrors] = useState<{
-    name?: string;
-    email?: string;
-    message?: string;
-  }>({});
   const { siteContent } = usePublicSiteContent();
   const { caseStudies } = usePublicCaseStudies();
   const hero = siteContent.home.hero;
-  const socialProofLogos = siteContent.home.trusted_by.clients.map((client) => ({
+  const requiredCollaborators = [
+    { name: "Zapiano", logo: "/images/zapiano-logo.svg" },
+    { name: "Habitat for Humanity", logo: "/images/habitat-for-humanity.svg" },
+    { name: "Elevation", logo: "/images/elevation-logo.svg" },
+  ];
+  const trustedClients = [
+    ...siteContent.home.trusted_by.clients,
+    ...requiredCollaborators.filter(
+      (collaborator) => !siteContent.home.trusted_by.clients.some((client) => client.name === collaborator.name),
+    ),
+  ];
+  const socialProofLogos = trustedClients.map((client) => ({
     src: resolveTrustedLogo(client.name, client.logo),
     alt: client.name,
-    h: client.name === "Skill" ? 59 : client.name === "Hakuna" ? 30 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : client.name === "Paramount+" ? 24 : client.name === "IBX" ? 34 : 41,
-    w: client.name === "Skill" ? 107 : client.name === "Hakuna" ? 96 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : client.name === "Paramount+" ? 94 : client.name === "IBX" ? 48 : 57,
+    h: client.name === "Skill" ? 59 : client.name === "Zapiano" ? 38 : client.name === "Habitat for Humanity" ? 36 : client.name === "Elevation" ? 36 : client.name === "Hakuna" ? 30 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : client.name === "Paramount+" ? 24 : client.name === "IBX" ? 34 : 41,
+    w: client.name === "Skill" ? 107 : client.name === "Zapiano" ? 212 : client.name === "Habitat for Humanity" ? 108 : client.name === "Elevation" ? 234 : client.name === "Hakuna" ? 96 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : client.name === "Paramount+" ? 94 : client.name === "IBX" ? 48 : 57,
   }));
   const logoCarousel = [...socialProofLogos, ...socialProofLogos];
   const methodologyChips = hero.methodology_chips.length
@@ -522,36 +522,6 @@ export default function PortfolioPage() {
       password: study.password,
       cta: study.external_link ? translate("home.viewProject") : translate("home.viewCaseStudy"),
     }));
-  const heroPills = [
-    {
-      title: translate("home.heroPill.aiProductTitle"),
-      subtitle: translate("home.heroPill.aiProductSubtitle"),
-      href: withBasePath("/projects?filter=AI%20Product"),
-      icon: BrainCircuit,
-      accentClassName: "bg-[#FFC437] text-[#0e2951]",
-    },
-    {
-      title: translate("home.heroPill.designSystemsTitle"),
-      subtitle: translate("home.heroPill.designSystemsSubtitle"),
-      href: withBasePath("/projects?filter=Design%20Systems"),
-      icon: LayoutTemplate,
-      accentClassName: "bg-[#F78BE3] text-[#0e2951]",
-    },
-    {
-      title: translate("home.heroPill.uxResearchTitle"),
-      subtitle: translate("home.heroPill.uxResearchSubtitle"),
-      href: withBasePath("/projects?filter=UX%20Research"),
-      icon: Mic,
-      accentClassName: "bg-[#25D7C4] text-[#0e2951]",
-    },
-    {
-      title: translate("home.heroPill.enterpriseSaasTitle"),
-      subtitle: translate("home.heroPill.enterpriseSaasSubtitle"),
-      href: withBasePath("/projects?topic=SaaS"),
-      icon: FolderGit2,
-      accentClassName: "bg-[#4E8BFF] text-white",
-    },
-  ];
   const heroSelectedProjects = [
     "nayya-ai-benefits",
     "i9-everify-integration",
@@ -598,75 +568,6 @@ export default function PortfolioPage() {
       setHeroAssistantResponse(translate("home.assistantSearchError"));
       setHeroAssistantResults([]);
       setHighlightedProjectIds([]);
-    }
-  }
-
-  async function handleCtaSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const nextErrors: {
-      name?: string;
-      email?: string;
-      message?: string;
-    } = {};
-
-    if (!ctaForm.name.trim()) {
-      nextErrors.name = translate("contactForm.errorName");
-    }
-
-    if (!ctaForm.email.trim()) {
-      nextErrors.email = translate("contactForm.errorEmail");
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ctaForm.email.trim())) {
-      nextErrors.email = translate("contactForm.errorEmailInvalid");
-    }
-
-    if (!ctaForm.message.trim()) {
-      nextErrors.message = translate("contactForm.errorMessage");
-    } else if (ctaForm.message.trim().length < 12) {
-      nextErrors.message = translate("contactForm.errorMessageDetail");
-    }
-
-    setCtaErrors(nextErrors);
-
-    if (Object.keys(nextErrors).length > 0) {
-      return;
-    }
-
-    setCtaSubmitting(true);
-
-    try {
-      const response = await fetch("https://formsubmit.co/ajax/greddysmartinez5@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name: ctaForm.name.trim(),
-          email: ctaForm.email.trim(),
-          message: ctaForm.message.trim(),
-          website: "https://www.greddys.com",
-          _subject: `Portfolio inquiry from ${ctaForm.name.trim()}`,
-          _template: "table",
-          _captcha: "false",
-          _next: "https://www.greddys.com",
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Email request failed");
-      }
-
-      setCtaToast(translate("contactForm.sentSuccess"));
-      setCtaForm({
-        name: "",
-        email: "",
-        message: "",
-      });
-    } catch {
-      setCtaToast(translate("contactForm.errorSendFailed"));
-    } finally {
-      setCtaSubmitting(false);
     }
   }
 
@@ -735,20 +636,6 @@ export default function PortfolioPage() {
       isActive = false;
     };
   }, []);
-
-  useEffect(() => {
-    if (!ctaToast) {
-      return;
-    }
-
-    const timeoutId = window.setTimeout(() => {
-      setCtaToast(null);
-    }, 3200);
-
-    return () => {
-      window.clearTimeout(timeoutId);
-    };
-  }, [ctaToast]);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -828,7 +715,7 @@ export default function PortfolioPage() {
   }, [githubActivityItems, language]);
 
   const recentWorkSection = (
-    <section key="work" id="projects" className="bg-[#fff8f3] pt-12 pb-24 px-6 md:px-10 xl:px-20">
+    <section key="work" id="projects" className="bg-white pt-12 pb-24 px-6 md:px-10 xl:px-20">
       <div className="mx-auto flex w-full flex-col gap-16">
         {[
           {
@@ -851,7 +738,7 @@ export default function PortfolioPage() {
           <div key={group.title}>
             <div className="mb-7 border-b border-[#141114]/15 pb-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e9608a]">Project type</p>
-              <h3 className="mt-2 font-serif-display text-[32px] leading-none text-[#141114]">{group.title}</h3>
+              <Heading as="h3" variant="display" tone="editorial" className="mt-2">{group.title}</Heading>
               <p className="mt-2 text-[14px] leading-relaxed text-[#5c7792]">{group.description}</p>
             </div>
             <div className="grid w-full gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -893,16 +780,16 @@ export default function PortfolioPage() {
   );
 
   const impactShowcaseSection = (
-    <section key="impact-showcase" className="bg-[#fff8f3] px-6 pb-8 md:px-10 xl:px-20">
+    <section key="impact-showcase" className="bg-white px-6 pb-8 md:px-10 xl:px-20">
       <div className="mx-auto grid w-full max-w-[1280px] gap-5 lg:grid-cols-[minmax(0,1.65fr)_minmax(320px,0.9fr)]">
         <Link
           href={withBasePath("/projects/nayya-ai-benefits")}
           className="group rounded-[34px] bg-[#f4f2f3] p-5 transition-transform duration-300 hover:-translate-y-1 md:p-7"
         >
           <div className="mb-7 flex flex-col gap-3 md:max-w-[760px]">
-            <h2 className="font-inter text-[18px] leading-[1.15] text-[#0e2951] md:text-[26px]">
+            <Heading as="h2" variant="feature" className="text-[18px] md:text-[26px]">
               Business thinking across product and design.
-            </h2>
+            </Heading>
             <p className="max-w-[720px] text-[14px] leading-[1.6] text-[#5c7792] md:text-[15px]">
               Brings clear business thinking to product work, with focus on value delivered for the business. The approach reflects maturity, strategy, and the ability to connect design decisions to broader product goals.
             </p>
@@ -1087,9 +974,9 @@ export default function PortfolioPage() {
               />
             </div>
 
-            <h3 className="max-w-[320px] font-inter text-[26px] leading-[1.15] text-[#0e2951]">
+            <Heading as="h3" variant="feature" className="max-w-[320px] text-[26px]">
               {translate("home.a11yCardTitle")}
-            </h3>
+            </Heading>
             <p className="mt-3 max-w-[320px] text-[14px] leading-[1.6] text-[#5c7792] md:text-[15px]">
               {translate("home.a11yCardDescription")}
             </p>
@@ -1102,9 +989,9 @@ export default function PortfolioPage() {
             <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#ffcf8c]/45 blur-2xl" />
             <div className="absolute bottom-8 right-6 h-24 w-24 rounded-full bg-[#9ec6ff]/35 blur-2xl" />
             <div className="relative">
-              <h3 className="max-w-[320px] font-inter text-[26px] leading-[1.15] text-[#0e2951]">
+              <Heading as="h3" variant="feature" className="max-w-[320px] text-[26px]">
                 {translate("home.designSystemsCardTitle")}
-              </h3>
+              </Heading>
               <p className="mt-3 max-w-[320px] text-[14px] leading-[1.6] text-[#5c7792] md:text-[15px]">
                 {translate("home.designSystemsCardDescription")}
               </p>
@@ -1136,7 +1023,7 @@ export default function PortfolioPage() {
     <section
       key="tools"
       id="skills"
-      className="isolate w-full overflow-clip bg-[#fff8f3] px-4 pb-10 pt-36 md:px-8"
+      className="isolate w-full overflow-clip bg-white px-4 pb-10 pt-36 md:px-8"
     >
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center gap-6">
         <div className="pointer-events-none absolute bottom-[44px] h-[248px] w-[629px] max-w-none select-none md:bottom-[-12px] md:h-[496px] md:w-[1257px]">
@@ -1166,16 +1053,16 @@ export default function PortfolioPage() {
             <span className="absolute inset-x-2 top-1 h-px bg-white/45" />
             <span className="relative z-10 font-mono">Experience &amp; Skills</span>
           </div>
-          <h2 className="max-w-[340px] text-center font-serif-display text-[46px] leading-[0.9] text-[#141114] md:max-w-[680px] md:text-[74px]">
+          <Heading as="h2" variant="hero" tone="editorial" className="max-w-[340px] text-center text-[46px] md:max-w-[680px] md:text-[74px]">
             Tools I Love <span className="text-[#e9608a]">&</span><br />
             <span className="text-[#e9608a]">Work With.</span>
-          </h2>
+          </Heading>
           <span className="h-[5px] w-28 -rotate-1 rounded-full bg-[#26aee2]" />
         </div>
         <p className="relative z-10 mb-4 max-w-[320px] text-center font-serif-display text-[17px] italic leading-[1.55] text-[#4c3b42] md:max-w-[560px] md:text-[21px]">
           {siteContent.home.tools_section.description}
         </p>
-        <Button asChild className="relative z-10 h-12 rounded-full border-0 bg-[#ec638d] px-7 text-base font-bold uppercase tracking-[0.08em] text-white shadow-[0_14px_24px_rgba(236,99,141,0.22)] hover:bg-[#dc4f7c]">
+        <Button asChild variant="editorial" size="hero" className="relative z-10 h-12 text-base font-bold">
           <Link href={withBasePath(siteContent.home.tools_section.cta_href)}>
             {siteContent.home.tools_section.cta_label.replace("→", "").trim()}
           </Link>
@@ -1188,7 +1075,7 @@ export default function PortfolioPage() {
     <section
       key="github-proof"
       id="github"
-      className="bg-[#fff8f3] px-6 py-20 md:px-16 xl:px-30"
+      className="bg-white px-6 py-20 md:px-16 xl:px-30"
     >
       <div className="mx-auto max-w-[1180px]">
         <div className="rounded-[24px] border border-[#d9e5f2] bg-white/80 p-6 md:p-8">
@@ -1213,72 +1100,17 @@ export default function PortfolioPage() {
   );
 
   const ctaSection = (
-    <section
-      key="cta"
-      className="relative isolate overflow-hidden bg-[#fff8f3] px-6 py-[96px] md:px-16 xl:px-30"
-    >
-      <div className="pointer-events-none absolute left-[8%] top-[14%] h-16 w-16 rotate-[-12deg] rounded-full border-[3px] border-[#25aee1] opacity-70" />
-      <div className="pointer-events-none absolute bottom-[12%] right-[8%] h-12 w-12 rotate-12 border-[3px] border-[#e9608a] opacity-60" />
-      <div className="relative mx-auto grid max-w-[1180px] gap-12 text-[#141114] lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <div className="relative px-2 py-2 md:px-4 md:py-4">
-            <div className="relative">
-              <p className="mb-5 inline-block -rotate-[3deg] bg-[#32b9e8] px-4 py-2 font-mono text-[11px] font-medium tracking-[0.06em] text-[#102a36] shadow-[0_5px_10px_rgba(18,111,148,0.16)]">
-                LET&apos;S MAKE IT WORK
-              </p>
-              <h2 className="max-w-[620px] font-serif-display text-[48px] leading-[0.92] tracking-[-0.04em] text-[#141114] md:text-[68px]">
-                Let’s work together, or explore my projects first.
-              </h2>
-              <div className="mt-6 h-[5px] w-28 -rotate-1 rounded-full bg-[#25aee1]" />
-              <p className="mt-6 max-w-[620px] font-serif-display text-[18px] italic leading-[1.55] text-[#55434a] md:text-[21px]">
-                Browse case studies, share what your team is working on, or reach out directly to start a conversation.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-2 text-[13px] font-semibold text-[#3f3338]">
-                <a href="mailto:greddysmartinez5@gmail.com" className="rounded-full border border-[#141114]/15 bg-white/70 px-4 py-2 transition hover:-translate-y-0.5 hover:border-[#e9608a] hover:text-[#e9608a]">
-                  Email
-                </a>
-                <a
-                  href="https://linkedin.com/in/greddysmartinez"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-full border border-[#141114]/15 bg-white/70 px-4 py-2 transition hover:-translate-y-0.5 hover:border-[#e9608a] hover:text-[#e9608a]"
-                >
-                  LinkedIn ↗
-                </a>
-                <Link href={withBasePath("/projects")} className="rounded-full border border-[#141114]/15 bg-white/70 px-4 py-2 transition hover:-translate-y-0.5 hover:border-[#e9608a] hover:text-[#e9608a]">
-                  {translate("home.caseStudiesLink")}
-                </Link>
-                <Link href={withBasePath("/social-media-diagnostic")} className="rounded-full border border-[#141114]/15 bg-white/70 px-4 py-2 transition hover:-translate-y-0.5 hover:border-[#e9608a] hover:text-[#e9608a]">
-                  Social media diagnostic
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <ContactFormCard
-            title={translate("contactPage.sendAMessage")}
-            submitLabel={siteContent.home.stat_banner.cta_label.replace("→", "").trim()}
-            onSubmit={handleCtaSubmit}
-            values={ctaForm}
-            errors={ctaErrors}
-            submitting={ctaSubmitting}
-            showSubject={false}
-            helperText="Tell me about the product, the team, or the design challenge. I’ll follow up from the contact page without the extra friction."
-            className="rounded-[28px] border-[#141114]/10 bg-white shadow-[0_20px_42px_rgba(95,63,69,0.12)]"
-            contentClassName="px-7 py-9 md:px-10 md:py-11 [&_input]:border-[#141114]/15 [&_input]:bg-[#fffaf7] [&_textarea]:border-[#141114]/15 [&_textarea]:bg-[#fffaf7] [&_label]:text-[#55434a]"
-            submitClassName="h-12 rounded-full border-0 bg-[#e9608a] px-6 font-bold uppercase tracking-[0.08em] text-white hover:bg-[#cf4f78] disabled:cursor-not-allowed disabled:opacity-70"
-            onNameChange={(value) => {
-              setCtaForm((current) => ({ ...current, name: value }));
-              setCtaErrors((current) => ({ ...current, name: undefined }));
-            }}
-            onEmailChange={(value) => {
-              setCtaForm((current) => ({ ...current, email: value }));
-              setCtaErrors((current) => ({ ...current, email: undefined }));
-            }}
-            onMessageChange={(value) => {
-              setCtaForm((current) => ({ ...current, message: value }));
-              setCtaErrors((current) => ({ ...current, message: undefined }));
-            }}
-          />
+    <section key="cta" className="bg-white px-6 py-10 text-center md:px-10 md:py-12 lg:px-20">
+      <div className="mx-auto flex max-w-3xl flex-col items-center text-[var(--ui-color-text-strong)]">
+        <p className="mb-3 text-[13px] font-semibold uppercase tracking-[0.2em] text-[var(--ui-color-brand-primary)]">
+          Let&apos;s make it work
+        </p>
+        <Heading as="h2" variant="display" tone="editorial" className="max-w-2xl">
+          Let&apos;s work together, or explore my projects first.
+        </Heading>
+        <Button asChild variant="editorial" size="sm" className="mt-6">
+          <Link href={withBasePath("/contact")}>{siteContent.nav.cta_label}</Link>
+        </Button>
       </div>
     </section>
   );
@@ -1286,19 +1118,14 @@ export default function PortfolioPage() {
   const contentSections = [toolsSection, ctaSection];
 
   return (
-    <main className="bg-[#fff8f3] text-[#3c3e3f] overflow-x-hidden">
-      {ctaToast ? (
-        <div className="fixed right-4 top-24 z-[80] max-w-[320px] rounded-[18px] border border-white/60 bg-[linear-gradient(135deg,rgba(247,241,249,0.96)_0%,rgba(243,247,255,0.94)_45%,rgba(255,247,239,0.92)_100%)] px-4 py-3 text-sm font-medium text-[#0e2951] shadow-[0_18px_40px_rgba(31,53,94,0.16)] backdrop-blur-xl">
-          {ctaToast}
-        </div>
-      ) : null}
+    <main className="bg-white text-[#3c3e3f] overflow-x-hidden lg:my-2 lg:mr-2 lg:overflow-clip lg:rounded-[28px] lg:border lg:border-[#e5eef7] lg:shadow-[0_10px_34px_rgba(14,41,81,0.06)]">
       <SiteHeader variant="transparent" forceSticky={heroProjectProgress >= 1} />
 
       {/* ── Hero ── */}
-      <section className="bg-[#fff8f3]">
+      <section className="bg-white">
         <div ref={heroScrollRef} className="min-[1025px]:h-[100svh]">
-        <div className="relative isolate overflow-hidden bg-[#fff8f3] px-5 pb-8 pt-24 sm:px-10 sm:pt-[8.25rem] lg:px-16 lg:pb-14 min-[1025px]:sticky min-[1025px]:top-0 min-[1025px]:h-[100svh] min-[1025px]:overflow-hidden">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_24%,rgba(255,255,255,0.95),transparent_25%),radial-gradient(circle_at_72%_58%,rgba(255,212,193,0.38),transparent_28%),linear-gradient(112deg,#fffaf5_0%,#fff3ea_54%,#fff9f6_100%)]" />
+        <div className="relative isolate overflow-hidden bg-white px-5 pb-8 pt-24 sm:px-10 sm:pt-[8.25rem] lg:px-16 lg:pb-14 min-[1025px]:sticky min-[1025px]:top-2 min-[1025px]:h-[100svh] min-[1025px]:overflow-hidden min-[1025px]:pt-[5.5rem]">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_24%,rgba(255,255,255,0.95),transparent_25%),radial-gradient(circle_at_72%_58%,rgba(255,234,223,0.28),transparent_28%),linear-gradient(112deg,#ffffff_0%,#ffffff_54%,#ffffff_100%)]" />
           <div className="pointer-events-none absolute right-[7%] top-[16%] hidden h-14 w-14 rotate-12 xl:block">
             <span className="absolute left-6 top-0 h-full w-[3px] rotate-45 rounded-full bg-[#f06d96]" />
             <span className="absolute left-6 top-0 h-full w-[3px] -rotate-45 rounded-full bg-[#f06d96]" />
@@ -1320,18 +1147,22 @@ export default function PortfolioPage() {
             <Image src="/images/home-hero-table.png" alt="" fill sizes="100vw" className="object-cover object-center" />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,248,243,0.32)_0%,rgba(255,248,243,0.04)_30%,rgba(215,181,154,0.12)_100%)]" />
           </div>
-          <div className="relative mx-auto grid min-h-0 max-w-[1280px] items-center gap-2 xl:min-h-[650px] xl:grid-cols-[1.08fr_0.92fr] xl:gap-4 2xl:min-h-[720px] 2xl:max-w-[1440px]">
+          <Container size="wide" className="relative grid min-h-0 items-center gap-2 xl:min-h-[650px] xl:grid-cols-[1.08fr_0.92fr] xl:gap-4 2xl:min-h-[720px] 2xl:max-w-[1440px]">
             <div className="relative z-40 order-2 max-w-[800px] pb-2 text-center xl:order-1 xl:translate-x-12 xl:pb-12 xl:text-left 2xl:translate-y-8">
               <div className="relative mb-5 inline-flex max-w-full -rotate-[5deg] overflow-hidden bg-[#39b8e7] px-3 py-2 text-[9px] font-medium tracking-[0.04em] text-[#163143] shadow-[0_5px_10px_rgba(18,111,148,0.16)] [clip-path:polygon(0_9%,2%_1%,7%_4%,12%_0,18%_3%,25%_0,31%_4%,38%_1%,45%_4%,52%_0,59%_3%,66%_0,74%_4%,81%_1%,88%_4%,96%_0,100%_9%,98%_21%,100%_36%,98%_51%,100%_67%,98%_83%,100%_94%,95%_100%,89%_96%,83%_100%,75%_96%,68%_100%,61%_97%,54%_100%,47%_96%,40%_100%,33%_97%,26%_100%,18%_96%,11%_100%,4%_96%,0_87%,2%_72%,0_56%,2%_41%,0_25%)] sm:mb-7 sm:px-7 sm:py-2.5 sm:text-sm xl:-translate-x-12">
                 <span className="absolute inset-0 opacity-20 [background-image:linear-gradient(30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%),linear-gradient(-30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%)] [background-size:18px_16px]" />
                 <span className="absolute inset-x-2 top-1 h-px bg-white/45" />
                 <span className="relative z-10 whitespace-nowrap font-mono">designer <span className="px-1 sm:px-2 text-[#f8eff0]">·</span> I solve problems <span className="px-1 sm:px-2 text-[#f8eff0]">·</span> I organize ideas</span>
               </div>
-              <h1 className="font-serif-display text-[clamp(2.35rem,4.55vw,4.7rem)] font-medium leading-[0.86] tracking-[-0.075em] text-[#141114]">
-                I MAKE
-                <span className="mt-[0.16em] block text-[#e7688f]">PRODUCTS</span>
-                <span className="mt-[0.16em] block">WORK <em className="font-serif-display font-medium text-[#e7688f]">&amp; WOW.</em></span>
-              </h1>
+              <Heading
+                as="h1"
+                variant="hero"
+                tone="editorial"
+                className="whitespace-nowrap font-medium leading-[0.86] text-[clamp(2rem,5.5vw,4.7rem)]"
+              >
+                <span className="text-[#e7688f]">Greddys</span>{" "}
+                <span className="text-[#141114]">Martinez</span>
+              </Heading>
               <div className="mx-auto mt-6 max-w-[610px] sm:mt-9 xl:mx-0">
                 <svg className="mb-2 h-7 w-40 -rotate-2" viewBox="0 0 160 28" fill="none" aria-hidden="true">
                   <path d="M4 10c31-7 88-9 148-2" stroke="#25aee1" strokeWidth="3.5" strokeLinecap="round" />
@@ -1341,14 +1172,6 @@ export default function PortfolioPage() {
                   Enterprise UX · AI-assisted design · Digital products
                 </p>
                 <p className="mt-1 font-serif-display text-base italic leading-relaxed text-[#3d3438] sm:text-lg">I turn complex workflows and data-rich systems into clear, usable products.</p>
-              </div>
-              <div className="mt-6 flex flex-wrap justify-center gap-3 sm:mt-8 xl:justify-start">
-                <Link href="#projects" className="inline-flex items-center justify-center rounded-full bg-[#ee668a] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-white shadow-[0_12px_24px_rgba(238,102,138,0.25)] transition hover:-translate-y-0.5 hover:bg-[#dc5278]">
-                  Explore my work
-                </Link>
-                <Link href={withBasePath("/contact")} className="inline-flex items-center justify-center rounded-full border border-[#31252a]/20 bg-white/60 px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-[#31252a] transition hover:-translate-y-0.5 hover:bg-white">
-                  Let&apos;s talk
-                </Link>
               </div>
             </div>
             <div className="relative order-1 mx-auto h-[350px] w-full max-w-[380px] self-end sm:h-[460px] sm:max-w-[430px] xl:order-2 xl:h-[650px] xl:max-w-[510px] 2xl:-translate-y-20">
@@ -1400,8 +1223,8 @@ export default function PortfolioPage() {
                 <div className="grid grid-cols-[0.88fr_1.12fr] gap-2 p-4"><div><p className="font-serif-display text-[28px] leading-[0.88]">Glow<br />from<br />within.</p><button className="mt-3 bg-[#172423] px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.12em] text-white">Buy</button></div><div className="relative min-h-[115px] overflow-hidden rounded-sm"><Image src="/images/home-card-perfume.png" alt="Amber perfume bottle on pink satin" fill sizes="125px" className="object-cover object-[62%_50%]" /></div></div>
               </div>
             </div>
-          </div>
-          <div className="absolute inset-0 z-40 hidden h-full bg-[#fff8f3] px-10 pb-12 pt-28 min-[1025px]:block" style={{ translate: `0 ${100 - heroProjectProgress * 100}%` }}>
+          </Container>
+          <div className="absolute inset-0 z-40 hidden h-full bg-white px-10 pb-12 pt-28 min-[1025px]:block" style={{ translate: `0 ${100 - heroProjectProgress * 100}%` }}>
             <div className="mx-auto h-full max-w-[1080px]">
               <p className="mb-6 text-center text-sm font-bold uppercase tracking-[0.18em] text-[#e05f88]">Selected projects</p>
               <div className="mx-auto grid h-[min(62vh,590px)] max-w-[1040px] grid-cols-3 gap-5">
@@ -1439,95 +1262,46 @@ export default function PortfolioPage() {
               </div>
             </div>
           </div>
-          <div className="relative z-10 mx-auto mt-8 hidden w-full max-w-[1180px] gap-4 px-6 text-left md:mt-10 md:grid-cols-2 md:px-10 lg:grid-cols-4 lg:px-16">
-            {heroPills.map((pill) => (
-              <Link
-                key={pill.title}
-                href={pill.href}
-                className="group flex min-h-[92px] items-center gap-4 rounded-[22px] border border-[#f1ece8] bg-white px-4 py-4 shadow-[0_12px_24px_rgba(60,62,63,0.04)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_18px_30px_rgba(60,62,63,0.08)]"
-              >
-                <span className={`inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] ${pill.accentClassName}`}>
-                  <pill.icon className="h-5 w-5" />
-                </span>
-                <span className="flex min-w-0 flex-col">
-                  <span className="text-[15px] font-semibold leading-tight text-[#16191d]">
-                    {pill.title}
-                  </span>
-                  <span className="mt-1 text-[12px] leading-relaxed text-[#71717f]">
-                    {pill.subtitle}
-                  </span>
-                </span>
-              </Link>
-            ))}
-          </div>
         </div>
         </div>
 
-        <section className="relative overflow-hidden border-y border-[#141114]/10 bg-[#fffaf7] px-6 py-10 md:px-10 lg:px-20">
-          <div className="mx-auto grid max-w-[1180px] items-center gap-7 lg:grid-cols-[0.78fr_1.22fr] lg:gap-12">
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#e05f88]">AI-assisted, human-led</p>
-              <h2 className="mt-3 font-serif-display text-[32px] leading-[0.95] text-[#141114] md:text-[42px]">AI speeds up the work. I own the decisions.</h2>
-            </div>
-            <div>
-              <p className="max-w-[690px] text-[15px] leading-[1.75] text-[#55434a] md:text-[16px]">I use AI to accelerate research synthesis, concept exploration, prototyping, and delivery—while keeping product judgment, UX decisions, validation, and accessibility firmly human-led.</p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {["Claude", "ChatGPT", "Gemini", "Figma AI", "Copilot"].map((tool) => (
-                  <span key={tool} className="rounded-full border border-[#141114]/15 bg-white px-3 py-1.5 text-[12px] font-semibold text-[#3d3438]">{tool}</span>
-                ))}
-              </div>
+        <section id="collaborators" aria-label={siteContent.home.trusted_by.label} className="flex min-h-[160px] flex-col items-center gap-6 px-6 py-10 text-center md:px-10 lg:px-20">
+          <div className="flex shrink-0 items-center justify-center">
+            <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#141114]">
+              {siteContent.home.trusted_by.label}
+            </span>
+          </div>
+          <div className="relative w-full max-w-[1200px] overflow-hidden md:py-2">
+            <div className="flex w-max animate-[logo-marquee_22s_linear_infinite] items-center gap-14 pr-14 hover:[animation-play-state:paused]">
+              {logoCarousel.map((logo, index) => (
+                <Image
+                  key={`${logo.alt}-${index}`}
+                  src={logo.src}
+                  alt={index < socialProofLogos.length ? logo.alt : ""}
+                  width={logo.w}
+                  height={logo.h}
+                  aria-hidden={index >= socialProofLogos.length}
+                    className={`w-auto shrink-0 object-contain opacity-80 transition-all hover:opacity-100 ${logo.alt === "Zapiano" || logo.alt === "Habitat for Humanity" || logo.alt === "Elevation" ? "max-h-[36px]" : logo.alt === "Hakuna" ? "max-h-[28px]" : logo.alt === "Paramount+" ? "max-h-[22px]" : "max-h-[46px]"}`}
+                  style={{ filter: "brightness(0) saturate(100%)" }}
+                />
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="relative isolate overflow-hidden bg-[#fff8f3] px-6 py-16 text-center md:px-10 md:py-20 lg:px-20">
+        <section className="relative isolate overflow-hidden bg-white px-6 pb-10 pt-16 text-center md:px-10 md:pb-12 md:pt-20 lg:px-20">
           <div className="relative mx-auto max-w-4xl">
             <div className="relative mx-auto mb-5 w-fit -rotate-[5deg] overflow-hidden bg-[#39b8e7] px-5 py-2 text-[10px] font-medium tracking-[0.04em] text-[#163143] shadow-[0_5px_10px_rgba(18,111,148,0.16)] [clip-path:polygon(0_9%,2%_1%,7%_4%,12%_0,18%_3%,25%_0,31%_4%,38%_1%,45%_4%,52%_0,59%_3%,66%_0,74%_4%,81%_1%,88%_4%,96%_0,100%_9%,98%_21%,100%_36%,98%_51%,100%_67%,98%_83%,100%_94%,95%_100%,89%_96%,83%_100%,75%_96%,68%_100%,61%_97%,54%_100%,47%_96%,40%_100%,33%_97%,26%_100%,18%_96%,11%_100%,4%_96%,0_87%,2%_72%,0_56%,2%_41%,0_25%)]">
               <span className="absolute inset-0 opacity-20 [background-image:linear-gradient(30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%),linear-gradient(-30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%)] [background-size:18px_16px]" />
               <span className="absolute inset-x-2 top-1 h-px bg-white/45" />
               <span className="relative z-10 font-mono">A few things I&apos;ve made</span>
             </div>
-            <h2 className="font-serif-display text-[40px] leading-[0.88] text-[#141114] md:text-[64px]">FROM IDEA TO <span className="text-[#e9608a]">IMPACT.</span></h2>
+            <Heading as="h2" variant="hero" tone="editorial" className="text-[40px] md:text-[64px]">From idea to <span className="text-[#e9608a]">impact.</span></Heading>
             <div className="mx-auto mt-6 h-[5px] w-28 -rotate-1 rounded-full bg-[#26aee2]" />
-            <div className="mt-9 flex flex-wrap justify-center gap-2">
-              {heroPills.map((pill) => (
-                <Link key={`project-filter-${pill.title}`} href={pill.href} className="inline-flex items-center gap-2 rounded-full border border-[#141114]/15 bg-white/80 px-4 py-2 text-xs font-semibold text-[#141114] transition hover:-translate-y-0.5 hover:border-[#159bd0] hover:text-[#159bd0]">
-                  <pill.icon className="h-3.5 w-3.5" />
-                  {pill.title}
-                </Link>
-              ))}
-            </div>
           </div>
         </section>
 
         {recentWorkSection}
-
-        {/* Social Proof Bar */}
-        <div>
-          <div className="flex min-h-[160px] flex-col items-center gap-6 px-6 py-10 text-center md:px-10 lg:px-20">
-            <div className="flex shrink-0 items-center justify-center">
-              <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#141114]">
-                {siteContent.home.trusted_by.label}
-              </span>
-            </div>
-            <div className="relative w-full max-w-[1200px] overflow-hidden md:py-2">
-              <div className="flex w-max animate-[logo-marquee_22s_linear_infinite] items-center gap-14 pr-14 hover:[animation-play-state:paused]">
-                {logoCarousel.map((logo, index) => (
-                  <Image
-                    key={`${logo.alt}-${index}`}
-                    src={logo.src}
-                    alt={index < socialProofLogos.length ? logo.alt : ""}
-                    width={logo.w}
-                    height={logo.h}
-                    aria-hidden={index >= socialProofLogos.length}
-                    className={`w-auto shrink-0 object-contain opacity-80 transition-all hover:opacity-100 ${logo.alt === "Hakuna" ? "max-h-[28px]" : logo.alt === "Paramount+" ? "max-h-[22px]" : "max-h-[46px]"}`}
-                    style={{ filter: "brightness(0) saturate(100%)" }}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       {contentSections}

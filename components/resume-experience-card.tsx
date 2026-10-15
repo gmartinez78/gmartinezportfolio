@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
+import { Heading } from "@/components/ui/heading"
 
 type ExperienceBullet = string | { heading: string; items: string[] }
 
@@ -21,11 +22,11 @@ export function ResumeExperienceCard({
   tags,
 }: ResumeExperienceCardProps) {
   return (
-    <Card className="overflow-hidden rounded-[34px] border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.84)_0%,rgba(247,251,255,0.74)_100%)] p-0 py-0 shadow-[0_22px_56px_rgba(31,53,94,0.08)] backdrop-blur-xl">
+    <Card variant="glass" className="overflow-hidden rounded-[34px] p-0 py-0">
       <CardContent className="p-6 sm:p-7">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <h3 className="text-lg font-semibold text-[var(--ui-color-text-strong)]">{role}</h3>
+            <Heading as="h3" variant="card" className="text-lg">{role}</Heading>
             <p className="mt-0.5 text-sm text-[var(--ui-color-text-muted)]">{company}</p>
           </div>
           <div className="flex shrink-0 flex-wrap gap-2">

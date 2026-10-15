@@ -6,6 +6,9 @@ import { FilterPillGroup } from "../../components/filter-pill-group";
 import { ProjectCard } from "../../components/project-card";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
+import { Container } from "../../components/ui/container";
+import { Heading } from "../../components/ui/heading";
+import { PageIntro } from "../../components/ui/page-intro";
 import { appendLockedNayyaPlaceholder } from "../../lib/cms/locked-placeholder";
 import {
   isHiddenCaseStudySlug,
@@ -146,13 +149,23 @@ function ProjectsPage() {
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden min-h-screen">
       <SiteHeader active="Projects" />
 
+      <Container as="section" size="wide" className="px-6 pb-4 pt-16">
+        <PageIntro
+          title={translate("projectsPage.title")}
+          description={translate("projectsPage.intro")}
+          centered
+        />
+      </Container>
+
       {/* Project Grid */}
-      <section className="max-w-[1200px] mx-auto px-6 pb-24 pt-16 flex flex-col gap-20">
+      <Container as="section" size="wide" className="flex flex-col gap-20 px-6 pb-24 pt-12">
         {projectGroups.map((group, index) => (
           <section key={group.title} className={index === 0 ? undefined : "border-t-2 border-[#e9608a] pt-16"}>
             <div className="mb-9 border-b border-[#141114]/15 pb-5">
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e9608a]">Project type</p>
-              <h2 className="mt-3 font-serif-display text-[clamp(32px,4vw,46px)] leading-none text-[#141114]">{group.title}</h2>
+              <Heading as="h2" variant="display" tone="editorial" className="mt-3">
+                {group.title}
+              </Heading>
               <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-[#5c7792]">{group.description}</p>
             </div>
             {index === 0 ? (
@@ -207,7 +220,7 @@ function ProjectsPage() {
             </div>
           </section>
         ))}
-      </section>
+      </Container>
 
       {/* Social proof */}
       <section className="border-t border-[#bcd2ff]/40 py-10">

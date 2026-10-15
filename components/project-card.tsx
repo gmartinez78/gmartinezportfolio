@@ -5,6 +5,7 @@ import Link from "next/link"
 
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
+import { Heading } from "@/components/ui/heading"
 import { useTranslate, useTranslateTag } from "@/lib/i18n/use-translate"
 
 type ProjectCardProps = {
@@ -54,7 +55,7 @@ export function ProjectCard({
       href={href}
       className="group block transition-all duration-300 hover:-translate-y-1.5"
     >
-      <Card className="relative flex overflow-hidden rounded-[40px] border border-white/55 bg-[linear-gradient(135deg,rgba(247,241,249,0.82)_0%,rgba(243,247,255,0.76)_40%,rgba(255,246,238,0.78)_100%)] p-0 py-0 shadow-[0_26px_70px_rgba(31,53,94,0.10)] backdrop-blur-xl transition-all duration-300 group-hover:border-white/75 group-hover:shadow-[0_34px_84px_rgba(31,53,94,0.14)] md:flex-row">
+      <Card variant="editorial" className="relative flex overflow-hidden rounded-[40px] p-0 py-0 transition-all duration-300 group-hover:border-white/75 group-hover:shadow-[0_34px_84px_rgba(31,53,94,0.14)] md:flex-row">
         <div className="pointer-events-none absolute -left-12 top-10 h-44 w-44 rounded-full bg-[#d8ebff]/70 blur-3xl" />
         <div className="pointer-events-none absolute right-10 top-0 h-36 w-36 rounded-full bg-[#f0d9ff]/55 blur-3xl" />
         <div className="pointer-events-none absolute bottom-0 right-0 h-48 w-48 rounded-full bg-[#ffe7c7]/60 blur-3xl" />
@@ -104,9 +105,9 @@ export function ProjectCard({
                 </span>
               ) : null}
             </div>
-            <h2 className="mb-5 font-inter text-[28px] leading-[1.08] text-[var(--ui-color-text-strong)]">
+            <Heading as="h2" variant="feature" className="mb-5">
               {title}
-            </h2>
+            </Heading>
             <p className="max-w-[560px] text-[15px] leading-[1.8] text-[var(--ui-color-text-muted)]">
               {tagline}
             </p>

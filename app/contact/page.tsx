@@ -4,7 +4,8 @@ import { InfoCard } from "../../components/info-card";
 import { ContactFormCard } from "../../components/contact-form-card";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
-import { SectionHeading } from "../../components/ui/section-heading";
+import { Container } from "../../components/ui/container";
+import { PageIntro } from "../../components/ui/page-intro";
 import { usePublicSiteContent } from "../../lib/cms/public";
 import { useTranslate } from "../../lib/i18n/use-translate";
 
@@ -88,17 +89,19 @@ export default function ContactPage() {
       <SiteHeader active="Contact" />
 
       {/* Hero */}
-      <section className="max-w-[1200px] mx-auto px-6 pt-16 pb-10 text-center">
+      <Container as="section" size="wide" className="px-6 pt-16 pb-10 text-center">
         <div className="px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
-          <SectionHeading eyebrow={siteContent.contact.subheadline} title={siteContent.contact.headline} centered className="items-center" />
-          <p className="mx-auto max-w-xl text-lg leading-relaxed text-[#5c7792]">
-            {siteContent.contact.intro}
-          </p>
+          <PageIntro
+            eyebrow={siteContent.contact.subheadline}
+            title={siteContent.contact.headline}
+            description={siteContent.contact.intro}
+            centered
+          />
         </div>
-      </section>
+      </Container>
 
       {/* 2-col: Form + Info */}
-      <section className="max-w-[1200px] mx-auto px-6 pb-20">
+      <Container as="section" size="wide" className="px-6 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Form */}
           <ContactFormCard
@@ -123,7 +126,7 @@ export default function ContactPage() {
             ))}
           </div>
         </div>
-      </section>
+      </Container>
 
       <SiteFooter />
     </main>

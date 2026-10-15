@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
-export type Language = "en" | "es";
+export type Language = "en" | "es" | "de";
 
 const STORAGE_KEY = "gm-portfolio-language";
 
@@ -20,7 +20,7 @@ function readStoredLanguage(): Language | null {
   }
 
   const stored = window.localStorage.getItem(STORAGE_KEY);
-  return stored === "en" || stored === "es" ? stored : null;
+  return stored === "en" || stored === "es" || stored === "de" ? stored : null;
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
@@ -46,7 +46,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     () => ({
       language,
       setLanguage,
-      toggleLanguage: () => setLanguage(language === "en" ? "es" : "en"),
+      toggleLanguage: () => setLanguage(language === "en" ? "es" : language === "es" ? "de" : "en"),
     }),
     [language],
   );

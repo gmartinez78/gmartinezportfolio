@@ -1,18 +1,43 @@
 import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
+
+const cardVariants = cva(
+  "group/card flex flex-col gap-4 overflow-hidden py-4 text-sm text-[var(--ui-color-text-body)]",
+  {
+    variants: {
+      variant: {
+        default:
+          "rounded-[var(--ui-radius-card)] border-2 border-[var(--ui-color-border-strong)] bg-[var(--ui-color-surface-base)] shadow-[var(--ui-shadow-card)]",
+        glass:
+          "rounded-[var(--ui-radius-panel)] border border-white/60 bg-[image:var(--ui-surface-glass)] shadow-[var(--ui-shadow-elevated)] backdrop-blur-xl",
+        panel:
+          "rounded-[var(--ui-radius-panel)] border border-[var(--ui-color-border-strong)] bg-[var(--ui-color-surface-base)] shadow-[var(--ui-shadow-panel)]",
+        editorial:
+          "rounded-[var(--ui-radius-panel)] border border-white/60 bg-[image:var(--ui-surface-editorial)] shadow-[var(--ui-shadow-elevated)]",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
 
 function Card({
   className,
   size = "default",
+  variant = "default",
   ...props
-}: React.ComponentProps<"div"> & { size?: "default" | "sm" }) {
+}: React.ComponentProps<"div"> &
+  VariantProps<typeof cardVariants> & { size?: "default" | "sm" }) {
   return (
     <div
       data-slot="card"
       data-size={size}
+      data-variant={variant}
       className={cn(
-        "flex flex-col gap-4 overflow-hidden rounded-[var(--ui-radius-card)] border-2 border-[var(--ui-color-border-strong)] bg-[var(--ui-color-surface-base)] py-4 text-sm text-[var(--ui-color-text-body)] shadow-[var(--ui-shadow-card)]",
+        cardVariants({ variant }),
         className
       )}
       {...props}
@@ -90,6 +115,7 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
 
 export {
   Card,
+  cardVariants,
   CardHeader,
   CardFooter,
   CardTitle,

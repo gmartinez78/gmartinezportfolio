@@ -2,10 +2,10 @@ import type { Language } from "@/lib/i18n/language-context";
 
 export const dictionary = {
   // Header / nav
-  "header.openMenu": { en: "Open menu", es: "Abrir menú" },
-  "header.closeMenu": { en: "Close menu", es: "Cerrar menú" },
-  "header.homeAria": { en: "Greddys Martinez home", es: "Inicio de Greddys Martinez" },
-  "header.languageToggleAria": { en: "Switch language", es: "Cambiar idioma" },
+  "header.openMenu": { en: "Open menu", es: "Abrir menú", de: "Menü öffnen" },
+  "header.closeMenu": { en: "Close menu", es: "Cerrar menú", de: "Menü schließen" },
+  "header.homeAria": { en: "Greddys Martinez home", es: "Inicio de Greddys Martinez", de: "Startseite von Greddys Martinez" },
+  "header.languageToggleAria": { en: "Switch language", es: "Cambiar idioma", de: "Sprache wechseln" },
 
   // Footer
   "footer.home": { en: "Home", es: "Inicio" },
@@ -606,7 +606,8 @@ export const dictionary = {
 export type DictionaryKey = keyof typeof dictionary;
 
 export function translate(key: DictionaryKey, language: Language): string {
-  return dictionary[key][language];
+  const entry = dictionary[key] as { en: string; es: string; de?: string };
+  return entry[language] ?? entry.en;
 }
 
 // Case-study tags/filters are display labels layered over English identifiers used for
@@ -616,11 +617,11 @@ export function translateTagLabel(rawValue: string, language: Language): string 
   const filterKey = `filter.${rawValue}` as DictionaryKey;
 
   if (dictionary[tagKey]) {
-    return dictionary[tagKey][language];
+    return translate(tagKey, language);
   }
 
   if (dictionary[filterKey]) {
-    return dictionary[filterKey][language];
+    return translate(filterKey, language);
   }
 
   return rawValue;

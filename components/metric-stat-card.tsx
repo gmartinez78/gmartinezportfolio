@@ -17,7 +17,7 @@ export function MetricStatCard({
   labelClassName,
 }: MetricStatCardProps) {
   return (
-    <Card className={cn("overflow-hidden", className)}>
+    <Card variant="panel" className={cn("overflow-hidden", className)}>
       <CardContent className="px-4 py-5">
         <p className={cn("text-[24px] font-bold leading-none text-[var(--ui-color-text-strong)]", valueClassName)}>
           {value}

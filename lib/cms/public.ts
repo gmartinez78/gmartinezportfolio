@@ -12,10 +12,12 @@ const trustedLogoMap: Record<string, string> = {
   IBX: withBasePath("/images/SNUZw.png"),
   Skill: withBasePath("/images/IbuV3.png"),
   Hakuna: withBasePath("/images/hakuna.avif"),
-  Elevation: withBasePath("/images/elevation.png"),
+  Elevation: withBasePath("/images/elevation-logo.svg"),
   Nayya: withBasePath("/images/bBw3A.png"),
   Paychex: withBasePath("/images/c54fy.png"),
   "Paramount+": withBasePath("/images/paramount-plus.svg"),
+  Zapiano: withBasePath("/images/zapiano-logo.svg"),
+  "Habitat for Humanity": withBasePath("/images/habitat-for-humanity.svg"),
   Flock: withBasePath("/images/flock-logo.png"),
 };
 
@@ -263,9 +265,9 @@ export function usePublicSiteContent() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Supabase only stores English content; Spanish always renders from the local translation file.
-    if (language === "es") {
-      setSiteContent(getFallbackSiteContent("es"));
+    // Supabase only stores English content; translated locales render from local fallbacks.
+    if (language !== "en") {
+      setSiteContent(getFallbackSiteContent(language));
       setLoading(false);
       return;
     }
@@ -299,9 +301,9 @@ export function usePublicCaseStudies() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Supabase only stores English content; Spanish always renders from the local translation file.
-    if (language === "es") {
-      setCaseStudies(getFallbackCaseStudies("es"));
+    // Supabase only stores English content; translated locales render from local fallbacks.
+    if (language !== "en") {
+      setCaseStudies(getFallbackCaseStudies(language));
       setLoading(false);
       return;
     }

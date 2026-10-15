@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { Badge } from "@/components/ui/badge"
+import { Heading } from "@/components/ui/heading"
 import { cn } from "@/lib/utils"
 import { useTranslateTag } from "@/lib/i18n/use-translate"
 
@@ -145,9 +146,9 @@ export function ProjectTeaserCard({
                 </>
               ) : null}
             </div>
-            <h3 className="font-inter text-[30px] leading-snug text-[var(--ui-color-text-strong)] transition-colors duration-200">
+            <Heading as="h3" variant="feature" className="text-[30px] leading-snug transition-colors duration-200">
               {title}
-            </h3>
+            </Heading>
           </div>
           <div
             className={cn(
@@ -169,9 +170,9 @@ export function ProjectTeaserCard({
         </div>
       ) : (
         <>
-          <h3 className="font-inter text-[30px] leading-snug text-[var(--ui-color-text-strong)] transition-colors duration-200 group-hover:text-[var(--ui-color-text-strong)] group-focus-visible:text-[var(--ui-color-text-strong)]">
+          <Heading as="h3" variant="feature" className="text-[30px] leading-snug transition-colors duration-200 group-hover:text-[var(--ui-color-text-strong)] group-focus-visible:text-[var(--ui-color-text-strong)]">
             {title}
-          </h3>
+          </Heading>
           <div className="-mt-2 h-[116px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
             <div className="flex h-full flex-col justify-between">
               <p className="text-[15px] leading-relaxed text-[var(--ui-color-text-muted)]">

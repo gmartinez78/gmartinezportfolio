@@ -1,6 +1,7 @@
 import type React from "react"
 
 import { cn } from "@/lib/utils"
+import { Heading } from "./heading"
 
 export function SectionHeading({
   eyebrow,
@@ -27,14 +28,9 @@ export function SectionHeading({
           {eyebrow}
         </p>
       ) : null}
-      <h2
-        className={cn(
-          "font-inter text-[44px] leading-[1.05]",
-          inverse ? "text-white" : "text-[var(--ui-color-text-strong)]"
-        )}
-      >
+      <Heading as="h2" variant="section" tone={inverse ? "inverse" : "default"}>
         {title}
-      </h2>
+      </Heading>
     </div>
   )
 }

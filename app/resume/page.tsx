@@ -8,11 +8,14 @@ import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
-import { Card, CardContent } from "../../components/ui/card";
+import { Card, CardContent, cardVariants } from "../../components/ui/card";
+import { Container } from "../../components/ui/container";
+import { Heading } from "../../components/ui/heading";
 import { SectionHeading } from "../../components/ui/section-heading";
 import { resolveCertificationLogo, resolveToolIcon, usePublicSiteContent } from "../../lib/cms/public";
 import { withBasePath } from "../../lib/site";
 import { useTranslate } from "../../lib/i18n/use-translate";
+import { cn } from "../../lib/utils";
 
 type ExperienceBullet = string | { heading: string; items: string[] };
 type ExperienceEntry = {
@@ -376,7 +379,7 @@ export default function ResumePage() {
       <SiteHeader active="Resume" />
 
       {/* Hero */}
-      <section className="max-w-[1200px] mx-auto px-6 pt-[10px] pb-10">
+      <Container as="section" size="wide" className="px-6 pb-10 pt-[10px]">
         <div className="flex items-center justify-between gap-4 mb-6">
           <a href={withBasePath("/")} className="inline-flex items-center gap-2 text-[#5c7792] text-sm hover:text-[#1183D0] transition-colors">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
@@ -397,9 +400,9 @@ export default function ResumePage() {
         <div className="relative overflow-hidden px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
           <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
             <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#0e2951]">{translate("resume.eyebrow")}</span>
-            <h1 className="mt-8 text-5xl font-inter leading-[0.95] text-[#0e2951] sm:text-6xl lg:text-7xl">
+            <Heading as="h1" variant="profile" className="mt-8">
               {resume.name}
-            </h1>
+            </Heading>
             <p className="mt-5 text-xl font-medium text-[#1f2f3d] sm:text-2xl">
               {resume.title}
             </p>
@@ -464,10 +467,10 @@ export default function ResumePage() {
             </div>
           </div>
         </div>
-      </section>
+      </Container>
 
       {/* Experience */}
-      <section className="max-w-[1200px] mx-auto px-6 py-10">
+      <Container as="section" size="wide" className="px-6 py-10">
         <SectionHeading eyebrow={translate("resume.careerEyebrow")} title={translate("resume.experienceHeading")} centered className="mb-8" />
         <div className="flex flex-col gap-5">
           {experience.map((job) => (
@@ -482,11 +485,11 @@ export default function ResumePage() {
             />
           ))}
         </div>
-      </section>
+      </Container>
 
       {/* Skills & Education */}
-      <section className="max-w-[1200px] mx-auto px-6 py-10">
-        <Card className="overflow-hidden rounded-[36px] border border-white/60 bg-[linear-gradient(135deg,rgba(247,241,249,0.78)_0%,rgba(243,247,255,0.82)_38%,rgba(255,248,241,0.76)_100%)] p-0 py-0 shadow-[0_24px_64px_rgba(31,53,94,0.10)]">
+      <Container as="section" size="wide" className="px-6 py-10">
+        <Card variant="editorial" className="overflow-hidden rounded-[36px] p-0 py-0">
           <CardContent className="px-6 py-10 sm:px-8 lg:px-12 lg:py-12">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
@@ -500,9 +503,9 @@ export default function ResumePage() {
                       className="flex w-full items-center justify-between gap-4 text-left"
                       aria-expanded={!collapsedSkillGroups[group.category]}
                     >
-                      <h3 className="text-[15px] font-semibold text-[#1f2f3d]">
+                      <Heading as="h3" variant="card" className="text-[15px] text-[#1f2f3d]">
                         {group.category}
-                      </h3>
+                      </Heading>
                       <svg
                         width="18"
                         height="18"
@@ -568,10 +571,10 @@ export default function ResumePage() {
           </div>
           </CardContent>
         </Card>
-      </section>
+      </Container>
 
       {/* Certifications */}
-      <section className="max-w-[1200px] mx-auto px-6 py-10">
+      <Container as="section" size="wide" className="px-6 py-10">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <SectionHeading eyebrow={translate("resume.recognitionHeading")} title={translate("resume.certificationsEyebrow")} />
@@ -585,9 +588,9 @@ export default function ResumePage() {
                 style={{ height: "auto" }}
               />
               <div>
-                <h3 className="text-[18px] font-semibold text-[#0e2951] sm:text-[20px]">
+                <Heading as="h3" variant="card" className="text-[18px] text-[#0e2951] sm:text-[20px]">
                   NN/Group UX Certification — Interaction Design
-                </h3>
+                </Heading>
                 <p className="mt-1 text-base text-[#5c7792]">{translate("resume.uxCertifiedProfessional")}</p>
               </div>
             </div>
@@ -613,14 +616,18 @@ export default function ResumePage() {
                     target="_blank"
                     rel="noreferrer"
                     key={credential.title}
-                    className="block rounded-[30px] border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.82)_0%,rgba(247,251,255,0.78)_100%)] text-center shadow-[0_18px_42px_rgba(31,53,94,0.08)] transition-all hover:-translate-y-1 hover:opacity-95"
+                    className={cn(
+                      cardVariants({ variant: "glass" }),
+                      "block rounded-[30px] py-0 text-center transition-all hover:-translate-y-1 hover:opacity-95"
+                    )}
                   >
                     <CardContent className="px-8 py-8">{children}</CardContent>
                   </a>
                 ) : (
                   <Card
                     key={credential.title}
-                    className="rounded-[30px] border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.82)_0%,rgba(247,251,255,0.78)_100%)] p-0 py-0 text-center shadow-[0_18px_42px_rgba(31,53,94,0.08)]"
+                    variant="glass"
+                    className="rounded-[30px] p-0 py-0 text-center"
                   >
                     <CardContent className="px-8 py-8">{children}</CardContent>
                   </Card>
@@ -665,7 +672,7 @@ export default function ResumePage() {
                     )}
                   </div>
                 )}
-                <h3 className="mt-6 text-[18px] font-semibold text-[#0e2951]">{credential.title}</h3>
+                <Heading as="h3" variant="card" className="mt-6 text-[18px] text-[#0e2951]">{credential.title}</Heading>
                 <p className="mt-3 text-[15px] font-semibold text-[#1183D0]">{credential.subtitle}</p>
                 <p className="mx-auto mt-4 max-w-[430px] text-[15px] leading-relaxed text-[#5c7792]">
                   {credential.description}
@@ -678,7 +685,7 @@ export default function ResumePage() {
             })}
           </div>
         </div>
-      </section>
+      </Container>
 
       <div className="mt-10">
         <SiteFooter />

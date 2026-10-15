@@ -848,7 +848,7 @@ const NAYYA_INSIGHTS_CLOSING =
 
 const METHODOLOGY_COLORS = ["#87d4ac", "#f5e692", "#d9b8ff", "#68c7c1", "#d1f090", "#f7b6c8", "#a9c6ff"];
 
-const PROTECTA_WORKFLOW_SUMMARIES: Record<Language, string[]> = {
+const PROTECTA_WORKFLOW_SUMMARIES: Record<"en" | "es", string[]> = {
   en: [
     "Capture audience needs, objections, and the service model.",
     "Map bilingual patterns and positioning opportunities.",
@@ -879,7 +879,7 @@ const PROTECTA_WORKFLOW_TOOLS = [
   ["Figma AI", "Storybook", "QA manual"],
 ];
 
-const PROTECTA_DECISION_MODEL: Record<Language, { title: string; body: string }> = {
+const PROTECTA_DECISION_MODEL: Record<"en" | "es", { title: string; body: string }> = {
   en: {
     title: "Human-led decision model",
     body: "AI expanded the option set; I set the criteria. At every stage, I evaluated outputs against source research, bilingual user needs, brand trust, business goals, feasibility, and accessibility—then selected the direction and made the final call.",
@@ -890,7 +890,7 @@ const PROTECTA_DECISION_MODEL: Record<Language, { title: string; body: string }>
   },
 };
 
-const PROTECTA_BRAND_COPY: Record<Language, { eyebrow: string; title: string; body: string; rationale: string; type: string; palette: string }> = {
+const PROTECTA_BRAND_COPY: Record<"en" | "es", { eyebrow: string; title: string; body: string; rationale: string; type: string; palette: string }> = {
   en: {
     eyebrow: "Design Proposal",
     title: "A brand built for clarity and care",
@@ -909,7 +909,7 @@ const PROTECTA_BRAND_COPY: Record<Language, { eyebrow: string; title: string; bo
   },
 };
 
-const PROTECTA_GUIDELINE_CALLOUTS: Record<Language, Array<{ title: string; body: string }>> = {
+const PROTECTA_GUIDELINE_CALLOUTS: Record<"en" | "es", Array<{ title: string; body: string }>> = {
   en: [
     { title: "Voice", body: "A trusted advisor at the kitchen table: educate first, sell second, and avoid hype or fear-based language." },
     { title: "Bilingual by design", body: "English and Spanish are equal citizens of the experience, built for cultural fluency rather than literal translation." },
@@ -922,7 +922,7 @@ const PROTECTA_GUIDELINE_CALLOUTS: Record<Language, Array<{ title: string; body:
   ],
 };
 
-const PROTECTA_COMPONENT_COPY: Record<Language, { eyebrow: string; title: string; body: string; labels: string[]; libraryTitle: string; libraryGroups: Array<{ title: string; items: string }> }> = {
+const PROTECTA_COMPONENT_COPY: Record<"en" | "es", { eyebrow: string; title: string; body: string; labels: string[]; libraryTitle: string; libraryGroups: Array<{ title: string; items: string }> }> = {
   en: {
     eyebrow: "Component library",
     title: "Built in code, documented to scale",
@@ -951,7 +951,7 @@ const PROTECTA_COMPONENT_COPY: Record<Language, { eyebrow: string; title: string
   },
 };
 
-const PROTECTA_HANDOFF_COPY: Record<Language, { eyebrow: string; title: string; body: string; stages: Array<{ label: string; title: string; body: string }>; note: string }> = {
+const PROTECTA_HANDOFF_COPY: Record<"en" | "es", { eyebrow: string; title: string; body: string; stages: Array<{ label: string; title: string; body: string }>; note: string }> = {
   en: {
     eyebrow: "The visual handoff",
     title: "From Claude Design direction to a coded component",
@@ -976,7 +976,7 @@ const PROTECTA_HANDOFF_COPY: Record<Language, { eyebrow: string; title: string; 
   },
 };
 
-const PROTECTA_PROBLEM_TO_OUTCOME: Record<Language, Array<{ problem: string; change: string; result: string }>> = {
+const PROTECTA_PROBLEM_TO_OUTCOME: Record<"en" | "es", Array<{ problem: string; change: string; result: string }>> = {
   en: [
     {
       problem: "No brand system or live website to explain the advisory model.",
@@ -1013,7 +1013,7 @@ const PROTECTA_PROBLEM_TO_OUTCOME: Record<Language, Array<{ problem: string; cha
   ],
 };
 
-const PROTECTA_AGENT_COPY: Record<Language, { eyebrow: string; title: string; body: string; roles: Array<{ title: string; body: string }>; note: string }> = {
+const PROTECTA_AGENT_COPY: Record<"en" | "es", { eyebrow: string; title: string; body: string; roles: Array<{ title: string; body: string }>; note: string }> = {
   en: {
     eyebrow: "AI collaboration model",
     title: "AI agents, directed by human judgment",
@@ -1038,7 +1038,7 @@ const PROTECTA_AGENT_COPY: Record<Language, { eyebrow: string; title: string; bo
   },
 };
 
-const PROTECTA_CAPABILITIES: Record<Language, { title: string; subtitle: string; items: string[] }> = {
+const PROTECTA_CAPABILITIES: Record<"en" | "es", { title: string; subtitle: string; items: string[] }> = {
   en: {
     title: "Tools with defined roles",
     subtitle: "Launch stack",
@@ -1069,7 +1069,7 @@ const PROTECTA_CAPABILITIES: Record<Language, { title: string; subtitle: string;
   },
 };
 
-const PROTECTA_PRACTICAL_IMPLICATIONS: Record<Language, { eyebrow: string; title: string; items: Array<{ title: string; body: string }> }> = {
+const PROTECTA_PRACTICAL_IMPLICATIONS: Record<"en" | "es", { eyebrow: string; title: string; items: Array<{ title: string; body: string }> }> = {
   en: {
     eyebrow: "Practical implications",
     title: "What the workflow changed",
@@ -1108,7 +1108,7 @@ const PROTECTA_PRACTICAL_IMPLICATIONS: Record<Language, { eyebrow: string; title
   },
 };
 
-const PROTECTA_KEY_LEARNINGS: Record<Language, { eyebrow: string; title: string; items: Array<{ title: string; body: string }> }> = {
+const PROTECTA_KEY_LEARNINGS: Record<"en" | "es", { eyebrow: string; title: string; items: Array<{ title: string; body: string }> }> = {
   en: {
     eyebrow: "Key learnings",
     title: "What this project reinforced",
@@ -1155,7 +1155,7 @@ const PROTECTA_KEY_LEARNINGS: Record<Language, { eyebrow: string; title: string;
   },
 };
 
-const PROTECTA_KEY_RESULTS: Record<Language, { title: string; items: string[] }> = {
+const PROTECTA_KEY_RESULTS: Record<"en" | "es", { title: string; items: string[] }> = {
   en: {
     title: "Key Results",
     items: [
@@ -1176,7 +1176,7 @@ const PROTECTA_KEY_RESULTS: Record<Language, { title: string; items: string[] }>
   },
 };
 
-const PROTECTA_DELIVERABLES: Record<Language, { eyebrow: string; title: string; items: string[] }> = {
+const PROTECTA_DELIVERABLES: Record<"en" | "es", { eyebrow: string; title: string; items: string[] }> = {
   en: {
     eyebrow: "Delivery snapshot",
     title: "One launch, six connected deliverables",
@@ -1189,7 +1189,7 @@ const PROTECTA_DELIVERABLES: Record<Language, { eyebrow: string; title: string; 
   },
 };
 
-const PROTECTA_CONTENT_PILLARS: Record<Language, { eyebrow: string; title: string; items: Array<{ title: string; body: string }> }> = {
+const PROTECTA_CONTENT_PILLARS: Record<"en" | "es", { eyebrow: string; title: string; items: Array<{ title: string; body: string }> }> = {
   en: {
     eyebrow: "Campaign content architecture",
     title: "Education for the moments families need it most",
@@ -1214,7 +1214,7 @@ const PROTECTA_CONTENT_PILLARS: Record<Language, { eyebrow: string; title: strin
   },
 };
 
-const PROTECTA_FUNNEL: Record<Language, { eyebrow: string; title: string; items: Array<{ value: string; label: string }> }> = {
+const PROTECTA_FUNNEL: Record<"en" | "es", { eyebrow: string; title: string; items: Array<{ value: string; label: string }> }> = {
   en: {
     eyebrow: "Campaign funnel · Jul 10 – Aug 6, 2026",
     title: "From attention to advisor intent",
@@ -1241,7 +1241,7 @@ const PROTECTA_FUNNEL: Record<Language, { eyebrow: string; title: string; items:
   },
 };
 
-const PROTECTA_LAUNCH_STACK: Record<Language, { eyebrow: string; title: string; items: Array<{ tool: string; role: string }> }> = {
+const PROTECTA_LAUNCH_STACK: Record<"en" | "es", { eyebrow: string; title: string; items: Array<{ tool: string; role: string }> }> = {
   en: {
     eyebrow: "Launch stack",
     title: "Tools with defined roles",
@@ -1272,7 +1272,7 @@ const PROTECTA_LAUNCH_STACK: Record<Language, { eyebrow: string; title: string; 
 
 const PROTECTA_STORYBOOK_URL = "https://protecta.today/storybook?path=/docs/components-accordion--docs";
 
-const PROTECTA_STORYBOOK: Record<Language, { eyebrow: string; title: string; body: string; link: string; components: Array<{ title: string; note: string; url: string }> }> = {
+const PROTECTA_STORYBOOK: Record<"en" | "es", { eyebrow: string; title: string; body: string; link: string; components: Array<{ title: string; note: string; url: string }> }> = {
   en: {
     eyebrow: "Live component documentation",
     title: "Protecta Storybook: built in code, documented to scale",
@@ -1982,6 +1982,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const EXPERIMENT_MODAL_BASE_WIDTH = 320;
   const translate = useTranslate();
   const { language } = useLanguage();
+  const localizedLanguage = language === "es" ? "es" : "en";
   const { caseStudy, loading } = usePublicCaseStudy(slug);
   const { caseStudies } = usePublicCaseStudies();
   const [enteredPassword, setEnteredPassword] = useState("");
@@ -2887,8 +2888,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   };
   const designProposalTitle = translate("caseStudy.designProposal");
   const activeProtectaStorybookComponent =
-    PROTECTA_STORYBOOK[language].components.find((component) => component.url === activeProtectaStorybookUrl) ??
-    PROTECTA_STORYBOOK[language].components[0];
+    PROTECTA_STORYBOOK[localizedLanguage].components.find((component) => component.url === activeProtectaStorybookUrl) ??
+    PROTECTA_STORYBOOK[localizedLanguage].components[0];
   const hypothesisIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf(translate("caseStudy.hypothesis3Marker")) : -1;
   const designNotesIndex = caseStudy.slug === "reversetech" ? designStrategy.indexOf(translate("caseStudy.aFewNotes")) : -1;
   const designProposalLinks =
@@ -3246,8 +3247,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section className="mx-auto max-w-[1200px] px-6 py-14 md:px-10 xl:px-20">
           <div className="overflow-hidden rounded-[32px] border border-[#d7e5de] bg-[#f8f8f4] px-6 py-10 md:px-12 md:py-14">
             <div className="mx-auto max-w-[760px] text-center">
-              <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#63826c]">{PROTECTA_BRAND_COPY[language].eyebrow}</p>
-              <p className="mx-auto mt-4 max-w-[700px] font-inter text-[16px] leading-[1.7] text-[#526863]">{PROTECTA_BRAND_COPY[language].body}</p>
+              <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#63826c]">{PROTECTA_BRAND_COPY[localizedLanguage].eyebrow}</p>
+              <p className="mx-auto mt-4 max-w-[700px] font-inter text-[16px] leading-[1.7] text-[#526863]">{PROTECTA_BRAND_COPY[localizedLanguage].body}</p>
             </div>
 
             <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr]">
@@ -3260,7 +3261,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
               <div className="space-y-8">
                 <div>
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#63826c]">{PROTECTA_BRAND_COPY[language].type}</p>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#63826c]">{PROTECTA_BRAND_COPY[localizedLanguage].type}</p>
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
                     <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5">
                       <p className="font-playfair-display text-[28px] text-[#154f4d]">Playfair Display</p>
@@ -3273,7 +3274,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                 </div>
                 <div>
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#63826c]">{PROTECTA_BRAND_COPY[language].palette}</p>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#63826c]">{PROTECTA_BRAND_COPY[localizedLanguage].palette}</p>
                   <div className="mt-4 grid grid-cols-4 overflow-hidden rounded-[18px]">
                     {[
                       ["#154F4D", "Deep green"],
@@ -3288,7 +3289,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     ))}
                   </div>
                 </div>
-                <p className="border-l-2 border-[#90af7a] pl-4 font-inter text-[15px] leading-[1.65] text-[#526863]">{PROTECTA_BRAND_COPY[language].rationale}</p>
+                <p className="border-l-2 border-[#90af7a] pl-4 font-inter text-[15px] leading-[1.65] text-[#526863]">{PROTECTA_BRAND_COPY[localizedLanguage].rationale}</p>
               </div>
             </div>
           </div>
@@ -3298,9 +3299,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "protecta" && false ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[860px] text-center">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#63826c]">{PROTECTA_COMPONENT_COPY[language].eyebrow}</p>
-            <h2 className="mt-3 font-playfair-display text-[36px] leading-tight text-[#154f4d] md:text-[46px]">{PROTECTA_COMPONENT_COPY[language].title}</h2>
-            <p className="mt-5 font-inter text-[16px] leading-[1.7] text-[#526863]">{PROTECTA_COMPONENT_COPY[language].body}</p>
+            <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#63826c]">{PROTECTA_COMPONENT_COPY[localizedLanguage].eyebrow}</p>
+            <h2 className="mt-3 font-playfair-display text-[36px] leading-tight text-[#154f4d] md:text-[46px]">{PROTECTA_COMPONENT_COPY[localizedLanguage].title}</h2>
+            <p className="mt-5 font-inter text-[16px] leading-[1.7] text-[#526863]">{PROTECTA_COMPONENT_COPY[localizedLanguage].body}</p>
           </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             <article className="overflow-hidden rounded-[20px] border border-[#d7e5de] bg-white shadow-[0_12px_30px_rgba(21,79,77,0.07)]">
@@ -3309,7 +3310,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <p className="mt-6 font-playfair-display text-[22px] leading-[1.05] text-[#154f4d]">Coverage that shows up for you.</p>
                 <button type="button" className="mt-5 rounded-full bg-[#d96c4b] px-4 py-2 text-[11px] font-semibold text-white">Get free quote</button>
               </div>
-              <p className="border-t border-[#d7e5de] px-4 py-3 text-center font-inter text-[12px] font-semibold text-[#154f4d]">{PROTECTA_COMPONENT_COPY[language].labels[0]}</p>
+              <p className="border-t border-[#d7e5de] px-4 py-3 text-center font-inter text-[12px] font-semibold text-[#154f4d]">{PROTECTA_COMPONENT_COPY[localizedLanguage].labels[0]}</p>
             </article>
             <article className="overflow-hidden rounded-[20px] border border-[#d7e5de] bg-white shadow-[0_12px_30px_rgba(21,79,77,0.07)]">
               <div className="min-h-[168px] p-5">
@@ -3317,7 +3318,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <p className="mt-5 font-inter text-[15px] font-semibold text-[#154f4d]">Health</p>
                 <p className="mt-1 font-inter text-[11px] leading-[1.5] text-[#63826c]">Guidance for the coverage that fits your family.</p>
               </div>
-              <p className="border-t border-[#d7e5de] px-4 py-3 text-center font-inter text-[12px] font-semibold text-[#154f4d]">{PROTECTA_COMPONENT_COPY[language].labels[1]}</p>
+              <p className="border-t border-[#d7e5de] px-4 py-3 text-center font-inter text-[12px] font-semibold text-[#154f4d]">{PROTECTA_COMPONENT_COPY[localizedLanguage].labels[1]}</p>
             </article>
             <article className="overflow-hidden rounded-[20px] border border-[#d7e5de] bg-white shadow-[0_12px_30px_rgba(21,79,77,0.07)]">
               <div className="min-h-[168px] p-5">
@@ -3328,7 +3329,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
                 <p className="mt-5 font-inter text-[11px] leading-[1.5] text-[#63826c]">Parallel language paths, not literal translation.</p>
               </div>
-              <p className="border-t border-[#d7e5de] px-4 py-3 text-center font-inter text-[12px] font-semibold text-[#154f4d]">{PROTECTA_COMPONENT_COPY[language].labels[2]}</p>
+              <p className="border-t border-[#d7e5de] px-4 py-3 text-center font-inter text-[12px] font-semibold text-[#154f4d]">{PROTECTA_COMPONENT_COPY[localizedLanguage].labels[2]}</p>
             </article>
             <article className="overflow-hidden rounded-[20px] border border-[#d7e5de] bg-white shadow-[0_12px_30px_rgba(21,79,77,0.07)]">
               <div className="min-h-[168px] p-5">
@@ -3338,13 +3339,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
                 <button type="button" className="mt-7 w-full rounded-full border border-[#80a76d] px-3 py-2 text-[11px] font-semibold text-[#154f4d]">Message on WhatsApp</button>
               </div>
-              <p className="border-t border-[#d7e5de] px-4 py-3 text-center font-inter text-[12px] font-semibold text-[#154f4d]">{PROTECTA_COMPONENT_COPY[language].labels[3]}</p>
+              <p className="border-t border-[#d7e5de] px-4 py-3 text-center font-inter text-[12px] font-semibold text-[#154f4d]">{PROTECTA_COMPONENT_COPY[localizedLanguage].labels[3]}</p>
             </article>
           </div>
           <div className="mt-8 rounded-[22px] border border-[#d7e5de] bg-[#f5f7ef] p-6 md:p-8">
-            <p className="text-center text-[12px] font-semibold uppercase tracking-[0.2em] text-[#63826c]">{PROTECTA_COMPONENT_COPY[language].libraryTitle}</p>
+            <p className="text-center text-[12px] font-semibold uppercase tracking-[0.2em] text-[#63826c]">{PROTECTA_COMPONENT_COPY[localizedLanguage].libraryTitle}</p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {PROTECTA_COMPONENT_COPY[language].libraryGroups.map((group) => (
+              {PROTECTA_COMPONENT_COPY[localizedLanguage].libraryGroups.map((group) => (
                 <div key={group.title} className="rounded-[16px] border border-[#d7e5de] bg-white px-4 py-4">
                   <p className="font-inter text-[13px] font-semibold text-[#154f4d]">{group.title}</p>
                   <p className="mt-2 font-inter text-[11px] leading-[1.5] text-[#63826c]">{group.items}</p>
@@ -3399,7 +3400,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           {caseStudy.slug === "protecta" ? (
             <>
               <div className="mx-auto mb-10 max-w-[820px] text-center">
-                <p className="mt-4 font-inter text-[16px] leading-[1.7] text-[#5c7792]">{PROTECTA_DECISION_MODEL[language].body}</p>
+                <p className="mt-4 font-inter text-[16px] leading-[1.7] text-[#5c7792]">{PROTECTA_DECISION_MODEL[localizedLanguage].body}</p>
               </div>
               <div className="overflow-x-auto pb-4">
                 <div className="relative mx-auto min-w-[840px] px-3">
@@ -3431,7 +3432,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     <article className="flex min-h-[190px] w-full flex-col rounded-[20px] border border-[#d7e8f7] bg-white p-4 shadow-[0_12px_30px_rgba(14,41,81,0.07)]">
                       <p className="font-inter text-[14px] font-semibold text-[#0e2951]">{step.label}</p>
                       <p className="mt-2 font-inter text-[12px] leading-[1.5] text-[#5c7792]">
-                        {PROTECTA_WORKFLOW_SUMMARIES[language][index] ?? step.description}
+                        {PROTECTA_WORKFLOW_SUMMARIES[localizedLanguage][index] ?? step.description}
                       </p>
                       <div className="mt-auto flex flex-wrap gap-1.5 pt-4">
                         {(PROTECTA_WORKFLOW_TOOLS[index] ?? []).map((tool) => (
@@ -3989,7 +3990,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {caseStudy.slug === "protecta" ? (
               <aside className="lg:sticky lg:top-24">
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-                  {PROTECTA_DELIVERABLES[language].items.map((item, index) => (
+                  {PROTECTA_DELIVERABLES[localizedLanguage].items.map((item, index) => (
                     <Card key={item} className="gap-0">
                       <CardContent className="px-7 py-6">
                         <p className="text-[30px] font-bold leading-none text-[#0e2951]">{String(index + 1).padStart(2, "0")}</p>
@@ -4534,7 +4535,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <SectionHeading eyebrow={protectaUi.methodology} title={methodologyName} centered className="mb-12" />
           <div className="mx-auto mb-10 max-w-[820px] text-center">
-            <p className="mt-4 font-inter text-[16px] leading-[1.7] text-[#5c7792]">{PROTECTA_DECISION_MODEL[language].body}</p>
+            <p className="mt-4 font-inter text-[16px] leading-[1.7] text-[#5c7792]">{PROTECTA_DECISION_MODEL[localizedLanguage].body}</p>
           </div>
           <div className="overflow-x-auto pb-4">
             <div className="relative mx-auto min-w-[840px] px-3">
@@ -4560,7 +4561,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </div>
                     <article className="flex min-h-[190px] w-full flex-col rounded-[20px] border border-[#d7e8f7] bg-white p-4 shadow-[0_12px_30px_rgba(14,41,81,0.07)]">
                       <p className="font-inter text-[14px] font-semibold text-[#0e2951]">{step.label}</p>
-                      <p className="mt-2 font-inter text-[12px] leading-[1.5] text-[#5c7792]">{PROTECTA_WORKFLOW_SUMMARIES[language][index] ?? step.description}</p>
+                      <p className="mt-2 font-inter text-[12px] leading-[1.5] text-[#5c7792]">{PROTECTA_WORKFLOW_SUMMARIES[localizedLanguage][index] ?? step.description}</p>
                       <div className="mt-auto flex flex-wrap gap-1.5 pt-4">
                         {(PROTECTA_WORKFLOW_TOOLS[index] ?? []).map((tool) => (
                           <span key={tool} className="rounded-full bg-[#E0EEFB] px-2 py-1 font-inter text-[10px] font-semibold text-[#1183D0]">{tool}</span>
@@ -5251,9 +5252,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <>
                   <div>
                     <div className="mx-auto max-w-[760px] text-center">
-                      <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#1183D0]">{PROTECTA_BRAND_COPY[language].eyebrow}</p>
-                      <h3 className="mt-3 font-playfair-display text-[36px] leading-tight text-[#0e2951] md:text-[48px]">{PROTECTA_BRAND_COPY[language].title}</h3>
-                      <p className="mx-auto mt-5 max-w-[700px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">{PROTECTA_BRAND_COPY[language].body}</p>
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#1183D0]">{PROTECTA_BRAND_COPY[localizedLanguage].eyebrow}</p>
+                      <h3 className="mt-3 font-playfair-display text-[36px] leading-tight text-[#0e2951] md:text-[48px]">{PROTECTA_BRAND_COPY[localizedLanguage].title}</h3>
+                      <p className="mx-auto mt-5 max-w-[700px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">{PROTECTA_BRAND_COPY[localizedLanguage].body}</p>
                     </div>
                     <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr]">
                       <div className="space-y-4">
@@ -5286,7 +5287,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </div>
                       <div className="space-y-8">
                         <div>
-                          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{PROTECTA_BRAND_COPY[language].type}</p>
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{PROTECTA_BRAND_COPY[localizedLanguage].type}</p>
                           <div className="mt-4 grid gap-3 sm:grid-cols-3">
                             <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-playfair-display text-[28px] text-[#154f4d]">Newsreader</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">{language === "es" ? "Titulares y textos editoriales cálidos" : "Warm editorial display and headlines"}</p></div>
                             <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-inter text-[27px] font-semibold text-[#154f4d]">Geist</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">{language === "es" ? "Texto de interfaz y cuerpo claro y moderno" : "Clear, modern body and UI text"}</p></div>
@@ -5313,8 +5314,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           </div>
                         </div>
                         <div>
-                          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{PROTECTA_BRAND_COPY[language].palette}</p>
-                          <p className="mt-3 font-inter text-[15px] leading-[1.65] text-[#5c7792]">{PROTECTA_BRAND_COPY[language].rationale}</p>
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{PROTECTA_BRAND_COPY[localizedLanguage].palette}</p>
+                          <p className="mt-3 font-inter text-[15px] leading-[1.65] text-[#5c7792]">{PROTECTA_BRAND_COPY[localizedLanguage].rationale}</p>
                           <div className="mt-4 grid grid-cols-5 overflow-hidden rounded-[18px]">
                             {(language === "es"
                               ? [["#154F4D", "Pino profundo"], ["#CFE3AD", "Salvia suave"], ["#FDFCFE", "Crema"], ["#D96C4B", "Arcilla"], ["#E6BE63", "Miel"]]
@@ -5327,7 +5328,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </div>
                     </div>
                     <div className="mt-10 grid gap-4 md:grid-cols-3">
-                      {PROTECTA_GUIDELINE_CALLOUTS[language].map((item) => (
+                      {PROTECTA_GUIDELINE_CALLOUTS[localizedLanguage].map((item) => (
                         <article key={item.title} className="border-l-2 border-[#1183D0] pl-4">
                           <p className="font-inter text-[14px] font-semibold text-[#0e2951]">{item.title}</p>
                           <p className="mt-2 font-inter text-[13px] leading-[1.6] text-[#5c7792]">{item.body}</p>
@@ -5338,9 +5339,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <div className="mx-auto mt-8 max-w-[1040px]">
                     <div className="rounded-[28px] border border-[#d7e8f7] bg-[#f8fbff] p-5 shadow-[0_14px_34px_rgba(17,131,208,0.08)] md:p-8">
                       <div className="mx-auto max-w-[760px] text-center">
-                        <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#1183D0]">{PROTECTA_HANDOFF_COPY[language].eyebrow}</p>
-                        <h3 className="mt-3 font-playfair-display text-[32px] leading-tight text-[#0e2951] md:text-[42px]">{PROTECTA_HANDOFF_COPY[language].title}</h3>
-                        <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[language].body}</p>
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#1183D0]">{PROTECTA_HANDOFF_COPY[localizedLanguage].eyebrow}</p>
+                        <h3 className="mt-3 font-playfair-display text-[32px] leading-tight text-[#0e2951] md:text-[42px]">{PROTECTA_HANDOFF_COPY[localizedLanguage].title}</h3>
+                        <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[localizedLanguage].body}</p>
                       </div>
                       <div className="mt-8 grid gap-5 lg:grid-cols-3">
                         <article className="overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
@@ -5353,7 +5354,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                               <span className="mt-5 inline-flex rounded-full bg-[#d96c4b] px-3 py-2 text-[8px] font-semibold text-white">Get a free quote</span>
                             </div>
                           </div>
-                          <div className="p-4"><p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{PROTECTA_HANDOFF_COPY[language].stages[0].label}</p><h4 className="mt-2 font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[language].stages[0].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[language].stages[0].body}</p></div>
+                          <div className="p-4"><p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[0].label}</p><h4 className="mt-2 font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[0].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[0].body}</p></div>
                         </article>
                         <article className="overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
                           <div className="min-h-[224px] bg-[#f1f4f8] p-4">
@@ -5363,31 +5364,31 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                               <div className="space-y-2"><div className="rounded-[10px] border border-dashed border-[#1183D0] bg-[#e8f4fd] p-2"><p className="text-[7px] font-semibold text-[#1183D0]">Button</p><div className="mt-2 rounded-full bg-[#154f4d] px-2 py-1.5 text-center text-[7px] font-semibold text-white">Primary</div></div><div className="rounded-[10px] border border-dashed border-[#1183D0] bg-[#e8f4fd] p-2"><p className="text-[7px] font-semibold text-[#1183D0]">Language</p><div className="mt-2 flex rounded-full bg-white p-0.5 text-[7px]"><span className="rounded-full bg-[#154f4d] px-1.5 py-1 text-white">EN</span><span className="px-1.5 py-1 text-[#47675f]">ES</span></div></div></div>
                             </div>
                           </div>
-                          <div className="p-4"><p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{PROTECTA_HANDOFF_COPY[language].stages[1].label}</p><h4 className="mt-2 font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[language].stages[1].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[language].stages[1].body}</p></div>
+                          <div className="p-4"><p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[1].label}</p><h4 className="mt-2 font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[1].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[1].body}</p></div>
                         </article>
                         <article className="overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
                           <div className="min-h-[224px] bg-[#0e2951] p-4">
                             <div className="flex items-center justify-between text-[9px] font-semibold uppercase tracking-[0.14em] text-[#b8dfff]"><span>Storybook</span><span>Button / Docs</span></div>
                             <div className="mt-4 rounded-[12px] bg-white p-3 shadow-[0_10px_24px_rgba(0,0,0,.18)]"><div className="flex gap-1.5 border-b border-[#e6eef5] pb-2"><span className="h-1.5 w-1.5 rounded-full bg-[#1183D0]" /><span className="h-1.5 w-1.5 rounded-full bg-[#83cef8]" /><span className="ml-1 text-[7px] font-semibold text-[#5c7792]">Components / Button</span></div><div className="mt-4 rounded-[10px] bg-[#f6f9fb] p-3"><button type="button" className="rounded-full bg-[#d96c4b] px-3 py-2 text-[8px] font-semibold text-white">Get a free quote</button><p className="mt-3 text-[7px] text-[#5c7792]">Default · hover · focus · disabled</p></div></div>
                           </div>
-                          <div className="p-4"><p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{PROTECTA_HANDOFF_COPY[language].stages[2].label}</p><h4 className="mt-2 font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[language].stages[2].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[language].stages[2].body}</p></div>
+                          <div className="p-4"><p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[2].label}</p><h4 className="mt-2 font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[2].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[2].body}</p></div>
                         </article>
                       </div>
-                      <p className="mx-auto mt-6 max-w-[850px] rounded-[14px] border border-[#b6d7f1] bg-white px-4 py-3 text-center font-inter text-[12px] leading-[1.6] text-[#36566b]">{PROTECTA_HANDOFF_COPY[language].note}</p>
+                      <p className="mx-auto mt-6 max-w-[850px] rounded-[14px] border border-[#b6d7f1] bg-white px-4 py-3 text-center font-inter text-[12px] leading-[1.6] text-[#36566b]">{PROTECTA_HANDOFF_COPY[localizedLanguage].note}</p>
                     </div>
                   </div>
                   <div className="mx-auto mt-12 max-w-[1040px]">
                     <div className="text-center">
-                      <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#1183D0]">{PROTECTA_COMPONENT_COPY[language].eyebrow}</p>
-                      <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#0e2951] md:text-[42px]">{PROTECTA_COMPONENT_COPY[language].title}</h3>
-                      <p className="mx-auto mt-5 max-w-[760px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">{PROTECTA_COMPONENT_COPY[language].body}</p>
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#1183D0]">{PROTECTA_COMPONENT_COPY[localizedLanguage].eyebrow}</p>
+                      <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#0e2951] md:text-[42px]">{PROTECTA_COMPONENT_COPY[localizedLanguage].title}</h3>
+                      <p className="mx-auto mt-5 max-w-[760px] font-inter text-[16px] leading-[1.7] text-[#5c7792]">{PROTECTA_COMPONENT_COPY[localizedLanguage].body}</p>
                     </div>
                   </div>
                   <div className="mx-auto mt-12 max-w-[1040px]">
                     <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
                       <div>
                         <div className="grid gap-2 sm:grid-cols-2">
-                          {PROTECTA_STORYBOOK[language].components.map((component) => (
+                          {PROTECTA_STORYBOOK[localizedLanguage].components.map((component) => (
                             <button
                               key={component.title}
                               type="button"
@@ -5404,7 +5405,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             </button>
                           ))}
                         </div>
-                        <a href={PROTECTA_STORYBOOK_URL} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center font-inter text-[14px] font-semibold text-[#1183D0] underline decoration-[#1183D0]/35 underline-offset-4 transition-colors hover:text-[#0e5a8a] hover:decoration-[#0e5a8a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0] focus-visible:ring-offset-4">{PROTECTA_STORYBOOK[language].link}</a>
+                        <a href={PROTECTA_STORYBOOK_URL} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center font-inter text-[14px] font-semibold text-[#1183D0] underline decoration-[#1183D0]/35 underline-offset-4 transition-colors hover:text-[#0e5a8a] hover:decoration-[#0e5a8a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0] focus-visible:ring-offset-4">{PROTECTA_STORYBOOK[localizedLanguage].link}</a>
                       </div>
                       <div className="overflow-hidden rounded-[20px] border border-[#d7e8f7] bg-white shadow-[0_14px_34px_rgba(17,131,208,0.10)]">
                         <div className="flex items-center gap-2 border-b border-[#d7e8f7] bg-[#f8fbff] px-4 py-3">
@@ -5458,7 +5459,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </p>
                     <div className="mx-auto mt-10 max-w-[1040px]">
                       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-                        {PROTECTA_CONTENT_PILLARS[language].items.map((item, index) => (
+                        {PROTECTA_CONTENT_PILLARS[localizedLanguage].items.map((item, index) => (
                           <article key={item.title} className="rounded-[16px] border border-[#d7e8f7] bg-white p-4">
                             <span className="font-inter text-[11px] font-semibold text-[#1183D0]">0{index + 1}</span>
                             <h4 className="mt-3 font-inter text-[14px] font-semibold leading-[1.3] text-[#0e2951]">{item.title}</h4>
@@ -5574,16 +5575,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </section>
                   <div className="mx-auto mt-12 max-w-[1040px]">
                     <div className="mx-auto max-w-[760px] text-center">
-                      <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{PROTECTA_AGENT_COPY[language].eyebrow}</p>
-                      <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#0e2951] md:text-[42px]">{PROTECTA_AGENT_COPY[language].title}</h3>
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{PROTECTA_AGENT_COPY[localizedLanguage].eyebrow}</p>
+                      <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#0e2951] md:text-[42px]">{PROTECTA_AGENT_COPY[localizedLanguage].title}</h3>
                       <div className="mt-5 space-y-4">
-                        {PROTECTA_AGENT_COPY[language].body.split(/\n+/).map((paragraph) => (
+                        {PROTECTA_AGENT_COPY[localizedLanguage].body.split(/\n+/).map((paragraph) => (
                           <p key={paragraph} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{paragraph}</p>
                         ))}
                       </div>
                     </div>
                     <div className="mt-8 grid gap-4 md:grid-cols-3">
-                      {PROTECTA_AGENT_COPY[language].roles.map((role) => (
+                      {PROTECTA_AGENT_COPY[localizedLanguage].roles.map((role) => (
                         <article key={role.title} className="rounded-[18px] border border-[#d7e8f7] bg-white p-5">
                           <p className="font-inter text-[15px] font-semibold text-[#0e2951]">{role.title}</p>
                           <p className="mt-3 font-inter text-[13px] leading-[1.6] text-[#5c7792]">{role.body}</p>
@@ -5592,11 +5593,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </div>
                   </div>
                   <div className="mx-auto mt-12 max-w-[1040px]">
-                    <p className="text-center font-inter text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{PROTECTA_CAPABILITIES[language].subtitle}</p>
-                    <h3 className="mt-3 text-center font-playfair-display text-[32px] leading-tight text-[#0e2951] sm:text-[40px]">{PROTECTA_CAPABILITIES[language].title}</h3>
+                    <p className="text-center font-inter text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{PROTECTA_CAPABILITIES[localizedLanguage].subtitle}</p>
+                    <h3 className="mt-3 text-center font-playfair-display text-[32px] leading-tight text-[#0e2951] sm:text-[40px]">{PROTECTA_CAPABILITIES[localizedLanguage].title}</h3>
                     <div className="relative mt-9 grid gap-7 sm:grid-cols-2 lg:grid-cols-7 lg:gap-3">
                       <div className="absolute left-[7.14%] right-[7.14%] top-8 hidden h-px bg-[#b8d1e6] lg:block" aria-hidden="true" />
-                      {PROTECTA_CAPABILITIES[language].items.map((item, index) => (
+                      {PROTECTA_CAPABILITIES[localizedLanguage].items.map((item, index) => (
                         <div key={item} className="relative z-10 flex flex-col items-center text-center">
                           <span className="flex h-16 w-16 items-center justify-center rounded-full border border-[#b8d1e6] bg-white font-inter text-[24px] font-semibold text-[#0e2951] shadow-[0_6px_16px_rgba(17,131,208,0.08)]">{index + 1}</span>
                           <p className="mt-4 max-w-[140px] font-inter text-[14px] leading-[1.25] text-[#0e2951]">
@@ -5609,11 +5610,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                   <div className="mx-auto mt-12 max-w-[1040px]">
                     <div className="text-center">
-                      <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{PROTECTA_PRACTICAL_IMPLICATIONS[language].eyebrow}</p>
-                      <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#0e2951] md:text-[42px]">{PROTECTA_PRACTICAL_IMPLICATIONS[language].title}</h3>
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{PROTECTA_PRACTICAL_IMPLICATIONS[localizedLanguage].eyebrow}</p>
+                      <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#0e2951] md:text-[42px]">{PROTECTA_PRACTICAL_IMPLICATIONS[localizedLanguage].title}</h3>
                     </div>
                     <div className="mt-8 grid gap-4 md:grid-cols-3">
-                      {PROTECTA_PRACTICAL_IMPLICATIONS[language].items.map((item, index) => (
+                      {PROTECTA_PRACTICAL_IMPLICATIONS[localizedLanguage].items.map((item, index) => (
                         <article key={item.title} className="rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] p-6">
                           <span className="font-inter text-[12px] font-semibold text-[#1183D0]">0{index + 1}</span>
                           <h4 className="mt-5 font-inter text-[18px] font-semibold leading-[1.2] tracking-[-0.03em] text-[#0e2951]">{item.title}</h4>
@@ -5624,11 +5625,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                   <div className="mx-auto mt-8 max-w-[1040px]">
                     <div className="text-center">
-                      <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{PROTECTA_KEY_LEARNINGS[language].eyebrow}</p>
-                      <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#0e2951] md:text-[42px]">{PROTECTA_KEY_LEARNINGS[language].title}</h3>
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{PROTECTA_KEY_LEARNINGS[localizedLanguage].eyebrow}</p>
+                      <h3 className="mt-3 font-playfair-display text-[34px] leading-tight text-[#0e2951] md:text-[42px]">{PROTECTA_KEY_LEARNINGS[localizedLanguage].title}</h3>
                     </div>
                     <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                      {PROTECTA_KEY_LEARNINGS[language].items.map((item) => (
+                      {PROTECTA_KEY_LEARNINGS[localizedLanguage].items.map((item) => (
                         <article key={item.title} className="rounded-[20px] border border-[#d7e8f7] bg-white p-6 shadow-[0_10px_24px_rgba(17,131,208,0.05)]">
                           <h4 className="font-inter text-[18px] font-semibold leading-[1.25] tracking-[-0.03em] text-[#0e2951]">{item.title}</h4>
                           <p className="mt-4 font-inter text-[14px] leading-[1.65] text-[#5c7792]">{item.body}</p>
@@ -6772,11 +6773,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </p>
           <div className="mx-auto mb-10 max-w-[1040px] rounded-[24px] border border-[#d7e5de] bg-[#f5f7ef] p-6 sm:p-8">
             <div className="text-center">
-              <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.18em] text-[#63826c]">{PROTECTA_CONTENT_PILLARS[language].eyebrow}</p>
-              <h3 className="mt-3 font-playfair-display text-[30px] leading-tight text-[#154f4d] sm:text-[38px]">{PROTECTA_CONTENT_PILLARS[language].title}</h3>
+              <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.18em] text-[#63826c]">{PROTECTA_CONTENT_PILLARS[localizedLanguage].eyebrow}</p>
+              <h3 className="mt-3 font-playfair-display text-[30px] leading-tight text-[#154f4d] sm:text-[38px]">{PROTECTA_CONTENT_PILLARS[localizedLanguage].title}</h3>
             </div>
             <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-              {PROTECTA_CONTENT_PILLARS[language].items.map((item, index) => (
+              {PROTECTA_CONTENT_PILLARS[localizedLanguage].items.map((item, index) => (
                 <article key={item.title} className="rounded-[16px] border border-[#d7e5de] bg-white p-4">
                   <span className="font-inter text-[11px] font-semibold text-[#6a9e42]">0{index + 1}</span>
                   <h4 className="mt-3 font-inter text-[14px] font-semibold leading-[1.3] text-[#154f4d]">{item.title}</h4>

@@ -13,8 +13,14 @@ const buttonVariants = cva(
           "rounded-[var(--ui-radius-button)] bg-[var(--ui-color-brand-primary)] text-white shadow-none hover:bg-[var(--ui-color-brand-primary-hover)]",
         outline:
           "rounded-[var(--ui-radius-button)] border-[var(--ui-color-border-strong)] bg-[var(--ui-color-surface-base)] text-[var(--ui-color-brand-primary)] shadow-none hover:border-[var(--ui-color-brand-primary)] hover:bg-[var(--ui-color-surface-base)] hover:text-[var(--ui-color-brand-primary)]",
+        filter:
+          "rounded-[var(--ui-radius-pill)] border-[var(--ui-color-border-strong)] bg-transparent text-[var(--ui-color-text-strong)] shadow-none hover:border-[var(--ui-color-brand-primary)] hover:bg-[var(--ui-color-brand-primary-soft)] hover:text-[var(--ui-color-brand-primary)]",
         secondary:
           "rounded-[var(--ui-radius-button)] bg-[var(--ui-color-brand-primary-soft)] text-[var(--ui-color-brand-primary)] shadow-none hover:bg-[var(--ui-color-brand-primary-soft-hover)]",
+        editorial:
+          "rounded-[var(--ui-radius-button)] bg-[var(--ui-color-brand-editorial)] text-white shadow-[0_12px_24px_rgba(231,104,143,0.25)] hover:-translate-y-0.5 hover:bg-[var(--ui-color-brand-editorial-hover)]",
+        "editorial-outline":
+          "rounded-[var(--ui-radius-button)] border border-[#31252a]/20 bg-white/60 text-[#31252a] shadow-none hover:-translate-y-0.5 hover:bg-white",
         tertiary:
           "rounded-[var(--ui-radius-button)] border-[var(--ui-color-border-strong)] bg-transparent text-[var(--ui-color-text-muted)] shadow-none hover:border-[var(--ui-color-border-muted)] hover:bg-[var(--ui-color-surface-base)] hover:text-[var(--ui-color-text-strong)]",
         ghost:
@@ -30,6 +36,7 @@ const buttonVariants = cva(
         sm: "px-7 py-3 text-base",
         lg: "px-12 py-3 text-2xl",
         xl: "px-14 py-3 text-2xl",
+        hero: "px-7 py-3.5 text-sm uppercase tracking-[0.08em]",
         icon: "h-10 w-10 rounded-full",
         "icon-xs": "h-7 w-7 rounded-full",
         "icon-sm": "h-9 w-9 rounded-full",

@@ -5,6 +5,7 @@ import type { FormEventHandler } from "react"
 import { FormField, FormFieldMessage } from "@/components/form-field"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Heading } from "@/components/ui/heading"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
@@ -63,11 +64,11 @@ export function ContactFormCard({
   const translate = useTranslate()
 
   return (
-    <Card className={cn("overflow-hidden rounded-[34px] border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.84)_0%,rgba(247,251,255,0.74)_100%)] p-0 py-0 shadow-[0_22px_56px_rgba(31,53,94,0.08)] backdrop-blur-xl", className)}>
+    <Card variant="glass" className={cn("overflow-hidden rounded-[34px] p-0 py-0", className)}>
       <CardContent className={cn("p-8", contentClassName)}>
-        <h2 className="mb-6 text-xl font-semibold text-[var(--ui-color-text-strong)]">
+        <Heading as="h2" variant="card" className="mb-6 text-xl">
           {title}
-        </h2>
+        </Heading>
         <form className="flex flex-col gap-4" onSubmit={onSubmit}>
           <div className="grid grid-cols-2 gap-4">
             <FormField>

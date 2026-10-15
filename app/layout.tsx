@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { inter, playfairDisplay } from "../lib/fonts";
 import { LanguageProvider } from "../lib/i18n/language-context";
 import { defaultDescription, defaultTitle, getPersonSchema, getWebsiteSchema, siteUrl } from "../lib/seo";
+import { SiteRail } from "../components/site-rail";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -59,7 +60,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(getPersonSchema()) }}
         />
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          <SiteRail />
+          <div className="min-h-dvh lg:pl-20">{children}</div>
+        </LanguageProvider>
       </body>
     </html>
   );

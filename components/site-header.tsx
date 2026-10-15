@@ -8,31 +8,35 @@ import { useLanguage } from "../lib/i18n/language-context";
 import { useTranslate } from "../lib/i18n/use-translate";
 
 function LanguageToggle() {
-  const { language, toggleLanguage } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const translate = useTranslate();
+  const languages = [
+    { code: "en", label: "English" },
+    { code: "es", label: "Español" },
+    { code: "de", label: "Deutsch" },
+  ] as const;
 
   return (
-    <button
-      type="button"
-      onClick={toggleLanguage}
+    <div
+      role="group"
       aria-label={translate("header.languageToggleAria")}
-      className="inline-flex h-9 items-center gap-1 rounded-full border border-[#bcd2ff]/70 px-1 text-xs font-semibold text-[#5c7792] transition-colors"
+      className="inline-flex h-9 items-center gap-0.5 rounded-full border border-[#bcd2ff]/70 p-1 text-[10px] font-semibold text-[#5c7792]"
     >
-      <span
-        className={`rounded-full px-2 py-1 transition-colors ${
-          language === "en" ? "bg-[#E0EEFB] text-[#1183D0]" : "text-[#5c7792]"
-        }`}
-      >
-        EN
-      </span>
-      <span
-        className={`rounded-full px-2 py-1 transition-colors ${
-          language === "es" ? "bg-[#E0EEFB] text-[#1183D0]" : "text-[#5c7792]"
-        }`}
-      >
-        ES
-      </span>
-    </button>
+      {languages.map((option) => (
+        <button
+          key={option.code}
+          type="button"
+          onClick={() => setLanguage(option.code)}
+          aria-pressed={language === option.code}
+          aria-label={option.label}
+          className={`rounded-full px-1.5 py-1 transition-colors ${
+            language === option.code ? "bg-[#E0EEFB] text-[#1183D0]" : "text-[#5c7792] hover:text-[#1183D0]"
+          }`}
+        >
+          {option.code.toUpperCase()}
+        </button>
+      ))}
+    </div>
   );
 }
 
@@ -110,7 +114,7 @@ export function SiteHeader({
   }, []);
 
   const navContent = (
-    <nav className="mx-auto max-w-[1200px] px-5 py-3 sm:px-8 lg:px-12">
+    <nav className="mx-auto max-w-[1200px] px-5 py-3 sm:px-8 lg:hidden">
       <div className="flex min-h-16 items-center justify-between gap-6">
         <Link href={withBasePath("/")} className="flex shrink-0 items-center gap-3 text-left" aria-label={translate("header.homeAria")}>
           <LogoMark className="h-10 w-auto" />
@@ -210,11 +214,11 @@ export function SiteHeader({
     return (
       <>
         {showStickyClone ? (
-          <header className="fixed inset-x-0 top-0 z-50 border-b border-[#bcd2ff]/60 bg-white/85 backdrop-blur">
+          <header className="fixed inset-x-0 top-0 z-50 border-b border-[#bcd2ff]/60 bg-white/85 backdrop-blur lg:hidden">
             {navContent}
           </header>
         ) : null}
-        <header ref={headerRef} className="border-b border-[#bcd2ff]/60 bg-white/85 backdrop-blur">
+        <header ref={headerRef} className="border-b border-[#bcd2ff]/60 bg-white/85 backdrop-blur lg:hidden">
           {navContent}
         </header>
       </>
@@ -224,13 +228,13 @@ export function SiteHeader({
   return (
     <header
       ref={headerRef}
-      className={
+      className={`lg:hidden ${
         isTransparent
           ? forceSticky
             ? "fixed inset-x-0 top-0 z-[60] border-b border-[#bcd2ff]/60 bg-white/85 backdrop-blur"
             : "absolute inset-x-0 top-0 z-50 border-b border-transparent bg-transparent"
           : "sticky top-0 z-50 border-b border-[#bcd2ff]/60 bg-white/85 backdrop-blur"
-      }
+      }`}
     >
       {navContent}
     </header>
