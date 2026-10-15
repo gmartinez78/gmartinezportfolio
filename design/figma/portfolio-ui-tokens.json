@@ -95,6 +95,10 @@
         "editorial": {
           "value": "linear-gradient(135deg, rgba(247,241,249,0.78) 0%, rgba(243,247,255,0.82) 38%, rgba(255,248,241,0.76) 100%)",
           "type": "gradient"
+        },
+        "contactCta": {
+          "value": "linear-gradient(110deg, #E7688F 0%, #39B8E7 52%, #1183D0 100%)",
+          "type": "gradient"
         }
       },
       "feedback": {

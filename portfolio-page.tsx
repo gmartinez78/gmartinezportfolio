@@ -483,7 +483,7 @@ export default function PortfolioPage() {
   const requiredCollaborators = [
     { name: "Zapiano", logo: "/images/zapiano-logo.svg" },
     { name: "Habitat for Humanity", logo: "/images/habitat-for-humanity.svg" },
-    { name: "Elevation", logo: "/images/elevation-logo.svg" },
+    { name: "Elevation", logo: "/images/elevation-mark.png" },
   ];
   const trustedClients = [
     ...siteContent.home.trusted_by.clients,
@@ -1100,15 +1100,15 @@ export default function PortfolioPage() {
   );
 
   const ctaSection = (
-    <section key="cta" className="bg-white px-6 py-10 text-center md:px-10 md:py-12 lg:px-20">
-      <div className="mx-auto flex max-w-3xl flex-col items-center text-[var(--ui-color-text-strong)]">
-        <p className="mb-3 text-[13px] font-semibold uppercase tracking-[0.2em] text-[var(--ui-color-brand-primary)]">
-          Let&apos;s make it work
-        </p>
-        <Heading as="h2" variant="display" tone="editorial" className="max-w-2xl">
-          Let&apos;s work together, or explore my projects first.
+    <section key="cta" className="bg-white px-6 pb-12 pt-4 text-center md:px-10 md:pb-16 md:pt-6 lg:px-20">
+      <div
+        className="mx-auto flex max-w-[1280px] flex-col items-center rounded-[var(--ui-radius-panel)] px-6 py-12 text-white shadow-[var(--ui-shadow-elevated)] sm:px-12 md:py-14"
+        style={{ background: "var(--ui-surface-contact-cta)" }}
+      >
+        <Heading as="h2" variant="display" tone="inverse" className="max-w-3xl">
+          Let&apos;s make your next product move — tell me what you&apos;re building, improving, or untangling.
         </Heading>
-        <Button asChild variant="editorial" size="sm" className="mt-6">
+        <Button asChild variant="editorial-outline" size="sm" className="mt-7 border-white/50 bg-white text-[var(--ui-color-text-editorial)] hover:bg-white">
           <Link href={withBasePath("/contact")}>{siteContent.nav.cta_label}</Link>
         </Button>
       </div>

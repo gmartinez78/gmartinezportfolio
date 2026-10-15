@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Check, FileText, FolderKanban, Home, Languages, Mail, PanelsTopLeft } from "lucide-react";
+import { Check, FileText, FolderKanban, Home, Languages, Mail } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { withBasePath } from "../lib/site";
 import { useLanguage } from "../lib/i18n/language-context";
@@ -191,12 +191,6 @@ export function SiteRail() {
             />
           );
         })}
-        <RailLink
-          href="/design-system"
-          label="Design system"
-          icon={PanelsTopLeft}
-          active={isCurrentPath(pathname, "/design-system")}
-        />
       </nav>
 
       <div className="mt-auto flex flex-col items-center gap-3">
