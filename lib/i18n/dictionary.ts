@@ -481,7 +481,7 @@ export const dictionary = {
   // Home page, hero / assistant / sections
   "home.viewCaseStudy": { en: "View case study", es: "Ver caso de estudio" },
   "home.viewProject": { en: "View project", es: "Ver proyecto" },
-  "home.githubActivity": { en: "GitHub Activity", es: "Actividad en GitHub" },
+  "home.githubActivity": { en: "GitHub Activity", es: "Actividad en GitHub", de: "GitHub-Aktivität" },
   "home.githubActivityDescription": {
     en: "Recent public GitHub work and repository activity.",
     es: "Actividad reciente y pública en repositorios de GitHub.",
@@ -650,20 +650,10 @@ export const dictionary = {
   "home.heroRole4": { en: "enterprise UX.", es: "UX empresarial." },
   "home.heroRole5": { en: "your next UX hire.", es: "tu próxima contratación de UX." },
   "home.caseStudiesLink": { en: "Case studies", es: "Casos de estudio" },
-  "home.mainHeroRibbon": {
-    en: "designer · I solve problems · I organize ideas",
-    es: "diseñador · Resuelvo problemas · Organizo ideas",
-    de: "Designer · Ich löse Probleme · Ich ordne Ideen",
-  },
   "home.mainHeroFocus": {
-    en: "Enterprise UX · AI-assisted design · Digital products",
-    es: "UX empresarial · Diseño asistido por IA · Productos digitales",
-    de: "Enterprise UX · KI-gestütztes Design · Digitale Produkte",
-  },
-  "home.mainHeroDescription": {
-    en: "I turn complex workflows and data-rich systems into clear, usable products.",
-    es: "Transformo flujos complejos y sistemas con muchos datos en productos claros y fáciles de usar.",
-    de: "Ich verwandle komplexe Abläufe und datenreiche Systeme in klare, nutzbare Produkte.",
+    en: "A senior product designer",
+    es: "Diseñadora senior de producto",
+    de: "Senior Product Designerin",
   },
   "home.projectsEyebrow": {
     en: "A few things I've made",
@@ -675,10 +665,75 @@ export const dictionary = {
     es: "Clientes destacados",
     de: "Ausgewählte Kunden",
   },
+  "home.projectCard.flockTitle": {
+    en: "Accessibility Audit & Design System",
+    es: "Auditoría de accesibilidad y sistema de diseño",
+    de: "Barrierefreiheitsprüfung & Designsystem",
+  },
   "home.viewPortfolio": {
-    en: "View portfolio",
-    es: "Ver portfolio",
-    de: "Portfolio ansehen",
+    en: "View my full portfolio",
+    es: "Ver mi portfolio completo",
+    de: "Mein vollständiges Portfolio ansehen",
+  },
+  "home.about.eyebrow": {
+    en: "Who I am",
+    es: "Quién soy",
+    de: "Über mich",
+  },
+  "home.about.title": {
+    en: "Senior product design for complex decisions.",
+    es: "Diseño de producto senior para decisiones complejas.",
+    de: "Senior Product Design für komplexe Entscheidungen.",
+  },
+  "home.about.titleLead": {
+    en: "Senior product design for",
+    es: "Diseño de producto senior para decisiones",
+    de: "Senior Product Design für",
+  },
+  "home.about.titleAccent": {
+    en: "complex",
+    es: "complejas",
+    de: "komplexe",
+  },
+  "home.about.titleTail": {
+    en: " decisions.",
+    es: ".",
+    de: " Entscheidungen.",
+  },
+  "home.about.tagResearch": {
+    en: "Human-centered",
+    es: "Centrado en las personas",
+    de: "Menschenzentriert",
+  },
+  "home.about.tagAi": {
+    en: "AI & GEO ready",
+    es: "Listo para IA y GEO",
+    de: "KI & GEO-bereit",
+  },
+  "home.about.tagSystems": {
+    en: "Accessibility-first",
+    es: "Accesibilidad primero",
+    de: "Barrierefreiheit zuerst",
+  },
+  "home.about.lead": {
+    en: "I’m a senior product designer who brings structure to complex product decisions.",
+    es: "Soy una diseñadora senior de producto que aporta estructura a decisiones complejas de producto.",
+    de: "Ich bin Senior Product Designerin und bringe Struktur in komplexe Produktentscheidungen.",
+  },
+  "home.about.recruiters": {
+    en: "From research and problem framing to flows, prototypes, and delivery, I partner with product and engineering to turn ambiguity into a clear direction.",
+    es: "Desde la investigación y el planteamiento del problema hasta los flujos, los prototipos y la entrega, colaboro con producto e ingeniería para convertir la ambigüedad en una dirección clara.",
+    de: "Von Forschung und Problemdefinition über Flows, Prototypen und Umsetzung arbeite ich eng mit Produkt und Engineering zusammen, um Unklarheit in eine klare Richtung zu verwandeln.",
+  },
+  "home.about.copy": {
+    en: "Across enterprise, AI, and operational products, I use systems thinking and accessible design to balance user needs, business goals, and technical constraints.",
+    es: "En productos empresariales, de IA y operativos, uso pensamiento sistémico y diseño accesible para equilibrar necesidades de usuarios, objetivos de negocio y restricciones técnicas.",
+    de: "Bei Enterprise-, KI- und operativen Produkten verbinde ich Systemdenken und barrierefreies Design, um Nutzerbedürfnisse, Geschäftsziele und technische Rahmenbedingungen auszubalancieren.",
+  },
+  "home.about.cta": {
+    en: "See my experience",
+    es: "Ver mi experiencia",
+    de: "Meine Erfahrung ansehen",
   },
   "home.productStrengths.eyebrow": {
     en: "Why teams bring me in",
@@ -686,9 +741,24 @@ export const dictionary = {
     de: "Warum Teams mich hinzuholen",
   },
   "home.productStrengths.title": {
-    en: "I make the hard parts of product feel clear.",
-    es: "Hago que las partes más difíciles de un producto se entiendan con claridad.",
-    de: "Ich mache die schwierigsten Teile eines Produkts verständlich.",
+    en: "Making complex product work clear",
+    es: "Haciendo productos complejos más claros",
+    de: "Komplexe Produktarbeit klar machen",
+  },
+  "home.productStrengths.titleLead": {
+    en: "Making complex",
+    es: "Haciendo productos",
+    de: "Komplexe",
+  },
+  "home.productStrengths.titleLineEnd": {
+    en: "product work",
+    es: "complejos más",
+    de: "Produktarbeit",
+  },
+  "home.productStrengths.titleAccent": {
+    en: "clear",
+    es: "claros",
+    de: "klar machen",
   },
   "home.productStrengths.intro": {
     en: "For enterprise, AI, and operational products where the decisions, and the consequences, are real.",
@@ -701,34 +771,34 @@ export const dictionary = {
     de: "Meine Erfahrung ansehen",
   },
   "home.productStrengths.endToEnd.title": {
-    en: "End-to-end, not handoff-only.",
-    es: "De principio a fin, no solo hasta el handoff.",
-    de: "End-to-End, nicht nur bis zur Übergabe.",
+    en: "End to end.",
+    es: "De principio a fin.",
+    de: "End-to-End.",
   },
   "home.productStrengths.endToEnd.description": {
-    en: "I take work from research and problem framing through flows, prototypes, build, and iteration, keeping decisions connected from start to finish.",
-    es: "Lidero el trabajo desde la investigación y la definición del problema hasta los flujos, prototipos, desarrollo e iteración, conectando las decisiones de principio a fin.",
-    de: "Ich begleite die Arbeit von Recherche und Problemdefinition über Flows, Prototypen und Umsetzung bis zur Iteration, damit Entscheidungen von Anfang bis Ende verbunden bleiben.",
+    en: "Every product decision is carried from research and problem framing through flows, prototypes, build, and iteration.",
+    es: "Cada decisión de producto se lleva desde la investigación y la definición del problema hasta los flujos, prototipos, desarrollo e iteración.",
+    de: "Jede Produktentscheidung wird von Recherche und Problemdefinition über Flows, Prototypen, Umsetzung und Iteration mitgetragen.",
   },
   "home.productStrengths.complexFlows.title": {
-    en: "Complex flows people can trust.",
-    es: "Flujos complejos en los que las personas pueden confiar.",
-    de: "Komplexe Abläufe, denen Menschen vertrauen können.",
+    en: "Complex flows",
+    es: "Flujos complejos",
+    de: "Komplexe Abläufe",
   },
   "home.productStrengths.complexFlows.description": {
-    en: "I turn data-heavy, role-based, and high-stakes tasks into clear next steps, with accessibility, edge cases, and recovery considered from the beginning.",
-    es: "Convierto tareas con muchos datos, roles y alto riesgo en pasos claros, considerando accesibilidad, casos límite y recuperación desde el inicio.",
-    de: "Ich mache datenreiche, rollenbasierte und risikoreiche Aufgaben zu klaren nächsten Schritten, mit Barrierefreiheit, Sonderfällen und Wiederherstellung von Anfang an.",
+    en: "Every complex flow is shaped around clear next steps, with accessibility, edge cases, and recovery built in from the start.",
+    es: "Cada flujo complejo se diseña en torno a próximos pasos claros, con accesibilidad, casos límite y recuperación integrados desde el inicio.",
+    de: "Jeder komplexe Ablauf wird auf klare nächste Schritte ausgerichtet, mit Barrierefreiheit, Sonderfällen und Wiederherstellung von Anfang an.",
   },
   "home.productStrengths.systems.title": {
-    en: "Systems that make the next release easier.",
-    es: "Sistemas que facilitan la siguiente entrega.",
-    de: "Systeme, die das nächste Release leichter machen.",
+    en: "Structured for AI",
+    es: "Estructurado para IA",
+    de: "Für KI strukturiert",
   },
   "home.productStrengths.systems.description": {
-    en: "I create reusable patterns, components, and practical documentation so design and engineering can ship with more consistency and less rework.",
-    es: "Creo patrones, componentes y documentación práctica para que diseño e ingeniería entreguen con más consistencia y menos retrabajo.",
-    de: "Ich entwickle wiederverwendbare Muster, Komponenten und praxisnahe Dokumentation, damit Design und Engineering konsistenter und mit weniger Nacharbeit liefern können.",
+    en: "Every content model and data point is structured so AI assistants and search engines can read, summarize, and cite it accurately.",
+    es: "Cada modelo de contenido y punto de datos se estructura para que los asistentes de IA y los buscadores puedan leerlo, resumirlo y citarlo con precisión.",
+    de: "Jedes Inhaltsmodell und jeder Datenpunkt wird so strukturiert, dass KI-Assistenten und Suchmaschinen ihn präzise lesen, zusammenfassen und zitieren können.",
   },
   "home.impact.eyebrow": {
     en: "Evidence in the work",
@@ -842,7 +912,6 @@ export const dictionary = {
   "home.heroShopNav": { en: "SHOP · ABOUT · JOURNAL · CART (0)", es: "TIENDA · SOBRE MÍ · DIARIO · CARRITO (0)", de: "SHOP · ÜBER UNS · JOURNAL · WARENKORB (0)" },
   "home.heroGlow": { en: "Glow from within.", es: "Brilla desde dentro.", de: "Strahle von innen." },
   "home.heroBuy": { en: "Buy", es: "Comprar", de: "Kaufen" },
-  "home.selectedProjects": { en: "Selected projects", es: "Proyectos destacados", de: "Ausgewählte Projekte" },
   "home.recruiterMode": {
     en: "Recruiter mode on. I highlighted two relevant case studies below. Ask about shipped work, AI projects, design systems, UX research, resume details, or GitHub activity on this website.",
     es: "Modo reclutador activado. He destacado dos casos de estudio relevantes abajo. Pregunta por trabajo entregado, proyectos de IA, sistemas de diseño, investigación UX, currículum o actividad de GitHub.",

@@ -12,7 +12,6 @@ import { Badge } from "./components/ui/badge";
 import { Button } from "./components/ui/button";
 import { Container } from "./components/ui/container";
 import { Heading } from "./components/ui/heading";
-import { ClassicalWordBrochurePreview } from "./components/classical-word-brochure-preview";
 import { appendLockedNayyaPlaceholder } from "./lib/cms/locked-placeholder";
 import { useLanguage } from "./lib/i18n/language-context";
 import { useTranslate, useTranslateTag } from "./lib/i18n/use-translate";
@@ -193,6 +192,7 @@ const HERO_ASSISTANT_SUGGESTIONS = [
 ];
 
 const MAIN_VISIBLE_CASE_STUDY_SLUGS = new Set(["reversetech"]);
+const HOME_HIDDEN_CASE_STUDY_SLUGS = new Set(["classical-word"]);
 const INDEPENDENT_CLIENT_WORK_SLUGS = new Set([
   "classical-word",
   "protecta",
@@ -224,7 +224,7 @@ function tokenizeSearchQuery(value: string) {
 }
 
 function isVisibleOnMain(slug: string) {
-  return MAIN_VISIBLE_CASE_STUDY_SLUGS.has(slug) || !isHiddenCaseStudySlug(slug);
+  return !HOME_HIDDEN_CASE_STUDY_SLUGS.has(slug) && (MAIN_VISIBLE_CASE_STUDY_SLUGS.has(slug) || !isHiddenCaseStudySlug(slug));
 }
 
 function compareCaseStudyPriority<
@@ -582,7 +582,6 @@ export default function PortfolioPage() {
     h: client.name === "Skill" ? 59 : client.name === "Zapiano" ? 38 : client.name === "Habitat for Humanity" ? 36 : client.name === "Elevation" ? 36 : client.name === "Indeed" ? 34 : client.name === "Hakuna" ? 30 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : client.name === "Paramount+" ? 24 : client.name === "IBX" ? 34 : 41,
     w: client.name === "Skill" ? 107 : client.name === "Zapiano" ? 212 : client.name === "Habitat for Humanity" ? 108 : client.name === "Elevation" ? 234 : client.name === "Indeed" ? 126 : client.name === "Hakuna" ? 96 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : client.name === "Paramount+" ? 94 : client.name === "IBX" ? 48 : 57,
   }));
-  const heroRibbon = translate("home.mainHeroRibbon");
   const heroFilters = [
     {
       label: translate("home.heroPill.aiProductTitle"),
@@ -609,7 +608,7 @@ export default function PortfolioPage() {
     .map((study) => ({
       slug: study.slug,
       cardId: resolveHomeCardId(study.slug),
-      title: study.title,
+      title: study.slug === "flock-accessibility-system" ? translate("home.projectCard.flockTitle") : study.title,
       company: study.company ?? "",
       description: getProjectCardDescription(study.tagline ?? ""),
       image: resolveProjectListCardImage(study.slug, study.images?.cover || study.images?.hero || ""),
@@ -617,13 +616,6 @@ export default function PortfolioPage() {
       href: resolveProjectHref(study),
       tags: getVisibleProjectTags(study.tags),
     }));
-  const heroSelectedProjects = [
-    "nayya-ai-benefits",
-    "i9-everify-integration",
-    "flock-accessibility-system",
-  ]
-    .map((slug) => homeProjects.find((project) => project.slug === slug))
-    .filter((project) => project !== undefined);
   const projectGroups = [
     {
       id: "company",
@@ -657,8 +649,6 @@ export default function PortfolioPage() {
     },
   ];
   const heroPhaseStyles = useMemo(() => HERO_PHASE_STYLES[heroPhase], [heroPhase]);
-  const heroProjectProgress = Math.min(1, Math.max(0, (heroParallax - 105) / 45));
-
   function scrollToSection(sectionId?: "projects" | "skills" | "github") {
     if (!sectionId || typeof document === "undefined") {
       return;
@@ -820,13 +810,13 @@ export default function PortfolioPage() {
   }, [githubActivityItems, language]);
 
   const recentWorkSection = (
-    <section key="work" id="projects" className="bg-white px-6 py-16 md:px-10 md:py-20 xl:px-20">
+    <section key="work" id="projects" className="bg-white px-6 pb-28 pt-16 md:px-10 md:pb-32 md:pt-20 xl:px-20">
       <Container size="wide">
         <div className="space-y-20 md:space-y-28">
           {projectGroups.map((group) => (
             <section key={group.id} aria-labelledby={`${group.id}-projects-title`}>
               <div className="flex items-end justify-between gap-6">
-                <Heading id={`${group.id}-projects-title`} as="h2" variant="section" className="text-[clamp(2rem,4vw,3.25rem)]">
+                <Heading id={`${group.id}-projects-title`} as="h2" variant="section" className="text-[clamp(2rem,3.4vw,3.1rem)] leading-[1.02]">
                   {group.title}
                 </Heading>
                 <Link
@@ -848,9 +838,7 @@ export default function PortfolioPage() {
                       className="relative aspect-[4/3] overflow-hidden rounded-[var(--ui-radius-card)]"
                       style={{ background: project.background }}
                     >
-                      {project.slug === "classical-word" ? (
-                        <ClassicalWordBrochurePreview className="transition-transform duration-500 group-hover:scale-[1.025]" />
-                      ) : project.image ? (
+                      {project.image ? (
                         <Image
                           src={project.image}
                           alt={`${project.title} case study preview for ${project.company}`}
@@ -889,15 +877,18 @@ export default function PortfolioPage() {
   );
 
   const productStrengthsSection = (
-    <section key="product-strengths" aria-labelledby="product-strengths-title" className="bg-white px-6 pb-16 md:px-10 md:pb-20 xl:px-20">
+    <section key="product-strengths" aria-labelledby="product-strengths-title" className="bg-white pb-16 md:pb-20">
       <div
-        className="relative mx-auto max-w-[1280px] overflow-hidden rounded-[var(--ui-radius-panel)] px-6 py-12 text-white shadow-[var(--ui-shadow-elevated)] sm:px-9 md:px-12 md:py-16"
+        className="relative w-full overflow-hidden px-6 py-12 text-white sm:px-9 md:px-12 md:py-16 xl:px-20"
         style={{ background: "linear-gradient(135deg, #076da9 0%, var(--ui-color-brand-primary) 100%)" }}
       >
         <div className="relative mx-auto max-w-[650px] lg:ml-[15%]">
           <div>
-            <Heading id="product-strengths-title" as="h2" variant="feature" tone="inverse" className="max-w-[620px] text-[clamp(2rem,4vw,3.35rem)] leading-[1.04]">
-              {translate("home.productStrengths.title")}
+            <Heading id="product-strengths-title" as="h2" variant="feature" tone="inverse" className="max-w-[620px] text-[clamp(2rem,3.4vw,3.1rem)] leading-[1.02]">
+              {translate("home.productStrengths.titleLead")}
+              <br />
+              {translate("home.productStrengths.titleLineEnd")} {" "}
+              <span className="font-playfair font-normal italic">{translate("home.productStrengths.titleAccent")}</span>
             </Heading>
             <p className="mt-5 max-w-[610px] text-[16px] leading-[1.5] text-white/85 md:text-[18px]">
               {translate("home.productStrengths.intro")}
@@ -909,7 +900,7 @@ export default function PortfolioPage() {
                 key={strength.title}
                 className={`grid grid-cols-[76px_minmax(0,1fr)] gap-3 py-6 transition-colors duration-200 hover:bg-white/10 sm:grid-cols-[86px_minmax(0,1fr)] ${index === 0 ? "" : "border-t border-white/25"}`}
               >
-                <span className="pt-0.5 text-[22px] font-semibold leading-none text-[#d5f0ff]">{String(index + 1).padStart(2, "0")}</span>
+                <span className="pt-0.5 text-[22px] font-semibold leading-none text-[#f8df36]">{String(index + 1).padStart(2, "0")}</span>
                 <div>
                   <h3 className="text-[21px] font-semibold leading-tight sm:text-[24px]">
                     {strength.title}
@@ -932,6 +923,51 @@ export default function PortfolioPage() {
     </section>
   );
 
+  const aboutSection = (
+    <section key="about" id="about" aria-labelledby="about-title" className="relative overflow-hidden bg-[#fcf9fb] px-6 py-14 md:px-10 md:py-[4.5rem] xl:px-20">
+      <svg aria-hidden="true" className="pointer-events-none absolute -bottom-24 -left-20 hidden h-56 w-72 text-[#f8df36] lg:block" viewBox="0 0 260 210" fill="none">
+        <path d="M-24 12C28 48 75 96 111 164" stroke="currentColor" strokeWidth="32" strokeLinecap="round" />
+      </svg>
+      <Container size="wide" className="relative">
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16">
+          <div>
+            <p className="inline-flex items-center gap-2 text-xs font-semibold text-[#2b0b2d]">
+              <span aria-hidden="true" className="size-1.5 rounded-full bg-[#2b0b2d]" />
+              {translate("home.about.eyebrow")}
+            </p>
+            <Heading id="about-title" as="h2" variant="feature" className="mt-4 max-w-[650px] text-[clamp(2rem,3.2vw,3rem)] leading-[1.08] text-[#141114]">
+              {translate("home.about.titleLead")} {" "}
+              <span className="font-playfair font-normal italic">{translate("home.about.titleAccent")}</span>
+              {translate("home.about.titleTail")}
+            </Heading>
+            <div className="mt-7 flex flex-wrap gap-2">
+              <span className="rounded-full bg-[#d8d3ff] px-4 py-2 text-xs font-semibold text-[#141114]">{translate("home.about.tagResearch")}</span>
+              <span className="rounded-full bg-[#f8df36] px-4 py-2 text-xs font-semibold text-[#141114]">{translate("home.about.tagAi")}</span>
+              <span className="rounded-full bg-[#f6c3ed] px-4 py-2 text-xs font-semibold text-[#141114]">{translate("home.about.tagSystems")}</span>
+            </div>
+          </div>
+          <div className="relative z-10 max-w-[430px] lg:pt-12">
+            <p className="text-[16px] font-semibold leading-[1.45] text-[#141114] md:text-[17px]">
+              {translate("home.about.lead")}
+            </p>
+            <p className="mt-2 text-[15px] font-normal not-italic leading-[1.5] text-[#5e5961] md:text-[16px]">
+              {translate("home.about.recruiters")}
+            </p>
+            <p className="mt-3 text-[15px] leading-[1.5] text-[#5e5961] md:text-[16px]">
+              {translate("home.about.copy")}
+            </p>
+            <Button asChild variant="default" size="sm" className="mt-6 bg-[#141114] text-white hover:bg-[#2d2528]">
+              <Link href={withBasePath("/resume")}>
+                {translate("home.about.cta")}
+                <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2.25} />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+
   const impactEvidenceSection = (
     <section key="impact-evidence" aria-labelledby="impact-evidence-title" className="bg-white px-6 pb-16 md:px-10 md:pb-20 xl:px-20">
       <Container size="wide">
@@ -943,7 +979,7 @@ export default function PortfolioPage() {
           </Heading>
         </div>
 
-        <div className="mx-auto mt-8 grid max-w-[1120px] gap-4 md:grid-cols-12 md:grid-rows-[252px_216px_210px]">
+        <div className="mx-auto mt-12 grid max-w-[1120px] gap-4 md:mt-14 md:grid-cols-12 md:grid-rows-[252px_216px_210px]">
           <Link
             href={withBasePath("/projects/nayya-ai-benefits")}
             className="group relative min-h-[252px] overflow-hidden rounded-xl md:col-span-4 md:min-h-0"
@@ -969,7 +1005,7 @@ export default function PortfolioPage() {
             className="group relative min-h-[252px] overflow-hidden rounded-xl md:col-span-5 md:min-h-0"
           >
             <Image
-              src="/images/projects/flock-accessibility-system/thumbnails/flock.png"
+              src="/images/projects/flock-accessibility-system/thumbnails/flock-accessibility-system-cover.png"
               alt={translate("home.impact.flockImageAlt")}
               fill
               sizes="(max-width: 767px) 100vw, 42vw"
@@ -1043,10 +1079,9 @@ export default function PortfolioPage() {
             <div className="absolute left-5 top-0 h-[5.5rem] w-[2.8rem] overflow-hidden">
               <div className="absolute -left-[2.8rem] top-0 size-[5.5rem] rounded-full border-[1.5rem] border-[#f8df36]" />
             </div>
-            <svg viewBox="0 0 280 240" className="absolute -bottom-5 -right-9 h-[7.5rem] w-[9.5rem] text-[#2183ca]" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="160" cy="185" r="56" stroke="currentColor" strokeWidth="24" />
-              <path d="M56 56C99 67 129 94 148 128C177 119 225 126 274 153" stroke="currentColor" strokeWidth="24" strokeLinecap="butt" strokeLinejoin="round" />
-            </svg>
+            <div className="absolute bottom-0 right-5 h-16 w-32 overflow-hidden">
+              <div className="absolute -bottom-16 left-0 size-32 rounded-full border-[1.15rem] border-[#2183ca]" />
+            </div>
           </div>
 
           <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[#efefef] p-5 text-[#141114] md:col-span-4 md:min-h-0">
@@ -1376,21 +1411,28 @@ export default function PortfolioPage() {
       className="bg-white px-6 py-20 md:px-16 xl:px-30"
     >
       <div className="mx-auto max-w-[1180px]">
-        <div className="rounded-[24px] border border-[#d9e5f2] bg-white/80 p-6 md:p-8">
-          <div>
-            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">
-              Contribution View
-            </p>
-          </div>
-          <div className="mt-6 overflow-x-auto rounded-[18px] border border-[#e6edf6] bg-[#fbfdff] p-5 md:p-8">
-            <div className="flex min-h-[220px] items-center">
-              <img
-                src={`https://ghchart.rshah.org/1183D0/${githubUsername}`}
-                alt={`${githubUsername} GitHub contributions chart`}
-                className="mx-auto translate-y-4 h-auto w-full min-w-[880px] object-contain"
-                loading="lazy"
-              />
-            </div>
+        <div className="flex items-center justify-between gap-6">
+          <Heading as="h2" variant="section" className="text-[clamp(2rem,3.4vw,3.1rem)] leading-[1.02] text-[#141114]">
+            {translate("home.githubActivity")}
+          </Heading>
+          <a
+            href={`https://github.com/${githubUsername}`}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-[#0e2951] transition-colors hover:text-[#1183D0]"
+          >
+            @{githubUsername}
+            <ArrowUpRight aria-hidden="true" className="size-4" strokeWidth={2.25} />
+          </a>
+        </div>
+        <div className="mt-6 overflow-x-auto rounded-[18px] bg-[#fbfdff] p-5 md:p-8">
+          <div className="flex min-h-[220px] items-center">
+            <img
+              src={`https://ghchart.rshah.org/1183D0/${githubUsername}`}
+              alt={`${githubUsername} GitHub contributions chart`}
+              className="mx-auto translate-y-4 h-auto w-full min-w-[880px] object-contain"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
@@ -1413,11 +1455,11 @@ export default function PortfolioPage() {
     </section>
   );
 
-  const contentSections = [collaboratorsSection, ctaSection];
+  const contentSections = [collaboratorsSection, githubProofSection, ctaSection];
 
   return (
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden lg:my-2 lg:mr-2 lg:overflow-clip lg:rounded-[28px] lg:border lg:border-[#e5eef7] lg:shadow-[0_10px_34px_rgba(14,41,81,0.06)]">
-      <SiteHeader variant="transparent" forceSticky={heroProjectProgress >= 1} />
+      <SiteHeader variant="transparent" />
 
       {/* ── Hero ── */}
       <section className="bg-white">
@@ -1441,38 +1483,23 @@ export default function PortfolioPage() {
             <path d="M14 56 22 24 40 42 49 13 65 39 80 24 76 58 14 56Z" stroke="#F0A51B" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M18 62c18 5 39 5 58-1" stroke="#F0A51B" strokeWidth="3" strokeLinecap="round" />
           </svg>
-          <div className="pointer-events-none absolute -bottom-[34%] -left-[12%] -right-[12%] z-0 hidden h-[60%] overflow-hidden rounded-[50%] min-[1025px]:block">
-            <Image src="/images/home-hero-table.png" alt="" fill sizes="100vw" className="object-cover object-center" />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,248,243,0.32)_0%,rgba(255,248,243,0.04)_30%,rgba(215,181,154,0.12)_100%)]" />
-          </div>
           <Container size="wide" className="relative grid min-h-0 items-center gap-2 xl:min-h-[650px] xl:grid-cols-[1.08fr_0.92fr] xl:gap-4 2xl:min-h-[720px] 2xl:max-w-[1440px]">
-            <div className="relative z-40 order-2 max-w-[800px] pb-2 text-center xl:order-1 xl:-translate-y-12 xl:translate-x-12 xl:pb-12 xl:text-left 2xl:-translate-y-16">
-              <div className="relative mb-5 inline-flex max-w-full -rotate-[5deg] overflow-hidden bg-[#39b8e7] px-3 py-2 text-[9px] font-medium tracking-[0.04em] text-[#163143] shadow-[0_5px_10px_rgba(18,111,148,0.16)] [clip-path:polygon(0_9%,2%_1%,7%_4%,12%_0,18%_3%,25%_0,31%_4%,38%_1%,45%_4%,52%_0,59%_3%,66%_0,74%_4%,81%_1%,88%_4%,96%_0,100%_9%,98%_21%,100%_36%,98%_51%,100%_67%,98%_83%,100%_94%,95%_100%,89%_96%,83%_100%,75%_96%,68%_100%,61%_97%,54%_100%,47%_96%,40%_100%,33%_97%,26%_100%,18%_96%,11%_100%,4%_96%,0_87%,2%_72%,0_56%,2%_41%,0_25%)] sm:mb-7 sm:px-7 sm:py-2.5 sm:text-sm xl:-translate-x-12">
-                <span className="absolute inset-0 opacity-20 [background-image:linear-gradient(30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%),linear-gradient(-30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%)] [background-size:18px_16px]" />
-                <span className="absolute inset-x-2 top-1 h-px bg-white/45" />
-                <span className="relative z-10 whitespace-nowrap font-mono">{heroRibbon}</span>
-              </div>
-              <Heading
-                as="h1"
-                variant="hero"
-                tone="editorial"
-                className="whitespace-nowrap font-medium leading-[0.86] text-[clamp(2rem,5.5vw,4.7rem)]"
-              >
-                <span className="text-[#e7688f]">Greddys</span>{" "}
-                <span className="text-[#141114]">Martinez</span>
-              </Heading>
-              <div className="mx-auto mt-6 max-w-[610px] sm:mt-9 xl:mx-0">
+            <div className="relative z-40 order-2 mx-auto max-w-[800px] pb-2 text-center xl:order-1 xl:-translate-y-12 xl:pb-12 2xl:-translate-y-16">
+              <div className="mx-auto max-w-[700px]">
                 <svg className="mb-2 h-7 w-40 -rotate-2" viewBox="0 0 160 28" fill="none" aria-hidden="true">
                   <path d="M4 10c31-7 88-9 148-2" stroke="#25aee1" strokeWidth="3.5" strokeLinecap="round" />
                   <path d="M8 20c42-7 100-5 148 1" stroke="#25aee1" strokeWidth="3.5" strokeLinecap="round" />
                 </svg>
-                <p className="text-[13px] font-bold uppercase leading-relaxed tracking-[0.04em] text-[#159bd0] sm:text-sm">
+                <p className="text-[12px] font-semibold leading-relaxed tracking-[0.02em] text-[var(--ui-color-brand-primary)] sm:text-sm">
                   {translate("home.mainHeroFocus")}
                 </p>
-                <p className="mt-1 font-inter text-base italic leading-relaxed text-[#3d3438] sm:text-lg">{translate("home.mainHeroDescription")}</p>
+                <Heading as="h1" variant="hero" tone="editorial" className="mt-3 text-[clamp(2rem,4.1vw,3.8rem)] font-medium leading-[0.98] tracking-[-0.045em] text-[#141114]">
+                  <span className="font-playfair font-normal italic tracking-[-0.035em]">Greddys</span>{" "}
+                  <span>Martinez</span>
+                </Heading>
                 <nav
                   aria-label={translate("projectsPage.filterBy")}
-                  className="mt-6 flex flex-wrap justify-center gap-2 xl:justify-start"
+                  className="mt-6 flex flex-wrap justify-center gap-2"
                 >
                   {heroFilters.map(({ label, href }) => (
                     <Badge key={href} asChild variant="outline" size="default">
@@ -1485,15 +1512,7 @@ export default function PortfolioPage() {
                 </nav>
               </div>
             </div>
-            <div className="relative order-1 mx-auto h-[350px] w-full max-w-[380px] self-end sm:h-[460px] sm:max-w-[430px] xl:order-2 xl:h-[650px] xl:max-w-[510px] 2xl:-translate-y-20">
-              <div className="absolute bottom-0 left-[-3%] right-[-10%] top-[22px] z-30 origin-bottom-left sm:left-[-6%] sm:right-[-15%] sm:top-[54px] xl:-translate-x-[60%] xl:scale-[1.08]" style={{ translate: `${heroParallax}px 0` }}>
-                <Image src="/images/home-hero-portrait-clean-v3.png" alt="Greddys Martinez seated at a laptop" fill priority sizes="(max-width: 1024px) 470px, 590px" className="object-contain object-bottom" />
-                <svg className="pointer-events-none absolute left-[57%] -top-[10%] h-20 w-24 rotate-[12deg] overflow-visible" viewBox="0 0 96 80" fill="none" aria-hidden="true">
-                  <path d="M16 59 24 20 42 43 51 12 67 42 82 25 76 61 16 59Z" stroke="#F0A51B" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M19 65c18 5 39 5 58-1" stroke="#F0A51B" strokeWidth="3.5" strokeLinecap="round" />
-                  <path d="m14 14-3-11M39 9V-3M71 17l6-9" stroke="#171417" strokeWidth="3.5" strokeLinecap="round" />
-                </svg>
-              </div>
+            <div className="relative order-1 mx-auto hidden h-[650px] w-full max-w-[510px] self-end xl:order-2 xl:block 2xl:-translate-y-20">
               <div className="absolute right-[-11%] -top-[3%] z-20 hidden w-[184px] bg-[#fffdf9] px-4 pb-4 pt-6 text-[#2a2528] shadow-[0_18px_34px_rgba(84,53,58,0.18)] xl:block xl:w-[205px] animate-[hero-paper-float_5.8s_ease-in-out_infinite]" style={{ ["--paper-rotate" as string]: "5deg", translate: `0 -${heroParallax * 0.7}px` }}>
                 <span className="absolute -top-3 left-1/2 h-7 w-[106px] -translate-x-1/2 -rotate-[2deg] overflow-hidden bg-[#ed7195] [clip-path:polygon(0_8%,3%_0,14%_4%,25%_0,39%_3%,51%_0,64%_4%,76%_0,90%_4%,100%_0,98%_22%,100%_39%,98%_56%,100%_75%,98%_94%,88%_100%,75%_96%,62%_100%,48%_96%,35%_100%,20%_96%,8%_100%,0_92%,2%_76%,0_58%,2%_40%,0_22%)]">
                   <span className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_25%_35%,transparent_0_8px,rgba(255,255,255,0.85)_9px_10px,transparent_11px),radial-gradient(circle_at_76%_70%,transparent_0_8px,rgba(255,255,255,0.85)_9px_10px,transparent_11px)] [background-size:30px_28px]" />
@@ -1519,7 +1538,7 @@ export default function PortfolioPage() {
                 <p className="mt-4 text-[10px] font-bold uppercase leading-relaxed tracking-[0.12em]">{translate("home.heroIdeaDescription")}</p>
               </div>
               <div className="absolute -right-[15%] bottom-[22%] z-20 hidden w-[205px] rounded-[24px] bg-[#fffdf9] p-4 text-[#261f21] shadow-[0_18px_34px_rgba(84,53,58,0.22)] xl:block xl:w-[230px] animate-[hero-paper-float_6.6s_ease-in-out_0.8s_infinite]" style={{ ["--paper-rotate" as string]: "-4deg", translate: `0 -${heroParallax * 0.7}px` }}>
-                <div className="flex items-center gap-2 text-[9px] font-bold"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f8d6ca] text-[#e06b91]">G</span><span>Greddys Martinez<br /><span className="font-normal text-[#766568]">@randomlygreddys</span></span><span className="ml-auto text-base">•••</span></div>
+                <div className="flex items-center gap-2 text-[9px] font-bold"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f8d6ca] text-[#e06b91]">G</span><span className="font-normal text-[#766568]">@randomlygreddys</span><span className="ml-auto text-base">•••</span></div>
                 <p className="mt-4 text-xs">{translate("home.heroNewBrand")} <span className="text-[#eaa223]">✦</span></p>
                 <div className="mt-3 grid grid-cols-[1fr_0.72fr] gap-2">
                   <p className="font-inter text-[26px] font-semibold leading-[0.9]">{translate("home.heroDesignPower")}</p>
@@ -1535,58 +1554,10 @@ export default function PortfolioPage() {
               </div>
             </div>
           </Container>
-          <div className="absolute inset-0 z-40 hidden h-full bg-white px-10 pb-12 pt-28 min-[1025px]:block" style={{ translate: `0 ${100 - heroProjectProgress * 100}%` }}>
-            <div className="mx-auto h-full max-w-[1080px]">
-              <p className="mb-6 text-center text-sm font-bold uppercase tracking-[0.18em] text-[#e05f88]">{translate("home.selectedProjects")}</p>
-              <div className="mx-auto grid h-[min(62vh,590px)] max-w-[1040px] grid-cols-3 gap-5">
-                {heroSelectedProjects.map((project) => (
-                  <Link
-                    key={`hero-project-${project.cardId}`}
-                    href={project.href}
-                    className="group relative overflow-hidden rounded-[22px] bg-[#f6f1ed] p-6 shadow-[0_18px_38px_rgba(58,39,47,0.12)]"
-                    onMouseEnter={(event) => {
-                      const video = event.currentTarget.querySelector("video");
-                      void video?.play();
-                    }}
-                    onMouseLeave={(event) => {
-                      const video = event.currentTarget.querySelector("video");
-                      if (video) {
-                        video.pause();
-                        video.currentTime = 0;
-                      }
-                    }}
-                  >
-                    <div className="absolute inset-0" style={{ background: project.background }} />
-                    {project.slug === "nayya-ai-benefits" ? (
-                      <Image src="/images/projects/nayya-ai-benefits/thumbnails/nayya-selected-project.png" alt="" fill sizes="33vw" className="object-cover transition duration-500 group-hover:scale-105" />
-                    ) : project.slug === "protecta" ? (
-                      <>
-                        <video src="/images/projects/protecta/hero-banner.mp4" muted loop playsInline preload="metadata" className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-                        <Image
-                          src="/images/projects/protecta/protecta-isotype-pine.svg"
-                          alt=""
-                          aria-hidden="true"
-                          width={170}
-                          height={192}
-                          className="pointer-events-none absolute left-1/2 top-6 z-10 w-16 -translate-x-1/2 brightness-0 invert drop-shadow-[0_3px_8px_rgba(0,0,0,0.3)] sm:w-[72px]"
-                        />
-                      </>
-                    ) : project.slug === "classical-word" ? (
-                      <ClassicalWordBrochurePreview className="transition duration-500 group-hover:scale-105" />
-                    ) : project.image ? <Image src={project.image} alt="" fill sizes="33vw" className="object-cover transition duration-500 group-hover:scale-105" /> : null}
-                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_30%,rgba(255,255,255,0.94)_77%)]" />
-                    <div className="relative flex h-full flex-col justify-end">
-                      <span className="text-xs font-bold uppercase tracking-[0.14em] text-[#5d5260]">{project.company}</span>
-                      <span className="mt-2 font-inter text-3xl leading-none text-[#171315]">{project.title}</span>
-                      <span className="mt-4 translate-y-2 text-sm font-semibold text-[#e05f88] opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">{translate("home.viewProject")} →</span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
         </div>
+
+        {aboutSection}
 
         <section hidden id="process" aria-labelledby="process-title" className="border-y border-[var(--ui-color-border-strong)] bg-[var(--ui-color-surface-base)] px-6 py-16 md:px-10 md:py-24 lg:px-20">
           <Container size="wide">
