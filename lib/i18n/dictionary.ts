@@ -740,6 +740,13 @@ export const dictionary = {
     es: "Diseño que se mide en resultados.",
     de: "Design, gemessen an Ergebnissen.",
   },
+  "home.impact.titleLead": {
+    en: "Evidence in the work,",
+    es: "Evidencia en el trabajo,",
+    de: "Belege in der Arbeit,",
+  },
+  "home.impact.titleAccent": { en: "measured", es: "medida", de: "gemessen" },
+  "home.impact.titleTail": { en: "in outcomes.", es: "en resultados.", de: "an Ergebnissen." },
   "home.impact.intro": {
     en: "A few signals from the products and teams I’ve helped move forward.",
     es: "Algunas señales de los productos y equipos que he ayudado a impulsar.",

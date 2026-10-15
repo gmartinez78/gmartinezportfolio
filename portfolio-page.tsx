@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowUp, ArrowUpRight, BrainCircuit, Check, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, Heart, LayoutTemplate, Lightbulb, MessageCircle, Mic, MousePointer2, Paperclip, Play, Repeat2, Star, Target, Wand2 } from "lucide-react";
+import { ArrowRight, ArrowUp, ArrowUpRight, BrainCircuit, Check, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, Heart, LayoutTemplate, Lightbulb, MessageCircle, Mic, MousePointer2, Paperclip, Play, Repeat2, Star, Target, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { ChecklistStatusCard } from "./components/checklist-status-card";
@@ -34,6 +34,18 @@ const PROJECT_BACKGROUNDS: Record<string, string> = {
   "flock-accessibility-system": "radial-gradient(ellipse at 80% 20%, #c8f0e0 0%, #edf5fb 70%)",
   "i9-everify-integration": "radial-gradient(ellipse at 50% 80%, #d9e7f5 0%, #f3f8fc 72%)",
 };
+
+function getProjectCardDescription(description: string) {
+  const trimmed = description.trim();
+  const sentenceEnd = trimmed.search(/[.!?](?:\s|$)/);
+  const firstSentence = sentenceEnd >= 0 ? trimmed.slice(0, sentenceEnd + 1) : trimmed;
+
+  if (firstSentence.length <= 126) {
+    return firstSentence;
+  }
+
+  return `${firstSentence.slice(0, 126).replace(/\s+\S*$/, "").trimEnd()}…`;
+}
 
 type HeroPhase = "sunrise" | "day" | "sunset" | "night";
 type GitHubActivityItem = {
@@ -571,7 +583,7 @@ export default function PortfolioPage() {
       cardId: resolveHomeCardId(study.slug),
       title: study.title,
       company: study.company ?? "",
-      description: study.tagline ?? "",
+      description: getProjectCardDescription(study.tagline ?? ""),
       image: resolveProjectListCardImage(study.slug, study.images?.cover || study.images?.hero || ""),
       background: PROJECT_BACKGROUNDS[study.slug] ?? "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
       href: resolveProjectHref(study),
@@ -794,7 +806,7 @@ export default function PortfolioPage() {
                   className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-[var(--ui-color-brand-primary)] transition-colors hover:text-[var(--ui-color-brand-primary-hover)] md:text-base"
                 >
                   {translate("home.viewPortfolio")}
-                  <ArrowUpRight aria-hidden="true" className="size-4" />
+                  <ArrowRight aria-hidden="true" className="size-4" />
                 </Link>
               </div>
               <div className="mt-8 grid gap-x-10 gap-y-12 md:grid-cols-2 md:gap-y-16">
@@ -818,18 +830,18 @@ export default function PortfolioPage() {
                         />
                       ) : null}
                     </div>
-                    <p className="mt-5 text-sm text-[var(--ui-color-text-muted)]">{project.company}</p>
+                    <p className="mt-4 text-sm text-[var(--ui-color-text-muted)]">{project.company}</p>
                     <Heading
                       as="h4"
                       variant="card"
-                      className="mt-2 text-[clamp(1.25rem,2vw,1.65rem)] transition-colors group-hover:text-[var(--ui-color-brand-primary)]"
+                      className="mt-1 line-clamp-2 text-[18px] leading-[1.25] transition-colors group-hover:text-[var(--ui-color-brand-primary)] md:text-[20px]"
                     >
                       {project.title}
                     </Heading>
-                    <p className="mt-3 max-w-[38rem] text-[16px] leading-[1.45] text-[var(--ui-color-text-muted)] md:text-[18px]">
+                    <p className="mt-2 line-clamp-3 max-w-[38rem] text-[15px] leading-[1.48] text-[var(--ui-color-text-muted)] md:text-[16px]">
                       {project.description}
                     </p>
-                    <div className="mt-4 flex flex-wrap gap-2">
+                    <div className="mt-3 flex flex-wrap gap-2">
                       {project.tags.map((tag) => (
                         <Badge key={tag} size="tag" variant="secondary">
                           {translateTag(tag)}
@@ -860,7 +872,7 @@ export default function PortfolioPage() {
             <p className="mt-5 max-w-[610px] text-[16px] leading-[1.5] text-white/85 md:text-[18px]">
               {translate("home.productStrengths.intro")}
             </p>
-            <Button asChild variant="editorial-outline" size="sm" className="mt-6 border-white/65 bg-white text-[var(--ui-color-text-strong)] hover:bg-white/90">
+            <Button asChild variant="tertiary" size="sm" className="mt-6 border-white/65 bg-transparent text-white hover:border-white hover:bg-white/10 hover:text-white">
               <Link href={withBasePath("/resume")}>
                 {translate("home.productStrengths.cta")}
                 <ArrowUpRight aria-hidden="true" className="size-4" strokeWidth={2.25} />
@@ -893,16 +905,12 @@ export default function PortfolioPage() {
   const impactEvidenceSection = (
     <section key="impact-evidence" aria-labelledby="impact-evidence-title" className="bg-white px-6 pb-16 md:px-10 md:pb-20 xl:px-20">
       <Container size="wide">
-        <div className="mx-auto max-w-xl text-center">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--ui-color-brand-primary)]">
-            {translate("home.impact.eyebrow")}
-          </p>
-          <Heading id="impact-evidence-title" as="h2" variant="section" className="mt-2 text-[clamp(1.85rem,3vw,2.75rem)]">
-            {translate("home.impact.title")}
+        <div className="mx-auto max-w-[540px] text-center">
+          <Heading id="impact-evidence-title" as="h2" variant="section" className="text-[clamp(2rem,3.4vw,3.1rem)] leading-[1.02] text-[#141114]">
+            {translate("home.impact.titleLead")} {" "}
+            <span className="font-playfair font-normal italic">{translate("home.impact.titleAccent")}</span>{" "}
+            {translate("home.impact.titleTail")}
           </Heading>
-          <p className="mt-3 text-[15px] leading-relaxed text-[var(--ui-color-text-muted)]">
-            {translate("home.impact.intro")}
-          </p>
         </div>
 
         <div className="mx-auto mt-8 grid max-w-[1120px] gap-4 md:grid-cols-12 md:grid-rows-[252px_216px_210px]">
@@ -946,7 +954,8 @@ export default function PortfolioPage() {
             </div>
           </Link>
 
-          <article className="flex min-h-[202px] flex-col justify-between rounded-xl bg-[var(--ui-color-brand-primary-soft)] p-5 text-[#141114] md:col-span-3 md:min-h-0">
+          <article className="relative flex min-h-[202px] flex-col justify-between overflow-hidden rounded-xl bg-[radial-gradient(circle_at_92%_8%,#f7c7ef_0%,#d9f8f8_30%,#cfe8ff_68%,#eaf5ff_100%)] p-5 text-[#141114] md:col-span-3 md:min-h-0">
+            <span aria-hidden="true" className="absolute -right-8 -top-8 size-24 rounded-full bg-[radial-gradient(circle_at_32%_30%,rgba(255,255,255,0.95),rgba(18,182,190,0.72)_42%,rgba(242,24,115,0.35)_72%)] blur-[1px]" />
             <div>
               <p className="text-[11px] font-medium">{translate("home.impact.enrollment")}</p>
               <strong className="mt-1 block text-[clamp(3.5rem,5vw,4.4rem)] font-semibold leading-none tracking-[-0.07em]">5,500</strong>
@@ -962,7 +971,8 @@ export default function PortfolioPage() {
             </div>
           </article>
 
-          <article className="flex min-h-[180px] flex-col justify-between rounded-xl bg-[var(--ui-color-brand-amber)] p-5 text-[#141114] md:col-span-3 md:min-h-0">
+          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[radial-gradient(circle_at_82%_18%,#fff8ad_0%,#f8df36_34%,#f0a51b_100%)] p-5 text-[#141114] md:col-span-3 md:min-h-0">
+            <span aria-hidden="true" className="absolute -right-10 -bottom-12 size-36 rounded-full bg-white/20" />
             <p className="max-w-[160px] text-[13px] font-medium leading-snug">{translate("home.impact.processingTime")}</p>
             <div className="flex items-end justify-between gap-3">
               <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">72%</strong>
@@ -970,7 +980,8 @@ export default function PortfolioPage() {
             </div>
           </article>
 
-          <article className="flex min-h-[180px] flex-col justify-between rounded-xl bg-[var(--ui-color-surface-soft)] p-5 text-[#141114] md:col-span-4 md:min-h-0">
+          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[linear-gradient(135deg,#f8fbff_0%,#e3f5fb_54%,#d8f6f4_100%)] p-5 text-[#141114] md:col-span-4 md:min-h-0">
+            <span aria-hidden="true" className="absolute right-5 top-4 size-12 rounded-full bg-[radial-gradient(circle_at_35%_30%,white_0%,#12b6be_50%,#062d8d_100%)] opacity-35" />
             <p className="max-w-[190px] text-[13px] font-medium leading-snug">{translate("home.impact.selfService")}</p>
             <div className="flex items-end justify-between gap-3">
               <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">500+</strong>
@@ -978,12 +989,14 @@ export default function PortfolioPage() {
             </div>
           </article>
 
-          <div aria-hidden="true" className="relative hidden overflow-hidden md:col-span-2 md:block">
-            <span className="absolute left-2 top-3 size-12 rounded-br-full bg-[var(--ui-color-brand-amber)]" />
-            <span className="absolute bottom-4 right-2 size-11 rotate-45 bg-[var(--ui-color-brand-editorial)]/35" />
+          <div aria-hidden="true" className="relative hidden overflow-hidden bg-white md:col-span-2 md:block">
+            <span className="absolute -left-7 top-1 h-20 w-20 rounded-br-[4.5rem] bg-[linear-gradient(135deg,#12b6be_0%,#7ae7e6_45%,#f5feff_100%)] shadow-[0_12px_22px_rgba(18,182,190,0.22)]" />
+            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={120} height={120} className="absolute -right-6 -top-4 h-28 w-28 rotate-[-12deg] drop-shadow-[0_14px_14px_rgba(6,45,141,0.18)]" />
+            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={104} height={104} className="absolute -bottom-9 right-2 h-24 w-24 rotate-[163deg] opacity-85 drop-shadow-[0_10px_12px_rgba(242,24,115,0.18)]" />
           </div>
 
-          <article className="flex min-h-[180px] flex-col justify-between rounded-xl bg-[#edf6f9] p-5 text-[#141114] md:col-span-4 md:min-h-0">
+          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[linear-gradient(135deg,#f8fcff_0%,#e7f5ff_62%,#dff8f4_100%)] p-5 text-[#141114] md:col-span-4 md:min-h-0">
+            <span aria-hidden="true" className="absolute -right-7 -top-8 size-24 rounded-full bg-[radial-gradient(circle_at_32%_32%,white_0%,#12b6be_55%,transparent_73%)] opacity-45" />
             <p className="max-w-[190px] text-[13px] font-medium leading-snug">{translate("home.impact.supportCalls")}</p>
             <div className="flex items-end justify-between gap-3">
               <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">9,000+</strong>
@@ -991,7 +1004,8 @@ export default function PortfolioPage() {
             </div>
           </article>
 
-          <article className="flex min-h-[180px] flex-col justify-between rounded-xl bg-[#f8d7ec] p-5 text-[#141114] md:col-span-5 md:min-h-0">
+          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[linear-gradient(135deg,#ffdff1_0%,#f9b5e5_52%,#ef86c9_100%)] p-5 text-[#141114] md:col-span-5 md:min-h-0">
+            <span aria-hidden="true" className="absolute -right-8 -bottom-10 size-36 rounded-full bg-white/25" />
             <p className="max-w-[220px] text-[13px] font-medium leading-snug">{translate("home.impact.ticketReduction")}</p>
             <div className="flex items-end justify-between gap-3">
               <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">500+</strong>
@@ -999,7 +1013,8 @@ export default function PortfolioPage() {
             </div>
           </article>
 
-          <article className="flex min-h-[180px] flex-col rounded-xl bg-[#e7ecff] p-5 text-[#141114] md:col-span-3 md:min-h-0">
+          <article className="relative flex min-h-[180px] flex-col overflow-hidden rounded-xl bg-[linear-gradient(135deg,#e7ebff_0%,#cedcff_100%)] p-5 text-[#141114] md:col-span-3 md:min-h-0">
+            <span aria-hidden="true" className="absolute right-4 top-4 size-6 rounded-full bg-[radial-gradient(circle_at_30%_25%,white_0%,#f21873_48%,#062d8d_100%)] opacity-65" />
             <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#141114]/70">{translate("home.impact.clientReview")}</p>
             <blockquote className="mt-3 text-[13px] font-medium leading-[1.42]">“{translate("home.impact.upworkQuote")}”</blockquote>
           </article>

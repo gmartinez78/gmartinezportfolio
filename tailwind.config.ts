@@ -46,6 +46,7 @@ const config: Config = {
       fontFamily: {
         inter: ["var(--font-inter)", "sans-serif"],
         sans: ["var(--font-inter)", "sans-serif"],
+        playfair: ["var(--font-playfair)", "serif"],
       },
       borderRadius: {
         "4xl": "2rem",
