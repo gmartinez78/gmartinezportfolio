@@ -1,11 +1,14 @@
 import caseStudies from "@/content/case-studies.json";
+import caseStudiesDe from "@/content/case-studies.de.json";
 import caseStudiesEs from "@/content/case-studies.es.json";
 import siteContent from "@/content/site.json";
+import siteContentDe from "@/content/site.de.json";
 import siteContentEs from "@/content/site.es.json";
 import type { Language } from "@/lib/i18n/language-context";
 import type { CaseStudyRecord, SiteContent } from "@/lib/cms/types";
 
 export const fallbackSiteContent = siteContent as SiteContent;
+export const fallbackSiteContentDe = siteContentDe as SiteContent;
 export const fallbackSiteContentEs = siteContentEs as SiteContent;
 
 function normalizeCaseStudies(studies: CaseStudyRecord[]) {
@@ -45,12 +48,17 @@ function normalizeCaseStudies(studies: CaseStudyRecord[]) {
 }
 
 export const fallbackCaseStudies = normalizeCaseStudies(caseStudies as CaseStudyRecord[]);
+export const fallbackCaseStudiesDe = normalizeCaseStudies(caseStudiesDe as CaseStudyRecord[]);
 export const fallbackCaseStudiesEs = normalizeCaseStudies(caseStudiesEs as CaseStudyRecord[]);
 
 export function getFallbackSiteContent(language: Language) {
-  return language === "es" ? fallbackSiteContentEs : fallbackSiteContent;
+  if (language === "es") return fallbackSiteContentEs;
+  if (language === "de") return fallbackSiteContentDe;
+  return fallbackSiteContent;
 }
 
 export function getFallbackCaseStudies(language: Language) {
-  return language === "es" ? fallbackCaseStudiesEs : fallbackCaseStudies;
+  if (language === "es") return fallbackCaseStudiesEs;
+  if (language === "de") return fallbackCaseStudiesDe;
+  return fallbackCaseStudies;
 }

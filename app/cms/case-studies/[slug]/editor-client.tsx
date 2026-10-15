@@ -9,7 +9,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { fallbackCaseStudies } from "@/lib/cms/fallback";
+import { fallbackCaseStudies, fallbackCaseStudiesDe, fallbackCaseStudiesEs } from "@/lib/cms/fallback";
+import { SUPPORTED_LOCALES, type SupportedLocale } from "@/lib/i18n/locales";
 import type { CaseStudyRecord } from "@/lib/cms/types";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
 import { useSupabaseConnection } from "@/lib/supabase/use-supabase-connection";
@@ -50,6 +51,18 @@ const emptyCaseStudy: CaseStudyRecord = {
   external_link: null,
 };
 
+type TranslationDrafts = Record<Exclude<SupportedLocale, "en">, string>;
+
+function getTranslationDrafts(slug: string): TranslationDrafts {
+  const spanish = fallbackCaseStudiesEs.find((study) => study.slug === slug) ?? emptyCaseStudy;
+  const german = fallbackCaseStudiesDe.find((study) => study.slug === slug) ?? emptyCaseStudy;
+
+  return {
+    es: JSON.stringify(spanish, null, 2),
+    de: JSON.stringify(german, null, 2),
+  };
+}
+
 function csvValue(values: string[] | undefined) {
   return (values ?? []).join(", ");
 }
@@ -75,6 +88,7 @@ export function CmsCaseStudyEditorClient({ slug }: { slug: string }) {
   const [loading, setLoading] = useState(!isNew);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const [translationDrafts, setTranslationDrafts] = useState<TranslationDrafts>(() => getTranslationDrafts(slug));
 
   const fallbackStudy = useMemo(
     () => fallbackCaseStudies.find((item) => item.slug === slug) ?? null,
@@ -83,6 +97,7 @@ export function CmsCaseStudyEditorClient({ slug }: { slug: string }) {
 
   useEffect(() => {
     if (isNew) {
+      setTranslationDrafts(getTranslationDrafts(""));
       return;
     }
 
@@ -99,8 +114,31 @@ export function CmsCaseStudyEditorClient({ slug }: { slug: string }) {
       .select("*")
       .eq("slug", slug)
       .maybeSingle()
-      .then(({ data }) => {
-        setStudy((data as CaseStudyRecord | null) ?? null);
+      .then(async ({ data }) => {
+        const nextStudy = (data as CaseStudyRecord | null) ?? null;
+        setStudy(nextStudy);
+
+        if (nextStudy?.id) {
+          const { data: localizedData } = await supabaseClient
+            .from("case_study_locales")
+            .select("locale, payload")
+            .eq("case_study_id", nextStudy.id);
+
+          setTranslationDrafts((current) => {
+            const next = { ...current };
+
+            for (const row of (localizedData ?? []) as Array<{
+              locale: Exclude<SupportedLocale, "en">;
+              payload: Record<string, unknown> | null;
+            }>) {
+              if ((row.locale === "es" || row.locale === "de") && row.payload) {
+                next[row.locale] = JSON.stringify(row.payload, null, 2);
+              }
+            }
+
+            return next;
+          });
+        }
         setLoading(false);
       });
   }, [fallbackStudy, isNew, slug]);
@@ -161,16 +199,80 @@ export function CmsCaseStudyEditorClient({ slug }: { slug: string }) {
         external_link: nullableString(formData.get("external_link")),
       };
 
+      const localePayloads = Object.fromEntries(
+        SUPPORTED_LOCALES.map((locale) => {
+          if (locale === "en") {
+            return [locale, payload];
+          }
+
+          const localizedStudy = JSON.parse(translationDrafts[locale]) as CaseStudyRecord;
+
+          if (!localizedStudy.title?.trim() || !localizedStudy.company?.trim()) {
+            throw new Error(`${locale === "es" ? "Spanish" : "German"} title and company are required.`);
+          }
+
+          return [
+            locale,
+            {
+              ...localizedStudy,
+              slug: payload.slug,
+              status: payload.status,
+              featured: payload.featured,
+              order: payload.order,
+            },
+          ];
+        }),
+      );
+
+      const { id: _id, ...basePayload } = payload;
+      // A draft is saved first, then the three locale payloads are written through
+      // one database function. The publication guard only allows the requested
+      // status once all locales are present.
       const response = id
-        ? await supabase.from("case_studies").update(payload).eq("id", id)
-        : await supabase.from("case_studies").insert(payload);
+        ? await supabase
+            .from("case_studies")
+            .update({ ...basePayload, status: "draft" })
+            .eq("id", id)
+            .select("id")
+            .single()
+        : await supabase
+            .from("case_studies")
+            .insert({ ...basePayload, status: "draft" })
+            .select("id")
+            .single();
 
       if (response.error) {
         throw response.error;
       }
 
-      setMessage("Case study saved.");
-      setStudy(payload);
+      const caseStudyId = response.data?.id;
+
+      if (!caseStudyId) {
+        throw new Error("The case study could not be saved.");
+      }
+
+      const { error: localizationError } = await supabase.rpc("upsert_case_study_locales", {
+        p_case_study_id: caseStudyId,
+        p_payloads: localePayloads,
+      });
+
+      if (localizationError) {
+        throw localizationError;
+      }
+
+      if (payload.status !== "draft") {
+        const { error: statusError } = await supabase
+          .from("case_studies")
+          .update({ status: payload.status })
+          .eq("id", caseStudyId);
+
+        if (statusError) {
+          throw statusError;
+        }
+      }
+
+      setMessage("Case study saved in English, Spanish, and German.");
+      setStudy({ ...payload, id: caseStudyId });
 
       if (slug !== payload.slug) {
         router.replace(`/cms/case-studies/${payload.slug}`);
@@ -356,6 +458,35 @@ export function CmsCaseStudyEditorClient({ slug }: { slug: string }) {
                     <Input id="external_link" name="external_link" defaultValue={currentStudy.external_link ?? ""} className="mt-3" />
                   </div>
                 </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Required translations</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <p className="text-sm leading-6 text-[#5c7792]">
+                  Publishing is blocked unless Spanish and German payloads are complete. English is the structured content above; keep the same slug, media paths, and data shape in each translated payload.
+                </p>
+                {([
+                  ["es", "Spanish"],
+                  ["de", "German"],
+                ] as const).map(([locale, label]) => (
+                  <div key={locale}>
+                    <Label htmlFor={`${locale}_payload_json`}>{label} case study JSON</Label>
+                    <Textarea
+                      id={`${locale}_payload_json`}
+                      name={`${locale}_payload_json`}
+                      className="mt-3 min-h-[320px] font-mono text-[13px] leading-6"
+                      value={translationDrafts[locale]}
+                      onChange={(event) => {
+                        const nextValue = event.target.value;
+                        setTranslationDrafts((current) => ({ ...current, [locale]: nextValue }));
+                      }}
+                    />
+                  </div>
+                ))}
               </CardContent>
             </Card>
 

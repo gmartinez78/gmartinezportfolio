@@ -1,8 +1,9 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { isSupportedLocale, type SupportedLocale } from "@/lib/i18n/locales";
 
-export type Language = "en" | "es" | "de";
+export type Language = SupportedLocale;
 
 const STORAGE_KEY = "gm-portfolio-language";
 
@@ -20,7 +21,7 @@ function readStoredLanguage(): Language | null {
   }
 
   const stored = window.localStorage.getItem(STORAGE_KEY);
-  return stored === "en" || stored === "es" || stored === "de" ? stored : null;
+  return isSupportedLocale(stored) ? stored : null;
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {

@@ -497,6 +497,7 @@ export default function PortfolioPage() {
     h: client.name === "Skill" ? 59 : client.name === "Zapiano" ? 38 : client.name === "Habitat for Humanity" ? 36 : client.name === "Elevation" ? 36 : client.name === "Hakuna" ? 30 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : client.name === "Paramount+" ? 24 : client.name === "IBX" ? 34 : 41,
     w: client.name === "Skill" ? 107 : client.name === "Zapiano" ? 212 : client.name === "Habitat for Humanity" ? 108 : client.name === "Elevation" ? 234 : client.name === "Hakuna" ? 96 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : client.name === "Paramount+" ? 94 : client.name === "IBX" ? 48 : 57,
   }));
+  const heroRibbon = translate("home.mainHeroRibbon");
   const logoCarousel = [...socialProofLogos, ...socialProofLogos];
   const methodologyChips = hero.methodology_chips.length
     ? hero.methodology_chips
@@ -1106,7 +1107,7 @@ export default function PortfolioPage() {
         style={{ background: "var(--ui-surface-contact-cta)" }}
       >
         <Heading as="h2" variant="display" tone="inverse" className="max-w-3xl">
-          Let&apos;s make your next product move — tell me what you&apos;re building, improving, or untangling.
+          {translate("home.contactCta")}
         </Heading>
         <Button asChild variant="editorial-outline" size="sm" className="mt-7 border-white/50 bg-white text-[var(--ui-color-text-editorial)] hover:bg-white">
           <Link href={withBasePath("/contact")}>{siteContent.nav.cta_label}</Link>
@@ -1152,7 +1153,7 @@ export default function PortfolioPage() {
               <div className="relative mb-5 inline-flex max-w-full -rotate-[5deg] overflow-hidden bg-[#39b8e7] px-3 py-2 text-[9px] font-medium tracking-[0.04em] text-[#163143] shadow-[0_5px_10px_rgba(18,111,148,0.16)] [clip-path:polygon(0_9%,2%_1%,7%_4%,12%_0,18%_3%,25%_0,31%_4%,38%_1%,45%_4%,52%_0,59%_3%,66%_0,74%_4%,81%_1%,88%_4%,96%_0,100%_9%,98%_21%,100%_36%,98%_51%,100%_67%,98%_83%,100%_94%,95%_100%,89%_96%,83%_100%,75%_96%,68%_100%,61%_97%,54%_100%,47%_96%,40%_100%,33%_97%,26%_100%,18%_96%,11%_100%,4%_96%,0_87%,2%_72%,0_56%,2%_41%,0_25%)] sm:mb-7 sm:px-7 sm:py-2.5 sm:text-sm xl:-translate-x-12">
                 <span className="absolute inset-0 opacity-20 [background-image:linear-gradient(30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%),linear-gradient(-30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%)] [background-size:18px_16px]" />
                 <span className="absolute inset-x-2 top-1 h-px bg-white/45" />
-                <span className="relative z-10 whitespace-nowrap font-mono">designer <span className="px-1 sm:px-2 text-[#f8eff0]">·</span> I solve problems <span className="px-1 sm:px-2 text-[#f8eff0]">·</span> I organize ideas</span>
+                <span className="relative z-10 whitespace-nowrap font-mono">{heroRibbon}</span>
               </div>
               <Heading
                 as="h1"
@@ -1169,9 +1170,9 @@ export default function PortfolioPage() {
                   <path d="M8 20c42-7 100-5 148 1" stroke="#25aee1" strokeWidth="3.5" strokeLinecap="round" />
                 </svg>
                 <p className="text-[13px] font-bold uppercase leading-relaxed tracking-[0.04em] text-[#159bd0] sm:text-sm">
-                  Enterprise UX · AI-assisted design · Digital products
+                  {translate("home.mainHeroFocus")}
                 </p>
-                <p className="mt-1 font-serif-display text-base italic leading-relaxed text-[#3d3438] sm:text-lg">I turn complex workflows and data-rich systems into clear, usable products.</p>
+                <p className="mt-1 font-serif-display text-base italic leading-relaxed text-[#3d3438] sm:text-lg">{translate("home.mainHeroDescription")}</p>
               </div>
             </div>
             <div className="relative order-1 mx-auto h-[350px] w-full max-w-[380px] self-end sm:h-[460px] sm:max-w-[430px] xl:order-2 xl:h-[650px] xl:max-w-[510px] 2xl:-translate-y-20">
@@ -1294,9 +1295,11 @@ export default function PortfolioPage() {
             <div className="relative mx-auto mb-5 w-fit -rotate-[5deg] overflow-hidden bg-[#39b8e7] px-5 py-2 text-[10px] font-medium tracking-[0.04em] text-[#163143] shadow-[0_5px_10px_rgba(18,111,148,0.16)] [clip-path:polygon(0_9%,2%_1%,7%_4%,12%_0,18%_3%,25%_0,31%_4%,38%_1%,45%_4%,52%_0,59%_3%,66%_0,74%_4%,81%_1%,88%_4%,96%_0,100%_9%,98%_21%,100%_36%,98%_51%,100%_67%,98%_83%,100%_94%,95%_100%,89%_96%,83%_100%,75%_96%,68%_100%,61%_97%,54%_100%,47%_96%,40%_100%,33%_97%,26%_100%,18%_96%,11%_100%,4%_96%,0_87%,2%_72%,0_56%,2%_41%,0_25%)]">
               <span className="absolute inset-0 opacity-20 [background-image:linear-gradient(30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%),linear-gradient(-30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%)] [background-size:18px_16px]" />
               <span className="absolute inset-x-2 top-1 h-px bg-white/45" />
-              <span className="relative z-10 font-mono">A few things I&apos;ve made</span>
+              <span className="relative z-10 font-mono">{translate("home.projectsEyebrow")}</span>
             </div>
-            <Heading as="h2" variant="hero" tone="editorial" className="text-[40px] md:text-[64px]">From idea to <span className="text-[#e9608a]">impact.</span></Heading>
+            <Heading as="h2" variant="hero" tone="editorial" className="text-[40px] md:text-[64px]">
+              {translate("home.ideaToImpactPrefix")} <span className="text-[#e9608a]">{translate("home.ideaToImpactAccent")}</span>
+            </Heading>
             <div className="mx-auto mt-6 h-[5px] w-28 -rotate-1 rounded-full bg-[#26aee2]" />
           </div>
         </section>

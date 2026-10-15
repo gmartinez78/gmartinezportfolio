@@ -1,0 +1,501 @@
+{
+  "nav": {
+    "logo_text": "Greddys Martinez",
+    "links": [
+      {
+        "label": "Projekte",
+        "href": "/projects"
+      },
+      {
+        "label": "Lebenslauf",
+        "href": "/resume"
+      },
+      {
+        "label": "Kontakt",
+        "href": "/contact"
+      }
+    ],
+    "cta_label": "Nehmen Sie Kontakt auf",
+    "cta_href": "/contact"
+  },
+  "home": {
+    "hero": {
+      "greeting": "Ich bin Greddys Martinez",
+      "tagline": "ein Designer im Bereich KI-Forschung und UX/UI",
+      "photo": "/images/projects/benefits-enrollment/hero/benefits-hero.png",
+      "methodology_chips": [
+        "Klassisch",
+        "Agil basiert",
+        "Produktprototyp",
+        "Digitaler Prototyp",
+        "Expertenbewertungen"
+      ]
+    },
+    "trusted_by": {
+      "label": "Zusammengearbeitet mit",
+      "clients": [
+        {
+          "name": "IBX",
+          "logo": "/images/SNUZw.png"
+        },
+        {
+          "name": "Skill",
+          "logo": "/images/IbuV3.png"
+        },
+        {
+          "name": "Hakuna",
+          "logo": "/images/hakuna.avif"
+        },
+        {
+          "name": "Nayya",
+          "logo": "/images/bBw3A.png"
+        },
+        {
+          "name": "Paychex",
+          "logo": "/images/c54fy.png"
+        },
+        {
+          "name": "Paramount+",
+          "logo": "/images/paramount-plus.svg"
+        },
+        {
+          "name": "Zapiano",
+          "logo": "/images/zapiano-logo.svg"
+        },
+        {
+          "name": "Habitat for Humanity",
+          "logo": "/images/habitat-for-humanity.svg"
+        },
+        {
+          "name": "Elevation",
+          "logo": "/images/elevation-mark.png"
+        }
+      ]
+    },
+    "certifications": [
+      {
+        "name": "Upwork-Zertifizierung",
+        "logo": "/images/iNSrn.png"
+      },
+      {
+        "name": "NN/g UX-Zertifizierung",
+        "logo": "/images/OiSjn.png"
+      }
+    ],
+    "stat_banner": {
+      "text": "Im letzten Quartal erzielten meine Kund:innen einen",
+      "value": "47 %",
+      "value_label": "durchschnittlicher Anstieg der Conversions.",
+      "cta_headline": "Das hat auch Ihr Produkt verdient.",
+      "cta_label": "Lassen Sie uns zusammenarbeiten →",
+      "cta_href": "#contact"
+    },
+    "tools_section": {
+      "headline": "Werkzeuge, die ich liebe und mit denen ich arbeite",
+      "description": "Ich integriere mich nahtlos in die Tools, die Ihr Team bereits verwendet, und erstelle Arbeitsabläufe, die sich natürlich und effizient anfühlen.",
+      "cta_label": "Meinen Lebenslauf anzeigen →",
+      "cta_href": "/resume",
+      "row_1": [
+        "Figma",
+        "Framer",
+        "Miro",
+        "React",
+        "Node",
+        "Python",
+        "Swift",
+        "TS",
+        "Vue",
+        "Go",
+        "SQL"
+      ],
+      "row_2": [
+        "GitHub",
+        "Slack",
+        "AWS",
+        "Vercel",
+        "Docker",
+        "Tailwind",
+        "Next.js",
+        "Rust",
+        "Redis",
+        "GPT",
+        "GCP"
+      ]
+    }
+  },
+  "footer": {
+    "tagline": "Leitender Produktdesigner, der durchdachte digitale Erlebnisse schafft, die einen Unterschied machen.",
+    "cta_headline": "Lassen Sie uns zusammenarbeiten",
+    "cta_body": "Ich bin immer offen für neue Möglichkeiten und Kooperationen.",
+    "cta_label": "Nehmen Sie Kontakt auf →",
+    "cta_href": "/contact",
+    "copyright": "© 2026 Greddys Martinez. Alle Rechte vorbehalten.",
+    "social_links": [
+      {
+        "label": "LinkedIn",
+        "href": "https://linkedin.com/in/greddysmartinez"
+      },
+      {
+        "label": "Behance",
+        "href": "https://www.behance.net/greddysmartinez"
+      },
+      {
+        "label": "UpWork",
+        "href": "https://www.upwork.com/freelancers/greddysmartinez"
+      }
+    ]
+  },
+  "contact": {
+    "headline": "Nehmen Sie Kontakt auf",
+    "subheadline": "Lassen Sie uns sprechen",
+    "intro": "Egal, ob Sie ein Projekt im Sinn haben, eine Frage haben oder einfach nur Hallo sagen möchten – ich würde gerne von Ihnen hören.",
+    "availability": "Ich lebe derzeit in Málaga, Spanien und stehe weltweit für Remote-Einsätze zur Verfügung. Normalerweise antworte ich schnell, oft innerhalb von 24 Stunden.",
+    "details": [
+      {
+        "label": "E-Mail",
+        "value": "greddysmartinez5@gmail.com",
+        "href": "mailto:greddysmartinez5@gmail.com"
+      },
+      {
+        "label": "LinkedIn",
+        "value": "linkedin.com/in/greddysmartinez",
+        "href": "https://linkedin.com/in/greddysmartinez"
+      },
+      {
+        "label": "Behance",
+        "value": "behance.net/greddysmartinez",
+        "href": "https://www.behance.net/greddysmartinez"
+      },
+      {
+        "label": "UpWork",
+        "value": "Available for freelance",
+        "href": "https://www.upwork.com/freelancers/greddysmartinez"
+      },
+      {
+        "label": "Standort",
+        "value": "Málaga, Spain · Open to remote",
+        "href": null
+      }
+    ]
+  },
+  "resume": {
+    "name": "Greddys Martínez",
+    "title": "Leitender Produktdesigner | KI-gestütztes UX | Unternehmens-SaaS",
+    "email": "greddysmartinez5@gmail.com",
+    "location": "Malaga, Spanien",
+    "website": "www.be.net/greddysmartinez",
+    "linkedin": "linkedin.com/in/greddysmartinez",
+    "bio": "Leitender Produktdesigner mit mehr als 10 Jahren Erfahrung in der Entwicklung von SaaS- und KI-gestützten Enterprise-Erlebnissen in den Bereichen HR, Sozialleistungen, Compliance und Gesundheitswesen. Ich verbinde Strategie und Umsetzung – leite Forschung, stelle funktionsübergreifende Teams zusammen und liefere klare, wirkungsvolle Lösungen in agilen Umgebungen.",
+    "pdf_link": "/documents/greddys-martinez-resume-2026.pdf",
+    "experience": [
+      {
+        "title": "Leitender Produktdesigner",
+        "company": "ITX Corp",
+        "client": "Paychex (Nayya, Flock, E-Verify, Indeed)",
+        "period": "März 2021 – Heute",
+        "location": "Malaga, Spanien (Remote)",
+        "bullets": [
+          "Leiten Sie die End-to-End-Designarchitektur für eine HR-SaaS-Plattform für Unternehmen mit über 2,3 Millionen Benutzern, indem Sie datengesteuerte Designentscheidungen treffen und gleichzeitig als Staff Designer fungieren und funktionsübergreifende Teams auf eine einheitliche Produktvision für mehrere wirkungsvolle Produkte ausrichten.",
+          "Wenden Sie UX-Grundlagen und die Strenge der Barrierefreiheit auf die Datenvisualisierung in ingenieurgesteuerten Umgebungen an und verbessern Sie die Benutzerfreundlichkeit, Klarheit und visuelle Konsistenzqualität.",
+          "Nutzen Sie evidenzbasierte Methoden durch heuristische Überprüfungen, Usability-Feedback und Heatmaps mit Maze, Hotjar und UserTesting.com und verfeinern Sie die Erfahrungen kontinuierlich auf der Grundlage von Forschungsergebnissen, um Abläufe neu zu gestalten und die Zeit für das Ausfüllen von Formularen um 35 % zu reduzieren.",
+          "Definieren Sie Designstrategie, Vision und Roadmap für mehrere große, mehrdeutige Produkte mit Jira und Confluence.",
+          "Übernehmen Sie die volle Verantwortung für Designentscheidungen und nutzen Sie Figma, um Produktverbesserungen regelmäßig mit klaren Begründungen den leitenden Beteiligten vorzustellen, konstruktiv mit Feedback umzugehen und bei Bedarf Gegenmaßnahmen zu ergreifen.",
+          "Definieren Sie wiederverwendbare UX-Muster und -Komponenten und verbessern Sie so die Konsistenz und Skalierbarkeit über mehrere große Produkte hinweg.",
+          "Identifizieren und reduzieren Sie Designschulden, konsolidieren Sie doppelte Komponenten und verbessern Sie die Systemkonsistenz.",
+          "Erstellen und implementieren Sie ein skalierbares React-basiertes Designsystem und definieren Sie wiederverwendbare Muster, Komponenten und Dokumentation, um Designschulden zu reduzieren und die Konsistenz über Plattformen hinweg zu verbessern.",
+          "Wenden Sie Layout-, Abstands-, Typografie- und Farbgrundlagen in komponentenbasierten Systemen an, um die Qualität der Benutzeroberflächengestaltung bei Produkten im Unternehmensmaßstab aufrechtzuerhalten.",
+          "Strukturieren Sie die Informationsarchitektur für komplexe, inhaltsreiche Arbeitsabläufe und verbessern Sie die Klarheit und Navigation.",
+          "Erstellen Sie Wireframes, Design-Mockups und interaktive Prototypen mit KI-Tools wie Balsamiq, Figma AI, Copilot und Framer.",
+          "Führen Sie KI-gestützte Funktionen mithilfe von LLMs ein, um die Entscheidungsfindung der Benutzer während der Registrierung zu verbessern und Probleme effektiv zu formulieren, indem Sie Benutzerziele, Schlüsselaufgaben, Einschränkungen, Erfolgskriterien und Geschäftsziele vor der Ausführung aufeinander abstimmen.",
+          "Nutzen Sie KI wie Copilot, Lovable, Claude und ChatGPT im gesamten Design-Workflow, um Forschungsergebnisse zu synthetisieren, frühe Konzepte zu generieren und schnell Prototypen zu erstellen, sodass das Team Erfahrungen viel schneller validieren und verfeinern kann.",
+          "Reduzieren Sie Support-Tickets um mehr als 500 und das Support-Anrufvolumen um mehr als 9.000 Anrufe pro Jahr durch neu gestaltete Personal- und Einstellungsabläufe.",
+          "Spielen Sie eine Schlüsselrolle dabei, das jährliche Registrierungsziel um 5.500 Benutzer zu übertreffen, indem Sie Arbeitsabläufe vereinfachen, um die Abschlussraten und das Benutzervertrauen zu verbessern.",
+          "Arbeiten Sie eng mit funktionsübergreifenden Teams zusammen, darunter Produkt, Technik, Marketing, Finanzen, Compliance und Forschung, um die Benutzererfahrung mit Geschäfts- und Inhaltszielen in Einklang zu bringen.",
+          "Arbeiten Sie mit Entwicklungsteams in einem komponentenbasierten Bereitstellungsmodell zusammen und definieren Sie Zustände, Varianten und Reaktionsverhalten, um UX-Strategie und Bereitstellung mithilfe von Miro und Figma aufeinander abzustimmen.",
+          "Unterstützen und betreuen Sie Junior- und Senior-Designer durch regelmäßige Überprüfungen, den Austausch von Feedback und Ihren Beitrag zur allgemeinen Designqualität.",
+          "Erstellen Sie Designdokumentationen, Best Practices und Nutzungsrichtlinien und ermöglichen Sie so die teamübergreifende Übernahme gemeinsamer Muster."
+        ],
+        "tags": [
+          "B2C SaaS",
+          "KI-Funktionen",
+          "Designsysteme",
+          "Forschung",
+          "React.js"
+        ]
+      },
+      {
+        "title": "UX/UI-Designer",
+        "company": "Alquilando S.A.",
+        "client": "PropTech-Marktplatz",
+        "period": "März 2019 – Mai. 2021",
+        "location": "Buenos Aires, Argentinien (Remote)",
+        "bullets": [
+          "Entwurf und Bereitstellung von End-to-End-UX/UI-Lösungen für ein PropTech-Startup, das eine groß angelegte Immobilienplattform für den LATAM-Markt aufbaut.",
+          "Etablierte die benutzerzentrierte Grundlage des Unternehmens durch von Alan Cooper inspirierte Personas.",
+          "Ein Komponentensystem von Grund auf basierend auf den Google Material Design-Standards erstellt.",
+          "Bereitstellung von High-Fidelity-UI-Designs und interaktiven Prototypen, wodurch Unklarheiten bei der Implementierung reduziert und Entwicklerübergaben beschleunigt wurden."
+        ],
+        "tags": [
+          "PropTech",
+          "B2C",
+          "Materialdesign",
+          "UI-Systeme",
+          "E-Mail HTML/CSS"
+        ]
+      },
+      {
+        "title": "Freiberuflicher UX-/UI-Designer",
+        "company": "Studio Hakuna",
+        "client": "Paramount App LATAM",
+        "period": "Dez. 2019 – Mai. 2020",
+        "location": "Buenos Aires, Argentinien (Remote)",
+        "bullets": [
+          "Führte UX-Recherchen durch, um die Bedürfnisse und Verhaltensweisen der Zielgruppe für die Paramount App LATAM zu verstehen.",
+          "Bestehende Plattformfunktionen wurden neu gestaltet, um die Benutzerfreundlichkeit und das allgemeine Benutzerengagement zu verbessern.",
+          "Entwickelte Wireframes, Prototypen und High-Fidelity-UI-Designs, die Benutzerbedürfnisse mit Geschäftszielen in Einklang bringen."
+        ],
+        "tags": [
+          "Streaming",
+          "LATAM",
+          "UX-Forschung",
+          "Prototyping",
+          "UI-Design"
+        ]
+      },
+      {
+        "title": "UX/UI-Designer",
+        "company": "Höhe",
+        "client": "Weblösungen für gemeinnützige Organisationen",
+        "period": "Januar 2017 – Februar 2019",
+        "location": "Buenos Aires, Argentinien (Hybrid)",
+        "bullets": [
+          "Bereitstellung eines durchgängigen UX/UI-Designs für mehrere gemeinnützige Kunden gleichzeitig.",
+          "Entworfene und optimierte E-Commerce-Erlebnisse für gemeinnützige Fundraising-Plattformen.",
+          "Erstellte Marketingressourcen, einschließlich HTML/CSS-E-Mails, Broschüren und Kampagnenmaterialien."
+        ],
+        "tags": [
+          "Gemeinnützige Organisationen",
+          "B2B",
+          "B2C",
+          "Barrierefreiheit",
+          "Fundraising"
+        ]
+      },
+      {
+        "title": "Freiberuflicher UX-/UI-Designer/Grafikdesigner",
+        "company": "Mehrere Clients | Web und soziale Medien",
+        "client": "",
+        "period": "Februar 2014 – Februar 2017",
+        "location": "LATAM, Spanien, USA (Remote)",
+        "bullets": [
+          "Bereitstellung eines durchgängigen UX/UI-Designs für Frühphasenprodukte, E-Commerce-Plattformen und Marktplätze in mehreren Branchen.",
+          "Entworfen und eingeführt von Markenidentitäten und digitalen Erlebnissen von 0→1, einschließlich Websites, Produktschnittstellen und Designsystemen.",
+          "Verbesserte Benutzereinbindung und -konvertierung durch optimierte Benutzerflüsse, visuelles Design und Marketingressourcen.",
+          "Hat zu Wachstumsinitiativen beigetragen, einschließlich sozialer Kampagnen, Landingpages und bezahlter Akquiseressourcen (Google Ads, E-Mail, soziale Medien).",
+          "Entworfen und entwickelt reaktionsfähige Schnittstellen mit HTML/CSS, um plattformübergreifende Konsistenz sicherzustellen."
+        ],
+        "tags": [
+          "Freiberuflich tätig",
+          "UX/UI-Design",
+          "Grafikdesign",
+          "E-Commerce",
+          "Soziale Medien",
+          "HTML/CSS"
+        ]
+      }
+    ],
+    "skills": {
+      "Design": [
+        "Skalierbare Designsysteme",
+        "Komponentenübernahme",
+        "Musterdefinition",
+        "Design-Token",
+        "Figma-Bibliotheken",
+        "Digitales Erlebnis",
+        "Storyboards",
+        "Barrierefreiheitsstandards",
+        "Design Thinking abbilden",
+        "KI-Produktdesign",
+        "Enterprise UX",
+        "B2B- und B2C-Produkte"
+      ],
+      "Data-Heavy Interfaces": [
+        "Komplexes Workflow-Design",
+        "Tabellen",
+        "Filter",
+        "Rollenbasierte Erfahrungen",
+        "Mehrstufige Abläufe",
+        "Miteinander verbundene Einheiten",
+        "Zustandsbewusstes Design"
+      ],
+      "Research": [
+        "Wettbewerbsanalyse",
+        "Qualitative und quantitative Forschung",
+        "Benutzerforschung",
+        "Usability-Tests",
+        "Umfragen",
+        "Heuristische Auswertung",
+        "Benutzerinterviews",
+        "Informationsarchitektur",
+        "Personas",
+        "Affinitätszuordnung"
+      ],
+      "Collaboration & Delivery": [
+        "Asynchron-freundliche Übergabe",
+        "Figma-Anmerkungen",
+        "Design-to-Build-Ausrichtung",
+        "HTML",
+        "CSS",
+        "Funktionsübergreifende Zusammenarbeit",
+        "Stakeholder-Management",
+        "Agil / Scrum",
+        "UX-Befürwortung",
+        "Workshop-Moderation"
+      ],
+      "AI in Design": [
+        "Copilot",
+        "OOUX mit KI",
+        "Forschungssynthese",
+        "Schnelles Prototyping",
+        "Design-Frontend-Workflow-Automatisierung",
+        "LLM"
+      ],
+      "Soft": [
+        "Freundlich",
+        "Flexibilität",
+        "Teamplayer",
+        "Kommunikation",
+        "Strategisch",
+        "Führung",
+        "Zeitmanagement",
+        "Fesselnd",
+        "Empathie",
+        "Liebe zum Detail",
+        "Problemlösung",
+        "Priorisierung",
+        "Verantwortlichkeit",
+        "Konfliktlösung"
+      ]
+    },
+    "tools": [
+      "Figma",
+      "Jira",
+      "Miro",
+      "Copilot",
+      "Webex",
+      "ClickUp",
+      "Confluence",
+      "Maze",
+      "Notion",
+      "Slack",
+      "HTML/CSS",
+      "React",
+      "Claude",
+      "VS Code",
+      "ChatGPT"
+    ],
+    "education": [
+      {
+        "year": "2014–2015",
+        "degree": "Diplom in Web-Mediendesign",
+        "institution": "Universidad Rafael Belloso Chacín"
+      },
+      {
+        "year": "2012–2015",
+        "degree": "Bachelor in Grafikdesign",
+        "institution": "URBE"
+      },
+      {
+        "year": "2017",
+        "degree": "UX-Design / Grafikdesign",
+        "institution": "Coderhouse"
+      }
+    ],
+    "certifications": [
+      {
+        "name": "LLMs verstehen: Ein Leitfaden für UX-Praktiker",
+        "level": "Wie LLMs geschult werden und wie man verantwortungsvoll gestaltet und KI-Kosten und -Risiken den Stakeholdern kommuniziert",
+        "year": "2026",
+        "logo": "/images/OiSjn.png"
+      },
+      {
+        "name": "Messung von UX und ROI",
+        "level": "Quantitative UX-Bewertung und Argumentation für den ROI von Designänderungen",
+        "year": "2025",
+        "logo": "/images/OiSjn.png"
+      },
+      {
+        "name": "Praktische KI für UX-Profis",
+        "level": "Schnelle Entwicklung, Bewertung der Ergebnisse von KI-Modellen und Ermittlung geeigneter Einsatzmöglichkeiten von KI-Tools",
+        "year": "2025",
+        "logo": "/images/OiSjn.png"
+      },
+      {
+        "name": "Informationsarchitektur",
+        "level": "Entwerfen und Dokumentieren einer nützlichen, nutzbaren und erweiterbaren Informationsarchitektur",
+        "year": "2025",
+        "logo": "/images/OiSjn.png"
+      },
+      {
+        "name": "Entwerfen komplexer Apps für spezialisierte Domänen",
+        "level": "Erstellen und Bewerten von Anwendungen für erweiterte Entscheidungsfindung und spezialisierte Arbeitsabläufe auf Expertenebene",
+        "year": "2023",
+        "logo": "/images/OiSjn.png"
+      },
+      {
+        "name": "Verfassen überzeugender digitaler Texte",
+        "level": "Forschungsgestütztes UX-Schreiben: Wie Menschen digitale Inhalte lesen und was sie schreiben sollen",
+        "year": "2023",
+        "logo": "/images/OiSjn.png"
+      },
+      {
+        "name": "Der menschliche Geist und die Benutzerfreundlichkeit",
+        "level": "Entwerfen unter Berücksichtigung der kognitiven Einschränkungen der Benutzer, um zu verstehen, warum einige Schnittstellen besser funktionieren als andere",
+        "year": "2023",
+        "logo": "/images/OiSjn.png"
+      },
+      {
+        "name": "Barrierefreiheit: So gestalten Sie für alle",
+        "level": "Entwerfen und Testen auf Barrierefreiheit, von der Bild- und ARIA-Verwaltung bis hin zur Arbeit mit Benutzern mit Behinderungen",
+        "year": "2023",
+        "logo": "/images/OiSjn.png"
+      },
+      {
+        "name": "Webdesign für Benutzerfreundlichkeit",
+        "level": "Richtlinien zur Benutzerfreundlichkeit und Barrierefreiheit, Benutzerforschung, Personas und Navigationsdesign für das Web",
+        "year": "2021",
+        "logo": "/images/OiSjn.png"
+      },
+      {
+        "name": "UI-Designmuster für erfolgreiche Software",
+        "level": "Praktische UI-Muster für Struktur, Inhalt, Navigation, Formulare und soziale Funktionen",
+        "year": "2021",
+        "logo": "/images/OiSjn.png"
+      },
+      {
+        "name": "Benutzerforschung: Methoden und Best Practices",
+        "level": "Planung und Durchführung von Interviews, Kontextbefragungen, Beobachtungsstudien und Usability-Tests",
+        "year": "2020",
+        "logo": "/images/OiSjn.png"
+      },
+      {
+        "name": "Grundlagen des objektorientierten UX (OOUX).",
+        "level": "Strukturierung von Produkten nach Objekten, ihren Beziehungen und den Aktionen, die Benutzer mit ihnen durchführen",
+        "year": "2024",
+        "logo": "/images/OiSjn.png"
+      },
+      {
+        "name": "Wie man großartige Mikrokopien schreibt",
+        "level": "Verfassen klarer, hilfreicher Mikrotexte für Schaltflächen, Formulare, Fehlerzustände und Onboarding-Abläufe",
+        "year": "2025",
+        "logo": "/images/OiSjn.png"
+      },
+      {
+        "name": "Evaluierung von Benutzeroberflächen",
+        "level": "Aktionsanalyse, heuristische Bewertung, Usability-Tests und Festlegung messbarer Usability-Ziele",
+        "year": "2019",
+        "logo": "/images/coursera.svg"
+      }
+    ]
+  }
+}

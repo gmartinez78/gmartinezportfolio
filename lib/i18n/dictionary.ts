@@ -1,4 +1,5 @@
 import type { Language } from "@/lib/i18n/language-context";
+import { germanDictionary } from "@/lib/i18n/dictionary.de";
 
 export const dictionary = {
   // Header / nav
@@ -601,13 +602,53 @@ export const dictionary = {
   "home.heroRole4": { en: "enterprise UX.", es: "UX empresarial." },
   "home.heroRole5": { en: "your next UX hire.", es: "tu próxima contratación de UX." },
   "home.caseStudiesLink": { en: "Case studies", es: "Casos de estudio" },
+  "home.mainHeroRibbon": {
+    en: "designer · I solve problems · I organize ideas",
+    es: "diseñador · Resuelvo problemas · Organizo ideas",
+    de: "Designer · Ich löse Probleme · Ich ordne Ideen",
+  },
+  "home.mainHeroFocus": {
+    en: "Enterprise UX · AI-assisted design · Digital products",
+    es: "UX empresarial · Diseño asistido por IA · Productos digitales",
+    de: "Enterprise UX · KI-gestütztes Design · Digitale Produkte",
+  },
+  "home.mainHeroDescription": {
+    en: "I turn complex workflows and data-rich systems into clear, usable products.",
+    es: "Transformo flujos complejos y sistemas con muchos datos en productos claros y fáciles de usar.",
+    de: "Ich verwandle komplexe Abläufe und datenreiche Systeme in klare, nutzbare Produkte.",
+  },
+  "home.projectsEyebrow": {
+    en: "A few things I've made",
+    es: "Algunas cosas que he creado",
+    de: "Ein paar Dinge, die ich entwickelt habe",
+  },
+  "home.ideaToImpact": {
+    en: "From idea to impact.",
+    es: "De la idea al impacto.",
+    de: "Von der Idee zur Wirkung.",
+  },
+  "home.ideaToImpactPrefix": {
+    en: "From idea to",
+    es: "De la idea al",
+    de: "Von der Idee zur",
+  },
+  "home.ideaToImpactAccent": {
+    en: "impact.",
+    es: "impacto.",
+    de: "Wirkung.",
+  },
+  "home.contactCta": {
+    en: "Let's make your next product move.",
+    es: "Hagamos avanzar tu próximo producto.",
+    de: "Bringen wir Ihr nächstes Produkt voran.",
+  },
 } as const;
 
 export type DictionaryKey = keyof typeof dictionary;
 
 export function translate(key: DictionaryKey, language: Language): string {
   const entry = dictionary[key] as { en: string; es: string; de?: string };
-  return entry[language] ?? entry.en;
+  return language === "de" ? germanDictionary[key] ?? entry.en : entry[language] ?? entry.en;
 }
 
 // Case-study tags/filters are display labels layered over English identifiers used for

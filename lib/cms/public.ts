@@ -6,7 +6,7 @@ import { buildLockedNayyaPlaceholder, LOCKED_NAYYA_PLACEHOLDER_SLUG } from "@/li
 import type { CaseStudyRecord, SiteContent } from "@/lib/cms/types";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
 import { normalizeNavigableHref, withBasePath } from "@/lib/site";
-import { useLanguage } from "@/lib/i18n/language-context";
+import { useLanguage, type Language } from "@/lib/i18n/language-context";
 
 const trustedLogoMap: Record<string, string> = {
   IBX: withBasePath("/images/SNUZw.png"),
@@ -189,7 +189,7 @@ function normalizeSiteContent(content: SiteContent): SiteContent {
   };
 }
 
-function normalizeCaseStudy(study: CaseStudyRecord): CaseStudyRecord {
+function normalizeCaseStudy(study: CaseStudyRecord, language: Language = "en"): CaseStudyRecord {
   if (study.slug === "nayya-ai-benefits") {
     return {
       ...study,
@@ -197,7 +197,7 @@ function normalizeCaseStudy(study: CaseStudyRecord): CaseStudyRecord {
     };
   }
 
-  if (study.slug === "reversetech") {
+  if (language === "en" && study.slug === "reversetech") {
     return {
       ...study,
       title: REVERSETECH_PROJECT_TITLE,
@@ -265,29 +265,27 @@ export function usePublicSiteContent() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Supabase only stores English content; translated locales render from local fallbacks.
-    if (language !== "en") {
-      setSiteContent(getFallbackSiteContent(language));
-      setLoading(false);
-      return;
-    }
-
     const supabase = getSupabaseBrowserClient();
 
     if (!supabase) {
-      setSiteContent(getFallbackSiteContent("en"));
+      setSiteContent(getFallbackSiteContent(language));
       setLoading(false);
       return;
     }
 
     void (async () => {
       const { data } = await supabase
-        .from("site_content")
+        .from("site_content_locales")
         .select("payload")
-        .eq("key", "site")
+        .eq("content_key", "site")
+        .eq("locale", language)
         .maybeSingle();
 
-      setSiteContent(data?.payload ? normalizeSiteContent(data.payload as SiteContent) : getFallbackSiteContent("en"));
+      setSiteContent(
+        data?.payload
+          ? normalizeSiteContent(data.payload as SiteContent)
+          : getFallbackSiteContent(language),
+      );
       setLoading(false);
     })();
   }, [language]);
@@ -301,29 +299,39 @@ export function usePublicCaseStudies() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Supabase only stores English content; translated locales render from local fallbacks.
-    if (language !== "en") {
+    const supabase = getSupabaseBrowserClient();
+
+    if (!supabase) {
       setCaseStudies(getFallbackCaseStudies(language));
       setLoading(false);
       return;
     }
 
-    const supabase = getSupabaseBrowserClient();
-
-    if (!supabase) {
-      setCaseStudies(getFallbackCaseStudies("en"));
-      setLoading(false);
-      return;
-    }
-
     void (async () => {
-      const { data } = await supabase
-        .from("case_studies")
-        .select("*")
-        .eq("status", "published")
-        .order("order", { ascending: true });
+      if (language === "en") {
+        const { data } = await supabase
+          .from("case_studies")
+          .select("*")
+          .eq("status", "published")
+          .order("order", { ascending: true });
 
-      setCaseStudies(data ? (data as CaseStudyRecord[]).map(normalizeCaseStudy) : getFallbackCaseStudies("en"));
+        setCaseStudies(
+          data
+            ? (data as CaseStudyRecord[]).map((study) => normalizeCaseStudy(study, language))
+            : getFallbackCaseStudies(language),
+        );
+      } else {
+        const { data } = await supabase
+          .from("case_study_locales")
+          .select("payload")
+          .eq("locale", language);
+
+        const localizedStudies = (data ?? [])
+          .map((row) => normalizeCaseStudy((row as { payload: CaseStudyRecord }).payload, language))
+          .sort((left, right) => left.order - right.order);
+
+        setCaseStudies(localizedStudies.length ? localizedStudies : getFallbackCaseStudies(language));
+      }
       setLoading(false);
     })();
   }, [language]);
@@ -333,7 +341,7 @@ export function usePublicCaseStudies() {
 
 export function usePublicCaseStudy(slug: string) {
   const { language } = useLanguage();
-  const supabase = language === "en" ? getSupabaseBrowserClient() : null;
+  const supabase = getSupabaseBrowserClient();
   const fallbackStudy = useMemo(() => {
     const localCaseStudies = getFallbackCaseStudies(language);
     const matchingStudy = localCaseStudies.find((study) => study.slug === slug) ?? null;
@@ -368,10 +376,33 @@ export function usePublicCaseStudy(slug: string) {
         .eq("slug", slug)
         .maybeSingle();
 
-      setCaseStudy(data ? normalizeCaseStudy(data as CaseStudyRecord) : fallbackStudy);
+      if (!data) {
+        setCaseStudy(fallbackStudy);
+        setLoading(false);
+        return;
+      }
+
+      if (language === "en") {
+        setCaseStudy(normalizeCaseStudy(data as CaseStudyRecord, language));
+        setLoading(false);
+        return;
+      }
+
+      const { data: localizedData } = await supabase
+        .from("case_study_locales")
+        .select("payload")
+        .eq("case_study_id", (data as CaseStudyRecord).id ?? "")
+        .eq("locale", language)
+        .maybeSingle();
+
+      setCaseStudy(
+        localizedData?.payload
+          ? normalizeCaseStudy((localizedData as { payload: CaseStudyRecord }).payload, language)
+          : fallbackStudy,
+      );
       setLoading(false);
     })();
-  }, [fallbackStudy, slug, supabase]);
+  }, [fallbackStudy, language, slug, supabase]);
 
   return { caseStudy, loading };
 }

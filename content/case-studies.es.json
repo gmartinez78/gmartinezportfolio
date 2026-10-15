@@ -12,21 +12,44 @@
     "duration": "2 semanas",
     "industry": "EDUCACIÓN / INSTITUCIÓN CULTURAL",
     "tagline": "Creé un tríptico editorial de seis paneles que reúne la oferta académica, el profesorado y el camino de inscripción en una experiencia de impresión coherente.",
-    "tags": ["Diseño impreso", "Diseño de marca", "Diseño editorial"],
-    "filters": ["Product Design"],
-    "tools": ["Figma"],
+    "tags": [
+      "Diseño impreso",
+      "Diseño de marca",
+      "Diseño editorial"
+    ],
+    "filters": [
+      "Product Design"
+    ],
+    "tools": [
+      "Figma"
+    ],
     "images": {
       "cover": "/images/projects/classical-word/trifold-outside.png",
       "hero": "/images/projects/classical-word/trifold-outside.png",
-      "gallery": ["/images/projects/classical-word/trifold-inside.png"]
+      "gallery": [
+        "/images/projects/classical-word/trifold-inside.png"
+      ]
     },
     "client_logos": [],
     "metrics": [],
-    "team": ["Cliente", "Diseñadora"],
-    "my_role": ["Dirección de arte", "Diseño de layout", "Diseño impreso"],
-    "problem": {"admin_pain_points": [], "user_pain_points": []},
+    "team": [
+      "Cliente",
+      "Diseñadora"
+    ],
+    "my_role": [
+      "Dirección de arte",
+      "Diseño de layout",
+      "Diseño impreso"
+    ],
+    "problem": {
+      "admin_pain_points": [],
+      "user_pain_points": []
+    },
     "constraints": [],
-    "methodology": {"name": "Diseño editorial", "steps": []},
+    "methodology": {
+      "name": "Diseño editorial",
+      "steps": []
+    },
     "design_strategy": [],
     "reflections": [],
     "nda_notice": null,
@@ -743,7 +766,6 @@
       ]
     },
     "design_strategy": [
-
       "Usar una comunicación de transferencia más clara, estados de progreso y feedback de finalización para reducir la confusión en torno a la experiencia externa de HIREtech."
     ],
     "reflections": [
@@ -1057,12 +1079,30 @@
         "body": "El resultado combina un sitio web bilingüe listo para el lanzamiento con una campaña educativa diseñada para hacer que la cobertura médica sea fácil de entender y de aplicar para las familias. En sus primeros 28 días, la campaña generó descubrimiento orgánico, interacción y tráfico de una audiencia compuesta casi por completo por personas nuevas para la página.",
         "payload": {
           "rows": [
-            { "metric": "Visualizaciones de contenido", "value": "3.3K" },
-            { "metric": "Espectadores únicos", "value": "1,436" },
-            { "metric": "Interacciones de contenido", "value": "129" },
-            { "metric": "Clics en enlaces", "value": "34" },
-            { "metric": "Visitas a Facebook", "value": "55" },
-            { "metric": "Nuevos seguidores netos", "value": "+12" }
+            {
+              "metric": "Visualizaciones de contenido",
+              "value": "3.3K"
+            },
+            {
+              "metric": "Espectadores únicos",
+              "value": "1,436"
+            },
+            {
+              "metric": "Interacciones de contenido",
+              "value": "129"
+            },
+            {
+              "metric": "Clics en enlaces",
+              "value": "34"
+            },
+            {
+              "metric": "Visitas a Facebook",
+              "value": "55"
+            },
+            {
+              "metric": "Nuevos seguidores netos",
+              "value": "+12"
+            }
           ],
           "insights": [
             "Periodo analizado: del 10 de julio al 6 de agosto de 2026 (28 días).",
@@ -1401,6 +1441,684 @@
               "description": "Del análisis de HubSpot de más de 40,000 landing pages: los botones etiquetados como \"Submit\" tenían tasas de conversión más bajas, y los formularios de 3 campos convertían mejor, con una caída a partir de ahí. Lo utilizo para los puntos de \"el texto orientado al resultado supera a 'continuar'\" y \"mantener la petición mínima\"."
             }
           ]
+        }
+      }
+    ]
+  },
+  {
+    "slug": "calendar-keeper",
+    "status": "published",
+    "featured": false,
+    "order": 8,
+    "title": "Administrador de calendario",
+    "company": "HRS",
+    "client_context": "HRS",
+    "role": "Diseñador Sr de Producto",
+    "year": 2026,
+    "duration": "Sprint de descubrimiento independiente asistido por IA",
+    "industry": "SaaS de gestión de consultas y atención sanitaria",
+    "tagline": "Descubrimiento de productos asistido por IA para la programación clínica, convirtiendo las dependencias de recursos, las interrupciones y las limitaciones de cumplimiento en una estrategia de producto por fases.",
+    "tags": [
+      "Salud",
+      "Estrategia de Producto",
+      "Investigación UX",
+      "Pensamiento de diseño",
+      "Producto de IA",
+      "Investigación de Mercado"
+    ],
+    "filters": [
+      "Healthcare",
+      "Product Strategy",
+      "AI Product"
+    ],
+    "tools": [
+      "Claude AI",
+      "Gemini",
+      "NotebookLM",
+      "ChatGPT",
+      "Codex"
+    ],
+    "images": {
+      "cover": "/images/projects/calendar-keeper/thumbnails/calendar-keeper-cover.png",
+      "hero": "/images/projects/calendar-keeper/hero/calendar-keeper-hero.png",
+      "gallery": []
+    },
+    "client_logos": [],
+    "metrics": [],
+    "team": [
+      "Estratega de producto",
+      "Investigador UX",
+      "Expertos en el ámbito sanitario",
+      "Socios de investigación de IA"
+    ],
+    "my_role": [
+      "Diseñador Sr de Producto"
+    ],
+    "problem": {
+      "admin_pain_points": [
+        "El personal clínico (MFA, médicos independientes) dedica horas al día a gestionar interrupciones, reservas dobles y comprobaciones manuales del calendario en lugar de atender a los pacientes.",
+        "Los asistentes médicos alemanes manejan las tareas obligatorias de TI (recetas electrónicas, mensajes KIM, ePA) además de la programación para múltiples profesionales; Las fallas de TI los afectan directamente.",
+        "Las fallas de sincronización del calendario crean desincronizaciones silenciosas o bloqueos de día completo, lo que convierte los problemas técnicos en crisis operativas sin una ruta de recuperación visible.",
+        "Las preocupaciones sobre la soberanía de los datos son requisitos regulatorios (GDPR, BSI C5, alemán §203 StGB), no cosas agradables de tener."
+      ],
+      "user_pain_points": [
+        "Los pacientes que regresan y intentan volver a reservar o administrar citas no tienen una ruta rápida de autoservicio, lo que los obliga a llamar, el mecanismo exacto que inunda al personal.",
+        "Los pacientes no tienen visibilidad de que sus datos de salud permanecen dentro de Europa, lo que erosiona la confianza en un mercado donde la soberanía de los datos es un mandato regulatorio.",
+        "Las plataformas de programación genéricas tratan cada reserva como un intervalo de tiempo intercambiable y no modelan las dependencias (sala, equipo, médico, preparación) que requieren los flujos de trabajo clínicos."
+      ]
+    },
+    "constraints": [
+      "Liquidez de red cero en la primera clínica; Los algoritmos de lista de espera y reabastecimiento necesitan un historial para funcionar.",
+      "Entorno regulatorio complejo: Francia y Alemania tienen diferentes modelos de dotación de personal (el 5% de los médicos de cabecera franceses tienen asistentes frente a los MFA alemanes que gestionan entre 3 y 19 profesionales).",
+      "Alta fricción de conmutación; El 44,8% de los consultorios alemanes teme que los datos no se migren de manera limpia, lo que suprimirá la demanda incluso de los usuarios insatisfechos.",
+      "La presencia de competidores difiere según el mercado: Doctolib domina Francia (23,2% de participación en PMS); Alemania muestra Doctolib a los 9 meses, lo que deja una ventana estrecha."
+    ],
+    "methodology": {
+      "name": "Design Thinking",
+      "steps": [
+        {
+          "step": 1,
+          "label": "Empatizar",
+          "description": "Descubrimiento de problemas, entrevistas con usuarios, mapeo de afinidades e investigación de mercados competitivos"
+        },
+        {
+          "step": 2,
+          "label": "Definir",
+          "description": "Síntesis de personas, conocimientos de mapas de afinidad y declaraciones de problemas de causa raíz"
+        },
+        {
+          "step": 3,
+          "label": "Idear",
+          "description": "Cómo-podríamos cuestionar, probar hipótesis y alinear estratégicamente"
+        },
+        {
+          "step": 4,
+          "label": "Prototipo",
+          "description": "Estrategia de producto por fases, posicionamiento competitivo y secuenciación de comercialización"
+        }
+      ]
+    },
+    "design_strategy": [
+      "Reclasificar la soberanía de datos y el posicionamiento de MFA primero como requisitos de entrada, no como diferenciadores; la verdadera ventaja defendible es la programación consciente de los recursos que no se interrumpe cuando lo hace la infraestructura.",
+      "Cree la versión inicial en torno a la reserva principal con dependencias de recursos (habitación, equipo, médico, preparación), no de reposición; la reposición necesita una lista de espera con historial para ser útil, que no existe el primer día.",
+      "Diseñe el modo degradado explícitamente: cuando la sincronización falla, muestre \"no sincronizado\" como un estado visible, cree una cola de reconciliación y permita que las citas se creen localmente con la identidad pendiente de verificación, convirtiendo una crisis en una condición conocida.",
+      "El primer GTM de Alemania está basado en evidencia: Doctolib ya posee Francia (23,2% de participación); Alemania lleva nueve meses en su impulso PMS (noviembre de 2025), lo que deja una ventana estrecha y mensurable.",
+      "El riesgo de migración es el obstáculo a la adopción, no las características; una ruta de migración de datos creíble y demostrable puede importar más que pulir el calendario."
+    ],
+    "reflections": [
+      {
+        "title": "La competencia es real, pero no donde esperarías.",
+        "body": "Doctolib ya ganó Francia; Samedi envía nuestros diferenciadores reclamados a Alemania. La idea honesta es que necesitamos encontrar un ángulo que los competidores no hayan ocupado todavía, lo que resulta ser confiabilidad en modo degradado y honestidad sobre lo que es la Fase 1 versus la Fase 2."
+      },
+      {
+        "title": "La estructura del mercado cambió la estrategia.",
+        "body": "Las diferencias de personal entre Francia y Alemania no son sólo variantes del mismo problema. Necesitan dos variantes de productos reales, dos enfoques de comercialización y dos narrativas ganadoras diferentes. Una solución única para todos fracasaría."
+      },
+      {
+        "title": "La soberanía de los datos es algo que está en juego ahora.",
+        "body": "El cumplimiento del RGPD, BSI C5 y la Ley de IA de la UE es normativo, no diferenciador. La arquitectura del consentimiento y la transparencia importan más que la ubicación del alojamiento, porque todos los competidores afirman lo mismo."
+      },
+      {
+        "title": "Las limitaciones obligaron a tomar una mejor decisión.",
+        "body": "Saber que no podemos respaldar el reabastecimiento el primer día (sin liquidez) nos obligó a preguntar qué funciona realmente en la primera cita de la primera clínica. La respuesta (reserva básica basada en los recursos) es más defendible que una función de lista de deseos."
+      }
+    ],
+    "nda_notice": "Este es un documento de estrategia en etapa inicial y un proceso de pensamiento de diseño. Los detalles del cliente y los datos competitivos se anonimizan o se agregan por mercado. La metodología y los hallazgos reflejan una investigación de mercado real y el descubrimiento de usuarios.",
+    "password": null,
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "overview",
+        "type": "overview",
+        "title": "Descripción general del proyecto"
+      },
+      {
+        "id": "design-thinking-facilitation",
+        "type": "custom",
+        "title": "Facilitación del pensamiento de diseño",
+        "body": "Estructuró el proceso de descubrimiento en cinco fases: empatizar, definir, idear y crear prototipos, utilizando la metodología del pensamiento de diseño para pasar de problemas no estructurados a estrategias viables. Cada fase se basó en la anterior, creando una cadena de conocimientos validados en lugar de suposiciones."
+      },
+      {
+        "id": "user-research-synthesis",
+        "type": "custom",
+        "title": "Investigación y síntesis de usuarios",
+        "body": "Se realizó un descubrimiento en dos mercados distintos (Francia y Alemania), descubriendo nueve planteamientos de problemas distintos desde diferentes perspectivas de los usuarios: el administrador del calendario (médico independiente versus MFA), el paciente que regresa y el sistema mismo. Sintetizó los hallazgos cualitativos en personas, mapas de afinidad y análisis de causa raíz que revelaron las brechas estructurales que los competidores pasan por alto."
+      },
+      {
+        "id": "competitive-intelligence",
+        "type": "custom",
+        "title": "Inteligencia Competitiva",
+        "body": "Realicé un riguroso análisis de mercado que cubrió a los proveedores actuales de PMS, los nuevos participantes y la dinámica del mercado. Se identificó que Doctolib ya es propietario de Francia (23,2% de participación en PMS), Samedi ocupa los supuestos diferenciadores en Alemania y el riesgo migratorio (no las características) es el verdadero obstáculo para la adopción. Esta investigación reformuló la estrategia y el enfoque de comercialización."
+      },
+      {
+        "id": "solution-strategy",
+        "type": "custom",
+        "title": "Estrategia de solución",
+        "body": "Se tradujo la investigación a un enfoque de entrega por fases: reserva central con dependencias de recursos (Fase 1), confiabilidad en modo degradado (Fase 1) e incorporación/reabastecimiento (Fase 2). Reposicionado desde los supuestos diferenciadores (soberanía, MFA primero) a un ángulo defendible: programación consciente de los recursos que no se interrumpe cuando lo hace la infraestructura. Recomendado el primer GTM de Alemania según la evidencia del mercado."
+      },
+      {
+        "id": "methodology",
+        "type": "custom",
+        "title": "Metodología: Design Thinking",
+        "body": "El proceso de descubrimiento siguió un enfoque de pensamiento de diseño estructurado en cuatro fases, complementado con herramientas de inteligencia artificial y una rigurosa investigación de mercado.",
+        "payload": {
+          "phases": [
+            {
+              "phase": "Empatizar",
+              "description": "Descubrimiento de problemas, entrevistas con usuarios, mapeo de afinidades e investigación de mercados competitivos"
+            },
+            {
+              "phase": "Definir",
+              "description": "Síntesis de personas, conocimientos de mapas de afinidad y declaraciones de problemas de causa raíz"
+            },
+            {
+              "phase": "Idear",
+              "description": "Cómo-podríamos cuestionar, probar hipótesis y alinear estratégicamente"
+            },
+            {
+              "phase": "Prototipo",
+              "description": "Estrategia de producto por fases, posicionamiento competitivo y secuenciación de comercialización"
+            }
+          ]
+        }
+      },
+      {
+        "id": "empathize-intro",
+        "type": "custom",
+        "title": "Empatizar: descubrimiento de problemas e investigación de mercado",
+        "body": "La fase de empatía combinó el descubrimiento directo del usuario con una rigurosa inteligencia competitiva para comprender la forma real del mercado y las necesidades no satisfechas de los usuarios."
+      },
+      {
+        "id": "problem-statements",
+        "type": "custom",
+        "title": "Declaraciones de problemas",
+        "body": "De la investigación surgieron nueve encuadres de problemas distintos en diferentes roles de usuario y mercados.",
+        "payload": {
+          "problems": [
+            "Calendar Keeper necesita que el cronograma refleje la realidad sin volver a verificarlo manualmente, porque las interrupciones durante todo el día (llamadas, cambios, no presentaciones) cuestan tiempo clínico o causan doble reserva.",
+            "El MFA alemán necesita completar las tareas ordenadas por TI con menos clics y con menos puntos de falla, porque la mitad de las consultas alemanas tienen problemas de TI semanalmente, y esas fallas recaen en el MFA, no en el médico.",
+            "El MFA/MVZ alemán necesita clasificar y delegar la programación entre muchos profesionales desde una sola vista, porque un solo MVZ puede emplear hasta 19 MFA coordinando calendarios que una interfaz de un solo médico nunca fue diseñada para manejar.",
+            "El médico francés en solitario necesita que las llamadas de rutina sean atendidas sin salir de la consulta, porque el 30% de las llamadas ya quedan sin respuesta y cada una de ellas es un paciente perdido o una consulta interrumpida.",
+            "La disponibilidad confiable y en tiempo real sirve primero al Calendar Keeper, porque un calendario obsoleto es un riesgo de doble reserva para el personal antes de que sea una mala experiencia de búsqueda para un paciente.",
+            "Calendar Keeper necesita programar visitas de menor agudeza por teléfono o video en lugar de establecer de forma predeterminada a todos en un espacio en persona, porque protege la capacidad en persona para las visitas que realmente la necesitan.",
+            "Tanto el encargado del calendario como el paciente que regresa necesitan pruebas visibles de que los datos de salud permanecen en Europa, porque la soberanía es un factor que rompe la confianza y un requisito de cumplimiento para 2026.",
+            "El paciente que regresa necesita volver a reservar o administrar una cita existente rápidamente utilizando la identidad que ya está registrada, porque desviar esa llamada de rutina es el mecanismo completo por el cual la carga de trabajo del administrador del calendario realmente disminuye.",
+            "Un paciente que regresa y que ocasionalmente reserva para un dependiente nombrado necesita una ruta de entrada manual mínima, no una vinculación completa de la cuenta."
+          ]
+        }
+      },
+      {
+        "id": "user-needs",
+        "type": "custom",
+        "title": "Necesidades de los usuarios: grupos de usuarios provisionales",
+        "body": "De la investigación surgieron seis grupos distintos de usuarios, cada uno con necesidades específicas, puntos débiles y consecuencias del error. Estas son agrupaciones provisionales, no personas definitivas.",
+        "payload": {
+          "groups": [
+            {
+              "group": "Pacientes: nuevos y existentes",
+              "goal": "Concierte una cita con poco esfuerzo y mínima divulgación de datos personales.",
+              "pain_points": [
+                "Abandona la reserva cuando los formularios solicitan información no esencial, o en Francia cuando el INS (Identifiant National de Santé) requiere detalles exactos de registro de nacimiento: alta fricción en el registro.",
+                "Frustrado por fallas técnicas: errores de páginas en blanco, cierres de sesión forzados, imposibilidad de hacer capturas de pantalla/copiar información de confirmación.",
+                "En Alemania, la doble suscripción (correo electrónico/SMS) puede dejar un espacio sin confirmar y efectivamente perdido.",
+                "Frustrado cuando \"no hay citas en línea disponibles\" hace que la herramienta parezca un esfuerzo desperdiciado.",
+                "Erosión de la confianza cuando una capacidad lingüística enumerada (por ejemplo, 'habla inglés') no se sostiene en persona: la precisión de los metadatos del profesional es importante para la seguridad, no solo para la satisfacción.",
+                "La desconfianza en las plataformas que se percibe que envían notas o datos de consulta a proveedores de IA fuera de la UE o a terceros: esta es una causa de abandono impulsada por la confianza."
+              ],
+              "consequence": "Reservas perdidas/duplicadas, embudo abandonado o (en el caso de falta de coincidencia de idiomas) un riesgo para la calidad de la atención.",
+              "jtbd": "Cuando necesito ver a un médico y no estoy seguro del proceso, quiero encontrar y confirmar un espacio real y disponible sin dar más información de la necesaria, para poder confiar en que la cita realmente se realizará."
+            },
+            {
+              "group": "Cuidadores / personas que reservan para otra persona",
+              "goal": "Administre las citas para un dependiente (niño, padre anciano) con la misma facilidad que para ellos mismos.",
+              "pain_points": [
+                "Un tercio de las citas francesas se reservan para un familiar; ~46 % de los pacientes tienen una cuenta relativa vinculada; este no es un caso marginal, es un flujo central.",
+                "La entrada de la fecha de nacimiento mediante el desplazamiento desplegable mes a mes es un punto de fricción específico y con nombre para este grupo.",
+                "Implicación de permisos: el producto necesita un modelo de 'administración en nombre de' de primera clase, no un complemento."
+              ]
+            },
+            {
+              "group": "Pacientes mayores/con menor alfabetización digital",
+              "goal": "Acceda a la reserva de citas con el soporte adecuado para su nivel de comodidad tecnológica.",
+              "pain_points": [
+                "5,9 millones de usuarios franceses de Doctolib tienen más de 65 años (señal de escala), pero los pacientes alemanes mayores de 80 años se describen como \"abrumados\" por las herramientas digitales, muchos de ellos sin teléfonos inteligentes ni PC; esta es una brecha específica del mercado, no el mismo problema en ambos países.",
+                "Los usuarios con discapacidad visual necesitan flujos de reserva accesibles; Todos los pacientes necesitan claridad sobre la accesibilidad física (acceso en silla de ruedas) de la propia consulta."
+              ],
+              "consequence": "Exclusión del autoservicio, que devuelve la carga a las líneas telefónicas y se conecta directamente al punto débil de la recepcionista."
+            },
+            {
+              "group": "Recepcionistas / Asistentes Médicos (MFA)",
+              "goal": "Mantenga la programación precisa con un mínimo de retrabajo manual, mientras maneja interrupciones constantes.",
+              "pain_points": [
+                "~30% de las llamadas a médicos quedan sin respuesta; las llamadas de rutina (verificaciones de seguros, reprogramaciones) entierran la recepción.",
+                "Los MFA alemanes se sienten frustrados por los flujos de trabajo de TI que requieren muchos clics (mensajería KIM, recetas electrónicas) y por los fallos del sistema o lector de tarjetas después de las actualizaciones.",
+                "Diferencia estructural: en Alemania, el MFA es un usuario avanzado: 3 años de formación, realiza tareas clínicas (extracciones de sangre, vendajes) y administrativas (reservas, facturación); promedio de 3,4 por práctica en solitario, hasta 19 en MVZ. En Francia, sólo ~5% de los médicos de cabecera emplean un MFA, y las tareas son principalmente administrativas."
+              ],
+              "design_implication": "La recepcionista no es una sola persona: Alemania necesita una interfaz centrada en asistentes y con capacidad de delegación; Francia necesita que el médico siga siendo el actor central. Esta es una de las tensiones más agudas de todo el proyecto."
+            },
+            {
+              "group": "Médicos / clínicos",
+              "goal": "Maximice el tiempo clínico, minimice la carga administrativa.",
+              "pain_points": [
+                "Diferencia estructural en cómo los médicos usan el tiempo: Alemania: 9,8 contactos/año, ~8 min/visita, alta rotación de pacientes, necesidad de documentación con un solo clic. Francia: 5,9 contactos/año, 16 a 18 min/visita, favorece las notas longitudinales y la IU de formato más largo.",
+                "~10 horas/semana perdidas debido a cuellos de botella administrativos (citado como el punto débil que Doctolib está atacando con el manejo de llamadas de IA)."
+              ],
+              "consequence": "Las reservas dobles o el tiempo perdido reducen directamente la capacidad clínica facturable: este grupo es sensible a los ingresos por errores de programación de una manera que los pacientes no lo son."
+            },
+            {
+              "group": "Gerentes/administradores de clínicas y equipos internos de CX/soporte",
+              "status": "🔴 Research gap",
+              "note": "Aún no hay evidencia directa. El material original se dirige a recepcionistas y médicos, pero no a propietarios/gerentes de consultorios ni a equipos de implementación internos. Marcado como una necesidad de investigación abierta en lugar de necesidades de invención."
+            }
+          ]
+        }
+      },
+      {
+        "id": "user-needs-context",
+        "type": "custom",
+        "title": "Contexto: panorama regulatorio, operativo y competitivo",
+        "body": "Las necesidades de los usuarios no se pueden entender sin el contexto regulatorio, laboral y competitivo que las configura.",
+        "payload": {
+          "regulatory": {
+            "title": "Contexto regulatorio y de gobernanza",
+            "france": "Centralizado — State + Assurance Maladie establece tarifas, certificaciones y negociaciones a nivel nacional. HDS v2.0: certificación obligatoria de alojamiento de datos sanitarios. Transición a V2.0 antes del 16 de mayo de 2026; Las normas de soberanía de septiembre de 2026 exigen el alojamiento y la divulgación de exposición legal fuera de la UE únicamente en el EEE (por ejemplo, la Ley CLOUD de EE. UU.).",
+            "germany": "Descentralizado: los organismos corporativistas (G-BA, KV regionales) controlan el acceso al mercado; Bedarfsplanung restringe dónde y cómo los médicos pueden incluso establecer su consulta. Infraestructura Telemática (TI): red cerrada obligatoria; Fecha límite de integración de ePA: 1 de octubre de 2025; Autenticación mediante tarjetas físicas SMC-B/eHBA. El 50% de los médicos alemanes informan semanalmente sobre problemas técnicos de TI, una apertura competitiva declarada para un participante más estable."
+          },
+          "workforce": {
+            "title": "Fuerza laboral y contexto operativo",
+            "gp_density": "Francia: gran número de médicos de cabecera (107/100.000) y orientado al volumen de atención primaria. Alemania, con muchos especialistas (117/100k), con el doble de cirujanos ambulatorios y aproximadamente el triple de ginecólogos, lo que significa que las necesidades de programación de Alemania se inclinan hacia la reserva de recursos complejos (habitaciones, equipos, bloques quirúrgicos), no solo franjas horarias.",
+            "consultation_rhythm": "Francia: 5,9 visitas/año, 16-18 min/visita, favorece las notas longitudinales. Alemania: 9,8 visitas/año, ~8 min/visita, alta rotación de pacientes, necesidad de documentación con un solo clic. Esto genera necesidades de densidad de información fundamentalmente diferentes en la interfaz de usuario de reserva y documentación."
+          },
+          "competitive": {
+            "title": "Panorama competitivo",
+            "incumbent": "Doctolib es el titular dominante, ya que pasó de una herramienta de reservas a un sistema operativo de práctica completa y lanzó su PMS alemán a finales de 2025, con gestión de llamadas mediante IA y pagos integrados basados en Adyen.",
+            "trust_gaps": "Carga de trabajo de MFA debido a solicitudes no seguras y una crisis de confianza más amplia en materia de 'soberanía de datos', nombrada como una apertura específica para un entrante soberano/privacidad primero.",
+            "pricing": "Samedi ~35–59€/usuario; Doctolib ~139€/profesional."
+          },
+          "business": {
+            "title": "Contexto empresarial: explícitamente sin resolver",
+            "note": "La secuenciación de GTM (Francia primero versus Alemania primero) no está decidida. Esto es importante para el alcance de la empatía: si no sabemos qué mercado se lanza primero, debemos mantener nuestra elección de flujo de trabajo prioritario defendible en ambos mercados en lugar de optimizar estrictamente para uno. El modelo de precio/agrupación con la suite existente no está definido."
+          }
+        }
+      },
+      {
+        "id": "competitive-analysis",
+        "type": "custom",
+        "title": "Investigación competitiva: tres hallazgos que cambiarán el mercado",
+        "body": "El análisis de mercado reveló que las suposiciones convencionales sobre nuestra posición eran incorrectas.",
+        "payload": {
+          "findings": [
+            {
+              "title": "⚠️ Doctolib ya ha conquistado el mercado francés de PMS",
+              "body": "Doctolib es el software de gestión de consultas de médicos de cabecera más utilizado en Francia en marzo de 2026, con el 23,2% de las transmisiones electrónicas de solicitudes de asistencia, por delante de Weda (14,0%), Medistory (10,1%) y HelloDoc (8,1%). Pasó del 0% al 23,2% en cinco años, y lo hizo sin adquisiciones, simplemente conectando software a su plataforma de reservas.\n\nEsto invierte nuestro encuadre anterior. En Francia, Doctolib se encarga ahora de la distribución a pacientes y a la práctica. Nuestro argumento de que \"somos fuertes donde ellos son débiles\" no se sostiene."
+            },
+            {
+              "title": "🔵 En Alemania, la misma medida apenas está en marcha, y ese es un período estrecho y anticuado.",
+              "body": "El PVS alemán de Doctolib se lanzó en noviembre de 2025, inicialmente solo para médicos de cabecera, pediatras y ginecólogos. En la evaluación Zi 2026, Doctolib tenía un tamaño de muestra insuficiente para producir datos válidos de usabilidad, NPS o tasa de error.\n\nSi se lee junto con el hallazgo de Francia, este es el argumento empírico más fuerte a favor del primer GTM de Alemania, una decisión que nuestros documentos catalogan como indecisa. Francia es un mercado que Doctolib ya ha conquistado; Alemania es uno de los que empezó a tomar hace nueve meses."
+            },
+            {
+              "title": "⚠️ Samedi ocupa nuestros diferenciadores reclamados",
+              "body": "Samedi es una plataforma SaaS con sede en Berlín utilizada por más de 48.000 médicos en aproximadamente 10.000 instituciones en la región DACH, que ofrece reservas en línea con lista de espera, planificación dinámica de recursos, formularios digitales con firma electrónica y pago integrado, respaldados por cifrado de extremo a extremo patentado por la UE, certificación TÜV e ISO 27001/9001.\n\nEs decir, programación consciente de los recursos más posicionamiento de soberanía más lista de espera/reabastecimiento, ya enviados, a escala. Dos de nuestros tres diferenciadores reclamados están ocupados. Sus verdaderas brechas: ningún portal público de búsqueda de pacientes, precios por médico que se acumulan para las prácticas grupales, ningún nivel de entrada gratuito y ninguna incorporación de autoservicio."
+            }
+          ]
+        }
+      },
+      {
+        "id": "market-dynamics",
+        "type": "custom",
+        "title": "Dinámica del mercado: la palanca de desplazamiento real",
+        "body": "Lo que realmente impulsa el cambio no es la satisfacción, sino las barreras al cambio y el riesgo de migración.",
+        "payload": {
+          "key_insight": "El 33,3% de los consultorios alemanes quieren cambiar de PMS (en comparación con el 44,4% en 2024). Uno de cada tres está comprando activamente. Pero la disminución no se debe a una mayor satisfacción; se debe a las barreras de cambio percibidas.",
+          "displacement_dynamics": [
+            {
+              "signal": "Prácticas que quieren cambiar de PMS",
+              "figure": "33,3% en 2025 (frente al 44,4% en 2024)",
+              "meaning": "Demanda suprimida, no satisfecha"
+            },
+            {
+              "signal": "Bloqueador superior",
+              "figure": "El 44,8% teme que los datos no se migren limpiamente",
+              "meaning": "La migración es un problema del producto, no de las características"
+            },
+            {
+              "signal": "Cambiar motivos",
+              "figure": "Usabilidad (1º), tarifas (2º), soporte (3º)",
+              "meaning": "La usabilidad es una palanca de diseño; el titular tiene mala experiencia"
+            },
+            {
+              "signal": "Resultado posterior al cambio",
+              "figure": "83,9% reporta una mejora significativa",
+              "meaning": "El cambio funciona, pero la gente está cambiando a sistemas que ya tienen mala calificación"
+            }
+          ],
+          "proof": "AxiSanté (CGM) cayó del 16% en 2019 a menos del 0,2% en 2026 después de que se anunció el fin del soporte. La titularidad colapsa rápidamente una vez que se rompe la confianza."
+        }
+      },
+      {
+        "id": "sovereignty-context",
+        "type": "custom",
+        "title": "Reclamaciones de soberanía: debidamente escalonadas",
+        "body": "La soberanía de los datos es un tema vivo y controvertido, no un diferenciador que podamos poseer.",
+        "payload": {
+          "reality": "Doctolib utiliza IA de Google, Microsoft y Anthropic en su asistente de consulta. Bajo escrutinio; acusaciones de que los datos de los pacientes pueden estar expuestos a proveedores de tecnología estadounidenses. Doctolib niega uso indebido; La OCDE lo clasifica como un peligro más que como un incidente realizado. La Ley de IA de la UE entrará en vigor el 2 de agosto de 2026.",
+          "honest_read": "El vector de confianza es real y actualmente activo, pero la postura de cumplimiento formal de Doctolib es fuerte, y nuestra propia ventaja descansaría en la arquitectura de consentimiento y la transparencia, no en la ubicación del alojamiento. La ubicación del alojamiento es algo que está en juego; todos los competidores lo reclaman.",
+          "takeaway": "'Somos el soberano' no es un diferenciador defendible. \"No utilizamos los datos de sus pacientes de forma predeterminada y podemos mostrarle exactamente lo que utilizamos\"."
+        }
+      },
+      {
+        "id": "define-intro",
+        "type": "custom",
+        "title": "Definir: Personas, Patrones y Causas Raíces",
+        "body": "La fase de definición sintetizó la investigación sobre modelos de personalidad e identificó los problemas estructurales debajo de las quejas superficiales."
+      },
+      {
+        "id": "affinity-map",
+        "type": "custom",
+        "title": "Mapa de afinidad: lo que da forma al flujo primario",
+        "body": "La investigación reveló profundas diferencias estructurales que dan forma a las decisiones sobre la arquitectura del producto.",
+        "payload": {
+          "findings": [
+            {
+              "title": "Francia y Alemania cuentan con personal como dos profesiones diferentes",
+              "details": "La densidad de médicos de cabecera es 107/100k en Francia frente a 66/100k en Alemania; El ritmo de consulta sigue la misma división: 5,9 visitas/año de 16 a 18 minutos en Francia, 9,8 visitas/año de ~8 minutos en Alemania. Es por eso que Calendar Keeper necesita dos variantes reales en lugar de una interfaz con cambio de idioma."
+            },
+            {
+              "title": "El calendario tiene que ser confiable, no sólo presente",
+              "details": "Los pacientes que realizan búsquedas exhaustivas y pulsan \"no hay citas disponibles\" describen la herramienta como una pérdida de tiempo. En lo que respecta a las operaciones, el 81% de los consultorios alemanes informan errores en el conector TI y el 82% informa fallas al leer la tarjeta eGK, lo que significa que el calendario en sí deja de ser confiable antes de que el paciente lo vea."
+            },
+            {
+              "title": "La recepción ya está bajo el agua.",
+              "details": "Aproximadamente el 30% de las llamadas a los médicos quedan sin respuesta. Los MFA alemanes citan específicamente los flujos de trabajo de TI con muchos clics y las fallas de los lectores de tarjetas como factores estresantes recurrentes. Las 10 horas semanales perdidas en trabajo administrativo es exactamente a lo que apuntan los competidores con el manejo de llamadas mediante IA."
+            },
+            {
+              "title": "La soberanía de los datos es una condición de confianza, no una característica",
+              "details": "La confianza se rompe cuando los datos de la consulta parecen llegar a modelos de IA no europeos o a terceros. Esto no es específico de un segmento: le importa por igual al encargado del calendario (exposición al cumplimiento) y al paciente que regresa (confianza), y las reglas de septiembre de 2026 hacen que el hospedaje exclusivo del EEE sea un requisito en lugar de una preferencia."
+            }
+          ]
+        }
+      },
+      {
+        "id": "personas",
+        "type": "custom",
+        "title": "Protopersonas",
+        "body": "Surgieron dos arquetipos de usuario distintos, no variaciones de idioma.",
+        "payload": {
+          "primary": {
+            "title": "El encargado del calendario",
+            "description": "Un rol, desempeñado por una persona diferente dependiendo del mercado: quien posee el cronograma y necesita que sea cierto sin tener que volver a verificarlo constantemente.",
+            "job": "Cuando mi agenda se ve interrumpida todo el día por llamadas, cambios y ausencias, quiero que el calendario siempre sea fiel sin que yo lo vuelva a revisar, para no perder tiempo clínico ni agendar dos veces a alguien.",
+            "france": {
+              "title": "Médico en solitario",
+              "details": "Dirige la recepción personalmente, ya que solo ~5% de los médicos de cabecera franceses emplean un asistente. Atiende a los pacientes durante 16 a 18 minutos seguidos y absorbe las interrupciones entre consultas en lugar de delegarlas. Necesita que se atiendan llamadas de rutina (reprogramación, preguntas sobre seguros) sin salir de la sala de examen."
+            },
+            "germany": {
+              "title": "MFA (Medizinische Fachangestellte)",
+              "details": "Clínicamente capacitado durante tres años, administra el calendario para múltiples profesionales: 3,4 en promedio en una práctica individual, hasta 19 en una MVZ más grande. Recibe consultas más breves y frecuentes (~8 minutos, 9,8 visitas/año) y dedica tiempo real a tareas obligatorias de TI (mensajes KIM, recetas electrónicas, ePA). Aproximadamente la mitad de los consultorios alemanes informan semanalmente problemas técnicos de TI, y esos fallos repercuten en el MFA. Necesita clasificar y delegar entre muchos profesionales desde una única vista."
+            }
+          },
+          "secondary": {
+            "title": "El paciente que regresa",
+            "description": "Una superficie estrecha y deliberadamente delgada. Su única función es permitir que un paciente que ya tiene un registro vuelva a reservar, cancelar o gestionar una cita existente sin llamar.",
+            "scope": "Ocasionalmente incluye la reserva para un dependiente nombrado, ingresada manualmente para esa cita, no un perfil guardado y vinculado. Excluye deliberadamente la verificación de identidad de nuevos pacientes, la administración completa de cuentas vinculadas y los informes/análisis en v1."
+          }
+        }
+      },
+      {
+        "id": "root-causes",
+        "type": "custom",
+        "title": "Causas fundamentales: lo que realmente está roto",
+        "body": "La investigación descubrió que los problemas obvios ocultan problemas estructurales más profundos.",
+        "payload": {
+          "q_a": [
+            {
+              "q": "¿Cuáles son los problemas centrales?",
+              "a": "Las plataformas de programación genéricas tratan cada reserva como una franja horaria intercambiable. Una cita clínica a menudo depende de una sala, un equipo, un médico específico y el tiempo de preparación juntos, y ninguna arquitectura de la competencia modela esa dependencia porque fue construida del lado de la demanda (el linaje de Doctolib). Segundo problema: cuando falla la sincronización (interrupción de TI, lector eGK caído), la mayoría de los sistemas se desincronizan silenciosamente o se bloquean durante todo el día, convirtiendo un problema técnico en una crisis operativa."
+            },
+            {
+              "q": "¿Cuáles son las causas fundamentales?",
+              "a": "La brecha de dependencia es estructural, no una brecha de características. Está integrado en cómo se diseñó el modelo de datos subyacente. El problema de la falla de sincronización es una omisión de diseño: nadie diseñó para el modo degradado, por lo que la falla no tiene un estado visible, ni una ruta de reconciliación ni un valor predeterminado seguro."
+            },
+            {
+              "q": "¿Cuáles son las perspectivas de las partes interesadas?",
+              "a": "La clínica evalúa las reservas teniendo en cuenta los recursos durante la demostración de ventas, no meses después. Al director de CX le importa una distinción: si una falla de sincronización se convierte en un ticket de soporte o en una crisis en toda regla. El riesgo real de la ingeniería es el acceso de escritura y la calidad del esquema en la integración, y las dependencias de recursos son exactamente lo que expone una mala sincronización."
+            },
+            {
+              "q": "¿Cuáles son las limitaciones actuales?",
+              "a": "Liquidez cero en la primera clínica (sin historial, sin datos de lista de espera), lo que descarta cualquier cosa que necesite un efecto de red para ser útil el primer día."
+            }
+          ]
+        }
+      },
+      {
+        "id": "ideate-intro",
+        "type": "custom",
+        "title": "Idear: Cómo podríamos y cuestionamiento estratégico",
+        "body": "La fase de ideación utilizó preguntas estructuradas para pasar de los problemas a hipótesis procesables."
+      },
+      {
+        "id": "hmw-questions",
+        "type": "custom",
+        "title": "Preguntas de cómo podríamos hacerlo",
+        "body": "Cinco categorías de preguntas abarcaron el espacio de soluciones y probaron los supuestos.",
+        "payload": {
+          "categories": [
+            {
+              "type": "Amplifying",
+              "example": "¿Cómo podríamos amplificar la confianza en la programación en el momento en que falla la sincronización?",
+              "answer": "Hacer que 'no sincronizado' sea un estado visible y con nombre en lugar de un espacio silencioso, para que el personal de recepción vea el modo degradado como una condición conocida, no como un fallo inexplicable."
+            },
+            {
+              "type": "Removing",
+              "example": "¿Cómo podríamos eliminar por completo el modo de falla de bloqueo de día completo?",
+              "answer": "Permita que las citas se creen localmente con la identidad pendiente de verificación cuando el lector de eGK o TI falle, y colóquelas en cola para su conciliación en lugar de detener la programación de todo el día."
+            },
+            {
+              "type": "Exploring",
+              "example": "¿Cómo podríamos explorar cómo debería ser operativamente una cola de conciliación?",
+              "answer": "Prototíquelo como un flujo de 1 a 2 pantallas (insignia de estado, vista de cola) y pruebe si el personal de recepción puede actuar en consecuencia sin capacitación, ya que esto es lo que se muestra al jefe de CX."
+            },
+            {
+              "type": "Questioning assumptions",
+              "example": "¿Cómo podríamos desafiar el supuesto de que la 'soberanía de los datos' y el 'MFA primero' son diferenciadores?",
+              "answer": "Reclasificar ambos como requisitos de ingreso, no como puntos de venta. Todos los competidores ya los reclaman, por lo que liderar con ellos desperdicia el espacio de diferenciación que realmente puede poseer la programación consciente de los recursos."
+            },
+            {
+              "type": "Unexpected resource",
+              "example": "¿Cómo podríamos utilizar la función de reposición diferida como prueba de juicio en lugar de como un espacio para ocultar?",
+              "answer": "Encuadrelo explícitamente en la clínica: el reabastecimiento necesita una lista de espera con historial para tener algún aporte, y esa liquidez no existe en el primer mes, por lo que es la Fase 2 por diseño, no por supervisión."
+            }
+          ]
+        }
+      },
+      {
+        "id": "question-characteristics",
+        "type": "custom",
+        "title": "Características de las preguntas: Rigor de las pruebas",
+        "body": "El conjunto HMW resistió cuatro pruebas de validez.",
+        "payload": {
+          "tests": [
+            {
+              "test": "Alcance",
+              "description": "Cada pregunta se centra en las dos pantallas que realmente se envían (reserva principal, modo degradado), no en una lista de deseos."
+            },
+            {
+              "test": "Accionable",
+              "description": "Se asignan directamente a lo que se construye y se demuestra."
+            },
+            {
+              "test": "Enmarcado positivamente",
+              "description": "Alrededor de 'cómo se ve el modo degradado confiable' en lugar de 'cómo ocultamos nuestro problema de sincronización'."
+            },
+            {
+              "test": "Factible",
+              "description": "Ninguno requiere un efecto de red o liquidez existente, razón por la cual el backfill queda completamente fuera de este conjunto. Aquí todo funciona en la primera cita de la primera clínica."
+            }
+          ]
+        }
+      },
+      {
+        "id": "strategic-alignment",
+        "type": "custom",
+        "title": "Alineamiento Estratégico",
+        "body": "Cada pregunta se conecta directamente con los problemas del usuario, el objetivo comercial y el riesgo técnico.",
+        "payload": {
+          "alignment": [
+            {
+              "lever": "Dolor del usuario",
+              "connection": "El personal de recepción pierde la confianza en el cronograma en el momento en que la sincronización se interrumpe silenciosamente. Las preguntas de eliminación y exploración apuntan directamente a eso."
+            },
+            {
+              "lever": "Objetivo de negocio",
+              "connection": "El momento de evaluación de ventas es el flujo central consciente de los recursos, por lo que cada HMW aquí fortalece ese flujo o lo protege del modo de falla que lo socavaría durante una demostración."
+            },
+            {
+              "lever": "Restricción técnica",
+              "connection": "El HMW de cuestionamiento y suposiciones obliga al equipo a probar el acceso de escritura y la calidad del esquema con anticipación, ya que ahí es donde surgiría primero una mala sincronización."
+            }
+          ]
+        }
+      },
+      {
+        "id": "prototype-intro",
+        "type": "custom",
+        "title": "Prototipo: Posicionamiento y estrategia de producto por fases",
+        "body": "La fase de prototipo tradujo los descubrimientos en un plan de comercialización concreto y secuenciado."
+      },
+      {
+        "id": "solution-strategy",
+        "type": "custom",
+        "title": "Solución: Nuevo flujo de héroe",
+        "body": "Un enfoque de tres niveles que prioriza lo que funciona desde el primer día.",
+        "payload": {
+          "layers": [
+            {
+              "tier": "Núcleo (alta fidelidad)",
+              "name": "Appointment-type setup with resource dependency → booking that respects it",
+              "details": "Sala + equipamiento + practicante + preparación, donde las plataformas genéricas tratan todo como franjas horarias.",
+              "why": "Funciona con liquidez cero. Es útil en la primera cita de la primera clínica. Es la verdadera brecha estructural: los competidores no hacen esto porque su arquitectura nació del lado de la demanda. Es el flujo que la clínica evalúa durante la venta, no seis meses después. Pone a prueba la suposición técnica más peligrosa (acceso de escritura y calidad del esquema), porque las dependencias de recursos son exactamente lo que rompe una mala sincronización."
+            },
+            {
+              "tier": "Secundario (alta fidelidad, 1 o 2 pantallas)",
+              "name": "Degraded mode and conflict resolution",
+              "details": "Estado visible \"no sincronizado\", cola de conciliación, cita creada localmente con identidad pendiente de verificación, nunca un bloqueo de día completo.",
+              "why": "Convierte el problema de falla de sincronización en una respuesta diseñada en lugar de un reclamo vacío. Cuando falla la TI o el lector eGK, el programa sigue siendo confiable y operable. Esto es lo que el jefe de CX quiere escuchar, porque es la diferencia entre un ticket y una crisis."
+            },
+            {
+              "tier": "Terciario (baja fidelidad, Fase 2)",
+              "name": "Time-to-first-configured-schedule (onboarding)",
+              "details": "Estructuras alámbricas que documentan el flujo de configuración sin pulir.",
+              "why": "La incorporación entra en alcance, pero como una estructura alámbrica. No es necesario que sea bonito; necesita existir y ser medido. El reabastecimiento pasa a la Fase 2 con una justificación explícita: el reabastecimiento necesita una lista de espera con historial para existir; Lo aplazamos porque en el mes 1 no tiene entrada y su valor depende de la liquidez que esta liberación aún no crea. Esto indica antigüedad: sabemos qué importa primero."
+            }
+          ]
+        }
+      },
+      {
+        "id": "competitive-positioning",
+        "type": "custom",
+        "title": "Reposicionamiento: Lo que realmente diferencia",
+        "body": "Reformule la narrativa basándose en lo que los competidores no pueden ocupar.",
+        "payload": {
+          "reframe": [
+            {
+              "claim": "Soberanía de datos y posicionamiento MFA-first",
+              "before": "Diferenciadores",
+              "after": "Requisitos de ingreso",
+              "reason": "Cada competidor los reclama; no nos diferencian."
+            },
+            {
+              "claim": "Programación basada en recursos",
+              "status": "Partially occupied",
+              "angle": "Samedi lo envía, pero el verdadero diferenciador defendible que queda es más limitado y más honesto."
+            }
+          ],
+          "defensible_differentiator": "Programación consciente de los recursos que no se interrumpe cuando lo hace la infraestructura. Es verificable, mensurable y no depende de un efecto de red que no tengamos."
+        }
+      },
+      {
+        "id": "gmt-strategy",
+        "type": "custom",
+        "title": "Estrategia de comercialización: Alemania primero",
+        "body": "La selección de mercado basada en evidencia pasa de indeciso a recomendado.",
+        "payload": {
+          "prior": "La secuencia GTM estaba indecisa",
+          "evidence": "Francia es un mercado que Doctolib ya ha conquistado (23,2% de participación en PMS). Alemania es uno de los países que comenzó a tomar hace nueve meses (noviembre de 2025), con un tamaño de muestra insuficiente para obtener datos de usabilidad válidos. Una ventana estrecha, mensurable y favorable.",
+          "recommendation": "Primer GTM en Alemania. Traiga a la conversación con las partes interesadas una recomendación con evidencia, no una suposición de diseño."
+        }
+      },
+      {
+        "id": "strategic-recommendations",
+        "type": "custom",
+        "title": "Recomendaciones estratégicas: lo que cambió",
+        "body": "La investigación de mercado reformuló el alcance y posicionamiento inicial.",
+        "payload": {
+          "table": [
+            {
+              "prior": "Doctolib es una herramienta de reservas que se traslada al PMS",
+              "status": "⚠️ False in France — it's #1 in PMS",
+              "action": "Reescribe la diapositiva competitiva"
+            },
+            {
+              "prior": "Secuencia GTM indecisa",
+              "status": "🔵 Evidence now favours Germany-first",
+              "action": "Llevar como recomendación a las partes interesadas"
+            },
+            {
+              "prior": "La programación consciente de los recursos es nuestro diferenciador",
+              "status": "⚠️ Samedi ships it at scale",
+              "action": "Necesario, no suficiente — reposicionar"
+            },
+            {
+              "prior": "La soberanía es nuestro diferenciador",
+              "status": "⚠️ Occupied by both rivals",
+              "action": "Cambio a arquitectura de consentimiento + transparencia"
+            },
+            {
+              "prior": "La inestabilidad heredada es la cuña",
+              "status": "🔵 Confirmed and quantified",
+              "action": "Mantener; fortalecer con datos Zi"
+            },
+            {
+              "prior": "Arquitectura de tres capas",
+              "status": "✅ Unaffected",
+              "action": "Mantener"
+            },
+            {
+              "prior": "Usuario principal de Calendar Keeper",
+              "status": "✅ Unaffected — Doctolib built its PVS in close collaboration with MFAs and doctors",
+              "action": "Mantener; valida que el MFA es el objetivo correcto"
+            },
+            {
+              "prior": "—",
+              "status": "🆕 Migration risk as adoption blocker",
+              "action": "Agregar a los requisitos iniciales; posiblemente más decisivo que cualquier característica del calendario"
+            }
+          ]
+        }
+      },
+      {
+        "id": "new-constraints",
+        "type": "custom",
+        "title": "Nuevas restricciones técnicas y regulatorias",
+        "body": "La investigación de mercado reveló requisitos de cumplimiento que no estaban en el informe original.",
+        "payload": {
+          "constraint": "Los proveedores de PVS en la nube en Alemania se enfrentan al artículo 203(3–4) StGB, art. 28 GDPR, §393 SGB V y BSI C5 requisitos de certificación, y un acuerdo de procesamiento de datos por sí solo no elimina la exposición al secreto profesional del derecho penal.",
+          "requirement": "La evaluación de conformidad de KBV y la conexión TI también son obligatorias para los sistemas en la nube.",
+          "implication": "Esta es una barrera de entrada nativa de la nube que ninguno de nuestros cuatro documentos de proyecto capturó. Añadir al registro de restricciones técnicas."
+        }
+      },
+      {
+        "id": "market-tailwinds",
+        "type": "custom",
+        "title": "Vientos de cola del mercado y métricas de referencia",
+        "body": "La investigación confirmó y cuantificó señales clave de demanda.",
+        "payload": {
+          "german_infrastructure": [
+            "El 82% de los consultorios reportan problemas recurrentes al leer la tarjeta sanitaria electrónica (eGK)",
+            "El 81% reporta errores frecuentes de conexión de TI",
+            "El 71 % informa dificultades periódicas para crear recetas electrónicas"
+          ],
+          "patient_adoption": "El 64% de los alemanes ha reservado una cita médica en línea al menos una vez, frente al 36% en 2023: un fuerte viento de cola para la parte de la versión inicial orientada al paciente."
         }
       }
     ]

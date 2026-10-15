@@ -1,0 +1,2126 @@
+[
+  {
+    "slug": "classical-word",
+    "status": "published",
+    "featured": true,
+    "order": 0,
+    "title": "Institut für klassisches Wortarabisch",
+    "company": "Classical Word",
+    "client_context": "Arabic language education",
+    "role": "Marken- und Druckdesigner",
+    "year": 2026,
+    "duration": "2 Wochen",
+    "industry": "BILDUNG / KULTURINSTITUTION",
+    "tagline": "Erstellte einen warmherzigen, redaktionellen Dreifachaufdruck mit sechs Feldern, der das Lernangebot, die Fakultät und den Einschreibungsprozess des Instituts in einem zusammenhängenden Druckerlebnis vereint.",
+    "tags": [
+      "Druckdesign",
+      "Markendesign",
+      "Redaktionelles Layout"
+    ],
+    "filters": [
+      "Product Design"
+    ],
+    "tools": [
+      "Figma"
+    ],
+    "images": {
+      "cover": "/images/projects/classical-word/trifold-outside.png",
+      "hero": "/images/projects/classical-word/trifold-outside.png",
+      "gallery": [
+        "/images/projects/classical-word/trifold-inside.png"
+      ]
+    },
+    "client_logos": [],
+    "metrics": [],
+    "team": [
+      "Kunde",
+      "Designer"
+    ],
+    "my_role": [
+      "Art Direction",
+      "Layout-Design",
+      "Druckdesign"
+    ],
+    "problem": {
+      "admin_pain_points": [],
+      "user_pain_points": []
+    },
+    "constraints": [],
+    "methodology": {
+      "name": "Editorial design",
+      "steps": []
+    },
+    "design_strategy": [],
+    "reflections": [],
+    "nda_notice": null,
+    "password": null,
+    "external_link": null
+  },
+  {
+    "slug": "benefits-enrollment",
+    "status": "published",
+    "featured": true,
+    "order": 4,
+    "title": "Self-Service-Zugriff und Rollenverwaltung",
+    "company": "Paychex & Flock",
+    "client_context": "Paychex & Flock",
+    "role": "Leitender Produktdesigner (Wachstum und Monetarisierung)",
+    "year": 2025,
+    "duration": "3 Monate",
+    "industry": "VORTEILE / SICHERHEIT SAAS",
+    "tagline": "Ersetzt einen manuellen Workflow durch eine zentralisierte, selbstverwaltete Plattform; Verkürzung der Bearbeitungszeit um 72 %.",
+    "tags": [
+      "VORTEILE / SICHERHEIT SAAS",
+      "UX-Forschung",
+      "IA",
+      "Interaktionsdesign",
+      "Designsysteme"
+    ],
+    "tools": [
+      "Jira",
+      "Miro",
+      "Webex",
+      "Outlook",
+      "Copilot",
+      "Hotjar"
+    ],
+    "images": {
+      "cover": "/images/projects/benefits-enrollment/thumbnails/thumbnail-benefits.png",
+      "hero": "/images/projects/benefits-enrollment/hero/benefits-hero.png",
+      "gallery": [
+        "/images/benefits/figma-logo.png",
+        "/images/benefits/jira-logo.png",
+        "/images/benefits/miro-logo.png"
+      ]
+    },
+    "client_logos": [
+      {
+        "name": "Paychex",
+        "logo": "/images/c54fy.png"
+      },
+      {
+        "name": "Flock",
+        "logo": "/images/flock-logo.png"
+      },
+      {
+        "name": "IBX",
+        "logo": "/images/SNUZw.png"
+      }
+    ],
+    "metrics": [
+      {
+        "value": "72 %",
+        "label": "Reduzierung der Bearbeitungszeit",
+        "context": "Leistungsabwicklung"
+      },
+      {
+        "value": "500+",
+        "label": "Mitarbeiter selbstverwaltet",
+        "context": "ohne IT-Tickets"
+      },
+      {
+        "value": "3 Monate",
+        "label": "Komplettes Design und Lieferung",
+        "context": "Zeitleiste"
+      }
+    ],
+    "team": [
+      "Produktinhaber",
+      "Programmmanager",
+      "Wirtschaftsanalyst",
+      "Forscher",
+      "Entwicklerteam (12)",
+      "UX-Manager",
+      "UX-Leiter",
+      "UX/UI-Designer",
+      "Service-Architekt",
+      "Scrum-Master"
+    ],
+    "my_role": [
+      "Benutzerforschung",
+      "UX/UI-Design",
+      "Produktdenken",
+      "Erzählung"
+    ],
+    "problem": {
+      "admin_pain_points": [
+        "Leistungsänderungen erforderten die Durchführung mehrerer Gehaltsabrechnungszyklen und einen manuellen Abgleich.",
+        "Administratoren hatten keine einfache Möglichkeit, Mitarbeiterdaten abteilungsübergreifend an einem Ort zusammenzufassen.",
+        "Als es zu Anmeldespitzen kam, gab es keine klare Eskalation oder einen Warn-Workflow."
+      ],
+      "user_pain_points": [
+        "Das Hinzufügen neuer Mitarbeiter erforderte Support-Tickets und manuellen Entwicklungsaufwand.",
+        "Daten mussten gesammelt, validiert und teamübergreifend gesendet werden. Änderungen wurden per E-Mail nachverfolgt.",
+        "Keine zentralisierte Governance oder klare Berechtigungsstruktur."
+      ]
+    },
+    "constraints": [
+      "Ein aggressiver Zeitplan.",
+      "Die vorhandenen Muster des Produkts mit den Benutzerbedürfnissen in Einklang bringen, ohne das Erlebnis zu beeinträchtigen."
+    ],
+    "methodology": {
+      "name": "Design Thinking",
+      "steps": [
+        {
+          "step": 1,
+          "label": "Mitfühlen",
+          "description": "Benutzerinterviews und Stakeholder-Sitzungen"
+        },
+        {
+          "step": 2,
+          "label": "Definieren",
+          "description": "Problem-Framing und Pain-Point-Mapping"
+        },
+        {
+          "step": 3,
+          "label": "Ideen entwickeln",
+          "description": "Abläufe, Architektur und Wireframing"
+        },
+        {
+          "step": 4,
+          "label": "Prototyp",
+          "description": "Hi-Fi-Bildschirme und interaktive Prototypen"
+        },
+        {
+          "step": 5,
+          "label": "Test",
+          "description": "Hotjar-Analyse nach dem Start"
+        }
+      ]
+    },
+    "design_strategy": [
+      "Definieren Sie die zugrunde liegende Architektur und Logik, bevor Sie die Benutzeroberfläche ändern.",
+      "Finden Sie heraus, welche Teile des Systems gut funktionieren, und bauen Sie darauf auf.",
+      "Da es kein Designsystem gab, stellte die Zusammenarbeit mit dem Entwicklungsteam sicher, dass die nach vorne gerichtete Benutzeroberfläche durchgehend kohärent blieb."
+    ],
+    "reflections": [
+      {
+        "title": "Architektur vor UI.",
+        "body": "Der Zeitaufwand für die Zuordnung des Berechtigungsmodells vor dem Entwerfen von Bildschirmen verhinderte kostspielige Nacharbeiten. Die Logik musste wasserdicht sein, bevor sich ein Pixel bewegte."
+      },
+      {
+        "title": "Vertrauen durch Zwänge.",
+        "body": "Das Arbeiten ohne Designsystem erzwang eine enge Zusammenarbeit mit Ingenieuren. Durch ständige Synchronisierungen blieb die Benutzeroberfläche zusammenhängend und die Übergabe reibungslos, auch unter Zeitdruck."
+      }
+    ],
+    "nda_notice": "Teile dieser Präsentation, einschließlich einiger Bildschirme und Projektdetails, wurden aufgrund einer mit dem Kunden unterzeichneten Vertraulichkeitsvereinbarung geschwärzt oder unkenntlich gemacht. Die gezeigte Arbeit ist echt; Um die Privatsphäre des Kunden zu schützen, werden sämtliche Details zurückgehalten.",
+    "password": null,
+    "external_link": null
+  },
+  {
+    "slug": "nayya-ai-benefits",
+    "status": "published",
+    "featured": true,
+    "order": 1,
+    "title": "Nayya-Integration",
+    "company": "Nayya",
+    "client_context": "Paychex via ITX Corp",
+    "role": "Leitender Produktdesigner",
+    "year": 2025,
+    "duration": "6 Monate",
+    "industry": "KI-Vorteile / HR SaaS",
+    "tagline": "Entwickelte die Integration von Nayya als KI-gestütztes Leistungstool, das die Mitarbeiter dabei unterstützt, eine Deckung zu wählen, die ihren Bedürfnissen entspricht.",
+    "tags": [
+      "VORTEILE / SICHERHEIT SAAS",
+      "UX-Forschung",
+      "IA",
+      "Interaktionsdesign",
+      "Designsysteme"
+    ],
+    "tools": [
+      "Figma",
+      "Jira",
+      "Miro",
+      "Webex",
+      "Outlook",
+      "Copilot",
+      "Hotjar"
+    ],
+    "filters": [
+      "UX Research",
+      "Product Design",
+      "AI Product"
+    ],
+    "images": {
+      "cover": "/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png",
+      "hero": "/images/projects/nayya-ai-benefits/hero/nayya-hero.png",
+      "gallery": []
+    },
+    "client_logos": [
+      {
+        "name": "Nayya",
+        "logo": "/images/bBw3A.png"
+      },
+      {
+        "name": "Paychex",
+        "logo": "/images/c54fy.png"
+      }
+    ],
+    "metrics": [
+      {
+        "value": "307 %",
+        "label": "IRR",
+        "context": "Prognostizierter ROI, geschätzte Rendite aus erhöhter Planaufnahme (NPV 11,4 Mio. USD)."
+      },
+      {
+        "value": "~115.500",
+        "label": "Jährliche Leistungen",
+        "context": "Die abgeschlossenen Registrierungen lagen 5 % über dem 100.000-Ziel."
+      },
+      {
+        "value": "67 %",
+        "label": "Conversion-Rate",
+        "context": "Benutzer, die Nayya-Empfehlungen erhalten haben, die ihren Bedürfnissen entsprechen, und sich für einen Plan angemeldet haben."
+      }
+    ],
+    "team": [
+      "UX-Leiter",
+      "Inhaltsdesigner",
+      "Produktinhaber",
+      "Business-Analyst",
+      "Lösungsvorschläge"
+    ],
+    "my_role": [
+      "UX-Strategie",
+      "Integration UX",
+      "Benutzerforschung",
+      "Produktdenken"
+    ],
+    "problem": {
+      "admin_pain_points": [
+        "Eine nahtlose eingebettete Integration zwischen Flex und Nayya Choose war aufgrund der technischen Einschränkungen nicht möglich.",
+        "Das Team musste während eines sensiblen Entscheidungsprozesses einen Ausgleich zwischen geschäftlichem Nutzen, technischen Einschränkungen und Benutzervertrauen finden."
+      ],
+      "user_pain_points": [
+        "Die Mitarbeiter benötigten mehr Unterstützung bei der Auswahl von Leistungen und der Auswahl eines Versicherungsschutzes, der ihren Bedürfnissen entsprach.",
+        "Benutzer müssten Flex verlassen und in einem separaten Erlebnis auf Nayya Choose zugreifen.",
+        "Der Übergang erforderte eine klarere Kommunikation, einen stärkeren Kontext und visuelle Hinweise, die der Übergabe das Gefühl gaben, beabsichtigt und vertrauenswürdig zu sein."
+      ]
+    },
+    "constraints": [
+      "Eine nahtlose eingebettete Integration zwischen Flex und Nayya Choose war technisch nicht machbar.",
+      "Das Projekt verlief innerhalb eines aggressiven Zeitplans mit erheblichen technischen Einschränkungen.",
+      "Die Erfahrung musste das Vertrauen der Benutzer bei der Entscheidungsfindung über Vorteile schützen."
+    ],
+    "methodology": {
+      "name": "Research & Discovery",
+      "steps": [
+        {
+          "step": 1,
+          "label": "Verstehen",
+          "description": "Klärung des Weges zur Leistungsauswahl und der Rolle von Nayya Choose bei der Entscheidungsunterstützung."
+        },
+        {
+          "step": 2,
+          "label": "Definieren",
+          "description": "Identifizierte den möglichen Integrationspfad zwischen Flex und dem externen Nayya-Erlebnis."
+        },
+        {
+          "step": 3,
+          "label": "Ausrichten",
+          "description": "Zusammenarbeit mit den Lösungsleitern, Produktentwicklern, Geschäftsanalysten und Entwicklern."
+        },
+        {
+          "step": 4,
+          "label": "Validieren",
+          "description": "Empfohlene Benutzertests, um Bedenken zu verstehen, bevor die Übergabe abgeschlossen wird."
+        },
+        {
+          "step": 5,
+          "label": "Messen",
+          "description": "Verwendete Anmeldeverhalten und Umsatzprognosen, um die Auswirkungen zu bewerten."
+        }
+      ]
+    },
+    "design_strategy": [
+      "Definieren Sie einen realistischen Integrationspfad, anstatt ein eingebettetes Erlebnis zu erzwingen, das die Plattform nicht unterstützen konnte.",
+      "Nutzen Sie Kommunikation und visuelle Hinweise, um zu erklären, wohin die Benutzer gingen, warum der Übergang wichtig war und wie Nayya Choose ihre Leistungsentscheidungen unterstützte.",
+      "Schützen Sie die Kontinuität zwischen Flex und Nayya Choose, indem Sie dafür sorgen, dass sich die Übergabe bewusst, vertrauenswürdig und auf den umfassenderen Registrierungsprozess abgestimmt anfühlt."
+    ],
+    "reflections": [
+      {
+        "title": "Entwerfen unter Einschränkungen.",
+        "body": "Das Entwerfen unter technischen Einschränkungen bedeutet nicht, dass das Erlebnis beeinträchtigt wird. Es bedeutet, innerhalb der vorgegebenen Grenzen den effektivsten Weg zu finden."
+      },
+      {
+        "title": "Früh testen, früh beheben.",
+        "body": "Benutzertests, selbst in kleinem Maßstab, bringen die Entscheidungen zum Vorschein, die am wichtigsten sind, bevor es teuer wird, sie zu beheben."
+      },
+      {
+        "title": "Vertrauen ist ein Designproblem.",
+        "body": "Wenn Benutzer Plattformgrenzen überschreiten, sind es Klarheit und Kontext, die sie voranbringen."
+      },
+      {
+        "title": "Einschränkungen erzwingen den Fokus.",
+        "body": "Die Unfähigkeit, Nayya nativ einzubetten, veranlasste das Team dazu, in das Übergangsdesign zu investieren, ein Bereich, der oft übersehen wird, wenn eine nahtlose Integration als offensichtliche Lösung erscheint."
+      }
+    ],
+    "nda_notice": null,
+    "password": null,
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "overview",
+        "type": "overview",
+        "title": "Projektübersicht",
+        "body": ""
+      },
+      {
+        "id": "team-context",
+        "type": "custom",
+        "title": "Team",
+        "body": "Ich habe eng mit dem UX-Leiter und dem Content-Designer zusammengearbeitet, um innerhalb eines engen Zeitrahmens Konsistenz sowohl beim Erlebnis als auch beim Messaging sicherzustellen. Ich habe auch mit dem Product Owner, dem Business Analyst und den Solution Leads zusammengearbeitet, um die vorgeschlagene Erfahrung mit den Geschäftszielen und der technischen Realität in Einklang zu bringen."
+      },
+      {
+        "id": "situation",
+        "type": "custom",
+        "title": "Situation",
+        "body": "Die Mitarbeiter brauchten mehr Unterstützung bei der Auswahl von Leistungen, und Nayya Choose bot eine starke Empfehlungsmaschine an, um sie zu einer relevanteren Abdeckung zu führen.\n\nDas Projekt verlief in einem engen Zeitrahmen und war mit erheblichen technischen Einschränkungen verbunden. Eine nahtlose eingebettete Integration zwischen Flex und Nayya Choose war nicht möglich."
+      },
+      {
+        "id": "task",
+        "type": "custom",
+        "title": "Aufgabe",
+        "body": "Ich war dafür verantwortlich, dabei zu helfen, den besten Integrationspfad zwischen den beiden Plattformen zu definieren und gleichzeitig das Benutzererlebnis so weit wie möglich zu schützen.\n\nDies bedeutete, während eines sensiblen Entscheidungsprozesses den Geschäftswert, technische Einschränkungen und das Vertrauen der Benutzer abzuwägen."
+      },
+      {
+        "id": "actions",
+        "type": "custom",
+        "title": "Aktionen",
+        "body": "Da eine nahtlose Integration nicht möglich war, haben wir festgestellt, dass Benutzer Flex verlassen und in einem separaten Erlebnis auf Nayya Choose zugreifen müssen.\n\nUm Reibungsverluste zu vermeiden, habe ich dazu beigetragen, Benutzertests zu empfehlen, um Bedenken besser zu verstehen, bevor das Erlebnis finalisiert wird.\n\nDie Untersuchung zeigte, dass Benutzer eine klarere Kommunikation darüber benötigten, wohin sie wollten, warum der Übergang wichtig war, und visuelle Hinweise, die dafür sorgten, dass sich die Übergabe absichtlich und vertrauenswürdig anfühlte."
+      },
+      {
+        "id": "impact",
+        "type": "results",
+        "title": "Auswirkungen",
+        "body": "Die Integration zeigte einen klaren Nutzen für Benutzer, die mit Nayya Choose interagierten. Teilnehmer, die an der Umfrage teilgenommen haben, haben doppelt so viele Leistungen in Anspruch genommen wie diejenigen, die sie ausgelassen haben, und die Arbeit hat zu einem messbaren Wachstum bei den Einnahmen aus Medizin, Zusatzleistungen und PEO beigetragen.",
+        "payload": {
+          "rows": [
+            {
+              "metric": "Jährliches Wachstumsziel – Medizin",
+              "value": "2 %"
+            },
+            {
+              "metric": "Jährliches Wachstumsziel – Nebenprodukte",
+              "value": "8 %"
+            },
+            {
+              "metric": "Medizinisches Wachstum im GJ26",
+              "value": "1 Mio. $"
+            },
+            {
+              "metric": "Nebenwachstum im GJ26",
+              "value": "2 Mio. $"
+            },
+            {
+              "metric": "Auswirkung auf das Gesamtjahr – Flex",
+              "value": "6 Mio. $"
+            },
+            {
+              "metric": "Auswirkungen auf das Gesamtjahr – alle PEO",
+              "value": "10 Millionen US-Dollar"
+            }
+          ],
+          "insights": [
+            "Durchschnittliche Grundpläne pro Teilnehmer (2023–2025): 4,46",
+            "2026",
+            "• Teilnehmer, die Nayya „übersprungen“ haben: 2,57",
+            "• Teilnehmer, die Nayya nur „gestartet“ haben: 4.43",
+            "• Teilnehmer, die Empfehlungen von Nayya erhalten haben: 5,44"
+          ],
+          "opportunities": [
+            "Weniger als 7 % der berechtigten Mitarbeiter haben an einer Nayya-Umfrage teilgenommen, was großes Potenzial für Wachstum lässt.",
+            "Eine Erhöhung der Fertigstellungsrate auf 10 % könnte über 10.000 Pläne hinzufügen und zusätzliche Einnahmen aus PEO-Leistungen in Höhe von 2 bis 7 Millionen US-Dollar generieren.",
+            "Weitere Forschungsmöglichkeiten umfassen eine tiefergehende Analyse des Nayya-Umfrageverhaltens und der Änderungen bei der Einschreibung im Jahresvergleich.",
+            "Mögliche Produkterweiterungsbereiche umfassen 401(k), FinFit und PayActiv-Empfehlungen."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "slug": "flock-accessibility-system",
+    "status": "published",
+    "featured": false,
+    "order": 2,
+    "title": "Flock-Zugänglichkeitsprüfung und Vereinheitlichung des Designsystems",
+    "company": "Flock",
+    "client_context": "Paychex via ITX Corp",
+    "role": "Produktdesigner",
+    "year": 2025,
+    "duration": "6 Monate Audit + 1 Jahr Build",
+    "industry": "Barrierefreiheit / Designsysteme",
+    "tagline": "Leitete eine Prüfung der Barrierefreiheit und half bei der Vereinheitlichung des Designsystems. Dadurch wurden Musterschulden reduziert, das Produkt konsistenter gemacht und die Zusammenarbeit zwischen Design- und Entwicklungsteams verbessert.",
+    "tags": [
+      "Barrierefreiheit",
+      "Designsysteme",
+      "UX-Forschung",
+      "Produktdesign",
+      "Axt",
+      "Designsystem",
+      "Voice-Over"
+    ],
+    "filters": [
+      "Accessibility",
+      "Design Systems",
+      "Product Design"
+    ],
+    "tools": [
+      "Figma",
+      "Jira",
+      "Miro"
+    ],
+    "images": {
+      "cover": "/images/projects/flock-accessibility-system/thumbnails/flock.png",
+      "hero": "/images/projects/flock-accessibility-system/hero/flock-hero.png",
+      "gallery": []
+    },
+    "client_logos": [],
+    "metrics": [
+      {
+        "value": "6 Monate",
+        "label": "Prüfung und Priorisierung",
+        "context": "Erste Barrierefreiheit und Systemüberprüfung"
+      },
+      {
+        "value": "1 System",
+        "label": "Gemeinsames Fundament",
+        "context": "ausgerichtete Muster, Typografie, Symbole und Dialoge"
+      }
+    ],
+    "team": [
+      "1 Designer",
+      "UX-Leiter",
+      "UX-Manager",
+      "Produktinhaber",
+      "Business-Analyst",
+      "3 Entwickler",
+      "Entwicklungsleiter"
+    ],
+    "my_role": [
+      "Leiter der Prüfung der Barrierefreiheit",
+      "Komponentenstrategie",
+      "Designsysteme",
+      "Technische Partnerschaft"
+    ],
+    "problem": {
+      "admin_pain_points": [
+        "Das Produkt hatte ein Risiko hinsichtlich der Zugänglichkeit in allen Kernabläufen und keine ausgereifte gemeinsame Bibliothek, um Probleme systematisch zu beheben.",
+        "Die Teams arbeiteten mit duplizierten Mustern, inkonsistenten Benennungen und fragmentiertem Komponentenverhalten auf allen Seiten.",
+        "Schwache Dokumentation und Unklarheiten bei der Übergabe führten zu Reibungsverlusten bei der Implementierung und erschwerten die Skalierung von Systementscheidungen."
+      ],
+      "user_pain_points": [
+        "Inkonsistente Komponenten machten das Erlebnis von Seite zu Seite weniger vorhersehbar.",
+        "Barrierefreiheitslücken verringerten die Klarheit und Benutzerfreundlichkeit für Personen, die auf eine stärkere Hierarchie, gezielte Behandlung und konsistente Interaktionszustände angewiesen sind.",
+        "Dialogen, Symbolen, Typografie und Reaktionsverhalten fehlten genügend gemeinsame Regeln, um im gesamten Produkt einen einheitlichen Eindruck zu hinterlassen."
+      ]
+    },
+    "constraints": [
+      "Verbesserungen der Barrierefreiheit mussten vorgenommen werden, während das Produkt live war und bereits über mehrere Seiten und Muster fragmentiert war.",
+      "Es gab kein vollständig ausgereiftes Designsystem, daher mussten Prüfungsarbeit und Systemdefinition gemeinsam voranschreiten.",
+      "Das System musste echte technische Einschränkungen, Qualitätssicherung und Implementierungsbereitschaft unterstützen und darf nicht nur eine reine Figma-Aufräumaktion bleiben."
+    ],
+    "methodology": {
+      "name": "Audit to Systemization",
+      "steps": [
+        {
+          "step": 1,
+          "label": "Prüfung",
+          "description": "Auf Barrierefreiheitsprobleme und Komponenten überprüft, die nicht zum System passen."
+        },
+        {
+          "step": 2,
+          "label": "Struktur",
+          "description": "Probleme nach Wichtigkeit gruppiert, um zu sehen, was zuerst behoben werden muss."
+        },
+        {
+          "step": 3,
+          "label": "Systematisieren",
+          "description": "Es wurden klare Muster, Zustände und Regeln für die Funktionsweise von Komponenten erstellt."
+        },
+        {
+          "step": 4,
+          "label": "Ausrichten",
+          "description": "Arbeitete mit Entwicklern zusammen, um sicherzustellen, dass Designs in React korrekt erstellt werden konnten."
+        },
+        {
+          "step": 5,
+          "label": "Validieren",
+          "description": "Überprüfte Designs und Builds und nutzte Feedback, um die Konsistenz zu verbessern."
+        }
+      ]
+    },
+    "design_strategy": [
+      "Klären Sie Grundlagen, Komponenten, Muster und Module, damit Teams wissen, wann jedes Muster verwendet werden muss und wie es sich verhalten soll.",
+      "Durch die Dokumentation von Mustern, Varianten, Zuständen und Nutzungsregeln wurden Barrierefreiheitskorrekturen von Designsystementscheidungen getrennt.",
+      "Arbeitete eng mit Entwicklern zusammen, um Komponentenentscheidungen an die Realität der Implementierung, die Qualitätssicherungsanforderungen und die Klarheit der Übergabe anzupassen.",
+      "Verwendete Designüberprüfung, Barrierefreiheitsprüfungen und Implementierungsfeedback, um Akzeptanz und Konsistenz zu stärken."
+    ],
+    "reflections": [
+      {
+        "title": "Bei der Benutzerfreundlichkeit geht es darum, zu offenbaren, worauf es ankommt.",
+        "body": "Bei der Benutzerfreundlichkeit geht es nicht um das Entfernen; Es geht darum, zu offenbaren, worauf es ankommt. Dieses Projekt beweist, dass Barrierefreiheit, Leistung und UX sich gegenseitig verstärken, wenn sie als eine Disziplin behandelt werden."
+      }
+    ],
+    "nda_notice": null,
+    "password": null,
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "overview",
+        "type": "overview",
+        "title": "Übersicht",
+        "body": ""
+      },
+      {
+        "id": "team-context",
+        "type": "custom",
+        "title": "Team",
+        "body": "Ich leitete das Audit-Framework, definierte, welche Muster konsolidiert werden mussten, und arbeitete mit der Technik zusammen, um zu klären, wie sich Komponenten beim Build verhalten sollten. Ich habe mit einem anderen Designer zusammengearbeitet, in Zusammenarbeit mit einem UX Lead, UX Manager, Product Owner, Business Analyst, drei Entwicklern und einem Dev Lead."
+      },
+      {
+        "id": "situation",
+        "type": "custom",
+        "title": "Situation",
+        "body": "Das Fehlen eines Designsystems führte dazu, dass sich Symbole, Typografie, Dialoge, wiederholte Schnittstellenmuster, inkonsistentes Komponentenverhalten und wiederverwendbare UI-Muster im Laufe der Zeit verändert hatten.\n\nDies führte zu Schwierigkeiten bei der Implementierung, beeinträchtigte die Barrierefreiheit, machte Übergaben weniger zuverlässig und erhöhte die Kosten für die Aufrechterhaltung der Konsistenz des Erlebnisses."
+      },
+      {
+        "id": "task",
+        "type": "custom",
+        "title": "Aufgabe",
+        "body": "Meine Aufgabe bestand darin, Erkenntnisse zur Barrierefreiheit und Inkonsistenzen in der Benutzeroberfläche in eine klare Systemrichtung umzuwandeln, um wiederverwendbare Muster zu definieren, die Design und Technik übernehmen konnten.\n\nDa das Produkt erst kürzlich erworben wurde, bestand das Ziel darin, seine visuelle Identität beizubehalten und gleichzeitig die Konsistenz und Benutzerfreundlichkeit durch ein besser skalierbares, React-basiertes System zu verbessern.\n\nErfolg bedeutete, doppelte Muster zu reduzieren, das Produkt zu verbessern, die Übergabeerwartungen zu klären und stärkere Leitlinien zur Barrierefreiheit für zukünftige Arbeiten zu schaffen."
+      },
+      {
+        "id": "actions",
+        "type": "custom",
+        "title": "Aktionen",
+        "payload": {
+          "items": [
+            "Ich habe ein Audit-Framework erstellt, das Probleme nach Schweregrad, Systemauswirkungen und Implementierungskomplexität gruppiert und gleichzeitig Zugänglichkeitsbefunde, Systeminkonsistenzen und technische Einschränkungen trennt, um eine klarere Entscheidungsfindung zu ermöglichen.",
+            "Ich habe Grundlagen und gemeinsame Muster für Symbole, Typografie, Dialoge und Komponenten überprüft, um herauszufinden, wo Zustände, Varianten, Benennung und Reaktionsverhalten standardisiert werden müssen. Darauf aufbauend habe ich in Figma wiederverwendbare Muster und klarere Anleitungen definiert, um Mehrdeutigkeiten zu reduzieren und die Übergabekonsistenz zu verbessern.",
+            "Ich habe auch während der Überprüfung und Qualitätssicherung eng mit Entwicklern zusammengearbeitet, um Muster an reale technische Einschränkungen anzupassen und zu bestätigen, dass die vorgeschlagenen Systementscheidungen beim Build funktionierten."
+          ]
+        }
+      },
+      {
+        "id": "impact",
+        "type": "results",
+        "title": "Produkt-/Systemergebnisse",
+        "body": "Das Projekt schuf eine klarere Systemgrundlage für Zugänglichkeit, Wiederverwendung von Komponenten und Konsistenz der Implementierung. Da bestätigte Geschäftskennzahlen nicht gespeichert wurden, werden die Ergebnisse durch Produkt-, System- und Liefersignale umrahmt.",
+        "payload": {
+          "rows": [
+            {
+              "metric": "Zugänglichkeitsrisiko",
+              "value": "Abgesenkt"
+            },
+            {
+              "metric": "Musterschulden",
+              "value": "Reduziert"
+            },
+            {
+              "metric": "Klarheit bei der Übergabe",
+              "value": "Stärker"
+            }
+          ],
+          "insights": [
+            "Das Audit machte den Schweregrad und die Priorisierung sichtbar, was dem Team dabei half, strukturelle Barrierefreiheitsprobleme anstelle isolierter UI-Korrekturen anzugehen.",
+            "Gemeinsame Anleitungen für Symbole, Typografie, Dialoge und wiederverwendbare Muster reduzierten Inkonsistenzen und gaben dem System eine klarere Informationsquelle.",
+            "Durch die Definition von Zuständen, Varianten und Nutzungsregeln wurden Unklarheiten zwischen Entwurf und Technik reduziert und die Qualität der Implementierungsgespräche verbessert."
+          ],
+          "projected": [
+            "Ein klarerer Einführungspfad für wiederverwendbare Komponenten, Muster und Module.",
+            "Zuverlässigere Übergabe und Qualitätssicherung, da Hinweise zur Barrierefreiheit und Nutzungshinweise dokumentiert sind.",
+            "Geringeres Risiko bei zukünftigen Überprüfungen der Barrierefreiheit, indem Probleme systematisch und nicht Seite für Seite behandelt werden.",
+            "Die Musterkonsistenz hilft Benutzern, die Interaktionen auf den Seiten zu verstehen."
+          ],
+          "successMetrics": [
+            "Reduzierung doppelter oder widersprüchlicher Komponentenmuster.",
+            "Verbesserte Komponentenzustände, Varianten und Reaktionsverhalten bei wiederverwendeten Modulen.",
+            "Weniger Implementierungsfragen während der Übergabe und Qualitätssicherung.",
+            "Barrierefreiheitsprobleme wurden vor der Veröffentlichung identifiziert und nach Schweregrad behoben."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "slug": "i9-everify-integration",
+    "status": "published",
+    "featured": false,
+    "order": 3,
+    "title": "I-9 und E-Verify-Integration",
+    "company": "Paychex Flex",
+    "client_context": "Paychex via ITX Corp",
+    "role": "Leitender Produktdesigner",
+    "year": 2024,
+    "duration": "Ungefähr 3 Jahre",
+    "industry": "HR Compliance / Onboarding SaaS",
+    "tagline": "Die I-9- und E-Verify-Integration für Flex wurde neu gestaltet, wodurch die Fertigstellungszeit nach dem Start von 69 % auf 81 % erhöht und die Fertigstellungszeit um 26 % verkürzt wurde.",
+    "tags": [
+      "UX-Forschung",
+      "Produktdesign",
+      "Workflow-Design",
+      "Compliance"
+    ],
+    "filters": [
+      "UX Research",
+      "Product Design",
+      "Compliance"
+    ],
+    "tools": [
+      "Figma",
+      "Jira",
+      "Miro",
+      "Webex",
+      "Outlook",
+      "Copilot"
+    ],
+    "images": {
+      "cover": "/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png",
+      "hero": "/images/projects/i9-everify-integration/hero/i9-banner.png",
+      "gallery": []
+    },
+    "client_logos": [
+      {
+        "name": "Paychex",
+        "logo": "/images/c54fy.png"
+      }
+    ],
+    "metrics": [
+      {
+        "value": "76 %",
+        "label": "der Flex-Kunden verfügte nicht über einen konformen I-9-Workflow"
+      },
+      {
+        "value": "26",
+        "label": "Erkundungs- und Testrunden"
+      },
+      {
+        "value": "2.548",
+        "label": "Umfrageantworten nach der ersten Veröffentlichung"
+      }
+    ],
+    "team": [
+      "Produktinhaber",
+      "Programmmanager",
+      "Business-Analyst",
+      "Forscher",
+      "Entwicklerteam (12)",
+      "UX-Manager",
+      "UX-Leiter",
+      "UX/UI-Designer",
+      "Service-Architekt",
+      "Scrum Master"
+    ],
+    "my_role": [
+      "Benutzerforschung",
+      "UX/UI-Design",
+      "Produktdenken",
+      "Erzählung"
+    ],
+    "problem": {
+      "admin_pain_points": [
+        "Kunden verließen sich häufig auf manuelle Prozesse oder benutzerdefinierte Off-Plattform-Lösungen, um I-9- und E-Verify-Anforderungen zu verwalten.",
+        "Administratoren benötigten eine klarere Statusverfolgung, Dokumentenzugriff, Transparenz bei der Lieferantenübergabe und eine transaktionsbasierte Abrechnung im Zusammenhang mit dem Onboarding.",
+        "Die Erfahrung musste mehrere Benutzerrollen, zukünftige Skalierbarkeit und Compliance-gesteuerte Arbeitsabläufe unterstützen."
+      ],
+      "user_pain_points": [
+        "Neue Mitarbeiter müssen im Rahmen des Onboardings Abschnitt 1 des Formulars I-9 ausfüllen, ohne das Gefühl zu haben, von der Flex-Erfahrung abgekoppelt zu sein.",
+        "Benutzer brauchten stärkere Hinweise, bevor sie Flex für das externe HIREtech-Erlebnis verließen.",
+        "Mitarbeiter und Administratoren benötigten klarere Zuständigkeiten, Fortschrittsstatus, Abschluss-Feedback und Folgemaßnahmen."
+      ]
+    },
+    "constraints": [
+      "Der Workflow hing von HIREtech ab, einem Drittanbieter außerhalb von Flex.",
+      "Das Design musste Mitarbeiter- und Administratorreisen, Compliance-Einschränkungen, Lieferantenumleitungen, Abrechnungsanforderungen und Statusverfolgung berücksichtigen.",
+      "Das Produkt musste für gemeinsam genutzte Mitarbeiter, gleiche FEIN-Clients, White-Label-Unterstützung und Migration bestehender I-9-Dokumente skalierbar sein."
+    ],
+    "methodology": {
+      "name": "Design Thinking",
+      "steps": [
+        {
+          "step": 1,
+          "label": "Forschung",
+          "description": "Führte Designuntersuchungen und Tests über Benutzerreisen hinweg durch."
+        },
+        {
+          "step": 2,
+          "label": "Karte",
+          "description": "Zugeordnet, wo der Workflow in Flex beginnen sollte und wo Benutzer zu HIREtech wechseln würden."
+        },
+        {
+          "step": 3,
+          "label": "Ausrichten",
+          "description": "I-9 wurde mit bekannten Onboarding-Aufgabenmustern wie W-4 und Direkteinzahlung abgeglichen."
+        },
+        {
+          "step": 4,
+          "label": "Klären",
+          "description": "Definierte Übergabemomente, Statussichtbarkeit, Aufgabeneigentümerschaft und Abschluss-Feedback."
+        },
+        {
+          "step": 5,
+          "label": "Maßstab",
+          "description": "Berücksichtigung zukünftiger Anforderungen, einschließlich gemeinsamer Arbeitskräfte, derselben FEIN-Clients, White-Label-Unterstützung und Dokumentenmigration."
+        }
+      ]
+    },
+    "design_strategy": [
+      "Verwenden Sie klarere Übergabenachrichten, Fortschrittsstatus und Abschluss-Feedback, um Verwirrung im Zusammenhang mit der externen HIREtech-Erfahrung zu reduzieren."
+    ],
+    "reflections": [
+      {
+        "title": "Was funktioniert hat.",
+        "body": "Durch die Verankerung eines Compliance-intensiven Workflows in vertrauten Onboarding-Mustern fühlte sich I-9 eher wie eine native Komponente des Produkts an und nicht als eine aufgeschraubte Aufgabe. Ein einziger Usability-Test mit 7 Benutzern reichte aus, um eine Produktentscheidung zu ändern und ein besseres Erlebnis zu gewährleisten, Daten schlagen Meinung. Durch die Kombination iterativer Tests mit einer klaren Übergabestrategie wurde eine stärkere Grundlage für Benutzerfreundlichkeit und Geschäftswachstum geschaffen."
+      },
+      {
+        "title": "Was ich anders machen würde.",
+        "body": "Richten Sie die Ausrichtung mit Drittanbietern früher ein. Das Warten auf die Compliance-Validierung durch HIREtech führte zu Nacharbeit und verlangsamte Design-Iterationen. Eine schnellere Umsetzung von Compliance-Inhaltsentscheidungen durch die Festlegung klarerer Genehmigungskontrollpunkte im Vorfeld, anstatt im Kreis zu iterieren, hätte Zeit gespart."
+      },
+      {
+        "title": "Was dadurch freigeschaltet wurde.",
+        "body": "Das Projekt hat ein fehlendes Muster in Flex für die Kommunikation von Drittanbieterübergängen an Benutzer aufgedeckt. Durch die Lösung dieses Problems wurde ein wiederverwendbares Transparenzmuster erstellt, das ein systemisches Problem behebt, das mehrere Integrationen auf der Plattform betrifft."
+      }
+    ],
+    "nda_notice": null,
+    "password": null,
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "situation",
+        "type": "custom",
+        "title": "Situation",
+        "body": "Flex-Kunden erfüllten die I-9- und E-Verify-Anforderungen außerhalb der Plattform und verließen sich dabei auf manuelle Koordination, plattformunabhängige Tools und Nachverfolgung durch den Administrator, um Compliance-Lücken zu schließen.\n\nRund 76 % der Benutzer waren betroffen, was zu inkonsistenten Abschlussraten, einem höheren Fehlerrisiko und einem erhöhten Supportaufwand in allen Einstellungsabläufen führte.\n\nOhne einen nativen Workflow gab es keine zuverlässige Möglichkeit, den Status zu verfolgen, den Besitz zu bestätigen oder sicherzustellen, dass die Compliance rechtzeitig abgeschlossen wurde."
+      },
+      {
+        "id": "task",
+        "type": "custom",
+        "title": "Aufgabe",
+        "body": "",
+        "payload": {
+          "items": [
+            "War als alleiniger Designer für den End-to-End-UX-Prozess verantwortlich, von der Recherche bis zur endgültigen Übergabe.",
+            "Entwickelt sowohl für die Mitarbeiterreise (Abschnitt 1) ​​als auch für die Verwaltungsreise (Abschnitt 2 und Statusverfolgung).",
+            "I-9 und E-Verify in Flex integriert, ohne das bestehende Onboarding-Erlebnis zu fragmentieren.",
+            "Moderation einer Arbeitssitzung mit BAs, Ingenieuren und Produktleitern, um offene Fragen, Integrationsbeschränkungen und Lücken bei Drittanbietern mit HIREtech aufzudecken."
+          ]
+        }
+      },
+      {
+        "id": "alternatives",
+        "type": "custom",
+        "title": "Alternativen untersucht",
+        "body": "",
+        "payload": {
+          "subtitle": "",
+          "items": []
+        }
+      },
+      {
+        "id": "research",
+        "type": "custom",
+        "title": "Die Lösung",
+        "body": "",
+        "payload": {
+          "items": [],
+          "delivery_items": [
+            "Lieferte detaillierte Designspezifikationen für die Entwicklung, einschließlich Verhaltensweisen, Inhaltsbeispielen, Komponentendefinitionen und Randfalldokumentation.",
+            "Entwickelte E-Mail-Kommunikation zur Ankündigung der neuen Integration und zur Nachverfolgung bei Benutzern, die den I-9-Prozess nicht abgeschlossen haben.",
+            "Erstellte Übergaberichtlinien, die dokumentieren, wie die Flex-zu-HIREtech-Integration den Benutzern kommuniziert wurde, einschließlich Weiterleitungsnachrichten, Fortschrittsstatus und Abschluss-Feedback."
+          ]
+        }
+      },
+      {
+        "id": "actions",
+        "type": "custom",
+        "title": "Aktionen",
+        "body": "",
+        "payload": {
+          "items": []
+        }
+      },
+      {
+        "id": "impact",
+        "type": "results",
+        "title": "Ergebnis",
+        "body": "",
+        "payload": {
+          "rows": [
+            {
+              "metric": "Aufgabenerledigungsrate des Mitarbeiters",
+              "value": "12 %"
+            },
+            {
+              "metric": "Durchschnittliche Zeit für die Aufgabe",
+              "value": "−26 %"
+            },
+            {
+              "metric": "Zögern umleiten",
+              "value": "−13 %"
+            },
+            {
+              "metric": "Statusinterpretationsfehler",
+              "value": "−9 %"
+            },
+            {
+              "metric": "Benutzervertrauensbewertung",
+              "value": "0,8"
+            }
+          ],
+          "insights": [
+            "Aufgabenabschlussrate: 69 % (frühes Konzept) bis 81 % (verfeinertes Konzept).",
+            "Durchschnittliche Zeit für die Aufgabe: 4 Min. 12 Sek. bis 3 Min. 06 Sek.",
+            "Das Weiterleitungszögern wurde von 46 % auf 33 % verringert.",
+            "Statusinterpretationsfehler von 31 % auf 22 % gesunken.",
+            "Der Benutzervertrauenswert wurde von 3,2/5 auf 4,0/5 verbessert.",
+            "Basislinie der manuellen Prozessabhängigkeit bei 60–70 % festgelegt; Das Ziel für das Post-Launch-Tracking liegt bei unter 25 %.",
+            "2.548 Umfrageantworten nach der ersten Veröffentlichung bestätigten, dass die integrierte Richtung funktionierte."
+          ],
+          "opportunities": [
+            "Mitarbeiter, die mitten im Prozess ausschieden, hatten keine Möglichkeit, den Fortschritt zu speichern, was zu einem Abbruchrisiko und unvollständigen I-9-Einreichungen führte.",
+            "Das Hinzufügen des Formularspeicherstatus könnte die Abschlussraten direkt verbessern und die Nachverfolgung durch den Administrator für nicht abgeschlossene Fälle reduzieren.",
+            "Bei Tests wurde eine inhaltliche Fehlausrichtung zwischen HIREtech und Flex festgestellt; Aktualisierte Kommunikationsrichtlinien wurden übermittelt und warten auf die Bestätigung durch HIREtech.",
+            "Das für diese Integration entwickelte Transparenzmuster öffnet die Tür zur Anwendung derselben Übergabestrategie auf andere Workflows von Drittanbietern in Flex."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "slug": "protecta",
+    "status": "published",
+    "featured": false,
+    "order": 6,
+    "title": "Marken-, Website- und Kampagneneinführung",
+    "company": "Protecta Advisory",
+    "client_context": "Protecta Advisory",
+    "role": "Designingenieur",
+    "year": 2026,
+    "duration": "72 % schnellere Website-Bereitstellung",
+    "industry": "Versicherung / Beratung",
+    "tagline": "Entwickelte eine Kampagne zur Sensibilisierung für Versicherungen und einen Conversion-Pfad, der die Reichweite in sozialen Medien in direkte WhatsApp-Anfragen und qualifizierte Beratungsmöglichkeiten umwandelt.",
+    "tags": [
+      "KI-Produkt",
+      "Produktdesign",
+      "Markenstrategie",
+      "Inhaltsdesign",
+      "Barrierefreiheit",
+      "Lokalisierung"
+    ],
+    "filters": [
+      "AI Product",
+      "Product Design",
+      "Accessibility"
+    ],
+    "tools": [
+      "NotebookLM",
+      "Claude",
+      "Figma AI",
+      "Codex",
+      "Claude Code",
+      "Storybook",
+      "Grammarly",
+      "Vercel"
+    ],
+    "images": {
+      "cover": "/images/projects/protecta/thumbnails/protectabanner.png",
+      "hero": "/images/projects/protecta/hero-banner.png",
+      "gallery": [
+        "/images/projects/protecta/screenshots/protecta-home-desktop.png",
+        "/images/projects/protecta/screenshots/protecta-home-mobile.png"
+      ]
+    },
+    "client_logos": [],
+    "metrics": [
+      {
+        "value": "72 %",
+        "label": "Schnellere Website-Bereitstellung",
+        "context": "KI-gestützter Workflow für Marke, zweisprachige Inhalte, Website-Design und -Erstellung, Qualitätssicherung und Einführung."
+      },
+      {
+        "value": "98 %",
+        "label": "Reichweite für neue Zielgruppen",
+        "context": "Aufrufe von Nicht-Followern in den ersten 28 Tagen der Kampagne."
+      },
+      {
+        "value": "WCAG 2.1 AA",
+        "label": "Barrierefreiheitsziel",
+        "context": "Während des Builds wurden in Storybook Barrierefreiheitsprüfungen auf Komponentenebene durchgeführt."
+      }
+    ],
+    "team": [
+      "Solo-Designer",
+      "Kundenberater",
+      "Kundengründer für endgültige Genehmigungen"
+    ],
+    "my_role": [
+      "UX/UI-Designer",
+      "Markenstratege",
+      "Content-Stratege und Autor",
+      "Produktinhaber",
+      "Entwickler",
+      "QS-Ingenieur",
+      "Zweisprachiger Lokalisierungsleiter"
+    ],
+    "problem": {
+      "admin_pain_points": [
+        "Protecta hatte ein klares Servicemodell und eine starke Empfehlungsmaschine, aber kein Markensystem, keine Live-Site und keine strukturierten Inhalte zur Wachstumsunterstützung.",
+        "Das Überweisungsprogramm, das Beratungsmodell und der WhatsApp-Kontaktpfad mussten alle klar und deutlich erklärt werden, sodass sie für Familien, die sensible Versicherungsentscheidungen treffen, vertrauenswürdig wirken."
+      ],
+      "user_pain_points": [
+        "Interessenten brauchten eine herzlichere, menschlichere Alternative zu dem Callcenter-Erlebnis, das sie normalerweise mit Versicherungs-Websites assoziieren.",
+        "Spanischsprachige Familien brauchten Inhalte, die sich heimisch und kulturell natürlich anfühlen und nicht wie eine direkte Übersetzung einer englischsprachigen Website.",
+        "Besucher brauchten ein klares Verständnis des Empfehlungsprogramms und einen einfachen Weg, um reibungslos mit den Beratern in Kontakt zu treten."
+      ]
+    },
+    "constraints": [
+      "Eine komprimierte Zeitleiste für Strategie, Marke, Inhalt, Design, Build, Qualitätssicherung und Bereitstellung.",
+      "Kein bestehendes Markensystem, keine vorherige Website und keine zur Veröffentlichung bereiten Inhalte.",
+      "Keine direkte Benutzerrecherche in der Timeline; Beraterinterviews und Kundenwissen fungierten als Proxy-Benutzersignal."
+    ],
+    "methodology": {
+      "name": "AI-Augmented Delivery Workflow",
+      "steps": [
+        {
+          "step": 1,
+          "label": "Aufnahme",
+          "description": "Führen Sie einen strukturierten Kundenanruf und einen Fragebogen durch, um die Bedürfnisse der Zielgruppe, den Verkaufsfluss, Einwände, Empfehlungsmechanismen und den Ton als Quelle der Wahrheit zu erfassen."
+        },
+        {
+          "step": 2,
+          "label": "Forschung",
+          "description": "Verwendete NotebookLM, um Branchenmuster, Wettbewerbspositionierung, zweisprachige Versicherungsnormen und strukturelle Möglichkeiten schnell zu synthetisieren."
+        },
+        {
+          "step": 3,
+          "label": "Marke",
+          "description": "Verwendete Claude Design für den ersten visuellen Entwurf, wählte dann die stärksten Richtungen aus und iterierte sie basierend auf Recherche, Struktur und Designurteil."
+        },
+        {
+          "step": 4,
+          "label": "Schreiben",
+          "description": "Benutzte Claude für erste Textentwürfe, schrieb dann die Nachrichtenhierarchie neu und passte den spanischen Inhalt nativ an."
+        },
+        {
+          "step": 5,
+          "label": "Design",
+          "description": "Habe Figma AI verwendet, um die ausgewählte Richtung in eine wiederverwendbare Komponentenbibliothek umzuwandeln, und habe dann die Homepage und die internen Seiten mit diesen Komponenten, Varianten und zweisprachigen Zuständen iteriert."
+        },
+        {
+          "step": 6,
+          "label": "Bauen",
+          "description": "Verwendete die Figma-Komponentenbibliothek als Implementierungsreferenz. Generiertes Gerüst mit Codex, Fertigstellung der Implementierungsdetails mit Claude Code und Feinabstimmung des Ergebnisses in eine Ausgabe in Produktionsqualität."
+        },
+        {
+          "step": 7,
+          "label": "Validieren",
+          "description": "Habe die Figma-Bibliothek und die codierten Komponenten aufeinander abgestimmt, Implementierungszustände in Storybook dokumentiert, die Zugänglichkeit anhand von WCAG 2.1 AA überprüft und das funktionierende Produkt zur Kundenüberprüfung an Vercel bereitgestellt."
+        }
+      ]
+    },
+    "design_strategy": [
+      "Das Projekt orientierte sich an einer zentralen Entscheidung: Verwendung von KI zur Komprimierung der Forschung, zum Kopieren von Gerüsten und zur Beschleunigung des Aufbaus, während das Designurteil dem Markenton, der Hierarchie, der Zugänglichkeit und vertrauensbildenden Momenten vorbehalten bleibt.",
+      "Da das Alleinstellungsmerkmal von Protecta die von Menschen geführte, ganzjährige Beratung ist, musste die Website warm und glaubwürdig wirken und nicht auf eine generische Insurtech-Art aufpoliert werden.",
+      "Bei der zweisprachigen Strategie stand die Übersetzung nicht im Vordergrund. Englische und spanische Inhalte wurden als parallele Sprachsysteme gestaltet, sodass sich jeder Publikumspfad beabsichtigt anfühlte.",
+      "Ich habe die Live-Site und kein statisches Design-Deck als Überprüfungsartefakt behandelt. Dadurch veränderte sich die Qualität des Kundenfeedbacks, da der Kunde ein Arbeitserlebnis auf echten Geräten bewertete."
+    ],
+    "reflections": [
+      {
+        "title": "KI ist am besten bei der Komprimierung, nicht bei der Urheberschaft.",
+        "body": "Der größte Gewinn ergab sich aus der Komprimierung der Forschungssynthese, der Erstentwurfskopie und des Code-Gerüsts. Markenurteil, Hierarchie und Vertrauenssignale erforderten immer noch einen Designer, der die Entscheidungen traf."
+      },
+      {
+        "title": "Lokalisierung ist eine Designentscheidung.",
+        "body": "Die spanische Erfahrung erforderte eine kulturelle Anpassung, keine wörtliche Übersetzung. Das veränderte den Ton, die Formulierung und die Art und Weise, wie Beruhigung in der Benutzeroberfläche angezeigt wurde."
+      },
+      {
+        "title": "Ein Live-Produkt verändert die Bewertungsqualität.",
+        "body": "Durch das Zeigen einer Arbeitsseite anstelle von Frames wurde das Feedback schneller und fundierter, da der Kunde das reale Erlebnis bewertete, anstatt es sich nur vorzustellen."
+      }
+    ],
+    "nda_notice": null,
+    "password": null,
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "team-context",
+        "type": "custom",
+        "title": "Team",
+        "body": "Ich habe den Auftrag als Solo-Lieferung in sieben Rollen durchgeführt: UX/UI-Design, Markenstrategie, Inhaltsstrategie und -erstellung, Produkteigentum, Entwicklung, Qualitätssicherung und zweisprachige Lokalisierung. Der Kunde intervenierte an den letzten Entscheidungspunkten, anstatt an jeder Zwischenbewertung teilzunehmen."
+      },
+      {
+        "id": "situation",
+        "type": "custom",
+        "title": "Situation",
+        "body": "Protecta ist eine unabhängige Kranken- und Lebensversicherungsberatung, die multikulturelle US-Familien auf Englisch und Spanisch betreut. Ihr Wert liegt in der von Menschen geleiteten, ganzjährigen Beratung, das Gegenteil des in dieser Kategorie üblichen Callcenter-Gefühls.\n\nSie verfügten bereits über eine starke Mundpropaganda und ein Empfehlungsmodell, das Geldanreize zahlt, aber sie verfügten über kein Markensystem, keine Website und keine Content-Architektur, um diesen Wert online klar zu erklären."
+      },
+      {
+        "id": "task",
+        "type": "custom",
+        "title": "Aufgabe",
+        "body": "Stellen Sie eine vollständig gebrandete zweisprachige Website bereit, einschließlich Homepage, internen Seiten, Inhaltsstrategie, Markensystem, Komponentenstruktur, Qualitätssicherung der Barrierefreiheit und Live-Bereitstellung.\n\nDie Website musste das Empfehlungsprogramm erläutern, schnell Vertrauen vermitteln und Interessenten eine unkomplizierte Möglichkeit bieten, die Berater über WhatsApp zu kontaktieren."
+      },
+      {
+        "id": "research",
+        "type": "custom",
+        "title": "Forschung",
+        "body": "Ich habe die Arbeit auf dem 2026 Hispanic Insurance Growth Blueprint, einem Kundenfragebogen und Beraterinterviews gestützt – mit Schwerpunkt auf ACA, Leben und digitale Akquise. Die Beiträge der Berater brachten wiederkehrende Einwände, Vertrauensbedenken und Familienfragen zum Vorschein.\n\nKI beschleunigte die Forschungssynthese, Arbeitsdefinitionen und die Analyse zweisprachiger Muster und Positionierungslücken. Diese Erkenntnisse habe ich in Kampagnenentscheidungen über Zielgruppe, Botschaft, Kanäle und Messung umgesetzt, die Ergebnisse anhand des Quellmaterials validiert und die endgültigen Marken- und Produktanrufe getätigt."
+      },
+      {
+        "id": "actions",
+        "type": "custom",
+        "title": "KI-Ausrichtung",
+        "body": "Ich habe die Arbeit als KI-gestützte Produktionspipeline mit menschlichem Urteilsvermögen bei jeder Übergabe strukturiert. Claude und NotebookLM beschleunigten die Ideenfindung, die Forschungssynthese und die Erstellung des ersten Entwurfs.\n\nClaude Design entwarf die erste visuelle Richtung; Anschließend habe ich die stärksten Ideen in Figma ausgewählt und verfeinert. Mit Figma AI habe ich die wiederverwendbare Komponentenbibliothek und ihre Varianten erstellt, bevor ich sie als Referenz für die codierte Schnittstelle verwendet habe. Codex und Claude Code beschleunigten die Implementierung, während Storybook die implementierten Komponenten dokumentierte und die Qualitätssicherung der Barrierefreiheit unterstützte."
+      },
+      {
+        "id": "impact",
+        "type": "results",
+        "title": "Ergebnis",
+        "body": "Das Ergebnis verbindet eine startbereite zweisprachige Website mit einer Aufklärungskampagne, die darauf abzielt, die Krankenversicherung für Familien verständlich und umsetzbar zu machen. In den ersten 28 Tagen sorgte die Kampagne für bedeutungsvolle organische Entdeckungen, Interaktionen und Traffic bei einem Publikum, das die Seite fast noch nicht kannte.",
+        "payload": {
+          "rows": [
+            {
+              "metric": "Inhaltsansichten",
+              "value": "3,3K"
+            },
+            {
+              "metric": "Einzigartige Zuschauer",
+              "value": "1.436"
+            },
+            {
+              "metric": "Inhaltsinteraktionen",
+              "value": "129"
+            },
+            {
+              "metric": "Linkklicks",
+              "value": "34"
+            },
+            {
+              "metric": "Facebook-Besuche",
+              "value": "55"
+            },
+            {
+              "metric": "Nettoneues folgt",
+              "value": "+12"
+            }
+          ],
+          "insights": [
+            "Berichtszeitraum: 10. Juli – 6. August 2026 (28 Tage).",
+            "98 % der Aufrufe kamen von Nicht-Followern, was zeigt, dass die Bildungskreative weit über das bestehende Publikum hinaus Anklang fand.",
+            "115 von 129 Content-Interaktionen (89 %) stammten von Nicht-Followern, was bestätigt, dass die Kampagne Engagement bei neuen Zielgruppen und nicht nur bei den aktuellen Followern der Seite hervorrief.",
+            "Die ursprünglichen Reichweitenziele wurden übertroffen: Facebook erreichte 1,5.000 bei einem Ziel von 208 (707 %), während Instagram 567 bei einem Ziel von 169 (336 %) erreichte.",
+            "Das Berichtsdiagramm zeigt die stärksten Zuwächse nach der geplanten Einführung im August, ein frühes Signal dafür, dass der organisierte zweisprachige Veröffentlichungsrhythmus funktioniert."
+          ],
+          "projected": [
+            "Verknüpfen Sie Linkklicks und WhatsApp-Anfragen mit einer Lead-Quelle, damit im nächsten Berichtszyklus qualifizierte Konversationen und Konversionen gemessen werden können, nicht nur die Bekanntheit.",
+            "Setzen Sie den zweisprachigen Inhaltsrhythmus rund um saisonale Familiengesundheitsmomente fort und vergleichen Sie Formate, Nachrichten und Veröffentlichungszeiten.",
+            "Ersetzen Sie Stock-Platzhalter durch ein echtes Foto- und Videoshooting mit den Beratern."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "slug": "reversetech",
+    "status": "published",
+    "featured": false,
+    "order": 7,
+    "title": "Reverse Health Funnel-Optimierung und A/B-Tests",
+    "company": "Reverse Health",
+    "client_context": "Paid search acquisition funnel",
+    "role": "Leitender Produktdesigner",
+    "year": 2026,
+    "duration": "Strategie- und Trichteranalyse",
+    "industry": "Gesundheit & Fitness / Wachstumstrichter",
+    "tagline": "Eine Fallstudie zum Wachstum, die Funnel-Erkenntnisse in testbare Designlösungen umwandelt.",
+    "tags": [
+      "Wachstum",
+      "UX-Forschung",
+      "Produktdesign",
+      "Kostenpflichtiger Erwerb",
+      "Trichteroptimierung"
+    ],
+    "filters": [
+      "UX Research",
+      "Product Design"
+    ],
+    "tools": [
+      "Figma",
+      "Google Ads",
+      "Analytics",
+      "Miro",
+      "Notion"
+    ],
+    "images": {
+      "cover": "/images/projects/Reversetech/thumbnails/project-list-card-reversetech.svg",
+      "hero": "/images/projects/Reversetech/figma-screen.png",
+      "gallery": []
+    },
+    "client_logos": [],
+    "metrics": [],
+    "team": [
+      "Wachstumsteam",
+      "Bezahlte Akquisitionsbeteiligte",
+      "Produktdesigner",
+      "Analytics-Partner"
+    ],
+    "my_role": [
+      "Trichterdateninterpretation",
+      "Identifizierung von UX- und Konvertierungsproblemen",
+      "Paywall-Experimentdesign",
+      "Testbarer Entwurfslösungsrahmen"
+    ],
+    "problem": {
+      "admin_pain_points": [
+        "Der Trichter hatte eine End-to-End-Konvertierungsrate von nur 0,63 %, wodurch ein Druck zur schnellen Optimierung entstand, ohne klare Beweise dafür, wo der tatsächliche Zusammenbruch auftrat.",
+        "Da die Erfahrung 44 Schritte umfasste, konnte das Team leicht auf die offensichtlichste Erklärung zurückgreifen, dass das Quiz einfach zu lang war, ohne zuvor zu beweisen, ob dies das Hauptproblem war."
+      ],
+      "user_pain_points": [
+        "Die meisten Besucher kamen ohne Google Ads an, daher musste bei jedem Schritt begründet werden, warum sie weitermachen sollten, bevor genügend Vertrauen aufgebaut war.",
+        "Die Mitte des Trichters enthielt mehr als 37 Quizschritte, was die Annahme nahelegt, dass die Interaktionskosten selbst die Benutzer verdrängten.",
+        "Ohne eine schärfere Diagnose bestand bei jeder Neugestaltung das Risiko, dass die Mitte poliert wurde, während schwächere Teile des Trichters davor oder danach ignoriert wurden."
+      ]
+    },
+    "constraints": [],
+    "methodology": {
+      "name": "Funnel Diagnosis",
+      "steps": [
+        {
+          "step": 1,
+          "label": "Karte",
+          "description": "Dokumentierte den gesamten Trichter vom Klick auf die Google-Anzeige über das 44-stufige Quiz bis zum Kauf und ermittelte, wo nach Ansicht des Teams die Reibung am größten war."
+        },
+        {
+          "step": 2,
+          "label": "Frage",
+          "description": "Stellte die Standardannahme in Frage, dass die lange Mitte das Hauptproblem sei, und formulierte das Problem in eine Diagnose auf Trichterebene und nicht in eine Beschwerde über die Schrittzahl."
+        },
+        {
+          "step": 3,
+          "label": "Panne",
+          "description": "Die Erfahrung wurde in Erwerbsversprechen, Einstiegserfahrung, Quizfortschritt und Übergang nach dem Quiz unterteilt, sodass jeder Teil zu seinen eigenen Bedingungen bewertet werden konnte."
+        },
+        {
+          "step": 4,
+          "label": "Priorisieren",
+          "description": "Das Team konzentrierte sich darauf, herauszufinden, in welchem Abschnitt des Trichters tatsächlich Absichten durchsickerten, bevor es sich auf eine Neugestaltungsrichtung festlegte."
+        },
+        {
+          "step": 5,
+          "label": "Rahmen für die nächsten Züge",
+          "description": "Definierte die Kernproblemaussage, die die nächste Entwurfsphase lösen sollte, anstatt davon auszugehen, dass die Antwort darin bestand, das Quiz zu verkürzen."
+        }
+      ]
+    },
+    "design_strategy": [
+      "Der Schritt „E-Mail-Adresse eingeben“ wurde für den Designvorschlag ausgewählt, da er der zweitgrößte Drop-off im Trichter und einer der kritischsten Momente für den Verlust von Benutzern ist. Das Hauptproblem ist ein schwacher Wertaustausch: Benutzer werden gebeten, ihre E-Mail-Adresse und ihre Aufmerksamkeit anzugeben, bevor sie klar sehen können, was sie erhalten. Infolgedessen fühlt sich der Schritt eher wie eine Lead-Erfassung an als wie ein Teil des personalisierten Planerlebnisses, und dies ist die vorgeschlagene Designlösung.",
+      "Hypothese 3",
+      "Um Reibungsverluste zu vermeiden, sollten die Seiten vor der E-Mail die Benutzer besser vorbereiten, indem sie den Fortschritt anzeigen, betonen, warum jede Frage wichtig ist, und eine Vorschau auf den Wert des endgültigen Plans geben.",
+      "Durch das Hinzufügen von Vertrauenssignalen, sichtbarem Fortschritt, App-Vorschauen und relevanteren Bildern würde sich die Frage auch sicherer und stärker mit dem Produkt verbunden fühlen."
+    ],
+    "reflections": [
+      {
+        "title": "Das offensichtliche Problem ist nicht immer das echte.",
+        "body": "Einem langen Quiz kann man leicht die Schuld geben, weil es sichtbar ist. Das macht es nicht automatisch zum Ort mit der höchsten Hebelwirkung für eine Intervention."
+      },
+      {
+        "title": "Kalter Verkehr verändert den Standard.",
+        "body": "Besucher, die über Google Ads kommen, haben noch nicht viel Vertrauen gewonnen, daher muss jeder Teil des Trichters härter arbeiten, als dies in einem warmen Publikumskontext der Fall wäre."
+      },
+      {
+        "title": "Diagnose ist Entwurfsarbeit.",
+        "body": "Bevor das Team Layouts änderte oder Schritte reduzierte, musste es besser verstehen, wo die Absicht tatsächlich scheiterte."
+      }
+    ],
+    "nda_notice": "Einige Trichterdetails werden zur Portfolioverwendung zusammengefasst, aber die Struktur, der Verkehrskontext und das Konvertierungsproblem spiegeln das tatsächliche Engagement wider.",
+    "password": null,
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "overview",
+        "type": "overview",
+        "title": "Projektübersicht",
+        "body": ""
+      },
+      {
+        "id": "team-context",
+        "type": "custom",
+        "title": "Team",
+        "body": "Ich habe an Wachstums- und Produktgesprächen gearbeitet, um das eigentliche Problem zu formulieren, bevor der Designaufwand an der falschen Stelle verschwendet wurde. Die Arbeit erforderte eine Abstimmung zwischen Akquisitionsdenken, Trichterverhalten und Benutzererfahrungsdiagnose."
+      },
+      {
+        "id": "situation",
+        "type": "custom",
+        "title": "Situation",
+        "body": "Reverse Health führte einen 44-stufigen Quiz-Trichter durch, der ein Calisthenics-Programm für Frauen verkaufte. Von Ende zu Ende betrug die Konvertierungsrate des Trichters 0,63 %.\n\nDer Traffic bestand größtenteils aus bezahlter Kaltsuche, wobei ein typischer Besuch über eine Google-Anzeige begann. Innerhalb des Teams war die intuitivste Erklärung, dass die lange Mitte des Quiz, mehr als 37 Schritte, dort sein musste, wo die Benutzer hinfielen."
+      },
+      {
+        "id": "task",
+        "type": "custom",
+        "title": "Aufgabe",
+        "body": "Der Umfang der Arbeit konzentrierte sich auf Trichterdiagnose und Designverbesserungen, Paywall-Experimentdesign und Konkurrenzmusterextraktion.\n\nMeine Aufgabe bestand darin, Trichterdaten zu interpretieren, UX- und Konvertierungsprobleme zu identifizieren und diese Erkenntnisse in konkrete, testbare Designlösungen innerhalb einer leistungsorientierten Produktumgebung umzusetzen."
+      },
+      {
+        "id": "task-1",
+        "type": "custom",
+        "title": "Aufgabe 1",
+        "body": "Anstatt jeden Schritt als gleich zu behandeln, habe ich alle 44 gelesen und drei zur Untersuchung ausgewählt, um Abwanderung, Benutzervolumen und nachgelagerten Einfluss auszugleichen. Dann habe ich mich jeweils mit zwei Fragen beschäftigt: Warum es so funktioniert, wie es funktioniert, und welches Benutzerverhalten, welche Reibung oder welches Problem mit der Klarheit die Daten erklärt.",
+        "payload": {
+          "heading": "Trichterdiagnose und Designverbesserungen",
+          "table": [
+            {
+              "step": "31. Alter",
+              "churnCount": "7",
+              "churnPercent": "0,13 %",
+              "userCount": "5.403",
+              "remainingPercent": "18,03 %",
+              "dotColor": "#5ca95c"
+            },
+            {
+              "step": "4. Hauptziel",
+              "churnCount": "224",
+              "churnPercent": "3,20 %",
+              "userCount": "6.784",
+              "remainingPercent": "22,64 %",
+              "dotColor": "#ffd45c"
+            },
+            {
+              "step": "34. E-Mail eingeben",
+              "churnCount": "1.156",
+              "churnPercent": "21,62 %",
+              "userCount": "4.190",
+              "remainingPercent": "13,99 %",
+              "dotColor": "#ff2d2d",
+              "tag": "Designauswahl"
+            }
+          ],
+          "analyses": [
+            {
+              "title": "31. Altersstufe – Gute Leistung",
+              "body": "Ein klarer Schritt mit geringem Aufwand. An diesem Punkt würde es sich verschwenderisch anfühlen, den Flow abzubrechen, also setzen sich die Benutzer durch. Die kognitive und emotionale Belastung ist minimal, es gibt keine finanzielle Entscheidung und die meisten Menschen verstehen, dass das Alter bei einem Gesundheitsplan eine Rolle spielt.",
+              "consideration": "Das Alter wird zweimal abgefragt, beim Treppenabsatz und noch einmal bei Schritt 31. Das Testen bei einem einzelnen Schritt könnte den Aufwand verringern und den Trichter verkürzen.",
+              "image": "/images/projects/Reversetech/age.png"
+            },
+            {
+              "title": "4. Hauptziel – Regelmäßige Leistung",
+              "body": "Die Single-Select-Option hält es übersichtlich und vermeidet eine Entscheidungsüberlastung für Benutzer. Die Reibung ist subtiler: Dies ist der Moment, in dem der Benutzer dem Produkt mitteilt, welches Ergebnis er erzielen möchte. Daher hat die Nennung eines Ziels emotionale Bedeutung. Eine auf Untersuchungen basierende Hypothese besagt, dass die Auswahl eines Ziels das Gewicht erhöht und sich wie Druck anfühlen kann, insbesondere wenn die Optionen nicht vollständig mit dem Benutzer übereinstimmen oder er sich noch nicht entschieden hat.",
+              "consideration": "Testen Sie eine Version mit verschiedenen Inhaltsoptionen und fügen Sie die Option „Helfen Sie mir, das richtige Ziel auszuwählen“ hinzu. Reduzieren Sie außerdem die Anzahl der Schritte vor dieser Frage, damit Benutzer früher ihren Zielsetzungsmoment erreichen, während die Absicht noch hoch ist.",
+              "image": "/images/projects/Reversetech/goal.png"
+            },
+            {
+              "title": "34. E-Mail eingeben – Schlechte Leistung",
+              "body": "Dies ist das zweitgrößte Leck im Trichter und der schlimmste Ort, an dem Menschen verloren gehen können. Zu diesem Zeitpunkt können Benutzer den Wert des Produkts noch nicht erkennen. Wenn Sie also um eine E-Mail bitten, ohne den Nutzen zu erläutern, kann es sich eher wie ein Marketingschritt anfühlen als als Teil des personalisierten Planerlebnisses.",
+              "consideration": "Einige Benutzer spüren auch die bevorstehende Paywall. Durch die Übergabe einer E-Mail direkt vor einer wahrscheinlichen Zahlungsaufforderung fühlt sich die Mauer näher an, sodass eine Kaution präventiv erforderlich ist.",
+              "image": "/images/projects/Reversetech/email.png"
+            }
+          ]
+        }
+      },
+      {
+        "id": "cta-variants",
+        "type": "custom",
+        "title": "CTA-Variante",
+        "body": "Der Inhalt im E-Mail-Schritt wirkt nicht personalisiert genug, um den Benutzern den Eindruck zu vermitteln, dass ein benutzerdefiniertes Ergebnis für sie erstellt wird. Die E-Mail-Seite sollte sie wieder mit ihrem Ziel verbinden, eine Vorschau dessen anzeigen, was sie erhalten werden, und eine ergebnisbasierte Kopie verwenden.",
+        "payload": {
+          "variants": [
+            {
+              "label": "Variante 1",
+              "title": "Sehen Sie sich meinen personalisierten Plan an",
+              "body": "Präzisiert das Angebot durch die direkte Benennung des Calisthenics-Plans. Die Hypothese ist, dass eine klarere Produktkennzeichnung dazu führen kann, dass sich der E-Mail-Schritt glaubwürdiger anfühlt und weniger wie eine generische Lead-Erfassung wirkt.",
+              "imageSrc": "/images/projects/Reversetech/cta-variant-1.svg"
+            },
+            {
+              "label": "Variante 2",
+              "title": "Holen Sie sich meinen Calisthenics-Plan",
+              "body": "Präsentiert die E-Mail-Anfrage etwas übersichtlicher. Dabei wird getestet, ob die Reduzierung zusätzlicher Formulierungen rund um das Feld dazu führt, dass sich der Schritt schneller anfühlt und den Benutzern dennoch genügend Selbstvertrauen gibt, um fortzufahren.",
+              "imageSrc": "/images/projects/Reversetech/cta-variant-2.svg"
+            },
+            {
+              "label": "Variante 3",
+              "title": "Schalten Sie meinen personalisierten Plan frei",
+              "body": "Ist am reduziertesten. Der Großteil der Überzeugungskraft liegt bei der personalisierten Calisthenics-Überschrift.",
+              "imageSrc": "/images/projects/Reversetech/cta-variant-3.svg"
+            }
+          ]
+        }
+      },
+      {
+        "id": "content-variants",
+        "type": "custom",
+        "title": "Inhaltsvariante",
+        "body": "Zu diesem Zeitpunkt haben Benutzer Zeit in das Quiz investiert, aber den Wert des Produkts immer noch nicht klar erkannt. Da der Fortschritt nicht sichtbar ist, kann sich der Trichter länger als nötig anfühlen, was zu Ermüdung führt, selbst wenn jeder Bildschirm einfach ist. Dadurch wirkt die E-Mail-Anfrage abrupt und nicht verdient.\n\nInfolgedessen fühlt sich der Schritt eher wie eine Lead-Erfassung an als wie ein Teil des personalisierten Planerlebnisses, und dies ist die vorgeschlagene Designlösung. Für diese Aufgabe habe ich Variante 3 als endgültige Designlösung ausgewählt, aber ich denke, ein guter Ansatz wäre ein A/B-Test einiger Ideen.",
+        "payload": {
+          "variants": [
+            {
+              "label": "Variante 3",
+              "title": "Variation: Kategorie, Überschrift, Untertitel und Hilfetext",
+              "body": "Leitet eine energetische, ergebnisorientierte Botschaft ein und verknüpft den Plan mit einem konkreten Fitnessergebnis. Es ist motivierender als die anderen, aber es kommt auf eine starke Relevanz an.",
+              "imageSrc": "/images/projects/Reversetech/content-variant-3.svg"
+            },
+            {
+              "label": "Variante 2",
+              "title": "Kategorie, Überschrift, Untertitel und Hilfetext",
+              "body": "Behält den planbereiten Rahmen bei und verbindet ihn mit einer direkten Anti-Spam-Versicherung. Es handelt sich um die sicherste Inhaltsvariante, da sie klarstellt, was der Benutzer erhält, und gleichzeitig Bedenken hinsichtlich der Privatsphäre verringert, ohne zu viele zusätzliche Erklärungen hinzuzufügen.",
+              "imageSrc": "/images/projects/Reversetech/content-variant-2.svg"
+            },
+            {
+              "label": "Variante 1",
+              "title": "Kategorie und Überschrift",
+              "body": "Personalisiert die Überschrift basierend auf dem vom Benutzer ausgewählten Ziel. Dadurch fühlt sich das Ergebnis relevant und maßgeschneidert an, während der E-Mail-Schritt mit dem verknüpft bleibt, was der Benutzer bereits ausgewählt hat. Der Nachteil besteht darin, dass das Versprechen früher eingeschränkt wird, sodass das Hauptziel darin bestehen muss, die Motivation des Benutzers aufrechtzuerhalten.",
+              "imageSrc": "/images/projects/Reversetech/content-variant-1.svg"
+            }
+          ]
+        }
+      },
+      {
+        "id": "impact",
+        "type": "results",
+        "title": "Auswirkungen",
+        "body": "Ich habe Trichterbeweise in priorisierte, testbare Designs für die Paywall-Konvertierungslücke übersetzt. Die eingeführte Gewinnervariante steigerte die End-to-End-Conversion von 0,63 % auf 0,77 %: eine Steigerung um 0,14 Prozentpunkte oder eine relative Steigerung um 22 %, was 14 zusätzlichen Käufen pro 10.000 qualifizierten Besuchen entspricht.",
+        "payload": {
+          "rows": [],
+          "insights": [
+            "Die Mitte des Quiz schien das Problem zu sein, weil sie lang und gut sichtbar war.",
+            "Kalt bezahlter Suchverkehr erhöhte die Kosten für jede Verpflichtung im Trichter, nicht nur für die Quizschritte selbst.",
+            "Das wichtigste Ergebnis dieser Phase war die Neuausrichtung der Arbeit von „das Quiz verkürzen“ zu „zuerst den tatsächlichen Engpass diagnostizieren“."
+          ],
+          "opportunities": [
+            "Vergleichen Sie die Drop-off- und Intent-Qualität zwischen dem Landing-Eintrag, der Quiz-Mitte und dem Kaufübergang nach dem Quiz.",
+            "Testen Sie, ob das Anzeigenversprechen und die Landungserwartung gut genug für den Kaltsuchverkehr aufeinander abgestimmt sind, bevor Sie Benutzer auffordern, sich auf einen langen Flow festzulegen.",
+            "Identifizieren Sie, welche Momente im Quiz an Dynamik gewinnen und welche lediglich die Interaktionskosten erhöhen."
+          ]
+        }
+      },
+      {
+        "id": "sources",
+        "type": "custom",
+        "title": "Quellen",
+        "body": "",
+        "payload": {
+          "sources": [
+            {
+              "title": "Nielsen Norman Group – „Fortschrittsindikatoren machen ein langsames System weniger unerträglich“",
+              "url": "https://www.nngroup.com/articles/progress-indicators/",
+              "description": "Unterstützt Fortschrittsfeedback, reduziert Unsicherheit und sorgt dafür, dass Benutzer in Bewegung bleiben. Vorsichtsmaßnahme: In diesem NN/g-Artikel geht es um den System- und Wartezeitfortschritt, nicht um Mehrschrittzähler. Daher funktioniert er am besten in Kombination mit der Zielgradientenforschung weiter unten speziell für den Schrittanzahlpunkt."
+            },
+            {
+              "title": "Baymard Institute – „Checkout-Abläufe umfassen durchschnittlich 5 Schritte und 11+ Formularfelder“",
+              "url": "https://baymard.com/blog/checkout-flow-average-form-fields",
+              "description": "Unterstützt die Vereinheitlichung von Fragen über die einfache Aufteilung von Schritten: Die Anzahl der Formularfelder, die Benutzer verwalten müssen, ist für Checkout UX wichtiger als die Anzahl der Schritte, und die meisten Abläufe können auf 6 bis 8 Felder reduziert werden."
+            },
+            {
+              "title": "Das Manifest – „6 Schritte zur Vermeidung von Online-Formularabbrüchen“",
+              "url": "https://themanifest.com/web-design/6-steps-avoiding-online-form-abandonment",
+              "description": "Wird für die Statistik verwendet, dass 27 % der Benutzer ein Formular abbrechen, weil es zu lang ist, und wenn sie einmal abgebrochen haben, kehren sie selten zurück. Vorsichtsmaßnahme: Dies ist eine Umfrage aus dem Jahr 2018 unter 502 Personen, daher betrachte ich sie als veraltet."
+            },
+            {
+              "title": "Nunes & Drèze (2006), Journal of Consumer Research – „The Endowed Progress Effect: Wie künstlicher Fortschritt den Aufwand steigert“",
+              "url": "https://academic.oup.com/jcr/article-abstract/32/4/504/1787425",
+              "description": "Der genaue Ursprung des Begriffs „begabter Fortschrittseffekt“: Menschen, denen ein künstlicher Fortschritt in Richtung eines Ziels ermöglicht wird, zeigen eine größere Beharrlichkeit bei der Erreichung dieses Ziels."
+            },
+            {
+              "title": "Kivetz, Urminsky & Zheng (2006), Journal of Marketing Research – „The Goal-Gradient Hypothesis Resurrected“",
+              "url": "https://journals.sagepub.com/doi/abs/10.1509/jmkr.43.1.39",
+              "description": "Unterstützt die Behauptung, dass Menschen ihre Anstrengung beschleunigen, je näher sie einer Belohnung kommen. Ich verwende dies, wenn ich auf den Zielgradienteneffekt verweise.",
+              "secondaryTitle": "Zusammenfassung der Columbia Business School",
+              "secondaryUrl": "https://business.columbia.edu/insights/chazen-global-insights/goal-gradient-hypothesis-resurrected-purchase-acceleration"
+            },
+            {
+              "title": "IBM Carbon Design System – Fortschrittsanzeige, Nutzungsrichtlinien",
+              "url": "https://carbondesignsystem.com/components/progress-indicator/usage/",
+              "description": "Eine maßgebliche Designsystem-Referenz, um Benutzern zu zeigen, wo sie sich befinden: Die Aufteilung des Endziels in kleinere Teilaufgaben erhöht das Gefühl der Vollständigkeit, und die Information der Benutzer darüber, wo sie sich befinden, gibt ihnen ein Gefühl der Kontrolle."
+            },
+            {
+              "title": "WebAIM Million 2025-Bericht",
+              "url": "https://webaim.org/projects/million/2025",
+              "description": "Wird für den Barrierefreiheitsaspekt im E-Mail-Feld verwendet: Auf Homepages wurden durchschnittlich 6,3 Formulareingaben vorgenommen, und 34,2 % dieser Eingaben waren nicht ordnungsgemäß beschriftet. Hinweis: Die 48 %-Zahl, die sich um Sekundärquellen herum bewegt, ist der Anteil der Homepages mit mindestens einem unbeschrifteten Eintrag, was eine andere Kennzahl darstellt."
+            },
+            {
+              "title": "HubSpot – „10 Tipps zur Optimierung der Formularkonvertierung“",
+              "url": "https://blog.hubspot.com/marketing/optimize-conversion-forms",
+              "description": "Aus HubSpots Analyse von mehr als 40.000 Landingpages: Schaltflächen mit der Bezeichnung „Senden“ hatten niedrigere Conversion-Raten und Formulare mit drei Feldern erzielten die beste Conversion, mit einem Rückgang danach. Ich verwende dies für die Punkte „Ergebniskopie schlägt weiter“ und „Halte die Nachfrage minimal“."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "slug": "calendar-keeper",
+    "status": "published",
+    "featured": false,
+    "order": 8,
+    "title": "Kalenderbewahrer",
+    "company": "HRS",
+    "client_context": "HRS",
+    "role": "Leitender Produktdesigner",
+    "year": 2026,
+    "duration": "Unabhängiger KI-gestützter Entdeckungssprint",
+    "industry": "Gesundheitswesen/Praxismanagement SaaS",
+    "tagline": "KI-gestützte Produkterkennung für die klinische Planung – Umwandlung von Ressourcenabhängigkeiten, Ausfällen und Compliance-Einschränkungen in eine stufenweise Produktstrategie.",
+    "tags": [
+      "Gesundheitswesen",
+      "Produktstrategie",
+      "UX-Forschung",
+      "Design Thinking",
+      "KI-Produkt",
+      "Marktforschung"
+    ],
+    "filters": [
+      "Healthcare",
+      "Product Strategy",
+      "AI Product"
+    ],
+    "tools": [
+      "Claude AI",
+      "Gemini",
+      "NotebookLM",
+      "ChatGPT",
+      "Codex"
+    ],
+    "images": {
+      "cover": "/images/projects/calendar-keeper/thumbnails/calendar-keeper-cover.png",
+      "hero": "/images/projects/calendar-keeper/hero/calendar-keeper-hero.png",
+      "gallery": []
+    },
+    "client_logos": [],
+    "metrics": [],
+    "team": [
+      "Produktstratege",
+      "UX-Forscher",
+      "Experten im Gesundheitswesen",
+      "KI-Forschungspartner"
+    ],
+    "my_role": [
+      "Leitender Produktdesigner"
+    ],
+    "problem": {
+      "admin_pain_points": [
+        "Klinikpersonal (MFAs, Einzelärzte) verbringt täglich Stunden damit, Unterbrechungen, Doppelbuchungen und manuelle Kalenderprüfungen zu verwalten, anstatt sich um die Patientenbetreuung zu kümmern.",
+        "Deutsche Arzthelferinnen kümmern sich zusätzlich zur Terminplanung für mehrere Ärzte um TI-mandatierte Aufgaben (E-Rezepte, KIM-Nachrichtenübermittlung, ePA); TI-Ausfälle wirken sich direkt auf sie aus.",
+        "Fehler bei der Kalendersynchronisierung führen zu stillen Desynchronisierungen oder ganztägigen Blockaden und verwandeln technische Probleme in Betriebskrisen ohne erkennbaren Wiederherstellungspfad.",
+        "Bedenken hinsichtlich der Datensouveränität sind regulatorische Anforderungen (DSGVO, BSI C5, §203 StGB) und keine „Nice-to-haves“."
+      ],
+      "user_pain_points": [
+        "Wiederkehrende Patienten, die versuchen, Termine umzubuchen oder zu verwalten, haben keinen schnellen Selbstbedienungsweg und sind gezwungen, anzurufen – genau der Mechanismus, der das Personal überschwemmt.",
+        "Patienten haben keinen Überblick darüber, dass ihre Gesundheitsdaten in Europa bleiben, was das Vertrauen in einen Markt untergräbt, in dem Datensouveränität ein regulatorisches Mandat ist.",
+        "Generische Planungsplattformen behandeln jede Buchung als austauschbares Zeitfenster und modellieren nicht die Abhängigkeiten (Raum, Ausrüstung, Arzt, Vorbereitung), die klinische Arbeitsabläufe erfordern."
+      ]
+    },
+    "constraints": [
+      "Keine Netzwerkliquidität in der ersten Klinik; Wartelisten- und Backfill-Algorithmen benötigen einen Verlauf, um zu funktionieren.",
+      "Komplexes regulatorisches Umfeld: Frankreich und Deutschland haben unterschiedliche Personalmodelle (5 % der französischen Allgemeinmediziner haben Assistenten im Vergleich zu deutschen MFAs, die 3–19 Ärzte betreuen).",
+      "Hohe Schaltreibung; 44,8 % der deutschen Praxen befürchten, dass die Daten nicht sauber migriert werden, was die Nachfrage selbst unzufriedener Benutzer unterdrückt.",
+      "Die Marktposition der Wettbewerber ist je nach Markt unterschiedlich: Doctolib dominiert Frankreich (23,2 % PMS-Anteil); Deutschland zeigt Doctolib nach 9 Monaten an, sodass ein schmales Zeitfenster verbleibt."
+    ],
+    "methodology": {
+      "name": "Design Thinking",
+      "steps": [
+        {
+          "step": 1,
+          "label": "Mitfühlen",
+          "description": "Problemerkennung, Benutzerinterviews, Affinitätskartierung und Wettbewerbsmarktforschung"
+        },
+        {
+          "step": 2,
+          "label": "Definieren",
+          "description": "Persona-Synthese, Affinity-Map-Einblicke und Problemursachen"
+        },
+        {
+          "step": 3,
+          "label": "Ideen entwickeln",
+          "description": "Wie-könnten-wir-Fragen, Hypothesentests und strategische Ausrichtung"
+        },
+        {
+          "step": 4,
+          "label": "Prototyp",
+          "description": "Phasenweise Produktstrategie, Wettbewerbspositionierung und Markteinführungssequenzierung"
+        }
+      ]
+    },
+    "design_strategy": [
+      "Datensouveränität und MFA-First-Positionierung als Zugangsvoraussetzungen und nicht als Unterscheidungsmerkmal neu klassifizieren; Der wirklich vertretbare Vorteil ist eine ressourcenbewusste Planung, die nicht ausfällt, wenn die Infrastruktur dies tut.",
+      "Bauen Sie die erste Version auf der Grundlage der Kernbuchung mit Ressourcenabhängigkeiten (Raum, Ausrüstung, Praktiker, Vorbereitung) auf, nicht auf Backfill – Backfill benötigt eine Warteliste mit Verlauf, um nützlich zu sein, die am ersten Tag noch nicht existiert.",
+      "Entwerfen Sie explizit den herabgesetzten Modus: Wenn die Synchronisierung fehlschlägt, zeigen Sie „nicht synchronisiert“ als sichtbaren Status an, erstellen Sie eine Abstimmungswarteschlange und ermöglichen Sie die lokale Erstellung von Terminen mit ausstehender Identitätsüberprüfung – wodurch eine Krise zu einem bekannten Zustand wird.",
+      "Deutschlands erster GTM ist evidenzbasiert: Doctolib besitzt bereits Frankreich (23,2 % Anteil); In Deutschland ist der PMS-Vorstoß bereits neun Monate alt (November 2025), sodass nur noch ein schmales, messbares Zeitfenster verbleibt.",
+      "Das Migrationsrisiko ist der Adoptionsblocker, nicht die Funktionen; Ein glaubwürdiger, nachweisbarer Datenmigrationspfad kann wichtiger sein als der Feinschliff des Kalenders."
+    ],
+    "reflections": [
+      {
+        "title": "Der Wettbewerb ist real, aber nicht dort, wo man es erwarten würde.",
+        "body": "Doctolib hat Frankreich bereits gewonnen; Samedi versendet unsere beanspruchten Unterscheidungsmerkmale in Deutschland. Die ehrliche Erkenntnis ist, dass wir einen Blickwinkel finden müssen, den die Konkurrenz noch nicht eingenommen hat – was sich als Zuverlässigkeit im heruntergefahrenen Modus herausstellt und ehrlich ist, was Phase 1 vs. Phase 2 ist."
+      },
+      {
+        "title": "Die Marktstruktur hat die Strategie geändert.",
+        "body": "Die Unterschiede in der Personalbesetzung zwischen Frankreich und Deutschland sind nicht nur Anzeichen desselben Problems. Sie brauchen zwei echte Produktvarianten, zwei Go-to-Market-Ansätze und zwei unterschiedliche Erfolgsgeschichten. Einheitslösungen würden scheitern."
+      },
+      {
+        "title": "Datensouveränität steht jetzt auf dem Spiel.",
+        "body": "Die Einhaltung der DSGVO, des BSI C5 und des EU-KI-Gesetzes hat regulatorischen Charakter und ist nicht differenzierend. Einwilligungsarchitektur und Transparenz sind wichtiger als der Hosting-Standort, denn jeder Wettbewerber behauptet das Gleiche."
+      },
+      {
+        "title": "Einschränkungen erzwangen die bessere Entscheidung.",
+        "body": "Da wir wussten, dass wir den Backfill am ersten Tag nicht unterstützen können (keine Liquidität), mussten wir beim ersten Termin in der ersten Klinik fragen, was tatsächlich funktioniert. Die Antwort – ressourcenbewusste Kernbuchung – ist vertretbarer als eine Wunschlistenfunktion."
+      }
+    ],
+    "nda_notice": "Dies ist ein Strategiedokument und ein Design-Thinking-Prozess für die Frühphase. Kundendaten und Wettbewerbsdaten werden pro Markt anonymisiert oder aggregiert. Die Methodik und Ergebnisse spiegeln echte Marktforschung und Benutzererkennung wider.",
+    "password": null,
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "overview",
+        "type": "overview",
+        "title": "Projektübersicht"
+      },
+      {
+        "id": "design-thinking-facilitation",
+        "type": "custom",
+        "title": "Design Thinking Erleichterung",
+        "body": "Strukturierte den Entdeckungsprozess in fünf Phasen – Einfühlen, Definieren, Ideen entwickeln und Prototypen – und nutzte die Design-Thinking-Methodik, um von unstrukturierten Problemen zu einer umsetzbaren Strategie zu gelangen. Jede Phase baute auf der vorherigen auf und schuf eine Kette validierter Erkenntnisse statt Annahmen."
+      },
+      {
+        "id": "user-research-synthesis",
+        "type": "custom",
+        "title": "Benutzerforschung und -synthese",
+        "body": "Durchführung einer Untersuchung in zwei unterschiedlichen Märkten (Frankreich und Deutschland), wobei neun unterschiedliche Problemstellungen aus unterschiedlichen Benutzerperspektiven aufgedeckt wurden: der Kalenderverwalter (Einzelarzt vs. MFA), der wiederkehrende Patient und das System selbst. Qualitative Ergebnisse wurden in Personas, Affinitätskarten und Ursachenanalysen zusammengefasst, die die strukturellen Lücken aufdeckten, die die Wettbewerber übersehen."
+      },
+      {
+        "id": "competitive-intelligence",
+        "type": "custom",
+        "title": "Wettbewerbsintelligenz",
+        "body": "Durchführung einer strengen Marktanalyse, die etablierte PMS-Anbieter, neue Marktteilnehmer und Marktdynamik umfasst. Es wurde festgestellt, dass Doctolib bereits Frankreich besitzt (23,2 % PMS-Anteil), Samedi beanspruchte Alleinstellungsmerkmale in Deutschland einnimmt und das Migrationsrisiko – nicht Funktionen – das eigentliche Akzeptanzhindernis darstellt. Diese Forschung hat die Strategie und den Go-to-Market-Ansatz neu definiert."
+      },
+      {
+        "id": "solution-strategy",
+        "type": "custom",
+        "title": "Lösungsstrategie",
+        "body": "Übersetzte Forschung in einen phasenweisen Bereitstellungsansatz: Kernbuchung mit Ressourcenabhängigkeiten (Phase 1), Zuverlässigkeit im eingeschränkten Modus (Phase 1) und Onboarding/Backfill (Phase 2). Neupositionierung von behaupteten Unterscheidungsmerkmalen (Souveränität, MFA zuerst) zu einem vertretbaren Aspekt: ​​ressourcenbewusste Planung, die nicht zusammenbricht, wenn die Infrastruktur dies tut. Empfohlenes Deutschland-erstes GTM basierend auf Markterkenntnissen."
+      },
+      {
+        "id": "methodology",
+        "type": "custom",
+        "title": "Methodik: Design Thinking",
+        "body": "Der Entdeckungsprozess folgte einem strukturierten Design-Thinking-Ansatz in vier Phasen, ergänzt durch KI-Tools und strenge Marktforschung.",
+        "payload": {
+          "phases": [
+            {
+              "phase": "Mitfühlen",
+              "description": "Problemerkennung, Benutzerinterviews, Affinitätskartierung und Wettbewerbsmarktforschung"
+            },
+            {
+              "phase": "Definieren",
+              "description": "Persona-Synthese, Affinity-Map-Einblicke und Problemursachen"
+            },
+            {
+              "phase": "Ideen entwickeln",
+              "description": "Wie-könnten-wir-Fragen, Hypothesentests und strategische Ausrichtung"
+            },
+            {
+              "phase": "Prototyp",
+              "description": "Phasenweise Produktstrategie, Wettbewerbspositionierung und Markteinführungssequenzierung"
+            }
+          ]
+        }
+      },
+      {
+        "id": "empathize-intro",
+        "type": "custom",
+        "title": "Empathize: Problemerkennung und Marktforschung",
+        "body": "Die Einfühlungsphase kombinierte direkte Benutzererkennung mit gründlicher Wettbewerbsanalyse, um die tatsächliche Form des Marktes und die unerfüllten Bedürfnisse der Benutzer zu verstehen."
+      },
+      {
+        "id": "problem-statements",
+        "type": "custom",
+        "title": "Problemstellungen",
+        "body": "Aus der Forschung gingen neun unterschiedliche Problemstellungen für verschiedene Benutzerrollen und Märkte hervor.",
+        "payload": {
+          "problems": [
+            "Der Terminplaner muss die Realität widerspiegeln, ohne ihn manuell erneut zu überprüfen, da Unterbrechungen den ganzen Tag über – Anrufe, Änderungen, Nichterscheinen – andernfalls klinische Zeit kosten oder zu Doppelbuchungen führen.",
+            "Das deutsche MFA muss von TI vorgeschriebene Aufgaben mit weniger Klicks und mit weniger Fehlerquellen erledigen, da in der Hälfte der deutschen Praxen wöchentlich TI-Probleme auftreten und diese Fehler beim MFA und nicht beim Arzt landen.",
+            "Das deutsche MFA/MVZ muss die Terminplanung für viele Ärzte aus einer Sicht selektieren und delegieren, da ein einzelnes MVZ bis zu 19 MFAs zur Koordinierung von Kalendern einsetzen kann, für deren Handhabung eine Einzelarztschnittstelle nie konzipiert wurde.",
+            "Der französische Einzelarzt muss Routineanrufe bearbeiten, ohne den Untersuchungsraum zu verlassen, da 30 % der Anrufe bereits unbeantwortet bleiben und jeder einzelne entweder ein verlorener Patient oder eine unterbrochene Konsultation ist.",
+            "Die vertrauenswürdige Echtzeitverfügbarkeit dient in erster Linie dem Kalenderverwalter, da ein veralteter Kalender ein Risiko für Doppelbuchungen für das Personal darstellt, bevor er für den Patienten ein schlechtes Sucherlebnis darstellt.",
+            "Der Calendar Keeper muss weniger dringende Besuche per Telefon oder Video planen, anstatt jedem standardmäßig einen persönlichen Termin zuzuweisen, da er die persönliche Kapazität für Besuche schützt, die sie tatsächlich benötigen.",
+            "Sowohl der Kalenderverwalter als auch der zurückkehrende Patient benötigen einen sichtbaren Nachweis, dass Gesundheitsdaten in Europa bleiben, denn Souveränität ist ein bekannter Vertrauensbrecher und eine Compliance-Anforderung für 2026.",
+            "Der wiederkehrende Patient muss einen bestehenden Termin schnell umbuchen oder verwalten und dabei die bereits hinterlegte Identität verwenden, da die Umleitung dieses Routineanrufs der gesamte Mechanismus ist, durch den die Arbeitsbelastung des Kalenderverwalters tatsächlich sinkt.",
+            "Ein wiederkehrender Patient, der gelegentlich für einen benannten Angehörigen bucht, benötigt einen minimalen manuellen Eingabepfad und keine vollständige Kontoverknüpfung."
+          ]
+        }
+      },
+      {
+        "id": "user-needs",
+        "type": "custom",
+        "title": "Benutzeranforderungen: Provisorische Benutzergruppen",
+        "body": "Aus der Forschung gingen sechs verschiedene Benutzergruppen hervor, jede mit spezifischen Bedürfnissen, Schwachstellen und Folgen von Fehlern. Dabei handelt es sich um vorläufige Gruppierungen, nicht um endgültige Personas.",
+        "payload": {
+          "groups": [
+            {
+              "group": "Patienten – neue und bestehende",
+              "goal": "Vereinbaren Sie einen Termin mit geringem Aufwand und minimaler Offenlegung personenbezogener Daten.",
+              "pain_points": [
+                "Brechen Sie die Buchung ab, wenn Formulare nach unwesentlichen Informationen fragen, oder in Frankreich, wenn INS (Identifiant National de Santé) genaue Geburtsregistrierungsdaten verlangt – hohe Reibung bei der Registrierung.",
+                "Frustriert über technische Fehler: Leerseitenfehler, erzwungene Abmeldungen, Unfähigkeit, Bestätigungsinformationen zu scannen/zu kopieren.",
+                "In Deutschland kann Double Opt-In (E-Mail/SMS) dazu führen, dass ein Slot unbestätigt bleibt und praktisch verloren geht.",
+                "Frustriert, wenn „keine Online-Termine verfügbar“ das Tool wie verschwendete Mühe erscheinen lässt.",
+                "Vertrauensverlust, wenn eine aufgeführte Sprachfähigkeit (z. B. „spricht Englisch“) vor Ort nicht Bestand hat – die Genauigkeit der Praktiker-Metadaten ist für die Sicherheit von Bedeutung, nicht nur für die Zufriedenheit.",
+                "Misstrauen gegenüber Plattformen, von denen angenommen wird, dass sie Konsultationsnotizen oder Daten an Nicht-EU-KI-Anbieter oder Dritte weiterleiten – dies ist ein vertrauensbedingter Grund für den Abbruch."
+              ],
+              "consequence": "Versäumte/doppelte Buchungen, abgebrochener Trichter oder (im Fall der Sprachinkongruenz) ein Risiko für die Pflegequalität.",
+              "jtbd": "Wenn ich einen Arzt aufsuchen muss und mir über den Ablauf nicht sicher bin, möchte ich einen echten, verfügbaren Platz finden und bestätigen, ohne mehr Informationen als nötig preiszugeben, damit ich darauf vertrauen kann, dass der Termin tatsächlich stattfindet."
+            },
+            {
+              "group": "Pflegekräfte/Personen buchen für jemand anderen",
+              "goal": "Verwalten Sie Termine für einen Angehörigen (Kind, älterer Elternteil) genauso reibungslos wie für sich selbst.",
+              "pain_points": [
+                "Ein Drittel der französischen Termine wird für einen Verwandten gebucht; ~46 % der Patienten haben ein verknüpftes relatives Konto – dies ist kein Randfall, sondern ein Kernfluss.",
+                "Die Eingabe des Geburtsdatums über das monatliche Scrollen im Dropdown-Menü ist ein spezifischer, benannter Reibungspunkt für diese Gruppe.",
+                "Auswirkung auf Berechtigungen: Das Produkt benötigt ein erstklassiges „Verwalten im Namen von“-Modell, kein Zusatzmodell."
+              ]
+            },
+            {
+              "group": "Ältere Patienten/Patienten mit geringerer digitaler Kompetenz",
+              "goal": "Zugriff auf Terminbuchung mit entsprechender Unterstützung für ihren Technologiekomfort.",
+              "pain_points": [
+                "5,9 Millionen französische Doctolib-Benutzer sind 65+ (Skalensignal), aber deutsche Patienten 80+ werden als „überfordert“ mit digitalen Tools beschrieben, viele ohne Smartphones/PCs – dies ist eine marktspezifische Lücke, nicht das gleiche Problem in beiden Ländern.",
+                "Sehbehinderte Benutzer benötigen barrierefreie Buchungsabläufe; Alle Patienten benötigen Klarheit über die physische Zugänglichkeit (Rollstuhlzugang) der Praxis selbst."
+              ],
+              "consequence": "Ausschluss von der Selbstbedienung, wodurch die Telefonleitungen wieder belastet werden – stellt eine direkte Verbindung zum Schmerzpunkt der Empfangsdame her."
+            },
+            {
+              "group": "Rezeptionisten / Medizinische Assistenten (MFAs)",
+              "goal": "Halten Sie den Zeitplan mit minimaler manueller Nacharbeit präzise und bewältigen Sie gleichzeitig ständige Unterbrechungen.",
+              "pain_points": [
+                "~30 % der Anrufe bei Ärzten bleiben unbeantwortet; Routineanrufe (Versicherungsprüfungen, Terminverschiebungen) belasten die Rezeption.",
+                "Deutsche MFAs sind frustriert über klicklastige TI-Workflows (KIM-Nachrichten, E-Rezepte) und über Kartenleser-/Systemabstürze nach Updates.",
+                "Struktureller Unterschied: In Deutschland ist das MFA ein Power-User – 3 Jahre ausgebildet, übernimmt klinische Aufgaben (Blutentnahmen, Verbände) und Verwaltung (Buchung, Rechnungsstellung); durchschnittlich 3,4 pro Soloübung, bis zu 19 in MVZs. In Frankreich beschäftigen nur etwa 5 % der Hausärzte überhaupt einen MFA, und die Aufgaben sind überwiegend administrativer Natur."
+              ],
+              "design_implication": "Die Rezeptionistin ist keine Persona – Deutschland braucht eine assistentenzentrierte, delegationsfähige Schnittstelle; Frankreich braucht den Arzt, um der zentrale Akteur zu bleiben. Dies ist eine der schärfsten Spannungen im gesamten Projekt."
+            },
+            {
+              "group": "Ärzte / Kliniker",
+              "goal": "Maximieren Sie die klinische Zeit und minimieren Sie den Verwaltungsaufwand.",
+              "pain_points": [
+                "Struktureller Unterschied in der Art und Weise, wie Ärzte ihre Zeit nutzen: Deutschland – 9,8 Kontakte/Jahr, ~8 Minuten/Besuch, hohe Patientenfluktuation, „One-Click“-Dokumentationsbedarf. Frankreich – 5,9 Kontakte/Jahr, 16–18 Minuten/Besuch, bevorzugt Längsschnittnotizen und längere Benutzeroberflächen.",
+                "~10 Stunden pro Woche gehen durch administrative Engpässe verloren (wird als der Schwachpunkt bezeichnet, den Doctolib bei der KI-Anrufabwicklung angreift)."
+              ],
+              "consequence": "Doppelte Buchungen oder verlorene Zeit verringern direkt die abrechenbare klinische Kapazität – diese Gruppe reagiert im Gegensatz zu Patienten umsatzempfindlich auf Terminfehler."
+            },
+            {
+              "group": "Klinikmanager/-administratoren und interne CX/Support-Teams",
+              "status": "🔴 Research gap",
+              "note": "Noch keine direkten Beweise. Das Quellmaterial richtet sich an Rezeptionisten und Ärzte, nicht jedoch an Praxisinhaber/-manager oder interne Implementierungsteams. Wird als offenes Forschungsbedürfnis gekennzeichnet und nicht als erfindendes Bedürfnis."
+            }
+          ]
+        }
+      },
+      {
+        "id": "user-needs-context",
+        "type": "custom",
+        "title": "Kontext: Regulierungs-, Betriebs- und Wettbewerbsumfeld",
+        "body": "Benutzerbedürfnisse können ohne den sie prägenden Regulierungs-, Arbeitskräfte- und Wettbewerbskontext nicht verstanden werden.",
+        "payload": {
+          "regulatory": {
+            "title": "Regulierungs- und Governance-Kontext",
+            "france": "Zentralisiert – State + Assurance Maladie legt landesweit Gebühren, Zertifizierungen und Verhandlungen fest. HDS v2.0: obligatorische Zertifizierung zum Hosten von Gesundheitsdaten. Umstellung auf V2.0 bis 16. Mai 2026; Die Souveränitätsvorschriften vom September 2026 erfordern ein ausschließlich EWR-Hosting und die Offenlegung von rechtlichen Risiken außerhalb der EU (z. B. US CLOUD Act).",
+            "germany": "Dezentralisiert – korporatistische Gremien (G-BA, regionale KVs) kontrollieren den Marktzugang; Die Bedarfsplanung schränkt ein, wo/wie Ärzte überhaupt eine Praxis eröffnen können. Telematische Infrastruktur (TI): obligatorisches geschlossenes Netzwerk; ePA-Integrationsfrist 1. Oktober 2025; Authentifizierung über physische SMC-B/eHBA-Karten. 50 % der deutschen Ärzte berichten wöchentlich über technische TI-Probleme – eine erklärte Wettbewerbsmöglichkeit für einen stabileren Markteinsteiger."
+          },
+          "workforce": {
+            "title": "Belegschaft und betrieblicher Kontext",
+            "gp_density": "Frankreich – GP-lastig (107/100.000) und primärversorgungsvolumenorientiert. Deutschland – spezialistenlastig (117/100.000), mit 2x so vielen ambulanten Chirurgen und etwa 3x so vielen Gynäkologen – was bedeutet, dass der Planungsbedarf in Deutschland eher auf die Buchung komplexer Ressourcen (Räume, Ausrüstung, OP-Blöcke) und nicht nur auf Zeitfenster ausgerichtet ist.",
+            "consultation_rhythm": "Frankreich: 5,9 Besuche/Jahr, 16–18 Minuten/Besuch, bevorzugt Längsschnittnotizen. Deutschland: 9,8 Besuche/Jahr, ca. 8 Minuten/Besuch, hohe Patientenfluktuation, „One-Click“-Dokumentation erforderlich. Dies führt zu grundlegend unterschiedlichen Anforderungen an die Informationsdichte in der Buchungs- und Dokumentations-Benutzeroberfläche."
+          },
+          "competitive": {
+            "title": "Wettbewerbslandschaft",
+            "incumbent": "Doctolib ist der dominierende etablierte Anbieter, der vom Buchungstool zum vollständigen Praxis-Betriebssystem übergegangen ist und Ende 2025 sein deutsches PMS mit KI-Anrufabwicklung und eingebetteten Zahlungen auf Adyen-Basis eingeführt hat.",
+            "trust_gaps": "MFA-Arbeitsbelastung durch ungesicherte Anfragen und eine umfassendere Vertrauenskrise der „Datensouveränität“ – benannt als spezifische Öffnung für einen Markteinsteiger, bei dem Souveränität/Datenschutz an erster Stelle steht.",
+            "pricing": "Samedi ~35–59 €/Benutzer; Doctolib ~139 €/Behandler."
+          },
+          "business": {
+            "title": "Geschäftskontext – explizit ungelöst",
+            "note": "GTM-Sequenzierung (Frankreich zuerst vs. Deutschland zuerst) ist noch nicht entschieden. Dies ist für den Empathize-Bereich wichtig: Wenn wir nicht wissen, welcher Markt zuerst eingeführt wird, sollten wir unsere vorrangige Workflow-Wahl in beiden Märkten vertretbar halten, anstatt nur auf einen Markt zu optimieren. Das Preis-/Bündelungsmodell mit der bestehenden Suite ist nicht definiert."
+          }
+        }
+      },
+      {
+        "id": "competitive-analysis",
+        "type": "custom",
+        "title": "Wettbewerbsforschung: Drei marktverändernde Erkenntnisse",
+        "body": "Die Marktanalyse ergab, dass herkömmliche Annahmen über unsere Position falsch waren.",
+        "payload": {
+          "findings": [
+            {
+              "title": "⚠️ Doctolib hat bereits den französischen PMS-Markt erobert",
+              "body": "Doctolib ist mit 23,2 % der elektronischen Übermittlungen von Pflegeansprüchen (Stand März 2026) die meistgenutzte Hausarztpraxis-Management-Software in Frankreich, vor Weda (14,0 %), Medistory (10,1 %) und HelloDoc (8,1 %). Der Umsatz stieg innerhalb von fünf Jahren von 0 % auf 23,2 % – und das ohne Akquisitionen, lediglich durch die Anbindung von Software an seine Buchungsplattform.\n\nDies kehrt unsere frühere Formulierung um. In Frankreich übernimmt Doctolib nun sowohl den Patientenvertrieb als auch den Praxisvertrieb. Unser Argument „Wir sind dort stark, wo sie schwach sind“ ist nicht stichhaltig."
+            },
+            {
+              "title": "🔵 In Deutschland ist derselbe Schritt gerade erst im Gange – und das ist ein schmales, veraltetes Zeitfenster",
+              "body": "Das deutsche PVS von Doctolib wurde im November 2025 eingeführt, zunächst nur für Allgemeinmediziner, Kinderärzte und Gynäkologen. Bei der Zi 2026-Bewertung reichte die Stichprobengröße von Doctolib nicht aus, um gültige Usability-, NPS- oder Fehlerratendaten zu erstellen.\n\nZusammen mit dem Frankreich-Befund ist dies das stärkste empirische Argument für Deutschlands erstes GTM – eine Entscheidung, die in unseren Dokumenten als unentschieden aufgeführt wurde. Frankreich ist ein Markt, den Doctolib bereits erobert hat; Deutschland ist einer, mit dessen Einnahme vor neun Monaten begonnen wurde."
+            },
+            {
+              "title": "⚠️ Samedi erfüllt unsere beanspruchten Unterscheidungsmerkmale",
+              "body": "Samedi ist eine in Berlin ansässige SaaS-Plattform, die von mehr als 48.000 Ärzten in rund 10.000 Institutionen in der DACH-Region genutzt wird und Online-Buchung mit Warteliste, dynamischer Ressourcenplanung, digitalen Formularen mit elektronischer Signatur und integrierter Zahlung bietet – unterstützt durch EU-patentierte Ende-zu-Ende-Verschlüsselung, TÜV-Zertifizierung und ISO 27001/9001.\n\nDas bedeutet ressourcenbewusste Planung plus Souveränitätspositionierung plus Warteliste/Auffüllung, bereits ausgeliefert, in großem Maßstab. Zwei unserer drei behaupteten Unterscheidungsmerkmale sind besetzt. Ihre wirklichen Lücken: kein öffentliches Patientensuchportal, Preise pro Arzt, die sich für Gruppenpraxen erhöhen, kein kostenloses Eintrittskontingent und kein Self-Service-Onboarding."
+            }
+          ]
+        }
+      },
+      {
+        "id": "market-dynamics",
+        "type": "custom",
+        "title": "Marktdynamik: Der echte Verschiebungshebel",
+        "body": "Was den Wechsel tatsächlich antreibt, ist nicht die Zufriedenheit, sondern die Wechselbarrieren und das Migrationsrisiko.",
+        "payload": {
+          "key_insight": "33,3 % der deutschen Praxen wollen das PMS wechseln (Rückgang von 44,4 % im Jahr 2024). Jeder Dritte kauft aktiv ein. Der Rückgang ist jedoch nicht auf eine verbesserte Zufriedenheit zurückzuführen; Es liegt an wahrgenommenen Wechselbarrieren.",
+          "displacement_dynamics": [
+            {
+              "signal": "Praxen, die das PMS wechseln möchten",
+              "figure": "33,3 % im Jahr 2025 (Rückgang von 44,4 % im Jahr 2024)",
+              "meaning": "Die Nachfrage wird unterdrückt, nicht befriedigt"
+            },
+            {
+              "signal": "Oberer Blocker",
+              "figure": "44,8 % befürchten, dass Daten nicht sauber migriert werden",
+              "meaning": "Migration ist das Produktproblem, nicht Funktionen"
+            },
+            {
+              "signal": "Motive wechseln",
+              "figure": "Benutzerfreundlichkeit (1.), Gebühren (2.), Support (3.)",
+              "meaning": "Benutzerfreundlichkeit ist ein Designhebel; Der Amtsinhaber hat schlechte Erfahrungen"
+            },
+            {
+              "signal": "Ergebnis nach dem Wechsel",
+              "figure": "83,9 % berichten von einer deutlichen Verbesserung",
+              "meaning": "Der Wechsel funktioniert, aber die Leute wechseln zu Systemen, die bereits schlecht bewertet sind"
+            }
+          ],
+          "proof": "AxiSanté (CGM) fiel von 16 % im Jahr 2019 auf unter 0,2 % im Jahr 2026, nachdem das Ende des Supports angekündigt wurde. Sobald das Vertrauen zerbricht, bricht die Herrschaft schnell zusammen."
+        }
+      },
+      {
+        "id": "sovereignty-context",
+        "type": "custom",
+        "title": "Souveränitätsansprüche: Ordnungsgemäß abgestuft",
+        "body": "Datensouveränität ist ein aktuelles, umstrittenes Thema – kein Unterscheidungsmerkmal, das wir uns zu eigen machen können.",
+        "payload": {
+          "reality": "Doctolib nutzt in seinem Beratungsassistenten KI von Google, Microsoft und Anthropic. Unter Beobachtung; Es gibt Vorwürfe, dass Patientendaten an US-amerikanische Technologieanbieter weitergegeben werden könnten. Doctolib bestreitet Missbrauch; Die OECD stuft es eher als Gefahr denn als realisierten Vorfall ein. Das EU-KI-Gesetz tritt am 2. August 2026 in Kraft.",
+          "honest_read": "Der Vertrauensvektor ist real und derzeit aktiv – aber Doctolibs formelle Compliance-Haltung ist stark und unser eigener Vorteil würde auf der Einwilligungsarchitektur und Transparenz beruhen, nicht auf dem Hosting-Standort. Der Hosting-Standort steht auf dem Spiel; Jeder Konkurrent behauptet es.",
+          "takeaway": "„Wir sind der Souverän“ ist kein vertretbares Unterscheidungsmerkmal. „Wir verwenden standardmäßig nicht die Daten Ihrer Patienten und können Ihnen genau zeigen, was wir verwenden.“"
+        }
+      },
+      {
+        "id": "define-intro",
+        "type": "custom",
+        "title": "Definieren Sie: Personas, Muster und Grundursachen",
+        "body": "Die Definitionsphase fasste die Forschung zu Persona-Modellen zusammen und identifizierte die strukturellen Probleme unter den oberflächlichen Beschwerden."
+      },
+      {
+        "id": "affinity-map",
+        "type": "custom",
+        "title": "Affinitätskarte: Was den Primärfluss formt",
+        "body": "Die Forschung hat tiefe strukturelle Unterschiede aufgedeckt, die Entscheidungen zur Produktarchitektur beeinflussen.",
+        "payload": {
+          "findings": [
+            {
+              "title": "Frankreich und Deutschland sind wie zwei verschiedene Berufe besetzt",
+              "details": "Die GP-Dichte beträgt 107/100.000 in Frankreich gegenüber 66/100.000 in Deutschland; Der Konsultationsrhythmus folgt der gleichen Aufteilung – 5,9 Besuche/Jahr bei 16–18 Minuten in Frankreich, 9,8 Besuche/Jahr bei ~8 Minuten in Deutschland. Aus diesem Grund benötigt der Calendar Keeper zwei echte Varianten statt einer Schnittstelle mit Sprachumschaltung."
+            },
+            {
+              "title": "Der Kalender muss vertrauenswürdig sein, nicht nur vorhanden",
+              "details": "Patienten, die ausführlich suchen und auf „Keine Termine verfügbar“ stoßen, beschreiben das Tool als Zeitverschwendung. Was den Betrieb betrifft, berichten 81 % der deutschen Praxen von Fehlern beim TI-Anschluss und 82 % von Fehlern beim Lesen der eGK-Karte – was bedeutet, dass der Kalender selbst unzuverlässig wird, bevor ein Patient ihn jemals sieht."
+            },
+            {
+              "title": "Die Rezeption steht bereits unter Wasser",
+              "details": "Ungefähr 30 % der Anrufe bei Ärzten bleiben unbeantwortet. Deutsche MFAs nennen insbesondere klicklastige TI-Workflows und Ausfälle von Kartenlesern als wiederkehrende Stressfaktoren. Die 10 Stunden pro Woche, die durch Verwaltungsarbeit verloren gehen, sind genau das, was die Konkurrenz mit der KI-Anrufabwicklung anstrebt."
+            },
+            {
+              "title": "Datensouveränität ist eine Vertrauensbedingung, keine Funktion",
+              "details": "Das Vertrauen bricht, wenn Konsultationsdaten scheinbar außereuropäische KI-Modelle oder Dritte erreichen. Dies ist nicht segmentspezifisch – es ist für den Kalenderverwalter (Compliance-Exposition) und den wiederkehrenden Patienten (Vertrauen) gleichermaßen wichtig, und die Regeln vom September 2026 machen die ausschließliche EWR-Beherbergung zu einer Anforderung und nicht zu einer Präferenz."
+            }
+          ]
+        }
+      },
+      {
+        "id": "personas",
+        "type": "custom",
+        "title": "Proto-Personas",
+        "body": "Es entstanden zwei unterschiedliche Benutzerarchetypen, keine Sprachvarianten.",
+        "payload": {
+          "primary": {
+            "title": "Der Kalenderbewahrer",
+            "description": "Eine Rolle, die je nach Markt von einer anderen Person besetzt wird – wer den Zeitplan besitzt und sicherstellen muss, dass er wahr ist, ohne ihn ständig erneut zu überprüfen.",
+            "job": "Wenn mein Zeitplan den ganzen Tag durch Anrufe, Änderungen und Nichterscheinen unterbrochen wird, möchte ich, dass der Kalender immer korrekt ist, ohne dass ich ihn erneut überprüfen muss, damit ich keine klinische Zeit verliere oder jemanden doppelt buche.",
+            "france": {
+              "title": "Einzelarzt",
+              "details": "Leitet die Rezeption persönlich, da nur etwa 5 % der französischen Hausärzte einen Assistenten beschäftigen. Betreut Patienten jeweils 16–18 Minuten lang und nimmt Unterbrechungen zwischen den Konsultationen auf, anstatt sie zu delegieren. Routineanrufe (Umplanung, Versicherungsfragen) müssen bearbeitet werden, ohne den Prüfungsraum zu verlassen."
+            },
+            "germany": {
+              "title": "MFA (Medizinische Fachangestellte)",
+              "details": "Klinisch ausgebildet über drei Jahre hinweg, verwaltet den Kalender für mehrere Praktizierende – durchschnittlich 3,4 in einer Einzelpraxis, bis zu 19 in einer größeren MVZ. Nimmt kürzere, häufigere Konsultationen wahr (~8 Minuten, 9,8 Besuche/Jahr) und verbringt Echtzeit mit TI-mandatierten Aufgaben (KIM-Nachrichten, E-Rezepte, ePA). Ungefähr die Hälfte der deutschen Praxen meldet wöchentlich technische TI-Probleme, und diese Ausfälle landen beim MFA. Es müssen viele Praktiker aus einer einzigen Sicht selektiert und delegiert werden."
+            }
+          },
+          "secondary": {
+            "title": "Der zurückkehrende Patient",
+            "description": "Eine schmale, bewusst dünne Oberfläche. Seine einzige Aufgabe besteht darin, einem Patienten, der bereits eine Akte hat, die Umbuchung, Stornierung oder Verwaltung eines bestehenden Termins ohne Anruf zu ermöglichen.",
+            "scope": "Beinhaltet gelegentlich die Buchung für einen benannten Angehörigen, die manuell für diesen einen Termin eingegeben wird – kein gespeichertes, verknüpftes Profil. In Version 1 sind die Überprüfung der Identität neuer Patienten, die vollständige Verwaltung verknüpfter Konten und Berichte/Analysen bewusst ausgeschlossen."
+          }
+        }
+      },
+      {
+        "id": "root-causes",
+        "type": "custom",
+        "title": "Grundursachen: Was wirklich kaputt ist",
+        "body": "Untersuchungen haben ergeben, dass die offensichtlichen Probleme tiefere strukturelle Probleme verbergen.",
+        "payload": {
+          "q_a": [
+            {
+              "q": "Was sind die Kernprobleme?",
+              "a": "Generische Planungsplattformen behandeln jede Buchung als austauschbares Zeitfenster. Ein Kliniktermin hängt oft von einem Raum, einem Gerät, einem bestimmten Arzt und der gemeinsamen Vorbereitungszeit ab. Die Architektur eines Mitbewerbers modelliert diese Abhängigkeit nicht, da sie auf der Nachfrageseite aufgebaut ist (Doctolibs Abstammung). Zweites Problem: Wenn die Synchronisierung fehlschlägt (IT-Ausfall, Ausfall des eGK-Lesers), desynchronisieren sich die meisten Systeme entweder stillschweigend oder blockieren den ganzen Tag, wodurch ein technischer Schluckauf zu einer Betriebskrise wird."
+            },
+            {
+              "q": "Was sind die Grundursachen?",
+              "a": "Die Abhängigkeitslücke ist strukturell und keine Funktionslücke. Es hängt davon ab, wie das zugrunde liegende Datenmodell entworfen wurde. Das Sync-Failure-Problem ist eine Designlücke: Niemand wurde für den herabgesetzten Modus entwickelt, daher hat der Fehler keinen sichtbaren Status, keinen Abgleichspfad und keinen sicheren Standard."
+            },
+            {
+              "q": "Was sind Stakeholder-Perspektiven?",
+              "a": "Die Klinik bewertet ressourcenbewusste Buchungen während der Verkaufsdemo selbst und nicht erst Monate später. Dem CX-Leiter ist eine Unterscheidung wichtig: Wird ein Synchronisierungsfehler zu einem Support-Ticket oder zu einer vollständigen Krise? Das eigentliche Risiko für die Technik liegt im Schreibzugriff und der Schemaqualität bei der Integration, und Ressourcenabhängigkeiten sind genau das, was eine fehlerhafte Synchronisierung aufdeckt."
+            },
+            {
+              "q": "Was sind die aktuellen Einschränkungen?",
+              "a": "Keine Liquidität in der ersten Klinik (keine Vorgeschichte, keine Wartelistendaten), was alles ausschließt, was einen Netzwerkeffekt benötigt, um am ersten Tag nützlich zu sein."
+            }
+          ]
+        }
+      },
+      {
+        "id": "ideate-intro",
+        "type": "custom",
+        "title": "Ideate: How-Might-We & Strategic Questioning",
+        "body": "In der Ideenfindungsphase wurden strukturierte Fragen eingesetzt, um von Problemen zu umsetzbaren Hypothesen zu gelangen."
+      },
+      {
+        "id": "hmw-questions",
+        "type": "custom",
+        "title": "Wie-könnten-wir-Fragen",
+        "body": "Fünf Kategorien von Fragen grenzten den Lösungsraum ab und prüften Annahmen.",
+        "payload": {
+          "categories": [
+            {
+              "type": "Amplifying",
+              "example": "Wie können wir das Vertrauen in den Zeitplan stärken, wenn die Synchronisierung fehlschlägt?",
+              "answer": "Machen Sie „nicht synchronisiert“ zu einem sichtbaren, benannten Zustand und nicht zu einer stillen Lücke, damit das Personal an der Rezeption den herabgesetzten Modus als bekannten Zustand und nicht als unerklärlichen Fehler erkennt."
+            },
+            {
+              "type": "Removing",
+              "example": "Wie können wir den Ausfallmodus für den ganztägigen Block vollständig entfernen?",
+              "answer": "Lassen Sie Termine lokal mit ausstehender Identitätsüberprüfung erstellen, wenn der eGK-Leser oder die IT ausfällt, und stellen Sie sie zur Abstimmung in die Warteschlange, anstatt den gesamten Tagesplan anzuhalten."
+            },
+            {
+              "type": "Exploring",
+              "example": "Wie können wir untersuchen, wie sich eine Abstimmungswarteschlange operativ anfühlen sollte?",
+              "answer": "Erstellen Sie einen Prototyp als 1-2-Bildschirm-Flow (Status-Badge, Warteschlangenansicht) und testen Sie, ob das Personal an der Rezeption ohne Schulung darauf reagieren kann, da dies dem CX-Leiter vorgeführt wird."
+            },
+            {
+              "type": "Questioning assumptions",
+              "example": "Wie können wir die Annahme in Frage stellen, dass „Datensouveränität“ und „MFA-first“ Unterscheidungsmerkmale sind?",
+              "answer": "Beides als Zugangsvoraussetzungen und nicht als Verkaufsargumente neu klassifizieren. Jeder Konkurrent beansprucht sie bereits für sich, sodass die Führung mit ihnen den Differenzierungsplatz verschwendet, den eine ressourcenbewusste Planung tatsächlich einnehmen kann."
+            },
+            {
+              "type": "Unexpected resource",
+              "example": "Wie könnten wir die verzögerte Nachfüllungsfunktion als Beweis für unser Urteil nutzen und nicht als Lücke zum Verstecken?",
+              "answer": "Beziehen Sie es explizit auf die Klinik ein: Backfill benötigt eine Warteliste mit Verlauf, um Eingaben zu erhalten, und diese Liquidität ist im ersten Monat nicht vorhanden, daher handelt es sich um Phase 2 durch Design und nicht durch Versehen."
+            }
+          ]
+        }
+      },
+      {
+        "id": "question-characteristics",
+        "type": "custom",
+        "title": "Fragenmerkmale: Genauigkeit testen",
+        "body": "Das HMW-Set hielt vier Validitätstests stand.",
+        "payload": {
+          "tests": [
+            {
+              "test": "Mit Zielfernrohr",
+              "description": "Jede Frage bezieht sich auf die beiden Bildschirme, die tatsächlich versendet werden (Hauptbuchung, eingeschränkter Modus), nicht auf eine Wunschliste."
+            },
+            {
+              "test": "Umsetzbar",
+              "description": "Sie sind direkt mit dem verknüpft, was erstellt und vorgeführt wird."
+            },
+            {
+              "test": "Positiv gerahmt",
+              "description": "Etwa um „Wie sieht der vertrauenswürdige herabgesetzte Modus aus?“ und nicht um „Wie verbergen wir unser Synchronisierungsproblem.“"
+            },
+            {
+              "test": "Machbar",
+              "description": "Keiner erfordert einen Netzwerkeffekt oder vorhandene Liquidität, weshalb Backfill gänzlich außerhalb dieser Gruppe liegt. Hier funktioniert alles beim ersten Termin der ersten Klinik."
+            }
+          ]
+        }
+      },
+      {
+        "id": "strategic-alignment",
+        "type": "custom",
+        "title": "Strategische Ausrichtung",
+        "body": "Jede Frage steht in direktem Zusammenhang mit Benutzerproblemen, Geschäftszielen und technischen Risiken.",
+        "payload": {
+          "alignment": [
+            {
+              "lever": "Benutzerschmerzen",
+              "connection": "Das Personal an der Rezeption verliert das Vertrauen in den Zeitplan, sobald die Synchronisierung stillschweigend unterbrochen wird. Die Fragen zum Entfernen und Erkunden zielen direkt darauf ab."
+            },
+            {
+              "lever": "Geschäftsziel",
+              "connection": "Der Moment der Verkaufsbewertung ist der ressourcenbewusste Kernfluss, daher stärkt jedes HMW hier entweder diesen Fluss oder schützt ihn vor dem Fehlermodus, der ihn während einer Demo untergraben würde."
+            },
+            {
+              "lever": "Technische Einschränkung",
+              "connection": "Die Frage-Annahmen-HMW zwingt das Team dazu, den Schreibzugriff und die Schemaqualität frühzeitig zu testen, da hier eine fehlerhafte Synchronisierung zuerst auftauchen würde."
+            }
+          ]
+        }
+      },
+      {
+        "id": "prototype-intro",
+        "type": "custom",
+        "title": "Prototyp: Phasenweise Produktstrategie und -positionierung",
+        "body": "In der Prototypenphase wurden die Entdeckungen in einen konkreten, sequenziellen Markteinführungsplan umgesetzt."
+      },
+      {
+        "id": "solution-strategy",
+        "type": "custom",
+        "title": "Lösung: Neuer Heldenfluss",
+        "body": "Ein dreistufiger Ansatz, der Prioritäten setzt, was am ersten Tag funktioniert.",
+        "payload": {
+          "layers": [
+            {
+              "tier": "Kern (hohe Wiedergabetreue)",
+              "name": "Appointment-type setup with resource dependency → booking that respects it",
+              "details": "Raum + Ausrüstung + Praktiker + Vorbereitung, wobei generische Plattformen alles als Zeitfenster behandeln.",
+              "why": "Funktioniert ohne Liquidität. Es ist beim allerersten Termin in der allerersten Klinik nützlich. Es ist die eigentliche strukturelle Lücke: Wettbewerber tun dies nicht, weil ihre Architektur auf der Nachfrageseite geboren wurde. Es ist der Ablauf, den die Klinik während des Verkaufs bewertet, nicht sechs Monate später. Es testet die gefährlichste technische Annahme (Schreibzugriff und Schemaqualität), da Ressourcenabhängigkeiten genau das sind, was eine schlechte Synchronisierung zunichte macht."
+            },
+            {
+              "tier": "Sekundär (High Fidelity, 1–2 Bildschirme)",
+              "name": "Degraded mode and conflict resolution",
+              "details": "Sichtbarer Status „nicht synchronisiert“, Abstimmungswarteschlange, lokal erstellter Termin mit ausstehender Identitätsprüfung, niemals eine ganztägige Sperre.",
+              "why": "Wandelt das Synchronisierungsfehlerproblem in eine entworfene Antwort statt in einen leeren Anspruch um. Bei einem Ausfall der IT oder des eGK-Lesers bleibt der Fahrplan zuverlässig und lauffähig. Das möchte der Head of CX hören, denn es ist der Unterschied zwischen einem Ticket und einer Krise."
+            },
+            {
+              "tier": "Tertiär (niedrige Wiedergabetreue, Phase 2)",
+              "name": "Time-to-first-configured-schedule (onboarding)",
+              "details": "Wireframes dokumentieren den Einrichtungsablauf ohne Politur.",
+              "why": "Onboarding geht in den Geltungsbereich, aber als Wireframe. Es muss nicht hübsch sein; es muss existieren und gemessen werden. Backfill geht mit expliziter Begründung in Phase 2 über: Backfill benötigt eine Warteliste mit Verlauf, um zu existieren; Wir haben es zurückgestellt, weil es im ersten Monat keinen Input hat und sein Wert von der Liquidität abhängt, die diese Veröffentlichung noch nicht schafft. Das signalisiert Seniorität: Wir wissen zuerst, worauf es ankommt."
+            }
+          ]
+        }
+      },
+      {
+        "id": "competitive-positioning",
+        "type": "custom",
+        "title": "Neupositionierung: Was wirklich unterscheidet",
+        "body": "Gestalten Sie die Erzählung neu, basierend auf dem, was die Konkurrenz nicht besetzen kann.",
+        "payload": {
+          "reframe": [
+            {
+              "claim": "Datensouveränität und MFA-First-Positionierung",
+              "before": "Unterscheidungsmerkmale",
+              "after": "Einreisebestimmungen",
+              "reason": "Jeder Teilnehmer beansprucht sie; Sie unterscheiden uns nicht."
+            },
+            {
+              "claim": "Ressourcenbewusste Planung",
+              "status": "Partially occupied",
+              "angle": "Samedi liefert es, aber das wirklich vertretbare Unterscheidungsmerkmal, das verbleibt, ist enger und ehrlicher"
+            }
+          ],
+          "defensible_differentiator": "Ressourcenbewusste Planung, die nicht ausfällt, wenn die Infrastruktur dies tut. Es ist überprüfbar, es ist messbar und es hängt nicht von einem Netzwerkeffekt ab, den wir nicht haben."
+        }
+      },
+      {
+        "id": "gmt-strategy",
+        "type": "custom",
+        "title": "Go-to-Market-Strategie: Deutschland zuerst",
+        "body": "Die evidenzbasierte Marktauswahl verschiebt sich von unentschlossen zu empfohlen.",
+        "payload": {
+          "prior": "GTM-Sequenz war unentschlossen",
+          "evidence": "Frankreich ist ein Markt, den Doctolib bereits erobert hat (23,2 % PMS-Anteil). Deutschland ist ein Land, das vor neun Monaten (November 2025) mit der Erhebung begonnen hat, da die Stichprobengröße für gültige Usability-Daten nicht ausreicht. Ein schmales Fenster, messbar und günstig.",
+          "recommendation": "Deutschlands erster GTM. Bringen Sie es als Empfehlung mit Beweisen in die Diskussion mit den Stakeholdern ein, nicht als Designannahme."
+        }
+      },
+      {
+        "id": "strategic-recommendations",
+        "type": "custom",
+        "title": "Strategische Empfehlungen: Was sich geändert hat",
+        "body": "Die Marktforschung veränderte den ursprünglichen Umfang und die Positionierung.",
+        "payload": {
+          "table": [
+            {
+              "prior": "Doctolib ist ein Buchungstool, das in PMS integriert wird",
+              "status": "⚠️ False in France — it's #1 in PMS",
+              "action": "Schreiben Sie die Wettbewerbsfolie neu"
+            },
+            {
+              "prior": "GTM-Sequenz unentschlossen",
+              "status": "🔵 Evidence now favours Germany-first",
+              "action": "Als Empfehlung an Stakeholder weitergeben"
+            },
+            {
+              "prior": "Ressourcenbewusste Planung ist unser Alleinstellungsmerkmal",
+              "status": "⚠️ Samedi ships it at scale",
+              "action": "Notwendig, nicht ausreichend – Neupositionierung"
+            },
+            {
+              "prior": "Souveränität ist unser Unterscheidungsmerkmal",
+              "status": "⚠️ Occupied by both rivals",
+              "action": "Wechsel zu Einwilligungsarchitektur + Transparenz"
+            },
+            {
+              "prior": "Legacy-Instabilität ist der Keil",
+              "status": "🔵 Confirmed and quantified",
+              "action": "Behalten; Stärken Sie mit Zi-Daten"
+            },
+            {
+              "prior": "Dreischichtige Architektur",
+              "status": "✅ Unaffected",
+              "action": "Behalten"
+            },
+            {
+              "prior": "Hauptbenutzer von Calendar Keeper",
+              "status": "✅ Unaffected — Doctolib built its PVS in close collaboration with MFAs and doctors",
+              "action": "Behalten; bestätigt, dass die MFA das richtige Ziel ist"
+            },
+            {
+              "prior": "—",
+              "status": "🆕 Migration risk as adoption blocker",
+              "action": "Zu den anfänglichen Anforderungen hinzufügen; möglicherweise entscheidender als jede Kalenderfunktion"
+            }
+          ]
+        }
+      },
+      {
+        "id": "new-constraints",
+        "type": "custom",
+        "title": "Neue technische und regulatorische Einschränkungen",
+        "body": "Die Marktforschung ergab Compliance-Anforderungen, die nicht im ursprünglichen Auftrag enthalten waren.",
+        "payload": {
+          "constraint": "Cloud-PVS-Anbieter in Deutschland unterliegen §203(3–4) StGB, Art. 28 DSGVO, §393 SGB V und BSI C5 Bescheinigungspflichten – auch eine Auftragsdatenverarbeitungsvereinbarung allein beseitigt die strafrechtliche Schweigepflicht nicht.",
+          "requirement": "KBV-Konformitätsbewertung und TI-Anbindung sind auch für Cloud-Systeme verpflichtend.",
+          "implication": "Dies ist eine Cloud-native Eintrittsbarriere, die in keinem unserer vier Projektdokumente erfasst wurde. Zum Register der technischen Einschränkungen hinzufügen."
+        }
+      },
+      {
+        "id": "market-tailwinds",
+        "type": "custom",
+        "title": "Rückenwind des Marktes und Basiskennzahlen",
+        "body": "Die Forschung bestätigte und quantifizierte wichtige Nachfragesignale.",
+        "payload": {
+          "german_infrastructure": [
+            "82 % der Praxen berichten von wiederkehrenden Problemen beim Lesen der elektronischen Gesundheitskarte (eGK)",
+            "81 % berichten von häufigen TI-Verbindungsfehlern",
+            "71 % berichten regelmäßig von Schwierigkeiten bei der Erstellung von E-Rezepten"
+          ],
+          "patient_adoption": "64 % der Deutschen haben mindestens einmal online einen Arzttermin gebucht, gegenüber 36 % im Jahr 2023 – starker Rückenwind für die patientenorientierte Seite der ersten Veröffentlichung."
+        }
+      }
+    ]
+  }
+]
