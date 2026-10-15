@@ -12,7 +12,7 @@ export const metadata: Metadata = buildMetadata({
   title: "Classical Word Arabic Institute | Print Design Case Study",
   description: "A warm, editorial trifold brochure design for Classical Word Arabic Institute.",
   path: "/classical-word",
-  image: "/images/projects/classical-word/trifold-outside.png",
+  image: "/images/projects/classical-word/brochure-cover-panels.png",
   type: "article",
 });
 
@@ -73,7 +73,7 @@ export default function ClassicalWordPage() {
           <div className="relative mx-auto w-full max-w-[730px]">
             <div className="absolute -inset-7 -z-10 rounded-[44px] bg-[#c29a5c]/15 blur-3xl" />
             <div className="overflow-hidden rounded-[22px] border border-[#9a702d]/20 bg-[#fffdf8] p-2 shadow-[0_30px_70px_rgba(66,45,20,0.18)] sm:p-3">
-              <Image src={withBasePath("/images/projects/classical-word/trifold-outside.png")} alt="Outside panels of the Classical Word Arabic Institute trifold brochure" width={1900} height={1469} loading="eager" className="h-auto w-full rounded-[14px]" />
+              <Image src={withBasePath("/images/projects/classical-word/brochure-cover-panels.png")} alt="Outside panels of the Classical Word Arabic Institute trifold brochure" width={1900} height={1469} loading="eager" className="h-auto w-full rounded-[14px]" />
             </div>
             <p className="mt-4 text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-[#8a6b3e]">Outside panels · cover, enrollment and contact</p>
           </div>
@@ -130,7 +130,7 @@ export default function ClassicalWordPage() {
           <p className="max-w-[520px] text-[16px] leading-[1.8] text-[#62564a]">The reverse side gives the programme’s story more depth: why Classical Arabic matters, what learners can expect, and the faculty credentials that establish trust.</p>
         </div>
         <div className="relative mt-12 overflow-hidden rounded-[26px] border border-[#9a702d]/20 bg-[#fffdf8] p-2 shadow-[0_30px_70px_rgba(66,45,20,0.12)] sm:p-4">
-          <Image src={withBasePath("/images/projects/classical-word/trifold-inside.png")} alt="Inside panels of the Classical Word Arabic Institute trifold brochure" width={1900} height={1469} className="h-auto w-full rounded-[18px]" />
+          <Image src={withBasePath("/images/projects/classical-word/brochure-inside-panels.png")} alt="Inside panels of the Classical Word Arabic Institute trifold brochure" width={1900} height={1469} className="h-auto w-full rounded-[18px]" />
         </div>
       </section>
 

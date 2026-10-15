@@ -55,7 +55,7 @@ const toolIconMap: Record<string, string> = {
 };
 
 const projectImageMap: Record<string, string> = {
-  "classical-word": withBasePath("/images/projects/classical-word/trifold-outside.png"),
+  "classical-word": withBasePath("/images/projects/classical-word/brochure-cover-panels.png"),
   "benefits-enrollment": withBasePath("/images/projects/benefits-enrollment/thumbnails/thumbnail-benefits.png"),
   "nayya-ai-benefits": withBasePath("/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png"),
   "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/thumbnails/flock.png"),
@@ -65,7 +65,7 @@ const projectImageMap: Record<string, string> = {
 };
 
 const projectHeroImageMap: Record<string, string> = {
-  "classical-word": withBasePath("/images/projects/classical-word/trifold-outside.png"),
+  "classical-word": withBasePath("/images/projects/classical-word/brochure-cover-panels.png"),
   "benefits-enrollment": withBasePath("/images/projects/benefits-enrollment/hero/benefits-hero.png"),
   "nayya-ai-benefits": withBasePath("/images/projects/nayya-ai-benefits/hero/nayya-hero.png"),
   "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/hero/flock-hero.png"),
@@ -109,6 +109,10 @@ const homeCardMediaMap: Record<string, { id: string; image: string }> = {
 };
 
 const projectListCardMediaMap: Record<string, { id: string; image: string }> = {
+  "classical-word": {
+    id: "project-list-card-classical-word",
+    image: withBasePath("/images/projects/classical-word/brochure-cover-panels.png"),
+  },
   "calendar-keeper": {
     id: "project-list-card-calendar-keeper",
     image: withBasePath("/images/projects/calendar-keeper/thumbnails/calendar-keeper-cover-square.png"),

@@ -16,9 +16,12 @@
     "filters": ["Product Design"],
     "tools": ["Figma"],
     "images": {
-      "cover": "/images/projects/classical-word/trifold-outside.png",
-      "hero": "/images/projects/classical-word/trifold-outside.png",
-      "gallery": ["/images/projects/classical-word/trifold-inside.png"]
+      "cover": "/images/projects/classical-word/brochure-cover-panels.png",
+      "hero": "/images/projects/classical-word/brochure-cover-panels.png",
+      "gallery": [
+        "/images/projects/classical-word/brochure-inside-panels.png",
+        "/images/projects/classical-word/brochure-cover-panels.png"
+      ]
     },
     "client_logos": [],
     "metrics": [],
