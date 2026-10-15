@@ -74,7 +74,7 @@
   "contact": {
     "headline": "Get in Touch",
     "subheadline": "Let's talk",
-    "intro": "Whether you have a project in mind, a question, or just want to say hello — I'd love to hear from you.",
+    "intro": "Whether you have a project in mind, a question, or just want to say hello, I'd love to hear from you.",
     "availability": "I'm currently based in Málaga, Spain and available for remote opportunities worldwide. I usually reply quickly, often within 24 hours.",
     "details": [
       { "label": "Email", "value": "greddysmartinez5@gmail.com", "href": "mailto:greddysmartinez5@gmail.com" },
@@ -91,14 +91,14 @@
     "location": "Malaga, Spain",
     "website": "www.be.net/greddysmartinez",
     "linkedin": "linkedin.com/in/greddysmartinez",
-    "bio": "Senior Product Designer with 10+ years designing enterprise SaaS and AI-assisted experiences across HR, benefits, compliance, and healthcare. I bridge strategy and execution—leading research, aligning cross-functional teams, and shipping clear, high-impact solutions in Agile environments.",
+    "bio": "Senior Product Designer with 10+ years designing enterprise SaaS and AI-assisted experiences across HR, benefits, compliance, and healthcare. I bridge strategy and execution, leading research, aligning cross-functional teams, and shipping clear, high-impact solutions in Agile environments.",
     "pdf_link": "/documents/greddys-martinez-resume-2026.pdf",
     "experience": [
       {
         "title": "Sr. Product Designer",
         "company": "ITX Corp",
         "client": "Paychex (Nayya, Flock, E-Verify, Indeed)",
-        "period": "Mar. 2021 – Present",
+        "period": "Mar. 2021, Present",
         "location": "Malaga, Spain (Remote)",
         "bullets": [
           "Lead end-to-end design architecture for an enterprise HR SaaS platform with over 2.3 million users by making data-driven design decisions while acting as Staff Designer, aligning cross-functional teams around a unified product vision across multiple high-impact products.",
@@ -127,7 +127,7 @@
         "title": "UX/UI Designer",
         "company": "Alquilando S.A.",
         "client": "PropTech Marketplace",
-        "period": "Mar. 2019 – May. 2021",
+        "period": "Mar. 2019, May. 2021",
         "location": "Buenos Aires, Argentina (Remote)",
         "bullets": [
           "Designing and shipping end-to-end UX/UI solutions for a PropTech startup building a large-scale real estate platform serving the LATAM market.",
@@ -141,7 +141,7 @@
         "title": "Freelance UX / UI Designer",
         "company": "Studio Hakuna",
         "client": "Paramount App LATAM",
-        "period": "Dec. 2019 – May. 2020",
+        "period": "Dec. 2019, May. 2020",
         "location": "Buenos Aires, Argentina (Remote)",
         "bullets": [
           "Conducted UX research to understand audience needs and behaviors for the Paramount App LATAM.",
@@ -154,7 +154,7 @@
         "title": "UX/UI Designer",
         "company": "Elevation",
         "client": "Web Solutions for Nonprofits",
-        "period": "Jan. 2017 – Feb. 2019",
+        "period": "Jan. 2017, Feb. 2019",
         "location": "Buenos Aires, Argentina (Hybrid)",
         "bullets": [
           "Delivered end-to-end UX/UI design across multiple nonprofit clients simultaneously.",
@@ -167,7 +167,7 @@
         "title": "Freelance UX / UI Designer / Graphic Designer",
         "company": "Multiple clients | Web and social media",
         "client": "",
-        "period": "Feb. 2014 – Feb. 2017",
+        "period": "Feb. 2014, Feb. 2017",
         "location": "LATAM, Spain, USA (Remote)",
         "bullets": [
           "Delivered end-to-end UX/UI design for early-stage products, e-commerce platforms, and marketplaces across multiple industries.",
@@ -189,8 +189,8 @@
     },
     "tools": ["Figma", "Jira", "Miro", "Copilot", "Webex", "ClickUp", "Confluence", "Maze", "Notion", "Slack", "HTML/CSS", "React", "Claude", "VS Code", "ChatGPT"],
     "education": [
-      { "year": "2014–2015", "degree": "Diploma in Web Media Design", "institution": "Universidad Rafael Belloso Chacín" },
-      { "year": "2012–2015", "degree": "Bachelor's in Graphic Design", "institution": "URBE" },
+      { "year": "2014, 2015", "degree": "Diploma in Web Media Design", "institution": "Universidad Rafael Belloso Chacín" },
+      { "year": "2012, 2015", "degree": "Bachelor's in Graphic Design", "institution": "URBE" },
       { "year": "2017", "degree": "UX Design / Graphic Design", "institution": "Coderhouse" }
     ],
     "certifications": [

@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Heading } from "@/components/ui/heading"
 import { cn } from "@/lib/utils"
 import { useTranslateTag } from "@/lib/i18n/use-translate"
+import { getVisibleProjectTags } from "@/lib/project-tags"
 
 type ProjectTeaserCardProps = {
   href: string
@@ -53,6 +54,7 @@ export function ProjectTeaserCard({
 }: ProjectTeaserCardProps) {
   const isCarousel = variant === "carousel"
   const translateTag = useTranslateTag()
+  const visibleTags = getVisibleProjectTags(tags)
 
   return (
     <Link
@@ -122,7 +124,7 @@ export function ProjectTeaserCard({
         ) : null}
       </div>
       <div className="flex flex-wrap gap-3">
-        {tags.map((tag) => (
+        {visibleTags.map((tag) => (
           <Badge key={tag} size="tag">
             {translateTag(tag)}
           </Badge>

@@ -6,7 +6,7 @@ set payload = jsonb_set(
     "title": "Sr. Product Designer",
     "company": "ITX Corp",
     "client": "Paychex (Nayya, Flock, E-Verify, Indeed)",
-    "period": "Mar. 2021 – Present",
+    "period": "Mar. 2021, Present",
     "location": "Malaga, Spain (Remote)",
     "bullets": [
       "Lead end-to-end design architecture for an enterprise HR SaaS platform with over 2.3 million users by making data-driven design decisions while acting as Staff Designer, aligning cross-functional teams around a unified product vision across multiple high-impact products.",

@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Heading } from "@/components/ui/heading"
 import { useTranslate, useTranslateTag } from "@/lib/i18n/use-translate"
+import { getVisibleProjectTags } from "@/lib/project-tags"
 
 type ProjectCardProps = {
   id?: string
@@ -48,6 +49,7 @@ export function ProjectCard({
   const translate = useTranslate()
   const translateTag = useTranslateTag()
   const resolvedCtaLabel = ctaLabel ?? translate("projectsPage.viewCaseStudy")
+  const visibleTags = getVisibleProjectTags(tags)
 
   return (
     <Link
@@ -114,7 +116,7 @@ export function ProjectCard({
           </div>
           <div className="mt-7 flex flex-wrap items-end justify-between gap-4">
             <div className="flex flex-wrap gap-2">
-              {tags.map((tag) => (
+              {visibleTags.map((tag) => (
                 <Badge key={tag} size="tag">
                   {translateTag(tag)}
                 </Badge>

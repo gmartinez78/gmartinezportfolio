@@ -53,7 +53,7 @@ export const dictionary = {
   "projectsPage.comingSoon": { en: "Coming soon", es: "Próximamente" },
   "projectsPage.viewCaseStudy": { en: "View case study ↗", es: "Ver caso de estudio ↗" },
 
-  // Filter pill labels (display only — matching logic still uses the English identifiers)
+  // Filter pill labels (display only, matching logic still uses the English identifiers)
   "filter.All": { en: "All", es: "Todos" },
   "filter.UX Research": { en: "UX Research", es: "Investigación UX" },
   "filter.Product Design": { en: "Product Design", es: "Diseño de producto" },
@@ -128,8 +128,8 @@ export const dictionary = {
   "caseStudy.task2": { en: "Task 2", es: "Tarea 2" },
   "caseStudy.task3": { en: "Task 3", es: "Tarea 3" },
   "caseStudy.task4": { en: "Task 4", es: "Tarea 4" },
-  "caseStudy.task4Optional": { en: "Task 4 — Impact metrics", es: "Tarea 4 — Métricas de impacto" },
-  "caseStudy.task5": { en: "Task 5 — How I used tools", es: "Tarea 5 — Cómo usé las herramientas" },
+  "caseStudy.task4Optional": { en: "Task 4, Impact metrics", es: "Tarea 4, Métricas de impacto" },
+  "caseStudy.task5": { en: "Task 5, How I used tools", es: "Tarea 5, Cómo usé las herramientas" },
   "caseStudy.task5Short": { en: "Task 5", es: "Tarea 5" },
   "caseStudy.tasks": { en: "Tasks", es: "Tareas" },
   "caseStudy.funnelDiagnosisFull": { en: "Funnel diagnosis & design improvements", es: "Diagnóstico del embudo y mejoras de diseño" },
@@ -150,7 +150,7 @@ export const dictionary = {
   },
   "caseStudy.howIUsedTools": { en: "How I used tools while completing this case", es: "Cómo usé las herramientas al completar este caso" },
   "caseStudy.task4Description": {
-    en: "A transparent breakdown of how AI-assisted tools supported analysis, exploration, writing, and delivery — with human judgement guiding the problem framing, decisions, and final quality.",
+    en: "A transparent breakdown of how AI-assisted tools supported analysis, exploration, writing, and delivery, with human judgement guiding the problem framing, decisions, and final quality.",
     es: "Un desglose transparente de cómo las herramientas asistidas por IA apoyaron el análisis, la exploración, la redacción y la entrega, con criterio humano guiando el planteamiento del problema, las decisiones y la calidad final.",
   },
   "caseStudy.task4ImpactDescription": {
@@ -478,7 +478,7 @@ export const dictionary = {
     es: "Si esas variantes mejoran la finalización del paso de email, sería más fácil justificar la inversión en un componente de personalización dinámica reutilizable.",
   },
 
-  // Home page — hero / assistant / sections
+  // Home page, hero / assistant / sections
   "home.viewCaseStudy": { en: "View case study", es: "Ver caso de estudio" },
   "home.viewProject": { en: "View project", es: "Ver proyecto" },
   "home.githubActivity": { en: "GitHub Activity", es: "Actividad en GitHub" },
@@ -542,7 +542,7 @@ export const dictionary = {
     es: "Actividad reciente y pública en repositorios de GitHub.",
   },
 
-  // Home page — skills showcase cards
+  // Home page, skills showcase cards
   "home.a11yValidationEyebrow": { en: "A11y validation", es: "Validación de accesibilidad" },
   "home.a11yValidationBadge": { en: "in review", es: "en revisión" },
   "home.focusOrder": { en: "Focus order", es: "Orden de foco" },
@@ -670,6 +670,91 @@ export const dictionary = {
     es: "Algunas cosas que he creado",
     de: "Ein paar Dinge, die ich entwickelt habe",
   },
+  "home.featuredProjects": {
+    en: "Featured clients",
+    es: "Clientes destacados",
+    de: "Ausgewählte Kunden",
+  },
+  "home.viewPortfolio": {
+    en: "View portfolio",
+    es: "Ver portfolio",
+    de: "Portfolio ansehen",
+  },
+  "home.productStrengths.eyebrow": {
+    en: "Why teams bring me in",
+    es: "Por qué los equipos cuentan conmigo",
+    de: "Warum Teams mich hinzuholen",
+  },
+  "home.productStrengths.title": {
+    en: "I make the hard parts of product feel clear.",
+    es: "Hago que las partes más difíciles de un producto se entiendan con claridad.",
+    de: "Ich mache die schwierigsten Teile eines Produkts verständlich.",
+  },
+  "home.productStrengths.intro": {
+    en: "For enterprise, AI, and operational products where the decisions, and the consequences, are real.",
+    es: "Para productos empresariales, de IA y operativos donde las decisiones, y sus consecuencias, son reales.",
+    de: "Für Enterprise-, KI- und operative Produkte, bei denen Entscheidungen und ihre Folgen real sind.",
+  },
+  "home.productStrengths.endToEnd.title": {
+    en: "End-to-end, not handoff-only.",
+    es: "De principio a fin, no solo hasta el handoff.",
+    de: "End-to-End, nicht nur bis zur Übergabe.",
+  },
+  "home.productStrengths.endToEnd.description": {
+    en: "I take work from research and problem framing through flows, prototypes, build, and iteration, keeping decisions connected from start to finish.",
+    es: "Lidero el trabajo desde la investigación y la definición del problema hasta los flujos, prototipos, desarrollo e iteración, conectando las decisiones de principio a fin.",
+    de: "Ich begleite die Arbeit von Recherche und Problemdefinition über Flows, Prototypen und Umsetzung bis zur Iteration, damit Entscheidungen von Anfang bis Ende verbunden bleiben.",
+  },
+  "home.productStrengths.complexFlows.title": {
+    en: "Complex flows people can trust.",
+    es: "Flujos complejos en los que las personas pueden confiar.",
+    de: "Komplexe Abläufe, denen Menschen vertrauen können.",
+  },
+  "home.productStrengths.complexFlows.description": {
+    en: "I turn data-heavy, role-based, and high-stakes tasks into clear next steps, with accessibility, edge cases, and recovery considered from the beginning.",
+    es: "Convierto tareas con muchos datos, roles y alto riesgo en pasos claros, considerando accesibilidad, casos límite y recuperación desde el inicio.",
+    de: "Ich mache datenreiche, rollenbasierte und risikoreiche Aufgaben zu klaren nächsten Schritten, mit Barrierefreiheit, Sonderfällen und Wiederherstellung von Anfang an.",
+  },
+  "home.productStrengths.systems.title": {
+    en: "Systems that make the next release easier.",
+    es: "Sistemas que facilitan la siguiente entrega.",
+    de: "Systeme, die das nächste Release leichter machen.",
+  },
+  "home.productStrengths.systems.description": {
+    en: "I create reusable patterns, components, and practical documentation so design and engineering can ship with more consistency and less rework.",
+    es: "Creo patrones, componentes y documentación práctica para que diseño e ingeniería entreguen con más consistencia y menos retrabajo.",
+    de: "Ich entwickle wiederverwendbare Muster, Komponenten und praxisnahe Dokumentation, damit Design und Engineering konsistenter und mit weniger Nacharbeit liefern können.",
+  },
+  "home.impact.eyebrow": {
+    en: "Evidence in the work",
+    es: "Evidencia en el trabajo",
+    de: "Belege in der Arbeit",
+  },
+  "home.impact.title": {
+    en: "Design work, measured in outcomes.",
+    es: "Diseño que se mide en resultados.",
+    de: "Design, gemessen an Ergebnissen.",
+  },
+  "home.impact.intro": {
+    en: "A few signals from the products and teams I’ve helped move forward.",
+    es: "Algunas señales de los productos y equipos que he ayudado a impulsar.",
+    de: "Einige Signale aus Produkten und Teams, die ich vorangebracht habe.",
+  },
+  "home.impact.caseStudy": { en: "Case study", es: "Caso de estudio", de: "Fallstudie" },
+  "home.impact.nayyaTitle": { en: "AI Benefits Integration", es: "Integración de beneficios con IA", de: "Integration von KI-gestützten Benefits" },
+  "home.impact.nayyaImageAlt": { en: "Nayya AI benefits integration case study", es: "Caso de estudio de la integración de beneficios con IA de Nayya", de: "Fallstudie zur KI-gestützten Benefits-Integration von Nayya" },
+  "home.impact.clientReview": { en: "Client review", es: "Reseña de cliente", de: "Kundenbewertung" },
+  "home.impact.upworkQuote": {
+    en: "Thanks Greddys for your great work. Greddys did a great job on many things, she surprised me often with some new and fresh ideas.",
+    es: "Gracias, Greddys, por tu excelente trabajo. Greddys hizo un gran trabajo en muchas cosas y a menudo me sorprendió con ideas nuevas y frescas.",
+    de: "Danke, Greddys, für deine großartige Arbeit. Greddys hat viele Dinge hervorragend umgesetzt und mich oft mit neuen, frischen Ideen überrascht.",
+  },
+  "home.impact.upworkAttribution": { en: "Upwork client · Graphic Design / Design Tasks", es: "Cliente de Upwork · Diseño gráfico / tareas de diseño", de: "Upwork-Kunde · Grafikdesign / Designaufgaben" },
+  "home.impact.upworkRating": { en: "Upwork rating", es: "Valoración en Upwork", de: "Upwork-Bewertung" },
+  "home.impact.processingTime": { en: "Less processing time", es: "Menos tiempo de procesamiento", de: "Weniger Bearbeitungszeit" },
+  "home.impact.selfService": { en: "Employees self-managing access", es: "Empleados autogestionando accesos", de: "Mitarbeitende verwalten Zugriffe selbst" },
+  "home.impact.enrollment": { en: "Annual enrollment goal exceeded", es: "Objetivo anual de inscripciones superado", de: "Jährliches Einschreibeziel übertroffen" },
+  "home.impact.supportCalls": { en: "Fewer support calls a year", es: "Menos llamadas de soporte al año", de: "Weniger Supportanrufe pro Jahr" },
   "home.ideaToImpact": {
     en: "From idea to impact.",
     es: "De la idea al impacto.",
@@ -701,7 +786,7 @@ export const dictionary = {
   "home.freelanceProjectsDescription": {
     en: "Independent client engagements, from strategy through delivery.",
     es: "Colaboraciones independientes con clientes, desde la estrategia hasta la entrega.",
-    de: "Unabhängige Kundenprojekte – von der Strategie bis zur Umsetzung.",
+    de: "Unabhängige Kundenprojekte, von der Strategie bis zur Umsetzung.",
   },
   "home.toolsEyebrow": { en: "Experience & Skills", es: "Experiencia y habilidades", de: "Erfahrung & Fähigkeiten" },
   "home.toolsLove": { en: "Tools I Love", es: "Herramientas que me encantan", de: "Tools, die ich liebe" },
@@ -747,7 +832,7 @@ export const dictionary = {
   "projectsPage.freelanceProjectsDescription": {
     en: "Independent client engagements, from strategy through delivery.",
     es: "Colaboraciones independientes con clientes, desde la estrategia hasta la entrega.",
-    de: "Unabhängige Kundenprojekte – von der Strategie bis zur Umsetzung.",
+    de: "Unabhängige Kundenprojekte, von der Strategie bis zur Umsetzung.",
   },
   "projectsPage.untitledProject": { en: "Untitled Project", es: "Proyecto sin título", de: "Projekt ohne Titel" },
   "projectsPage.previewAlt": { en: "{project} preview", es: "Vista previa de {project}", de: "Vorschau von {project}" },

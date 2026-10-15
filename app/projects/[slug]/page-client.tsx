@@ -32,6 +32,7 @@ import {
 } from "@/lib/cms/public";
 import type { CaseStudyContentBlock, CaseStudyRecord, CaseStudyReflection } from "@/lib/cms/types";
 import { withBasePath } from "@/lib/site";
+import { getVisibleProjectTags } from "@/lib/project-tags";
 import { useTranslate } from "@/lib/i18n/use-translate";
 import { useLanguage, type Language } from "@/lib/i18n/language-context";
 import { translate } from "@/lib/i18n/dictionary";
@@ -173,7 +174,7 @@ const PROTECTA_CAMPAIGN_CREATIVE = [
 ];
 
 const PROTECTA_CONVERSION_FUNNEL = [
-  ["Campaign impressions", "100,000", "—"],
+  ["Campaign impressions", "100,000", ", "],
   ["Unique reach", "77,000 people", "Average frequency: 1.3"],
   ["Link clicks / landing-page visits", "1,000", "1.0% click-through rate"],
   ["WhatsApp inquiries started", "120", "12% of landing-page visitors"],
@@ -883,7 +884,7 @@ const PROTECTA_WORKFLOW_TOOLS = [
 const PROTECTA_DECISION_MODEL: Record<"en" | "es", { title: string; body: string }> = {
   en: {
     title: "Human-led decision model",
-    body: "AI expanded the option set; I set the criteria. At every stage, I evaluated outputs against source research, bilingual user needs, brand trust, business goals, feasibility, and accessibility—then selected the direction and made the final call.",
+    body: "AI expanded the option set; I set the criteria. At every stage, I evaluated outputs against source research, bilingual user needs, brand trust, business goals, feasibility, and accessibility, then selected the direction and made the final call.",
   },
   es: {
     title: "Modelo de decisión guiado por una persona",
@@ -958,7 +959,7 @@ const PROTECTA_HANDOFF_COPY: Record<"en" | "es", { eyebrow: string; title: strin
     title: "From Claude Design direction to a coded component",
     body: "These are the three working surfaces behind the finished website: an exploratory Claude Design screen, the Figma AI component work that made the direction reusable, and the coded state documented in Storybook.",
     stages: [
-      { label: "01 · Claude Design", title: "Explore the visual direction", body: "A fast first screen to compare tone, hierarchy, and brand character—not the final UI." },
+      { label: "01 · Claude Design", title: "Explore the visual direction", body: "A fast first screen to compare tone, hierarchy, and brand character, not the final UI." },
       { label: "02 · Figma AI", title: "Turn the direction into a system", body: "I built the components, variants, and bilingual states that the pages would reuse." },
       { label: "03 · Code + Storybook", title: "Implement and verify", body: "The coded counterpart is reviewed in Storybook for behavior, responsive states, and accessibility." },
     ],
@@ -1217,7 +1218,7 @@ const PROTECTA_CONTENT_PILLARS: Record<"en" | "es", { eyebrow: string; title: st
 
 const PROTECTA_FUNNEL: Record<"en" | "es", { eyebrow: string; title: string; items: Array<{ value: string; label: string }> }> = {
   en: {
-    eyebrow: "Campaign funnel · Jul 10 – Aug 6, 2026",
+    eyebrow: "Campaign funnel · Jul 10, Aug 6, 2026",
     title: "From attention to advisor intent",
     items: [
       { value: "3.3K", label: "Views" },
@@ -1229,7 +1230,7 @@ const PROTECTA_FUNNEL: Record<"en" | "es", { eyebrow: string; title: string; ite
     ],
   },
   es: {
-    eyebrow: "Embudo de campaña · 10 de julio – 6 de agosto de 2026",
+    eyebrow: "Embudo de campaña · 10 de julio, 6 de agosto de 2026",
     title: "De atención a intención de contacto",
     items: [
       { value: "3.3K", label: "Visualizaciones" },
@@ -2579,7 +2580,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
           </div>
           <div className="mt-2 rounded-[8px] border border-dashed border-[#1c1a17] bg-white/60 px-2 py-[5px] text-[10px] leading-[1.3] text-[#1c1a17]">
-            🎁 1:1 coach consultation — included with 12-wk only
+            🎁 1:1 coach consultation, included with 12-wk only
           </div>
         </div>
         <div className="flex items-center justify-between rounded-full bg-[#1c1a17] px-[12px] py-[8px]">
@@ -4306,7 +4307,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </table>
                   </div>
                   <div className="mt-4 p-4 bg-[#f0fdf4] border-l-4 border-[#16a34a] rounded">
-                    <p className="text-[15px] leading-[1.7] text-[#5c7792]"><strong>Key Finding:</strong> Data migration is the real differentiator — 44.8% of German practices fear data won't migrate cleanly. This is the #1 blocker to switching, making it a higher initial priority than additional compliance certifications or payment integrations.</p>
+                    <p className="text-[15px] leading-[1.7] text-[#5c7792]"><strong>Key Finding:</strong> Data migration is the real differentiator, 44.8% of German practices fear data won't migrate cleanly. This is the #1 blocker to switching, making it a higher initial priority than additional compliance certifications or payment integrations.</p>
                   </div>
                   <p className="mt-5 text-[14px] leading-[1.7] text-[#5c7792]">Starting with this comparison of the selected competitors, I used their product information, help centers, app listings, and recurring themes in Google Play and Apple App Store reviews to identify the gaps and friction points outlined in the Market Opportunity & Key Insights below.</p>
                 </div>
@@ -4536,7 +4537,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="mx-auto max-w-[1080px]">
               <SectionHeading eyebrow="Customer journey map" title="A return visit, from search to confirmation" centered className="mb-5" />
               <p className="mx-auto mb-8 max-w-[720px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                For returning patients, an appointment should be a quick, familiar task. Today, uncertainty at each step often sends a routine rebooking back to the phone line—adding pressure to the clinic team it was meant to help.
+                For returning patients, an appointment should be a quick, familiar task. Today, uncertainty at each step often sends a routine rebooking back to the phone line, adding pressure to the clinic team it was meant to help.
               </p>
 
               <div className="overflow-x-auto rounded-[24px] border border-[#d9e5f2] bg-[#f8fbff] shadow-[0_12px_32px_rgba(14,41,81,0.06)]">
@@ -4691,7 +4692,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
 
               <div className="mx-auto mt-6 max-w-[820px] text-center text-[14px] leading-[1.65] text-[#5c7792]">
-                <p><strong className="text-[#0e2951]">Strategic focus:</strong> Data sovereignty and MFA-first workflows are entry requirements. The defensible advantage is reliable, resource-aware scheduling—especially in degraded mode.</p>
+                <p><strong className="text-[#0e2951]">Strategic focus:</strong> Data sovereignty and MFA-first workflows are entry requirements. The defensible advantage is reliable, resource-aware scheduling, especially in degraded mode.</p>
               </div>
               <div className="mx-auto mt-12 max-w-[820px]">
                 <div className="text-center">
@@ -5496,12 +5497,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             <div className="border-b border-[#d7e5de] px-4 py-3"><p className="font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{protectaUi.typeScale}</p></div>
                             <div className="divide-y divide-[#e5ece5]">
                               {[
-                                ["Display", "Newsreader", "48–84px · 400"],
-                                ["H1", "Newsreader", "38–60px · 400"],
-                                ["H2", "Newsreader", "30–42px · 400"],
-                                ["H3 / H4", "Geist", "21–26px · 600"],
-                                [translate("caseStudy.body"), "Geist", "17–19px · 400"],
-                                [translate("caseStudy.eyebrow"), "JetBrains Mono", "12–13px · 500"],
+                                ["Display", "Newsreader", "48, 84px · 400"],
+                                ["H1", "Newsreader", "38, 60px · 400"],
+                                ["H2", "Newsreader", "30, 42px · 400"],
+                                ["H3 / H4", "Geist", "21, 26px · 600"],
+                                [translate("caseStudy.body"), "Geist", "17, 19px · 400"],
+                                [translate("caseStudy.eyebrow"), "JetBrains Mono", "12, 13px · 500"],
                               ].map(([level, font, scale]) => (
                                 <div key={level} className="grid grid-cols-[52px_1fr_auto] items-center gap-3 px-4 py-2.5">
                                   <span className="font-inter text-[12px] font-semibold text-[#154f4d]">{level}</span>
@@ -5679,7 +5680,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <div>Funnel stage</div><div>Results</div><div>Conversion</div>
                         </div>
                         {[
-                          ["Campaign impressions", "100,000", "—"],
+                          ["Campaign impressions", "100,000", ", "],
                           ["Unique reach", "77,000 people", "Average frequency: 1.3"],
                           ["Link clicks / landing-page visits", "1,000", "1.0% click-through rate"],
                           ["WhatsApp inquiries started", "120", "12% of landing-page visitors"],
@@ -5697,7 +5698,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
                       <div className="mt-6 grid gap-3 md:hidden">
                         {[
-                          ["Campaign impressions", "100,000", "—"],
+                          ["Campaign impressions", "100,000", ", "],
                           ["Unique reach", "77,000 people", "Average frequency: 1.3"],
                           ["Link clicks / landing-page visits", "1,000", "1.0% click-through rate"],
                           ["WhatsApp inquiries started", "120", "12% of landing-page visitors"],
@@ -6319,7 +6320,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <div className="mx-auto max-w-[1040px] rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] p-6 text-center md:p-8">
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Live A/B test result</p>
             <p className="mt-3 font-inter text-[25px] font-semibold leading-[1.25] text-[#0e2951] md:text-[30px]">The winning paywall increased conversion from 0.63% to 0.77%.</p>
-            <p className="mx-auto mt-4 max-w-[760px] text-[14px] leading-[1.7] text-[#5c7792]">Across 50,000 paid-search sessions per variant, this was a 0.14 percentage-point increase, or a 22% relative lift—70 additional purchases at the tested volume, without increasing media spend.</p>
+            <p className="mx-auto mt-4 max-w-[760px] text-[14px] leading-[1.7] text-[#5c7792]">Across 50,000 paid-search sessions per variant, this was a 0.14 percentage-point increase, or a 22% relative lift, 70 additional purchases at the tested volume, without increasing media spend.</p>
           </div>
           <div className="mx-auto mt-6 max-w-[1040px] rounded-[20px] border border-[#d7e8f7] bg-white p-6 md:p-7">
             <div className="overflow-x-auto">
@@ -7279,8 +7280,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   ["Hesitation at the E-Verify redirect", "46%", "33%", "13 percentage-point reduction"],
                   ["Status interpretation errors", "31%", "22%", "9 percentage-point reduction"],
                   ["User confidence score", "3.2/5", "4.0/5", "+0.8 points"],
-                  ["Manual process dependency", "60–70% baseline", "Target: under 25%", "Post-launch tracking target"],
-                  ["Survey responses after first release", "—", "2,548 responses", "Confirmed the integrated direction was working"],
+                  ["Manual process dependency", "60, 70% baseline", "Target: under 25%", "Post-launch tracking target"],
+                  ["Survey responses after first release", ", ", "2,548 responses", "Confirmed the integrated direction was working"],
               ].map(([measure, before, after, impact]) => (
                 <div key={measure} className="grid grid-cols-[1.55fr_0.7fr_0.7fr_1.25fr] border-b border-[#edf4fa] px-6 py-5 text-[14px] leading-[1.6] text-[#5c7792] last:border-0">
                   <div className="font-inter font-semibold text-[#0e2951]">{measure}</div>
@@ -7297,8 +7298,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   ["Hesitation at the E-Verify redirect", "46%", "33%", "13 percentage-point reduction"],
                   ["Status interpretation errors", "31%", "22%", "9 percentage-point reduction"],
                   ["User confidence score", "3.2/5", "4.0/5", "+0.8 points"],
-                  ["Manual process dependency", "60–70% baseline", "Target: under 25%", "Post-launch tracking target"],
-                  ["Survey responses after first release", "—", "2,548 responses", "Confirmed the integrated direction was working"],
+                  ["Manual process dependency", "60, 70% baseline", "Target: under 25%", "Post-launch tracking target"],
+                  ["Survey responses after first release", ", ", "2,548 responses", "Confirmed the integrated direction was working"],
               ].map(([measure, before, after, impact]) => (
                 <div key={measure} className="rounded-[18px] border border-[#d7e8f7] bg-white p-5">
                   <p className="font-inter text-[16px] font-semibold leading-snug text-[#0e2951]">{measure}</p>
@@ -7357,7 +7358,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               {translate("caseStudy.experimentsFramingIntro")}
             </p>
           </div>
-          {/* Phone frames — low-fi wireframes */}
+          {/* Phone frames, low-fi wireframes */}
           <div className="mt-20">
             <div className="mx-auto mb-8 grid max-w-[1180px] gap-8 text-center md:grid-cols-3">
               <NarrativePanelCard
@@ -7805,7 +7806,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
 
             <div className="mt-5 rounded-[20px] border border-[#d7e8f7] bg-white px-6 py-5 text-center text-[14px] leading-[1.7] text-[#5c7792]">
-              <span className="font-semibold text-[#0e2951]">Pilot approach:</span> compare a 4–6 week baseline with a limited clinic rollout, then pair behavioural data with short staff interviews to understand why a metric moved.
+              <span className="font-semibold text-[#0e2951]">Pilot approach:</span> compare a 4, 6 week baseline with a limited clinic rollout, then pair behavioural data with short staff interviews to understand why a metric moved.
             </div>
           </div>
         </section>
@@ -7905,7 +7906,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               Tags
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              {caseStudy.tags.map((tag) => (
+              {getVisibleProjectTags(caseStudy.tags).map((tag) => (
                 <Badge key={tag} size="tag">
                   {tag}
                 </Badge>

@@ -20,6 +20,7 @@ import {
 } from "../../lib/cms/public";
 import { withBasePath } from "../../lib/site";
 import { LocalizedCaseStudyRoute } from "../../components/localized-case-study-route";
+import { getVisibleProjectTags } from "../../lib/project-tags";
 
 // ── Assets from Figma ─────────────────────────────────────────────────────────
 const ASSETS = {
@@ -826,7 +827,7 @@ export default function BenefitsPage() {
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <SectionHeading eyebrow="Solution" title="The Platform" centered className="mb-4" />
         <p className="mb-8 text-center text-[14px] text-[#5c7792]">
-          The dashboard below is an interactive example — click the tabs to explore the User Accounts and Roles &amp; Permissions views.
+          The dashboard below is an interactive example, click the tabs to explore the User Accounts and Roles &amp; Permissions views.
         </p>
         <ProductPreview />
       </section>
@@ -948,7 +949,7 @@ export default function BenefitsPage() {
         </div>
         <div className="border-t border-[#bcd2ff]/40 pt-8 mt-10">
           <p className="mx-auto max-w-[900px] text-center font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-            <strong className="font-semibold text-[#5c7792]">NDA notice:</strong> {caseStudy?.nda_notice ?? "Parts of this presentation — including some screens and project details — have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy."}
+            <strong className="font-semibold text-[#5c7792]">NDA notice:</strong> {caseStudy?.nda_notice ?? "Parts of this presentation, including some screens and project details, have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy."}
           </p>
         </div>
         <div className="mt-10 grid gap-10 md:grid-cols-[1fr_auto_1fr] md:items-start">
@@ -970,7 +971,7 @@ export default function BenefitsPage() {
               Tags
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              {(caseStudy?.tags?.length ? caseStudy.tags : ["BENEFITS / ENSURANCE SAAS", "UX Research", "IA", "Interaction Design", "Design Systems"]).map((tag) => (
+              {getVisibleProjectTags(caseStudy?.tags?.length ? caseStudy.tags : ["UX Research", "IA", "Interaction Design", "Design Systems"]).map((tag) => (
                 <Badge key={tag} size="tag">
                   {tag}
                 </Badge>

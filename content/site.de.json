@@ -152,7 +152,7 @@
   "contact": {
     "headline": "Nehmen Sie Kontakt auf",
     "subheadline": "Lassen Sie uns sprechen",
-    "intro": "Egal, ob Sie ein Projekt im Sinn haben, eine Frage haben oder einfach nur Hallo sagen möchten – ich würde gerne von Ihnen hören.",
+    "intro": "Egal, ob Sie ein Projekt im Sinn haben, eine Frage haben oder einfach nur Hallo sagen möchten, ich würde gerne von Ihnen hören.",
     "availability": "Ich lebe derzeit in Málaga, Spanien und stehe weltweit für Remote-Einsätze zur Verfügung. Normalerweise antworte ich schnell, oft innerhalb von 24 Stunden.",
     "details": [
       {
@@ -189,14 +189,14 @@
     "location": "Malaga, Spanien",
     "website": "www.be.net/greddysmartinez",
     "linkedin": "linkedin.com/in/greddysmartinez",
-    "bio": "Leitender Produktdesigner mit mehr als 10 Jahren Erfahrung in der Entwicklung von SaaS- und KI-gestützten Enterprise-Erlebnissen in den Bereichen HR, Sozialleistungen, Compliance und Gesundheitswesen. Ich verbinde Strategie und Umsetzung – leite Forschung, stelle funktionsübergreifende Teams zusammen und liefere klare, wirkungsvolle Lösungen in agilen Umgebungen.",
+    "bio": "Leitender Produktdesigner mit mehr als 10 Jahren Erfahrung in der Entwicklung von SaaS- und KI-gestützten Enterprise-Erlebnissen in den Bereichen HR, Sozialleistungen, Compliance und Gesundheitswesen. Ich verbinde Strategie und Umsetzung, leite Forschung, stelle funktionsübergreifende Teams zusammen und liefere klare, wirkungsvolle Lösungen in agilen Umgebungen.",
     "pdf_link": "/documents/greddys-martinez-resume-2026.pdf",
     "experience": [
       {
         "title": "Leitender Produktdesigner",
         "company": "ITX Corp",
         "client": "Paychex (Nayya, Flock, E-Verify, Indeed)",
-        "period": "März 2021 – Heute",
+        "period": "März 2021, Heute",
         "location": "Malaga, Spanien (Remote)",
         "bullets": [
           "Leiten Sie die End-to-End-Designarchitektur für eine HR-SaaS-Plattform für Unternehmen mit über 2,3 Millionen Benutzern, indem Sie datengesteuerte Designentscheidungen treffen und gleichzeitig als Staff Designer fungieren und funktionsübergreifende Teams auf eine einheitliche Produktvision für mehrere wirkungsvolle Produkte ausrichten.",
@@ -231,7 +231,7 @@
         "title": "UX/UI-Designer",
         "company": "Alquilando S.A.",
         "client": "PropTech-Marktplatz",
-        "period": "März 2019 – Mai. 2021",
+        "period": "März 2019, Mai. 2021",
         "location": "Buenos Aires, Argentinien (Remote)",
         "bullets": [
           "Entwurf und Bereitstellung von End-to-End-UX/UI-Lösungen für ein PropTech-Startup, das eine groß angelegte Immobilienplattform für den LATAM-Markt aufbaut.",
@@ -251,7 +251,7 @@
         "title": "Freiberuflicher UX-/UI-Designer",
         "company": "Studio Hakuna",
         "client": "Paramount App LATAM",
-        "period": "Dez. 2019 – Mai. 2020",
+        "period": "Dez. 2019, Mai. 2020",
         "location": "Buenos Aires, Argentinien (Remote)",
         "bullets": [
           "Führte UX-Recherchen durch, um die Bedürfnisse und Verhaltensweisen der Zielgruppe für die Paramount App LATAM zu verstehen.",
@@ -270,7 +270,7 @@
         "title": "UX/UI-Designer",
         "company": "Höhe",
         "client": "Weblösungen für gemeinnützige Organisationen",
-        "period": "Januar 2017 – Februar 2019",
+        "period": "Januar 2017, Februar 2019",
         "location": "Buenos Aires, Argentinien (Hybrid)",
         "bullets": [
           "Bereitstellung eines durchgängigen UX/UI-Designs für mehrere gemeinnützige Kunden gleichzeitig.",
@@ -289,7 +289,7 @@
         "title": "Freiberuflicher UX-/UI-Designer/Grafikdesigner",
         "company": "Mehrere Clients | Web und soziale Medien",
         "client": "",
-        "period": "Februar 2014 – Februar 2017",
+        "period": "Februar 2014, Februar 2017",
         "location": "LATAM, Spanien, USA (Remote)",
         "bullets": [
           "Bereitstellung eines durchgängigen UX/UI-Designs für Frühphasenprodukte, E-Commerce-Plattformen und Marktplätze in mehreren Branchen.",
@@ -400,12 +400,12 @@
     ],
     "education": [
       {
-        "year": "2014–2015",
+        "year": "2014, 2015",
         "degree": "Diplom in Web-Mediendesign",
         "institution": "Universidad Rafael Belloso Chacín"
       },
       {
-        "year": "2012–2015",
+        "year": "2012, 2015",
         "degree": "Bachelor in Grafikdesign",
         "institution": "URBE"
       },

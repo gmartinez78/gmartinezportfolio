@@ -12,37 +12,20 @@ import { Badge } from "./components/ui/badge";
 import { Button } from "./components/ui/button";
 import { Container } from "./components/ui/container";
 import { Heading } from "./components/ui/heading";
-import { ProjectTeaserCard } from "./components/project-teaser-card";
 import { appendLockedNayyaPlaceholder } from "./lib/cms/locked-placeholder";
 import { useLanguage } from "./lib/i18n/language-context";
-import { useTranslate } from "./lib/i18n/use-translate";
+import { useTranslate, useTranslateTag } from "./lib/i18n/use-translate";
+import { getVisibleProjectTags } from "./lib/project-tags";
 import {
   isHiddenCaseStudySlug,
   resolveHomeCardId,
   resolveProjectListCardImage,
   resolveProjectHref,
-  resolveToolIcon,
   resolveTrustedLogo,
   usePublicCaseStudies,
   usePublicSiteContent,
 } from "./lib/cms/public";
 import { withBasePath } from "./lib/site";
-
-const TOOL_SHOWCASE_ICONS = [
-  { label: "Jira", className: "absolute top-[5%] left-[2%] w-[15px] md:w-[30px]", duration: "5.6s", delay: "0.1s" },
-  { label: "React", className: "absolute top-[2%] left-[12%] w-[16px] md:w-[32px]", duration: "6.2s", delay: "0.7s" },
-  { label: "Miro", className: "absolute top-[25%] left-[15%] w-[20px] md:w-[40px]", duration: "5.8s", delay: "1.1s" },
-  { label: "ChatGPT", className: "absolute top-[8%] left-[40%] w-[35px] md:w-[70px]", duration: "6.5s", delay: "0.4s" },
-  { label: "HTML", className: "absolute top-[1%] left-[63%] w-[15px] md:w-[30px]", duration: "5.4s", delay: "1.5s" },
-  { label: "Confluence", className: "absolute top-[19%] left-[69%] w-[19px] md:w-[38px]", duration: "6.1s", delay: "0.9s" },
-  { label: "Notion", className: "absolute top-[15%] left-[82%] w-[20px] md:w-[40px]", duration: "5.9s", delay: "1.3s" },
-  { label: "Claude", className: "absolute top-0 left-[90%] w-[12px] md:w-[25px]", duration: "6.4s", delay: "0.2s" },
-  { label: "Figma", className: "absolute top-[45%] left-[19%] w-[22px] md:w-[44px]", duration: "5.7s", delay: "0.8s" },
-  { label: "Angular", className: "absolute top-[35%] left-[85%] w-[19px] md:w-[38px]", duration: "6.3s", delay: "1.2s" },
-  { label: "VS Code", className: "absolute top-[30%] left-[95%] w-[22px] md:w-[44px]", duration: "5.5s", delay: "0.6s" },
-  { label: "Copilot", className: "absolute top-[75%] left-[93%] w-[15px] md:w-[30px]", duration: "6.6s", delay: "1.6s" },
-  { label: "Maze", className: "absolute top-[80%] left-[10%] w-[15px] md:w-[30px]", duration: "6.0s", delay: "1.0s" },
-] as const;
 
 const PROJECT_BACKGROUNDS: Record<string, string> = {
   reversetech: "linear-gradient(180deg, #eef4fb 0%, #eef4fb 100%)",
@@ -177,7 +160,6 @@ const INDEPENDENT_CLIENT_WORK_SLUGS = new Set([
   "calendar-keeper",
   "zapiano-marketing",
 ]);
-
 type LocalSearchItem = {
   id: string;
   title: string;
@@ -276,25 +258,6 @@ function resolveHeroAssistantQuery(
           study.constraints.join(" "),
         ].join(" "),
       })),
-    {
-      id: "skills-tools",
-      title: siteContent.home.tools_section.headline,
-      snippet: siteContent.home.tools_section.description,
-      href: "#skills",
-      sectionId: "skills" as const,
-      audience: ["recruiter", "client"] as HeroVisitorType[],
-      content: [
-        siteContent.home.tools_section.headline,
-        siteContent.home.tools_section.description,
-        siteContent.home.tools_section.row_1.join(" "),
-        siteContent.home.tools_section.row_2.join(" "),
-        siteContent.resume.title,
-        siteContent.resume.bio,
-        siteContent.resume.tools.join(" "),
-        resumeSkills.join(" "),
-        experienceText,
-      ].join(" "),
-    },
     {
       id: "resume",
       title: translate("home.assistantResumeTitle"),
@@ -548,14 +511,13 @@ export default function PortfolioPage() {
   const heroPhase: HeroPhase = "day";
   const { language } = useLanguage();
   const translate = useTranslate();
+  const translateTag = useTranslateTag();
   const [githubActivity, setGithubActivity] = useState<GitHubActivityItem[]>([]);
   const [githubUsername, setGithubUsername] = useState("gmartinez78");
   const [heroVisitorType, setHeroVisitorType] = useState<HeroVisitorType | null>(null);
   const [heroAssistantQuery, setHeroAssistantQuery] = useState("");
   const [heroAssistantResponse, setHeroAssistantResponse] = useState(() => translate("home.assistantDefaultResponse"));
   const [heroAssistantResults, setHeroAssistantResults] = useState<HeroAssistantResult["items"]>([]);
-  const [highlightedProjectIds, setHighlightedProjectIds] = useState<string[]>([]);
-  const [activeProjectCardId, setActiveProjectCardId] = useState<string | null>(null);
   const [activeProcessCapability, setActiveProcessCapability] = useState<ProcessCapabilityId>("ai-product");
   const [heroParallax, setHeroParallax] = useState(0);
   const heroScrollRef = useRef<HTMLDivElement | null>(null);
@@ -608,23 +570,12 @@ export default function PortfolioPage() {
       slug: study.slug,
       cardId: resolveHomeCardId(study.slug),
       title: study.title,
-      description: study.tagline ?? "",
       company: study.company ?? "",
-      year: study.year ?? 0,
+      description: study.tagline ?? "",
       image: resolveProjectListCardImage(study.slug, study.images?.cover || study.images?.hero || ""),
-      video: study.slug === "protecta" ? "/images/projects/protecta/hero-banner.mp4" : undefined,
       background: PROJECT_BACKGROUNDS[study.slug] ?? "radial-gradient(ellipse at 20% 50%, #d4e8ff 0%, #edf5fb 70%)",
       href: resolveProjectHref(study),
-      // Put work context first so visitors can immediately distinguish embedded
-      // company-team work from independent client engagements.
-      tags: [
-        INDEPENDENT_CLIENT_WORK_SLUGS.has(study.slug)
-          ? translate("home.freelanceProjects")
-          : translate("home.companyProjects"),
-        ...study.tags.slice(0, 2),
-      ],
-      password: study.password,
-      cta: study.external_link ? translate("home.viewProject") : translate("home.viewCaseStudy"),
+      tags: getVisibleProjectTags(study.tags),
     }));
   const heroSelectedProjects = [
     "nayya-ai-benefits",
@@ -633,7 +584,44 @@ export default function PortfolioPage() {
   ]
     .map((slug) => homeProjects.find((project) => project.slug === slug))
     .filter((project) => project !== undefined);
-  const projectGridProjects = homeProjects;
+  const projectGroups = [
+    {
+      id: "company",
+      title: translate("home.companyProjects"),
+      projects: homeProjects.filter((project) => !INDEPENDENT_CLIENT_WORK_SLUGS.has(project.slug)),
+    },
+    {
+      id: "freelance",
+      title: translate("home.freelanceProjects"),
+      projects: homeProjects
+        .filter((project) => INDEPENDENT_CLIENT_WORK_SLUGS.has(project.slug))
+        .sort((left, right) => {
+          if (left.slug === "calendar-keeper") return -1;
+          if (right.slug === "calendar-keeper") return 1;
+          return 0;
+        }),
+    },
+  ].filter((group) => group.projects.length > 0);
+  const productStrengths = [
+    {
+      title: translate("home.productStrengths.endToEnd.title"),
+      description: translate("home.productStrengths.endToEnd.description"),
+    },
+    {
+      title: translate("home.productStrengths.complexFlows.title"),
+      description: translate("home.productStrengths.complexFlows.description"),
+    },
+    {
+      title: translate("home.productStrengths.systems.title"),
+      description: translate("home.productStrengths.systems.description"),
+    },
+  ];
+  const impactMetrics = [
+    { value: "4.9/5", label: translate("home.impact.upworkRating"), className: "bg-white shadow-[var(--ui-shadow-panel)]" },
+    { value: "72%", label: translate("home.impact.processingTime"), className: "bg-[var(--ui-color-brand-primary-soft)]" },
+    { value: "5,500", label: translate("home.impact.enrollment"), className: "bg-[var(--ui-color-surface-soft)]" },
+    { value: "9,000+", label: translate("home.impact.supportCalls"), className: "bg-[#fae1ec]" },
+  ];
   const heroPhaseStyles = useMemo(() => HERO_PHASE_STYLES[heroPhase], [heroPhase]);
   const heroProjectProgress = Math.min(1, Math.max(0, (heroParallax - 105) / 45));
 
@@ -652,7 +640,6 @@ export default function PortfolioPage() {
     if (!query) {
       setHeroAssistantResponse(translate("home.assistantDefaultResponse"));
       setHeroAssistantResults([]);
-      setHighlightedProjectIds([]);
       return;
     }
 
@@ -661,23 +648,16 @@ export default function PortfolioPage() {
       setHeroAssistantResponse(result.response);
       setHeroAssistantResults(result.items);
 
-      const projectMatches = result.items
-        .map((item) => item.cardId)
-        .filter((value): value is string => Boolean(value));
-      setHighlightedProjectIds(projectMatches);
-
       const firstSection = result.items.find((item) => item.sectionId)?.sectionId;
       scrollToSection(firstSection);
     } catch {
       setHeroAssistantResponse(translate("home.assistantSearchError"));
       setHeroAssistantResults([]);
-      setHighlightedProjectIds([]);
     }
   }
 
   function handleHeroVisitorTypeSelect(type: HeroVisitorType) {
     setHeroVisitorType(type);
-    setHighlightedProjectIds(type === "recruiter" ? homeProjects.slice(0, 2).map((project) => project.cardId) : []);
     setHeroAssistantResults([]);
     setHeroAssistantQuery("");
     setHeroAssistantResponse(
@@ -694,17 +674,6 @@ export default function PortfolioPage() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language]);
-
-  useEffect(() => {
-    if (!homeProjects.length) {
-      setActiveProjectCardId(null);
-      return;
-    }
-
-    setActiveProjectCardId((current) =>
-      current && homeProjects.some((project) => project.cardId === current) ? current : homeProjects[0]?.cardId ?? null,
-    );
-  }, [homeProjects]);
 
   useEffect(() => {
     let isActive = true;
@@ -817,67 +786,188 @@ export default function PortfolioPage() {
   }, [githubActivityItems, language]);
 
   const recentWorkSection = (
-    <section key="work" id="projects" className="bg-white pt-12 pb-24 px-6 md:px-10 xl:px-20">
-      <div className="mx-auto flex w-full flex-col gap-16">
-        {[
-          {
-            title: translate("home.companyProjects"),
-            description: translate("home.companyProjectsDescription"),
-            projects: projectGridProjects.filter((project) => !INDEPENDENT_CLIENT_WORK_SLUGS.has(project.slug)),
-          },
-          {
-            title: translate("home.freelanceProjects"),
-            description: translate("home.freelanceProjectsDescription"),
-            projects: projectGridProjects
-              .filter((project) => INDEPENDENT_CLIENT_WORK_SLUGS.has(project.slug))
-              .sort((left, right) => {
-                if (left.slug === "calendar-keeper") return -1;
-                if (right.slug === "calendar-keeper") return 1;
-                return 0;
-              }),
-          },
-        ].map((group) => (
-          <div key={group.title}>
-            <div className="mb-7 border-b border-[#141114]/15 pb-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e9608a]">{translate("home.projectType")}</p>
-              <Heading as="h3" variant="display" tone="editorial" className="mt-2">{group.title}</Heading>
-              <p className="mt-2 text-[14px] leading-relaxed text-[#5c7792]">{group.description}</p>
-            </div>
-            <div className="grid w-full gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {group.projects.map((project) => {
-                const isActiveCard =
-                  activeProjectCardId === project.cardId ||
-                  (highlightedProjectIds.length > 0 && highlightedProjectIds.includes(project.cardId));
-
-                return (
-                  <ProjectTeaserCard
-                    key={project.title}
-                    id={project.cardId}
+    <section key="work" id="projects" className="bg-white px-6 py-16 md:px-10 md:py-20 xl:px-20">
+      <Container size="wide">
+        <div className="space-y-20 md:space-y-28">
+          {projectGroups.map((group) => (
+            <section key={group.id} aria-labelledby={`${group.id}-projects-title`}>
+              <div className="flex items-end justify-between gap-6">
+                <Heading id={`${group.id}-projects-title`} as="h2" variant="section" className="text-[clamp(2rem,4vw,3.25rem)]">
+                  {group.title}
+                </Heading>
+                <Link
+                  href={withBasePath("/projects")}
+                  className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-[var(--ui-color-brand-primary)] transition-colors hover:text-[var(--ui-color-brand-primary-hover)] md:text-base"
+                >
+                  {translate("home.viewPortfolio")}
+                  <ArrowUpRight aria-hidden="true" className="size-4" />
+                </Link>
+              </div>
+              <div className="mt-8 grid gap-x-10 gap-y-12 md:grid-cols-2 md:gap-y-16">
+                {group.projects.map((project, index) => (
+                  <Link
+                    key={project.slug}
                     href={project.href}
-                    dataCardId={project.cardId}
-                    onMouseEnter={() => setActiveProjectCardId(project.cardId)}
-                    onFocus={() => setActiveProjectCardId(project.cardId)}
-                    title={project.title}
-                    company={project.company}
-                    year={project.year}
-                    description={project.description}
-                    tags={project.tags}
-                    image={project.image}
-                    video={project.video}
-                    imageAlt={`${project.title} case study preview for ${project.company}`}
-                    background={project.background}
-                    ctaLabel={project.cta}
-                    locked={Boolean(project.password)}
-                    variant="grid"
-                    inactive={Boolean(highlightedProjectIds.length && !highlightedProjectIds.includes(project.cardId))}
-                    active={isActiveCard}
-                  />
-                );
-              })}
-            </div>
+                    className={`group block ${index % 2 === 1 ? "md:translate-y-12" : ""}`}
+                  >
+                    <div
+                      className="relative aspect-[4/3] overflow-hidden rounded-[var(--ui-radius-card)]"
+                      style={{ background: project.background }}
+                    >
+                      {project.image ? (
+                        <Image
+                          src={project.image}
+                          alt={`${project.title} case study preview for ${project.company}`}
+                          fill
+                          sizes="(max-width: 767px) 100vw, (max-width: 1280px) 50vw, 600px"
+                          className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                        />
+                      ) : null}
+                    </div>
+                    <p className="mt-5 text-sm text-[var(--ui-color-text-muted)]">{project.company}</p>
+                    <Heading
+                      as="h4"
+                      variant="card"
+                      className="mt-2 text-[clamp(1.25rem,2vw,1.65rem)] transition-colors group-hover:text-[var(--ui-color-brand-primary)]"
+                    >
+                      {project.title}
+                    </Heading>
+                    <p className="mt-3 max-w-[38rem] text-[16px] leading-[1.45] text-[var(--ui-color-text-muted)] md:text-[18px]">
+                      {project.description}
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <Badge key={tag} size="tag" variant="secondary">
+                          {translateTag(tag)}
+                        </Badge>
+                      ))}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+
+  const productStrengthsSection = (
+    <section key="product-strengths" aria-labelledby="product-strengths-title" className="bg-white px-6 pb-16 md:px-10 md:pb-20 xl:px-20">
+      <div
+        className="relative mx-auto max-w-[1280px] overflow-hidden rounded-[var(--ui-radius-panel)] px-6 py-12 text-white shadow-[var(--ui-shadow-elevated)] sm:px-9 md:px-12 md:py-16"
+        style={{ background: "linear-gradient(135deg, #076da9 0%, var(--ui-color-brand-primary) 100%)" }}
+      >
+        <div className="relative mx-auto max-w-[650px] lg:ml-[15%]">
+          <div>
+            <p className="text-[11px] font-semibold tracking-[0.04em] text-white/80">
+              <span aria-hidden="true" className="mr-2 inline-block size-1.5 rounded-full bg-[#d5f0ff] align-middle" />
+              {translate("home.productStrengths.eyebrow")}
+            </p>
+            <Heading id="product-strengths-title" as="h2" variant="feature" tone="inverse" className="mt-4 max-w-[620px] text-[clamp(2rem,4vw,3.35rem)] leading-[1.04]">
+              {translate("home.productStrengths.title")}
+            </Heading>
+            <p className="mt-5 max-w-[610px] text-[16px] leading-[1.5] text-white/85 md:text-[18px]">
+              {translate("home.productStrengths.intro")}
+            </p>
           </div>
-        ))}
+          <ol className="mt-10">
+            {productStrengths.map((strength, index) => (
+              <li
+                key={strength.title}
+                className={`grid grid-cols-[76px_minmax(0,1fr)] gap-3 py-6 transition-colors duration-200 hover:bg-white/10 hover:px-5 sm:grid-cols-[86px_minmax(0,1fr)] sm:hover:px-7 ${index === 0 ? "" : "border-t border-white/25"}`}
+              >
+                <span className="pt-0.5 text-[22px] font-semibold leading-none text-[#d5f0ff]">{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3 className="text-[21px] font-semibold leading-tight sm:text-[24px]">
+                    {strength.title}
+                  </h3>
+                  <p className="mt-3 max-w-[490px] text-sm leading-relaxed text-white/80 sm:text-[15px]">
+                    {strength.description}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
+    </section>
+  );
+
+  const impactEvidenceSection = (
+    <section key="impact-evidence" aria-labelledby="impact-evidence-title" className="bg-white px-6 pb-16 md:px-10 md:pb-20 xl:px-20">
+      <Container size="wide">
+        <div className="mx-auto max-w-xl text-center">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--ui-color-brand-primary)]">
+            {translate("home.impact.eyebrow")}
+          </p>
+          <Heading id="impact-evidence-title" as="h2" variant="section" className="mt-2 text-[clamp(1.85rem,3vw,2.75rem)]">
+            {translate("home.impact.title")}
+          </Heading>
+          <p className="mt-3 text-[15px] leading-relaxed text-[var(--ui-color-text-muted)]">
+            {translate("home.impact.intro")}
+          </p>
+        </div>
+
+        <div className="mx-auto mt-8 grid max-w-[1120px] gap-3 md:auto-rows-[120px] md:grid-cols-12 md:gap-4">
+          <Link
+            href={withBasePath("/projects/nayya-ai-benefits")}
+            className="group relative min-h-[238px] overflow-hidden rounded-xl md:col-span-4 md:row-span-2 md:min-h-0"
+          >
+            <Image
+              src="/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png"
+              alt={translate("home.impact.nayyaImageAlt")}
+              fill
+              sizes="(max-width: 767px) 100vw, 42vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_36%,rgba(14,41,81,0.78)_100%)]" />
+            <div className="absolute inset-x-4 bottom-4 text-white">
+              <span className="inline-flex rounded-full bg-[var(--ui-color-brand-amber)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#141114]">
+                {translate("home.impact.caseStudy")}
+              </span>
+              <p className="mt-2 text-[18px] font-semibold leading-tight">{translate("home.impact.nayyaTitle")}</p>
+            </div>
+          </Link>
+
+          <article className="flex min-h-[216px] flex-col justify-between rounded-xl bg-[#f8eef3] p-5 text-[#141114] md:col-span-4 md:row-span-2 md:min-h-0">
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#141114]/70">
+                {translate("home.impact.clientReview")}
+              </p>
+              <blockquote className="mt-4 text-[17px] font-medium leading-[1.42]">
+                “{translate("home.impact.upworkQuote")}”
+              </blockquote>
+            </div>
+            <div className="mt-5 border-t border-[#141114]/10 pt-3 text-xs font-semibold text-[#141114]/75">
+              {translate("home.impact.upworkAttribution")}
+            </div>
+          </article>
+
+          <article className="flex min-h-[168px] flex-col justify-between rounded-xl bg-[#e2f3f7] p-5 text-[#141114] md:col-span-4 md:row-span-2 md:min-h-0">
+            <p className="max-w-[180px] text-[13px] font-medium leading-snug">
+              {translate("home.impact.selfService")}
+            </p>
+            <div className="flex items-end justify-between gap-3">
+              <strong className="text-[clamp(3rem,5vw,4.3rem)] font-semibold leading-none tracking-[-0.07em]">500+</strong>
+              <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
+            </div>
+          </article>
+
+          {impactMetrics.map((metric) => (
+            <article
+              key={metric.label}
+              className={`flex min-h-[130px] flex-col justify-between rounded-xl p-5 text-[#141114] md:col-span-3 md:min-h-0 ${metric.className}`}
+            >
+              <p className="max-w-[160px] text-[13px] font-medium leading-snug">{metric.label}</p>
+              <div className="flex items-end justify-between gap-3">
+                <strong className="text-[clamp(2.55rem,4vw,3.6rem)] font-semibold leading-none tracking-[-0.07em]">{metric.value}</strong>
+                <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
+              </div>
+            </article>
+          ))}
+        </div>
+      </Container>
     </section>
   );
 
@@ -1121,54 +1211,33 @@ export default function PortfolioPage() {
     </section>
   );
 
-  const toolsSection = (
+  const collaboratorsSection = (
     <section
-      key="tools"
-      id="skills"
-      className="isolate w-full overflow-clip bg-white px-4 pb-10 pt-36 md:px-8"
+      key="collaborators"
+      id="collaborators"
+      aria-label={siteContent.home.trusted_by.label}
+      className="flex min-h-[160px] flex-col items-center gap-6 px-6 py-10 text-center md:px-10 lg:px-20"
     >
-      <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center gap-6">
-        <div className="pointer-events-none absolute bottom-[44px] h-[248px] w-[629px] max-w-none select-none md:bottom-[-12px] md:h-[496px] md:w-[1257px]">
-          <div className="relative h-full w-full">
-            {TOOL_SHOWCASE_ICONS.map((tool) => (
-              <div
-                key={`${tool.label}-${tool.className}`}
-                className={tool.className}
-                style={{ animation: `tool-float ${tool.duration} ease-in-out ${tool.delay} infinite` }}
-              >
-                <Image
-                  src={resolveToolIcon(tool.label)}
-                  alt={tool.label}
-                  width={64}
-                  height={64}
-                  draggable={false}
-                  className="h-full w-full object-contain"
-                />
-              </div>
-            ))}
-          </div>
+      <div className="flex shrink-0 items-center justify-center">
+        <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#141114]">
+          {siteContent.home.trusted_by.label}
+        </span>
+      </div>
+      <div className="relative w-full max-w-[1200px] overflow-hidden md:py-2">
+        <div className="flex w-max animate-[logo-marquee_22s_linear_infinite] items-center gap-14 pr-14 will-change-transform">
+          {logoCarousel.map((logo, index) => (
+            <Image
+              key={`${logo.alt}-${index}`}
+              src={logo.src}
+              alt={index < socialProofLogos.length ? logo.alt : ""}
+              width={logo.w}
+              height={logo.h}
+              aria-hidden={index >= socialProofLogos.length}
+              className={`w-auto shrink-0 object-contain opacity-80 ${logo.alt === "Zapiano" || logo.alt === "Habitat for Humanity" || logo.alt === "Elevation" || logo.alt === "Indeed" ? "max-h-[28px]" : logo.alt === "Hakuna" ? "max-h-[22px]" : logo.alt === "Paramount+" ? "max-h-[18px]" : "max-h-[36px]"}`}
+              style={{ filter: "brightness(0) saturate(100%)" }}
+            />
+          ))}
         </div>
-
-        <div className="relative z-10 flex flex-col items-center gap-4">
-          <div className="relative w-fit min-w-[218px] -rotate-[5deg] overflow-hidden bg-[#39b8e7] px-5 py-2.5 text-center text-[12px] font-medium tracking-[0.06em] text-[#163143] shadow-[0_5px_10px_rgba(18,111,148,0.16)] [clip-path:polygon(0_9%,2%_1%,7%_4%,12%_0,18%_3%,25%_0,31%_4%,38%_1%,45%_4%,52%_0,59%_3%,66%_0,74%_4%,81%_1%,88%_4%,96%_0,100%_9%,98%_21%,100%_36%,98%_51%,100%_67%,98%_83%,100%_94%,95%_100%,89%_96%,83%_100%,75%_96%,68%_100%,61%_97%,54%_100%,47%_96%,40%_100%,33%_97%,26%_100%,18%_96%,11%_100%,4%_96%,0_87%,2%_72%,0_56%,2%_41%,0_25%)] md:min-w-[270px] md:px-7 md:py-3 md:text-sm">
-            <span className="absolute inset-0 opacity-20 [background-image:linear-gradient(30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%),linear-gradient(-30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%)] [background-size:18px_16px]" />
-            <span className="absolute inset-x-2 top-1 h-px bg-white/45" />
-            <span className="relative z-10 font-mono">{translate("home.toolsEyebrow")}</span>
-          </div>
-          <Heading as="h2" variant="hero" tone="editorial" className="max-w-[340px] text-center text-[46px] md:max-w-[680px] md:text-[74px]">
-            {translate("home.toolsLove")} <span className="text-[#e9608a]">&amp;</span><br />
-            <span className="text-[#e9608a]">{translate("home.toolsWorkWith")}</span>
-          </Heading>
-          <span className="h-[5px] w-28 -rotate-1 rounded-full bg-[#26aee2]" />
-        </div>
-        <p className="relative z-10 mb-4 max-w-[320px] text-center font-inter text-[17px] italic leading-[1.55] text-[#4c3b42] md:max-w-[560px] md:text-[21px]">
-          {siteContent.home.tools_section.description}
-        </p>
-        <Button asChild variant="editorial" size="hero" className="relative z-10 h-12 text-base font-bold">
-          <Link href={withBasePath(siteContent.home.tools_section.cta_href)}>
-            {siteContent.home.tools_section.cta_label.replace("→", "").trim()}
-          </Link>
-        </Button>
       </div>
     </section>
   );
@@ -1217,7 +1286,7 @@ export default function PortfolioPage() {
     </section>
   );
 
-  const contentSections = [toolsSection, ctaSection];
+  const contentSections = [collaboratorsSection, ctaSection];
 
   return (
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden lg:my-2 lg:mr-2 lg:overflow-clip lg:rounded-[28px] lg:border lg:border-[#e5eef7] lg:shadow-[0_10px_34px_rgba(14,41,81,0.06)]">
@@ -1390,30 +1459,6 @@ export default function PortfolioPage() {
         </div>
         </div>
 
-        <section id="collaborators" aria-label={siteContent.home.trusted_by.label} className="flex min-h-[160px] flex-col items-center gap-6 px-6 py-10 text-center md:px-10 lg:px-20">
-          <div className="flex shrink-0 items-center justify-center">
-            <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#141114]">
-              {siteContent.home.trusted_by.label}
-            </span>
-          </div>
-          <div className="relative w-full max-w-[1200px] overflow-hidden md:py-2">
-            <div className="flex w-max animate-[logo-marquee_22s_linear_infinite] items-center gap-8 pr-8 will-change-transform">
-              {logoCarousel.map((logo, index) => (
-                <Image
-                  key={`${logo.alt}-${index}`}
-                  src={logo.src}
-                  alt={index < socialProofLogos.length ? logo.alt : ""}
-                  width={logo.w}
-                  height={logo.h}
-                  aria-hidden={index >= socialProofLogos.length}
-                    className={`w-auto shrink-0 object-contain opacity-80 ${logo.alt === "Zapiano" ? "-mr-7" : ""} ${logo.alt === "Zapiano" || logo.alt === "Habitat for Humanity" || logo.alt === "Elevation" || logo.alt === "Indeed" ? "max-h-[36px]" : logo.alt === "Hakuna" ? "max-h-[28px]" : logo.alt === "Paramount+" ? "max-h-[22px]" : "max-h-[46px]"}`}
-                  style={{ filter: "brightness(0) saturate(100%)" }}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section hidden id="process" aria-labelledby="process-title" className="border-y border-[var(--ui-color-border-strong)] bg-[var(--ui-color-surface-base)] px-6 py-16 md:px-10 md:py-24 lg:px-20">
           <Container size="wide">
             <div className="mx-auto max-w-3xl text-center">
@@ -1515,21 +1560,9 @@ export default function PortfolioPage() {
           </Container>
         </section>
 
-        <section className="relative isolate overflow-hidden bg-white px-6 pb-10 pt-16 text-center md:px-10 md:pb-12 md:pt-20 lg:px-20">
-          <div className="relative mx-auto max-w-4xl">
-            <div className="relative mx-auto mb-5 w-fit -rotate-[5deg] overflow-hidden bg-[#39b8e7] px-5 py-2 text-[10px] font-medium tracking-[0.04em] text-[#163143] shadow-[0_5px_10px_rgba(18,111,148,0.16)] [clip-path:polygon(0_9%,2%_1%,7%_4%,12%_0,18%_3%,25%_0,31%_4%,38%_1%,45%_4%,52%_0,59%_3%,66%_0,74%_4%,81%_1%,88%_4%,96%_0,100%_9%,98%_21%,100%_36%,98%_51%,100%_67%,98%_83%,100%_94%,95%_100%,89%_96%,83%_100%,75%_96%,68%_100%,61%_97%,54%_100%,47%_96%,40%_100%,33%_97%,26%_100%,18%_96%,11%_100%,4%_96%,0_87%,2%_72%,0_56%,2%_41%,0_25%)]">
-              <span className="absolute inset-0 opacity-20 [background-image:linear-gradient(30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%),linear-gradient(-30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%)] [background-size:18px_16px]" />
-              <span className="absolute inset-x-2 top-1 h-px bg-white/45" />
-              <span className="relative z-10 font-mono">{translate("home.projectsEyebrow")}</span>
-            </div>
-            <Heading as="h2" variant="hero" tone="editorial" className="text-[40px] md:text-[64px]">
-              {translate("home.ideaToImpactPrefix")} <span className="text-[#e9608a]">{translate("home.ideaToImpactAccent")}</span>
-            </Heading>
-            <div className="mx-auto mt-6 h-[5px] w-28 -rotate-1 rounded-full bg-[#26aee2]" />
-          </div>
-        </section>
-
         {recentWorkSection}
+        {productStrengthsSection}
+        {impactEvidenceSection}
       </section>
 
       {contentSections}

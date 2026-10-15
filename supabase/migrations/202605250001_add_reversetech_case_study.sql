@@ -272,34 +272,34 @@ values (
       "payload":{
         "sources":[
           {
-            "title":"Nielsen Norman Group — \"Progress Indicators Make a Slow System Less Insufferable\"",
+            "title":"Nielsen Norman Group, \"Progress Indicators Make a Slow System Less Insufferable\"",
             "url":"https://www.nngroup.com/articles/progress-indicators/",
             "description":"Supports progress feedback reducing uncertainty and keeping users moving. Caveat: this NN/g piece is about system and wait-time progress, not multi-step counters, so it works best paired with the goal-gradient research below for the step-count point specifically."
           },
           {
-            "title":"Baymard Institute — \"Checkout Flows Average 5 Steps and 11+ Form Fields\"",
+            "title":"Baymard Institute, \"Checkout Flows Average 5 Steps and 11+ Form Fields\"",
             "url":"https://baymard.com/blog/checkout-flow-average-form-fields",
             "description":"Supports unifying questions over just splitting steps: the number of form fields users must manage matters more to checkout UX than the number of steps, and most flows can drop to 6 to 8 fields."
           },
           {
-            "title":"The Manifest — \"6 Steps for Avoiding Online Form Abandonment\"",
+            "title":"The Manifest, \"6 Steps for Avoiding Online Form Abandonment\"",
             "url":"https://themanifest.com/web-design/6-steps-avoiding-online-form-abandonment",
             "description":"Used for the stat that 27% of users abandon a form because it is too long, and once they abandon, they rarely return. Caveat: this is a 2018 survey of 502 people, so I treat it as dated."
           },
           {
-            "title":"Nunes & Drèze (2006), Journal of Consumer Research — \"The Endowed Progress Effect: How Artificial Advancement Increases Effort\"",
+            "title":"Nunes & Drèze (2006), Journal of Consumer Research, \"The Endowed Progress Effect: How Artificial Advancement Increases Effort\"",
             "url":"https://academic.oup.com/jcr/article-abstract/32/4/504/1787425",
             "description":"The exact origin of the term \"endowed progress effect\": people given artificial advancement toward a goal show greater persistence toward reaching it."
           },
           {
-            "title":"Kivetz, Urminsky & Zheng (2006), Journal of Marketing Research — \"The Goal-Gradient Hypothesis Resurrected\"",
+            "title":"Kivetz, Urminsky & Zheng (2006), Journal of Marketing Research, \"The Goal-Gradient Hypothesis Resurrected\"",
             "url":"https://journals.sagepub.com/doi/abs/10.1509/jmkr.43.1.39",
             "description":"Supports the claim that people accelerate effort as they get closer to a reward. I use this when I reference the goal-gradient effect.",
             "secondaryTitle":"Columbia Business School summary",
             "secondaryUrl":"https://business.columbia.edu/insights/chazen-global-insights/goal-gradient-hypothesis-resurrected-purchase-acceleration"
           },
           {
-            "title":"IBM Carbon Design System — Progress indicator, usage guidelines",
+            "title":"IBM Carbon Design System, Progress indicator, usage guidelines",
             "url":"https://carbondesignsystem.com/components/progress-indicator/usage/",
             "description":"An authoritative design-system reference for showing users where they are: dividing the end goal into smaller subtasks increases the sense of completeness, and keeping users informed of where they are gives them a sense of control."
           },
@@ -309,7 +309,7 @@ values (
             "description":"Used for the accessibility angle on the email field: home pages averaged 6.3 form inputs, and 34.2% of those inputs were not properly labeled. Note: the 48% figure floating around secondary sources is the share of homepages with at least one unlabeled input, which is a different metric."
           },
           {
-            "title":"HubSpot — \"10 Form Conversion Optimization Tips\"",
+            "title":"HubSpot, \"10 Form Conversion Optimization Tips\"",
             "url":"https://blog.hubspot.com/marketing/optimize-conversion-forms",
             "description":"From HubSpot's analysis of 40,000+ landing pages: buttons labeled \"Submit\" had lower conversion rates, and 3-field forms converted best with a drop-off after that. I use this for the \"outcome copy beats continue\" and \"keep the ask minimal\" points."
           }

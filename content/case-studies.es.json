@@ -213,14 +213,14 @@
     "status": "published",
     "featured": true,
     "order": 1,
-    "title": "Integración de Nayya",
-    "company": "Nayya",
+    "title": "Integración de beneficios con IA",
+    "company": "Nayya AI",
     "client_context": "Paychex a través de ITX Corp",
     "role": "Diseñador de Producto Sr.",
     "year": 2025,
     "duration": "6 meses",
     "industry": "Beneficios con IA / SaaS de RRHH",
-    "tagline": "Diseñó la integración de Nayya como herramienta de beneficios impulsada por IA, guiando a los empleados a elegir la cobertura que mejor se ajustaba a sus necesidades.",
+    "tagline": "Diseñé la integración de Nayya como una herramienta de beneficios impulsada por IA que guía a las personas empleadas a elegir la cobertura que mejor se ajusta a sus necesidades.",
     "tags": [
       "BENEFITS / ENSURANCE SAAS",
       "UX Research",
@@ -874,7 +874,7 @@
             "El titubeo ante la redirección se redujo del 46% al 33%.",
             "Los errores de interpretación del estado bajaron del 31% al 22%.",
             "La puntuación de confianza del usuario mejoró de 3.2/5 a 4.0/5.",
-            "La dependencia de procesos manuales se estableció en un valor base de 60–70%; el objetivo se fijó por debajo del 25% para el seguimiento posterior al lanzamiento.",
+            "La dependencia de procesos manuales se estableció en un valor base de 60, 70%; el objetivo se fijó por debajo del 25% para el seguimiento posterior al lanzamiento.",
             "2,548 respuestas de encuesta tras el primer lanzamiento confirmaron que la dirección integrada estaba funcionando."
           ],
           "opportunities": [
@@ -1400,34 +1400,34 @@
         "payload": {
           "sources": [
             {
-              "title": "Nielsen Norman Group — \"Progress Indicators Make a Slow System Less Insufferable\"",
+              "title": "Nielsen Norman Group, \"Progress Indicators Make a Slow System Less Insufferable\"",
               "url": "https://www.nngroup.com/articles/progress-indicators/",
               "description": "Respalda la idea de que el feedback de progreso reduce la incertidumbre y mantiene a los usuarios avanzando. Advertencia: este artículo de NN/g trata sobre el progreso de sistemas y tiempos de espera, no sobre contadores de varios pasos, por lo que funciona mejor combinado con la investigación sobre el efecto gradiente de meta citada más abajo, específicamente para el punto sobre el número de pasos."
             },
             {
-              "title": "Baymard Institute — \"Checkout Flows Average 5 Steps and 11+ Form Fields\"",
+              "title": "Baymard Institute, \"Checkout Flows Average 5 Steps and 11+ Form Fields\"",
               "url": "https://baymard.com/blog/checkout-flow-average-form-fields",
               "description": "Respalda unificar preguntas en lugar de limitarse a dividir pasos: el número de campos de formulario que el usuario debe gestionar importa más para la UX del checkout que el número de pasos, y la mayoría de los flujos pueden reducirse a entre 6 y 8 campos."
             },
             {
-              "title": "The Manifest — \"6 Steps for Avoiding Online Form Abandonment\"",
+              "title": "The Manifest, \"6 Steps for Avoiding Online Form Abandonment\"",
               "url": "https://themanifest.com/web-design/6-steps-avoiding-online-form-abandonment",
               "description": "Se utiliza para el dato de que el 27% de los usuarios abandona un formulario por ser demasiado largo, y una vez que abandonan, rara vez regresan. Advertencia: se trata de una encuesta de 2018 con 502 personas, así que lo considero un dato desactualizado."
             },
             {
-              "title": "Nunes & Drèze (2006), Journal of Consumer Research — \"The Endowed Progress Effect: How Artificial Advancement Increases Effort\"",
+              "title": "Nunes & Drèze (2006), Journal of Consumer Research, \"The Endowed Progress Effect: How Artificial Advancement Increases Effort\"",
               "url": "https://academic.oup.com/jcr/article-abstract/32/4/504/1787425",
               "description": "El origen exacto del término \"efecto de progreso dotado\" (endowed progress effect): las personas a las que se les da un avance artificial hacia una meta muestran mayor persistencia para alcanzarla."
             },
             {
-              "title": "Kivetz, Urminsky & Zheng (2006), Journal of Marketing Research — \"The Goal-Gradient Hypothesis Resurrected\"",
+              "title": "Kivetz, Urminsky & Zheng (2006), Journal of Marketing Research, \"The Goal-Gradient Hypothesis Resurrected\"",
               "url": "https://journals.sagepub.com/doi/abs/10.1509/jmkr.43.1.39",
               "description": "Respalda la afirmación de que las personas aceleran su esfuerzo a medida que se acercan a una recompensa. Lo utilizo cuando hago referencia al efecto gradiente de meta (goal-gradient effect).",
               "secondaryTitle": "Resumen de Columbia Business School",
               "secondaryUrl": "https://business.columbia.edu/insights/chazen-global-insights/goal-gradient-hypothesis-resurrected-purchase-acceleration"
             },
             {
-              "title": "IBM Carbon Design System — Progress indicator, usage guidelines",
+              "title": "IBM Carbon Design System, Progress indicator, usage guidelines",
               "url": "https://carbondesignsystem.com/components/progress-indicator/usage/",
               "description": "Una referencia autorizada de sistema de diseño sobre cómo mostrar a los usuarios dónde se encuentran: dividir la meta final en subtareas más pequeñas aumenta la sensación de completitud, y mantener informados a los usuarios de dónde están les da sensación de control."
             },
@@ -1437,7 +1437,7 @@
               "description": "Se utiliza para el ángulo de accesibilidad sobre el campo de email: las páginas de inicio tenían un promedio de 6.3 campos de formulario, y el 34.2% de esos campos no estaban correctamente etiquetados. Nota: la cifra del 48% que circula en fuentes secundarias es el porcentaje de páginas de inicio con al menos un campo sin etiquetar, que es una métrica distinta."
             },
             {
-              "title": "HubSpot — \"10 Form Conversion Optimization Tips\"",
+              "title": "HubSpot, \"10 Form Conversion Optimization Tips\"",
               "url": "https://blog.hubspot.com/marketing/optimize-conversion-forms",
               "description": "Del análisis de HubSpot de más de 40,000 landing pages: los botones etiquetados como \"Submit\" tenían tasas de conversión más bajas, y los formularios de 3 campos convertían mejor, con una caída a partir de ahí. Lo utilizo para los puntos de \"el texto orientado al resultado supera a 'continuar'\" y \"mantener la petición mínima\"."
             }
@@ -1722,7 +1722,7 @@
         "payload": {
           "regulatory": {
             "title": "Contexto regulatorio y de gobernanza",
-            "france": "Centralizado — State + Assurance Maladie establece tarifas, certificaciones y negociaciones a nivel nacional. HDS v2.0: certificación obligatoria de alojamiento de datos sanitarios. Transición a V2.0 antes del 16 de mayo de 2026; Las normas de soberanía de septiembre de 2026 exigen el alojamiento y la divulgación de exposición legal fuera de la UE únicamente en el EEE (por ejemplo, la Ley CLOUD de EE. UU.).",
+            "france": "Centralizado, State + Assurance Maladie establece tarifas, certificaciones y negociaciones a nivel nacional. HDS v2.0: certificación obligatoria de alojamiento de datos sanitarios. Transición a V2.0 antes del 16 de mayo de 2026; Las normas de soberanía de septiembre de 2026 exigen el alojamiento y la divulgación de exposición legal fuera de la UE únicamente en el EEE (por ejemplo, la Ley CLOUD de EE. UU.).",
             "germany": "Descentralizado: los organismos corporativistas (G-BA, KV regionales) controlan el acceso al mercado; Bedarfsplanung restringe dónde y cómo los médicos pueden incluso establecer su consulta. Infraestructura Telemática (TI): red cerrada obligatoria; Fecha límite de integración de ePA: 1 de octubre de 2025; Autenticación mediante tarjetas físicas SMC-B/eHBA. El 50% de los médicos alemanes informan semanalmente sobre problemas técnicos de TI, una apertura competitiva declarada para un participante más estable."
           },
           "workforce": {
@@ -1734,7 +1734,7 @@
             "title": "Panorama competitivo",
             "incumbent": "Doctolib es el titular dominante, ya que pasó de una herramienta de reservas a un sistema operativo de práctica completa y lanzó su PMS alemán a finales de 2025, con gestión de llamadas mediante IA y pagos integrados basados en Adyen.",
             "trust_gaps": "Carga de trabajo de MFA debido a solicitudes no seguras y una crisis de confianza más amplia en materia de 'soberanía de datos', nombrada como una apertura específica para un entrante soberano/privacidad primero.",
-            "pricing": "Samedi ~35–59€/usuario; Doctolib ~139€/profesional."
+            "pricing": "Samedi ~35, 59€/usuario; Doctolib ~139€/profesional."
           },
           "business": {
             "title": "Contexto empresarial: explícitamente sin resolver",
@@ -2056,7 +2056,7 @@
           "table": [
             {
               "prior": "Doctolib es una herramienta de reservas que se traslada al PMS",
-              "status": "⚠️ False in France — it's #1 in PMS",
+              "status": "⚠️ False in France, it's #1 in PMS",
               "action": "Reescribe la diapositiva competitiva"
             },
             {
@@ -2067,7 +2067,7 @@
             {
               "prior": "La programación consciente de los recursos es nuestro diferenciador",
               "status": "⚠️ Samedi ships it at scale",
-              "action": "Necesario, no suficiente — reposicionar"
+              "action": "Necesario, no suficiente, reposicionar"
             },
             {
               "prior": "La soberanía es nuestro diferenciador",
@@ -2086,11 +2086,11 @@
             },
             {
               "prior": "Usuario principal de Calendar Keeper",
-              "status": "✅ Unaffected — Doctolib built its PVS in close collaboration with MFAs and doctors",
+              "status": "✅ Unaffected, Doctolib built its PVS in close collaboration with MFAs and doctors",
               "action": "Mantener; valida que el MFA es el objetivo correcto"
             },
             {
-              "prior": "—",
+              "prior": ", ",
               "status": "🆕 Migration risk as adoption blocker",
               "action": "Agregar a los requisitos iniciales; posiblemente más decisivo que cualquier característica del calendario"
             }
@@ -2103,7 +2103,7 @@
         "title": "Nuevas restricciones técnicas y regulatorias",
         "body": "La investigación de mercado reveló requisitos de cumplimiento que no estaban en el informe original.",
         "payload": {
-          "constraint": "Los proveedores de PVS en la nube en Alemania se enfrentan al artículo 203(3–4) StGB, art. 28 GDPR, §393 SGB V y BSI C5 requisitos de certificación, y un acuerdo de procesamiento de datos por sí solo no elimina la exposición al secreto profesional del derecho penal.",
+          "constraint": "Los proveedores de PVS en la nube en Alemania se enfrentan al artículo 203(3, 4) StGB, art. 28 GDPR, §393 SGB V y BSI C5 requisitos de certificación, y un acuerdo de procesamiento de datos por sí solo no elimina la exposición al secreto profesional del derecho penal.",
           "requirement": "La evaluación de conformidad de KBV y la conexión TI también son obligatorias para los sistemas en la nube.",
           "implication": "Esta es una barrera de entrada nativa de la nube que ninguno de nuestros cuatro documentos de proyecto capturó. Añadir al registro de restricciones técnicas."
         }

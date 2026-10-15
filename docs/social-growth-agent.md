@@ -45,7 +45,7 @@ trend_signals(id, platform, source_url, summary, relevance_score, captured_at)
 experiments(id, hypothesis, success_metric, status, result, started_at, ended_at)
 ```
 
-Use `metric_snapshots` for the source-of-truth numbers. Give the language model only the relevant, aggregated views—not broad database access.
+Use `metric_snapshots` for the source-of-truth numbers. Give the language model only the relevant, aggregated views, not broad database access.
 
 ## Tools the agent needs
 
@@ -106,7 +106,7 @@ For a custom dashboard such as this one, the Agents SDK is usually the clearest 
 2. Create a reusable episode intake: title, transcript, guest/topic, core promise, target listener, one CTA, and available assets.
 3. Approve daily Patreon and LinkedIn drafts manually for two weeks. Save edits/rejections so the agent can learn a preferred voice, but keep approval mandatory.
 4. Test one funnel: short clip → full episode → Patreon member post → one specific paid offer.
-5. Judge success with retained Patreon members, qualified clicks, episode completion, and email/lead conversion—not vanity reach alone.
+5. Judge success with retained Patreon members, qualified clicks, episode completion, and email/lead conversion, not vanity reach alone.
 
 ## What is included in the current site prototype
 

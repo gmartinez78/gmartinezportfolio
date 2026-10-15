@@ -98,7 +98,7 @@
         "title": "Sr. Product Designer",
         "company": "ITX Corp",
         "client": "Paychex (Nayya, Flock, E-Verify, Indeed)",
-        "period": "Mar. 2021 – Presente",
+        "period": "Mar. 2021, Presente",
         "location": "Málaga, España (Remoto)",
         "bullets": [
           "Lidero la arquitectura de diseño de extremo a extremo de una plataforma SaaS de RRHH empresarial con más de 2,3 millones de usuarios, tomando decisiones de diseño basadas en datos como Staff Designer, alineando equipos multidisciplinares en torno a una visión de producto unificada en múltiples productos de alto impacto.",
@@ -127,7 +127,7 @@
         "title": "UX/UI Designer",
         "company": "Alquilando S.A.",
         "client": "Marketplace PropTech",
-        "period": "Mar. 2019 – May. 2021",
+        "period": "Mar. 2019, May. 2021",
         "location": "Buenos Aires, Argentina (Remoto)",
         "bullets": [
           "Diseño y entrego soluciones UX/UI de extremo a extremo para una startup PropTech construyendo una plataforma inmobiliaria a gran escala para el mercado LATAM.",
@@ -141,7 +141,7 @@
         "title": "Freelance UX / UI Designer",
         "company": "Studio Hakuna",
         "client": "Paramount App LATAM",
-        "period": "Dic. 2019 – May. 2020",
+        "period": "Dic. 2019, May. 2020",
         "location": "Buenos Aires, Argentina (Remoto)",
         "bullets": [
           "Realicé investigación UX para entender las necesidades y comportamientos de la audiencia de Paramount App LATAM.",
@@ -154,7 +154,7 @@
         "title": "UX/UI Designer",
         "company": "Elevation",
         "client": "Soluciones web para ONG",
-        "period": "Ene. 2017 – Feb. 2019",
+        "period": "Ene. 2017, Feb. 2019",
         "location": "Buenos Aires, Argentina (Híbrido)",
         "bullets": [
           "Entregué diseño UX/UI de extremo a extremo para múltiples clientes sin ánimo de lucro de forma simultánea.",
@@ -167,7 +167,7 @@
         "title": "Freelance UX / UI Designer / Graphic Designer",
         "company": "Múltiples clientes | Web y redes sociales",
         "client": "",
-        "period": "Feb. 2014 – Feb. 2017",
+        "period": "Feb. 2014, Feb. 2017",
         "location": "LATAM, España, EE. UU. (Remoto)",
         "bullets": [
           "Entregué diseño UX/UI de extremo a extremo para productos en etapa temprana, plataformas de e-commerce y marketplaces en múltiples industrias.",
@@ -189,8 +189,8 @@
     },
     "tools": ["Figma", "Jira", "Miro", "Copilot", "Webex", "ClickUp", "Confluence", "Maze", "Notion", "Slack", "HTML/CSS", "React", "Claude", "VS Code", "ChatGPT"],
     "education": [
-      { "year": "2014–2015", "degree": "Diplomado en Diseño de Medios Web", "institution": "Universidad Rafael Belloso Chacín" },
-      { "year": "2012–2015", "degree": "Licenciatura en Diseño Gráfico", "institution": "URBE" },
+      { "year": "2014, 2015", "degree": "Diplomado en Diseño de Medios Web", "institution": "Universidad Rafael Belloso Chacín" },
+      { "year": "2012, 2015", "degree": "Licenciatura en Diseño Gráfico", "institution": "URBE" },
       { "year": "2017", "degree": "Diseño UX / Diseño Gráfico", "institution": "Coderhouse" }
     ],
     "certifications": [

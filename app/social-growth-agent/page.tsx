@@ -74,7 +74,7 @@ const initialDrafts: Draft[] = [
     date: "Fri · 18:15",
     format: "Reel",
     title: "A 24-second clip with a strong first sentence",
-    body: "Hook: “Most teams don’t have a product problem—they have a listening problem.”",
+    body: "Hook: “Most teams don’t have a product problem, they have a listening problem.”",
   },
   {
     id: 4,
@@ -282,7 +282,7 @@ export default function SocialGrowthAgentPage() {
               <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 border-t border-[#E6EEF6] pt-5 text-xs text-[#5C7792]">
                 <span><span className="mr-1.5 inline-block h-2 w-2 rounded-full bg-[#1183D0]" />Organic reach</span>
                 <span>Best format: video clips</span>
-                <span>Best publish window: Thu 17:00–19:00</span>
+                <span>Best publish window: Thu 17:00, 19:00</span>
               </div>
             </CardContent>
           </Card>
@@ -291,7 +291,7 @@ export default function SocialGrowthAgentPage() {
             <CardContent className="p-0">
               <div className="bg-[linear-gradient(135deg,#FFF4E3_0%,#FFF9F1_100%)] p-6 sm:p-7">
                 <p className="flex items-center gap-2 text-lg font-semibold text-[#0E2951]"><Flame className="h-5 w-5 text-[#E67D22]" /> Trend signals</p>
-                <p className="mt-1 text-sm text-[#6C6258]">Useful angles to adapt—never copy.</p>
+                <p className="mt-1 text-sm text-[#6C6258]">Useful angles to adapt, never copy.</p>
               </div>
               <div className="space-y-4 p-6 sm:p-7">
                 {[

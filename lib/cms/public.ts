@@ -25,8 +25,8 @@ const trustedLogoMap: Record<string, string> = {
 const certificationLogoMap: Record<string, string> = {
   "Upwork Certification": withBasePath("/images/iNSrn.png"),
   "NN/g UX Certification": withBasePath("/images/OiSjn.png"),
-  "NN/Group UX Certification — Interaction Design": withBasePath("/images/OiSjn.png"),
-  "Upwork Skill Certification — User Interface Design": withBasePath("/images/iNSrn.png"),
+  "NN/Group UX Certification, Interaction Design": withBasePath("/images/OiSjn.png"),
+  "Upwork Skill Certification, User Interface Design": withBasePath("/images/iNSrn.png"),
 };
 
 const toolIconMap: Record<string, string> = {

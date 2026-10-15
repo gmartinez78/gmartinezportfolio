@@ -192,8 +192,8 @@
     "status": "published",
     "featured": true,
     "order": 1,
-    "title": "Nayya Integration",
-    "company": "Nayya",
+    "title": "AI Benefits Integration",
+    "company": "Nayya AI",
     "client_context": "Paychex via ITX Corp",
     "role": "Sr. Product Designer",
     "year": 2025,
@@ -854,7 +854,7 @@
             "Redirect hesitation reduced from 46% to 33%.",
             "Status interpretation errors down from 31% to 22%.",
             "User confidence score improved from 3.2/5 to 4.0/5.",
-            "Manual process dependency baseline established at 60–70%; target set at under 25% for post-launch tracking.",
+            "Manual process dependency baseline established at 60, 70%; target set at under 25% for post-launch tracking.",
             "2,548 survey responses post first release confirmed the integrated direction was working."
           ],
           "opportunities": [
@@ -1045,7 +1045,7 @@
         "id": "research",
         "type": "custom",
         "title": "Research",
-        "body": "I grounded the work in the 2026 Hispanic Insurance Growth Blueprint, client questionnaire, and advisor interviews—focusing on ACA, life, and digital acquisition. Advisor input surfaced recurring objections, trust concerns, and family questions.\n\nAI accelerated research synthesis, working definitions, and analysis of bilingual patterns and positioning gaps. I turned those insights into campaign decisions across audience, message, channels, and measurement, validated outputs against source material, and made the final brand and product calls."
+        "body": "I grounded the work in the 2026 Hispanic Insurance Growth Blueprint, client questionnaire, and advisor interviews, focusing on ACA, life, and digital acquisition. Advisor input surfaced recurring objections, trust concerns, and family questions.\n\nAI accelerated research synthesis, working definitions, and analysis of bilingual patterns and positioning gaps. I turned those insights into campaign decisions across audience, message, channels, and measurement, validated outputs against source material, and made the final brand and product calls."
       },
       {
         "id": "actions",
@@ -1362,34 +1362,34 @@
         "payload": {
           "sources": [
             {
-              "title": "Nielsen Norman Group — \"Progress Indicators Make a Slow System Less Insufferable\"",
+              "title": "Nielsen Norman Group, \"Progress Indicators Make a Slow System Less Insufferable\"",
               "url": "https://www.nngroup.com/articles/progress-indicators/",
               "description": "Supports progress feedback reducing uncertainty and keeping users moving. Caveat: this NN/g piece is about system and wait-time progress, not multi-step counters, so it works best paired with the goal-gradient research below for the step-count point specifically."
             },
             {
-              "title": "Baymard Institute — \"Checkout Flows Average 5 Steps and 11+ Form Fields\"",
+              "title": "Baymard Institute, \"Checkout Flows Average 5 Steps and 11+ Form Fields\"",
               "url": "https://baymard.com/blog/checkout-flow-average-form-fields",
               "description": "Supports unifying questions over just splitting steps: the number of form fields users must manage matters more to checkout UX than the number of steps, and most flows can drop to 6 to 8 fields."
             },
             {
-              "title": "The Manifest — \"6 Steps for Avoiding Online Form Abandonment\"",
+              "title": "The Manifest, \"6 Steps for Avoiding Online Form Abandonment\"",
               "url": "https://themanifest.com/web-design/6-steps-avoiding-online-form-abandonment",
               "description": "Used for the stat that 27% of users abandon a form because it is too long, and once they abandon, they rarely return. Caveat: this is a 2018 survey of 502 people, so I treat it as dated."
             },
             {
-              "title": "Nunes & Drèze (2006), Journal of Consumer Research — \"The Endowed Progress Effect: How Artificial Advancement Increases Effort\"",
+              "title": "Nunes & Drèze (2006), Journal of Consumer Research, \"The Endowed Progress Effect: How Artificial Advancement Increases Effort\"",
               "url": "https://academic.oup.com/jcr/article-abstract/32/4/504/1787425",
               "description": "The exact origin of the term \"endowed progress effect\": people given artificial advancement toward a goal show greater persistence toward reaching it."
             },
             {
-              "title": "Kivetz, Urminsky & Zheng (2006), Journal of Marketing Research — \"The Goal-Gradient Hypothesis Resurrected\"",
+              "title": "Kivetz, Urminsky & Zheng (2006), Journal of Marketing Research, \"The Goal-Gradient Hypothesis Resurrected\"",
               "url": "https://journals.sagepub.com/doi/abs/10.1509/jmkr.43.1.39",
               "description": "Supports the claim that people accelerate effort as they get closer to a reward. I use this when I reference the goal-gradient effect.",
               "secondaryTitle": "Columbia Business School summary",
               "secondaryUrl": "https://business.columbia.edu/insights/chazen-global-insights/goal-gradient-hypothesis-resurrected-purchase-acceleration"
             },
             {
-              "title": "IBM Carbon Design System — Progress indicator, usage guidelines",
+              "title": "IBM Carbon Design System, Progress indicator, usage guidelines",
               "url": "https://carbondesignsystem.com/components/progress-indicator/usage/",
               "description": "An authoritative design-system reference for showing users where they are: dividing the end goal into smaller subtasks increases the sense of completeness, and keeping users informed of where they are gives them a sense of control."
             },
@@ -1399,7 +1399,7 @@
               "description": "Used for the accessibility angle on the email field: home pages averaged 6.3 form inputs, and 34.2% of those inputs were not properly labeled. Note: the 48% figure floating around secondary sources is the share of homepages with at least one unlabeled input, which is a different metric."
             },
             {
-              "title": "HubSpot — \"10 Form Conversion Optimization Tips\"",
+              "title": "HubSpot, \"10 Form Conversion Optimization Tips\"",
               "url": "https://blog.hubspot.com/marketing/optimize-conversion-forms",
               "description": "From HubSpot's analysis of 40,000+ landing pages: buttons labeled \"Submit\" had lower conversion rates, and 3-field forms converted best with a drop-off after that. I use this for the \"outcome copy beats continue\" and \"keep the ask minimal\" points."
             }
@@ -1420,7 +1420,7 @@
     "year": 2026,
     "duration": "Independent AI-assisted discovery sprint",
     "industry": "Healthcare / Practice Management SaaS",
-    "tagline": "AI-assisted product discovery for clinical scheduling—turning resource dependencies, outages, and compliance constraints into a phased product strategy.",
+    "tagline": "AI-assisted product discovery for clinical scheduling, turning resource dependencies, outages, and compliance constraints into a phased product strategy.",
     "tags": [
       "Healthcare",
       "Product Strategy",
@@ -1465,7 +1465,7 @@
         "Data sovereignty concerns are regulatory requirements (GDPR, BSI C5, German §203 StGB), not nice-to-haves."
       ],
       "user_pain_points": [
-        "Returning patients trying to rebook or manage appointments have no fast self-service path, forcing them to call—the exact mechanism that floods staff.",
+        "Returning patients trying to rebook or manage appointments have no fast self-service path, forcing them to call, the exact mechanism that floods staff.",
         "Patients have no visibility that their health data stays within Europe, eroding trust in a market where data sovereignty is a regulatory mandate.",
         "Generic scheduling platforms treat every booking as an interchangeable time slot and don't model the dependencies (room, equipment, practitioner, prep) that clinical workflows require."
       ]
@@ -1503,15 +1503,15 @@
     },
     "design_strategy": [
       "Reclassify data sovereignty and MFA-first positioning as entry requirements, not differentiators; the real defensible advantage is resource-aware scheduling that doesn't break when infrastructure does.",
-      "Build the initial release around core booking with resource dependencies (room, equipment, practitioner, prep), not backfill—backfill needs a waitlist with history to be useful, which doesn't exist on day one.",
-      "Design degraded mode explicitly: when sync fails, show 'not synced' as a visible state, create a reconciliation queue, and allow appointments to be created locally with identity pending verification—turning a crisis into a known condition.",
+      "Build the initial release around core booking with resource dependencies (room, equipment, practitioner, prep), not backfill, backfill needs a waitlist with history to be useful, which doesn't exist on day one.",
+      "Design degraded mode explicitly: when sync fails, show 'not synced' as a visible state, create a reconciliation queue, and allow appointments to be created locally with identity pending verification, turning a crisis into a known condition.",
       "Germany-first GTM is evidence-based: Doctolib already owns France (23.2% share); Germany is 9 months into its PMS push (Nov 2025), leaving a narrow, measurable window.",
       "Migration risk is the adoption blocker, not features; a credible, demonstrable data-migration path may matter more than calendar polish."
     ],
     "reflections": [
       {
         "title": "Competition is real, but not where you'd expect.",
-        "body": "Doctolib has already won France; Samedi is shipping our claimed differentiators in Germany. The honest insight is that we need to find an angle competitors haven't occupied yet—which turns out to be degraded-mode reliability and honest about what's Phase 1 vs. Phase 2."
+        "body": "Doctolib has already won France; Samedi is shipping our claimed differentiators in Germany. The honest insight is that we need to find an angle competitors haven't occupied yet, which turns out to be degraded-mode reliability and honest about what's Phase 1 vs. Phase 2."
       },
       {
         "title": "Market structure changed the strategy.",
@@ -1523,7 +1523,7 @@
       },
       {
         "title": "Constraints forced the better decision.",
-        "body": "Knowing we can't support backfill on day one (no liquidity) forced us to ask what actually works at the first appointment of the first clinic. The answer—resource-aware core booking—is more defensible than a wishlist feature."
+        "body": "Knowing we can't support backfill on day one (no liquidity) forced us to ask what actually works at the first appointment of the first clinic. The answer, resource-aware core booking, is more defensible than a wishlist feature."
       }
     ],
     "nda_notice": "This is an early-stage strategy document and design thinking process. Client details and competitive data are anonymized or aggregated per market. The methodology and findings reflect real market research and user discovery.",
@@ -1539,7 +1539,7 @@
         "id": "design-thinking-facilitation",
         "type": "custom",
         "title": "Design Thinking Facilitation",
-        "body": "Structured the discovery process across five phases—Empathize, Define, Ideate, and Prototype—using design thinking methodology to move from unstructured problems to actionable strategy. Each phase built on the previous, creating a chain of validated insights rather than assumptions."
+        "body": "Structured the discovery process across five phases, Empathize, Define, Ideate, and Prototype, using design thinking methodology to move from unstructured problems to actionable strategy. Each phase built on the previous, creating a chain of validated insights rather than assumptions."
       },
       {
         "id": "user-research-synthesis",
@@ -1551,7 +1551,7 @@
         "id": "competitive-intelligence",
         "type": "custom",
         "title": "Competitive Intelligence",
-        "body": "Performed rigorous market analysis covering incumbent PMS vendors, new entrants, and market dynamics. Identified that Doctolib already owns France (23.2% PMS share), Samedi occupies claimed differentiators in Germany, and migration risk—not features—is the real adoption blocker. This research reframed strategy and go-to-market approach."
+        "body": "Performed rigorous market analysis covering incumbent PMS vendors, new entrants, and market dynamics. Identified that Doctolib already owns France (23.2% PMS share), Samedi occupies claimed differentiators in Germany, and migration risk, not features, is the real adoption blocker. This research reframed strategy and go-to-market approach."
       },
       {
         "id": "solution-strategy",
@@ -1598,7 +1598,7 @@
         "body": "Nine distinct problem framings across different user roles and markets emerged from research.",
         "payload": {
           "problems": [
-            "The Calendar Keeper needs the schedule to reflect reality without manually re-checking it, because interruptions all day—calls, changes, no-shows—otherwise cost clinical time or cause double-booking.",
+            "The Calendar Keeper needs the schedule to reflect reality without manually re-checking it, because interruptions all day, calls, changes, no-shows, otherwise cost clinical time or cause double-booking.",
             "The German MFA needs to complete TI-mandated tasks in fewer clicks and with fewer failure points, because half of German practices hit TI issues weekly, and those failures land on the MFA, not the doctor.",
             "The German MFA/MVZ needs to triage and delegate scheduling across many practitioners from one view, because a single MVZ can employ up to 19 MFAs coordinating calendars that a single-doctor interface was never built to handle.",
             "The French solo doctor needs routine calls handled without leaving the exam room, because 30% of calls already go unanswered, and every one is either a lost patient or an interrupted consultation.",
@@ -1618,15 +1618,15 @@
         "payload": {
           "groups": [
             {
-              "group": "Patients — new & existing",
+              "group": "Patients, new & existing",
               "goal": "Make an appointment with low effort and minimal disclosure of personal data.",
               "pain_points": [
-                "Abandon booking when forms ask for non-essential info, or in France when INS (Identifiant National de Santé) requires exact birth-registration details — high friction at registration.",
+                "Abandon booking when forms ask for non-essential info, or in France when INS (Identifiant National de Santé) requires exact birth-registration details, high friction at registration.",
                 "Frustrated by technical failures: blank-page errors, forced logouts, inability to screenshot/copy confirmation info.",
                 "In Germany, Double Opt-In (email/SMS) can leave a slot unconfirmed and effectively lost.",
                 "Frustrated when 'no online appointments available' makes the tool feel like wasted effort.",
-                "Erosion of trust when a listed language capability (e.g., 'speaks English') doesn't hold up in person — accuracy of practitioner metadata matters for safety, not just satisfaction.",
-                "Distrust of platforms perceived to route consultation notes or data to non-EU AI providers or third parties — this is a trust-driven abandonment cause."
+                "Erosion of trust when a listed language capability (e.g., 'speaks English') doesn't hold up in person, accuracy of practitioner metadata matters for safety, not just satisfaction.",
+                "Distrust of platforms perceived to route consultation notes or data to non-EU AI providers or third parties, this is a trust-driven abandonment cause."
               ],
               "consequence": "Missed/duplicate bookings, abandoned funnel, or (in the language-mismatch case) a care-quality risk.",
               "jtbd": "When I need to see a doctor, and I'm unsure of the process, I want to find and confirm a real, available slot without giving up more information than necessary, so I can trust the appointment will actually happen."
@@ -1635,7 +1635,7 @@
               "group": "Caregivers / people booking for someone else",
               "goal": "Manage appointments for a dependent (child, elderly parent) as smoothly as for themselves.",
               "pain_points": [
-                "One-third of French appointments are booked for a relative; ~46% of patients have a linked relative account — this is not an edge case, it's a core flow.",
+                "One-third of French appointments are booked for a relative; ~46% of patients have a linked relative account, this is not an edge case, it's a core flow.",
                 "Birthdate entry via month-by-month dropdown scrolling is a specific, named friction point for this group.",
                 "Permissions implication: the product needs a first-class 'manage on behalf of' model, not a bolt-on."
               ]
@@ -1644,10 +1644,10 @@
               "group": "Older / lower-digital-literacy patients",
               "goal": "Access appointment booking with appropriate support for their technology comfort level.",
               "pain_points": [
-                "5.9M French Doctolib users are 65+ (scale signal), but German patients 80+ are described as 'overwhelmed' by digital tools, many without smartphones/PCs — this is a market-specific gap, not the same problem in both countries.",
+                "5.9M French Doctolib users are 65+ (scale signal), but German patients 80+ are described as 'overwhelmed' by digital tools, many without smartphones/PCs, this is a market-specific gap, not the same problem in both countries.",
                 "Visually impaired users need accessible booking flows; all patients need clarity on physical accessibility (wheelchair access) of the practice itself."
               ],
-              "consequence": "Exclusion from self-service, which pushes load back onto phone lines — directly connects to the receptionist pain point."
+              "consequence": "Exclusion from self-service, which pushes load back onto phone lines, directly connects to the receptionist pain point."
             },
             {
               "group": "Receptionists / Medical Assistants (MFAs)",
@@ -1655,18 +1655,18 @@
               "pain_points": [
                 "~30% of calls to doctors go unanswered; routine calls (insurance checks, rescheduling) bury the front desk.",
                 "German MFAs are frustrated by click-heavy TI workflows (KIM messaging, e-prescriptions) and by card-reader/system crashes after updates.",
-                "Structural difference: in Germany, the MFA is a power user — 3 years trained, performs clinical tasks (blood draws, dressings) and admin (booking, invoicing); average 3.4 per solo practice, up to 19 in MVZs. In France, only ~5% of GPs employ an MFA at all, and tasks are mostly administrative."
+                "Structural difference: in Germany, the MFA is a power user, 3 years trained, performs clinical tasks (blood draws, dressings) and admin (booking, invoicing); average 3.4 per solo practice, up to 19 in MVZs. In France, only ~5% of GPs employ an MFA at all, and tasks are mostly administrative."
               ],
-              "design_implication": "The receptionist is not one persona — Germany needs an assistant-centric, delegation-capable interface; France needs the doctor to remain the central actor. This is one of the sharpest tensions in the whole project."
+              "design_implication": "The receptionist is not one persona, Germany needs an assistant-centric, delegation-capable interface; France needs the doctor to remain the central actor. This is one of the sharpest tensions in the whole project."
             },
             {
               "group": "Doctors / clinicians",
               "goal": "Maximize clinical time, minimize administrative drag.",
               "pain_points": [
-                "Structural difference in how doctors use time: Germany — 9.8 contacts/year, ~8 min/visit, high patient turnover, 'one-click' documentation need. France — 5.9 contacts/year, 16–18 min/visit, favors longitudinal notes and longer-form UI.",
+                "Structural difference in how doctors use time: Germany, 9.8 contacts/year, ~8 min/visit, high patient turnover, 'one-click' documentation need. France, 5.9 contacts/year, 16, 18 min/visit, favors longitudinal notes and longer-form UI.",
                 "~10 hours/week lost to administrative bottlenecks (cited as the pain point Doctolib is attacking with AI call-handling)."
               ],
-              "consequence": "Double-booking or lost time directly reduces billable clinical capacity — this group is revenue-sensitive to scheduling errors in a way patients aren't."
+              "consequence": "Double-booking or lost time directly reduces billable clinical capacity, this group is revenue-sensitive to scheduling errors in a way patients aren't."
             },
             {
               "group": "Clinic managers / administrators, and internal CX/support teams",
@@ -1684,22 +1684,22 @@
         "payload": {
           "regulatory": {
             "title": "Regulatory & Governance Context",
-            "france": "Centralized — State + Assurance Maladie set fees, certifications, and negotiations nationally. HDS v2.0: mandatory health-data hosting certification. Transition to V2.0 by May 16, 2026; September 2026 sovereignty rules require EEA-only hosting and disclosure of non-EU legal exposure (e.g., US CLOUD Act).",
-            "germany": "Decentralized — corporatist bodies (G-BA, regional KVs) control market access; Bedarfsplanung restricts where/how physicians can even set up practice. Telematic Infrastructure (TI): mandatory closed network; ePA integration deadline October 1, 2025; authentication via physical SMC-B/eHBA cards. 50% of German doctors report weekly TI technical issues — a stated competitive opening for a more stable entrant."
+            "france": "Centralized, State + Assurance Maladie set fees, certifications, and negotiations nationally. HDS v2.0: mandatory health-data hosting certification. Transition to V2.0 by May 16, 2026; September 2026 sovereignty rules require EEA-only hosting and disclosure of non-EU legal exposure (e.g., US CLOUD Act).",
+            "germany": "Decentralized, corporatist bodies (G-BA, regional KVs) control market access; Bedarfsplanung restricts where/how physicians can even set up practice. Telematic Infrastructure (TI): mandatory closed network; ePA integration deadline October 1, 2025; authentication via physical SMC-B/eHBA cards. 50% of German doctors report weekly TI technical issues, a stated competitive opening for a more stable entrant."
           },
           "workforce": {
             "title": "Workforce & Operational Context",
-            "gp_density": "France — GP-heavy (107/100k) and primary-care-volume-oriented. Germany — specialist-heavy (117/100k), with 2x the ambulatory surgeons and ~3x the gynecologists — meaning Germany's scheduling needs skew toward complex resource booking (rooms, equipment, surgical blocks), not just time slots.",
-            "consultation_rhythm": "France: 5.9 visits/year, 16–18 min/visit, favors longitudinal notes. Germany: 9.8 visits/year, ~8 min/visit, high patient turnover, 'one-click' documentation need. This drives fundamentally different information-density needs in the booking and documentation UI."
+            "gp_density": "France, GP-heavy (107/100k) and primary-care-volume-oriented. Germany, specialist-heavy (117/100k), with 2x the ambulatory surgeons and ~3x the gynecologists, meaning Germany's scheduling needs skew toward complex resource booking (rooms, equipment, surgical blocks), not just time slots.",
+            "consultation_rhythm": "France: 5.9 visits/year, 16, 18 min/visit, favors longitudinal notes. Germany: 9.8 visits/year, ~8 min/visit, high patient turnover, 'one-click' documentation need. This drives fundamentally different information-density needs in the booking and documentation UI."
           },
           "competitive": {
             "title": "Competitive Landscape",
             "incumbent": "Doctolib is the dominant incumbent, having moved from booking tool to full practice-OS, launching its German PMS in late 2025, with AI call-handling and Adyen-based embedded payments.",
-            "trust_gaps": "MFA workload from unsecured requests, and a broader 'data sovereignty' trust crisis — named as a specific opening for a sovereign/privacy-first entrant.",
-            "pricing": "Samedi ~€35–59/user; Doctolib ~€139/practitioner."
+            "trust_gaps": "MFA workload from unsecured requests, and a broader 'data sovereignty' trust crisis, named as a specific opening for a sovereign/privacy-first entrant.",
+            "pricing": "Samedi ~€35, 59/user; Doctolib ~€139/practitioner."
           },
           "business": {
-            "title": "Business Context — Explicitly Unresolved",
+            "title": "Business Context, Explicitly Unresolved",
             "note": "GTM sequencing (France-first vs. Germany-first) is not decided. This matters for empathize scope: if we don't know which market launches first, we should keep our priority workflow choice defensible in both markets rather than optimizing narrowly for one. Pricing/bundling model with the existing suite is undefined."
           }
         }
@@ -1713,15 +1713,15 @@
           "findings": [
             {
               "title": "⚠️ Doctolib has already won the French PMS market",
-              "body": "Doctolib is the most-used GP practice-management software in France as of March 2026, with 23.2% of electronic care-claim transmissions, ahead of Weda (14.0%), Medistory (10.1%) and HelloDoc (8.1%). It went from 0% to 23.2% in five years — and did it without acquisitions, purely by attaching software to its booking platform.\n\nThis inverts our earlier framing. In France, Doctolib now holds both patient distribution and practice distribution. Our 'we're strong where they're weak' argument does not hold."
+              "body": "Doctolib is the most-used GP practice-management software in France as of March 2026, with 23.2% of electronic care-claim transmissions, ahead of Weda (14.0%), Medistory (10.1%) and HelloDoc (8.1%). It went from 0% to 23.2% in five years, and did it without acquisitions, purely by attaching software to its booking platform.\n\nThis inverts our earlier framing. In France, Doctolib now holds both patient distribution and practice distribution. Our 'we're strong where they're weak' argument does not hold."
             },
             {
-              "title": "🔵 In Germany, the same move is barely underway — and that's a narrow, dated window",
-              "body": "Doctolib's German PVS launched in November 2025, initially only for GPs, pediatricians and gynecologists. In the Zi 2026 evaluation, Doctolib had insufficient sample size to produce valid usability, NPS or error-rate data.\n\nRead together with the France finding, this is the strongest empirical argument for Germany-first GTM — a decision our documents listed as undecided. France is a market Doctolib has already taken; Germany is one it started taking nine months ago."
+              "title": "🔵 In Germany, the same move is barely underway, and that's a narrow, dated window",
+              "body": "Doctolib's German PVS launched in November 2025, initially only for GPs, pediatricians and gynecologists. In the Zi 2026 evaluation, Doctolib had insufficient sample size to produce valid usability, NPS or error-rate data.\n\nRead together with the France finding, this is the strongest empirical argument for Germany-first GTM, a decision our documents listed as undecided. France is a market Doctolib has already taken; Germany is one it started taking nine months ago."
             },
             {
               "title": "⚠️ Samedi occupies our claimed differentiators",
-              "body": "Samedi is a Berlin-based SaaS platform used by more than 48,000 doctors across roughly 10,000 institutions in the DACH region, offering online booking with a waitlist, dynamic resource planning, digital forms with e-signature and integrated payment — backed by EU-patented end-to-end encryption, TÜV certification and ISO 27001/9001.\n\nThat is resource-aware scheduling plus sovereignty positioning plus waitlist/backfill, already shipped, at scale. Two of our three claimed differentiators are occupied. Their real gaps: no public patient-search portal, per-doctor pricing that compounds for group practices, no free entry tier, and no self-service onboarding."
+              "body": "Samedi is a Berlin-based SaaS platform used by more than 48,000 doctors across roughly 10,000 institutions in the DACH region, offering online booking with a waitlist, dynamic resource planning, digital forms with e-signature and integrated payment, backed by EU-patented end-to-end encryption, TÜV certification and ISO 27001/9001.\n\nThat is resource-aware scheduling plus sovereignty positioning plus waitlist/backfill, already shipped, at scale. Two of our three claimed differentiators are occupied. Their real gaps: no public patient-search portal, per-doctor pricing that compounds for group practices, no free entry tier, and no self-service onboarding."
             }
           ]
         }
@@ -1730,7 +1730,7 @@
         "id": "market-dynamics",
         "type": "custom",
         "title": "Market Dynamics: The Real Displacement Lever",
-        "body": "What actually drives switching is not satisfaction—it's switching barriers and migration risk.",
+        "body": "What actually drives switching is not satisfaction, it's switching barriers and migration risk.",
         "payload": {
           "key_insight": "33.3% of German practices want to switch PMS (down from 44.4% in 2024). One in three is actively shopping. But the decline is not due to improved satisfaction; it's due to perceived switching barriers.",
           "displacement_dynamics": [
@@ -1762,10 +1762,10 @@
         "id": "sovereignty-context",
         "type": "custom",
         "title": "Sovereignty Claims: Properly Tiered",
-        "body": "Data sovereignty is a live, contested issue—not a differentiator we can own.",
+        "body": "Data sovereignty is a live, contested issue, not a differentiator we can own.",
         "payload": {
           "reality": "Doctolib uses AI from Google, Microsoft and Anthropic in its consultation assistant. Under scrutiny; allegations that patient data may be exposed to US tech providers. Doctolib denies misuse; OECD classifies it as a hazard rather than a realised incident. EU AI Act becomes applicable August 2, 2026.",
-          "honest_read": "The trust vector is real and currently active — but Doctolib's formal compliance posture is strong, and our own advantage would rest on consent architecture and transparency, not on hosting location. Hosting location is table stakes; every competitor claims it.",
+          "honest_read": "The trust vector is real and currently active, but Doctolib's formal compliance posture is strong, and our own advantage would rest on consent architecture and transparency, not on hosting location. Hosting location is table stakes; every competitor claims it.",
           "takeaway": "'We're the sovereign one' is not a defensible differentiator. 'We don't use your patients' data by default, and we can show you exactly what we do use' might be."
         }
       },
@@ -1784,11 +1784,11 @@
           "findings": [
             {
               "title": "France and Germany are staffed like two different professions",
-              "details": "GP density is 107/100k in France vs. 66/100k in Germany; consultation rhythm follows the same divide — 5.9 visits/year at 16–18 minutes in France, 9.8 visits/year at ~8 minutes in Germany. This is why the Calendar Keeper needs two real variants rather than one interface with a language toggle."
+              "details": "GP density is 107/100k in France vs. 66/100k in Germany; consultation rhythm follows the same divide, 5.9 visits/year at 16, 18 minutes in France, 9.8 visits/year at ~8 minutes in Germany. This is why the Calendar Keeper needs two real variants rather than one interface with a language toggle."
             },
             {
               "title": "The calendar has to be trustworthy, not just present",
-              "details": "Patients who search extensively and hit 'no appointments available' describe the tool as a waste of time. On the operations side, 81% of German practices report TI connector errors and 82% report failures reading the eGK card — meaning the calendar itself becomes unreliable before a patient ever sees it."
+              "details": "Patients who search extensively and hit 'no appointments available' describe the tool as a waste of time. On the operations side, 81% of German practices report TI connector errors and 82% report failures reading the eGK card, meaning the calendar itself becomes unreliable before a patient ever sees it."
             },
             {
               "title": "The front desk is already underwater",
@@ -1796,7 +1796,7 @@
             },
             {
               "title": "Data sovereignty is a trust condition, not a feature",
-              "details": "Trust breaks when consultation data appears to reach non-European AI models or third parties. This isn't segment-specific — it matters to the Calendar Keeper (compliance exposure) and the returning patient (trust) equally, and September 2026 rules make EEA-only hosting a requirement rather than a preference."
+              "details": "Trust breaks when consultation data appears to reach non-European AI models or third parties. This isn't segment-specific, it matters to the Calendar Keeper (compliance exposure) and the returning patient (trust) equally, and September 2026 rules make EEA-only hosting a requirement rather than a preference."
             }
           ]
         }
@@ -1809,21 +1809,21 @@
         "payload": {
           "primary": {
             "title": "The Calendar Keeper",
-            "description": "One role, filled by a different person depending on the market — whoever owns the schedule and needs it to be true without constantly re-checking it.",
+            "description": "One role, filled by a different person depending on the market, whoever owns the schedule and needs it to be true without constantly re-checking it.",
             "job": "When my schedule is interrupted all day by calls, changes, and no-shows, I want the calendar to always be true without me re-checking it, so I don't lose clinical time or double-book someone.",
             "france": {
               "title": "Solo-practice doctor",
-              "details": "Runs the front desk personally, since only ~5% of French GPs employ an assistant. Sees patients for 16–18 minutes at a time and absorbs interruptions between consultations rather than delegating them. Needs routine calls (rescheduling, insurance questions) handled without leaving the exam room."
+              "details": "Runs the front desk personally, since only ~5% of French GPs employ an assistant. Sees patients for 16, 18 minutes at a time and absorbs interruptions between consultations rather than delegating them. Needs routine calls (rescheduling, insurance questions) handled without leaving the exam room."
             },
             "germany": {
               "title": "MFA (Medizinische Fachangestellte)",
-              "details": "Clinically trained over three years, manages the calendar for multiple practitioners — 3.4 on average in a solo practice, up to 19 in a larger MVZ. Sees shorter, more frequent consultations (~8 minutes, 9.8 visits/year) and spends real time on TI-mandated tasks (KIM messaging, e-prescriptions, ePA). Roughly half of German practices report weekly TI technical issues, and those failures land on the MFA. Needs to triage and delegate across many practitioners from a single view."
+              "details": "Clinically trained over three years, manages the calendar for multiple practitioners, 3.4 on average in a solo practice, up to 19 in a larger MVZ. Sees shorter, more frequent consultations (~8 minutes, 9.8 visits/year) and spends real time on TI-mandated tasks (KIM messaging, e-prescriptions, ePA). Roughly half of German practices report weekly TI technical issues, and those failures land on the MFA. Needs to triage and delegate across many practitioners from a single view."
             }
           },
           "secondary": {
             "title": "The Returning Patient",
             "description": "A narrow, deliberately thin surface. Its only job is to let a patient who already has a record rebook, cancel, or manage an existing appointment without calling.",
-            "scope": "Occasionally includes booking for a named dependent, entered manually for that one appointment — not a saved, linked profile. Deliberately excludes new-patient identity verification, full linked-account management, and reporting/analytics in v1."
+            "scope": "Occasionally includes booking for a named dependent, entered manually for that one appointment, not a saved, linked profile. Deliberately excludes new-patient identity verification, full linked-account management, and reporting/analytics in v1."
           }
         }
       },
@@ -1962,7 +1962,7 @@
               "why": "Works with zero liquidity. It's useful at the very first appointment of the very first clinic. It's the real structural gap: competitors don't do this because their architecture was born on the demand side. It's the flow the clinic evaluates during the sale, not six months later. It tests the most dangerous technical assumption (write access and schema quality), because resource dependencies are exactly what a poor sync breaks."
             },
             {
-              "tier": "Secondary (high fidelity, 1–2 screens)",
+              "tier": "Secondary (high fidelity, 1, 2 screens)",
               "name": "Degraded mode and conflict resolution",
               "details": "Visible 'not synced' status, reconciliation queue, appointment created locally with identity pending verification, never a full-day block.",
               "why": "Turns the sync-failure problem into a designed response instead of an empty claim. When IT or the eGK reader fails, the schedule stays reliable and operable. This is what the Head of CX wants to hear, because it's the difference between a ticket and a crisis."
@@ -2018,7 +2018,7 @@
           "table": [
             {
               "prior": "Doctolib is a booking tool moving into PMS",
-              "status": "⚠️ False in France — it's #1 in PMS",
+              "status": "⚠️ False in France, it's #1 in PMS",
               "action": "Rewrite the competitive slide"
             },
             {
@@ -2029,7 +2029,7 @@
             {
               "prior": "Resource-aware scheduling is our differentiator",
               "status": "⚠️ Samedi ships it at scale",
-              "action": "Necessary, not sufficient — reposition"
+              "action": "Necessary, not sufficient, reposition"
             },
             {
               "prior": "Sovereignty is our differentiator",
@@ -2048,11 +2048,11 @@
             },
             {
               "prior": "Calendar Keeper primary user",
-              "status": "✅ Unaffected — Doctolib built its PVS in close collaboration with MFAs and doctors",
+              "status": "✅ Unaffected, Doctolib built its PVS in close collaboration with MFAs and doctors",
               "action": "Keep; validates that the MFA is the right target"
             },
             {
-              "prior": "—",
+              "prior": ", ",
               "status": "🆕 Migration risk as adoption blocker",
               "action": "Add to initial requirements; possibly more decisive than any calendar feature"
             }
@@ -2065,7 +2065,7 @@
         "title": "New Technical & Regulatory Constraints",
         "body": "Market research surfaced compliance requirements not in the original brief.",
         "payload": {
-          "constraint": "Cloud PVS providers in Germany face §203(3–4) StGB, Art. 28 GDPR, §393 SGB V and BSI C5 attestation requirements — and a data-processing agreement alone does not remove the criminal-law professional-secrecy exposure.",
+          "constraint": "Cloud PVS providers in Germany face §203(3, 4) StGB, Art. 28 GDPR, §393 SGB V and BSI C5 attestation requirements, and a data-processing agreement alone does not remove the criminal-law professional-secrecy exposure.",
           "requirement": "KBV conformity assessment and TI connection are mandatory for cloud systems too.",
           "implication": "This is a cloud-native entry barrier none of our four project documents captured. Add to technical-constraints register."
         }
@@ -2081,7 +2081,7 @@
             "81% report frequent TI connection errors",
             "71% report regular difficulties creating e-prescriptions"
           ],
-          "patient_adoption": "64% of Germans have booked a medical appointment online at least once, up from 36% in 2023 — strong tailwind for the patient-facing side of the initial release."
+          "patient_adoption": "64% of Germans have booked a medical appointment online at least once, up from 36% in 2023, strong tailwind for the patient-facing side of the initial release."
         }
       }
     ]

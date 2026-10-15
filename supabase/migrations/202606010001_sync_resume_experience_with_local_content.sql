@@ -7,7 +7,7 @@ set payload = jsonb_set(
       "title": "Sr. Product Designer",
       "company": "ITX Corp",
       "client": "Paychex (Nayya, Flock, E-Verify, Indeed)",
-      "period": "Mar. 2021 – Present",
+      "period": "Mar. 2021, Present",
       "location": "Malaga, Spain (Remote)",
       "bullets": [
         "Lead end-to-end design architecture for an enterprise HR SaaS platform with over 2.3 million users by making data-driven design decisions while acting as Staff Designer, aligning cross-functional teams around a unified product vision across multiple high-impact products.",
@@ -36,7 +36,7 @@ set payload = jsonb_set(
       "title": "UX/UI Designer",
       "company": "Alquilando S.A.",
       "client": "PropTech Marketplace",
-      "period": "Mar. 2019 – May. 2021",
+      "period": "Mar. 2019, May. 2021",
       "location": "Buenos Aires, Argentina (Remote)",
       "bullets": [
         "Designing and shipping end-to-end UX/UI solutions for a PropTech startup building a large-scale real estate platform serving the LATAM market.",
@@ -50,7 +50,7 @@ set payload = jsonb_set(
       "title": "Freelance UX / UI Designer",
       "company": "Studio Hakuna",
       "client": "Paramount App LATAM",
-      "period": "Dec. 2019 – May. 2020",
+      "period": "Dec. 2019, May. 2020",
       "location": "Buenos Aires, Argentina (Remote)",
       "bullets": [
         "Conducted UX research to understand audience needs and behaviors for the Paramount App LATAM.",
@@ -63,7 +63,7 @@ set payload = jsonb_set(
       "title": "UX/UI Designer",
       "company": "Elevation",
       "client": "Web Solutions for Nonprofits",
-      "period": "Jan. 2017 – Feb. 2019",
+      "period": "Jan. 2017, Feb. 2019",
       "location": "Buenos Aires, Argentina (Hybrid)",
       "bullets": [
         "Delivered end-to-end UX/UI design across multiple nonprofit clients simultaneously.",
@@ -76,7 +76,7 @@ set payload = jsonb_set(
       "title": "Freelance UX / UI Designer / Graphic Designer",
       "company": "Multiple clients | Web and social media",
       "client": "",
-      "period": "Feb. 2014 – Feb. 2017",
+      "period": "Feb. 2014, Feb. 2017",
       "location": "LATAM, Spain, USA (Remote)",
       "bullets": [
         "Delivered end-to-end UX/UI design for early-stage products, e-commerce platforms, and marketplaces across multiple industries.",

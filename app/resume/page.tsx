@@ -31,7 +31,7 @@ const EXPERIENCE: ExperienceEntry[] = [
   {
     role: "Sr. Product Designer",
     company: "ITX Corp | Client: Paychex (Nayya, Flock, E-Verify, Indeed)",
-    period: "Mar. 2021 – Present",
+    period: "Mar. 2021, Present",
     location: "Malaga, Spain (Remote)",
     bullets: [
       "Lead end-to-end design architecture for an enterprise HR SaaS platform with over 2.3 million users by making data-driven design decisions while acting as Staff Designer, aligning cross-functional teams around a unified product vision across multiple high-impact products.",
@@ -59,10 +59,10 @@ const EXPERIENCE: ExperienceEntry[] = [
   {
     role: "UX/UI Designer",
     company: "Alquilando S.A. | PropTech Marketplace",
-    period: "Mar. 2019 – May. 2021",
+    period: "Mar. 2019, May. 2021",
     location: "Buenos Aires, Argentina (Remote)",
     bullets: [
-      "Designing and shipping end-to-end UX/UI solutions for a PropTech startup building a large-scale real estate platform serving the LATAM market — B2C.",
+      "Designing and shipping end-to-end UX/UI solutions for a PropTech startup building a large-scale real estate platform serving the LATAM market, B2C.",
       "Established the company's user-centric foundation through Alan Cooper-inspired personas, leading research and definition with the marketing team to place the customer at the heart of the work.",
       "Led the end-to-end product design process for a B2C proptech, from user research and information architecture to mobile-first UI and design system development.",
       "Built a component system from scratch based on Google Material Design standards, establishing visual consistency and scalability across the platform.",
@@ -76,7 +76,7 @@ const EXPERIENCE: ExperienceEntry[] = [
   {
     role: "Freelance UX / UI Designer",
     company: "Studio Hakuna | Client: Paramount App LATAM",
-    period: "Dec. 2019 – May. 2020",
+    period: "Dec. 2019, May. 2020",
     location: "Buenos Aires, Argentina (Remote)",
     bullets: [
       "Conducted UX research to understand audience needs and behaviors, translating insights into intuitive layouts and optimized user flows for the Paramount App LATAM.",
@@ -90,7 +90,7 @@ const EXPERIENCE: ExperienceEntry[] = [
   {
     role: "UX/UI Designer",
     company: "Elevation | Web Solutions for Nonprofits",
-    period: "Jan. 2017 – Feb. 2019",
+    period: "Jan. 2017, Feb. 2019",
     location: "Buenos Aires, Argentina (Hybrid)",
     bullets: [
       "Delivered end-to-end UX/UI design across multiple nonprofit clients (B2B and B2C) simultaneously, managing competing priorities and deadlines in a fast-paced agency environment.",
@@ -105,7 +105,7 @@ const EXPERIENCE: ExperienceEntry[] = [
   {
     role: "Freelance UX / UI Designer / Graphic Designer",
     company: "Multiple clients | Web and social media",
-    period: "Feb. 2014 – Feb. 2017",
+    period: "Feb. 2014, Feb. 2017",
     location: "LATAM, Spain, USA (Remote)",
     bullets: [
       "Delivered end-to-end UX/UI design for early-stage products, e-commerce platforms, and marketplaces across multiple industries.",
@@ -219,12 +219,12 @@ const EDUCATION = [
   {
     degree: "Diploma in Web Media Design",
     school: "Universidad Rafael Belloso Chacín",
-    year: "2014–2015",
+    year: "2014, 2015",
   },
   {
     degree: "Bachelor's in Graphic Design",
     school: "URBE",
-    year: "2012–2015",
+    year: "2012, 2015",
   },
 ];
 
@@ -589,7 +589,7 @@ export default function ResumePage() {
               />
               <div>
                 <Heading as="h3" variant="card" className="text-[18px] text-[#0e2951] sm:text-[20px]">
-                  NN/Group UX Certification — Interaction Design
+                  NN/Group UX Certification, Interaction Design
                 </Heading>
                 <p className="mt-1 text-base text-[#5c7792]">{translate("resume.uxCertifiedProfessional")}</p>
               </div>

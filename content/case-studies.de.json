@@ -213,14 +213,14 @@
     "status": "published",
     "featured": true,
     "order": 1,
-    "title": "Nayya-Integration",
-    "company": "Nayya",
+    "title": "Integration von KI-gestützten Benefits",
+    "company": "Nayya AI",
     "client_context": "Paychex via ITX Corp",
     "role": "Leitender Produktdesigner",
     "year": 2025,
     "duration": "6 Monate",
     "industry": "KI-Vorteile / HR SaaS",
-    "tagline": "Entwickelte die Integration von Nayya als KI-gestütztes Leistungstool, das die Mitarbeiter dabei unterstützt, eine Deckung zu wählen, die ihren Bedürfnissen entspricht.",
+    "tagline": "Ich entwickelte die Integration von Nayya als KI-gestütztes Benefit-Tool, das Mitarbeitende bei der Wahl einer zu ihren Bedürfnissen passenden Absicherung unterstützt.",
     "tags": [
       "VORTEILE / SICHERHEIT SAAS",
       "UX-Forschung",
@@ -398,11 +398,11 @@
         "payload": {
           "rows": [
             {
-              "metric": "Jährliches Wachstumsziel – Medizin",
+              "metric": "Jährliches Wachstumsziel, Medizin",
               "value": "2 %"
             },
             {
-              "metric": "Jährliches Wachstumsziel – Nebenprodukte",
+              "metric": "Jährliches Wachstumsziel, Nebenprodukte",
               "value": "8 %"
             },
             {
@@ -414,16 +414,16 @@
               "value": "2 Mio. $"
             },
             {
-              "metric": "Auswirkung auf das Gesamtjahr – Flex",
+              "metric": "Auswirkung auf das Gesamtjahr, Flex",
               "value": "6 Mio. $"
             },
             {
-              "metric": "Auswirkungen auf das Gesamtjahr – alle PEO",
+              "metric": "Auswirkungen auf das Gesamtjahr, alle PEO",
               "value": "10 Millionen US-Dollar"
             }
           ],
           "insights": [
-            "Durchschnittliche Grundpläne pro Teilnehmer (2023–2025): 4,46",
+            "Durchschnittliche Grundpläne pro Teilnehmer (2023, 2025): 4,46",
             "2026",
             "• Teilnehmer, die Nayya „übersprungen“ haben: 2,57",
             "• Teilnehmer, die Nayya nur „gestartet“ haben: 4.43",
@@ -874,7 +874,7 @@
             "Das Weiterleitungszögern wurde von 46 % auf 33 % verringert.",
             "Statusinterpretationsfehler von 31 % auf 22 % gesunken.",
             "Der Benutzervertrauenswert wurde von 3,2/5 auf 4,0/5 verbessert.",
-            "Basislinie der manuellen Prozessabhängigkeit bei 60–70 % festgelegt; Das Ziel für das Post-Launch-Tracking liegt bei unter 25 %.",
+            "Basislinie der manuellen Prozessabhängigkeit bei 60, 70 % festgelegt; Das Ziel für das Post-Launch-Tracking liegt bei unter 25 %.",
             "2.548 Umfrageantworten nach der ersten Veröffentlichung bestätigten, dass die integrierte Richtung funktionierte."
           ],
           "opportunities": [
@@ -1065,7 +1065,7 @@
         "id": "research",
         "type": "custom",
         "title": "Forschung",
-        "body": "Ich habe die Arbeit auf dem 2026 Hispanic Insurance Growth Blueprint, einem Kundenfragebogen und Beraterinterviews gestützt – mit Schwerpunkt auf ACA, Leben und digitale Akquise. Die Beiträge der Berater brachten wiederkehrende Einwände, Vertrauensbedenken und Familienfragen zum Vorschein.\n\nKI beschleunigte die Forschungssynthese, Arbeitsdefinitionen und die Analyse zweisprachiger Muster und Positionierungslücken. Diese Erkenntnisse habe ich in Kampagnenentscheidungen über Zielgruppe, Botschaft, Kanäle und Messung umgesetzt, die Ergebnisse anhand des Quellmaterials validiert und die endgültigen Marken- und Produktanrufe getätigt."
+        "body": "Ich habe die Arbeit auf dem 2026 Hispanic Insurance Growth Blueprint, einem Kundenfragebogen und Beraterinterviews gestützt, mit Schwerpunkt auf ACA, Leben und digitale Akquise. Die Beiträge der Berater brachten wiederkehrende Einwände, Vertrauensbedenken und Familienfragen zum Vorschein.\n\nKI beschleunigte die Forschungssynthese, Arbeitsdefinitionen und die Analyse zweisprachiger Muster und Positionierungslücken. Diese Erkenntnisse habe ich in Kampagnenentscheidungen über Zielgruppe, Botschaft, Kanäle und Messung umgesetzt, die Ergebnisse anhand des Quellmaterials validiert und die endgültigen Marken- und Produktanrufe getätigt."
       },
       {
         "id": "actions",
@@ -1106,7 +1106,7 @@
             }
           ],
           "insights": [
-            "Berichtszeitraum: 10. Juli – 6. August 2026 (28 Tage).",
+            "Berichtszeitraum: 10. Juli, 6. August 2026 (28 Tage).",
             "98 % der Aufrufe kamen von Nicht-Followern, was zeigt, dass die Bildungskreative weit über das bestehende Publikum hinaus Anklang fand.",
             "115 von 129 Content-Interaktionen (89 %) stammten von Nicht-Followern, was bestätigt, dass die Kampagne Engagement bei neuen Zielgruppen und nicht nur bei den aktuellen Followern der Seite hervorrief.",
             "Die ursprünglichen Reichweitenziele wurden übertroffen: Facebook erreichte 1,5.000 bei einem Ziel von 208 (707 %), während Instagram 567 bei einem Ziel von 169 (336 %) erreichte.",
@@ -1297,19 +1297,19 @@
           ],
           "analyses": [
             {
-              "title": "31. Altersstufe – Gute Leistung",
+              "title": "31. Altersstufe, Gute Leistung",
               "body": "Ein klarer Schritt mit geringem Aufwand. An diesem Punkt würde es sich verschwenderisch anfühlen, den Flow abzubrechen, also setzen sich die Benutzer durch. Die kognitive und emotionale Belastung ist minimal, es gibt keine finanzielle Entscheidung und die meisten Menschen verstehen, dass das Alter bei einem Gesundheitsplan eine Rolle spielt.",
               "consideration": "Das Alter wird zweimal abgefragt, beim Treppenabsatz und noch einmal bei Schritt 31. Das Testen bei einem einzelnen Schritt könnte den Aufwand verringern und den Trichter verkürzen.",
               "image": "/images/projects/Reversetech/age.png"
             },
             {
-              "title": "4. Hauptziel – Regelmäßige Leistung",
+              "title": "4. Hauptziel, Regelmäßige Leistung",
               "body": "Die Single-Select-Option hält es übersichtlich und vermeidet eine Entscheidungsüberlastung für Benutzer. Die Reibung ist subtiler: Dies ist der Moment, in dem der Benutzer dem Produkt mitteilt, welches Ergebnis er erzielen möchte. Daher hat die Nennung eines Ziels emotionale Bedeutung. Eine auf Untersuchungen basierende Hypothese besagt, dass die Auswahl eines Ziels das Gewicht erhöht und sich wie Druck anfühlen kann, insbesondere wenn die Optionen nicht vollständig mit dem Benutzer übereinstimmen oder er sich noch nicht entschieden hat.",
               "consideration": "Testen Sie eine Version mit verschiedenen Inhaltsoptionen und fügen Sie die Option „Helfen Sie mir, das richtige Ziel auszuwählen“ hinzu. Reduzieren Sie außerdem die Anzahl der Schritte vor dieser Frage, damit Benutzer früher ihren Zielsetzungsmoment erreichen, während die Absicht noch hoch ist.",
               "image": "/images/projects/Reversetech/goal.png"
             },
             {
-              "title": "34. E-Mail eingeben – Schlechte Leistung",
+              "title": "34. E-Mail eingeben, Schlechte Leistung",
               "body": "Dies ist das zweitgrößte Leck im Trichter und der schlimmste Ort, an dem Menschen verloren gehen können. Zu diesem Zeitpunkt können Benutzer den Wert des Produkts noch nicht erkennen. Wenn Sie also um eine E-Mail bitten, ohne den Nutzen zu erläutern, kann es sich eher wie ein Marketingschritt anfühlen als als Teil des personalisierten Planerlebnisses.",
               "consideration": "Einige Benutzer spüren auch die bevorstehende Paywall. Durch die Übergabe einer E-Mail direkt vor einer wahrscheinlichen Zahlungsaufforderung fühlt sich die Mauer näher an, sodass eine Kaution präventiv erforderlich ist.",
               "image": "/images/projects/Reversetech/email.png"
@@ -1400,34 +1400,34 @@
         "payload": {
           "sources": [
             {
-              "title": "Nielsen Norman Group – „Fortschrittsindikatoren machen ein langsames System weniger unerträglich“",
+              "title": "Nielsen Norman Group, „Fortschrittsindikatoren machen ein langsames System weniger unerträglich“",
               "url": "https://www.nngroup.com/articles/progress-indicators/",
               "description": "Unterstützt Fortschrittsfeedback, reduziert Unsicherheit und sorgt dafür, dass Benutzer in Bewegung bleiben. Vorsichtsmaßnahme: In diesem NN/g-Artikel geht es um den System- und Wartezeitfortschritt, nicht um Mehrschrittzähler. Daher funktioniert er am besten in Kombination mit der Zielgradientenforschung weiter unten speziell für den Schrittanzahlpunkt."
             },
             {
-              "title": "Baymard Institute – „Checkout-Abläufe umfassen durchschnittlich 5 Schritte und 11+ Formularfelder“",
+              "title": "Baymard Institute, „Checkout-Abläufe umfassen durchschnittlich 5 Schritte und 11+ Formularfelder“",
               "url": "https://baymard.com/blog/checkout-flow-average-form-fields",
               "description": "Unterstützt die Vereinheitlichung von Fragen über die einfache Aufteilung von Schritten: Die Anzahl der Formularfelder, die Benutzer verwalten müssen, ist für Checkout UX wichtiger als die Anzahl der Schritte, und die meisten Abläufe können auf 6 bis 8 Felder reduziert werden."
             },
             {
-              "title": "Das Manifest – „6 Schritte zur Vermeidung von Online-Formularabbrüchen“",
+              "title": "Das Manifest, „6 Schritte zur Vermeidung von Online-Formularabbrüchen“",
               "url": "https://themanifest.com/web-design/6-steps-avoiding-online-form-abandonment",
               "description": "Wird für die Statistik verwendet, dass 27 % der Benutzer ein Formular abbrechen, weil es zu lang ist, und wenn sie einmal abgebrochen haben, kehren sie selten zurück. Vorsichtsmaßnahme: Dies ist eine Umfrage aus dem Jahr 2018 unter 502 Personen, daher betrachte ich sie als veraltet."
             },
             {
-              "title": "Nunes & Drèze (2006), Journal of Consumer Research – „The Endowed Progress Effect: Wie künstlicher Fortschritt den Aufwand steigert“",
+              "title": "Nunes & Drèze (2006), Journal of Consumer Research, „The Endowed Progress Effect: Wie künstlicher Fortschritt den Aufwand steigert“",
               "url": "https://academic.oup.com/jcr/article-abstract/32/4/504/1787425",
               "description": "Der genaue Ursprung des Begriffs „begabter Fortschrittseffekt“: Menschen, denen ein künstlicher Fortschritt in Richtung eines Ziels ermöglicht wird, zeigen eine größere Beharrlichkeit bei der Erreichung dieses Ziels."
             },
             {
-              "title": "Kivetz, Urminsky & Zheng (2006), Journal of Marketing Research – „The Goal-Gradient Hypothesis Resurrected“",
+              "title": "Kivetz, Urminsky & Zheng (2006), Journal of Marketing Research, „The Goal-Gradient Hypothesis Resurrected“",
               "url": "https://journals.sagepub.com/doi/abs/10.1509/jmkr.43.1.39",
               "description": "Unterstützt die Behauptung, dass Menschen ihre Anstrengung beschleunigen, je näher sie einer Belohnung kommen. Ich verwende dies, wenn ich auf den Zielgradienteneffekt verweise.",
               "secondaryTitle": "Zusammenfassung der Columbia Business School",
               "secondaryUrl": "https://business.columbia.edu/insights/chazen-global-insights/goal-gradient-hypothesis-resurrected-purchase-acceleration"
             },
             {
-              "title": "IBM Carbon Design System – Fortschrittsanzeige, Nutzungsrichtlinien",
+              "title": "IBM Carbon Design System, Fortschrittsanzeige, Nutzungsrichtlinien",
               "url": "https://carbondesignsystem.com/components/progress-indicator/usage/",
               "description": "Eine maßgebliche Designsystem-Referenz, um Benutzern zu zeigen, wo sie sich befinden: Die Aufteilung des Endziels in kleinere Teilaufgaben erhöht das Gefühl der Vollständigkeit, und die Information der Benutzer darüber, wo sie sich befinden, gibt ihnen ein Gefühl der Kontrolle."
             },
@@ -1437,7 +1437,7 @@
               "description": "Wird für den Barrierefreiheitsaspekt im E-Mail-Feld verwendet: Auf Homepages wurden durchschnittlich 6,3 Formulareingaben vorgenommen, und 34,2 % dieser Eingaben waren nicht ordnungsgemäß beschriftet. Hinweis: Die 48 %-Zahl, die sich um Sekundärquellen herum bewegt, ist der Anteil der Homepages mit mindestens einem unbeschrifteten Eintrag, was eine andere Kennzahl darstellt."
             },
             {
-              "title": "HubSpot – „10 Tipps zur Optimierung der Formularkonvertierung“",
+              "title": "HubSpot, „10 Tipps zur Optimierung der Formularkonvertierung“",
               "url": "https://blog.hubspot.com/marketing/optimize-conversion-forms",
               "description": "Aus HubSpots Analyse von mehr als 40.000 Landingpages: Schaltflächen mit der Bezeichnung „Senden“ hatten niedrigere Conversion-Raten und Formulare mit drei Feldern erzielten die beste Conversion, mit einem Rückgang danach. Ich verwende dies für die Punkte „Ergebniskopie schlägt weiter“ und „Halte die Nachfrage minimal“."
             }
@@ -1458,7 +1458,7 @@
     "year": 2026,
     "duration": "Unabhängiger KI-gestützter Entdeckungssprint",
     "industry": "Gesundheitswesen/Praxismanagement SaaS",
-    "tagline": "KI-gestützte Produkterkennung für die klinische Planung – Umwandlung von Ressourcenabhängigkeiten, Ausfällen und Compliance-Einschränkungen in eine stufenweise Produktstrategie.",
+    "tagline": "KI-gestützte Produkterkennung für die klinische Planung, Umwandlung von Ressourcenabhängigkeiten, Ausfällen und Compliance-Einschränkungen in eine stufenweise Produktstrategie.",
     "tags": [
       "Gesundheitswesen",
       "Produktstrategie",
@@ -1503,14 +1503,14 @@
         "Bedenken hinsichtlich der Datensouveränität sind regulatorische Anforderungen (DSGVO, BSI C5, §203 StGB) und keine „Nice-to-haves“."
       ],
       "user_pain_points": [
-        "Wiederkehrende Patienten, die versuchen, Termine umzubuchen oder zu verwalten, haben keinen schnellen Selbstbedienungsweg und sind gezwungen, anzurufen – genau der Mechanismus, der das Personal überschwemmt.",
+        "Wiederkehrende Patienten, die versuchen, Termine umzubuchen oder zu verwalten, haben keinen schnellen Selbstbedienungsweg und sind gezwungen, anzurufen, genau der Mechanismus, der das Personal überschwemmt.",
         "Patienten haben keinen Überblick darüber, dass ihre Gesundheitsdaten in Europa bleiben, was das Vertrauen in einen Markt untergräbt, in dem Datensouveränität ein regulatorisches Mandat ist.",
         "Generische Planungsplattformen behandeln jede Buchung als austauschbares Zeitfenster und modellieren nicht die Abhängigkeiten (Raum, Ausrüstung, Arzt, Vorbereitung), die klinische Arbeitsabläufe erfordern."
       ]
     },
     "constraints": [
       "Keine Netzwerkliquidität in der ersten Klinik; Wartelisten- und Backfill-Algorithmen benötigen einen Verlauf, um zu funktionieren.",
-      "Komplexes regulatorisches Umfeld: Frankreich und Deutschland haben unterschiedliche Personalmodelle (5 % der französischen Allgemeinmediziner haben Assistenten im Vergleich zu deutschen MFAs, die 3–19 Ärzte betreuen).",
+      "Komplexes regulatorisches Umfeld: Frankreich und Deutschland haben unterschiedliche Personalmodelle (5 % der französischen Allgemeinmediziner haben Assistenten im Vergleich zu deutschen MFAs, die 3, 19 Ärzte betreuen).",
       "Hohe Schaltreibung; 44,8 % der deutschen Praxen befürchten, dass die Daten nicht sauber migriert werden, was die Nachfrage selbst unzufriedener Benutzer unterdrückt.",
       "Die Marktposition der Wettbewerber ist je nach Markt unterschiedlich: Doctolib dominiert Frankreich (23,2 % PMS-Anteil); Deutschland zeigt Doctolib nach 9 Monaten an, sodass ein schmales Zeitfenster verbleibt."
     ],
@@ -1541,15 +1541,15 @@
     },
     "design_strategy": [
       "Datensouveränität und MFA-First-Positionierung als Zugangsvoraussetzungen und nicht als Unterscheidungsmerkmal neu klassifizieren; Der wirklich vertretbare Vorteil ist eine ressourcenbewusste Planung, die nicht ausfällt, wenn die Infrastruktur dies tut.",
-      "Bauen Sie die erste Version auf der Grundlage der Kernbuchung mit Ressourcenabhängigkeiten (Raum, Ausrüstung, Praktiker, Vorbereitung) auf, nicht auf Backfill – Backfill benötigt eine Warteliste mit Verlauf, um nützlich zu sein, die am ersten Tag noch nicht existiert.",
-      "Entwerfen Sie explizit den herabgesetzten Modus: Wenn die Synchronisierung fehlschlägt, zeigen Sie „nicht synchronisiert“ als sichtbaren Status an, erstellen Sie eine Abstimmungswarteschlange und ermöglichen Sie die lokale Erstellung von Terminen mit ausstehender Identitätsüberprüfung – wodurch eine Krise zu einem bekannten Zustand wird.",
+      "Bauen Sie die erste Version auf der Grundlage der Kernbuchung mit Ressourcenabhängigkeiten (Raum, Ausrüstung, Praktiker, Vorbereitung) auf, nicht auf Backfill, Backfill benötigt eine Warteliste mit Verlauf, um nützlich zu sein, die am ersten Tag noch nicht existiert.",
+      "Entwerfen Sie explizit den herabgesetzten Modus: Wenn die Synchronisierung fehlschlägt, zeigen Sie „nicht synchronisiert“ als sichtbaren Status an, erstellen Sie eine Abstimmungswarteschlange und ermöglichen Sie die lokale Erstellung von Terminen mit ausstehender Identitätsüberprüfung, wodurch eine Krise zu einem bekannten Zustand wird.",
       "Deutschlands erster GTM ist evidenzbasiert: Doctolib besitzt bereits Frankreich (23,2 % Anteil); In Deutschland ist der PMS-Vorstoß bereits neun Monate alt (November 2025), sodass nur noch ein schmales, messbares Zeitfenster verbleibt.",
       "Das Migrationsrisiko ist der Adoptionsblocker, nicht die Funktionen; Ein glaubwürdiger, nachweisbarer Datenmigrationspfad kann wichtiger sein als der Feinschliff des Kalenders."
     ],
     "reflections": [
       {
         "title": "Der Wettbewerb ist real, aber nicht dort, wo man es erwarten würde.",
-        "body": "Doctolib hat Frankreich bereits gewonnen; Samedi versendet unsere beanspruchten Unterscheidungsmerkmale in Deutschland. Die ehrliche Erkenntnis ist, dass wir einen Blickwinkel finden müssen, den die Konkurrenz noch nicht eingenommen hat – was sich als Zuverlässigkeit im heruntergefahrenen Modus herausstellt und ehrlich ist, was Phase 1 vs. Phase 2 ist."
+        "body": "Doctolib hat Frankreich bereits gewonnen; Samedi versendet unsere beanspruchten Unterscheidungsmerkmale in Deutschland. Die ehrliche Erkenntnis ist, dass wir einen Blickwinkel finden müssen, den die Konkurrenz noch nicht eingenommen hat, was sich als Zuverlässigkeit im heruntergefahrenen Modus herausstellt und ehrlich ist, was Phase 1 vs. Phase 2 ist."
       },
       {
         "title": "Die Marktstruktur hat die Strategie geändert.",
@@ -1561,7 +1561,7 @@
       },
       {
         "title": "Einschränkungen erzwangen die bessere Entscheidung.",
-        "body": "Da wir wussten, dass wir den Backfill am ersten Tag nicht unterstützen können (keine Liquidität), mussten wir beim ersten Termin in der ersten Klinik fragen, was tatsächlich funktioniert. Die Antwort – ressourcenbewusste Kernbuchung – ist vertretbarer als eine Wunschlistenfunktion."
+        "body": "Da wir wussten, dass wir den Backfill am ersten Tag nicht unterstützen können (keine Liquidität), mussten wir beim ersten Termin in der ersten Klinik fragen, was tatsächlich funktioniert. Die Antwort, ressourcenbewusste Kernbuchung, ist vertretbarer als eine Wunschlistenfunktion."
       }
     ],
     "nda_notice": "Dies ist ein Strategiedokument und ein Design-Thinking-Prozess für die Frühphase. Kundendaten und Wettbewerbsdaten werden pro Markt anonymisiert oder aggregiert. Die Methodik und Ergebnisse spiegeln echte Marktforschung und Benutzererkennung wider.",
@@ -1577,7 +1577,7 @@
         "id": "design-thinking-facilitation",
         "type": "custom",
         "title": "Design Thinking Erleichterung",
-        "body": "Strukturierte den Entdeckungsprozess in fünf Phasen – Einfühlen, Definieren, Ideen entwickeln und Prototypen – und nutzte die Design-Thinking-Methodik, um von unstrukturierten Problemen zu einer umsetzbaren Strategie zu gelangen. Jede Phase baute auf der vorherigen auf und schuf eine Kette validierter Erkenntnisse statt Annahmen."
+        "body": "Strukturierte den Entdeckungsprozess in fünf Phasen, Einfühlen, Definieren, Ideen entwickeln und Prototypen, und nutzte die Design-Thinking-Methodik, um von unstrukturierten Problemen zu einer umsetzbaren Strategie zu gelangen. Jede Phase baute auf der vorherigen auf und schuf eine Kette validierter Erkenntnisse statt Annahmen."
       },
       {
         "id": "user-research-synthesis",
@@ -1589,7 +1589,7 @@
         "id": "competitive-intelligence",
         "type": "custom",
         "title": "Wettbewerbsintelligenz",
-        "body": "Durchführung einer strengen Marktanalyse, die etablierte PMS-Anbieter, neue Marktteilnehmer und Marktdynamik umfasst. Es wurde festgestellt, dass Doctolib bereits Frankreich besitzt (23,2 % PMS-Anteil), Samedi beanspruchte Alleinstellungsmerkmale in Deutschland einnimmt und das Migrationsrisiko – nicht Funktionen – das eigentliche Akzeptanzhindernis darstellt. Diese Forschung hat die Strategie und den Go-to-Market-Ansatz neu definiert."
+        "body": "Durchführung einer strengen Marktanalyse, die etablierte PMS-Anbieter, neue Marktteilnehmer und Marktdynamik umfasst. Es wurde festgestellt, dass Doctolib bereits Frankreich besitzt (23,2 % PMS-Anteil), Samedi beanspruchte Alleinstellungsmerkmale in Deutschland einnimmt und das Migrationsrisiko, nicht Funktionen, das eigentliche Akzeptanzhindernis darstellt. Diese Forschung hat die Strategie und den Go-to-Market-Ansatz neu definiert."
       },
       {
         "id": "solution-strategy",
@@ -1636,7 +1636,7 @@
         "body": "Aus der Forschung gingen neun unterschiedliche Problemstellungen für verschiedene Benutzerrollen und Märkte hervor.",
         "payload": {
           "problems": [
-            "Der Terminplaner muss die Realität widerspiegeln, ohne ihn manuell erneut zu überprüfen, da Unterbrechungen den ganzen Tag über – Anrufe, Änderungen, Nichterscheinen – andernfalls klinische Zeit kosten oder zu Doppelbuchungen führen.",
+            "Der Terminplaner muss die Realität widerspiegeln, ohne ihn manuell erneut zu überprüfen, da Unterbrechungen den ganzen Tag über, Anrufe, Änderungen, Nichterscheinen, andernfalls klinische Zeit kosten oder zu Doppelbuchungen führen.",
             "Das deutsche MFA muss von TI vorgeschriebene Aufgaben mit weniger Klicks und mit weniger Fehlerquellen erledigen, da in der Hälfte der deutschen Praxen wöchentlich TI-Probleme auftreten und diese Fehler beim MFA und nicht beim Arzt landen.",
             "Das deutsche MFA/MVZ muss die Terminplanung für viele Ärzte aus einer Sicht selektieren und delegieren, da ein einzelnes MVZ bis zu 19 MFAs zur Koordinierung von Kalendern einsetzen kann, für deren Handhabung eine Einzelarztschnittstelle nie konzipiert wurde.",
             "Der französische Einzelarzt muss Routineanrufe bearbeiten, ohne den Untersuchungsraum zu verlassen, da 30 % der Anrufe bereits unbeantwortet bleiben und jeder einzelne entweder ein verlorener Patient oder eine unterbrochene Konsultation ist.",
@@ -1656,15 +1656,15 @@
         "payload": {
           "groups": [
             {
-              "group": "Patienten – neue und bestehende",
+              "group": "Patienten, neue und bestehende",
               "goal": "Vereinbaren Sie einen Termin mit geringem Aufwand und minimaler Offenlegung personenbezogener Daten.",
               "pain_points": [
-                "Brechen Sie die Buchung ab, wenn Formulare nach unwesentlichen Informationen fragen, oder in Frankreich, wenn INS (Identifiant National de Santé) genaue Geburtsregistrierungsdaten verlangt – hohe Reibung bei der Registrierung.",
+                "Brechen Sie die Buchung ab, wenn Formulare nach unwesentlichen Informationen fragen, oder in Frankreich, wenn INS (Identifiant National de Santé) genaue Geburtsregistrierungsdaten verlangt, hohe Reibung bei der Registrierung.",
                 "Frustriert über technische Fehler: Leerseitenfehler, erzwungene Abmeldungen, Unfähigkeit, Bestätigungsinformationen zu scannen/zu kopieren.",
                 "In Deutschland kann Double Opt-In (E-Mail/SMS) dazu führen, dass ein Slot unbestätigt bleibt und praktisch verloren geht.",
                 "Frustriert, wenn „keine Online-Termine verfügbar“ das Tool wie verschwendete Mühe erscheinen lässt.",
-                "Vertrauensverlust, wenn eine aufgeführte Sprachfähigkeit (z. B. „spricht Englisch“) vor Ort nicht Bestand hat – die Genauigkeit der Praktiker-Metadaten ist für die Sicherheit von Bedeutung, nicht nur für die Zufriedenheit.",
-                "Misstrauen gegenüber Plattformen, von denen angenommen wird, dass sie Konsultationsnotizen oder Daten an Nicht-EU-KI-Anbieter oder Dritte weiterleiten – dies ist ein vertrauensbedingter Grund für den Abbruch."
+                "Vertrauensverlust, wenn eine aufgeführte Sprachfähigkeit (z. B. „spricht Englisch“) vor Ort nicht Bestand hat, die Genauigkeit der Praktiker-Metadaten ist für die Sicherheit von Bedeutung, nicht nur für die Zufriedenheit.",
+                "Misstrauen gegenüber Plattformen, von denen angenommen wird, dass sie Konsultationsnotizen oder Daten an Nicht-EU-KI-Anbieter oder Dritte weiterleiten, dies ist ein vertrauensbedingter Grund für den Abbruch."
               ],
               "consequence": "Versäumte/doppelte Buchungen, abgebrochener Trichter oder (im Fall der Sprachinkongruenz) ein Risiko für die Pflegequalität.",
               "jtbd": "Wenn ich einen Arzt aufsuchen muss und mir über den Ablauf nicht sicher bin, möchte ich einen echten, verfügbaren Platz finden und bestätigen, ohne mehr Informationen als nötig preiszugeben, damit ich darauf vertrauen kann, dass der Termin tatsächlich stattfindet."
@@ -1673,7 +1673,7 @@
               "group": "Pflegekräfte/Personen buchen für jemand anderen",
               "goal": "Verwalten Sie Termine für einen Angehörigen (Kind, älterer Elternteil) genauso reibungslos wie für sich selbst.",
               "pain_points": [
-                "Ein Drittel der französischen Termine wird für einen Verwandten gebucht; ~46 % der Patienten haben ein verknüpftes relatives Konto – dies ist kein Randfall, sondern ein Kernfluss.",
+                "Ein Drittel der französischen Termine wird für einen Verwandten gebucht; ~46 % der Patienten haben ein verknüpftes relatives Konto, dies ist kein Randfall, sondern ein Kernfluss.",
                 "Die Eingabe des Geburtsdatums über das monatliche Scrollen im Dropdown-Menü ist ein spezifischer, benannter Reibungspunkt für diese Gruppe.",
                 "Auswirkung auf Berechtigungen: Das Produkt benötigt ein erstklassiges „Verwalten im Namen von“-Modell, kein Zusatzmodell."
               ]
@@ -1682,10 +1682,10 @@
               "group": "Ältere Patienten/Patienten mit geringerer digitaler Kompetenz",
               "goal": "Zugriff auf Terminbuchung mit entsprechender Unterstützung für ihren Technologiekomfort.",
               "pain_points": [
-                "5,9 Millionen französische Doctolib-Benutzer sind 65+ (Skalensignal), aber deutsche Patienten 80+ werden als „überfordert“ mit digitalen Tools beschrieben, viele ohne Smartphones/PCs – dies ist eine marktspezifische Lücke, nicht das gleiche Problem in beiden Ländern.",
+                "5,9 Millionen französische Doctolib-Benutzer sind 65+ (Skalensignal), aber deutsche Patienten 80+ werden als „überfordert“ mit digitalen Tools beschrieben, viele ohne Smartphones/PCs, dies ist eine marktspezifische Lücke, nicht das gleiche Problem in beiden Ländern.",
                 "Sehbehinderte Benutzer benötigen barrierefreie Buchungsabläufe; Alle Patienten benötigen Klarheit über die physische Zugänglichkeit (Rollstuhlzugang) der Praxis selbst."
               ],
-              "consequence": "Ausschluss von der Selbstbedienung, wodurch die Telefonleitungen wieder belastet werden – stellt eine direkte Verbindung zum Schmerzpunkt der Empfangsdame her."
+              "consequence": "Ausschluss von der Selbstbedienung, wodurch die Telefonleitungen wieder belastet werden, stellt eine direkte Verbindung zum Schmerzpunkt der Empfangsdame her."
             },
             {
               "group": "Rezeptionisten / Medizinische Assistenten (MFAs)",
@@ -1693,18 +1693,18 @@
               "pain_points": [
                 "~30 % der Anrufe bei Ärzten bleiben unbeantwortet; Routineanrufe (Versicherungsprüfungen, Terminverschiebungen) belasten die Rezeption.",
                 "Deutsche MFAs sind frustriert über klicklastige TI-Workflows (KIM-Nachrichten, E-Rezepte) und über Kartenleser-/Systemabstürze nach Updates.",
-                "Struktureller Unterschied: In Deutschland ist das MFA ein Power-User – 3 Jahre ausgebildet, übernimmt klinische Aufgaben (Blutentnahmen, Verbände) und Verwaltung (Buchung, Rechnungsstellung); durchschnittlich 3,4 pro Soloübung, bis zu 19 in MVZs. In Frankreich beschäftigen nur etwa 5 % der Hausärzte überhaupt einen MFA, und die Aufgaben sind überwiegend administrativer Natur."
+                "Struktureller Unterschied: In Deutschland ist das MFA ein Power-User, 3 Jahre ausgebildet, übernimmt klinische Aufgaben (Blutentnahmen, Verbände) und Verwaltung (Buchung, Rechnungsstellung); durchschnittlich 3,4 pro Soloübung, bis zu 19 in MVZs. In Frankreich beschäftigen nur etwa 5 % der Hausärzte überhaupt einen MFA, und die Aufgaben sind überwiegend administrativer Natur."
               ],
-              "design_implication": "Die Rezeptionistin ist keine Persona – Deutschland braucht eine assistentenzentrierte, delegationsfähige Schnittstelle; Frankreich braucht den Arzt, um der zentrale Akteur zu bleiben. Dies ist eine der schärfsten Spannungen im gesamten Projekt."
+              "design_implication": "Die Rezeptionistin ist keine Persona, Deutschland braucht eine assistentenzentrierte, delegationsfähige Schnittstelle; Frankreich braucht den Arzt, um der zentrale Akteur zu bleiben. Dies ist eine der schärfsten Spannungen im gesamten Projekt."
             },
             {
               "group": "Ärzte / Kliniker",
               "goal": "Maximieren Sie die klinische Zeit und minimieren Sie den Verwaltungsaufwand.",
               "pain_points": [
-                "Struktureller Unterschied in der Art und Weise, wie Ärzte ihre Zeit nutzen: Deutschland – 9,8 Kontakte/Jahr, ~8 Minuten/Besuch, hohe Patientenfluktuation, „One-Click“-Dokumentationsbedarf. Frankreich – 5,9 Kontakte/Jahr, 16–18 Minuten/Besuch, bevorzugt Längsschnittnotizen und längere Benutzeroberflächen.",
+                "Struktureller Unterschied in der Art und Weise, wie Ärzte ihre Zeit nutzen: Deutschland, 9,8 Kontakte/Jahr, ~8 Minuten/Besuch, hohe Patientenfluktuation, „One-Click“-Dokumentationsbedarf. Frankreich, 5,9 Kontakte/Jahr, 16, 18 Minuten/Besuch, bevorzugt Längsschnittnotizen und längere Benutzeroberflächen.",
                 "~10 Stunden pro Woche gehen durch administrative Engpässe verloren (wird als der Schwachpunkt bezeichnet, den Doctolib bei der KI-Anrufabwicklung angreift)."
               ],
-              "consequence": "Doppelte Buchungen oder verlorene Zeit verringern direkt die abrechenbare klinische Kapazität – diese Gruppe reagiert im Gegensatz zu Patienten umsatzempfindlich auf Terminfehler."
+              "consequence": "Doppelte Buchungen oder verlorene Zeit verringern direkt die abrechenbare klinische Kapazität, diese Gruppe reagiert im Gegensatz zu Patienten umsatzempfindlich auf Terminfehler."
             },
             {
               "group": "Klinikmanager/-administratoren und interne CX/Support-Teams",
@@ -1722,22 +1722,22 @@
         "payload": {
           "regulatory": {
             "title": "Regulierungs- und Governance-Kontext",
-            "france": "Zentralisiert – State + Assurance Maladie legt landesweit Gebühren, Zertifizierungen und Verhandlungen fest. HDS v2.0: obligatorische Zertifizierung zum Hosten von Gesundheitsdaten. Umstellung auf V2.0 bis 16. Mai 2026; Die Souveränitätsvorschriften vom September 2026 erfordern ein ausschließlich EWR-Hosting und die Offenlegung von rechtlichen Risiken außerhalb der EU (z. B. US CLOUD Act).",
-            "germany": "Dezentralisiert – korporatistische Gremien (G-BA, regionale KVs) kontrollieren den Marktzugang; Die Bedarfsplanung schränkt ein, wo/wie Ärzte überhaupt eine Praxis eröffnen können. Telematische Infrastruktur (TI): obligatorisches geschlossenes Netzwerk; ePA-Integrationsfrist 1. Oktober 2025; Authentifizierung über physische SMC-B/eHBA-Karten. 50 % der deutschen Ärzte berichten wöchentlich über technische TI-Probleme – eine erklärte Wettbewerbsmöglichkeit für einen stabileren Markteinsteiger."
+            "france": "Zentralisiert, State + Assurance Maladie legt landesweit Gebühren, Zertifizierungen und Verhandlungen fest. HDS v2.0: obligatorische Zertifizierung zum Hosten von Gesundheitsdaten. Umstellung auf V2.0 bis 16. Mai 2026; Die Souveränitätsvorschriften vom September 2026 erfordern ein ausschließlich EWR-Hosting und die Offenlegung von rechtlichen Risiken außerhalb der EU (z. B. US CLOUD Act).",
+            "germany": "Dezentralisiert, korporatistische Gremien (G-BA, regionale KVs) kontrollieren den Marktzugang; Die Bedarfsplanung schränkt ein, wo/wie Ärzte überhaupt eine Praxis eröffnen können. Telematische Infrastruktur (TI): obligatorisches geschlossenes Netzwerk; ePA-Integrationsfrist 1. Oktober 2025; Authentifizierung über physische SMC-B/eHBA-Karten. 50 % der deutschen Ärzte berichten wöchentlich über technische TI-Probleme, eine erklärte Wettbewerbsmöglichkeit für einen stabileren Markteinsteiger."
           },
           "workforce": {
             "title": "Belegschaft und betrieblicher Kontext",
-            "gp_density": "Frankreich – GP-lastig (107/100.000) und primärversorgungsvolumenorientiert. Deutschland – spezialistenlastig (117/100.000), mit 2x so vielen ambulanten Chirurgen und etwa 3x so vielen Gynäkologen – was bedeutet, dass der Planungsbedarf in Deutschland eher auf die Buchung komplexer Ressourcen (Räume, Ausrüstung, OP-Blöcke) und nicht nur auf Zeitfenster ausgerichtet ist.",
-            "consultation_rhythm": "Frankreich: 5,9 Besuche/Jahr, 16–18 Minuten/Besuch, bevorzugt Längsschnittnotizen. Deutschland: 9,8 Besuche/Jahr, ca. 8 Minuten/Besuch, hohe Patientenfluktuation, „One-Click“-Dokumentation erforderlich. Dies führt zu grundlegend unterschiedlichen Anforderungen an die Informationsdichte in der Buchungs- und Dokumentations-Benutzeroberfläche."
+            "gp_density": "Frankreich, GP-lastig (107/100.000) und primärversorgungsvolumenorientiert. Deutschland, spezialistenlastig (117/100.000), mit 2x so vielen ambulanten Chirurgen und etwa 3x so vielen Gynäkologen, was bedeutet, dass der Planungsbedarf in Deutschland eher auf die Buchung komplexer Ressourcen (Räume, Ausrüstung, OP-Blöcke) und nicht nur auf Zeitfenster ausgerichtet ist.",
+            "consultation_rhythm": "Frankreich: 5,9 Besuche/Jahr, 16, 18 Minuten/Besuch, bevorzugt Längsschnittnotizen. Deutschland: 9,8 Besuche/Jahr, ca. 8 Minuten/Besuch, hohe Patientenfluktuation, „One-Click“-Dokumentation erforderlich. Dies führt zu grundlegend unterschiedlichen Anforderungen an die Informationsdichte in der Buchungs- und Dokumentations-Benutzeroberfläche."
           },
           "competitive": {
             "title": "Wettbewerbslandschaft",
             "incumbent": "Doctolib ist der dominierende etablierte Anbieter, der vom Buchungstool zum vollständigen Praxis-Betriebssystem übergegangen ist und Ende 2025 sein deutsches PMS mit KI-Anrufabwicklung und eingebetteten Zahlungen auf Adyen-Basis eingeführt hat.",
-            "trust_gaps": "MFA-Arbeitsbelastung durch ungesicherte Anfragen und eine umfassendere Vertrauenskrise der „Datensouveränität“ – benannt als spezifische Öffnung für einen Markteinsteiger, bei dem Souveränität/Datenschutz an erster Stelle steht.",
-            "pricing": "Samedi ~35–59 €/Benutzer; Doctolib ~139 €/Behandler."
+            "trust_gaps": "MFA-Arbeitsbelastung durch ungesicherte Anfragen und eine umfassendere Vertrauenskrise der „Datensouveränität“, benannt als spezifische Öffnung für einen Markteinsteiger, bei dem Souveränität/Datenschutz an erster Stelle steht.",
+            "pricing": "Samedi ~35, 59 €/Benutzer; Doctolib ~139 €/Behandler."
           },
           "business": {
-            "title": "Geschäftskontext – explizit ungelöst",
+            "title": "Geschäftskontext, explizit ungelöst",
             "note": "GTM-Sequenzierung (Frankreich zuerst vs. Deutschland zuerst) ist noch nicht entschieden. Dies ist für den Empathize-Bereich wichtig: Wenn wir nicht wissen, welcher Markt zuerst eingeführt wird, sollten wir unsere vorrangige Workflow-Wahl in beiden Märkten vertretbar halten, anstatt nur auf einen Markt zu optimieren. Das Preis-/Bündelungsmodell mit der bestehenden Suite ist nicht definiert."
           }
         }
@@ -1751,15 +1751,15 @@
           "findings": [
             {
               "title": "⚠️ Doctolib hat bereits den französischen PMS-Markt erobert",
-              "body": "Doctolib ist mit 23,2 % der elektronischen Übermittlungen von Pflegeansprüchen (Stand März 2026) die meistgenutzte Hausarztpraxis-Management-Software in Frankreich, vor Weda (14,0 %), Medistory (10,1 %) und HelloDoc (8,1 %). Der Umsatz stieg innerhalb von fünf Jahren von 0 % auf 23,2 % – und das ohne Akquisitionen, lediglich durch die Anbindung von Software an seine Buchungsplattform.\n\nDies kehrt unsere frühere Formulierung um. In Frankreich übernimmt Doctolib nun sowohl den Patientenvertrieb als auch den Praxisvertrieb. Unser Argument „Wir sind dort stark, wo sie schwach sind“ ist nicht stichhaltig."
+              "body": "Doctolib ist mit 23,2 % der elektronischen Übermittlungen von Pflegeansprüchen (Stand März 2026) die meistgenutzte Hausarztpraxis-Management-Software in Frankreich, vor Weda (14,0 %), Medistory (10,1 %) und HelloDoc (8,1 %). Der Umsatz stieg innerhalb von fünf Jahren von 0 % auf 23,2 %, und das ohne Akquisitionen, lediglich durch die Anbindung von Software an seine Buchungsplattform.\n\nDies kehrt unsere frühere Formulierung um. In Frankreich übernimmt Doctolib nun sowohl den Patientenvertrieb als auch den Praxisvertrieb. Unser Argument „Wir sind dort stark, wo sie schwach sind“ ist nicht stichhaltig."
             },
             {
-              "title": "🔵 In Deutschland ist derselbe Schritt gerade erst im Gange – und das ist ein schmales, veraltetes Zeitfenster",
-              "body": "Das deutsche PVS von Doctolib wurde im November 2025 eingeführt, zunächst nur für Allgemeinmediziner, Kinderärzte und Gynäkologen. Bei der Zi 2026-Bewertung reichte die Stichprobengröße von Doctolib nicht aus, um gültige Usability-, NPS- oder Fehlerratendaten zu erstellen.\n\nZusammen mit dem Frankreich-Befund ist dies das stärkste empirische Argument für Deutschlands erstes GTM – eine Entscheidung, die in unseren Dokumenten als unentschieden aufgeführt wurde. Frankreich ist ein Markt, den Doctolib bereits erobert hat; Deutschland ist einer, mit dessen Einnahme vor neun Monaten begonnen wurde."
+              "title": "🔵 In Deutschland ist derselbe Schritt gerade erst im Gange, und das ist ein schmales, veraltetes Zeitfenster",
+              "body": "Das deutsche PVS von Doctolib wurde im November 2025 eingeführt, zunächst nur für Allgemeinmediziner, Kinderärzte und Gynäkologen. Bei der Zi 2026-Bewertung reichte die Stichprobengröße von Doctolib nicht aus, um gültige Usability-, NPS- oder Fehlerratendaten zu erstellen.\n\nZusammen mit dem Frankreich-Befund ist dies das stärkste empirische Argument für Deutschlands erstes GTM, eine Entscheidung, die in unseren Dokumenten als unentschieden aufgeführt wurde. Frankreich ist ein Markt, den Doctolib bereits erobert hat; Deutschland ist einer, mit dessen Einnahme vor neun Monaten begonnen wurde."
             },
             {
               "title": "⚠️ Samedi erfüllt unsere beanspruchten Unterscheidungsmerkmale",
-              "body": "Samedi ist eine in Berlin ansässige SaaS-Plattform, die von mehr als 48.000 Ärzten in rund 10.000 Institutionen in der DACH-Region genutzt wird und Online-Buchung mit Warteliste, dynamischer Ressourcenplanung, digitalen Formularen mit elektronischer Signatur und integrierter Zahlung bietet – unterstützt durch EU-patentierte Ende-zu-Ende-Verschlüsselung, TÜV-Zertifizierung und ISO 27001/9001.\n\nDas bedeutet ressourcenbewusste Planung plus Souveränitätspositionierung plus Warteliste/Auffüllung, bereits ausgeliefert, in großem Maßstab. Zwei unserer drei behaupteten Unterscheidungsmerkmale sind besetzt. Ihre wirklichen Lücken: kein öffentliches Patientensuchportal, Preise pro Arzt, die sich für Gruppenpraxen erhöhen, kein kostenloses Eintrittskontingent und kein Self-Service-Onboarding."
+              "body": "Samedi ist eine in Berlin ansässige SaaS-Plattform, die von mehr als 48.000 Ärzten in rund 10.000 Institutionen in der DACH-Region genutzt wird und Online-Buchung mit Warteliste, dynamischer Ressourcenplanung, digitalen Formularen mit elektronischer Signatur und integrierter Zahlung bietet, unterstützt durch EU-patentierte Ende-zu-Ende-Verschlüsselung, TÜV-Zertifizierung und ISO 27001/9001.\n\nDas bedeutet ressourcenbewusste Planung plus Souveränitätspositionierung plus Warteliste/Auffüllung, bereits ausgeliefert, in großem Maßstab. Zwei unserer drei behaupteten Unterscheidungsmerkmale sind besetzt. Ihre wirklichen Lücken: kein öffentliches Patientensuchportal, Preise pro Arzt, die sich für Gruppenpraxen erhöhen, kein kostenloses Eintrittskontingent und kein Self-Service-Onboarding."
             }
           ]
         }
@@ -1800,10 +1800,10 @@
         "id": "sovereignty-context",
         "type": "custom",
         "title": "Souveränitätsansprüche: Ordnungsgemäß abgestuft",
-        "body": "Datensouveränität ist ein aktuelles, umstrittenes Thema – kein Unterscheidungsmerkmal, das wir uns zu eigen machen können.",
+        "body": "Datensouveränität ist ein aktuelles, umstrittenes Thema, kein Unterscheidungsmerkmal, das wir uns zu eigen machen können.",
         "payload": {
           "reality": "Doctolib nutzt in seinem Beratungsassistenten KI von Google, Microsoft und Anthropic. Unter Beobachtung; Es gibt Vorwürfe, dass Patientendaten an US-amerikanische Technologieanbieter weitergegeben werden könnten. Doctolib bestreitet Missbrauch; Die OECD stuft es eher als Gefahr denn als realisierten Vorfall ein. Das EU-KI-Gesetz tritt am 2. August 2026 in Kraft.",
-          "honest_read": "Der Vertrauensvektor ist real und derzeit aktiv – aber Doctolibs formelle Compliance-Haltung ist stark und unser eigener Vorteil würde auf der Einwilligungsarchitektur und Transparenz beruhen, nicht auf dem Hosting-Standort. Der Hosting-Standort steht auf dem Spiel; Jeder Konkurrent behauptet es.",
+          "honest_read": "Der Vertrauensvektor ist real und derzeit aktiv, aber Doctolibs formelle Compliance-Haltung ist stark und unser eigener Vorteil würde auf der Einwilligungsarchitektur und Transparenz beruhen, nicht auf dem Hosting-Standort. Der Hosting-Standort steht auf dem Spiel; Jeder Konkurrent behauptet es.",
           "takeaway": "„Wir sind der Souverän“ ist kein vertretbares Unterscheidungsmerkmal. „Wir verwenden standardmäßig nicht die Daten Ihrer Patienten und können Ihnen genau zeigen, was wir verwenden.“"
         }
       },
@@ -1822,11 +1822,11 @@
           "findings": [
             {
               "title": "Frankreich und Deutschland sind wie zwei verschiedene Berufe besetzt",
-              "details": "Die GP-Dichte beträgt 107/100.000 in Frankreich gegenüber 66/100.000 in Deutschland; Der Konsultationsrhythmus folgt der gleichen Aufteilung – 5,9 Besuche/Jahr bei 16–18 Minuten in Frankreich, 9,8 Besuche/Jahr bei ~8 Minuten in Deutschland. Aus diesem Grund benötigt der Calendar Keeper zwei echte Varianten statt einer Schnittstelle mit Sprachumschaltung."
+              "details": "Die GP-Dichte beträgt 107/100.000 in Frankreich gegenüber 66/100.000 in Deutschland; Der Konsultationsrhythmus folgt der gleichen Aufteilung, 5,9 Besuche/Jahr bei 16, 18 Minuten in Frankreich, 9,8 Besuche/Jahr bei ~8 Minuten in Deutschland. Aus diesem Grund benötigt der Calendar Keeper zwei echte Varianten statt einer Schnittstelle mit Sprachumschaltung."
             },
             {
               "title": "Der Kalender muss vertrauenswürdig sein, nicht nur vorhanden",
-              "details": "Patienten, die ausführlich suchen und auf „Keine Termine verfügbar“ stoßen, beschreiben das Tool als Zeitverschwendung. Was den Betrieb betrifft, berichten 81 % der deutschen Praxen von Fehlern beim TI-Anschluss und 82 % von Fehlern beim Lesen der eGK-Karte – was bedeutet, dass der Kalender selbst unzuverlässig wird, bevor ein Patient ihn jemals sieht."
+              "details": "Patienten, die ausführlich suchen und auf „Keine Termine verfügbar“ stoßen, beschreiben das Tool als Zeitverschwendung. Was den Betrieb betrifft, berichten 81 % der deutschen Praxen von Fehlern beim TI-Anschluss und 82 % von Fehlern beim Lesen der eGK-Karte, was bedeutet, dass der Kalender selbst unzuverlässig wird, bevor ein Patient ihn jemals sieht."
             },
             {
               "title": "Die Rezeption steht bereits unter Wasser",
@@ -1834,7 +1834,7 @@
             },
             {
               "title": "Datensouveränität ist eine Vertrauensbedingung, keine Funktion",
-              "details": "Das Vertrauen bricht, wenn Konsultationsdaten scheinbar außereuropäische KI-Modelle oder Dritte erreichen. Dies ist nicht segmentspezifisch – es ist für den Kalenderverwalter (Compliance-Exposition) und den wiederkehrenden Patienten (Vertrauen) gleichermaßen wichtig, und die Regeln vom September 2026 machen die ausschließliche EWR-Beherbergung zu einer Anforderung und nicht zu einer Präferenz."
+              "details": "Das Vertrauen bricht, wenn Konsultationsdaten scheinbar außereuropäische KI-Modelle oder Dritte erreichen. Dies ist nicht segmentspezifisch, es ist für den Kalenderverwalter (Compliance-Exposition) und den wiederkehrenden Patienten (Vertrauen) gleichermaßen wichtig, und die Regeln vom September 2026 machen die ausschließliche EWR-Beherbergung zu einer Anforderung und nicht zu einer Präferenz."
             }
           ]
         }
@@ -1847,21 +1847,21 @@
         "payload": {
           "primary": {
             "title": "Der Kalenderbewahrer",
-            "description": "Eine Rolle, die je nach Markt von einer anderen Person besetzt wird – wer den Zeitplan besitzt und sicherstellen muss, dass er wahr ist, ohne ihn ständig erneut zu überprüfen.",
+            "description": "Eine Rolle, die je nach Markt von einer anderen Person besetzt wird, wer den Zeitplan besitzt und sicherstellen muss, dass er wahr ist, ohne ihn ständig erneut zu überprüfen.",
             "job": "Wenn mein Zeitplan den ganzen Tag durch Anrufe, Änderungen und Nichterscheinen unterbrochen wird, möchte ich, dass der Kalender immer korrekt ist, ohne dass ich ihn erneut überprüfen muss, damit ich keine klinische Zeit verliere oder jemanden doppelt buche.",
             "france": {
               "title": "Einzelarzt",
-              "details": "Leitet die Rezeption persönlich, da nur etwa 5 % der französischen Hausärzte einen Assistenten beschäftigen. Betreut Patienten jeweils 16–18 Minuten lang und nimmt Unterbrechungen zwischen den Konsultationen auf, anstatt sie zu delegieren. Routineanrufe (Umplanung, Versicherungsfragen) müssen bearbeitet werden, ohne den Prüfungsraum zu verlassen."
+              "details": "Leitet die Rezeption persönlich, da nur etwa 5 % der französischen Hausärzte einen Assistenten beschäftigen. Betreut Patienten jeweils 16, 18 Minuten lang und nimmt Unterbrechungen zwischen den Konsultationen auf, anstatt sie zu delegieren. Routineanrufe (Umplanung, Versicherungsfragen) müssen bearbeitet werden, ohne den Prüfungsraum zu verlassen."
             },
             "germany": {
               "title": "MFA (Medizinische Fachangestellte)",
-              "details": "Klinisch ausgebildet über drei Jahre hinweg, verwaltet den Kalender für mehrere Praktizierende – durchschnittlich 3,4 in einer Einzelpraxis, bis zu 19 in einer größeren MVZ. Nimmt kürzere, häufigere Konsultationen wahr (~8 Minuten, 9,8 Besuche/Jahr) und verbringt Echtzeit mit TI-mandatierten Aufgaben (KIM-Nachrichten, E-Rezepte, ePA). Ungefähr die Hälfte der deutschen Praxen meldet wöchentlich technische TI-Probleme, und diese Ausfälle landen beim MFA. Es müssen viele Praktiker aus einer einzigen Sicht selektiert und delegiert werden."
+              "details": "Klinisch ausgebildet über drei Jahre hinweg, verwaltet den Kalender für mehrere Praktizierende, durchschnittlich 3,4 in einer Einzelpraxis, bis zu 19 in einer größeren MVZ. Nimmt kürzere, häufigere Konsultationen wahr (~8 Minuten, 9,8 Besuche/Jahr) und verbringt Echtzeit mit TI-mandatierten Aufgaben (KIM-Nachrichten, E-Rezepte, ePA). Ungefähr die Hälfte der deutschen Praxen meldet wöchentlich technische TI-Probleme, und diese Ausfälle landen beim MFA. Es müssen viele Praktiker aus einer einzigen Sicht selektiert und delegiert werden."
             }
           },
           "secondary": {
             "title": "Der zurückkehrende Patient",
             "description": "Eine schmale, bewusst dünne Oberfläche. Seine einzige Aufgabe besteht darin, einem Patienten, der bereits eine Akte hat, die Umbuchung, Stornierung oder Verwaltung eines bestehenden Termins ohne Anruf zu ermöglichen.",
-            "scope": "Beinhaltet gelegentlich die Buchung für einen benannten Angehörigen, die manuell für diesen einen Termin eingegeben wird – kein gespeichertes, verknüpftes Profil. In Version 1 sind die Überprüfung der Identität neuer Patienten, die vollständige Verwaltung verknüpfter Konten und Berichte/Analysen bewusst ausgeschlossen."
+            "scope": "Beinhaltet gelegentlich die Buchung für einen benannten Angehörigen, die manuell für diesen einen Termin eingegeben wird, kein gespeichertes, verknüpftes Profil. In Version 1 sind die Überprüfung der Identität neuer Patienten, die vollständige Verwaltung verknüpfter Konten und Berichte/Analysen bewusst ausgeschlossen."
           }
         }
       },
@@ -2000,7 +2000,7 @@
               "why": "Funktioniert ohne Liquidität. Es ist beim allerersten Termin in der allerersten Klinik nützlich. Es ist die eigentliche strukturelle Lücke: Wettbewerber tun dies nicht, weil ihre Architektur auf der Nachfrageseite geboren wurde. Es ist der Ablauf, den die Klinik während des Verkaufs bewertet, nicht sechs Monate später. Es testet die gefährlichste technische Annahme (Schreibzugriff und Schemaqualität), da Ressourcenabhängigkeiten genau das sind, was eine schlechte Synchronisierung zunichte macht."
             },
             {
-              "tier": "Sekundär (High Fidelity, 1–2 Bildschirme)",
+              "tier": "Sekundär (High Fidelity, 1, 2 Bildschirme)",
               "name": "Degraded mode and conflict resolution",
               "details": "Sichtbarer Status „nicht synchronisiert“, Abstimmungswarteschlange, lokal erstellter Termin mit ausstehender Identitätsprüfung, niemals eine ganztägige Sperre.",
               "why": "Wandelt das Synchronisierungsfehlerproblem in eine entworfene Antwort statt in einen leeren Anspruch um. Bei einem Ausfall der IT oder des eGK-Lesers bleibt der Fahrplan zuverlässig und lauffähig. Das möchte der Head of CX hören, denn es ist der Unterschied zwischen einem Ticket und einer Krise."
@@ -2056,7 +2056,7 @@
           "table": [
             {
               "prior": "Doctolib ist ein Buchungstool, das in PMS integriert wird",
-              "status": "⚠️ False in France — it's #1 in PMS",
+              "status": "⚠️ False in France, it's #1 in PMS",
               "action": "Schreiben Sie die Wettbewerbsfolie neu"
             },
             {
@@ -2067,7 +2067,7 @@
             {
               "prior": "Ressourcenbewusste Planung ist unser Alleinstellungsmerkmal",
               "status": "⚠️ Samedi ships it at scale",
-              "action": "Notwendig, nicht ausreichend – Neupositionierung"
+              "action": "Notwendig, nicht ausreichend, Neupositionierung"
             },
             {
               "prior": "Souveränität ist unser Unterscheidungsmerkmal",
@@ -2086,11 +2086,11 @@
             },
             {
               "prior": "Hauptbenutzer von Calendar Keeper",
-              "status": "✅ Unaffected — Doctolib built its PVS in close collaboration with MFAs and doctors",
+              "status": "✅ Unaffected, Doctolib built its PVS in close collaboration with MFAs and doctors",
               "action": "Behalten; bestätigt, dass die MFA das richtige Ziel ist"
             },
             {
-              "prior": "—",
+              "prior": ", ",
               "status": "🆕 Migration risk as adoption blocker",
               "action": "Zu den anfänglichen Anforderungen hinzufügen; möglicherweise entscheidender als jede Kalenderfunktion"
             }
@@ -2103,7 +2103,7 @@
         "title": "Neue technische und regulatorische Einschränkungen",
         "body": "Die Marktforschung ergab Compliance-Anforderungen, die nicht im ursprünglichen Auftrag enthalten waren.",
         "payload": {
-          "constraint": "Cloud-PVS-Anbieter in Deutschland unterliegen §203(3–4) StGB, Art. 28 DSGVO, §393 SGB V und BSI C5 Bescheinigungspflichten – auch eine Auftragsdatenverarbeitungsvereinbarung allein beseitigt die strafrechtliche Schweigepflicht nicht.",
+          "constraint": "Cloud-PVS-Anbieter in Deutschland unterliegen §203(3, 4) StGB, Art. 28 DSGVO, §393 SGB V und BSI C5 Bescheinigungspflichten, auch eine Auftragsdatenverarbeitungsvereinbarung allein beseitigt die strafrechtliche Schweigepflicht nicht.",
           "requirement": "KBV-Konformitätsbewertung und TI-Anbindung sind auch für Cloud-Systeme verpflichtend.",
           "implication": "Dies ist eine Cloud-native Eintrittsbarriere, die in keinem unserer vier Projektdokumente erfasst wurde. Zum Register der technischen Einschränkungen hinzufügen."
         }
@@ -2119,7 +2119,7 @@
             "81 % berichten von häufigen TI-Verbindungsfehlern",
             "71 % berichten regelmäßig von Schwierigkeiten bei der Erstellung von E-Rezepten"
           ],
-          "patient_adoption": "64 % der Deutschen haben mindestens einmal online einen Arzttermin gebucht, gegenüber 36 % im Jahr 2023 – starker Rückenwind für die patientenorientierte Seite der ersten Veröffentlichung."
+          "patient_adoption": "64 % der Deutschen haben mindestens einmal online einen Arzttermin gebucht, gegenüber 36 % im Jahr 2023, starker Rückenwind für die patientenorientierte Seite der ersten Veröffentlichung."
         }
       }
     ]

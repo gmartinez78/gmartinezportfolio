@@ -323,7 +323,7 @@ const COPY = {
     title: "Teilen Sie den Kontext Ihres Unternehmens, und ich erstelle einen strategischen Vorschlag, der zu Ihren Zielen passt.",
     intro:
       "Vielen Dank, dass Sie sich ein paar Minuten für diesen Fragebogen nehmen. Er hilft mir, Ihr Unternehmen, Ihre Kund:innen und Ihre Ziele zu verstehen, damit ich eine passende Social-Media-Strategie entwickeln kann.",
-    timing: "Geschätzte Dauer: 5–8 Minuten",
+    timing: "Geschätzte Dauer: 5, 8 Minuten",
     langEs: "Español",
     langEn: "English",
     langDe: "Deutsch",
