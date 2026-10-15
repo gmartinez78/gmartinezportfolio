@@ -88,7 +88,7 @@ function ProjectsPage() {
     .map((project) => ({
       ...project,
       cardId: resolveProjectListCardId(project.slug),
-      title: project.title ?? "Untitled Project",
+      title: project.title ?? translate("projectsPage.untitledProject"),
       company: project.company ?? "",
       year: project.year ?? 0,
       tagline: project.tagline ?? "",
@@ -127,13 +127,13 @@ function ProjectsPage() {
   }, [activeFilter, activeTopic, projects]);
   const projectGroups = [
     {
-      title: "Company Projects",
-      description: "Projects completed while embedded in company product teams, driving UX outcomes through research, collaboration, and iterative design.",
+      title: translate("projectsPage.companyProjects"),
+      description: translate("projectsPage.companyProjectsDescription"),
       projects: filteredProjects.filter((project) => !FREELANCE_PROJECT_SLUGS.has(project.slug)),
     },
     {
-      title: "Freelance Projects",
-      description: "Independent client engagements, from strategy through delivery.",
+      title: translate("projectsPage.freelanceProjects"),
+      description: translate("projectsPage.freelanceProjectsDescription"),
       projects: filteredProjects.filter((project) => FREELANCE_PROJECT_SLUGS.has(project.slug)),
     },
   ].filter((group) => group.projects.length > 0);
@@ -162,7 +162,7 @@ function ProjectsPage() {
         {projectGroups.map((group, index) => (
           <section key={group.title} className={index === 0 ? undefined : "border-t-2 border-[#e9608a] pt-16"}>
             <div className="mb-9 border-b border-[#141114]/15 pb-5">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e9608a]">Project type</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e9608a]">{translate("projectsPage.projectType")}</p>
               <Heading as="h2" variant="display" tone="editorial" className="mt-3">
                 {group.title}
               </Heading>
@@ -170,7 +170,7 @@ function ProjectsPage() {
             </div>
             {index === 0 ? (
               <div className="mb-9">
-                <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e9608a]">Filter projects by</p>
+                <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e9608a]">{translate("projectsPage.filterBy")}</p>
                 <FilterPillGroup
                   items={FILTER_PILLS}
                   activeItem={activeFilter}
@@ -202,7 +202,7 @@ function ProjectsPage() {
                   tags={project.tags ?? []}
                   previewImage={project.previewImage}
                   squarePreview={project.slug === "calendar-keeper"}
-                  previewAlt={`${project.title} preview`}
+                  previewAlt={translate("projectsPage.previewAlt").replace("{project}", project.title)}
                   stat={project.stat}
                   statLabel={project.statLabel}
                   background={project.background}

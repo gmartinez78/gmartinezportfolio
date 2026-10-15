@@ -18,6 +18,7 @@ const trustedLogoMap: Record<string, string> = {
   "Paramount+": withBasePath("/images/paramount-plus.svg"),
   Zapiano: withBasePath("/images/zapiano-logo.svg"),
   "Habitat for Humanity": withBasePath("/images/habitat-for-humanity.svg"),
+  Indeed: withBasePath("/images/indeed-logo.svg"),
   Flock: withBasePath("/images/flock-logo.png"),
 };
 

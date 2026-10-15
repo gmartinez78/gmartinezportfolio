@@ -69,6 +69,10 @@
         {
           "name": "Elevation",
           "logo": "/images/elevation-mark.png"
+        },
+        {
+          "name": "Indeed",
+          "logo": "/images/indeed-logo.svg"
         }
       ]
     },

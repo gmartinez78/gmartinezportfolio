@@ -19,6 +19,7 @@ import {
   usePublicCaseStudy,
 } from "../../lib/cms/public";
 import { withBasePath } from "../../lib/site";
+import { LocalizedCaseStudyRoute } from "../../components/localized-case-study-route";
 
 // ── Assets from Figma ─────────────────────────────────────────────────────────
 const ASSETS = {
@@ -532,6 +533,7 @@ export default function BenefitsPage() {
       ];
 
   return (
+    <LocalizedCaseStudyRoute slug="benefits-enrollment">
     <main className="bg-white text-[#5c7792] overflow-x-hidden">
       <SiteHeader active="Projects" />
 
@@ -1031,5 +1033,6 @@ export default function BenefitsPage() {
         </>
       )}
     </main>
+    </LocalizedCaseStudyRoute>
   );
 }

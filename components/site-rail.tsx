@@ -6,14 +6,17 @@ import { Check, FileText, FolderKanban, Home, Languages, Mail } from "lucide-rea
 import { usePathname } from "next/navigation";
 import { withBasePath } from "../lib/site";
 import { useLanguage } from "../lib/i18n/language-context";
+import { useTranslate } from "../lib/i18n/use-translate";
 import { usePublicSiteContent } from "../lib/cms/public";
 
 type RailIcon = typeof Home;
 
+// Navigation artwork is structural, so it is keyed by stable routes rather than
+// translated labels. Language selection should never alter the menu's icons.
 const linkIcons: Record<string, RailIcon> = {
-  projects: FolderKanban,
-  resume: FileText,
-  contact: Mail,
+  "/projects": FolderKanban,
+  "/resume": FileText,
+  "/contact": Mail,
 };
 
 function isCurrentPath(pathname: string, href: string) {
@@ -72,6 +75,7 @@ const languageOptions = [
 
 function RailLanguageSelector() {
   const { language, setLanguage } = useLanguage();
+  const translate = useTranslate();
   const [isOpen, setIsOpen] = useState(false);
   const selectorRef = useRef<HTMLDivElement>(null);
 
@@ -102,7 +106,7 @@ function RailLanguageSelector() {
       <button
         type="button"
         onClick={() => setIsOpen((open) => !open)}
-        aria-label={`Select language. Current language: ${selectedLanguage}`}
+        aria-label={`${translate("rail.selectLanguage")}. ${translate("rail.currentLanguage").replace("{language}", selectedLanguage)}`}
         aria-expanded={isOpen}
         aria-haspopup="menu"
         className={`group relative flex h-9 min-w-9 items-center justify-center rounded-xl text-[#1183D0] transition-colors hover:bg-[#E0EEFB] hover:text-[#0e75b8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0]/40 ${
@@ -113,7 +117,7 @@ function RailLanguageSelector() {
         <span className="sr-only">{selectedLanguage}</span>
         {!isOpen ? (
           <span className="pointer-events-none absolute left-[calc(100%+12px)] top-1/2 z-[70] -translate-y-1/2 whitespace-nowrap rounded-lg bg-[#0e2951] px-2.5 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg ring-1 ring-[#1183D0]/30 transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100">
-            Language: {selectedLanguage}
+            {translate("rail.language").replace("{language}", selectedLanguage)}
           </span>
         ) : null}
       </button>
@@ -121,7 +125,7 @@ function RailLanguageSelector() {
       {isOpen ? (
         <div
           role="menu"
-          aria-label="Select language"
+          aria-label={translate("rail.selectLanguage")}
           className="absolute bottom-0 left-[calc(100%+12px)] z-[80] w-40 rounded-2xl border border-[#dbe9f7] bg-white p-1.5 shadow-[0_14px_36px_rgba(14,41,81,0.16)]"
         >
           {languageOptions.map((option) => {
@@ -156,16 +160,17 @@ function RailLanguageSelector() {
 
 export function SiteRail() {
   const pathname = usePathname();
+  const translate = useTranslate();
   const { siteContent } = usePublicSiteContent();
 
   return (
     <aside
-      aria-label="Primary navigation"
+      aria-label={translate("rail.primaryNavigation")}
       className="fixed inset-y-2 left-2 z-[70] hidden w-16 flex-col items-center rounded-[26px] border border-[#dbe9f7] bg-white py-4 shadow-[0_10px_28px_rgba(14,41,81,0.10)] lg:flex"
     >
       <Link
         href={withBasePath("/")}
-        aria-label="Greddys Martinez home"
+        aria-label={translate("rail.homeAria")}
         className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-[#bcd2ff]/70 bg-white p-2 shadow-[0_3px_10px_rgba(14,41,81,0.12)] transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0]/40"
       >
         <img src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" className="h-full w-full" />
@@ -176,10 +181,10 @@ export function SiteRail() {
 
       <div className="my-5 h-px w-8 bg-[#bcd2ff]" />
 
-      <nav className="flex flex-col items-center gap-2" aria-label="Main pages">
-        <RailLink href="/" label="Home" icon={Home} active={isCurrentPath(pathname, "/")} />
+      <nav className="flex flex-col items-center gap-2" aria-label={translate("rail.mainPages")}>
+        <RailLink href="/" label={translate("footer.home")} icon={Home} active={isCurrentPath(pathname, "/")} />
         {siteContent.nav.links.map((link) => {
-          const Icon = linkIcons[link.label.toLowerCase()] ?? FolderKanban;
+          const Icon = linkIcons[link.href.replace(/\/$/, "")] ?? FolderKanban;
 
           return (
             <RailLink
@@ -199,17 +204,17 @@ export function SiteRail() {
           href="https://www.upwork.com/freelancers/greddysmartinez"
           target="_blank"
           rel="noreferrer"
-          aria-label="Visit Upwork profile"
+          aria-label={translate("rail.visitUpwork")}
           className="group relative flex h-9 w-9 items-center justify-center rounded-xl text-[11px] font-bold tracking-[-0.08em] text-[#1183D0] transition-colors hover:bg-[#E0EEFB] hover:text-[#0e75b8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0]/40"
         >
           up
           <span className="pointer-events-none absolute left-[calc(100%+12px)] top-1/2 z-[70] -translate-y-1/2 whitespace-nowrap rounded-lg bg-[#0e2951] px-2.5 py-1.5 text-xs font-medium tracking-normal text-white opacity-0 shadow-lg ring-1 ring-[#1183D0]/30 transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100">
-            View Upwork profile
+            {translate("rail.viewUpwork")}
           </span>
         </a>
         <Link
           href={withBasePath("/resume")}
-          aria-label="View profile"
+          aria-label={translate("rail.viewProfile")}
           className="group relative h-9 w-9 overflow-visible rounded-full outline-offset-2 transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0]/40"
         >
           <img
@@ -218,7 +223,7 @@ export function SiteRail() {
             className="h-full w-full rounded-full border-2 border-[#1183D0] object-cover"
           />
           <span className="pointer-events-none absolute left-[calc(100%+12px)] top-1/2 z-[70] -translate-y-1/2 whitespace-nowrap rounded-lg bg-[#0e2951] px-2.5 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg ring-1 ring-[#1183D0]/30 transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100">
-            View profile
+            {translate("rail.viewProfile")}
           </span>
         </Link>
       </div>

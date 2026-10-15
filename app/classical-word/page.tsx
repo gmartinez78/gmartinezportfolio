@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { withBasePath } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
+import { LocalizedCaseStudyRoute } from "@/components/localized-case-study-route";
 
 export const metadata: Metadata = buildMetadata({
   title: "Classical Word Arabic Institute | Print Design Case Study",
@@ -42,6 +43,7 @@ const principles = [
 
 export default function ClassicalWordPage() {
   return (
+    <LocalizedCaseStudyRoute slug="classical-word">
     <main className="overflow-hidden bg-[#fbf8f1] text-[#1f1a16]">
       <SiteHeader active="Projects" behavior="reveal" />
 
@@ -143,5 +145,6 @@ export default function ClassicalWordPage() {
 
       <SiteFooter />
     </main>
+    </LocalizedCaseStudyRoute>
   );
 }

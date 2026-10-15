@@ -93,10 +93,6 @@ const INDEPENDENT_CLIENT_WORK_SLUGS = new Set([
   "zapiano-marketing",
 ]);
 
-function getProjectWorkContext(slug: string) {
-  return INDEPENDENT_CLIENT_WORK_SLUGS.has(slug) ? "Freelance Projects" : "Company Projects";
-}
-
 type LocalSearchItem = {
   id: string;
   title: string;
@@ -479,11 +475,11 @@ export default function PortfolioPage() {
   const heroScrollRef = useRef<HTMLDivElement | null>(null);
   const { siteContent } = usePublicSiteContent();
   const { caseStudies } = usePublicCaseStudies();
-  const hero = siteContent.home.hero;
   const requiredCollaborators = [
     { name: "Zapiano", logo: "/images/zapiano-logo.svg" },
     { name: "Habitat for Humanity", logo: "/images/habitat-for-humanity.svg" },
     { name: "Elevation", logo: "/images/elevation-mark.png" },
+    { name: "Indeed", logo: "/images/indeed-logo.svg" },
   ];
   const trustedClients = [
     ...siteContent.home.trusted_by.clients,
@@ -494,14 +490,29 @@ export default function PortfolioPage() {
   const socialProofLogos = trustedClients.map((client) => ({
     src: resolveTrustedLogo(client.name, client.logo),
     alt: client.name,
-    h: client.name === "Skill" ? 59 : client.name === "Zapiano" ? 38 : client.name === "Habitat for Humanity" ? 36 : client.name === "Elevation" ? 36 : client.name === "Hakuna" ? 30 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : client.name === "Paramount+" ? 24 : client.name === "IBX" ? 34 : 41,
-    w: client.name === "Skill" ? 107 : client.name === "Zapiano" ? 212 : client.name === "Habitat for Humanity" ? 108 : client.name === "Elevation" ? 234 : client.name === "Hakuna" ? 96 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : client.name === "Paramount+" ? 94 : client.name === "IBX" ? 48 : 57,
+    h: client.name === "Skill" ? 59 : client.name === "Zapiano" ? 38 : client.name === "Habitat for Humanity" ? 36 : client.name === "Elevation" ? 36 : client.name === "Indeed" ? 34 : client.name === "Hakuna" ? 30 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : client.name === "Paramount+" ? 24 : client.name === "IBX" ? 34 : 41,
+    w: client.name === "Skill" ? 107 : client.name === "Zapiano" ? 212 : client.name === "Habitat for Humanity" ? 108 : client.name === "Elevation" ? 234 : client.name === "Indeed" ? 126 : client.name === "Hakuna" ? 96 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : client.name === "Paramount+" ? 94 : client.name === "IBX" ? 48 : 57,
   }));
   const heroRibbon = translate("home.mainHeroRibbon");
+  const heroFilters = [
+    {
+      label: translate("home.heroPill.aiProductTitle"),
+      href: "/projects/?filter=AI%20Product",
+    },
+    {
+      label: translate("home.heroPill.designSystemsTitle"),
+      href: "/projects/?filter=Design%20Systems",
+    },
+    {
+      label: translate("home.heroPill.uxResearchTitle"),
+      href: "/projects/?filter=UX%20Research",
+    },
+    {
+      label: translate("home.heroPill.enterpriseSaasTitle"),
+      href: "/projects/?topic=SaaS",
+    },
+  ];
   const logoCarousel = [...socialProofLogos, ...socialProofLogos];
-  const methodologyChips = hero.methodology_chips.length
-    ? hero.methodology_chips
-    : ["AI product design", "UX research", "Enterprise SaaS", "Design systems"];
   const allProjects = appendLockedNayyaPlaceholder(caseStudies ?? []);
   const homeProjects = allProjects
     .filter((study) => study?.slug && isVisibleOnMain(study.slug))
@@ -519,7 +530,12 @@ export default function PortfolioPage() {
       href: resolveProjectHref(study),
       // Put work context first so visitors can immediately distinguish embedded
       // company-team work from independent client engagements.
-      tags: [getProjectWorkContext(study.slug), ...study.tags.slice(0, 2)],
+      tags: [
+        INDEPENDENT_CLIENT_WORK_SLUGS.has(study.slug)
+          ? translate("home.freelanceProjects")
+          : translate("home.companyProjects"),
+        ...study.tags.slice(0, 2),
+      ],
       password: study.password,
       cta: study.external_link ? translate("home.viewProject") : translate("home.viewCaseStudy"),
     }));
@@ -578,9 +594,7 @@ export default function PortfolioPage() {
     setHeroAssistantResults([]);
     setHeroAssistantQuery("");
     setHeroAssistantResponse(
-      type === "recruiter"
-        ? "Recruiter mode on. I highlighted two relevant case studies below. Ask about shipped work, AI projects, design systems, UX research, resume details, or GitHub activity on this website."
-        : "Client mode on. Ask about projects, capabilities, tools, contact details, UX research, or design systems on this website.",
+      type === "recruiter" ? translate("home.recruiterMode") : translate("home.clientMode"),
     );
     if (type === "recruiter") {
       scrollToSection("projects");
@@ -720,13 +734,13 @@ export default function PortfolioPage() {
       <div className="mx-auto flex w-full flex-col gap-16">
         {[
           {
-            title: "Company Projects",
-            description: "Projects completed while embedded in company product teams, driving UX outcomes through research, collaboration, and iterative design.",
+            title: translate("home.companyProjects"),
+            description: translate("home.companyProjectsDescription"),
             projects: projectGridProjects.filter((project) => !INDEPENDENT_CLIENT_WORK_SLUGS.has(project.slug)),
           },
           {
-            title: "Freelance Projects",
-            description: "Independent client engagements, from strategy through delivery.",
+            title: translate("home.freelanceProjects"),
+            description: translate("home.freelanceProjectsDescription"),
             projects: projectGridProjects
               .filter((project) => INDEPENDENT_CLIENT_WORK_SLUGS.has(project.slug))
               .sort((left, right) => {
@@ -738,7 +752,7 @@ export default function PortfolioPage() {
         ].map((group) => (
           <div key={group.title}>
             <div className="mb-7 border-b border-[#141114]/15 pb-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e9608a]">Project type</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e9608a]">{translate("home.projectType")}</p>
               <Heading as="h3" variant="display" tone="editorial" className="mt-2">{group.title}</Heading>
               <p className="mt-2 text-[14px] leading-relaxed text-[#5c7792]">{group.description}</p>
             </div>
@@ -1052,11 +1066,11 @@ export default function PortfolioPage() {
           <div className="relative w-fit min-w-[218px] -rotate-[5deg] overflow-hidden bg-[#39b8e7] px-5 py-2.5 text-center text-[12px] font-medium tracking-[0.06em] text-[#163143] shadow-[0_5px_10px_rgba(18,111,148,0.16)] [clip-path:polygon(0_9%,2%_1%,7%_4%,12%_0,18%_3%,25%_0,31%_4%,38%_1%,45%_4%,52%_0,59%_3%,66%_0,74%_4%,81%_1%,88%_4%,96%_0,100%_9%,98%_21%,100%_36%,98%_51%,100%_67%,98%_83%,100%_94%,95%_100%,89%_96%,83%_100%,75%_96%,68%_100%,61%_97%,54%_100%,47%_96%,40%_100%,33%_97%,26%_100%,18%_96%,11%_100%,4%_96%,0_87%,2%_72%,0_56%,2%_41%,0_25%)] md:min-w-[270px] md:px-7 md:py-3 md:text-sm">
             <span className="absolute inset-0 opacity-20 [background-image:linear-gradient(30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%),linear-gradient(-30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%)] [background-size:18px_16px]" />
             <span className="absolute inset-x-2 top-1 h-px bg-white/45" />
-            <span className="relative z-10 font-mono">Experience &amp; Skills</span>
+            <span className="relative z-10 font-mono">{translate("home.toolsEyebrow")}</span>
           </div>
           <Heading as="h2" variant="hero" tone="editorial" className="max-w-[340px] text-center text-[46px] md:max-w-[680px] md:text-[74px]">
-            Tools I Love <span className="text-[#e9608a]">&</span><br />
-            <span className="text-[#e9608a]">Work With.</span>
+            {translate("home.toolsLove")} <span className="text-[#e9608a]">&amp;</span><br />
+            <span className="text-[#e9608a]">{translate("home.toolsWorkWith")}</span>
           </Heading>
           <span className="h-[5px] w-28 -rotate-1 rounded-full bg-[#26aee2]" />
         </div>
@@ -1173,6 +1187,19 @@ export default function PortfolioPage() {
                   {translate("home.mainHeroFocus")}
                 </p>
                 <p className="mt-1 font-serif-display text-base italic leading-relaxed text-[#3d3438] sm:text-lg">{translate("home.mainHeroDescription")}</p>
+                <nav
+                  aria-label={translate("projectsPage.filterBy")}
+                  className="mt-6 flex flex-wrap justify-center gap-2 xl:justify-start"
+                >
+                  {heroFilters.map(({ label, href }) => (
+                    <Badge key={href} asChild variant="outline" size="default">
+                      <Link href={withBasePath(href)}>
+                        {label}
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    </Badge>
+                  ))}
+                </nav>
               </div>
             </div>
             <div className="relative order-1 mx-auto h-[350px] w-full max-w-[380px] self-end sm:h-[460px] sm:max-w-[430px] xl:order-2 xl:h-[650px] xl:max-w-[510px] 2xl:-translate-y-20">
@@ -1189,13 +1216,13 @@ export default function PortfolioPage() {
                   <span className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_25%_35%,transparent_0_8px,rgba(255,255,255,0.85)_9px_10px,transparent_11px),radial-gradient(circle_at_76%_70%,transparent_0_8px,rgba(255,255,255,0.85)_9px_10px,transparent_11px)] [background-size:30px_28px]" />
                   <span className="absolute inset-x-1 top-1 h-px bg-white/35" />
                 </span>
-                <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#e05f88]">How I can help</p>
+                <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#e05f88]">{translate("home.heroHelp")}</p>
                 <ul className="space-y-3 text-[13px] font-medium leading-tight xl:text-sm">
-                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#2eb4e7] text-[11px]">▣</span> Website design</li>
-                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f181a4] text-[11px]">♡</span> Social media</li>
-                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f7b93b] text-[11px]">✎</span> Brand identity</li>
-                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#2eb4e7] text-[11px]">▯</span> User experience</li>
-                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f181a4] text-[11px]">✦</span> AI product design</li>
+                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#2eb4e7] text-[11px]">▣</span> {translate("home.heroServiceWebsite")}</li>
+                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f181a4] text-[11px]">♡</span> {translate("home.heroServiceSocial")}</li>
+                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f7b93b] text-[11px]">✎</span> {translate("home.heroServiceBrand")}</li>
+                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#2eb4e7] text-[11px]">▯</span> {translate("home.heroServiceUx")}</li>
+                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f181a4] text-[11px]">✦</span> {translate("home.heroServiceAi")}</li>
                 </ul>
               </div>
               <div className="absolute right-[22%] top-[22%] z-20 hidden w-[210px] bg-[#32b9e8] px-5 py-6 text-[#102a36] shadow-[0_18px_34px_rgba(31,122,157,0.25)] xl:block xl:w-[232px] animate-[hero-paper-float_6.6s_ease-in-out_0.8s_infinite]" style={{ ["--paper-rotate" as string]: "-4deg", translate: `0 -${heroParallax * 0.7}px` }}>
@@ -1203,16 +1230,16 @@ export default function PortfolioPage() {
                 <svg className="absolute bottom-5 right-6 h-8 w-7 rotate-[8deg]" viewBox="0 0 28 32" fill="none" aria-hidden="true">
                   <path d="M14 28C6 22 3 17 3 11c0-4 2-7 5-7 3 0 5 3 6 5 1-2 3-5 6-5 3 0 5 3 5 7 0 6-3 11-11 17Z" stroke="#087DCE" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <p className="font-serif-display text-[23px] italic leading-[1.1] xl:text-[27px]">You have the idea.</p>
-                <p className="mt-2 font-serif-display text-[23px] italic leading-[1.1] xl:text-[27px]">I make it work.</p>
+                <p className="font-serif-display text-[23px] italic leading-[1.1] xl:text-[27px]">{translate("home.heroIdeaTop")}</p>
+                <p className="mt-2 font-serif-display text-[23px] italic leading-[1.1] xl:text-[27px]">{translate("home.heroIdeaBottom")}</p>
                 <div className="mt-5 h-[3px] w-24 bg-[#087da9]" />
-                <p className="mt-4 text-[10px] font-bold uppercase leading-relaxed tracking-[0.12em]">Beautiful, useful, and ready for real people.</p>
+                <p className="mt-4 text-[10px] font-bold uppercase leading-relaxed tracking-[0.12em]">{translate("home.heroIdeaDescription")}</p>
               </div>
               <div className="absolute -right-[15%] bottom-[22%] z-20 hidden w-[205px] rounded-[24px] bg-[#fffdf9] p-4 text-[#261f21] shadow-[0_18px_34px_rgba(84,53,58,0.22)] xl:block xl:w-[230px] animate-[hero-paper-float_6.6s_ease-in-out_0.8s_infinite]" style={{ ["--paper-rotate" as string]: "-4deg", translate: `0 -${heroParallax * 0.7}px` }}>
                 <div className="flex items-center gap-2 text-[9px] font-bold"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f8d6ca] text-[#e06b91]">G</span><span>Greddys Martinez<br /><span className="font-normal text-[#766568]">@randomlygreddys</span></span><span className="ml-auto text-base">•••</span></div>
-                <p className="mt-4 text-xs">New brand, new era. <span className="text-[#eaa223]">✦</span></p>
+                <p className="mt-4 text-xs">{translate("home.heroNewBrand")} <span className="text-[#eaa223]">✦</span></p>
                 <div className="mt-3 grid grid-cols-[1fr_0.72fr] gap-2">
-                  <p className="font-serif-display text-[26px] font-semibold leading-[0.9]">DESIGN<br />HAS<br />POWER.</p>
+                  <p className="font-serif-display text-[26px] font-semibold leading-[0.9]">{translate("home.heroDesignPower")}</p>
                   <div className="relative aspect-square overflow-hidden rounded-[10px]">
                     <Image src="/images/home-card-flower-vase.png" alt="Yellow flower in a black vase" fill sizes="120px" className="object-cover" />
                   </div>
@@ -1220,14 +1247,14 @@ export default function PortfolioPage() {
                 <div className="mt-3 flex items-center gap-3 text-[10px] font-medium"><span className="inline-flex items-center gap-1"><Heart className="h-4 w-4 fill-[#e7232a] text-[#e7232a]" />128</span><span className="inline-flex items-center gap-1"><MessageCircle className="h-4 w-4 stroke-[1.8]" />12</span><span className="inline-flex items-center gap-1"><Repeat2 className="h-4 w-4 stroke-[1.8]" />8</span></div>
               </div>
               <div className="absolute right-[4%] bottom-[3%] z-20 hidden w-[210px] overflow-hidden rounded-[8px] bg-[#96e4d8] text-[#102a36] shadow-[0_18px_34px_rgba(31,122,157,0.25)] xl:block xl:w-[235px] animate-[hero-paper-float_5.8s_ease-in-out_infinite]" style={{ ["--paper-rotate" as string]: "4deg", translate: `0 -${heroParallax * 0.7}px` }}>
-                <div className="flex h-6 items-center justify-between bg-[#11b9a7] px-3 text-[7px] font-bold"><span className="flex items-center gap-1"><i className="h-2 w-2 rounded-full bg-[#ff5f57]" /><i className="h-2 w-2 rounded-full bg-[#febc2e]" /><i className="h-2 w-2 rounded-full bg-[#28c840]" /></span><span>SHOP · ABOUT · JOURNAL · CART (0)</span></div>
-                <div className="grid grid-cols-[0.88fr_1.12fr] gap-2 p-4"><div><p className="font-serif-display text-[28px] leading-[0.88]">Glow<br />from<br />within.</p><button className="mt-3 bg-[#172423] px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.12em] text-white">Buy</button></div><div className="relative min-h-[115px] overflow-hidden rounded-sm"><Image src="/images/home-card-perfume.png" alt="Amber perfume bottle on pink satin" fill sizes="125px" className="object-cover object-[62%_50%]" /></div></div>
+                <div className="flex h-6 items-center justify-between bg-[#11b9a7] px-3 text-[7px] font-bold"><span className="flex items-center gap-1"><i className="h-2 w-2 rounded-full bg-[#ff5f57]" /><i className="h-2 w-2 rounded-full bg-[#febc2e]" /><i className="h-2 w-2 rounded-full bg-[#28c840]" /></span><span>{translate("home.heroShopNav")}</span></div>
+                <div className="grid grid-cols-[0.88fr_1.12fr] gap-2 p-4"><div><p className="font-serif-display text-[28px] leading-[0.88]">{translate("home.heroGlow")}</p><button className="mt-3 bg-[#172423] px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.12em] text-white">{translate("home.heroBuy")}</button></div><div className="relative min-h-[115px] overflow-hidden rounded-sm"><Image src="/images/home-card-perfume.png" alt="" fill sizes="125px" className="object-cover object-[62%_50%]" /></div></div>
               </div>
             </div>
           </Container>
           <div className="absolute inset-0 z-40 hidden h-full bg-white px-10 pb-12 pt-28 min-[1025px]:block" style={{ translate: `0 ${100 - heroProjectProgress * 100}%` }}>
             <div className="mx-auto h-full max-w-[1080px]">
-              <p className="mb-6 text-center text-sm font-bold uppercase tracking-[0.18em] text-[#e05f88]">Selected projects</p>
+              <p className="mb-6 text-center text-sm font-bold uppercase tracking-[0.18em] text-[#e05f88]">{translate("home.selectedProjects")}</p>
               <div className="mx-auto grid h-[min(62vh,590px)] max-w-[1040px] grid-cols-3 gap-5">
                 {heroSelectedProjects.map((project) => (
                   <Link
@@ -1256,7 +1283,7 @@ export default function PortfolioPage() {
                     <div className="relative flex h-full flex-col justify-end">
                       <span className="text-xs font-bold uppercase tracking-[0.14em] text-[#5d5260]">{project.company}</span>
                       <span className="mt-2 font-serif-display text-3xl leading-none text-[#171315]">{project.title}</span>
-                      <span className="mt-4 translate-y-2 text-sm font-semibold text-[#e05f88] opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">View project →</span>
+                      <span className="mt-4 translate-y-2 text-sm font-semibold text-[#e05f88] opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">{translate("home.viewProject")} →</span>
                     </div>
                   </Link>
                 ))}
@@ -1282,7 +1309,7 @@ export default function PortfolioPage() {
                   width={logo.w}
                   height={logo.h}
                   aria-hidden={index >= socialProofLogos.length}
-                    className={`w-auto shrink-0 object-contain opacity-80 transition-all hover:opacity-100 ${logo.alt === "Zapiano" || logo.alt === "Habitat for Humanity" || logo.alt === "Elevation" ? "max-h-[36px]" : logo.alt === "Hakuna" ? "max-h-[28px]" : logo.alt === "Paramount+" ? "max-h-[22px]" : "max-h-[46px]"}`}
+                    className={`w-auto shrink-0 object-contain opacity-80 transition-all hover:opacity-100 ${logo.alt === "Zapiano" || logo.alt === "Habitat for Humanity" || logo.alt === "Elevation" || logo.alt === "Indeed" ? "max-h-[36px]" : logo.alt === "Hakuna" ? "max-h-[28px]" : logo.alt === "Paramount+" ? "max-h-[22px]" : "max-h-[46px]"}`}
                   style={{ filter: "brightness(0) saturate(100%)" }}
                 />
               ))}

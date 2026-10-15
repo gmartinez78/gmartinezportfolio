@@ -30,7 +30,7 @@ import {
   usePublicCaseStudies,
   usePublicCaseStudy,
 } from "@/lib/cms/public";
-import type { CaseStudyContentBlock, CaseStudyReflection } from "@/lib/cms/types";
+import type { CaseStudyContentBlock, CaseStudyRecord, CaseStudyReflection } from "@/lib/cms/types";
 import { withBasePath } from "@/lib/site";
 import { useTranslate } from "@/lib/i18n/use-translate";
 import { useLanguage, type Language } from "@/lib/i18n/language-context";
@@ -43,6 +43,7 @@ const kalam = Kalam({
 
 type PayloadRow = {
   metric?: string;
+  label?: string;
   value?: string;
   context?: string;
 };
@@ -1831,6 +1832,196 @@ function isContentBlock(block: CaseStudyContentBlock | undefined): block is Case
   return Boolean(block);
 }
 
+function hasLocalizedCaseStudyPayload(language: Language) {
+  return language !== "en";
+}
+
+function LocalizedCaseStudyOverview({ caseStudy }: { caseStudy: CaseStudyRecord }) {
+  const translate = useTranslate();
+  const contentBlocks = (caseStudy.content_blocks ?? []).filter((block) => block.id !== "overview");
+  const overviewBlock = caseStudy.content_blocks?.find((block) => block.id === "overview");
+  const sourceEntries =
+    caseStudy.content_blocks
+      ?.find((block) => block.id === "sources")
+      ?.payload?.sources;
+  const sources = Array.isArray(sourceEntries)
+    ? sourceEntries.filter(
+        (source): source is Record<string, unknown> => Boolean(source) && typeof source === "object" && !Array.isArray(source),
+      )
+    : [];
+
+  return (
+    <main className="min-h-screen overflow-x-hidden bg-white text-[#3c3e3f]">
+      <SiteHeader active="Projects" behavior="reveal" />
+
+      <section className="bg-[linear-gradient(90deg,#e6f1fb_0%,#eee7fb_37%,#f9e5ee_68%,#fcf0e2_100%)] px-6 pb-16 pt-10 md:px-10 lg:px-20">
+        <div className="mx-auto max-w-[1120px]">
+          <nav className="flex flex-wrap items-center gap-3 text-sm text-[#5c7792]" aria-label={translate("caseStudy.projects")}>
+            <Link href={withBasePath("/")}>{translate("caseStudy.home")}</Link>
+            <span aria-hidden="true">›</span>
+            <Link href={withBasePath("/projects")}>{translate("caseStudy.projects")}</Link>
+          </nav>
+          <div className="mx-auto mt-14 max-w-3xl text-center">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#1183D0]">
+              {caseStudy.industry ?? translate("caseStudy.projects")}
+            </p>
+            <h1 className="mt-4 font-inter text-[clamp(2.25rem,6vw,4.4rem)] font-bold leading-[1.05] text-[#0e2951]">
+              {caseStudy.title}
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-[1.7] text-[#5c7792]">{caseStudy.tagline}</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-[1120px] px-6 py-12 md:px-10 lg:px-20">
+        <div className="grid gap-6 border-y border-[#d7e8f7] py-7 text-center sm:grid-cols-3">
+          {[
+            [translate("caseStudy.year"), String(caseStudy.year ?? "")],
+            [translate("caseStudy.role"), caseStudy.role ?? ""],
+            [translate("caseStudy.client"), caseStudy.client_context ?? caseStudy.company ?? ""],
+          ].map(([label, value]) => (
+            <div key={label}>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5c7792]">{label}</p>
+              <p className="mt-2 text-[15px] font-medium text-[#0e2951]">{value}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {caseStudy.images.hero || caseStudy.images.cover ? (
+        <section className="mx-auto max-w-[1120px] px-6 pb-8 md:px-10 lg:px-20">
+          <div className="relative aspect-[16/7] overflow-hidden rounded-[28px] bg-[#eef6fc] shadow-[0_18px_44px_rgba(14,41,81,0.10)]">
+            <Image
+              src={withBasePath(caseStudy.images.hero || caseStudy.images.cover)}
+              alt={caseStudy.title}
+              fill
+              sizes="(max-width: 1120px) 100vw, 1120px"
+              className="object-cover"
+            />
+          </div>
+        </section>
+      ) : null}
+
+      <section className="mx-auto max-w-[900px] px-6 py-12 text-center md:px-10">
+        <SectionHeading title={overviewBlock?.title ?? caseStudy.title} centered className="mb-6" />
+        {overviewBlock?.body ? <p className="text-[16px] leading-[1.8] text-[#5c7792]">{overviewBlock.body}</p> : null}
+        {(caseStudy.problem.admin_pain_points.length || caseStudy.problem.user_pain_points.length) ? (
+          <div className="mt-9 grid gap-5 text-left md:grid-cols-2">
+            {[caseStudy.problem.admin_pain_points, caseStudy.problem.user_pain_points].map((items, index) => (
+              <Card key={index} className="border-[#d7e8f7] bg-[#f8fbff] p-0 py-0 shadow-none">
+                <CardContent className="p-6">
+                  <ul className="space-y-3">
+                    {items.map((item) => <li key={item} className="text-[14px] leading-[1.65] text-[#5c7792]">{item}</li>)}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        ) : null}
+      </section>
+
+      {caseStudy.metrics.length ? (
+        <section className="mx-auto max-w-[1120px] px-6 py-8 md:px-10 lg:px-20">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {caseStudy.metrics.map((metric) => (
+              <MetricStatCard key={`${metric.label}-${metric.value}`} value={metric.value} label={metric.label} />
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {contentBlocks.filter((block) => block.id !== "sources").map((block) => {
+        const payload = block.payload ?? {};
+        const items = ["items", "insights", "opportunities", "projected", "successMetrics"]
+          .flatMap((key) => getPayloadList(payload, key));
+        const rows = getPayloadRows(payload, "rows");
+
+        return (
+          <section key={block.id} className="mx-auto max-w-[900px] px-6 py-12 md:px-10">
+            <SectionHeading title={block.title} centered className="mb-6" />
+            {block.body ? <p className="whitespace-pre-line text-center text-[16px] leading-[1.8] text-[#5c7792]">{block.body}</p> : null}
+            {items.length ? (
+              <ul className="mx-auto mt-7 max-w-[760px] list-disc space-y-3 pl-5 text-[15px] leading-[1.7] text-[#5c7792]">
+                {items.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            ) : null}
+            {rows.length ? (
+              <div className="mx-auto mt-8 grid max-w-[760px] gap-3 sm:grid-cols-2">
+                {rows.map((row, index) => (
+                  <Card key={`${row.metric}-${index}`} className="border-[#d7e8f7] bg-[#f8fbff] p-0 py-0 shadow-none">
+                    <CardContent className="p-5">
+                      <p className="font-semibold text-[#0e2951]">{row.metric ?? row.label ?? ""}</p>
+                      <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{row.value ?? row.context ?? ""}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            ) : null}
+          </section>
+        );
+      })}
+
+      {caseStudy.methodology.steps.length ? (
+        <section className="mx-auto max-w-[1120px] px-6 py-12 md:px-10 lg:px-20">
+          <SectionHeading title={caseStudy.methodology.name} centered className="mb-8" />
+          <div className="grid gap-4 md:grid-cols-3">
+            {caseStudy.methodology.steps.map((step) => (
+              <Card key={step.step} className="border-[#d7e8f7] p-0 py-0 shadow-none">
+                <CardContent className="p-6">
+                  <p className="text-[11px] font-semibold tracking-[0.16em] text-[#1183D0]">{step.step}</p>
+                  <h3 className="mt-3 text-[18px] font-semibold text-[#0e2951]">{step.label}</h3>
+                  <p className="mt-3 text-[14px] leading-[1.65] text-[#5c7792]">{step.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {caseStudy.design_strategy.length ? (
+        <section className="mx-auto max-w-[900px] px-6 py-12 md:px-10">
+          <SectionHeading title={translate("caseStudy.designProposal")} centered className="mb-7" />
+          <div className="space-y-4 text-center text-[16px] leading-[1.8] text-[#5c7792]">
+            {caseStudy.design_strategy.map((item) => <p key={item}>{item}</p>)}
+          </div>
+        </section>
+      ) : null}
+
+      {caseStudy.reflections.length ? (
+        <section className="mx-auto max-w-[900px] px-6 py-12 md:px-10">
+          <SectionHeading title={translate("caseStudy.learnings")} centered className="mb-7" />
+          <div className="space-y-5 text-center text-[16px] leading-[1.8] text-[#5c7792]">
+            {caseStudy.reflections.map((reflection) => <p key={reflection.title}><strong className="text-[#0e2951]">{reflection.title} </strong>{reflection.body}</p>)}
+          </div>
+        </section>
+      ) : null}
+
+      {sources.length ? (
+        <section className="mx-auto max-w-[900px] px-6 py-12 md:px-10">
+          <SectionHeading title={translate("caseStudy.sources")} centered className="mb-7" />
+          <div className="space-y-3">
+            {sources.map((source, index) => {
+              const title = typeof source.title === "string" ? source.title : "";
+              const description = typeof source.description === "string" ? source.description : "";
+              const url = typeof source.url === "string" ? source.url : "";
+              return (
+                <Card key={`${title}-${index}`} className="border-[#d7e8f7] p-0 py-0 shadow-none">
+                  <CardContent className="p-5">
+                    {url ? <a href={url} target="_blank" rel="noreferrer" className="font-semibold text-[#1183D0] underline underline-offset-4">{title}</a> : <p className="font-semibold text-[#0e2951]">{title}</p>}
+                    {description ? <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{description}</p> : null}
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </section>
+      ) : null}
+
+      <SiteFooter />
+    </main>
+  );
+}
+
 function stripLeadingBullet(value: string) {
   return value.replace(/^\s*[•·▪‣◦]\s*/, "");
 }
@@ -2760,6 +2951,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <SiteFooter />
       </main>
     );
+  }
+
+  // The detailed English art-direction contains many project-specific interface
+  // mockups. Spanish and German use this shared composition so every visible
+  // narrative comes from the required localized case-study payload.
+  const caseStudyLanguage: Language = language;
+  if (hasLocalizedCaseStudyPayload(caseStudyLanguage)) {
+    return <LocalizedCaseStudyOverview caseStudy={caseStudy} />;
   }
 
   const otherProjects = caseStudies
@@ -3935,7 +4134,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           rel="noreferrer"
                           className="mt-6 inline-flex items-center font-inter text-[14px] font-semibold text-[#1183D0] underline decoration-[#1183D0]/35 underline-offset-4 transition-colors hover:text-[#0e5a8a] hover:decoration-[#0e5a8a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0] focus-visible:ring-offset-4"
                         >
-                          {language === "es" ? "Abrir investigación en Notebook ↗" : "Open Notebook research ↗"}
+                          {translate("caseStudy.openNotebookResearch")}
                         </a>
                       ) : null}
                       {items.length ? (
@@ -5262,12 +5461,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <div className="overflow-hidden rounded-[24px] bg-[#154f4d] shadow-[0_18px_48px_rgba(21,79,77,0.18)]">
                             <img src={withBasePath("/images/projects/protecta/protecta-logo.svg")} alt="Protecta logo" className="h-auto w-full" />
                           </div>
-                          <figcaption className="mt-2 font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{language === "es" ? "Diseño de logotipo" : "Logo design"}</figcaption>
+                          <figcaption className="mt-2 font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{translate("caseStudy.logoDesign")}</figcaption>
                           <div className="mt-4 grid grid-cols-3 gap-2">
                             {[
-                              ["/images/projects/protecta/protecta-imagotype.svg", language === "es" ? "Imagotipo" : "Imagotype", "bg-[#154f4d]", ""],
-                              ["/images/projects/protecta/protecta-isotype-pine.svg", language === "es" ? "Isotipo pino" : "Pine isotype", "bg-[#f8f8f4]", ""],
-                              ["/images/projects/protecta/protecta-isotype-pine.svg", language === "es" ? "Isotipo blanco" : "White isotype", "bg-[#154f4d]", "brightness-0 invert"],
+                              ["/images/projects/protecta/protecta-imagotype.svg", translate("caseStudy.imagotype"), "bg-[#154f4d]", ""],
+                              ["/images/projects/protecta/protecta-isotype-pine.svg", translate("caseStudy.pineIsotype"), "bg-[#f8f8f4]", ""],
+                              ["/images/projects/protecta/protecta-isotype-pine.svg", translate("caseStudy.whiteIsotype"), "bg-[#154f4d]", "brightness-0 invert"],
                             ].map(([src, label, background, logoClass]) => (
                               <div key={`${src}-${label}`} className="min-w-0">
                                 <div className={`flex aspect-square items-center justify-center rounded-[14px] border border-[#d7e5de] p-3 ${background}`}>
@@ -5280,7 +5479,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </figure>
                         <figure>
                           <div className="overflow-hidden rounded-[20px] border border-[#d7e5de] bg-[#154f4d] shadow-[0_14px_34px_rgba(21,79,77,0.14)]">
-                            <img src={withBasePath("/images/projects/protecta/facebook-cover.png")} alt={language === "es" ? "Portada de Facebook de Protecta con el mensaje La protección que te acompaña siempre" : "Protecta Facebook cover featuring the message La protección que te acompaña siempre"} className="aspect-[2.4/1] h-auto w-full object-cover" />
+                            <img src={withBasePath("/images/projects/protecta/facebook-cover.png")} alt={translate("caseStudy.protectaFacebookCover")} className="aspect-[2.4/1] h-auto w-full object-cover" />
                           </div>
                           <figcaption className="mt-2 font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{protectaUi.facebookCover}</figcaption>
                         </figure>
@@ -5289,9 +5488,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         <div>
                           <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">{PROTECTA_BRAND_COPY[localizedLanguage].type}</p>
                           <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-playfair-display text-[28px] text-[#154f4d]">Newsreader</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">{language === "es" ? "Titulares y textos editoriales cálidos" : "Warm editorial display and headlines"}</p></div>
-                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-inter text-[27px] font-semibold text-[#154f4d]">Geist</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">{language === "es" ? "Texto de interfaz y cuerpo claro y moderno" : "Clear, modern body and UI text"}</p></div>
-                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-mono text-[18px] font-semibold text-[#154f4d]">JetBrains Mono</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">{language === "es" ? "Antetítulos, etiquetas y datos" : "Eyebrows, labels, and data"}</p></div>
+                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-playfair-display text-[28px] text-[#154f4d]">Newsreader</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">{translate("caseStudy.warmEditorialType")}</p></div>
+                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-inter text-[27px] font-semibold text-[#154f4d]">Geist</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">{translate("caseStudy.clearUiType")}</p></div>
+                            <div className="rounded-[18px] border border-[#d7e5de] bg-white p-5"><p className="font-mono text-[18px] font-semibold text-[#154f4d]">JetBrains Mono</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">{translate("caseStudy.eyebrowsLabelsData")}</p></div>
                           </div>
                           <div className="mt-4 overflow-hidden rounded-[18px] border border-[#d7e5de] bg-white">
                             <div className="border-b border-[#d7e5de] px-4 py-3"><p className="font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{protectaUi.typeScale}</p></div>
@@ -5301,8 +5500,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                                 ["H1", "Newsreader", "38–60px · 400"],
                                 ["H2", "Newsreader", "30–42px · 400"],
                                 ["H3 / H4", "Geist", "21–26px · 600"],
-                                [language === "es" ? "Cuerpo" : "Body", "Geist", "17–19px · 400"],
-                                [language === "es" ? "Antetítulo" : "Eyebrow", "JetBrains Mono", "12–13px · 500"],
+                                [translate("caseStudy.body"), "Geist", "17–19px · 400"],
+                                [translate("caseStudy.eyebrow"), "JetBrains Mono", "12–13px · 500"],
                               ].map(([level, font, scale]) => (
                                 <div key={level} className="grid grid-cols-[52px_1fr_auto] items-center gap-3 px-4 py-2.5">
                                   <span className="font-inter text-[12px] font-semibold text-[#154f4d]">{level}</span>
@@ -5427,7 +5626,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                                 <span className="ml-2 truncate rounded bg-white/10 px-2 py-0.5 font-inter text-[9px] text-white/70">www.protecta.today</span>
                               </div>
                               <div className="aspect-[16/9] overflow-hidden bg-white">
-                                <img src={withBasePath(imageSrc)} alt={language === "es" ? "Vista de escritorio del sitio web de Protecta" : "Protecta website desktop layout"} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" />
+                                <img src={withBasePath(imageSrc)} alt={translate("caseStudy.protectaDesktopLayout")} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" />
                               </div>
                             </div>
                             <p className="mt-4 text-center font-inter text-[13px] leading-[1.6] text-[#5c7792]">{protectaUi.desktopLayout}</p>
@@ -5437,7 +5636,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             <div className="rounded-[36px] border-[8px] border-[#17302d] bg-[#17302d] p-[5px] shadow-[0_20px_50px_rgba(21,79,77,0.18)] transition-transform duration-300 group-hover:-translate-y-1">
                               <div className="mx-auto mb-2 h-5 w-24 rounded-full bg-[#0d1b19]" />
                               <div className="h-[350px] overflow-hidden rounded-[23px] bg-white">
-                                <img src={withBasePath(imageSrc)} alt={language === "es" ? "Vista móvil del sitio web de Protecta" : "Protecta website mobile layout"} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" />
+                                <img src={withBasePath(imageSrc)} alt={translate("caseStudy.protectaMobileLayout")} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" />
                               </div>
                               <div className="mx-auto mt-2 h-1 w-12 rounded-full bg-[#49615c]" />
                             </div>
@@ -6904,7 +7103,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" && caseStudy.slug !== "i9-everify-integration" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading eyebrow={caseStudy.slug === "protecta" ? (language === "es" ? "Impacto medido" : "Measured impact") : undefined} title={language === "es" ? "Resultados e impacto" : "Results & Impact"} centered className="mb-12" />
+          <SectionHeading eyebrow={caseStudy.slug === "protecta" ? translate("caseStudy.measuredImpact") : undefined} title={translate("caseStudy.resultsImpact")} centered className="mb-12" />
           {caseStudy.slug === "protecta" ? (
             <>
               <div className="mx-auto max-w-[1040px] rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] p-6 sm:p-8">
@@ -6949,7 +7148,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {primaryResultInsights.length ? (
               <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
                 <CardContent className="p-8">
-                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{caseStudy.slug === "i9-everify-integration" ? (language === "es" ? "Resultados clave" : "Key Results") : (language === "es" ? "Hallazgos sobre el comportamiento de inscripción" : "Enrollment Behavior Insights")}</h3>
+                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{caseStudy.slug === "i9-everify-integration" ? translate("caseStudy.keyResults") : translate("caseStudy.enrollmentInsights")}</h3>
                   <ul className="mt-5 list-disc space-y-3 pl-5">
                     {primaryResultInsights.filter((item) => !shouldHideInsight(item)).map((item) => (
                       /^2026(?:\s+data)?$/i.test(stripLeadingBullet(item)) ? (
@@ -6970,7 +7169,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {protectaMomentumInsights.length ? (
               <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
                 <CardContent className="p-8">
-                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{language === "es" ? "Impulso de la campaña" : "Campaign momentum"}</h3>
+                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{translate("caseStudy.campaignMomentum")}</h3>
                   <ul className="mt-5 list-disc space-y-3 pl-5">
                     {protectaMomentumInsights.map((item) => (
                       <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>
@@ -6982,7 +7181,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {resultOpportunities.length ? (
               <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
                 <CardContent className="p-8">
-                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">Opportunities and Next Steps</h3>
+                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{translate("caseStudy.opportunitiesNext")}</h3>
                   <ul className="mt-5 list-disc space-y-3 pl-5">
                     {resultOpportunities.map((item) => (
                       <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>
@@ -6993,7 +7192,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ) : null}
             {caseStudy.slug !== "protecta" && projectedImprovements.length ? (
               <div className="p-8 md:col-span-2">
-                <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Projected Improvements</p>
+                <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">{translate("caseStudy.projectedImprovements")}</p>
                 <ul className="space-y-3">
                   {projectedImprovements.map((item) => (
                     <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>
@@ -7003,7 +7202,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <div className="mt-8 overflow-hidden rounded-[20px] border border-[#d7e8f7] bg-white">
                     <div className="border-b border-[#d7e8f7] bg-[#f7f9fb] px-5 py-4">
                       <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">
-                        Conservative 1-Month Scenario
+                        {translate("caseStudy.conservativeScenario")}
                       </p>
                     </div>
                   <DataTablePanel
@@ -7011,7 +7210,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     columnsClassName="grid grid-cols-4 px-5"
                     headerClassName="py-4 text-[12px] font-semibold"
                     rowClassName="py-4"
-                    headers={[<div>Budget</div>, <div>Reach</div>, <div>Purchases</div>, <div>Revenue</div>]}
+                    headers={[<div>{translate("caseStudy.budget")}</div>, <div>{translate("caseStudy.reach")}</div>, <div>{translate("caseStudy.purchases")}</div>, <div>{translate("caseStudy.revenue")}</div>]}
                     rows={CONFIDENTIAL_CONSERVATIVE_SCENARIO_ROWS.map((row) => [
                       <div className="font-semibold text-[var(--ui-color-text-strong)]">{row.budget}</div>,
                       <div>{row.reach}</div>,
@@ -7025,13 +7224,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           key={`scenario-${row.budget}`}
                           items={[
                             {
-                              label: "Budget",
+                              label: translate("caseStudy.budget"),
                               value: row.budget,
                               valueClassName: "mt-1 font-semibold text-[var(--ui-color-text-strong)]",
                             },
-                            { label: "Reach", value: row.reach, valueClassName: "mt-1" },
-                            { label: "Purchases", value: row.purchases, valueClassName: "mt-1" },
-                            { label: "Revenue", value: row.revenue, valueClassName: "mt-1" },
+                            { label: translate("caseStudy.reach"), value: row.reach, valueClassName: "mt-1" },
+                            { label: translate("caseStudy.purchases"), value: row.purchases, valueClassName: "mt-1" },
+                            { label: translate("caseStudy.revenue"), value: row.revenue, valueClassName: "mt-1" },
                           ]}
                         />
                       ))}
@@ -7043,7 +7242,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {successMetrics.length && caseStudy.slug !== CONFIDENTIAL_PLACEHOLDER_SLUG ? (
               <Card className="p-0 py-0">
                 <CardContent className="p-8">
-                  <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">Success Metrics</p>
+                  <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">{translate("caseStudy.successMetrics")}</p>
                   <ul className="space-y-3">
                     {successMetrics.map((item) => (
                       <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>
@@ -7122,7 +7321,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "i9-everify-integration" && resultOpportunities.length ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title="Opportunities and Next Steps" centered className="mb-12" />
+          <SectionHeading title={translate("caseStudy.opportunitiesNext")} centered className="mb-12" />
           <div className="mx-auto grid max-w-[980px] gap-4 md:grid-cols-2">
             {resultOpportunities.map((item, index) => (
               <article key={item} className="flex gap-5 rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] p-6 sm:p-7">
@@ -7138,7 +7337,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title={language === "es" ? "Aprendizajes" : "Learnings"} centered className="mb-12" />
+          <SectionHeading title={translate("caseStudy.learnings")} centered className="mb-12" />
           <div className="mx-auto max-w-[820px] space-y-8 text-center">
             {reflections.map((reflection) => (
               <p key={reflection.title} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">

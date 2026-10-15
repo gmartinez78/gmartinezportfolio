@@ -14,9 +14,10 @@ import { Label } from "@/components/ui/label";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Textarea } from "@/components/ui/textarea";
 import { withBasePath } from "@/lib/site";
+import { useLanguage, type Language } from "@/lib/i18n/language-context";
 import { cn } from "@/lib/utils";
 
-type Locale = "es" | "en";
+type Locale = Language;
 
 type FormState = {
   companyName: string;
@@ -60,44 +61,45 @@ type Option = {
   id: string;
   es: string;
   en: string;
+  de: string;
 };
 
 const OBJECTIVE_OPTIONS: Option[] = [
-  { id: "visibility", es: "Mayor visibilidad", en: "More visibility" },
-  { id: "leads", es: "Generar leads", en: "Generate leads" },
-  { id: "meetings", es: "Conseguir reuniones", en: "Book meetings" },
-  { id: "sales", es: "Aumentar ventas", en: "Increase sales" },
-  { id: "brand", es: "Posicionamiento de marca", en: "Brand positioning" },
-  { id: "other", es: "Otro", en: "Other" },
+  { id: "visibility", es: "Mayor visibilidad", en: "More visibility", de: "Mehr Sichtbarkeit" },
+  { id: "leads", es: "Generar leads", en: "Generate leads", de: "Leads gewinnen" },
+  { id: "meetings", es: "Conseguir reuniones", en: "Book meetings", de: "Termine vereinbaren" },
+  { id: "sales", es: "Aumentar ventas", en: "Increase sales", de: "Umsatz steigern" },
+  { id: "brand", es: "Posicionamiento de marca", en: "Brand positioning", de: "Markenpositionierung" },
+  { id: "other", es: "Otro", en: "Other", de: "Sonstiges" },
 ];
 
 const MARKETING_OPTIONS: Option[] = [
-  { id: "seo", es: "SEO", en: "SEO" },
-  { id: "google-ads", es: "Google Ads", en: "Google Ads" },
-  { id: "meta-ads", es: "Meta Ads", en: "Meta Ads" },
-  { id: "email-marketing", es: "Email Marketing", en: "Email Marketing" },
-  { id: "linkedin", es: "LinkedIn", en: "LinkedIn" },
-  { id: "instagram", es: "Instagram", en: "Instagram" },
-  { id: "tiktok", es: "TikTok", en: "TikTok" },
-  { id: "other", es: "Otro", en: "Other" },
+  { id: "seo", es: "SEO", en: "SEO", de: "SEO" },
+  { id: "google-ads", es: "Google Ads", en: "Google Ads", de: "Google Ads" },
+  { id: "meta-ads", es: "Meta Ads", en: "Meta Ads", de: "Meta Ads" },
+  { id: "email-marketing", es: "Email Marketing", en: "Email Marketing", de: "E-Mail-Marketing" },
+  { id: "linkedin", es: "LinkedIn", en: "LinkedIn", de: "LinkedIn" },
+  { id: "instagram", es: "Instagram", en: "Instagram", de: "Instagram" },
+  { id: "tiktok", es: "TikTok", en: "TikTok", de: "TikTok" },
+  { id: "other", es: "Otro", en: "Other", de: "Sonstiges" },
 ];
 
 const SUCCESS_METRICS: Option[] = [
-  { id: "reach", es: "Alcance", en: "Reach" },
-  { id: "engagement", es: "Engagement", en: "Engagement" },
-  { id: "leads", es: "Leads", en: "Leads" },
-  { id: "meetings", es: "Reuniones", en: "Meetings" },
-  { id: "sales", es: "Ventas", en: "Sales" },
-  { id: "website-traffic", es: "Tráfico al sitio web", en: "Website traffic" },
-  { id: "community-growth", es: "Crecimiento de la comunidad", en: "Community growth" },
-  { id: "other", es: "Otro", en: "Other" },
+  { id: "reach", es: "Alcance", en: "Reach", de: "Reichweite" },
+  { id: "engagement", es: "Engagement", en: "Engagement", de: "Interaktion" },
+  { id: "leads", es: "Leads", en: "Leads", de: "Leads" },
+  { id: "meetings", es: "Reuniones", en: "Meetings", de: "Termine" },
+  { id: "sales", es: "Ventas", en: "Sales", de: "Umsatz" },
+  { id: "website-traffic", es: "Tráfico al sitio web", en: "Website traffic", de: "Website-Traffic" },
+  { id: "community-growth", es: "Crecimiento de la comunidad", en: "Community growth", de: "Community-Wachstum" },
+  { id: "other", es: "Otro", en: "Other", de: "Sonstiges" },
 ];
 
 const CONTACT_METHODS: Option[] = [
-  { id: "email", es: "Email", en: "Email" },
-  { id: "phone", es: "Llamada", en: "Phone call" },
-  { id: "whatsapp", es: "WhatsApp", en: "WhatsApp" },
-  { id: "linkedin", es: "LinkedIn", en: "LinkedIn" },
+  { id: "email", es: "Email", en: "Email", de: "E-Mail" },
+  { id: "phone", es: "Llamada", en: "Phone call", de: "Telefonat" },
+  { id: "whatsapp", es: "WhatsApp", en: "WhatsApp", de: "WhatsApp" },
+  { id: "linkedin", es: "LinkedIn", en: "LinkedIn", de: "LinkedIn" },
 ];
 
 const INITIAL_FORM: FormState = {
@@ -146,11 +148,13 @@ const COPY = {
     timing: "Tiempo estimado: 5 - 8 minutos",
     langEs: "Español",
     langEn: "English",
+    langDe: "Deutsch",
     formTitle: "Completa el diagnóstico",
     submit: "Enviar diagnóstico",
     submitting: "Enviando...",
     success:
       "Gracias. Recibí tu diagnóstico y usaré esta información para preparar una propuesta personalizada.",
+    sendFailed: "No se pudo enviar el formulario. Inténtalo de nuevo.",
     contactTitle: "Información de contacto",
     companyTitle: "Información de la empresa",
     businessTitle: "Sobre el negocio",
@@ -170,6 +174,7 @@ const COPY = {
     preferredFollowup: "Canal sugerido",
     helper:
       "También puedes usar este link como intake form con clientes nuevos. La data llega ordenada y con una clasificación inicial.",
+    followupNote: "El formulario pide nombre, email, teléfono y método preferido de contacto para facilitar el seguimiento.",
     companyName: "Nombre de la empresa",
     role: "Cargo",
     contactName: "Nombre y apellido",
@@ -207,6 +212,7 @@ const COPY = {
     invalidEmail: "Ingresa un correo válido.",
     invalidPhone: "Ingresa un número o medio de contacto válido.",
     chooseOne: "Selecciona al menos una opción.",
+    notDefined: "Sin definir",
     priorityHigh: "Alta",
     priorityMedium: "Media",
     priorityLow: "Inicial",
@@ -231,11 +237,13 @@ const COPY = {
     timing: "Estimated time: 5 - 8 minutes",
     langEs: "Español",
     langEn: "English",
+    langDe: "Deutsch",
     formTitle: "Complete the diagnostic",
     submit: "Send diagnostic",
     submitting: "Sending...",
     success:
       "Thank you. I received your diagnostic and will use it to prepare a tailored strategic proposal.",
+    sendFailed: "The form could not be sent. Please try again.",
     contactTitle: "Contact information",
     companyTitle: "Company information",
     businessTitle: "About the business",
@@ -255,6 +263,7 @@ const COPY = {
     preferredFollowup: "Suggested follow-up",
     helper:
       "You can also use this link as an intake form for new clients. The data arrives structured and pre-classified.",
+    followupNote: "The form requests name, email, phone, and preferred contact method to make follow-up easier.",
     companyName: "Company name",
     role: "Role",
     contactName: "Full name",
@@ -292,6 +301,7 @@ const COPY = {
     invalidEmail: "Enter a valid email.",
     invalidPhone: "Enter a valid phone number or contact method.",
     chooseOne: "Choose at least one option.",
+    notDefined: "Not defined",
     priorityHigh: "High",
     priorityMedium: "Medium",
     priorityLow: "Early",
@@ -307,10 +317,99 @@ const COPY = {
     resourcesNote: "You can paste links, Drive folders, or a short note explaining where to find them.",
     socialMediaCta: "Share this link with clients",
   },
+  de: {
+    back: "Zurück zur Website",
+    eyebrow: "Erste Analyse für Social Media",
+    title: "Teilen Sie den Kontext Ihres Unternehmens, und ich erstelle einen strategischen Vorschlag, der zu Ihren Zielen passt.",
+    intro:
+      "Vielen Dank, dass Sie sich ein paar Minuten für diesen Fragebogen nehmen. Er hilft mir, Ihr Unternehmen, Ihre Kund:innen und Ihre Ziele zu verstehen, damit ich eine passende Social-Media-Strategie entwickeln kann.",
+    timing: "Geschätzte Dauer: 5–8 Minuten",
+    langEs: "Español",
+    langEn: "English",
+    langDe: "Deutsch",
+    formTitle: "Analyse ausfüllen",
+    submit: "Analyse senden",
+    submitting: "Wird gesendet …",
+    success:
+      "Vielen Dank. Ich habe Ihre Angaben erhalten und nutze sie, um einen maßgeschneiderten strategischen Vorschlag vorzubereiten.",
+    sendFailed: "Das Formular konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
+    contactTitle: "Kontaktinformationen",
+    companyTitle: "Unternehmensinformationen",
+    businessTitle: "Über das Unternehmen",
+    clientTitle: "Ideale Kund:innen",
+    digitalTitle: "Digitale Präsenz",
+    marketingTitle: "Marketing",
+    salesTitle: "Vertriebsprozess",
+    goalsTitle: "Ziele",
+    resourcesTitle: "Unterstützende Materialien",
+    classificationTitle: "Automatische Einordnung",
+    classificationBody:
+      "Diese Zusammenfassung wird automatisch erstellt, damit der Lead vor der Angebotserstellung eingeordnet werden kann.",
+    leadPriority: "Lead-Priorität",
+    primaryGoal: "Hauptziel",
+    maturity: "Marketing-Reifegrad",
+    recommendation: "Empfohlener Fokus",
+    preferredFollowup: "Empfohlener Kontaktweg",
+    helper:
+      "Sie können diesen Link auch als Intake-Formular für neue Kund:innen nutzen. Die Daten werden strukturiert und vorab eingeordnet übermittelt.",
+    followupNote: "Das Formular fragt nach Name, E-Mail, Telefon und bevorzugtem Kontaktweg, damit die Nachverfolgung einfacher wird.",
+    companyName: "Unternehmensname",
+    role: "Position",
+    contactName: "Vollständiger Name",
+    email: "E-Mail",
+    phone: "Telefonnummer oder Kontaktmöglichkeit",
+    preferredContactMethod: "Bevorzugter Kontaktweg",
+    website: "Website",
+    businessDescription: "Was macht das Unternehmen und welche Leistungen oder Produkte möchten Sie aktuell hervorheben?",
+    differentiator: "Was ist aus Ihrer Sicht Ihr wichtigstes Alleinstellungsmerkmal gegenüber dem Wettbewerb?",
+    primaryObjective: "Was ist das wichtigste Ziel, um Ihre Präsenz in sozialen Medien zu stärken?",
+    idealClient: "Wer ist Ihre ideale Kundschaft?",
+    idealClientHint: "Unternehmen, Position, Branche, Standort oder andere relevante Merkmale.",
+    clientProblem: "Welches zentrale Problem lösen Sie für Ihre Kund:innen?",
+    decisionDriver: "Was führt üblicherweise dazu, dass Kund:innen mit Ihnen arbeiten möchten?",
+    socialPain: "Was funktioniert Ihrer Meinung nach derzeit nicht in Ihren sozialen Medien?",
+    representativeContent: "Welche Inhalte repräsentieren Ihr Unternehmen Ihrer Meinung nach am besten?",
+    inspiration: "Gibt es eine Marke oder ein Unternehmen, dessen Inhalte Sie inspirieren? Warum?",
+    marketingActions: "Welche Marketingmaßnahmen führen Sie aktuell durch?",
+    marketingResults: "Welche Ergebnisse erzielen diese Maßnahmen derzeit?",
+    salesProcess: "Wie läuft der Prozess ab, wenn jemand Sie kontaktiert, bis daraus ein:e Kund:in wird?",
+    socialResponder: "Wer beantwortet derzeit Nachrichten oder Anfragen aus sozialen Medien?",
+    sixMonthSuccess: "Welche Ergebnisse möchten Sie nach sechs Monaten erreichen, wenn dieses Projekt erfolgreich ist?",
+    successMetrics: "Welche Kennzahlen sind für die Messung dieses Erfolgs am wichtigsten?",
+    brandConstraints: "Gibt es Marken-, Kommunikations- oder Compliance-Vorgaben, die ich kennen sollte?",
+    resourcesIntro: "Wenn möglich, teilen Sie:",
+    resourceWebsite: "Zusätzliche Website oder relevante Landingpage",
+    instagram: "Instagram",
+    tiktok: "TikTok",
+    linkedin: "LinkedIn",
+    brandManual: "Markenhandbuch",
+    brochure: "Vertriebspräsentation oder Broschüre",
+    otherResources: "Weitere relevante Materialien",
+    otherPlaceholder: "Zusätzlichen Kontext hinzufügen",
+    required: "Dieses Feld ist erforderlich.",
+    invalidEmail: "Geben Sie eine gültige E-Mail-Adresse ein.",
+    invalidPhone: "Geben Sie eine gültige Telefonnummer oder Kontaktmöglichkeit ein.",
+    chooseOne: "Wählen Sie mindestens eine Option aus.",
+    notDefined: "Nicht definiert",
+    priorityHigh: "Hoch",
+    priorityMedium: "Mittel",
+    priorityLow: "Frühphase",
+    maturityHigh: "Aktiv",
+    maturityMedium: "Im Wachstum",
+    maturityLow: "Frühphase",
+    recommendationVisibility: "Autorität, Konsistenz und grundlegende Inhalte aufbauen.",
+    recommendationLeads: "Die Conversion verbessern und das Angebot schärfen.",
+    recommendationMeetings: "Inhalte mit klaren Calls-to-Action für Erstgespräche gestalten.",
+    recommendationSales: "Inhalte, Vertriebsnachverfolgung und Vertrauenssignale aufeinander abstimmen.",
+    recommendationBrand: "Narrativ, Differenzierung und Positionierung stärken.",
+    recommendationOther: "Ziele überprüfen und strategische Quick Wins priorisieren.",
+    resourcesNote: "Sie können Links, Drive-Ordner oder eine kurze Notiz dazu einfügen, wo die Materialien zu finden sind.",
+    socialMediaCta: "Diesen Link mit Kund:innen teilen",
+  },
 } as const;
 
 function getOptionLabel(option: Option, locale: Locale) {
-  return locale === "es" ? option.es : option.en;
+  return option[locale];
 }
 
 function toggleSelection(list: string[], value: string) {
@@ -318,6 +417,7 @@ function toggleSelection(list: string[], value: string) {
 }
 
 function classifyLead(values: FormState, locale: Locale) {
+  const copy = COPY[locale];
   const score =
     Number(Boolean(values.website.trim())) +
     Number(Boolean(values.phone.trim())) +
@@ -325,37 +425,15 @@ function classifyLead(values: FormState, locale: Locale) {
     Number(Boolean(values.sixMonthSuccess.trim())) +
     Number(Boolean(values.marketingResults.trim()));
 
-  const leadPriority =
-    score >= 4
-      ? locale === "es"
-        ? COPY.es.priorityHigh
-        : COPY.en.priorityHigh
-      : score >= 2
-        ? locale === "es"
-          ? COPY.es.priorityMedium
-          : COPY.en.priorityMedium
-        : locale === "es"
-          ? COPY.es.priorityLow
-          : COPY.en.priorityLow;
+  const leadPriority = score >= 4 ? copy.priorityHigh : score >= 2 ? copy.priorityMedium : copy.priorityLow;
 
   const actionCount = values.marketingActions.filter((item) => item !== "other").length;
-  const marketingMaturity =
-    actionCount >= 4
-      ? locale === "es"
-        ? COPY.es.maturityHigh
-        : COPY.en.maturityHigh
-      : actionCount >= 2
-        ? locale === "es"
-          ? COPY.es.maturityMedium
-          : COPY.en.maturityMedium
-        : locale === "es"
-          ? COPY.es.maturityLow
-          : COPY.en.maturityLow;
+  const marketingMaturity = actionCount >= 4 ? copy.maturityHigh : actionCount >= 2 ? copy.maturityMedium : copy.maturityLow;
 
   const primaryGoalOption = OBJECTIVE_OPTIONS.find((option) => option.id === values.primaryObjective);
   const primaryGoal = primaryGoalOption
     ? getOptionLabel(primaryGoalOption, locale)
-    : values.primaryObjectiveOther.trim() || (locale === "es" ? "Sin definir" : "Not defined");
+    : values.primaryObjectiveOther.trim() || copy.notDefined;
 
   const recommendationKey =
     values.primaryObjective === "visibility"
@@ -369,8 +447,6 @@ function classifyLead(values: FormState, locale: Locale) {
             : values.primaryObjective === "brand"
               ? "recommendationBrand"
               : "recommendationOther";
-
-  const copy = COPY[locale];
 
   return {
     leadPriority,
@@ -502,7 +578,7 @@ function DiagnosticSection({
 }
 
 export default function SocialMediaDiagnosticPage() {
-  const [locale, setLocale] = useState<Locale>("es");
+  const { language: locale, setLanguage: setLocale } = useLanguage();
   const [values, setValues] = useState<FormState>(INITIAL_FORM);
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitting, setSubmitting] = useState(false);
@@ -563,7 +639,9 @@ export default function SocialMediaDiagnosticPage() {
         _subject:
           locale === "es"
             ? `Nuevo diagnóstico de redes sociales - ${values.companyName.trim()}`
-            : `New social media diagnostic - ${values.companyName.trim()}`,
+            : locale === "de"
+              ? `Neue Social-Media-Analyse - ${values.companyName.trim()}`
+              : `New social media diagnostic - ${values.companyName.trim()}`,
         _template: "table",
         _captcha: "false",
         _next: "https://www.greddys.com/social-media-diagnostic",
@@ -586,7 +664,7 @@ export default function SocialMediaDiagnosticPage() {
       setValues(INITIAL_FORM);
       setErrors({});
     } catch {
-      setSuccessMessage(locale === "es" ? "No se pudo enviar el formulario. Inténtalo de nuevo." : "The form could not be sent. Please try again.");
+      setSuccessMessage(copy.sendFailed);
     } finally {
       setSubmitting(false);
     }
@@ -639,6 +717,16 @@ export default function SocialMediaDiagnosticPage() {
                   )}
                 >
                   {copy.langEn}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLocale("de")}
+                  className={cn(
+                    "rounded-full px-4 py-2 text-sm font-semibold transition-colors",
+                    locale === "de" ? "bg-[#1183D0] text-white" : "text-[#5c7792]",
+                  )}
+                >
+                  {copy.langDe}
                 </button>
               </div>
             </div>
@@ -941,9 +1029,7 @@ export default function SocialMediaDiagnosticPage() {
                   <div className="flex items-start gap-3">
                     <Phone className="mt-1 h-4 w-4 text-[#1183D0]" />
                     <p className="text-sm leading-7 text-[#5c7792]">
-                      {locale === "es"
-                        ? "El formulario pide nombre, email, teléfono y método preferido de contacto para facilitar el seguimiento."
-                        : "The form requests name, email, phone, and preferred contact method to make follow-up easier."}
+                      {copy.followupNote}
                     </p>
                   </div>
                 </div>

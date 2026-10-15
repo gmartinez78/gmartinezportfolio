@@ -442,10 +442,10 @@ export default function ResumePage() {
                   className="h-auto w-[92px] sm:w-[110px]"
                 />
                 <p className="mt-3 text-[15px] font-medium leading-snug text-[#1f2f3d]">
-                  Upwork Certified
+                  {translate("resume.upworkCertifiedLabel")}
                 </p>
                 <p className="mt-1 text-[15px] font-medium leading-snug text-[#1f2f3d]">
-                  User Interface Design
+                  {translate("resume.userInterfaceDesign")}
                 </p>
               </a>
               <div className="flex max-w-[180px] flex-col items-center text-center">
@@ -458,10 +458,10 @@ export default function ResumePage() {
                   style={{ height: "auto" }}
                 />
                 <p className="mt-3 text-[15px] font-medium leading-snug text-[#1f2f3d]">
-                  NN/Group Certified
+                  {translate("resume.nnGroupCertifiedLabel")}
                 </p>
                 <p className="mt-1 text-[15px] font-medium leading-snug text-[#1f2f3d]">
-                  Interaction Design
+                  {translate("resume.interactionDesign")}
                 </p>
               </div>
             </div>
