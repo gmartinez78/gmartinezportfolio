@@ -3,6 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
+import { ClassicalWordBrochurePreview } from "@/components/classical-word-brochure-preview"
 import { Badge } from "@/components/ui/badge"
 import { Heading } from "@/components/ui/heading"
 import { cn } from "@/lib/utils"
@@ -53,6 +54,7 @@ export function ProjectTeaserCard({
   onFocus,
 }: ProjectTeaserCardProps) {
   const isCarousel = variant === "carousel"
+  const isClassicalWordBrochure = image?.includes("/projects/classical-word/")
   const translateTag = useTranslateTag()
   const visibleTags = getVisibleProjectTags(tags)
 
@@ -100,6 +102,8 @@ export function ProjectTeaserCard({
             preload="metadata"
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04] group-focus-visible:scale-[1.04]"
           />
+        ) : isClassicalWordBrochure ? (
+          <ClassicalWordBrochurePreview className="transition-transform duration-500 group-hover:scale-[1.04] group-focus-visible:scale-[1.04]" />
         ) : image ? (
           <Image
             src={image}

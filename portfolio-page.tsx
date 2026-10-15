@@ -12,6 +12,7 @@ import { Badge } from "./components/ui/badge";
 import { Button } from "./components/ui/button";
 import { Container } from "./components/ui/container";
 import { Heading } from "./components/ui/heading";
+import { ClassicalWordBrochurePreview } from "./components/classical-word-brochure-preview";
 import { appendLockedNayyaPlaceholder } from "./lib/cms/locked-placeholder";
 import { useLanguage } from "./lib/i18n/language-context";
 import { useTranslate, useTranslateTag } from "./lib/i18n/use-translate";
@@ -820,7 +821,9 @@ export default function PortfolioPage() {
                       className="relative aspect-[4/3] overflow-hidden rounded-[var(--ui-radius-card)]"
                       style={{ background: project.background }}
                     >
-                      {project.image ? (
+                      {project.slug === "classical-word" ? (
+                        <ClassicalWordBrochurePreview className="transition-transform duration-500 group-hover:scale-[1.025]" />
+                      ) : project.image ? (
                         <Image
                           src={project.image}
                           alt={`${project.title} case study preview for ${project.company}`}
@@ -872,18 +875,12 @@ export default function PortfolioPage() {
             <p className="mt-5 max-w-[610px] text-[16px] leading-[1.5] text-white/85 md:text-[18px]">
               {translate("home.productStrengths.intro")}
             </p>
-            <Button asChild variant="tertiary" size="sm" className="mt-6 border-white/65 bg-transparent text-white hover:border-white hover:bg-white/10 hover:text-white">
-              <Link href={withBasePath("/resume")}>
-                {translate("home.productStrengths.cta")}
-                <ArrowUpRight aria-hidden="true" className="size-4" strokeWidth={2.25} />
-              </Link>
-            </Button>
           </div>
           <ol className="mt-10">
             {productStrengths.map((strength, index) => (
               <li
                 key={strength.title}
-                className={`grid grid-cols-[76px_minmax(0,1fr)] gap-3 py-6 transition-colors duration-200 hover:bg-white/10 hover:px-5 sm:grid-cols-[86px_minmax(0,1fr)] sm:hover:px-7 ${index === 0 ? "" : "border-t border-white/25"}`}
+                className={`grid grid-cols-[76px_minmax(0,1fr)] gap-3 py-6 transition-colors duration-200 hover:bg-white/10 sm:grid-cols-[86px_minmax(0,1fr)] ${index === 0 ? "" : "border-t border-white/25"}`}
               >
                 <span className="pt-0.5 text-[22px] font-semibold leading-none text-[#d5f0ff]">{String(index + 1).padStart(2, "0")}</span>
                 <div>
@@ -897,6 +894,12 @@ export default function PortfolioPage() {
               </li>
             ))}
           </ol>
+          <Button asChild variant="tertiary" size="sm" className="mt-8 border-white/65 bg-transparent text-white hover:border-white hover:bg-white/10 hover:text-white">
+            <Link href={withBasePath("/resume")}>
+              {translate("home.productStrengths.cta")}
+              <ArrowUpRight aria-hidden="true" className="size-4" strokeWidth={2.25} />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>
@@ -926,11 +929,11 @@ export default function PortfolioPage() {
               className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_36%,rgba(14,41,81,0.78)_100%)]" />
+            <span className="absolute left-4 top-4 inline-flex rounded-full bg-[var(--ui-color-brand-amber)] px-3 py-1 text-[10px] font-semibold text-[#141114]">
+              {translate("home.impact.caseStudy")}
+            </span>
             <div className="absolute inset-x-4 bottom-4 text-white">
-              <span className="inline-flex rounded-full bg-[var(--ui-color-brand-amber)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#141114]">
-                {translate("home.impact.caseStudy")}
-              </span>
-              <p className="mt-2 text-[18px] font-semibold leading-tight">{translate("home.impact.nayyaTitle")}</p>
+              <p className="text-[18px] font-semibold leading-tight">{translate("home.impact.nayyaTitle")}</p>
             </div>
           </Link>
 
@@ -946,76 +949,97 @@ export default function PortfolioPage() {
               className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_36%,rgba(14,41,81,0.78)_100%)]" />
+            <span className="absolute left-4 top-4 inline-flex rounded-full bg-[var(--ui-color-brand-amber)] px-3 py-1 text-[10px] font-semibold text-[#141114]">
+              {translate("home.impact.featuredProject")}
+            </span>
             <div className="absolute inset-x-4 bottom-4 text-white">
-              <span className="inline-flex rounded-full bg-[var(--ui-color-brand-amber)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#141114]">
-                {translate("home.impact.featuredProject")}
-              </span>
-              <p className="mt-2 text-[18px] font-semibold leading-tight">{translate("home.impact.flockTitle")}</p>
+              <p className="text-[18px] font-semibold leading-tight">{translate("home.impact.flockTitle")}</p>
             </div>
           </Link>
 
-          <article className="relative flex min-h-[202px] flex-col justify-between overflow-hidden rounded-xl bg-[radial-gradient(circle_at_92%_8%,#f7c7ef_0%,#d9f8f8_30%,#cfe8ff_68%,#eaf5ff_100%)] p-5 text-[#141114] md:col-span-3 md:min-h-0">
-            <span aria-hidden="true" className="absolute -right-8 -top-8 size-24 rounded-full bg-[radial-gradient(circle_at_32%_30%,rgba(255,255,255,0.95),rgba(18,182,190,0.72)_42%,rgba(242,24,115,0.35)_72%)] blur-[1px]" />
+          <article className="relative flex min-h-[202px] flex-col justify-between overflow-hidden rounded-xl bg-[#cfe8ff] p-5 text-[#141114] md:col-span-3 md:min-h-0">
+            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={120} height={120} className="pointer-events-none absolute -right-7 -top-7 size-28 opacity-25" />
             <div>
-              <p className="text-[11px] font-medium">{translate("home.impact.enrollment")}</p>
+              <span className="inline-flex rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold text-[#141114]">{translate("home.impact.tagEnrollment")}</span>
+              <p className="mt-3 text-[13px] font-medium leading-snug">{translate("home.impact.enrollment")}</p>
               <strong className="mt-1 block text-[clamp(3.5rem,5vw,4.4rem)] font-semibold leading-none tracking-[-0.07em]">5,500</strong>
             </div>
             <p className="max-w-[180px] text-[13px] leading-snug text-[#141114]/78">{translate("home.impact.enrollmentContext")}</p>
           </article>
 
-          <article className="flex min-h-[180px] flex-col justify-between rounded-xl bg-white p-5 text-[#141114] shadow-[var(--ui-shadow-panel)] md:col-span-3 md:min-h-0">
-            <p className="max-w-[150px] text-[13px] font-medium leading-snug">{translate("home.impact.formCompletion")}</p>
+          <article className="relative z-10 flex min-h-[180px] flex-col justify-between rounded-xl bg-[#efefef] p-5 text-[#141114] shadow-[0_18px_36px_rgba(14,41,81,0.18)] md:col-span-3 md:min-h-0">
+            <div>
+              <span className="inline-flex rounded-full bg-[#f5f5f5] px-3 py-1 text-[10px] font-semibold text-[#141114]">{translate("home.impact.tagFormCompletion")}</span>
+              <p className="mt-3 max-w-[180px] text-[15px] font-semibold leading-[1.16]">{translate("home.impact.formCompletion")}</p>
+            </div>
             <div className="flex items-end justify-between gap-3">
-              <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">35%</strong>
+              <div className="flex items-start gap-0.5">
+                <strong className="text-[clamp(3.5rem,5vw,4.4rem)] font-semibold leading-none tracking-[-0.07em]">35</strong>
+                <span className="mt-1 text-[clamp(1rem,1.5vw,1.3rem)] font-semibold leading-none">%</span>
+              </div>
               <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
             </div>
           </article>
 
-          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[radial-gradient(circle_at_82%_18%,#fff8ad_0%,#f8df36_34%,#f0a51b_100%)] p-5 text-[#141114] md:col-span-3 md:min-h-0">
-            <span aria-hidden="true" className="absolute -right-10 -bottom-12 size-36 rounded-full bg-white/20" />
-            <p className="max-w-[160px] text-[13px] font-medium leading-snug">{translate("home.impact.processingTime")}</p>
+          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[#f8df36] p-5 text-[#141114] md:col-span-3 md:min-h-0">
+            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={150} height={150} className="pointer-events-none absolute -bottom-10 -right-9 size-36 opacity-20" />
+            <div>
+              <span className="inline-flex rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold text-[#141114]">{translate("home.impact.tagProcessing")}</span>
+              <p className="mt-3 max-w-[160px] text-[13px] font-medium leading-snug">{translate("home.impact.processingTime")}</p>
+            </div>
             <div className="flex items-end justify-between gap-3">
-              <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">72%</strong>
+              <div className="flex items-start gap-0.5">
+                <strong className="text-[clamp(3.5rem,5vw,4.4rem)] font-semibold leading-none tracking-[-0.07em]">72</strong>
+                <span className="mt-1 text-[clamp(1rem,1.5vw,1.3rem)] font-semibold leading-none">%</span>
+              </div>
               <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
             </div>
           </article>
 
-          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[linear-gradient(135deg,#f8fbff_0%,#e3f5fb_54%,#d8f6f4_100%)] p-5 text-[#141114] md:col-span-4 md:min-h-0">
-            <span aria-hidden="true" className="absolute right-5 top-4 size-12 rounded-full bg-[radial-gradient(circle_at_35%_30%,white_0%,#12b6be_50%,#062d8d_100%)] opacity-35" />
-            <p className="max-w-[190px] text-[13px] font-medium leading-snug">{translate("home.impact.selfService")}</p>
+          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[#d8f6f4] p-5 text-[#141114] md:col-span-4 md:min-h-0">
+            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={104} height={104} className="pointer-events-none absolute -right-4 -top-4 size-24 opacity-25" />
+            <div>
+              <span className="inline-flex rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold text-[#141114]">{translate("home.impact.tagSelfService")}</span>
+              <p className="mt-3 max-w-[190px] text-[13px] font-medium leading-snug">{translate("home.impact.selfService")}</p>
+            </div>
             <div className="flex items-end justify-between gap-3">
               <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">500+</strong>
               <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
             </div>
           </article>
 
-          <div aria-hidden="true" className="relative hidden overflow-hidden bg-white md:col-span-2 md:block">
-            <span className="absolute -left-7 top-1 h-20 w-20 rounded-br-[4.5rem] bg-[linear-gradient(135deg,#12b6be_0%,#7ae7e6_45%,#f5feff_100%)] shadow-[0_12px_22px_rgba(18,182,190,0.22)]" />
-            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={120} height={120} className="absolute -right-6 -top-4 h-28 w-28 rotate-[-12deg] drop-shadow-[0_14px_14px_rgba(6,45,141,0.18)]" />
-            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={104} height={104} className="absolute -bottom-9 right-2 h-24 w-24 rotate-[163deg] opacity-85 drop-shadow-[0_10px_12px_rgba(242,24,115,0.18)]" />
+          <div aria-hidden="true" className="relative hidden overflow-hidden bg-[#f5f5f5] md:col-span-2 md:block">
+            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={150} height={150} className="absolute -left-8 -top-7 size-36 opacity-75" />
+            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={120} height={120} className="absolute -bottom-8 -right-7 size-28 rotate-180 opacity-55" />
           </div>
 
-          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[linear-gradient(135deg,#f8fcff_0%,#e7f5ff_62%,#dff8f4_100%)] p-5 text-[#141114] md:col-span-4 md:min-h-0">
-            <span aria-hidden="true" className="absolute -right-7 -top-8 size-24 rounded-full bg-[radial-gradient(circle_at_32%_32%,white_0%,#12b6be_55%,transparent_73%)] opacity-45" />
-            <p className="max-w-[190px] text-[13px] font-medium leading-snug">{translate("home.impact.supportCalls")}</p>
+          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[#dff8f4] p-5 text-[#141114] md:col-span-4 md:min-h-0">
+            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={104} height={104} className="pointer-events-none absolute -right-4 -top-4 size-24 opacity-25" />
+            <div>
+              <span className="inline-flex rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold text-[#141114]">{translate("home.impact.tagSupportImpact")}</span>
+              <p className="mt-3 max-w-[190px] text-[13px] font-medium leading-snug">{translate("home.impact.supportCalls")}</p>
+            </div>
             <div className="flex items-end justify-between gap-3">
               <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">9,000+</strong>
               <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
             </div>
           </article>
 
-          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[linear-gradient(135deg,#ffdff1_0%,#f9b5e5_52%,#ef86c9_100%)] p-5 text-[#141114] md:col-span-5 md:min-h-0">
-            <span aria-hidden="true" className="absolute -right-8 -bottom-10 size-36 rounded-full bg-white/25" />
-            <p className="max-w-[220px] text-[13px] font-medium leading-snug">{translate("home.impact.ticketReduction")}</p>
+          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[#f9b5e5] p-5 text-[#141114] md:col-span-5 md:min-h-0">
+            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={150} height={150} className="pointer-events-none absolute -bottom-10 -right-9 size-36 opacity-20" />
+            <div>
+              <span className="inline-flex rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold text-[#141114]">{translate("home.impact.tagSupportEfficiency")}</span>
+              <p className="mt-3 max-w-[220px] text-[13px] font-medium leading-snug">{translate("home.impact.ticketReduction")}</p>
+            </div>
             <div className="flex items-end justify-between gap-3">
               <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">500+</strong>
               <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
             </div>
           </article>
 
-          <article className="relative flex min-h-[180px] flex-col overflow-hidden rounded-xl bg-[linear-gradient(135deg,#e7ebff_0%,#cedcff_100%)] p-5 text-[#141114] md:col-span-3 md:min-h-0">
-            <span aria-hidden="true" className="absolute right-4 top-4 size-6 rounded-full bg-[radial-gradient(circle_at_30%_25%,white_0%,#f21873_48%,#062d8d_100%)] opacity-65" />
-            <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#141114]/70">{translate("home.impact.clientReview")}</p>
+          <article className="relative flex min-h-[180px] flex-col overflow-hidden rounded-xl bg-[#cedcff] p-5 text-[#141114] md:col-span-3 md:min-h-0">
+            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={64} height={64} className="pointer-events-none absolute right-4 top-4 size-12 opacity-45" />
+            <span className="inline-flex w-fit rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold text-[#141114]">{translate("home.impact.clientReview")}</span>
             <blockquote className="mt-3 text-[13px] font-medium leading-[1.42]">“{translate("home.impact.upworkQuote")}”</blockquote>
           </article>
         </div>
@@ -1496,6 +1520,8 @@ export default function PortfolioPage() {
                           className="pointer-events-none absolute left-1/2 top-6 z-10 w-16 -translate-x-1/2 brightness-0 invert drop-shadow-[0_3px_8px_rgba(0,0,0,0.3)] sm:w-[72px]"
                         />
                       </>
+                    ) : project.slug === "classical-word" ? (
+                      <ClassicalWordBrochurePreview className="transition duration-500 group-hover:scale-105" />
                     ) : project.image ? <Image src={project.image} alt="" fill sizes="33vw" className="object-cover transition duration-500 group-hover:scale-105" /> : null}
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_30%,rgba(255,255,255,0.94)_77%)]" />
                     <div className="relative flex h-full flex-col justify-end">

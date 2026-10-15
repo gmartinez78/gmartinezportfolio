@@ -3,6 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
+import { ClassicalWordBrochurePreview } from "@/components/classical-word-brochure-preview"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Heading } from "@/components/ui/heading"
@@ -50,6 +51,7 @@ export function ProjectCard({
   const translateTag = useTranslateTag()
   const resolvedCtaLabel = ctaLabel ?? translate("projectsPage.viewCaseStudy")
   const visibleTags = getVisibleProjectTags(tags)
+  const isClassicalWordBrochure = previewImage?.includes("/projects/classical-word/")
 
   return (
     <Link
@@ -69,7 +71,9 @@ export function ProjectCard({
           <div
             className={`relative h-full w-full overflow-hidden rounded-[30px] border border-white/60 bg-white/55 shadow-[0_18px_42px_rgba(31,53,94,0.08)] transition-transform duration-500 group-hover:scale-[1.03] ${reversed ? "md:rotate-[1.6deg]" : "md:rotate-[-1.6deg]"}`}
           >
-            {previewImage ? (
+            {isClassicalWordBrochure ? (
+              <ClassicalWordBrochurePreview className="transition-transform duration-500 group-hover:scale-[1.03]" />
+            ) : previewImage ? (
               <Image
                 src={previewImage}
                 alt={previewAlt}
