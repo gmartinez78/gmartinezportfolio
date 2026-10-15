@@ -192,7 +192,7 @@ function ProjectsPage() {
           <section key={group.title} className={index === 0 ? "rounded-[32px] border border-[#f0ded4] bg-[#fff8f3] p-6 sm:p-10" : "border-t-2 border-[#e9608a] pt-16"}>
             <div className="mb-9 border-b border-[#141114]/15 pb-5">
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e9608a]">Project type</p>
-              <h2 className="mt-3 font-serif-display text-[clamp(32px,4vw,46px)] leading-none text-[#141114]">{group.title}</h2>
+              <h2 className="mt-3 font-inter text-[clamp(32px,4vw,46px)] leading-none text-[#141114]">{group.title}</h2>
               <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-[#5c7792]">{group.description}</p>
             </div>
             <div className="flex flex-col gap-6">

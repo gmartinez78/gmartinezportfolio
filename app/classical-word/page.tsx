@@ -57,7 +57,7 @@ export default function ClassicalWordPage() {
               <ArrowLeft className="h-4 w-4" /> Back to projects
             </Link>
             <p className="mt-12 text-[12px] font-semibold uppercase tracking-[0.32em] text-[#a27336]">Print design / 2026</p>
-            <h1 className="mt-5 max-w-[600px] font-playfair-display text-[52px] leading-[0.97] text-[#241d17] sm:text-[68px] lg:text-[76px]">
+            <h1 className="mt-5 max-w-[600px] font-inter text-[52px] leading-[0.97] text-[#241d17] sm:text-[68px] lg:text-[76px]">
               A brochure with a sense of place.
             </h1>
             <p className="mt-7 max-w-[520px] text-[17px] leading-[1.8] text-[#62564a]">
@@ -90,7 +90,7 @@ export default function ClassicalWordPage() {
         <div className="mx-auto max-w-[1240px] px-6 md:px-10 lg:px-20">
           <div className="mx-auto max-w-[760px] text-center">
             <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-[#a27336]">Print presentation</p>
-            <h2 className="mt-4 font-playfair-display text-[40px] leading-tight text-[#241d17] sm:text-[52px]">The brand, from first fold to the full story.</h2>
+            <h2 className="mt-4 font-inter text-[40px] leading-tight text-[#241d17] sm:text-[52px]">The brand, from first fold to the full story.</h2>
             <p className="mt-5 text-[16px] leading-[1.8] text-[#62564a]">A three-part presentation that introduces the visual language, compares both sides of the brochure, then reveals the full interior.</p>
           </div>
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
@@ -101,7 +101,7 @@ export default function ClassicalWordPage() {
             ].map(([title, src, caption]) => (
               <figure key={title} className="overflow-hidden rounded-[20px] border border-[#a27336]/20 bg-[#fffdf8] p-2 shadow-[0_14px_36px_rgba(74,53,26,0.08)]">
                 <Image src={withBasePath(src)} alt={`${title} presentation for the Classical Word trifold brochure`} width={1600} height={1510} className="h-auto w-full rounded-[14px]" />
-                <figcaption className="p-5"><p className="font-playfair-display text-[24px] text-[#2e251e]">{title}</p><p className="mt-2 text-[13px] leading-[1.65] text-[#6c5d4d]">{caption}</p></figcaption>
+                <figcaption className="p-5"><p className="font-inter text-[24px] text-[#2e251e]">{title}</p><p className="mt-2 text-[13px] leading-[1.65] text-[#6c5d4d]">{caption}</p></figcaption>
               </figure>
             ))}
           </div>
@@ -112,11 +112,11 @@ export default function ClassicalWordPage() {
         <div className="mx-auto max-w-[1240px] px-6 md:px-10 lg:px-20">
           <div className="mx-auto max-w-[720px] text-center">
             <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-[#a27336]">Design direction</p>
-            <h2 className="mt-4 font-playfair-display text-[40px] leading-tight text-[#241d17] sm:text-[52px]">Designed to feel considered, not crowded.</h2>
+            <h2 className="mt-4 font-inter text-[40px] leading-tight text-[#241d17] sm:text-[52px]">Designed to feel considered, not crowded.</h2>
             <p className="mt-5 text-[16px] leading-[1.8] text-[#62564a]">The visual system leans into the warmth of traditional print materials while giving every message a clear hierarchy and enough room to breathe.</p>
           </div>
           <div className="mt-14 grid gap-5 md:grid-cols-3">
-            {principles.map(({ icon: Icon, title, body }, index) => <article key={title} className="relative overflow-hidden rounded-[20px] border border-[#a27336]/20 bg-[#fffdf8] p-7 shadow-[0_12px_30px_rgba(74,53,26,0.05)]"><span className="absolute right-5 top-3 font-playfair-display text-[64px] leading-none text-[#b68a4d]/15">0{index + 1}</span><Icon className="h-6 w-6 text-[#a27336]" strokeWidth={1.5} /><h3 className="mt-7 font-playfair-display text-[26px] leading-tight text-[#2e251e]">{title}</h3><p className="mt-4 text-[14px] leading-[1.75] text-[#6c5d4d]">{body}</p></article>)}
+            {principles.map(({ icon: Icon, title, body }, index) => <article key={title} className="relative overflow-hidden rounded-[20px] border border-[#a27336]/20 bg-[#fffdf8] p-7 shadow-[0_12px_30px_rgba(74,53,26,0.05)]"><span className="absolute right-5 top-3 font-inter text-[64px] leading-none text-[#b68a4d]/15">0{index + 1}</span><Icon className="h-6 w-6 text-[#a27336]" strokeWidth={1.5} /><h3 className="mt-7 font-inter text-[26px] leading-tight text-[#2e251e]">{title}</h3><p className="mt-4 text-[14px] leading-[1.75] text-[#6c5d4d]">{body}</p></article>)}
           </div>
         </div>
       </section>
@@ -125,7 +125,7 @@ export default function ClassicalWordPage() {
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
             <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-[#a27336]">The complete piece</p>
-            <h2 className="mt-4 max-w-[560px] font-playfair-display text-[42px] leading-[1.06] text-[#241d17] sm:text-[58px]">An interior that turns information into an experience.</h2>
+            <h2 className="mt-4 max-w-[560px] font-inter text-[42px] leading-[1.06] text-[#241d17] sm:text-[58px]">An interior that turns information into an experience.</h2>
           </div>
           <p className="max-w-[520px] text-[16px] leading-[1.8] text-[#62564a]">The reverse side gives the programme’s story more depth: why Classical Arabic matters, what learners can expect, and the faculty credentials that establish trust.</p>
         </div>
@@ -138,7 +138,7 @@ export default function ClassicalWordPage() {
         <div className="mx-auto flex max-w-[1100px] flex-col items-center text-center">
           <Sparkles className="h-7 w-7 text-[#d5af68]" strokeWidth={1.4} />
           <p className="mt-7 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#d5af68]">Portfolio project</p>
-          <h2 className="mt-4 max-w-[760px] font-playfair-display text-[40px] leading-tight sm:text-[54px]">Good print design guides the eye before it asks for attention.</h2>
+          <h2 className="mt-4 max-w-[760px] font-inter text-[40px] leading-tight sm:text-[54px]">Good print design guides the eye before it asks for attention.</h2>
           <Link href={withBasePath("/projects")} className="mt-10 inline-flex items-center gap-2 rounded-full border border-[#d5af68]/50 px-5 py-3 text-[13px] font-semibold transition-colors hover:bg-[#d5af68] hover:text-[#29231d]">Explore more work <ArrowUpRight className="h-4 w-4" /></Link>
         </div>
       </section>

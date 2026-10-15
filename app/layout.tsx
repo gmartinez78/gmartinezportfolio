@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { inter, playfairDisplay } from "../lib/fonts";
+import { inter } from "../lib/fonts";
 import { LanguageProvider } from "../lib/i18n/language-context";
 import { defaultDescription, defaultTitle, getPersonSchema, getWebsiteSchema, siteUrl } from "../lib/seo";
 import { SiteRail } from "../components/site-rail";
@@ -50,8 +50,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${playfairDisplay.variable} ${inter.variable} font-sans`}>
-      <body className={`${playfairDisplay.variable} ${inter.variable} font-inter`} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} font-sans`}>
+      <body className={`${inter.variable} font-inter`} suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(getWebsiteSchema()) }}

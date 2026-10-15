@@ -1,12 +1,6 @@
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter } from "next/font/google";
 
 export const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-});
-
-export const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-playfair-display",
 });

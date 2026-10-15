@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowUp, BrainCircuit, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, Heart, LayoutTemplate, Lightbulb, MessageCircle, Mic, MousePointer2, Paperclip, Repeat2, Star, Target, Wand2 } from "lucide-react";
+import { ArrowUp, ArrowUpRight, BrainCircuit, Check, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, Heart, LayoutTemplate, Lightbulb, MessageCircle, Mic, MousePointer2, Paperclip, Play, Repeat2, Star, Target, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { ChecklistStatusCard } from "./components/checklist-status-card";
@@ -76,6 +76,91 @@ type HeroAssistantResult = {
 };
 
 type HeroVisitorType = "recruiter" | "client";
+
+const PROCESS_CAPABILITIES = [
+  {
+    id: "ai-product",
+    href: "/projects/nayya-ai-benefits",
+    media: { videoSrc: null as string | null, posterSrc: null as string | null },
+    keys: {
+      label: "home.process.aiProduct.label",
+      project: "home.process.aiProduct.project",
+      title: "home.process.aiProduct.title",
+      description: "home.process.aiProduct.description",
+      outcomes: [
+        "home.process.aiProduct.outcome1",
+        "home.process.aiProduct.outcome2",
+        "home.process.aiProduct.outcome3",
+      ],
+    },
+  },
+  {
+    id: "product-research",
+    href: "/benefits",
+    media: { videoSrc: null as string | null, posterSrc: null as string | null },
+    keys: {
+      label: "home.process.productResearch.label",
+      project: "home.process.productResearch.project",
+      title: "home.process.productResearch.title",
+      description: "home.process.productResearch.description",
+      outcomes: [
+        "home.process.productResearch.outcome1",
+        "home.process.productResearch.outcome2",
+        "home.process.productResearch.outcome3",
+      ],
+    },
+  },
+  {
+    id: "design-systems",
+    href: "/projects/flock-accessibility-system",
+    media: { videoSrc: null as string | null, posterSrc: null as string | null },
+    keys: {
+      label: "home.process.designSystems.label",
+      project: "home.process.designSystems.project",
+      title: "home.process.designSystems.title",
+      description: "home.process.designSystems.description",
+      outcomes: [
+        "home.process.designSystems.outcome1",
+        "home.process.designSystems.outcome2",
+        "home.process.designSystems.outcome3",
+      ],
+    },
+  },
+  {
+    id: "accessibility-audits",
+    href: "/projects/flock-accessibility-system",
+    media: { videoSrc: null as string | null, posterSrc: null as string | null },
+    keys: {
+      label: "home.process.accessibility.label",
+      project: "home.process.accessibility.project",
+      title: "home.process.accessibility.title",
+      description: "home.process.accessibility.description",
+      outcomes: [
+        "home.process.accessibility.outcome1",
+        "home.process.accessibility.outcome2",
+        "home.process.accessibility.outcome3",
+      ],
+    },
+  },
+  {
+    id: "brand-social",
+    href: "/protecta",
+    media: { videoSrc: null as string | null, posterSrc: null as string | null },
+    keys: {
+      label: "home.process.brandSocial.label",
+      project: "home.process.brandSocial.project",
+      title: "home.process.brandSocial.title",
+      description: "home.process.brandSocial.description",
+      outcomes: [
+        "home.process.brandSocial.outcome1",
+        "home.process.brandSocial.outcome2",
+        "home.process.brandSocial.outcome3",
+      ],
+    },
+  },
+] as const;
+
+type ProcessCapabilityId = (typeof PROCESS_CAPABILITIES)[number]["id"];
 
 const HERO_ASSISTANT_SUGGESTIONS = [
   "Show me AI projects",
@@ -471,10 +556,12 @@ export default function PortfolioPage() {
   const [heroAssistantResults, setHeroAssistantResults] = useState<HeroAssistantResult["items"]>([]);
   const [highlightedProjectIds, setHighlightedProjectIds] = useState<string[]>([]);
   const [activeProjectCardId, setActiveProjectCardId] = useState<string | null>(null);
+  const [activeProcessCapability, setActiveProcessCapability] = useState<ProcessCapabilityId>("ai-product");
   const [heroParallax, setHeroParallax] = useState(0);
   const heroScrollRef = useRef<HTMLDivElement | null>(null);
   const { siteContent } = usePublicSiteContent();
   const { caseStudies } = usePublicCaseStudies();
+  const activeProcess = PROCESS_CAPABILITIES.find((capability) => capability.id === activeProcessCapability) ?? PROCESS_CAPABILITIES[0];
   const requiredCollaborators = [
     { name: "Zapiano", logo: "/images/zapiano-logo.svg" },
     { name: "Habitat for Humanity", logo: "/images/habitat-for-humanity.svg" },
@@ -1074,7 +1161,7 @@ export default function PortfolioPage() {
           </Heading>
           <span className="h-[5px] w-28 -rotate-1 rounded-full bg-[#26aee2]" />
         </div>
-        <p className="relative z-10 mb-4 max-w-[320px] text-center font-serif-display text-[17px] italic leading-[1.55] text-[#4c3b42] md:max-w-[560px] md:text-[21px]">
+        <p className="relative z-10 mb-4 max-w-[320px] text-center font-inter text-[17px] italic leading-[1.55] text-[#4c3b42] md:max-w-[560px] md:text-[21px]">
           {siteContent.home.tools_section.description}
         </p>
         <Button asChild variant="editorial" size="hero" className="relative z-10 h-12 text-base font-bold">
@@ -1140,7 +1227,7 @@ export default function PortfolioPage() {
       <section className="bg-white">
         <div ref={heroScrollRef} className="min-[1025px]:h-[100svh]">
         <div className="relative isolate overflow-hidden bg-white px-5 pb-8 pt-24 sm:px-10 sm:pt-[8.25rem] lg:px-16 lg:pb-14 min-[1025px]:sticky min-[1025px]:top-2 min-[1025px]:h-[100svh] min-[1025px]:overflow-hidden min-[1025px]:pt-[5.5rem]">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_24%,rgba(255,255,255,0.95),transparent_25%),radial-gradient(circle_at_72%_58%,rgba(255,234,223,0.28),transparent_28%),linear-gradient(112deg,#ffffff_0%,#ffffff_54%,#ffffff_100%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[image:var(--ui-surface-hero)]" />
           <div className="pointer-events-none absolute right-[7%] top-[16%] hidden h-14 w-14 rotate-12 xl:block">
             <span className="absolute left-6 top-0 h-full w-[3px] rotate-45 rounded-full bg-[#f06d96]" />
             <span className="absolute left-6 top-0 h-full w-[3px] -rotate-45 rounded-full bg-[#f06d96]" />
@@ -1186,7 +1273,7 @@ export default function PortfolioPage() {
                 <p className="text-[13px] font-bold uppercase leading-relaxed tracking-[0.04em] text-[#159bd0] sm:text-sm">
                   {translate("home.mainHeroFocus")}
                 </p>
-                <p className="mt-1 font-serif-display text-base italic leading-relaxed text-[#3d3438] sm:text-lg">{translate("home.mainHeroDescription")}</p>
+                <p className="mt-1 font-inter text-base italic leading-relaxed text-[#3d3438] sm:text-lg">{translate("home.mainHeroDescription")}</p>
                 <nav
                   aria-label={translate("projectsPage.filterBy")}
                   className="mt-6 flex flex-wrap justify-center gap-2 xl:justify-start"
@@ -1230,8 +1317,8 @@ export default function PortfolioPage() {
                 <svg className="absolute bottom-5 right-6 h-8 w-7 rotate-[8deg]" viewBox="0 0 28 32" fill="none" aria-hidden="true">
                   <path d="M14 28C6 22 3 17 3 11c0-4 2-7 5-7 3 0 5 3 6 5 1-2 3-5 6-5 3 0 5 3 5 7 0 6-3 11-11 17Z" stroke="#087DCE" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <p className="font-serif-display text-[23px] italic leading-[1.1] xl:text-[27px]">{translate("home.heroIdeaTop")}</p>
-                <p className="mt-2 font-serif-display text-[23px] italic leading-[1.1] xl:text-[27px]">{translate("home.heroIdeaBottom")}</p>
+                <p className="font-inter text-[23px] italic leading-[1.1] xl:text-[27px]">{translate("home.heroIdeaTop")}</p>
+                <p className="mt-2 font-inter text-[23px] italic leading-[1.1] xl:text-[27px]">{translate("home.heroIdeaBottom")}</p>
                 <div className="mt-5 h-[3px] w-24 bg-[#087da9]" />
                 <p className="mt-4 text-[10px] font-bold uppercase leading-relaxed tracking-[0.12em]">{translate("home.heroIdeaDescription")}</p>
               </div>
@@ -1239,7 +1326,7 @@ export default function PortfolioPage() {
                 <div className="flex items-center gap-2 text-[9px] font-bold"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f8d6ca] text-[#e06b91]">G</span><span>Greddys Martinez<br /><span className="font-normal text-[#766568]">@randomlygreddys</span></span><span className="ml-auto text-base">•••</span></div>
                 <p className="mt-4 text-xs">{translate("home.heroNewBrand")} <span className="text-[#eaa223]">✦</span></p>
                 <div className="mt-3 grid grid-cols-[1fr_0.72fr] gap-2">
-                  <p className="font-serif-display text-[26px] font-semibold leading-[0.9]">{translate("home.heroDesignPower")}</p>
+                  <p className="font-inter text-[26px] font-semibold leading-[0.9]">{translate("home.heroDesignPower")}</p>
                   <div className="relative aspect-square overflow-hidden rounded-[10px]">
                     <Image src="/images/home-card-flower-vase.png" alt="Yellow flower in a black vase" fill sizes="120px" className="object-cover" />
                   </div>
@@ -1248,7 +1335,7 @@ export default function PortfolioPage() {
               </div>
               <div className="absolute right-[4%] bottom-[3%] z-20 hidden w-[210px] overflow-hidden rounded-[8px] bg-[#96e4d8] text-[#102a36] shadow-[0_18px_34px_rgba(31,122,157,0.25)] xl:block xl:w-[235px] animate-[hero-paper-float_5.8s_ease-in-out_infinite]" style={{ ["--paper-rotate" as string]: "4deg", translate: `0 -${heroParallax * 0.7}px` }}>
                 <div className="flex h-6 items-center justify-between bg-[#11b9a7] px-3 text-[7px] font-bold"><span className="flex items-center gap-1"><i className="h-2 w-2 rounded-full bg-[#ff5f57]" /><i className="h-2 w-2 rounded-full bg-[#febc2e]" /><i className="h-2 w-2 rounded-full bg-[#28c840]" /></span><span>{translate("home.heroShopNav")}</span></div>
-                <div className="grid grid-cols-[0.88fr_1.12fr] gap-2 p-4"><div><p className="font-serif-display text-[28px] leading-[0.88]">{translate("home.heroGlow")}</p><button className="mt-3 bg-[#172423] px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.12em] text-white">{translate("home.heroBuy")}</button></div><div className="relative min-h-[115px] overflow-hidden rounded-sm"><Image src="/images/home-card-perfume.png" alt="" fill sizes="125px" className="object-cover object-[62%_50%]" /></div></div>
+                <div className="grid grid-cols-[0.88fr_1.12fr] gap-2 p-4"><div><p className="font-inter text-[28px] leading-[0.88]">{translate("home.heroGlow")}</p><button className="mt-3 bg-[#172423] px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.12em] text-white">{translate("home.heroBuy")}</button></div><div className="relative min-h-[115px] overflow-hidden rounded-sm"><Image src="/images/home-card-perfume.png" alt="" fill sizes="125px" className="object-cover object-[62%_50%]" /></div></div>
               </div>
             </div>
           </Container>
@@ -1292,7 +1379,7 @@ export default function PortfolioPage() {
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_30%,rgba(255,255,255,0.94)_77%)]" />
                     <div className="relative flex h-full flex-col justify-end">
                       <span className="text-xs font-bold uppercase tracking-[0.14em] text-[#5d5260]">{project.company}</span>
-                      <span className="mt-2 font-serif-display text-3xl leading-none text-[#171315]">{project.title}</span>
+                      <span className="mt-2 font-inter text-3xl leading-none text-[#171315]">{project.title}</span>
                       <span className="mt-4 translate-y-2 text-sm font-semibold text-[#e05f88] opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">{translate("home.viewProject")} →</span>
                     </div>
                   </Link>
@@ -1325,6 +1412,107 @@ export default function PortfolioPage() {
               ))}
             </div>
           </div>
+        </section>
+
+        <section hidden id="process" aria-labelledby="process-title" className="border-y border-[var(--ui-color-border-strong)] bg-[var(--ui-color-surface-base)] px-6 py-16 md:px-10 md:py-24 lg:px-20">
+          <Container size="wide">
+            <div className="mx-auto max-w-3xl text-center">
+              <Heading id="process-title" as="h2" variant="display" className="text-[clamp(2.15rem,4vw,3.5rem)]">
+                {translate("home.process.title")}
+              </Heading>
+            </div>
+
+            <div role="tablist" aria-label={translate("home.process.tabsAria")} className="mx-auto mt-10 flex max-w-5xl gap-1 overflow-x-auto rounded-[var(--ui-radius-pill)] bg-[var(--ui-color-surface-base)] p-2 shadow-[var(--ui-shadow-panel)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {PROCESS_CAPABILITIES.map((capability) => {
+                const isActive = activeProcessCapability === capability.id;
+
+                return (
+                  <Button
+                    key={capability.id}
+                    id={`process-tab-${capability.id}`}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-controls={`process-panel-${capability.id}`}
+                    variant={isActive ? "secondary" : "ghost"}
+                    size="xs"
+                    onClick={() => setActiveProcessCapability(capability.id)}
+                    className="min-h-10 shrink-0 rounded-[var(--ui-radius-pill)] px-4 text-[var(--ui-color-text-body)] hover:text-[var(--ui-color-brand-primary)] data-[variant=secondary]:text-[var(--ui-color-brand-primary)]"
+                  >
+                    {translate(capability.keys.label)}
+                  </Button>
+                );
+              })}
+            </div>
+
+            <div
+              id={`process-panel-${activeProcess.id}`}
+              role="tabpanel"
+              aria-labelledby={`process-tab-${activeProcess.id}`}
+              className="mt-8"
+            >
+              <div className="grid gap-8 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-14">
+                <div className="flex flex-col justify-center">
+                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--ui-color-brand-primary)]">
+                    {translate(activeProcess.keys.label)}
+                  </span>
+                  <Heading as="h3" variant="feature" className="mt-4 max-w-md text-[clamp(1.7rem,2.7vw,2.45rem)]">
+                    {translate(activeProcess.keys.title)}
+                  </Heading>
+                  <p className="mt-4 max-w-lg text-base leading-relaxed text-[var(--ui-color-text-body)]">
+                    {translate(activeProcess.keys.description)}
+                  </p>
+                  <ul className="mt-7 grid gap-3" aria-label={translate("home.process.outcomesAria")}>
+                    {activeProcess.keys.outcomes.map((outcome) => (
+                      <li key={outcome} className="flex items-start gap-3 text-sm leading-relaxed text-[var(--ui-color-text-strong)]">
+                        <Check aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-[var(--ui-color-brand-primary)]" strokeWidth={2.5} />
+                        <span>{translate(outcome)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button asChild variant="outline" size="xs" className="mt-7 w-fit rounded-[var(--ui-radius-pill)]">
+                    <Link href={withBasePath(activeProcess.href)}>
+                      {translate("home.process.viewProject")}
+                      <ArrowUpRight aria-hidden="true" className="size-4" />
+                    </Link>
+                  </Button>
+                </div>
+
+                <div className="relative grid min-h-[290px] place-items-center overflow-hidden rounded-[var(--ui-radius-panel)] bg-[var(--ui-color-surface-soft)] p-6 sm:min-h-[360px] sm:p-10">
+                  {activeProcess.media.videoSrc ? (
+                    <video
+                      src={activeProcess.media.videoSrc}
+                      poster={activeProcess.media.posterSrc ?? undefined}
+                      muted
+                      loop
+                      playsInline
+                      autoPlay
+                      className="absolute inset-0 size-full object-cover"
+                    />
+                  ) : (
+                    <>
+                      <span aria-hidden="true" className="absolute -right-16 -top-20 size-64 rounded-full border border-[var(--ui-color-brand-primary)] opacity-10" />
+                      <span aria-hidden="true" className="absolute -bottom-24 -left-20 size-72 rounded-full bg-[var(--ui-color-brand-primary-soft)] opacity-70" />
+                    </>
+                  )}
+                  <div className="relative z-10 max-w-sm text-center">
+                    <div className="mx-auto grid size-14 place-items-center rounded-full bg-[var(--ui-color-brand-primary)] text-white shadow-[var(--ui-shadow-button)]">
+                      <Play aria-hidden="true" className="ml-0.5 size-5 fill-current" />
+                    </div>
+                    <span className="mt-7 block text-xs font-semibold uppercase tracking-[0.16em] text-[var(--ui-color-brand-primary)]">
+                      {translate("home.process.featuredProject")}
+                    </span>
+                    <p className="mt-2 font-inter text-3xl leading-tight text-[var(--ui-color-text-strong)] sm:text-4xl">
+                      {translate(activeProcess.keys.project)}
+                    </p>
+                    <span className="mt-3 block text-sm text-[var(--ui-color-text-muted)]">
+                      {translate("home.process.videoPlaceholder")}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Container>
         </section>
 
         <section className="relative isolate overflow-hidden bg-white px-6 pb-10 pt-16 text-center md:px-10 md:pb-12 md:pt-20 lg:px-20">
