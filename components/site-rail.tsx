@@ -171,7 +171,7 @@ export function SiteRail() {
       <Link
         href={withBasePath("/")}
         aria-label={translate("rail.homeAria")}
-        className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-[#bcd2ff]/70 bg-white p-2 shadow-[0_3px_10px_rgba(14,41,81,0.12)] transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0]/40"
+        className="group relative flex h-10 w-10 items-center justify-center rounded-full bg-white p-2 transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0]/40"
       >
         <img src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" className="h-full w-full" />
         <span className="pointer-events-none absolute left-[calc(100%+12px)] top-1/2 z-[70] -translate-y-1/2 whitespace-nowrap rounded-lg bg-[#0e2951] px-2.5 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg ring-1 ring-[#1183D0]/30 transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100">
