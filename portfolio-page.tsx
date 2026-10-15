@@ -1148,7 +1148,7 @@ export default function PortfolioPage() {
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,248,243,0.32)_0%,rgba(255,248,243,0.04)_30%,rgba(215,181,154,0.12)_100%)]" />
           </div>
           <Container size="wide" className="relative grid min-h-0 items-center gap-2 xl:min-h-[650px] xl:grid-cols-[1.08fr_0.92fr] xl:gap-4 2xl:min-h-[720px] 2xl:max-w-[1440px]">
-            <div className="relative z-40 order-2 max-w-[800px] pb-2 text-center xl:order-1 xl:translate-x-12 xl:pb-12 xl:text-left 2xl:translate-y-8">
+            <div className="relative z-40 order-2 max-w-[800px] pb-2 text-center xl:order-1 xl:-translate-y-12 xl:translate-x-12 xl:pb-12 xl:text-left 2xl:-translate-y-16">
               <div className="relative mb-5 inline-flex max-w-full -rotate-[5deg] overflow-hidden bg-[#39b8e7] px-3 py-2 text-[9px] font-medium tracking-[0.04em] text-[#163143] shadow-[0_5px_10px_rgba(18,111,148,0.16)] [clip-path:polygon(0_9%,2%_1%,7%_4%,12%_0,18%_3%,25%_0,31%_4%,38%_1%,45%_4%,52%_0,59%_3%,66%_0,74%_4%,81%_1%,88%_4%,96%_0,100%_9%,98%_21%,100%_36%,98%_51%,100%_67%,98%_83%,100%_94%,95%_100%,89%_96%,83%_100%,75%_96%,68%_100%,61%_97%,54%_100%,47%_96%,40%_100%,33%_97%,26%_100%,18%_96%,11%_100%,4%_96%,0_87%,2%_72%,0_56%,2%_41%,0_25%)] sm:mb-7 sm:px-7 sm:py-2.5 sm:text-sm xl:-translate-x-12">
                 <span className="absolute inset-0 opacity-20 [background-image:linear-gradient(30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%),linear-gradient(-30deg,transparent_42%,rgba(255,255,255,0.7)_43%,transparent_45%)] [background-size:18px_16px]" />
                 <span className="absolute inset-x-2 top-1 h-px bg-white/45" />
