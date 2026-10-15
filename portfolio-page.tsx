@@ -598,6 +598,12 @@ export default function PortfolioPage() {
       href: "/projects/?topic=SaaS",
     },
   ];
+  const heroAssistantSuggestions = [
+    "home.assistantSuggestion1",
+    "home.assistantSuggestion2",
+    "home.assistantSuggestion3",
+    "home.assistantSuggestion4",
+  ] as const;
   const logoCarousel = [...socialProofLogos, ...socialProofLogos];
   const allProjects = appendLockedNayyaPlaceholder(caseStudies ?? []);
   const homeProjects = allProjects
@@ -655,10 +661,8 @@ export default function PortfolioPage() {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  async function handleHeroAssistantSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const query = heroAssistantQuery.trim();
+  function runHeroAssistantQuery(rawQuery: string) {
+    const query = rawQuery.trim();
     if (!query) {
       setHeroAssistantResponse(translate("home.assistantDefaultResponse"));
       setHeroAssistantResults([]);
@@ -676,6 +680,11 @@ export default function PortfolioPage() {
       setHeroAssistantResponse(translate("home.assistantSearchError"));
       setHeroAssistantResults([]);
     }
+  }
+
+  function handleHeroAssistantSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    runHeroAssistantQuery(heroAssistantQuery);
   }
 
   function handleHeroVisitorTypeSelect(type: HeroVisitorType) {
@@ -1426,9 +1435,9 @@ export default function PortfolioPage() {
         <div>
         <div className="relative isolate overflow-hidden bg-white px-5 pb-8 pt-24 sm:px-10 sm:pt-[8.25rem] lg:px-16 lg:pb-14 min-[1025px]:pt-[5.5rem]">
           <div className="pointer-events-none absolute inset-0 bg-[image:var(--ui-surface-hero)]" />
-          <Container size="wide" className="relative grid min-h-0 items-center gap-7 lg:min-h-[500px] lg:grid-cols-[0.86fr_1.14fr] lg:gap-10 xl:min-h-[560px] xl:gap-14 2xl:max-w-[1440px]">
-            <div className="relative z-10 order-2 mx-auto max-w-[800px] pb-2 text-center lg:mx-0 lg:max-w-[640px] lg:pb-0 lg:text-left">
-              <div className="mx-auto max-w-[700px] lg:mx-0">
+          <Container size="wide" className="relative flex min-h-[300px] items-center justify-center sm:min-h-[340px] lg:min-h-[380px]">
+            <div className="relative z-10 mx-auto w-full min-w-0 max-w-[700px] pb-2 text-center lg:pb-0">
+              <div className="mx-auto w-full min-w-0 max-w-[700px]">
                 <p className="text-[12px] font-semibold leading-relaxed tracking-[0.02em] text-[var(--ui-color-brand-primary)] sm:text-sm">
                   {translate("home.mainHeroFocus")}
                 </p>
@@ -1438,7 +1447,7 @@ export default function PortfolioPage() {
                 </Heading>
                 <nav
                   aria-label={translate("projectsPage.filterBy")}
-                  className="mt-6 grid justify-items-center gap-2 sm:flex sm:flex-wrap sm:justify-center lg:justify-start"
+                  className="mt-6 hidden flex-wrap justify-center gap-2 sm:flex"
                 >
                   {heroFilters.map(({ label, href }) => (
                     <Badge key={href} asChild variant="outline" size="default" className="max-sm:min-h-7 max-sm:px-3 max-sm:text-[13px]">
@@ -1449,19 +1458,86 @@ export default function PortfolioPage() {
                     </Badge>
                   ))}
                 </nav>
+                <div
+                  hidden
+                  className="mt-6 w-full min-w-0 max-w-[540px] rounded-[24px] border border-[#b7ddf4] bg-white p-4 text-left text-[#0e2951] shadow-[0_18px_38px_rgba(14,41,81,0.1)] sm:p-5"
+                  style={{ width: "min(540px, calc(100vw - 2.5rem))" }}
+                >
+                  <div className="flex items-center gap-2 text-[#0e5f9a]">
+                    <span className="inline-flex size-7 items-center justify-center rounded-full bg-[#1183D0] text-white">
+                      <BrainCircuit aria-hidden="true" className="size-4" />
+                    </span>
+                    <span className="text-sm font-semibold">{translate("home.assistantHeroTitle")}</span>
+                  </div>
+                  <p className="mt-4 text-[15px] font-medium leading-snug text-[#0e2951] sm:text-base">
+                    {translate("home.assistantHeroPrompt")}
+                  </p>
+                  <form onSubmit={handleHeroAssistantSubmit} className="mt-3 flex items-center gap-2 rounded-[15px] border border-[#c5def0] bg-[#eef7fd] p-1.5">
+                    <Mic aria-hidden="true" className="ml-2 size-4 shrink-0 text-[#1183D0]" />
+                    <input
+                      value={heroAssistantQuery}
+                      onChange={(event) => setHeroAssistantQuery(event.target.value)}
+                      aria-label={translate("home.assistantHeroPlaceholder")}
+                      placeholder={translate("home.assistantHeroPlaceholder")}
+                      className="min-w-0 flex-1 bg-transparent py-2 text-sm text-[#0e2951] outline-none placeholder:text-[#5c8fb2]"
+                    />
+                    <button
+                      type="submit"
+                      aria-label={translate("home.assistantHeroSubmit")}
+                      className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-[#2183ca] text-white transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2183ca]"
+                    >
+                      <ArrowRight aria-hidden="true" className="size-4" strokeWidth={2.5} />
+                    </button>
+                  </form>
+                  {heroAssistantQuery.trim() ? (
+                    <div className="mt-3 border-t border-[#d8e7f2] pt-3">
+                      <p className="text-xs leading-relaxed text-[#4c6276]">{heroAssistantResponse}</p>
+                      {heroAssistantResults.slice(0, 1).map((result) => (
+                        <Link
+                          key={result.id}
+                          href={result.href}
+                          className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-[#0e78bc] hover:text-[#0e2951]"
+                        >
+                          {result.title}
+                          <ArrowRight aria-hidden="true" className="size-3.5" />
+                        </Link>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+                <div hidden className="mt-3 max-w-[540px] flex-wrap justify-center gap-2">
+                  {heroAssistantSuggestions.map((suggestion) => {
+                    const query = translate(suggestion);
+
+                    return (
+                      <button
+                        key={suggestion}
+                        type="button"
+                        onClick={() => {
+                          setHeroAssistantQuery(query);
+                          runHeroAssistantQuery(query);
+                        }}
+                        className="rounded-full border border-[#1183D0]/25 bg-white/75 px-3 py-1.5 text-[11px] font-semibold text-[#0e5f9a] transition-colors hover:border-[#1183D0] hover:bg-[#e9f6ff]"
+                      >
+                        {query}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
             </div>
-            <div className="relative order-1 mx-auto h-[260px] w-full max-w-[280px] sm:h-[380px] sm:max-w-[380px] lg:mx-0 lg:h-[460px] lg:max-w-[460px] xl:h-[520px] xl:max-w-[520px]">
-              <div aria-hidden="true" className="absolute left-1/2 top-[48%] size-[76%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--ui-color-brand-primary)]" />
+            <div hidden className="relative order-1 mx-auto h-[260px] w-full max-w-[280px] sm:h-[380px] sm:max-w-[380px] lg:mx-0 lg:h-[460px] lg:max-w-[460px] xl:h-[520px] xl:max-w-[520px]">
+              <div className="absolute left-1/2 top-[48%] z-10 size-[76%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full bg-[var(--ui-color-brand-primary)]">
+                <Image
+                  src="/images/home-hero-portrait-white.png"
+                  alt="Greddys Martinez"
+                  fill
+                  priority
+                  sizes="(min-width: 1280px) 520px, (min-width: 1024px) 460px, (min-width: 640px) 380px, 320px"
+                  className="object-contain object-bottom"
+                />
+              </div>
               <div aria-hidden="true" className="absolute left-1/2 top-[48%] size-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full border-[9px] border-[var(--ui-color-brand-primary)] border-b-transparent border-l-transparent rotate-[28deg] opacity-70" />
-              <Image
-                src="/images/home-hero-portrait-white.png"
-                alt="Greddys Martinez"
-                fill
-                priority
-                sizes="(min-width: 1280px) 520px, (min-width: 1024px) 460px, (min-width: 640px) 380px, 320px"
-                className="relative z-10 object-contain object-bottom"
-              />
             </div>
           </Container>
         </div>

@@ -510,6 +510,13 @@ export const dictionary = {
     en: "Where can I see resume details?",
     es: "¿Dónde puedo ver los detalles del currículum?",
   },
+  "home.assistantHeroTitle": { en: "Ask Greddys AI", es: "Pregunta a Greddys AI" },
+  "home.assistantHeroPrompt": { en: "Ask about my work", es: "Pregunta sobre mi trabajo" },
+  "home.assistantHeroPlaceholder": {
+    en: "Projects, skills, or experience",
+    es: "Proyectos, habilidades o experiencia",
+  },
+  "home.assistantHeroSubmit": { en: "Ask", es: "Preguntar" },
   "home.assistantDefaultResponse": {
     en: "Ask about projects, case studies, skills, resume, contact details, or GitHub activity on this website.",
     es: "Pregunta sobre proyectos, casos de estudio, habilidades, currículum, datos de contacto o actividad en GitHub de este sitio.",
@@ -843,7 +850,7 @@ export const dictionary = {
   "home.impact.tagSelfService": { en: "Reach", es: "Alcance", de: "Reichweite" },
   "home.impact.tagSupportImpact": { en: "Support impact", es: "Impacto en soporte", de: "Supportwirkung" },
   "home.impact.tagSupportEfficiency": { en: "Support efficiency", es: "Eficiencia de soporte", de: "Supporteffizienz" },
-  "home.impact.formCompletion": { en: "Less time to complete forms", es: "Menos tiempo para completar formularios", de: "Weniger Zeit zum Ausfüllen von Formularen" },
+  "home.impact.formCompletion": { en: "Less time to complete I-9 forms", es: "Menos tiempo para completar formularios I-9", de: "Weniger Zeit für I-9-Formulare" },
   "home.impact.formCompletionEmphasis": { en: "Less time", es: "Menos tiempo", de: "Weniger Zeit" },
   "home.impact.processingTime": { en: "Less processing time", es: "Menos tiempo de procesamiento", de: "Weniger Bearbeitungszeit" },
   "home.impact.processingTimeEmphasis": { en: "processing", es: "procesamiento", de: "Bearbeitungszeit" },
