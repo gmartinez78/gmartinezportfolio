@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, ArrowUpRight, BrainCircuit, Check, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, Heart, LayoutTemplate, Lightbulb, MessageCircle, Mic, MousePointer2, Paperclip, Play, Repeat2, Star, Target, Wand2 } from "lucide-react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
+import { ArrowRight, ArrowUpRight, BrainCircuit, Check, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Lightbulb, Mic, MousePointer2, Play, Star, Target, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { ChecklistStatusCard } from "./components/checklist-status-card";
@@ -559,8 +559,6 @@ export default function PortfolioPage() {
   const [heroAssistantResponse, setHeroAssistantResponse] = useState(() => translate("home.assistantDefaultResponse"));
   const [heroAssistantResults, setHeroAssistantResults] = useState<HeroAssistantResult["items"]>([]);
   const [activeProcessCapability, setActiveProcessCapability] = useState<ProcessCapabilityId>("ai-product");
-  const [heroParallax, setHeroParallax] = useState(0);
-  const heroScrollRef = useRef<HTMLDivElement | null>(null);
   const { siteContent } = usePublicSiteContent();
   const { caseStudies } = usePublicCaseStudies();
   const activeProcess = PROCESS_CAPABILITIES.find((capability) => capability.id === activeProcessCapability) ?? PROCESS_CAPABILITIES[0];
@@ -731,44 +729,6 @@ export default function PortfolioPage() {
       isActive = false;
     };
   }, []);
-
-  useEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const desktop = window.matchMedia("(min-width: 1025px)");
-    if (reducedMotion.matches || !desktop.matches) {
-      setHeroParallax(0);
-    }
-
-    return () => {
-    };
-  }, []);
-
-  useEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const desktop = window.matchMedia("(min-width: 1025px)");
-
-    const handleWheel = (event: WheelEvent) => {
-      const heroBounds = heroScrollRef.current?.getBoundingClientRect();
-      const heroIsPinned = heroBounds && heroBounds.top <= 2 && heroBounds.bottom >= window.innerHeight - 2;
-
-      if (!heroIsPinned || reducedMotion.matches || !desktop.matches) {
-        return;
-      }
-
-      if (event.deltaY > 0 && heroParallax < 150) {
-        event.preventDefault();
-        setHeroParallax((current) => Math.min(150, current + event.deltaY * 0.28));
-      }
-
-      if (event.deltaY < 0 && heroParallax > 0) {
-        event.preventDefault();
-        setHeroParallax((current) => Math.max(0, current + event.deltaY * 0.28));
-      }
-    };
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    return () => window.removeEventListener("wheel", handleWheel);
-  }, [heroParallax]);
 
   const githubActivityItems = githubActivity.length
     ? githubActivity.filter((item) => item.kind !== "release").slice(0, 6)
@@ -1463,33 +1423,12 @@ export default function PortfolioPage() {
 
       {/* ── Hero ── */}
       <section className="bg-white">
-        <div ref={heroScrollRef} className="min-[1025px]:h-[100svh]">
-        <div className="relative isolate overflow-hidden bg-white px-5 pb-8 pt-24 sm:px-10 sm:pt-[8.25rem] lg:px-16 lg:pb-14 min-[1025px]:sticky min-[1025px]:top-2 min-[1025px]:h-[100svh] min-[1025px]:overflow-hidden min-[1025px]:pt-[5.5rem]">
+        <div>
+        <div className="relative isolate overflow-hidden bg-white px-5 pb-8 pt-24 sm:px-10 sm:pt-[8.25rem] lg:px-16 lg:pb-14 min-[1025px]:pt-[5.5rem]">
           <div className="pointer-events-none absolute inset-0 bg-[image:var(--ui-surface-hero)]" />
-          <div className="pointer-events-none absolute right-[7%] top-[16%] hidden h-14 w-14 rotate-12 xl:block">
-            <span className="absolute left-6 top-0 h-full w-[3px] rotate-45 rounded-full bg-[#f06d96]" />
-            <span className="absolute left-6 top-0 h-full w-[3px] -rotate-45 rounded-full bg-[#f06d96]" />
-            <span className="absolute left-0 top-6 h-[3px] w-full rotate-45 rounded-full bg-[#f06d96]" />
-            <span className="absolute left-0 top-6 h-[3px] w-full -rotate-45 rounded-full bg-[#f06d96]" />
-          </div>
-          <div className="pointer-events-none absolute bottom-[11%] right-[3%] hidden h-20 w-20 xl:block">
-            <span className="absolute left-[31px] top-0 h-12 w-9 rotate-[-36deg] rounded-t-full border-[3px] border-b-0 border-[#1183d0]" />
-            <span className="absolute left-[13px] top-3 h-12 w-9 rotate-[36deg] rounded-t-full border-[3px] border-b-0 border-[#1183d0]" />
-          </div>
-          <svg className="pointer-events-none absolute left-[1.5%] top-[36%] hidden h-16 w-16 -rotate-12 xl:block" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <path d="M32 6 37 25 57 18 43 33 59 43 39 41 36 60 28 42 10 53 22 35 5 26 26 27Z" stroke="#16A7DF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <svg className="pointer-events-none absolute bottom-[18%] left-[49%] hidden h-20 w-24 rotate-[-12deg] xl:block" viewBox="0 0 96 80" fill="none" aria-hidden="true">
-            <path d="M14 56 22 24 40 42 49 13 65 39 80 24 76 58 14 56Z" stroke="#F0A51B" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M18 62c18 5 39 5 58-1" stroke="#F0A51B" strokeWidth="3" strokeLinecap="round" />
-          </svg>
-          <Container size="wide" className="relative grid min-h-0 items-center gap-2 xl:min-h-[650px] xl:grid-cols-[1.08fr_0.92fr] xl:gap-4 2xl:min-h-[720px] 2xl:max-w-[1440px]">
-            <div className="relative z-40 order-2 mx-auto max-w-[800px] pb-2 text-center xl:order-1 xl:-translate-y-12 xl:pb-12 2xl:-translate-y-16">
-              <div className="mx-auto max-w-[700px]">
-                <svg className="mb-2 h-7 w-40 -rotate-2" viewBox="0 0 160 28" fill="none" aria-hidden="true">
-                  <path d="M4 10c31-7 88-9 148-2" stroke="#25aee1" strokeWidth="3.5" strokeLinecap="round" />
-                  <path d="M8 20c42-7 100-5 148 1" stroke="#25aee1" strokeWidth="3.5" strokeLinecap="round" />
-                </svg>
+          <Container size="wide" className="relative grid min-h-0 items-center gap-7 lg:min-h-[500px] lg:grid-cols-[0.86fr_1.14fr] lg:gap-10 xl:min-h-[560px] xl:gap-14 2xl:max-w-[1440px]">
+            <div className="relative z-10 order-2 mx-auto max-w-[800px] pb-2 text-center lg:mx-0 lg:max-w-[640px] lg:pb-0 lg:text-left">
+              <div className="mx-auto max-w-[700px] lg:mx-0">
                 <p className="text-[12px] font-semibold leading-relaxed tracking-[0.02em] text-[var(--ui-color-brand-primary)] sm:text-sm">
                   {translate("home.mainHeroFocus")}
                 </p>
@@ -1499,10 +1438,10 @@ export default function PortfolioPage() {
                 </Heading>
                 <nav
                   aria-label={translate("projectsPage.filterBy")}
-                  className="mt-6 flex flex-wrap justify-center gap-2"
+                  className="mt-6 grid justify-items-center gap-2 sm:flex sm:flex-wrap sm:justify-center lg:justify-start"
                 >
                   {heroFilters.map(({ label, href }) => (
-                    <Badge key={href} asChild variant="outline" size="default">
+                    <Badge key={href} asChild variant="outline" size="default" className="max-sm:min-h-7 max-sm:px-3 max-sm:text-[13px]">
                       <Link href={withBasePath(href)}>
                         {label}
                         <span aria-hidden="true">→</span>
@@ -1512,46 +1451,17 @@ export default function PortfolioPage() {
                 </nav>
               </div>
             </div>
-            <div className="relative order-1 mx-auto hidden h-[650px] w-full max-w-[510px] self-end xl:order-2 xl:block 2xl:-translate-y-20">
-              <div className="absolute right-[-11%] -top-[3%] z-20 hidden w-[184px] bg-[#fffdf9] px-4 pb-4 pt-6 text-[#2a2528] shadow-[0_18px_34px_rgba(84,53,58,0.18)] xl:block xl:w-[205px] animate-[hero-paper-float_5.8s_ease-in-out_infinite]" style={{ ["--paper-rotate" as string]: "5deg", translate: `0 -${heroParallax * 0.7}px` }}>
-                <span className="absolute -top-3 left-1/2 h-7 w-[106px] -translate-x-1/2 -rotate-[2deg] overflow-hidden bg-[#ed7195] [clip-path:polygon(0_8%,3%_0,14%_4%,25%_0,39%_3%,51%_0,64%_4%,76%_0,90%_4%,100%_0,98%_22%,100%_39%,98%_56%,100%_75%,98%_94%,88%_100%,75%_96%,62%_100%,48%_96%,35%_100%,20%_96%,8%_100%,0_92%,2%_76%,0_58%,2%_40%,0_22%)]">
-                  <span className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_25%_35%,transparent_0_8px,rgba(255,255,255,0.85)_9px_10px,transparent_11px),radial-gradient(circle_at_76%_70%,transparent_0_8px,rgba(255,255,255,0.85)_9px_10px,transparent_11px)] [background-size:30px_28px]" />
-                  <span className="absolute inset-x-1 top-1 h-px bg-white/35" />
-                </span>
-                <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#e05f88]">{translate("home.heroHelp")}</p>
-                <ul className="space-y-3 text-[13px] font-medium leading-tight xl:text-sm">
-                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#2eb4e7] text-[11px]">▣</span> {translate("home.heroServiceWebsite")}</li>
-                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f181a4] text-[11px]">♡</span> {translate("home.heroServiceSocial")}</li>
-                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f7b93b] text-[11px]">✎</span> {translate("home.heroServiceBrand")}</li>
-                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#2eb4e7] text-[11px]">▯</span> {translate("home.heroServiceUx")}</li>
-                  <li className="flex items-center gap-2"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f181a4] text-[11px]">✦</span> {translate("home.heroServiceAi")}</li>
-                </ul>
-              </div>
-              <div className="absolute right-[22%] top-[22%] z-20 hidden w-[210px] bg-[#32b9e8] px-5 py-6 text-[#102a36] shadow-[0_18px_34px_rgba(31,122,157,0.25)] xl:block xl:w-[232px] animate-[hero-paper-float_6.6s_ease-in-out_0.8s_infinite]" style={{ ["--paper-rotate" as string]: "-4deg", translate: `0 -${heroParallax * 0.7}px` }}>
-                <Paperclip aria-hidden="true" className="absolute -top-6 right-6 h-12 w-12 rotate-[10deg] stroke-[1.05] text-[#1e2527] drop-shadow-[0_2px_1px_rgba(255,255,255,0.45)]" />
-                <svg className="absolute bottom-5 right-6 h-8 w-7 rotate-[8deg]" viewBox="0 0 28 32" fill="none" aria-hidden="true">
-                  <path d="M14 28C6 22 3 17 3 11c0-4 2-7 5-7 3 0 5 3 6 5 1-2 3-5 6-5 3 0 5 3 5 7 0 6-3 11-11 17Z" stroke="#087DCE" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <p className="font-inter text-[23px] italic leading-[1.1] xl:text-[27px]">{translate("home.heroIdeaTop")}</p>
-                <p className="mt-2 font-inter text-[23px] italic leading-[1.1] xl:text-[27px]">{translate("home.heroIdeaBottom")}</p>
-                <div className="mt-5 h-[3px] w-24 bg-[#087da9]" />
-                <p className="mt-4 text-[10px] font-bold uppercase leading-relaxed tracking-[0.12em]">{translate("home.heroIdeaDescription")}</p>
-              </div>
-              <div className="absolute -right-[15%] bottom-[22%] z-20 hidden w-[205px] rounded-[24px] bg-[#fffdf9] p-4 text-[#261f21] shadow-[0_18px_34px_rgba(84,53,58,0.22)] xl:block xl:w-[230px] animate-[hero-paper-float_6.6s_ease-in-out_0.8s_infinite]" style={{ ["--paper-rotate" as string]: "-4deg", translate: `0 -${heroParallax * 0.7}px` }}>
-                <div className="flex items-center gap-2 text-[9px] font-bold"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f8d6ca] text-[#e06b91]">G</span><span className="font-normal text-[#766568]">@randomlygreddys</span><span className="ml-auto text-base">•••</span></div>
-                <p className="mt-4 text-xs">{translate("home.heroNewBrand")} <span className="text-[#eaa223]">✦</span></p>
-                <div className="mt-3 grid grid-cols-[1fr_0.72fr] gap-2">
-                  <p className="font-inter text-[26px] font-semibold leading-[0.9]">{translate("home.heroDesignPower")}</p>
-                  <div className="relative aspect-square overflow-hidden rounded-[10px]">
-                    <Image src="/images/home-card-flower-vase.png" alt="Yellow flower in a black vase" fill sizes="120px" className="object-cover" />
-                  </div>
-                </div>
-                <div className="mt-3 flex items-center gap-3 text-[10px] font-medium"><span className="inline-flex items-center gap-1"><Heart className="h-4 w-4 fill-[#e7232a] text-[#e7232a]" />128</span><span className="inline-flex items-center gap-1"><MessageCircle className="h-4 w-4 stroke-[1.8]" />12</span><span className="inline-flex items-center gap-1"><Repeat2 className="h-4 w-4 stroke-[1.8]" />8</span></div>
-              </div>
-              <div className="absolute right-[4%] bottom-[3%] z-20 hidden w-[210px] overflow-hidden rounded-[8px] bg-[#96e4d8] text-[#102a36] shadow-[0_18px_34px_rgba(31,122,157,0.25)] xl:block xl:w-[235px] animate-[hero-paper-float_5.8s_ease-in-out_infinite]" style={{ ["--paper-rotate" as string]: "4deg", translate: `0 -${heroParallax * 0.7}px` }}>
-                <div className="flex h-6 items-center justify-between bg-[#11b9a7] px-3 text-[7px] font-bold"><span className="flex items-center gap-1"><i className="h-2 w-2 rounded-full bg-[#ff5f57]" /><i className="h-2 w-2 rounded-full bg-[#febc2e]" /><i className="h-2 w-2 rounded-full bg-[#28c840]" /></span><span>{translate("home.heroShopNav")}</span></div>
-                <div className="grid grid-cols-[0.88fr_1.12fr] gap-2 p-4"><div><p className="font-inter text-[28px] leading-[0.88]">{translate("home.heroGlow")}</p><button className="mt-3 bg-[#172423] px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.12em] text-white">{translate("home.heroBuy")}</button></div><div className="relative min-h-[115px] overflow-hidden rounded-sm"><Image src="/images/home-card-perfume.png" alt="" fill sizes="125px" className="object-cover object-[62%_50%]" /></div></div>
-              </div>
+            <div className="relative order-1 mx-auto h-[260px] w-full max-w-[280px] sm:h-[380px] sm:max-w-[380px] lg:mx-0 lg:h-[460px] lg:max-w-[460px] xl:h-[520px] xl:max-w-[520px]">
+              <div aria-hidden="true" className="absolute left-1/2 top-[48%] size-[76%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--ui-color-brand-primary)]" />
+              <div aria-hidden="true" className="absolute left-1/2 top-[48%] size-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full border-[9px] border-[var(--ui-color-brand-primary)] border-b-transparent border-l-transparent rotate-[28deg] opacity-70" />
+              <Image
+                src="/images/home-hero-portrait-white.png"
+                alt="Greddys Martinez"
+                fill
+                priority
+                sizes="(min-width: 1280px) 520px, (min-width: 1024px) 460px, (min-width: 640px) 380px, 320px"
+                className="relative z-10 object-contain object-bottom"
+              />
             </div>
           </Container>
         </div>
