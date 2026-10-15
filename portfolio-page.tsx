@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, ArrowUp, ArrowUpRight, BrainCircuit, Check, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, Heart, LayoutTemplate, Lightbulb, MessageCircle, Mic, MousePointer2, Paperclip, Play, Repeat2, Star, Target, Wand2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BrainCircuit, Check, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, Heart, LayoutTemplate, Lightbulb, MessageCircle, Mic, MousePointer2, Paperclip, Play, Repeat2, Star, Target, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { ChecklistStatusCard } from "./components/checklist-status-card";
@@ -46,6 +46,33 @@ function getProjectCardDescription(description: string) {
   }
 
   return `${firstSentence.slice(0, 126).replace(/\s+\S*$/, "").trimEnd()}…`;
+}
+
+function EmphasizedImpactText({ text, emphasis }: { text: string; emphasis: string }) {
+  const start = text.indexOf(emphasis);
+
+  if (start === -1) {
+    return text;
+  }
+
+  const end = start + emphasis.length;
+
+  return (
+    <>
+      {text.slice(0, start)}
+      <strong className="font-bold">{emphasis}</strong>
+      {text.slice(end)}
+    </>
+  );
+}
+
+function ImpactArrow() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 20 28" fill="none" className="mb-0.5 h-7 w-5 shrink-0" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M10 25V3" />
+      <path d="m3.5 9.5 6.5-6.5 6.5 6.5" />
+    </svg>
+  );
 }
 
 type HeroPhase = "sunrise" | "day" | "sunset" | "night";
@@ -922,18 +949,18 @@ export default function PortfolioPage() {
             className="group relative min-h-[252px] overflow-hidden rounded-xl md:col-span-4 md:min-h-0"
           >
             <Image
-              src="/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png"
+              src="/images/projects/nayya-ai-benefits/thumbnails/nayya-enrollment-laptop.png"
               alt={translate("home.impact.nayyaImageAlt")}
               fill
               sizes="(max-width: 767px) 100vw, 42vw"
               className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_36%,rgba(14,41,81,0.78)_100%)]" />
-            <span className="absolute left-4 top-4 inline-flex rounded-full bg-[var(--ui-color-brand-amber)] px-3 py-1 text-[10px] font-semibold text-[#141114]">
+            <span className="absolute bottom-16 left-4 inline-flex rounded-full bg-[#ffe000] px-4 py-2 text-[10px] font-bold leading-none text-[#141114]">
               {translate("home.impact.caseStudy")}
             </span>
             <div className="absolute inset-x-4 bottom-4 text-white">
-              <p className="text-[18px] font-semibold leading-tight">{translate("home.impact.nayyaTitle")}</p>
+              <p className="text-[18px] font-normal leading-tight">{translate("home.impact.nayyaTitle")}</p>
             </div>
           </Link>
 
@@ -949,98 +976,122 @@ export default function PortfolioPage() {
               className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_36%,rgba(14,41,81,0.78)_100%)]" />
-            <span className="absolute left-4 top-4 inline-flex rounded-full bg-[var(--ui-color-brand-amber)] px-3 py-1 text-[10px] font-semibold text-[#141114]">
+            <span className="absolute bottom-16 left-4 inline-flex rounded-full bg-[#ffe000] px-4 py-2 text-[10px] font-bold leading-none text-[#141114]">
               {translate("home.impact.featuredProject")}
             </span>
             <div className="absolute inset-x-4 bottom-4 text-white">
-              <p className="text-[18px] font-semibold leading-tight">{translate("home.impact.flockTitle")}</p>
+              <p className="text-[18px] font-normal leading-tight">{translate("home.impact.flockTitle")}</p>
             </div>
           </Link>
 
-          <article className="relative flex min-h-[202px] flex-col justify-between overflow-hidden rounded-xl bg-[#cfe8ff] p-5 text-[#141114] md:col-span-3 md:min-h-0">
-            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={120} height={120} className="pointer-events-none absolute -right-7 -top-7 size-28 opacity-25" />
+          <article className="relative flex min-h-[202px] flex-col justify-between overflow-hidden rounded-xl bg-[var(--ui-color-brand-primary)] p-5 text-white md:col-span-3 md:min-h-0">
             <div>
-              <span className="inline-flex rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold text-[#141114]">{translate("home.impact.tagEnrollment")}</span>
-              <p className="mt-3 text-[13px] font-medium leading-snug">{translate("home.impact.enrollment")}</p>
-              <strong className="mt-1 block text-[clamp(3.5rem,5vw,4.4rem)] font-semibold leading-none tracking-[-0.07em]">5,500</strong>
+              <p className="text-[15px] font-normal leading-[1.16] text-white">{translate("home.impact.enrollment")}</p>
+              <strong className="mt-1 block text-[clamp(3.5rem,5vw,4.4rem)] font-bold leading-none tracking-[-0.07em]">5,500</strong>
+              <p className="mt-3 max-w-[180px] text-[15px] font-normal leading-[1.16] text-white/80">
+                {translate("home.impact.enrollmentContextLead")}
+                <span className="font-playfair font-normal italic">{translate("home.impact.enrollmentContextAccent")}</span>
+                {translate("home.impact.enrollmentContextTail")}
+              </p>
             </div>
-            <p className="max-w-[180px] text-[13px] leading-snug text-[#141114]/78">{translate("home.impact.enrollmentContext")}</p>
           </article>
 
-          <article className="relative z-10 flex min-h-[180px] flex-col justify-between rounded-xl bg-[#efefef] p-5 text-[#141114] shadow-[0_18px_36px_rgba(14,41,81,0.18)] md:col-span-3 md:min-h-0">
+          <article className="relative flex min-h-[180px] flex-col justify-between rounded-xl bg-white p-5 text-[#141114] shadow-[0_8px_18px_rgba(14,41,81,0.1)] md:col-span-3 md:min-h-0">
             <div>
-              <span className="inline-flex rounded-full bg-[#f5f5f5] px-3 py-1 text-[10px] font-semibold text-[#141114]">{translate("home.impact.tagFormCompletion")}</span>
-              <p className="mt-3 max-w-[180px] text-[15px] font-semibold leading-[1.16]">{translate("home.impact.formCompletion")}</p>
+              <span className="inline-flex rounded-full bg-[#f5f5f5] px-4 py-2 text-[10px] font-bold leading-none text-[#141114]">{translate("home.impact.tagFormCompletion")}</span>
+              <p className="mt-3 max-w-[180px] text-[15px] font-normal leading-[1.16]"><EmphasizedImpactText text={translate("home.impact.formCompletion")} emphasis={translate("home.impact.formCompletionEmphasis")} /></p>
             </div>
             <div className="flex items-end justify-between gap-3">
               <div className="flex items-start gap-0.5">
                 <strong className="text-[clamp(3.5rem,5vw,4.4rem)] font-semibold leading-none tracking-[-0.07em]">35</strong>
                 <span className="mt-1 text-[clamp(1rem,1.5vw,1.3rem)] font-semibold leading-none">%</span>
               </div>
-              <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
+              <ImpactArrow />
             </div>
           </article>
 
           <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[#f8df36] p-5 text-[#141114] md:col-span-3 md:min-h-0">
-            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={150} height={150} className="pointer-events-none absolute -bottom-10 -right-9 size-36 opacity-20" />
-            <div>
-              <span className="inline-flex rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold text-[#141114]">{translate("home.impact.tagProcessing")}</span>
-              <p className="mt-3 max-w-[160px] text-[13px] font-medium leading-snug">{translate("home.impact.processingTime")}</p>
+            <div aria-hidden="true" className="pointer-events-none absolute -bottom-[5.4rem] left-1/2 size-44 -translate-x-1/2 rounded-full border-[1.75rem] border-[#e4c900]/80" />
+            <div className="relative z-10">
+              <span className="inline-flex rounded-full bg-white/80 px-4 py-2 text-[10px] font-bold leading-none text-[#141114]">{translate("home.impact.tagProcessing")}</span>
+              <p className="mt-3 max-w-[160px] text-[15px] font-normal leading-[1.16]"><EmphasizedImpactText text={translate("home.impact.processingTime")} emphasis={translate("home.impact.processingTimeEmphasis")} /></p>
             </div>
-            <div className="flex items-end justify-between gap-3">
+            <div className="relative z-10 flex items-end justify-between gap-3">
               <div className="flex items-start gap-0.5">
                 <strong className="text-[clamp(3.5rem,5vw,4.4rem)] font-semibold leading-none tracking-[-0.07em]">72</strong>
                 <span className="mt-1 text-[clamp(1rem,1.5vw,1.3rem)] font-semibold leading-none">%</span>
               </div>
-              <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
+              <ImpactArrow />
             </div>
           </article>
 
-          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[#d8f6f4] p-5 text-[#141114] md:col-span-4 md:min-h-0">
-            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={104} height={104} className="pointer-events-none absolute -right-4 -top-4 size-24 opacity-25" />
+          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[#efefef] p-5 text-[#141114] md:col-span-4 md:min-h-0">
             <div>
-              <span className="inline-flex rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold text-[#141114]">{translate("home.impact.tagSelfService")}</span>
-              <p className="mt-3 max-w-[190px] text-[13px] font-medium leading-snug">{translate("home.impact.selfService")}</p>
+              <span className="inline-flex rounded-full bg-white/80 px-4 py-2 text-[10px] font-bold leading-none text-[#141114]">{translate("home.impact.tagSelfService")}</span>
+              <p className="mt-3 max-w-[190px] text-[15px] font-normal leading-[1.16]"><EmphasizedImpactText text={translate("home.impact.selfService")} emphasis={translate("home.impact.selfServiceEmphasis")} /></p>
             </div>
             <div className="flex items-end justify-between gap-3">
-              <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">500+</strong>
-              <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
+              <div className="flex items-start gap-0.5">
+                <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">500</strong>
+                <span className="mt-1 text-[clamp(1rem,1.5vw,1.3rem)] font-semibold leading-none">+</span>
+              </div>
+              <ImpactArrow />
             </div>
           </article>
 
-          <div aria-hidden="true" className="relative hidden overflow-hidden bg-[#f5f5f5] md:col-span-2 md:block">
-            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={150} height={150} className="absolute -left-8 -top-7 size-36 opacity-75" />
-            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={120} height={120} className="absolute -bottom-8 -right-7 size-28 rotate-180 opacity-55" />
+          <div aria-hidden="true" className="relative hidden overflow-hidden md:col-span-2 md:block">
+            <div className="absolute left-5 top-0 h-[5.5rem] w-[2.8rem] overflow-hidden">
+              <div className="absolute -left-[2.8rem] top-0 size-[5.5rem] rounded-full border-[1.5rem] border-[#f8df36]" />
+            </div>
+            <svg viewBox="0 0 280 240" className="absolute -bottom-5 -right-9 h-[7.5rem] w-[9.5rem] text-[#2183ca]" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="160" cy="185" r="56" stroke="currentColor" strokeWidth="24" />
+              <path d="M56 56C99 67 129 94 148 128C177 119 225 126 274 153" stroke="currentColor" strokeWidth="24" strokeLinecap="butt" strokeLinejoin="round" />
+            </svg>
           </div>
 
-          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[#dff8f4] p-5 text-[#141114] md:col-span-4 md:min-h-0">
-            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={104} height={104} className="pointer-events-none absolute -right-4 -top-4 size-24 opacity-25" />
+          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[#efefef] p-5 text-[#141114] md:col-span-4 md:min-h-0">
             <div>
-              <span className="inline-flex rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold text-[#141114]">{translate("home.impact.tagSupportImpact")}</span>
-              <p className="mt-3 max-w-[190px] text-[13px] font-medium leading-snug">{translate("home.impact.supportCalls")}</p>
+              <span className="inline-flex rounded-full bg-white/80 px-4 py-2 text-[10px] font-bold leading-none text-[#141114]">{translate("home.impact.tagSupportImpact")}</span>
+              <p className="mt-3 max-w-[190px] text-[15px] font-normal leading-[1.16]"><EmphasizedImpactText text={translate("home.impact.supportCalls")} emphasis={translate("home.impact.supportCallsEmphasis")} /></p>
             </div>
             <div className="flex items-end justify-between gap-3">
-              <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">9,000+</strong>
-              <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
+              <div className="flex items-start gap-0.5">
+                <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">9,000</strong>
+                <span className="mt-1 text-[clamp(1rem,1.5vw,1.3rem)] font-semibold leading-none">+</span>
+              </div>
+              <ImpactArrow />
             </div>
           </article>
 
           <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[#f9b5e5] p-5 text-[#141114] md:col-span-5 md:min-h-0">
-            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={150} height={150} className="pointer-events-none absolute -bottom-10 -right-9 size-36 opacity-20" />
             <div>
-              <span className="inline-flex rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold text-[#141114]">{translate("home.impact.tagSupportEfficiency")}</span>
-              <p className="mt-3 max-w-[220px] text-[13px] font-medium leading-snug">{translate("home.impact.ticketReduction")}</p>
+              <span className="inline-flex rounded-full bg-white/80 px-4 py-2 text-[10px] font-bold leading-none text-[#141114]">{translate("home.impact.tagSupportEfficiency")}</span>
+              <p className="mt-3 max-w-[220px] text-[15px] font-normal leading-[1.16]"><EmphasizedImpactText text={translate("home.impact.ticketReduction")} emphasis={translate("home.impact.ticketReductionEmphasis")} /></p>
             </div>
             <div className="flex items-end justify-between gap-3">
-              <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">500+</strong>
-              <ArrowUp aria-hidden="true" className="mb-1 size-5" strokeWidth={2.25} />
+              <div className="flex items-start gap-0.5">
+                <strong className="text-[clamp(2.9rem,4vw,3.9rem)] font-semibold leading-none tracking-[-0.07em]">500</strong>
+                <span className="mt-1 text-[clamp(1rem,1.5vw,1.3rem)] font-semibold leading-none">+</span>
+              </div>
+              <ImpactArrow />
             </div>
           </article>
 
-          <article className="relative flex min-h-[180px] flex-col overflow-hidden rounded-xl bg-[#cedcff] p-5 text-[#141114] md:col-span-3 md:min-h-0">
-            <Image src={withBasePath("/images/logo-gj.svg")} alt="" aria-hidden="true" width={64} height={64} className="pointer-events-none absolute right-4 top-4 size-12 opacity-45" />
-            <span className="inline-flex w-fit rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold text-[#141114]">{translate("home.impact.clientReview")}</span>
-            <blockquote className="mt-3 text-[13px] font-medium leading-[1.42]">“{translate("home.impact.upworkQuote")}”</blockquote>
+          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[#cfe8ff] p-5 text-[#141114] md:col-span-3 md:min-h-0">
+            <blockquote className="text-[15px] font-normal leading-[1.35] text-[#141114]">“{translate("home.impact.upworkQuote")}”</blockquote>
+            <div className="mt-8 flex items-center gap-3">
+              <Image
+                src={withBasePath("/images/people/sven-haefliger.png")}
+                alt="Sven Haefliger"
+                width={44}
+                height={44}
+                className="size-11 shrink-0 rounded-full object-cover"
+              />
+              <div>
+                <p className="text-[13px] font-semibold leading-tight">Sven Haefliger</p>
+                <p className="mt-1 text-[11px] leading-tight text-[#141114]/72">{translate("home.impact.zapianoOwner")}</p>
+              </div>
+            </div>
           </article>
         </div>
       </Container>
