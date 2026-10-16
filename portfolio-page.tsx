@@ -618,7 +618,7 @@ export default function PortfolioPage() {
     {
       href: withBasePath("/projects/i9-everify-integration"),
       backImage: "/images/projects/i9-everify-integration/hero/i9-banner.png",
-      frontImage: "/images/projects/i9-everify-integration/banners/i9-employee-design-process.svg",
+      frontImage: "/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png",
       label: translate("home.aiHeroProjectI9Label"),
       title: translate("home.aiHeroProjectI9Title"),
     },
