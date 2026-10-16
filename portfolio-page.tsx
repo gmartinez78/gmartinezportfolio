@@ -559,6 +559,13 @@ export default function PortfolioPage() {
   const [heroAssistantResponse, setHeroAssistantResponse] = useState(() => translate("home.assistantDefaultResponse"));
   const [heroAssistantResults, setHeroAssistantResults] = useState<HeroAssistantResult["items"]>([]);
   const [activeProcessCapability, setActiveProcessCapability] = useState<ProcessCapabilityId>("ai-product");
+  const heroStatementKeys = [
+    "home.aiHeroStatementEnd",
+    "home.aiHeroStatementEndWorkflows",
+    "home.aiHeroStatementEndAccessibility",
+    "home.aiHeroStatementEndDecisions",
+  ] as const;
+  const [activeHeroStatement, setActiveHeroStatement] = useState(0);
   const { siteContent } = usePublicSiteContent();
   const { caseStudies } = usePublicCaseStudies();
   const activeProcess = PROCESS_CAPABILITIES.find((capability) => capability.id === activeProcessCapability) ?? PROCESS_CAPABILITIES[0];
@@ -705,6 +712,18 @@ export default function PortfolioPage() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language]);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const interval = window.setInterval(() => {
+      setActiveHeroStatement((current) => (current + 1) % heroStatementKeys.length);
+    }, 3000);
+
+    return () => window.clearInterval(interval);
+  }, [heroStatementKeys.length]);
 
   useEffect(() => {
     let isActive = true;
@@ -1516,7 +1535,7 @@ export default function PortfolioPage() {
                     {translate("home.aiHeroStatementLead")}
                   </span>
                   <span className="font-playfair text-[clamp(1.05rem,1.7vw,1.35rem)] italic leading-none text-[#45576a]">
-                    {translate("home.aiHeroStatementEnd")}
+                    {translate(heroStatementKeys[activeHeroStatement])}
                   </span>
                 </p>
                 <nav
