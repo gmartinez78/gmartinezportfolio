@@ -752,19 +752,24 @@ export const dictionary = {
     de: "Barrierefreiheit zuerst",
   },
   "home.about.lead": {
-    en: "12 years partnering with cross-functional, international teams to turn complex product work into clear business outcomes.",
+    en: "12 years partnering with cross-functional, international teams to turn ambiguity into clear business outcomes.",
     es: "12 años colaborando con equipos internacionales y multidisciplinarios para convertir productos complejos en resultados claros para el negocio.",
     de: "12 Jahre Erfahrung in der Zusammenarbeit mit internationalen, funktionsübergreifenden Teams, um komplexe Produktarbeit in klare Geschäftsergebnisse zu übersetzen.",
   },
   "home.about.recruiters": {
-    en: "From research and problem framing to flows, prototypes, and delivery, I partner with product and engineering to turn ambiguity into a clear direction.",
+    en: "From research and framing to flows, prototypes, and delivery, I work with product and engineering to create direction.",
     es: "Desde la investigación y el planteamiento del problema hasta los flujos, los prototipos y la entrega, colaboro con producto e ingeniería para convertir la ambigüedad en una dirección clara.",
     de: "Von Forschung und Problemdefinition über Flows, Prototypen und Umsetzung arbeite ich eng mit Produkt und Engineering zusammen, um Unklarheit in eine klare Richtung zu verwandeln.",
   },
   "home.about.copy": {
-    en: "Across enterprise, AI, and operational products, I use systems thinking and accessible design to balance user needs, business goals, and technical constraints.",
-    es: "En productos empresariales, de IA y operativos, uso pensamiento sistémico y diseño accesible para equilibrar necesidades de usuarios, objetivos de negocio y restricciones técnicas.",
-    de: "Bei Enterprise-, KI- und operativen Produkten verbinde ich Systemdenken und barrierefreies Design, um Nutzerbedürfnisse, Geschäftsziele und technische Rahmenbedingungen auszubalancieren.",
+    en: "Across enterprise, AI, and operational products, I use systems thinking and accessible design to",
+    es: "En productos empresariales, de IA y operativos, uso pensamiento sistémico y diseño accesible para",
+    de: "Bei Enterprise-, KI- und operativen Produkten verbinde ich Systemdenken und barrierefreies Design, um",
+  },
+  "home.about.copyAccent": {
+    en: "balance user needs, business goals, and technical constraints.",
+    es: "equilibrar necesidades de usuarios, objetivos de negocio y restricciones técnicas.",
+    de: "Nutzerbedürfnisse, Geschäftsziele und technische Rahmenbedingungen auszubalancieren.",
   },
   "home.about.cta": {
     en: "See my experience",

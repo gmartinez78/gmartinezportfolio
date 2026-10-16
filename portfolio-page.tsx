@@ -969,8 +969,8 @@ export default function PortfolioPage() {
       <Container size="wide" className="relative">
         <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16">
           <div>
-            <p className="inline-flex items-center gap-2 rounded-full bg-[#d8d3ff] px-4 py-2 text-xs font-semibold text-[#141114]">
-              <span aria-hidden="true" className="size-1.5 rounded-full bg-[#1183D0]" />
+              <p className="inline-flex items-center gap-2 text-xs font-semibold text-[#1183D0]">
+                <span aria-hidden="true" className="size-1.5 rounded-full bg-[#1183D0]" />
               {translate("home.about.eyebrow")}
             </p>
             <Heading id="about-title" as="h2" variant="feature" className="mt-4 max-w-[650px] text-[clamp(2rem,3.2vw,3rem)] leading-[1.08] text-[#141114]">
@@ -992,7 +992,7 @@ export default function PortfolioPage() {
               {translate("home.about.recruiters")}
             </p>
             <p className="mt-3 text-[15px] leading-[1.5] text-[#5e5961] md:text-[16px]">
-              {translate("home.about.copy")}
+              {translate("home.about.copy")} <span className="font-playfair italic">{translate("home.about.copyAccent")}</span>
             </p>
             <Button asChild variant="default" size="sm" className="mt-6 bg-[#141114] text-white hover:bg-[#2d2528]">
               <Link href={withBasePath("/resume")}>
@@ -1532,7 +1532,7 @@ export default function PortfolioPage() {
                   <div aria-hidden="true" className="absolute left-[1%] top-1 z-20 grid size-11 -rotate-[10deg] place-items-center rounded-[15px] bg-[#141414] p-2.5 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:left-4 sm:size-[3.75rem] sm:rounded-[18px] sm:p-3.5">
                     <Image src="/images/tools/ai/openai.svg" alt="" width={32} height={32} className="size-6 sm:size-8" />
                   </div>
-                  <div aria-hidden="true" className="absolute left-[10%] top-[74px] z-20 grid size-10 rotate-[8deg] place-items-center rounded-[13px] bg-[#050505] p-1.5 shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:left-[13%] sm:top-[88px] sm:size-[3.3rem] sm:rounded-[16px] sm:p-2">
+                  <div aria-hidden="true" className="absolute left-[10%] top-[74px] z-20 grid size-10 rotate-[8deg] place-items-center rounded-[13px] bg-white p-1.5 shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:left-[13%] sm:top-[88px] sm:size-[3.3rem] sm:rounded-[16px] sm:p-2">
                     <Image src="/images/tools/ai/grok.png" alt="" width={540} height={540} className="size-7 sm:size-9" />
                   </div>
                   <div aria-hidden="true" className="absolute bottom-1 left-[26%] z-20 grid size-10 rotate-[7deg] place-items-center rounded-[13px] bg-white p-1 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:bottom-2 sm:left-[28%] sm:size-[3.1rem] sm:rounded-[16px] sm:p-1.5">
@@ -1562,7 +1562,7 @@ export default function PortfolioPage() {
                           className="object-cover object-[56%_42%]"
                         />
                       </div>
-                      <div className="absolute right-0 top-0 h-[130px] w-[195px] rotate-[6deg] overflow-hidden rounded-[18px] border-0 bg-transparent shadow-none outline-none transition-transform duration-300 group-hover:translate-x-1 group-hover:rotate-[8deg] sm:h-[165px] sm:w-[245px] sm:rounded-[24px]">
+                      <div className="absolute right-0 top-0 h-[130px] w-[195px] rotate-[6deg] overflow-hidden rounded-[18px] border-0 bg-white shadow-none outline-none transition-transform duration-300 group-hover:translate-x-1 group-hover:rotate-[8deg] sm:h-[165px] sm:w-[245px] sm:rounded-[24px]">
                         <Image
                           src={activeHeroProject.frontImage}
                           alt={activeHeroProject.title}

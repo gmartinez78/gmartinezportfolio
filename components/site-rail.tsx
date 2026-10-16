@@ -166,7 +166,7 @@ export function SiteRail() {
   return (
     <aside
       aria-label={translate("rail.primaryNavigation")}
-      className="fixed inset-y-0 left-0 z-[70] hidden w-16 flex-col items-center border-r border-[#dbe9f7] bg-white py-4 lg:flex"
+      className="fixed inset-y-0 left-0 z-[70] hidden w-16 flex-col items-center bg-white py-4 shadow-[8px_0_24px_rgba(14,41,81,0.08)] lg:flex"
     >
       <Link
         href={withBasePath("/")}
