@@ -1032,7 +1032,11 @@ export default function PortfolioPage() {
             </div>
           </Link>
 
-          <article className="relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-xl bg-[var(--ui-color-brand-primary)] p-5 text-white md:col-span-3 md:min-h-0">
+          <Link
+            href={withBasePath("/projects/nayya-ai-benefits")}
+            aria-label={`${translate("home.viewProject")}: ${translate("home.impact.enrollment")}`}
+            className="group relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-xl bg-[var(--ui-color-brand-primary)] p-5 text-white transition-transform duration-300 hover:-translate-y-1 focus-visible:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#141114] focus-visible:ring-offset-4 md:col-span-3 md:min-h-0"
+          >
             <div>
               <p className="text-[15px] font-normal leading-[1.16] text-white">{translate("home.impact.enrollment")}</p>
               <strong className="mt-1 block text-[clamp(3.5rem,5vw,4.4rem)] font-bold leading-none tracking-[-0.07em]">5,500</strong>
@@ -1042,9 +1046,13 @@ export default function PortfolioPage() {
                 {translate("home.impact.enrollmentContextTail")}
               </p>
             </div>
-          </article>
+          </Link>
 
-          <article className="relative flex min-h-[250px] flex-col justify-between rounded-xl bg-white p-5 text-[#141114] shadow-[0_8px_18px_rgba(14,41,81,0.1)] md:col-span-3 md:min-h-0">
+          <Link
+            href={withBasePath("/projects/i9-everify-integration")}
+            aria-label={`${translate("home.viewProject")}: ${translate("home.impact.formCompletion")}`}
+            className="group relative flex min-h-[250px] flex-col justify-between rounded-xl bg-white p-5 text-[#141114] shadow-[0_8px_18px_rgba(14,41,81,0.1)] transition-transform duration-300 hover:-translate-y-1 focus-visible:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#141114] focus-visible:ring-offset-4 md:col-span-3 md:min-h-0"
+          >
             <div>
               <span className="inline-flex rounded-full bg-[#f5f5f5] px-5 py-2.5 text-[12px] font-bold leading-none text-[#141114]">{translate("home.impact.tagFormCompletion")}</span>
               <p className="mt-3 max-w-[190px] text-[17px] font-normal leading-[1.18] md:text-[18px]"><EmphasizedImpactText text={translate("home.impact.formCompletion")} emphasis={translate("home.impact.formCompletionEmphasis")} /></p>
@@ -1056,9 +1064,13 @@ export default function PortfolioPage() {
               </div>
               <ImpactArrow />
             </div>
-          </article>
+          </Link>
 
-          <article className="relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-xl bg-[#f8df36] p-5 text-[#141114] md:col-span-3 md:min-h-0">
+          <Link
+            href={withBasePath("/benefits")}
+            aria-label={`${translate("home.viewProject")}: ${translate("home.impact.processingTime")}`}
+            className="group relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-xl bg-[#f8df36] p-5 text-[#141114] transition-transform duration-300 hover:-translate-y-1 focus-visible:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#141114] focus-visible:ring-offset-4 md:col-span-3 md:min-h-0"
+          >
             <div aria-hidden="true" className="pointer-events-none absolute -bottom-[5.4rem] left-1/2 size-44 -translate-x-1/2 rounded-full border-[1.75rem] border-[#e4c900]/80" />
             <div className="relative z-10">
               <span className="inline-flex rounded-full bg-white/80 px-5 py-2.5 text-[12px] font-bold leading-none text-[#141114]">{translate("home.impact.tagProcessing")}</span>
@@ -1071,9 +1083,13 @@ export default function PortfolioPage() {
               </div>
               <ImpactArrow />
             </div>
-          </article>
+          </Link>
 
-          <article className="relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-xl bg-[#efefef] p-5 text-[#141114] md:col-span-4 md:min-h-0">
+          <Link
+            href={withBasePath("/benefits")}
+            aria-label={`${translate("home.viewProject")}: ${translate("home.impact.selfService")}`}
+            className="group relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-xl bg-[#efefef] p-5 text-[#141114] transition-transform duration-300 hover:-translate-y-1 focus-visible:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#141114] focus-visible:ring-offset-4 md:col-span-4 md:min-h-0"
+          >
             <div>
               <span className="inline-flex rounded-full bg-white/80 px-5 py-2.5 text-[12px] font-bold leading-none text-[#141114]">{translate("home.impact.tagSelfService")}</span>
               <p className="mt-3 max-w-[220px] text-[17px] font-normal leading-[1.18] md:text-[18px]"><EmphasizedImpactText text={translate("home.impact.selfService")} emphasis={translate("home.impact.selfServiceEmphasis")} /></p>
@@ -1085,7 +1101,7 @@ export default function PortfolioPage() {
               </div>
               <ImpactArrow />
             </div>
-          </article>
+          </Link>
 
           <div aria-hidden="true" className="relative hidden overflow-hidden md:col-span-2 md:block">
             <div className="absolute left-5 top-0 h-[5.5rem] w-[2.8rem] overflow-hidden">
@@ -1096,7 +1112,11 @@ export default function PortfolioPage() {
             </div>
           </div>
 
-          <article className="relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-xl bg-[#efefef] p-5 text-[#141114] md:col-span-4 md:min-h-0">
+          <Link
+            href={withBasePath("/benefits")}
+            aria-label={`${translate("home.viewProject")}: ${translate("home.impact.supportCalls")}`}
+            className="group relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-xl bg-[#efefef] p-5 text-[#141114] transition-transform duration-300 hover:-translate-y-1 focus-visible:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#141114] focus-visible:ring-offset-4 md:col-span-4 md:min-h-0"
+          >
             <div>
               <span className="inline-flex rounded-full bg-white/80 px-5 py-2.5 text-[12px] font-bold leading-none text-[#141114]">{translate("home.impact.tagSupportImpact")}</span>
               <p className="mt-3 max-w-[220px] text-[17px] font-normal leading-[1.18] md:text-[18px]"><EmphasizedImpactText text={translate("home.impact.supportCalls")} emphasis={translate("home.impact.supportCallsEmphasis")} /></p>
@@ -1108,9 +1128,13 @@ export default function PortfolioPage() {
               </div>
               <ImpactArrow />
             </div>
-          </article>
+          </Link>
 
-          <article className="relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-xl bg-[#f9b5e5] p-5 text-[#141114] md:col-span-5 md:min-h-0">
+          <Link
+            href={withBasePath("/benefits")}
+            aria-label={`${translate("home.viewProject")}: ${translate("home.impact.ticketReduction")}`}
+            className="group relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-xl bg-[#f9b5e5] p-5 text-[#141114] transition-transform duration-300 hover:-translate-y-1 focus-visible:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#141114] focus-visible:ring-offset-4 md:col-span-5 md:min-h-0"
+          >
             <div>
               <span className="inline-flex rounded-full bg-white/80 px-5 py-2.5 text-[12px] font-bold leading-none text-[#141114]">{translate("home.impact.tagSupportEfficiency")}</span>
               <p className="mt-3 max-w-[255px] text-[17px] font-normal leading-[1.18] md:text-[18px]"><EmphasizedImpactText text={translate("home.impact.ticketReduction")} emphasis={translate("home.impact.ticketReductionEmphasis")} /></p>
@@ -1122,9 +1146,13 @@ export default function PortfolioPage() {
               </div>
               <ImpactArrow />
             </div>
-          </article>
+          </Link>
 
-          <article className="relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-xl bg-[#cfe8ff] p-5 text-[#141114] md:col-span-3 md:min-h-0">
+          <Link
+            href={withBasePath("/projects/zapiano-marketing")}
+            aria-label={`${translate("home.viewProject")}: Zapiano`}
+            className="group relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-xl bg-[#cfe8ff] p-5 text-[#141114] transition-transform duration-300 hover:-translate-y-1 focus-visible:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#141114] focus-visible:ring-offset-4 md:col-span-3 md:min-h-0"
+          >
             <blockquote className="text-[14px] font-normal leading-[1.45] text-[#141114] md:text-[15px]">“{translate("home.impact.upworkQuote")}”</blockquote>
             <div className="mt-8 flex items-center gap-3">
               <Image
@@ -1139,7 +1167,7 @@ export default function PortfolioPage() {
                 <p className="mt-1 text-[11px] leading-tight text-[#141114]/72">{translate("home.impact.zapianoOwner")}</p>
               </div>
             </div>
-          </article>
+          </Link>
         </div>
       </Container>
     </section>
