@@ -618,8 +618,8 @@ export default function PortfolioPage() {
     },
     {
       href: withBasePath("/projects/zapiano-marketing"),
-      backImage: "/images/projects/zapiano/thumbnails/zapiano-thumbnail.png",
-      frontImage: "/images/projects/zapiano/banners/page-7.svg",
+      backImage: "/images/projects/zapiano/banners/page-7.svg",
+      frontImage: "/images/projects/zapiano/thumbnails/zapiano-thumbnail.png",
       label: translate("home.aiHeroProjectZapianoLabel"),
       title: translate("home.aiHeroProjectZapianoTitle"),
     },
