@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.hero-cloud {
+  opacity: 0.68;
+  filter: brightness(0) invert(1) blur(10px);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 34%, rgb(0 0 0 / 0.72) 62%, transparent 92%);
+  mask-image: radial-gradient(ellipse at center, #000 34%, rgb(0 0 0 / 0.72) 62%, transparent 92%);
+}
+
 @keyframes logo-marquee {
   from {
     transform: translateX(0);

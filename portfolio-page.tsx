@@ -969,8 +969,8 @@ export default function PortfolioPage() {
       <Container size="wide" className="relative">
         <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16">
           <div>
-            <p className="inline-flex items-center gap-2 text-xs font-semibold text-[#2b0b2d]">
-              <span aria-hidden="true" className="size-1.5 rounded-full bg-[#2b0b2d]" />
+            <p className="inline-flex items-center gap-2 rounded-full bg-[#d8d3ff] px-4 py-2 text-xs font-semibold text-[#141114]">
+              <span aria-hidden="true" className="size-1.5 rounded-full bg-[#1183D0]" />
               {translate("home.about.eyebrow")}
             </p>
             <Heading id="about-title" as="h2" variant="feature" className="mt-4 max-w-[650px] text-[clamp(2rem,3.2vw,3rem)] leading-[1.08] text-[#141114]">
@@ -1151,7 +1151,7 @@ export default function PortfolioPage() {
           </article>
 
           <article className="relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-xl bg-[#cfe8ff] p-5 text-[#141114] md:col-span-3 md:min-h-0">
-            <blockquote className="text-[17px] font-normal leading-[1.35] text-[#141114] md:text-[18px]">“{translate("home.impact.upworkQuote")}”</blockquote>
+            <blockquote className="text-[14px] font-normal leading-[1.45] text-[#141114] md:text-[15px]">“{translate("home.impact.upworkQuote")}”</blockquote>
             <div className="mt-8 flex items-center gap-3">
               <Image
                 src={withBasePath("/images/people/sven-haefliger.png")}
@@ -1504,10 +1504,10 @@ export default function PortfolioPage() {
         <div>
         <div className="relative isolate overflow-hidden bg-white px-5 pb-10 pt-20 sm:px-10 sm:pt-[6.75rem] lg:px-16 lg:pb-10 min-[1025px]:pt-[4.5rem]">
           <div className="pointer-events-none absolute inset-0 bg-[image:var(--ui-surface-hero)]" />
-          <div aria-hidden="true" className="pointer-events-none absolute -left-52 top-[28%] h-44 w-[29rem] opacity-70 drop-shadow-[0_10px_16px_rgba(154,177,216,0.18)] sm:-left-44 sm:h-56 sm:w-[36rem]">
+          <div aria-hidden="true" className="hero-cloud pointer-events-none absolute -left-52 top-[28%] h-44 w-[29rem] sm:-left-44 sm:h-56 sm:w-[36rem]">
             <Image src="/images/hero-clouds.png" alt="" fill sizes="(min-width: 640px) 576px, 464px" className="object-contain" />
           </div>
-          <div aria-hidden="true" className="pointer-events-none absolute -right-52 bottom-[-0.5rem] h-40 w-[29rem] -scale-x-100 opacity-70 drop-shadow-[0_10px_16px_rgba(154,177,216,0.18)] sm:-right-44 sm:h-52 sm:w-[34rem]">
+          <div aria-hidden="true" className="hero-cloud pointer-events-none absolute -right-52 bottom-[-0.5rem] h-40 w-[29rem] -scale-x-100 sm:-right-44 sm:h-52 sm:w-[34rem]">
             <Image src="/images/hero-clouds.png" alt="" fill sizes="(min-width: 640px) 544px, 464px" className="object-contain" />
           </div>
           <Container size="wide" className="relative flex items-center justify-center">
@@ -1533,7 +1533,7 @@ export default function PortfolioPage() {
                     <Image src="/images/tools/ai/openai.svg" alt="" width={32} height={32} className="size-6 sm:size-8" />
                   </div>
                   <div aria-hidden="true" className="absolute left-[10%] top-[74px] z-20 grid size-10 rotate-[8deg] place-items-center rounded-[13px] bg-[#050505] p-1.5 shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:left-[13%] sm:top-[88px] sm:size-[3.3rem] sm:rounded-[16px] sm:p-2">
-                    <Image src="/images/tools/ai/grok.svg" alt="" width={32} height={32} className="size-7 sm:size-9" />
+                    <Image src="/images/tools/ai/grok.png" alt="" width={540} height={540} className="size-7 sm:size-9" />
                   </div>
                   <div aria-hidden="true" className="absolute bottom-1 left-[26%] z-20 grid size-10 rotate-[7deg] place-items-center rounded-[13px] bg-white p-1 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:bottom-2 sm:left-[28%] sm:size-[3.1rem] sm:rounded-[16px] sm:p-1.5">
                     <Image src="/images/tools/ai/codex.svg" alt="" width={40} height={40} className="size-8 sm:size-10" />
@@ -1562,7 +1562,7 @@ export default function PortfolioPage() {
                           className="object-cover object-[56%_42%]"
                         />
                       </div>
-                      <div className="absolute right-0 top-0 h-[130px] w-[195px] rotate-[6deg] overflow-hidden rounded-[18px] bg-[#0d1f36] shadow-[0_18px_34px_rgba(14,41,81,0.24)] transition-transform duration-300 group-hover:translate-x-1 group-hover:rotate-[8deg] sm:h-[165px] sm:w-[245px] sm:rounded-[24px]">
+                      <div className="absolute right-0 top-0 h-[130px] w-[195px] rotate-[6deg] overflow-hidden rounded-[18px] border-0 bg-transparent shadow-none outline-none transition-transform duration-300 group-hover:translate-x-1 group-hover:rotate-[8deg] sm:h-[165px] sm:w-[245px] sm:rounded-[24px]">
                         <Image
                           src={activeHeroProject.frontImage}
                           alt={activeHeroProject.title}
