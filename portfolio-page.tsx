@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, ArrowUpRight, BrainCircuit, Check, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Lightbulb, Mic, MousePointer2, Play, Sparkles, Star, Target, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
@@ -566,6 +566,8 @@ export default function PortfolioPage() {
     "home.aiHeroStatementEndDecisions",
   ] as const;
   const [activeHeroStatement, setActiveHeroStatement] = useState(0);
+  const [previousHeroStatement, setPreviousHeroStatement] = useState<number | null>(null);
+  const activeHeroStatementRef = useRef(0);
   const { siteContent } = usePublicSiteContent();
   const { caseStudies } = usePublicCaseStudies();
   const activeProcess = PROCESS_CAPABILITIES.find((capability) => capability.id === activeProcessCapability) ?? PROCESS_CAPABILITIES[0];
@@ -605,6 +607,37 @@ export default function PortfolioPage() {
       href: "/projects/?topic=SaaS",
     },
   ];
+  const heroProjects = [
+    {
+      href: withBasePath("/projects/nayya-ai-benefits"),
+      backImage: "/images/projects/nayya-ai-benefits/banners/nayya-benefit-list-entry.jpg",
+      frontImage: "/images/projects/nayya-ai-benefits/banners/nayya-guided-decision-modal.jpg",
+      label: translate("home.aiHeroProjectLabel"),
+      title: translate("home.aiHeroProjectTitle"),
+    },
+    {
+      href: withBasePath("/projects/i9-everify-integration"),
+      backImage: "/images/projects/i9-everify-integration/hero/i9-banner.png",
+      frontImage: "/images/projects/i9-everify-integration/banners/i9-employee-design-process.svg",
+      label: translate("home.aiHeroProjectI9Label"),
+      title: translate("home.aiHeroProjectI9Title"),
+    },
+    {
+      href: withBasePath("/projects/flock-accessibility-system"),
+      backImage: "/images/projects/flock-accessibility-system/hero/flock-hero.png",
+      frontImage: "/images/projects/flock-accessibility-system/banners/flock-buttons-ui.svg",
+      label: translate("home.aiHeroProjectFlockLabel"),
+      title: translate("home.aiHeroProjectFlockTitle"),
+    },
+    {
+      href: withBasePath("/projects/zapiano-marketing"),
+      backImage: "/images/projects/zapiano/thumbnails/zapiano-thumbnail.png",
+      frontImage: "/images/projects/zapiano/banners/page-7.svg",
+      label: translate("home.aiHeroProjectZapianoLabel"),
+      title: translate("home.aiHeroProjectZapianoTitle"),
+    },
+  ];
+  const activeHeroProject = heroProjects[activeHeroStatement] ?? heroProjects[0];
   const heroAssistantSuggestions = [
     "home.assistantSuggestion1",
     "home.assistantSuggestion2",
@@ -719,11 +752,24 @@ export default function PortfolioPage() {
     }
 
     const interval = window.setInterval(() => {
-      setActiveHeroStatement((current) => (current + 1) % heroStatementKeys.length);
+      const current = activeHeroStatementRef.current;
+      const next = (current + 1) % heroStatementKeys.length;
+      setPreviousHeroStatement(current);
+      activeHeroStatementRef.current = next;
+      setActiveHeroStatement(next);
     }, 3000);
 
     return () => window.clearInterval(interval);
   }, [heroStatementKeys.length]);
+
+  useEffect(() => {
+    if (previousHeroStatement === null) {
+      return;
+    }
+
+    const timeout = window.setTimeout(() => setPreviousHeroStatement(null), 520);
+    return () => window.clearTimeout(timeout);
+  }, [previousHeroStatement]);
 
   useEffect(() => {
     let isActive = true;
@@ -799,7 +845,7 @@ export default function PortfolioPage() {
 
   const recentWorkSection = (
     <section key="work" id="projects" className="bg-white px-6 pb-28 pt-16 md:px-10 md:pb-32 md:pt-20 xl:px-20">
-      <Container size="wide">
+      <Container size="content">
         <div className="space-y-20 md:space-y-28">
           {projectGroups.map((group) => (
             <section key={group.id} aria-labelledby={`${group.id}-projects-title`}>
@@ -815,7 +861,7 @@ export default function PortfolioPage() {
                   <ArrowRight aria-hidden="true" className="size-4" />
                 </Link>
               </div>
-              <div className="mt-8 grid gap-x-10 gap-y-12 md:grid-cols-2 md:gap-y-16">
+              <div className="mt-8 grid gap-x-10 gap-y-12 md:grid-cols-2 md:gap-x-16 md:gap-y-16">
                 {group.projects.map((project, index) => (
                   <Link
                     key={project.slug}
@@ -831,7 +877,7 @@ export default function PortfolioPage() {
                           src={project.image}
                           alt={`${project.title} case study preview for ${project.company}`}
                           fill
-                          sizes="(max-width: 767px) 100vw, (max-width: 1280px) 50vw, 600px"
+                          sizes="(max-width: 767px) 100vw, 520px"
                           className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
                         />
                       ) : null}
@@ -957,7 +1003,7 @@ export default function PortfolioPage() {
   );
 
   const impactEvidenceSection = (
-    <section key="impact-evidence" aria-labelledby="impact-evidence-title" className="bg-white px-6 pb-16 md:px-10 md:pb-20 xl:px-20">
+    <section key="impact-evidence" aria-labelledby="impact-evidence-title" className="bg-white px-8 pb-20 md:px-12 md:pb-24 xl:px-24">
       <Container size="wide">
         <div className="mx-auto max-w-[540px] text-center">
           <Heading id="impact-evidence-title" as="h2" variant="section" className="text-[clamp(2rem,3.4vw,3.1rem)] leading-[1.02] text-[#141114]">
@@ -967,10 +1013,10 @@ export default function PortfolioPage() {
           </Heading>
         </div>
 
-        <div className="mx-auto mt-12 grid max-w-[1120px] gap-4 md:mt-14 md:grid-cols-12 md:grid-rows-[252px_216px_210px]">
+        <div className="mx-auto mt-14 grid max-w-[1120px] gap-8 md:mt-16 md:grid-cols-12 md:grid-rows-[310px_270px_266px] md:gap-8">
           <Link
             href={withBasePath("/projects/nayya-ai-benefits")}
-            className="group relative min-h-[252px] overflow-hidden rounded-xl md:col-span-4 md:min-h-0"
+            className="group relative min-h-[310px] overflow-hidden rounded-xl md:col-span-4 md:min-h-0"
           >
             <Image
               src="/images/projects/nayya-ai-benefits/thumbnails/nayya-enrollment-laptop.png"
@@ -980,7 +1026,7 @@ export default function PortfolioPage() {
               className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_36%,rgba(14,41,81,0.78)_100%)]" />
-            <span className="absolute bottom-16 left-4 inline-flex rounded-full bg-[#ffe000] px-4 py-2 text-[10px] font-bold leading-none text-[#141114]">
+            <span className="absolute bottom-16 left-4 inline-flex rounded-full bg-[#ffe000] px-5 py-2.5 text-[12px] font-bold leading-none text-[#141114]">
               {translate("home.impact.caseStudy")}
             </span>
             <div className="absolute inset-x-4 bottom-4 text-white">
@@ -990,7 +1036,7 @@ export default function PortfolioPage() {
 
           <Link
             href={withBasePath("/projects/flock-accessibility-system")}
-            className="group relative min-h-[252px] overflow-hidden rounded-xl md:col-span-5 md:min-h-0"
+            className="group relative min-h-[310px] overflow-hidden rounded-xl md:col-span-5 md:min-h-0"
           >
             <Image
               src="/images/projects/flock-accessibility-system/thumbnails/flock-accessibility-system-cover.png"
@@ -1000,7 +1046,7 @@ export default function PortfolioPage() {
               className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_36%,rgba(14,41,81,0.78)_100%)]" />
-            <span className="absolute bottom-16 left-4 inline-flex rounded-full bg-[#ffe000] px-4 py-2 text-[10px] font-bold leading-none text-[#141114]">
+            <span className="absolute bottom-16 left-4 inline-flex rounded-full bg-[#ffe000] px-5 py-2.5 text-[12px] font-bold leading-none text-[#141114]">
               {translate("home.impact.featuredProject")}
             </span>
             <div className="absolute inset-x-4 bottom-4 text-white">
@@ -1008,7 +1054,7 @@ export default function PortfolioPage() {
             </div>
           </Link>
 
-          <article className="relative flex min-h-[202px] flex-col justify-between overflow-hidden rounded-xl bg-[var(--ui-color-brand-primary)] p-5 text-white md:col-span-3 md:min-h-0">
+          <article className="relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-xl bg-[var(--ui-color-brand-primary)] p-5 text-white md:col-span-3 md:min-h-0">
             <div>
               <p className="text-[15px] font-normal leading-[1.16] text-white">{translate("home.impact.enrollment")}</p>
               <strong className="mt-1 block text-[clamp(3.5rem,5vw,4.4rem)] font-bold leading-none tracking-[-0.07em]">5,500</strong>
@@ -1020,10 +1066,10 @@ export default function PortfolioPage() {
             </div>
           </article>
 
-          <article className="relative flex min-h-[180px] flex-col justify-between rounded-xl bg-white p-5 text-[#141114] shadow-[0_8px_18px_rgba(14,41,81,0.1)] md:col-span-3 md:min-h-0">
+          <article className="relative flex min-h-[250px] flex-col justify-between rounded-xl bg-white p-5 text-[#141114] shadow-[0_8px_18px_rgba(14,41,81,0.1)] md:col-span-3 md:min-h-0">
             <div>
-              <span className="inline-flex rounded-full bg-[#f5f5f5] px-4 py-2 text-[10px] font-bold leading-none text-[#141114]">{translate("home.impact.tagFormCompletion")}</span>
-              <p className="mt-3 max-w-[180px] text-[15px] font-normal leading-[1.16]"><EmphasizedImpactText text={translate("home.impact.formCompletion")} emphasis={translate("home.impact.formCompletionEmphasis")} /></p>
+              <span className="inline-flex rounded-full bg-[#f5f5f5] px-5 py-2.5 text-[12px] font-bold leading-none text-[#141114]">{translate("home.impact.tagFormCompletion")}</span>
+              <p className="mt-3 max-w-[190px] text-[17px] font-normal leading-[1.18] md:text-[18px]"><EmphasizedImpactText text={translate("home.impact.formCompletion")} emphasis={translate("home.impact.formCompletionEmphasis")} /></p>
             </div>
             <div className="flex items-end justify-between gap-3">
               <div className="flex items-start gap-0.5">
@@ -1034,11 +1080,11 @@ export default function PortfolioPage() {
             </div>
           </article>
 
-          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[#f8df36] p-5 text-[#141114] md:col-span-3 md:min-h-0">
+          <article className="relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-xl bg-[#f8df36] p-5 text-[#141114] md:col-span-3 md:min-h-0">
             <div aria-hidden="true" className="pointer-events-none absolute -bottom-[5.4rem] left-1/2 size-44 -translate-x-1/2 rounded-full border-[1.75rem] border-[#e4c900]/80" />
             <div className="relative z-10">
-              <span className="inline-flex rounded-full bg-white/80 px-4 py-2 text-[10px] font-bold leading-none text-[#141114]">{translate("home.impact.tagProcessing")}</span>
-              <p className="mt-3 max-w-[160px] text-[15px] font-normal leading-[1.16]"><EmphasizedImpactText text={translate("home.impact.processingTime")} emphasis={translate("home.impact.processingTimeEmphasis")} /></p>
+              <span className="inline-flex rounded-full bg-white/80 px-5 py-2.5 text-[12px] font-bold leading-none text-[#141114]">{translate("home.impact.tagProcessing")}</span>
+              <p className="mt-3 max-w-[175px] text-[17px] font-normal leading-[1.18] md:text-[18px]"><EmphasizedImpactText text={translate("home.impact.processingTime")} emphasis={translate("home.impact.processingTimeEmphasis")} /></p>
             </div>
             <div className="relative z-10 flex items-end justify-between gap-3">
               <div className="flex items-start gap-0.5">
@@ -1049,10 +1095,10 @@ export default function PortfolioPage() {
             </div>
           </article>
 
-          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[#efefef] p-5 text-[#141114] md:col-span-4 md:min-h-0">
+          <article className="relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-xl bg-[#efefef] p-5 text-[#141114] md:col-span-4 md:min-h-0">
             <div>
-              <span className="inline-flex rounded-full bg-white/80 px-4 py-2 text-[10px] font-bold leading-none text-[#141114]">{translate("home.impact.tagSelfService")}</span>
-              <p className="mt-3 max-w-[190px] text-[15px] font-normal leading-[1.16]"><EmphasizedImpactText text={translate("home.impact.selfService")} emphasis={translate("home.impact.selfServiceEmphasis")} /></p>
+              <span className="inline-flex rounded-full bg-white/80 px-5 py-2.5 text-[12px] font-bold leading-none text-[#141114]">{translate("home.impact.tagSelfService")}</span>
+              <p className="mt-3 max-w-[220px] text-[17px] font-normal leading-[1.18] md:text-[18px]"><EmphasizedImpactText text={translate("home.impact.selfService")} emphasis={translate("home.impact.selfServiceEmphasis")} /></p>
             </div>
             <div className="flex items-end justify-between gap-3">
               <div className="flex items-start gap-0.5">
@@ -1072,10 +1118,10 @@ export default function PortfolioPage() {
             </div>
           </div>
 
-          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[#efefef] p-5 text-[#141114] md:col-span-4 md:min-h-0">
+          <article className="relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-xl bg-[#efefef] p-5 text-[#141114] md:col-span-4 md:min-h-0">
             <div>
-              <span className="inline-flex rounded-full bg-white/80 px-4 py-2 text-[10px] font-bold leading-none text-[#141114]">{translate("home.impact.tagSupportImpact")}</span>
-              <p className="mt-3 max-w-[190px] text-[15px] font-normal leading-[1.16]"><EmphasizedImpactText text={translate("home.impact.supportCalls")} emphasis={translate("home.impact.supportCallsEmphasis")} /></p>
+              <span className="inline-flex rounded-full bg-white/80 px-5 py-2.5 text-[12px] font-bold leading-none text-[#141114]">{translate("home.impact.tagSupportImpact")}</span>
+              <p className="mt-3 max-w-[220px] text-[17px] font-normal leading-[1.18] md:text-[18px]"><EmphasizedImpactText text={translate("home.impact.supportCalls")} emphasis={translate("home.impact.supportCallsEmphasis")} /></p>
             </div>
             <div className="flex items-end justify-between gap-3">
               <div className="flex items-start gap-0.5">
@@ -1086,10 +1132,10 @@ export default function PortfolioPage() {
             </div>
           </article>
 
-          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[#f9b5e5] p-5 text-[#141114] md:col-span-5 md:min-h-0">
+          <article className="relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-xl bg-[#f9b5e5] p-5 text-[#141114] md:col-span-5 md:min-h-0">
             <div>
-              <span className="inline-flex rounded-full bg-white/80 px-4 py-2 text-[10px] font-bold leading-none text-[#141114]">{translate("home.impact.tagSupportEfficiency")}</span>
-              <p className="mt-3 max-w-[220px] text-[15px] font-normal leading-[1.16]"><EmphasizedImpactText text={translate("home.impact.ticketReduction")} emphasis={translate("home.impact.ticketReductionEmphasis")} /></p>
+              <span className="inline-flex rounded-full bg-white/80 px-5 py-2.5 text-[12px] font-bold leading-none text-[#141114]">{translate("home.impact.tagSupportEfficiency")}</span>
+              <p className="mt-3 max-w-[255px] text-[17px] font-normal leading-[1.18] md:text-[18px]"><EmphasizedImpactText text={translate("home.impact.ticketReduction")} emphasis={translate("home.impact.ticketReductionEmphasis")} /></p>
             </div>
             <div className="flex items-end justify-between gap-3">
               <div className="flex items-start gap-0.5">
@@ -1100,8 +1146,8 @@ export default function PortfolioPage() {
             </div>
           </article>
 
-          <article className="relative flex min-h-[180px] flex-col justify-between overflow-hidden rounded-xl bg-[#cfe8ff] p-5 text-[#141114] md:col-span-3 md:min-h-0">
-            <blockquote className="text-[15px] font-normal leading-[1.35] text-[#141114]">“{translate("home.impact.upworkQuote")}”</blockquote>
+          <article className="relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-xl bg-[#cfe8ff] p-5 text-[#141114] md:col-span-3 md:min-h-0">
+            <blockquote className="text-[17px] font-normal leading-[1.35] text-[#141114] md:text-[18px]">“{translate("home.impact.upworkQuote")}”</blockquote>
             <div className="mt-8 flex items-center gap-3">
               <Image
                 src={withBasePath("/images/people/sven-haefliger.png")}
@@ -1452,8 +1498,14 @@ export default function PortfolioPage() {
       {/* ── Hero ── */}
       <section className="bg-white">
         <div>
-        <div className="relative isolate overflow-hidden bg-white px-5 pb-10 pt-24 sm:px-10 sm:pt-[8.25rem] lg:px-16 lg:pb-10 min-[1025px]:pt-[5.5rem]">
+        <div className="relative isolate overflow-hidden bg-white px-5 pb-10 pt-20 sm:px-10 sm:pt-[6.75rem] lg:px-16 lg:pb-10 min-[1025px]:pt-[4.5rem]">
           <div className="pointer-events-none absolute inset-0 bg-[image:var(--ui-surface-hero)]" />
+          <div aria-hidden="true" className="pointer-events-none absolute -left-52 top-[28%] h-44 w-[29rem] opacity-70 drop-shadow-[0_10px_16px_rgba(154,177,216,0.18)] sm:-left-44 sm:h-56 sm:w-[36rem]">
+            <Image src="/images/hero-clouds.png" alt="" fill sizes="(min-width: 640px) 576px, 464px" className="object-contain" />
+          </div>
+          <div aria-hidden="true" className="pointer-events-none absolute -right-52 bottom-[-0.5rem] h-40 w-[29rem] -scale-x-100 opacity-70 drop-shadow-[0_10px_16px_rgba(154,177,216,0.18)] sm:-right-44 sm:h-52 sm:w-[34rem]">
+            <Image src="/images/hero-clouds.png" alt="" fill sizes="(min-width: 640px) 544px, 464px" className="object-contain" />
+          </div>
           <Container size="wide" className="relative flex items-center justify-center">
             <div className="relative z-10 mx-auto w-full min-w-0 max-w-[840px] text-center">
               <div className="mx-auto w-full min-w-0 max-w-[840px]">
@@ -1466,10 +1518,7 @@ export default function PortfolioPage() {
                     className="object-cover object-center"
                   />
                 </div>
-                <p className="text-[12px] font-normal leading-relaxed tracking-[0.02em] text-[var(--ui-color-brand-primary)] sm:text-sm">
-                  {translate("home.mainHeroFocus")}
-                </p>
-                <Heading as="h1" variant="hero" tone="editorial" className="mx-auto mt-3 max-w-[840px] text-center text-[clamp(2.5rem,5.1vw,4.9rem)] leading-[0.95] tracking-[-0.055em] text-[#141114]">
+                <Heading as="h1" variant="hero" tone="editorial" className="mx-auto mt-2 max-w-[840px] text-center text-[clamp(2.5rem,5.1vw,4.9rem)] leading-[0.95] tracking-[-0.055em] text-[#141114]">
                   <span className="block font-playfair font-normal italic">{translate("home.aiHeroTitleLead")}</span>
                   <span className="mt-4 block font-inter text-[0.5em] font-semibold tracking-[-0.04em] sm:mt-5 sm:text-[0.58em]">
                     {translate("home.aiHeroTitleAccent")}
@@ -1479,8 +1528,8 @@ export default function PortfolioPage() {
                   <div aria-hidden="true" className="absolute left-[1%] top-1 z-20 grid size-11 -rotate-[10deg] place-items-center rounded-[15px] bg-[#141414] p-2.5 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:left-4 sm:size-[3.75rem] sm:rounded-[18px] sm:p-3.5">
                     <Image src="/images/tools/ai/openai.svg" alt="" width={32} height={32} className="size-6 sm:size-8" />
                   </div>
-                  <div aria-hidden="true" className="absolute left-[10%] top-[74px] z-20 grid size-10 rotate-[8deg] place-items-center rounded-[13px] bg-[#e97954] text-white shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:left-[13%] sm:top-[88px] sm:size-[3.3rem] sm:rounded-[16px]">
-                    <Sparkles aria-hidden="true" className="size-6 sm:size-7" strokeWidth={2.4} />
+                  <div aria-hidden="true" className="absolute left-[10%] top-[74px] z-20 grid size-10 rotate-[8deg] place-items-center rounded-[13px] bg-[#050505] p-1.5 shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:left-[13%] sm:top-[88px] sm:size-[3.3rem] sm:rounded-[16px] sm:p-2">
+                    <Image src="/images/tools/ai/grok.svg" alt="" width={32} height={32} className="size-7 sm:size-9" />
                   </div>
                   <div aria-hidden="true" className="absolute bottom-1 left-[26%] z-20 grid size-10 rotate-[7deg] place-items-center rounded-[13px] bg-white p-1 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:bottom-2 sm:left-[28%] sm:size-[3.1rem] sm:rounded-[16px] sm:p-1.5">
                     <Image src="/images/tools/ai/codex.svg" alt="" width={40} height={40} className="size-8 sm:size-10" />
@@ -1496,36 +1545,34 @@ export default function PortfolioPage() {
                     <Image src="/images/tools/ai/claude-code.svg" alt="" width={32} height={32} className="size-8 sm:size-10" />
                   </div>
                   <Link
-                    href={withBasePath("/projects/nayya-ai-benefits")}
+                    href={activeHeroProject.href}
                     className="group absolute left-1/2 top-1/2 z-10 h-[150px] w-[300px] -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 hover:-translate-y-[54%] sm:h-[180px] sm:w-[390px]"
                   >
-                    <div className="absolute left-0 top-5 h-[112px] w-[172px] -rotate-[7deg] overflow-hidden rounded-[16px] border-2 border-white bg-[#edf7fc] shadow-[0_14px_26px_rgba(14,41,81,0.19)] transition-transform duration-300 group-hover:-translate-x-1 group-hover:-rotate-[9deg] sm:top-5 sm:h-[140px] sm:w-[215px] sm:rounded-[20px]">
-                      <Image
-                        src="/images/projects/nayya-ai-benefits/banners/nayya-benefit-list-entry.jpg"
-                        alt=""
-                        fill
-                        sizes="(min-width: 640px) 215px, 172px"
-                        className="object-cover object-[56%_42%]"
-                      />
-                    </div>
-                    <div className="absolute right-0 top-0 h-[130px] w-[195px] rotate-[6deg] overflow-hidden rounded-[18px] border-2 border-white bg-[#0d1f36] shadow-[0_18px_34px_rgba(14,41,81,0.24)] transition-transform duration-300 group-hover:translate-x-1 group-hover:rotate-[8deg] sm:h-[165px] sm:w-[245px] sm:rounded-[24px]">
-                      <Image
-                        src="/images/projects/nayya-ai-benefits/banners/nayya-guided-decision-modal.jpg"
-                        alt={translate("home.aiHeroProjectTitle")}
-                        fill
-                        sizes="(min-width: 640px) 245px, 195px"
-                        className="object-cover object-[54%_46%] transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,19,37,0.02)_20%,rgba(5,19,37,0.88)_100%)]" />
-                      <div className="absolute inset-x-0 bottom-0 p-2.5 text-left text-white sm:p-3.5">
-                        <span className="inline-flex rounded-full bg-[#ffe000] px-1.5 py-0.5 text-[8px] font-bold text-[#171314] sm:px-2 sm:text-[10px]">
-                          {translate("home.aiHeroProjectLabel")}
-                        </span>
-                        <p className="mt-1 text-[12px] font-semibold leading-tight sm:text-[15px]">{translate("home.aiHeroProjectTitle")}</p>
-                        <span className="mt-1 flex items-center gap-1 text-[9px] font-semibold text-white/85 opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:text-[10px]">
-                          {translate("home.aiHeroProjectCta")}
-                          <ArrowRight aria-hidden="true" className="size-3" />
-                        </span>
+                    <div key={activeHeroStatement} className="relative size-full animate-[hero-project-enter_520ms_ease-out]">
+                      <div className="absolute left-0 top-5 h-[112px] w-[172px] -rotate-[7deg] overflow-hidden rounded-[16px] bg-[#edf7fc] shadow-[0_14px_26px_rgba(14,41,81,0.19)] transition-transform duration-300 group-hover:-translate-x-1 group-hover:-rotate-[9deg] sm:top-5 sm:h-[140px] sm:w-[215px] sm:rounded-[20px]">
+                        <Image
+                          src={activeHeroProject.backImage}
+                          alt=""
+                          fill
+                          sizes="(min-width: 640px) 215px, 172px"
+                          className="object-cover object-[56%_42%]"
+                        />
+                      </div>
+                      <div className="absolute right-0 top-0 h-[130px] w-[195px] rotate-[6deg] overflow-hidden rounded-[18px] bg-[#0d1f36] shadow-[0_18px_34px_rgba(14,41,81,0.24)] transition-transform duration-300 group-hover:translate-x-1 group-hover:rotate-[8deg] sm:h-[165px] sm:w-[245px] sm:rounded-[24px]">
+                        <Image
+                          src={activeHeroProject.frontImage}
+                          alt={activeHeroProject.title}
+                          fill
+                          sizes="(min-width: 640px) 245px, 195px"
+                          className="object-cover object-[54%_46%] transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,19,37,0.02)_20%,rgba(5,19,37,0.88)_100%)] opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+                        <div className="absolute inset-x-0 bottom-0 translate-y-2 p-2.5 text-left text-white opacity-0 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 sm:p-3.5">
+                          <span className="flex items-center gap-1 text-[9px] font-semibold text-white sm:text-[10px]">
+                            {translate("home.aiHeroProjectCta")}
+                            <ArrowRight aria-hidden="true" className="size-3" />
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </Link>
@@ -1534,8 +1581,15 @@ export default function PortfolioPage() {
                   <span className="text-[13px] font-semibold uppercase tracking-[0.05em] text-[#71808d] sm:text-[15px]">
                     {translate("home.aiHeroStatementLead")}
                   </span>
-                  <span className="font-playfair text-[clamp(1.05rem,1.7vw,1.35rem)] italic leading-none text-[#45576a]">
-                    {translate(heroStatementKeys[activeHeroStatement])}
+                  <span className="relative inline-grid max-w-full overflow-hidden align-[-0.14em] font-playfair text-[clamp(1.05rem,1.7vw,1.35rem)] italic leading-none text-[#45576a]">
+                    {previousHeroStatement !== null ? (
+                      <span aria-hidden="true" className="absolute inset-x-0 top-0 animate-[hero-statement-exit_480ms_ease-out] text-center">
+                        {translate(heroStatementKeys[previousHeroStatement])}
+                      </span>
+                    ) : null}
+                    <span key={activeHeroStatement} className={`block text-center ${previousHeroStatement !== null ? "animate-[hero-statement-enter_480ms_ease-out]" : ""}`}>
+                      {translate(heroStatementKeys[activeHeroStatement])}
+                    </span>
                   </span>
                 </p>
                 <nav

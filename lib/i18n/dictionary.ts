@@ -684,6 +684,12 @@ export const dictionary = {
   "home.aiHeroStatementEndDecisions": { en: "better user decisions.", es: "mejores decisiones de las personas usuarias.", de: "bessere Nutzerentscheidungen." },
   "home.aiHeroProjectLabel": { en: "AI product", es: "Producto con IA", de: "KI-Produkt" },
   "home.aiHeroProjectTitle": { en: "AI Benefits Integration", es: "Integración de beneficios con IA", de: "KI-Vorteilsintegration" },
+  "home.aiHeroProjectI9Label": { en: "Enterprise workflow", es: "Flujo empresarial", de: "Unternehmensablauf" },
+  "home.aiHeroProjectI9Title": { en: "I-9 & E-Verify Integration", es: "Integración de I-9 y E-Verify", de: "I-9- und E-Verify-Integration" },
+  "home.aiHeroProjectFlockLabel": { en: "Accessibility system", es: "Sistema accesible", de: "Barrierefreies System" },
+  "home.aiHeroProjectFlockTitle": { en: "Accessibility Audit & Design System", es: "Auditoría de accesibilidad y sistema de diseño", de: "Barrierefreiheitsprüfung & Designsystem" },
+  "home.aiHeroProjectZapianoLabel": { en: "Growth design", es: "Diseño de crecimiento", de: "Wachstumsdesign" },
+  "home.aiHeroProjectZapianoTitle": { en: "Paid Traffic Funnel Redesign", es: "Rediseño de embudo de tráfico de pago", de: "Redesign des Paid-Traffic-Funnels" },
   "home.aiHeroProjectCta": { en: "View case study", es: "Ver caso de estudio", de: "Fallstudie ansehen" },
   "home.projectsEyebrow": {
     en: "A few things I've made",
