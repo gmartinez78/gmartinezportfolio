@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, ArrowUpRight, BrainCircuit, Check, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Lightbulb, Mic, MousePointer2, Play, Sparkles, Star, Target, Wand2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BrainCircuit, Check, Eye, FolderGit2, GitCommitHorizontal, GitFork, LayoutTemplate, Lightbulb, Mic, MousePointer2, Play, Sparkles, Target, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { ChecklistStatusCard } from "./components/checklist-status-card";
@@ -75,15 +75,26 @@ function ImpactArrow() {
 }
 
 type HeroPhase = "sunrise" | "day" | "sunset" | "night";
-type GitHubActivityItem = {
-  id: string;
-  kind: "commit" | "pull_request" | "issue" | "release" | "repo" | "star";
-  title: string;
-  detail: string;
-  repo: string;
-  timestamp: string | null;
-  url: string;
+type GitHubContribution = {
+  date: string;
+  count: number;
+  level: number;
 };
+
+type GitHubContributionResponse = {
+  total?: {
+    lastYear?: number;
+  };
+  contributions?: GitHubContribution[];
+};
+
+const GITHUB_USERNAME = "gmartinez78";
+const GITHUB_CONTRIBUTIONS_URL = `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}?y=last`;
+const GITHUB_CONTRIBUTION_COLORS = ["#e8eff6", "#c8e8fa", "#8bd2f2", "#46aae0", "#1183D0"];
+
+function getGitHubContributionColor(level: number) {
+  return GITHUB_CONTRIBUTION_COLORS[Math.max(0, Math.min(level, GITHUB_CONTRIBUTION_COLORS.length - 1))];
+}
 
 type HeroAssistantResult = {
   response: string;
@@ -521,39 +532,15 @@ function getHeroPhaseForLocation(date: Date, latitude: number, longitude: number
   return "night";
 }
 
-function formatRelativeTimestamp(value: string | null) {
-  if (!value) {
-    return "Recently";
-  }
-
-  const then = new Date(value).getTime();
-  const now = Date.now();
-  const diffMinutes = Math.max(1, Math.round((now - then) / 60000));
-
-  if (diffMinutes < 60) return `${diffMinutes}m ago`;
-  const diffHours = Math.round(diffMinutes / 60);
-  if (diffHours < 24) return `${diffHours}h ago`;
-  const diffDays = Math.round(diffHours / 24);
-  if (diffDays < 30) return `${diffDays}d ago`;
-  const diffMonths = Math.round(diffDays / 30);
-  return `${diffMonths}mo ago`;
-}
-
-function getGitHubActivityIcon(kind: GitHubActivityItem["kind"]) {
-  if (kind === "commit") return GitCommitHorizontal;
-  if (kind === "pull_request") return GitPullRequest;
-  if (kind === "star") return Star;
-  if (kind === "repo") return FolderGit2;
-  return GitFork;
-}
-
 export default function PortfolioPage() {
   const heroPhase: HeroPhase = "day";
   const { language } = useLanguage();
   const translate = useTranslate();
   const translateTag = useTranslateTag();
-  const [githubActivity, setGithubActivity] = useState<GitHubActivityItem[]>([]);
-  const [githubUsername, setGithubUsername] = useState("gmartinez78");
+  const [githubContributions, setGithubContributions] = useState<GitHubContribution[]>([]);
+  const [githubContributionTotal, setGithubContributionTotal] = useState(0);
+  const [isGitHubActivityLoaded, setIsGitHubActivityLoaded] = useState(false);
+  const githubUsername = GITHUB_USERNAME;
   const [heroVisitorType, setHeroVisitorType] = useState<HeroVisitorType | null>(null);
   const [heroAssistantQuery, setHeroAssistantQuery] = useState("");
   const [heroAssistantResponse, setHeroAssistantResponse] = useState(() => translate("home.assistantDefaultResponse"));
@@ -772,76 +759,57 @@ export default function PortfolioPage() {
   }, [previousHeroStatement]);
 
   useEffect(() => {
+    const controller = new AbortController();
     let isActive = true;
 
     void (async () => {
       try {
-        const response = await fetch(withBasePath("/api/github-activity"));
+        const response = await fetch(GITHUB_CONTRIBUTIONS_URL, {
+          cache: "no-store",
+          signal: controller.signal,
+        });
         if (!response.ok) {
           return;
         }
 
-        const payload = (await response.json()) as {
-          items?: GitHubActivityItem[];
-          username?: string;
-        };
+        const payload = (await response.json()) as GitHubContributionResponse;
 
         if (!isActive) {
           return;
         }
 
-        setGithubActivity(payload.items ?? []);
-        setGithubUsername(payload.username ?? "gmartinez78");
+        const contributions = payload.contributions ?? [];
+        setGithubContributions(contributions);
+        setGithubContributionTotal(
+          payload.total?.lastYear ?? contributions.reduce((total, item) => total + item.count, 0),
+        );
       } catch {
         if (isActive) {
-          setGithubActivity([]);
+          setGithubContributions([]);
+        }
+      } finally {
+        if (isActive) {
+          setIsGitHubActivityLoaded(true);
         }
       }
     })();
 
     return () => {
       isActive = false;
+      controller.abort();
     };
   }, []);
 
-  const githubActivityItems = githubActivity.length
-    ? githubActivity.filter((item) => item.kind !== "release").slice(0, 6)
-    : [
-        {
-          id: "github-fallback",
-          kind: "repo" as const,
-          title: translate("home.githubProfile"),
-          detail: translate("home.githubEmptyState"),
-          repo: githubUsername,
-          timestamp: null,
-          url: `https://github.com/${githubUsername}`,
-        },
-      ];
+  const githubContributionWeeks = useMemo(() => {
+    const recentContributions = githubContributions.slice(-364);
+    const weeks: GitHubContribution[][] = [];
 
-  const githubActivitySummary = useMemo(() => {
-    const counts = githubActivityItems.reduce<Record<GitHubActivityItem["kind"], number>>(
-      (acc, item) => {
-        acc[item.kind] += 1;
-        return acc;
-      },
-      {
-        commit: 0,
-        pull_request: 0,
-        issue: 0,
-        release: 0,
-        repo: 0,
-        star: 0,
-      },
-    );
+    for (let index = 0; index < recentContributions.length; index += 7) {
+      weeks.push(recentContributions.slice(index, index + 7));
+    }
 
-    return [
-      { label: translate("home.commits"), value: counts.commit },
-      { label: translate("home.pullRequests"), value: counts.pull_request },
-      { label: translate("home.issues"), value: counts.issue },
-      { label: translate("home.repos"), value: counts.repo },
-    ].filter((item) => item.value > 0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [githubActivityItems, language]);
+    return weeks;
+  }, [githubContributions]);
 
   const recentWorkSection = (
     <section key="work" id="projects" className="bg-white px-6 pb-28 pt-16 md:px-10 md:pb-32 md:pt-20 xl:px-20">
@@ -1464,13 +1432,44 @@ export default function PortfolioPage() {
           </a>
         </div>
         <div className="mt-6 overflow-x-auto rounded-[18px] bg-[#fbfdff] p-5 md:p-8">
-          <div className="flex min-h-[220px] items-center">
-            <img
-              src={`https://ghchart.rshah.org/1183D0/${githubUsername}`}
-              alt={`${githubUsername} GitHub contributions chart`}
-              className="mx-auto translate-y-4 h-auto w-full min-w-[880px] object-contain"
-              loading="lazy"
-            />
+          <div className="mx-auto flex min-h-[220px] min-w-[840px] flex-col justify-center">
+            <div className="flex items-center gap-3 text-[12px] font-medium text-[#5c7792]">
+              <span className={`size-2 rounded-full ${isGitHubActivityLoaded ? "bg-[#1183D0]" : "bg-[#bcd2e7]"}`} aria-hidden="true" />
+              <span>{isGitHubActivityLoaded ? translate("home.githubLiveActivity") : translate("home.githubLoadingActivity")}</span>
+              {githubContributions.length ? (
+                <>
+                  <span className="text-[#b7c8d8]" aria-hidden="true">•</span>
+                  <span><strong className="font-semibold text-[#0e2951]">{githubContributionTotal.toLocaleString(language)}</strong> {translate("home.githubLastYearContributions")}</span>
+                </>
+              ) : null}
+            </div>
+            <div className="mt-5 flex items-center gap-3" role="img" aria-label={`${githubUsername} GitHub contributions over the last year`}>
+              <div className="flex h-[101px] flex-col justify-between pb-px text-[10px] font-medium text-[#8aa0b8]">
+                <span>Mon</span>
+                <span>Wed</span>
+                <span>Fri</span>
+              </div>
+              <div className="grid grid-flow-col grid-rows-7 gap-[3px]">
+                {(githubContributions.length
+                  ? githubContributionWeeks.flat()
+                  : Array.from({ length: 364 }, (_, index) => ({ date: `loading-${index}`, count: 0, level: 0 }))
+                ).map((contribution) => (
+                  <span
+                    key={contribution.date}
+                    title={contribution.date.startsWith("loading-") ? undefined : `${contribution.count} contribution${contribution.count === 1 ? "" : "s"} on ${contribution.date}`}
+                    className="size-[11px] rounded-[3px] transition-transform duration-150 hover:scale-125"
+                    style={{ backgroundColor: getGitHubContributionColor(contribution.level) }}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="mt-5 flex items-center gap-2 text-[10px] font-medium text-[#8aa0b8]">
+              <span>{translate("home.githubLess")}</span>
+              {GITHUB_CONTRIBUTION_COLORS.map((color) => (
+                <span key={color} className="size-[11px] rounded-[3px]" style={{ backgroundColor: color }} />
+              ))}
+              <span>{translate("home.githubMore")}</span>
+            </div>
           </div>
         </div>
       </div>
