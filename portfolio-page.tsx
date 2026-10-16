@@ -1597,13 +1597,13 @@ export default function PortfolioPage() {
                   <span className="text-[13px] font-semibold uppercase tracking-[0.05em] text-[#71808d] sm:text-[15px]">
                     {translate("home.aiHeroStatementLead")}
                   </span>
-                  <span className="relative inline-block h-[1.25em] w-80 max-w-full overflow-hidden align-[-0.22em] font-playfair text-[clamp(1.05rem,1.7vw,1.35rem)] italic leading-[1.15] text-[#45576a]">
+                  <span className="relative inline-grid max-w-full overflow-hidden align-[-0.14em] font-playfair text-[clamp(1.05rem,1.7vw,1.35rem)] italic leading-none text-[#45576a]">
                     {previousHeroStatement !== null ? (
                       <span aria-hidden="true" className="hero-statement-out absolute inset-x-0 top-0 text-center">
                         {translate(heroStatementKeys[previousHeroStatement])}
                       </span>
                     ) : null}
-                    <span key={activeHeroStatement} className={`absolute inset-x-0 top-0 text-center ${previousHeroStatement !== null ? "hero-statement-in" : ""}`}>
+                    <span key={activeHeroStatement} className={`block text-center ${previousHeroStatement !== null ? "hero-statement-in" : ""}`}>
                       {translate(heroStatementKeys[activeHeroStatement])}
                     </span>
                   </span>
