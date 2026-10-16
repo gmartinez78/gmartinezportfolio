@@ -62,6 +62,7 @@ const projectImageMap: Record<string, string> = {
   "i9-everify-integration": withBasePath("/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png"),
   protecta: withBasePath("/images/projects/protecta/thumbnails/protectabanner.png"),
   reversetech: withBasePath("/images/projects/Reversetech/thumbnails/project-list-card-reversetech.png"),
+  "zapiano-marketing": withBasePath("/images/projects/zapiano/thumbnails/zapiano-thumbnail.png"),
 };
 
 const projectHeroImageMap: Record<string, string> = {
@@ -141,6 +142,10 @@ const projectListCardMediaMap: Record<string, { id: string; image: string }> = {
     id: "project-list-card-reversetech",
     image: withBasePath("/images/projects/Reversetech/thumbnails/project-list-card-reversetech.png"),
   },
+  "zapiano-marketing": {
+    id: "project-list-card-zapiano-marketing",
+    image: withBasePath("/images/projects/zapiano/thumbnails/zapiano-thumbnail.png"),
+  },
 };
 
 const legacyAssetMap: Record<string, string> = {
@@ -153,7 +158,7 @@ const legacyAssetMap: Record<string, string> = {
   "/images/certs/nng-cert.png": "/images/OiSjn.png",
 };
 
-const HIDDEN_CASE_STUDY_SLUGS = new Set<string>();
+const HIDDEN_CASE_STUDY_SLUGS = new Set(["protecta"]);
 
 const REVERSETECH_PROJECT_TITLE = "Reverse Health Funnel Optimization & A/B Testing";
 
