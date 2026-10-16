@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useState } from "react";
-import { ArrowRight, ArrowUpRight, BrainCircuit, Check, Code2, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, Heart, LayoutTemplate, Lightbulb, Mic, MousePointer2, Play, Sparkles, Star, Target, Wand2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BrainCircuit, Check, Code2, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Lightbulb, Mic, MousePointer2, Play, Sparkles, Star, Target, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { ChecklistStatusCard } from "./components/checklist-status-card";
@@ -1451,10 +1451,10 @@ export default function PortfolioPage() {
                   {translate("home.mainHeroFocus")}
                 </p>
                 <Heading as="h1" variant="hero" tone="editorial" className="mx-auto mt-3 max-w-[840px] text-center text-[clamp(2.5rem,5.1vw,4.9rem)] leading-[0.95] tracking-[-0.055em] text-[#141114]">
-                  <span className="block font-inter text-[0.5em] font-semibold tracking-[-0.04em] sm:text-[0.58em]">
+                  <span className="block font-playfair font-normal italic">{translate("home.aiHeroTitleLead")}</span>
+                  <span className="mt-1 block font-inter text-[0.5em] font-semibold tracking-[-0.04em] sm:text-[0.58em]">
                     {translate("home.aiHeroTitleAccent")}
                   </span>
-                  <span className="mt-1 block font-playfair font-normal italic">{translate("home.aiHeroTitleLead")}</span>
                 </Heading>
                 <p className="mx-auto mt-4 max-w-[510px] text-sm leading-relaxed text-[#45576a] sm:text-base">
                   {translate("home.aiHeroDescription")}
@@ -1474,34 +1474,43 @@ export default function PortfolioPage() {
                     <Sparkles aria-hidden="true" className="absolute -right-1 -top-1 size-3.5 rounded-full bg-white p-0.5 text-[#8e66ff] sm:size-4" strokeWidth={2.4} />
                   </div>
                   <div aria-hidden="true" className="absolute right-[10%] top-[76px] z-20 grid size-10 -rotate-[8deg] place-items-center rounded-[13px] bg-white shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:right-[13%] sm:top-[88px] sm:size-[3.3rem] sm:rounded-[16px]">
-                    <Heart aria-hidden="true" className="size-5 fill-[#ff6b63] text-[#ff6b63] sm:size-6" strokeWidth={2.1} />
-                    <span aria-hidden="true" className="absolute bottom-2 right-2 size-2 rounded-full bg-[#805cff] sm:bottom-2.5 sm:right-2.5" />
+                    <Image src="/images/tools/ai/lovable.svg" alt="" width={32} height={32} className="size-7 sm:size-8" />
                   </div>
-                  <div aria-hidden="true" className="absolute bottom-1 right-[26%] z-20 grid size-10 -rotate-[6deg] place-items-center rounded-[13px] bg-[#2a1b18] shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:bottom-2 sm:right-[28%] sm:size-[3.1rem] sm:rounded-[16px]">
-                    <Image src="/images/tools/ai/anthropic.svg" alt="" width={28} height={28} className="size-6 sm:size-7" />
-                    <Code2 aria-hidden="true" className="absolute -bottom-1 -right-1 size-3.5 rounded-full bg-[#f5d4c2] p-0.5 text-[#5b2e1e] sm:size-4" strokeWidth={2.5} />
+                  <div aria-hidden="true" className="absolute bottom-1 right-[26%] z-20 grid size-10 -rotate-[6deg] place-items-center rounded-[13px] bg-white p-1.5 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:bottom-2 sm:right-[28%] sm:size-[3.1rem] sm:rounded-[16px] sm:p-2">
+                    <Image src="/images/tools/ai/claude-code.svg" alt="" width={32} height={32} className="size-8 sm:size-10" />
                   </div>
                   <Link
                     href={withBasePath("/projects/nayya-ai-benefits")}
-                    className="group absolute left-1/2 top-1/2 z-10 h-[132px] w-[min(260px,67vw)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[20px] border border-white/75 bg-[#0d1f36] shadow-[0_18px_34px_rgba(14,41,81,0.24)] transition-transform duration-300 hover:-translate-y-[54%] sm:h-[165px] sm:w-[330px] sm:rounded-[24px]"
+                    className="group absolute left-1/2 top-1/2 z-10 h-[150px] w-[300px] -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 hover:-translate-y-[54%] sm:h-[180px] sm:w-[390px]"
                   >
-                    <Image
-                      src="/images/projects/nayya-ai-benefits/thumbnails/nayya-selected-project.png"
-                      alt={translate("home.aiHeroProjectTitle")}
-                      fill
-                      sizes="(min-width: 640px) 330px, 67vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,19,37,0.04)_10%,rgba(5,19,37,0.86)_100%)]" />
-                    <div className="absolute inset-x-0 bottom-0 p-3 text-left text-white sm:p-4">
-                      <span className="inline-flex rounded-full bg-[#ffe000] px-2 py-0.5 text-[9px] font-bold text-[#171314] sm:text-[10px]">
-                        {translate("home.aiHeroProjectLabel")}
-                      </span>
-                      <p className="mt-1 text-sm font-semibold leading-tight sm:text-base">{translate("home.aiHeroProjectTitle")}</p>
-                      <span className="mt-1 flex items-center gap-1 text-[10px] font-semibold text-white/85 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                        {translate("home.aiHeroProjectCta")}
-                        <ArrowRight aria-hidden="true" className="size-3" />
-                      </span>
+                    <div className="absolute left-0 top-5 h-[112px] w-[172px] -rotate-[7deg] overflow-hidden rounded-[16px] border-2 border-white bg-[#edf7fc] shadow-[0_14px_26px_rgba(14,41,81,0.19)] transition-transform duration-300 group-hover:-translate-x-1 group-hover:-rotate-[9deg] sm:top-5 sm:h-[140px] sm:w-[215px] sm:rounded-[20px]">
+                      <Image
+                        src="/images/projects/nayya-ai-benefits/banners/nayya-benefit-list-entry.jpg"
+                        alt=""
+                        fill
+                        sizes="(min-width: 640px) 215px, 172px"
+                        className="object-cover object-[56%_42%]"
+                      />
+                    </div>
+                    <div className="absolute right-0 top-0 h-[130px] w-[195px] rotate-[6deg] overflow-hidden rounded-[18px] border-2 border-white bg-[#0d1f36] shadow-[0_18px_34px_rgba(14,41,81,0.24)] transition-transform duration-300 group-hover:translate-x-1 group-hover:rotate-[8deg] sm:h-[165px] sm:w-[245px] sm:rounded-[24px]">
+                      <Image
+                        src="/images/projects/nayya-ai-benefits/banners/nayya-guided-decision-modal.jpg"
+                        alt={translate("home.aiHeroProjectTitle")}
+                        fill
+                        sizes="(min-width: 640px) 245px, 195px"
+                        className="object-cover object-[54%_46%] transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,19,37,0.02)_20%,rgba(5,19,37,0.88)_100%)]" />
+                      <div className="absolute inset-x-0 bottom-0 p-2.5 text-left text-white sm:p-3.5">
+                        <span className="inline-flex rounded-full bg-[#ffe000] px-1.5 py-0.5 text-[8px] font-bold text-[#171314] sm:px-2 sm:text-[10px]">
+                          {translate("home.aiHeroProjectLabel")}
+                        </span>
+                        <p className="mt-1 text-[12px] font-semibold leading-tight sm:text-[15px]">{translate("home.aiHeroProjectTitle")}</p>
+                        <span className="mt-1 flex items-center gap-1 text-[9px] font-semibold text-white/85 opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:text-[10px]">
+                          {translate("home.aiHeroProjectCta")}
+                          <ArrowRight aria-hidden="true" className="size-3" />
+                        </span>
+                      </div>
                     </div>
                   </Link>
                 </div>

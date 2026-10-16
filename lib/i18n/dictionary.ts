@@ -741,9 +741,9 @@ export const dictionary = {
     de: "Barrierefreiheit zuerst",
   },
   "home.about.lead": {
-    en: "I’m a senior product designer who brings structure to complex product decisions.",
-    es: "Soy una diseñadora senior de producto que aporta estructura a decisiones complejas de producto.",
-    de: "Ich bin Senior Product Designerin und bringe Struktur in komplexe Produktentscheidungen.",
+    en: "12 years partnering with cross-functional, international teams to turn complex product work into clear business outcomes.",
+    es: "12 años colaborando con equipos internacionales y multidisciplinarios para convertir productos complejos en resultados claros para el negocio.",
+    de: "12 Jahre Erfahrung in der Zusammenarbeit mit internationalen, funktionsübergreifenden Teams, um komplexe Produktarbeit in klare Geschäftsergebnisse zu übersetzen.",
   },
   "home.about.recruiters": {
     en: "From research and problem framing to flows, prototypes, and delivery, I partner with product and engineering to turn ambiguity into a clear direction.",

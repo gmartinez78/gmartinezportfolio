@@ -402,7 +402,7 @@ export const germanDictionary = {
   "home.about.tagResearch": "Menschenzentriert",
   "home.about.tagAi": "KI & GEO-bereit",
   "home.about.tagSystems": "Barrierefreiheit zuerst",
-  "home.about.lead": "Ich bin Senior Product Designerin und bringe Struktur in komplexe Produktentscheidungen.",
+  "home.about.lead": "12 Jahre Erfahrung in der Zusammenarbeit mit internationalen, funktionsübergreifenden Teams, um komplexe Produktarbeit in klare Geschäftsergebnisse zu übersetzen.",
   "home.about.recruiters": "Von Forschung und Problemdefinition über Flows, Prototypen und Umsetzung arbeite ich eng mit Produkt und Engineering zusammen, um Unklarheit in eine klare Richtung zu verwandeln.",
   "home.about.copy": "Bei Enterprise-, KI- und operativen Produkten verbinde ich Systemdenken und barrierefreies Design, um Nutzerbedürfnisse, Geschäftsziele und technische Rahmenbedingungen auszubalancieren.",
   "home.about.cta": "Meine Erfahrung ansehen",
