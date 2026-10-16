@@ -4823,10 +4823,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "reversetech" ? (
         <>
           {showStickyTaskTabs ? (
-            <div
-              className="fixed inset-x-0 z-40 border-b border-[#d7e8f7] bg-white/95 backdrop-blur"
-              style={{ top: REVERSETECH_STICKY_HEADER_OFFSET }}
-            >
+            <div className="fixed inset-x-0 top-[88px] z-40 border-b border-[#d7e8f7] bg-white/95 backdrop-blur lg:top-0">
               <div className="mx-auto max-w-[1200px] px-6 pt-0 pb-0 md:px-10 xl:px-20">
                 <div className="w-full lg:mx-auto lg:max-w-[900px]">
                   <div className="lg:hidden">
