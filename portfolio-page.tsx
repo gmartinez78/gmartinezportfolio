@@ -1438,12 +1438,25 @@ export default function PortfolioPage() {
           <Container size="wide" className="relative flex min-h-[300px] items-center justify-center sm:min-h-[340px] lg:min-h-[380px]">
             <div className="relative z-10 mx-auto w-full min-w-0 max-w-[700px] pb-2 text-center lg:pb-0">
               <div className="mx-auto w-full min-w-0 max-w-[700px]">
+                <div className="relative mx-auto mb-3 size-[4.5rem] overflow-hidden rounded-full border-2 border-white shadow-[0_8px_20px_rgba(14,41,81,0.14)] sm:size-20">
+                  <Image
+                    src="/images/profile-photo.png"
+                    alt="Greddys Martinez"
+                    fill
+                    sizes="80px"
+                    className="object-cover object-center"
+                  />
+                </div>
                 <p className="text-[12px] font-semibold leading-relaxed tracking-[0.02em] text-[var(--ui-color-brand-primary)] sm:text-sm">
                   {translate("home.mainHeroFocus")}
                 </p>
-                <Heading as="h1" variant="hero" tone="editorial" className="mt-3 text-[clamp(2rem,4.1vw,3.8rem)] font-medium leading-[0.98] tracking-[-0.045em] text-[#141114]">
-                  <span className="font-playfair font-normal italic tracking-[-0.035em]">Greddys</span>{" "}
-                  <span>Martinez</span>
+                <Heading as="h1" variant="hero" tone="editorial" className="relative mx-auto mt-3 flex max-w-[760px] flex-col items-center text-center">
+                  <span className="relative z-10 -mb-[0.16em] -translate-x-[0.08em] -translate-y-[0.08em] font-playfair text-[clamp(2.9rem,7.2vw,6.6rem)] font-normal italic leading-[0.82] tracking-[-0.07em] text-black">
+                    Greddys
+                  </span>
+                  <span className="font-inter text-[clamp(3.8rem,6vw,6.5rem)] font-black uppercase leading-[0.78] tracking-[0.01em] text-[#141114]">
+                    Martinez
+                  </span>
                 </Heading>
                 <nav
                   aria-label={translate("projectsPage.filterBy")}
