@@ -611,7 +611,7 @@ export default function PortfolioPage() {
     {
       href: withBasePath("/projects/nayya-ai-benefits"),
       backImage: "/images/projects/nayya-ai-benefits/banners/nayya-benefit-list-entry.jpg",
-      frontImage: "/images/projects/nayya-ai-benefits/banners/nayya-guided-decision-modal.jpg",
+      frontImage: "/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png",
       label: translate("home.aiHeroProjectLabel"),
       title: translate("home.aiHeroProjectTitle"),
     },
@@ -625,7 +625,7 @@ export default function PortfolioPage() {
     {
       href: withBasePath("/projects/flock-accessibility-system"),
       backImage: "/images/projects/flock-accessibility-system/hero/flock-hero.png",
-      frontImage: "/images/projects/flock-accessibility-system/banners/flock-buttons-ui.svg",
+      frontImage: "/images/projects/flock-accessibility-system/thumbnails/flock-accessibility-system-cover.png",
       label: translate("home.aiHeroProjectFlockLabel"),
       title: translate("home.aiHeroProjectFlockTitle"),
     },
@@ -984,7 +984,7 @@ export default function PortfolioPage() {
               <span className="rounded-full bg-[#f6c3ed] px-4 py-2 text-xs font-semibold text-[#141114]">{translate("home.about.tagSystems")}</span>
             </div>
           </div>
-          <div className="relative z-10 max-w-[430px] lg:pt-12">
+          <div className="relative z-10 max-w-[430px] lg:pt-16">
             <p className="text-[16px] font-semibold leading-[1.45] text-[#141114] md:text-[17px]">
               {translate("home.about.lead")}
             </p>
@@ -1523,8 +1523,8 @@ export default function PortfolioPage() {
                   />
                 </div>
                 <Heading as="h1" variant="hero" tone="editorial" className="mx-auto mt-2 max-w-[840px] text-center text-[clamp(2.5rem,5.1vw,4.9rem)] leading-[0.95] tracking-[-0.055em] text-[#141114]">
-                  <span className="block font-playfair font-normal italic">{translate("home.aiHeroTitleLead")}</span>
-                  <span className="mt-4 block font-inter text-[0.5em] font-semibold tracking-[-0.04em] sm:mt-5 sm:text-[0.58em]">
+                  <span className="hero-title-reveal hero-title-reveal-name block font-playfair font-normal italic">{translate("home.aiHeroTitleLead")}</span>
+                  <span className="hero-title-reveal hero-title-reveal-line mt-4 block font-inter text-[0.5em] font-semibold tracking-[-0.04em] sm:mt-5 sm:text-[0.58em]">
                     {translate("home.aiHeroTitleAccent")}
                   </span>
                 </Heading>
