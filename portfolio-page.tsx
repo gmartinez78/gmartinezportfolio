@@ -668,14 +668,17 @@ export default function PortfolioPage() {
     {
       title: translate("home.productStrengths.endToEnd.title"),
       description: translate("home.productStrengths.endToEnd.description"),
+      href: "/benefits",
     },
     {
       title: translate("home.productStrengths.complexFlows.title"),
       description: translate("home.productStrengths.complexFlows.description"),
+      href: "/projects/flock-accessibility-system",
     },
     {
       title: translate("home.productStrengths.systems.title"),
       description: translate("home.productStrengths.systems.description"),
+      href: "/projects/nayya-ai-benefits",
     },
   ];
   const heroPhaseStyles = useMemo(() => HERO_PHASE_STYLES[heroPhase], [heroPhase]);
@@ -901,19 +904,23 @@ export default function PortfolioPage() {
           </div>
           <ol className="mt-10">
             {productStrengths.map((strength, index) => (
-              <li
-                key={strength.title}
-                className={`grid grid-cols-[76px_minmax(0,1fr)] gap-3 py-6 transition-colors duration-200 hover:bg-white/10 sm:grid-cols-[86px_minmax(0,1fr)] ${index === 0 ? "" : "border-t border-white/25"}`}
-              >
-                <span className="pt-0.5 text-[22px] font-semibold leading-none text-[#f8df36]">{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <h3 className="text-[21px] font-semibold leading-tight sm:text-[24px]">
-                    {strength.title}
-                  </h3>
-                  <p className="mt-3 max-w-[490px] text-sm leading-relaxed text-white/80 sm:text-[15px]">
-                    {strength.description}
-                  </p>
-                </div>
+              <li key={strength.title} className={index === 0 ? "" : "border-t border-white/25"}>
+                <Link
+                  href={withBasePath(strength.href)}
+                  aria-label={`${translate("home.viewProject")}: ${strength.title}`}
+                  className="group grid grid-cols-[76px_minmax(0,1fr)] gap-3 py-6 transition-colors duration-200 hover:bg-white/10 focus-visible:bg-white/10 focus-visible:outline-none sm:grid-cols-[86px_minmax(0,1fr)]"
+                >
+                  <span className="pt-0.5 text-[22px] font-semibold leading-none text-[#f8df36]">{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3 className="flex items-center gap-2 text-[21px] font-semibold leading-tight sm:text-[24px]">
+                      {strength.title}
+                      <ArrowRight aria-hidden="true" className="size-5 -translate-x-2 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100" strokeWidth={2.25} />
+                    </h3>
+                    <p className="mt-3 max-w-[490px] text-sm leading-relaxed text-white/80 sm:text-[15px]">
+                      {strength.description}
+                    </p>
+                  </div>
+                </Link>
               </li>
             ))}
           </ol>
