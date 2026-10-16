@@ -772,9 +772,9 @@ export const dictionary = {
     de: "Meine Erfahrung ansehen",
   },
   "home.productStrengths.eyebrow": {
-    en: "Why teams bring me in",
-    es: "Por qué los equipos cuentan conmigo",
-    de: "Warum Teams mich hinzuholen",
+    en: "What I do",
+    es: "Lo que hago",
+    de: "Was ich mache",
   },
   "home.productStrengths.title": {
     en: "Making complex product work clear",

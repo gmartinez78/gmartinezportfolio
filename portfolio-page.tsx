@@ -918,7 +918,11 @@ export default function PortfolioPage() {
       >
         <div className="relative mx-auto max-w-[650px] lg:ml-[15%]">
           <div>
-            <Heading id="product-strengths-title" as="h2" variant="feature" tone="inverse" className="max-w-[620px] text-[clamp(2rem,3.4vw,3.1rem)] leading-[1.02]">
+            <p className="inline-flex items-center gap-2 text-xs font-semibold text-white">
+              <span aria-hidden="true" className="size-1.5 rounded-full bg-white" />
+              {translate("home.productStrengths.eyebrow")}
+            </p>
+            <Heading id="product-strengths-title" as="h2" variant="feature" tone="inverse" className="mt-4 max-w-[620px] text-[clamp(2rem,3.4vw,3.1rem)] leading-[1.02]">
               {translate("home.productStrengths.titleLead")}
               <br />
               {translate("home.productStrengths.titleLineEnd")} {" "}

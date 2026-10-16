@@ -417,7 +417,7 @@ export const germanDictionary = {
   "home.about.recruiters": "Von Forschung und Problemdefinition über Flows, Prototypen und Umsetzung arbeite ich eng mit Produkt und Engineering zusammen, um Unklarheit in eine klare Richtung zu verwandeln.",
   "home.about.copy": "Bei Enterprise-, KI- und operativen Produkten verbinde ich Systemdenken und barrierefreies Design, um Nutzerbedürfnisse, Geschäftsziele und technische Rahmenbedingungen auszubalancieren.",
   "home.about.cta": "Meine Erfahrung ansehen",
-  "home.productStrengths.eyebrow": "Warum Teams mich hinzuholen",
+  "home.productStrengths.eyebrow": "Was ich mache",
   "home.productStrengths.title": "Komplexe Produktarbeit klar machen",
   "home.productStrengths.titleLead": "Komplexe",
   "home.productStrengths.titleLineEnd": "Produktarbeit",
