@@ -817,7 +817,7 @@ export const dictionary = {
     de: "Meine Erfahrung ansehen",
   },
   "home.productStrengths.endToEnd.title": {
-    en: "End to end.",
+    en: "End to end",
     es: "De principio a fin.",
     de: "End-to-End.",
   },

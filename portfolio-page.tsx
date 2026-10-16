@@ -958,7 +958,7 @@ export default function PortfolioPage() {
               <span className="rounded-full bg-[#f6c3ed] px-4 py-2 text-xs font-semibold text-[#141114]">{translate("home.about.tagSystems")}</span>
             </div>
           </div>
-          <div className="relative z-10 max-w-[430px] lg:pt-16">
+          <div className="relative z-10 max-w-[430px] pt-6 lg:pt-24">
             <p className="text-[16px] font-semibold leading-[1.45] text-[#141114] md:text-[17px]">
               {translate("home.about.lead")}
             </p>
