@@ -141,9 +141,8 @@ function ProjectsPage() {
       projects: filteredProjects
         .filter((project) => isFreelanceProject(project))
         .sort((left, right) => {
-          if (left.slug === "calendar-keeper") return -1;
-          if (right.slug === "calendar-keeper") return 1;
-          return 0;
+          const rank = (slug: string) => (slug === "calendar-keeper" ? 0 : slug === "protecta" ? 2 : 1);
+          return rank(left.slug) - rank(right.slug);
         }),
     },
   ].filter((group) => group.projects.length > 0);

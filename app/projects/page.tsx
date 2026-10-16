@@ -134,7 +134,12 @@ function ProjectsPage() {
     {
       title: translate("projectsPage.freelanceProjects"),
       description: translate("projectsPage.freelanceProjectsDescription"),
-      projects: filteredProjects.filter((project) => FREELANCE_PROJECT_SLUGS.has(project.slug)),
+      projects: filteredProjects
+        .filter((project) => FREELANCE_PROJECT_SLUGS.has(project.slug))
+        .sort((left, right) => {
+          const rank = (slug: string) => (slug === "calendar-keeper" ? 0 : slug === "protecta" ? 2 : 1);
+          return rank(left.slug) - rank(right.slug);
+        }),
     },
   ].filter((group) => group.projects.length > 0);
   const socialLogos = siteContent?.home?.trusted_by?.clients?.map((client) => ({
