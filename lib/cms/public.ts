@@ -55,13 +55,13 @@ const toolIconMap: Record<string, string> = {
 };
 
 const projectImageMap: Record<string, string> = {
-  "classical-word": withBasePath("/images/projects/classical-word/brochure-cover-panels.png"),
+  "classical-word": withBasePath("/images/projects/classical-word/cover-classical word.png"),
   "benefits-enrollment": withBasePath("/images/projects/benefits-enrollment/thumbnails/thumbnail-benefits.png"),
   "nayya-ai-benefits": withBasePath("/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png"),
   "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/thumbnails/flock.png"),
   "i9-everify-integration": withBasePath("/images/projects/i9-everify-integration/thumbnails/i9-thumbnail.png"),
   protecta: withBasePath("/images/projects/protecta/thumbnails/protectabanner.png"),
-  reversetech: withBasePath("/images/projects/Reversetech/thumbnails/project-list-card-reversetech.svg"),
+  reversetech: withBasePath("/images/projects/Reversetech/thumbnails/project-list-card-reversetech.png"),
 };
 
 const projectHeroImageMap: Record<string, string> = {
@@ -104,14 +104,14 @@ const homeCardMediaMap: Record<string, { id: string; image: string }> = {
   },
   reversetech: {
     id: "home-card-reversetech",
-    image: withBasePath("/images/projects/Reversetech/thumbnails/project-list-card-reversetech.svg"),
+    image: withBasePath("/images/projects/Reversetech/thumbnails/project-list-card-reversetech.png"),
   },
 };
 
 const projectListCardMediaMap: Record<string, { id: string; image: string }> = {
   "classical-word": {
     id: "project-list-card-classical-word",
-    image: withBasePath("/images/projects/classical-word/brochure-cover-panels.png"),
+    image: withBasePath("/images/projects/classical-word/cover-classical word.png"),
   },
   "calendar-keeper": {
     id: "project-list-card-calendar-keeper",
@@ -139,7 +139,7 @@ const projectListCardMediaMap: Record<string, { id: string; image: string }> = {
   },
   reversetech: {
     id: "project-list-card-reversetech",
-    image: withBasePath("/images/projects/Reversetech/thumbnails/project-list-card-reversetech.svg"),
+    image: withBasePath("/images/projects/Reversetech/thumbnails/project-list-card-reversetech.png"),
   },
 };
 

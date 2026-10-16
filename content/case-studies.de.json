@@ -24,7 +24,7 @@
       "Figma"
     ],
     "images": {
-      "cover": "/images/projects/classical-word/brochure-cover-panels.png",
+      "cover": "/images/projects/classical-word/cover-classical word.png",
       "hero": "/images/projects/classical-word/brochure-cover-panels.png",
       "gallery": [
         "/images/projects/classical-word/brochure-inside-panels.png",
@@ -1153,7 +1153,7 @@
       "Notion"
     ],
     "images": {
-      "cover": "/images/projects/Reversetech/thumbnails/project-list-card-reversetech.svg",
+      "cover": "/images/projects/Reversetech/thumbnails/project-list-card-reversetech.png",
       "hero": "/images/projects/Reversetech/figma-screen.png",
       "gallery": []
     },
