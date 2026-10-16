@@ -1502,7 +1502,7 @@ export default function PortfolioPage() {
       {/* ── Hero ── */}
       <section className="bg-white">
         <div>
-        <div className="relative isolate overflow-hidden bg-white px-5 pb-10 pt-20 sm:px-10 sm:pt-[6.75rem] lg:px-16 lg:pb-10 min-[1025px]:pt-[4.5rem]">
+        <div className="relative isolate overflow-hidden bg-white px-5 py-10 sm:px-10 sm:py-12 lg:px-16">
           <div className="pointer-events-none absolute inset-0 bg-[image:var(--ui-surface-hero)]" />
           <div aria-hidden="true" className="hero-cloud pointer-events-none absolute -left-52 top-[28%] h-44 w-[29rem] sm:-left-44 sm:h-56 sm:w-[36rem]">
             <Image src="/images/hero-clouds.png" alt="" fill sizes="(min-width: 640px) 576px, 464px" className="object-contain" />
