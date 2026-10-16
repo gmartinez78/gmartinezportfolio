@@ -662,6 +662,24 @@ export const dictionary = {
     es: "Diseñadora senior de producto",
     de: "Senior Product Designerin",
   },
+  "home.aiHeroTitleLead": {
+    en: "Greddys Martinez",
+    es: "Greddys Martinez",
+    de: "Greddys Martinez",
+  },
+  "home.aiHeroTitleAccent": {
+    en: "in the era of AI possibilities.",
+    es: "en la era de las posibilidades de la IA.",
+    de: "in der Ära der KI-Möglichkeiten.",
+  },
+  "home.aiHeroDescription": {
+    en: "AI expands the options. I bring research, context, and craft to make the right ones real.",
+    es: "La IA amplía las opciones. Aporto investigación, contexto y oficio para hacer realidad las correctas.",
+    de: "KI erweitert die Möglichkeiten. Ich bringe Forschung, Kontext und Gestaltung mit, um die richtigen Wirklichkeit werden zu lassen.",
+  },
+  "home.aiHeroProjectLabel": { en: "AI product", es: "Producto con IA", de: "KI-Produkt" },
+  "home.aiHeroProjectTitle": { en: "AI Benefits Integration", es: "Integración de beneficios con IA", de: "KI-Vorteilsintegration" },
+  "home.aiHeroProjectCta": { en: "View case study", es: "Ver caso de estudio", de: "Fallstudie ansehen" },
   "home.projectsEyebrow": {
     en: "A few things I've made",
     es: "Algunas cosas que he creado",

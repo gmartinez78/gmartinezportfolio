@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useState } from "react";
-import { ArrowRight, ArrowUpRight, BrainCircuit, Check, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Lightbulb, Mic, MousePointer2, Play, Star, Target, Wand2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BrainCircuit, Check, Code2, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, Heart, LayoutTemplate, Lightbulb, Mic, MousePointer2, Play, Sparkles, Star, Target, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { ChecklistStatusCard } from "./components/checklist-status-card";
@@ -1433,12 +1433,12 @@ export default function PortfolioPage() {
       {/* ── Hero ── */}
       <section className="bg-white">
         <div>
-        <div className="relative isolate overflow-hidden bg-white px-5 pb-8 pt-24 sm:px-10 sm:pt-[8.25rem] lg:px-16 lg:pb-14 min-[1025px]:pt-[5.5rem]">
+        <div className="relative isolate overflow-hidden bg-white px-5 pb-10 pt-24 sm:px-10 sm:pt-[8.25rem] lg:px-16 lg:pb-10 min-[1025px]:pt-[5.5rem]">
           <div className="pointer-events-none absolute inset-0 bg-[image:var(--ui-surface-hero)]" />
-          <Container size="wide" className="relative flex min-h-[300px] items-center justify-center sm:min-h-[340px] lg:min-h-[380px]">
-            <div className="relative z-10 mx-auto w-full min-w-0 max-w-[700px] pb-2 text-center lg:pb-0">
-              <div className="mx-auto w-full min-w-0 max-w-[700px]">
-                <div className="relative mx-auto mb-3 size-[4.5rem] overflow-hidden rounded-full border-2 border-white shadow-[0_8px_20px_rgba(14,41,81,0.14)] sm:size-20">
+          <Container size="wide" className="relative flex items-center justify-center">
+            <div className="relative z-10 mx-auto w-full min-w-0 max-w-[840px] text-center">
+              <div className="mx-auto w-full min-w-0 max-w-[840px]">
+                <div className="relative mx-auto mb-2 size-16 overflow-hidden rounded-full border-2 border-white shadow-[0_8px_20px_rgba(14,41,81,0.14)] sm:size-[4.5rem]">
                   <Image
                     src="/images/profile-photo.png"
                     alt="Greddys Martinez"
@@ -1450,17 +1450,65 @@ export default function PortfolioPage() {
                 <p className="text-[12px] font-semibold leading-relaxed tracking-[0.02em] text-[var(--ui-color-brand-primary)] sm:text-sm">
                   {translate("home.mainHeroFocus")}
                 </p>
-                <Heading as="h1" variant="hero" tone="editorial" className="relative mx-auto mt-3 flex max-w-[760px] flex-col items-center text-center">
-                  <span className="relative z-10 -mb-[0.16em] -translate-x-[0.08em] -translate-y-[0.08em] font-playfair text-[clamp(2.9rem,7.2vw,6.6rem)] font-normal italic leading-[0.82] tracking-[-0.07em] text-black">
-                    Greddys
+                <Heading as="h1" variant="hero" tone="editorial" className="mx-auto mt-3 max-w-[840px] text-center text-[clamp(2.5rem,5.1vw,4.9rem)] leading-[0.95] tracking-[-0.055em] text-[#141114]">
+                  <span className="block font-inter text-[0.5em] font-semibold tracking-[-0.04em] sm:text-[0.58em]">
+                    {translate("home.aiHeroTitleAccent")}
                   </span>
-                  <span className="font-inter text-[clamp(3.8rem,6vw,6.5rem)] font-black uppercase leading-[0.78] tracking-[0.01em] text-[#141114]">
-                    Martinez
-                  </span>
+                  <span className="mt-1 block font-playfair font-normal italic">{translate("home.aiHeroTitleLead")}</span>
                 </Heading>
+                <p className="mx-auto mt-4 max-w-[510px] text-sm leading-relaxed text-[#45576a] sm:text-base">
+                  {translate("home.aiHeroDescription")}
+                </p>
+                <div className="relative mx-auto mt-5 h-[190px] w-full max-w-[540px] sm:mt-6 sm:h-[220px] sm:max-w-[620px]">
+                  <div aria-hidden="true" className="absolute left-[1%] top-1 z-20 grid size-11 -rotate-[10deg] place-items-center rounded-[15px] bg-[#141414] p-2.5 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:left-4 sm:size-[3.75rem] sm:rounded-[18px] sm:p-3.5">
+                    <Image src="/images/tools/ai/openai.svg" alt="" width={32} height={32} className="size-6 sm:size-8" />
+                  </div>
+                  <div aria-hidden="true" className="absolute left-[10%] top-[74px] z-20 grid size-10 rotate-[8deg] place-items-center rounded-[13px] bg-[#e97954] text-white shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:left-[13%] sm:top-[88px] sm:size-[3.3rem] sm:rounded-[16px]">
+                    <Sparkles aria-hidden="true" className="size-6 sm:size-7" strokeWidth={2.4} />
+                  </div>
+                  <div aria-hidden="true" className="absolute bottom-1 left-[26%] z-20 grid size-10 rotate-[7deg] place-items-center rounded-[13px] bg-[#082f49] text-white shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:bottom-2 sm:left-[28%] sm:size-[3.1rem] sm:rounded-[16px]">
+                    <Code2 aria-hidden="true" className="size-5 sm:size-6" strokeWidth={2.3} />
+                  </div>
+                  <div aria-hidden="true" className="absolute right-[1%] top-1 z-20 grid size-11 rotate-[9deg] place-items-center rounded-[15px] border border-white bg-white shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:right-4 sm:size-[3.75rem] sm:rounded-[18px]">
+                    <Image src="/images/tools/figma.svg" alt="" width={20} height={30} className="h-7 w-auto sm:h-8" />
+                    <Sparkles aria-hidden="true" className="absolute -right-1 -top-1 size-3.5 rounded-full bg-white p-0.5 text-[#8e66ff] sm:size-4" strokeWidth={2.4} />
+                  </div>
+                  <div aria-hidden="true" className="absolute right-[10%] top-[76px] z-20 grid size-10 -rotate-[8deg] place-items-center rounded-[13px] bg-white shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:right-[13%] sm:top-[88px] sm:size-[3.3rem] sm:rounded-[16px]">
+                    <Heart aria-hidden="true" className="size-5 fill-[#ff6b63] text-[#ff6b63] sm:size-6" strokeWidth={2.1} />
+                    <span aria-hidden="true" className="absolute bottom-2 right-2 size-2 rounded-full bg-[#805cff] sm:bottom-2.5 sm:right-2.5" />
+                  </div>
+                  <div aria-hidden="true" className="absolute bottom-1 right-[26%] z-20 grid size-10 -rotate-[6deg] place-items-center rounded-[13px] bg-[#2a1b18] shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:bottom-2 sm:right-[28%] sm:size-[3.1rem] sm:rounded-[16px]">
+                    <Image src="/images/tools/ai/anthropic.svg" alt="" width={28} height={28} className="size-6 sm:size-7" />
+                    <Code2 aria-hidden="true" className="absolute -bottom-1 -right-1 size-3.5 rounded-full bg-[#f5d4c2] p-0.5 text-[#5b2e1e] sm:size-4" strokeWidth={2.5} />
+                  </div>
+                  <Link
+                    href={withBasePath("/projects/nayya-ai-benefits")}
+                    className="group absolute left-1/2 top-1/2 z-10 h-[132px] w-[min(260px,67vw)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[20px] border border-white/75 bg-[#0d1f36] shadow-[0_18px_34px_rgba(14,41,81,0.24)] transition-transform duration-300 hover:-translate-y-[54%] sm:h-[165px] sm:w-[330px] sm:rounded-[24px]"
+                  >
+                    <Image
+                      src="/images/projects/nayya-ai-benefits/thumbnails/nayya-selected-project.png"
+                      alt={translate("home.aiHeroProjectTitle")}
+                      fill
+                      sizes="(min-width: 640px) 330px, 67vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,19,37,0.04)_10%,rgba(5,19,37,0.86)_100%)]" />
+                    <div className="absolute inset-x-0 bottom-0 p-3 text-left text-white sm:p-4">
+                      <span className="inline-flex rounded-full bg-[#ffe000] px-2 py-0.5 text-[9px] font-bold text-[#171314] sm:text-[10px]">
+                        {translate("home.aiHeroProjectLabel")}
+                      </span>
+                      <p className="mt-1 text-sm font-semibold leading-tight sm:text-base">{translate("home.aiHeroProjectTitle")}</p>
+                      <span className="mt-1 flex items-center gap-1 text-[10px] font-semibold text-white/85 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                        {translate("home.aiHeroProjectCta")}
+                        <ArrowRight aria-hidden="true" className="size-3" />
+                      </span>
+                    </div>
+                  </Link>
+                </div>
                 <nav
+                  hidden
                   aria-label={translate("projectsPage.filterBy")}
-                  className="mt-6 hidden flex-wrap justify-center gap-2 sm:flex"
+                  className="mt-6 flex-wrap justify-center gap-2"
                 >
                   {heroFilters.map(({ label, href }) => (
                     <Badge key={href} asChild variant="outline" size="default" className="max-sm:min-h-7 max-sm:px-3 max-sm:text-[13px]">
