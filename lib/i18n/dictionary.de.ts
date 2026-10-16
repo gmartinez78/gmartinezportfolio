@@ -387,6 +387,8 @@ export const germanDictionary = {
   "home.aiHeroTitleLead": "Greddys Martinez",
   "home.aiHeroTitleAccent": "in der Ära der KI-Möglichkeiten.",
   "home.aiHeroDescription": "KI erweitert die Möglichkeiten. Ich bringe Forschung, Kontext und Gestaltung mit, um die richtigen Wirklichkeit werden zu lassen.",
+  "home.aiHeroStatementLead": "Entwickelt für",
+  "home.aiHeroStatementEnd": "sichere Benefits-Entscheidungen.",
   "home.aiHeroProjectLabel": "KI-Produkt",
   "home.aiHeroProjectTitle": "KI-Vorteilsintegration",
   "home.aiHeroProjectCta": "Fallstudie ansehen",

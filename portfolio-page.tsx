@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useState } from "react";
-import { ArrowRight, ArrowUpRight, BrainCircuit, Check, Code2, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Lightbulb, Mic, MousePointer2, Play, Sparkles, Star, Target, Wand2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BrainCircuit, Check, Eye, FolderGit2, GitCommitHorizontal, GitFork, GitPullRequest, LayoutTemplate, Lightbulb, Mic, MousePointer2, Play, Sparkles, Star, Target, Wand2 } from "lucide-react";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { ChecklistStatusCard } from "./components/checklist-status-card";
@@ -785,7 +785,7 @@ export default function PortfolioPage() {
           {projectGroups.map((group) => (
             <section key={group.id} aria-labelledby={`${group.id}-projects-title`}>
               <div className="flex items-end justify-between gap-6">
-                <Heading id={`${group.id}-projects-title`} as="h2" variant="section" className="text-[clamp(2rem,3.4vw,3.1rem)] leading-[1.02]">
+                <Heading id={`${group.id}-projects-title`} as="h2" variant="section" className="text-[clamp(2rem,3.4vw,3.1rem)] leading-[1.02] text-[#141114]">
                   {group.title}
                 </Heading>
                 <Link
@@ -1447,18 +1447,15 @@ export default function PortfolioPage() {
                     className="object-cover object-center"
                   />
                 </div>
-                <p className="text-[12px] font-semibold leading-relaxed tracking-[0.02em] text-[var(--ui-color-brand-primary)] sm:text-sm">
+                <p className="text-[12px] font-normal leading-relaxed tracking-[0.02em] text-[var(--ui-color-brand-primary)] sm:text-sm">
                   {translate("home.mainHeroFocus")}
                 </p>
                 <Heading as="h1" variant="hero" tone="editorial" className="mx-auto mt-3 max-w-[840px] text-center text-[clamp(2.5rem,5.1vw,4.9rem)] leading-[0.95] tracking-[-0.055em] text-[#141114]">
                   <span className="block font-playfair font-normal italic">{translate("home.aiHeroTitleLead")}</span>
-                  <span className="mt-1 block font-inter text-[0.5em] font-semibold tracking-[-0.04em] sm:text-[0.58em]">
+                  <span className="mt-4 block font-inter text-[0.5em] font-semibold tracking-[-0.04em] sm:mt-5 sm:text-[0.58em]">
                     {translate("home.aiHeroTitleAccent")}
                   </span>
                 </Heading>
-                <p className="mx-auto mt-4 max-w-[510px] text-sm leading-relaxed text-[#45576a] sm:text-base">
-                  {translate("home.aiHeroDescription")}
-                </p>
                 <div className="relative mx-auto mt-5 h-[190px] w-full max-w-[540px] sm:mt-6 sm:h-[220px] sm:max-w-[620px]">
                   <div aria-hidden="true" className="absolute left-[1%] top-1 z-20 grid size-11 -rotate-[10deg] place-items-center rounded-[15px] bg-[#141414] p-2.5 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:left-4 sm:size-[3.75rem] sm:rounded-[18px] sm:p-3.5">
                     <Image src="/images/tools/ai/openai.svg" alt="" width={32} height={32} className="size-6 sm:size-8" />
@@ -1466,8 +1463,8 @@ export default function PortfolioPage() {
                   <div aria-hidden="true" className="absolute left-[10%] top-[74px] z-20 grid size-10 rotate-[8deg] place-items-center rounded-[13px] bg-[#e97954] text-white shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:left-[13%] sm:top-[88px] sm:size-[3.3rem] sm:rounded-[16px]">
                     <Sparkles aria-hidden="true" className="size-6 sm:size-7" strokeWidth={2.4} />
                   </div>
-                  <div aria-hidden="true" className="absolute bottom-1 left-[26%] z-20 grid size-10 rotate-[7deg] place-items-center rounded-[13px] bg-[#082f49] text-white shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:bottom-2 sm:left-[28%] sm:size-[3.1rem] sm:rounded-[16px]">
-                    <Code2 aria-hidden="true" className="size-5 sm:size-6" strokeWidth={2.3} />
+                  <div aria-hidden="true" className="absolute bottom-1 left-[26%] z-20 grid size-10 rotate-[7deg] place-items-center rounded-[13px] bg-white p-1 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:bottom-2 sm:left-[28%] sm:size-[3.1rem] sm:rounded-[16px] sm:p-1.5">
+                    <Image src="/images/tools/ai/codex.svg" alt="" width={40} height={40} className="size-8 sm:size-10" />
                   </div>
                   <div aria-hidden="true" className="absolute right-[1%] top-1 z-20 grid size-11 rotate-[9deg] place-items-center rounded-[15px] border border-white bg-white shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:right-4 sm:size-[3.75rem] sm:rounded-[18px]">
                     <Image src="/images/tools/figma.svg" alt="" width={20} height={30} className="h-7 w-auto sm:h-8" />
@@ -1514,6 +1511,14 @@ export default function PortfolioPage() {
                     </div>
                   </Link>
                 </div>
+                <p className="mx-auto mt-3 flex max-w-[510px] flex-wrap items-baseline justify-center gap-x-2 text-[#45576a] sm:mt-4">
+                  <span className="text-[13px] font-semibold uppercase tracking-[0.05em] text-[#71808d] sm:text-[15px]">
+                    {translate("home.aiHeroStatementLead")}
+                  </span>
+                  <span className="font-playfair text-[clamp(1.05rem,1.7vw,1.35rem)] italic leading-none text-[#45576a]">
+                    {translate("home.aiHeroStatementEnd")}
+                  </span>
+                </p>
                 <nav
                   hidden
                   aria-label={translate("projectsPage.filterBy")}

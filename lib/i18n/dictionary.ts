@@ -677,6 +677,8 @@ export const dictionary = {
     es: "La IA amplía las opciones. Aporto investigación, contexto y oficio para hacer realidad las correctas.",
     de: "KI erweitert die Möglichkeiten. Ich bringe Forschung, Kontext und Gestaltung mit, um die richtigen Wirklichkeit werden zu lassen.",
   },
+  "home.aiHeroStatementLead": { en: "Built for", es: "Creado para", de: "Entwickelt für" },
+  "home.aiHeroStatementEnd": { en: "the work we build.", es: "el trabajo que construimos.", de: "die Arbeit, die wir gestalten." },
   "home.aiHeroProjectLabel": { en: "AI product", es: "Producto con IA", de: "KI-Produkt" },
   "home.aiHeroProjectTitle": { en: "AI Benefits Integration", es: "Integración de beneficios con IA", de: "KI-Vorteilsintegration" },
   "home.aiHeroProjectCta": { en: "View case study", es: "Ver caso de estudio", de: "Fallstudie ansehen" },
