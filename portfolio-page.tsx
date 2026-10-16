@@ -767,7 +767,7 @@ export default function PortfolioPage() {
       return;
     }
 
-    const timeout = window.setTimeout(() => setPreviousHeroStatement(null), 520);
+    const timeout = window.setTimeout(() => setPreviousHeroStatement(null), 640);
     return () => window.clearTimeout(timeout);
   }, [previousHeroStatement]);
 
@@ -1529,24 +1529,36 @@ export default function PortfolioPage() {
                   </span>
                 </Heading>
                 <div className="relative mx-auto mt-5 h-[190px] w-full max-w-[540px] sm:mt-6 sm:h-[220px] sm:max-w-[620px]">
-                  <div aria-hidden="true" className="absolute left-[1%] top-1 z-20 grid size-11 -rotate-[10deg] place-items-center rounded-[15px] bg-[#141414] p-2.5 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:left-4 sm:size-[3.75rem] sm:rounded-[18px] sm:p-3.5">
-                    <Image src="/images/tools/ai/openai.svg" alt="" width={32} height={32} className="size-6 sm:size-8" />
+                  <div aria-hidden="true" className="pointer-events-none absolute left-[1%] top-1 z-20 animate-[tool-float_4.6s_ease-in-out_infinite] [animation-delay:-1.2s] motion-reduce:animate-none sm:left-4">
+                    <div className="grid size-11 -rotate-[10deg] place-items-center rounded-[15px] bg-[#141414] p-2.5 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:size-[3.75rem] sm:rounded-[18px] sm:p-3.5">
+                      <Image src="/images/tools/ai/openai.svg" alt="" width={32} height={32} className="size-6 sm:size-8" />
+                    </div>
                   </div>
-                  <div aria-hidden="true" className="absolute left-[10%] top-[74px] z-20 grid size-10 rotate-[8deg] place-items-center rounded-[13px] bg-white p-1.5 shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:left-[13%] sm:top-[88px] sm:size-[3.3rem] sm:rounded-[16px] sm:p-2">
-                    <Image src="/images/tools/ai/grok.png" alt="" width={540} height={540} className="size-7 sm:size-9" />
+                  <div aria-hidden="true" className="pointer-events-none absolute left-[10%] top-[74px] z-20 animate-[tool-float_5.4s_ease-in-out_infinite] [animation-delay:-3.1s] motion-reduce:animate-none sm:left-[13%] sm:top-[88px]">
+                    <div className="grid size-10 rotate-[8deg] place-items-center rounded-[13px] bg-white p-1.5 shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:size-[3.3rem] sm:rounded-[16px] sm:p-2">
+                      <Image src="/images/tools/ai/grok.png" alt="" width={540} height={540} className="size-7 sm:size-9" />
+                    </div>
                   </div>
-                  <div aria-hidden="true" className="absolute bottom-1 left-[26%] z-20 grid size-10 rotate-[7deg] place-items-center rounded-[13px] bg-white p-1 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:bottom-2 sm:left-[28%] sm:size-[3.1rem] sm:rounded-[16px] sm:p-1.5">
-                    <Image src="/images/tools/ai/codex.svg" alt="" width={40} height={40} className="size-8 sm:size-10" />
+                  <div aria-hidden="true" className="pointer-events-none absolute bottom-1 left-[26%] z-20 animate-[tool-float_4.9s_ease-in-out_infinite] [animation-delay:-0.7s] motion-reduce:animate-none sm:bottom-2 sm:left-[28%]">
+                    <div className="grid size-10 rotate-[7deg] place-items-center rounded-[13px] bg-white p-1 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:size-[3.1rem] sm:rounded-[16px] sm:p-1.5">
+                      <Image src="/images/tools/ai/codex.svg" alt="" width={40} height={40} className="size-8 sm:size-10" />
+                    </div>
                   </div>
-                  <div aria-hidden="true" className="absolute right-[1%] top-1 z-20 grid size-11 rotate-[9deg] place-items-center rounded-[15px] border border-white bg-white shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:right-4 sm:size-[3.75rem] sm:rounded-[18px]">
-                    <Image src="/images/tools/figma.svg" alt="" width={20} height={30} className="h-7 w-auto sm:h-8" />
-                    <Sparkles aria-hidden="true" className="absolute -right-1 -top-1 size-3.5 rounded-full bg-white p-0.5 text-[#8e66ff] sm:size-4" strokeWidth={2.4} />
+                  <div aria-hidden="true" className="pointer-events-none absolute right-[1%] top-1 z-20 animate-[tool-float_5.2s_ease-in-out_infinite] [animation-delay:-2.5s] motion-reduce:animate-none sm:right-4">
+                    <div className="relative grid size-11 rotate-[9deg] place-items-center rounded-[15px] border border-white bg-white shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:size-[3.75rem] sm:rounded-[18px]">
+                      <Image src="/images/tools/figma.svg" alt="" width={20} height={30} className="h-7 w-auto sm:h-8" />
+                      <Sparkles aria-hidden="true" className="absolute -right-1 -top-1 size-3.5 rounded-full bg-white p-0.5 text-[#8e66ff] sm:size-4" strokeWidth={2.4} />
+                    </div>
                   </div>
-                  <div aria-hidden="true" className="absolute right-[10%] top-[76px] z-20 grid size-10 -rotate-[8deg] place-items-center rounded-[13px] bg-white shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:right-[13%] sm:top-[88px] sm:size-[3.3rem] sm:rounded-[16px]">
-                    <Image src="/images/tools/ai/lovable.svg" alt="" width={32} height={32} className="size-7 sm:size-8" />
+                  <div aria-hidden="true" className="pointer-events-none absolute right-[10%] top-[76px] z-20 animate-[tool-float_5.6s_ease-in-out_infinite] [animation-delay:-4s] motion-reduce:animate-none sm:right-[13%] sm:top-[88px]">
+                    <div className="grid size-10 -rotate-[8deg] place-items-center rounded-[13px] bg-white shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:size-[3.3rem] sm:rounded-[16px]">
+                      <Image src="/images/tools/ai/lovable.svg" alt="" width={32} height={32} className="size-7 sm:size-8" />
+                    </div>
                   </div>
-                  <div aria-hidden="true" className="absolute bottom-1 right-[26%] z-20 grid size-10 -rotate-[6deg] place-items-center rounded-[13px] bg-white p-1.5 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:bottom-2 sm:right-[28%] sm:size-[3.1rem] sm:rounded-[16px] sm:p-2">
-                    <Image src="/images/tools/ai/claude-code.svg" alt="" width={32} height={32} className="size-8 sm:size-10" />
+                  <div aria-hidden="true" className="pointer-events-none absolute bottom-1 right-[26%] z-20 animate-[tool-float_4.7s_ease-in-out_infinite] [animation-delay:-1.8s] motion-reduce:animate-none sm:bottom-2 sm:right-[28%]">
+                    <div className="grid size-10 -rotate-[6deg] place-items-center rounded-[13px] bg-white p-1.5 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:size-[3.1rem] sm:rounded-[16px] sm:p-2">
+                      <Image src="/images/tools/ai/claude-code.svg" alt="" width={32} height={32} className="size-8 sm:size-10" />
+                    </div>
                   </div>
                   <Link
                     href={activeHeroProject.href}
@@ -1585,13 +1597,13 @@ export default function PortfolioPage() {
                   <span className="text-[13px] font-semibold uppercase tracking-[0.05em] text-[#71808d] sm:text-[15px]">
                     {translate("home.aiHeroStatementLead")}
                   </span>
-                  <span className="relative inline-grid max-w-full overflow-hidden align-[-0.14em] font-playfair text-[clamp(1.05rem,1.7vw,1.35rem)] italic leading-none text-[#45576a]">
+                  <span className="relative inline-block h-[1.25em] w-80 max-w-full overflow-hidden align-[-0.22em] font-playfair text-[clamp(1.05rem,1.7vw,1.35rem)] italic leading-[1.15] text-[#45576a]">
                     {previousHeroStatement !== null ? (
-                      <span aria-hidden="true" className="absolute inset-x-0 top-0 animate-[hero-statement-exit_480ms_ease-out] text-center">
+                      <span aria-hidden="true" className="hero-statement-out absolute inset-x-0 top-0 text-center">
                         {translate(heroStatementKeys[previousHeroStatement])}
                       </span>
                     ) : null}
-                    <span key={activeHeroStatement} className={`block text-center ${previousHeroStatement !== null ? "animate-[hero-statement-enter_480ms_ease-out]" : ""}`}>
+                    <span key={activeHeroStatement} className={`absolute inset-x-0 top-0 text-center ${previousHeroStatement !== null ? "hero-statement-in" : ""}`}>
                       {translate(heroStatementKeys[activeHeroStatement])}
                     </span>
                   </span>
