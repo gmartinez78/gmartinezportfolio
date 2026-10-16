@@ -1443,13 +1443,13 @@ export default function PortfolioPage() {
                 </>
               ) : null}
             </div>
-            <div className="mt-5 flex items-center gap-3" role="img" aria-label={`${githubUsername} GitHub contributions over the last year`}>
-              <div className="flex h-[101px] flex-col justify-between pb-px text-[10px] font-medium text-[#8aa0b8]">
+            <div className="mt-5 flex items-stretch gap-3" role="img" aria-label={`${githubUsername} GitHub contributions over the last year`}>
+              <div className="flex flex-col justify-between pb-px text-[10px] font-medium text-[#8aa0b8]">
                 <span>Mon</span>
                 <span>Wed</span>
                 <span>Fri</span>
               </div>
-              <div className="grid grid-flow-col grid-rows-7 gap-[3px]">
+              <div className="grid aspect-[23/3] flex-1 grid-flow-col grid-rows-7 auto-cols-fr gap-[5px]">
                 {(githubContributions.length
                   ? githubContributionWeeks.flat()
                   : Array.from({ length: 364 }, (_, index) => ({ date: `loading-${index}`, count: 0, level: 0 }))
@@ -1457,7 +1457,7 @@ export default function PortfolioPage() {
                   <span
                     key={contribution.date}
                     title={contribution.date.startsWith("loading-") ? undefined : `${contribution.count} contribution${contribution.count === 1 ? "" : "s"} on ${contribution.date}`}
-                    className="size-[11px] rounded-[3px] transition-transform duration-150 hover:scale-125"
+                    className="h-full w-full rounded-[4px] transition-transform duration-150 hover:scale-110"
                     style={{ backgroundColor: getGitHubContributionColor(contribution.level) }}
                   />
                 ))}
