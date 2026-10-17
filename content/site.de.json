@@ -397,19 +397,19 @@
     ],
     "education": [
       {
-        "year": "2014, 2015",
-        "degree": "Diplom in Web-Mediendesign",
-        "institution": "Universidad Rafael Belloso Chacín"
-      },
-      {
-        "year": "2012, 2015",
-        "degree": "Bachelor in Grafikdesign",
-        "institution": "URBE"
-      },
-      {
         "year": "2017",
         "degree": "UX-Design / Grafikdesign",
         "institution": "Coderhouse"
+      },
+      {
+        "year": "2014, 2015",
+        "degree": "Diplom in Web-Mediendesign",
+        "institution": "Universidad Rafael Belloso Chacín (URBE)"
+      },
+      {
+        "year": "2012 - 2015",
+        "degree": "Bachelor in Grafikdesign",
+        "institution": "URBE"
       }
     ],
     "certifications": [

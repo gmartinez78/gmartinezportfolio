@@ -188,9 +188,9 @@
     },
     "tools": ["Figma", "Jira", "Miro", "Copilot", "Webex", "ClickUp", "Confluence", "Maze", "Notion", "Slack", "HTML/CSS", "React", "Claude", "VS Code", "ChatGPT"],
     "education": [
-      { "year": "2014, 2015", "degree": "Diploma in Web Media Design", "institution": "Universidad Rafael Belloso Chacín" },
-      { "year": "2012, 2015", "degree": "Bachelor's in Graphic Design", "institution": "URBE" },
-      { "year": "2017", "degree": "UX Design / Graphic Design", "institution": "Coderhouse" }
+      { "year": "2017", "degree": "UX Design / Graphic Design", "institution": "Coderhouse" },
+      { "year": "2014, 2015", "degree": "Diploma in Web Media Design", "institution": "Universidad Rafael Belloso Chacín (URBE)" },
+      { "year": "2012 - 2015", "degree": "Bachelor's in Graphic Design", "institution": "URBE" }
     ],
     "certifications": [
       { "name": "Understanding LLMs: A Guide for UX Practitioners", "level": "How LLMs are trained, and how to design responsibly and communicate AI costs and risks to stakeholders", "year": "2026", "logo": "/images/OiSjn.png" },

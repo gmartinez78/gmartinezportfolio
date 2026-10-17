@@ -188,9 +188,9 @@
     },
     "tools": ["Figma", "Jira", "Miro", "Copilot", "Webex", "ClickUp", "Confluence", "Maze", "Notion", "Slack", "HTML/CSS", "React", "Claude", "VS Code", "ChatGPT"],
     "education": [
-      { "year": "2014, 2015", "degree": "Diplomado en Diseño de Medios Web", "institution": "Universidad Rafael Belloso Chacín" },
-      { "year": "2012, 2015", "degree": "Licenciatura en Diseño Gráfico", "institution": "URBE" },
-      { "year": "2017", "degree": "Diseño UX / Diseño Gráfico", "institution": "Coderhouse" }
+      { "year": "2017", "degree": "Diseño UX / Diseño Gráfico", "institution": "Coderhouse" },
+      { "year": "2014, 2015", "degree": "Diplomado en Diseño de Medios Web", "institution": "Universidad Rafael Belloso Chacín (URBE)" },
+      { "year": "2012 - 2015", "degree": "Licenciatura en Diseño Gráfico", "institution": "URBE" }
     ],
     "certifications": [
       { "name": "Comprendiendo los LLMs: una guía para profesionales de UX", "level": "Cómo se entrenan los LLMs, y cómo diseñar de forma responsable y comunicar sus costes y riesgos a stakeholders", "year": "2026", "logo": "/images/OiSjn.png" },

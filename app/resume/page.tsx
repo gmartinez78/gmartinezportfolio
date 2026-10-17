@@ -295,13 +295,13 @@ const EDUCATION = [
   },
   {
     degree: "Diploma in Web Media Design",
-    school: "Universidad Rafael Belloso Chacín",
+    school: "Universidad Rafael Belloso Chacín (URBE)",
     year: "2014, 2015",
   },
   {
     degree: "Bachelor's in Graphic Design",
     school: "URBE",
-    year: "2012, 2015",
+    year: "2012 - 2015",
   },
 ];
 
@@ -598,90 +598,26 @@ export default function ResumePage() {
         </div>
       </Container>
 
-      {/* Skills & Education */}
-      <section className="w-full bg-[#1183D0]">
-        <Container as="div" size="wide" className="px-6 py-10">
-          <div className="overflow-hidden rounded-[36px] p-0 py-0">
-          <div className="px-6 py-10 sm:px-8 lg:px-12 lg:py-12">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.15fr_0.85fr]">
-            <div>
-              <ResumeSectionHeading eyebrow={translate("resume.capabilitiesEyebrow")} title={translate("resume.skillsHeading")} inverse />
-              <div className="mt-8 flex flex-col gap-8">
-                {skills.map((group) => (
-                  <div key={group.category}>
-                    <button
-                      type="button"
-                      onClick={() => toggleSkillGroup(group.category)}
-                      className="flex w-full items-center justify-between gap-4 text-left"
-                      aria-expanded={!collapsedSkillGroups[group.category]}
-                    >
-                      <Heading as="h3" variant="card" className="text-[15px] text-white">
-                        {group.category}
-                      </Heading>
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        className={`shrink-0 text-white transition-transform ${
-                          collapsedSkillGroups[group.category] ? "-rotate-90" : "rotate-0"
-                        }`}
-                        aria-hidden="true"
-                      >
-                        <path d="m6 9 6 6 6-6" />
-                      </svg>
-                    </button>
-                    {!collapsedSkillGroups[group.category] ? (
-                      <div className="mt-4 flex flex-wrap gap-3">
-                        {group.items.map((item) => (
-                          <Badge key={item} size="tag" className="bg-white text-[#0e2951] hover:bg-white">
-                            {item}
-                          </Badge>
-                        ))}
-                      </div>
-                    ) : null}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <ResumeSectionHeading eyebrow={translate("resume.trainingHeading")} title={translate("resume.educationEyebrow")} inverse />
-              <div className="mt-8 flex flex-col gap-5">
-                {education.map((edu) => (
-                  <ResumeDetailCard
-                    key={edu.degree}
-                    badge={edu.year}
-                    title={edu.degree}
-                    description={edu.school}
-                    className="rounded-[28px] border border-white/60 bg-white/72 shadow-[0_14px_36px_rgba(31,53,94,0.06)]"
-                    contentClassName="px-6 py-6"
-                    titleClassName="text-[#111827]"
-                    descriptionClassName="text-base text-[var(--ui-color-text-body)]"
-                  />
-                ))}
-              </div>
-
-              <div className="mt-10">
-                <ResumeSectionHeading eyebrow={translate("resume.stackEyebrow")} title={translate("resume.toolsHeading")} inverse />
-                <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-4">
-                  {tools.map((tool) => (
-                    <div key={tool.label} className="flex flex-col items-center text-center">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/70 bg-white/82 shadow-[0_10px_24px_rgba(31,53,94,0.06)]">
-                        <Image src={tool.src} alt={tool.label} width={26} height={26} />
-                      </div>
-                      <span className="mt-2 text-xs font-medium text-white">
-                        {tool.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
+      {/* Education */}
+      <section className="w-full bg-[#1183D0] text-white">
+        <Container as="div" size="wide" className="px-6 py-12 sm:py-16">
+          <ResumeSectionHeading
+            eyebrow={translate("resume.trainingHeading")}
+            title={translate("resume.educationEyebrow")}
+            inverse
+          />
+          <div className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+            {education.map((edu) => (
+              <article key={edu.degree} className="border-t border-white/25 pt-6">
+                <p className="font-playfair text-4xl italic leading-none text-[#f8df36] sm:text-5xl">
+                  {edu.year}
+                </p>
+                <Heading as="h3" variant="card" className="mt-5 text-xl font-semibold text-white">
+                  {edu.degree}
+                </Heading>
+                <p className="mt-3 text-base leading-relaxed text-white/80">{edu.school}</p>
+              </article>
+            ))}
           </div>
         </Container>
       </section>
@@ -840,6 +776,80 @@ export default function ResumePage() {
           </div>
         </div>
       </Container>
+
+      {/* Skills */}
+      <section className="w-full bg-[#1183D0] text-white">
+        <Container as="div" size="wide" className="px-6 py-12 sm:py-16">
+          <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+            <div>
+              <ResumeSectionHeading
+                eyebrow={translate("resume.capabilitiesEyebrow")}
+                title={translate("resume.skillsHeading")}
+                inverse
+              />
+              <div className="mt-8 flex flex-col gap-8">
+                {skills.map((group) => (
+                  <div key={group.category}>
+                    <button
+                      type="button"
+                      onClick={() => toggleSkillGroup(group.category)}
+                      className="flex w-full items-center justify-between gap-4 text-left"
+                      aria-expanded={!collapsedSkillGroups[group.category]}
+                    >
+                      <Heading as="h3" variant="card" className="text-[15px] text-white">
+                        {group.category}
+                      </Heading>
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        className={`shrink-0 text-white transition-transform ${
+                          collapsedSkillGroups[group.category] ? "-rotate-90" : "rotate-0"
+                        }`}
+                        aria-hidden="true"
+                      >
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
+                    </button>
+                    {!collapsedSkillGroups[group.category] ? (
+                      <div className="mt-4 flex flex-wrap gap-3">
+                        {group.items.map((item) => (
+                          <Badge key={item} size="tag" className="bg-white text-[#0e2951] hover:bg-white">
+                            {item}
+                          </Badge>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="w-full bg-[#1183D0] text-white">
+        <Container as="div" size="wide" className="px-6 py-12 sm:py-16">
+          <ResumeSectionHeading
+            eyebrow={translate("resume.stackEyebrow")}
+            title={translate("resume.toolsHeading")}
+            inverse
+          />
+          <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+            {tools.map((tool) => (
+              <div key={tool.label} className="flex flex-col items-center text-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/70 bg-white/90 shadow-[0_10px_24px_rgba(31,53,94,0.12)]">
+                  <Image src={tool.src} alt={tool.label} width={26} height={26} />
+                </div>
+                <span className="mt-2 text-xs font-medium text-white">{tool.label}</span>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
 
       <div className="mt-10">
         <SiteFooter />
