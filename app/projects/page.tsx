@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -82,6 +82,7 @@ function ProjectsPage() {
   const { siteContent } = usePublicSiteContent();
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
   const [isFilterPanelOpen, setIsFilterPanelOpen] = useState(false);
+  const filterControlRef = useRef<HTMLDivElement | null>(null);
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
   const allProjects = appendLockedNayyaPlaceholder(caseStudies ?? [], language);
   const initialFilter = searchParams.get("filter");
@@ -97,6 +98,21 @@ function ProjectsPage() {
     setActiveFilters([]);
     setActiveTopic(initialTopic);
   }, [initialFilter, initialTopic]);
+
+  useEffect(() => {
+    if (!isFilterPanelOpen) {
+      return;
+    }
+
+    const closeOnOutsideClick = (event: PointerEvent) => {
+      if (event.target instanceof Node && !filterControlRef.current?.contains(event.target)) {
+        setIsFilterPanelOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    return () => document.removeEventListener("pointerdown", closeOnOutsideClick);
+  }, [isFilterPanelOpen]);
   
   const projects = allProjects
     .filter((project) => project?.slug && !isHiddenCaseStudySlug(project.slug))
@@ -221,10 +237,10 @@ function ProjectsPage() {
                     type="button"
                     onClick={() => setActiveFilters((selected) => selected.filter((item) => item !== filter))}
                     aria-label={`${translate("filter." + filter as DictionaryKey)}: ${translate("projectsPage.removeFilter")}`}
-                    className="inline-flex min-h-12 items-center gap-3 rounded-full bg-[#f8df36] px-5 text-sm font-medium text-[#141114] transition-colors hover:bg-[#f2d92d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#141114] focus-visible:ring-offset-2"
+                    className="inline-flex min-h-12 items-center gap-3 rounded-full bg-[var(--ui-color-brand-primary-soft)] px-5 text-sm font-medium text-[var(--ui-color-brand-primary)] transition-colors hover:bg-[var(--ui-color-brand-primary-soft-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ui-color-brand-primary-ring)] focus-visible:ring-offset-2"
                   >
                     {translate(`filter.${filter}` as DictionaryKey)}
-                    <span aria-hidden="true" className="text-lg leading-none text-[#5c5961]">×</span>
+                    <span aria-hidden="true" className="text-lg leading-none text-[var(--ui-color-brand-primary)]">×</span>
                   </button>
                 ))}
                 {activeFilters.length > 0 ? (
@@ -237,7 +253,7 @@ function ProjectsPage() {
                   </button>
                 ) : null}
               </div>
-              <div className="relative shrink-0 self-start sm:self-auto">
+              <div ref={filterControlRef} className="relative shrink-0 self-start sm:self-auto">
                 <button
                   type="button"
                   aria-expanded={isFilterPanelOpen}
@@ -276,10 +292,9 @@ function ProjectsPage() {
                                   ? [...selected, filter]
                                   : selected.filter((selectedFilter) => selectedFilter !== filter),
                               );
-                              setIsFilterPanelOpen(false);
                               setActiveTopic(null);
                             }}
-                            className="size-5 shrink-0 accent-[#141114]"
+                            className="size-5 shrink-0 accent-[var(--ui-color-brand-primary)]"
                           />
                           <span className="min-w-0 flex-1 text-base text-[#141114]">
                             {translate(`filter.${filter}` as DictionaryKey)}
