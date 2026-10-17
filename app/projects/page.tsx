@@ -1,14 +1,15 @@
 "use client";
 
 import { Suspense, useEffect, useMemo, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { FilterPillGroup } from "../../components/filter-pill-group";
-import { ProjectCard } from "../../components/project-card";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
+import { Badge } from "../../components/ui/badge";
 import { Container } from "../../components/ui/container";
 import { Heading } from "../../components/ui/heading";
-import { PageIntro } from "../../components/ui/page-intro";
 import { appendLockedNayyaPlaceholder } from "../../lib/cms/locked-placeholder";
 import {
   isHiddenCaseStudySlug,
@@ -20,7 +21,8 @@ import {
   usePublicSiteContent,
 } from "../../lib/cms/public";
 import { useLanguage } from "../../lib/i18n/language-context";
-import { useTranslate } from "../../lib/i18n/use-translate";
+import { useTranslate, useTranslateTag } from "../../lib/i18n/use-translate";
+import { getVisibleProjectTags } from "../../lib/project-tags";
 import type { DictionaryKey } from "../../lib/i18n/dictionary";
 
 const FILTER_PILLS = ["All", "UX Research", "Product Design", "Design Systems", "AI Product", "Compliance", "Accessibility"];
@@ -59,10 +61,23 @@ function compareCaseStudyPriority<
   return (left.title ?? "").localeCompare(right.title ?? "");
 }
 
+function getProjectCardDescription(description: string) {
+  const trimmed = description.trim();
+  const sentenceEnd = trimmed.search(/[.!?](?:\s|$)/);
+  const firstSentence = sentenceEnd >= 0 ? trimmed.slice(0, sentenceEnd + 1) : trimmed;
+
+  if (firstSentence.length <= 126) {
+    return firstSentence;
+  }
+
+  return `${firstSentence.slice(0, 126).replace(/\s+\S*$/, "").trimEnd()}…`;
+}
+
 function ProjectsPage() {
   const searchParams = useSearchParams();
   const { language } = useLanguage();
   const translate = useTranslate();
+  const translateTag = useTranslateTag();
   const { caseStudies } = usePublicCaseStudies();
   const { siteContent } = usePublicSiteContent();
   const [activeFilter, setActiveFilter] = useState("All");
@@ -91,7 +106,7 @@ function ProjectsPage() {
       title: project.title ?? translate("projectsPage.untitledProject"),
       company: project.company ?? "",
       year: project.year ?? 0,
-      tagline: project.tagline ?? "",
+      description: getProjectCardDescription(project.tagline ?? ""),
       tags: project.tags ?? [],
       filters: project.filters?.length ? project.filters : project.tags ?? [],
       stat: project.metrics?.[0]?.value ?? `${project.year ?? ""}`,
@@ -142,40 +157,57 @@ function ProjectsPage() {
         }),
     },
   ].filter((group) => group.projects.length > 0);
-  const socialLogos = siteContent?.home?.trusted_by?.clients?.map((client) => ({
+  const requiredCollaborators = [
+    { name: "Zapiano", logo: "/images/zapiano-logo.svg" },
+    { name: "Habitat for Humanity", logo: "/images/habitat-for-humanity.svg" },
+    { name: "Elevation", logo: "/images/elevation-mark.png" },
+    { name: "Indeed", logo: "/images/indeed-logo.svg" },
+  ];
+  const trustedClients = [
+    ...(siteContent?.home?.trusted_by?.clients ?? []),
+    ...requiredCollaborators.filter(
+      (collaborator) => !siteContent?.home?.trusted_by?.clients?.some((client) => client.name === collaborator.name),
+    ),
+  ];
+  const socialLogos = trustedClients.map((client) => ({
     src: resolveTrustedLogo(client.name, client.logo),
     alt: client.name,
-    h: client.name === "Skill" ? 59 : client.name === "Hakuna" ? 30 : client.name === "Elevation" ? 56 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : client.name === "Paramount+" ? 24 : client.name === "IBX" ? 34 : 41,
-    w: client.name === "Skill" ? 107 : client.name === "Hakuna" ? 96 : client.name === "Elevation" ? 220 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : client.name === "Paramount+" ? 94 : client.name === "IBX" ? 48 : 57,
+    h: client.name === "Skill" ? 59 : client.name === "Zapiano" ? 38 : client.name === "Habitat for Humanity" ? 36 : client.name === "Elevation" ? 36 : client.name === "Indeed" ? 34 : client.name === "Hakuna" ? 30 : client.name === "Paychex" ? 51 : client.name === "Nayya" ? 48 : client.name === "Paramount+" ? 24 : client.name === "IBX" ? 34 : 41,
+    w: client.name === "Skill" ? 107 : client.name === "Zapiano" ? 212 : client.name === "Habitat for Humanity" ? 108 : client.name === "Elevation" ? 234 : client.name === "Indeed" ? 126 : client.name === "Hakuna" ? 96 : client.name === "Paychex" ? 142 : client.name === "Nayya" ? 127 : client.name === "Paramount+" ? 94 : client.name === "IBX" ? 48 : 57,
   }));
+  const logoCarousel = [...socialLogos, ...socialLogos];
   const mutedRingColor = "#a1a1a1";
 
   return (
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden min-h-screen">
       <SiteHeader active="Projects" />
 
-      <Container as="section" size="wide" className="px-6 pb-4 pt-16">
-        <PageIntro
-          title={translate("projectsPage.title")}
-          description={translate("projectsPage.intro")}
-          centered
-        />
-      </Container>
+      <section className="bg-[#fcfafc]">
+        <Container as="div" size="wide" className="px-6 pb-9 pt-12 sm:pb-12 sm:pt-16">
+          <div className="max-w-[980px]">
+            <p className="inline-flex items-center rounded-full bg-[#f8df36] px-5 py-2.5 text-sm font-medium text-[#141114]">
+              {translate("projectsPage.workEyebrow")}
+            </p>
+            <h1 className="mt-8 font-inter text-[clamp(2.5rem,5.5vw,4.5rem)] font-bold leading-[0.88] tracking-[-0.075em] text-[#141114]">
+              {translate("projectsPage.heroTitle")}
+              <span className="mt-1 block font-playfair font-normal italic tracking-[-0.055em] text-[#1183D0]">
+                {translate("projectsPage.heroAccent")}
+              </span>
+            </h1>
+            <p className="mt-8 max-w-[760px] text-lg leading-[1.65] text-[#5c5961] sm:text-[21px]">
+              {translate("projectsPage.intro")}
+            </p>
+          </div>
 
-      {/* Project Grid */}
-      <Container as="section" size="wide" className="flex flex-col gap-20 px-6 pb-24 pt-12">
-        {projectGroups.map((group, index) => (
-          <section key={group.title} className={index === 0 ? undefined : "border-t-2 border-[#e9608a] pt-16"}>
-            <div className="mb-9 border-b border-[#141114]/15 pb-5">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e9608a]">{translate("projectsPage.projectType")}</p>
-              <Heading as="h2" variant="display" tone="editorial" className="mt-3">
-                {group.title}
-              </Heading>
-              <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-[#5c7792]">{group.description}</p>
-            </div>
-            {index === 0 ? (
-              <div className="mb-9">
-                <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e9608a]">{translate("projectsPage.filterBy")}</p>
+          <div className="mt-16 border-t border-[#141114]/15 pt-6">
+            <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+              <p className="shrink-0 text-base text-[#5c5961]" aria-live="polite">
+                {translate("projectsPage.showingProjects").replace("{count}", String(filteredProjects.length))}
+              </p>
+              <div className="flex flex-col gap-3 lg:items-end">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">
+                  {translate("projectsPage.filterBy")}
+                </p>
                 <FilterPillGroup
                   items={FILTER_PILLS}
                   activeItem={activeFilter}
@@ -186,41 +218,70 @@ function ProjectsPage() {
                       setActiveTopic(null);
                     }
                   }}
+                  className="justify-start lg:justify-end"
                 />
-                {activeTopic ? (
-                  <p className="mt-4 text-sm leading-relaxed text-[#1183D0]">
-                    {translate("projectsPage.showingRelatedTo")} <span className="font-semibold">{activeTopic}</span>.
-                  </p>
-                ) : null}
               </div>
+            </div>
+            {activeTopic ? (
+              <p className="mt-4 text-sm leading-relaxed text-[#1183D0]">
+                {translate("projectsPage.showingRelatedTo")} <span className="font-semibold">{activeTopic}</span>.
+              </p>
             ) : null}
-            <div className="flex flex-col gap-6">
-              {group.projects.map((project, i) => (
-                <ProjectCard
+          </div>
+        </Container>
+      </section>
+
+      {/* Project Grid */}
+      <Container as="section" size="wide" className="flex flex-col gap-20 px-6 pb-24 pt-14">
+        {projectGroups.map((group, index) => (
+          <section key={group.title} className={index === 0 ? undefined : "border-t border-[#e6e2e8] pt-16"}>
+            <div className="flex items-end justify-between gap-6">
+              <Heading as="h2" variant="section" className="text-[clamp(2rem,3.4vw,3.1rem)] leading-[1.02] text-[#141114]">
+                {group.title}
+              </Heading>
+            </div>
+            <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-[#5c7792]">{group.description}</p>
+            <div className="mt-8 grid gap-x-10 gap-y-12 md:grid-cols-2 md:gap-x-16 md:gap-y-16">
+              {group.projects.map((project, projectIndex) => (
+                <Link
                   key={project.title}
                   id={project.cardId}
                   href={resolveProjectHref(project)}
-                  title={project.title}
-                  company={project.company}
-                  year={project.year}
-                  tagline={project.tagline}
-                  tags={project.tags ?? []}
-                  previewImage={project.previewImage}
-                  squarePreview={project.slug === "calendar-keeper"}
-                  previewAlt={translate("projectsPage.previewAlt").replace("{project}", project.title)}
-                  stat={project.stat}
-                  statLabel={project.statLabel}
-                  background={project.background}
-                  locked={Boolean(project.password)}
-                  reversed={i % 2 === 1}
-                  ctaLabel={
-                    project.password
-                      ? translate("projectsPage.passwordRequired")
-                      : resolveProjectHref(project) === "#"
-                        ? translate("projectsPage.comingSoon")
-                        : translate("projectsPage.viewCaseStudy")
-                  }
-                />
+                  className={`group block ${projectIndex % 2 === 1 ? "md:translate-y-12" : ""}`}
+                >
+                  <div
+                    className="relative aspect-[4/3] overflow-hidden rounded-[var(--ui-radius-card)]"
+                    style={{ background: project.background }}
+                  >
+                    {project.previewImage ? (
+                      <Image
+                        src={project.previewImage}
+                        alt={translate("projectsPage.previewAlt").replace("{project}", project.title)}
+                        fill
+                        sizes="(max-width: 767px) 100vw, 520px"
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                      />
+                    ) : null}
+                  </div>
+                  <p className="mt-4 text-sm text-[var(--ui-color-text-muted)]">{project.company}</p>
+                  <Heading
+                    as="h3"
+                    variant="card"
+                    className="mt-1 line-clamp-2 text-[18px] leading-[1.25] transition-colors group-hover:text-[var(--ui-color-brand-primary)] md:text-[20px]"
+                  >
+                    {project.title}
+                  </Heading>
+                  <p className="mt-2 line-clamp-3 max-w-[38rem] text-[15px] leading-[1.48] text-[var(--ui-color-text-muted)] md:text-[16px]">
+                    {project.description}
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {getVisibleProjectTags(project.tags ?? []).map((tag) => (
+                      <Badge key={tag} size="tag" variant="secondary">
+                        {translateTag(tag)}
+                      </Badge>
+                    ))}
+                  </div>
+                </Link>
               ))}
             </div>
           </section>
@@ -228,32 +289,25 @@ function ProjectsPage() {
       </Container>
 
       {/* Social proof */}
-      <section className="border-t border-[#bcd2ff]/40 py-10">
-        <p className="mb-6 text-center text-[13px] font-semibold uppercase tracking-[0.45em] text-[var(--ui-color-text-strong)]">
+      <section className="flex min-h-[160px] flex-col items-center gap-6 border-t border-[#bcd2ff]/40 px-6 py-10 text-center md:px-10 lg:px-20">
+        <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#141114]">
           {translate("projectsPage.companiesWorkedWith")}
         </p>
-        <div className="flex items-center justify-center gap-10 flex-wrap px-6">
-          {socialLogos.map((logo) => (
-            <span
-              key={logo.alt}
-              aria-label={logo.alt}
-              role="img"
-              className={`block opacity-100 transition-opacity ${logo.alt === "Hakuna" ? "max-h-[30px]" : logo.alt === "Paramount+" ? "max-h-[24px]" : logo.alt === "Elevation" ? "max-h-[56px]" : "max-h-[58px]"}`}
-              style={{
-                width: `${logo.w}px`,
-                height: `${logo.h}px`,
-                backgroundColor: "var(--ui-color-text-strong)",
-                WebkitMaskImage: `url(${logo.src})`,
-                maskImage: `url(${logo.src})`,
-                WebkitMaskRepeat: "no-repeat",
-                maskRepeat: "no-repeat",
-                WebkitMaskPosition: "center",
-                maskPosition: "center",
-                WebkitMaskSize: "contain",
-                maskSize: "contain",
-              }}
-            />
-          ))}
+        <div className="relative w-full max-w-[1200px] overflow-hidden md:py-2">
+          <div className="flex w-max animate-[logo-marquee_22s_linear_infinite] items-center gap-14 pr-14 will-change-transform">
+            {logoCarousel.map((logo, index) => (
+              <Image
+                key={`${logo.alt}-${index}`}
+                src={logo.src}
+                alt={index < socialLogos.length ? logo.alt : ""}
+                width={logo.w}
+                height={logo.h}
+                aria-hidden={index >= socialLogos.length}
+                className={`w-auto shrink-0 object-contain opacity-80 ${logo.alt === "Zapiano" || logo.alt === "Habitat for Humanity" || logo.alt === "Elevation" || logo.alt === "Indeed" ? "max-h-[28px]" : logo.alt === "Hakuna" ? "max-h-[22px]" : logo.alt === "Paramount+" ? "max-h-[18px]" : "max-h-[36px]"}`}
+                style={{ filter: "brightness(0) saturate(100%)" }}
+              />
+            ))}
+          </div>
         </div>
       </section>
 

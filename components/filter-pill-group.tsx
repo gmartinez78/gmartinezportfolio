@@ -1,10 +1,12 @@
 import { Badge } from "@/components/ui/badge"
+import { cn } from "@/lib/utils"
 
 type FilterPillGroupProps = {
   items: string[]
   activeItem: string
   onSelect: (item: string) => void
   getLabel?: (item: string) => string
+  className?: string
 }
 
 export function FilterPillGroup({
@@ -12,9 +14,10 @@ export function FilterPillGroup({
   activeItem,
   onSelect,
   getLabel,
+  className,
 }: FilterPillGroupProps) {
   return (
-    <div className="flex flex-wrap justify-center gap-2">
+    <div className={cn("flex flex-wrap justify-center gap-2", className)}>
       {items.map((item) => (
         <Badge
           key={item}
