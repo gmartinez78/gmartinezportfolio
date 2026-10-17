@@ -628,7 +628,7 @@ export default function ResumePage() {
             eyebrow={translate("resume.recognitionHeading")}
             title={translate("resume.certificationsEyebrow")}
           />
-          <div className="mt-8 flex flex-wrap items-center gap-5 border-b border-[#e6e2e8] pb-8">
+          <div className="mt-8 flex flex-wrap items-start gap-5 border-b border-[#e6e2e8] pb-8">
             <a
               href="https://www.upwork.com/freelancers/greddysmartinez"
               target="_blank"
