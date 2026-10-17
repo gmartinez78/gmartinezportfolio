@@ -31,6 +31,7 @@ const certificationLogoMap: Record<string, string> = {
 
 const toolIconMap: Record<string, string> = {
   Figma: withBasePath("/images/tools/figma.svg"),
+  Canva: withBasePath("/images/tools/canva.svg"),
   Jira: withBasePath("/images/tools/jira.svg"),
   Miro: withBasePath("/images/tools/miro.svg"),
   Copilot: withBasePath("/images/tools/githubcopilot.svg"),

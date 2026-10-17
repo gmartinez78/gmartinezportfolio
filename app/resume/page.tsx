@@ -304,6 +304,7 @@ const EDUCATION = [
 
 const TOOLS = [
   { label: "Figma",      src: withBasePath("/images/tools/figma.svg") },
+  { label: "Canva",      src: withBasePath("/images/tools/canva.svg") },
   { label: "Jira",       src: withBasePath("/images/tools/jira.svg") },
   { label: "Miro",       src: withBasePath("/images/tools/miro.svg") },
   { label: "Copilot",    src: withBasePath("/images/tools/githubcopilot.svg") },
