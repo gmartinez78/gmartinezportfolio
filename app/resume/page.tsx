@@ -405,6 +405,8 @@ export default function ResumePage() {
   const [collapsedSkillGroups, setCollapsedSkillGroups] = useState<Record<string, boolean>>({});
   const [nngCertificationsExpanded, setNngCertificationsExpanded] = useState(true);
   const [ixdfCertificationsExpanded, setIxdfCertificationsExpanded] = useState(true);
+  const [courseraCertificationsExpanded, setCourseraCertificationsExpanded] = useState(true);
+  const [udemyCertificationsExpanded, setUdemyCertificationsExpanded] = useState(true);
   const translate = useTranslate();
   const { siteContent } = usePublicSiteContent();
   const resume = siteContent.resume;
@@ -621,7 +623,7 @@ export default function ResumePage() {
       {/* Certifications */}
       <section className="relative isolate overflow-hidden bg-[#fffdfd]">
         <div aria-hidden="true" className="pointer-events-none absolute -right-48 -top-[28rem] size-[64rem] rounded-full border-[5rem] border-[#f4ff00]" />
-        <Container as="div" size="wide" className="relative px-6 py-12 sm:py-16">
+        <Container as="div" size="wide" className="relative px-6 pt-12 pb-8 sm:pt-16 sm:pb-8">
           <ResumeSectionHeading
             eyebrow={translate("resume.recognitionHeading")}
             title={translate("resume.certificationsEyebrow")}
@@ -687,7 +689,7 @@ export default function ResumePage() {
             </div>
           </div>
           {nngCertificationsExpanded ? (
-            <div className="mt-3 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
               {nngCertifications.map((item) => (
                 <article
                   key={`${item.year}-${item.title}`}
@@ -737,7 +739,7 @@ export default function ResumePage() {
               </div>
             </div>
             {ixdfCertificationsExpanded ? (
-              <div className="mt-3 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
                 {ixdfCertifications.map((item) => (
                   <article
                     key={`${item.year}-${item.title}`}
@@ -753,7 +755,7 @@ export default function ResumePage() {
           </div>
 
           <div className="mt-16 border-t border-[#e6e2e8] pt-10">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-5">
               <a href="https://www.coursera.org/" target="_blank" rel="noreferrer" className="shrink-0 transition-opacity hover:opacity-80">
                 <Image
                   src={withBasePath("/images/coursera.svg")}
@@ -763,29 +765,46 @@ export default function ResumePage() {
                   className="size-16"
                 />
               </a>
-              <div>
-                <h3 className="text-xl font-semibold leading-snug text-[#141114]">Coursera</h3>
-                <p className="mt-1 text-base leading-relaxed text-[#5c5961]">
-                  {translate("resume.courseraDescription")}
-                </p>
+              <div className="flex min-w-0 flex-1 items-center gap-6">
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-xl font-semibold leading-snug text-[#141114]">Coursera</h3>
+                  <p className="mt-1 text-base leading-relaxed text-[#5c5961]">
+                    {translate("resume.courseraDescription")}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setCourseraCertificationsExpanded((expanded) => !expanded)}
+                  aria-expanded={courseraCertificationsExpanded}
+                  aria-label={
+                    courseraCertificationsExpanded
+                      ? translate("resume.collapseCertifications")
+                      : translate("resume.expandCertifications")
+                  }
+                  className="ml-auto flex size-12 shrink-0 items-center justify-center text-4xl font-light leading-none text-[#1183D0] transition-colors hover:text-[#0d6fae]"
+                >
+                  {courseraCertificationsExpanded ? "−" : "+"}
+                </button>
               </div>
             </div>
-            <div className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-              {courseraCertifications.map((item) => (
-                <article
-                  key={`${item.year}-${item.title}`}
-                  className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
-                >
-                  <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
-                  <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
-                  <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
-                </article>
-              ))}
-            </div>
+            {courseraCertificationsExpanded ? (
+              <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                {courseraCertifications.map((item) => (
+                  <article
+                    key={`${item.year}-${item.title}`}
+                    className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
+                  >
+                    <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
+                    <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
+                    <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
+                  </article>
+                ))}
+              </div>
+            ) : null}
           </div>
 
           <div className="mt-16 border-t border-[#e6e2e8] pt-10">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-5">
               <a href="https://www.udemy.com/" target="_blank" rel="noreferrer" className="shrink-0 transition-opacity hover:opacity-80">
                 <Image
                   src={withBasePath("/images/udemy-logo.svg")}
@@ -795,25 +814,42 @@ export default function ResumePage() {
                   className="h-auto w-20"
                 />
               </a>
-              <div>
-                <h3 className="text-xl font-semibold leading-snug text-[#141114]">Udemy</h3>
-                <p className="mt-1 text-base leading-relaxed text-[#5c5961]">
-                  {translate("resume.udemyDescription")}
-                </p>
+              <div className="flex min-w-0 flex-1 items-center gap-6">
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-xl font-semibold leading-snug text-[#141114]">Udemy</h3>
+                  <p className="mt-1 text-base leading-relaxed text-[#5c5961]">
+                    {translate("resume.udemyDescription")}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setUdemyCertificationsExpanded((expanded) => !expanded)}
+                  aria-expanded={udemyCertificationsExpanded}
+                  aria-label={
+                    udemyCertificationsExpanded
+                      ? translate("resume.collapseCertifications")
+                      : translate("resume.expandCertifications")
+                  }
+                  className="ml-auto flex size-12 shrink-0 items-center justify-center text-4xl font-light leading-none text-[#1183D0] transition-colors hover:text-[#0d6fae]"
+                >
+                  {udemyCertificationsExpanded ? "−" : "+"}
+                </button>
               </div>
             </div>
-            <div className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-              {udemyCertifications.map((item) => (
-                <article
-                  key={`${item.year}-${item.title}`}
-                  className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
-                >
-                  <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
-                  <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
-                  <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
-                </article>
-              ))}
-            </div>
+            {udemyCertificationsExpanded ? (
+              <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                {udemyCertifications.map((item) => (
+                  <article
+                    key={`${item.year}-${item.title}`}
+                    className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
+                  >
+                    <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
+                    <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
+                    <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
+                  </article>
+                ))}
+              </div>
+            ) : null}
           </div>
 
           {otherCertifications.length > 0 && (
