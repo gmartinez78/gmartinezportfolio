@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { withBasePath } from "../lib/site";
 import { usePublicSiteContent } from "../lib/cms/public";
@@ -58,11 +58,13 @@ export function SiteHeader({
   variant = "default",
   behavior = "sticky",
   forceSticky = false,
+  mobileMenuActions,
 }: {
   active?: "Projects" | "Resume" | "Contact";
   variant?: "default" | "transparent";
   behavior?: "sticky" | "reveal";
   forceSticky?: boolean;
+  mobileMenuActions?: ReactNode;
 }) {
   const { siteContent } = usePublicSiteContent();
   const navLinks = siteContent.nav.links;
@@ -176,6 +178,13 @@ export function SiteHeader({
                 </Link>
               </li>
             ))}
+            {mobileMenuActions ? (
+              <li className="mt-1 border-t border-[#bcd2ff]/60 pt-3">
+                <div className="grid gap-2" onClick={() => setIsMobileMenuOpen(false)}>
+                  {mobileMenuActions}
+                </div>
+              </li>
+            ) : null}
           </ul>
         </div>
       </div>
