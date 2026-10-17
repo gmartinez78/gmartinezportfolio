@@ -402,51 +402,51 @@
         "institution": "Coderhouse"
       },
       {
-        "year": "2014, 2015",
+        "year": "2014 - 2015",
         "degree": "Diplom in Web-Mediendesign",
         "institution": "Universidad Rafael Belloso Chacín (URBE)"
       },
       {
         "year": "2012 - 2015",
         "degree": "Bachelor in Grafikdesign",
-        "institution": "URBE"
+        "institution": "Universidad Rafael Belloso Chacín (URBE)"
       }
     ],
     "certifications": [
       {
         "name": "LLMs verstehen: Ein Leitfaden für UX-Praktiker",
         "level": "Wie LLMs geschult werden und wie man verantwortungsvoll gestaltet und KI-Kosten und -Risiken den Stakeholdern kommuniziert",
-        "year": "2026",
+        "year": "01/2026",
         "logo": "/images/OiSjn.png"
       },
       {
         "name": "Messung von UX und ROI",
         "level": "Quantitative UX-Bewertung und Argumentation für den ROI von Designänderungen",
-        "year": "2025",
+        "year": "06/2025",
         "logo": "/images/OiSjn.png"
       },
       {
         "name": "Praktische KI für UX-Profis",
         "level": "Schnelle Entwicklung, Bewertung der Ergebnisse von KI-Modellen und Ermittlung geeigneter Einsatzmöglichkeiten von KI-Tools",
-        "year": "2025",
+        "year": "01/2025",
         "logo": "/images/OiSjn.png"
       },
       {
         "name": "Informationsarchitektur",
         "level": "Entwerfen und Dokumentieren einer nützlichen, nutzbaren und erweiterbaren Informationsarchitektur",
-        "year": "2025",
+        "year": "01/2025",
         "logo": "/images/OiSjn.png"
       },
       {
         "name": "Entwerfen komplexer Apps für spezialisierte Domänen",
         "level": "Erstellen und Bewerten von Anwendungen für erweiterte Entscheidungsfindung und spezialisierte Arbeitsabläufe auf Expertenebene",
-        "year": "2023",
+        "year": "12/2023",
         "logo": "/images/OiSjn.png"
       },
       {
         "name": "Verfassen überzeugender digitaler Texte",
         "level": "Forschungsgestütztes UX-Schreiben: Wie Menschen digitale Inhalte lesen und was sie schreiben sollen",
-        "year": "2023",
+        "year": "12/2023",
         "logo": "/images/OiSjn.png"
       },
       {
@@ -458,43 +458,43 @@
       {
         "name": "Barrierefreiheit: So gestalten Sie für alle",
         "level": "Entwerfen und Testen auf Barrierefreiheit, von der Bild- und ARIA-Verwaltung bis hin zur Arbeit mit Benutzern mit Behinderungen",
-        "year": "2023",
+        "year": "06/2023",
         "logo": "/images/OiSjn.png"
       },
       {
         "name": "Webdesign für Benutzerfreundlichkeit",
         "level": "Richtlinien zur Benutzerfreundlichkeit und Barrierefreiheit, Benutzerforschung, Personas und Navigationsdesign für das Web",
-        "year": "2021",
+        "year": "01/2021",
         "logo": "/images/OiSjn.png"
       },
       {
         "name": "UI-Designmuster für erfolgreiche Software",
         "level": "Praktische UI-Muster für Struktur, Inhalt, Navigation, Formulare und soziale Funktionen",
-        "year": "2021",
+        "year": "03/2021",
         "logo": "/images/OiSjn.png"
       },
       {
         "name": "Benutzerforschung: Methoden und Best Practices",
         "level": "Planung und Durchführung von Interviews, Kontextbefragungen, Beobachtungsstudien und Usability-Tests",
-        "year": "2020",
+        "year": "11/2020",
         "logo": "/images/OiSjn.png"
       },
       {
         "name": "Grundlagen des objektorientierten UX (OOUX).",
         "level": "Strukturierung von Produkten nach Objekten, ihren Beziehungen und den Aktionen, die Benutzer mit ihnen durchführen",
-        "year": "2024",
+        "year": "06/2024",
         "logo": "/images/OiSjn.png"
       },
       {
         "name": "Wie man großartige Mikrokopien schreibt",
         "level": "Verfassen klarer, hilfreicher Mikrotexte für Schaltflächen, Formulare, Fehlerzustände und Onboarding-Abläufe",
-        "year": "2025",
+        "year": "07/2025",
         "logo": "/images/OiSjn.png"
       },
       {
         "name": "Evaluierung von Benutzeroberflächen",
         "level": "Aktionsanalyse, heuristische Bewertung, Usability-Tests und Festlegung messbarer Usability-Ziele",
-        "year": "2019",
+        "year": "01/2019",
         "logo": "/images/coursera.svg"
       }
     ]

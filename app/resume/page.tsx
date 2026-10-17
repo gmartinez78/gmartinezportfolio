@@ -2,19 +2,16 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ResumeDetailCard } from "../../components/resume-detail-card";
 import { ResumeExperienceCard } from "../../components/resume-experience-card";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
-import { Card, CardContent, cardVariants } from "../../components/ui/card";
 import { Container } from "../../components/ui/container";
 import { Heading } from "../../components/ui/heading";
-import { resolveCertificationLogo, resolveToolIcon, usePublicSiteContent } from "../../lib/cms/public";
+import { resolveToolIcon, usePublicSiteContent } from "../../lib/cms/public";
 import { withBasePath } from "../../lib/site";
 import { useTranslate } from "../../lib/i18n/use-translate";
-import { cn } from "../../lib/utils";
 
 type ExperienceBullet =
   | string
@@ -296,11 +293,11 @@ const EDUCATION = [
   {
     degree: "Diploma in Web Media Design",
     school: "Universidad Rafael Belloso Chacín (URBE)",
-    year: "2014, 2015",
+    year: "2014 - 2015",
   },
   {
     degree: "Bachelor's in Graphic Design",
-    school: "URBE",
+    school: "Universidad Rafael Belloso Chacín (URBE)",
     year: "2012 - 2015",
   },
 ];
@@ -325,78 +322,74 @@ const TOOLS = [
 
 const CERTIFICATION_ITEMS = [
   {
-    year: "2023",
-    title: "Interaction Design Specialty",
-    description: "Advanced patterns for complex interactive systems and enterprise workflows",
+    year: "01/2026",
+    title: "Understanding LLMs: A Guide for UX Practitioners",
+    description: "How LLMs are trained, and how to design responsibly and communicate AI costs and risks to stakeholders",
   },
   {
-    year: "2023",
-    title: "UX Management: Strategy & Tactics",
-    description: "Leading design teams, stakeholder alignment, and design ops",
+    year: "06/2025",
+    title: "Measuring UX and ROI",
+    description: "Quantitative UX evaluation and building the case for the ROI of design changes",
   },
   {
-    year: "2022",
-    title: "Measuring UX & ROI",
-    description: "Quantifying design impact through analytics, A/B testing, and KPIs",
+    year: "01/2025",
+    title: "Practical AI for UX Professionals",
+    description: "Prompt engineering, evaluating AI model outputs, and identifying appropriate uses of AI tools",
   },
   {
-    year: "2022",
-    title: "Journey Mapping",
-    description: "Mapping end-to-end user experiences across touchpoints and channels",
-  },
-  {
-    year: "2021",
+    year: "01/2025",
     title: "Information Architecture",
-    description: "Organizing and structuring content for findability and clarity",
+    description: "Designing and documenting a useful, usable, and extensible information architecture",
   },
   {
-    year: "2021",
-    title: "Usability Testing",
-    description: "Planning, conducting, and analyzing usability studies",
+    year: "12/2023",
+    title: "Designing Complex Apps for Specialized Domains",
+    description: "Creating and evaluating applications for advanced decision-making and specialized, expert-level workflows",
   },
   {
-    year: "2020",
-    title: "User Interface Design Guidelines",
-    description: "Applying evidence-based UI patterns and accessibility standards",
+    year: "12/2023",
+    title: "Writing Compelling Digital Copy",
+    description: "Research-backed UX writing: how people read digital content and what to write",
   },
   {
-    year: "2020",
-    title: "Human-Computer Interaction",
-    description: "Foundational principles of cognitive science applied to design",
-  },
-];
-
-const FEATURED_CREDENTIALS = [
-  {
-    type: "image" as const,
-    image: withBasePath("/images/iNSrn.png"),
-    alt: "Upwork Skill Certification",
-    title: "Upwork Skill Certification",
-    href: "https://www.upwork.com/freelancers/greddysmartinez",
-    subtitle: "User Interface Design",
-    description:
-      "Verified professional certification for UI Design skills on the Upwork platform, demonstrating expertise in creating intuitive and visually appealing interfaces.",
-    year: "2024",
+    year: "2023",
+    title: "The Human Mind and Usability",
+    description: "Designing around users' cognitive constraints to understand why some interfaces work better than others",
   },
   {
-    type: "image" as const,
-    image: withBasePath("/images/coursera.svg"),
-    alt: "Coursera",
-    title: "User Interface Design",
-    subtitle: "University of Minnesota - COURSERA",
-    description:
-      "Comprehensive course covering user interface design principles, visual hierarchy, typography, and responsive design patterns.",
-    year: "2018",
+    year: "06/2023",
+    title: "Accessibility: How to Design for All",
+    description: "Designing and testing for accessibility, from image and ARIA handling to working with users with disabilities",
   },
   {
-    type: "image" as const,
-    image: withBasePath("/images/coderhouse.jpeg"),
-    alt: "Coderhouse",
-    title: "UX / UI Course",
-    subtitle: "Coderhouse",
-    description:
-      "Intensive program covering UX research methodologies, wireframing, prototyping, and end-to-end design workflow.",
-    year: "2017",
+    year: "01/2021",
+    title: "Web Design for Usability",
+    description: "Usability and accessibility guidelines, user research, personas, and navigation design for the web",
+  },
+  {
+    year: "03/2021",
+    title: "UI Design Patterns for Successful Software",
+    description: "Practical UI patterns for structure, content, navigation, forms, and social features",
+  },
+  {
+    year: "11/2020",
+    title: "User Research: Methods and Best Practices",
+    description: "Planning and running interviews, contextual inquiries, observational studies, and usability tests",
+  },
+  {
+    year: "06/2024",
+    title: "Object-Oriented UX (OOUX) Fundamentals",
+    description: "Structuring products around objects, their relationships, and the actions users take on them",
+  },
+  {
+    year: "07/2025",
+    title: "How to Write Great Microcopy",
+    description: "Writing clear, helpful microcopy for buttons, forms, error states, and onboarding flows",
+  },
+  {
+    year: "01/2019",
+    title: "Evaluating User Interfaces",
+    description: "Action analysis, heuristic evaluation, usability testing, and setting measurable usability goals",
   },
 ];
 
@@ -431,18 +424,11 @@ export default function ResumePage() {
         description: item.level,
       }))
     : CERTIFICATION_ITEMS;
-  const featuredCredentials = resume.certifications.length
-    ? resume.certifications.slice(0, 3).map((item, index) => ({
-        type: "image" as const,
-        image: resolveCertificationLogo(item.name, item.logo),
-        alt: item.name,
-        title: item.name,
-        ...(index === 0 ? { href: "https://www.upwork.com/freelancers/greddysmartinez" } : {}),
-        subtitle: item.level,
-        description: item.level,
-        year: item.year,
-      }))
-    : FEATURED_CREDENTIALS;
+  const nngCertifications = certifications.slice(0, 7);
+  const ixdfCertifications = certifications.slice(7, 11);
+  const udemyCertifications = certifications.slice(11, 13);
+  const courseraCertifications = certifications.slice(13, 14);
+  const otherCertifications = certifications.slice(14);
   const heroBio = resume.bio.replace(/^Senior Product Designer with/, "With");
   const heroTitle = resume.title
     .replace("Senior Product Designer", "Sr. Product Designer")
@@ -623,159 +609,188 @@ export default function ResumePage() {
       </section>
 
       {/* Certifications */}
-      <Container as="section" size="wide" className="px-6 py-10">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-          <div>
-            <ResumeSectionHeading eyebrow={translate("resume.recognitionHeading")} title={translate("resume.certificationsEyebrow")} />
-            <div className="mt-8 flex items-center gap-5">
+      <section className="relative isolate overflow-hidden bg-[#fffdfd]">
+        <div aria-hidden="true" className="pointer-events-none absolute -right-48 -top-[28rem] size-[64rem] rounded-full border-[5rem] border-[#f4ff00]" />
+        <Container as="div" size="wide" className="relative px-6 py-12 sm:py-16">
+          <ResumeSectionHeading
+            eyebrow={translate("resume.recognitionHeading")}
+            title={translate("resume.certificationsEyebrow")}
+          />
+          <div className="mt-8 flex flex-wrap items-center gap-5 border-b border-[#e6e2e8] pb-8">
+            <a
+              href="https://www.upwork.com/freelancers/greddysmartinez"
+              target="_blank"
+              rel="noreferrer"
+              className="shrink-0 transition-opacity hover:opacity-80"
+            >
+              <Image
+                src={withBasePath("/images/iNSrn.png")}
+                alt="Upwork Skill Certification"
+                width={110}
+                height={110}
+                className="h-auto w-[78px] sm:w-[92px]"
+              />
+            </a>
+            <div className="max-w-3xl">
+              <h3 className="text-xl font-semibold leading-snug text-[#141114]">
+                {translate("resume.upworkCertificationTitle")}
+              </h3>
+              <p className="mt-2 text-base leading-relaxed text-[#5c5961]">
+                {translate("resume.upworkCertificationDescription")}
+              </p>
+            </div>
+          </div>
+          <div className="mt-8 max-w-2xl">
+            <div className="flex items-center gap-5">
               <Image
                 src={withBasePath("/images/OiSjn.png")}
                 alt="NN Group UX Certified Interaction Design"
-                width={38}
-                height={54}
-                className="h-auto w-[30px] sm:w-[38px]"
-                style={{ height: "auto" }}
+                width={110}
+                height={154}
+                className="h-auto w-[64px] sm:w-[74px]"
               />
               <div>
-                <Heading as="h3" variant="card" className="text-[18px] text-[#0e2951] sm:text-[20px]">
-                  NN/Group UX Certification, Interaction Design
-                </Heading>
-                <p className="mt-1 text-base text-[#5c7792]">{translate("resume.uxCertifiedProfessional")}</p>
+                <h3 className="text-xl font-semibold leading-snug text-[#141114]">
+                  {translate("resume.nnGroupCertifiedLabel")}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#5c5961]">
+                  {translate("resume.interactionDesign")}
+                </p>
+                <p className="mt-1 text-sm leading-relaxed text-[#5c5961]">
+                  {translate("resume.nnGroupCertificationDescription")}
+                </p>
               </div>
             </div>
+          </div>
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            {nngCertifications.map((item) => (
+              <article
+                key={`${item.year}-${item.title}`}
+                className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
+              >
+                <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
+                <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
+                <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
+              </article>
+            ))}
+          </div>
 
-            <div className="mt-8 flex flex-col gap-5">
-              {certifications.map((item) => (
-                <ResumeDetailCard
-                  key={`${item.year}-${item.title}`}
-                  badge={item.year}
-                  title={item.title}
-                  description={item.description}
+          <div className="mt-16 border-t border-[#e6e2e8] pt-10">
+            <div className="flex items-center gap-4">
+              <a href="https://ixdf.org/" target="_blank" rel="noreferrer" className="shrink-0 transition-opacity hover:opacity-80">
+                <Image
+                  src={withBasePath("/images/ixdf-logo.svg")}
+                  alt="Interaction Design Foundation"
+                  width={64}
+                  height={64}
+                  className="size-16"
                 />
+              </a>
+              <div>
+                <h3 className="text-xl font-semibold leading-snug text-[#141114]">
+                  Interaction Design Foundation (IxDF)
+                </h3>
+                <p className="mt-1 text-sm leading-relaxed text-[#5c5961]">
+                  {translate("resume.ixdfDescription")}
+                </p>
+              </div>
+            </div>
+            <div className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              {ixdfCertifications.map((item) => (
+                <article
+                  key={`${item.year}-${item.title}`}
+                  className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
+                >
+                  <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
+                  <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
+                  <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
+                </article>
               ))}
             </div>
           </div>
 
-          <div className="flex flex-col gap-6 lg:pt-[92px]">
-            {featuredCredentials.map((credential) => {
-              const CardWrapper = ({ children }: { children: React.ReactNode }) =>
-                "href" in credential ? (
-                  <a
-                    href={(credential as { href: string }).href}
-                    target="_blank"
-                    rel="noreferrer"
-                    key={credential.title}
-                    className={cn(
-                      cardVariants({ variant: "glass" }),
-                      "block rounded-[30px] py-0 text-center transition-all hover:-translate-y-1 hover:opacity-95"
-                    )}
-                  >
-                    <CardContent className="px-8 py-8">{children}</CardContent>
-                  </a>
-                ) : (
-                  <Card
-                    key={credential.title}
-                    variant="glass"
-                    className="rounded-[30px] p-0 py-0 text-center"
-                  >
-                    <CardContent className="px-8 py-8">{children}</CardContent>
-                  </Card>
-                );
-              return (
-              <CardWrapper key={credential.title}>
-                {credential.type === "image" ? (
-                  credential.image === withBasePath("/images/coursera.svg") ||
-                  credential.image === withBasePath("/images/coderhouse.jpeg") ? (
-                    <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#e7f1fd]">
-                      <Image
-                        src={credential.image}
-                        alt={credential.alt!}
-                        width={54}
-                        height={54}
-                        className={`h-[54px] w-[54px] object-contain ${
-                          credential.image === withBasePath("/images/coderhouse.jpeg") ? "mix-blend-multiply" : ""
-                        }`}
-                      />
-                    </div>
-                  ) : (
-                    <Image
-                      src={credential.image!}
-                      alt={credential.alt!}
-                      width={92}
-                      height={92}
-                      className="mx-auto h-auto w-[72px] sm:w-[92px]"
-                    />
-                  )
-                ) : (
-                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#e7f1fd]">
-                    {"icon" in credential && credential.icon === "cap" ? (
-                      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="1.8" aria-hidden="true">
-                        <path d="m2 9 10-5 10 5-10 5Z" />
-                        <path d="M6 11.5v4.2c0 1.2 2.7 2.8 6 2.8s6-1.6 6-2.8v-4.2" />
-                      </svg>
-                    ) : (
-                      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="1.8" aria-hidden="true">
-                        <path d="m8 8-4 4 4 4" />
-                        <path d="m16 8 4 4-4 4" />
-                      </svg>
-                    )}
-                  </div>
-                )}
-                <Heading as="h3" variant="card" className="mt-6 text-[18px] text-[#0e2951]">{credential.title}</Heading>
-                <p className="mt-3 text-[15px] font-semibold text-[#1183D0]">{credential.subtitle}</p>
-                <p className="mx-auto mt-4 max-w-[430px] text-[15px] leading-relaxed text-[#5c7792]">
-                  {credential.description}
+          <div className="mt-16 border-t border-[#e6e2e8] pt-10">
+            <div className="flex items-center gap-4">
+              <a href="https://www.coursera.org/" target="_blank" rel="noreferrer" className="shrink-0 transition-opacity hover:opacity-80">
+                <Image
+                  src={withBasePath("/images/coursera.svg")}
+                  alt="Coursera"
+                  width={64}
+                  height={64}
+                  className="size-16"
+                />
+              </a>
+              <div>
+                <h3 className="text-xl font-semibold leading-snug text-[#141114]">Coursera</h3>
+                <p className="mt-1 text-sm leading-relaxed text-[#5c5961]">
+                  {translate("resume.courseraDescription")}
                 </p>
-                <Badge className="mt-6" size="tag">
-                  {credential.year}
-                </Badge>
-              </CardWrapper>
-              );
-            })}
+              </div>
+            </div>
+            <div className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              {courseraCertifications.map((item) => (
+                <article
+                  key={`${item.year}-${item.title}`}
+                  className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
+                >
+                  <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
+                  <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
+                  <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </Container>
 
-      <Container as="section" size="wide" aria-label={translate("resume.certificationsEyebrow")} className="px-6 py-10">
-        <div className="flex flex-wrap items-start gap-10 sm:gap-14">
-          <a
-            href="https://www.upwork.com/freelancers/greddysmartinez"
-            target="_blank"
-            rel="noreferrer"
-            className="flex max-w-[180px] flex-col items-start text-left transition-opacity hover:opacity-80"
-          >
-            <Image
-              src={withBasePath("/images/iNSrn.png")}
-              alt="Upwork Skill Certification"
-              width={110}
-              height={110}
-              className="h-auto w-[92px] sm:w-[110px]"
-            />
-            <p className="mt-3 text-[15px] font-medium leading-snug text-[#141114]">
-              {translate("resume.upworkCertifiedLabel")}
-            </p>
-            <p className="mt-1 text-[15px] font-medium leading-snug text-[#5c7792]">
-              {translate("resume.userInterfaceDesign")}
-            </p>
-          </a>
-          <div className="flex max-w-[180px] flex-col items-start text-left">
-            <Image
-              src={withBasePath("/images/OiSjn.png")}
-              alt="NN Group UX Certified Interaction Design"
-              width={110}
-              height={154}
-              className="h-auto w-[92px] sm:w-[110px]"
-              style={{ height: "auto" }}
-            />
-            <p className="mt-3 text-[15px] font-medium leading-snug text-[#141114]">
-              {translate("resume.nnGroupCertifiedLabel")}
-            </p>
-            <p className="mt-1 text-[15px] font-medium leading-snug text-[#5c7792]">
-              {translate("resume.interactionDesign")}
-            </p>
+          <div className="mt-16 border-t border-[#e6e2e8] pt-10">
+            <div className="flex items-center gap-4">
+              <a href="https://www.udemy.com/" target="_blank" rel="noreferrer" className="shrink-0 transition-opacity hover:opacity-80">
+                <Image
+                  src={withBasePath("/images/udemy-logo.svg")}
+                  alt="Udemy"
+                  width={91}
+                  height={34}
+                  className="h-auto w-20"
+                />
+              </a>
+              <div>
+                <h3 className="text-xl font-semibold leading-snug text-[#141114]">Udemy</h3>
+                <p className="mt-1 text-sm leading-relaxed text-[#5c5961]">
+                  {translate("resume.udemyDescription")}
+                </p>
+              </div>
+            </div>
+            <div className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              {udemyCertifications.map((item) => (
+                <article
+                  key={`${item.year}-${item.title}`}
+                  className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
+                >
+                  <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
+                  <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
+                  <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </Container>
+
+          {otherCertifications.length > 0 && (
+            <div className="mt-16 border-t border-[#e6e2e8] pt-10">
+              <div className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                {otherCertifications.map((item) => (
+                  <article
+                    key={`${item.year}-${item.title}`}
+                    className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
+                  >
+                    <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
+                    <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
+                    <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          )}
+        </Container>
+      </section>
 
       {/* Skills */}
       <section className="w-full bg-[#1183D0] text-white">

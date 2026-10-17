@@ -107,6 +107,22 @@ export const dictionary = {
   "resume.stackEyebrow": { en: "Stack", es: "Tecnologías" },
   "resume.toolsHeading": { en: "Tools", es: "Herramientas" },
   "resume.certificationsEyebrow": { en: "Certifications", es: "Certificaciones" },
+  "resume.otherCertifications": { en: "Other certifications", es: "Otras certificaciones", de: "Weitere Zertifizierungen" },
+  "resume.ixdfDescription": {
+    en: "Evidence-based design education for UX professionals since 2002.",
+    es: "Formación en diseño basada en evidencia para profesionales de UX desde 2002.",
+    de: "Evidenzbasierte Designausbildung für UX-Fachleute seit 2002.",
+  },
+  "resume.courseraDescription": {
+    en: "Online learning from universities and companies, with courses and professional certificates.",
+    es: "Aprendizaje en línea de universidades y empresas, con cursos y certificados profesionales.",
+    de: "Online-Lernen von Universitäten und Unternehmen mit Kursen und professionellen Zertifikaten.",
+  },
+  "resume.udemyDescription": {
+    en: "An online learning platform offering practical courses taught by experts across a wide range of subjects.",
+    es: "Una plataforma de aprendizaje en línea con cursos prácticos impartidos por expertos en una amplia variedad de temas.",
+    de: "Eine Online-Lernplattform mit praxisnahen Kursen von Experten zu einer Vielzahl von Themen.",
+  },
   "resume.recognitionHeading": { en: "Recognition", es: "Reconocimientos" },
   "resume.clientLabel": { en: "Client", es: "Cliente" },
 
@@ -1009,8 +1025,23 @@ export const dictionary = {
   "rail.viewProfile": { en: "View profile", es: "Ver perfil", de: "Profil ansehen" },
   "resume.upworkCertifiedLabel": { en: "Upwork Certified", es: "Certificada por Upwork", de: "Von Upwork zertifiziert" },
   "resume.userInterfaceDesign": { en: "User Interface Design", es: "Diseño de interfaces", de: "Interface-Design" },
+  "resume.upworkCertificationTitle": {
+    en: "Upwork Skill Certification - User Experience Design",
+    es: "Certificación de habilidades de Upwork - Diseño de experiencia de usuario",
+    de: "Upwork-Skill-Zertifizierung - User Experience Design",
+  },
+  "resume.upworkCertificationDescription": {
+    en: "User experience design (UXD or UED) is the process of enhancing customer satisfaction and loyalty by improving the usability, ease of use, and pleasure provided in the interaction between the customer and the product.",
+    es: "El diseño de experiencia de usuario (UXD o UED) busca mejorar la satisfacción y fidelidad de los clientes al optimizar la usabilidad, facilidad de uso y satisfacción que ofrece la interacción entre las personas y un producto.",
+    de: "User Experience Design (UXD oder UED) verbessert Kundenzufriedenheit und -bindung, indem es die Benutzerfreundlichkeit und das Nutzungserlebnis bei der Interaktion zwischen Kunden und Produkt optimiert.",
+  },
   "resume.nnGroupCertifiedLabel": { en: "NN/Group Certified", es: "Certificada por NN/Group", de: "NN/Group-zertifiziert" },
   "resume.interactionDesign": { en: "Interaction Design", es: "Diseño de interacción", de: "Interaktionsdesign" },
+  "resume.nnGroupCertificationDescription": {
+    en: "An NN/g UX Certification recognizing advanced knowledge of interaction design and user-centered product experiences.",
+    es: "Una certificación de UX de NN/g que reconoce conocimientos avanzados de diseño de interacción y experiencias de producto centradas en las personas.",
+    de: "Eine NN/g-UX-Zertifizierung, die fundierte Kenntnisse in Interaktionsdesign und nutzerzentrierten Produkterlebnissen bestätigt.",
+  },
   "caseStudy.openNotebookResearch": { en: "Open Notebook research ↗", es: "Abrir investigación en Notebook ↗", de: "Notebook-Recherche öffnen ↗" },
   "caseStudy.logoDesign": { en: "Logo design", es: "Diseño de logotipo", de: "Logodesign" },
   "caseStudy.imagotype": { en: "Imagotype", es: "Imagotipo", de: "Wort-Bild-Marke" },
