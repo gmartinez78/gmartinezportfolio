@@ -11,7 +11,6 @@ import { Button } from "../../components/ui/button";
 import { Card, CardContent, cardVariants } from "../../components/ui/card";
 import { Container } from "../../components/ui/container";
 import { Heading } from "../../components/ui/heading";
-import { SectionHeading } from "../../components/ui/section-heading";
 import { resolveCertificationLogo, resolveToolIcon, usePublicSiteContent } from "../../lib/cms/public";
 import { withBasePath } from "../../lib/site";
 import { useTranslate } from "../../lib/i18n/use-translate";
@@ -29,6 +28,32 @@ type ExperienceEntry = {
   bullets: ExperienceBullet[];
   tags: string[];
 };
+
+function ResumeSectionHeading({
+  eyebrow,
+  title,
+  inverse = false,
+}: {
+  eyebrow: string;
+  title: string;
+  inverse?: boolean;
+}) {
+  return (
+    <div className="flex flex-col items-start gap-3">
+      <p className={`flex items-center gap-2 text-[13px] font-semibold tracking-normal ${inverse ? "text-white/85" : "text-[var(--ui-color-brand-primary)]"}`}>
+        <span aria-hidden="true" className={`size-2 rounded-full ${inverse ? "bg-white" : "bg-[var(--ui-color-brand-primary)]"}`} />
+        {eyebrow}
+      </p>
+      <Heading
+        as="h2"
+        variant="section"
+        className={`text-[clamp(2.5rem,5vw,3.5rem)] font-bold leading-[0.98] tracking-[-0.055em] ${inverse ? "text-white" : "text-[var(--ui-color-text-editorial)]"}`}
+      >
+        {title}
+      </Heading>
+    </div>
+  );
+}
 
 const EXPERIENCE: ExperienceEntry[] = [
   {
@@ -485,7 +510,7 @@ export default function ResumePage() {
             <p className="mt-5 text-2xl font-medium text-white sm:text-3xl">
               {heroTitle}
             </p>
-            <p className="mt-8 max-w-[680px] text-lg font-normal leading-[1.8] text-white/85 sm:text-xl">
+            <p className="mt-8 max-w-[680px] text-lg font-normal leading-[2.2] text-white/85 sm:text-xl">
               {heroBio}
             </p>
           </div>
@@ -513,44 +538,6 @@ export default function ResumePage() {
             <p className="mt-6 max-w-[700px] text-[17px] leading-[1.8] tracking-[-0.02em] text-[#141114] sm:text-[20.4px]">
               <strong className="font-semibold">Double Diamond design thinking</strong> guides the work: simplifying complex workflows, clarifying <strong className="font-semibold">information architecture</strong>, and building <strong className="font-semibold">reusable systems</strong>. Content-rich, data-heavy experiences are structured with scalable hierarchy and interaction patterns, in partnership with product and engineering to define success, strengthen implementation, and <strong className="font-semibold">reduce design debt</strong>.
             </p>
-            <div className="mt-10 flex flex-wrap items-start gap-10 sm:gap-14">
-              <a
-                href="https://www.upwork.com/freelancers/greddysmartinez"
-                target="_blank"
-                rel="noreferrer"
-                className="flex max-w-[180px] flex-col items-start text-left transition-opacity hover:opacity-80"
-              >
-                <Image
-                  src={withBasePath("/images/iNSrn.png")}
-                  alt="Upwork Skill Certification"
-                  width={110}
-                  height={110}
-                  className="h-auto w-[92px] sm:w-[110px]"
-                />
-                <p className="mt-3 text-[15px] font-medium leading-snug text-[#141114]">
-                  {translate("resume.upworkCertifiedLabel")}
-                </p>
-                <p className="mt-1 text-[15px] font-medium leading-snug text-[#5c7792]">
-                  {translate("resume.userInterfaceDesign")}
-                </p>
-              </a>
-              <div className="flex max-w-[180px] flex-col items-start text-left">
-                <Image
-                  src={withBasePath("/images/OiSjn.png")}
-                  alt="NN Group UX Certified Interaction Design"
-                  width={110}
-                  height={154}
-                  className="h-auto w-[92px] sm:w-[110px]"
-                  style={{ height: "auto" }}
-                />
-                <p className="mt-3 text-[15px] font-medium leading-snug text-[#141114]">
-                  {translate("resume.nnGroupCertifiedLabel")}
-                </p>
-                <p className="mt-1 text-[15px] font-medium leading-snug text-[#5c7792]">
-                  {translate("resume.interactionDesign")}
-                </p>
-              </div>
-            </div>
           </div>
           </div>
       </Container>
@@ -559,39 +546,32 @@ export default function ResumePage() {
         <div className="grid overflow-hidden rounded-[24px] border border-[#d7e7f5] bg-[#d7e7f5] gap-px md:grid-cols-2">
           <a href={`mailto:${resume.email}`} className="group bg-[#fbfdff] p-7 transition-colors hover:bg-[#f2f8fd] sm:p-8">
             <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{translate("resume.emailLabel")}</span>
-            <span className="mt-2 block break-words text-xl font-semibold leading-tight tracking-[-0.035em] text-[#141114] transition-colors group-hover:text-[#1183D0] sm:text-2xl">{resume.email}</span>
+            <span className="mt-2 block break-words text-xl font-normal leading-tight tracking-[-0.035em] text-[#141114] transition-colors group-hover:text-[#1183D0] sm:text-2xl">{resume.email}</span>
           </a>
           <div className="bg-[#fbfdff] p-7 sm:p-8">
             <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{translate("resume.locationLabel")}</span>
-            <span className="mt-2 block text-xl font-semibold leading-tight tracking-[-0.035em] text-[#141114] sm:text-2xl">{resume.location}</span>
+            <span className="mt-2 block text-xl font-normal leading-tight tracking-[-0.035em] text-[#141114] sm:text-2xl">{resume.location}</span>
           </div>
           <a href={`https://${resume.website}`} target="_blank" rel="noreferrer" className="group bg-[#fbfdff] p-7 transition-colors hover:bg-[#f2f8fd] sm:p-8">
             <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{translate("resume.portfolioLabel")}</span>
-            <span className="mt-2 block break-words text-xl font-semibold leading-tight tracking-[-0.035em] text-[#141114] transition-colors group-hover:text-[#1183D0] sm:text-2xl">{resume.website}</span>
+            <span className="mt-2 block break-words text-xl font-normal leading-tight tracking-[-0.035em] text-[#141114] transition-colors group-hover:text-[#1183D0] sm:text-2xl">{resume.website}</span>
           </a>
           <a href={`https://${resume.linkedin}`} target="_blank" rel="noreferrer" className="group bg-[#fbfdff] p-7 transition-colors hover:bg-[#f2f8fd] sm:p-8">
             <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{translate("resume.linkedinLabel")}</span>
-            <span className="mt-2 block break-words text-xl font-semibold leading-tight tracking-[-0.035em] text-[#141114] transition-colors group-hover:text-[#1183D0] sm:text-2xl">{resume.linkedin}</span>
+            <span className="mt-2 block break-words text-xl font-normal leading-tight tracking-[-0.035em] text-[#141114] transition-colors group-hover:text-[#1183D0] sm:text-2xl">{resume.linkedin}</span>
           </a>
         </div>
       </Container>
 
       {/* Experience */}
       <Container as="section" size="wide" className="px-6 py-10">
-        <div className="mb-8 flex flex-col items-start gap-3 px-6 sm:px-7">
-          <p className="flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.14em] text-[var(--ui-color-brand-primary)]">
-            <span aria-hidden="true" className="size-2 rounded-full bg-[var(--ui-color-brand-primary)]" />
-            {translate("resume.careerEyebrow")}
-          </p>
-          <Heading
-            as="h2"
-            variant="section"
-            className="text-[clamp(2.5rem,5vw,3.5rem)] font-bold leading-[0.98] tracking-[-0.055em] text-[var(--ui-color-text-editorial)]"
-          >
-            {translate("resume.experienceHeading")}
-          </Heading>
+        <div className="mb-8 px-6 sm:px-7">
+          <ResumeSectionHeading
+            eyebrow={translate("resume.careerEyebrow")}
+            title={translate("resume.experienceHeading")}
+          />
         </div>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-5">
           {experience.map((job) => (
             <ResumeExperienceCard
               key={`${job.role}-${job.company}`}
@@ -610,19 +590,22 @@ export default function ResumePage() {
                     ]
                   : []),
               ]}
-              className="rounded-[24px] border border-[#e5e1e8] bg-white"
+              expandLabel={translate("resume.readMore")}
+              collapseLabel={translate("resume.readLess")}
+              className="rounded-[24px] border border-[#e5e1e8] bg-white transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
             />
           ))}
         </div>
       </Container>
 
       {/* Skills & Education */}
-      <Container as="section" size="wide" className="px-6 py-10">
-        <Card variant="editorial" className="overflow-hidden rounded-[36px] p-0 py-0">
-          <CardContent className="px-6 py-10 sm:px-8 lg:px-12 lg:py-12">
+      <section className="w-full bg-[#1183D0]">
+        <Container as="div" size="wide" className="px-6 py-10">
+          <div className="overflow-hidden rounded-[36px] p-0 py-0">
+          <div className="px-6 py-10 sm:px-8 lg:px-12 lg:py-12">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
-              <SectionHeading eyebrow={translate("resume.capabilitiesEyebrow")} title={translate("resume.skillsHeading")} />
+              <ResumeSectionHeading eyebrow={translate("resume.capabilitiesEyebrow")} title={translate("resume.skillsHeading")} inverse />
               <div className="mt-8 flex flex-col gap-8">
                 {skills.map((group) => (
                   <div key={group.category}>
@@ -632,7 +615,7 @@ export default function ResumePage() {
                       className="flex w-full items-center justify-between gap-4 text-left"
                       aria-expanded={!collapsedSkillGroups[group.category]}
                     >
-                      <Heading as="h3" variant="card" className="text-[15px] text-[#1f2f3d]">
+                      <Heading as="h3" variant="card" className="text-[15px] text-white">
                         {group.category}
                       </Heading>
                       <svg
@@ -642,7 +625,7 @@ export default function ResumePage() {
                         fill="none"
                         stroke="currentColor"
                         strokeWidth="2"
-                        className={`shrink-0 text-[#1183D0] transition-transform ${
+                        className={`shrink-0 text-white transition-transform ${
                           collapsedSkillGroups[group.category] ? "-rotate-90" : "rotate-0"
                         }`}
                         aria-hidden="true"
@@ -653,7 +636,7 @@ export default function ResumePage() {
                     {!collapsedSkillGroups[group.category] ? (
                       <div className="mt-4 flex flex-wrap gap-3">
                         {group.items.map((item) => (
-                          <Badge key={item} size="tag">
+                          <Badge key={item} size="tag" className="bg-white text-[#0e2951] hover:bg-white">
                             {item}
                           </Badge>
                         ))}
@@ -665,7 +648,7 @@ export default function ResumePage() {
             </div>
 
             <div>
-              <SectionHeading eyebrow={translate("resume.trainingHeading")} title={translate("resume.educationEyebrow")} />
+              <ResumeSectionHeading eyebrow={translate("resume.trainingHeading")} title={translate("resume.educationEyebrow")} inverse />
               <div className="mt-8 flex flex-col gap-5">
                 {education.map((edu) => (
                   <ResumeDetailCard
@@ -682,14 +665,14 @@ export default function ResumePage() {
               </div>
 
               <div className="mt-10">
-                <SectionHeading eyebrow={translate("resume.stackEyebrow")} title={translate("resume.toolsHeading")} />
+                <ResumeSectionHeading eyebrow={translate("resume.stackEyebrow")} title={translate("resume.toolsHeading")} inverse />
                 <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-4">
                   {tools.map((tool) => (
                     <div key={tool.label} className="flex flex-col items-center text-center">
                       <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/70 bg-white/82 shadow-[0_10px_24px_rgba(31,53,94,0.06)]">
                         <Image src={tool.src} alt={tool.label} width={26} height={26} />
                       </div>
-                      <span className="mt-2 text-xs font-medium text-[#3c3e3f]">
+                      <span className="mt-2 text-xs font-medium text-white">
                         {tool.label}
                       </span>
                     </div>
@@ -698,15 +681,16 @@ export default function ResumePage() {
               </div>
             </div>
           </div>
-          </CardContent>
-        </Card>
-      </Container>
+          </div>
+          </div>
+        </Container>
+      </section>
 
       {/* Certifications */}
       <Container as="section" size="wide" className="px-6 py-10">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
-            <SectionHeading eyebrow={translate("resume.recognitionHeading")} title={translate("resume.certificationsEyebrow")} />
+            <ResumeSectionHeading eyebrow={translate("resume.recognitionHeading")} title={translate("resume.certificationsEyebrow")} />
             <div className="mt-8 flex items-center gap-5">
               <Image
                 src={withBasePath("/images/OiSjn.png")}
@@ -812,6 +796,47 @@ export default function ResumePage() {
               </CardWrapper>
               );
             })}
+          </div>
+        </div>
+      </Container>
+
+      <Container as="section" size="wide" aria-label={translate("resume.certificationsEyebrow")} className="px-6 py-10">
+        <div className="flex flex-wrap items-start gap-10 sm:gap-14">
+          <a
+            href="https://www.upwork.com/freelancers/greddysmartinez"
+            target="_blank"
+            rel="noreferrer"
+            className="flex max-w-[180px] flex-col items-start text-left transition-opacity hover:opacity-80"
+          >
+            <Image
+              src={withBasePath("/images/iNSrn.png")}
+              alt="Upwork Skill Certification"
+              width={110}
+              height={110}
+              className="h-auto w-[92px] sm:w-[110px]"
+            />
+            <p className="mt-3 text-[15px] font-medium leading-snug text-[#141114]">
+              {translate("resume.upworkCertifiedLabel")}
+            </p>
+            <p className="mt-1 text-[15px] font-medium leading-snug text-[#5c7792]">
+              {translate("resume.userInterfaceDesign")}
+            </p>
+          </a>
+          <div className="flex max-w-[180px] flex-col items-start text-left">
+            <Image
+              src={withBasePath("/images/OiSjn.png")}
+              alt="NN Group UX Certified Interaction Design"
+              width={110}
+              height={154}
+              className="h-auto w-[92px] sm:w-[110px]"
+              style={{ height: "auto" }}
+            />
+            <p className="mt-3 text-[15px] font-medium leading-snug text-[#141114]">
+              {translate("resume.nnGroupCertifiedLabel")}
+            </p>
+            <p className="mt-1 text-[15px] font-medium leading-snug text-[#5c7792]">
+              {translate("resume.interactionDesign")}
+            </p>
           </div>
         </div>
       </Container>

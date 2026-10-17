@@ -16,6 +16,8 @@ type ResumeExperienceCardProps = {
   tags: string[]
   className: string
   statusBadges: string[]
+  expandLabel: string
+  collapseLabel: string
 }
 
 const IMPACT_PHRASES = [
@@ -50,7 +52,7 @@ const IMPACT_TOKEN_PATTERN = new RegExp(`^${IMPACT_PATTERN.source.slice(1, -1)}$
 function renderImpactText(text: string, keyPrefix: string) {
   return text.split(IMPACT_PATTERN).map((part, index) =>
     IMPACT_TOKEN_PATTERN.test(part) ? (
-      <strong key={`${keyPrefix}-${index}`} className="font-semibold text-black">
+      <strong key={`${keyPrefix}-${index}`} className="font-semibold text-[#292929]">
         {part}
       </strong>
     ) : (
@@ -60,7 +62,7 @@ function renderImpactText(text: string, keyPrefix: string) {
 }
 
 function ExperienceBulletText({ bullet }: { bullet: ExperienceBullet }) {
-  const textClassName = "text-base leading-relaxed text-black sm:text-[17px]"
+  const textClassName = "text-base leading-relaxed text-[#292929] sm:text-[17px]"
 
   if (typeof bullet === "string") {
     const openingPhrase = bullet.match(/^(\S+(?:\s+\S+){0,2})(\s+[\s\S]+)$/)
@@ -69,7 +71,7 @@ function ExperienceBulletText({ bullet }: { bullet: ExperienceBullet }) {
       <p className={textClassName}>
         {openingPhrase ? (
           <>
-            <strong className="font-semibold text-black">{openingPhrase[1]}</strong>
+            <strong className="font-semibold text-[#292929]">{openingPhrase[1]}</strong>
             {renderImpactText(openingPhrase[2], "bullet")}
           </>
         ) : (
@@ -84,7 +86,7 @@ function ExperienceBulletText({ bullet }: { bullet: ExperienceBullet }) {
       <p className={textClassName}>
         {bullet.segments.map((segment, index) =>
           segment.bold ? (
-            <strong key={`${segment.text}-${index}`} className="font-semibold text-black">
+            <strong key={`${segment.text}-${index}`} className="font-semibold text-[#292929]">
               {segment.text}
             </strong>
           ) : (
@@ -97,7 +99,7 @@ function ExperienceBulletText({ bullet }: { bullet: ExperienceBullet }) {
 
   return (
     <div className={textClassName}>
-      <p className="font-inter font-semibold text-black">{renderImpactText(bullet.heading, "heading")}</p>
+      <p className="font-inter font-semibold text-[#292929]">{renderImpactText(bullet.heading, "heading")}</p>
       {bullet.items.map((item) => (
         <p key={item} className="mt-2">
           {renderImpactText(item, item)}
@@ -116,6 +118,8 @@ export function ResumeExperienceCard({
   tags,
   className,
   statusBadges,
+  expandLabel,
+  collapseLabel,
 }: ResumeExperienceCardProps) {
   const [isExpanded, setIsExpanded] = useState(false)
   const detailsId = useId()
@@ -123,7 +127,7 @@ export function ResumeExperienceCard({
 
   return (
     <div className={className}>
-      <div className="p-6 sm:p-7">
+      <div className="p-7 sm:p-8">
         <div className="grid gap-6 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:gap-12">
           <div>
             <p className="mb-1 text-sm text-black">
@@ -167,14 +171,14 @@ export function ResumeExperienceCard({
           <div className="relative min-h-24 min-w-0 md:min-h-0">
             <div
               id={detailsId}
-              className={`divide-y divide-[var(--ui-color-border-strong)] ${
+              className={`${
                 isExpanded ? "relative" : "absolute inset-0 overflow-hidden pb-4"
               }`}
             >
               {bullets.map((bullet, index) => (
                 <div
                   key={typeof bullet === "string" ? bullet : "segments" in bullet ? bullet.segments.map(({ text }) => text).join("") : bullet.heading}
-                  className={`${index === 0 ? "pb-4" : "py-3"} border-b border-[var(--ui-color-border-strong)] last:border-b-0`}
+                  className={`${index === 0 ? "pb-6" : "py-6"} border-b border-[#e6e2e8] last:border-b-0`}
                 >
                   <ExperienceBulletText bullet={bullet} />
                 </div>
@@ -183,7 +187,7 @@ export function ResumeExperienceCard({
             {!isExpanded ? (
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 bottom-0 border-b border-[var(--ui-color-border-strong)]"
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-b from-transparent via-white/85 to-white"
               />
             ) : null}
           </div>
@@ -191,12 +195,13 @@ export function ResumeExperienceCard({
         {bullets.length > 1 ? (
           <button
             type="button"
-            aria-label={isExpanded ? `Show less for ${role}` : `Show more for ${role}`}
+            aria-label={`${isExpanded ? collapseLabel : expandLabel} ${role}`}
             aria-expanded={isExpanded}
             aria-controls={detailsId}
             onClick={() => setIsExpanded((expanded) => !expanded)}
-            className="group mx-auto mt-4 flex size-10 items-center justify-center rounded-full text-[var(--ui-color-brand-primary)] transition-colors hover:bg-[var(--ui-color-brand-primary-subtle)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ui-color-brand-primary)]"
+            className="group mx-auto mt-4 flex items-center justify-center gap-1 rounded-full px-3 text-base font-medium text-[var(--ui-color-brand-primary)] transition-colors hover:bg-[var(--ui-color-brand-primary-subtle)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ui-color-brand-primary)]"
           >
+            <span>{isExpanded ? collapseLabel : expandLabel}</span>
             <svg
               aria-hidden="true"
               width="20"

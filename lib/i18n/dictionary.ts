@@ -98,6 +98,8 @@ export const dictionary = {
   "resume.experienceHeading": { en: "Experience", es: "Experiencia" },
   "resume.remote": { en: "Remote", es: "Remoto" },
   "resume.hybrid": { en: "Hybrid", es: "Híbrido" },
+  "resume.readMore": { en: "Read more", es: "Leer más" },
+  "resume.readLess": { en: "Read less", es: "Leer menos" },
   "resume.capabilitiesEyebrow": { en: "Capabilities", es: "Capacidades" },
   "resume.skillsHeading": { en: "Skills", es: "Habilidades" },
   "resume.educationEyebrow": { en: "Education", es: "Educación" },

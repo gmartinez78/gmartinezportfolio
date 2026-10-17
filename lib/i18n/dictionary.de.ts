@@ -74,6 +74,8 @@ export const germanDictionary = {
   "resume.experienceHeading": "Erfahrung",
   "resume.remote": "Remote",
   "resume.hybrid": "Hybrid",
+  "resume.readMore": "Mehr lesen",
+  "resume.readLess": "Weniger lesen",
   "resume.capabilitiesEyebrow": "Fähigkeiten",
   "resume.skillsHeading": "Fähigkeiten",
   "resume.educationEyebrow": "Bildung",
