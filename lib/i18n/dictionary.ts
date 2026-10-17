@@ -51,10 +51,13 @@ export const dictionary = {
 
   // Projects listing page
   "projectsPage.title": { en: "Projects", es: "Proyectos" },
-  "projectsPage.workEyebrow": { en: "Our work", es: "Nuestro trabajo", de: "Unsere Arbeit" },
+  "projectsPage.workEyebrow": { en: "My work", es: "Mi trabajo", de: "Meine Arbeit" },
   "projectsPage.heroTitle": { en: "Product design", es: "Diseño de producto", de: "Produktdesign" },
   "projectsPage.heroAccent": { en: "portfolio", es: "portafolio", de: "Portfolio" },
   "projectsPage.showingProjects": { en: "Showing {count} projects", es: "Mostrando {count} proyectos", de: "{count} Projekte" },
+  "projectsPage.showingCasesIn": { en: "Showing {count} cases in:", es: "Mostrando {count} casos en:", de: "{count} Fälle in:" },
+  "projectsPage.clearAll": { en: "Clear all", es: "Limpiar todo", de: "Alle löschen" },
+  "projectsPage.removeFilter": { en: "remove filter", es: "quitar filtro", de: "Filter entfernen" },
   "projectsPage.intro": {
     en: "Case studies and highlights from 10+ years designing enterprise SaaS, healthtech, and nonprofit digital experiences.",
     es: "Casos de estudio y momentos destacados de más de 10 años diseñando experiencias digitales para SaaS empresarial, salud digital y organizaciones sin ánimo de lucro.",

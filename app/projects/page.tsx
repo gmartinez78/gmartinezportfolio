@@ -4,7 +4,6 @@ import { Suspense, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { FilterPillGroup } from "../../components/filter-pill-group";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
@@ -26,6 +25,7 @@ import { getVisibleProjectTags } from "../../lib/project-tags";
 import type { DictionaryKey } from "../../lib/i18n/dictionary";
 
 const FILTER_PILLS = ["All", "UX Research", "Product Design", "Design Systems", "AI Product", "Compliance", "Accessibility"];
+const PROJECT_FILTERS = FILTER_PILLS.filter((filter) => filter !== "All");
 const PROJECT_BACKGROUNDS: Record<string, string> = {
   reversetech: "linear-gradient(180deg, #eef4fb 0%, #eef4fb 100%)",
   "benefits-enrollment": "radial-gradient(ellipse at 82% 50%, #b7daf1 11%, #e9f3fb 64%, #edf5fb 98%)",
@@ -80,7 +80,8 @@ function ProjectsPage() {
   const translateTag = useTranslateTag();
   const { caseStudies } = usePublicCaseStudies();
   const { siteContent } = usePublicSiteContent();
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
+  const [isFilterPanelOpen, setIsFilterPanelOpen] = useState(false);
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
   const allProjects = appendLockedNayyaPlaceholder(caseStudies ?? [], language);
   const initialFilter = searchParams.get("filter");
@@ -88,12 +89,12 @@ function ProjectsPage() {
 
   useEffect(() => {
     if (initialFilter && FILTER_PILLS.includes(initialFilter)) {
-      setActiveFilter(initialFilter);
+      setActiveFilters(initialFilter === "All" ? [] : [initialFilter]);
       setActiveTopic(null);
       return;
     }
 
-    setActiveFilter("All");
+    setActiveFilters([]);
     setActiveTopic(initialTopic);
   }, [initialFilter, initialTopic]);
   
@@ -118,7 +119,7 @@ function ProjectsPage() {
     const normalizedTopic = activeTopic?.trim().toLowerCase() ?? null;
 
     return projects.filter((project) => {
-      if (activeFilter !== "All" && !(project.filters ?? []).includes(activeFilter)) {
+      if (activeFilters.length > 0 && !activeFilters.some((filter) => (project.filters ?? []).includes(filter))) {
         return false;
       }
 
@@ -139,7 +140,14 @@ function ProjectsPage() {
 
       return searchableValues.some((value) => value.includes(normalizedTopic));
     });
-  }, [activeFilter, activeTopic, projects]);
+  }, [activeFilters, activeTopic, projects]);
+  const projectFilterCounts = projects.reduce<Record<string, number>>((counts, project) => {
+    for (const filter of project.filters ?? []) {
+      counts[filter] = (counts[filter] ?? 0) + 1;
+    }
+
+    return counts;
+  }, {});
   const projectGroups = [
     {
       title: translate("projectsPage.companyProjects"),
@@ -200,26 +208,88 @@ function ProjectsPage() {
           </div>
 
           <div className="mt-16 border-t border-[#141114]/15 pt-6">
-            <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-              <p className="shrink-0 text-base text-[#5c5961]" aria-live="polite">
-                {translate("projectsPage.showingProjects").replace("{count}", String(filteredProjects.length))}
-              </p>
-              <div className="flex flex-col gap-3 lg:items-end">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">
-                  {translate("projectsPage.filterBy")}
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-3">
+                <p className="shrink-0 text-base text-[#5c5961]" aria-live="polite">
+                  {activeFilters.length > 0
+                    ? translate("projectsPage.showingCasesIn").replace("{count}", String(filteredProjects.length))
+                    : translate("projectsPage.showingProjects").replace("{count}", String(filteredProjects.length))}
                 </p>
-                <FilterPillGroup
-                  items={FILTER_PILLS}
-                  activeItem={activeFilter}
-                  getLabel={(filter) => translate(`filter.${filter}` as DictionaryKey)}
-                  onSelect={(filter) => {
-                    setActiveFilter(filter);
-                    if (filter !== "All") {
-                      setActiveTopic(null);
-                    }
-                  }}
-                  className="justify-start lg:justify-end"
-                />
+                {activeFilters.map((filter) => (
+                  <button
+                    key={filter}
+                    type="button"
+                    onClick={() => setActiveFilters((selected) => selected.filter((item) => item !== filter))}
+                    aria-label={`${translate("filter." + filter as DictionaryKey)}: ${translate("projectsPage.removeFilter")}`}
+                    className="inline-flex min-h-12 items-center gap-3 rounded-full bg-[#f8df36] px-5 text-sm font-medium text-[#141114] transition-colors hover:bg-[#f2d92d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#141114] focus-visible:ring-offset-2"
+                  >
+                    {translate(`filter.${filter}` as DictionaryKey)}
+                    <span aria-hidden="true" className="text-lg leading-none text-[#5c5961]">×</span>
+                  </button>
+                ))}
+                {activeFilters.length > 0 ? (
+                  <button
+                    type="button"
+                    onClick={() => setActiveFilters([])}
+                    className="text-sm text-[#5c5961] underline underline-offset-4 hover:text-[#141114]"
+                  >
+                    {translate("projectsPage.clearAll")}
+                  </button>
+                ) : null}
+              </div>
+              <div className="relative shrink-0 self-start sm:self-auto">
+                <button
+                  type="button"
+                  aria-expanded={isFilterPanelOpen}
+                  aria-controls="projects-filter-panel"
+                  onClick={() => setIsFilterPanelOpen((open) => !open)}
+                  className="inline-flex min-h-12 items-center gap-3 rounded-full border border-[#e6e2e8] bg-white px-5 text-sm font-medium text-[#141114] transition-colors hover:bg-[#f3f3f4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#141114] focus-visible:ring-offset-2"
+                >
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="size-4">
+                    <path d="M4 6h16M7 12h10m-7 6h4" />
+                  </svg>
+                  {translate("projectsPage.filterBy")}
+                  <span className="flex size-7 items-center justify-center rounded-full bg-[#f3f3f4] text-xs font-semibold">
+                    {activeFilters.length}
+                  </span>
+                </button>
+                {isFilterPanelOpen ? (
+                  <div
+                    id="projects-filter-panel"
+                    className="absolute left-0 right-auto top-full z-30 mt-3 w-[min(360px,calc(100vw-3rem))] rounded-[24px] border border-[#e6e2e8] bg-white p-4 shadow-[0_18px_48px_rgba(20,17,20,0.12)] sm:left-auto sm:right-0 sm:p-6"
+                  >
+                    <p className="mb-4 px-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#5c5961]">
+                      {translate("projectsPage.filterBy")}
+                    </p>
+                    <div className="space-y-1">
+                      {PROJECT_FILTERS.map((filter) => (
+                        <label
+                          key={filter}
+                          className={`flex cursor-pointer items-center gap-4 rounded-2xl px-3 py-3 transition-colors ${activeFilters.includes(filter) ? "bg-[#f3f3f4]" : "hover:bg-[#f8f8f9]"}`}
+                        >
+                          <input
+                            type="checkbox"
+                            checked={activeFilters.includes(filter)}
+                            onChange={(event) => {
+                              setActiveFilters((selected) =>
+                                event.target.checked
+                                  ? [...selected, filter]
+                                  : selected.filter((selectedFilter) => selectedFilter !== filter),
+                              );
+                              setIsFilterPanelOpen(false);
+                              setActiveTopic(null);
+                            }}
+                            className="size-5 shrink-0 accent-[#141114]"
+                          />
+                          <span className="min-w-0 flex-1 text-base text-[#141114]">
+                            {translate(`filter.${filter}` as DictionaryKey)}
+                          </span>
+                          <span className="text-sm text-[#5c5961]">{projectFilterCounts[filter] ?? 0}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
               </div>
             </div>
             {activeTopic ? (
