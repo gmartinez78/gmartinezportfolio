@@ -24,18 +24,25 @@ export function ResumeExperienceCard({
   return (
     <Card variant="glass" className="overflow-hidden rounded-[34px] p-0 py-0">
       <CardContent className="p-6 sm:p-7">
-        <div className="flex flex-wrap items-start justify-between gap-4">
+        <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(15rem,0.7fr)]">
           <div>
             <Heading as="h3" variant="card" className="text-lg">{role}</Heading>
             <p className="mt-0.5 text-sm text-[var(--ui-color-text-muted)]">{company}</p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {tags.map((tag) => (
+                <Badge key={tag} size="tag">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
           </div>
-          <div className="flex shrink-0 flex-wrap gap-2">
-            <Badge variant="secondary" size="sm">
+          <div className="divide-y divide-[var(--ui-color-border-strong)] text-sm text-[var(--ui-color-text-muted)]">
+            <p className="py-3 first:pt-0 last:pb-0">
               {period}
-            </Badge>
-            <Badge variant="secondary" size="sm">
+            </p>
+            <p className="py-3 first:pt-0 last:pb-0">
               {location}
-            </Badge>
+            </p>
           </div>
         </div>
         <ul className="mt-4 space-y-2">
@@ -65,13 +72,6 @@ export function ResumeExperienceCard({
             )
           )}
         </ul>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <Badge key={tag} size="tag">
-              {tag}
-            </Badge>
-          ))}
-        </div>
       </CardContent>
     </Card>
   )

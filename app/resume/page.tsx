@@ -526,7 +526,19 @@ export default function ResumePage() {
 
       {/* Experience */}
       <Container as="section" size="wide" className="px-6 py-10">
-        <SectionHeading eyebrow={translate("resume.careerEyebrow")} title={translate("resume.experienceHeading")} centered className="mb-8" />
+        <div className="mb-8 flex flex-col items-start gap-3">
+          <p className="flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.14em] text-[var(--ui-color-brand-primary)]">
+            <span aria-hidden="true" className="size-2 rounded-full bg-[var(--ui-color-brand-primary)]" />
+            {translate("resume.careerEyebrow")}
+          </p>
+          <Heading
+            as="h2"
+            variant="section"
+            className="text-[clamp(2.5rem,5vw,3.5rem)] font-bold leading-[0.98] tracking-[-0.055em] text-[var(--ui-color-text-editorial)]"
+          >
+            {translate("resume.experienceHeading")}
+          </Heading>
+        </div>
         <div className="flex flex-col gap-5">
           {experience.map((job) => (
             <ResumeExperienceCard
