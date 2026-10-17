@@ -366,6 +366,16 @@ export default function ResumePage() {
         year: item.year,
       }))
     : FEATURED_CREDENTIALS;
+  const heroBio = resume.bio.replace(/^Senior Product Designer with/, "With");
+  const heroTitle = resume.title
+    .replace("Senior Product Designer", "Sr. Product Designer")
+    .replace(" | Enterprise SaaS", "");
+  const resumeHighlights = [
+    { label: "Experience", value: "10+", detail: "Years designing digital products", className: "bg-[#dceeff] text-[#141114]" },
+    { label: "Platform scale", value: "2.3M", detail: "Users supported across HR products", className: "bg-[#f8df36] text-[#141114]" },
+    { label: "Form completion", value: "35%", detail: "Less time to complete I-9 forms", className: "bg-[#d8d3ff] text-[#141114]" },
+    { label: "Processing time", value: "72%", detail: "Less benefits processing time", className: "bg-[#0e2951] text-white" },
+  ];
 
   function toggleSkillGroup(category: string) {
     setCollapsedSkillGroups((current) => ({
@@ -379,60 +389,84 @@ export default function ResumePage() {
       <SiteHeader active="Resume" />
 
       {/* Hero */}
-      <Container as="section" size="wide" className="px-6 pb-10 pt-[10px]">
-        <div className="flex items-center justify-between gap-4 mb-6">
-          <a href={withBasePath("/")} className="inline-flex items-center gap-2 text-[#5c7792] text-sm hover:text-[#1183D0] transition-colors">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            {translate("resume.backToHome")}
-          </a>
-          <Button
-            asChild
-            variant="secondary"
-            size="sm"
-            className="shrink-0"
-          >
-            <a href={withBasePath(resume.pdf_link || "/documents/greddys-martinez-resume-2026.pdf")} download>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              {translate("resume.downloadResume")}
+      <section className="relative bg-[#1183D0]">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -bottom-[16rem] -left-28 size-[34rem] rounded-full border-[6rem] border-[#54aae0]/85" />
+      </div>
+      <Container size="wide" className="relative z-10 px-6 pb-10 pt-[10px]">
+        <div className="sticky top-[88px] z-40 mb-6 flex items-center justify-between gap-4 py-3 lg:top-0">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm">
+            <a href={withBasePath("/")} className="text-white/70 transition-colors hover:text-white">
+              {translate("footer.home")}
             </a>
-          </Button>
+            <span aria-hidden="true" className="text-white/40">/</span>
+            <span className="font-medium text-white">{translate("resume.eyebrow")}</span>
+          </nav>
+          <div className="flex shrink-0 items-center gap-2">
+            <Button
+              asChild
+              variant="tertiary"
+              size="sm"
+              className="border-white/70 bg-transparent text-white hover:border-white hover:bg-white/10 hover:text-white"
+            >
+              <a href={withBasePath(resume.pdf_link || "/documents/greddys-martinez-resume-2026.pdf")} download>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                {translate("resume.downloadResume")}
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="sm"
+              className="bg-white text-[#1183D0] hover:bg-white/90"
+            >
+              <a href={withBasePath("/contact")}>{translate("resume.getInTouch")}</a>
+            </Button>
+          </div>
         </div>
-        <div className="relative overflow-hidden px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
-          <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
-            <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#0e2951]">{translate("resume.eyebrow")}</span>
-            <Heading as="h1" variant="profile" className="mt-8">
+        <div className="relative px-2 py-12 text-white sm:px-4 lg:px-6 lg:py-16">
+          <div className="relative grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.82fr)] lg:gap-14">
+          <div className="mx-0 flex max-w-[760px] flex-col items-start text-left">
+            <span className="rounded-full bg-[#f8df36] px-4 py-2 text-xs font-semibold text-[#141114]">{translate("resume.eyebrow")}</span>
+            <Heading as="h1" variant="hero" className="mt-8 max-w-[840px] font-playfair text-[clamp(2.5rem,5.1vw,4.9rem)] font-normal italic leading-[0.95] tracking-[-0.055em] text-white">
               {resume.name}
             </Heading>
-            <p className="mt-5 text-xl font-medium text-[#1f2f3d] sm:text-2xl">
-              {resume.title}
+            <p className="mt-5 text-2xl font-medium text-white sm:text-3xl">
+              {heroTitle}
             </p>
-            <div className="mt-8 flex w-full max-w-[980px] flex-col items-center gap-4 text-sm text-[#24425d] sm:text-base lg:flex-row lg:flex-nowrap lg:justify-center lg:gap-6">
-              <span className="inline-flex items-center gap-2 whitespace-nowrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-                {resume.email}
-              </span>
-              <span className="inline-flex items-center gap-2 whitespace-nowrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="2" aria-hidden="true"><path d="M12 21s-6-4.35-6-10a6 6 0 1 1 12 0c0 5.65-6 10-6 10Z"/><circle cx="12" cy="11" r="2.5"/></svg>
-                {resume.location}
-              </span>
-              <span className="inline-flex items-center gap-2 whitespace-nowrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1-4-9 15.3 15.3 0 0 1 4-9Z"/></svg>
-                {resume.website}
-              </span>
-              <span className="inline-flex items-center gap-2 whitespace-nowrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1183D0" strokeWidth="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                {resume.linkedin}
-              </span>
-            </div>
-            <p className="mt-8 max-w-4xl text-[15px] leading-[1.7] text-[#243746] sm:text-base">
-              {resume.bio}
+            <p className="mt-8 max-w-[680px] text-lg font-normal leading-[1.8] text-white/85 sm:text-xl">
+              {heroBio}
             </p>
-            <div className="mt-10 flex flex-wrap items-start justify-center gap-10 sm:gap-14">
+          </div>
+          <div className="grid translate-y-16 grid-cols-2 gap-4 lg:translate-x-12 lg:translate-y-32">
+            {resumeHighlights.map((highlight) => (
+              <article key={highlight.label} className={`flex min-h-[160px] flex-col justify-between rounded-[20px] p-5 shadow-[0_14px_28px_rgba(14,41,81,0.12)] sm:min-h-[190px] sm:p-7 ${highlight.className}`}>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] opacity-75">{highlight.label}</p>
+                <strong className="text-[clamp(2.8rem,5vw,4.6rem)] font-semibold leading-none tracking-[-0.07em]">{highlight.value}</strong>
+                <p className="max-w-[160px] text-sm leading-[1.35] opacity-85 sm:text-[15px]">{highlight.detail}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+        </div>
+      </Container>
+      </section>
+
+      <Container as="section" size="wide" aria-label="Product design approach" className="relative z-20 px-6 pb-14 pt-0 md:pb-20">
+        <div className="pt-12 md:pt-16">
+          <div className="max-w-[700px]">
+            <p className="flex items-center gap-2 text-sm font-semibold text-[#1183D0]">
+              <span aria-hidden="true" className="size-1.5 rounded-full bg-[#1183D0]" />
+              Product design approach
+            </p>
+            <p className="mt-6 max-w-[700px] text-xl leading-[1.8] tracking-[-0.02em] text-[#141114] sm:text-2xl">
+              <strong className="font-semibold">Double Diamond design thinking</strong> guides the work: simplifying complex workflows, clarifying <strong className="font-semibold">information architecture</strong>, and building <strong className="font-semibold">reusable systems</strong>. Content-rich, data-heavy experiences are structured with scalable hierarchy and interaction patterns, in partnership with product and engineering to define success, strengthen implementation, and <strong className="font-semibold">reduce design debt</strong>.
+            </p>
+            <div className="mt-10 flex flex-wrap items-start gap-10 sm:gap-14">
               <a
                 href="https://www.upwork.com/freelancers/greddysmartinez"
                 target="_blank"
                 rel="noreferrer"
-                className="flex max-w-[180px] flex-col items-center text-center hover:opacity-80 transition-opacity"
+                className="flex max-w-[180px] flex-col items-start text-left transition-opacity hover:opacity-80"
               >
                 <Image
                   src={withBasePath("/images/iNSrn.png")}
@@ -441,14 +475,14 @@ export default function ResumePage() {
                   height={110}
                   className="h-auto w-[92px] sm:w-[110px]"
                 />
-                <p className="mt-3 text-[15px] font-medium leading-snug text-[#1f2f3d]">
+                <p className="mt-3 text-[15px] font-medium leading-snug text-[#141114]">
                   {translate("resume.upworkCertifiedLabel")}
                 </p>
-                <p className="mt-1 text-[15px] font-medium leading-snug text-[#1f2f3d]">
+                <p className="mt-1 text-[15px] font-medium leading-snug text-[#5c7792]">
                   {translate("resume.userInterfaceDesign")}
                 </p>
               </a>
-              <div className="flex max-w-[180px] flex-col items-center text-center">
+              <div className="flex max-w-[180px] flex-col items-start text-left">
                 <Image
                   src={withBasePath("/images/OiSjn.png")}
                   alt="NN Group UX Certified Interaction Design"
@@ -457,15 +491,36 @@ export default function ResumePage() {
                   className="h-auto w-[92px] sm:w-[110px]"
                   style={{ height: "auto" }}
                 />
-                <p className="mt-3 text-[15px] font-medium leading-snug text-[#1f2f3d]">
+                <p className="mt-3 text-[15px] font-medium leading-snug text-[#141114]">
                   {translate("resume.nnGroupCertifiedLabel")}
                 </p>
-                <p className="mt-1 text-[15px] font-medium leading-snug text-[#1f2f3d]">
+                <p className="mt-1 text-[15px] font-medium leading-snug text-[#5c7792]">
                   {translate("resume.interactionDesign")}
                 </p>
               </div>
             </div>
           </div>
+          </div>
+      </Container>
+
+      <Container as="section" size="wide" aria-label={translate("resume.contactDetails")} className="px-6 py-8 md:py-10">
+        <div className="grid overflow-hidden rounded-[24px] border border-[#d7e7f5] bg-[#d7e7f5] gap-px md:grid-cols-2">
+          <a href={`mailto:${resume.email}`} className="group bg-[#fbfdff] p-7 transition-colors hover:bg-[#f2f8fd] sm:p-8">
+            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{translate("resume.emailLabel")}</span>
+            <span className="mt-2 block break-words text-xl font-semibold leading-tight tracking-[-0.035em] text-[#141114] transition-colors group-hover:text-[#1183D0] sm:text-2xl">{resume.email}</span>
+          </a>
+          <div className="bg-[#fbfdff] p-7 sm:p-8">
+            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{translate("resume.locationLabel")}</span>
+            <span className="mt-2 block text-xl font-semibold leading-tight tracking-[-0.035em] text-[#141114] sm:text-2xl">{resume.location}</span>
+          </div>
+          <a href={`https://${resume.website}`} target="_blank" rel="noreferrer" className="group bg-[#fbfdff] p-7 transition-colors hover:bg-[#f2f8fd] sm:p-8">
+            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{translate("resume.portfolioLabel")}</span>
+            <span className="mt-2 block break-words text-xl font-semibold leading-tight tracking-[-0.035em] text-[#141114] transition-colors group-hover:text-[#1183D0] sm:text-2xl">{resume.website}</span>
+          </a>
+          <a href={`https://${resume.linkedin}`} target="_blank" rel="noreferrer" className="group bg-[#fbfdff] p-7 transition-colors hover:bg-[#f2f8fd] sm:p-8">
+            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#1183D0]">{translate("resume.linkedinLabel")}</span>
+            <span className="mt-2 block break-words text-xl font-semibold leading-tight tracking-[-0.035em] text-[#141114] transition-colors group-hover:text-[#1183D0] sm:text-2xl">{resume.linkedin}</span>
+          </a>
         </div>
       </Container>
 

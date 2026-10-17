@@ -40,6 +40,7 @@ export const dictionary = {
 
   // Contact page
   "contactPage.sendAMessage": { en: "Send a message", es: "Envía un mensaje" },
+  "resume.getInTouch": { en: "Get in touch", es: "Hablemos" },
 
   // Projects listing page
   "projectsPage.title": { en: "Projects", es: "Proyectos" },
@@ -83,6 +84,11 @@ export const dictionary = {
 
   // Resume page
   "resume.backToHome": { en: "Back to Home", es: "Volver al inicio" },
+  "resume.contactDetails": { en: "Contact details", es: "Datos de contacto" },
+  "resume.emailLabel": { en: "Email", es: "Correo electrónico" },
+  "resume.locationLabel": { en: "Location", es: "Ubicación" },
+  "resume.portfolioLabel": { en: "Portfolio", es: "Portafolio" },
+  "resume.linkedinLabel": { en: "LinkedIn", es: "LinkedIn" },
   "resume.downloadResume": { en: "Download Resume", es: "Descargar currículum" },
   "resume.eyebrow": { en: "Resume", es: "Currículum" },
   "resume.upworkCertified": { en: "Upwork Skill Certification", es: "Certificación de Upwork" },
@@ -757,9 +763,9 @@ export const dictionary = {
     de: "Barrierefreiheit zuerst",
   },
   "home.about.lead": {
-    en: "12 years partnering with cross-functional, international teams to turn ambiguity into clear business outcomes.",
-    es: "12 años colaborando con equipos internacionales y multidisciplinarios para convertir productos complejos en resultados claros para el negocio.",
-    de: "12 Jahre Erfahrung in der Zusammenarbeit mit internationalen, funktionsübergreifenden Teams, um komplexe Produktarbeit in klare Geschäftsergebnisse zu übersetzen.",
+    en: "10+ years partnering with cross-functional, international teams to turn ambiguity into clear business outcomes.",
+    es: "10+ años colaborando con equipos internacionales y multidisciplinarios para convertir productos complejos en resultados claros para el negocio.",
+    de: "10+ Jahre Erfahrung in der Zusammenarbeit mit internationalen, funktionsübergreifenden Teams, um komplexe Produktarbeit in klare Geschäftsergebnisse zu übersetzen.",
   },
   "home.about.recruiters": {
     en: "From research and framing to flows, prototypes, and delivery, I work with product and engineering to create direction.",
