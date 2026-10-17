@@ -181,7 +181,8 @@
     "skills": {
       "Design": ["Scalable design systems", "Component adoption", "Pattern definition", "Design tokens", "Figma libraries", "Digital Experience", "Storyboards", "Accessibility Standards", "Mapping Design Thinking", "AI Product Design", "Enterprise UX", "B2B & B2C Products"],
       "Data-Heavy Interfaces": ["Complex workflow design", "Tables", "Filters", "Role-based experiences", "Multi-step flows", "Interconnected entities", "State-aware design"],
-      "Research": ["Competitive Analysis", "Qualitative & Quantitative Research", "User Research", "Usability Testing", "Surveys", "Heuristic Evaluation", "User Interviews", "Information Architecture", "Personas", "Affinity Mapping"],
+      "Research": ["Competitive Analysis", "Qualitative & Quantitative Research", "User Research", "Usability Testing", "Surveys", "Heuristic Evaluation", "User Interviews", "Information Architecture", "Personas", "Affinity Mapping", "Service Blueprinting"],
+      "Languages": ["English", "Spanish", "German"],
       "Collaboration & Delivery": ["Async-friendly handoff", "Figma annotations", "Design-to-build alignment", "HTML", "CSS", "Cross-functional Collaboration", "Stakeholder Management", "Agile / Scrum", "UX Advocacy", "Workshop Facilitation"],
       "AI in Design": ["Copilot", "OOUX with AI", "Research synthesis", "Rapid prototyping", "Design-frontend workflow automation", "LLM"],
       "Soft": ["Friendly", "Flexibility", "Team Player", "Communication", "Strategic", "Leadership", "Time Management", "Engaging", "Empathy", "Attention to Detail", "Problem Solving", "Prioritization", "Accountability", "Conflict Resolution"]

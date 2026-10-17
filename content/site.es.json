@@ -181,7 +181,8 @@
     "skills": {
       "Design": ["Sistemas de diseño escalables", "Adopción de componentes", "Definición de patrones", "Tokens de diseño", "Librerías de Figma", "Experiencia digital", "Storyboards", "Estándares de accesibilidad", "Mapeo de Design Thinking", "Diseño de producto con IA", "UX empresarial", "Productos B2B y B2C"],
       "Data-Heavy Interfaces": ["Diseño de flujos de trabajo complejos", "Tablas", "Filtros", "Experiencias basadas en roles", "Flujos multipaso", "Entidades interconectadas", "Diseño consciente del estado"],
-      "Research": ["Análisis competitivo", "Investigación cualitativa y cuantitativa", "Investigación de usuarios", "Pruebas de usabilidad", "Encuestas", "Evaluación heurística", "Entrevistas de usuario", "Arquitectura de la información", "Personas", "Mapeo de afinidad"],
+      "Research": ["Análisis competitivo", "Investigación cualitativa y cuantitativa", "Investigación de usuarios", "Pruebas de usabilidad", "Encuestas", "Evaluación heurística", "Entrevistas de usuario", "Arquitectura de la información", "Personas", "Mapeo de afinidad", "Blueprint de servicios"],
+      "Languages": ["Inglés", "Español", "Alemán"],
       "Collaboration & Delivery": ["Traspaso asíncrono", "Anotaciones en Figma", "Alineación diseño-desarrollo", "HTML", "CSS", "Colaboración multidisciplinar", "Gestión de stakeholders", "Agile / Scrum", "Defensa de la UX", "Facilitación de talleres"],
       "AI in Design": ["Copilot", "OOUX con IA", "Síntesis de investigación", "Prototipado rápido", "Automatización del flujo diseño-frontend", "LLM"],
       "Soft": ["Cercanía", "Flexibilidad", "Trabajo en equipo", "Comunicación", "Pensamiento estratégico", "Liderazgo", "Gestión del tiempo", "Cercanía con el equipo", "Empatía", "Atención al detalle", "Resolución de problemas", "Priorización", "Responsabilidad", "Resolución de conflictos"]

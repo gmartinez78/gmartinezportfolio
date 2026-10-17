@@ -339,7 +339,13 @@
         "Benutzerinterviews",
         "Informationsarchitektur",
         "Personas",
-        "Affinitätszuordnung"
+        "Affinitätszuordnung",
+        "Service Blueprinting"
+      ],
+      "Languages": [
+        "Englisch",
+        "Spanisch",
+        "Deutsch"
       ],
       "Collaboration & Delivery": [
         "Asynchron-freundliche Übergabe",

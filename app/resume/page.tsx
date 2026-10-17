@@ -518,7 +518,7 @@ export default function ResumePage() {
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] opacity-75">{translate(highlight.label)}</p>
                 <p className="flex items-baseline gap-2">
                   <strong className="text-4xl font-semibold leading-tight tracking-[-0.05em] sm:text-[clamp(2.5rem,4vw,3.5rem)]">{translate(highlight.value)}</strong>
-                  <span className="text-sm font-medium leading-tight opacity-80 sm:text-base">{translate(highlight.unit)}</span>
+                  <span className="text-base font-medium leading-tight opacity-80 sm:text-lg">{translate(highlight.unit)}</span>
                 </p>
                 <p className="text-sm leading-[1.35] opacity-85 sm:text-[15px]">{translate(highlight.detail)}</p>
               </article>
@@ -917,7 +917,7 @@ export default function ResumePage() {
                   aria-expanded={!collapsedSkillGroups[group.category]}
                 >
                   <Heading as="h3" variant="card" className="text-xl font-semibold text-[#141114]">
-                    {group.category}
+                    {group.category === "Languages" ? translate("resume.languagesHighlight") : group.category}
                   </Heading>
                 </button>
                 {!collapsedSkillGroups[group.category] ? (
