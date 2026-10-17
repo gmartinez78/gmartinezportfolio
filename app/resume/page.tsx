@@ -403,10 +403,10 @@ const CERTIFICATION_ITEMS = [
 
 export default function ResumePage() {
   const [collapsedSkillGroups, setCollapsedSkillGroups] = useState<Record<string, boolean>>({});
-  const [nngCertificationsExpanded, setNngCertificationsExpanded] = useState(true);
-  const [ixdfCertificationsExpanded, setIxdfCertificationsExpanded] = useState(true);
-  const [courseraCertificationsExpanded, setCourseraCertificationsExpanded] = useState(true);
-  const [udemyCertificationsExpanded, setUdemyCertificationsExpanded] = useState(true);
+  const [nngCertificationsExpanded, setNngCertificationsExpanded] = useState(false);
+  const [ixdfCertificationsExpanded, setIxdfCertificationsExpanded] = useState(false);
+  const [courseraCertificationsExpanded, setCourseraCertificationsExpanded] = useState(false);
+  const [udemyCertificationsExpanded, setUdemyCertificationsExpanded] = useState(false);
   const translate = useTranslate();
   const { siteContent } = usePublicSiteContent();
   const resume = siteContent.resume;
@@ -446,11 +446,11 @@ export default function ResumePage() {
     .replace("Senior Product Designer", "Sr. Product Designer")
     .replace(" | Enterprise SaaS", "");
   const resumeHighlights = [
-    { label: "Experience", value: "10+", detail: "Years designing digital products", className: "bg-[#dceeff] text-[#141114]" },
-    { label: "Platform scale", value: "2.3M", detail: "Users supported across HR products", className: "bg-[#f8df36] text-[#141114]" },
-    { label: "Form completion", value: "35%", detail: "Less time to complete I-9 forms", className: "bg-[#d8d3ff] text-[#141114]" },
-    { label: "Processing time", value: "72%", detail: "Less benefits processing time", className: "bg-[#0e2951] text-white" },
-  ];
+    { label: "resume.experienceHighlight", value: "resume.experienceHighlightValue", unit: "resume.experienceHighlightUnit", detail: "resume.experienceHighlightDetail", className: "bg-[#dceeff] text-[#141114]" },
+    { label: "resume.globalReachHighlight", value: "resume.globalReachHighlightValue", unit: "resume.globalReachHighlightUnit", detail: "resume.globalReachHighlightDetail", className: "bg-[#f8df36] text-[#141114]" },
+    { label: "resume.languagesHighlight", value: "resume.languagesHighlightValue", unit: "resume.languagesHighlightUnit", detail: "resume.languagesHighlightDetail", className: "bg-[#d8d3ff] text-[#141114]" },
+    { label: "resume.learningHighlight", value: "resume.learningHighlightValue", unit: "resume.learningHighlightUnit", detail: "resume.learningHighlightDetail", className: "bg-[#0e2951] text-white" },
+  ] as const;
 
   function toggleSkillGroup(category: string) {
     setCollapsedSkillGroups((current) => ({
@@ -515,9 +515,12 @@ export default function ResumePage() {
           <div className="grid translate-y-16 grid-cols-2 gap-4 lg:translate-x-12 lg:translate-y-32">
             {resumeHighlights.map((highlight) => (
               <article key={highlight.label} className={`flex min-h-[160px] flex-col justify-between rounded-[20px] p-5 shadow-[0_14px_28px_rgba(14,41,81,0.12)] sm:min-h-[190px] sm:p-7 ${highlight.className}`}>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] opacity-75">{highlight.label}</p>
-                <strong className="text-[clamp(2.8rem,5vw,4.6rem)] font-semibold leading-none tracking-[-0.07em]">{highlight.value}</strong>
-                <p className="max-w-[160px] text-sm leading-[1.35] opacity-85 sm:text-[15px]">{highlight.detail}</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] opacity-75">{translate(highlight.label)}</p>
+                <p className="flex items-baseline gap-2">
+                  <strong className="text-4xl font-semibold leading-tight tracking-[-0.05em] sm:text-[clamp(2.5rem,4vw,3.5rem)]">{translate(highlight.value)}</strong>
+                  <span className="text-sm font-medium leading-tight opacity-80 sm:text-base">{translate(highlight.unit)}</span>
+                </p>
+                <p className="text-sm leading-[1.35] opacity-85 sm:text-[15px]">{translate(highlight.detail)}</p>
               </article>
             ))}
           </div>
@@ -653,40 +656,41 @@ export default function ResumePage() {
             </div>
           </div>
           <div className="mt-8">
-            <div className="flex items-center gap-5">
+            <button
+              type="button"
+              onClick={() => setNngCertificationsExpanded((expanded) => !expanded)}
+              aria-expanded={nngCertificationsExpanded}
+              aria-label={
+                nngCertificationsExpanded
+                  ? translate("resume.collapseCertifications")
+                  : translate("resume.expandCertifications")
+              }
+              className="group flex w-full items-center gap-5 text-left"
+            >
               <Image
                 src={withBasePath("/images/OiSjn.png")}
-                alt="NN Group UX Certified Interaction Design"
+                alt=""
+                aria-hidden="true"
                 width={110}
                 height={154}
                 className="h-auto w-[64px] sm:w-[74px]"
               />
-              <div className="flex min-w-0 flex-1 items-center gap-6">
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-xl font-semibold leading-snug text-[#141114]">
+              <span className="flex min-w-0 flex-1 items-center gap-6">
+                <span className="min-w-0 flex-1">
+                  <span className="block text-xl font-semibold leading-snug text-[#141114]">
                     {translate("resume.nnGroupCertifiedLabel")}
                     {" - "}
                     {translate("resume.interactionDesign")}
-                  </h3>
-                  <p className="mt-2 text-base leading-relaxed text-[#5c5961]">
+                  </span>
+                  <span className="mt-2 block text-base leading-relaxed text-[#5c5961]">
                     {translate("resume.nnGroupCertificationDescription")}
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setNngCertificationsExpanded((expanded) => !expanded)}
-                  aria-expanded={nngCertificationsExpanded}
-                  aria-label={
-                    nngCertificationsExpanded
-                      ? translate("resume.collapseCertifications")
-                      : translate("resume.expandCertifications")
-                  }
-                  className="ml-auto flex size-12 shrink-0 items-center justify-center text-4xl font-light leading-none text-[#1183D0] transition-colors hover:text-[#0d6fae]"
-                >
+                  </span>
+                </span>
+                <span className="ml-auto flex size-12 shrink-0 items-center justify-center text-4xl font-light leading-none text-[#1183D0] transition-colors group-hover:text-[#0d6fae]">
                   {nngCertificationsExpanded ? "−" : "+"}
-                </button>
-              </div>
-            </div>
+                </span>
+              </span>
+            </button>
           </div>
           {nngCertificationsExpanded ? (
             <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
@@ -704,40 +708,39 @@ export default function ResumePage() {
           ) : null}
 
           <div className="mt-16 border-t border-[#e6e2e8] pt-10">
-            <div className="flex items-center gap-5">
-              <a href="https://ixdf.org/" target="_blank" rel="noreferrer" className="shrink-0 transition-opacity hover:opacity-80">
-                <Image
-                  src={withBasePath("/images/ixdf-logo.svg")}
-                  alt="Interaction Design Foundation"
-                  width={64}
-                  height={64}
-                  className="size-16"
-                />
-              </a>
-              <div className="flex min-w-0 flex-1 items-center gap-6">
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-xl font-semibold leading-snug text-[#141114]">
+            <button
+              type="button"
+              onClick={() => setIxdfCertificationsExpanded((expanded) => !expanded)}
+              aria-expanded={ixdfCertificationsExpanded}
+              aria-label={
+                ixdfCertificationsExpanded
+                  ? translate("resume.collapseCertifications")
+                  : translate("resume.expandCertifications")
+              }
+              className="group flex w-full items-center gap-5 text-left"
+            >
+              <Image
+                src={withBasePath("/images/ixdf-logo.svg")}
+                alt=""
+                aria-hidden="true"
+                width={64}
+                height={64}
+                className="size-16 shrink-0"
+              />
+              <span className="flex min-w-0 flex-1 items-center gap-6">
+                <span className="min-w-0 flex-1">
+                  <span className="block text-xl font-semibold leading-snug text-[#141114]">
                     Interaction Design Foundation (IxDF)
-                  </h3>
-                  <p className="mt-1 text-base leading-relaxed text-[#5c5961]">
+                  </span>
+                  <span className="mt-1 block text-base leading-relaxed text-[#5c5961]">
                     {translate("resume.ixdfDescription")}
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setIxdfCertificationsExpanded((expanded) => !expanded)}
-                  aria-expanded={ixdfCertificationsExpanded}
-                  aria-label={
-                    ixdfCertificationsExpanded
-                      ? translate("resume.collapseCertifications")
-                      : translate("resume.expandCertifications")
-                  }
-                  className="ml-auto flex size-12 shrink-0 items-center justify-center text-4xl font-light leading-none text-[#1183D0] transition-colors hover:text-[#0d6fae]"
-                >
+                  </span>
+                </span>
+                <span className="ml-auto flex size-12 shrink-0 items-center justify-center text-4xl font-light leading-none text-[#1183D0] transition-colors group-hover:text-[#0d6fae]">
                   {ixdfCertificationsExpanded ? "−" : "+"}
-                </button>
-              </div>
-            </div>
+                </span>
+              </span>
+            </button>
             {ixdfCertificationsExpanded ? (
               <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
                 {ixdfCertifications.map((item) => (
@@ -755,38 +758,37 @@ export default function ResumePage() {
           </div>
 
           <div className="mt-16 border-t border-[#e6e2e8] pt-10">
-            <div className="flex items-center gap-5">
-              <a href="https://www.coursera.org/" target="_blank" rel="noreferrer" className="shrink-0 transition-opacity hover:opacity-80">
-                <Image
-                  src={withBasePath("/images/coursera.svg")}
-                  alt="Coursera"
-                  width={64}
-                  height={64}
-                  className="size-16"
-                />
-              </a>
-              <div className="flex min-w-0 flex-1 items-center gap-6">
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-xl font-semibold leading-snug text-[#141114]">Coursera</h3>
-                  <p className="mt-1 text-base leading-relaxed text-[#5c5961]">
+            <button
+              type="button"
+              onClick={() => setCourseraCertificationsExpanded((expanded) => !expanded)}
+              aria-expanded={courseraCertificationsExpanded}
+              aria-label={
+                courseraCertificationsExpanded
+                  ? translate("resume.collapseCertifications")
+                  : translate("resume.expandCertifications")
+              }
+              className="group flex w-full items-center gap-5 text-left"
+            >
+              <Image
+                src={withBasePath("/images/coursera.svg")}
+                alt=""
+                aria-hidden="true"
+                width={64}
+                height={64}
+                className="size-16 shrink-0"
+              />
+              <span className="flex min-w-0 flex-1 items-center gap-6">
+                <span className="min-w-0 flex-1">
+                  <span className="block text-xl font-semibold leading-snug text-[#141114]">Coursera</span>
+                  <span className="mt-1 block text-base leading-relaxed text-[#5c5961]">
                     {translate("resume.courseraDescription")}
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setCourseraCertificationsExpanded((expanded) => !expanded)}
-                  aria-expanded={courseraCertificationsExpanded}
-                  aria-label={
-                    courseraCertificationsExpanded
-                      ? translate("resume.collapseCertifications")
-                      : translate("resume.expandCertifications")
-                  }
-                  className="ml-auto flex size-12 shrink-0 items-center justify-center text-4xl font-light leading-none text-[#1183D0] transition-colors hover:text-[#0d6fae]"
-                >
+                  </span>
+                </span>
+                <span className="ml-auto flex size-12 shrink-0 items-center justify-center text-4xl font-light leading-none text-[#1183D0] transition-colors group-hover:text-[#0d6fae]">
                   {courseraCertificationsExpanded ? "−" : "+"}
-                </button>
-              </div>
-            </div>
+                </span>
+              </span>
+            </button>
             {courseraCertificationsExpanded ? (
               <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
                 {courseraCertifications.map((item) => (
@@ -804,38 +806,37 @@ export default function ResumePage() {
           </div>
 
           <div className="mt-16 border-t border-[#e6e2e8] pt-10">
-            <div className="flex items-center gap-5">
-              <a href="https://www.udemy.com/" target="_blank" rel="noreferrer" className="shrink-0 transition-opacity hover:opacity-80">
-                <Image
-                  src={withBasePath("/images/udemy-logo.svg")}
-                  alt="Udemy"
-                  width={91}
-                  height={34}
-                  className="h-auto w-20"
-                />
-              </a>
-              <div className="flex min-w-0 flex-1 items-center gap-6">
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-xl font-semibold leading-snug text-[#141114]">Udemy</h3>
-                  <p className="mt-1 text-base leading-relaxed text-[#5c5961]">
+            <button
+              type="button"
+              onClick={() => setUdemyCertificationsExpanded((expanded) => !expanded)}
+              aria-expanded={udemyCertificationsExpanded}
+              aria-label={
+                udemyCertificationsExpanded
+                  ? translate("resume.collapseCertifications")
+                  : translate("resume.expandCertifications")
+              }
+              className="group flex w-full items-center gap-5 text-left"
+            >
+              <Image
+                src={withBasePath("/images/udemy-logo.svg")}
+                alt=""
+                aria-hidden="true"
+                width={91}
+                height={34}
+                className="h-auto w-20 shrink-0"
+              />
+              <span className="flex min-w-0 flex-1 items-center gap-6">
+                <span className="min-w-0 flex-1">
+                  <span className="block text-xl font-semibold leading-snug text-[#141114]">Udemy</span>
+                  <span className="mt-1 block text-base leading-relaxed text-[#5c5961]">
                     {translate("resume.udemyDescription")}
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setUdemyCertificationsExpanded((expanded) => !expanded)}
-                  aria-expanded={udemyCertificationsExpanded}
-                  aria-label={
-                    udemyCertificationsExpanded
-                      ? translate("resume.collapseCertifications")
-                      : translate("resume.expandCertifications")
-                  }
-                  className="ml-auto flex size-12 shrink-0 items-center justify-center text-4xl font-light leading-none text-[#1183D0] transition-colors hover:text-[#0d6fae]"
-                >
+                  </span>
+                </span>
+                <span className="ml-auto flex size-12 shrink-0 items-center justify-center text-4xl font-light leading-none text-[#1183D0] transition-colors group-hover:text-[#0d6fae]">
                   {udemyCertificationsExpanded ? "−" : "+"}
-                </button>
-              </div>
-            </div>
+                </span>
+              </span>
+            </button>
             {udemyCertificationsExpanded ? (
               <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
                 {udemyCertifications.map((item) => (
@@ -954,7 +955,7 @@ export default function ResumePage() {
             asChild
             variant="editorial-outline"
             size="sm"
-            className="relative mt-8 border-transparent bg-[#ffe600] text-[#141114] hover:bg-[#f5dc00]"
+            className="relative mt-8 border-transparent bg-white text-[#141114] hover:bg-white/90"
           >
             <a href={withBasePath("/contact")}>
               {translate("resume.getInTouch")}
