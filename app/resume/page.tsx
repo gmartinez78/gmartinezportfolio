@@ -693,11 +693,11 @@ export default function ResumePage() {
               {nngCertifications.map((item) => (
                 <article
                   key={`${item.year}-${item.title}`}
-                  className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
+                  className="flex min-h-[260px] flex-col rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
                 >
                   <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
                   <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
-                  <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
+                  <p className="mt-auto pt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
                 </article>
               ))}
             </div>
@@ -743,11 +743,11 @@ export default function ResumePage() {
                 {ixdfCertifications.map((item) => (
                   <article
                     key={`${item.year}-${item.title}`}
-                    className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
+                    className="flex min-h-[260px] flex-col rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
                   >
                     <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
                     <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
-                    <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
+                    <p className="mt-auto pt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
                   </article>
                 ))}
               </div>
@@ -792,11 +792,11 @@ export default function ResumePage() {
                 {courseraCertifications.map((item) => (
                   <article
                     key={`${item.year}-${item.title}`}
-                    className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
+                    className="flex min-h-[260px] flex-col rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
                   >
                     <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
                     <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
-                    <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
+                    <p className="mt-auto pt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
                   </article>
                 ))}
               </div>
@@ -841,11 +841,11 @@ export default function ResumePage() {
                 {udemyCertifications.map((item) => (
                   <article
                     key={`${item.year}-${item.title}`}
-                    className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
+                    className="flex min-h-[260px] flex-col rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
                   >
                     <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
                     <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
-                    <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
+                    <p className="mt-auto pt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
                   </article>
                 ))}
               </div>
@@ -858,11 +858,11 @@ export default function ResumePage() {
                 {otherCertifications.map((item) => (
                   <article
                     key={`${item.year}-${item.title}`}
-                    className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
+                    className="flex min-h-[260px] flex-col rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
                   >
                     <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
                     <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
-                    <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
+                    <p className="mt-auto pt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
                   </article>
                 ))}
               </div>
