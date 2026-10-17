@@ -72,6 +72,8 @@ export const germanDictionary = {
   "resume.uxCertifiedProfessional": "UX-zertifizierter Fachmann",
   "resume.careerEyebrow": "Karriere",
   "resume.experienceHeading": "Erfahrung",
+  "resume.remote": "Remote",
+  "resume.hybrid": "Hybrid",
   "resume.capabilitiesEyebrow": "Fähigkeiten",
   "resume.skillsHeading": "Fähigkeiten",
   "resume.educationEyebrow": "Bildung",

@@ -105,7 +105,7 @@
           "Apply UX fundamentals and accessibility rigor to data visualization in engineering-led environments, elevating usability, clarity, and visual consistency quality.",
           "Use evidence-based methods through heuristic reviews, usability feedback, and heatmaps using Maze, Hotjar, and UserTesting.com, continuously refining experiences based on research to redesign flows and reduce form completion time by 35%.",
           "Define design strategy, vision, and roadmap for major, ambiguous products using Jira and Confluence while owning multiple initiatives simultaneously. Make clear design decisions, present enhancements to senior stakeholders with a clear rationale, incorporate feedback, and push back when needed.",
-          "Build and implement a scalable React-based design system with reusable UX patterns and components. Identify and reduce design debt by consolidating duplicate components, improving system consistency and scalability across products and platforms.",
+          "Build and implement a scalable React-based design system with reusable UX patterns and components, improving consistency and scalability across products and platforms.",
           "Apply layout, spacing, typography, and color fundamentals within component-based systems to maintain UI craft quality across enterprise-scale products.",
           "Structure information architecture for complex, content-heavy workflows, improving clarity and navigation.",
           "Produce wireframes, design mockups, and interactive prototypes using AI tools including Balsamiq, Figma AI, Copilot, and Framer.",
@@ -118,7 +118,7 @@
           "Support and mentor junior and senior designers through regular reviews, exchanging feedback, and contributing to overall design quality.",
           "Create design documentation, best practices, and usage guidelines, enabling cross-team adoption of shared patterns."
         ],
-        "tags": ["B2C SaaS", "AI Features", "Design Systems", "Research", "React.js"]
+        "tags": ["B2C", "SaaS", "AI Features", "Design Systems", "Research", "React.js"]
       },
       {
         "title": "UX/UI Designer",
@@ -145,7 +145,7 @@
           "Redesigned existing platform features, improving usability and overall user engagement.",
           "Developed wireframes, prototypes, and high-fidelity UI designs balancing user needs with business goals."
         ],
-        "tags": ["Streaming", "LATAM", "UX Research", "Prototyping", "UI Design"]
+        "tags": ["Streaming", "Research", "Prototyping", "UI Design"]
       },
       {
         "title": "UX/UI Designer",
@@ -160,10 +160,10 @@
           "Collaborated with developers and strategists to align user needs with business goals, and partnered with marketing teams to implement SEO-informed UX and growth-focused web experiences, enhancing content structure and usability.",
           "Contributed to brand identity work for multiple clients, applying branding principles to enhance overall product identity and visual consistency across digital touchpoints."
         ],
-        "tags": ["Nonprofits", "B2B", "B2C", "Accessibility", "Fundraising"]
+        "tags": ["B2B", "B2C", "Accessibility", "Fundraising"]
       },
       {
-        "title": "Freelance UX / UI Designer / Graphic Designer",
+        "title": "Freelance UX/UI & Graphic Designer",
         "company": "Multiple clients | Web and social media",
         "client": "",
         "period": "Feb. 2014, Feb. 2017",
@@ -175,7 +175,7 @@
           "Contributed to growth initiatives, including social campaigns, landing pages, and paid acquisition assets (Google Ads, email, social media).",
           "Designed and developed responsive interfaces using HTML/CSS, ensuring consistency across platforms."
         ],
-        "tags": ["Freelance", "UX/UI Design", "Graphic Design", "E-commerce", "Social Media", "HTML/CSS"]
+        "tags": ["UX/UI Design", "Graphic Design", "E-commerce", "Social Media", "HTML/CSS"]
       }
     ],
     "skills": {

@@ -71,7 +71,7 @@ const EXPERIENCE: ExperienceEntry[] = [
         segments: [
           { text: "Build and implement scalable React-based design systems with " },
           { text: "reusable UX patterns and components", bold: true },
-          { text: ". Identify and reduce design debt by consolidating duplicate components, improving system consistency and scalability across products and platforms." },
+          { text: ", improving consistency and scalability across products and platforms." },
         ],
       },
       {
@@ -107,7 +107,7 @@ const EXPERIENCE: ExperienceEntry[] = [
         ],
       },
     ],
-    tags: ["B2C SaaS", "AI Features", "Design Systems", "Research", "React.js"],
+    tags: ["B2C", "SaaS", "AI Features", "Design Systems", "Research", "React.js"],
   },
   {
     role: "UX/UI Designer",
@@ -138,7 +138,7 @@ const EXPERIENCE: ExperienceEntry[] = [
       "Developed wireframes, prototypes, and high-fidelity UI designs that balanced user needs with business and content strategy goals.",
       "Stayed current with industry trends and streaming UX patterns to inform design decisions and maintain a competitive product experience.",
     ],
-    tags: ["Streaming", "LATAM", "UX Research", "Prototyping", "UI Design"],
+    tags: ["Streaming", "Research", "Prototyping", "UI Design"],
   },
   {
     role: "UX/UI Designer",
@@ -152,10 +152,10 @@ const EXPERIENCE: ExperienceEntry[] = [
       "Collaborated with developers and strategists to align user needs with business goals, and partnered with marketing teams to implement SEO-informed UX and growth-focused web experiences, enhancing content structure and usability.",
       "Contributed to brand identity work for multiple clients, applying branding principles to enhance overall product identity and visual consistency across digital touchpoints.",
     ],
-    tags: ["Nonprofits", "B2B", "B2C", "Accessibility", "Fundraising"],
+    tags: ["B2B", "B2C", "Accessibility", "Fundraising"],
   },
   {
-    role: "Freelance UX / UI Designer / Graphic Designer",
+    role: "Freelance UX/UI & Graphic Designer",
     company: "Multiple clients | Web and social media",
     period: "Feb. 2014, Feb. 2017",
     location: "LATAM, Spain, USA (Remote)",
@@ -166,7 +166,7 @@ const EXPERIENCE: ExperienceEntry[] = [
       "Contributed to growth initiatives, including social campaigns, landing pages, and paid acquisition assets (Google Ads, email, social media).",
       "Designed and developed responsive interfaces using HTML/CSS, ensuring consistency across platforms.",
     ],
-    tags: ["Freelance", "UX/UI Design", "Graphic Design", "E-commerce", "Social Media", "HTML/CSS"],
+    tags: ["UX/UI Design", "Graphic Design", "E-commerce", "Social Media", "HTML/CSS"],
   },
 ];
 
@@ -510,7 +510,7 @@ export default function ResumePage() {
               <span aria-hidden="true" className="size-1.5 rounded-full bg-[#1183D0]" />
               Product design approach
             </p>
-            <p className="mt-6 max-w-[700px] text-xl leading-[1.8] tracking-[-0.02em] text-[#141114] sm:text-2xl">
+            <p className="mt-6 max-w-[700px] text-[17px] leading-[1.8] tracking-[-0.02em] text-[#141114] sm:text-[20.4px]">
               <strong className="font-semibold">Double Diamond design thinking</strong> guides the work: simplifying complex workflows, clarifying <strong className="font-semibold">information architecture</strong>, and building <strong className="font-semibold">reusable systems</strong>. Content-rich, data-heavy experiences are structured with scalable hierarchy and interaction patterns, in partnership with product and engineering to define success, strengthen implementation, and <strong className="font-semibold">reduce design debt</strong>.
             </p>
             <div className="mt-10 flex flex-wrap items-start gap-10 sm:gap-14">
@@ -591,7 +591,7 @@ export default function ResumePage() {
             {translate("resume.experienceHeading")}
           </Heading>
         </div>
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-4">
           {experience.map((job) => (
             <ResumeExperienceCard
               key={`${job.role}-${job.company}`}
@@ -601,6 +601,16 @@ export default function ResumePage() {
               location={job.location}
               bullets={job.bullets}
               tags={job.tags}
+              statusBadges={[
+                ...(job.location.match(/\((remote|remoto|hybrid|híbrido)\)/i)
+                  ? [
+                      /hybrid|híbrido/i.test(job.location)
+                        ? translate("resume.hybrid")
+                        : translate("resume.remote"),
+                    ]
+                  : []),
+              ]}
+              className="rounded-[24px] border border-[#e5e1e8] bg-white"
             />
           ))}
         </div>

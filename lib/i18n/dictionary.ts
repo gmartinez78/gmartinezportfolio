@@ -96,6 +96,8 @@ export const dictionary = {
   "resume.uxCertifiedProfessional": { en: "UX Certified Professional", es: "Profesional certificado en UX" },
   "resume.careerEyebrow": { en: "Career", es: "Trayectoria" },
   "resume.experienceHeading": { en: "Experience", es: "Experiencia" },
+  "resume.remote": { en: "Remote", es: "Remoto" },
+  "resume.hybrid": { en: "Hybrid", es: "Híbrido" },
   "resume.capabilitiesEyebrow": { en: "Capabilities", es: "Capacidades" },
   "resume.skillsHeading": { en: "Skills", es: "Habilidades" },
   "resume.educationEyebrow": { en: "Education", es: "Educación" },

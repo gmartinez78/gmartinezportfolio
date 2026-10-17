@@ -1,6 +1,6 @@
+import { useId, useState } from "react"
+
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent } from "@/components/ui/card"
-import { Heading } from "@/components/ui/heading"
 
 type ExperienceBullet =
   | string
@@ -14,6 +14,97 @@ type ResumeExperienceCardProps = {
   location: string
   bullets: ExperienceBullet[]
   tags: string[]
+  className: string
+  statusBadges: string[]
+}
+
+const IMPACT_PHRASES = [
+  "reduce design debt",
+  "improving usability",
+  "improving the conversion",
+  "improving conversion",
+  "completion rates",
+  "completion time",
+  "user confidence",
+  "support tickets",
+  "calls per year",
+  "high-impact",
+  "exceeding",
+  "improving",
+  "improved",
+  "reduce",
+  "reduced",
+  "reducing",
+  "increase",
+  "increased",
+  "increasing",
+  "faster",
+  "conversion",
+]
+const IMPACT_PATTERN = new RegExp(
+  `(${IMPACT_PHRASES.join("|")}|\\b\\d[\\d,.]*(?:\\+)?(?:\\s?%)?)`,
+  "gi",
+)
+const IMPACT_TOKEN_PATTERN = new RegExp(`^${IMPACT_PATTERN.source.slice(1, -1)}$`, "i")
+
+function renderImpactText(text: string, keyPrefix: string) {
+  return text.split(IMPACT_PATTERN).map((part, index) =>
+    IMPACT_TOKEN_PATTERN.test(part) ? (
+      <strong key={`${keyPrefix}-${index}`} className="font-semibold text-black">
+        {part}
+      </strong>
+    ) : (
+      <span key={`${keyPrefix}-${index}`}>{part}</span>
+    )
+  )
+}
+
+function ExperienceBulletText({ bullet }: { bullet: ExperienceBullet }) {
+  const textClassName = "text-base leading-relaxed text-black sm:text-[17px]"
+
+  if (typeof bullet === "string") {
+    const openingPhrase = bullet.match(/^(\S+(?:\s+\S+){0,2})(\s+[\s\S]+)$/)
+
+    return (
+      <p className={textClassName}>
+        {openingPhrase ? (
+          <>
+            <strong className="font-semibold text-black">{openingPhrase[1]}</strong>
+            {renderImpactText(openingPhrase[2], "bullet")}
+          </>
+        ) : (
+          renderImpactText(bullet, "bullet")
+        )}
+      </p>
+    )
+  }
+
+  if ("segments" in bullet) {
+    return (
+      <p className={textClassName}>
+        {bullet.segments.map((segment, index) =>
+          segment.bold ? (
+            <strong key={`${segment.text}-${index}`} className="font-semibold text-black">
+              {segment.text}
+            </strong>
+          ) : (
+            <span key={`${segment.text}-${index}`}>{renderImpactText(segment.text, `segment-${index}`)}</span>
+          )
+        )}
+      </p>
+    )
+  }
+
+  return (
+    <div className={textClassName}>
+      <p className="font-inter font-semibold text-black">{renderImpactText(bullet.heading, "heading")}</p>
+      {bullet.items.map((item) => (
+        <p key={item} className="mt-2">
+          {renderImpactText(item, item)}
+        </p>
+      ))}
+    </div>
+  )
 }
 
 export function ResumeExperienceCard({
@@ -23,59 +114,104 @@ export function ResumeExperienceCard({
   location,
   bullets,
   tags,
+  className,
+  statusBadges,
 }: ResumeExperienceCardProps) {
+  const [isExpanded, setIsExpanded] = useState(false)
+  const detailsId = useId()
+  const displayLocation = location.replace(/\s*\((?:remote|remoto|hybrid|híbrido)\)/i, "")
+
   return (
-    <Card variant="glass" className="overflow-hidden rounded-[34px] p-0 py-0">
-      <CardContent className="p-6 sm:p-7">
-        <div className="grid gap-8 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:gap-12">
+    <div className={className}>
+      <div className="p-6 sm:p-7">
+        <div className="grid gap-6 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:gap-12">
           <div>
-            <Heading as="h3" variant="card" className="text-xl sm:text-2xl">{role}</Heading>
-            <p className="mt-1 text-sm text-[var(--ui-color-text-muted)]">
-              {period} · {location}
+            <p className="mb-1 text-sm text-black">
+              {period}
             </p>
-            <p className="mt-0.5 text-sm text-[var(--ui-color-text-muted)]">{company}</p>
+            <div className="flex flex-wrap items-center gap-3">
+              <h3 className="text-xl font-semibold leading-snug text-black sm:text-2xl">
+                {role}
+              </h3>
+              {statusBadges.map((badge) => (
+                <Badge
+                  key={badge}
+                  variant="outline"
+                  size="sm"
+                  className="border-black bg-transparent text-black hover:bg-transparent"
+                >
+                  {badge}
+                </Badge>
+              ))}
+            </div>
+            <p className="mt-1 font-playfair text-base italic text-black sm:text-lg">{company}</p>
+            <p className="mt-0.5 text-sm text-black">{displayLocation}</p>
             <div className="mt-4 flex flex-wrap gap-2">
-              {tags.map((tag) => (
-                <Badge key={tag} size="tag">
+              {tags.map((tag, index) => (
+                <Badge
+                  key={tag}
+                  size="sm"
+                  className={`h-8 border-transparent px-4 text-xs text-black hover:text-black ${
+                    [
+                      "bg-[#c9e7ff] hover:bg-[#c9e7ff]",
+                      "bg-[#f4e522] hover:bg-[#f4e522]",
+                      "bg-[#efb9ed] hover:bg-[#efb9ed]",
+                    ][index % 3]
+                  }`}
+                >
                   {tag}
                 </Badge>
               ))}
             </div>
           </div>
-          <div className="divide-y divide-[var(--ui-color-border-strong)]">
-            {bullets.map((bullet) =>
-              typeof bullet === "string" ? (
-                <p key={bullet} className="py-3 text-sm leading-relaxed text-[var(--ui-color-text-body)]">
-                  {bullet}
-                </p>
-              ) : "segments" in bullet ? (
-                <p key={bullet.segments.map(({ text }) => text).join("")} className="py-3 text-sm leading-relaxed text-[var(--ui-color-text-body)]">
-                  {bullet.segments.map((segment, index) =>
-                    segment.bold ? (
-                      <strong key={`${segment.text}-${index}`} className="font-semibold text-[var(--ui-color-text-strong)]">
-                        {segment.text}
-                      </strong>
-                    ) : (
-                      <span key={`${segment.text}-${index}`}>{segment.text}</span>
-                    )
-                  )}
-                </p>
-              ) : (
-                <div key={bullet.heading} className="py-3 text-sm leading-relaxed text-[var(--ui-color-text-body)]">
-                  <p className="font-inter font-semibold text-[var(--ui-color-text-strong)]">
-                    {bullet.heading}
-                  </p>
-                  {bullet.items.map((item) => (
-                    <p key={item} className="mt-2">
-                      {item}
-                    </p>
-                  ))}
+          <div className="relative min-h-24 min-w-0 md:min-h-0">
+            <div
+              id={detailsId}
+              className={`divide-y divide-[var(--ui-color-border-strong)] ${
+                isExpanded ? "relative" : "absolute inset-0 overflow-hidden pb-4"
+              }`}
+            >
+              {bullets.map((bullet, index) => (
+                <div
+                  key={typeof bullet === "string" ? bullet : "segments" in bullet ? bullet.segments.map(({ text }) => text).join("") : bullet.heading}
+                  className={`${index === 0 ? "pb-4" : "py-3"} border-b border-[var(--ui-color-border-strong)] last:border-b-0`}
+                >
+                  <ExperienceBulletText bullet={bullet} />
                 </div>
-              )
-            )}
+              ))}
+            </div>
+            {!isExpanded ? (
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 bottom-0 border-b border-[var(--ui-color-border-strong)]"
+              />
+            ) : null}
           </div>
         </div>
-      </CardContent>
-    </Card>
+        {bullets.length > 1 ? (
+          <button
+            type="button"
+            aria-label={isExpanded ? `Show less for ${role}` : `Show more for ${role}`}
+            aria-expanded={isExpanded}
+            aria-controls={detailsId}
+            onClick={() => setIsExpanded((expanded) => !expanded)}
+            className="group mx-auto mt-4 flex size-10 items-center justify-center rounded-full text-[var(--ui-color-brand-primary)] transition-colors hover:bg-[var(--ui-color-brand-primary-subtle)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ui-color-brand-primary)]"
+          >
+            <svg
+              aria-hidden="true"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className={`transition-transform ${isExpanded ? "rotate-180" : ""}`}
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+        ) : null}
+      </div>
+    </div>
   )
 }

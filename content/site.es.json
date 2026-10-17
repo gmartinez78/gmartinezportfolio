@@ -105,7 +105,7 @@
           "Aplico fundamentos de UX y rigor de accesibilidad a la visualización de datos en entornos liderados por ingeniería, elevando la usabilidad, la claridad y la consistencia visual.",
           "Utilizo métodos basados en evidencia mediante revisiones heurísticas, feedback de usabilidad y mapas de calor con Maze, Hotjar y UserTesting.com, refinando continuamente las experiencias a partir de la investigación para rediseñar flujos y reducir el tiempo de completado de formularios en un 35%.",
           "Defino la estrategia, visión y hoja de ruta de diseño para productos complejos y ambiguos usando Jira y Confluence, mientras lidero varias iniciativas simultáneamente. Tomo decisiones de diseño claras, presento mejoras a stakeholders senior con una justificación sólida, incorporo sus comentarios y defiendo mi criterio cuando es necesario.",
-          "Construyo e implemento un sistema de diseño escalable basado en React con patrones y componentes UX reutilizables. Identifico y reduzco la deuda de diseño al consolidar componentes duplicados, mejorando la consistencia y escalabilidad del sistema en productos y plataformas.",
+          "Construyo e implemento un sistema de diseño escalable basado en React con patrones y componentes UX reutilizables, mejorando la consistencia y escalabilidad del sistema en productos y plataformas.",
           "Aplico fundamentos de layout, espaciado, tipografía y color dentro de sistemas basados en componentes para mantener la calidad del UI craft en productos de escala empresarial.",
           "Estructuro la arquitectura de información para flujos de trabajo complejos y con mucho contenido, mejorando la claridad y la navegación.",
           "Produzco wireframes, mockups de diseño y prototipos interactivos usando herramientas de IA como Balsamiq, Figma AI, Copilot y Framer.",
@@ -118,7 +118,7 @@
           "Apoyo y hago de mentor de diseñadores junior y senior mediante revisiones regulares, intercambiando feedback y contribuyendo a la calidad general del diseño.",
           "Creo documentación de diseño, buenas prácticas y guías de uso, permitiendo la adopción de patrones compartidos entre equipos."
         ],
-        "tags": ["B2C SaaS", "AI Features", "Design Systems", "Research", "React.js"]
+        "tags": ["B2C", "SaaS", "AI Features", "Design Systems", "Research", "React.js"]
       },
       {
         "title": "UX/UI Designer",
@@ -145,7 +145,7 @@
           "Rediseñé funcionalidades existentes de la plataforma, mejorando la usabilidad y el engagement general del usuario.",
           "Desarrollé wireframes, prototipos y diseños UI de alta fidelidad equilibrando las necesidades del usuario con los objetivos de negocio."
         ],
-        "tags": ["Streaming", "LATAM", "UX Research", "Prototyping", "UI Design"]
+        "tags": ["Streaming", "Research", "Prototyping", "UI Design"]
       },
       {
         "title": "UX/UI Designer",
@@ -160,10 +160,10 @@
           "Colaboré con desarrolladores y estrategas para alinear las necesidades de los usuarios con los objetivos de negocio, y trabajé con equipos de marketing en experiencias web enfocadas en crecimiento e informadas por SEO, mejorando la estructura y usabilidad del contenido.",
           "Contribuí a la identidad de marca de varios clientes, aplicando principios de branding para fortalecer la identidad de producto y la consistencia visual en los distintos puntos de contacto digitales."
         ],
-        "tags": ["Nonprofits", "B2B", "B2C", "Accessibility", "Fundraising"]
+        "tags": ["B2B", "B2C", "Accessibility", "Fundraising"]
       },
       {
-        "title": "Freelance UX / UI Designer / Graphic Designer",
+        "title": "Diseñador freelance de UX/UI y diseño gráfico",
         "company": "Múltiples clientes | Web y redes sociales",
         "client": "",
         "period": "Feb. 2014, Feb. 2017",
@@ -175,7 +175,7 @@
           "Contribuí a iniciativas de crecimiento, incluyendo campañas sociales, landing pages y materiales de adquisición de pago (Google Ads, email, redes sociales).",
           "Diseñé y desarrollé interfaces responsive usando HTML/CSS, asegurando consistencia entre plataformas."
         ],
-        "tags": ["Freelance", "UX/UI Design", "Graphic Design", "E-commerce", "Social Media", "HTML/CSS"]
+        "tags": ["UX/UI Design", "Graphic Design", "E-commerce", "Social Media", "HTML/CSS"]
       }
     ],
     "skills": {
