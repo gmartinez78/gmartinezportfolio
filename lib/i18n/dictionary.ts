@@ -106,6 +106,11 @@ export const dictionary = {
   "resume.trainingHeading": { en: "Training", es: "Formación" },
   "resume.stackEyebrow": { en: "Stack", es: "Tecnologías" },
   "resume.toolsHeading": { en: "Tools", es: "Herramientas" },
+  "resume.toolsDescription": {
+    en: "Tools I use to plan, research, collaborate, and create thoughtful digital experiences.",
+    es: "Herramientas que uso para planificar, investigar, colaborar y crear experiencias digitales cuidadas.",
+    de: "Tools, mit denen ich plane, recherchiere, zusammenarbeite und durchdachte digitale Erlebnisse gestalte.",
+  },
   "resume.certificationsEyebrow": { en: "Certifications", es: "Certificaciones" },
   "resume.otherCertifications": { en: "Other certifications", es: "Otras certificaciones", de: "Weitere Zertifizierungen" },
   "resume.ixdfDescription": {

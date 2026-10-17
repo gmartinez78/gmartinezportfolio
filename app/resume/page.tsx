@@ -313,9 +313,16 @@ const TOOLS = [
   { label: "Maze",       src: withBasePath("/images/tools/maze.svg") },
   { label: "Notion",     src: withBasePath("/images/tools/notion.svg") },
   { label: "Slack",      src: withBasePath("/images/tools/slack.svg") },
-  { label: "HTML/CSS",   src: withBasePath("/images/tools/html5.svg") },
+  { label: "HTML5",      src: withBasePath("/images/tools/html5.svg") },
+  { label: "CSS",        src: withBasePath("/images/tools/css.svg") },
   { label: "React",      src: withBasePath("/images/tools/react.svg") },
+  { label: "Angular",    src: withBasePath("/images/tools/Angular_gradient_logo.png") },
+  { label: "Supabase",   src: withBasePath("/images/tools/supabase.svg") },
+  { label: "Hotjar",     src: withBasePath("/images/tools/hotjar.svg") },
+  { label: "WCAG",       src: withBasePath("/images/tools/accessibility.svg") },
   { label: "Claude",     src: withBasePath("/images/tools/anthropic.svg") },
+  { label: "Claude Code", src: withBasePath("/images/tools/ai/claude-code.svg") },
+  { label: "Codex",      src: withBasePath("/images/tools/ai/codex.svg") },
   { label: "VS Code",    src: withBasePath("/images/tools/visualstudiocode.svg") },
   { label: "ChatGPT",    src: withBasePath("/images/tools/openai.svg") },
 ];
@@ -653,10 +660,10 @@ export default function ResumePage() {
                 <h3 className="text-xl font-semibold leading-snug text-[#141114]">
                   {translate("resume.nnGroupCertifiedLabel")}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#5c5961]">
+                <p className="mt-2 text-base leading-relaxed text-[#5c5961]">
                   {translate("resume.interactionDesign")}
                 </p>
-                <p className="mt-1 text-sm leading-relaxed text-[#5c5961]">
+                <p className="mt-1 text-base leading-relaxed text-[#5c5961]">
                   {translate("resume.nnGroupCertificationDescription")}
                 </p>
               </div>
@@ -690,7 +697,7 @@ export default function ResumePage() {
                 <h3 className="text-xl font-semibold leading-snug text-[#141114]">
                   Interaction Design Foundation (IxDF)
                 </h3>
-                <p className="mt-1 text-sm leading-relaxed text-[#5c5961]">
+                <p className="mt-1 text-base leading-relaxed text-[#5c5961]">
                   {translate("resume.ixdfDescription")}
                 </p>
               </div>
@@ -722,7 +729,7 @@ export default function ResumePage() {
               </a>
               <div>
                 <h3 className="text-xl font-semibold leading-snug text-[#141114]">Coursera</h3>
-                <p className="mt-1 text-sm leading-relaxed text-[#5c5961]">
+                <p className="mt-1 text-base leading-relaxed text-[#5c5961]">
                   {translate("resume.courseraDescription")}
                 </p>
               </div>
@@ -754,7 +761,7 @@ export default function ResumePage() {
               </a>
               <div>
                 <h3 className="text-xl font-semibold leading-snug text-[#141114]">Udemy</h3>
-                <p className="mt-1 text-sm leading-relaxed text-[#5c5961]">
+                <p className="mt-1 text-base leading-relaxed text-[#5c5961]">
                   {translate("resume.udemyDescription")}
                 </p>
               </div>
@@ -846,20 +853,25 @@ export default function ResumePage() {
         </Container>
       </section>
 
-      <section className="w-full bg-[#1183D0] text-white">
+      <section className="w-full bg-[#fffdfd] text-[#141114]">
         <Container as="div" size="wide" className="px-6 py-12 sm:py-16">
           <ResumeSectionHeading
             eyebrow={translate("resume.stackEyebrow")}
             title={translate("resume.toolsHeading")}
-            inverse
           />
-          <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#5c5961]">
+            {translate("resume.toolsDescription")}
+          </p>
+          <div className="mt-8 grid grid-cols-2 overflow-hidden rounded-[20px] border border-[#e6e2e8] bg-white sm:grid-cols-3 lg:grid-cols-5">
             {tools.map((tool) => (
-              <div key={tool.label} className="flex flex-col items-center text-center">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/70 bg-white/90 shadow-[0_10px_24px_rgba(31,53,94,0.12)]">
-                  <Image src={tool.src} alt={tool.label} width={26} height={26} />
+              <div
+                key={tool.label}
+                className="flex min-h-28 flex-col items-center justify-center gap-3 border-b border-r border-[#e6e2e8] p-5 text-center transition-colors hover:bg-[#faf8fb] sm:min-h-32 sm:p-6"
+              >
+                <div className="flex size-10 items-center justify-center sm:size-12">
+                  <Image src={tool.src} alt="" aria-hidden="true" width={36} height={36} className="max-h-9 w-auto max-w-9 object-contain sm:max-h-10 sm:max-w-10" />
                 </div>
-                <span className="mt-2 text-xs font-medium text-white">{tool.label}</span>
+                <span className="text-sm font-medium text-[#141114]">{tool.label}</span>
               </div>
             ))}
           </div>

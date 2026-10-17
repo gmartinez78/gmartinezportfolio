@@ -82,6 +82,7 @@ export const germanDictionary = {
   "resume.trainingHeading": "Ausbildung",
   "resume.stackEyebrow": "Stapel",
   "resume.toolsHeading": "Werkzeuge",
+  "resume.toolsDescription": "Tools, mit denen ich plane, recherchiere, zusammenarbeite und durchdachte digitale Erlebnisse gestalte.",
   "resume.certificationsEyebrow": "Zertifizierungen",
   "resume.otherCertifications": "Weitere Zertifizierungen",
   "resume.ixdfDescription": "Evidenzbasierte Designausbildung für UX-Fachleute seit 2002.",

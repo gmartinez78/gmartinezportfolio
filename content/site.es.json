@@ -186,7 +186,7 @@
       "AI in Design": ["Copilot", "OOUX con IA", "Síntesis de investigación", "Prototipado rápido", "Automatización del flujo diseño-frontend", "LLM"],
       "Soft": ["Cercanía", "Flexibilidad", "Trabajo en equipo", "Comunicación", "Pensamiento estratégico", "Liderazgo", "Gestión del tiempo", "Cercanía con el equipo", "Empatía", "Atención al detalle", "Resolución de problemas", "Priorización", "Responsabilidad", "Resolución de conflictos"]
     },
-    "tools": ["Figma", "Jira", "Miro", "Copilot", "Webex", "ClickUp", "Confluence", "Maze", "Notion", "Slack", "HTML/CSS", "React", "Claude", "VS Code", "ChatGPT"],
+    "tools": ["Figma", "Jira", "Miro", "Copilot", "Webex", "ClickUp", "Confluence", "Maze", "Notion", "Slack", "HTML5", "CSS", "React", "Angular", "Supabase", "Hotjar", "WCAG", "Claude", "Claude Code", "Codex", "VS Code", "ChatGPT"],
     "education": [
       { "year": "2017", "degree": "Diseño UX / Diseño Gráfico", "institution": "Coderhouse" },
       { "year": "2014 - 2015", "degree": "Diplomado en Diseño de Medios Web", "institution": "Universidad Rafael Belloso Chacín (URBE)" },
