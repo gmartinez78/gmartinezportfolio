@@ -30,6 +30,9 @@ export function ResumeExperienceCard({
         <div className="grid gap-8 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:gap-12">
           <div>
             <Heading as="h3" variant="card" className="text-xl sm:text-2xl">{role}</Heading>
+            <p className="mt-1 text-sm text-[var(--ui-color-text-muted)]">
+              {period} · {location}
+            </p>
             <p className="mt-0.5 text-sm text-[var(--ui-color-text-muted)]">{company}</p>
             <div className="mt-4 flex flex-wrap gap-2">
               {tags.map((tag) => (
@@ -40,9 +43,6 @@ export function ResumeExperienceCard({
             </div>
           </div>
           <div className="divide-y divide-[var(--ui-color-border-strong)]">
-            <p className="py-3 first:pt-0 text-sm text-[var(--ui-color-text-muted)]">
-              {period} · {location}
-            </p>
             {bullets.map((bullet) =>
               typeof bullet === "string" ? (
                 <p key={bullet} className="py-3 text-sm leading-relaxed text-[var(--ui-color-text-body)]">

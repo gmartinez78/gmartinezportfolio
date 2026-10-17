@@ -97,18 +97,15 @@
       {
         "title": "Sr. Product Designer",
         "company": "ITX Corp",
-        "client": "Paychex (Nayya, Flock, E-Verify, Indeed)",
+        "client": "Paychex",
         "period": "Mar. 2021, Present",
         "location": "Malaga, Spain (Remote)",
         "bullets": [
           "Lead end-to-end design architecture for an enterprise HR SaaS platform with over 2.3 million users by making data-driven design decisions while acting as Staff Designer, aligning cross-functional teams around a unified product vision across multiple high-impact products.",
           "Apply UX fundamentals and accessibility rigor to data visualization in engineering-led environments, elevating usability, clarity, and visual consistency quality.",
           "Use evidence-based methods through heuristic reviews, usability feedback, and heatmaps using Maze, Hotjar, and UserTesting.com, continuously refining experiences based on research to redesign flows and reduce form completion time by 35%.",
-          "Define design strategy, vision, and roadmap for several major, ambiguous products using Jira and Confluence.",
-          "Take full ownership of design decisions and use Figma to present product enhancements regularly to senior stakeholders with clear rationale, handling feedback constructively and pushing back when needed.",
-          "Define reusable UX patterns and components, improving consistency and scalability across multiple large-scale products.",
-          "Identify and reduce design debt, consolidating duplicate components and improving system consistency.",
-          "Build and implement a scalable React-based design system, defining reusable patterns, components, and documentation to reduce design debt and improve consistency across platforms.",
+          "Define design strategy, vision, and roadmap for major, ambiguous products using Jira and Confluence while owning multiple initiatives simultaneously. Make clear design decisions, present enhancements to senior stakeholders with a clear rationale, incorporate feedback, and push back when needed.",
+          "Build and implement a scalable React-based design system with reusable UX patterns and components. Identify and reduce design debt by consolidating duplicate components, improving system consistency and scalability across products and platforms.",
           "Apply layout, spacing, typography, and color fundamentals within component-based systems to maintain UI craft quality across enterprise-scale products.",
           "Structure information architecture for complex, content-heavy workflows, improving clarity and navigation.",
           "Produce wireframes, design mockups, and interactive prototypes using AI tools including Balsamiq, Figma AI, Copilot, and Framer.",
@@ -154,12 +151,14 @@
         "title": "UX/UI Designer",
         "company": "Elevation",
         "client": "Web Solutions for Nonprofits",
-        "period": "Jan. 2017, Feb. 2019",
+        "period": "01/2017 – 02/2019",
         "location": "Buenos Aires, Argentina (Hybrid)",
         "bullets": [
-          "Delivered end-to-end UX/UI design across multiple nonprofit clients simultaneously.",
-          "Designed and optimized e-commerce experiences for nonprofit fundraising platforms.",
-          "Created marketing assets including HTML/CSS emails, brochures, and campaign materials."
+          "Delivered UX/UI solutions for multiple nonprofit clients (B2B & B2C).",
+          "Improved usability and accessibility across digital platforms.",
+          "Designed e-commerce and donation flows, improving conversion rates.",
+          "Collaborated with developers and strategists to align user needs with business goals, and partnered with marketing teams to implement SEO-informed UX and growth-focused web experiences, enhancing content structure and usability.",
+          "Contributed to brand identity work for multiple clients, applying branding principles to enhance overall product identity and visual consistency across digital touchpoints."
         ],
         "tags": ["Nonprofits", "B2B", "B2C", "Accessibility", "Fundraising"]
       },

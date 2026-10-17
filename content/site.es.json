@@ -97,18 +97,15 @@
       {
         "title": "Sr. Product Designer",
         "company": "ITX Corp",
-        "client": "Paychex (Nayya, Flock, E-Verify, Indeed)",
+        "client": "Paychex",
         "period": "Mar. 2021, Presente",
         "location": "Málaga, España (Remoto)",
         "bullets": [
           "Lidero la arquitectura de diseño de extremo a extremo de una plataforma SaaS de RRHH empresarial con más de 2,3 millones de usuarios, tomando decisiones de diseño basadas en datos como Staff Designer, alineando equipos multidisciplinares en torno a una visión de producto unificada en múltiples productos de alto impacto.",
           "Aplico fundamentos de UX y rigor de accesibilidad a la visualización de datos en entornos liderados por ingeniería, elevando la usabilidad, la claridad y la consistencia visual.",
           "Utilizo métodos basados en evidencia mediante revisiones heurísticas, feedback de usabilidad y mapas de calor con Maze, Hotjar y UserTesting.com, refinando continuamente las experiencias a partir de la investigación para rediseñar flujos y reducir el tiempo de completado de formularios en un 35%.",
-          "Defino la estrategia de diseño, la visión y la hoja de ruta para varios productos ambiguos de gran envergadura usando Jira y Confluence.",
-          "Asumo por completo la responsabilidad de las decisiones de diseño y uso Figma para presentar mejoras de producto de forma regular a stakeholders senior con una justificación clara, gestionando el feedback de forma constructiva y defendiendo mi criterio cuando es necesario.",
-          "Defino patrones y componentes UX reutilizables, mejorando la consistencia y la escalabilidad en múltiples productos de gran escala.",
-          "Identifico y reduzco la deuda de diseño, consolidando componentes duplicados y mejorando la consistencia del sistema.",
-          "Construyo e implemento un sistema de diseño escalable basado en React, definiendo patrones, componentes y documentación reutilizables para reducir la deuda de diseño y mejorar la consistencia entre plataformas.",
+          "Defino la estrategia, visión y hoja de ruta de diseño para productos complejos y ambiguos usando Jira y Confluence, mientras lidero varias iniciativas simultáneamente. Tomo decisiones de diseño claras, presento mejoras a stakeholders senior con una justificación sólida, incorporo sus comentarios y defiendo mi criterio cuando es necesario.",
+          "Construyo e implemento un sistema de diseño escalable basado en React con patrones y componentes UX reutilizables. Identifico y reduzco la deuda de diseño al consolidar componentes duplicados, mejorando la consistencia y escalabilidad del sistema en productos y plataformas.",
           "Aplico fundamentos de layout, espaciado, tipografía y color dentro de sistemas basados en componentes para mantener la calidad del UI craft en productos de escala empresarial.",
           "Estructuro la arquitectura de información para flujos de trabajo complejos y con mucho contenido, mejorando la claridad y la navegación.",
           "Produzco wireframes, mockups de diseño y prototipos interactivos usando herramientas de IA como Balsamiq, Figma AI, Copilot y Framer.",
@@ -154,12 +151,14 @@
         "title": "UX/UI Designer",
         "company": "Elevation",
         "client": "Soluciones web para ONG",
-        "period": "Ene. 2017, Feb. 2019",
+        "period": "01/2017 – 02/2019",
         "location": "Buenos Aires, Argentina (Híbrido)",
         "bullets": [
-          "Entregué diseño UX/UI de extremo a extremo para múltiples clientes sin ánimo de lucro de forma simultánea.",
-          "Diseñé y optimicé experiencias de e-commerce para plataformas de recaudación de fondos de ONG.",
-          "Creé materiales de marketing, incluyendo emails HTML/CSS, folletos y materiales de campaña."
+          "Entregué soluciones UX/UI para múltiples organizaciones sin ánimo de lucro (B2B y B2C).",
+          "Mejoré la usabilidad y accesibilidad en plataformas digitales.",
+          "Diseñé flujos de e-commerce y donaciones, mejorando las tasas de conversión.",
+          "Colaboré con desarrolladores y estrategas para alinear las necesidades de los usuarios con los objetivos de negocio, y trabajé con equipos de marketing en experiencias web enfocadas en crecimiento e informadas por SEO, mejorando la estructura y usabilidad del contenido.",
+          "Contribuí a la identidad de marca de varios clientes, aplicando principios de branding para fortalecer la identidad de producto y la consistencia visual en los distintos puntos de contacto digitales."
         ],
         "tags": ["Nonprofits", "B2B", "B2C", "Accessibility", "Fundraising"]
       },

@@ -195,18 +195,15 @@
       {
         "title": "Leitender Produktdesigner",
         "company": "ITX Corp",
-        "client": "Paychex (Nayya, Flock, E-Verify, Indeed)",
+        "client": "Paychex",
         "period": "März 2021, Heute",
         "location": "Malaga, Spanien (Remote)",
         "bullets": [
           "Leiten Sie die End-to-End-Designarchitektur für eine HR-SaaS-Plattform für Unternehmen mit über 2,3 Millionen Benutzern, indem Sie datengesteuerte Designentscheidungen treffen und gleichzeitig als Staff Designer fungieren und funktionsübergreifende Teams auf eine einheitliche Produktvision für mehrere wirkungsvolle Produkte ausrichten.",
           "Wenden Sie UX-Grundlagen und die Strenge der Barrierefreiheit auf die Datenvisualisierung in ingenieurgesteuerten Umgebungen an und verbessern Sie die Benutzerfreundlichkeit, Klarheit und visuelle Konsistenzqualität.",
           "Nutzen Sie evidenzbasierte Methoden durch heuristische Überprüfungen, Usability-Feedback und Heatmaps mit Maze, Hotjar und UserTesting.com und verfeinern Sie die Erfahrungen kontinuierlich auf der Grundlage von Forschungsergebnissen, um Abläufe neu zu gestalten und die Zeit für das Ausfüllen von Formularen um 35 % zu reduzieren.",
-          "Definieren Sie Designstrategie, Vision und Roadmap für mehrere große, mehrdeutige Produkte mit Jira und Confluence.",
-          "Übernehmen Sie die volle Verantwortung für Designentscheidungen und nutzen Sie Figma, um Produktverbesserungen regelmäßig mit klaren Begründungen den leitenden Beteiligten vorzustellen, konstruktiv mit Feedback umzugehen und bei Bedarf Gegenmaßnahmen zu ergreifen.",
-          "Definieren Sie wiederverwendbare UX-Muster und -Komponenten und verbessern Sie so die Konsistenz und Skalierbarkeit über mehrere große Produkte hinweg.",
-          "Identifizieren und reduzieren Sie Designschulden, konsolidieren Sie doppelte Komponenten und verbessern Sie die Systemkonsistenz.",
-          "Erstellen und implementieren Sie ein skalierbares React-basiertes Designsystem und definieren Sie wiederverwendbare Muster, Komponenten und Dokumentation, um Designschulden zu reduzieren und die Konsistenz über Plattformen hinweg zu verbessern.",
+          "Definieren Sie Designstrategie, Vision und Roadmap für komplexe, mehrdeutige Produkte mit Jira und Confluence und verantworten Sie gleichzeitig mehrere Initiativen. Treffen Sie klare Designentscheidungen, präsentieren Sie Verbesserungen mit überzeugender Begründung vor leitenden Stakeholdern, berücksichtigen Sie Feedback und vertreten Sie bei Bedarf Ihren Standpunkt.",
+          "Erstellen und implementieren Sie ein skalierbares React-basiertes Designsystem mit wiederverwendbaren UX-Mustern und Komponenten. Identifizieren und reduzieren Sie Designschulden durch die Zusammenführung doppelter Komponenten und verbessern Sie so Systemkonsistenz und Skalierbarkeit über Produkte und Plattformen hinweg.",
           "Wenden Sie Layout-, Abstands-, Typografie- und Farbgrundlagen in komponentenbasierten Systemen an, um die Qualität der Benutzeroberflächengestaltung bei Produkten im Unternehmensmaßstab aufrechtzuerhalten.",
           "Strukturieren Sie die Informationsarchitektur für komplexe, inhaltsreiche Arbeitsabläufe und verbessern Sie die Klarheit und Navigation.",
           "Erstellen Sie Wireframes, Design-Mockups und interaktive Prototypen mit KI-Tools wie Balsamiq, Figma AI, Copilot und Framer.",
@@ -268,14 +265,16 @@
       },
       {
         "title": "UX/UI-Designer",
-        "company": "Höhe",
+        "company": "Elevation",
         "client": "Weblösungen für gemeinnützige Organisationen",
-        "period": "Januar 2017, Februar 2019",
+        "period": "01/2017 – 02/2019",
         "location": "Buenos Aires, Argentinien (Hybrid)",
         "bullets": [
-          "Bereitstellung eines durchgängigen UX/UI-Designs für mehrere gemeinnützige Kunden gleichzeitig.",
-          "Entworfene und optimierte E-Commerce-Erlebnisse für gemeinnützige Fundraising-Plattformen.",
-          "Erstellte Marketingressourcen, einschließlich HTML/CSS-E-Mails, Broschüren und Kampagnenmaterialien."
+          "Lieferte UX/UI-Lösungen für mehrere gemeinnützige Kunden (B2B und B2C).",
+          "Verbesserte Benutzerfreundlichkeit und Barrierefreiheit auf digitalen Plattformen.",
+          "Entwarf E-Commerce- und Spendenabläufe und verbesserte die Conversion-Raten.",
+          "Arbeitete mit Entwicklern und Strategen zusammen, um Nutzerbedürfnisse mit Geschäftszielen abzustimmen, und kooperierte mit Marketingteams an SEO-informierten, wachstumsorientierten Web-Erlebnissen, die Inhaltsstruktur und Benutzerfreundlichkeit verbesserten.",
+          "Wirkte an der Markenidentität mehrerer Kunden mit und stärkte durch Branding-Prinzipien die Produktidentität und visuelle Konsistenz über digitale Kontaktpunkte hinweg."
         ],
         "tags": [
           "Gemeinnützige Organisationen",

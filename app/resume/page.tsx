@@ -33,7 +33,7 @@ type ExperienceEntry = {
 const EXPERIENCE: ExperienceEntry[] = [
   {
     role: "Sr. Product Designer",
-    company: "ITX Corp | Client: Paychex (Nayya, Flock, E-Verify, Indeed)",
+    company: "ITX Corp | Paychex",
     period: "Mar. 2021, Present",
     location: "Malaga, Spain (Remote)",
     bullets: [
@@ -59,24 +59,25 @@ const EXPERIENCE: ExperienceEntry[] = [
       },
       {
         segments: [
-          { text: "Define design strategy, vision, and roadmap for several major, ambiguous products", bold: true },
+          { text: "Define design strategy, vision, and roadmap for major, ambiguous products", bold: true },
           { text: " using " },
           { text: "Jira and Confluence", bold: true },
-          { text: "." },
-        ],
-      },
-      {
-        segments: [
-          { text: "Take full " },
-          { text: "ownership of multiple product initiatives", bold: true },
-          { text: " simultaneously, making clear design decisions and presenting product enhancements regularly to senior stakeholders with a clear rationale, handling feedback, and pushing back when needed." },
+          { text: " while owning " },
+          { text: "multiple product initiatives", bold: true },
+          { text: " simultaneously. Make clear design decisions, present enhancements to senior stakeholders with a clear rationale, incorporate feedback, and push back when needed." },
         ],
       },
       {
         segments: [
           { text: "Build and implement scalable React-based design systems with " },
           { text: "reusable UX patterns and components", bold: true },
-          { text: ", identifying design debt and consolidating duplicates to improve consistency across products. Create documentation, best practices, and usage guidelines to support cross-team adoption." },
+          { text: ". Identify and reduce design debt by consolidating duplicate components, improving system consistency and scalability across products and platforms." },
+        ],
+      },
+      {
+        segments: [
+          { text: "Create design documentation", bold: true },
+          { text: ", best practices, and usage guidelines to support cross-team adoption." },
         ],
       },
       {
@@ -91,13 +92,8 @@ const EXPERIENCE: ExperienceEntry[] = [
       },
       {
         segments: [
-          { text: "Produce wireframes, mockups, and interactive prototypes", bold: true },
-          { text: " using Balsamiq, Figma AI, and Framer. Use Copilot, Lovable, Claude, and ChatGPT to synthesize research, generate early concepts, and prototype quickly, helping the team validate and refine experiences faster." },
-        ],
-      },
-      {
-        segments: [
-          { text: "Launch AI-powered features (LLMs), improving user decision-making during enrollment, framing problems effectively by aligning users' goals, key tasks, constraints, success criteria, and business goals prior to execution.", bold: true },
+          { text: "Launch AI-powered features (LLMs) that improve user decision-making during enrollment by framing problems around user goals, key tasks, constraints, success criteria, and business goals. Produce wireframes, mockups, and interactive prototypes", bold: true },
+          { text: " using Balsamiq, Figma AI, Copilot, Framer, Lovable, Claude, and ChatGPT to synthesize research, generate early concepts, and enable faster validation and refinement." },
         ],
       },
       {
@@ -147,15 +143,14 @@ const EXPERIENCE: ExperienceEntry[] = [
   {
     role: "UX/UI Designer",
     company: "Elevation | Web Solutions for Nonprofits",
-    period: "Jan. 2017, Feb. 2019",
+    period: "01/2017 – 02/2019",
     location: "Buenos Aires, Argentina (Hybrid)",
     bullets: [
-      "Delivered end-to-end UX/UI design across multiple nonprofit clients (B2B and B2C) simultaneously, managing competing priorities and deadlines in a fast-paced agency environment.",
-      "Developed wireframes, prototypes, and optimized interface designs that improved usability and digital accessibility for mission-driven organizations.",
-      "Designed and optimized e-commerce experiences for nonprofit fundraising platforms, contributing to improved donor conversion and online giving flows.",
-      "Created engaging email newsletters and marketing materials that supported client communication strategies and audience retention.",
-      "Collaborated cross-functionally with developers and strategists to ensure design solutions aligned with user needs and nonprofit business goals.",
-      "Created marketing assets, including HTML/CSS emails, brochures, and campaign materials, tailored to each client's needs.",
+      "Delivered UX/UI solutions for multiple nonprofit clients (B2B & B2C).",
+      "Improved usability and accessibility across digital platforms.",
+      "Designed e-commerce and donation flows, improving conversion rates.",
+      "Collaborated with developers and strategists to align user needs with business goals, and partnered with marketing teams to implement SEO-informed UX and growth-focused web experiences, enhancing content structure and usability.",
+      "Contributed to brand identity work for multiple clients, applying branding principles to enhance overall product identity and visual consistency across digital touchpoints.",
     ],
     tags: ["Nonprofits", "B2B", "B2C", "Accessibility", "Fundraising"],
   },
@@ -388,7 +383,7 @@ export default function ResumePage() {
   const experience = resume.experience.length
     ? resume.experience.map((job) => ({
         role: job.title,
-        company: job.client ? `${job.company} | ${translate("resume.clientLabel")}: ${job.client}` : job.company,
+        company: job.client ? `${job.company} | ${job.client}` : job.company,
         period: job.period,
         location: job.location,
         bullets: job.bullets,
