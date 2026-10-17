@@ -113,6 +113,8 @@ export const dictionary = {
   "resume.trainingHeading": { en: "Training", es: "Formación" },
   "resume.stackEyebrow": { en: "Stack", es: "Tecnologías" },
   "resume.toolsHeading": { en: "Tools", es: "Herramientas" },
+  "resume.toolsShowMore": { en: "Show more tools", es: "Mostrar más herramientas", de: "Mehr Tools anzeigen" },
+  "resume.toolsShowLess": { en: "Show fewer tools", es: "Mostrar menos herramientas", de: "Weniger Tools anzeigen" },
   "resume.experienceHighlight": { en: "Experience", es: "Experiencia", de: "Erfahrung" },
   "resume.experienceHighlightValue": { en: "10+", es: "10+", de: "10+" },
   "resume.experienceHighlightUnit": { en: "years", es: "años", de: "Jahre" },

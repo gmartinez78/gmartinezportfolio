@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ResumeExperienceCard } from "../../components/resume-experience-card";
 import { SiteFooter } from "../../components/site-footer";
@@ -402,6 +402,8 @@ const CERTIFICATION_ITEMS = [
 ];
 
 export default function ResumePage() {
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const [toolsExpanded, setToolsExpanded] = useState(false);
   const [collapsedSkillGroups, setCollapsedSkillGroups] = useState<Record<string, boolean>>({});
   const [nngCertificationsExpanded, setNngCertificationsExpanded] = useState(false);
   const [ixdfCertificationsExpanded, setIxdfCertificationsExpanded] = useState(false);
@@ -410,6 +412,16 @@ export default function ResumePage() {
   const translate = useTranslate();
   const { siteContent } = usePublicSiteContent();
   const resume = siteContent.resume;
+
+  useEffect(() => {
+    const updateScrollState = () => setHasScrolled(window.scrollY > 0);
+
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+
+    return () => window.removeEventListener("scroll", updateScrollState);
+  }, []);
+
   const experience = resume.experience.length
     ? resume.experience.map((job) => ({
         role: job.title,
@@ -463,7 +475,7 @@ export default function ResumePage() {
     <main className="bg-white text-[#3c3e3f] overflow-x-clip min-h-screen">
       <SiteHeader active="Resume" />
 
-      <div className="sticky top-[88px] z-[70] bg-[#1183D0] shadow-[0_8px_24px_rgba(14,41,81,0.14)] lg:top-0">
+      <div className={`sticky top-[88px] z-[70] bg-[#1183D0] transition-shadow duration-200 lg:top-0 ${hasScrolled ? "shadow-[0_8px_24px_rgba(14,41,81,0.14)]" : ""}`}>
         <Container size="wide" className="px-6">
           <div className="flex items-center justify-between gap-4 py-3">
             <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm">
@@ -887,10 +899,10 @@ export default function ResumePage() {
             {translate("resume.toolsDescription")}
           </p>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {tools.map((tool) => (
+            {tools.map((tool, index) => (
               <div
                 key={tool.label}
-                className="flex min-h-24 items-center gap-5 rounded-[18px] bg-[#fbf8f9] p-5 shadow-[0_14px_30px_rgba(29,22,36,0.08)] transition-shadow duration-200 hover:shadow-[0_18px_36px_rgba(29,22,36,0.12)] sm:p-6"
+                className={`${index >= 5 && !toolsExpanded ? "hidden sm:flex" : "flex"} min-h-24 items-center gap-5 rounded-[18px] bg-[#fbf8f9] p-5 shadow-[0_14px_30px_rgba(29,22,36,0.08)] transition-shadow duration-200 hover:shadow-[0_18px_36px_rgba(29,22,36,0.12)] sm:p-6`}
               >
                 <div className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-white">
                   <Image src={tool.src} alt="" aria-hidden="true" width={36} height={36} className="max-h-9 w-auto max-w-9 object-contain" />
@@ -899,6 +911,16 @@ export default function ResumePage() {
               </div>
             ))}
           </div>
+          {tools.length > 5 ? (
+            <button
+              type="button"
+              onClick={() => setToolsExpanded((expanded) => !expanded)}
+              aria-expanded={toolsExpanded}
+              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#1183D0] underline-offset-4 hover:underline sm:hidden"
+            >
+              {translate(toolsExpanded ? "resume.toolsShowLess" : "resume.toolsShowMore")}
+            </button>
+          ) : null}
         </Container>
       </section>
 

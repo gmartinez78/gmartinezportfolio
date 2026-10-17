@@ -85,6 +85,8 @@ export const germanDictionary = {
   "resume.trainingHeading": "Ausbildung",
   "resume.stackEyebrow": "Stapel",
   "resume.toolsHeading": "Werkzeuge",
+  "resume.toolsShowMore": "Mehr Tools anzeigen",
+  "resume.toolsShowLess": "Weniger Tools anzeigen",
   "resume.experienceHighlight": "Erfahrung",
   "resume.experienceHighlightValue": "10+",
   "resume.experienceHighlightUnit": "Jahre",
