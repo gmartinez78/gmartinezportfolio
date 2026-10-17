@@ -1,134 +1,141 @@
 "use client";
 
-import { InfoCard } from "../../components/info-card";
+import { useState, type FormEvent } from "react";
+import Link from "next/link";
+import { X } from "lucide-react";
 import { ContactFormCard } from "../../components/contact-form-card";
-import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Container } from "../../components/ui/container";
-import { PageIntro } from "../../components/ui/page-intro";
 import { usePublicSiteContent } from "../../lib/cms/public";
+import type { DictionaryKey } from "../../lib/i18n/dictionary";
+import { withBasePath } from "../../lib/site";
 import { useTranslate } from "../../lib/i18n/use-translate";
 
-
-const INFO_CARDS = [
-  {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-        <polyline points="22,6 12,13 2,6"/>
-      </svg>
-    ),
-    label: "Email",
-    value: "greddysmartinez5@gmail.com",
-    href: "mailto:greddysmartinez5@gmail.com",
-  },
-  {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-        <rect x="2" y="9" width="4" height="12"/>
-        <circle cx="4" cy="4" r="2"/>
-      </svg>
-    ),
-    label: "LinkedIn",
-    value: "linkedin.com/in/greddysmartinez",
-    href: "https://linkedin.com/in/greddysmartinez",
-  },
-  {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <circle cx="12" cy="12" r="10"/>
-        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-      </svg>
-    ),
-    label: "Behance",
-    value: "behance.net/greddysmartinez",
-    href: "https://www.behance.net/greddysmartinez",
-  },
-  {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-      </svg>
-    ),
-    label: "UpWork",
-    value: "Available for freelance",
-    href: "https://www.upwork.com/freelancers/greddysmartinez",
-  },
-  {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-        <circle cx="12" cy="10" r="3"/>
-      </svg>
-    ),
-    label: "Location",
-    value: "Málaga, Spain · Open to remote",
-    href: undefined,
-  },
-];
+const CONTACT_INTERESTS = ["website", "marketing", "brand", "support"];
 
 export default function ContactPage() {
   const { siteContent } = usePublicSiteContent();
   const translate = useTranslate();
-  const infoCards: Array<{ icon: (typeof INFO_CARDS)[number]["icon"]; label: string; value: string; href?: string | null }> =
-    siteContent.contact.details.map((detail, index) => {
-      const baseCard = INFO_CARDS[index] ?? INFO_CARDS[0];
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
+  const emailHref = siteContent.contact.details.find((detail) => detail.href?.startsWith("mailto:"))?.href
+    ?? "mailto:greddysmartinez5@gmail.com";
+  const emailAddress = emailHref.replace(/^mailto:/, "");
+  const socialLinks = siteContent.contact.details.filter((detail) => (
+    detail.href && !detail.href.startsWith("mailto:")
+  ));
 
-      return {
-        icon: baseCard.icon,
-        label: detail.label,
-        value: detail.value,
-        href: detail.href,
-      };
-    });
+  function toggleInterest(interest: string) {
+    setSelectedInterests((selected) => (
+      selected.includes(interest)
+        ? selected.filter((item) => item !== interest)
+        : [...selected, interest]
+    ));
+  }
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const interestLabels = selectedInterests.map((interest) => (
+      translate(`contactPage.interest.${interest}` as DictionaryKey)
+    ));
+    const subject = interestLabels.length > 0
+      ? `Portfolio inquiry: ${interestLabels.join(", ")}`
+      : "Portfolio inquiry";
+    const body = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      ...(interestLabels.length > 0 ? [`Interested in: ${interestLabels.join(", ")}`] : []),
+      "",
+      message,
+    ].join("\n");
+
+    window.location.href = `${emailHref}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
 
   return (
-    <main className="bg-white text-[#3c3e3f] overflow-x-hidden min-h-screen">
+    <main className="min-h-screen overflow-x-hidden bg-white text-[#3c3e3f]">
       <SiteHeader active="Contact" />
 
-      {/* Hero */}
-      <Container as="section" size="wide" className="px-6 pt-16 pb-10 text-center">
-        <div className="px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
-          <PageIntro
-            eyebrow={siteContent.contact.subheadline}
-            title={siteContent.contact.headline}
-            description={siteContent.contact.intro}
-            centered
-          />
-        </div>
-      </Container>
+      <section className="relative overflow-hidden bg-[#1183D0] text-white">
+        <Link
+          href={withBasePath("/")}
+          aria-label={translate("contactPage.close")}
+          title={translate("contactPage.close")}
+          className="absolute right-5 top-5 z-20 inline-flex size-11 items-center justify-center rounded-full border border-white/35 text-white transition-colors hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f8df36] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1183D0] sm:right-8 sm:top-8"
+        >
+          <X aria-hidden="true" className="size-5" />
+        </Link>
+        <Container as="div" size="wide" className="relative z-10 px-6 pb-20 pt-16 sm:pb-24 sm:pt-20">
+          <div className="mx-auto max-w-[960px]">
+            <header className="mx-auto max-w-[760px] pb-10 text-center sm:pb-14">
+              <p className="text-sm font-semibold tracking-[0.12em] text-white/85">
+                {translate("contactPage.eyebrow")}
+              </p>
+              <h1 className="mt-5 text-[clamp(2.7rem,6vw,5rem)] font-bold leading-[0.96] tracking-[-0.06em] text-white">
+                {translate("contactPage.headlineLead")}
+                <span className="mt-1 block text-[#f8df36]">
+                  <span className="font-playfair font-normal italic tracking-[-0.04em]">
+                    {translate("contactPage.headlineAccent")}
+                  </span>{" "}
+                  <span className="font-bold not-italic tracking-[-0.06em] text-white">
+                    {translate("contactPage.headlineTogether")}
+                  </span>
+                </span>
+              </h1>
+            </header>
 
-      {/* 2-col: Form + Info */}
-      <Container as="section" size="wide" className="px-6 pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Contact Form */}
-          <ContactFormCard
-            title={translate("contactPage.sendAMessage")}
-            submitLabel={translate("contactForm.sendMessage")}
-            values={{ name: "", email: "", subject: "", message: "" }}
-          />
+            <ContactFormCard
+              title={translate("contactPage.interestPrompt")}
+              submitLabel={translate("contactForm.sendMessage")}
+              onSubmit={handleSubmit}
+              values={{ name, email, message }}
+              onNameChange={setName}
+              onEmailChange={setEmail}
+              onMessageChange={setMessage}
+              showSubject={false}
+              interestOptions={CONTACT_INTERESTS}
+              selectedInterests={selectedInterests}
+              onInterestToggle={toggleInterest}
+              messageLabel={translate("contactPage.messageLabel")}
+              messagePlaceholder={translate("contactPage.messagePlaceholder")}
+              helperText={translate("contactPage.emailAppNote")}
+              className="mx-auto max-w-[880px]"
+              contentClassName="p-5 sm:p-8 md:p-10"
+              submitClassName="w-full text-base font-semibold"
+            />
 
-          {/* Info Cards */}
-          <div className="flex flex-col gap-4">
-            <p className="text-[#5c7792] text-sm leading-relaxed">
-              {siteContent.contact.availability}
-            </p>
-            {infoCards.map((card) => (
-              <InfoCard
-                key={card.label}
-                icon={card.icon}
-                label={card.label}
-                value={card.value}
-                href={card.href}
-              />
-            ))}
+            <div className="mx-auto mt-8 flex max-w-[880px] flex-col gap-5 border-t border-white/20 pt-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+              <div>
+                <p className="text-sm text-white/75">{translate("contactPage.preferEmail")}</p>
+                <a
+                  href={emailHref}
+                  className="mt-1 inline-block font-medium text-white underline decoration-white/50 underline-offset-4 transition-colors hover:text-[#f8df36]"
+                >
+                  {emailAddress}
+                </a>
+                <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/70">
+                  {siteContent.contact.availability}
+                </p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm sm:justify-end">
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href ?? undefined}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-white/75 underline decoration-white/30 underline-offset-4 transition-colors hover:text-[#f8df36]"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </Container>
-
-      <SiteFooter />
+        </Container>
+      </section>
     </main>
   );
 }

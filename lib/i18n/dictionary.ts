@@ -16,7 +16,7 @@ export const dictionary = {
   // Contact form
   "contactForm.name": { en: "Name", es: "Nombre" },
   "contactForm.namePlaceholder": { en: "Your name", es: "Tu nombre" },
-  "contactForm.email": { en: "Email", es: "Correo electrónico" },
+  "contactForm.email": { en: "Work email", es: "Correo de trabajo", de: "Geschäftliche E-Mail" },
   "contactForm.emailPlaceholder": { en: "your@email.com", es: "tucorreo@email.com" },
   "contactForm.subject": { en: "Subject", es: "Asunto" },
   "contactForm.subjectPlaceholder": { en: "What's this about?", es: "¿De qué se trata?" },
@@ -40,6 +40,22 @@ export const dictionary = {
 
   // Contact page
   "contactPage.sendAMessage": { en: "Send a message", es: "Envía un mensaje" },
+  "contactPage.close": { en: "Close contact page", es: "Cerrar la página de contacto", de: "Kontaktseite schließen" },
+  "contactPage.eyebrow": { en: "Let's talk", es: "Hablemos", de: "Lass uns sprechen" },
+  "contactPage.headlineLead": { en: "Let's build something", es: "Construyamos algo", de: "Lass uns etwas" },
+  "contactPage.headlineAccent": { en: "great", es: "increíble", de: "Großartiges" },
+  "contactPage.headlineTogether": { en: "together.", es: "juntos.", de: "schaffen." },
+  "contactPage.formHeading": { en: "Tell me about your project", es: "Cuéntame sobre tu proyecto", de: "Erzähl mir von deinem Projekt" },
+  "contactPage.interestPrompt": { en: "I'm interested in...", es: "Me interesa...", de: "Ich interessiere mich für ..." },
+  "contactPage.interestHint": { en: "Choose any that apply.", es: "Elige todas las opciones que correspondan.", de: "Wähle alle passenden Optionen." },
+  "contactPage.interest.website": { en: "A new website or redesign", es: "Un sitio web nuevo o un rediseño", de: "Neue Website oder Redesign" },
+  "contactPage.interest.marketing": { en: "Digital Marketing & AI Visibility", es: "Marketing digital y visibilidad con IA", de: "Digitales Marketing & KI-Sichtbarkeit" },
+  "contactPage.interest.brand": { en: "Brand & Identity", es: "Marca e identidad", de: "Marke & Identität" },
+  "contactPage.interest.support": { en: "Support & accessibility", es: "Soporte y accesibilidad", de: "Support & Barrierefreiheit" },
+  "contactPage.messageLabel": { en: "Tell me about your project", es: "Cuéntame sobre tu proyecto", de: "Erzähl mir von deinem Projekt" },
+  "contactPage.messagePlaceholder": { en: "What are you hoping to achieve? What's working, and what isn't?", es: "¿Qué quieres conseguir? ¿Qué funciona y qué no?", de: "Was möchtest du erreichen? Was funktioniert und was nicht?" },
+  "contactPage.emailAppNote": { en: "Send message opens your email app with your details ready to send.", es: "Enviar mensaje abrirá tu aplicación de correo con los datos listos.", de: "Über „Nachricht senden“ öffnest du deine E-Mail-App mit vorbereiteten Angaben." },
+  "contactPage.preferEmail": { en: "Prefer email?", es: "¿Prefieres escribir por correo?", de: "Lieber per E-Mail?" },
   "resume.getInTouch": { en: "Get in touch", es: "Hablemos" },
   "resume.contactCtaDescription": {
     en: "Have a project in mind? Let's talk about your goals and how I can help.",
