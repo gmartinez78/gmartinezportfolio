@@ -463,6 +463,40 @@ export default function ResumePage() {
     <main className="bg-white text-[#3c3e3f] overflow-x-clip min-h-screen">
       <SiteHeader active="Resume" />
 
+      <div className="sticky top-[88px] z-[70] bg-[#1183D0] shadow-[0_8px_24px_rgba(14,41,81,0.14)] lg:top-0">
+        <Container size="wide" className="px-6">
+          <div className="flex items-center justify-between gap-4 py-3">
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm">
+              <a href={withBasePath("/")} className="text-white/70 transition-colors hover:text-white">
+                {translate("footer.home")}
+              </a>
+              <span aria-hidden="true" className="text-white/40">/</span>
+              <span className="font-medium text-white">{translate("resume.eyebrow")}</span>
+            </nav>
+            <div className="flex shrink-0 items-center gap-2">
+              <Button
+                asChild
+                variant="tertiary"
+                size="sm"
+                className="border-white/70 bg-transparent text-white hover:border-white hover:bg-white/10 hover:text-white"
+              >
+                <a href={withBasePath(resume.pdf_link || "/documents/greddys-martinez-resume-2026.pdf")} download>
+                  {translate("resume.downloadResume")}
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </a>
+              </Button>
+              <Button
+                asChild
+                size="sm"
+                className="bg-white text-[#1183D0] hover:bg-white/90"
+              >
+                <a href={withBasePath("/contact")}>{translate("resume.getInTouch")}</a>
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </div>
+
       {/* Hero */}
       <section className="relative bg-[#1183D0]">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -499,40 +533,6 @@ export default function ResumePage() {
         </div>
       </Container>
       </section>
-
-      <div className="sticky top-0 z-40 bg-[#1183D0]">
-        <Container size="wide" className="px-6">
-          <div className="flex items-center justify-between gap-4 py-3">
-            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm">
-              <a href={withBasePath("/")} className="text-white/70 transition-colors hover:text-white">
-                {translate("footer.home")}
-              </a>
-              <span aria-hidden="true" className="text-white/40">/</span>
-              <span className="font-medium text-white">{translate("resume.eyebrow")}</span>
-            </nav>
-            <div className="flex shrink-0 items-center gap-2">
-              <Button
-                asChild
-                variant="tertiary"
-                size="sm"
-                className="border-white/70 bg-transparent text-white hover:border-white hover:bg-white/10 hover:text-white"
-              >
-                <a href={withBasePath(resume.pdf_link || "/documents/greddys-martinez-resume-2026.pdf")} download>
-                  {translate("resume.downloadResume")}
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                </a>
-              </Button>
-              <Button
-                asChild
-                size="sm"
-                className="bg-white text-[#1183D0] hover:bg-white/90"
-              >
-                <a href={withBasePath("/contact")}>{translate("resume.getInTouch")}</a>
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </div>
 
       <Container as="section" size="wide" aria-label="Product design approach" className="relative z-20 px-6 pb-14 pt-0 md:pb-20">
         <div className="pt-12 md:pt-16">
