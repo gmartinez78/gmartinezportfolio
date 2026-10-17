@@ -404,6 +404,7 @@ const CERTIFICATION_ITEMS = [
 export default function ResumePage() {
   const [collapsedSkillGroups, setCollapsedSkillGroups] = useState<Record<string, boolean>>({});
   const [nngCertificationsExpanded, setNngCertificationsExpanded] = useState(true);
+  const [ixdfCertificationsExpanded, setIxdfCertificationsExpanded] = useState(true);
   const translate = useTranslate();
   const { siteContent } = usePublicSiteContent();
   const resume = siteContent.resume;
@@ -644,12 +645,12 @@ export default function ResumePage() {
               <h3 className="text-xl font-semibold leading-snug text-[#141114]">
                 {translate("resume.upworkCertificationTitle")}
               </h3>
-              <p className="mt-2 text-base leading-relaxed text-[#5c5961]">
+              <p className="mt-1 text-base leading-relaxed text-[#5c5961]">
                 {translate("resume.upworkCertificationDescription")}
               </p>
             </div>
           </div>
-          <div className="mt-8 max-w-2xl">
+          <div className="mt-8">
             <div className="flex items-center gap-5">
               <Image
                 src={withBasePath("/images/OiSjn.png")}
@@ -658,35 +659,35 @@ export default function ResumePage() {
                 height={154}
                 className="h-auto w-[64px] sm:w-[74px]"
               />
-              <div>
-                <div className="flex items-center justify-between gap-6">
+              <div className="flex min-w-0 flex-1 items-center gap-6">
+                <div className="min-w-0 flex-1">
                   <h3 className="text-xl font-semibold leading-snug text-[#141114]">
                     {translate("resume.nnGroupCertifiedLabel")}
                     {" - "}
                     {translate("resume.interactionDesign")}
                   </h3>
-                  <button
-                    type="button"
-                    onClick={() => setNngCertificationsExpanded((expanded) => !expanded)}
-                    aria-expanded={nngCertificationsExpanded}
-                    aria-label={
-                      nngCertificationsExpanded
-                        ? translate("resume.collapseCertifications")
-                        : translate("resume.expandCertifications")
-                    }
-                    className="flex size-10 shrink-0 items-center justify-center rounded-full border border-[#e6e2e8] text-2xl leading-none text-[#141114] transition-colors hover:bg-[#f6f4f9]"
-                  >
-                    {nngCertificationsExpanded ? "−" : "+"}
-                  </button>
+                  <p className="mt-2 text-base leading-relaxed text-[#5c5961]">
+                    {translate("resume.nnGroupCertificationDescription")}
+                  </p>
                 </div>
-                <p className="mt-2 text-base leading-relaxed text-[#5c5961]">
-                  {translate("resume.nnGroupCertificationDescription")}
-                </p>
+                <button
+                  type="button"
+                  onClick={() => setNngCertificationsExpanded((expanded) => !expanded)}
+                  aria-expanded={nngCertificationsExpanded}
+                  aria-label={
+                    nngCertificationsExpanded
+                      ? translate("resume.collapseCertifications")
+                      : translate("resume.expandCertifications")
+                  }
+                  className="ml-auto flex size-12 shrink-0 items-center justify-center text-4xl font-light leading-none text-[#1183D0] transition-colors hover:text-[#0d6fae]"
+                >
+                  {nngCertificationsExpanded ? "−" : "+"}
+                </button>
               </div>
             </div>
           </div>
           {nngCertificationsExpanded ? (
-            <div className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-3 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
               {nngCertifications.map((item) => (
                 <article
                   key={`${item.year}-${item.title}`}
@@ -701,7 +702,7 @@ export default function ResumePage() {
           ) : null}
 
           <div className="mt-16 border-t border-[#e6e2e8] pt-10">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-5">
               <a href="https://ixdf.org/" target="_blank" rel="noreferrer" className="shrink-0 transition-opacity hover:opacity-80">
                 <Image
                   src={withBasePath("/images/ixdf-logo.svg")}
@@ -711,27 +712,44 @@ export default function ResumePage() {
                   className="size-16"
                 />
               </a>
-              <div>
-                <h3 className="text-xl font-semibold leading-snug text-[#141114]">
-                  Interaction Design Foundation (IxDF)
-                </h3>
-                <p className="mt-1 text-base leading-relaxed text-[#5c5961]">
-                  {translate("resume.ixdfDescription")}
-                </p>
+              <div className="flex min-w-0 flex-1 items-center gap-6">
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-xl font-semibold leading-snug text-[#141114]">
+                    Interaction Design Foundation (IxDF)
+                  </h3>
+                  <p className="mt-1 text-base leading-relaxed text-[#5c5961]">
+                    {translate("resume.ixdfDescription")}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIxdfCertificationsExpanded((expanded) => !expanded)}
+                  aria-expanded={ixdfCertificationsExpanded}
+                  aria-label={
+                    ixdfCertificationsExpanded
+                      ? translate("resume.collapseCertifications")
+                      : translate("resume.expandCertifications")
+                  }
+                  className="ml-auto flex size-12 shrink-0 items-center justify-center text-4xl font-light leading-none text-[#1183D0] transition-colors hover:text-[#0d6fae]"
+                >
+                  {ixdfCertificationsExpanded ? "−" : "+"}
+                </button>
               </div>
             </div>
-            <div className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-              {ixdfCertifications.map((item) => (
-                <article
-                  key={`${item.year}-${item.title}`}
-                  className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
-                >
-                  <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
-                  <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
-                  <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
-                </article>
-              ))}
-            </div>
+            {ixdfCertificationsExpanded ? (
+              <div className="mt-3 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                {ixdfCertifications.map((item) => (
+                  <article
+                    key={`${item.year}-${item.title}`}
+                    className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
+                  >
+                    <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
+                    <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
+                    <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
+                  </article>
+                ))}
+              </div>
+            ) : null}
           </div>
 
           <div className="mt-16 border-t border-[#e6e2e8] pt-10">
