@@ -2,7 +2,10 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Heading } from "@/components/ui/heading"
 
-type ExperienceBullet = string | { heading: string; items: string[] }
+type ExperienceBullet =
+  | string
+  | { segments: { text: string; bold?: boolean }[] }
+  | { heading: string; items: string[] }
 
 type ResumeExperienceCardProps = {
   role: string
@@ -24,9 +27,9 @@ export function ResumeExperienceCard({
   return (
     <Card variant="glass" className="overflow-hidden rounded-[34px] p-0 py-0">
       <CardContent className="p-6 sm:p-7">
-        <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(15rem,0.7fr)]">
+        <div className="grid gap-8 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:gap-12">
           <div>
-            <Heading as="h3" variant="card" className="text-lg">{role}</Heading>
+            <Heading as="h3" variant="card" className="text-xl sm:text-2xl">{role}</Heading>
             <p className="mt-0.5 text-sm text-[var(--ui-color-text-muted)]">{company}</p>
             <div className="mt-4 flex flex-wrap gap-2">
               {tags.map((tag) => (
@@ -36,42 +39,42 @@ export function ResumeExperienceCard({
               ))}
             </div>
           </div>
-          <div className="divide-y divide-[var(--ui-color-border-strong)] text-sm text-[var(--ui-color-text-muted)]">
-            <p className="py-3 first:pt-0 last:pb-0">
-              {period}
+          <div className="divide-y divide-[var(--ui-color-border-strong)]">
+            <p className="py-3 first:pt-0 text-sm text-[var(--ui-color-text-muted)]">
+              {period} · {location}
             </p>
-            <p className="py-3 first:pt-0 last:pb-0">
-              {location}
-            </p>
+            {bullets.map((bullet) =>
+              typeof bullet === "string" ? (
+                <p key={bullet} className="py-3 text-sm leading-relaxed text-[var(--ui-color-text-body)]">
+                  {bullet}
+                </p>
+              ) : "segments" in bullet ? (
+                <p key={bullet.segments.map(({ text }) => text).join("")} className="py-3 text-sm leading-relaxed text-[var(--ui-color-text-body)]">
+                  {bullet.segments.map((segment, index) =>
+                    segment.bold ? (
+                      <strong key={`${segment.text}-${index}`} className="font-semibold text-[var(--ui-color-text-strong)]">
+                        {segment.text}
+                      </strong>
+                    ) : (
+                      <span key={`${segment.text}-${index}`}>{segment.text}</span>
+                    )
+                  )}
+                </p>
+              ) : (
+                <div key={bullet.heading} className="py-3 text-sm leading-relaxed text-[var(--ui-color-text-body)]">
+                  <p className="font-inter font-semibold text-[var(--ui-color-text-strong)]">
+                    {bullet.heading}
+                  </p>
+                  {bullet.items.map((item) => (
+                    <p key={item} className="mt-2">
+                      {item}
+                    </p>
+                  ))}
+                </div>
+              )
+            )}
           </div>
         </div>
-        <ul className="mt-4 space-y-2">
-          {bullets.map((bullet) =>
-            typeof bullet === "string" ? (
-              <li key={bullet} className="flex gap-2 text-sm leading-relaxed text-[var(--ui-color-text-body)]">
-                <span className="mt-1 shrink-0 text-[var(--ui-color-brand-primary)]">›</span>
-                {bullet}
-              </li>
-            ) : (
-              <li key={bullet.heading} className="text-sm leading-relaxed text-[var(--ui-color-text-body)]">
-                <div className="flex gap-2">
-                  <span className="mt-1 shrink-0 text-[var(--ui-color-brand-primary)]">›</span>
-                  <span className="font-inter font-semibold text-[var(--ui-color-text-strong)]">
-                    {bullet.heading}
-                  </span>
-                </div>
-                <ul className="mt-2 space-y-2 pl-5">
-                  {bullet.items.map((item) => (
-                    <li key={item} className="flex gap-2 text-sm leading-relaxed text-[var(--ui-color-text-body)]">
-                      <span className="mt-1 shrink-0 text-[var(--ui-color-brand-primary)]">•</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            )
-          )}
-        </ul>
       </CardContent>
     </Card>
   )

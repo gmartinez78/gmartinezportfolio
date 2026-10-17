@@ -17,7 +17,10 @@ import { withBasePath } from "../../lib/site";
 import { useTranslate } from "../../lib/i18n/use-translate";
 import { cn } from "../../lib/utils";
 
-type ExperienceBullet = string | { heading: string; items: string[] };
+type ExperienceBullet =
+  | string
+  | { segments: { text: string; bold?: boolean }[] }
+  | { heading: string; items: string[] };
 type ExperienceEntry = {
   role: string;
   company: string;
@@ -34,25 +37,79 @@ const EXPERIENCE: ExperienceEntry[] = [
     period: "Mar. 2021, Present",
     location: "Malaga, Spain (Remote)",
     bullets: [
-      "Lead end-to-end design architecture for an enterprise HR SaaS platform with over 2.3 million users by making data-driven design decisions while acting as Staff Designer, aligning cross-functional teams around a unified product vision across multiple high-impact products.",
-      "Apply UX fundamentals and accessibility rigor to data visualization in engineering-led environments, elevating usability, clarity, and visual consistency quality.",
-      "Use evidence-based methods through heuristic reviews, usability feedback, and heatmaps using Maze, Hotjar, and UserTesting.com, continuously refining experiences based on research to redesign flows and reduce form completion time by 35%.",
-      "Define design strategy, vision, and roadmap for several major, ambiguous products using Jira and Confluence.",
-      "Take full ownership of design decisions and use Figma to present product enhancements regularly to senior stakeholders with clear rationale, handling feedback constructively and pushing back when needed.",
-      "Define reusable UX patterns and components, improving consistency and scalability across multiple large-scale products.",
-      "Identify and reduce design debt, consolidating duplicate components and improving system consistency.",
-      "Build and implement a scalable React-based design system, defining reusable patterns, components, and documentation to reduce design debt and improve consistency across platforms.",
-      "Apply layout, spacing, typography, and color fundamentals within component-based systems to maintain UI craft quality across enterprise-scale products.",
-      "Structure information architecture for complex, content-heavy workflows, improving clarity and navigation.",
-      "Produce wireframes, design mockups, and interactive prototypes using AI tools including Balsamiq, Figma AI, Copilot, and Framer.",
-      "Launch AI-powered features using LLMs to improve user decision-making during enrollment, framing problems effectively by aligning user goals, key tasks, constraints, success criteria, and business goals prior to execution.",
-      "Use AI such as Copilot, Lovable, Claude, and ChatGPT throughout the design workflow to synthesize research, generate early concepts, and prototype quickly, enabling the team to validate and refine experiences much faster.",
-      "Reduce support tickets by 500+ and support call volume by 9,000+ calls per year through redesigned HR and hiring flows.",
-      "Play a key role in exceeding the annual enrollment goal by 5,500 users, simplifying workflows to improve completion rates and user confidence.",
-      "Work closely with cross-functional teams including Product, Engineering, Marketing, Finance, Compliance, and Research to align user experience with business and content goals.",
-      "Partner with engineering teams in a component-based delivery model, defining states, variants, and responsive behavior to align UX strategy and delivery using Miro and Figma.",
-      "Support and mentor junior and senior designers through regular reviews, exchanging feedback, and contributing to overall design quality.",
-      "Create design documentation, best practices, and usage guidelines, enabling cross-team adoption of shared patterns.",
+      {
+        segments: [
+          { text: "Lead end-to-end design architecture", bold: true },
+          { text: " for an enterprise HR SaaS platform with over 2.3 million users, making data-driven decisions across multiple high-impact products. As Staff Designer, align Product, Engineering, Marketing, Finance, Compliance, and Research around a unified product vision, balancing user experience with business and content goals. Partner with engineering on component-based delivery, defining states, variants, and responsive behavior using Miro and Figma." },
+        ],
+      },
+      {
+        segments: [
+          { text: "Apply " },
+          { text: "UX fundamentals and accessibility", bold: true },
+          { text: " rigor to data visualization in engineering-led environments, elevating usability, clarity, and visual consistency." },
+        ],
+      },
+      {
+        segments: [
+          { text: "Use evidence-based methods—" },
+          { text: "heuristic reviews, usability feedback,", bold: true },
+          { text: " and heatmap signals from Maze, Hotjar, and UserTesting.com—to refine flows and reduce form completion time by 35%. Separately, simplifying enrollment workflows helped exceed the annual goal by 5,500 users while improving completion rates and user confidence." },
+        ],
+      },
+      {
+        segments: [
+          { text: "Define design strategy, vision, and roadmap for several major, ambiguous products", bold: true },
+          { text: " using " },
+          { text: "Jira and Confluence", bold: true },
+          { text: "." },
+        ],
+      },
+      {
+        segments: [
+          { text: "Take full " },
+          { text: "ownership of multiple product initiatives", bold: true },
+          { text: " simultaneously, making clear design decisions and presenting product enhancements regularly to senior stakeholders with a clear rationale, handling feedback, and pushing back when needed." },
+        ],
+      },
+      {
+        segments: [
+          { text: "Build and implement scalable React-based design systems with " },
+          { text: "reusable UX patterns and components", bold: true },
+          { text: ", identifying design debt and consolidating duplicates to improve consistency across products. Create documentation, best practices, and usage guidelines to support cross-team adoption." },
+        ],
+      },
+      {
+        segments: [
+          { text: "Apply layout, spacing, typography, and color fundamentals using pixel-perfect execution within component-based systems to maintain UI craft quality across enterprise-scale products.", bold: true },
+        ],
+      },
+      {
+        segments: [
+          { text: "Structure information architecture for complex, content-heavy workflows, improving clarity and navigation.", bold: true },
+        ],
+      },
+      {
+        segments: [
+          { text: "Produce wireframes, mockups, and interactive prototypes", bold: true },
+          { text: " using Balsamiq, Figma AI, and Framer. Use Copilot, Lovable, Claude, and ChatGPT to synthesize research, generate early concepts, and prototype quickly, helping the team validate and refine experiences faster." },
+        ],
+      },
+      {
+        segments: [
+          { text: "Launch AI-powered features (LLMs), improving user decision-making during enrollment, framing problems effectively by aligning users' goals, key tasks, constraints, success criteria, and business goals prior to execution.", bold: true },
+        ],
+      },
+      {
+        segments: [
+          { text: "Reduce support tickets by 500+ and support call volume by 9,000+ calls per year through redesigned HR and hiring flows.", bold: true },
+        ],
+      },
+      {
+        segments: [
+          { text: "Support and mentor junior and senior designers through regular reviews, exchanging feedback, and contributing to overall design quality.", bold: true },
+        ],
+      },
     ],
     tags: ["B2C SaaS", "AI Features", "Design Systems", "Research", "React.js"],
   },
@@ -526,7 +583,7 @@ export default function ResumePage() {
 
       {/* Experience */}
       <Container as="section" size="wide" className="px-6 py-10">
-        <div className="mb-8 flex flex-col items-start gap-3">
+        <div className="mb-8 flex flex-col items-start gap-3 px-6 sm:px-7">
           <p className="flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.14em] text-[var(--ui-color-brand-primary)]">
             <span aria-hidden="true" className="size-2 rounded-full bg-[var(--ui-color-brand-primary)]" />
             {translate("resume.careerEyebrow")}
