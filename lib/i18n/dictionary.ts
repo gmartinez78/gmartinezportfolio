@@ -41,6 +41,13 @@ export const dictionary = {
   // Contact page
   "contactPage.sendAMessage": { en: "Send a message", es: "Envía un mensaje" },
   "resume.getInTouch": { en: "Get in touch", es: "Hablemos" },
+  "resume.contactCtaDescription": {
+    en: "Have a project in mind? Let's talk about your goals and how I can help.",
+    es: "¿Tienes un proyecto en mente? Hablemos de tus objetivos y de cómo puedo ayudarte.",
+    de: "Haben Sie ein Projekt im Sinn? Sprechen wir über Ihre Ziele und darüber, wie ich helfen kann.",
+  },
+  "resume.expandCertifications": { en: "Expand NN/g certifications", es: "Mostrar certificaciones de NN/g", de: "NN/g-Zertifizierungen einblenden" },
+  "resume.collapseCertifications": { en: "Collapse NN/g certifications", es: "Ocultar certificaciones de NN/g", de: "NN/g-Zertifizierungen ausblenden" },
 
   // Projects listing page
   "projectsPage.title": { en: "Projects", es: "Proyectos" },

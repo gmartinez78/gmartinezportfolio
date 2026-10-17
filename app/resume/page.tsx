@@ -403,6 +403,7 @@ const CERTIFICATION_ITEMS = [
 
 export default function ResumePage() {
   const [collapsedSkillGroups, setCollapsedSkillGroups] = useState<Record<string, boolean>>({});
+  const [nngCertificationsExpanded, setNngCertificationsExpanded] = useState(true);
   const translate = useTranslate();
   const { siteContent } = usePublicSiteContent();
   const resume = siteContent.resume;
@@ -658,30 +659,46 @@ export default function ResumePage() {
                 className="h-auto w-[64px] sm:w-[74px]"
               />
               <div>
-                <h3 className="text-xl font-semibold leading-snug text-[#141114]">
-                  {translate("resume.nnGroupCertifiedLabel")}
-                </h3>
+                <div className="flex items-center justify-between gap-6">
+                  <h3 className="text-xl font-semibold leading-snug text-[#141114]">
+                    {translate("resume.nnGroupCertifiedLabel")}
+                    {" - "}
+                    {translate("resume.interactionDesign")}
+                  </h3>
+                  <button
+                    type="button"
+                    onClick={() => setNngCertificationsExpanded((expanded) => !expanded)}
+                    aria-expanded={nngCertificationsExpanded}
+                    aria-label={
+                      nngCertificationsExpanded
+                        ? translate("resume.collapseCertifications")
+                        : translate("resume.expandCertifications")
+                    }
+                    className="flex size-10 shrink-0 items-center justify-center rounded-full border border-[#e6e2e8] text-2xl leading-none text-[#141114] transition-colors hover:bg-[#f6f4f9]"
+                  >
+                    {nngCertificationsExpanded ? "−" : "+"}
+                  </button>
+                </div>
                 <p className="mt-2 text-base leading-relaxed text-[#5c5961]">
-                  {translate("resume.interactionDesign")}
-                </p>
-                <p className="mt-1 text-base leading-relaxed text-[#5c5961]">
                   {translate("resume.nnGroupCertificationDescription")}
                 </p>
               </div>
             </div>
           </div>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {nngCertifications.map((item) => (
-              <article
-                key={`${item.year}-${item.title}`}
-                className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
-              >
-                <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
-                <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
-                <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
-              </article>
-            ))}
-          </div>
+          {nngCertificationsExpanded ? (
+            <div className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              {nngCertifications.map((item) => (
+                <article
+                  key={`${item.year}-${item.title}`}
+                  className="rounded-[20px] border border-[#e6e2e8] bg-white p-8 transition-shadow duration-200 hover:shadow-[0_16px_32px_rgba(29,22,36,0.10)]"
+                >
+                  <p className="text-sm font-medium text-[#5c5961]">{item.year}</p>
+                  <h3 className="mt-3 text-xl font-semibold leading-snug text-[#141114]">{item.title}</h3>
+                  <p className="mt-3 text-base leading-relaxed text-[#5c5961]">{item.description}</p>
+                </article>
+              ))}
+            </div>
+          ) : null}
 
           <div className="mt-16 border-t border-[#e6e2e8] pt-10">
             <div className="flex items-center gap-4">
@@ -800,61 +817,7 @@ export default function ResumePage() {
         </Container>
       </section>
 
-      {/* Skills */}
-      <section className="w-full bg-[#1183D0] text-white">
-        <Container as="div" size="wide" className="px-6 py-12 sm:py-16">
-          <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr]">
-            <div>
-              <ResumeSectionHeading
-                eyebrow={translate("resume.capabilitiesEyebrow")}
-                title={translate("resume.skillsHeading")}
-                inverse
-              />
-              <div className="mt-8 flex flex-col gap-8">
-                {skills.map((group) => (
-                  <div key={group.category}>
-                    <button
-                      type="button"
-                      onClick={() => toggleSkillGroup(group.category)}
-                      className="flex w-full items-center justify-between gap-4 text-left"
-                      aria-expanded={!collapsedSkillGroups[group.category]}
-                    >
-                      <Heading as="h3" variant="card" className="text-[15px] text-white">
-                        {group.category}
-                      </Heading>
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        className={`shrink-0 text-white transition-transform ${
-                          collapsedSkillGroups[group.category] ? "-rotate-90" : "rotate-0"
-                        }`}
-                        aria-hidden="true"
-                      >
-                        <path d="m6 9 6 6 6-6" />
-                      </svg>
-                    </button>
-                    {!collapsedSkillGroups[group.category] ? (
-                      <div className="mt-4 flex flex-wrap gap-3">
-                        {group.items.map((item) => (
-                          <Badge key={item} size="tag" className="bg-white text-[#0e2951] hover:bg-white">
-                            {item}
-                          </Badge>
-                        ))}
-                      </div>
-                    ) : null}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      <section className="w-full bg-[#fffdfd] text-[#141114]">
+      <section className="w-full bg-[#f6f4f9] text-[#141114]">
         <Container as="div" size="wide" className="px-6 py-12 sm:py-16">
           <ResumeSectionHeading
             eyebrow={translate("resume.stackEyebrow")}
@@ -863,20 +826,88 @@ export default function ResumePage() {
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#5c5961]">
             {translate("resume.toolsDescription")}
           </p>
-          <div className="mt-8 grid grid-cols-2 overflow-hidden rounded-[20px] border border-[#e6e2e8] bg-white sm:grid-cols-3 lg:grid-cols-5">
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {tools.map((tool) => (
               <div
                 key={tool.label}
-                className="flex min-h-28 flex-col items-center justify-center gap-3 border-b border-r border-[#e6e2e8] p-5 text-center transition-colors hover:bg-[#faf8fb] sm:min-h-32 sm:p-6"
+                className="flex min-h-24 items-center gap-5 rounded-[18px] bg-[#fbf8f9] p-5 shadow-[0_14px_30px_rgba(29,22,36,0.08)] transition-shadow duration-200 hover:shadow-[0_18px_36px_rgba(29,22,36,0.12)] sm:p-6"
               >
-                <div className="flex size-10 items-center justify-center sm:size-12">
-                  <Image src={tool.src} alt="" aria-hidden="true" width={36} height={36} className="max-h-9 w-auto max-w-9 object-contain sm:max-h-10 sm:max-w-10" />
+                <div className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-white">
+                  <Image src={tool.src} alt="" aria-hidden="true" width={36} height={36} className="max-h-9 w-auto max-w-9 object-contain" />
                 </div>
-                <span className="text-sm font-medium text-[#141114]">{tool.label}</span>
+                <span className="text-base font-medium text-[#141114]">{tool.label}</span>
               </div>
             ))}
           </div>
         </Container>
+      </section>
+
+      {/* Skills */}
+      <section className="w-full bg-[#fbf8f9] text-[#141114]">
+        <Container as="div" size="wide" className="px-6 py-12 sm:py-16">
+          <ResumeSectionHeading
+            eyebrow={translate("resume.capabilitiesEyebrow")}
+            title={translate("resume.skillsHeading")}
+          />
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+            {skills.map((group) => (
+              <article
+                key={group.category}
+                className="rounded-[20px] border border-[#e6e2e8] bg-[#fffdfd] p-6 sm:p-7"
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleSkillGroup(group.category)}
+                  className="flex w-full items-start justify-between gap-4 text-left"
+                  aria-expanded={!collapsedSkillGroups[group.category]}
+                >
+                  <Heading as="h3" variant="card" className="text-xl font-semibold text-[#141114]">
+                    {group.category}
+                  </Heading>
+                </button>
+                {!collapsedSkillGroups[group.category] ? (
+                  <div className="mt-5 flex flex-wrap gap-2.5">
+                    {group.items.map((item) => (
+                      <Badge
+                        key={item}
+                        size="tag"
+                        className="h-auto rounded-full border border-[#e6e2e8] bg-transparent px-4 py-2 text-sm font-medium text-[#4f4b53] hover:bg-white"
+                      >
+                        {item}
+                      </Badge>
+                    ))}
+                  </div>
+                ) : null}
+              </article>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-white px-6 py-12 sm:px-10 sm:py-16">
+        <div
+          className="relative mx-auto flex max-w-[1280px] flex-col items-center overflow-hidden rounded-[24px] px-6 py-12 text-center text-white shadow-[var(--ui-shadow-elevated)] sm:px-12 md:py-16"
+          style={{ background: "var(--ui-surface-contact-cta)" }}
+        >
+          <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-[-5rem] h-56 w-72 -translate-x-1/2 rounded-[50%] bg-white/10 blur-[1px]" />
+          <Heading as="h2" variant="display" tone="inverse" className="relative max-w-3xl">
+            {translate("home.contactCta")}
+          </Heading>
+          <p className="relative mt-5 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
+            {translate("resume.contactCtaDescription")}
+          </p>
+          <Button
+            asChild
+            variant="editorial-outline"
+            size="sm"
+            className="relative mt-8 border-transparent bg-[#ffe600] text-[#141114] hover:bg-[#f5dc00]"
+          >
+            <a href={withBasePath("/contact")}>
+              {translate("resume.getInTouch")}
+              <span aria-hidden="true">→</span>
+            </a>
+          </Button>
+        </div>
       </section>
 
       <div className="mt-10">
