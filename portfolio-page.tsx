@@ -1561,58 +1561,58 @@ export default function PortfolioPage() {
                     {translate("home.aiHeroTitleAccent")}
                   </span>
                 </Heading>
-                <div className="relative mx-auto mt-5 h-[190px] w-full max-w-[540px] sm:mt-6 sm:h-[220px] sm:max-w-[620px]">
+                <div className="relative mx-auto mt-5 h-[216px] w-full max-w-[600px] sm:mt-6 sm:h-[256px] sm:max-w-[700px]">
                   <div aria-hidden="true" className="pointer-events-none absolute left-[1%] top-1 z-20 animate-[tool-float_4.6s_ease-in-out_infinite] [animation-delay:-1.2s] motion-reduce:animate-none sm:left-4">
-                    <div className="grid size-11 -rotate-[10deg] place-items-center rounded-[15px] bg-[#141414] p-2.5 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:size-[3.75rem] sm:rounded-[18px] sm:p-3.5">
-                      <Image src="/images/tools/ai/openai.svg" alt="" width={32} height={32} className="size-6 sm:size-8" />
+                    <div className="grid size-12 -rotate-[10deg] place-items-center rounded-[15px] bg-[#141414] p-2.5 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:size-[4.25rem] sm:rounded-[18px] sm:p-3.5">
+                      <Image src="/images/tools/ai/openai.svg" alt="" width={32} height={32} className="size-7 sm:size-9" />
                     </div>
                   </div>
                   <div aria-hidden="true" className="pointer-events-none absolute left-[10%] top-[74px] z-20 animate-[tool-float_5.4s_ease-in-out_infinite] [animation-delay:-3.1s] motion-reduce:animate-none sm:left-[13%] sm:top-[88px]">
-                    <div className="grid size-10 rotate-[8deg] place-items-center rounded-[13px] bg-white p-1.5 shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:size-[3.3rem] sm:rounded-[16px] sm:p-2">
-                      <Image src="/images/tools/ai/grok.png" alt="" width={540} height={540} className="size-7 sm:size-9" />
+                    <div className="grid size-11 rotate-[8deg] place-items-center rounded-[13px] bg-white p-1.5 shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:size-[3.75rem] sm:rounded-[16px] sm:p-2">
+                      <Image src="/images/tools/ai/grok.png" alt="" width={540} height={540} className="size-8 sm:size-10" />
                     </div>
                   </div>
                   <div aria-hidden="true" className="pointer-events-none absolute bottom-1 left-[26%] z-20 animate-[tool-float_4.9s_ease-in-out_infinite] [animation-delay:-0.7s] motion-reduce:animate-none sm:bottom-2 sm:left-[28%]">
-                    <div className="grid size-10 rotate-[7deg] place-items-center rounded-[13px] bg-white p-1 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:size-[3.1rem] sm:rounded-[16px] sm:p-1.5">
-                      <Image src="/images/tools/ai/codex.svg" alt="" width={40} height={40} className="size-8 sm:size-10" />
+                    <div className="grid size-11 rotate-[7deg] place-items-center rounded-[13px] bg-white p-1 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:size-[3.5rem] sm:rounded-[16px] sm:p-1.5">
+                      <Image src="/images/tools/ai/codex.svg" alt="" width={40} height={40} className="size-9 sm:size-11" />
                     </div>
                   </div>
                   <div aria-hidden="true" className="pointer-events-none absolute right-[1%] top-1 z-20 animate-[tool-float_5.2s_ease-in-out_infinite] [animation-delay:-2.5s] motion-reduce:animate-none sm:right-4">
-                    <div className="relative grid size-11 rotate-[9deg] place-items-center rounded-[15px] border border-white bg-white shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:size-[3.75rem] sm:rounded-[18px]">
-                      <Image src="/images/tools/figma.svg" alt="" width={20} height={30} className="h-7 w-auto sm:h-8" />
-                      <Sparkles aria-hidden="true" className="absolute -right-1 -top-1 size-3.5 rounded-full bg-white p-0.5 text-[#8e66ff] sm:size-4" strokeWidth={2.4} />
+                    <div className="relative grid size-12 rotate-[9deg] place-items-center rounded-[15px] border border-white bg-white shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:size-[4.25rem] sm:rounded-[18px]">
+                      <Image src="/images/tools/figma.svg" alt="" width={20} height={30} className="h-8 w-auto sm:h-10" />
+                      <Sparkles aria-hidden="true" className="absolute -right-1 -top-1 size-4 rounded-full bg-white p-0.5 text-[#8e66ff] sm:size-[1.125rem]" strokeWidth={2.4} />
                     </div>
                   </div>
                   <div aria-hidden="true" className="pointer-events-none absolute right-[10%] top-[76px] z-20 animate-[tool-float_5.6s_ease-in-out_infinite] [animation-delay:-4s] motion-reduce:animate-none sm:right-[13%] sm:top-[88px]">
-                    <div className="grid size-10 -rotate-[8deg] place-items-center rounded-[13px] bg-white shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:size-[3.3rem] sm:rounded-[16px]">
-                      <Image src="/images/tools/ai/lovable.svg" alt="" width={32} height={32} className="size-7 sm:size-8" />
+                    <div className="grid size-11 -rotate-[8deg] place-items-center rounded-[13px] bg-white shadow-[0_10px_18px_rgba(14,41,81,0.2)] sm:size-[3.75rem] sm:rounded-[16px]">
+                      <Image src="/images/tools/ai/lovable.svg" alt="" width={32} height={32} className="size-8 sm:size-9" />
                     </div>
                   </div>
                   <div aria-hidden="true" className="pointer-events-none absolute bottom-1 right-[26%] z-20 animate-[tool-float_4.7s_ease-in-out_infinite] [animation-delay:-1.8s] motion-reduce:animate-none sm:bottom-2 sm:right-[28%]">
-                    <div className="grid size-10 -rotate-[6deg] place-items-center rounded-[13px] bg-white p-1.5 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:size-[3.1rem] sm:rounded-[16px] sm:p-2">
-                      <Image src="/images/tools/ai/claude-code.svg" alt="" width={32} height={32} className="size-8 sm:size-10" />
+                    <div className="grid size-11 -rotate-[6deg] place-items-center rounded-[13px] bg-white p-1.5 shadow-[0_10px_18px_rgba(14,41,81,0.22)] sm:size-[3.5rem] sm:rounded-[16px] sm:p-2">
+                      <Image src="/images/tools/ai/claude-code.svg" alt="" width={32} height={32} className="size-9 sm:size-11" />
                     </div>
                   </div>
                   <Link
                     href={activeHeroProject.href}
-                    className="group absolute left-1/2 top-1/2 z-10 h-[150px] w-[300px] -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 hover:-translate-y-[54%] sm:h-[180px] sm:w-[390px]"
+                    className="group absolute left-1/2 top-1/2 z-10 h-[170px] w-[340px] -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 hover:-translate-y-[54%] sm:h-[205px] sm:w-[445px]"
                   >
                     <div key={activeHeroStatement} className="relative size-full animate-[hero-project-enter_520ms_ease-out]">
-                      <div className="absolute left-0 top-5 h-[112px] w-[172px] -rotate-[7deg] overflow-hidden rounded-[16px] bg-[#edf7fc] shadow-[0_14px_26px_rgba(14,41,81,0.19)] transition-transform duration-300 group-hover:-translate-x-1 group-hover:-rotate-[9deg] sm:top-5 sm:h-[140px] sm:w-[215px] sm:rounded-[20px]">
+                      <div className="absolute left-0 top-6 h-[127px] w-[194px] -rotate-[7deg] overflow-hidden rounded-[16px] bg-[#edf7fc] shadow-[0_14px_26px_rgba(14,41,81,0.19)] transition-transform duration-300 group-hover:-translate-x-1 group-hover:-rotate-[9deg] sm:top-6 sm:h-[158px] sm:w-[242px] sm:rounded-[20px]">
                         <Image
                           src={activeHeroProject.backImage}
                           alt=""
                           fill
-                          sizes="(min-width: 640px) 215px, 172px"
+                          sizes="(min-width: 640px) 242px, 194px"
                           className="object-cover object-[56%_42%]"
                         />
                       </div>
-                      <div className="absolute right-0 top-0 h-[130px] w-[195px] rotate-[6deg] overflow-hidden rounded-[18px] border-0 bg-white shadow-none outline-none transition-transform duration-300 group-hover:translate-x-1 group-hover:rotate-[8deg] sm:h-[165px] sm:w-[245px] sm:rounded-[24px]">
+                      <div className="absolute right-0 top-0 h-[148px] w-[222px] rotate-[6deg] overflow-hidden rounded-[18px] border-0 bg-white shadow-none outline-none transition-transform duration-300 group-hover:translate-x-1 group-hover:rotate-[8deg] sm:h-[188px] sm:w-[278px] sm:rounded-[24px]">
                         <Image
                           src={activeHeroProject.frontImage}
                           alt={activeHeroProject.title}
                           fill
-                          sizes="(min-width: 640px) 245px, 195px"
+                          sizes="(min-width: 640px) 278px, 222px"
                           className="object-cover object-[54%_46%] transition-transform duration-500 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,19,37,0.02)_20%,rgba(5,19,37,0.88)_100%)] opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
