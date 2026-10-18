@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "check:locales": "node scripts/check-locales.mjs",
+    "i18n:translate": "node scripts/libretranslate.mjs",
+    "i18n:translate:apply": "node scripts/libretranslate.mjs --apply",
     "ai-context:update": "node scripts/update-ai-context-tracker.mjs",
     "ai-context:reset": "node scripts/update-ai-context-tracker.mjs reset"
   },

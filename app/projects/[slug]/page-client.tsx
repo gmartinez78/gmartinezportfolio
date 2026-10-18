@@ -33,7 +33,6 @@ import {
 } from "@/lib/cms/public";
 import type { CaseStudyContentBlock, CaseStudyRecord, CaseStudyReflection } from "@/lib/cms/types";
 import { withBasePath } from "@/lib/site";
-import { getVisibleProjectTags } from "@/lib/project-tags";
 import { useTranslate } from "@/lib/i18n/use-translate";
 import { useLanguage, type Language } from "@/lib/i18n/language-context";
 import { translate } from "@/lib/i18n/dictionary";
@@ -8400,6 +8399,30 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
+      <section className="mx-auto max-w-[1200px] px-6 pb-10 pt-1 md:px-10 xl:px-20">
+        <p className={`mb-2 text-[13px] font-semibold uppercase ${isNayyaCaseStudy ? "tracking-[0.16em] text-[#5c5960]" : "tracking-[0.45em] text-[#1183D0]"}`}>{translate("caseStudy.moreWork")}</p>
+        <h2 className={`mb-8 font-inter ${isNayyaCaseStudy ? "text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold tracking-[-0.035em] text-[#141114]" : "text-[32px] text-[#0e2951]"}`}>{translate("caseStudy.otherProjects")}</h2>
+        <div className="grid gap-5 md:grid-cols-3">
+          {otherProjects.map((project) => (
+            <ProjectTeaserCard
+              key={project.slug}
+              id={project.cardId}
+              href={resolveProjectHref(project)}
+              dataCardId={project.cardId}
+              title={project.title}
+              description={project.tagline ?? ""}
+              tags={project.tags}
+              image={project.previewImage}
+              imageAlt={`${project.title} case study preview for ${project.company}`}
+              background={project.background}
+              ctaLabel={project.external_link ? "View project" : "View case study"}
+            />
+          ))}
+        </div>
+      </section>
+
+      <SiteFooter />
+
       <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
         {caseStudy.slug === "flock-accessibility-system" ? (
           <div className="mb-10 flex flex-wrap items-center justify-center gap-8">
@@ -8437,62 +8460,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             />
           </div>
         ) : null}
-        <div className={`mt-6 grid gap-10 md:grid-cols-[1fr_auto_1fr] md:items-start ${isNayyaCaseStudy ? "border-t border-[#d7d2d3] pt-8" : ""}`}>
-          <div className="flex flex-col items-center gap-6">
-            <p className={`text-[13px] font-semibold uppercase ${isNayyaCaseStudy ? "tracking-[0.16em] text-[#5c5960]" : "tracking-[0.32em] text-[#5c7792]"}`}>
-              Tools
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {caseStudy.tools.map((tool) => {
-                const icon = isNayyaCaseStudy ? resolveToolIconOptional(tool) : null;
-                return (
-                  <Badge key={tool} size="tag" className={isNayyaCaseStudy ? "inline-flex items-center gap-2 border border-[#d7d2d3] bg-white text-[#141114]" : ""}>
-                    {icon ? <Image src={icon} alt="" aria-hidden="true" width={18} height={18} className="size-[18px] object-contain" /> : null}
-                    {tool}
-                  </Badge>
-                );
-              })}
-            </div>
-          </div>
-          <div className={`hidden w-px self-stretch md:block ${isNayyaCaseStudy ? "bg-[#d7d2d3]" : "bg-[#d7e8f7]"}`} />
-          <div className="flex flex-col items-center gap-6">
-            <p className={`text-[13px] font-semibold uppercase ${isNayyaCaseStudy ? "tracking-[0.16em] text-[#5c5960]" : "tracking-[0.32em] text-[#5c7792]"}`}>
-              Tags
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {getVisibleProjectTags(caseStudy.tags).map((tag) => (
-                <Badge key={tag} size="tag" className={isNayyaCaseStudy ? "border border-[#f8df36] bg-[#fffbea] text-[#141114]" : ""}>
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        </div>
       </section>
 
-      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        <p className={`mb-2 text-[13px] font-semibold uppercase ${isNayyaCaseStudy ? "tracking-[0.16em] text-[#5c5960]" : "tracking-[0.45em] text-[#1183D0]"}`}>{translate("caseStudy.moreWork")}</p>
-        <h2 className={`mb-8 font-inter ${isNayyaCaseStudy ? "text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold tracking-[-0.035em] text-[#141114]" : "text-[32px] text-[#0e2951]"}`}>{translate("caseStudy.otherProjects")}</h2>
-        <div className="grid gap-5 md:grid-cols-3">
-          {otherProjects.map((project) => (
-            <ProjectTeaserCard
-              key={project.slug}
-              id={project.cardId}
-              href={resolveProjectHref(project)}
-              dataCardId={project.cardId}
-              title={project.title}
-              description={project.tagline ?? ""}
-              tags={project.tags}
-              image={project.previewImage}
-              imageAlt={`${project.title} case study preview for ${project.company}`}
-              background={project.background}
-              ctaLabel={project.external_link ? "View project" : "View case study"}
-            />
-          ))}
-        </div>
-      </section>
 
-      <SiteFooter />
     </main>
   );
 }
