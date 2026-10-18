@@ -194,18 +194,44 @@ const PROTECTA_EXPERIENCE_DECISIONS = [
 
 const PROTECTA_WEBSITE_URL = "https://www.protecta.today/";
 
-const NAYYA_HIGHLIGHT_METRICS: HighlightMetric[] = [
-  { value: "307%", label: "IRR", context: "Projected ROI,estimated return from increased plan uptake (NPV $11.4M)." },
-  { value: "~115,500", label: "Annual Benefits", context: "Enrollments completed 5% above the 100K goal." },
-  { value: "67%", label: "Conversion Rate", context: "Users who received Nayya recommendations that fit their needs and enrolled in a plan." },
-];
+const NAYYA_HIGHLIGHT_METRICS: Record<Language, HighlightMetric[]> = {
+  en: [
+    { value: "307%", label: "IRR", context: "Projected ROI,estimated return from increased plan uptake (NPV $11.4M)." },
+    { value: "~115,500", label: "Annual Benefits", context: "Enrollments completed 5% above the 100K goal." },
+    { value: "67%", label: "Conversion Rate", context: "Users who received Nayya recommendations that fit their needs and enrolled in a plan." },
+  ],
+  es: [
+    { value: "307%", label: "VAN", context: "ROI proyectado, retorno estimado por mayor adopción de planes (VPN $11.4M)." },
+    { value: "~115,500", label: "Beneficios anuales", context: "Inscripciones completadas un 5% por encima de la meta de 100K." },
+    { value: "67%", label: "Tasa de conversión", context: "Usuarios que recibieron recomendaciones de Nayya ajustadas a sus necesidades y se inscribieron en un plan." },
+  ],
+  de: [
+    { value: "307%", label: "Interner Zinsfuß", context: "Prognostizierter ROI, geschätzter Rückfluss durch höhere Planaufnahme (Barwert 11,4 Mio. $)." },
+    { value: "~115,500", label: "Jährliche Leistungen", context: "Abgeschlossene Einschreibungen 5 % über dem Ziel von 100 Tsd." },
+    { value: "67%", label: "Konversionsrate", context: "Nutzer, die passende Nayya-Empfehlungen erhielten und sich für einen Plan angemeldet haben." },
+  ],
+};
 
-const NAYYA_PROBLEM_METRICS: ProblemMetric[] = [
-  { value: "32%", label: "of employees dropped off before completing the benefits selection flow" },
-  { value: "44%", label: "of employees felt confident they had selected the best plan for their needs" },
-  { value: "48%", label: "understood why they needed to continue in a separate experience" },
-  { value: "2.9/5", label: "trust score for the transition in testing" },
-];
+const NAYYA_PROBLEM_METRICS: Record<Language, ProblemMetric[]> = {
+  en: [
+    { value: "32%", label: "of employees dropped off before completing the benefits selection flow" },
+    { value: "44%", label: "of employees felt confident they had selected the best plan for their needs" },
+    { value: "48%", label: "understood why they needed to continue in a separate experience" },
+    { value: "2.9/5", label: "trust score for the transition in testing" },
+  ],
+  es: [
+    { value: "32%", label: "de los empleados abandonó antes de completar el flujo de selección de beneficios" },
+    { value: "44%", label: "de los empleados se sintió seguro de haber elegido el mejor plan para sus necesidades" },
+    { value: "48%", label: "entendió por qué debía continuar en una experiencia separada" },
+    { value: "2.9/5", label: "puntuación de confianza sobre la transición en las pruebas" },
+  ],
+  de: [
+    { value: "32%", label: "der Nutzer brechen vor dem Abschluss des Leistungswahl-Flusses ab" },
+    { value: "44%", label: "der Nutzer waren sich sicher, den besten Plan für ihre Bedürfnisse gewählt zu haben" },
+    { value: "48%", label: "verstanden, warum sie in einer separaten Erfahrung weitermachen mussten" },
+    { value: "2.9/5", label: "Vertrauenswert für den Übergang in den Tests" },
+  ],
+};
 
 const CONFIDENTIAL_PROBLEM_METRICS: ProblemMetric[] = [
   { value: "6.0%", label: "conversion rate on the original control campaign" },
@@ -685,115 +711,312 @@ function getReverseTechExtraSources(language: Language) {
   return language === "es" ? REVERSE_TECH_EXTRA_SOURCES_ES : REVERSE_TECH_EXTRA_SOURCES_EN;
 }
 
-const NAYYA_PROCESS_ALTERNATIVES = [
-  {
-    title: "Embedded Nayya section",
-    status: "Rejected",
-    body:
-      "Add the Nayya form as its own step inside the enrollment process, keeping the assistance directly in the core flow.",
-    imageSrc: "/images/projects/nayya-ai-benefits/banners/nayya-embedded-section.jpg",
-  },
-  {
-    title: "Benefit-list entry point",
-    status: "Rejected",
-    body:
-      "Place a button in the benefits list so users could choose to use Nayya while reviewing available coverage options.",
-    imageSrc: "/images/projects/nayya-ai-benefits/banners/nayya-benefit-list-entry.jpg",
-  },
-  {
-    title: "Guided decision modal",
-    status: "Selected",
-    body:
-      "Show a modal after users entered their family information, when guidance felt timely connected to choosing better benefits.",
-    imageSrc: "/images/projects/nayya-ai-benefits/banners/nayya-guided-decision-modal.jpg",
-  },
-];
+type NayyaProcessAlternative = {
+  title: string;
+  selected: boolean;
+  body: string;
+  imageSrc: string;
+};
 
-const NAYYA_PROCESS_TRADEOFFS = [
-  {
-    alternative: "Embedded Nayya section",
-    strength: "Most seamless and visible inside enrollment.",
-    tradeoff: "Required too much product and engineering work for the project scope.",
-    decision: "Rejected",
-  },
-  {
-    alternative: "Benefit-list entry point",
-    strength: "Lower implementation effort and easy to place in the existing UI.",
-    tradeoff: "Relied on users noticing and seeking help, which was not their primary goal in that moment.",
-    decision: "Rejected",
-  },
-  {
-    alternative: "Guided decision modal",
-    strength: "Introduced help at a high-intent moment after family details were entered.",
-    tradeoff: "Less deeply integrated than a full embedded section, but clearer and more feasible.",
-    decision: "Selected",
-  },
-];
+const NAYYA_PROCESS_ALTERNATIVES: Record<Language, NayyaProcessAlternative[]> = {
+  en: [
+    {
+      title: "Embedded *Nayya* section",
+      selected: false,
+      body:
+        "Add the Nayya form as its own step inside the enrollment process, keeping the assistance directly in the core flow.",
+      imageSrc: "/images/projects/nayya-ai-benefits/banners/nayya-embedded-section.jpg",
+    },
+    {
+      title: "Benefit-list *entry* point",
+      selected: false,
+      body:
+        "Place a button in the benefits list so users could choose to use Nayya while reviewing available coverage options.",
+      imageSrc: "/images/projects/nayya-ai-benefits/banners/nayya-benefit-list-entry.jpg",
+    },
+    {
+      title: "Guided *decision* modal",
+      selected: true,
+      body:
+        "Show a modal after users entered their family information, when guidance felt timely connected to choosing better benefits.",
+      imageSrc: "/images/projects/nayya-ai-benefits/banners/nayya-guided-decision-modal.jpg",
+    },
+  ],
+  es: [
+    {
+      title: "Sección *Nayya* integrada",
+      selected: false,
+      body:
+        "Añadir el formulario de Nayya como un paso propio dentro del proceso de inscripción, manteniendo la asistencia directamente en el flujo principal.",
+      imageSrc: "/images/projects/nayya-ai-benefits/banners/nayya-embedded-section.jpg",
+    },
+    {
+      title: "Punto de *entrada* en la lista de beneficios",
+      selected: false,
+      body:
+        "Colocar un botón en la lista de beneficios para que los usuarios pudieran elegir usar Nayya mientras revisaban las opciones de cobertura disponibles.",
+      imageSrc: "/images/projects/nayya-ai-benefits/banners/nayya-benefit-list-entry.jpg",
+    },
+    {
+      title: "Modal de *decisión* guiada",
+      selected: true,
+      body:
+        "Mostrar un modal después de que los usuarios ingresaran la información de su familia, cuando la guía llegaba en el momento oportuno de elegir mejores beneficios.",
+      imageSrc: "/images/projects/nayya-ai-benefits/banners/nayya-guided-decision-modal.jpg",
+    },
+  ],
+  de: [
+    {
+      title: "Eingebettete *Nayya*-Sektion",
+      selected: false,
+      body:
+        "Das Nayya-Formular als eigenen Schritt in den Einschreibeprozess einbauen, damit die Hilfe direkt im Hauptfluss bleibt.",
+      imageSrc: "/images/projects/nayya-ai-benefits/banners/nayya-embedded-section.jpg",
+    },
+    {
+      title: "*Einstiegspunkt* in der Leistungsliste",
+      selected: false,
+      body:
+        "Einen Button in die Leistungsliste einfügen, damit Nutzer Nayya nutzen können, während sie die verfügbaren Leistungen prüfen.",
+      imageSrc: "/images/projects/nayya-ai-benefits/banners/nayya-benefit-list-entry.jpg",
+    },
+    {
+      title: "Modal für *geführte Entscheidungen*",
+      selected: true,
+      body:
+        "Ein Modal anzeigen, nachdem Nutzer ihre Familien daten eingegeben haben, wenn die Unterstützung genau dann greift, wenn es um die bessere Leistungswahl geht.",
+      imageSrc: "/images/projects/nayya-ai-benefits/banners/nayya-guided-decision-modal.jpg",
+    },
+  ],
+};
 
-const NAYYA_DESIGN_STRATEGY = [
-  "I started by reviewing the available data, gathering the right inputs, and aligning with the team on constraints and goals before moving into design.",
-  "From there, I explored several integration approaches and evaluated each one based on timing in the user journey, technical feasibility, and how clearly it communicated the value of the experience.",
-  "Once a direction was selected, I designed the handoff to feel intentional and trustworthy, using clear messaging and visual cues to help users understand the transition and stay confident as they chose their benefits.",
-];
+type NayyaProcessTradeoff = {
+  strength: string;
+  tradeoff: string;
+};
 
-const NAYYA_TESTING_RESULTS = [
-  {
-    metric: "7",
-    label: "Participants",
-    finding: "Moderated usability testing on the integrated prototype",
-    insight: "Representative sample for qualitative insight, with patterns that were consistent across participants",
-    signal: "Positive",
-  },
-  {
-    metric: "4/5",
-    label: "Satisfaction score",
-    finding: "Users rated their overall experience completing the flow",
-    insight: "High comfort level with the process, and users felt supported through the benefit selection steps",
-    signal: "Positive",
-  },
-  {
-    metric: "100%",
-    label: "Task completion",
-    finding: "All participants successfully completed the end-to-end flow",
-    insight: "Core interaction design supported task completion without critical failure points",
-    signal: "Positive",
-  },
-  {
-    metric: "High",
-    label: "Data trust",
-    finding: "Users felt comfortable sharing personal information within the Nayya form",
-    insight: "Trust signals and context-setting reduced anxiety around data sharing",
-    signal: "Positive",
-  },
-  {
-    metric: "Low",
-    label: "Form fatigue",
-    finding: "Users perceived the form as shorter than expected",
-    insight: "Perceived effort was lower than anticipated, reducing drop-off risk at form entry",
-    signal: "Positive",
-  },
-  {
-    metric: "Critical",
-    label: "Transition clarity",
-    finding: "Users did not know Nayya was part of the Flex process and were confused returning to their original point",
-    insight: "The platform handoff lacked sufficient context, and users lost their place after completing Nayya",
-    signal: "Negative",
-  },
-  {
-    metric: "Modal",
-    label: "Dismissal rate",
-    finding: "Some users closed the modal automatically without reading it",
-    insight: "Reflexive dismiss behavior suggests the modal pattern may need reconsideration or a stronger hook",
-    signal: "Negative",
-  },
-  {
-    metric: "Low",
-    label: "Question relevance",
-    finding: "A few users questioned why certain personal questions were being asked",
-    insight: "Missing context around question purpose means users need clearer rationale to stay engaged",
-    signal: "Negative",
-  },
-];
+const NAYYA_PROCESS_TRADEOFFS: Record<Language, NayyaProcessTradeoff[]> = {
+  en: [
+    {
+      strength: "Most seamless and visible inside enrollment.",
+      tradeoff: "Required too much product and engineering work for the project scope.",
+    },
+    {
+      strength: "Lower implementation effort and easy to place in the existing UI.",
+      tradeoff: "Relied on users noticing and seeking help, which was not their primary goal in that moment.",
+    },
+    {
+      strength: "Introduced help at a high-intent moment after family details were entered.",
+      tradeoff: "Less deeply integrated than a full embedded section, but clearer and more feasible.",
+    },
+  ],
+  es: [
+    {
+      strength: "La más fluida y visible dentro de la inscripción.",
+      tradeoff: "Requería demasiado trabajo de producto e ingeniería para el alcance del proyecto.",
+    },
+    {
+      strength: "Menor esfuerzo de implementación y fácil de ubicar en la interfaz existente.",
+      tradeoff: "Dependía de que los usuarios notaran y buscaran ayuda, que no era su objetivo principal en ese momento.",
+    },
+    {
+      strength: "Ofrecía ayuda en un momento de alta intención después de ingresar los datos familiares.",
+      tradeoff: "Menos integrada que una sección completa, pero más clara y factible.",
+    },
+  ],
+  de: [
+    {
+      strength: "Am nahtlossten und sichtbarsten innerhalb der Einschreibung.",
+      tradeoff: "Erforderte zu viel Produkt- und Engineering-Arbeit im Rahmen des Projekts.",
+    },
+    {
+      strength: "Geringerer Implementierungsaufwand und leicht in der bestehenden UI platzierbar.",
+      tradeoff: "Setzte voraus, dass Nutzer Hilfe suchen und bemerken, was in diesem Moment nicht ihr Hauptziel war.",
+    },
+    {
+      strength: "Hilfe genau dann, wenn hohe Kaufabsicht nach der Eingabe der Familien daten besteht.",
+      tradeoff: "Weniger tief integriert als ein vollständig eingebetteter Abschnitt, dafür klarer und umsetzbarer.",
+    },
+  ],
+};
+
+const NAYYA_DESIGN_STRATEGY: Record<Language, string[]> = {
+  en: [
+    "I started by reviewing the available data, gathering the right inputs, and aligning with the team on constraints and goals before moving into design.",
+    "From there, I explored several integration approaches and evaluated each one based on timing in the user journey, technical feasibility, and how clearly it communicated the value of the experience.",
+    "Once a direction was selected, I designed the handoff to feel intentional and trustworthy, using clear messaging and visual cues to help users understand the transition and stay confident as they chose their benefits.",
+  ],
+  es: [
+    "Comenzué revisando los datos disponibles, reuniendo los insumos adecuados y alineándome con el equipo sobre restricciones y objetivos antes de pasar al diseño.",
+    "A partir de ahí, exploré varios enfoques de integración y evalué cada uno según su momento en el recorrido del usuario, la viabilidad técnica y qué tan clara comunicaba el valor de la experiencia.",
+    "Una vez seleccionada una dirección, diseñé la transición para que se sintiera intencional y confiable, usando mensajes claros y señales visuales que ayudaran a los usuarios a entender el cambio y mantener la confianza al elegir sus beneficios.",
+  ],
+  de: [
+    "Ich habe mit der Auswertung der verfügbaren Daten begonnen, die richtigen Inputs gesammelt und mich mit dem Team über Einschränkungen und Ziele abgestimmt, bevor ich mit dem Design begann.",
+    "Anschließend habe ich mehrere Integrationsansätze erkundet und jeden nach seinem Timing im Nutzerpfad, der technischen Machbarkeit und der Klarheit des Werts der Erfahrung bewertet.",
+    "Nach der Richtungswahl habe ich den Übergang bewusst und vertrauenswürdig gestaltet, mit klaren Botschaften und visuellen Signalen, die Nutzer beim Verständnis des Wechsels unterstützen und sicher bei der Leistungswahl halten.",
+  ],
+};
+
+type NayyaTestingResult = {
+  metric: string;
+  label: string;
+  finding: string;
+  insight: string;
+};
+
+const NAYYA_TESTING_RESULTS: Record<Language, NayyaTestingResult[]> = {
+  en: [
+    {
+      metric: "7",
+      label: "Participants",
+      finding: "Moderated usability testing on the integrated prototype",
+      insight: "Representative sample for qualitative insight, with patterns that were consistent across participants",
+    },
+    {
+      metric: "4/5",
+      label: "Satisfaction score",
+      finding: "Users rated their overall experience completing the flow",
+      insight: "High comfort level with the process, and users felt supported through the benefit selection steps",
+    },
+    {
+      metric: "100%",
+      label: "Task completion",
+      finding: "All participants successfully completed the end-to-end flow",
+      insight: "Core interaction design supported task completion without critical failure points",
+    },
+    {
+      metric: "High",
+      label: "Data trust",
+      finding: "Users felt comfortable sharing personal information within the Nayya form",
+      insight: "Trust signals and context-setting reduced anxiety around data sharing",
+    },
+    {
+      metric: "Low",
+      label: "Form fatigue",
+      finding: "Users perceived the form as shorter than expected",
+      insight: "Perceived effort was lower than anticipated, reducing drop-off risk at form entry",
+    },
+    {
+      metric: "Critical",
+      label: "Transition clarity",
+      finding: "Users did not know Nayya was part of the Flex process and were confused returning to their original point",
+      insight: "The platform handoff lacked sufficient context, and users lost their place after completing Nayya",
+    },
+    {
+      metric: "Modal",
+      label: "Dismissal rate",
+      finding: "Some users closed the modal automatically without reading it",
+      insight: "Reflexive dismiss behavior suggests the modal pattern may need reconsideration or a stronger hook",
+    },
+    {
+      metric: "Low",
+      label: "Question relevance",
+      finding: "A few users questioned why certain personal questions were being asked",
+      insight: "Missing context around question purpose means users need clearer rationale to stay engaged",
+    },
+  ],
+  es: [
+    {
+      metric: "7",
+      label: "Participantes",
+      finding: "Prueba de usabilidad moderada en el prototipo integrado",
+      insight: "Muestra representativa para hallazgos cualitativos, con patrones consistentes entre participantes",
+    },
+    {
+      metric: "4/5",
+      label: "Satisfacción",
+      finding: "Los usuarios valoraron su experiencia general al completar el flujo",
+      insight: "Alto nivel de comodidad con el proceso; se sintieron acompañados durante los pasos de selección de beneficios",
+    },
+    {
+      metric: "100%",
+      label: "Finalización de tarea",
+      finding: "Todos los participantes completaron con éxito el flujo de principio a fin",
+      insight: "El diseño de interacción central permitió completar la tarea sin puntos de fallo críticos",
+    },
+    {
+      metric: "Alto",
+      label: "Confianza en los datos",
+      finding: "Los usuarios se sintieron cómodos compartiendo información personal dentro del formulario de Nayya",
+      insight: "Las señales de confianza y el contexto redujeron la ansiedad al compartir datos",
+    },
+    {
+      metric: "Bajo",
+      label: "Fatiga del formulario",
+      finding: "Los usuarios percibieron el formulario como más corto de lo esperado",
+      insight: "El esfuerzo percibido fue menor de lo anticipado, reduciendo el riesgo de abandono al inicio del formulario",
+    },
+    {
+      metric: "Crítico",
+      label: "Claridad de la transición",
+      finding: "Los usuarios no sabían que Nayya formaba parte del proceso de Flex y se confundieron al volver a su punto original",
+      insight: "La transición entre plataformas carecía de contexto suficiente y los usuarios perdieron su lugar tras completar Nayya",
+    },
+    {
+      metric: "Modal",
+      label: "Tasa de cierre",
+      finding: "Algunos usuarios cerraron el modal automáticamente sin leerlo",
+      insight: "El cierre reflejo sugiere que el patrón de modal podría necesitar reconsideración o un gancho más fuerte",
+    },
+    {
+      metric: "Bajo",
+      label: "Relevancia de las preguntas",
+      finding: "Algunos usuarios cuestionaron por qué se les pedían ciertas preguntas personales",
+      insight: "Falta contexto sobre el propósito de las preguntas; los usuarios necesitan una razón más clara para mantenerse involucrados",
+    },
+  ],
+  de: [
+    {
+      metric: "7",
+      label: "Teilnehmer",
+      finding: "Moderierte Usability-Tests am integrierten Prototyp",
+      insight: "Repräsentatives Sample für qualitative Erkenntnisse mit Mustern, die über alle Teilnehmer konsistent waren",
+    },
+    {
+      metric: "4/5",
+      label: "Zufriedenheitswert",
+      finding: "Nutzer bewerteten ihre Gesamterfahrung beim Abschluss des Flusses",
+      insight: "Hohe Zufriedenheit mit dem Ablauf; Nutzer fühlten sich bei den Leistungswahl-Schritten unterstützt",
+    },
+    {
+      metric: "100%",
+      label: "Aufgabenerfüllung",
+      finding: "Alle Teilnehmer haben den Fluss von Anfang bis Ende erfolgreich abgeschlossen",
+      insight: "Das zentrale Interaktionsdesign ermöglichte die Aufgabenerfüllung ohne kritische Fehlerpunkte",
+    },
+    {
+      metric: "Hoch",
+      label: "Vertrauen in Daten",
+      finding: "Nutzer fühlten sich beim Teilen persönlicher Informationen im Nayya-Formular wohl",
+      insight: "Vertrauenssignale und Kontext setzten die Angst vor dem Datenteilen herunter",
+    },
+    {
+      metric: "Niedrig",
+      label: "Formularmüdigkeit",
+      finding: "Nutzer empfanden das Formular als kürzer als erwartet",
+      insight: "Der wahrgenommene Aufwand war geringer als erwartet und senkte das Abbruchrisiko beim Formularstart",
+    },
+    {
+      metric: "Kritisch",
+      label: "Klarheit des Übergangs",
+      finding: "Nutzer wussten nicht, dass Nayya Teil des Flex-Prozesses war und waren verwirrt, als sie an ihren Ausgangspunkt zurückkehrten",
+      insight: "Der Plattform-Übergang lieferte zu wenig Kontext; Nutzer verloren nach Nayya ihren Platz",
+    },
+    {
+      metric: "Modal",
+      label: "Schließrate",
+      finding: "Einige Nutzer schlossen das Modal automatisch, ohne es zu lesen",
+      insight: "Reflexartiges Schließen deutet darauf hin, dass das Modal-Muster überdacht werden sollte oder ein stärkerer Anreiz nötig ist",
+    },
+    {
+      metric: "Niedrig",
+      label: "Relevanz der Fragen",
+      finding: "Einige Nutzer hinterfragten, warum bestimmte persönliche Fragen gestellt werden",
+      insight: "Fehlender Kontext zum Zweck der Fragen bedeutet, dass Nutzer eine klarere Begründung brauchen, um engagiert zu bleiben",
+    },
+  ],
+};
 
 const I9_TESTING_RESULTS = [
   {
@@ -822,33 +1045,68 @@ const I9_TESTING_RESULTS = [
   },
 ];
 
-const NAYYA_REFLECTIONS: CaseStudyReflection[] = [
-  {
-    title: "Designing under constraints.",
-    body: "Designing under technical constraints does not mean compromising the experience. It means finding the most effective path within the boundaries you are given.",
-  },
-  {
-    title: "Test early, fix early.",
-    body: "User testing, even at a small scale, surfaces the decisions that matter most before they become expensive to fix.",
-  },
-  {
-    title: "Trust is a design problem.",
-    body: "When users cross platform boundaries, clarity and context are what keep them moving forward.",
-  },
-  {
-    title: "Constraints force focus.",
-    body: "The inability to embed Nayya natively pushed the team to invest in transition design, an area that is often overlooked when seamless integration feels like the obvious solution.",
-  },
-];
+const NAYYA_REFLECTIONS: Record<Language, CaseStudyReflection[]> = {
+  en: [
+    {
+      title: "Designing under constraints.",
+      body: "Designing under technical constraints does not mean compromising the experience. It means finding the most effective path within the boundaries you are given.",
+    },
+    {
+      title: "Test early, fix early.",
+      body: "User testing, even at a small scale, surfaces the decisions that matter most before they become expensive to fix.",
+    },
+    {
+      title: "Trust is a design problem.",
+      body: "When users cross platform boundaries, clarity and context are what keep them moving forward.",
+    },
+    {
+      title: "Constraints force focus.",
+      body: "The inability to embed Nayya natively pushed the team to invest in transition design, an area that is often overlooked when seamless integration feels like the obvious solution.",
+    },
+  ],
+  es: [
+    {
+      title: "Diseñar con restricciones.",
+      body: "Diseñar bajo restricciones técnicas no significa comprometer la experiencia. Significa encontrar el camino más efectivo dentro de los límites que te dan.",
+    },
+    {
+      title: "Prueba pronto, corrige pronto.",
+      body: "La prueba con usuarios, incluso a pequeña escala, saca a la luz las decisiones más importantes antes de que sean caras de corregir.",
+    },
+    {
+      title: "La confianza es un problema de diseño.",
+      body: "Cuando los usuarios cruzan límites entre plataformas, la claridad y el contexto son lo que les permite seguir adelante.",
+    },
+    {
+      title: "Las restricciones obligan a enfocarse.",
+      body: "La imposibilidad de incrustar Nayya de forma nativa llevó al equipo a invertir en diseño de transición, un área que suele pasarse por alto cuando la integración perfecta parece la solución obvia.",
+    },
+  ],
+  de: [
+    {
+      title: "Gestalten unter Einschränkungen.",
+      body: "Unter technischen Einschränkungen zu gestalten heißt nicht, die Erfahrung zu opfern. Es heißt, den effektivsten Weg innerhalb der gegebenen Grenzen zu finden.",
+    },
+    {
+      title: "Früh testen, früh verbessern.",
+      body: "Nutzertests, auch im kleinen Maßstab, zeigen die wichtigsten Entscheidungen, bevor sie teuer werden.",
+    },
+    {
+      title: "Vertrauen ist ein Designproblem.",
+      body: "Wenn Nutzer Plattformgrenzen überschreiten, sorgen Klarheit und Kontext dafür, dass sie weitermachen.",
+    },
+    {
+      title: "Einschränkungen erzwingen Fokus.",
+      body: "Die Unmöglichkeit, Nayya nativ einzubetten, brachte das Team dazu, in Übergangsdesign zu investieren – ein Bereich, der oft übersehen wird, wenn nahtlose Integration wie die offensichtliche Lösung wirkt.",
+    },
+  ],
+};
 
 const NAYYA_PHONE_IMAGE = "/images/projects/nayya-ai-benefits/banners/nayya-design-process.png";
 const NAYYA_IMPACT_FIGMA_EMBED =
   "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FYK1xcLLDokH5gNYAeDmNiP%2FNayya%3Fnode-id%3D20753-8774%26m%3Ddev%26t%3DOkK79FuO2xBLEwc6-1";
 const REVERSE_TECH_FLOW_EMBED =
   "https://embed.figma.com/design/82wWga1ObOtJEZ9LyNaQTo/Reverse-Tech---Flow?node-id=0-1&embed-host=share";
-const NAYYA_INSIGHTS_CLOSING =
-  "Participants who completed the Nayya survey enrolled in TWICE as many benefits as those who skipped it.";
-
 const METHODOLOGY_COLORS = ["#87d4ac", "#f5e692", "#d9b8ff", "#68c7c1", "#d1f090", "#f7b6c8", "#a9c6ff"];
 
 const PROTECTA_WORKFLOW_SUMMARIES: Record<"en" | "es", string[]> = {
@@ -1860,6 +2118,18 @@ function renderNayyaEditorialTitle(title: string) {
       {words.join(" ")}{" "}
       <span className="font-playfair font-normal italic">{accent}</span>
     </>
+  );
+}
+
+function renderMarkedTitle(title: string) {
+  return title.split("*").map((part, index) =>
+    index % 2 === 1 ? (
+      <span key={`accent-${index}`} className="font-playfair font-normal italic">
+        {part}
+      </span>
+    ) : (
+      <Fragment key={`part-${index}`}>{part}</Fragment>
+    )
   );
 }
 
@@ -3088,19 +3358,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       : [];
   const highlightMetrics =
     caseStudy.slug === "nayya-ai-benefits"
-      ? NAYYA_HIGHLIGHT_METRICS
+      ? NAYYA_HIGHLIGHT_METRICS[language]
       : caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG
       ? caseStudy.metrics.slice(0, 3)
       : caseStudy.metrics.slice(0, 3);
   const problemMetrics =
     caseStudy.slug === "nayya-ai-benefits"
-      ? NAYYA_PROBLEM_METRICS
+      ? NAYYA_PROBLEM_METRICS[language]
       : caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG
       ? CONFIDENTIAL_PROBLEM_METRICS
       : caseStudy.metrics.slice(0, 3);
-  const designStrategy = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_DESIGN_STRATEGY : caseStudy.design_strategy;
+  const designStrategy = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_DESIGN_STRATEGY[language] : caseStudy.design_strategy;
   const methodologyName = caseStudy.methodology.name;
-  const reflections = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_REFLECTIONS : caseStudy.reflections;
+  const reflections = caseStudy.slug === "nayya-ai-benefits" ? NAYYA_REFLECTIONS[language] : caseStudy.reflections;
   const projectYear = caseStudy.year;
   const isNayyaCaseStudy = caseStudy.slug === "nayya-ai-benefits";
   const nayyaTitle = isNayyaCaseStudy ? splitNayyaHeroTitle(caseStudy.title, language) : null;
@@ -3397,7 +3667,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className={`mb-6 ${isNayyaCaseStudy ? "text-left" : "text-center"}`}>
               <div className={`relative py-6 ${isNayyaCaseStudy ? "max-w-[1040px]" : "mx-auto max-w-[760px] px-5 sm:px-8"}`}>
                 <p className={`mb-3 font-inter ${isNayyaCaseStudy ? "inline-flex rounded-full bg-[#f8df36] px-4 py-2 text-xs font-semibold text-[#141114]" : "text-[13px] uppercase tracking-[3px] text-[#5c7792]"}`}>
-                  {caseStudy.industry ?? protectaUi.caseStudy}
+                  {caseStudy.industry ?? translate("caseStudy.caseStudyLabel")}
                 </p>
                 <h1 className={`mb-5 font-inter font-bold leading-[0.98] ${isNayyaCaseStudy ? "max-w-[1000px] text-[clamp(2.5rem,5.5vw,4.5rem)] tracking-[-0.055em] text-[#141114]" : "text-[36px] leading-[1.15] text-[#0e2951] md:text-[44px]"}`}>
                   {isNayyaCaseStudy ? (
@@ -3512,10 +3782,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <div className={isNayyaCaseStudy ? "rounded-[24px] border-l-[3px] border-[#f8df36] bg-white px-6 py-7 shadow-[8px_10px_0_#c7e8f7] md:px-10 md:py-9" : ""}>
         {isNayyaCaseStudy ? (
           <p className="mb-6 font-inter text-[15px] font-semibold uppercase tracking-[0.16em] text-[#141114]">
-            {protectaUi.structure}
+            {translate("caseStudy.structure")}
           </p>
         ) : (
-          <SectionHeading eyebrow={protectaUi.overview} title={protectaUi.structure} centered className="mb-6" />
+          <SectionHeading eyebrow={translate("caseStudy.overview")} title={translate("caseStudy.structure")} centered className="mb-6" />
         )}
         {overviewBlock?.body ? (
           <p className="mx-auto mt-8 max-w-[860px] text-center font-inter text-[18px] leading-[1.8] text-[#5c7792]">
@@ -4322,10 +4592,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className={caseStudy.slug === "reversetech" ? "text-center" : ""}>
               {isNayyaCaseStudy ? (
                 <div className="mb-10">
-                  <h2 className="font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">{renderNayyaEditorialTitle(protectaUi.problem)}</h2>
+                  <h2 className="font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">{renderNayyaEditorialTitle(translate("caseStudy.problem"))}</h2>
                 </div>
               ) : (
-                <SectionHeading eyebrow={protectaUi.caseStudy} title={protectaUi.problem} centered={caseStudy.slug === "reversetech"} className="mb-12" />
+                <SectionHeading eyebrow={translate("caseStudy.caseStudyLabel")} title={translate("caseStudy.problem")} centered={caseStudy.slug === "reversetech"} className="mb-12" />
               )}
               <div className="space-y-10">
                 {visibleStoryBlocks.map((block) => {
@@ -4971,7 +5241,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "protecta" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading eyebrow={protectaUi.methodology} title={methodologyName} centered className="mb-12" />
+          <SectionHeading eyebrow={translate("caseStudy.methodology")} title={methodologyName} centered className="mb-12" />
           <div className="mx-auto mb-10 max-w-[820px] text-center">
             <p className="mt-4 font-inter text-[16px] leading-[1.7] text-[#5c7792]">{PROTECTA_DECISION_MODEL[localizedLanguage].body}</p>
           </div>
@@ -7024,15 +7294,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "nayya-ai-benefits" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <h2 className="mb-5 text-left font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
-            {renderNayyaEditorialTitle("Alternatives explored")}
+            {renderNayyaEditorialTitle(translate("caseStudy.alternativesExplored"))}
           </h2>
           <p className="mb-10 max-w-[820px] font-inter text-[16px] leading-[1.7] text-[#5c5960]">
-            Three integration approaches were considered and assessed on placement, feasibility, and user support. The guided decision modal was selected as the strongest option and moved into testing.
+            {translate("caseStudy.alternativesIntro")}
           </p>
 
           <div className="grid gap-5">
-            {NAYYA_PROCESS_ALTERNATIVES.map((item, index) => {
-              const tradeoff = NAYYA_PROCESS_TRADEOFFS.find((row) => row.alternative === item.title);
+            {NAYYA_PROCESS_ALTERNATIVES[language].map((item, index) => {
+              const tradeoff = NAYYA_PROCESS_TRADEOFFS[language][index];
               const stickyOffset = ["md:top-20", "md:top-[100px]", "md:top-[120px]"][index];
               const cardColors = ["bg-[#c7c6ff]", "bg-[#c7e8f7]", "bg-white"];
 
@@ -7046,31 +7316,27 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     <div className="flex aspect-[16/10] w-full max-w-[440px] items-center justify-center overflow-hidden rounded-[18px] bg-white shadow-[0_10px_24px_rgba(69,16,68,0.14)]">
                       <img
                         src={withBasePath(item.imageSrc)}
-                        alt={`${item.title} concept`}
+                        alt={`${item.title.replaceAll("*", "")} ${translate("caseStudy.concept")}`}
                         className="h-full w-full object-cover"
                       />
                     </div>
                   </div>
                   <CardContent className="flex flex-1 flex-col items-start justify-center p-6 md:p-8">
-                    <Badge className={item.status === "Rejected" ? "border border-[#d7d2d3] bg-[#faf8f7] text-[#5c5960]" : "border border-[#f8df36] bg-[#f8df36] text-[#141114]"}>{item.status}</Badge>
+                    <Badge className={!item.selected ? "border border-[#d7d2d3] bg-[#faf8f7] text-[#5c5960]" : "border border-[#f8df36] bg-[#f8df36] text-[#141114]"}>
+                      {translate(item.selected ? "caseStudy.statusSelected" : "caseStudy.statusRejected")}
+                    </Badge>
                     <h3 className="mt-4 font-inter text-[24px] font-semibold leading-snug text-[#141114]">
-                      {item.title === "Embedded Nayya section" ? (
-                        <>Embedded <span className="font-playfair font-normal italic">Nayya</span> section</>
-                      ) : item.title === "Benefit-list entry point" ? (
-                        <>Benefit-list <span className="font-playfair font-normal italic">entry</span> point</>
-                      ) : item.title === "Guided decision modal" ? (
-                        <>Guided <span className="font-playfair font-normal italic">decision</span> modal</>
-                      ) : item.title}
+                      {renderMarkedTitle(item.title)}
                     </h3>
                     <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c5960]">{item.body}</p>
                     {tradeoff ? (
                       <div className="mt-5 grid gap-4 border-t border-[#d7d2d3] pt-4 sm:grid-cols-2">
                         <p className="font-inter text-[14px] leading-[1.65] text-[#5c5960]">
-                          <span className="font-semibold text-[#141114]">Strength: </span>
+                          <span className="font-semibold text-[#141114]">{translate("caseStudy.strength")}: </span>
                           {tradeoff.strength}
                         </p>
                         <p className="font-inter text-[14px] leading-[1.65] text-[#5c5960]">
-                          <span className="font-semibold text-[#141114]">Tradeoff: </span>
+                          <span className="font-semibold text-[#141114]">{translate("caseStudy.tradeoff")}: </span>
                           {tradeoff.tradeoff}
                         </p>
                       </div>
@@ -7086,21 +7352,22 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "nayya-ai-benefits" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <h2 className="mb-5 text-left font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
-            {renderNayyaEditorialTitle("Key Insights from Testing")}
+            {renderNayyaEditorialTitle(translate("caseStudy.keyInsightsFromTesting"))}
           </h2>
           <p className="mb-10 max-w-[820px] font-inter text-[16px] leading-[1.7] text-[#5c5960]">
-            Research and discovery clarified the key questions for testing: Did users understand the
-            handoff, feel confident continuing, and maintain trust throughout the experience? The selected
-            guided decision modal was the concept tested, and the findings showed which parts of the
-            integration felt clear and where friction still remained.
+            {translate("caseStudy.testingIntro")}
           </p>
           <DataTablePanel
             wrapperClassName="hidden overflow-hidden rounded-[20px] border border-[#d7d2d3] bg-white md:block"
             columnsClassName="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 px-6"
             headerClassName="border-b border-[#d7d2d3] bg-[#faf8f7] py-4 text-[#5c5960]"
             rowClassName="border-[#d7d2d3] px-6 py-5"
-            headers={[<div>Metric</div>, <div>Finding</div>, <div>Insight</div>]}
-            rows={NAYYA_TESTING_RESULTS.map((row) => [
+            headers={[
+              <div>{translate("caseStudy.metricCol")}</div>,
+              <div>{translate("caseStudy.findingCol")}</div>,
+              <div>{translate("caseStudy.insightCol")}</div>,
+            ]}
+            rows={NAYYA_TESTING_RESULTS[language].map((row) => [
               <div>
                 <p className="text-[30px] font-semibold leading-none text-[#141114]">{row.metric}</p>
                 <p className="mt-3 text-[14px] leading-[1.5] text-[#5c5960]">{row.label}</p>
@@ -7111,7 +7378,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           />
 
           <div className="grid gap-4 md:hidden">
-            {NAYYA_TESTING_RESULTS.map((row) => (
+            {NAYYA_TESTING_RESULTS[language].map((row) => (
               <KeyValueStackCard
                 key={`${row.metric}-${row.label}`}
                 items={[
@@ -7120,8 +7387,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     value: row.label,
                     valueClassName: "mt-2 text-[14px] leading-[1.5] text-[var(--ui-color-text-muted)]",
                   },
-                  { label: "Finding", value: row.finding, valueClassName: "mt-2 text-[14px] leading-[1.6] text-[var(--ui-color-text-muted)]" },
-                  { label: "Insight", value: row.insight, valueClassName: "mt-2 text-[14px] leading-[1.6] text-[var(--ui-color-text-muted)]" },
+                  { label: translate("caseStudy.findingCol"), value: row.finding, valueClassName: "mt-2 text-[14px] leading-[1.6] text-[var(--ui-color-text-muted)]" },
+                  { label: translate("caseStudy.insightCol"), value: row.insight, valueClassName: "mt-2 text-[14px] leading-[1.6] text-[var(--ui-color-text-muted)]" },
                 ]}
               />
             ))}
@@ -7142,7 +7409,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </ContentPanel>
             <div>
               <h2 className="mb-6 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
-                {renderNayyaEditorialTitle("The Solution")}
+                {renderNayyaEditorialTitle(translate("caseStudy.theSolution"))}
               </h2>
               {resultBlock?.body ? (
                 <p className="font-inter text-[17px] leading-[1.7] text-[#5c5960]">
@@ -7156,7 +7423,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "flock-accessibility-system" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title="The Solution" centered className="mb-12" />
+          <SectionHeading title={translate("caseStudy.theSolution")} centered className="mb-12" />
           <div className="mx-auto grid max-w-[1120px] items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
             <div className="space-y-5 text-center lg:text-left">
               {FLOCK_SOLUTION.map((item) => (
@@ -7393,18 +7660,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <Card className={isNayyaCaseStudy ? "border-0 bg-transparent p-0 py-0 shadow-none" : "border-0 bg-transparent p-0 py-0 shadow-none"}>
                 <CardContent className={isNayyaCaseStudy ? "p-0" : "p-8"}>
                   {isNayyaCaseStudy ? (
-                    <p className="mb-5 flex items-center gap-3 font-inter text-[14px] font-medium text-[#141114]">
-                      <span className="size-1.5 rounded-full bg-[#451044]" aria-hidden="true" />
-                      What we learned
-                    </p>
-                  ) : null}
-                  <h3 className={`font-inter font-semibold leading-snug ${isNayyaCaseStudy ? "max-w-[520px] text-[clamp(2rem,3.4vw,3rem)] tracking-[-0.045em] text-[#141114]" : "text-[20px] text-[#0e2951]"}`}>
-                    {isNayyaCaseStudy
-                      ? renderNayyaEditorialTitle(translate("caseStudy.enrollmentInsights"))
-                      : caseStudy.slug === "i9-everify-integration"
+                    <h3 className="max-w-[520px] font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+                      {renderNayyaEditorialTitle(translate("caseStudy.enrollmentInsights"))}
+                    </h3>
+                  ) : (
+                    <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
+                      {caseStudy.slug === "i9-everify-integration"
                         ? translate("caseStudy.keyResults")
                         : translate("caseStudy.enrollmentInsights")}
-                  </h3>
+                    </h3>
+                  )}
                   <ul className={isNayyaCaseStudy ? "mt-7" : "mt-5 list-disc space-y-3 pl-5"}>
                     {visiblePrimaryResultInsights.map((item, index) => {
                       const isYearHeading = /^2026(?:\s+data)?$/i.test(stripLeadingBullet(item));
@@ -7415,7 +7680,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         <li key={item} className="my-5 list-none pl-1 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">{normalizeInsightHeading(item)}</li>
                       ) : (
                         <li key={item} className={`font-inter text-[15px] leading-[1.7] ${isNayyaCaseStudy ? `flex gap-4 py-4 text-[#141114] ${nextIsYearHeading ? "" : "border-b border-[#ded8de]"}` : "text-[#5c7792]"}`}>
-                          {isNayyaCaseStudy ? <span className="mt-0.5 shrink-0 text-[18px] font-bold leading-none text-[#451044]" aria-hidden="true">✓</span> : null}
+                          {isNayyaCaseStudy ? <span className="mt-0.5 shrink-0 text-[18px] font-bold leading-none text-[#1183D0]" aria-hidden="true">✓</span> : null}
                           <span>{stripLeadingBullet(item)}</span>
                         </li>
                       );
@@ -7423,7 +7688,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </ul>
                   {caseStudy.slug === "nayya-ai-benefits" ? (
                     <p className="mt-5 font-inter text-[15px] font-semibold leading-[1.7] text-[#5c5960]">
-                      {NAYYA_INSIGHTS_CLOSING}
+                      {translate("caseStudy.nayyaInsightsClosing")}
                     </p>
                   ) : null}
                 </CardContent>
@@ -7451,12 +7716,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </Card>
             ) : null}
             {resultOpportunities.length ? (
-              <Card className={isNayyaCaseStudy ? "rounded-[20px] border border-[#e6dfe6] bg-white/80 p-0 py-0 shadow-none lg:col-span-2" : "border-0 bg-transparent p-0 py-0 shadow-none"}>
-                <CardContent className="p-8">
-                  <h3 className={`font-inter text-[20px] font-semibold leading-snug ${isNayyaCaseStudy ? "text-[#141114]" : "text-[#0e2951]"}`}>{translate("caseStudy.opportunitiesNext")}</h3>
-                  <ul className="mt-5 list-disc space-y-3 pl-5">
+              <Card className={isNayyaCaseStudy ? "border-0 bg-transparent p-0 py-0 shadow-none lg:col-span-2" : "border-0 bg-transparent p-0 py-0 shadow-none"}>
+                <CardContent className={isNayyaCaseStudy ? "flex flex-col gap-8 p-0 lg:flex-row lg:items-start lg:gap-16" : "p-8"}>
+                  <h3 className={`font-inter font-semibold leading-[1.1] tracking-[-0.035em] ${isNayyaCaseStudy ? "max-w-[520px] shrink-0 text-[clamp(1.75rem,2.6vw,2.5rem)] text-[#141114] lg:w-[38%]" : "text-[20px] leading-snug tracking-normal text-[#0e2951]"}`}>
+                    {isNayyaCaseStudy
+                      ? renderNayyaEditorialTitle(translate("caseStudy.opportunitiesNext"))
+                      : translate("caseStudy.opportunitiesNext")}
+                  </h3>
+                  <ul className={`${isNayyaCaseStudy ? "mt-0 flex-1 space-y-0" : "mt-5 list-disc space-y-3 pl-5"}`}>
                     {resultOpportunities.map((item) => (
-                      <li key={item} className={`font-inter text-[15px] leading-[1.7] ${isNayyaCaseStudy ? "text-[#5c5960]" : "text-[#5c7792]"}`}>{stripLeadingBullet(item)}</li>
+                      <li key={item} className={`font-inter text-[15px] leading-[1.7] ${isNayyaCaseStudy ? "flex gap-4 border-b border-[#ded8de] py-4 text-[#141114]" : "text-[#5c7792]"}`}>
+                        {isNayyaCaseStudy ? <span className="mt-0.5 shrink-0 text-[18px] font-bold leading-none text-[#1183D0]" aria-hidden="true">✓</span> : null}
+                        <span>{stripLeadingBullet(item)}</span>
+                      </li>
                     ))}
                   </ul>
                 </CardContent>
@@ -8199,8 +8471,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       </section>
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        <p className={`mb-2 text-[13px] font-semibold uppercase ${isNayyaCaseStudy ? "tracking-[0.16em] text-[#5c5960]" : "tracking-[0.45em] text-[#1183D0]"}`}>More work</p>
-        <h2 className={`mb-8 font-inter ${isNayyaCaseStudy ? "text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold tracking-[-0.035em] text-[#141114]" : "text-[32px] text-[#0e2951]"}`}>Other Projects</h2>
+        <p className={`mb-2 text-[13px] font-semibold uppercase ${isNayyaCaseStudy ? "tracking-[0.16em] text-[#5c5960]" : "tracking-[0.45em] text-[#1183D0]"}`}>{translate("caseStudy.moreWork")}</p>
+        <h2 className={`mb-8 font-inter ${isNayyaCaseStudy ? "text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold tracking-[-0.035em] text-[#141114]" : "text-[32px] text-[#0e2951]"}`}>{translate("caseStudy.otherProjects")}</h2>
         <div className="grid gap-5 md:grid-cols-3">
           {otherProjects.map((project) => (
             <ProjectTeaserCard
