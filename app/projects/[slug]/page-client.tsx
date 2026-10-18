@@ -1849,6 +1849,20 @@ function splitNayyaHeroTitle(title: string, language: Language) {
   };
 }
 
+function renderNayyaEditorialTitle(title: string) {
+  const words = title.trim().split(/\s+/);
+  const accent = words.pop();
+
+  if (!accent || words.length === 0) return title;
+
+  return (
+    <>
+      {words.join(" ")}{" "}
+      <span className="font-playfair font-normal italic">{accent}</span>
+    </>
+  );
+}
+
 function LocalizedCaseStudyOverview({ caseStudy }: { caseStudy: CaseStudyRecord }) {
   const translate = useTranslate();
   const { language } = useLanguage();
@@ -3044,6 +3058,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const resultRows = getPayloadRows(resultBlock?.payload, "rows");
   const resultInsights = getPayloadList(resultBlock?.payload, "insights");
   const primaryResultInsights = caseStudy.slug === "protecta" ? resultInsights.slice(0, 3) : resultInsights;
+  const visiblePrimaryResultInsights = primaryResultInsights.filter((item) => !shouldHideInsight(item));
   const protectaMomentumInsights = caseStudy.slug === "protecta" ? resultInsights.slice(3) : [];
   const resultOpportunities = getPayloadList(resultBlock?.payload, "opportunities");
   const projectedImprovements = getPayloadList(resultBlock?.payload, "projected");
@@ -3090,6 +3105,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const isNayyaCaseStudy = caseStudy.slug === "nayya-ai-benefits";
   const nayyaTitle = isNayyaCaseStudy ? splitNayyaHeroTitle(caseStudy.title, language) : null;
   const heroImage = resolveProjectHeroImage(caseStudy.slug, caseStudy.images.hero);
+  const homeCoverImage = resolveHomeCardImage(caseStudy.slug, caseStudy.images.cover || caseStudy.images.hero);
   const protectaUi = language === "es"
     ? {
         caseStudy: "Caso de estudio",
@@ -3355,7 +3371,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   );
 
   return (
-    <main data-case-study={caseStudy.slug} className="bg-white text-[#3c3e3f] overflow-x-hidden">
+    <main data-case-study={caseStudy.slug} className={`bg-white text-[#3c3e3f] ${isNayyaCaseStudy ? "overflow-x-clip" : "overflow-x-hidden"}`}>
       <SiteHeader active="Projects" behavior="reveal" />
 
       <div
@@ -3368,7 +3384,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             style={{ background: HOME_BANNER_GRADIENT_OVERLAY }}
           />
         ) : null}
-        <div className={`relative mx-auto flex max-w-[1200px] items-center gap-3 px-6 pt-6 text-sm lg:px-20 ${isNayyaCaseStudy ? "text-[#5c5960]" : ""}`}>
+        <div className={`relative mx-auto flex max-w-[1200px] items-center gap-3 px-6 pt-6 text-sm md:px-10 xl:px-20 ${isNayyaCaseStudy ? "text-[#5c5960]" : ""}`}>
           <a href={withBasePath("/")} className={isNayyaCaseStudy ? "text-[#451044] transition-colors hover:text-[#1183D0]" : "text-[#5c7792] transition-colors hover:text-[#0e2951]"}>{translate("caseStudy.home")}</a>
           <span className={isNayyaCaseStudy ? "text-[#aaa5aa]" : "text-[#b8cce0]"}>›</span>
           <a href={withBasePath("/projects")} className={isNayyaCaseStudy ? "transition-colors hover:text-[#1183D0]" : "text-[#5c7792] transition-colors hover:text-[#0e2951]"}>{translate("caseStudy.projects")}</a>
@@ -3377,9 +3393,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </div>
 
         <section className={`relative mx-auto max-w-[1200px] px-6 pb-0 md:px-10 xl:px-20 ${isNayyaCaseStudy ? "pt-12" : "pt-16"}`}>
-          <div className={`mx-auto px-3 pb-4 ${isNayyaCaseStudy ? "max-w-full" : "max-w-[1040px] rounded-[0]"}`}>
+          <div className={`mx-auto pb-4 ${isNayyaCaseStudy ? "max-w-full" : "max-w-[1040px] rounded-[0] px-3"}`}>
             <div className={`mb-6 ${isNayyaCaseStudy ? "text-left" : "text-center"}`}>
-              <div className={`relative px-5 py-6 sm:px-8 ${isNayyaCaseStudy ? "max-w-[1040px]" : "mx-auto max-w-[760px]"}`}>
+              <div className={`relative py-6 ${isNayyaCaseStudy ? "max-w-[1040px]" : "mx-auto max-w-[760px] px-5 sm:px-8"}`}>
                 <p className={`mb-3 font-inter ${isNayyaCaseStudy ? "inline-flex rounded-full bg-[#f8df36] px-4 py-2 text-xs font-semibold text-[#141114]" : "text-[13px] uppercase tracking-[3px] text-[#5c7792]"}`}>
                   {caseStudy.industry ?? protectaUi.caseStudy}
                 </p>
@@ -3755,10 +3771,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           {isNayyaCaseStudy ? (
             <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
               <div className="lg:sticky lg:top-24 lg:self-start">
-                <p className="mb-5 flex items-center gap-2 font-inter text-[14px] text-[#5c5960]">
-                  <span className="size-1.5 rounded-full bg-[#451044]" aria-hidden="true" />
-                  {methodologyName}
-                </p>
                 <h2 className="max-w-[480px] font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-bold leading-[1.1] tracking-[-0.035em] text-[#141114]">
                   Research that <span className="font-playfair font-normal italic">shaped a feasible</span>, trusted experience.
                 </h2>
@@ -4304,17 +4316,24 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {visibleStoryBlocks.length ? (
-        <section id="rt-problem" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
+        <section id="rt-problem" className={`scroll-mt-24 py-10 ${isNayyaCaseStudy ? "w-full bg-[#faf8f7]" : "mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20"}`}>
+          <div className={isNayyaCaseStudy ? "mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20" : ""}>
           <div className={caseStudy.slug === "reversetech" ? "mx-auto max-w-[860px]" : "grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start"}>
             <div className={caseStudy.slug === "reversetech" ? "text-center" : ""}>
-              <SectionHeading eyebrow={protectaUi.caseStudy} title={protectaUi.problem} centered={caseStudy.slug === "reversetech"} className="mb-12" />
+              {isNayyaCaseStudy ? (
+                <div className="mb-10">
+                  <h2 className="font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">{renderNayyaEditorialTitle(protectaUi.problem)}</h2>
+                </div>
+              ) : (
+                <SectionHeading eyebrow={protectaUi.caseStudy} title={protectaUi.problem} centered={caseStudy.slug === "reversetech"} className="mb-12" />
+              )}
               <div className="space-y-10">
                 {visibleStoryBlocks.map((block) => {
                   const items = getPayloadList(block.payload, "items");
                   return (
                     <div key={block.id} id={caseStudy.slug === "reversetech" ? block.id : undefined} className={caseStudy.slug === "reversetech" ? "scroll-mt-24" : undefined}>
                       {block.title !== "Situation" && block.title !== "Actions" ? (
-                        <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">
+                        <p className={`mb-4 ${isNayyaCaseStudy && block.title === "Task" ? "text-[15px] normal-case tracking-normal" : `text-[13px] uppercase ${isNayyaCaseStudy ? "tracking-[0.16em]" : "tracking-[0.28em]"}`} font-semibold text-[#1183D0]`}>
                           {block.title === "Task" ? "Context" : block.title}
                         </p>
                       ) : null}
@@ -4322,7 +4341,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         block.body.split(/\n+/).map((paragraph, idx) => (
                           <p
                             key={idx}
-                            className={`font-inter text-[16px] leading-[1.7] text-[#5c7792] mb-4 last:mb-0 ${
+                            className={`font-inter text-[16px] leading-[1.7] ${isNayyaCaseStudy ? "text-[#5c5960]" : "text-[#5c7792]"} mb-4 last:mb-0 ${
                               caseStudy.slug === "reversetech" ? "mx-auto max-w-[760px]" : "max-w-[720px]"
                             }`}
                           >
@@ -4345,7 +4364,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           {items.map((item) => (
                             <p
                               key={item}
-                              className={`font-inter text-[16px] leading-[1.7] text-[#5c7792] ${
+                              className={`font-inter text-[16px] leading-[1.7] ${isNayyaCaseStudy ? "text-[#5c5960]" : "text-[#5c7792]"} ${
                                 caseStudy.slug === "reversetech" ? "mx-auto max-w-[760px]" : "max-w-[720px]"
                               }`}
                             >
@@ -4373,18 +4392,31 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {caseStudy.slug !== "reversetech" && caseStudy.slug !== "protecta" ? (
             <div className="grid gap-4">
               {
-                problemMetrics.map((metric) => (
+                problemMetrics.map((metric, index) => (
                   <Card
                     key={`${metric.label}-${metric.value}`}
-                    className={`overflow-hidden ${isNayyaCaseStudy ? "border-t-4 border-t-[#f8df36] bg-[#f0f7ff] shadow-none" : ""}`}
+                    className={`overflow-hidden ${
+                      isNayyaCaseStudy
+                      ? "relative min-h-[190px] rounded-[20px] border-0 bg-white shadow-[0_14px_30px_rgba(29,22,36,0.10)]"
+                        : ""
+                    }`}
+                    style={isNayyaCaseStudy ? { boxShadow: "0 14px 30px rgba(29, 22, 36, 0.1)" } : undefined}
                   >
+                    {isNayyaCaseStudy ? (
+                      <span
+                        aria-hidden="true"
+                        className={`absolute right-0 top-0 size-[74px] rounded-bl-full ${
+                          ["bg-[#f8df36]", "bg-[#c7e8f7]", "bg-[#f3b4ed]", "bg-[#00d9cf]"][index % 4]
+                        }`}
+                      />
+                    ) : null}
                     <CardContent className="px-7 py-7">
-                      <p className="text-[30px] font-bold leading-none text-[#0e2951]">{metric.value}</p>
-                      <p className="mt-3 text-[16px] leading-[1.625em] text-[#0e2951]">
+                      <p className={`relative text-[30px] font-bold leading-none ${isNayyaCaseStudy ? "text-[#141114]" : "text-[#0e2951]"}`}>{metric.value}</p>
+                      <p className={`relative mt-4 text-[16px] leading-[1.625em] ${isNayyaCaseStudy ? "text-[#5c5960]" : "text-[#0e2951]"}`}>
                         {metric.label}
                       </p>
                       {metric.context ? (
-                        <p className="mt-2 text-[14px] leading-[1.6] text-[#5c7792]">{metric.context}</p>
+                        <p className={`mt-2 text-[14px] leading-[1.6] ${isNayyaCaseStudy ? "text-[#5c5960]" : "text-[#5c7792]"}`}>{metric.context}</p>
                       ) : null}
                     </CardContent>
                   </Card>
@@ -4406,6 +4438,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
               </aside>
             ) : null}
+          </div>
           </div>
         </section>
       ) : (
@@ -5411,7 +5444,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <Card className="overflow-hidden border-0 bg-transparent shadow-none">
                   <CardContent className="px-0 py-4 text-left lg:flex lg:min-h-[420px] lg:flex-col lg:justify-center">
                     <div className="space-y-4">
-                      <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                      <p className={`font-inter text-[16px] leading-[1.7] ${isNayyaCaseStudy ? "text-[#5c5960]" : "text-[#5c7792]"}`}>
                         Existing Confluence documentation and the product were reviewed to identify missing patterns and determine which could be retained within the new library structure.
                       </p>
                       <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
@@ -5509,12 +5542,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           {caseStudy.slug === "nayya-ai-benefits" ? (
           <>
-            <h2 className="mb-5 text-center font-inter text-[36px] leading-tight text-[#0e2951]">
-              {designProposalTitle}
+            <h2 className="mb-6 text-left font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+              {renderNayyaEditorialTitle(designProposalTitle)}
             </h2>
-            <div className="mx-auto max-w-[820px] space-y-5 text-center">
+            <div className="max-w-[900px] space-y-5">
               {designStrategy.map((item) => (
-                <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+                <p key={item} className="font-inter text-[17px] leading-[1.7] text-[#5c5960]">{item}</p>
               ))}
             </div>
           </>
@@ -6990,107 +7023,90 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "nayya-ai-benefits" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <h2 className="mb-5 text-center font-inter text-[36px] leading-tight text-[#0e2951]">
-            Alternatives explored
+          <h2 className="mb-5 text-left font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+            {renderNayyaEditorialTitle("Alternatives explored")}
           </h2>
-          <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+          <p className="mb-10 max-w-[820px] font-inter text-[16px] leading-[1.7] text-[#5c5960]">
             Three integration approaches were considered and assessed on placement, feasibility, and user support. The guided decision modal was selected as the strongest option and moved into testing.
           </p>
 
-          <div className="grid gap-5 md:grid-cols-3">
-            {NAYYA_PROCESS_ALTERNATIVES.map((item) => (
-              <Card
-                key={item.title}
-                className={`overflow-hidden ${isNayyaCaseStudy ? "rounded-[22px] border-[#d7e8f7] border-t-4 border-t-[#f8df36] bg-white shadow-[0_12px_32px_rgba(14,41,81,0.07)]" : "border-transparent shadow-none"}`}
-              >
-                <CardContent className="p-7">
-                  <Badge className={item.status === "Rejected" ? "border border-[#1183D0] bg-white text-[#1183D0]" : ""}>{item.status}</Badge>
-                  <h3 className="mt-5 font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[#5c7792]">{item.body}</p>
-                  {item.imageSrc ? (
-                    <div className="mt-6 overflow-hidden rounded-[18px] bg-white">
+          <div className="grid gap-5">
+            {NAYYA_PROCESS_ALTERNATIVES.map((item, index) => {
+              const tradeoff = NAYYA_PROCESS_TRADEOFFS.find((row) => row.alternative === item.title);
+              const stickyOffset = ["md:top-20", "md:top-[100px]", "md:top-[120px]"][index];
+              const cardColors = ["bg-[#c7c6ff]", "bg-[#c7e8f7]", "bg-white"];
+
+              return (
+                <Card
+                  key={item.title}
+                  className={`overflow-hidden rounded-[24px] border-0 md:sticky md:min-h-[240px] md:flex-row ${cardColors[index % cardColors.length]} ${stickyOffset}`}
+                  style={{ zIndex: index + 1, boxShadow: "0 18px 40px rgba(69, 16, 68, 0.16)" }}
+                >
+                  <div className="flex w-full shrink-0 items-center justify-center p-5 sm:p-6 md:w-[38%] md:p-8">
+                    <div className="flex aspect-[16/10] w-full max-w-[440px] items-center justify-center overflow-hidden rounded-[18px] bg-white shadow-[0_10px_24px_rgba(69,16,68,0.14)]">
                       <img
                         src={withBasePath(item.imageSrc)}
-                        alt="Nayya recommendation step inside benefits enrollment"
-                        className="h-auto w-full"
+                        alt={`${item.title} concept`}
+                        className="h-full w-full object-cover"
                       />
                     </div>
-                  ) : null}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <DataTablePanel
-            wrapperClassName="mt-10 hidden overflow-x-auto"
-            minWidthClassName="min-w-[900px]"
-            columnsClassName="grid grid-cols-[1fr_1.2fr_1.4fr_0.8fr]"
-            headerClassName="text-[13px]"
-            rowClassName="text-[15px]"
-            headers={[
-              <div className="px-5 py-4">Alternative</div>,
-              <div className="px-5 py-4">Strength</div>,
-              <div className="px-5 py-4">Tradeoff</div>,
-              <div className="px-5 py-4">Decision</div>,
-            ]}
-            rows={NAYYA_PROCESS_TRADEOFFS.map((row) => [
-              <div className="px-5 py-5 font-semibold text-[var(--ui-color-text-strong)]">{row.alternative}</div>,
-              <div className="px-5 py-5">{row.strength}</div>,
-              <div className="px-5 py-5">{row.tradeoff}</div>,
-              <div className="px-5 py-5 font-semibold text-[var(--ui-color-brand-primary)]">{row.decision}</div>,
-            ])}
-          />
-
-          <div className="mt-10 grid gap-4 md:hidden">
-            {NAYYA_PROCESS_TRADEOFFS.map((row) => (
-              <KeyValueStackCard
-                key={row.alternative}
-                items={[
-                  {
-                    label: "Alternative",
-                    value: row.alternative,
-                    valueClassName: "mt-2 text-[18px] font-semibold leading-snug text-[var(--ui-color-text-strong)]",
-                  },
-                  { label: "Strength", value: row.strength },
-                  { label: "Tradeoff", value: row.tradeoff },
-                  {
-                    label: "Decision",
-                    value: row.decision,
-                    valueClassName: "mt-2 text-[15px] font-semibold text-[var(--ui-color-brand-primary)]",
-                  },
-                ]}
-              />
-            ))}
+                  </div>
+                  <CardContent className="flex flex-1 flex-col items-start justify-center p-6 md:p-8">
+                    <Badge className={item.status === "Rejected" ? "border border-[#d7d2d3] bg-[#faf8f7] text-[#5c5960]" : "border border-[#f8df36] bg-[#f8df36] text-[#141114]"}>{item.status}</Badge>
+                    <h3 className="mt-4 font-inter text-[24px] font-semibold leading-snug text-[#141114]">
+                      {item.title === "Embedded Nayya section" ? (
+                        <>Embedded <span className="font-playfair font-normal italic">Nayya</span> section</>
+                      ) : item.title === "Benefit-list entry point" ? (
+                        <>Benefit-list <span className="font-playfair font-normal italic">entry</span> point</>
+                      ) : item.title === "Guided decision modal" ? (
+                        <>Guided <span className="font-playfair font-normal italic">decision</span> modal</>
+                      ) : item.title}
+                    </h3>
+                    <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c5960]">{item.body}</p>
+                    {tradeoff ? (
+                      <div className="mt-5 grid gap-4 border-t border-[#d7d2d3] pt-4 sm:grid-cols-2">
+                        <p className="font-inter text-[14px] leading-[1.65] text-[#5c5960]">
+                          <span className="font-semibold text-[#141114]">Strength: </span>
+                          {tradeoff.strength}
+                        </p>
+                        <p className="font-inter text-[14px] leading-[1.65] text-[#5c5960]">
+                          <span className="font-semibold text-[#141114]">Tradeoff: </span>
+                          {tradeoff.tradeoff}
+                        </p>
+                      </div>
+                    ) : null}
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </section>
       ) : null}
 
       {caseStudy.slug === "nayya-ai-benefits" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <h2 className="mb-5 text-center font-inter text-[36px] leading-tight text-[#0e2951]">
-            Key Insights from Testing
+          <h2 className="mb-5 text-left font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+            {renderNayyaEditorialTitle("Key Insights from Testing")}
           </h2>
-          <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+          <p className="mb-10 max-w-[820px] font-inter text-[16px] leading-[1.7] text-[#5c5960]">
             Research and discovery clarified the key questions for testing: Did users understand the
             handoff, feel confident continuing, and maintain trust throughout the experience? The selected
             guided decision modal was the concept tested, and the findings showed which parts of the
             integration felt clear and where friction still remained.
           </p>
           <DataTablePanel
-            wrapperClassName="hidden md:block"
+            wrapperClassName="hidden overflow-hidden rounded-[20px] border border-[#d7d2d3] bg-white md:block"
             columnsClassName="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 px-6"
-            headerClassName="py-4"
-            rowClassName="px-0 py-5"
+            headerClassName="border-b border-[#d7d2d3] bg-[#faf8f7] py-4 text-[#5c5960]"
+            rowClassName="border-[#d7d2d3] px-6 py-5"
             headers={[<div>Metric</div>, <div>Finding</div>, <div>Insight</div>]}
             rows={NAYYA_TESTING_RESULTS.map((row) => [
               <div>
-                <p className="text-[30px] font-semibold leading-none text-[var(--ui-color-text-strong)]">{row.metric}</p>
-                <p className="mt-3 text-[14px] leading-[1.5] text-[var(--ui-color-text-muted)]">{row.label}</p>
+                <p className="text-[30px] font-semibold leading-none text-[#141114]">{row.metric}</p>
+                <p className="mt-3 text-[14px] leading-[1.5] text-[#5c5960]">{row.label}</p>
               </div>,
-              <p className="font-normal text-[var(--ui-color-text-muted)]">{row.finding}</p>,
-              <p className="font-normal text-[var(--ui-color-text-muted)]">{row.insight}</p>,
+              <p className="font-normal text-[#5c5960]">{row.finding}</p>,
+              <p className="font-normal text-[#5c5960]">{row.insight}</p>,
             ])}
           />
 
@@ -7115,12 +7131,26 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "nayya-ai-benefits" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title="The Solution" centered className="mb-12" />
-          {resultBlock?.body ? (
-            <p className="mx-auto max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-              {resultBlock.body}
-            </p>
-          ) : null}
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:items-center lg:gap-14">
+            <ContentPanel className="border-[#d7d2d3] shadow-[0_14px_34px_rgba(20,17,20,0.06)]">
+              <iframe
+                title="Nayya impact frame from Figma"
+                src={NAYYA_IMPACT_FIGMA_EMBED}
+                className="h-[520px] w-full"
+                allowFullScreen
+              />
+            </ContentPanel>
+            <div>
+              <h2 className="mb-6 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+                {renderNayyaEditorialTitle("The Solution")}
+              </h2>
+              {resultBlock?.body ? (
+                <p className="font-inter text-[17px] leading-[1.7] text-[#5c5960]">
+                  {resultBlock.body}
+                </p>
+              ) : null}
+            </div>
+          </div>
         </section>
       ) : null}
 
@@ -7151,21 +7181,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 />
               </ContentPanel>
             </a>
-          </div>
-        </section>
-      ) : null}
-
-      {caseStudy.slug === "nayya-ai-benefits" ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <div className="max-w-[1040px] mx-auto">
-            <ContentPanel className="shadow-[0_24px_64px_rgba(17,131,208,0.10)]">
-              <iframe
-                title="Nayya impact frame from Figma"
-                src={NAYYA_IMPACT_FIGMA_EMBED}
-                className="h-[520px] w-full"
-                allowFullScreen
-              />
-            </ContentPanel>
           </div>
         </section>
       ) : null}
@@ -7308,10 +7323,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" && caseStudy.slug !== "i9-everify-integration" ? (
-        <section className={`mx-auto px-6 py-10 md:px-10 xl:px-20 ${isNayyaCaseStudy ? "max-w-[1640px] bg-[#faf8f7]" : "max-w-[1200px]"}`}>
+        <section className={`py-10 ${isNayyaCaseStudy ? "bg-[#faf8f7]" : ""}`}>
+          <div className="mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20">
           {isNayyaCaseStudy ? (
-            <h2 className="mb-10 font-inter text-[clamp(2rem,4vw,3rem)] font-semibold leading-tight tracking-[-0.04em] text-[#090909]">
-              {translate("caseStudy.resultsImpact")}
+            <h2 className="mb-10 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+              {renderNayyaEditorialTitle(translate("caseStudy.resultsImpact"))}
             </h2>
           ) : (
             <SectionHeading eyebrow={caseStudy.slug === "protecta" ? translate("caseStudy.measuredImpact") : undefined} title={translate("caseStudy.resultsImpact")} centered className="mb-12" />
@@ -7345,23 +7361,18 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ])}
           />
         ) : isNayyaCaseStudy && resultRows.length ? (
-          <div className="rounded-[20px] bg-[#f4f1f6] px-5 py-4 sm:px-8 sm:py-6">
-            {resultRows.map((row, index) => (
+          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+            {resultRows.map((row) => (
               <article
                 key={`${row.metric}-${row.value}`}
-                className={`grid gap-3 py-5 sm:grid-cols-[minmax(0,0.9fr)_minmax(0,2.1fr)] sm:items-center sm:gap-6 sm:py-7 ${
-                  index < resultRows.length - 1 ? "border-b border-[#ded9e1]" : ""
-                }`}
+                className="flex min-h-[180px] flex-col items-start rounded-[20px] border border-[#e6dfe6] bg-white/80 p-7 sm:p-8"
               >
-                <h3 className="font-inter text-[clamp(1.35rem,2.4vw,2rem)] font-semibold leading-tight tracking-[-0.035em] text-[#090909]">
+                <p className="font-inter text-[36px] font-bold leading-none tracking-[-0.04em] text-[#141114] sm:text-[40px]">
+                  {row.value}
+                </p>
+                <h3 className="mt-3 font-inter text-[18px] font-medium leading-snug text-[#141114] sm:text-[20px]">
                   {row.metric}
                 </h3>
-                <div className="flex items-center gap-4 text-[#5c5960] sm:gap-5">
-                  <ArrowUpRight aria-hidden="true" className="size-4 shrink-0 text-[#090909] sm:size-5" strokeWidth={2} />
-                  <p className="text-[16px] leading-[1.55] sm:text-[18px]">
-                    <span className="font-semibold text-[#090909]">{row.value}</span>
-                  </p>
-                </div>
               </article>
             ))}
           </div>
@@ -7377,27 +7388,55 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         ) : null}
         {caseStudy.slug !== "flock-accessibility-system" && [resultInsights, resultOpportunities, projectedImprovements, successMetrics].some((items) => items.length) ? (
-          <div className="mx-auto mt-10 max-w-[820px]">
+          <div className={`mx-auto mt-10 ${isNayyaCaseStudy ? "grid max-w-full gap-6 lg:grid-cols-2 lg:items-stretch" : "max-w-[820px]"}`}>
             {primaryResultInsights.length ? (
-              <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
-                <CardContent className="p-8">
-                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{caseStudy.slug === "i9-everify-integration" ? translate("caseStudy.keyResults") : translate("caseStudy.enrollmentInsights")}</h3>
-                  <ul className="mt-5 list-disc space-y-3 pl-5">
-                    {primaryResultInsights.filter((item) => !shouldHideInsight(item)).map((item) => (
-                      /^2026(?:\s+data)?$/i.test(stripLeadingBullet(item)) ? (
-                        <li key={item} className="list-none mt-6 mb-3 pl-1 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">{normalizeInsightHeading(item)}</li>
+              <Card className={isNayyaCaseStudy ? "border-0 bg-transparent p-0 py-0 shadow-none" : "border-0 bg-transparent p-0 py-0 shadow-none"}>
+                <CardContent className={isNayyaCaseStudy ? "p-0" : "p-8"}>
+                  {isNayyaCaseStudy ? (
+                    <p className="mb-5 flex items-center gap-3 font-inter text-[14px] font-medium text-[#141114]">
+                      <span className="size-1.5 rounded-full bg-[#451044]" aria-hidden="true" />
+                      What we learned
+                    </p>
+                  ) : null}
+                  <h3 className={`font-inter font-semibold leading-snug ${isNayyaCaseStudy ? "max-w-[520px] text-[clamp(2rem,3.4vw,3rem)] tracking-[-0.045em] text-[#141114]" : "text-[20px] text-[#0e2951]"}`}>
+                    {isNayyaCaseStudy
+                      ? renderNayyaEditorialTitle(translate("caseStudy.enrollmentInsights"))
+                      : caseStudy.slug === "i9-everify-integration"
+                        ? translate("caseStudy.keyResults")
+                        : translate("caseStudy.enrollmentInsights")}
+                  </h3>
+                  <ul className={isNayyaCaseStudy ? "mt-7" : "mt-5 list-disc space-y-3 pl-5"}>
+                    {visiblePrimaryResultInsights.map((item, index) => {
+                      const isYearHeading = /^2026(?:\s+data)?$/i.test(stripLeadingBullet(item));
+                      const nextItem = visiblePrimaryResultInsights[index + 1];
+                      const nextIsYearHeading = nextItem ? /^2026(?:\s+data)?$/i.test(stripLeadingBullet(nextItem)) : false;
+
+                      return isYearHeading ? (
+                        <li key={item} className="my-5 list-none pl-1 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">{normalizeInsightHeading(item)}</li>
                       ) : (
-                        <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>
-                      )
-                    ))}
+                        <li key={item} className={`font-inter text-[15px] leading-[1.7] ${isNayyaCaseStudy ? `flex gap-4 py-4 text-[#141114] ${nextIsYearHeading ? "" : "border-b border-[#ded8de]"}` : "text-[#5c7792]"}`}>
+                          {isNayyaCaseStudy ? <span className="mt-0.5 shrink-0 text-[18px] font-bold leading-none text-[#451044]" aria-hidden="true">✓</span> : null}
+                          <span>{stripLeadingBullet(item)}</span>
+                        </li>
+                      );
+                    })}
                   </ul>
                   {caseStudy.slug === "nayya-ai-benefits" ? (
-                    <p className="mt-5 font-inter text-[15px] font-semibold leading-[1.7] text-[#5c7792]">
+                    <p className="mt-5 font-inter text-[15px] font-semibold leading-[1.7] text-[#5c5960]">
                       {NAYYA_INSIGHTS_CLOSING}
                     </p>
                   ) : null}
                 </CardContent>
               </Card>
+            ) : null}
+            {isNayyaCaseStudy ? (
+              <figure className="min-h-[420px] overflow-hidden rounded-[24px] bg-[#e8eefc] shadow-[0_18px_40px_rgba(69,16,68,0.12)]">
+                <img
+                  src={homeCoverImage}
+                  alt={`${caseStudy.title} project cover`}
+                  className="h-full min-h-[420px] w-full object-cover"
+                />
+              </figure>
             ) : null}
             {protectaMomentumInsights.length ? (
               <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
@@ -7412,12 +7451,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </Card>
             ) : null}
             {resultOpportunities.length ? (
-              <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
+              <Card className={isNayyaCaseStudy ? "rounded-[20px] border border-[#e6dfe6] bg-white/80 p-0 py-0 shadow-none lg:col-span-2" : "border-0 bg-transparent p-0 py-0 shadow-none"}>
                 <CardContent className="p-8">
-                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{translate("caseStudy.opportunitiesNext")}</h3>
+                  <h3 className={`font-inter text-[20px] font-semibold leading-snug ${isNayyaCaseStudy ? "text-[#141114]" : "text-[#0e2951]"}`}>{translate("caseStudy.opportunitiesNext")}</h3>
                   <ul className="mt-5 list-disc space-y-3 pl-5">
                     {resultOpportunities.map((item) => (
-                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>
+                      <li key={item} className={`font-inter text-[15px] leading-[1.7] ${isNayyaCaseStudy ? "text-[#5c5960]" : "text-[#5c7792]"}`}>{stripLeadingBullet(item)}</li>
                     ))}
                   </ul>
                 </CardContent>
@@ -7473,12 +7512,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             ) : null}
             {successMetrics.length && caseStudy.slug !== CONFIDENTIAL_PLACEHOLDER_SLUG ? (
-              <Card className="p-0 py-0">
+              <Card className={isNayyaCaseStudy ? "mt-5 rounded-[20px] border border-[#e6dfe6] bg-white/80 p-0 py-0 shadow-none" : "p-0 py-0"}>
                 <CardContent className="p-8">
                   <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#1183D0]">{translate("caseStudy.successMetrics")}</p>
                   <ul className="space-y-3">
                     {successMetrics.map((item) => (
-                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>
+                      <li key={item} className={`font-inter text-[15px] leading-[1.7] ${isNayyaCaseStudy ? "text-[#5c5960]" : "text-[#5c7792]"}`}>{stripLeadingBullet(item)}</li>
                     ))}
                   </ul>
                 </CardContent>
@@ -7486,6 +7525,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ) : null}
           </div>
           ) : null}
+          </div>
         </section>
       ) : null}
 
@@ -7570,11 +7610,17 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title={translate("caseStudy.learnings")} centered className="mb-12" />
-          <div className="mx-auto max-w-[820px] space-y-8 text-center">
+          {isNayyaCaseStudy ? (
+            <h2 className="mb-8 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+              {renderNayyaEditorialTitle(translate("caseStudy.learnings"))}
+            </h2>
+          ) : (
+            <SectionHeading title={translate("caseStudy.learnings")} centered className="mb-12" />
+          )}
+          <div className={`max-w-[820px] space-y-8 ${isNayyaCaseStudy ? "mr-auto text-left" : "mx-auto text-center"}`}>
             {reflections.map((reflection) => (
-              <p key={reflection.title} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                <strong className="font-semibold">{reflection.title} </strong>
+              <p key={reflection.title} className={`font-inter text-[16px] leading-[1.7] ${isNayyaCaseStudy ? "text-[#5c5960]" : "text-[#5c7792]"}`}>
+                <strong className={`font-semibold ${isNayyaCaseStudy ? "text-[#141114]" : ""}`}>{reflection.title} </strong>
                 {reflection.body}
               </p>
             ))}
@@ -8102,7 +8148,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             />
           </div>
         ) : null}
-        {caseStudy.client_logos.length ? (
+        {caseStudy.client_logos.length && !isNayyaCaseStudy ? (
           <div className="mb-10 flex flex-wrap items-center justify-center gap-8">
             {caseStudy.client_logos.map((logo) => (
               <img
@@ -8119,27 +8165,31 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             />
           </div>
         ) : null}
-        <div className="mt-6 grid gap-10 md:grid-cols-[1fr_auto_1fr] md:items-start">
+        <div className={`mt-6 grid gap-10 md:grid-cols-[1fr_auto_1fr] md:items-start ${isNayyaCaseStudy ? "border-t border-[#d7d2d3] pt-8" : ""}`}>
           <div className="flex flex-col items-center gap-6">
-            <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
+            <p className={`text-[13px] font-semibold uppercase ${isNayyaCaseStudy ? "tracking-[0.16em] text-[#5c5960]" : "tracking-[0.32em] text-[#5c7792]"}`}>
               Tools
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              {caseStudy.tools.map((tool) => (
-                <Badge key={tool} size="tag">
-                  {tool}
-                </Badge>
-              ))}
+            <div className="flex flex-wrap justify-center gap-3">
+              {caseStudy.tools.map((tool) => {
+                const icon = isNayyaCaseStudy ? resolveToolIconOptional(tool) : null;
+                return (
+                  <Badge key={tool} size="tag" className={isNayyaCaseStudy ? "inline-flex items-center gap-2 border border-[#d7d2d3] bg-white text-[#141114]" : ""}>
+                    {icon ? <Image src={icon} alt="" aria-hidden="true" width={18} height={18} className="size-[18px] object-contain" /> : null}
+                    {tool}
+                  </Badge>
+                );
+              })}
             </div>
           </div>
-          <div className="hidden w-px self-stretch bg-[#d7e8f7] md:block" />
+          <div className={`hidden w-px self-stretch md:block ${isNayyaCaseStudy ? "bg-[#d7d2d3]" : "bg-[#d7e8f7]"}`} />
           <div className="flex flex-col items-center gap-6">
-            <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
+            <p className={`text-[13px] font-semibold uppercase ${isNayyaCaseStudy ? "tracking-[0.16em] text-[#5c5960]" : "tracking-[0.32em] text-[#5c7792]"}`}>
               Tags
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-3">
               {getVisibleProjectTags(caseStudy.tags).map((tag) => (
-                <Badge key={tag} size="tag">
+                <Badge key={tag} size="tag" className={isNayyaCaseStudy ? "border border-[#f8df36] bg-[#fffbea] text-[#141114]" : ""}>
                   {tag}
                 </Badge>
               ))}
@@ -8149,8 +8199,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       </section>
 
       <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-        <p className="mb-2 text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">More work</p>
-        <h2 className="mb-8 font-inter text-[32px] text-[#0e2951]">Other Projects</h2>
+        <p className={`mb-2 text-[13px] font-semibold uppercase ${isNayyaCaseStudy ? "tracking-[0.16em] text-[#5c5960]" : "tracking-[0.45em] text-[#1183D0]"}`}>More work</p>
+        <h2 className={`mb-8 font-inter ${isNayyaCaseStudy ? "text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold tracking-[-0.035em] text-[#141114]" : "text-[32px] text-[#0e2951]"}`}>Other Projects</h2>
         <div className="grid gap-5 md:grid-cols-3">
           {otherProjects.map((project) => (
             <ProjectTeaserCard
