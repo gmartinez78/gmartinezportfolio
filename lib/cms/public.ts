@@ -37,6 +37,7 @@ const toolIconMap: Record<string, string> = {
   Copilot: withBasePath("/images/tools/githubcopilot.svg"),
   "GitHub Copilot": withBasePath("/images/tools/githubcopilot.svg"),
   Webex: withBasePath("/images/tools/webex.svg"),
+  Outlook: withBasePath("/images/tools/outlook.svg"),
   ClickUp: withBasePath("/images/tools/clickup.svg"),
   Confluence: withBasePath("/images/tools/confluence.svg"),
   Maze: withBasePath("/images/tools/maze.svg"),

@@ -257,6 +257,11 @@
   }
 }
 
+main[data-case-study="nayya-ai-benefits"] > section,
+main[data-case-study="nayya-ai-benefits"] > div > section {
+  padding-inline: 1.5rem !important;
+}
+
 @layer base {
   .theme {
     --font-sans: var(--font-inter);
