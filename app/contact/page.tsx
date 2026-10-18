@@ -73,7 +73,7 @@ export default function ContactPage() {
               <p className="text-sm font-semibold tracking-[0.12em] text-white/85">
                 {translate("contactPage.eyebrow")}
               </p>
-              <h1 className="mt-5 text-[clamp(2.7rem,6vw,5rem)] font-bold leading-[0.96] tracking-[-0.06em] text-white">
+              <h1 className="mt-5 text-[clamp(2.25rem,5vw,4rem)] font-bold leading-[0.96] tracking-[-0.06em] text-white">
                 {translate("contactPage.headlineLead")}
                 <span className="mt-1 block text-[#f8df36]">
                   <span className="font-playfair font-normal italic tracking-[-0.04em]">

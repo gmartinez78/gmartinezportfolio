@@ -473,7 +473,27 @@ export default function ResumePage() {
 
   return (
     <main className="bg-white text-[#3c3e3f] overflow-x-clip min-h-screen">
-      <SiteHeader active="Resume" />
+      <SiteHeader
+        active="Resume"
+        mobileMenuActions={
+          <>
+            <Button
+              asChild
+              variant="tertiary"
+              size="sm"
+              className="w-full justify-center border-[#1183D0]/40 bg-transparent text-[#1183D0] hover:border-[#1183D0] hover:bg-[#E0EEFB] hover:text-[#1183D0]"
+            >
+              <a href={withBasePath(resume.pdf_link || "/documents/greddys-martinez-resume-2026.pdf")} download>
+                {translate("resume.downloadResume")}
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              </a>
+            </Button>
+            <Button asChild size="sm" className="w-full justify-center bg-[#1183D0] text-white hover:bg-[#0e2951]">
+              <a href={withBasePath("/contact")}>{translate("resume.getInTouch")}</a>
+            </Button>
+          </>
+        }
+      />
 
       <div className={`sticky top-[88px] z-[70] bg-[#1183D0] transition-shadow duration-200 lg:top-0 ${hasScrolled ? "shadow-[0_8px_24px_rgba(14,41,81,0.14)]" : ""}`}>
         <Container size="wide" className="px-6">
@@ -485,7 +505,7 @@ export default function ResumePage() {
               <span aria-hidden="true" className="text-white/40">/</span>
               <span className="font-medium text-white">{translate("resume.eyebrow")}</span>
             </nav>
-            <div className="flex shrink-0 items-center gap-2">
+            <div className="hidden shrink-0 items-center gap-2 lg:flex">
               <Button
                 asChild
                 variant="tertiary"
