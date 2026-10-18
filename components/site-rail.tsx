@@ -1,11 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Check, FileText, FolderKanban, Home, Languages, Mail } from "lucide-react";
+import { FileText, FolderKanban, Home, Mail } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { withBasePath } from "../lib/site";
-import { useLanguage } from "../lib/i18n/language-context";
 import { useTranslate } from "../lib/i18n/use-translate";
 import { usePublicSiteContent } from "../lib/cms/public";
 
@@ -67,95 +65,10 @@ function RailLink({
   );
 }
 
-const languageOptions = [
-  { code: "en", label: "English" },
-  { code: "es", label: "Español" },
-  { code: "de", label: "Deutsch" },
-] as const;
-
 function RailLanguageSelector() {
-  const { language, setLanguage } = useLanguage();
-  const translate = useTranslate();
-  const [isOpen, setIsOpen] = useState(false);
-  const selectorRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const closeOnOutsidePointer = (event: MouseEvent) => {
-      if (selectorRef.current && !selectorRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", closeOnOutsidePointer);
-    document.addEventListener("keydown", closeOnEscape);
-    return () => {
-      document.removeEventListener("mousedown", closeOnOutsidePointer);
-      document.removeEventListener("keydown", closeOnEscape);
-    };
-  }, []);
-
-  const selectedLanguage = languageOptions.find((option) => option.code === language)?.label ?? "English";
-
-  return (
-    <div ref={selectorRef} className="relative">
-      <button
-        type="button"
-        onClick={() => setIsOpen((open) => !open)}
-        aria-label={`${translate("rail.selectLanguage")}. ${translate("rail.currentLanguage").replace("{language}", selectedLanguage)}`}
-        aria-expanded={isOpen}
-        aria-haspopup="menu"
-        className={`group relative flex h-9 min-w-9 items-center justify-center rounded-xl text-[#1183D0] transition-colors hover:bg-[#E0EEFB] hover:text-[#0e75b8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0]/40 ${
-          isOpen ? "bg-[#E0EEFB] text-[#0e75b8]" : ""
-        }`}
-      >
-        <Languages aria-hidden="true" size={18} strokeWidth={1.7} />
-        <span className="sr-only">{selectedLanguage}</span>
-        {!isOpen ? (
-          <span className="pointer-events-none absolute left-[calc(100%+12px)] top-1/2 z-[70] -translate-y-1/2 whitespace-nowrap rounded-lg bg-[#0e2951] px-2.5 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg ring-1 ring-[#1183D0]/30 transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100">
-            {translate("rail.language").replace("{language}", selectedLanguage)}
-          </span>
-        ) : null}
-      </button>
-
-      {isOpen ? (
-        <div
-          role="menu"
-          aria-label={translate("rail.selectLanguage")}
-          className="absolute bottom-0 left-[calc(100%+12px)] z-[80] w-40 rounded-2xl border border-[#dbe9f7] bg-white p-1.5 shadow-[0_14px_36px_rgba(14,41,81,0.16)]"
-        >
-          {languageOptions.map((option) => {
-            const selected = language === option.code;
-
-            return (
-              <button
-                key={option.code}
-                type="button"
-                role="menuitemradio"
-                aria-checked={selected}
-                onClick={() => {
-                  setLanguage(option.code);
-                  setIsOpen(false);
-                }}
-                className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm font-medium transition-colors ${
-                  selected
-                    ? "bg-[#E0EEFB] text-[#1183D0]"
-                    : "text-[#3c3e3f] hover:bg-[#f0f7ff] hover:text-[#1183D0]"
-                }`}
-              >
-                <span>{option.label}</span>
-                {selected ? <Check aria-hidden="true" size={15} strokeWidth={2.2} /> : <span className="w-[15px]" />}
-              </button>
-            );
-          })}
-        </div>
-      ) : null}
-    </div>
-  );
+  // i18n selector hidden for now — only English is exposed.
+  // To re-enable: restore body from git history (commit prior to this change).
+  return null;
 }
 
 export function SiteRail() {

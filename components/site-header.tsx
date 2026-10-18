@@ -4,40 +4,12 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { withBasePath } from "../lib/site";
 import { usePublicSiteContent } from "../lib/cms/public";
-import { useLanguage } from "../lib/i18n/language-context";
 import { useTranslate } from "../lib/i18n/use-translate";
 
 function LanguageToggle() {
-  const { language, setLanguage } = useLanguage();
-  const translate = useTranslate();
-  const languages = [
-    { code: "en", label: "English" },
-    { code: "es", label: "Español" },
-    { code: "de", label: "Deutsch" },
-  ] as const;
-
-  return (
-    <div
-      role="group"
-      aria-label={translate("header.languageToggleAria")}
-      className="inline-flex h-9 items-center gap-0.5 rounded-full border border-[#bcd2ff]/70 p-1 text-[10px] font-semibold text-[#5c7792]"
-    >
-      {languages.map((option) => (
-        <button
-          key={option.code}
-          type="button"
-          onClick={() => setLanguage(option.code)}
-          aria-pressed={language === option.code}
-          aria-label={option.label}
-          className={`rounded-full px-1.5 py-1 transition-colors ${
-            language === option.code ? "bg-[#E0EEFB] text-[#1183D0]" : "text-[#5c7792] hover:text-[#1183D0]"
-          }`}
-        >
-          {option.code.toUpperCase()}
-        </button>
-      ))}
-    </div>
-  );
+  // i18n toggle hidden for now — only English is exposed.
+  // To re-enable: restore body from git history (commit prior to this change).
+  return null;
 }
 
 export function LogoMark({ className = "" }: { className?: string }) {
