@@ -7446,13 +7446,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "flock-accessibility-system" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title={translate("caseStudy.theSolution")} centered className="mb-12" />
+          <h2 className="mb-8 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+            {renderNayyaEditorialTitle(translate("caseStudy.theSolution"))}
+          </h2>
           <div className="mx-auto grid max-w-[1120px] items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-            <div className="space-y-5 text-center lg:text-left">
+            <div className="space-y-5">
               {FLOCK_SOLUTION.map((item) => (
-                <div key={item.title} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                <div key={item.title} className="font-inter text-[17px] leading-[1.7] text-[#5c5960]">
                   <p>
-                    <span className="font-semibold text-[#0e2951]">{item.title}:</span> {item.body}
+                    <span className="font-semibold text-[#141114]">{item.title}:</span> {item.body}
                   </p>
                 </div>
               ))}
@@ -7463,13 +7465,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               rel="noreferrer"
               className="group block"
             >
-              <ContentPanel className="shadow-[0_20px_64px_rgba(14,41,81,0.10)]">
+              <div className="overflow-hidden rounded-[24px] border border-[#d7d2d3] bg-white shadow-[0_18px_40px_rgba(69,16,68,0.16)]">
                 <img
                   src={withBasePath("/images/projects/flock-accessibility-system/banners/flock-buttons-suggestions.svg")}
                   alt="Flock button suggestions and solution example"
                   className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.01]"
                 />
-              </ContentPanel>
+              </div>
             </a>
           </div>
         </section>
