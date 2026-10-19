@@ -8484,6 +8484,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       <SiteFooter />
 
+      {(caseStudy.slug === "flock-accessibility-system" ||
+        (caseStudy.client_logos.length && !isNayyaCaseStudy && caseStudy.slug !== "i9-everify-integration")) ? (
       <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
         {caseStudy.slug === "flock-accessibility-system" ? (
           <div className="mb-10 flex flex-wrap items-center justify-center gap-8">
@@ -8522,6 +8524,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         ) : null}
       </section>
+      ) : null}
 
 
     </main>
