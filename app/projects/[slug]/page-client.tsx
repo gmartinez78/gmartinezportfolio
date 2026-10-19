@@ -3739,11 +3739,26 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       </div>
 
       {caseStudy.slug !== "flock-accessibility-system" && caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" ? (
-        <section className={`mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20 ${usesNayyaVisualStyle ? "bg-white" : ""}`}>
+        <section className={`mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20 ${usesNayyaVisualStyle ? "bg-white" : ""} ${caseStudy.slug === "i9-everify-integration" ? "py-8" : "py-16"}`}>
           <div className={`mx-auto ${usesNayyaVisualStyle ? "max-w-full" : "max-w-[1040px]"}`}>
             <div className={`grid gap-12 ${usesNayyaVisualStyle ? "md:grid-cols-3 md:gap-0" : "text-center md:grid-cols-3"}`}>
               {highlightMetrics.map((metric, index) => (
                 usesNayyaVisualStyle ? (
+                  caseStudy.slug === "i9-everify-integration" ? (
+                  <article
+                    key={`${metric.label}-${metric.value}`}
+                    className={`flex min-h-[150px] flex-col md:min-h-[220px] md:px-10 ${index > 0 ? "md:border-l md:border-[#d7d2d3]" : "md:pl-0"} ${index === highlightMetrics.length - 1 ? "md:pr-0" : ""}`}
+                  >
+                    <p className="text-[15px] font-semibold tracking-[0.04em] text-[#1183D0]">{metric.context ?? metric.value}</p>
+                    <p className="mt-4 max-w-[30ch] text-[18px] leading-[1.45] text-[#5c5960]">{metric.label}</p>
+                    <div className="mt-6 flex items-end justify-between gap-2">
+                      <p className="text-[clamp(2.1rem,3.3vw,4rem)] font-bold leading-[0.88] tracking-[-0.065em] text-[#090909]">
+                        {metric.value}
+                      </p>
+                      <ArrowUp aria-hidden="true" className="mb-1 size-7 shrink-0 text-[#090909] sm:size-8" strokeWidth={2} />
+                    </div>
+                  </article>
+                  ) : (
                   <article
                     key={`${metric.label}-${metric.value}`}
                     className={`flex min-h-[190px] flex-col md:min-h-[300px] md:px-10 ${index > 0 ? "md:border-l md:border-[#d7d2d3]" : "md:pl-0"} ${index === highlightMetrics.length - 1 ? "md:pr-0" : ""}`}
@@ -3761,6 +3776,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       <ArrowUp aria-hidden="true" className="mb-1 size-7 shrink-0 text-[#090909] sm:size-8" strokeWidth={2} />
                     </div>
                   </article>
+                  )
                 ) : (
                   <div
                     key={`${metric.label}-${metric.value}`}
@@ -3792,10 +3808,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {overviewBlock.body}
           </p>
         ) : null}
-        {isNayyaCaseStudy ? (
+        {isNayyaCaseStudy || caseStudy.slug === "i9-everify-integration" ? (
           <>
             <p className="mt-6 font-inter text-[17px] leading-[1.7] text-[#3c3e3f]">
-              My role was {caseStudy.my_role.join(", ")}, across a {caseStudy.duration} timeline.
+              {caseStudy.slug === "i9-everify-integration"
+                ? "My role was UX Strategy, Integration UX, User Research, Product Thinking, across a 6 months timeline."
+                : `My role was ${caseStudy.my_role.join(", ")}, across a ${caseStudy.duration} timeline.`}
             </p>
             <div className="mt-8">
               <p className="mb-4 font-inter text-[13px] font-semibold uppercase tracking-[0.14em] text-[#5c5960]">
@@ -4065,8 +4083,17 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           ) : (
           <>
           <SectionHeading
-            eyebrow={caseStudy.slug === "i9-everify-integration" ? methodologyName : "Methodology"}
-            title={caseStudy.slug === "i9-everify-integration" ? "Methodology" : methodologyName}
+            eyebrow={caseStudy.slug === "i9-everify-integration" ? undefined : "Methodology"}
+            title={
+              caseStudy.slug === "i9-everify-integration" ? (
+                <>
+                  {methodologyName}{" "}
+                  <span className="block font-playfair font-normal italic">Methodology</span>
+                </>
+              ) : (
+                methodologyName
+              )
+            }
             centered={["i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG, "calendar-keeper", "protecta"].includes(caseStudy.slug)}
             className="mb-12"
           />
@@ -7280,35 +7307,37 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         const deliveryItems = getPayloadList(block.payload, "delivery_items");
         return (
           <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-            <SectionHeading title={block.title} centered className="mb-12" />
+            <h2 className="mb-8 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+              {renderNayyaEditorialTitle(block.title)}
+            </h2>
             <div className="mx-auto grid max-w-[1120px] items-start gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
               <div className="space-y-4">
                 {block.body ? block.body.split(/\n+/).map((p, i) => (
-                  <p key={i} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{p.trim()}</p>
+                  <p key={i} className="font-inter text-[17px] leading-[1.7] text-[#5c5960]">{p.trim()}</p>
                 )) : null}
                 {items.length ? (
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     {items.map((item) => (
-                      <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+                      <p key={item} className="font-inter text-[17px] leading-[1.7] text-[#5c5960]">{item}</p>
                     ))}
                   </div>
                 ) : null}
                 {deliveryItems.length ? (
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     {deliveryItems.map((item) => (
-                      <p key={item} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">{item}</p>
+                      <p key={item} className="font-inter text-[17px] leading-[1.7] text-[#5c5960]">{item}</p>
                     ))}
                   </div>
                 ) : null}
               </div>
-              <ContentPanel className="shadow-[0_20px_64px_rgba(14,41,81,0.10)]">
+              <div className="overflow-hidden rounded-[24px] border border-[#d7d2d3] bg-white shadow-[0_18px_40px_rgba(69,16,68,0.16)]">
                 <iframe
                   title="I-9 solution design"
                   src="https://embed.figma.com/design/WKPa60cO7df7mmw8SlB2dA/OLD-PHASE-I-9---Phase-1?node-id=382-141419&embed-host=share"
                   className="h-[480px] w-full"
                   allowFullScreen
                 />
-              </ContentPanel>
+              </div>
             </div>
           </section>
         );
@@ -8475,7 +8504,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             />
           </div>
         ) : null}
-        {caseStudy.client_logos.length && !isNayyaCaseStudy ? (
+        {caseStudy.client_logos.length && !isNayyaCaseStudy && caseStudy.slug !== "i9-everify-integration" ? (
           <div className="mb-10 flex flex-wrap items-center justify-center gap-8">
             {caseStudy.client_logos.map((logo) => (
               <img

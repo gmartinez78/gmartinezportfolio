@@ -669,14 +669,17 @@
     "metrics": [
       {
         "value": "76%",
+        "context": "Clients",
         "label": "of Flex clients lacked a compliant I-9 workflow"
       },
       {
         "value": "26",
+        "context": "Test",
         "label": "Rounds of exploration & testing"
       },
       {
         "value": "2,548",
+        "context": "Survey",
         "label": "Survey responses post first release"
       }
     ],
