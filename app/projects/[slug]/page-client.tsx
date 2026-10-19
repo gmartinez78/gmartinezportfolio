@@ -7169,26 +7169,53 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <p className="mb-10 max-w-[820px] font-inter text-[17px] leading-[1.7] text-[#5c5960]">
             Three integration approaches were considered and assessed on placement, user familiarity, and third-party dependency. Embedding I-9 directly into the existing onboarding flow was selected as the strongest option and moved into testing.
           </p>
-          <div className="grid gap-5 md:grid-cols-3">
-            <Card className="overflow-hidden rounded-[24px] border-0 md:min-h-[240px] md:flex-row bg-white shadow-[0_18px_40px_rgba(69,16,68,0.16)]">
+          <div className="grid gap-5">
+            <Card className="overflow-hidden rounded-[24px] border-0 md:sticky md:min-h-[240px] md:flex-row bg-[#c7c6ff] md:top-20" style={{ zIndex: 1, boxShadow: "0 18px 40px rgba(69, 16, 68, 0.16)" }}>
+              <div className="flex w-full shrink-0 items-center justify-center p-5 sm:p-6 md:w-[38%] md:p-8">
+                <div className="flex aspect-[16/10] w-full max-w-[440px] items-center justify-center overflow-hidden rounded-[18px] bg-white shadow-[0_10px_24px_rgba(69,16,68,0.14)]">
+                  <img
+                    src={withBasePath("/images/projects/i9-everify-integration/banners/i9-admin-design-process.svg")}
+                    alt="Launch I-9 from HIREtech concept"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              </div>
               <CardContent className="flex flex-1 flex-col items-start justify-center p-6 md:p-8">
                 <Badge className="border border-[#d7d2d3] bg-[#faf8f7] text-[#5c5960]">Rejected</Badge>
                 <h3 className="mt-4 font-inter text-[24px] font-semibold leading-snug text-[#141114]">Launch I-9 from HIREtech</h3>
                 <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c5960]">Product initially proposed launching I-9 from HIREtech, but testing quickly ruled it out, new users didn't recognize the platform and had no context for why they were leaving Flex.</p>
               </CardContent>
             </Card>
-            <Card className="overflow-hidden rounded-[24px] border-0 md:min-h-[240px] md:flex-row bg-white shadow-[0_18px_40px_rgba(69,16,68,0.16)]">
+            <Card className="overflow-hidden rounded-[24px] border-0 md:sticky md:min-h-[240px] md:flex-row bg-[#c7e8f7] md:top-[100px]" style={{ zIndex: 2, boxShadow: "0 18px 40px rgba(69, 16, 68, 0.16)" }}>
+              <div className="flex w-full shrink-0 items-center justify-center p-5 sm:p-6 md:w-[38%] md:p-8">
+                <div className="flex aspect-[16/10] w-full max-w-[440px] items-center justify-center overflow-hidden rounded-[18px] bg-white shadow-[0_10px_24px_rgba(69,16,68,0.14)]">
+                  <img
+                    src={withBasePath("/images/projects/i9-everify-integration/banners/i9-employee-design-process.svg")}
+                    alt="Standalone I-9 section concept"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              </div>
               <CardContent className="flex flex-1 flex-col items-start justify-center p-6 md:p-8">
                 <Badge className="border border-[#d7d2d3] bg-[#faf8f7] text-[#5c5960]">Rejected</Badge>
                 <h3 className="mt-4 font-inter text-[24px] font-semibold leading-snug text-[#141114]">Standalone I-9 section</h3>
                 <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c5960]">Explored a standalone I-9 section separate from onboarding, but competitive benchmarking showed embedding it within the onboarding flow was the industry standard.</p>
               </CardContent>
             </Card>
-            <Card className="overflow-hidden rounded-[24px] border-0 md:min-h-[240px] md:flex-row bg-[#f8df36] shadow-[0_18px_40px_rgba(69,16,68,0.16)]">
+            <Card className="overflow-hidden rounded-[24px] border-0 md:sticky md:min-h-[240px] md:flex-row bg-white md:top-[120px]" style={{ zIndex: 3, boxShadow: "0 18px 40px rgba(69, 16, 68, 0.16)" }}>
+              <div className="flex w-full shrink-0 items-center justify-center p-5 sm:p-6 md:w-[38%] md:p-8">
+                <div className="flex aspect-[16/10] w-full max-w-[440px] items-center justify-center overflow-hidden rounded-[18px] bg-white shadow-[0_10px_24px_rgba(69,16,68,0.14)]">
+                  <img
+                    src={withBasePath("/images/projects/i9-everify-integration/banners/i9-admin-experience.svg")}
+                    alt="Integrated into onboarding flow concept"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              </div>
               <CardContent className="flex flex-1 flex-col items-start justify-center p-6 md:p-8">
-                <Badge className="border border-[#141114] bg-[#141114] text-[#f8df36]">Selected</Badge>
+                <Badge className="border border-[#f8df36] bg-[#f8df36] text-[#141114]">Selected</Badge>
                 <h3 className="mt-4 font-inter text-[24px] font-semibold leading-snug text-[#141114]">Integrated into onboarding flow</h3>
-                <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#141114]">Integrated I-9 directly into the existing onboarding flow, aligning with competitive patterns and familiar user mental models. This was the approved direction.</p>
+                <p className="mt-3 font-inter text-[15px] leading-[1.7] text-[#5c5960]">Integrated I-9 directly into the existing onboarding flow, aligning with competitive patterns and familiar user mental models. This was the approved direction.</p>
               </CardContent>
             </Card>
           </div>
@@ -7215,8 +7242,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 className="grid grid-cols-[1.05fr_1.45fr_1.5fr] gap-6 border-t border-[#d7d2d3] px-6 py-5 text-[15px] leading-[1.6] text-[#5c5960]"
               >
                 <div>
-                  <p className="text-[30px] font-semibold leading-none text-[#141114]">{row.metric}</p>
-                  <p className="mt-3 text-[14px] leading-[1.5] text-[#5c5960]">{row.label}</p>
+                  <p className="text-[28px] font-semibold leading-none text-[#141114]">{row.metric}</p>
+                  <p className="mt-2 text-[14px] leading-[1.5] text-[#5c5960]">{row.label}</p>
                 </div>
                 <p className="font-normal text-[#5c5960]">{row.finding}</p>
                 <p className="font-normal text-[#5c5960]">{row.insight}</p>
@@ -7365,8 +7392,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ]}
             rows={NAYYA_TESTING_RESULTS[language].map((row) => [
               <div>
-                <p className="text-[30px] font-semibold leading-none text-[#141114]">{row.metric}</p>
-                <p className="mt-3 text-[14px] leading-[1.5] text-[#5c5960]">{row.label}</p>
+                <p className="text-[28px] font-semibold leading-none text-[#141114]">{row.metric}</p>
+                <p className="mt-2 text-[14px] leading-[1.5] text-[#5c5960]">{row.label}</p>
               </div>,
               <p className="font-normal text-[#5c5960]">{row.finding}</p>,
               <p className="font-normal text-[#5c5960]">{row.insight}</p>,
@@ -7407,11 +7434,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <h2 className="mb-6 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
                 {renderNayyaEditorialTitle(translate("caseStudy.theSolution"))}
               </h2>
-              {resultBlock?.body ? (
-                <p className="font-inter text-[17px] leading-[1.7] text-[#5c5960]">
-                  {resultBlock.body}
+              {resultBlock?.body ? resultBlock.body.split(/\n+/).map((paragraph, idx) => (
+                <p key={idx} className="mb-4 font-inter text-[17px] leading-[1.7] text-[#5c5960] last:mb-0">
+                  {paragraph.trim()}
                 </p>
-              ) : null}
+              )) : null}
             </div>
           </div>
         </section>
@@ -7853,10 +7880,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
                 ))}
             </div>
-            <div className="mt-8 max-w-[900px] border-t border-[#d7d2d3] pt-7">
+            <div className="mt-8 max-w-[900px] pt-7">
               <h3 className="font-inter text-[22px] font-semibold leading-snug text-[#141114]">Why the change mattered</h3>
-              <p className="mt-3 text-[17px] leading-[1.7] text-[#5c5960]">The previous experience left employees uncertain about when they would leave Flex, what E-Verify required, and whether their progress had been saved. The redesigned flow made the transition explicit, clarified the required action, and gave users clearer guidance at the point of decision.</p>
-              <p className="mt-4 text-[17px] leading-[1.7] text-[#5c5960]">After launch, more employees completed the flow, completed it faster, and showed less hesitation at the E-Verify handoff. For HR teams, this created a stronger foundation for timely employment verification and reduced friction in a sensitive compliance process.</p>
+              <div className="mt-3 space-y-4">
+                <p className="text-[17px] leading-[1.7] text-[#5c5960]">The previous experience left employees uncertain about when they would leave Flex, what E-Verify required, and whether their progress had been saved. The redesigned flow made the transition explicit, clarified the required action, and gave users clearer guidance at the point of decision.</p>
+                <p className="text-[17px] leading-[1.7] text-[#5c5960]">After launch, more employees completed the flow, completed it faster, and showed less hesitation at the E-Verify handoff. For HR teams, this created a stronger foundation for timely employment verification and reduced friction in a sensitive compliance process.</p>
+              </div>
             </div>
         </section>
       ) : null}
