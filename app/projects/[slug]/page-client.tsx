@@ -1807,16 +1807,15 @@ function FlockChecklistShowcase() {
   return (
     <div className="space-y-8">
       {FLOCK_CHECKLIST_SECTIONS.map((section) => (
-        <Card key={section.title} className="gap-0 overflow-hidden border border-[#d7e8f7] py-0">
-          <CardContent className="p-0">
-            <div className="border-b border-[#e4eef7] bg-[#f7fbff] px-6 py-5">
-              <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#1183D0]">Checklist Applied</p>
-              <h3 className="mt-2 text-[28px] font-semibold leading-tight text-[#0e2951]">{section.title}</h3>
-              <p className="mt-3 max-w-[820px] text-[15px] leading-[1.7] text-[#5c7792]">{section.intro}</p>
+        <div key={section.title} className="overflow-hidden rounded-[20px] border border-[#d7d2d3] bg-white py-0">
+          <div className="p-0">
+            <div className="border-b border-[#d7d2d3] bg-white px-6 py-5">
+              <h3 className="text-[28px] font-semibold leading-tight text-[#141114]">{section.title}</h3>
+              <p className="mt-3 max-w-[820px] text-[15px] leading-[1.7] text-[#5c5960]">{section.intro}</p>
             </div>
 
             <div className="grid gap-0 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1.2fr)_320px]">
-              <div className="border-b border-[#e4eef7] p-6 lg:border-b-0 lg:border-r">
+              <div className="border-b border-[#d7d2d3] p-6 lg:border-b-0 lg:border-r">
                 <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#9b6b6b]">Before</p>
                 <div className="mt-4 rounded-[20px] border border-[#EEEFEF] p-5">
                   {section.title === "Color & Typography" ? (
@@ -1904,7 +1903,7 @@ function FlockChecklistShowcase() {
                 </div>
               </div>
 
-              <div className="border-b border-[#e4eef7] p-6 lg:border-b-0 lg:border-r">
+              <div className="border-b border-[#d7d2d3] p-6 lg:border-b-0 lg:border-r">
                 <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#4d87ae]">After</p>
                 <div className="mt-4 rounded-[20px] border border-[#d7e8f7] bg-[#f8fbfe] p-5">
                   {section.title === "Color & Typography" ? (
@@ -2020,12 +2019,12 @@ function FlockChecklistShowcase() {
               </div>
 
               <div className="p-6">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1183D0]">Requirements met</p>
+                <p className="text-[12px] font-semibold text-[#1183D0]">Requirements met</p>
                 <div className="mt-4 space-y-3">
                   {section.checklist.map((item) => (
                     <div key={item} className="px-1 py-1">
                       <p
-                        className="text-[14px] leading-[1.6] text-[#0e2951]"
+                        className="text-[14px] leading-[1.6] text-[#5c5960]"
                         dangerouslySetInnerHTML={{
                           __html: item
                             .replace("Contrast:", "<strong>Contrast:</strong>")
@@ -2049,8 +2048,8 @@ function FlockChecklistShowcase() {
                 </div>
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       ))}
     </div>
   );
@@ -3672,9 +3671,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <h1 className={`mb-5 font-inter font-bold leading-[0.98] ${usesNayyaVisualStyle ? "max-w-[1000px] text-[clamp(2.5rem,5.5vw,4.5rem)] tracking-[-0.055em] text-[#141114]" : "text-[36px] leading-[1.15] text-[#0e2951] md:text-[44px]"}`}>
                   {usesNayyaVisualStyle ? (
                     <>
-                      {editorialTitle.lead}
+                      {editorialTitle.lead}{" "}
                       {editorialTitle.accent ? (
-                        <span className="mt-1 block font-playfair font-normal italic tracking-[-0.045em]">
+                        <span className="font-playfair font-normal italic tracking-[-0.045em]">
                           {editorialTitle.accent}
                         </span>
                       ) : null}
@@ -3808,7 +3807,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {overviewBlock.body}
           </p>
         ) : null}
-        {isNayyaCaseStudy || caseStudy.slug === "i9-everify-integration" ? (
+        {isNayyaCaseStudy || caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "flock-accessibility-system" ? (
           <>
             <p className="mt-6 font-inter text-[17px] leading-[1.7] text-[#3c3e3f]">
               {caseStudy.slug === "i9-everify-integration"
@@ -4613,7 +4612,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {visibleStoryBlocks.length ? (
-        <section id="rt-problem" className={`scroll-mt-24 py-10 ${usesNayyaVisualStyle ? "w-full bg-[#faf8f7]" : "mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20"}`}>
+        <section id="rt-problem" className={`scroll-mt-24 py-10 ${usesNayyaVisualStyle ? `w-full ${caseStudy.slug === "flock-accessibility-system" ? "bg-white" : "bg-[#faf8f7]"}` : "mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20"}`}>
           <div className={usesNayyaVisualStyle ? "mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20" : ""}>
           <div className={caseStudy.slug === "reversetech" ? "mx-auto max-w-[860px]" : "grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start"}>
             <div className={caseStudy.slug === "reversetech" ? "text-center" : ""}>
@@ -5697,27 +5696,26 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "flock-accessibility-system" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
-          <SectionHeading
-            eyebrow="Methodology"
-            title={methodologyName}
-            centered
-            className="mb-12"
-          />
+          <div className="mb-12">
+            <h2 className="font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+              Audit to <span className="block font-playfair font-normal italic">Systemization</span>
+            </h2>
+          </div>
           <div className="grid gap-4 md:grid-cols-5">
             {caseStudy.methodology.steps.map((step, index) => (
               <div key={step.step} className="flex flex-col gap-4">
                 <div
                   className="flex flex-1 flex-col gap-2 rounded-2xl p-5"
-                  style={{ backgroundColor: `${METHODOLOGY_COLORS[index] ?? "#87d4ac"}33` }}
+                  style={{ backgroundColor: index % 2 === 0 ? "#1183D020" : "#f8df3633" }}
                 >
                   <div
                     className="w-full rounded-xl"
-                    style={{ height: 10, backgroundColor: METHODOLOGY_COLORS[index] ?? "#87d4ac" }}
+                    style={{ height: 10, backgroundColor: index % 2 === 0 ? "#1183D0" : "#f8df36" }}
                   />
                   <p className="mt-2 font-inter text-[15px] font-semibold text-[#3c3e3f]">
                     {step.step}. {step.label}
                   </p>
-                  <p className="font-inter text-[14px] leading-[1.625em] text-[#5c7792]">
+                  <p className="font-inter text-[14px] leading-[1.625em] text-[#5c5960]">
                     {step.description}
                   </p>
                 </div>
@@ -5731,16 +5729,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <>
           <section className="mx-auto max-w-[1200px] px-6 py-6 md:px-10 xl:px-20">
             <div className="px-6 py-6 md:px-10">
-              <div className="mb-8">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#5c5960]">Research &amp; discovery</p>
-                <h2 className="mt-3 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
-                  {renderNayyaEditorialTitle("Accessibility Audit")}
-                </h2>
-              </div>
               <div className="mx-auto grid max-w-[1180px] items-center gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
                 <Card className="overflow-hidden border-0 bg-transparent shadow-none">
                   <CardContent className="px-0 py-4 text-left lg:flex lg:min-h-[420px] lg:flex-col lg:justify-center">
                     <div className="space-y-4">
+                      <h2 className="mb-6 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+                        {renderNayyaEditorialTitle("Accessibility Audit")}
+                      </h2>
                       <p className="font-inter text-[17px] leading-[1.7] text-[#5c5960]">
                         Existing Confluence documentation and the product were reviewed to identify missing patterns and determine which could be retained within the new library structure.
                       </p>
@@ -5779,9 +5774,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
           <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
             <h2 className="mb-10 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
-              {renderNayyaEditorialTitle("Before & After Accessibility Updates")}
+              Before &amp; After
+              <span className="block">
+                Accessibility <span className="font-playfair font-normal italic">Updates</span>
+              </span>
             </h2>
-            <p className="mx-auto mb-10 max-w-[860px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+            <p className="mb-10 max-w-[860px] text-left font-inter text-[17px] leading-[1.7] text-[#5c5960]">
               Each example below shows how the same product patterns were reworked to improve hierarchy, navigation, controls, and clarity without relying on the original branded UI.
             </p>
             <FlockChecklistShowcase />
@@ -5896,9 +5894,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </>
           ) : caseStudy.slug === "flock-accessibility-system" ? (
           <>
-            <h2 className="mb-8 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
-              {renderNayyaEditorialTitle(designProposalTitle)}
-            </h2>
             <div className="mx-auto grid max-w-[1100px] items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
               <div className="flex justify-center lg:justify-start">
                 <img
@@ -5908,6 +5903,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 />
               </div>
               <div className="space-y-5 text-left">
+                <h2 className="mb-8 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+                  {renderNayyaEditorialTitle(designProposalTitle)}
+                </h2>
                 {designStrategy.map((item) => (
                   <p key={item} className="font-inter text-[17px] leading-[1.7] text-[#5c5960]">{item}</p>
                 ))}
@@ -7475,11 +7473,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "flock-accessibility-system" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <h2 className="mb-8 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
-            {renderNayyaEditorialTitle(translate("caseStudy.theSolution"))}
-          </h2>
           <div className="mx-auto grid max-w-[1120px] items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
             <div className="space-y-5">
+              <h2 className="mb-8 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+                {renderNayyaEditorialTitle(translate("caseStudy.theSolution"))}
+              </h2>
               {FLOCK_SOLUTION.map((item) => (
                 <div key={item.title} className="font-inter text-[17px] leading-[1.7] text-[#5c5960]">
                   <p>
@@ -7644,7 +7642,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" && caseStudy.slug !== "i9-everify-integration" ? (
-        <section className={`py-10 ${usesNayyaVisualStyle ? "bg-[#faf8f7]" : ""}`}>
+        <section className={`py-10 ${usesNayyaVisualStyle ? (caseStudy.slug === "flock-accessibility-system" ? "bg-white" : "bg-[#faf8f7]") : ""}`}>
           <div className="mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20">
           {usesNayyaVisualStyle ? (
             <h2 className="mb-10 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
@@ -7670,18 +7668,22 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </>
           ) : null}
           {caseStudy.slug === "flock-accessibility-system" ? (
-          <DataTablePanel
-            wrapperClassName="mx-auto max-w-[1040px]"
-            columnsClassName="grid grid-cols-[1fr_1fr] gap-6 px-6"
-            headerClassName="py-4"
-            rowClassName="py-5"
-            headers={[<div>Before</div>, <div>After</div>]}
-            rows={FLOCK_RESULTS_COMPARISON.map((row) => [
-              <p>{row.before}</p>,
-              <p className="text-[var(--ui-color-text-strong)]">{row.after}</p>,
-            ])}
-          />
-        ) : usesNayyaVisualStyle && resultRows.length ? (
+            <div className="mx-auto max-w-[1040px] overflow-hidden rounded-[20px] border border-[#d7d2d3] bg-white">
+              <div className="grid grid-cols-[1fr_1fr] gap-6 border-b border-[#d7d2d3] bg-[#faf8f7] px-6 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#5c5960]">
+                <div>Before</div>
+                <div>After</div>
+              </div>
+              {FLOCK_RESULTS_COMPARISON.map((row, index) => (
+                <div
+                  key={index}
+                  className="grid grid-cols-[1fr_1fr] gap-6 border-t border-[#d7d2d3] px-6 py-5 text-[15px] leading-[1.6] text-[#5c5960]"
+                >
+                  <p>{row.before}</p>
+                  <p className="font-semibold text-[#141114]">{row.after}</p>
+                </div>
+              ))}
+            </div>
+          ) : usesNayyaVisualStyle && resultRows.length ? (
           <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
             {resultRows.map((row) => (
               <article
