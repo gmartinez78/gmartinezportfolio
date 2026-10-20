@@ -3670,6 +3670,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </p>
                 <h1 className={`mb-5 font-inter font-bold leading-[0.98] ${usesNayyaVisualStyle ? "max-w-[1000px] text-[clamp(2.5rem,5.5vw,4.5rem)] tracking-[-0.055em] text-[#141114]" : "text-[36px] leading-[1.15] text-[#0e2951] md:text-[44px]"}`}>
                   {usesNayyaVisualStyle ? (
+                    caseStudy.slug === "flock-accessibility-system" ? (
+                      <>
+                        Flock Accessibility &amp;{" "}
+                        <span className="block font-playfair font-normal italic tracking-[-0.045em]">
+                          Design System Audit
+                        </span>
+                      </>
+                    ) : (
                     <>
                       {editorialTitle.lead}{" "}
                       {editorialTitle.accent ? (
@@ -3678,6 +3686,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </span>
                       ) : null}
                     </>
+                    )
                   ) : caseStudy.title}
                 </h1>
                 <p className={`break-words leading-[1.55] ${usesNayyaVisualStyle ? "mt-7 max-w-full text-[clamp(1rem,1.5vw,1.25rem)] text-[#5c5960] lg:w-3/5" : "text-[16px] text-[#5c7792]"}`}>{caseStudy.tagline}</p>
@@ -4081,21 +4090,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
           ) : (
           <>
+          {caseStudy.slug === "i9-everify-integration" ? (
+            <h2 className="mb-12 text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+              {methodologyName}{" "}
+              <span className="block font-playfair font-normal italic">Methodology</span>
+            </h2>
+          ) : (
           <SectionHeading
-            eyebrow={caseStudy.slug === "i9-everify-integration" ? undefined : "Methodology"}
-            title={
-              caseStudy.slug === "i9-everify-integration" ? (
-                <>
-                  {methodologyName}{" "}
-                  <span className="block font-playfair font-normal italic">Methodology</span>
-                </>
-              ) : (
-                methodologyName
-              )
-            }
-            centered={["i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG, "calendar-keeper", "protecta"].includes(caseStudy.slug)}
+            eyebrow="Methodology"
+            title={methodologyName}
+            centered={[CONFIDENTIAL_PLACEHOLDER_SLUG, "calendar-keeper", "protecta"].includes(caseStudy.slug)}
             className="mb-12"
           />
+          )}
           {caseStudy.slug === "protecta" ? (
             <>
               <div className="mx-auto mb-10 max-w-[820px] text-center">
@@ -5728,7 +5735,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "flock-accessibility-system" ? (
         <>
           <section className="mx-auto max-w-[1200px] px-6 py-6 md:px-10 xl:px-20">
-            <div className="px-6 py-6 md:px-10">
+            <div className="py-6">
               <div className="mx-auto grid max-w-[1180px] items-center gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
                 <Card className="overflow-hidden border-0 bg-transparent shadow-none">
                   <CardContent className="px-0 py-4 text-left lg:flex lg:min-h-[420px] lg:flex-col lg:justify-center">
@@ -8486,28 +8493,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       <SiteFooter />
 
-      {(caseStudy.slug === "flock-accessibility-system" ||
-        (caseStudy.client_logos.length && !isNayyaCaseStudy && caseStudy.slug !== "i9-everify-integration")) ? (
+      {(caseStudy.client_logos.length && !isNayyaCaseStudy && caseStudy.slug !== "i9-everify-integration" && caseStudy.slug !== "flock-accessibility-system") ? (
       <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
-        {caseStudy.slug === "flock-accessibility-system" ? (
-          <div className="mb-10 flex flex-wrap items-center justify-center gap-8">
-            <img
-              src={withBasePath("/images/SNUZw.png")}
-              alt="IBX"
-              className="h-12 w-auto object-contain opacity-80"
-            />
-            <img
-              src={withBasePath("/images/c54fy.png")}
-              alt="Paychex"
-              className="h-12 w-auto object-contain opacity-80"
-            />
-            <img
-              src={withBasePath("/images/IbuV3.png")}
-              alt="Flock"
-              className="h-12 w-auto object-contain opacity-80"
-            />
-          </div>
-        ) : null}
         {caseStudy.client_logos.length && !isNayyaCaseStudy && caseStudy.slug !== "i9-everify-integration" ? (
           <div className="mb-10 flex flex-wrap items-center justify-center gap-8">
             {caseStudy.client_logos.map((logo) => (
