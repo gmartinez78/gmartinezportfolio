@@ -1241,7 +1241,7 @@ const PROTECTA_PROBLEM_TO_OUTCOME: Record<"en" | "es", Array<{ problem: string; 
     {
       problem: "No brand system or live website to explain the advisory model.",
       change: "Created the brand, bilingual content strategy, and production website.",
-      result: "Website build time reduced by 72%.",
+      result: "Launched a bilingual website with clear advisory pathways.",
     },
     {
       problem: "Insurance felt complex and impersonal for families navigating coverage.",
@@ -1258,7 +1258,7 @@ const PROTECTA_PROBLEM_TO_OUTCOME: Record<"en" | "es", Array<{ problem: string; 
     {
       problem: "No había sistema de marca ni sitio web para explicar el modelo de asesoría.",
       change: "Creé la marca, la estrategia de contenido bilingüe y el sitio web en producción.",
-      result: "Tiempo de construcción web reducido en un 72%.",
+      result: "Sitio bilingüe lanzado con rutas claras hacia la asesoría.",
     },
     {
       problem: "Los seguros se sentían complejos e impersonales para las familias que buscaban cobertura.",
@@ -1331,20 +1331,20 @@ const PROTECTA_CAPABILITIES: Record<"en" | "es", { title: string; subtitle: stri
 
 const PROTECTA_PRACTICAL_IMPLICATIONS: Record<"en" | "es", { eyebrow: string; title: string; items: Array<{ title: string; body: string }> }> = {
   en: {
-    eyebrow: "Practical implications",
-    title: "What the workflow changed",
+    eyebrow: "Design decisions grounded in the service",
+    title: "Design decisions grounded in the service",
     items: [
       {
-        title: "Exploration moved at the speed of judgment.",
-        body: "Claude Design made early directions faster to generate and compare. The constraint was no longer producing screens; it was evaluating NotebookLM research, choosing the strongest direction, and refining it with intent.",
+        title: "An established contact channel",
+        body: "I prioritized WhatsApp based on direct client feedback, advisor interviews, and a review of existing conversations. Clients were familiar with the channel, and advisors already used its tools to manage communication. Reviewing other advisor websites provided additional context for the pattern. I retained a contact form as an alternative.",
       },
       {
-        title: "Figma and code stayed connected by component.",
-        body: "Figma was the design-system source for component anatomy, variants, and bilingual states. I used it as the implementation reference, then documented the coded equivalent in Storybook for QA. Changes were reviewed and applied deliberately; this was an aligned workflow, not an automatic two-way sync.",
+        title: "Making personal support visible",
+        body: "The initial AI-generated structure focused on insurance products and did not adequately communicate Protecta’s ongoing advisory support. I reorganized the content to highlight appointment assistance and personalized plan guidance, adding a dedicated section and reinforcing these services throughout the page.",
       },
       {
-        title: "Figma AI made system work faster.",
-        body: "After Claude Design established the first visual direction, I used Figma AI to create and refine the component library. This let me test page compositions quickly while preserving a reusable system for the website build.",
+        title: "Adapting content for different audiences",
+        body: "Research identified different backgrounds and information needs across the English- and Spanish-speaking audiences. The English version primarily addressed Americans who grew up speaking English, while the Spanish version served Latin American clients moving to or living in the US. I adapted terminology and the level of detail for each audience rather than relying on direct translation.",
       },
     ],
   },
@@ -1374,20 +1374,16 @@ const PROTECTA_KEY_LEARNINGS: Record<"en" | "es", { eyebrow: string; title: stri
     title: "What this project reinforced",
     items: [
       {
-        title: "Build the product before the system.",
-        body: "Starting in code created a system based on real bilingual pages, responsive behavior, and conversion paths. Each reusable pattern earned its place by solving a need in the product.",
+        title: "AI output needs business context.",
+        body: "The initial direction needed changes to reflect Protecta’s personal advisory service. My contribution was evaluating and reshaping the output against the actual offering.",
       },
       {
-        title: "AI needs a clear decision model.",
-        body: "AI was most useful when guided by source research, working definitions, brand guardrails, and a defined role. It accelerated exploration and critique; it did not replace product judgment.",
+        title: "A phased release makes a tight deadline manageable.",
+        body: "I established the initial presence and contact path first, then expanded the website in subsequent releases.",
       },
       {
-        title: "Bilingual content is adaptation, not translation.",
-        body: "English and Spanish needed independent messaging choices to remain clear, credible, and natural for the families Protecta serves.",
-      },
-      {
-        title: "Component QA makes speed repeatable.",
-        body: "Documenting patterns in Storybook made it easier to review states, mobile behavior, and language variations before launch.",
+        title: "Accessibility requires checking the implementation.",
+        body: "VoiceOver exposed skipped content that required correction and retesting.",
       },
     ],
   },
@@ -1420,7 +1416,6 @@ const PROTECTA_KEY_RESULTS: Record<"en" | "es", { title: string; items: string[]
     title: "Key Results",
     items: [
       "Bilingual English + Spanish content and conversion paths launched together",
-      "Website build time reduced by 72% with an AI-assisted workflow",
       "98% of 3.3K views came from people who did not follow the page",
       "26 website form leads tracked in the first week",
     ],
@@ -1429,7 +1424,6 @@ const PROTECTA_KEY_RESULTS: Record<"en" | "es", { title: string; items: string[]
     title: "Resultados clave",
     items: [
       "Contenido y rutas de conversión en inglés y español lanzados en conjunto",
-      "Tiempo de construcción web reducido en un 72% con un flujo asistido por IA",
       "El 98% de las 3.3K visualizaciones provino de personas que no seguían la página",
       "26 leads del formulario web registrados en la primera semana",
     ],
@@ -3440,7 +3434,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ? storyBlocks.filter((block) => block.id !== "research")
       : caseStudy.slug === "i9-everify-integration"
       ? storyBlocks.filter((block) => block.id !== "research")
+      : caseStudy.slug === "protecta"
+      ? storyBlocks.filter((block) => block.id !== "research")
       : storyBlocks;
+  const researchBlock = findBlock("research");
   const resultBlock = findBlock("impact");
   const sourcesBlock = findBlock("sources");
   const ctaVariantsBlock = findBlock("cta-variants");
@@ -3938,10 +3935,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {overviewBlock.body}
           </p>
         ) : null}
-        {isNayyaCaseStudy || caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "flock-accessibility-system" ? (
+        {isNayyaCaseStudy || caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "protecta" ? (
           <>
             <p className="mt-6 font-inter text-[17px] leading-[1.7] text-[#3c3e3f]">
-              {caseStudy.slug === "i9-everify-integration"
+              {caseStudy.slug === "protecta"
+                ? "My role was Design Engineer, owning the brand system, bilingual UX/UI, content structure, implementation, accessibility QA, and launch; the client advisors provided domain expertise and final approvals."
+                : caseStudy.slug === "i9-everify-integration"
                 ? "My role was UX Strategy, Integration UX, User Research, Product Thinking, across a 6 months timeline."
                 : `My role was ${caseStudy.my_role.join(", ")}, across a ${caseStudy.duration} timeline.`}
             </p>
@@ -4750,7 +4749,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {visibleStoryBlocks.length ? (
-        <section id="rt-problem" className={`scroll-mt-24 py-10 ${usesNayyaVisualStyle ? `w-full ${caseStudy.slug === "flock-accessibility-system" ? "bg-white" : "bg-[#faf8f7]"}` : "mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20"}`}>
+        <section id="rt-problem" className={`scroll-mt-24 py-10 ${usesNayyaVisualStyle ? `w-full ${caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "protecta" ? "bg-white" : "bg-[#faf8f7]"}` : "mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20"}`}>
           <div className={usesNayyaVisualStyle ? "mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20" : ""}>
           <div className={caseStudy.slug === "reversetech" ? "mx-auto max-w-[860px]" : "grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start"}>
             <div className={caseStudy.slug === "reversetech" ? "text-center" : ""}>
@@ -4857,20 +4856,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 ))
               }
             </div>
-            ) : null}
-            {caseStudy.slug === "protecta" ? (
-              <aside className="lg:sticky lg:top-24">
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-                  {PROTECTA_DELIVERABLES[localizedLanguage].items.map((item, index) => (
-                    <Card key={item} className="gap-0">
-                      <CardContent className="px-7 py-6">
-                        <p className="text-[30px] font-bold leading-none text-[#0e2951]">{String(index + 1).padStart(2, "0")}</p>
-                        <p className="mt-3 text-[16px] leading-[1.625em] text-[#0e2951]">{item}</p>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </aside>
             ) : null}
           </div>
           </div>
@@ -5411,46 +5396,44 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </>
       )}
 
+      {caseStudy.slug === "protecta" && researchBlock ? (
+        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-[900px]">
+            <div className="mb-8 flex flex-col items-center gap-4 text-center">
+              <div className="mb-4 h-[3px] w-full max-w-[120px] rounded-full bg-[#f8df36]" />
+              <h2 className="font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">{researchBlock.title}</h2>
+            </div>
+            <div className="rounded-[24px] border-l-[3px] border-[#f8df36] bg-white px-6 py-7 shadow-[8px_10px_0_#c7e8f7] md:px-10 md:py-9">
+              {researchBlock.body?.split(/\n+/).map((paragraph, index) => <p key={index} className="mb-4 last:mb-0 font-inter text-[17px] leading-[1.8] text-[#5c5960]">{paragraph.trim()}</p>)}
+              <a href="https://notebook.google.com/notebook/4ce934be-90fa-44ad-9770-9b2bef5ffbb2" target="_blank" rel="noreferrer" className="mt-6 inline-flex font-inter text-[14px] font-semibold text-[#0E6FB4] underline underline-offset-4">{translate("caseStudy.openNotebookResearch")}</a>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       {caseStudy.slug === "protecta" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading eyebrow={translate("caseStudy.methodology")} title={methodologyName} centered className="mb-12" />
-          <div className="mx-auto mb-10 max-w-[820px] text-center">
-            <p className="mt-4 font-inter text-[16px] leading-[1.7] text-[#5c7792]">{PROTECTA_DECISION_MODEL[localizedLanguage].body}</p>
-          </div>
-          <div className="overflow-x-auto pb-4">
-            <div className="relative mx-auto min-w-[840px] px-3">
-              <div className="grid grid-cols-4 gap-x-4 gap-y-10">
-                {caseStudy.methodology.steps.map((step, index) => (
-                  <div
-                    key={step.step}
-                    className={`relative flex flex-col items-center ${
-                      index === 4
-                        ? "col-start-1 row-start-2"
-                        : index === 5
-                          ? "col-start-2 row-start-2"
-                          : index === 6
-                            ? "col-start-3 row-start-2"
-                            : ""
-                    }`}
-                  >
-                    <div className="relative z-10 flex flex-col items-center">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white text-[12px] font-bold text-[#0e2951] shadow-[0_3px_8px_rgba(14,41,81,0.12)]" style={{ backgroundColor: METHODOLOGY_COLORS[index] ?? "#87d4ac" }}>
-                        {step.step}
-                      </div>
-                      <span className="h-6 w-px bg-[#8badc7]" aria-hidden="true" />
-                    </div>
-                    <article className="flex min-h-[190px] w-full flex-col rounded-[20px] border border-[#d7e8f7] bg-white p-4 shadow-[0_12px_30px_rgba(14,41,81,0.07)]">
-                      <p className="font-inter text-[14px] font-semibold text-[#0e2951]">{step.label}</p>
-                      <p className="mt-2 font-inter text-[12px] leading-[1.5] text-[#5c7792]">{PROTECTA_WORKFLOW_SUMMARIES[localizedLanguage][index] ?? step.description}</p>
-                      <div className="mt-auto flex flex-wrap gap-1.5 pt-4">
-                        {(PROTECTA_WORKFLOW_TOOLS[index] ?? []).map((tool) => (
-                          <span key={tool} className="rounded-full bg-[#E0EEFB] px-2 py-1 font-inter text-[10px] font-semibold text-[#0E6FB4]">{tool}</span>
-                        ))}
-                      </div>
-                    </article>
+          <div className="mx-auto max-w-[900px]">
+            <div className="mb-8 flex flex-col items-center gap-4 text-center">
+              <div className="mb-4 h-[3px] w-full max-w-[120px] rounded-full bg-[#f8df36]" />
+              <p className="font-inter text-[12px] font-semibold uppercase tracking-[0.18em] text-[#0E6FB4]">{translate("caseStudy.methodology")}</p>
+              <h2 className="font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">{methodologyName}</h2>
+              <p className="max-w-[820px] font-inter text-[17px] leading-[1.7] text-[#5c5960]">{PROTECTA_DECISION_MODEL[localizedLanguage].body}</p>
+            </div>
+            <div className="grid gap-5 md:grid-cols-3">
+              {caseStudy.methodology.steps.map((step, index) => (
+                <article key={step.step} className="rounded-[20px] border border-[#d7d2d3] bg-white p-6">
+                  <div className="mb-5 h-[3px] w-full rounded-full bg-[#f8df36]" />
+                  <p className="font-inter text-[11px] font-semibold tracking-[0.18em] text-[#0E6FB4]">{step.step}</p>
+                  <h3 className="mt-3 font-inter text-[20px] font-semibold leading-[1.35] text-[#141114]">{step.label}</h3>
+                  <p className="mt-3 font-inter text-[14px] leading-[1.65] text-[#5c5960]">{PROTECTA_WORKFLOW_SUMMARIES[localizedLanguage][index] ?? step.description}</p>
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {(PROTECTA_WORKFLOW_TOOLS[index] ?? []).map((tool) => (
+                      <span key={tool} className="rounded-full bg-[#E0EEFB] px-2 py-1 font-inter text-[10px] font-semibold text-[#0E6FB4]">{tool}</span>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -7792,7 +7775,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <div className="mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20">
           {usesNayyaVisualStyle ? (
             <h2 className="mb-10 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
-              {renderNayyaEditorialTitle(translate("caseStudy.resultsImpact"))}
+              {caseStudy.slug === "protecta" ? "Projected acquisition funnel" : renderNayyaEditorialTitle(translate("caseStudy.resultsImpact"))}
             </h2>
           ) : (
             <SectionHeading eyebrow={caseStudy.slug === "protecta" ? translate("caseStudy.measuredImpact") : undefined} title={translate("caseStudy.resultsImpact")} centered className="mb-12" />
@@ -7800,7 +7783,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           {caseStudy.slug === "protecta" ? (
             <>
               <div className="mx-auto max-w-[1040px] rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] p-6 sm:p-8">
-                <p className="mx-auto max-w-[820px] text-center font-inter text-[15px] leading-[1.7] text-[#5c7792]">The campaign was designed to do more than build awareness. It created a direct path from social-media discovery to a personal conversation, helping potential customers move from interest to a qualified insurance consultation.</p>
+                <p className="mx-auto max-w-[820px] text-center font-inter text-[15px] leading-[1.7] text-[#5c7792]">This benchmark-based model shows the intended acquisition path from social-media discovery to a qualified insurance consultation. These are projected results, not measured campaign outcomes.</p>
                 <div className="mt-8 hidden overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white md:block">
                   <div className="grid grid-cols-[1.4fr_0.9fr_1.35fr] border-b border-[#d7e8f7] bg-[#eef6fc] px-6 py-4 font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#385b7a]"><div>Funnel stage</div><div>Results</div><div>Conversion</div></div>
                   {PROTECTA_CONVERSION_FUNNEL.map(([stage, result, conversion]) => <div key={stage} className={`grid grid-cols-[1.4fr_0.9fr_1.35fr] px-6 py-5 font-inter text-[14px] leading-[1.6] text-[#5c7792] ${stage === "WhatsApp inquiries started" ? "border-y border-[#b8d9f2] bg-[#e0eefb]" : "border-b border-[#edf4fa] last:border-0"}`}><div className="font-semibold text-[#0e2951]">{stage}</div><div className={`font-semibold ${stage === "WhatsApp inquiries started" ? "text-[#0E6FB4]" : "text-[#0e2951]"}`}>{result}</div><div>{conversion}</div></div>)}

@@ -116,6 +116,11 @@
     ],
     "metrics": [
       {
+        "value": "5 days",
+        "label": "From research to initial launch",
+        "context": "Included brand creation, the homepage, Who We Are page, a working contact form, and client review."
+      },
+      {
         "value": "72%",
         "label": "Reduction in processing time",
         "context": "benefits processing"
@@ -879,7 +884,7 @@
       {
         "id": "impact",
         "type": "results",
-        "title": "Result",
+        "title": "Audience reach and engagement",
         "body": "",
         "payload": {
           "rows": [
@@ -931,11 +936,11 @@
     "title": "Brand, Website & Campaign Launch",
     "company": "Protecta Advisory",
     "client_context": "Protecta Advisory",
-    "role": "Design Engineer",
+    "role": "Senior Product Designer | End-to-end design and implementation",
     "year": 2026,
-    "duration": "72% faster website delivery",
+    "duration": "Five days from research to initial launch, including brand creation and a one-day client review. Remaining pages followed in later releases.",
     "industry": "Insurance / Advisory",
-    "tagline": "Designed an insurance-awareness campaign and conversion path that turns social-media reach into direct WhatsApp inquiries and qualified consultation opportunities.",
+    "tagline": "I independently designed and built Protecta’s brand and bilingual website, using AI to support research, exploration, and implementation. The initial release went live in five days, giving the business a digital presence and a way for prospective clients to get in touch.",
     "tags": [
       "AI Product",
       "Product Design",
@@ -970,19 +975,14 @@
     "client_logos": [],
     "metrics": [
       {
-        "value": "72%",
-        "label": "Faster website delivery",
-        "context": "AI-assisted workflow across brand, bilingual content, website design and build, QA, and launch."
-      },
-      {
         "value": "98%",
         "label": "New-audience reach",
         "context": "Views from non-followers in the first 28 days of the campaign."
       },
       {
-        "value": "WCAG 2.1 AA",
-        "label": "Accessibility target",
-        "context": "Component-level accessibility checks were handled in Storybook during the build."
+        "value": "VoiceOver tested",
+        "label": "Accessibility review and correction",
+        "context": "Identified skipped content, revised the implementation, and verified the fix."
       }
     ],
     "team": [
@@ -1082,8 +1082,8 @@
       {
         "id": "team-context",
         "type": "custom",
-        "title": "Team",
-        "body": "I ran the engagement as a solo delivery across seven roles: UX/UI design, brand strategy, content strategy and writing, product ownership, development, QA, and bilingual localization. The client stepped in at final decision points rather than participating in every intermediate review."
+        "title": "Scope",
+        "body": "I owned research, branding, bilingual content, website design, development, and accessibility checks. AI tools supported exploration and execution; I made the final decisions and worked directly with the client to review and approve the experience."
       },
       {
         "id": "situation",
@@ -1106,13 +1106,13 @@
       {
         "id": "actions",
         "type": "custom",
-        "title": "AI alignment",
-        "body": "I structured the work as an AI-augmented production pipeline with human judgment at each handoff. Claude and NotebookLM accelerated ideation, research synthesis, and first-draft copy.\n\nClaude Design created the initial visual direction; I then selected and refined the strongest ideas in Figma. With Figma AI, I built the reusable component library and its variants before using it as the reference for the coded interface. Codex and Claude Code accelerated implementation, while Storybook documented the implemented components and supported accessibility QA."
+        "title": "Using AI with clear design direction",
+        "body": "I used Claude Design to explore an initial website direction, then evaluated the output against the client’s priorities and Protecta’s brand. The first version felt generic, so I refined the typography and imagery and restructured the content to communicate the personal support behind the insurance offering.\n\nAI helped me move from exploration to implementation quickly. I remained responsible for selecting the direction, adapting the content, reviewing the build, and resolving issues before release. I refined the visual direction and reusable patterns across design and implementation, then reviewed the coded experience."
       },
       {
         "id": "impact",
         "type": "results",
-        "title": "Result",
+        "title": "Audience reach and engagement",
         "body": "The outcome pairs a launch-ready bilingual website with an educational campaign designed to make medical coverage understandable and actionable for families. In its first 28 days, the campaign built meaningful organic discovery, interaction, and traffic from an audience that was almost entirely new to the page.",
         "payload": {
           "rows": [

@@ -60,6 +60,11 @@ const toolIconMap: Record<string, string> = {
   Hotjar: withBasePath("/images/tools/hotjar.svg"),
   WCAG: withBasePath("/images/tools/accessibility.svg"),
   Anthropic: withBasePath("/images/tools/anthropic.svg"),
+  NotebookLM: withBasePath("/images/tools/notion.svg"),
+  "Figma AI": withBasePath("/images/tools/figma.svg"),
+  Storybook: withBasePath("/images/tools/react.svg"),
+  Grammarly: withBasePath("/images/tools/openai.svg"),
+  Vercel: withBasePath("/images/tools/visualstudiocode.svg"),
 };
 
 const projectImageMap: Record<string, string> = {
