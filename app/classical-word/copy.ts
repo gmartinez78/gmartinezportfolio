@@ -45,8 +45,8 @@ const copy: Record<SupportedLocale, ClassicalWordCopy> = {
     printBody: "A three-part presentation that introduces the visual language, compares both sides of the brochure, then reveals the full interior.",
     printImageAlt: "Classical Word Arabic Institute brochure cover",
     directionEyebrow: "Design direction",
-    directionTitleLead: "Designed to feel considered, not",
-    directionTitleAccent: "crowded.",
+    directionTitleLead: "Designed to feel",
+    directionTitleAccent: "considered, not crowded.",
     directionBody: "The visual system leans into the warmth of traditional print materials while giving every message a clear hierarchy and enough room to breathe.",
     principles: [
       {

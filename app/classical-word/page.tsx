@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Compass, LayoutPanelTop, Palette } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ProjectTeaserCard } from "@/components/project-teaser-card";
@@ -17,8 +16,6 @@ import {
   usePublicCaseStudies,
 } from "@/lib/cms/public";
 import { getClassicalWordCopy } from "./copy";
-
-const principleIcons = [LayoutPanelTop, Palette, Compass];
 
 const PROJECT_BACKGROUNDS: Record<string, string> = {
   reversetech: "linear-gradient(180deg, #eef4fb 0%, #eef4fb 100%)",
@@ -108,21 +105,17 @@ export default function ClassicalWordPage() {
 
       <section className="bg-white py-20 md:py-28">
         <div className="mx-auto max-w-[1160px] rounded-[32px] bg-[#0E6FB4] px-7 py-12 text-white sm:px-10 md:px-14 md:py-16 lg:px-16">
-          <div className="mx-auto max-w-[720px] text-center">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#f8df36]">{t.directionEyebrow}</p>
-            <h2 className="mx-auto mt-3 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-white">
+          <div className="max-w-[720px] text-left">
+            <h2 className="mt-3 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-white">
               {t.directionTitleLead}{" "}
-              <span className="font-playfair font-normal italic tracking-[-0.045em]">{t.directionTitleAccent}</span>
+              <span className="block font-playfair font-normal italic tracking-[-0.045em]">{t.directionTitleAccent}</span>
             </h2>
-            <p className="mt-5 text-[17px] leading-[1.7] text-white/85">{t.directionBody}</p>
           </div>
           <div className="mt-14 grid gap-8 md:grid-cols-3">
             {t.principles.map(({ title, body }, index) => {
-              const Icon = principleIcons[index] ?? LayoutPanelTop;
               return (
-                <article key={title} className="relative overflow-hidden border-t border-white/30 pt-5">
+                <article key={title} className="relative overflow-hidden">
                   <span className="font-inter text-[42px] font-semibold leading-none text-[#f8df36]">0{index + 1}</span>
-                  <Icon className="mt-5 h-5 w-5 text-white/80" strokeWidth={1.5} />
                   <h3 className="mt-5 font-inter text-[20px] font-semibold leading-tight text-white">{title}</h3>
                   <p className="mt-4 text-[14px] leading-[1.75] text-white/80">{body}</p>
                 </article>
