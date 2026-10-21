@@ -74,7 +74,7 @@ export default function ClassicalWordPage() {
     <main className="overflow-hidden bg-white text-[#141114]">
       <SiteHeader active="Projects" behavior="reveal" />
 
-      <section className="relative isolate overflow-hidden bg-white">
+      <section className="relative isolate overflow-hidden bg-[#fff8f3]">
         <div className="relative mx-auto max-w-[1240px] px-6 pt-6 md:px-10 lg:px-20">
           <nav className="flex flex-wrap items-center gap-3 text-sm text-[#5c5960]" aria-label="Breadcrumb">
             <Link href={withBasePath("/")} className="text-[#451044] transition-colors hover:text-[#0E6FB4]">{t.breadcrumbHome}</Link>
@@ -102,24 +102,6 @@ export default function ClassicalWordPage() {
                 </span>
               ))}
             </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-20 md:py-28">
-        <div className="mx-auto max-w-[1240px] px-6 md:px-10 lg:px-20">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <div>
-              <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#0E6FB4]">{t.printEyebrow}</p>
-              <h2 className="mt-3 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
-                {t.printTitleLead}{" "}
-                <span className="font-playfair font-normal italic tracking-[-0.045em]">{t.printTitleAccent}</span>
-              </h2>
-              <p className="mt-5 text-[17px] leading-[1.7] text-[#5c5960]">{t.printBody}</p>
-            </div>
-            <div className="relative overflow-hidden rounded-[20px] border border-[#d7d2d3] bg-white p-2 shadow-[0_30px_70px_rgba(20,17,20,0.12)] sm:p-3">
-              <Image src={withBasePath("/images/projects/classical-word/cover-classical-word.png")} alt={t.printImageAlt} width={1448} height={1086} className="h-auto w-full rounded-[14px]" />
-            </div>
           </div>
         </div>
       </section>
