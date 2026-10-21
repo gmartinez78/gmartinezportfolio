@@ -63,7 +63,7 @@ const toolIconMap: Record<string, string> = {
 };
 
 const projectImageMap: Record<string, string> = {
-  "classical-word": withBasePath("/images/projects/classical-word/cover-classical word.png"),
+  "classical-word": withBasePath("/images/projects/classical-word/cover-classical-word.png"),
   "benefits-enrollment": withBasePath("/images/projects/benefits-enrollment/thumbnails/thumbnail-benefits.png"),
   "nayya-ai-benefits": withBasePath("/images/projects/nayya-ai-benefits/thumbnails/thumbnail-nayya-cover.png"),
   "flock-accessibility-system": withBasePath("/images/projects/flock-accessibility-system/thumbnails/flock.png"),
@@ -120,7 +120,7 @@ const homeCardMediaMap: Record<string, { id: string; image: string }> = {
 const projectListCardMediaMap: Record<string, { id: string; image: string }> = {
   "classical-word": {
     id: "project-list-card-classical-word",
-    image: withBasePath("/images/projects/classical-word/cover-classical word.png"),
+    image: withBasePath("/images/projects/classical-word/cover-classical-word.png"),
   },
   "calendar-keeper": {
     id: "project-list-card-calendar-keeper",

@@ -3677,6 +3677,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           Design System Audit
                         </span>
                       </>
+                    ) : caseStudy.slug === "i9-everify-integration" ? (
+                      <>
+                        I-9 &amp; E-Verify{" "}
+                        <span className="block font-playfair font-normal italic tracking-[-0.045em]">
+                          Integration
+                        </span>
+                      </>
                     ) : (
                     <>
                       {editorialTitle.lead}{" "}
