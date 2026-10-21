@@ -74,7 +74,7 @@ export default function ClassicalWordPage() {
     <main className="overflow-hidden bg-white text-[#141114]">
       <SiteHeader active="Projects" behavior="reveal" />
 
-      <section className="relative isolate overflow-hidden bg-[#fff8f3]">
+      <section className="relative isolate overflow-hidden bg-[#fcfafc]">
         <div className="relative mx-auto max-w-[1240px] px-6 pt-6 md:px-10 lg:px-20">
           <nav className="flex flex-wrap items-center gap-3 text-sm text-[#5c5960]" aria-label="Breadcrumb">
             <Link href={withBasePath("/")} className="text-[#451044] transition-colors hover:text-[#0E6FB4]">{t.breadcrumbHome}</Link>
@@ -107,24 +107,24 @@ export default function ClassicalWordPage() {
       </section>
 
       <section className="bg-white py-20 md:py-28">
-        <div className="mx-auto max-w-[1240px] px-6 md:px-10 lg:px-20">
+        <div className="mx-auto max-w-[1160px] rounded-[32px] bg-[#0E6FB4] px-7 py-12 text-white sm:px-10 md:px-14 md:py-16 lg:px-16">
           <div className="mx-auto max-w-[720px] text-center">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#0E6FB4]">{t.directionEyebrow}</p>
-            <h2 className="mx-auto mt-3 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#f8df36]">{t.directionEyebrow}</p>
+            <h2 className="mx-auto mt-3 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-white">
               {t.directionTitleLead}{" "}
               <span className="font-playfair font-normal italic tracking-[-0.045em]">{t.directionTitleAccent}</span>
             </h2>
-            <p className="mt-5 text-[17px] leading-[1.7] text-[#5c5960]">{t.directionBody}</p>
+            <p className="mt-5 text-[17px] leading-[1.7] text-white/85">{t.directionBody}</p>
           </div>
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
+          <div className="mt-14 grid gap-8 md:grid-cols-3">
             {t.principles.map(({ title, body }, index) => {
               const Icon = principleIcons[index] ?? LayoutPanelTop;
               return (
-                <article key={title} className="relative overflow-hidden rounded-[20px] border border-[#d7d2d3] bg-white p-7 shadow-[0_12px_30px_rgba(20,17,20,0.05)]">
-                  <span className="absolute right-5 top-3 font-inter text-[64px] font-semibold leading-none text-[#f8df36]/45">0{index + 1}</span>
-                  <Icon className="h-6 w-6 text-[#0E6FB4]" strokeWidth={1.5} />
-                  <h3 className="mt-7 font-inter text-[20px] font-semibold leading-tight text-[#141114]">{title}</h3>
-                  <p className="mt-4 text-[14px] leading-[1.75] text-[#5c5960]">{body}</p>
+                <article key={title} className="relative overflow-hidden border-t border-white/30 pt-5">
+                  <span className="font-inter text-[42px] font-semibold leading-none text-[#f8df36]">0{index + 1}</span>
+                  <Icon className="mt-5 h-5 w-5 text-white/80" strokeWidth={1.5} />
+                  <h3 className="mt-5 font-inter text-[20px] font-semibold leading-tight text-white">{title}</h3>
+                  <p className="mt-4 text-[14px] leading-[1.75] text-white/80">{body}</p>
                 </article>
               );
             })}
