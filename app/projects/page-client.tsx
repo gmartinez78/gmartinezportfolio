@@ -165,7 +165,7 @@ function ProjectsPage() {
           Case studies and highlights from 10+ years designing enterprise SaaS, healthtech, and nonprofit digital experiences.
         </p>
         {activeTopic ? (
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#1183D0]">
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#0E6FB4]">
             Showing projects related to <span className="font-semibold">{activeTopic}</span>.
           </p>
         ) : null}

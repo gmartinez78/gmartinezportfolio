@@ -84,7 +84,7 @@ export function ProjectCard({
             ) : (
               <div className="flex h-full items-center justify-center text-center">
                 <div>
-                  <div className="text-5xl font-inter font-bold text-[var(--ui-color-brand-primary)]">
+                  <div className="text-5xl font-inter font-bold text-[var(--ui-color-brand-ink)]">
                     {stat}
                   </div>
                   <div className="mx-auto mt-1 max-w-[120px] text-xs leading-tight text-[var(--ui-color-text-muted)]">
@@ -106,7 +106,7 @@ export function ProjectCard({
                 {year}
               </span>
               {locked ? (
-                <span className="rounded-full bg-[#eaf4ff] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--ui-color-brand-primary)]">
+                <span className="rounded-full bg-[#eaf4ff] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--ui-color-brand-ink)]">
                   {translate("projectCard.locked")}
                 </span>
               ) : null}
@@ -126,7 +126,7 @@ export function ProjectCard({
                 </Badge>
               ))}
             </div>
-            <span className="rounded-full bg-white/72 px-4 py-2 text-sm font-medium text-[var(--ui-color-brand-primary)] transition-colors group-hover:bg-white">
+            <span className="rounded-full bg-white/72 px-4 py-2 text-sm font-medium text-[var(--ui-color-brand-ink)] transition-colors group-hover:bg-white">
               {resolvedCtaLabel}
             </span>
           </div>

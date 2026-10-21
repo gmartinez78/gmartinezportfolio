@@ -633,6 +633,7 @@ export const germanDictionary = {
   "caseStudy.overview": "Überblick",
   "caseStudy.structure": "Struktur",
   "caseStudy.problem": "Das Problem",
+  "caseStudy.context": "Kontext",
   "caseStudy.methodology": "Methodologie",
   "caseStudy.moreWork": "Mehr Arbeiten",
   "caseStudy.otherProjects": "Andere Projekte"

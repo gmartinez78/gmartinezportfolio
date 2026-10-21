@@ -114,7 +114,7 @@ export function ProjectTeaserCard({
         ) : (
           <div className="flex h-full items-center justify-center px-6 text-center">
             <div>
-              <div className="text-5xl font-inter font-bold text-[var(--ui-color-brand-primary)]">
+              <div className="text-5xl font-inter font-bold text-[var(--ui-color-brand-ink)]">
                 {year}
               </div>
               <div className="mt-2 text-xs leading-tight text-[var(--ui-color-text-muted)]">
@@ -146,7 +146,7 @@ export function ProjectTeaserCard({
               {locked ? (
                 <>
                   <span className="text-[#bcd2ff]">·</span>
-                  <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--ui-color-brand-primary)]">
+                  <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--ui-color-brand-ink)]">
                     Locked
                   </span>
                 </>
@@ -168,7 +168,7 @@ export function ProjectTeaserCard({
               <p className="text-[15px] leading-relaxed text-[var(--ui-color-text-muted)]">
                 {description}
               </p>
-              <span className="inline-flex text-[14px] font-medium text-[var(--ui-color-brand-primary)] underline-offset-2 group-hover:underline">
+              <span className="inline-flex text-[14px] font-medium text-[var(--ui-color-brand-ink)] underline-offset-2 group-hover:underline">
                 {ctaLabel} →
               </span>
             </div>
@@ -184,7 +184,7 @@ export function ProjectTeaserCard({
               <p className="text-[15px] leading-relaxed text-[var(--ui-color-text-muted)]">
                 {description}
               </p>
-              <span className="inline-flex text-[14px] font-medium text-[var(--ui-color-brand-primary)] underline-offset-2 group-hover:underline group-focus-visible:underline">
+              <span className="inline-flex text-[14px] font-medium text-[var(--ui-color-brand-ink)] underline-offset-2 group-hover:underline group-focus-visible:underline">
                 {ctaLabel} →
               </span>
             </div>

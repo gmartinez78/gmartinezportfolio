@@ -25,7 +25,7 @@ function PageIntro({
   return (
     <div className={cn("flex max-w-3xl flex-col gap-5", centered && "mx-auto items-center text-center", className)}>
       {eyebrow ? (
-        <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[var(--ui-color-brand-primary)]">
+        <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[var(--ui-color-brand-ink)]">
           {eyebrow}
         </p>
       ) : null}

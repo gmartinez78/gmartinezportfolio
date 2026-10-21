@@ -943,8 +943,8 @@ export default function PortfolioPage() {
       <Container size="wide" className="relative">
         <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16">
           <div>
-              <p className="inline-flex items-center gap-2 text-xs font-semibold text-[#1183D0]">
-                <span aria-hidden="true" className="size-1.5 rounded-full bg-[#1183D0]" />
+              <p className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--ui-color-brand-ink)]">
+                <span aria-hidden="true" className="size-1.5 rounded-full bg-[var(--ui-color-brand-ink)]" />
               {translate("home.about.eyebrow")}
             </p>
             <Heading id="about-title" as="h2" variant="feature" className="mt-4 max-w-[650px] text-[clamp(2rem,3.2vw,3rem)] leading-[1.08] text-[#141114]">
@@ -1765,7 +1765,7 @@ export default function PortfolioPage() {
                     variant={isActive ? "secondary" : "ghost"}
                     size="xs"
                     onClick={() => setActiveProcessCapability(capability.id)}
-                    className="min-h-10 shrink-0 rounded-[var(--ui-radius-pill)] px-4 text-[var(--ui-color-text-body)] hover:text-[var(--ui-color-brand-primary)] data-[variant=secondary]:text-[var(--ui-color-brand-primary)]"
+                    className="min-h-10 shrink-0 rounded-[var(--ui-radius-pill)] px-4 text-[var(--ui-color-text-body)] hover:text-[var(--ui-color-brand-ink)] data-[variant=secondary]:text-[var(--ui-color-brand-ink)]"
                   >
                     {translate(capability.keys.label)}
                   </Button>
@@ -1781,7 +1781,7 @@ export default function PortfolioPage() {
             >
               <div className="grid gap-8 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-14">
                 <div className="flex flex-col justify-center">
-                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--ui-color-brand-primary)]">
+                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--ui-color-brand-ink)]">
                     {translate(activeProcess.keys.label)}
                   </span>
                   <Heading as="h3" variant="feature" className="mt-4 max-w-md text-[clamp(1.7rem,2.7vw,2.45rem)]">
@@ -1827,7 +1827,7 @@ export default function PortfolioPage() {
                     <div className="mx-auto grid size-14 place-items-center rounded-full bg-[var(--ui-color-brand-primary)] text-white shadow-[var(--ui-shadow-button)]">
                       <Play aria-hidden="true" className="ml-0.5 size-5 fill-current" />
                     </div>
-                    <span className="mt-7 block text-xs font-semibold uppercase tracking-[0.16em] text-[var(--ui-color-brand-primary)]">
+                    <span className="mt-7 block text-xs font-semibold uppercase tracking-[0.16em] text-[var(--ui-color-brand-ink)]">
                       {translate("home.process.featuredProject")}
                     </span>
                     <p className="mt-2 font-inter text-3xl leading-tight text-[var(--ui-color-text-strong)] sm:text-4xl">

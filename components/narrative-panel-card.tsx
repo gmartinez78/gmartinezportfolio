@@ -28,7 +28,7 @@ export function NarrativePanelCard({
         className
       )}
     >
-      <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[var(--ui-color-brand-primary)]">
+      <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[var(--ui-color-brand-ink)]">
         {badge}
       </p>
       <p className="mt-4 font-inter text-[15px] leading-[1.7] text-[var(--ui-color-text-muted)]">

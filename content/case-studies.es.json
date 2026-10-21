@@ -233,7 +233,33 @@
     ],
     "nda_notice": "Partes de esta presentación, incluidas algunas pantallas y detalles del proyecto, han sido ocultadas o difuminadas debido a un acuerdo de confidencialidad firmado con el cliente. El trabajo mostrado es real; se omiten los detalles completos para proteger la privacidad del cliente.",
     "password": null,
-    "external_link": null
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "overview",
+        "type": "overview",
+        "title": "Resumen",
+        "body": "Paychex y Flock necesitaban una forma en la que los administradores de beneficios gestionaran por sí mismos altas, roles y permisos. El equipo diseñó y entregó en tres meses una plataforma centralizada que sustituyó el flujo manual, recortó un 72 % el tiempo de procesamiento y permitió que más de 500 empleados se autogestionaran sin abrir tickets de TI."
+      },
+      {
+        "id": "situation",
+        "type": "custom",
+        "title": "Situación",
+        "body": "Añadir un nuevo empleado exigía tickets de soporte y esfuerzo de desarrollo manual: los datos se recopilaban, validaban y enviaban entre equipos, y cada cambio se seguía por correo electrónico.\n\nNo existía una gobernanza centralizada ni una estructura de permisos clara, de modo que los cambios de beneficios requerían varios ciclos de nómina y una conciliación manual. En los picos de inscripción faltaba un flujo de escalado.\n\nCada solicitud de inscripción sin soporte tardaba entre 5 y 7 días hábiles, y el impacto se multiplicaba entre cientos de clientes."
+      },
+      {
+        "id": "task",
+        "type": "custom",
+        "title": "Tarea",
+        "body": "Diseñar una experiencia de autoservicio que redujera la dependencia del soporte, aclarara los permisos y encajara con el modelo operativo ya existente del producto.\n\nFui responsable de la investigación con usuarios, del diseño UX/UI y de la definición del modelo de roles y permisos que sostenía toda la plataforma, trabajando con el responsable de producto, el gestor de programa, el arquitecto de servicio y un equipo de desarrollo de doce personas bajo un calendario muy ajustado."
+      },
+      {
+        "id": "actions",
+        "type": "custom",
+        "title": "Acciones",
+        "body": "Investigué con los usuarios de la plataforma para entender sus puntos de dolor y su flujo de trabajo diario, y mapeé los roles internos, las reglas de gobernanza y los límites de permisos antes de tocar la interfaz, para que el sistema respondiera a necesidades operativas reales.\n\nDefiní la arquitectura subyacente y su lógica antes de modificar la UI, identifiqué qué partes del sistema ya funcionaban bien y construí sobre ellas, y verifiqué el ciclo de inscripción contra excepciones y casos límite de los administradores.\n\nAl no existir un sistema de diseño, la colaboración estrecha con ingeniería mantuvo la interfaz coherente y el traspaso limpio durante todo el proceso."
+      }
+    ]
   },
   {
     "slug": "nayya-ai-benefits",

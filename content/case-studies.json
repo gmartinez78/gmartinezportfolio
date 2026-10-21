@@ -212,7 +212,33 @@
     ],
     "nda_notice": "Parts of this presentation,including some screens and project details,have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy.",
     "password": null,
-    "external_link": null
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "overview",
+        "type": "overview",
+        "title": "Overview",
+        "body": "Paychex and Flock needed a way for benefits administrators to self-manage enrollments, roles, and permissions. The team designed and shipped a centralized platform in three months that replaced the manual workflow, cut processing time by 72%, and let more than 500 employees self-manage without opening an IT ticket."
+      },
+      {
+        "id": "situation",
+        "type": "custom",
+        "title": "Situation",
+        "body": "Adding a new employee required support tickets and manual development effort: data had to be collected, validated, and sent across teams, with every change tracked over email.\n\nThere was no centralized governance and no clear permission structure, so benefits changes required multiple payroll cycles and manual reconciliation. During enrollment spikes there was no clear escalation path.\n\nEach unsupported enrollment request took 5-7 business days, and the impact multiplied across hundreds of clients."
+      },
+      {
+        "id": "task",
+        "type": "custom",
+        "title": "Task",
+        "body": "Design a self-service enrollment experience that reduced support dependency, clarified permissions, and fit the product's existing operational model.\n\nI was responsible for user research, UX/UI design, and defining the role and permission model that the whole platform rested on, working with the product owner, program manager, service architect, and a twelve-person development team under a tight timeline."
+      },
+      {
+        "id": "actions",
+        "type": "custom",
+        "title": "Actions",
+        "body": "I spoke directly with platform users to understand their pain points and day-to-day workflow, and mapped internal roles, governance rules, and permission boundaries before touching the interface, so the system would support real operational needs.\n\nI defined the underlying architecture and its logic before changing the UI, identified the parts of the system that already worked well and built around those, and validated the enrollment lifecycle against exceptions and administrative edge cases.\n\nWith no design system in place, close collaboration with engineering kept the interface cohesive and the handoff smooth throughout delivery."
+      }
+    ]
   },
   {
     "slug": "nayya-ai-benefits",

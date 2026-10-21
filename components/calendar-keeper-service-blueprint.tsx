@@ -29,7 +29,7 @@ export function CalendarKeeperServiceBlueprint() {
       <div className="min-w-[980px] p-5 md:p-7">
         <div className="grid grid-cols-[150px_repeat(5,minmax(0,1fr))] border-b border-[#d9e5f2]">
           <div className="p-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#5c7792]">Journey stage</div>
-          {stages.map((stage, index) => <div key={stage} className="border-l border-[#d9e5f2] p-3"><p className="text-[10px] font-semibold tracking-[0.16em] text-[#1183D0]">0{index + 1}</p><p className="mt-1 font-inter text-[14px] font-semibold leading-[1.25] text-[#0e2951]">{stage}</p></div>)}
+          {stages.map((stage, index) => <div key={stage} className="border-l border-[#d9e5f2] p-3"><p className="text-[10px] font-semibold tracking-[0.16em] text-[#0E6FB4]">0{index + 1}</p><p className="mt-1 font-inter text-[14px] font-semibold leading-[1.25] text-[#0e2951]">{stage}</p></div>)}
         </div>
         {lanes.map((lane, index) => <div key={lane.label} className={`grid grid-cols-[150px_repeat(5,minmax(0,1fr))] ${index === 2 ? "border-t-2 border-dashed border-[#9ebcd7]" : "border-t border-[#d9e5f2]"}`}>
           <div className="p-3"><span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold ${lane.tone}`}>{lane.label}</span>{index === 2 ? <p className="mt-2 text-[9px] font-medium uppercase tracking-[0.08em] text-[#5c7792]">Line of visibility</p> : null}</div>

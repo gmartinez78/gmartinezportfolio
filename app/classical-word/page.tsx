@@ -77,9 +77,9 @@ export default function ClassicalWordPage() {
       <section className="relative isolate overflow-hidden bg-white">
         <div className="relative mx-auto max-w-[1240px] px-6 pt-6 md:px-10 lg:px-20">
           <nav className="flex flex-wrap items-center gap-3 text-sm text-[#5c5960]" aria-label="Breadcrumb">
-            <Link href={withBasePath("/")} className="text-[#451044] transition-colors hover:text-[#1183D0]">{t.breadcrumbHome}</Link>
+            <Link href={withBasePath("/")} className="text-[#451044] transition-colors hover:text-[#0E6FB4]">{t.breadcrumbHome}</Link>
             <span className="text-[#aaa5aa]">›</span>
-            <Link href={withBasePath("/projects")} className="transition-colors hover:text-[#1183D0]">{t.breadcrumbProjects}</Link>
+            <Link href={withBasePath("/projects")} className="transition-colors hover:text-[#0E6FB4]">{t.breadcrumbProjects}</Link>
             <span className="text-[#aaa5aa]">›</span>
             <span className="min-w-0 break-words font-semibold text-[#141114]">{t.breadcrumbCurrent}</span>
           </nav>
@@ -110,7 +110,7 @@ export default function ClassicalWordPage() {
         <div className="mx-auto max-w-[1240px] px-6 md:px-10 lg:px-20">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div>
-              <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{t.printEyebrow}</p>
+              <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#0E6FB4]">{t.printEyebrow}</p>
               <h2 className="mt-3 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
                 {t.printTitleLead}{" "}
                 <span className="font-playfair font-normal italic tracking-[-0.045em]">{t.printTitleAccent}</span>
@@ -127,7 +127,7 @@ export default function ClassicalWordPage() {
       <section className="bg-white py-20 md:py-28">
         <div className="mx-auto max-w-[1240px] px-6 md:px-10 lg:px-20">
           <div className="mx-auto max-w-[720px] text-center">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{t.directionEyebrow}</p>
+            <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#0E6FB4]">{t.directionEyebrow}</p>
             <h2 className="mx-auto mt-3 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
               {t.directionTitleLead}{" "}
               <span className="font-playfair font-normal italic tracking-[-0.045em]">{t.directionTitleAccent}</span>
@@ -140,7 +140,7 @@ export default function ClassicalWordPage() {
               return (
                 <article key={title} className="relative overflow-hidden rounded-[20px] border border-[#d7d2d3] bg-white p-7 shadow-[0_12px_30px_rgba(20,17,20,0.05)]">
                   <span className="absolute right-5 top-3 font-inter text-[64px] font-semibold leading-none text-[#f8df36]/45">0{index + 1}</span>
-                  <Icon className="h-6 w-6 text-[#1183D0]" strokeWidth={1.5} />
+                  <Icon className="h-6 w-6 text-[#0E6FB4]" strokeWidth={1.5} />
                   <h3 className="mt-7 font-inter text-[20px] font-semibold leading-tight text-[#141114]">{title}</h3>
                   <p className="mt-4 text-[14px] leading-[1.75] text-[#5c5960]">{body}</p>
                 </article>
@@ -153,7 +153,7 @@ export default function ClassicalWordPage() {
       <section className="mx-auto max-w-[1320px] px-6 py-20 md:px-10 lg:px-20 lg:py-28">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
-            <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">{t.pieceEyebrow}</p>
+            <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#0E6FB4]">{t.pieceEyebrow}</p>
             <h2 className="mt-3 max-w-[560px] font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
               {t.pieceTitleLead}{" "}
               <span className="font-playfair font-normal italic tracking-[-0.045em]">{t.pieceTitleAccent}</span>

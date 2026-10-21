@@ -1151,6 +1151,7 @@ export const dictionary = {
   "caseStudy.overview": { en: "Overview", es: "Resumen", de: "Überblick" },
   "caseStudy.structure": { en: "Structure", es: "Estructura", de: "Struktur" },
   "caseStudy.problem": { en: "The problem", es: "El problema", de: "Das Problem" },
+  "caseStudy.context": { en: "Context", es: "Contexto", de: "Kontext" },
   "caseStudy.methodology": { en: "Methodology", es: "Metodología", de: "Methodologie" },
   "caseStudy.moreWork": { en: "More work", es: "Más trabajo", de: "Mehr Arbeiten" },
   "caseStudy.otherProjects": { en: "Other Projects", es: "Otros proyectos", de: "Andere Projekte" },

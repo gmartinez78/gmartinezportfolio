@@ -106,7 +106,7 @@ export function SiteHeader({
             onClick={() => setIsMobileMenuOpen((open) => !open)}
             className={`inline-flex h-11 w-11 items-center justify-center rounded-2xl transition-all duration-200 lg:hidden ${
               isMobileMenuOpen
-                ? "bg-[#E0EEFB] text-[#1183D0] shadow-[0_10px_24px_rgba(17,131,208,0.12)]"
+                ? "bg-[#E0EEFB] text-[#0E6FB4] shadow-[0_10px_24px_rgba(17,131,208,0.12)]"
                 : isTransparent
                   ? "bg-transparent text-[#0e2951]"
                   : "bg-transparent text-[#0e2951]"
@@ -140,10 +140,10 @@ export function SiteHeader({
                     active === link.label
                       ? isTransparent
                         ? "bg-white/70 text-[#0e2951] shadow-[0_10px_24px_rgba(14,41,81,0.08)]"
-                        : "bg-[#E0EEFB] text-[#1183D0] shadow-[0_10px_24px_rgba(17,131,208,0.12)]"
+                        : "bg-[#E0EEFB] text-[#0E6FB4] shadow-[0_10px_24px_rgba(17,131,208,0.12)]"
                       : isTransparent
                         ? "text-[#0e2951] hover:-translate-y-0.5 hover:bg-white/70 hover:text-[#0e2951] hover:shadow-[0_10px_24px_rgba(14,41,81,0.08)]"
-                        : "text-[#5c7792] hover:-translate-y-0.5 hover:bg-[#E0EEFB] hover:text-[#1183D0] hover:shadow-[0_10px_24px_rgba(17,131,208,0.10)]"
+                        : "text-[#5c7792] hover:-translate-y-0.5 hover:bg-[#E0EEFB] hover:text-[#0E6FB4] hover:shadow-[0_10px_24px_rgba(17,131,208,0.10)]"
                   }`}
                 >
                   {link.label}
@@ -176,10 +176,10 @@ export function SiteHeader({
                   active === link.label
                     ? isTransparent
                       ? "bg-white/70 text-[#0e2951] shadow-[0_10px_24px_rgba(14,41,81,0.08)]"
-                      : "bg-[#E0EEFB] text-[#1183D0] shadow-[0_10px_24px_rgba(17,131,208,0.12)]"
+                      : "bg-[#E0EEFB] text-[#0E6FB4] shadow-[0_10px_24px_rgba(17,131,208,0.12)]"
                     : isTransparent
                       ? "text-[#0e2951] hover:bg-white/70 hover:text-[#0e2951] hover:shadow-[0_10px_24px_rgba(14,41,81,0.08)]"
-                      : "text-[#5c7792] hover:bg-[#E0EEFB] hover:text-[#1183D0] hover:shadow-[0_10px_24px_rgba(17,131,208,0.10)]"
+                      : "text-[#5c7792] hover:bg-[#E0EEFB] hover:text-[#0E6FB4] hover:shadow-[0_10px_24px_rgba(17,131,208,0.10)]"
                 }`}
               >
                 {link.label}

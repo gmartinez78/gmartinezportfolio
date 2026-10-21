@@ -10,15 +10,15 @@ const badgeVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-[var(--ui-color-brand-primary-soft)] text-[var(--ui-color-brand-primary)] hover:bg-[var(--ui-color-brand-primary-soft-hover)]",
+          "bg-[var(--ui-color-brand-primary-soft)] text-[var(--ui-color-brand-ink)] hover:bg-[var(--ui-color-brand-primary-soft-hover)]",
         secondary:
           "bg-[var(--ui-color-surface-soft-hover)] text-[var(--ui-color-text-muted)] hover:bg-[var(--ui-color-brand-primary-soft)]",
         destructive:
           "bg-destructive/10 text-destructive focus-visible:ring-destructive/20 hover:bg-destructive/20",
         outline:
-          "border-[var(--ui-color-border-strong)] bg-[var(--ui-color-surface-base)] text-[var(--ui-color-brand-primary)] hover:bg-[var(--ui-color-surface-soft-hover)]",
+          "border-[var(--ui-color-border-strong)] bg-[var(--ui-color-surface-base)] text-[var(--ui-color-brand-ink)] hover:bg-[var(--ui-color-surface-soft-hover)]",
         ghost:
-          "bg-transparent text-[var(--ui-color-text-muted)] hover:bg-[var(--ui-color-brand-primary-soft)] hover:text-[var(--ui-color-brand-primary)]",
+          "bg-transparent text-[var(--ui-color-text-muted)] hover:bg-[var(--ui-color-brand-primary-soft)] hover:text-[var(--ui-color-brand-ink)]",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {

@@ -559,7 +559,7 @@ export default function BenefitsPage() {
       {!isLiveCaseStudy ? (
         <>
           <section className="mx-auto flex min-h-[60vh] max-w-[1200px] flex-col items-center justify-center px-6 py-20 text-center">
-            <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0]">
+            <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#0E6FB4]">
               Case Study Unavailable
             </p>
             <h1 className="mt-6 font-inter text-[44px] leading-[1.05] text-[#0e2951]">
@@ -587,9 +587,9 @@ export default function BenefitsPage() {
         />
         <div className="relative mx-auto max-w-[1200px] px-6 pt-6 lg:px-20">
           <div className="flex items-center gap-3 text-sm">
-            <Link href={withBasePath("/")} className="text-[#451044] transition-colors hover:text-[#1183D0]">Home</Link>
+            <Link href={withBasePath("/")} className="text-[#451044] transition-colors hover:text-[#0E6FB4]">Home</Link>
             <span className="text-[#aaa5aa]">›</span>
-            <Link href={withBasePath("/projects")} className="transition-colors hover:text-[#1183D0]">Projects</Link>
+            <Link href={withBasePath("/projects")} className="transition-colors hover:text-[#0E6FB4]">Projects</Link>
             <span className="text-[#aaa5aa]">›</span>
             <span className="font-semibold text-[#141114]">{caseStudy?.title ?? "Self-Service Access and Role Management"}</span>
           </div>
@@ -645,7 +645,7 @@ export default function BenefitsPage() {
                 key={metric.label}
                 className={`flex min-h-[190px] flex-col md:min-h-[240px] md:px-10 ${index > 0 ? "md:border-l md:border-[#d7d2d3]" : "md:pl-0"} ${index === results.slice(0, 3).length - 1 ? "md:pr-0" : ""}`}
               >
-                <p className="text-[15px] font-semibold tracking-[0.04em] text-[#1183D0]">{metric.title}</p>
+                <p className="text-[15px] font-semibold tracking-[0.04em] text-[#0E6FB4]">{metric.title}</p>
                 <p className="mt-4 max-w-[32ch] text-[18px] leading-[1.45] text-[#5c5960]">{metric.label}</p>
                 <div className="relative mt-auto mb-4 flex items-end justify-between gap-2">
                   <p className="text-[clamp(2.1rem,3.3vw,4rem)] font-bold leading-[0.88] tracking-[-0.065em] text-[#090909]">
@@ -718,7 +718,7 @@ export default function BenefitsPage() {
             </div>
 
             <div>
-              <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
+              <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0E6FB4]">
                 Supporting signals
               </p>
               {userPainPoints.map((point) => (
@@ -729,7 +729,7 @@ export default function BenefitsPage() {
             </div>
 
             <div>
-              <p className="mb-4 text-[15px] normal-case tracking-normal font-semibold text-[#1183D0]">
+              <p className="mb-4 text-[15px] normal-case tracking-normal font-semibold text-[#0E6FB4]">
                 Context
               </p>
               <p className="max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#5c5960]">
@@ -909,7 +909,7 @@ export default function BenefitsPage() {
               ].map(([outcome, value, detail]) => (
                 <tr key={outcome} className="border-b border-[#d7d2d3] last:border-0">
                   <td className="px-6 py-4 font-inter font-semibold text-[#141114]">{outcome}</td>
-                  <td className="px-6 py-4"><strong className="font-semibold text-[#1183D0]">{value}</strong> {detail}</td>
+                  <td className="px-6 py-4"><strong className="font-semibold text-[#0E6FB4]">{value}</strong> {detail}</td>
                 </tr>
               ))}
             </tbody>
@@ -948,7 +948,7 @@ export default function BenefitsPage() {
 
       {/* ── Other Projects ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0] mb-2">More work</p>
+        <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#0E6FB4] mb-2">More work</p>
         <h2 className="mb-8 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">Other Projects</h2>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {otherProjects.map((p) => (
@@ -985,7 +985,7 @@ export default function BenefitsPage() {
                   <p className="text-[15px] leading-relaxed text-[#5c5960]">
                     {p.tagline ?? ""}
                   </p>
-                  <span className="inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline group-focus-visible:underline">
+                  <span className="inline-flex text-[14px] font-medium text-[#0E6FB4] underline-offset-2 group-hover:underline group-focus-visible:underline">
                     {p.external_link ? "View project" : "View case study"} →
                   </span>
                 </div>

@@ -6,7 +6,7 @@
     "order": 0,
     "title": "Institut für klassisches Wortarabisch",
     "company": "Classical Word",
-    "client_context": "Arabic language education",
+    "client_context": "Arabischsprachige Bildung",
     "role": "Marken- und Druckdesigner",
     "year": 2026,
     "duration": "2 Wochen",
@@ -48,7 +48,7 @@
     },
     "constraints": [],
     "methodology": {
-      "name": "Editorial design",
+      "name": "Editoriales Design",
       "steps": []
     },
     "design_strategy": [],
@@ -211,7 +211,7 @@
         },
         {
           "step": 5,
-          "label": "Test",
+          "label": "Testen",
           "description": "Hotjar-Analyse nach dem Start"
         }
       ]
@@ -233,7 +233,33 @@
     ],
     "nda_notice": "Teile dieser Präsentation, einschließlich einiger Bildschirme und Projektdetails, wurden aufgrund einer mit dem Kunden unterzeichneten Vertraulichkeitsvereinbarung geschwärzt oder unkenntlich gemacht. Die gezeigte Arbeit ist echt; Um die Privatsphäre des Kunden zu schützen, werden sämtliche Details zurückgehalten.",
     "password": null,
-    "external_link": null
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "overview",
+        "type": "overview",
+        "title": "Überblick",
+        "body": "Paychex und Flock brauchten eine Möglichkeit, mit der Benefits-Administratoren Anmeldungen, Rollen und Berechtigungen selbst verwalten konnten. Das Team hat in drei Monaten eine zentralisierte Plattform entworfen und geliefert, die den manuellen Ablauf ersetzte, die Bearbeitungszeit um 72 % verkürzte und mehr als 500 Mitarbeitern die Selbstverwaltung ohne IT-Ticket ermöglichte."
+      },
+      {
+        "id": "situation",
+        "type": "custom",
+        "title": "Situation",
+        "body": "Neue Mitarbeiter hinzuzufügen erforderte Support-Tickets und manuellen Entwicklungsaufwand: Daten mussten gesammelt, validiert und teamübergreifend gesendet werden, und jede Änderung wurde per E-Mail nachverfolgt.\n\nEs gab keine zentralisierte Governance und keine klare Berechtigungsstruktur, sodass Leistungsänderungen mehrere Gehaltsabrechnungszyklen und einen manuellen Abgleich erforderten. Bei Anmeldespitzen fehlte ein klarer Eskalations- und Alarmierungsweg.\n\nJede nicht unterstützte Anmeldeanfrage dauerte 5 bis 7 Werktage, und die Wirkung vervielfachte sich über Hunderte von Kunden hinweg."
+      },
+      {
+        "id": "task",
+        "type": "custom",
+        "title": "Aufgabe",
+        "body": "Ein Self-Service-Erlebnis zu gestalten, das die Abhängigkeit vom Support verringerte, die Berechtigungen klärte und zum bestehenden Betriebsmodell des Produkts passte.\n\nIch war verantwortlich für die Benutzerforschung, das UX/UI-Design und die Definition des Rollen- und Berechtigungsmodells, das die gesamte Plattform trug. Zusammen mit dem Product Owner, dem Programmmanager, dem Service-Architekten und einem zwölfköpfigen Entwicklungsteam arbeitete ich unter einem sehr knappen Zeitplan."
+      },
+      {
+        "id": "actions",
+        "type": "custom",
+        "title": "Aktionen",
+        "body": "Ich habe mit den Nutzern der Plattform gesprochen, um ihre Schmerzpunkte und ihren täglichen Ablauf zu verstehen, und habe die internen Rollen, die Governance-Regeln und die Berechtigungsgrenzen abgebildet, bevor ich die Oberfläche anfasste - damit das System echte operative Bedürfnisse abbildet.\n\nIch habe die zugrunde liegende Architektur und ihre Logik festgelegt, bevor ich die UI verändert habe, habe die Teile des Systems identifiziert, die bereits gut funktionierten, und darauf aufgebaut. Den Anmeldezyklus habe ich gegen Ausnahmen und Grenzfälle der Administration geprüft.\n\nDa es kein Designsystem gab, hielt die enge Zusammenarbeit mit der Entwicklung die Oberfläche stimmig und die Übergabe reibungslos - auch unter Zeitdruck."
+      }
+    ]
   },
   {
     "slug": "nayya-ai-benefits",
@@ -331,7 +357,7 @@
       "Die Erfahrung musste das Vertrauen der Benutzer bei der Entscheidungsfindung über Vorteile schützen."
     ],
     "methodology": {
-      "name": "Research & Discovery",
+      "name": "Recherche & Entdeckung",
       "steps": [
         {
           "step": 1,
@@ -549,7 +575,7 @@
       "Das System musste echte technische Einschränkungen, Qualitätssicherung und Implementierungsbereitschaft unterstützen und darf nicht nur eine reine Figma-Aufräumaktion bleiben."
     ],
     "methodology": {
-      "name": "Audit to Systemization",
+      "name": "Von der Prüfung zur Systematisierung",
       "steps": [
         {
           "step": 1,
@@ -682,7 +708,7 @@
     "role": "Leitender Produktdesigner",
     "year": 2024,
     "duration": "Ungefähr 3 Jahre",
-    "industry": "HR Compliance / Onboarding SaaS",
+    "industry": "HR-Compliance / Onboarding-SaaS",
     "tagline": "Die I-9- und E-Verify-Integration für Flex wurde neu gestaltet, wodurch die Fertigstellungszeit nach dem Start von 69 % auf 81 % erhöht und die Fertigstellungszeit um 26 % verkürzt wurde.",
     "tags": [
       "UX-Forschung",
@@ -1010,7 +1036,7 @@
       "Keine direkte Benutzerrecherche in der Timeline; Beraterinterviews und Kundenwissen fungierten als Proxy-Benutzersignal."
     ],
     "methodology": {
-      "name": "AI-Augmented Delivery Workflow",
+      "name": "KI-gestützter Auslieferungsprozess",
       "steps": [
         {
           "step": 1,
@@ -1158,7 +1184,7 @@
     "order": 7,
     "title": "Reverse Health Funnel-Optimierung und A/B-Tests",
     "company": "Reverse Health",
-    "client_context": "Paid search acquisition funnel",
+    "client_context": "Paid-Search-Akquise-Funnel",
     "role": "Leitender Produktdesigner",
     "year": 2026,
     "duration": "Strategie- und Trichteranalyse",
@@ -1214,7 +1240,7 @@
     },
     "constraints": [],
     "methodology": {
-      "name": "Funnel Diagnosis",
+      "name": "Funnel-Diagnose",
       "steps": [
         {
           "step": 1,

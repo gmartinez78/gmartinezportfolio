@@ -214,7 +214,7 @@ function ProjectsPage() {
             </p>
             <h1 className="mt-8 font-inter text-[clamp(2.5rem,5.5vw,4.5rem)] font-bold leading-[0.88] tracking-[-0.075em] text-[#141114]">
               {translate("projectsPage.heroTitle")}
-              <span className="mt-1 block font-playfair font-normal italic tracking-[-0.055em] text-[#1183D0]">
+              <span className="mt-1 block font-playfair font-normal italic tracking-[-0.055em] text-[#0E6FB4]">
                 {translate("projectsPage.heroAccent")}
               </span>
             </h1>
@@ -308,7 +308,7 @@ function ProjectsPage() {
               </div>
             </div>
             {activeTopic ? (
-              <p className="mt-4 text-sm leading-relaxed text-[#1183D0]">
+              <p className="mt-4 text-sm leading-relaxed text-[#0E6FB4]">
                 {translate("projectsPage.showingRelatedTo")} <span className="font-semibold">{activeTopic}</span>.
               </p>
             ) : null}
