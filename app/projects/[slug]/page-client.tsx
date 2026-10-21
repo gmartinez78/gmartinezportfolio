@@ -2196,7 +2196,7 @@ function LocalizedCaseStudyOverview({ caseStudy }: { caseStudy: CaseStudyRecord 
           </nav>
 
           <div className="mt-12 max-w-full">
-            <div className="relative max-w-[1040px] py-6 text-left">
+            <div className={`relative max-w-[1040px] py-6 text-left ${caseStudy.slug === "protecta" ? "lg:w-3/5" : ""}`}>
               <p className="mb-3 inline-flex rounded-full bg-[#f8df36] px-4 py-2 font-inter text-xs font-semibold text-[#141114]">
                 {caseStudy.industry ?? translate("caseStudy.caseStudyLabel")}
               </p>
@@ -2228,7 +2228,7 @@ function LocalizedCaseStudyOverview({ caseStudy }: { caseStudy: CaseStudyRecord 
         </div>
       </section>
 
-      {caseStudy.images.hero || caseStudy.images.cover ? (
+      {caseStudy.slug !== "protecta" && (caseStudy.images.hero || caseStudy.images.cover) ? (
         <section className="mx-auto max-w-[1200px] px-6 pb-8 md:px-10 xl:px-20">
           <div className="relative mx-auto aspect-[2/1] w-full max-w-[1040px] overflow-hidden rounded-[32px] border-4 border-white/90 shadow-[0_20px_64px_rgba(14,41,81,0.12)]">
             <Image
