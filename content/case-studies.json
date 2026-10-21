@@ -34,7 +34,34 @@
     "reflections": [],
     "nda_notice": null,
     "password": null,
-    "external_link": null
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "presentation",
+        "type": "custom",
+        "title": "Print presentation",
+        "body": "A three-part presentation that introduces the visual language, compares both sides of the brochure, then reveals the full interior."
+      },
+      {
+        "id": "direction",
+        "type": "custom",
+        "title": "Design direction",
+        "body": "The visual system leans into the warmth of traditional print materials while giving every message a clear hierarchy and enough room to breathe.",
+        "payload": {
+          "items": [
+            "A considered reading path: the outside introduces the institute, sets the invitation, and makes enrollment tangible, while the inside expands the story from purpose to faculty credibility.",
+            "A visual language with roots: ivory paper tones, a measured gold accent, editorial serif type, and delicate geometric patterning create a calm, heritage-led identity.",
+            "Clarity at every fold: headlines, pricing, QR actions, testimonials, and faculty profiles are sequenced to make the programme easy to understand and act on."
+          ]
+        }
+      },
+      {
+        "id": "complete-piece",
+        "type": "custom",
+        "title": "The complete piece",
+        "body": "The reverse side gives the programme's story more depth: why Classical Arabic matters, what learners can expect, and the faculty credentials that establish trust."
+      }
+    ]
   },
   {
     "slug": "benefits-enrollment",

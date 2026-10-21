@@ -55,7 +55,34 @@
     "reflections": [],
     "nda_notice": null,
     "password": null,
-    "external_link": null
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "presentation",
+        "type": "custom",
+        "title": "Druckpräsentation",
+        "body": "Eine dreiteilige Präsentation, die die visuelle Sprache vorstellt, beide Seiten der Broschüre gegenüberstellt und schließlich das komplette Innenlayout zeigt."
+      },
+      {
+        "id": "direction",
+        "type": "custom",
+        "title": "Designrichtung",
+        "body": "Das visuelle System setzt auf die Wärme traditioneller Druckmaterialien und gibt zugleich jeder Botschaft eine klare Hierarchie und genug Raum zum Atmen.",
+        "payload": {
+          "items": [
+            "Ein durchdachter Leseweg: die Außenseiten führen das Institut ein, setzen die Einladung und machen die Anmeldung greifbar, während das Innenlayout die Geschichte von der Mission bis zur Glaubwürdigkeit des Kollegiums vertieft.",
+            "Eine visuelle Sprache mit Wurzeln: Elfenbeinton, ein dosierter Goldakzent, redaktionelle Serifenschrift und feine geometrische Muster ergeben eine ruhige, kulturverwurzelte Identität.",
+            "Klarheit an jeder Falz: Schlagzeilen, Preise, QR-Aktionen, Testimonials und Professorenprofile sind so sequenziert, dass das Programm leicht verständlich und nutzbar bleibt."
+          ]
+        }
+      },
+      {
+        "id": "complete-piece",
+        "type": "custom",
+        "title": "Das vollständige Werk",
+        "body": "Die Rückseite vertieft die Geschichte des Programms: warum klassisches Arabisch zählt, was Lernende erwartet, und welche Qualifikationen des Kollegiums Vertrauen schaffen."
+      }
+    ]
   },
   {
     "slug": "benefits-enrollment",

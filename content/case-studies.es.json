@@ -55,7 +55,34 @@
     "reflections": [],
     "nda_notice": null,
     "password": null,
-    "external_link": null
+    "external_link": null,
+    "content_blocks": [
+      {
+        "id": "presentation",
+        "type": "custom",
+        "title": "Presentación impresa",
+        "body": "Una presentación en tres partes que introduce el lenguaje visual, compara ambos lados del folleto y revela por fin el interior completo."
+      },
+      {
+        "id": "direction",
+        "type": "custom",
+        "title": "Dirección de diseño",
+        "body": "El sistema visual se apoya en la calidez de los materiales impresos tradicionales, mientras da a cada mensaje una jerarquía clara y espacio suficiente para respirar.",
+        "payload": {
+          "items": [
+            "Un recorrido de lectura meditado: el exterior presenta el instituto, marca la invitación y hace tangible la inscripción, mientras el interior amplía el relato desde el propósito hasta la credibilidad del profesorado.",
+            "Un lenguaje visual con raíces: tonos de papel marfil, un acento dorado medido, tipografía serif editorial y un delicado patrón geométrico crean una identidad serena con raíces culturales.",
+            "Claridad en cada pliegue: titulares, precios, llamadas a la acción con QR, testimonios y perfiles del profesorado se ordenan para que el programa sea fácil de entender y de aprovechar."
+          ]
+        }
+      },
+      {
+        "id": "complete-piece",
+        "type": "custom",
+        "title": "La pieza completa",
+        "body": "La cara interior da más profundidad al relato del programa: por qué importa el árabe clásico, qué pueden esperar los estudiantes y las credenciales del profesorado que generan confianza."
+      }
+    ]
   },
   {
     "slug": "benefits-enrollment",
