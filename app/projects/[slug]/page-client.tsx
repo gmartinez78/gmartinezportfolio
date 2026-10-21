@@ -2102,6 +2102,10 @@ const EDITORIAL_TITLE_ACCENT_WORDS: Record<string, Partial<Record<Language, numb
 };
 
 function splitNayyaHeroTitle(title: string, language: Language, accentWordCount?: number) {
+  if (title === "Brand, Website & Campaign Launch") {
+    return { lead: "Brand, Website &", accent: "Campaign Launch" };
+  }
+
   const words = title.trim().split(/\s+/);
   const accentWords = accentWordCount ?? (language === "en" ? 1 : 2);
   const splitIndex = Math.max(1, words.length - accentWords);
@@ -2158,7 +2162,7 @@ function LocalizedCaseStudyOverview({ caseStudy }: { caseStudy: CaseStudyRecord 
   const accentWordCount = EDITORIAL_TITLE_ACCENT_WORDS[caseStudy.slug]?.[language];
   const editorialTitle = splitNayyaHeroTitle(caseStudy.title, language, accentWordCount);
   const accentIsBlock =
-    caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "i9-everify-integration";
+    caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "protecta";
 
   const otherProjects = caseStudies
     .filter(
@@ -3801,7 +3805,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </p>
                 <h1 className={`mb-5 font-inter font-bold leading-[0.98] ${usesNayyaVisualStyle ? "max-w-[1000px] text-[clamp(2.5rem,5.5vw,4.5rem)] tracking-[-0.055em] text-[#141114]" : "text-[36px] leading-[1.15] text-[#0e2951] md:text-[44px]"}`}>
                   {usesNayyaVisualStyle ? (
-                    caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "i9-everify-integration" ? (
+                    caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "protecta" ? (
                       <>
                         {editorialTitle.lead}{" "}
                         <span className="block font-playfair font-normal italic tracking-[-0.045em]">
@@ -3839,19 +3843,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 ) : null}
               </div>
             </div>
-
-            {heroImage && caseStudy.slug === "protecta" ? (
-              <div className={`relative mx-auto mb-10 w-full overflow-hidden shadow-[0_20px_64px_rgba(14,41,81,0.12)] ${usesNayyaVisualStyle ? "aspect-[2/1] max-w-[1040px] rounded-[32px] border-4 border-white/90" : "h-[150px] max-w-[840px] rounded-[24px]"}`}>
-                <img
-                  src={withBasePath(heroImage)}
-                  alt={`${caseStudy.title} banner`}
-                  className={`h-full w-full object-cover ${caseStudy.slug === "protecta" ? "object-[center_30%]" : "object-center"}`}
-                />
-                {!usesNayyaVisualStyle ? (
-                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(14,41,81,0.05)_0%,rgba(14,41,81,0.16)_100%)]" />
-                ) : null}
-              </div>
-            ) : null}
 
             {!usesNayyaVisualStyle ? (
               <div className="relative mt-10 flex flex-col items-center gap-8 pt-8 text-center">
