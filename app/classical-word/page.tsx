@@ -104,9 +104,29 @@ export default function ClassicalWordPage() {
       </section>
 
       <section className="bg-white py-20 md:py-28">
-        <div className="mx-auto max-w-[1160px] rounded-[32px] bg-[#0E6FB4] px-7 py-12 text-white sm:px-10 md:px-14 md:py-16 lg:px-16">
+        <div className="mx-auto grid max-w-[1240px] gap-12 px-6 md:px-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:px-20">
+          <div>
+            <h2 className="mt-3 max-w-[520px] font-inter text-[clamp(2rem,3.4vw,3.25rem)] font-semibold leading-[1.02] tracking-[-0.045em] text-[#141114]">
+              A welcoming identity for a school rooted in language.
+            </h2>
+            <p className="mt-6 max-w-[520px] text-[17px] leading-[1.7] text-[#5c5960]">{t.lede}</p>
+          </div>
+          <div className="relative overflow-hidden rounded-[24px] bg-white p-2 shadow-[0_24px_60px_rgba(20,17,20,0.12)] sm:p-3">
+            <Image
+              src={withBasePath("/images/projects/classical-word/cover-classical-word.png")}
+              alt={t.printImageAlt}
+              width={1448}
+              height={1086}
+              className="h-auto w-full rounded-[18px]"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-20 md:py-28">
+        <div className="mx-auto max-w-[1160px] rounded-[24px] border-l-[3px] border-[#f8df36] bg-white px-7 py-12 text-[#141114] shadow-[8px_10px_0_#c7e8f7] sm:px-10 md:px-14 md:py-16 lg:px-16">
           <div className="max-w-[720px] text-left">
-            <h2 className="mt-3 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-white">
+            <h2 className="mt-3 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
               {t.directionTitleLead}{" "}
               <span className="block font-playfair font-normal italic tracking-[-0.045em]">{t.directionTitleAccent}</span>
             </h2>
@@ -116,8 +136,8 @@ export default function ClassicalWordPage() {
               return (
                 <article key={title} className="relative overflow-hidden">
                   <span className="font-inter text-[42px] font-semibold leading-none text-[#f8df36]">0{index + 1}</span>
-                  <h3 className="mt-5 font-inter text-[20px] font-semibold leading-tight text-white">{title}</h3>
-                  <p className="mt-4 text-[14px] leading-[1.75] text-white/80">{body}</p>
+                  <h3 className="mt-5 font-inter text-[20px] font-semibold leading-tight text-[#141114]">{title}</h3>
+                  <p className="mt-4 text-[14px] leading-[1.75] text-[#5c5960]">{body}</p>
                 </article>
               );
             })}
@@ -128,7 +148,6 @@ export default function ClassicalWordPage() {
       <section className="mx-auto max-w-[1320px] px-6 py-20 md:px-10 lg:px-20 lg:py-28">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
-            <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#0E6FB4]">{t.pieceEyebrow}</p>
             <h2 className="mt-3 max-w-[560px] font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
               {t.pieceTitleLead}{" "}
               <span className="font-playfair font-normal italic tracking-[-0.045em]">{t.pieceTitleAccent}</span>
