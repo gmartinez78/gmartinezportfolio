@@ -690,14 +690,17 @@
     "metrics": [
       {
         "value": "76 %",
+        "context": "Clients",
         "label": "der Flex-Kunden verfügte nicht über einen konformen I-9-Workflow"
       },
       {
         "value": "26",
+        "context": "Test",
         "label": "Erkundungs- und Testrunden"
       },
       {
         "value": "2.548",
+        "context": "Umfrage",
         "label": "Umfrageantworten nach der ersten Veröffentlichung"
       }
     ],

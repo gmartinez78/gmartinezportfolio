@@ -4032,18 +4032,23 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[860px] text-center space-y-6">
-            <SectionHeading eyebrow="Independent AI-assisted discovery sprint" title="The problem" centered className="mb-8" />
-            <p className="text-[16px] leading-[1.7] text-[#5c7792]">For this case, I was tasked to design a new appointment scheduling system for clinics and medical practices in France and Germany. My role was to understand the market, identify the biggest opportunities and pain points, and define an initial product direction that could compete with existing solutions.</p>
-            <p className="text-[16px] leading-[1.7] text-[#5c7792]">I started by researching users, competitors, and regulatory constraints to uncover the most critical problems. From there, I translated those insights into product opportunities and designed an experience that made scheduling more efficient, reliable, and intuitive for healthcare staff and patients.</p>
+            <h2 className="mx-auto max-w-[720px] font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+              {renderNayyaEditorialTitle("The problem")}
+            </h2>
+            <p className="text-[17px] leading-[1.7] text-[#5c5960]">For this case, I was tasked to design a new appointment scheduling system for clinics and medical practices in France and Germany. My role was to understand the market, identify the biggest opportunities and pain points, and define an initial product direction that could compete with existing solutions.</p>
+            <p className="text-[17px] leading-[1.7] text-[#5c5960]">I started by researching users, competitors, and regulatory constraints to uncover the most critical problems. From there, I translated those insights into product opportunities and designed an experience that made scheduling more efficient, reliable, and intuitive for healthcare staff and patients.</p>
           </div>
         </section>
       ) : null}
 
       {caseStudy.slug === "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <div className="mx-auto max-w-[1080px] rounded-[28px] border border-[#d9e5f2] bg-[#f8fbff] px-6 py-9 shadow-[0_12px_32px_rgba(14,41,81,0.06)] md:px-10 md:py-11">
-            <SectionHeading eyebrow="AI-assisted design workflow" title="From evidence to a testable direction" centered className="mb-5" />
-            <p className="mx-auto max-w-[760px] text-center text-[16px] leading-[1.7] text-[#5c7792]">AI helped compress the research and exploration cycle. I remained accountable for framing the problem, judging the trade-offs, defining the product strategy, and deciding what the prototype needed to prove.</p>
+          <div className="mx-auto max-w-[1080px] rounded-[24px] border-l-[3px] border-[#f8df36] bg-white px-6 py-9 shadow-[8px_10px_0_#c7e8f7] md:px-10 md:py-11">
+            <p className="text-center text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">AI-assisted design workflow</p>
+            <h2 className="mx-auto mt-3 max-w-[720px] text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+              {renderNayyaEditorialTitle("From evidence to a testable direction")}
+            </h2>
+            <p className="mx-auto mt-5 max-w-[760px] text-center text-[17px] leading-[1.7] text-[#5c5960]">AI helped compress the research and exploration cycle. I remained accountable for framing the problem, judging the trade-offs, defining the product strategy, and deciding what the prototype needed to prove.</p>
             <div className="mt-9 grid gap-4 md:grid-cols-4">
               {[
                 { step: "01", title: "Research signals", body: "Gathered market, user, regulatory, and competitive evidence." },
@@ -4051,10 +4056,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 { step: "03", title: "Human-led decisions", body: "Prioritized the resource-aware core and safe degraded-mode strategy." },
                 { step: "04", title: "Prototype to validate", body: "Translated decisions into a scheduling service and console to test." },
               ].map((stage) => (
-                <article key={stage.step} className="relative rounded-[18px] border border-[#d9e5f2] bg-white p-5">
+                <article key={stage.step} className="relative rounded-[18px] border border-[#d7d2d3] bg-[#faf8f7] p-5">
                   <p className="text-[11px] font-semibold tracking-[0.2em] text-[#1183D0]">STEP {stage.step}</p>
-                  <h3 className="mt-3 font-inter text-[18px] font-semibold leading-[1.25] text-[#0e2951]">{stage.title}</h3>
-                  <p className="mt-3 text-[13px] leading-[1.6] text-[#5c7792]">{stage.body}</p>
+                  <h3 className="mt-3 font-inter text-[18px] font-semibold leading-[1.25] text-[#141114]">{stage.title}</h3>
+                  <p className="mt-3 text-[13px] leading-[1.6] text-[#5c5960]">{stage.body}</p>
                 </article>
               ))}
             </div>
@@ -4090,7 +4095,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
           ) : (
           <>
-          {caseStudy.slug === "i9-everify-integration" ? (
+          {caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "calendar-keeper" ? (
             <h2 className="mb-12 text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
               {methodologyName}{" "}
               <span className="block font-playfair font-normal italic">Methodology</span>
@@ -4099,7 +4104,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <SectionHeading
             eyebrow="Methodology"
             title={methodologyName}
-            centered={[CONFIDENTIAL_PLACEHOLDER_SLUG, "calendar-keeper", "protecta"].includes(caseStudy.slug)}
+            centered={[CONFIDENTIAL_PLACEHOLDER_SLUG, "protecta"].includes(caseStudy.slug)}
             className="mb-12"
           />
           )}
@@ -4185,12 +4190,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                 </div>
               ) : (
-                <Card key={step.step} className="p-0 py-0">
-                  <CardContent className={`p-6 ${caseStudy.slug === "calendar-keeper" ? "text-center" : ""}`}>
-                    <p className="font-inter text-[15px] font-semibold text-[#3c3e3f]">{index + 1}. {step.label}</p>
-                    <p className="mt-2 font-inter text-[13px] leading-[1.5] text-[#5c7792]">{step.description}</p>
-                  </CardContent>
-                </Card>
+                <div
+                  key={step.step}
+                  className={`flex flex-col rounded-[20px] border border-[#d7d2d3] bg-white p-6 ${caseStudy.slug === "calendar-keeper" ? "text-center" : ""}`}
+                >
+                  <span className="font-inter text-[13px] font-semibold tracking-[0.18em] text-[#1183D0]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <p className="mt-3 font-inter text-[16px] font-semibold text-[#141114]">{step.label}</p>
+                  <p className="mt-2 font-inter text-[14px] leading-[1.6] text-[#5c5960]">{step.description}</p>
+                </div>
               )
             ))}
           </div>
@@ -4749,12 +4758,15 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[860px]">
             <div className="mb-12">
-              <SectionHeading eyebrow="Research" title="Behind the schedule" centered className="mb-5" />
-              <div className="mx-auto mb-6 max-w-[760px] space-y-5 text-center text-[16px] leading-[1.7] text-[#5c7792]">
+              <p className="text-center text-[12px] font-semibold uppercase tracking-[0.22em] text-[#1183D0]">Research</p>
+              <h2 className="mx-auto mt-3 max-w-[760px] text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+                {renderNayyaEditorialTitle("Behind the schedule")}
+              </h2>
+              <div className="mx-auto mb-6 mt-5 max-w-[760px] space-y-5 text-center text-[17px] leading-[1.7] text-[#5c5960]">
                 <p>I started by conducting a strategic research phase to understand the healthcare ecosystem in France and Germany. I analyzed the market, competitors, regulations, and care delivery models to identify the biggest opportunities and constraints. I also synthesized stakeholder and user insights to understand the needs of patients, medical assistants, doctors, and clinic managers.</p>
                 <p>Based on this research, I prioritized the primary users, defined personas, problem statements, and user journeys, and identified the highest-impact product direction. This process allowed me to move from a broad market opportunity to a focused product strategy and user experience grounded in both business goals and user needs.</p>
               </div>
-              <p className="text-center text-[15px] leading-[1.6] text-[#5c7792]">
+              <p className="text-center text-[15px] leading-[1.6] text-[#5c5960]">
                 <a href="https://docs.google.com/document/d/1f8IdPBMvMJf_yqPTCc1hNMkU1EpcaO1OIUKFSGaVCLk/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-[#1183D0] hover:text-[#0e5a8a] underline">
                   View detailed research insights →
                 </a>
@@ -4764,8 +4776,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="mb-12">
               <div className="flex flex-col gap-8">
                 <div className="order-2">
-                  <h3 className="mb-8 text-center font-inter text-[28px] leading-tight text-[#0e2951]">Market Opportunity & Key Insights</h3>
-                  <ul className="space-y-4 text-[16px] leading-[1.7] text-[#5c7792]">
+                  <h3 className="mb-8 text-center font-inter text-[clamp(1.5rem,2.2vw,2rem)] font-semibold leading-[1.15] tracking-[-0.03em] text-[#141114]">Market Opportunity & Key Insights</h3>
+                  <ul className="space-y-4 text-[17px] leading-[1.7] text-[#5c5960]">
                     <li><strong>Germany presents the strongest market opportunity.</strong> While Doctolib has already become the market leader in France by combining appointment booking with practice management, its German practice management solution is still in its early stages, creating an opportunity to enter the market before adoption accelerates.</li>
                     <li><strong>User reviews revealed that the biggest barrier to switching is trust, not functionality.</strong> The most common concern was data migration, with practices fearing they would lose or corrupt patient data when changing systems. This made seamless migration a higher priority than introducing additional scheduling features.</li>
                     <li><strong>User feedback consistently highlighted usability as a pain point.</strong> Healthcare professionals frequently mentioned complex workflows, poor onboarding, and difficult day-to-day interactions as reasons for considering alternative solutions, making usability a key opportunity for differentiation.</li>
@@ -4775,97 +4787,97 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
 
                 <div className="order-1">
-                  <h4 className="mb-4 text-center font-inter text-[20px] font-semibold text-[#0e2951]">📊 Feature & Capability Comparison</h4>
+                  <h4 className="mb-4 text-center font-inter text-[20px] font-semibold text-[#141114]">📊 Feature & Capability Comparison</h4>
                   <div className="overflow-x-auto mt-4">
                     <table className="w-full text-[13px] border-collapse">
                       <thead>
-                        <tr className="bg-[#f0f5fa]">
-                          <th className="border border-[#d9e5f2] px-3 py-2 text-left font-semibold text-[#0e2951]">Feature</th>
-                          <th className="border border-[#d9e5f2] px-3 py-2 text-center font-semibold text-[#0e2951]">Doctolib</th>
-                          <th className="border border-[#d9e5f2] px-3 py-2 text-center font-semibold text-[#0e2951]">Samedi</th>
-                          <th className="border border-[#d9e5f2] px-3 py-2 text-center font-semibold text-[#0e2951]">German Incumbents</th>
-                          <th className="border border-[#d9e5f2] px-3 py-2 text-center font-semibold text-[#0e2951]">French Incumbents</th>
+                        <tr className="bg-[#faf8f7]">
+                          <th className="border border-[#d7d2d3] px-3 py-2 text-left font-semibold text-[#141114]">Feature</th>
+                          <th className="border border-[#d7d2d3] px-3 py-2 text-center font-semibold text-[#141114]">Doctolib</th>
+                          <th className="border border-[#d7d2d3] px-3 py-2 text-center font-semibold text-[#141114]">Samedi</th>
+                          <th className="border border-[#d7d2d3] px-3 py-2 text-center font-semibold text-[#141114]">German Incumbents</th>
+                          <th className="border border-[#d7d2d3] px-3 py-2 text-center font-semibold text-[#141114]">French Incumbents</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr className="bg-white">
-                          <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Patient Booking</td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 font-medium">Patient Booking</td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
                         </tr>
-                        <tr className="bg-[#f9fbfc]">
-                          <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Data Migration Tools</td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
-                        </tr>
-                        <tr className="bg-white">
-                          <td className="border border-[#d9e5f2] px-3 py-2 font-medium">End-to-End Encryption</td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
-                        </tr>
-                        <tr className="bg-[#f9fbfc]">
-                          <td className="border border-[#d9e5f2] px-3 py-2 font-medium">EU Data Sovereignty</td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                        <tr className="bg-[#faf8f7]">
+                          <td className="border border-[#d7d2d3] px-3 py-2 font-medium">Data Migration Tools</td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
                         </tr>
                         <tr className="bg-white">
-                          <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Waitlist / Backfill</td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 font-medium">End-to-End Encryption</td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
                         </tr>
-                        <tr className="bg-[#f9fbfc]">
-                          <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Usability / Satisfaction</td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                        <tr className="bg-[#faf8f7]">
+                          <td className="border border-[#d7d2d3] px-3 py-2 font-medium">EU Data Sovereignty</td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
                         </tr>
                         <tr className="bg-white">
-                          <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Self-Service Onboarding</td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 font-medium">Waitlist / Backfill</td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
                         </tr>
-                        <tr className="bg-[#f9fbfc]">
-                          <td className="border border-[#d9e5f2] px-3 py-2 font-medium">Free Entry Tier</td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
-                          <td className="border border-[#d9e5f2] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                        <tr className="bg-[#faf8f7]">
+                          <td className="border border-[#d7d2d3] px-3 py-2 font-medium">Usability / Satisfaction</td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                        </tr>
+                        <tr className="bg-white">
+                          <td className="border border-[#d7d2d3] px-3 py-2 font-medium">Self-Service Onboarding</td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#16a34a] font-bold">✓</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                        </tr>
+                        <tr className="bg-[#faf8f7]">
+                          <td className="border border-[#d7d2d3] px-3 py-2 font-medium">Free Entry Tier</td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#dc2626] font-bold">✗</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
+                          <td className="border border-[#d7d2d3] px-3 py-2 text-center"><span className="text-[#d97706] font-bold">~</span></td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                   <div className="mt-4 p-4 bg-[#f0fdf4] border-l-4 border-[#16a34a] rounded">
-                    <p className="text-[15px] leading-[1.7] text-[#5c7792]"><strong>Key Finding:</strong> Data migration is the real differentiator, 44.8% of German practices fear data won't migrate cleanly. This is the #1 blocker to switching, making it a higher initial priority than additional compliance certifications or payment integrations.</p>
+                    <p className="text-[15px] leading-[1.7] text-[#5c5960]"><strong>Key Finding:</strong> Data migration is the real differentiator, 44.8% of German practices fear data won't migrate cleanly. This is the #1 blocker to switching, making it a higher initial priority than additional compliance certifications or payment integrations.</p>
                   </div>
-                  <p className="mt-5 text-[14px] leading-[1.7] text-[#5c7792]">Starting with this comparison of the selected competitors, I used their product information, help centers, app listings, and recurring themes in Google Play and Apple App Store reviews to identify the gaps and friction points outlined in the Market Opportunity & Key Insights below.</p>
+                  <p className="mt-5 text-[14px] leading-[1.7] text-[#5c5960]">Starting with this comparison of the selected competitors, I used their product information, help centers, app listings, and recurring themes in Google Play and Apple App Store reviews to identify the gaps and friction points outlined in the Market Opportunity & Key Insights below.</p>
                 </div>
               </div>
             </div>
 
             <div className="mb-12">
-              <h3 className="mb-8 text-center font-inter text-[28px] leading-tight text-[#0e2951]">User Needs</h3>
-              <div className="mb-8 space-y-5 text-center text-[16px] leading-[1.7] text-[#5c7792]">
+              <h3 className="mb-8 text-center font-inter text-[clamp(1.5rem,2.2vw,2rem)] font-semibold leading-[1.15] tracking-[-0.03em] text-[#141114]">User Needs</h3>
+              <div className="mb-8 space-y-5 text-center text-[17px] leading-[1.7] text-[#5c5960]">
                 <p>Through the research, I identified five key user groups. I prioritized clinical staff (medical assistants) and returning patients because they represented the highest business impact and had the strongest research evidence.</p>
                 <p>Focusing on these two personas allowed me to address the core scheduling challenges in both Germany and France while keeping the initial scope focused on the users who interact with the system most frequently.</p>
               </div>
 
               <div className="space-y-3">
-                <div className="mb-6 p-4 bg-[#f0f5ff] border-l-4 border-[#1183D0] rounded">
-                  <p className="text-[14px] font-semibold text-[#0e2951]">Primary Focus</p>
-                  <p className="text-[13px] text-[#5c7792] mt-1">These two personas guided the initial design direction</p>
+                <div className="mb-6 p-4 bg-[#faf8f7] border-l-4 border-[#1183D0] rounded">
+                  <p className="text-[14px] font-semibold text-[#141114]">Primary Focus</p>
+                  <p className="text-[13px] text-[#5c5960] mt-1">These two personas guided the initial design direction</p>
                 </div>
                 {([
                   {
@@ -4883,14 +4895,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     ]
                   },
                 ] as CalendarKeeperUserNeed[]).map((userType) => (
-                  <div key={userType.id} className="border border-[#1183D0] rounded-lg overflow-hidden bg-[#f8fbff]">
+                  <div key={userType.id} className="border border-[#d7d2d3] rounded-lg overflow-hidden bg-[#faf8f7]">
                     <button
                       onClick={() => setExpandedUserNeed(expandedUserNeed === userType.id ? null : userType.id)}
-                      className="w-full flex items-center justify-between p-5 bg-white hover:bg-[#f8fbff] transition-colors border-b border-[#1183D0]"
+                      className="w-full flex items-center justify-between p-5 bg-white hover:bg-[#faf8f7] transition-colors border-b border-[#d7d2d3]"
                     >
-                      <h4 className="font-inter text-[18px] font-semibold text-[#0e2951] text-left">{userType.title}</h4>
+                      <h4 className="font-inter text-[18px] font-semibold text-[#141114] text-left">{userType.title}</h4>
                       <svg
-                        className={`w-5 h-5 text-[#0e2951] transition-transform ${expandedUserNeed === userType.id ? "rotate-180" : ""}`}
+                        className={`w-5 h-5 text-[#141114] transition-transform ${expandedUserNeed === userType.id ? "rotate-180" : ""}`}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -4899,28 +4911,28 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </svg>
                     </button>
                     {expandedUserNeed === userType.id && (
-                      <div className="px-5 pb-5 border-t border-[#1183D0] bg-[#fafbfc]">
+                      <div className="px-5 pb-5 border-t border-[#d7d2d3] bg-[#fafbfc]">
                         {userType.goal && (
-                          <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-4">Goal: {userType.goal}</p>
+                          <p className="text-[16px] leading-[1.7] text-[#141114] font-semibold mb-4">Goal: {userType.goal}</p>
                         )}
                         <ul className="space-y-3 mb-4">
                           {userType.needs.map((need, idx) => (
-                            <li key={idx} className="text-[15px] leading-[1.6] text-[#5c7792]">{need}</li>
+                            <li key={idx} className="text-[15px] leading-[1.6] text-[#5c5960]">{need}</li>
                           ))}
                         </ul>
                         {userType.consequence && (
-                          <p className="text-[15px] leading-[1.6] text-[#5c7792]"><strong>Consequence:</strong> {userType.consequence}</p>
+                          <p className="text-[15px] leading-[1.6] text-[#5c5960]"><strong>Consequence:</strong> {userType.consequence}</p>
                         )}
                         {userType.jtbd && (
-                          <p className="text-[15px] leading-[1.6] text-[#5c7792] mt-3"><strong>JTBD (provisional):</strong> "{userType.jtbd}"</p>
+                          <p className="text-[15px] leading-[1.6] text-[#5c5960] mt-3"><strong>JTBD (provisional):</strong> "{userType.jtbd}"</p>
                         )}
                       </div>
                     )}
                   </div>
                 ))}
 
-                <div className="mt-8 pt-6 border-t border-[#d9e5f2]">
-                  <p className="text-[14px] font-semibold text-[#0e2951] mb-4">Secondary Users</p>
+                <div className="mt-8 pt-6 border-t border-[#d7d2d3]">
+                  <p className="text-[14px] font-semibold text-[#141114] mb-4">Secondary Users</p>
                   {([
                     {
                       id: "caregivers",
@@ -4944,14 +4956,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       ]
                     }
                   ] as CalendarKeeperUserNeed[]).map((userType) => (
-                  <div key={userType.id} className="border border-[#d9e5f2] rounded-lg overflow-hidden">
+                  <div key={userType.id} className="border border-[#d7d2d3] rounded-lg overflow-hidden">
                     <button
                       onClick={() => setExpandedUserNeed(expandedUserNeed === userType.id ? null : userType.id)}
-                      className="w-full flex items-center justify-between p-5 bg-white hover:bg-[#f8fbff] transition-colors"
+                      className="w-full flex items-center justify-between p-5 bg-white hover:bg-[#faf8f7] transition-colors"
                     >
-                      <h4 className="font-inter text-[18px] font-semibold text-[#0e2951] text-left">{userType.title}</h4>
+                      <h4 className="font-inter text-[18px] font-semibold text-[#141114] text-left">{userType.title}</h4>
                       <svg
-                        className={`w-5 h-5 text-[#0e2951] transition-transform ${expandedUserNeed === userType.id ? "rotate-180" : ""}`}
+                        className={`w-5 h-5 text-[#141114] transition-transform ${expandedUserNeed === userType.id ? "rotate-180" : ""}`}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -4960,20 +4972,20 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </svg>
                     </button>
                     {expandedUserNeed === userType.id && (
-                      <div className="px-5 pb-5 border-t border-[#d9e5f2] bg-[#fafbfc]">
+                      <div className="px-5 pb-5 border-t border-[#d7d2d3] bg-[#fafbfc]">
                         {userType.goal && (
-                          <p className="text-[16px] leading-[1.7] text-[#0e2951] font-semibold mb-4">Goal: {userType.goal}</p>
+                          <p className="text-[16px] leading-[1.7] text-[#141114] font-semibold mb-4">Goal: {userType.goal}</p>
                         )}
                         <ul className="space-y-3 mb-4">
                           {userType.needs.map((need, idx) => (
-                            <li key={idx} className="text-[15px] leading-[1.6] text-[#5c7792]">{need}</li>
+                            <li key={idx} className="text-[15px] leading-[1.6] text-[#5c5960]">{need}</li>
                           ))}
                         </ul>
                         {userType.consequence && (
-                          <p className="text-[15px] leading-[1.6] text-[#5c7792]"><strong>Consequence:</strong> {userType.consequence}</p>
+                          <p className="text-[15px] leading-[1.6] text-[#5c5960]"><strong>Consequence:</strong> {userType.consequence}</p>
                         )}
                         {userType.jtbd && (
-                          <p className="text-[15px] leading-[1.6] text-[#5c7792] mt-3"><strong>JTBD (provisional):</strong> "{userType.jtbd}"</p>
+                          <p className="text-[15px] leading-[1.6] text-[#5c5960] mt-3"><strong>JTBD (provisional):</strong> "{userType.jtbd}"</p>
                         )}
                       </div>
                     )}
@@ -4987,22 +4999,24 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[860px]">
-            <h3 className="mb-8 text-center font-inter text-[28px] leading-tight text-[#0e2951]">Research Takeaway</h3>
-            <p className="text-center text-[16px] leading-[1.7] text-[#5c7792]">The research gave me a clear understanding of users' needs, business opportunities, and market constraints. I found that the priority was creating a scheduling experience that was efficient, reliable, and easy to use for healthcare staff. These insights helped me prioritize the target users, define the product strategy, and build proto-personas that guided the rest of the design process.</p>
+            <h3 className="mb-8 text-center font-inter text-[clamp(1.5rem,2.2vw,2rem)] font-semibold leading-[1.15] tracking-[-0.03em] text-[#141114]">Research Takeaway</h3>
+            <p className="text-center text-[17px] leading-[1.7] text-[#5c5960]">The research gave me a clear understanding of users' needs, business opportunities, and market constraints. I found that the priority was creating a scheduling experience that was efficient, reliable, and easy to use for healthcare staff. These insights helped me prioritize the target users, define the product strategy, and build proto-personas that guided the rest of the design process.</p>
           </div>
         </section>
 
         {caseStudy.slug === "calendar-keeper" ? (
           <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
             <div className="mx-auto max-w-[1080px]">
-              <SectionHeading eyebrow="Customer journey map" title="A day for the Calendar Keeper" centered className="mb-5" />
-              <p className="mx-auto mb-8 max-w-[720px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              <h2 className="mx-auto mt-3 max-w-[720px] text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+                {renderNayyaEditorialTitle("A day for the Calendar Keeper")}
+              </h2>
+              <p className="mx-auto mb-8 mt-5 max-w-[720px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">
                 The journey shows how routine requests compound into operational pressure for a medical assistant managing a clinic schedule. Each break in the flow creates rework, interrupts care, or puts the day&apos;s capacity at risk.
               </p>
 
-              <div className="overflow-x-auto rounded-[24px] border border-[#d9e5f2] bg-[#f8fbff] shadow-[0_12px_32px_rgba(14,41,81,0.06)]">
+              <div className="overflow-x-auto rounded-[24px] border border-[#d7d2d3] bg-[#faf8f7] shadow-[0_12px_32px_rgba(20,17,20,0.06)]">
                 <div className="min-w-[920px] p-5 md:p-7">
-                  <div className="grid grid-cols-5 gap-3 border-b border-[#d9e5f2] pb-4">
+                  <div className="grid grid-cols-5 gap-3 border-b border-[#d7d2d3] pb-4">
                     {[
                       { step: "01", title: "Open the day", moment: "Check the calendar and prepare the clinic" },
                       { step: "02", title: "Handle requests", moment: "Answer calls, messages, and walk-ins" },
@@ -5012,8 +5026,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     ].map((stage) => (
                       <div key={stage.step}>
                         <p className="mb-2 text-[11px] font-semibold tracking-[0.2em] text-[#1183D0]">{stage.step}</p>
-                        <h4 className="font-inter text-[16px] font-semibold leading-[1.25] text-[#0e2951]">{stage.title}</h4>
-                        <p className="mt-2 text-[12px] leading-[1.5] text-[#5c7792]">{stage.moment}</p>
+                        <h4 className="font-inter text-[16px] font-semibold leading-[1.25] text-[#141114]">{stage.title}</h4>
+                        <p className="mt-2 text-[12px] leading-[1.5] text-[#5c5960]">{stage.moment}</p>
                       </div>
                     ))}
                   </div>
@@ -5024,47 +5038,47 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         tension: "Calendar confidence is fragile",
                         detail: "A sync failure or stale availability can turn the first calendar check into a day-long operational issue.",
                         opportunity: "Make sync status and recovery actions visible.",
-                        tone: "border-[#f1c4aa] bg-[#fff8f3]",
+                        tone: "border-[#d7d2d3] bg-[#fffdf5]",
                       },
                       {
                         tension: "Routine requests pile up",
                         detail: "Rebooking and insurance calls compete with patients already at the front desk.",
                         opportunity: "Deflect repeat tasks through reliable self-service.",
-                        tone: "border-[#f4d89a] bg-[#fffdf5]",
+                        tone: "border-[#d7d2d3] bg-[#fffdf5]",
                       },
                       {
                         tension: "Scheduling requires constant cross-checking",
                         detail: "Every booking may depend on practitioner, room, equipment, and patient needs.",
                         opportunity: "Surface constraints before a slot is confirmed.",
-                        tone: "border-[#b7d8f5] bg-[#f5faff]",
+                        tone: "border-[#d7d2d3] bg-[#f5faff]",
                       },
                       {
                         tension: "The work is interrupted, not sequential",
                         detail: "German MFAs balance scheduling alongside clinical work and TI-mandated tasks.",
                         opportunity: "Support handoffs and quick return-to-task moments.",
-                        tone: "border-[#c9c0f3] bg-[#f8f6ff]",
+                        tone: "border-[#d7d2d3] bg-[#f8f6ff]",
                       },
                       {
                         tension: "Errors reduce clinical capacity",
                         detail: "Double-bookings and manual fixes take time away from care and leave no room for recovery.",
                         opportunity: "Offer clear exception handling and a trustworthy audit trail.",
-                        tone: "border-[#efbbbf] bg-[#fff7f7]",
+                        tone: "border-[#d7d2d3] bg-[#fff7f7]",
                       },
                     ].map((stage) => (
                       <article key={stage.tension} className={`rounded-[18px] border p-4 ${stage.tone}`}>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0e2951]">Pain point</p>
-                        <h5 className="mt-2 font-inter text-[15px] font-semibold leading-[1.35] text-[#0e2951]">{stage.tension}</h5>
-                        <p className="mt-3 text-[13px] leading-[1.55] text-[#5c7792]">{stage.detail}</p>
-                        <div className="mt-4 border-t border-[#0e2951]/10 pt-3">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#141114]">Pain point</p>
+                        <h5 className="mt-2 font-inter text-[15px] font-semibold leading-[1.35] text-[#141114]">{stage.tension}</h5>
+                        <p className="mt-3 text-[13px] leading-[1.55] text-[#5c5960]">{stage.detail}</p>
+                        <div className="mt-4 border-t border-[#d7d2d3] pt-3">
                           <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Design opportunity</p>
-                          <p className="mt-1 text-[13px] font-medium leading-[1.55] text-[#0e2951]">{stage.opportunity}</p>
+                          <p className="mt-1 text-[13px] font-medium leading-[1.55] text-[#141114]">{stage.opportunity}</p>
                         </div>
                       </article>
                     ))}
                   </div>
 
-                  <div className="mt-5 flex items-center gap-3 rounded-[14px] bg-[#0e2951] px-4 py-3 text-[13px] leading-[1.5] text-white">
-                    <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#82d5ae]" aria-hidden="true" />
+                  <div className="mt-5 flex items-center gap-3 rounded-[14px] bg-[#141114] px-4 py-3 text-[13px] leading-[1.5] text-white">
+                    <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#f8df36]" aria-hidden="true" />
                     <span><strong>Design principle:</strong> Protect clinical capacity by making availability reliable, routine tasks self-serve, and exceptions easy to resolve.</span>
                   </div>
                 </div>
@@ -5076,14 +5090,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         {caseStudy.slug === "calendar-keeper" ? (
           <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
             <div className="mx-auto max-w-[1080px]">
-              <SectionHeading eyebrow="Customer journey map" title="A return visit, from search to confirmation" centered className="mb-5" />
-              <p className="mx-auto mb-8 max-w-[720px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              <h2 className="mx-auto mt-3 max-w-[720px] text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+                {renderNayyaEditorialTitle("A return visit, from search to confirmation")}
+              </h2>
+              <p className="mx-auto mb-8 mt-5 max-w-[720px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">
                 For returning patients, an appointment should be a quick, familiar task. Today, uncertainty at each step often sends a routine rebooking back to the phone line, adding pressure to the clinic team it was meant to help.
               </p>
 
-              <div className="overflow-x-auto rounded-[24px] border border-[#d9e5f2] bg-[#f8fbff] shadow-[0_12px_32px_rgba(14,41,81,0.06)]">
+              <div className="overflow-x-auto rounded-[24px] border border-[#d7d2d3] bg-[#faf8f7] shadow-[0_12px_32px_rgba(20,17,20,0.06)]">
                 <div className="min-w-[920px] p-5 md:p-7">
-                  <div className="grid grid-cols-5 gap-3 border-b border-[#d9e5f2] pb-4">
+                  <div className="grid grid-cols-5 gap-3 border-b border-[#d7d2d3] pb-4">
                     {[
                       { step: "01", title: "Find a time", moment: "Look for an available follow-up appointment" },
                       { step: "02", title: "Choose a visit", moment: "Confirm practitioner, visit type, and location" },
@@ -5093,8 +5109,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     ].map((stage) => (
                       <div key={stage.step}>
                         <p className="mb-2 text-[11px] font-semibold tracking-[0.2em] text-[#1183D0]">{stage.step}</p>
-                        <h4 className="font-inter text-[16px] font-semibold leading-[1.25] text-[#0e2951]">{stage.title}</h4>
-                        <p className="mt-2 text-[12px] leading-[1.5] text-[#5c7792]">{stage.moment}</p>
+                        <h4 className="font-inter text-[16px] font-semibold leading-[1.25] text-[#141114]">{stage.title}</h4>
+                        <p className="mt-2 text-[12px] leading-[1.5] text-[#5c5960]">{stage.moment}</p>
                       </div>
                     ))}
                   </div>
@@ -5105,47 +5121,47 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         tension: "Availability feels like a dead end",
                         detail: "When the right appointment is not visible, patients cannot tell whether to wait, try again, or call the practice.",
                         opportunity: "Explain availability and offer a clear next step.",
-                        tone: "border-[#f4d89a] bg-[#fffdf5]",
+                        tone: "border-[#d7d2d3] bg-[#fffdf5]",
                       },
                       {
                         tension: "Key details are inconsistent",
                         detail: "Unclear practitioner information or appointment options make a familiar choice feel risky.",
                         opportunity: "Make visit details reliable and easy to compare.",
-                        tone: "border-[#b7d8f5] bg-[#f5faff]",
+                        tone: "border-[#d7d2d3] bg-[#f5faff]",
                       },
                       {
                         tension: "Registration repeats unnecessary work",
                         detail: "Long forms and extra data requests add effort before a returning patient can complete a simple booking.",
                         opportunity: "Recognize returners and ask only for what changed.",
-                        tone: "border-[#c9c0f3] bg-[#f8f6ff]",
+                        tone: "border-[#d7d2d3] bg-[#f8f6ff]",
                       },
                       {
                         tension: "Technical errors break trust",
                         detail: "A blank page, logout, or unclear confirmation leaves patients unsure whether their slot is actually reserved.",
                         opportunity: "Make status, recovery, and confirmation unmistakable.",
-                        tone: "border-[#f1c4aa] bg-[#fff8f3]",
+                        tone: "border-[#d7d2d3] bg-[#fff8f3]",
                       },
                       {
                         tension: "Changes return patients to the phone",
                         detail: "Without a fast self-service path to rebook, routine adjustments become another front-desk call.",
                         opportunity: "Let patients manage an existing booking in a few steps.",
-                        tone: "border-[#efbbbf] bg-[#fff7f7]",
+                        tone: "border-[#d7d2d3] bg-[#fff7f7]",
                       },
                     ].map((stage) => (
                       <article key={stage.tension} className={`rounded-[18px] border p-4 ${stage.tone}`}>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0e2951]">Pain point</p>
-                        <h5 className="mt-2 font-inter text-[15px] font-semibold leading-[1.35] text-[#0e2951]">{stage.tension}</h5>
-                        <p className="mt-3 text-[13px] leading-[1.55] text-[#5c7792]">{stage.detail}</p>
-                        <div className="mt-4 border-t border-[#0e2951]/10 pt-3">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#141114]">Pain point</p>
+                        <h5 className="mt-2 font-inter text-[15px] font-semibold leading-[1.35] text-[#141114]">{stage.tension}</h5>
+                        <p className="mt-3 text-[13px] leading-[1.55] text-[#5c5960]">{stage.detail}</p>
+                        <div className="mt-4 border-t border-[#d7d2d3] pt-3">
                           <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">Design opportunity</p>
-                          <p className="mt-1 text-[13px] font-medium leading-[1.55] text-[#0e2951]">{stage.opportunity}</p>
+                          <p className="mt-1 text-[13px] font-medium leading-[1.55] text-[#141114]">{stage.opportunity}</p>
                         </div>
                       </article>
                     ))}
                   </div>
 
-                  <div className="mt-5 flex items-center gap-3 rounded-[14px] bg-[#0e2951] px-4 py-3 text-[13px] leading-[1.5] text-white">
-                    <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#82d5ae]" aria-hidden="true" />
+                  <div className="mt-5 flex items-center gap-3 rounded-[14px] bg-[#141114] px-4 py-3 text-[13px] leading-[1.5] text-white">
+                    <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#f8df36]" aria-hidden="true" />
                     <span><strong>Design principle:</strong> Make a return visit feel like a continuation, not a new administrative task.</span>
                   </div>
                 </div>
@@ -5157,8 +5173,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         {caseStudy.slug === "calendar-keeper" ? (
           <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
             <div className="mx-auto max-w-[1080px]">
-              <SectionHeading eyebrow="How Might We Questions" title="How might we make the schedule trustworthy?" centered className="mb-5" />
-              <p className="mx-auto mb-8 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              <h2 className="mx-auto mt-3 max-w-[760px] text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+                {renderNayyaEditorialTitle("How might we make the schedule trustworthy?")}
+              </h2>
+              <p className="mx-auto mb-8 mt-5 max-w-[760px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">
                 The opportunity is not another booking interface. It is a resource-aware schedule that stays understandable and usable when the underlying infrastructure does not.
               </p>
 
@@ -5189,7 +5207,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     answer: "Avoid relying on empty waitlist data at launch, and focus the first experience on dependable core booking instead.",
                   },
                 ].map((item, index) => (
-                  <article key={item.question} className="overflow-hidden rounded-[18px] border border-[#d9e5f2] bg-[#f8fbff]">
+                  <article key={item.question} className="overflow-hidden rounded-[18px] border border-[#d7d2d3] bg-[#faf8f7]">
                     <button
                       type="button"
                       onClick={() => setExpandedHmwIndex((current) => current === index ? null : index)}
@@ -5197,10 +5215,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       className="flex w-full items-center gap-4 px-5 py-4 text-left transition-colors hover:bg-white"
                     >
                       <span className="shrink-0 text-[11px] font-semibold tracking-[0.18em] text-[#1183D0]">HMW {String(index + 1).padStart(2, "0")}</span>
-                      <h3 className="flex-1 font-inter text-[17px] font-semibold leading-[1.35] text-[#0e2951]">{item.question}</h3>
+                      <h3 className="flex-1 font-inter text-[17px] font-semibold leading-[1.35] text-[#141114]">{item.question}</h3>
                       <ChevronRight className={`h-5 w-5 shrink-0 text-[#1183D0] transition-transform ${expandedHmwIndex === index ? "rotate-90" : ""}`} />
                     </button>
-                    {expandedHmwIndex === index ? <div className="border-t border-[#d9e5f2] bg-white px-5 py-4"><p className="text-[14px] leading-[1.65] text-[#5c7792]">{item.answer}</p></div> : null}
+                    {expandedHmwIndex === index ? <div className="border-t border-[#d7d2d3] bg-white px-5 py-4"><p className="text-[14px] leading-[1.65] text-[#5c5960]">{item.answer}</p></div> : null}
                   </article>
                 ))}
               </div>
@@ -5232,32 +5250,31 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 />
               </div>
 
-              <div className="mx-auto mt-6 max-w-[820px] text-center text-[14px] leading-[1.65] text-[#5c7792]">
-                <p><strong className="text-[#0e2951]">Strategic focus:</strong> Data sovereignty and MFA-first workflows are entry requirements. The defensible advantage is reliable, resource-aware scheduling, especially in degraded mode.</p>
+              <div className="mx-auto mt-6 max-w-[820px] text-center text-[14px] leading-[1.65] text-[#5c5960]">
+                <p><strong className="text-[#141114]">Strategic focus:</strong> Data sovereignty and MFA-first workflows are entry requirements. The defensible advantage is reliable, resource-aware scheduling, especially in degraded mode.</p>
               </div>
               <div className="mx-auto mt-12 max-w-[820px]">
                 <div className="text-center">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.3em] text-[#1183D0]">Design rationale</p>
-                  <h3 className="mt-3 font-inter text-[28px] leading-tight text-[#0e2951]">Prioritizing the first flows</h3>
+                  <h3 className="mt-3 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">Prioritizing the first flows</h3>
                 </div>
                 <div className="mt-7 grid gap-4 md:grid-cols-2">
-                  <article className="rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] p-6">
+                  <article className="rounded-[20px] border border-[#d7d2d3] bg-[#faf8f7] p-6">
                     <h4 className="font-inter text-[15px] font-semibold leading-[1.4] text-[#1183D0]">Why these two users first</h4>
-                    <div className="mt-3 space-y-3 text-[14px] leading-[1.7] text-[#5c7792]">
+                    <div className="mt-3 space-y-3 text-[14px] leading-[1.7] text-[#5c5960]">
                       <p>The Calendar Keeper owns the most complex, high-impact work: coordinating practitioners, rooms, equipment, changes, and recovery when systems fail.</p>
                       <p>Returning patients create the most frequent, predictable requests. Designing a fast self-service path for them removes routine calls before they reach the clinic team.</p>
                     </div>
                   </article>
-                  <article className="rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] p-6">
+                  <article className="rounded-[20px] border border-[#d7d2d3] bg-[#faf8f7] p-6">
                     <h4 className="font-inter text-[15px] font-semibold leading-[1.4] text-[#1183D0]">Why the other users are not separate first flows</h4>
-                    <div className="mt-3 space-y-3 text-[14px] leading-[1.7] text-[#5c7792]">
+                    <div className="mt-3 space-y-3 text-[14px] leading-[1.7] text-[#5c5960]">
                       <p>Caregivers can extend the returning-patient experience through the same identity and appointment-management foundation.</p>
                       <p>Older and lower-digital-literacy patients shape accessibility across every screen, while doctors and clinicians benefit from a reliable shared schedule but do not manage the repeated coordination work this console removes.</p>
                     </div>
                   </article>
                 </div>
               </div>
-              <div className="mx-auto mt-8 max-w-[820px] space-y-4 text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+              <div className="mx-auto mt-8 max-w-[820px] space-y-4 text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">
                 <p>
                   The design direction is a scheduling experience that feels clear, dependable, and useful for both staff and returning patients. The interface simplifies each decision by keeping availability, visit requirements, and the next best action visible at the moment they matter.
                 </p>
@@ -8366,9 +8383,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading eyebrow="Service blueprint" title="How the scheduling service works together" centered className="mb-5" />
-          <p className="mx-auto mb-10 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-            This proposed future-state flow connects the patient and clinic experience to the operational work and systems that keep a resource-aware schedule reliable.
+          <h2 className="mx-auto mt-3 max-w-[760px] text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+            {renderNayyaEditorialTitle("How the scheduling service works together")}
+          </h2>
+          <p className="mx-auto mb-10 mt-5 max-w-[760px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">
+            This service blueprint shows a proposed future-state flow that connects the patient and clinic experience to the operational work and systems that keep a resource-aware schedule reliable.
           </p>
           <CalendarKeeperServiceBlueprint />
         </section>
@@ -8376,8 +8395,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
-          <SectionHeading eyebrow="Prototype" title="Resource-aware scheduling" centered className="mb-5" />
-          <p className="mx-auto mb-10 max-w-[720px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+          <h2 className="mx-auto mt-3 max-w-[720px] text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+            {renderNayyaEditorialTitle("Resource-aware scheduling")}
+          </h2>
+          <p className="mx-auto mb-10 mt-5 max-w-[720px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">
             One product with three connected layers: a shared resource-aware scheduling core, a Calendar Keeper console, and a deliberately thin returning-patient surface. Two entrances adapt the experience to the practice shape, not the country.
           </p>
           <CalendarKeeperPrototypeViews />
@@ -8387,8 +8408,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[1080px]">
-            <SectionHeading eyebrow="Success criteria" title="How we would know it is working" centered className="mb-5" />
-            <p className="mx-auto max-w-[780px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+            <h2 className="mx-auto mt-3 max-w-[780px] text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+              {renderNayyaEditorialTitle("How we would know it is working")}
+            </h2>
+            <p className="mx-auto mt-5 max-w-[780px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">
               This is a proposed direction, not a claimed outcome. A pilot would establish a baseline first, then measure whether the new scheduling service reduces coordination work while protecting patient confidence and clinical capacity.
             </p>
 
@@ -8415,17 +8438,17 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   measure: "Weekly active staff users, task-completion success, and a short post-task confidence score.",
                 },
               ].map((criterion, index) => (
-                <article key={criterion.metric} className="rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] p-6">
+                <article key={criterion.metric} className="rounded-[20px] border border-[#d7d2d3] bg-[#faf8f7] p-6">
                   <p className="text-[11px] font-semibold tracking-[0.18em] text-[#1183D0]">SUCCESS SIGNAL 0{index + 1}</p>
-                  <h3 className="mt-3 font-inter text-[20px] font-semibold leading-[1.35] text-[#0e2951]">{criterion.metric}</h3>
-                  <p className="mt-3 text-[14px] leading-[1.65] text-[#5c7792]">{criterion.signal}</p>
-                  <p className="mt-5 border-t border-[#d7e8f7] pt-4 text-[13px] font-medium leading-[1.6] text-[#385b7a]">Measure: {criterion.measure}</p>
+                  <h3 className="mt-3 font-inter text-[20px] font-semibold leading-[1.35] text-[#141114]">{criterion.metric}</h3>
+                  <p className="mt-3 text-[14px] leading-[1.65] text-[#5c5960]">{criterion.signal}</p>
+                  <p className="mt-5 border-t border-[#d7d2d3] pt-4 text-[13px] font-medium leading-[1.6] text-[#141114]">Measure: {criterion.measure}</p>
                 </article>
               ))}
             </div>
 
-            <div className="mt-5 rounded-[20px] border border-[#d7e8f7] bg-white px-6 py-5 text-center text-[14px] leading-[1.7] text-[#5c7792]">
-              <span className="font-semibold text-[#0e2951]">Pilot approach:</span> compare a 4, 6 week baseline with a limited clinic rollout, then pair behavioural data with short staff interviews to understand why a metric moved.
+            <div className="mt-5 rounded-[20px] border border-[#d7d2d3] bg-white px-6 py-5 text-center text-[14px] leading-[1.7] text-[#5c5960]">
+              <span className="font-semibold text-[#141114]">Pilot approach:</span> compare a 4, 6 week baseline with a limited clinic rollout, then pair behavioural data with short staff interviews to understand why a metric moved.
             </div>
           </div>
         </section>
@@ -8434,8 +8457,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       {caseStudy.slug === "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           <div className="mx-auto max-w-[1080px]">
-            <SectionHeading eyebrow="Future phases" title="A schedule the clinic can keep trusting" centered className="mb-5" />
-            <p className="mx-auto max-w-[780px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+            <h2 className="mx-auto mt-3 max-w-[780px] text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+              {renderNayyaEditorialTitle("A schedule the clinic can keep trusting")}
+            </h2>
+            <p className="mx-auto mt-5 max-w-[780px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">
               The proposed experience treats scheduling as a coordination system: it protects clinical capacity by reserving the right resources together, keeps work moving during outages, and gives patients a dependable self-service path. The prototype establishes the core service; the next steps extend that reliability around the clinic.
             </p>
 
@@ -8458,10 +8483,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   body: "Test delegation-ready team practices and lean, doctor-led practices separately, ensuring roles, handoffs, and automation reduce work without obscuring responsibility.",
                 },
               ].map((item, index) => (
-                <article key={item.title} className="rounded-[20px] border border-[#d9e5f2] bg-[#f8fbff] p-6">
+                <article key={item.title} className="rounded-[20px] border border-[#d7d2d3] bg-[#faf8f7] p-6">
                   <p className="text-[11px] font-semibold tracking-[0.18em] text-[#1183D0]">NEXT STEP 0{index + 1}</p>
-                  <h3 className="mt-3 font-inter text-[20px] font-semibold leading-[1.35] text-[#0e2951]">{item.title}</h3>
-                  <p className="mt-3 text-[14px] leading-[1.65] text-[#5c7792]">{item.body}</p>
+                  <h3 className="mt-3 font-inter text-[20px] font-semibold leading-[1.35] text-[#141114]">{item.title}</h3>
+                  <p className="mt-3 text-[14px] leading-[1.65] text-[#5c5960]">{item.body}</p>
                 </article>
               ))}
             </div>

@@ -3,24 +3,21 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUp } from "lucide-react";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
 import { Badge } from "../../components/ui/badge";
-import { Card, CardContent } from "../../components/ui/card";
-import { SectionHeading } from "../../components/ui/section-heading";
 import {
   isHiddenCaseStudySlug,
   resolveHomeCardId,
   resolveHomeCardImage,
-  resolveProjectHeroImage,
   resolveProjectHref,
-  resolveTrustedLogo,
+  resolveToolIconOptional,
   usePublicCaseStudies,
   usePublicCaseStudy,
 } from "../../lib/cms/public";
 import { withBasePath } from "../../lib/site";
 import { LocalizedCaseStudyRoute } from "../../components/localized-case-study-route";
-import { getVisibleProjectTags } from "../../lib/project-tags";
 
 // ── Assets from Figma ─────────────────────────────────────────────────────────
 const ASSETS = {
@@ -36,13 +33,45 @@ const ASSETS = {
   ibx: withBasePath("/images/flock-logo.png"),
 };
 
-const HOME_BANNER_GRADIENT =
-  "linear-gradient(90deg, #e6f1fb 0%, #eee7fb 37%, #f9e5ee 68%, #fcf0e2 100%)";
 const HOME_BANNER_GRADIENT_OVERLAY =
   "radial-gradient(circle at top,rgba(171,160,246,0.16),transparent 42%),radial-gradient(circle at 72% 26%,rgba(255,174,202,0.18),transparent 32%),radial-gradient(circle at 92% 50%,rgba(255,224,189,0.2),transparent 24%),linear-gradient(180deg,rgba(118,141,177,0.06)_0%,rgba(255,255,255,0)_58%)";
 const RELATED_PROJECT_BACKGROUNDS: Record<string, string> = {
   reversetech: "linear-gradient(180deg, #eef4fb 0%, #eef4fb 100%)",
 };
+
+function NayyaHeading({
+  eyebrow,
+  title,
+  centered = false,
+  className = "",
+}: {
+  eyebrow?: string;
+  title: string;
+  centered?: boolean;
+  className?: string;
+}) {
+  const words = title.trim().split(/\s+/);
+  const accent = words.length > 1 ? words[words.length - 1] : null;
+  const lead = words.length > 1 ? words.slice(0, -1).join(" ") : title;
+  return (
+    <div className={`${centered ? "text-center" : "text-left"} ${className}`}>
+      {eyebrow ? (
+        <p className="mb-3 inline-flex rounded-full bg-[#f8df36] px-4 py-2 font-inter text-xs font-semibold text-[#141114]">
+          {eyebrow}
+        </p>
+      ) : null}
+      <h2 className={`font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114] ${centered ? "mx-auto" : ""}`}>
+        {lead}
+        {accent ? (
+          <>
+            {" "}
+            <span className="font-playfair font-normal italic">{accent}</span>
+          </>
+        ) : null}
+      </h2>
+    </div>
+  );
+}
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 const TEAM_MEMBERS = [
@@ -100,10 +129,12 @@ const DESIGN_PROCESS = [
 ];
 
 const RESULTS = [
-  { value: "72%", label: "Reduction in processing time" },
-  { value: "500+", label: "Employees self-managed without IT tickets" },
-  { value: "3 mo", label: "End-to-end design & delivery" },
+  { value: "72%", title: "Processing time", label: "Reduction in processing time" },
+  { value: "500+", title: "Adoption", label: "Employees self-managed without IT tickets" },
+  { value: "3 mo", title: "Delivery", label: "End-to-end design & delivery" },
 ];
+
+const RESULT_TITLES = ["Processing time", "Adoption", "Delivery"];
 
 const REFLECTIONS = [
   {
@@ -479,7 +510,6 @@ export default function BenefitsPage() {
   const isLiveCaseStudy = Boolean(caseStudy && caseStudy.status === "published");
   const userPainPoints = caseStudy?.problem.user_pain_points ?? USER_PAIN_POINTS.map((item) => `${item.before}${item.bold}${item.after}`);
   const strategyPoints = caseStudy?.design_strategy ?? STRATEGY_POINTS.map((item) => `${item.before}${item.bold}${item.after}`);
-  const teamMembers = caseStudy?.team ?? TEAM_MEMBERS;
   const myRole = caseStudy?.my_role ?? MY_ROLE;
   const toolsUsed = caseStudy?.tools ?? TOOLS;
   const methodologySteps =
@@ -489,7 +519,7 @@ export default function BenefitsPage() {
       desc: step.description,
     })) ?? DESIGN_PROCESS;
   const results = caseStudy?.metrics.length
-    ? caseStudy.metrics.map((metric) => ({ value: metric.value, label: metric.label }))
+    ? caseStudy.metrics.map((metric, index) => ({ value: metric.value, title: RESULT_TITLES[index] ?? metric.label, label: metric.label }))
     : RESULTS;
   const resultRows = [
     {
@@ -521,21 +551,9 @@ export default function BenefitsPage() {
       previewImage: resolveHomeCardImage(project.slug, project.images?.cover || project.images?.hero || ""),
       background: RELATED_PROJECT_BACKGROUNDS[project.slug],
     }));
-  const heroImage = resolveProjectHeroImage("benefits-enrollment", caseStudy?.images.hero ?? null);
-  const clientLogos = caseStudy?.client_logos.length
-    ? caseStudy.client_logos.filter((logo) => logo.name !== "Flock").map((logo) => {
-        const name = logo.name === "Nayya" ? "Flock" : logo.name;
-        const src = name === "Flock" ? withBasePath("/images/flock-logo.png") : resolveTrustedLogo(logo.name, logo.logo);
-        return { src, alt: name, width: name === "Paychex" ? 120 : name === "Flock" ? 120 : 60 };
-      })
-    : [
-        { src: ASSETS.paychex, alt: "Paychex", width: 120 },
-        { src: ASSETS.ibx, alt: "IBX", width: 60 },
-      ];
-
   return (
     <LocalizedCaseStudyRoute slug="benefits-enrollment">
-    <main className="bg-white text-[#5c7792] overflow-x-hidden">
+    <main className="bg-white text-[#5c5960] overflow-x-hidden">
       <SiteHeader active="Projects" />
 
       {!isLiveCaseStudy ? (
@@ -562,184 +580,182 @@ export default function BenefitsPage() {
         </>
       ) : (
         <>
-      <div
-        className="relative overflow-hidden"
-        style={{ background: HOME_BANNER_GRADIENT }}
-      >
+      <div className="relative overflow-hidden" style={{ background: "#faf8f7" }}>
         <div
           className="pointer-events-none absolute inset-0"
           style={{ background: HOME_BANNER_GRADIENT_OVERLAY }}
         />
         <div className="relative mx-auto max-w-[1200px] px-6 pt-6 lg:px-20">
           <div className="flex items-center gap-3 text-sm">
-            <Link href={withBasePath("/")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Home</Link>
-            <span className="text-[#b8cce0]">›</span>
-            <Link href={withBasePath("/projects")} className="text-[#5c7792] transition-colors hover:text-[#0e2951]">Projects</Link>
-            <span className="text-[#b8cce0]">›</span>
-            <span className="font-semibold text-[#0e2951]">{caseStudy?.title ?? "Self-Service Access and Role Management"}</span>
+            <Link href={withBasePath("/")} className="text-[#451044] transition-colors hover:text-[#1183D0]">Home</Link>
+            <span className="text-[#aaa5aa]">›</span>
+            <Link href={withBasePath("/projects")} className="transition-colors hover:text-[#1183D0]">Projects</Link>
+            <span className="text-[#aaa5aa]">›</span>
+            <span className="font-semibold text-[#141114]">{caseStudy?.title ?? "Self-Service Access and Role Management"}</span>
           </div>
         </div>
 
         {/* ── Hero ── */}
-        <section className="relative mx-auto max-w-[1200px] px-6 pt-8 pb-0 md:px-10 xl:px-20">
-          <div className="mx-auto max-w-[1040px] rounded-[0] px-3 pb-4">
-            <div className="px-6 pt-4 text-center md:px-12 lg:px-[120px]">
-              <div className="mx-auto max-w-[820px]">
-                <p className="mb-3 font-inter text-[13px] uppercase tracking-[3px] text-[#5c7792]">
-                  {caseStudy?.industry ?? "Case Study Redesign 2025"}
-                </p>
-                <h1 className="font-inter text-[40px] font-bold leading-[1.15] text-[#0e2951] md:text-[48px]">
-                  {caseStudy?.title ?? "Self-Service Access and Role Management"}
-                </h1>
-                <p className="mx-auto mt-5 max-w-[680px] font-inter text-[16px] leading-[1.625em] text-[#5c7792]">
-                  {caseStudy?.tagline ?? "Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%."}
-                </p>
-                <div className="relative mx-auto mt-10 h-[150px] w-full max-w-[1040px] overflow-hidden rounded-[24px] shadow-[0_20px_64px_rgba(14,41,81,0.12)]">
-                  <Image
-                    src={heroImage}
-                    alt="Benefits enrollment workflow and dashboard preview"
-                    fill
-                    sizes="(min-width: 1200px) 1040px, calc(100vw - 48px)"
-                    className="object-cover object-center"
-                    priority
-                  />
-                </div>
-                <div className="relative mt-10 flex flex-col items-center gap-8 pt-8">
-                  <div className="grid w-full gap-8 text-center md:grid-cols-[1fr_2fr_1fr] md:items-center">
-                    <div>
-                      <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Year</p>
-                      <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy?.year ?? 2024}</p>
-                    </div>
-                    <div>
-                      <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Role</p>
-                      <p className="mt-1 text-[14px] font-medium text-[#0e2951]">{caseStudy?.role ?? "Sr. Product Designer"}</p>
-                    </div>
-                    <div>
-                      <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0e2951]/50">Client</p>
-                      <p className="mt-1 text-[14px] font-medium text-[#0e2951]">
-                        {caseStudy?.client_context ?? "Paychex via ITX Corp"}
-                      </p>
-                    </div>
-                  </div>
-                </div>
+        <section className="relative mx-auto max-w-[1200px] px-6 pt-12 pb-0 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-full pb-4">
+            <div className="w-[60%] max-w-[1040px] pb-6 text-left">
+              <p className="mb-3 inline-flex rounded-full bg-[#f8df36] px-4 py-2 font-inter text-xs font-semibold text-[#141114]">
+                {caseStudy?.industry ?? "Case Study Redesign 2025"}
+              </p>
+              <h1 className="mb-5 max-w-[1000px] font-inter text-[clamp(2.5rem,5.5vw,4.5rem)] font-bold leading-[0.98] tracking-[-0.055em] text-[#141114]">
+                {(() => {
+                  const t = caseStudy?.title ?? "Self-Service Access and Role Management";
+                  const words = t.trim().split(/\s+/);
+                  if (words.length < 2) return t;
+                  const accent = words[words.length - 1];
+                  const lead = words.slice(0, -1).join(" ");
+                  return (
+                    <>
+                      {lead}{" "}
+                      <span className="font-playfair font-normal italic tracking-[-0.045em]">{accent}</span>
+                    </>
+                  );
+                })()}
+              </h1>
+              <p className="max-w-full font-inter text-[18px] leading-[1.6] text-[#5c5960]">
+                {caseStudy?.tagline ?? "Replaced a manual workflow with a centralized, self-managed platform; cutting processing time by 72%."}
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px] text-[#5c5960]">
+                {[
+                  String(caseStudy?.year ?? 2024),
+                  caseStudy?.role ?? "Sr. Product Designer",
+                  `Client: ${caseStudy?.client_context ?? "Paychex via ITX Corp"}`,
+                ].map((detail, index) => (
+                  <span key={`${detail}-${index}`} className="inline-flex items-center gap-3">
+                    {index > 0 ? <span aria-hidden="true">·</span> : null}
+                    <span>{detail}</span>
+                  </span>
+                ))}
               </div>
             </div>
           </div>
         </section>
       </div>
 
-      <section className="mx-auto max-w-[1200px] px-6 pt-12 pb-10 md:px-10 xl:px-20">
-        <div className="grid gap-6 text-center md:grid-cols-3">
-          {results.slice(0, 3).map((metric, index) => (
-            <div
-              key={metric.label}
-              className={index < 2 ? "md:border-r md:border-[#d7e8f7]" : ""}
-            >
-              <p className="text-[46px] font-bold leading-none text-[#1183D0]">{metric.value}</p>
-              <p className="mt-3 text-[16px] leading-[1.625em] text-[#5c7792]">{metric.label}</p>
-            </div>
-          ))}
+      <section className="mx-auto max-w-[1200px] bg-white px-6 py-12 md:px-10 xl:px-20">
+        <div className="mx-auto max-w-full">
+          <div className="grid gap-12 md:grid-cols-3 md:gap-0">
+            {results.slice(0, 3).map((metric, index) => (
+              <article
+                key={metric.label}
+                className={`flex min-h-[190px] flex-col md:min-h-[240px] md:px-10 ${index > 0 ? "md:border-l md:border-[#d7d2d3]" : "md:pl-0"} ${index === results.slice(0, 3).length - 1 ? "md:pr-0" : ""}`}
+              >
+                <p className="text-[15px] font-semibold tracking-[0.04em] text-[#1183D0]">{metric.title}</p>
+                <p className="mt-4 max-w-[32ch] text-[18px] leading-[1.45] text-[#5c5960]">{metric.label}</p>
+                <div className="relative mt-auto mb-4 flex items-end justify-between gap-2">
+                  <p className="text-[clamp(2.1rem,3.3vw,4rem)] font-bold leading-[0.88] tracking-[-0.065em] text-[#090909]">
+                    {metric.value}
+                  </p>
+                  <ArrowUp aria-hidden="true" className="mb-1 size-7 shrink-0 text-[#090909] sm:size-8" strokeWidth={2} />
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── Overview ── */}
-      <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading eyebrow="Overview" title="Structure" className="mb-6" />
-
-        <div className="mt-8 grid gap-8 pt-8 md:grid-cols-2 xl:grid-cols-4 xl:gap-0">
-          {/* Team */}
-          <div className="xl:pr-8">
-            <p className="text-[#5c7792] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter">
-              Team Members
-            </p>
-            <div className="h-[3px] w-full bg-[#4d87ae]/20 rounded-full mb-5" />
-            <ul className="space-y-1">
-              {teamMembers.map((m) => (
-                <li key={m} className="text-[#5c7792] text-[16px] font-inter capitalize leading-[1.75]">{m}</li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Role */}
-          <div className="xl:px-8">
-            <p className="text-[#5c7792] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter font-medium">
-              My Role
-            </p>
-            <div className="h-[3px] w-full bg-[#1183D0] rounded-full mb-5" />
-            <ul className="space-y-1">
-              {myRole.map((r) => (
-                <li key={r} className="text-[#5c7792] text-[16px] font-inter capitalize leading-[1.75] font-medium">{r}</li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Tools */}
-          <div className="xl:px-8">
-            <p className="text-[#5c7792] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter">
+      <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        <div className="rounded-[24px] border-l-[3px] border-[#f8df36] bg-white px-6 py-7 shadow-[8px_10px_0_#c7e8f7] md:px-10 md:py-9">
+          <p className="mb-6 font-inter text-[15px] font-semibold uppercase tracking-[0.16em] text-[#141114]">
+            Structure
+          </p>
+          <p className="mt-8 max-w-[860px] font-inter text-[18px] leading-[1.8] text-[#5c5960]">
+            {caseStudy?.content_blocks?.find((block) => block.id === "overview")?.body ??
+              "A cross-functional team aligned around one goal: replacing a fragmented, ticket-driven access workflow with a centralized self-service platform."}
+          </p>
+          <p className="mt-6 font-inter text-[17px] leading-[1.7] text-[#3c3e3f]">
+            {`My role was ${myRole.join(", ")}, across a ${caseStudy?.duration ?? "3 months"} timeline.`}
+          </p>
+          <div className="mt-8">
+            <p className="mb-4 font-inter text-[13px] font-semibold uppercase tracking-[0.14em] text-[#5c5960]">
               Tools Used
             </p>
-            <div className="h-[3px] w-full bg-[#4d87ae]/20 rounded-full mb-5" />
-            <ul className="space-y-1">
-              {toolsUsed.map((t) => (
-                <li key={t} className="text-[#5c7792] text-[16px] font-inter capitalize leading-[1.75]">{t}</li>
-              ))}
+            <ul className="flex flex-wrap gap-3">
+              {toolsUsed.map((tool) => {
+                const icon = resolveToolIconOptional(tool);
+                return (
+                  <li
+                    key={tool}
+                    className="inline-flex items-center gap-3 rounded-xl border border-[#d7d2d3] bg-white px-3 py-2 font-inter text-[14px] text-[#3c3e3f]"
+                  >
+                    {icon ? (
+                      <Image
+                        src={icon}
+                        alt=""
+                        aria-hidden="true"
+                        width={24}
+                        height={24}
+                        className="size-6 object-contain"
+                      />
+                    ) : null}
+                    <span>{tool}</span>
+                  </li>
+                );
+              })}
             </ul>
-          </div>
-
-          {/* Timeline */}
-          <div className="xl:pl-8">
-            <p className="text-[#5c7792] text-[15px] uppercase tracking-[1.5px] mb-4 font-inter">
-              Timeline
-            </p>
-            <div className="h-[3px] w-full bg-[#4d87ae]/20 rounded-full mb-5" />
-            <p className="text-[#5c7792] text-[16px] font-inter capitalize leading-[1.75]">{caseStudy?.duration ?? "3 months"}</p>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1200px] px-6 pb-10 md:px-10 xl:px-20">
+      <section className="w-full bg-[#faf8f7] py-10">
+        <div className="mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
           <div>
-            <SectionHeading eyebrow="Case Study" title="The Problem" className="mb-8" />
-            <div className="mt-8 space-y-6">
+            <NayyaHeading title="The Problem" className="mb-8" />
+            <div className="space-y-10">
+            <div>
               {CHALLENGE_POINTS.map((point) => (
-                <p key={point} className="max-w-[720px] text-[16px] leading-[1.625em] text-[#5c7792]">
+                <p key={point} className="mb-4 max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#5c5960] last:mb-0">
                   {point}
                 </p>
               ))}
             </div>
 
-            <h3 className="mt-12 text-[15px] uppercase tracking-[0.24em] text-[#5c7792]">
-              Supporting signals
-            </h3>
-            <div className="mt-8 space-y-6">
+            <div>
+              <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#1183D0]">
+                Supporting signals
+              </p>
               {userPainPoints.map((point) => (
-                <p key={point} className="max-w-[720px] text-[16px] leading-[1.625em] text-[#5c7792]">
+                <p key={point} className="mb-4 max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#5c5960] last:mb-0">
                   {point}
                 </p>
               ))}
             </div>
 
-            <h3 className="mt-12 text-[15px] uppercase tracking-[0.24em] text-[#1183D0]">
-              Task
-            </h3>
-            <p className="mt-8 max-w-[720px] text-[16px] leading-[1.625em] text-[#5c7792]">
-              {TASK_SUMMARY}
-            </p>
+            <div>
+              <p className="mb-4 text-[15px] normal-case tracking-normal font-semibold text-[#1183D0]">
+                Context
+              </p>
+              <p className="max-w-[720px] font-inter text-[16px] leading-[1.7] text-[#5c5960]">
+                {TASK_SUMMARY}
+              </p>
+            </div>
+            </div>
           </div>
 
           <div className="grid gap-4">
-            {CHALLENGE_METRICS.map((metric) => (
-              <Card key={metric.label} className="overflow-hidden">
-                <CardContent className="px-7 py-7">
-                  <p className="text-[30px] font-bold leading-none text-[#0e2951]">{metric.value}</p>
-                  <p className="mt-3 max-w-[220px] text-[16px] leading-[1.625em] text-[#0e2951]">
-                    {metric.label}
-                  </p>
-                </CardContent>
-              </Card>
+            {CHALLENGE_METRICS.map((metric, index) => (
+              <div key={metric.label} className="relative min-h-[190px] overflow-hidden rounded-[20px] border-0 bg-white p-7 shadow-[0_14px_30px_rgba(29,22,36,0.10)]">
+                <span
+                  aria-hidden="true"
+                  className={`absolute right-0 top-0 size-[74px] rounded-bl-full ${
+                    ["bg-[#f8df36]", "bg-[#c7e8f7]", "bg-[#f3b4ed]", "bg-[#00d9cf]"][index % 4]
+                  }`}
+                />
+                <p className="relative text-[30px] font-bold leading-none text-[#141114]">{metric.value}</p>
+                <p className="relative mt-4 max-w-[220px] text-[16px] leading-[1.6] text-[#5c5960]">
+                  {metric.label}
+                </p>
+              </div>
             ))}
           </div>
+        </div>
         </div>
       </section>
 
@@ -747,29 +763,24 @@ export default function BenefitsPage() {
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
           {RESEARCH_DISCOVERY_ITEMS.map((item, index) => (
-            <Card
-              key={item.title}
-              className="border-transparent bg-transparent shadow-none"
-            >
-              <CardContent className="p-0">
-                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-[14px] bg-[#eaf4fd] shadow-[0_10px_24px_rgba(17,131,208,0.08)]">
-                  <ActionIcon title={item.title} />
-                </div>
-                <h3 className="text-[28px] font-normal leading-none text-[#1183D0]">
-                  {item.title}
-                </h3>
-                <p className="mt-5 max-w-[320px] text-[16px] leading-[1.625em] text-[#5c7792]">
-                  {item.body}
-                </p>
-              </CardContent>
-            </Card>
+            <div key={item.title}>
+              <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-[14px] bg-[#f8f4f1] shadow-[0_10px_24px_rgba(17,131,208,0.08)]">
+                <ActionIcon title={item.title} />
+              </div>
+              <h3 className="font-inter text-[clamp(1.5rem,2vw,1.75rem)] font-semibold leading-[1.15] tracking-[-0.03em] text-[#141114]">
+                {item.title}
+              </h3>
+              <p className="mt-5 max-w-[320px] text-[17px] leading-[1.7] text-[#5c5960]">
+                {item.body}
+              </p>
+            </div>
           ))}
         </div>
       </section>
 
       {/* ── Design Thinking Process ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading eyebrow="Actions" title="Methodology" className="mb-12" />
+        <NayyaHeading title="Methodology" className="mb-12" />
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
           {methodologySteps.map((step, i) => (
             <div key={i} className="flex flex-col gap-4">
@@ -782,10 +793,10 @@ export default function BenefitsPage() {
                   className="rounded-xl w-full"
                   style={{ height: 10, backgroundColor: step.color }}
                 />
-                <p className="text-[#5c7792] font-inter font-semibold text-[15px] mt-2">
+                <p className="text-[#5c5960] font-inter font-semibold text-[15px] mt-2">
                   {i + 1}. {step.label}
                 </p>
-                <p className="font-inter text-[16px] leading-[1.625em] text-[#5c7792]">
+                <p className="font-inter text-[16px] leading-[1.6] text-[#5c5960]">
                   {step.desc}
                 </p>
               </div>
@@ -799,11 +810,11 @@ export default function BenefitsPage() {
         <div className="grid items-center gap-16 lg:grid-cols-2">
           {/* Left text */}
           <div>
-            <SectionHeading eyebrow="Definition" title={<>Design <span className="text-[#1183D0]">Strategy</span></>} className="mb-8" />
+            <NayyaHeading title="Design Strategy" className="mb-8" />
             <div className="flex flex-col gap-8">
               {strategyPoints.map((p, i) => (
                 <div key={i}>
-                  <p className="font-inter text-[16px] leading-[1.625em] font-normal text-[#5c7792]">{p}</p>
+                  <p className="font-inter text-[17px] leading-[1.7] font-normal text-[#5c5960]">{p}</p>
                 </div>
               ))}
             </div>
@@ -811,7 +822,7 @@ export default function BenefitsPage() {
 
           {/* Right embed */}
           <div className="flex justify-end">
-            <div className="w-full overflow-hidden rounded-[24px] border border-[#d7e8f7] bg-white shadow-[0_24px_64px_rgba(17,131,208,0.12)]">
+            <div className="w-full overflow-hidden rounded-[20px] border border-[#d7d2d3] bg-white shadow-[0_24px_64px_rgba(29,22,36,0.10)]">
               <iframe
                 title="Design Strategy Figma Embed"
                 src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FsCK6Jts4ID7bDc5dCmTgsY%2FAE---porft%3Fnode-id%3D223-1186%26m%3Ddev%26t%3DNP7TGuZDFhnLT48c-1"
@@ -825,8 +836,8 @@ export default function BenefitsPage() {
 
       {/* ── Product Deep Dive ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading eyebrow="Solution" title="The Platform" centered className="mb-4" />
-        <p className="mb-8 text-center text-[14px] text-[#5c7792]">
+        <NayyaHeading title="The Platform" centered className="mb-4" />
+        <p className="mb-8 text-center text-[17px] leading-[1.7] text-[#5c5960]">
           The dashboard below is an interactive example, click the tabs to explore the User Accounts and Roles &amp; Permissions views.
         </p>
         <ProductPreview />
@@ -834,10 +845,10 @@ export default function BenefitsPage() {
 
       {/* ── Results ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading eyebrow="Validation" title="Results" centered className="mb-12" />
+        <NayyaHeading title="Results" centered className="mb-12" />
 
-        <div className="overflow-x-auto rounded-[24px] border border-[#d7e8f7] bg-white">
-          <div className="grid min-w-[820px] grid-cols-[1.2fr_1.4fr_1.4fr_0.8fr] bg-[#f7f9fb] text-[13px] font-bold uppercase tracking-[0.16em] text-[#0e2951]">
+        <div className="overflow-x-auto rounded-[20px] border border-[#d7d2d3] bg-white">
+          <div className="grid min-w-[820px] grid-cols-[1.2fr_1.4fr_1.4fr_0.8fr] bg-[#faf8f7] text-[13px] font-semibold uppercase tracking-[0.16em] text-[#5c5960]">
             <div className="px-5 py-4">Metric</div>
             <div className="px-5 py-4">Before</div>
             <div className="px-5 py-4">After</div>
@@ -846,30 +857,26 @@ export default function BenefitsPage() {
           {resultRows.map((row) => (
             <div
               key={row.metric}
-              className="grid min-w-[820px] grid-cols-[1.2fr_1.4fr_1.4fr_0.8fr] border-t border-[#d7e8f7] text-[15px] leading-[1.6] text-[#5c7792]"
+              className="grid min-w-[820px] grid-cols-[1.2fr_1.4fr_1.4fr_0.8fr] border-t border-[#d7d2d3] text-[15px] leading-[1.6] text-[#5c5960]"
             >
-              <div className="px-5 py-5 font-semibold text-[#0e2951]">{row.metric}</div>
+              <div className="px-5 py-5 font-semibold text-[#141114]">{row.metric}</div>
               <div className="px-5 py-5">{row.before}</div>
               <div className="px-5 py-5">{row.after}</div>
-              <div className="px-5 py-5 text-right text-[24px] font-bold leading-none text-[#1183D0]">
+              <div className="px-5 py-5 text-right text-[24px] font-bold leading-none text-[#090909]">
                 {row.change}
               </div>
             </div>
           ))}
         </div>
-        <div className="mt-8">
-          <h2 className="mb-5 text-center font-inter text-[36px] leading-tight text-[#0e2951]">
-            Outcome Signals
-          </h2>
+        <div className="mt-12">
+          <NayyaHeading title="Outcome Signals" centered className="mb-6" />
           <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {ADDITIONAL_RESULT_SIGNALS.map((item) => (
-              <Card key={item.title} className="overflow-hidden border-transparent shadow-none">
-                <CardContent className="p-7">
-                  <p className="text-[30px] font-bold leading-none text-[#0e2951]">{item.value}</p>
-                  <h3 className="mt-3 text-[16px] font-semibold leading-snug text-[#0e2951]">{item.title}</h3>
-                  <p className="mt-4 text-[15px] leading-[1.7] text-[#5c7792]">{item.body}</p>
-                </CardContent>
-              </Card>
+              <div key={item.title} className="rounded-[20px] border border-[#d7d2d3] bg-white p-7">
+                <p className="text-[30px] font-bold leading-none text-[#141114]">{item.value}</p>
+                <h3 className="mt-3 text-[16px] font-semibold leading-snug text-[#141114]">{item.title}</h3>
+                <p className="mt-4 text-[15px] leading-[1.7] text-[#5c5960]">{item.body}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -877,19 +884,19 @@ export default function BenefitsPage() {
 
       {/* ── Impact ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading eyebrow="Outcomes" title="Impact" centered className="mb-6" />
-        <p className="mx-auto max-w-[820px] text-center text-[16px] leading-[1.7] text-[#5c7792]">
+        <NayyaHeading title="Impact" centered className="mb-6" />
+        <p className="mx-auto max-w-[820px] text-center text-[17px] leading-[1.7] text-[#5c5960]">
           Following the rollout of the redesigned self-service workflow, product, support, and security reporting showed improvements in operational efficiency, access clarity, and compliance.
         </p>
-        <div className="mx-auto mt-8 max-w-[1040px] overflow-x-auto rounded-[20px] border border-[#d7e8f7] bg-white">
+        <div className="mx-auto mt-8 max-w-[1040px] overflow-x-auto rounded-[20px] border border-[#d7d2d3] bg-white">
           <table className="w-full min-w-[720px] border-collapse text-left">
             <thead>
-              <tr className="bg-[#f8fbff] text-[11px] font-semibold uppercase tracking-[0.14em] text-[#385b7a]">
-                <th className="border-b border-[#d7e8f7] px-6 py-4">Outcome</th>
-                <th className="border-b border-[#d7e8f7] px-6 py-4">Result</th>
+              <tr className="bg-[#faf8f7] text-[11px] font-semibold uppercase tracking-[0.14em] text-[#5c5960]">
+                <th className="border-b border-[#d7d2d3] px-6 py-4">Outcome</th>
+                <th className="border-b border-[#d7d2d3] px-6 py-4">Result</th>
               </tr>
             </thead>
-            <tbody className="text-[14px] leading-[1.65] text-[#5c7792]">
+            <tbody className="text-[14px] leading-[1.65] text-[#5c5960]">
               {[
                 ["Processing time", "72% reduction", "after centralizing request, approval, and role-assignment workflows"],
                 ["Self-service adoption", "500+ employees", "able to manage standard access tasks independently"],
@@ -900,91 +907,49 @@ export default function BenefitsPage() {
                 ["Security-team feedback", "8.9/10", "rating for the updated access model and control patterns"],
                 ["Compliance readiness", "100%", "of supported roles had a documented owner and audit-ready permission structure"],
               ].map(([outcome, value, detail]) => (
-                <tr key={outcome} className="border-b border-[#edf4fa] last:border-0">
-                  <td className="px-6 py-4 font-inter font-semibold text-[#0e2951]">{outcome}</td>
+                <tr key={outcome} className="border-b border-[#d7d2d3] last:border-0">
+                  <td className="px-6 py-4 font-inter font-semibold text-[#141114]">{outcome}</td>
                   <td className="px-6 py-4"><strong className="font-semibold text-[#1183D0]">{value}</strong> {detail}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <p className="mx-auto mt-5 max-w-[1040px] text-center text-[13px] leading-[1.65] text-[#5c7792]">
-          <strong className="font-semibold text-[#385b7a]">Measurement period:</strong> Post-launch product, support, and security reporting. Metrics reflect the released self-service access and role-management workflow.
+        <p className="mx-auto mt-5 max-w-[1040px] text-center text-[13px] leading-[1.65] text-[#5c5960]">
+          <strong className="font-semibold text-[#5c5960]">Measurement period:</strong> Post-launch product, support, and security reporting. Metrics reflect the released self-service access and role-management workflow.
         </p>
       </section>
 
       {/* ── Reflections ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <SectionHeading title="Learnings" centered className="mb-12" />
+        <NayyaHeading title="Learnings" centered className="mb-12" />
 
         <div className="mx-auto grid max-w-[1040px] gap-6 md:grid-cols-2">
           {reflections.map((r, i) => (
-            <Card key={i} className="border-0 bg-transparent p-0 py-0 shadow-none">
-              <CardContent className="p-8">
-                <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">
-                  {normalizeReflectionTitle(r.title)}
-                </h3>
-                <p className="mt-4 text-[15px] leading-[1.7] text-[#5c7792]">
-                  {r.body}
-                </p>
-              </CardContent>
-            </Card>
+            <div key={i} className="rounded-[20px] border border-[#d7d2d3] bg-white p-8">
+              <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#141114]">
+                {normalizeReflectionTitle(r.title)}
+              </h3>
+              <p className="mt-4 text-[15px] leading-[1.7] text-[#5c5960]">
+                {r.body}
+              </p>
+            </div>
           ))}
         </div>
       </section>
 
       <section className="px-6 pb-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
-        <div className="flex flex-wrap items-center justify-center gap-8 border-t border-[#d7e8f7] pt-10">
-          {clientLogos.map((logo) => (
-            <Image
-              key={logo.alt}
-              src={logo.src}
-              alt={logo.alt}
-              width={logo.width}
-              height={32}
-              className="h-8 w-auto object-contain opacity-80"
-              style={{ width: "auto" }}
-            />
-          ))}
-        </div>
-        <div className="border-t border-[#bcd2ff]/40 pt-8 mt-10">
-          <p className="mx-auto max-w-[900px] text-center font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-            <strong className="font-semibold text-[#5c7792]">NDA notice:</strong> {caseStudy?.nda_notice ?? "Parts of this presentation, including some screens and project details, have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy."}
+        <div className="border-t border-[#d7d2d3] pt-8 mt-10">
+          <p className="mx-auto max-w-[900px] text-center font-inter text-[14px] leading-[1.7] text-[#5c5960]">
+            <strong className="font-semibold text-[#5c5960]">NDA notice:</strong> {caseStudy?.nda_notice ?? "Parts of this presentation, including some screens and project details, have been redacted or blurred due to a confidentiality agreement signed with the client. The work shown is real; full details are withheld to protect client privacy."}
           </p>
-        </div>
-        <div className="mt-10 grid gap-10 md:grid-cols-[1fr_auto_1fr] md:items-start">
-          <div className="flex flex-col items-center gap-5">
-            <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
-              Tools
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {toolsUsed.map((tool) => (
-                <Badge key={tool} size="tag">
-                  {tool}
-                </Badge>
-              ))}
-            </div>
-          </div>
-          <div className="hidden w-px self-stretch bg-[#d7e8f7] md:block" />
-          <div className="flex flex-col items-center gap-5">
-            <p className="text-[13px] font-semibold uppercase tracking-[0.32em] text-[#5c7792]">
-              Tags
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {getVisibleProjectTags(caseStudy?.tags?.length ? caseStudy.tags : ["UX Research", "IA", "Interaction Design", "Design Systems"]).map((tag) => (
-                <Badge key={tag} size="tag">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
       {/* ── Other Projects ── */}
       <section className="px-6 py-10 md:px-10 xl:px-20 max-w-[1200px] mx-auto">
         <p className="text-[13px] font-semibold uppercase tracking-[0.45em] text-[#1183D0] mb-2">More work</p>
-        <h2 className="mb-8 font-inter text-[32px] text-[#0e2951]">Other Projects</h2>
+        <h2 className="mb-8 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">Other Projects</h2>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {otherProjects.map((p) => (
             <Link
@@ -995,7 +960,7 @@ export default function BenefitsPage() {
               className="group flex min-w-0 cursor-pointer flex-col gap-5 outline-none"
             >
               <div
-                className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#e9f3fb] shadow-[0_18px_52px_rgba(14,41,81,0.12)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(14,41,81,0.22)] group-focus-visible:-translate-y-1 group-focus-visible:shadow-[0_28px_70px_rgba(14,41,81,0.22)]"
+                className="relative h-[230px] overflow-hidden rounded-[28px] bg-[#f8f4f1] shadow-[0_18px_52px_rgba(29,22,36,0.10)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(29,22,36,0.18)] group-focus-visible:-translate-y-1 group-focus-visible:shadow-[0_28px_70px_rgba(29,22,36,0.18)]"
                 style={p.background ? { background: p.background } : undefined}
               >
                 <Image
@@ -1012,12 +977,12 @@ export default function BenefitsPage() {
                   </Badge>
                 ))}
               </div>
-              <h3 className="font-inter text-[30px] leading-snug text-[rgb(14_41_81/var(--tw-text-opacity,1))] transition-colors duration-200 group-hover:text-[rgb(14_41_81/var(--tw-text-opacity,1))] group-focus-visible:text-[rgb(14_41_81/var(--tw-text-opacity,1))]">
+              <h3 className="font-inter text-[30px] leading-snug text-[#141114] transition-colors duration-200 group-hover:text-[#141114] group-focus-visible:text-[#141114]">
                 {p.title}
               </h3>
               <div className="-mt-2 h-[116px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
                 <div className="flex h-full flex-col justify-between">
-                  <p className="text-[15px] leading-relaxed text-[#5c7792]">
+                  <p className="text-[15px] leading-relaxed text-[#5c5960]">
                     {p.tagline ?? ""}
                   </p>
                   <span className="inline-flex text-[14px] font-medium text-[#1183D0] underline-offset-2 group-hover:underline group-focus-visible:underline">

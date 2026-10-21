@@ -690,14 +690,17 @@
     "metrics": [
       {
         "value": "76%",
+        "context": "Clientes",
         "label": "de los clientes de Flex carecía de un flujo de I-9 conforme a la normativa"
       },
       {
         "value": "26",
+        "context": "Prueba",
         "label": "Rondas de exploración y pruebas"
       },
       {
         "value": "2,548",
+        "context": "Encuesta",
         "label": "Respuestas de encuesta tras el primer lanzamiento"
       }
     ],
