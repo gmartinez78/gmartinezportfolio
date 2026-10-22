@@ -993,18 +993,7 @@
       ]
     },
     "client_logos": [],
-    "metrics": [
-      {
-        "value": "98%",
-        "label": "Alcance de nueva audiencia",
-        "context": "Visualizaciones de personas que no seguían la página durante los primeros 28 días de la campaña."
-      },
-      {
-        "value": "VoiceOver",
-        "label": "Revisión y corrección de accesibilidad",
-        "context": "Se identificó contenido omitido, se revisó la implementación y se verificó la corrección."
-      }
-    ],
+    "metrics": [],
     "team": [
       "Diseñador en solitario",
       "Asesores del cliente",

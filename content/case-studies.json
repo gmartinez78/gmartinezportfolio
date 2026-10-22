@@ -12,9 +12,17 @@
     "duration": "2 weeks",
     "industry": "EDUCATION / CULTURAL INSTITUTION",
     "tagline": "Created a warm, editorial six-panel trifold that brings the institute's learning offer, faculty, and enrollment journey into one cohesive print experience.",
-    "tags": ["Print Design", "Brand Design", "Editorial Layout"],
-    "filters": ["Product Design"],
-    "tools": ["Figma"],
+    "tags": [
+      "Print Design",
+      "Brand Design",
+      "Editorial Layout"
+    ],
+    "filters": [
+      "Product Design"
+    ],
+    "tools": [
+      "Figma"
+    ],
     "images": {
       "cover": "/images/projects/classical-word/cover-classical-word.png",
       "hero": "/images/projects/classical-word/brochure-cover-panels.png",
@@ -25,11 +33,24 @@
     },
     "client_logos": [],
     "metrics": [],
-    "team": ["Client", "Designer"],
-    "my_role": ["Art Direction", "Layout Design", "Print Design"],
-    "problem": {"admin_pain_points": [], "user_pain_points": []},
+    "team": [
+      "Client",
+      "Designer"
+    ],
+    "my_role": [
+      "Art Direction",
+      "Layout Design",
+      "Print Design"
+    ],
+    "problem": {
+      "admin_pain_points": [],
+      "user_pain_points": []
+    },
     "constraints": [],
-    "methodology": {"name": "Editorial design", "steps": []},
+    "methodology": {
+      "name": "Editorial design",
+      "steps": []
+    },
     "design_strategy": [],
     "reflections": [],
     "nda_notice": null,
@@ -807,7 +828,6 @@
       ]
     },
     "design_strategy": [
-
       "Use clearer handoff messaging, progress states, and completion feedback to reduce confusion around the external HIREtech experience."
     ],
     "reflections": [
@@ -973,18 +993,7 @@
       ]
     },
     "client_logos": [],
-    "metrics": [
-      {
-        "value": "98%",
-        "label": "New-audience reach",
-        "context": "Views from non-followers in the first 28 days of the campaign."
-      },
-      {
-        "value": "VoiceOver",
-        "label": "Accessibility review and correction",
-        "context": "Identified skipped content, revised the implementation, and verified the fix."
-      }
-    ],
+    "metrics": [],
     "team": [
       "Solo designer",
       "Client advisors",
@@ -1101,12 +1110,30 @@
         "body": "The outcome pairs a launch-ready bilingual website with an educational campaign designed to make medical coverage understandable and actionable for families. In its first 28 days, the campaign built meaningful organic discovery, interaction, and traffic from an audience that was almost entirely new to the page.",
         "payload": {
           "rows": [
-            { "metric": "Content views", "value": "3.3K" },
-            { "metric": "Unique viewers", "value": "1,436" },
-            { "metric": "Content interactions", "value": "129" },
-            { "metric": "Link clicks", "value": "34" },
-            { "metric": "Facebook visits", "value": "55" },
-            { "metric": "Net new follows", "value": "+12" }
+            {
+              "metric": "Content views",
+              "value": "3.3K"
+            },
+            {
+              "metric": "Unique viewers",
+              "value": "1,436"
+            },
+            {
+              "metric": "Content interactions",
+              "value": "129"
+            },
+            {
+              "metric": "Link clicks",
+              "value": "34"
+            },
+            {
+              "metric": "Facebook visits",
+              "value": "55"
+            },
+            {
+              "metric": "Net new follows",
+              "value": "+12"
+            }
           ],
           "insights": [
             "Reporting period: July 10-August 6, 2026 (28 days).",
