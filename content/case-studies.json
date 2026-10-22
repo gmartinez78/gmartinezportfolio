@@ -953,14 +953,14 @@
     "status": "published",
     "featured": false,
     "order": 6,
-    "title": "Brand, Website & Campaign Launch",
+    "title": "Brand & Bilingual Website",
     "company": "Protecta Advisory",
     "client_context": "Protecta Advisory",
-    "role": "Senior Product Designer | End-to-end design and implementation",
+    "role": "Design Engineer | Brand, content, and website",
     "year": 2026,
     "duration": "Five days from research to initial launch, including brand creation and a one-day client review. Remaining pages followed in later releases.",
     "industry": "Insurance / Advisory",
-    "tagline": "Designed and built Protecta’s brand and bilingual website with AI-assisted research, exploration, and implementation. The initial release launched in five days with a clear digital presence and contact path.",
+    "tagline": "Researched, designed, and built Protecta’s brand and bilingual website, from content structure and components to the initial live release in five days.",
     "tags": [
       "AI Product",
       "Product Design",
@@ -1095,7 +1095,7 @@
         "id": "research",
         "type": "custom",
         "title": "Research",
-        "body": "I grounded the work in the 2026 Hispanic Insurance Growth Blueprint, client questionnaire, and advisor interviews, focusing on ACA, life, and digital acquisition. Advisor input surfaced recurring objections, trust concerns, and family questions.\n\nAI accelerated research synthesis, working definitions, and analysis of bilingual patterns and positioning gaps. I turned those insights into campaign decisions across audience, message, channels, and measurement, validated outputs against source material, and made the final brand and product calls."
+        "body": "I grounded the work in the 2026 Hispanic Insurance Growth Blueprint, client questionnaire, and advisor interviews, focusing on ACA, life, and digital acquisition. Advisor input surfaced recurring objections, trust concerns, and family questions.\n\nAI accelerated research synthesis and analysis of bilingual patterns and positioning gaps. I used those findings to shape the website’s content hierarchy, brand voice, and contact path, then made the final design and implementation decisions."
       },
       {
         "id": "actions",
@@ -1106,48 +1106,9 @@
       {
         "id": "impact",
         "type": "results",
-        "title": "Audience reach and engagement",
-        "body": "The outcome pairs a launch-ready bilingual website with an educational campaign designed to make medical coverage understandable and actionable for families. In its first 28 days, the campaign built meaningful organic discovery, interaction, and traffic from an audience that was almost entirely new to the page.",
-        "payload": {
-          "rows": [
-            {
-              "metric": "Content views",
-              "value": "3.3K"
-            },
-            {
-              "metric": "Unique viewers",
-              "value": "1,436"
-            },
-            {
-              "metric": "Content interactions",
-              "value": "129"
-            },
-            {
-              "metric": "Link clicks",
-              "value": "34"
-            },
-            {
-              "metric": "Facebook visits",
-              "value": "55"
-            },
-            {
-              "metric": "Net new follows",
-              "value": "+12"
-            }
-          ],
-          "insights": [
-            "Reporting period: July 10-August 6, 2026 (28 days).",
-            "98% of views came from non-followers, showing the educational creative reached well beyond the existing audience.",
-            "115 of 129 content interactions (89%) came from non-followers, reinforcing that the campaign generated engagement from new audiences rather than only the page's current followers.",
-            "The initial reach goals were exceeded: Facebook reached 1.5K against a goal of 208 (707%), while Instagram reached 567 against a goal of 169 (336%).",
-            "The reporting chart shows the strongest gains after the scheduled August rollout, an early signal that the organized bilingual publishing cadence is working."
-          ],
-          "projected": [
-            "Connect link clicks and WhatsApp inquiries to a lead source so the next reporting cycle can measure qualified conversations and conversion, not only awareness.",
-            "Continue the bilingual content cadence around seasonal family-health moments and compare formats, messages, and posting times.",
-            "Replace stock placeholders with a real photo and video shoot featuring the advisors."
-          ]
-        }
+        "title": "Website outcome",
+        "body": "The initial bilingual website went live in five days, giving Protecta a consistent brand, clear service information, and a direct path to its advisors. Reusable components and English–Spanish content structure supported the pages released afterward.",
+        "payload": {}
       }
     ]
   },

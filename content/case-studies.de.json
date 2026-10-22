@@ -953,14 +953,14 @@
     "status": "published",
     "featured": false,
     "order": 6,
-    "title": "Marken-, Website- und Kampagneneinführung",
+    "title": "Marke und zweisprachige Website",
     "company": "Protecta Advisory",
     "client_context": "Protecta Advisory",
     "role": "Designingenieur",
     "year": 2026,
-    "duration": "10. Juli–6. August 2026",
+    "duration": "Fünf Tage von der Recherche bis zum ersten Launch; weitere Seiten folgten später.",
     "industry": "Versicherung / Beratung",
-    "tagline": "Entwickelte eine Kampagne zur Sensibilisierung für Versicherungen und einen Conversion-Pfad, der die Reichweite in sozialen Medien in direkte WhatsApp-Anfragen und qualifizierte Beratungsmöglichkeiten umwandelt.",
+    "tagline": "Recherchierte, gestaltete und entwickelte Protectas Marke und zweisprachige Website – von der Inhaltsstruktur und den Komponenten bis zum ersten Launch in fünf Tagen.",
     "tags": [
       "KI-Produkt",
       "Produktdesign",
@@ -1095,7 +1095,7 @@
         "id": "research",
         "type": "custom",
         "title": "Forschung",
-        "body": "Ich habe die Arbeit auf dem 2026 Hispanic Insurance Growth Blueprint, einem Kundenfragebogen und Beraterinterviews gestützt, mit Schwerpunkt auf ACA, Leben und digitale Akquise. Die Beiträge der Berater brachten wiederkehrende Einwände, Vertrauensbedenken und Familienfragen zum Vorschein.\n\nKI beschleunigte die Forschungssynthese, Arbeitsdefinitionen und die Analyse zweisprachiger Muster und Positionierungslücken. Diese Erkenntnisse habe ich in Kampagnenentscheidungen über Zielgruppe, Botschaft, Kanäle und Messung umgesetzt, die Ergebnisse anhand des Quellmaterials validiert und die endgültigen Marken- und Produktanrufe getätigt."
+        "body": "Ich habe die Arbeit auf dem 2026 Hispanic Insurance Growth Blueprint, einem Kundenfragebogen und Beraterinterviews gestützt, mit Schwerpunkt auf ACA, Lebensversicherung und digitaler Akquise. Die Beiträge der Berater zeigten wiederkehrende Einwände, Vertrauensbedenken und Fragen von Familien.\n\nKI beschleunigte die Forschungssynthese und die Analyse zweisprachiger Muster und Positionierungslücken. Aus diesen Erkenntnissen entwickelte ich die Inhaltshierarchie, Markenstimme und Kontaktmöglichkeit der Website und traf die endgültigen Design- und Implementierungsentscheidungen."
       },
       {
         "id": "actions",
@@ -1106,48 +1106,9 @@
       {
         "id": "impact",
         "type": "results",
-        "title": "Ergebnis",
-        "body": "Das Ergebnis verbindet eine startbereite zweisprachige Website mit einer Aufklärungskampagne, die darauf abzielt, die Krankenversicherung für Familien verständlich und umsetzbar zu machen. In den ersten 28 Tagen sorgte die Kampagne für bedeutungsvolle organische Entdeckungen, Interaktionen und Traffic bei einem Publikum, das die Seite fast noch nicht kannte.",
-        "payload": {
-          "rows": [
-            {
-              "metric": "Inhaltsansichten",
-              "value": "3,3K"
-            },
-            {
-              "metric": "Einzigartige Zuschauer",
-              "value": "1.436"
-            },
-            {
-              "metric": "Inhaltsinteraktionen",
-              "value": "129"
-            },
-            {
-              "metric": "Linkklicks",
-              "value": "34"
-            },
-            {
-              "metric": "Facebook-Besuche",
-              "value": "55"
-            },
-            {
-              "metric": "Nettoneues folgt",
-              "value": "+12"
-            }
-          ],
-          "insights": [
-            "Berichtszeitraum: 10. Juli, 6. August 2026 (28 Tage).",
-            "98 % der Aufrufe kamen von Nicht-Followern, was zeigt, dass die Bildungskreative weit über das bestehende Publikum hinaus Anklang fand.",
-            "115 von 129 Content-Interaktionen (89 %) stammten von Nicht-Followern, was bestätigt, dass die Kampagne Engagement bei neuen Zielgruppen und nicht nur bei den aktuellen Followern der Seite hervorrief.",
-            "Die ursprünglichen Reichweitenziele wurden übertroffen: Facebook erreichte 1,5.000 bei einem Ziel von 208 (707 %), während Instagram 567 bei einem Ziel von 169 (336 %) erreichte.",
-            "Das Berichtsdiagramm zeigt die stärksten Zuwächse nach der geplanten Einführung im August, ein frühes Signal dafür, dass der organisierte zweisprachige Veröffentlichungsrhythmus funktioniert."
-          ],
-          "projected": [
-            "Verknüpfen Sie Linkklicks und WhatsApp-Anfragen mit einer Lead-Quelle, damit im nächsten Berichtszyklus qualifizierte Konversationen und Konversionen gemessen werden können, nicht nur die Bekanntheit.",
-            "Setzen Sie den zweisprachigen Inhaltsrhythmus rund um saisonale Familiengesundheitsmomente fort und vergleichen Sie Formate, Nachrichten und Veröffentlichungszeiten.",
-            "Ersetzen Sie Stock-Platzhalter durch ein echtes Foto- und Videoshooting mit den Beratern."
-          ]
-        }
+        "title": "Website-Ergebnis",
+        "body": "Die erste Version der zweisprachigen Website ging innerhalb von fünf Tagen live und gab Protecta eine konsistente Marke, klare Informationen zum Angebot und einen direkten Kontaktweg zu den Beratern. Wiederverwendbare Komponenten und die englisch-spanische Inhaltsstruktur unterstützten die später veröffentlichten Seiten.",
+        "payload": {}
       }
     ]
   },

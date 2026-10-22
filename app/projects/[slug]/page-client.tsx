@@ -140,58 +140,6 @@ const RELATED_PROJECT_BACKGROUNDS: Record<string, string> = {
   reversetech: "linear-gradient(180deg, #eef4fb 0%, #eef4fb 100%)",
 };
 
-const PROTECTA_CAMPAIGN_CREATIVE = [
-  {
-    src: "/images/projects/protecta/campaign/Post 1.png",
-    alt: "Protecta campaign creative explaining everyday medical coverage",
-    label: "Coverage awareness",
-  },
-  {
-    src: "/images/projects/protecta/campaign/Post 5.png",
-    alt: "Protecta campaign creative promoting preventative checkups",
-    label: "Preventive care",
-  },
-  {
-    src: "/images/projects/protecta/campaign/Post 6.png",
-    alt: "Protecta campaign creative explaining telemedicine",
-    label: "Telemedicine",
-  },
-  {
-    src: "/images/projects/protecta/campaign/Post 7.png",
-    alt: "Protecta campaign creative about back-to-school benefits",
-    label: "Back to school",
-  },
-  {
-    src: "/images/projects/protecta/campaign/Post 8.png",
-    alt: "Protecta campaign creative promoting pediatric checkups",
-    label: "Family health",
-  },
-  {
-    src: "/images/projects/protecta/campaign/Post 9.png",
-    alt: "Protecta campaign creative about preventive vaccines",
-    label: "Vaccines",
-  },
-];
-
-const PROTECTA_CONVERSION_FUNNEL = [
-  ["Campaign impressions", "100,000", ", "],
-  ["Unique reach", "77,000 people", "Average frequency: 1.3"],
-  ["Link clicks / landing-page visits", "1,000", "1.0% click-through rate"],
-  ["WhatsApp inquiries started", "120", "12% of landing-page visitors"],
-  ["Qualified leads", "40", "33% of WhatsApp inquiries"],
-  ["Consultations booked", "10", "25% of qualified leads"],
-  ["New customers or policies", "3", "30% of consultations"],
-] as const;
-
-const PROTECTA_EXPERIENCE_DECISIONS = [
-  "Made the value proposition easy to understand before users clicked.",
-  "Used a clear, prominent WhatsApp call to action for low-friction contact.",
-  "Reduced uncertainty by explaining what users could expect from an advisor.",
-  "Structured campaign and landing-page content around the questions customers need answered before requesting insurance guidance.",
-  "Created a clearer connection between campaign messaging, landing-page information, and the first consultation.",
-];
-
-
 const NAYYA_HIGHLIGHT_METRICS: Record<Language, HighlightMetric[]> = {
   en: [
     { value: "307%", label: "IRR", context: "Projected ROI,estimated return from increased plan uptake (NPV $11.4M)." },
@@ -1142,6 +1090,51 @@ const PROTECTA_BRAND_CONTENT_COPY: Record<"en" | "es", { title: string; titleAcc
   },
 };
 
+const PROTECTA_WEBSITE_OUTCOME: Record<Language, string> = {
+  en: "The initial bilingual website went live in five days, giving Protecta a consistent brand, clear service information, and a direct path to its advisors. Reusable components and English–Spanish content structure supported the pages released afterward.",
+  es: "La primera versión del sitio web bilingüe se publicó en cinco días y dio a Protecta una marca coherente, información clara sobre sus servicios y una vía directa de contacto con sus asesores. Los componentes reutilizables y la estructura de contenido en inglés y español facilitaron las páginas publicadas después.",
+  de: "Die erste Version der zweisprachigen Website ging innerhalb von fünf Tagen live und gab Protecta eine konsistente Marke, klare Informationen zum Angebot und einen direkten Kontaktweg zu den Beratern. Wiederverwendbare Komponenten und die englisch-spanische Inhaltsstruktur unterstützten die später veröffentlichten Seiten.",
+};
+
+const PROTECTA_WHATSAPP_RATIONALE: Record<Language, string> = {
+  en: "WhatsApp was the primary contact option because clients already used it and advisors managed conversations there. A contact form remained available as an alternative.",
+  es: "WhatsApp fue la vía principal de contacto porque los clientes ya lo usaban y los asesores gestionaban allí sus conversaciones. El formulario de contacto siguió disponible como alternativa.",
+  de: "WhatsApp war der wichtigste Kontaktweg, weil Kunden den Dienst bereits nutzten und die Berater ihre Gespräche dort führten. Ein Kontaktformular blieb als Alternative verfügbar.",
+};
+
+const PROTECTA_RECORDED_RESULTS: Record<Language, { metrics: Array<{ value: string; label: string; rate?: string }>; note: string }> = {
+  en: {
+    metrics: [
+      { value: "1,000", label: "Website visits" },
+      { value: "120", label: "WhatsApp inquiries" },
+      { value: "40", label: "Qualified leads", rate: "33% of inquiries" },
+      { value: "10", label: "Consultations booked", rate: "25% of qualified leads" },
+      { value: "3", label: "New customers", rate: "30% of consultations" },
+    ],
+    note: "Recorded in the same 28-day period. Downstream percentages compare the reported business counts; they are not website-attributed conversion rates.",
+  },
+  es: {
+    metrics: [
+      { value: "1.000", label: "Visitas al sitio web" },
+      { value: "120", label: "Consultas por WhatsApp" },
+      { value: "40", label: "Leads cualificados", rate: "33 % de las consultas" },
+      { value: "10", label: "Consultas agendadas", rate: "25 % de los leads cualificados" },
+      { value: "3", label: "Nuevos clientes", rate: "30 % de las consultas agendadas" },
+    ],
+    note: "Datos del mismo periodo de 28 días. Los porcentajes posteriores comparan los resultados registrados del negocio; no son tasas de conversión atribuibles al sitio web.",
+  },
+  de: {
+    metrics: [
+      { value: "1.000", label: "Website-Besuche" },
+      { value: "120", label: "WhatsApp-Anfragen" },
+      { value: "40", label: "Qualifizierte Leads", rate: "33 % der Anfragen" },
+      { value: "10", label: "Gebuchte Beratungstermine", rate: "25 % der qualifizierten Leads" },
+      { value: "3", label: "Neue Kunden", rate: "30 % der Beratungen" },
+    ],
+    note: "Werte aus demselben 28-Tage-Zeitraum. Die nachgelagerten Prozentsätze vergleichen erfasste Geschäftszahlen; sie sind keine der Website zugeordneten Konversionsraten.",
+  },
+};
+
 const PROTECTA_DECISION_MODEL: Record<"en" | "es", { title: string; body: string }> = {
   en: {
     title: "Human-led decision model",
@@ -1174,7 +1167,7 @@ const PROTECTA_BRAND_COPY: Record<"en" | "es", { eyebrow: string; title: string;
 
 const PROTECTA_COMPONENT_COPY: Record<"en" | "es", { title: string; body: string; labels: string[]; libraryTitle: string; libraryGroups: Array<{ title: string; items: string }> }> = {
   en: {
-    title: "Built in code, documented to scale",
+    title: "Design + Build",
     body: "I built the design-system components in Figma with Figma AI, then implemented their coded counterparts with AI-assisted development. Storybook documents the implementation states, keeping bilingual reuse, accessibility review, and future iteration visible in one place.",
     labels: ["Primary CTA", "Coverage card", "Language switch", "Advisor contact"],
     libraryTitle: "Component library coverage",
@@ -1186,7 +1179,7 @@ const PROTECTA_COMPONENT_COPY: Record<"en" | "es", { title: string; body: string
     ],
   },
   es: {
-    title: "Creado en código, documentado para escalar",
+    title: "Diseño + Construcción",
     body: "Construí los componentes del sistema de diseño en Figma con Figma AI y después implementé sus equivalentes en código con desarrollo asistido por IA. Storybook documenta los estados de implementación para mantener visible en un solo lugar la reutilización bilingüe, la revisión de accesibilidad y la iteración futura.",
     labels: ["CTA principal", "Tarjeta de cobertura", "Selector de idioma", "Contacto con asesor"],
     libraryTitle: "Cobertura de la biblioteca de componentes",
@@ -1212,220 +1205,6 @@ const PROTECTA_HANDOFF_COPY: Record<"en" | "es", { stages: Array<{ title: string
       { title: "Explorar la dirección visual", body: "Una primera pantalla rápida para comparar tono, jerarquía y carácter de marca; no la UI final." },
       { title: "Convertir la dirección en sistema", body: "Construí los componentes, variantes y estados bilingües que reutilizarían las páginas." },
       { title: "Implementar y verificar", body: "El equivalente en código se revisa en Storybook para validar comportamiento, estados responsive y accesibilidad." },
-    ],
-  },
-};
-
-const PROTECTA_PROBLEM_TO_OUTCOME: Record<"en" | "es", Array<{ problem: string; change: string; result: string }>> = {
-  en: [
-    {
-      problem: "No brand system or live website to explain the advisory model.",
-      change: "Created the brand, bilingual content strategy, and production website.",
-      result: "Launched a bilingual website with clear advisory pathways.",
-    },
-    {
-      problem: "Insurance felt complex and impersonal for families navigating coverage.",
-      change: "Turned coverage topics into calm, family-centered educational content.",
-      result: "3.3K views; 98% came from non-followers.",
-    },
-    {
-      problem: "Prospects lacked a simple, trustworthy path to an advisor.",
-      change: "Designed clear conversion paths and trackable contact links.",
-      result: "34 link clicks and 55 Facebook visits in 28 days.",
-    },
-  ],
-  es: [
-    {
-      problem: "No había sistema de marca ni sitio web para explicar el modelo de asesoría.",
-      change: "Creé la marca, la estrategia de contenido bilingüe y el sitio web en producción.",
-      result: "Sitio bilingüe lanzado con rutas claras hacia la asesoría.",
-    },
-    {
-      problem: "Los seguros se sentían complejos e impersonales para las familias que buscaban cobertura.",
-      change: "Convertí los temas de cobertura en contenido educativo, calmado y centrado en las familias.",
-      result: "3.3K visualizaciones; el 98% provino de personas que no seguían la página.",
-    },
-    {
-      problem: "Los prospectos no tenían una vía simple y fiable para contactar con un asesor.",
-      change: "Diseñé rutas de conversión claras y enlaces de contacto medibles.",
-      result: "34 clics en enlaces y 55 visitas a Facebook en 28 días.",
-    },
-  ],
-};
-
-const PROTECTA_AGENT_COPY: Record<"en" | "es", { title: string; titleAccent: string; body: string; roles: Array<{ title: string; body: string }>; note: string }> = {
-  en: {
-    title: "AI agents, directed",
-    titleAccent: "by human judgment",
-    body: "The 2026 Insurance Growth Blueprint was the decision foundation. I built task-specific agents to synthesize research, create working definitions, and challenge the work from each needed perspective: project manager, client stakeholder, researcher, content strategist, engineer, and QA reviewer.\n\nAI accelerated synthesis and role-based critique; I evaluated its output against source research and remained accountable for the decisions, trade-offs, and final product.",
-    roles: [
-      { title: "PM agent", body: "Clarified scope, priorities, dependencies, and delivery risks." },
-      { title: "Stakeholder agent", body: "Pressure-tested decisions against client goals, trust, and business needs." },
-      { title: "Craft agents", body: "Accelerated research synthesis, content drafts, implementation, and QA checks." },
-    ],
-    note: "AI accelerated synthesis and role-based critique. I evaluated its output against the source research and remained accountable for the decisions, trade-offs, and final product.",
-  },
-  es: {
-    title: "Agentes de IA, dirigidos",
-    titleAccent: "por el criterio humano",
-    body: "El 2026 Insurance Growth Blueprint fue la base para tomar decisiones. Creé agentes específicos por tarea para sintetizar la investigación, desarrollar definiciones de trabajo y cuestionar el trabajo desde cada perspectiva necesaria: gestión de proyecto, parte interesada del cliente, investigación, estrategia de contenido, ingeniería y QA.\n\nLa IA aceleró la síntesis y la crítica basada en roles; evalué sus resultados frente a la investigación fuente y mantuve la responsabilidad de las decisiones, las compensaciones y el producto final.",
-    roles: [
-      { title: "Agente de PM", body: "Aclaró alcance, prioridades, dependencias y riesgos de entrega." },
-      { title: "Agente stakeholder", body: "Contrastó decisiones con los objetivos del cliente, la confianza y las necesidades del negocio." },
-      { title: "Agentes de ejecución", body: "Aceleraron la síntesis de investigación, borradores de contenido, implementación y revisiones de QA." },
-    ],
-    note: "La IA aceleró la síntesis y la crítica basada en roles. Evalué sus resultados frente a la investigación fuente y mantuve la responsabilidad de las decisiones, los trade-offs y el producto final.",
-  },
-};
-
-const PROTECTA_CAPABILITIES: Record<"en" | "es", { title: string; items: string[] }> = {
-  en: {
-    title: "Tools with defined roles",
-    items: [
-      "NotebookLM · Research synthesis",
-      "Claude Design · First visual direction",
-      "Figma AI · Component library and page iteration",
-      "ChatGPT · Working definitions + copy",
-      "Codex + Claude Code · Implementation support",
-      "GitHub · Version control",
-      "Vercel · Live deployment",
-      "Storybook · Component documentation + QA",
-    ],
-  },
-  es: {
-    title: "Herramientas con roles definidos",
-    items: [
-      "NotebookLM · Síntesis de investigación",
-      "Claude Design · Primera dirección visual",
-      "Figma AI · Biblioteca de componentes e iteración de páginas",
-      "ChatGPT · Definiciones de trabajo + texto",
-      "Codex + Claude Code · Soporte de implementación",
-      "GitHub · Control de versiones",
-      "Vercel · Despliegue en producción",
-      "Storybook · Documentación de componentes + QA",
-    ],
-  },
-};
-
-const PROTECTA_PRACTICAL_IMPLICATIONS: Record<"en" | "es", { eyebrow: string; title: string; items: Array<{ title: string; body: string }> }> = {
-  en: {
-    eyebrow: "Design decisions grounded in the service",
-    title: "Design decisions grounded in the service",
-    items: [
-      {
-        title: "An established contact channel",
-        body: "I prioritized WhatsApp based on direct client feedback, advisor interviews, and a review of existing conversations. Clients were familiar with the channel, and advisors already used its tools to manage communication. Reviewing other advisor websites provided additional context for the pattern. I retained a contact form as an alternative.",
-      },
-      {
-        title: "Making personal support visible",
-        body: "The initial AI-generated structure focused on insurance products and did not adequately communicate Protecta’s ongoing advisory support. I reorganized the content to highlight appointment assistance and personalized plan guidance, adding a dedicated section and reinforcing these services throughout the page.",
-      },
-      {
-        title: "Adapting content for different audiences",
-        body: "Research identified different backgrounds and information needs across the English- and Spanish-speaking audiences. The English version primarily addressed Americans who grew up speaking English, while the Spanish version served Latin American clients moving to or living in the US. I adapted terminology and the level of detail for each audience rather than relying on direct translation.",
-      },
-    ],
-  },
-  es: {
-    eyebrow: "Implicaciones prácticas",
-    title: "Lo que cambió con este flujo",
-    items: [
-      {
-        title: "La exploración avanzó a la velocidad del criterio.",
-        body: "Claude Design hizo más rápido generar y comparar direcciones iniciales. El límite ya no era producir pantallas; era evaluar la investigación de NotebookLM, elegir la mejor dirección y refinarla con intención.",
-      },
-      {
-        title: "Figma y el código se mantuvieron conectados por componente.",
-        body: "Figma fue la fuente del sistema de diseño para la anatomía de componentes, las variantes y los estados bilingües. Lo usé como referencia de implementación y documenté el equivalente en código en Storybook para QA. Los cambios se revisaron y aplicaron de forma intencional; era un flujo alineado, no una sincronización automática bidireccional.",
-      },
-      {
-        title: "Figma AI aceleró el trabajo de sistema.",
-        body: "Después de que Claude Design definiera la primera dirección visual, utilicé Figma AI para crear y refinar la biblioteca de componentes. Eso me permitió probar composiciones de página rápidamente y mantener un sistema reutilizable para la construcción del sitio.",
-      },
-    ],
-  },
-};
-
-const PROTECTA_KEY_RESULTS: Record<"en" | "es", { title: string; items: string[] }> = {
-  en: {
-    title: "Key Results",
-    items: [
-      "Bilingual English + Spanish content and conversion paths launched together",
-      "98% of 3.3K views came from people who did not follow the page",
-      "26 website form leads tracked in the first week",
-    ],
-  },
-  es: {
-    title: "Resultados clave",
-    items: [
-      "Contenido y rutas de conversión en inglés y español lanzados en conjunto",
-      "El 98% de las 3.3K visualizaciones provino de personas que no seguían la página",
-      "26 leads del formulario web registrados en la primera semana",
-    ],
-  },
-};
-
-const PROTECTA_DELIVERABLES: Record<"en" | "es", { eyebrow: string; title: string; items: string[] }> = {
-  en: {
-    eyebrow: "Delivery snapshot",
-    title: "One launch, six connected deliverables",
-    items: ["Brand system", "Bilingual website", "Content strategy", "Campaign creative", "Component library", "Launch QA"],
-  },
-  es: {
-    eyebrow: "Resumen de entrega",
-    title: "Un lanzamiento, seis entregables conectados",
-    items: ["Sistema de marca", "Sitio web bilingüe", "Estrategia de contenido", "Creatividades de campaña", "Biblioteca de componentes", "QA de lanzamiento"],
-  },
-};
-
-const PROTECTA_CONTENT_PILLARS: Record<"en" | "es", { eyebrow: string; title: string; items: Array<{ title: string; body: string }> }> = {
-  en: {
-    eyebrow: "Campaign content architecture",
-    title: "Education for the moments families need it most",
-    items: [
-      { title: "Coverage basics", body: "Make U.S. health coverage easier to understand." },
-      { title: "Preventive care", body: "Connect annual checkups to everyday coverage." },
-      { title: "Telemedicine", body: "Show families where to turn after hours." },
-      { title: "Back to school", body: "Link school preparation to included benefits." },
-      { title: "Vaccinations", body: "Make required vaccines a clear coverage next step." },
-    ],
-  },
-  es: {
-    eyebrow: "Arquitectura de contenido de campaña",
-    title: "Educación para los momentos que más importan a las familias",
-    items: [
-      { title: "Bases de cobertura", body: "Hacer que la cobertura médica en EE. UU. sea más fácil de entender." },
-      { title: "Cuidado preventivo", body: "Conectar los chequeos anuales con la cobertura diaria." },
-      { title: "Telemedicina", body: "Mostrar a dónde acudir fuera del horario médico." },
-      { title: "Regreso a clases", body: "Vincular la preparación escolar con beneficios incluidos." },
-      { title: "Vacunas", body: "Convertir las vacunas requeridas en un siguiente paso claro." },
-    ],
-  },
-};
-
-const PROTECTA_FUNNEL: Record<"en" | "es", { eyebrow: string; title: string; items: Array<{ value: string; label: string }> }> = {
-  en: {
-    eyebrow: "Campaign funnel · Jul 10, Aug 6, 2026",
-    title: "From attention to advisor intent",
-    items: [
-      { value: "3.3K", label: "Views" },
-      { value: "1,436", label: "Viewers" },
-      { value: "129", label: "Interactions" },
-      { value: "34", label: "Link clicks" },
-      { value: "55", label: "Facebook visits" },
-      { value: "+12", label: "Net follows" },
-    ],
-  },
-  es: {
-    eyebrow: "Embudo de campaña · 10 de julio, 6 de agosto de 2026",
-    title: "De atención a intención de contacto",
-    items: [
-      { value: "3.3K", label: "Visualizaciones" },
-      { value: "1,436", label: "Espectadores" },
-      { value: "129", label: "Interacciones" },
-      { value: "34", label: "Clics en enlaces" },
-      { value: "55", label: "Visitas a Facebook" },
-      { value: "+12", label: "Nuevos seguidores" },
     ],
   },
 };
@@ -2045,8 +1824,8 @@ const EDITORIAL_TITLE_ACCENT_WORDS: Record<string, Partial<Record<Language, numb
 };
 
 function splitNayyaHeroTitle(title: string, language: Language, accentWordCount?: number) {
-  if (title === "Brand, Website & Campaign Launch") {
-    return { lead: "Brand, Website &", accent: "Campaign Launch" };
+  if (title === "Brand & Bilingual Website") {
+    return { lead: "Brand &", accent: "Bilingual Website" };
   }
 
   const words = title.trim().split(/\s+/);
@@ -3392,9 +3171,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const contentVariantsBlock = findBlock("content-variants");
   const resultRows = getPayloadRows(resultBlock?.payload, "rows");
   const resultInsights = getPayloadList(resultBlock?.payload, "insights");
-  const primaryResultInsights = caseStudy.slug === "protecta" ? resultInsights.slice(0, 3) : resultInsights;
+  const primaryResultInsights = resultInsights;
   const visiblePrimaryResultInsights = primaryResultInsights.filter((item) => !shouldHideInsight(item));
-  const protectaMomentumInsights = caseStudy.slug === "protecta" ? resultInsights.slice(3) : [];
   const resultOpportunities = getPayloadList(resultBlock?.payload, "opportunities");
   const projectedImprovements = getPayloadList(resultBlock?.payload, "projected");
   const successMetrics = getPayloadList(resultBlock?.payload, "successMetrics");
@@ -3446,7 +3224,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const showsSharedMetricsSection =
     caseStudy.slug !== "flock-accessibility-system" &&
     caseStudy.slug !== "reversetech" &&
-    caseStudy.slug !== "calendar-keeper";
+  caseStudy.slug !== "calendar-keeper" &&
+  caseStudy.slug !== "protecta";
   const showsSharedStructureSection = caseStudy.slug !== "calendar-keeper";
   const editorialTitle = splitNayyaHeroTitle(
     caseStudy.title,
@@ -3455,43 +3234,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   );
   const heroImage = resolveProjectHeroImage(caseStudy.slug, caseStudy.images.hero);
   const homeCoverImage = resolveHomeCardImage(caseStudy.slug, caseStudy.images.cover || caseStudy.images.hero);
-  const protectaUi = language === "es"
-    ? {
-        caseStudy: "Caso de estudio",
-        overview: "Resumen",
-        structure: "Estructura",
-        problem: "El problema",
-        methodology: "Metodología",
-        facebookCover: "Portada de Facebook",
-        typeScale: "Escala tipográfica del sitio web",
-        liveWebsite: "Visitar el sitio web ↗",
-        open: "Abrir",
-      }
-    : {
-        caseStudy: "Case Study",
-        overview: "Overview",
-        structure: "Structure",
-        problem: "The problem",
-        methodology: "Methodology",
-        facebookCover: "Facebook cover",
-        typeScale: "Website type scale",
-        liveWebsite: "Visit the live website ↗",
-        open: "Open",
-      };
-  const getProtectaCreativeAlt = (creative: (typeof PROTECTA_CAMPAIGN_CREATIVE)[number]) => {
-    if (language !== "es") return creative.alt;
-
-    const spanishAlts = [
-      "Creatividad de campaña de Protecta sobre la cobertura médica cotidiana",
-      "Creatividad de campaña de Protecta sobre chequeos preventivos",
-      "Creatividad de campaña de Protecta sobre telemedicina",
-      "Creatividad de campaña de Protecta sobre beneficios para el regreso a clases",
-      "Creatividad de campaña de Protecta sobre chequeos pediátricos",
-      "Creatividad de campaña de Protecta sobre vacunas escolares",
-    ];
-
-    return spanishAlts[PROTECTA_CAMPAIGN_CREATIVE.indexOf(creative)] ?? creative.alt;
-  };
   const designProposalTitle = translate("caseStudy.designProposal");
   const activeProtectaStorybookComponent =
     PROTECTA_STORYBOOK[localizedLanguage].components.find((component) => component.url === activeProtectaStorybookUrl) ??
@@ -6091,13 +5833,10 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ) : (
               caseStudy.slug === "protecta" ? (
                 <>
-                  <div>
+                  <div className="mx-auto mt-12 max-w-[1040px]">
                     <div className="max-w-[900px] text-left">
-                      <h3 className="mt-3 max-w-[760px] font-inter text-[36px] leading-tight text-[#141114] md:text-[48px]">
-                        A brand built for<br />
-                        <span className="font-playfair font-normal italic">clarity and care</span>
-                      </h3>
-                      <p className="mt-5 max-w-[760px] font-inter text-[16px] leading-[1.7] text-[#3c3e3f]">{PROTECTA_BRAND_COPY[localizedLanguage].body}</p>
+                      <h2 className="font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">{PROTECTA_COMPONENT_COPY[localizedLanguage].title}</h2>
+                      <p className="mt-5 max-w-[820px] font-inter text-[17px] leading-[1.7] text-[#5c5960]">{PROTECTA_COMPONENT_COPY[localizedLanguage].body}</p>
                     </div>
                     <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr]">
                       <div className="space-y-4">
@@ -6139,25 +5878,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             <div className="rounded-[18px] bg-white p-5"><p className="font-inter text-[27px] font-semibold text-[#154f4d]">Geist</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">{translate("caseStudy.clearUiType")}</p></div>
                             <div className="rounded-[18px] bg-white p-5"><p className="font-mono text-[18px] font-semibold text-[#154f4d]">JetBrains Mono</p><p className="mt-2 font-inter text-[12px] text-[#69807a]">{translate("caseStudy.eyebrowsLabelsData")}</p></div>
                           </div>
-                          <div className="hidden">
-                            <div className="border-b border-[#d7e5de] px-4 py-3"><p className="font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#0E6FB4]">{protectaUi.typeScale}</p></div>
-                            <div className="divide-y divide-[#e5ece5]">
-                              {[
-                                ["Display", "Newsreader", "48, 84px · 400"],
-                                ["H1", "Newsreader", "38, 60px · 400"],
-                                ["H2", "Newsreader", "30, 42px · 400"],
-                                ["H3 / H4", "Geist", "21, 26px · 600"],
-                                [translate("caseStudy.body"), "Geist", "17, 19px · 400"],
-                                [translate("caseStudy.eyebrow"), "JetBrains Mono", "12, 13px · 500"],
-                              ].map(([level, font, scale]) => (
-                                <div key={level} className="grid grid-cols-[52px_1fr_auto] items-center gap-3 px-4 py-2.5">
-                                  <span className="font-inter text-[12px] font-semibold text-[#154f4d]">{level}</span>
-                                  <span className={font === "Newsreader" ? "font-inter text-[17px] text-[#154f4d]" : font === "JetBrains Mono" ? "font-mono text-[12px] font-semibold text-[#154f4d]" : "font-inter text-[13px] font-semibold text-[#154f4d]"}>{font}</span>
-                                  <span className="font-inter text-[11px] text-[#69807a]">{scale}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
                         </div>
                         <div className="order-2">
                           <div className="mt-4 grid grid-cols-5 overflow-hidden rounded-[18px]">
@@ -6170,12 +5890,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="mx-auto mt-12 max-w-[1040px]">
-                    <div className="max-w-[900px] text-left">
-                      <h2 className="font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">{PROTECTA_COMPONENT_COPY[localizedLanguage].title}</h2>
-                      <p className="mt-5 max-w-[820px] font-inter text-[17px] leading-[1.7] text-[#5c5960]">{PROTECTA_COMPONENT_COPY[localizedLanguage].body}</p>
                     </div>
                   </div>
                   <div className="mx-auto mt-12 max-w-[1040px]">
@@ -6214,58 +5928,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     </div>
                     <div className="mt-5 flex justify-center">
                       <a href={PROTECTA_STORYBOOK_URL} target="_blank" rel="noreferrer" className="inline-flex items-center font-inter text-[14px] font-semibold text-[#0E6FB4] underline decoration-[#1183D0]/35 underline-offset-4 transition-colors hover:text-[#0e5a8a] hover:decoration-[#0e5a8a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0] focus-visible:ring-offset-4">{PROTECTA_STORYBOOK[localizedLanguage].link}</a>
-                    </div>
-                  </div>
-                  <div className="mx-auto mt-12 max-w-[1040px]">
-                    <div className="max-w-[900px] text-left">
-                      <h2 className="font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
-                        {PROTECTA_AGENT_COPY[localizedLanguage].title}
-                        <br />
-                        <span className="font-playfair font-normal italic">{PROTECTA_AGENT_COPY[localizedLanguage].titleAccent}</span>
-                      </h2>
-                      <div className="mt-5 max-w-[820px] space-y-4">
-                        {PROTECTA_AGENT_COPY[localizedLanguage].body.split(/\n+/).map((paragraph) => (
-                          <p key={paragraph} className="font-inter text-[17px] leading-[1.7] text-[#5c5960]">{paragraph}</p>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="mt-8 grid gap-4 md:grid-cols-3">
-                      {PROTECTA_AGENT_COPY[localizedLanguage].roles.map((role) => (
-                        <article key={role.title} className="rounded-[18px] border border-[#d7e8f7] bg-white p-5">
-                          <p className="font-inter text-[15px] font-semibold text-[#0e2951]">{role.title}</p>
-                          <p className="mt-3 font-inter text-[13px] leading-[1.6] text-[#5c7792]">{role.body}</p>
-                        </article>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="mx-auto mt-12 max-w-[1040px]">
-                    <h3 className="text-center font-inter text-[32px] leading-tight text-[#0e2951] sm:text-[40px]">{PROTECTA_CAPABILITIES[localizedLanguage].title}</h3>
-                    <div className="relative mt-9 grid gap-7 sm:grid-cols-2 lg:grid-cols-7 lg:gap-3">
-                      <div className="absolute left-[7.14%] right-[7.14%] top-8 hidden h-px bg-[#b8d1e6] lg:block" aria-hidden="true" />
-                      {PROTECTA_CAPABILITIES[localizedLanguage].items.map((item, index) => (
-                        <div key={item} className="relative z-10 flex flex-col items-center text-center">
-                          <span className="flex h-16 w-16 items-center justify-center rounded-full border border-[#b8d1e6] bg-white font-inter text-[24px] font-semibold text-[#0e2951] shadow-[0_6px_16px_rgba(17,131,208,0.08)]">{index + 1}</span>
-                          <p className="mt-4 max-w-[140px] font-inter text-[14px] leading-[1.25] text-[#0e2951]">
-                            <strong>{item.split(" · ")[0]}</strong>
-                            {item.includes(" · ") ? ` · ${item.split(" · ").slice(1).join(" · ")}` : null}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="mx-auto mt-12 max-w-[1040px]">
-                    <div className="text-center">
-                      <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-[#0E6FB4]">{PROTECTA_PRACTICAL_IMPLICATIONS[localizedLanguage].eyebrow}</p>
-                      <h3 className="mt-3 font-inter text-[34px] leading-tight text-[#0e2951] md:text-[42px]">{PROTECTA_PRACTICAL_IMPLICATIONS[localizedLanguage].title}</h3>
-                    </div>
-                    <div className="mt-8 grid gap-4 md:grid-cols-3">
-                      {PROTECTA_PRACTICAL_IMPLICATIONS[localizedLanguage].items.map((item, index) => (
-                        <article key={item.title} className="rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] p-6">
-                          <span className="font-inter text-[12px] font-semibold text-[#0E6FB4]">0{index + 1}</span>
-                          <h4 className="mt-5 font-inter text-[18px] font-semibold leading-[1.2] tracking-[-0.03em] text-[#0e2951]">{item.title}</h4>
-                          <p className="mt-4 font-inter text-[14px] leading-[1.65] text-[#5c7792]">{item.body}</p>
-                        </article>
-                      ))}
                     </div>
                   </div>
                 </>
@@ -7409,168 +7071,43 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy?.slug === "protecta" && false ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title="Campaign System" centered className="mb-6" />
-          <p className="mx-auto mb-12 max-w-[760px] text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-            The launch campaign was published across Facebook and Instagram to build awareness and generate qualified advisor leads. It translated complex health-benefit topics into calm, family-centered education, giving families one clear, timely reason to understand their coverage and take the next step.
-          </p>
-          <div className="mx-auto mb-10 max-w-[1040px] rounded-[24px] border border-[#d7e5de] bg-[#f5f7ef] p-6 sm:p-8">
-            <div className="text-center">
-              <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.18em] text-[#63826c]">{PROTECTA_CONTENT_PILLARS[localizedLanguage].eyebrow}</p>
-              <h3 className="mt-3 font-inter text-[30px] leading-tight text-[#154f4d] sm:text-[38px]">{PROTECTA_CONTENT_PILLARS[localizedLanguage].title}</h3>
-            </div>
-            <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-              {PROTECTA_CONTENT_PILLARS[localizedLanguage].items.map((item, index) => (
-                <article key={item.title} className="rounded-[16px] border border-[#d7e5de] bg-white p-4">
-                  <span className="font-inter text-[11px] font-semibold text-[#6a9e42]">0{index + 1}</span>
-                  <h4 className="mt-3 font-inter text-[14px] font-semibold leading-[1.3] text-[#154f4d]">{item.title}</h4>
-                  <p className="mt-2 font-inter text-[12px] leading-[1.5] text-[#63826c]">{item.body}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-          <>
-          <div className="hidden rounded-[30px] bg-[#171b1a] p-3 sm:p-6 lg:p-8">
-            <div className="overflow-hidden rounded-[24px] bg-[#fbfbf9] px-5 py-7 sm:px-9 sm:py-10 lg:px-14 lg:py-12">
-              <header className="flex items-center justify-between gap-5">
-                <span className="font-inter text-[22px] font-semibold tracking-[-0.03em] text-[#17302d]">Protecta</span>
-                <nav className="hidden items-center gap-7 font-inter text-[12px] font-medium text-[#263431] lg:flex">
-                  <span>Coverage</span><span>For families</span><span>How it works</span><span>Our advisors</span><span>Resources</span>
-                </nav>
-                <div className="flex items-center gap-3 font-inter text-[12px] text-[#263431]">
-                  <span className="hidden text-[18px] sm:block">⌕</span>
-                  <span className="hidden text-[16px] sm:block">◌</span>
-                  <span className="rounded-full border border-[#263431] px-3.5 py-2 font-semibold">Sign In</span>
-                </div>
-              </header>
-
-              <div className="relative mx-auto mt-14 max-w-[820px] text-center sm:mt-16">
-                <div className="absolute -left-2 -top-7 flex h-[68px] w-[68px] items-center justify-center rounded-full border border-[#b9ccba] bg-[#eef4e9] text-[20px] text-[#154f4d] sm:-left-10 sm:-top-3 sm:h-[86px] sm:w-[86px]">
-                  <span className="relative z-10 ml-0.5">▶</span>
-                  <span className="absolute inset-[5px] rounded-full border border-dashed border-[#8caa89]" />
-                </div>
-                <div className="absolute -right-1 -top-6 flex -space-x-3 sm:right-0">
-                  {PROTECTA_CAMPAIGN_CREATIVE.slice(0, 3).map((creative) => (
-                    <img key={creative.src} src={withBasePath(creative.src)} alt="" className="h-9 w-9 rounded-full border-2 border-[#fbfbf9] object-cover" />
-                  ))}
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-[#fbfbf9] bg-[#17302d] text-[16px] text-white">+</span>
-                </div>
-                <p className="font-inter text-[10px] font-semibold uppercase tracking-[0.2em] text-[#6a9e42]">Protecta health education</p>
-                <h3 className="mx-auto mt-4 max-w-[650px] font-inter text-[clamp(38px,6vw,68px)] font-bold leading-[0.95] tracking-[-0.065em] text-[#141918]">
-                  Coverage that feels clear, human, and close to home.
-                </h3>
-              </div>
-
-              <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_0.9fr_1fr_1fr] lg:gap-4">
-                <div className="grid gap-4 lg:grid-rows-[minmax(0,1fr)_120px]">
-                  {[PROTECTA_CAMPAIGN_CREATIVE[0], PROTECTA_CAMPAIGN_CREATIVE[1]].map((creative) => (
-                    <a key={creative.src} href={withBasePath(creative.src)} target="_blank" rel="noreferrer" className="group overflow-hidden rounded-[20px] bg-[#e8efe4]">
-                      <img src={withBasePath(creative.src)} alt={creative.alt} className="h-full min-h-[245px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.035] lg:min-h-0" />
-                    </a>
-                  ))}
-                </div>
-                <a href={withBasePath(PROTECTA_CAMPAIGN_CREATIVE[2].src)} target="_blank" rel="noreferrer" className="group overflow-hidden rounded-[20px] bg-[#e8efe4] lg:h-[540px]">
-                  <img src={withBasePath(PROTECTA_CAMPAIGN_CREATIVE[2].src)} alt={PROTECTA_CAMPAIGN_CREATIVE[2].alt} className="h-full min-h-[360px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.035] lg:min-h-0" />
-                </a>
-                <div className="flex flex-col gap-4 lg:h-[540px]">
-                  <div className="relative flex-1 overflow-hidden rounded-[20px] bg-[#e8efe4]">
-                    <span className="absolute left-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-[#fbfbf9] font-inter text-[13px] text-[#154f4d] shadow-sm">✦</span>
-                    <img src={withBasePath(PROTECTA_CAMPAIGN_CREATIVE[3].src)} alt={PROTECTA_CAMPAIGN_CREATIVE[3].alt} className="h-full min-h-[330px] w-full object-cover" />
-                  </div>
-                  <a href={withBasePath(PROTECTA_CAMPAIGN_CREATIVE[3].src)} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center rounded-full bg-[#171b1a] px-4 py-3 font-inter text-[11px] font-semibold text-white">Explore posts <span className="ml-2">→</span></a>
-                </div>
-                <a href={withBasePath(PROTECTA_CAMPAIGN_CREATIVE[4].src)} target="_blank" rel="noreferrer" className="group overflow-hidden rounded-[20px] bg-[#e8efe4] lg:h-[540px]">
-                  <img src={withBasePath(PROTECTA_CAMPAIGN_CREATIVE[4].src)} alt={PROTECTA_CAMPAIGN_CREATIVE[4].alt} className="h-full min-h-[360px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.035] lg:min-h-0" />
-                </a>
-                <div className="grid gap-4 lg:grid-rows-[minmax(0,1fr)_120px]">
-                  <a href={withBasePath(PROTECTA_CAMPAIGN_CREATIVE[5].src)} target="_blank" rel="noreferrer" className="group overflow-hidden rounded-[20px] bg-[#e8efe4]">
-                    <img src={withBasePath(PROTECTA_CAMPAIGN_CREATIVE[5].src)} alt={PROTECTA_CAMPAIGN_CREATIVE[5].alt} className="h-full min-h-[245px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.035] lg:min-h-0" />
-                  </a>
-                  <div className="flex items-end rounded-[20px] bg-[#dfe9d8] p-5 font-inter text-[12px] leading-[1.45] text-[#315448]">
-                    One helpful message at a time.
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-10 flex flex-col justify-between gap-8 border-t border-[#e3e8e2] pt-8 md:flex-row md:items-start">
-                <div className="max-w-[380px]">
-                  <span className="font-inter text-[48px] leading-none text-[#c5cec2]">“</span>
-                  <p className="mt-1 font-inter text-[14px] italic leading-[1.65] text-[#64706a]">The campaign made insurance education feel less intimidating by speaking to everyday family moments with care and clarity.</p>
-                  <p className="mt-3 font-inter text-[17px] italic text-[#315448]">Protecta campaign direction</p>
-                </div>
-                <div className="flex max-w-[280px] items-start gap-4 md:text-right">
-                  <span className="font-inter text-[46px] font-light leading-none tracking-[-0.06em] text-[#263431]">01</span>
-                  <div>
-                    <div className="flex items-center gap-2 md:justify-end"><p className="font-inter text-[10px] font-semibold uppercase tracking-[0.16em] text-[#6a9e42]">Lifestyle</p><span className="text-[#263431]">→</span></div>
-                    <p className="mt-3 font-inter text-[18px] font-bold leading-[1.1] tracking-[-0.04em] text-[#141918]">Education designed around real family decisions.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <style>{`
-            @keyframes protecta-campaign-scroll {
-              from { transform: translateX(0); }
-              to { transform: translateX(-50%); }
-            }
-            .protecta-campaign-track {
-              animation: protecta-campaign-scroll 24s linear infinite;
-              animation-play-state: paused;
-            }
-            .protecta-campaign-rail:hover .protecta-campaign-track {
-              animation-play-state: running;
-            }
-            @media (prefers-reduced-motion: reduce) {
-              .protecta-campaign-track { animation: none; }
-            }
-          `}</style>
-          <div className="protecta-campaign-rail relative overflow-hidden py-2">
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white via-white/85 to-transparent sm:w-24" aria-hidden="true" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white via-white/85 to-transparent sm:w-24" aria-hidden="true" />
-            <div className="protecta-campaign-track flex w-max gap-3">
-              {[...PROTECTA_CAMPAIGN_CREATIVE, ...PROTECTA_CAMPAIGN_CREATIVE].map((creative, index) => (
-                <a
-                  key={`${creative.src}-${index}`}
-                  href={withBasePath(creative.src)}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group h-[184px] w-[184px] shrink-0 overflow-hidden rounded-[20px] border border-[#d7e5de] bg-white shadow-[0_10px_24px_rgba(21,79,77,0.10)] transition-transform duration-300 hover:-translate-y-1"
-                >
-                  <img src={withBasePath(creative.src)} alt={creative.alt} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]" />
-                </a>
-              ))}
-            </div>
-          </div>
-          </>
-        </section>
-      ) : null}
-
       {caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" && caseStudy.slug !== "i9-everify-integration" ? (
         <section className={`py-10 ${usesNayyaVisualStyle ? (caseStudy.slug === "flock-accessibility-system" ? "bg-white" : "bg-[#faf8f7]") : ""}`}>
           <div className="mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20">
           {usesNayyaVisualStyle ? (
-            <h2 className="mb-10 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
-              {caseStudy.slug === "protecta" ? "Projected acquisition funnel" : renderNayyaEditorialTitle(translate("caseStudy.resultsImpact"))}
-            </h2>
+            caseStudy.slug !== "protecta" ? (
+              <h2 className="mb-10 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+                {renderNayyaEditorialTitle(translate("caseStudy.resultsImpact"))}
+              </h2>
+            ) : null
           ) : (
             <SectionHeading eyebrow={caseStudy.slug === "protecta" ? translate("caseStudy.measuredImpact") : undefined} title={translate("caseStudy.resultsImpact")} centered className="mb-12" />
           )}
           {caseStudy.slug === "protecta" ? (
-            <>
-              <div className="mx-auto max-w-[1040px] rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] p-6 sm:p-8">
-                <p className="mx-auto max-w-[820px] text-center font-inter text-[15px] leading-[1.7] text-[#5c7792]">This benchmark-based model shows the intended acquisition path from social-media discovery to a qualified insurance consultation. These are projected results, not measured campaign outcomes.</p>
-                <div className="mt-8 hidden overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white md:block">
-                  <div className="grid grid-cols-[1.4fr_0.9fr_1.35fr] border-b border-[#d7e8f7] bg-[#eef6fc] px-6 py-4 font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#385b7a]"><div>Funnel stage</div><div>Results</div><div>Conversion</div></div>
-                  {PROTECTA_CONVERSION_FUNNEL.map(([stage, result, conversion]) => <div key={stage} className={`grid grid-cols-[1.4fr_0.9fr_1.35fr] px-6 py-5 font-inter text-[14px] leading-[1.6] text-[#5c7792] ${stage === "WhatsApp inquiries started" ? "border-y border-[#b8d9f2] bg-[#e0eefb]" : "border-b border-[#edf4fa] last:border-0"}`}><div className="font-semibold text-[#0e2951]">{stage}</div><div className={`font-semibold ${stage === "WhatsApp inquiries started" ? "text-[#0E6FB4]" : "text-[#0e2951]"}`}>{result}</div><div>{conversion}</div></div>)}
+            <div>
+              <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-14">
+                <div className="max-w-[620px] space-y-5 font-inter text-[17px] leading-[1.7] text-[#5c5960]">
+                  <h2 className="font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+                    {localizedLanguage === "es" ? "Resultados del proyecto" : "Project outcomes"}
+                  </h2>
+                  <p>{PROTECTA_WEBSITE_OUTCOME[language]}</p>
+                  <p>{PROTECTA_WHATSAPP_RATIONALE[language]}</p>
                 </div>
-                <div className="mt-6 grid gap-3 md:hidden">
-                  {PROTECTA_CONVERSION_FUNNEL.map(([stage, result, conversion]) => <article key={stage} className={`rounded-[16px] border p-5 ${stage === "WhatsApp inquiries started" ? "border-[#b8d9f2] bg-[#e0eefb]" : "border-[#d7e8f7] bg-white"}`}><p className="font-inter text-[15px] font-semibold text-[#0e2951]">{stage}</p><div className="mt-3 grid grid-cols-2 gap-4"><div><p className="font-inter text-[10px] font-semibold uppercase tracking-[0.12em] text-[#5c7792]">Results</p><p className="mt-1 font-inter text-[16px] font-semibold text-[#0e2951]">{result}</p></div><div><p className="font-inter text-[10px] font-semibold uppercase tracking-[0.12em] text-[#5c7792]">Conversion</p><p className="mt-1 font-inter text-[13px] leading-[1.5] text-[#5c7792]">{conversion}</p></div></div></article>)}
-                </div>
-                <div className="mx-auto mt-8 max-w-[820px] border-t border-[#d7e8f7] pt-7 text-center"><p className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">The campaign converted awareness into a measurable conversation path:</p><p className="mx-auto mt-5 max-w-[760px] rounded-[16px] bg-[#0e2951] px-5 py-4 font-inter text-[15px] font-semibold leading-[1.7] text-white">100,000 impressions → 1,000 landing-page visits → <span className="text-[#83cef8]">120 WhatsApp inquiries</span> → 40 qualified leads → 10 consultations → 3 new customers</p><p className="mt-5 font-inter text-[15px] leading-[1.7] text-[#5c7792]">By making WhatsApp the primary call to action, the experience reduced the effort required to ask questions, understand coverage options, and speak directly with an advisor. This gave Protecta a more useful measure of campaign value than reach alone: qualified demand and consultation opportunities.</p></div>
-                <div className="mx-auto mt-8 max-w-[820px] border-t border-[#d7e8f7] pt-7"><h3 className="text-center font-inter text-[20px] font-semibold text-[#0e2951]">Key experience decisions</h3><div className="mt-5 grid gap-3 sm:grid-cols-2">{PROTECTA_EXPERIENCE_DECISIONS.map((decision, index) => <div key={decision} className="flex gap-3 rounded-[14px] bg-white p-4 font-inter text-[13px] leading-[1.6] text-[#5c7792]"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#e0eefb] text-[10px] font-semibold text-[#0E6FB4]">0{index + 1}</span>{decision}</div>)}</div><p className="mt-6 font-inter text-[12px] leading-[1.65] text-[#5c7792]"><strong className="font-semibold text-[#385b7a]">Measurement note:</strong> This is a benchmark-based model using a 1.0% click-through rate and estimated conversion rates through the inquiry and consultation journey.</p></div>
+                <figure className="overflow-hidden rounded-[24px] bg-[#e8eefc] shadow-[0_18px_40px_rgba(69,16,68,0.12)]">
+                  <img src={homeCoverImage} alt="Protecta project cover" className="h-full w-full object-cover" />
+                </figure>
               </div>
-            </>
+              <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+                {PROTECTA_RECORDED_RESULTS[language].metrics.map((metric) => (
+                  <article key={metric.label} className="rounded-[20px] border border-[#e6dfe6] bg-white p-6">
+                    <p className="font-inter text-[36px] font-bold leading-none tracking-[-0.04em] text-[#141114]">{metric.value}</p>
+                    <h3 className="mt-3 font-inter text-[16px] font-medium text-[#141114]">{metric.label}</h3>
+                    {metric.rate ? <p className="mt-2 font-inter text-[12px] leading-[1.5] text-[#5c5960]">{metric.rate}</p> : null}
+                  </article>
+                ))}
+              </div>
+              <p className="mt-5 max-w-[900px] font-inter text-[13px] leading-[1.65] text-[#5c5960]">{PROTECTA_RECORDED_RESULTS[language].note}</p>
+            </div>
           ) : null}
           {caseStudy.slug === "flock-accessibility-system" ? (
             <div className="mx-auto max-w-[1040px] overflow-hidden rounded-[20px] border border-[#d7d2d3] bg-white">
@@ -7588,7 +7125,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </div>
               ))}
             </div>
-          ) : usesNayyaVisualStyle && resultRows.length ? (
+          ) : caseStudy.slug !== "protecta" && usesNayyaVisualStyle && resultRows.length ? (
           <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
             {resultRows.map((row) => (
               <article
@@ -7615,7 +7152,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ))}
           </div>
         ) : null}
-        {caseStudy.slug !== "flock-accessibility-system" && [resultInsights, resultOpportunities, projectedImprovements, successMetrics].some((items) => items.length) ? (
+        {caseStudy.slug !== "protecta" && caseStudy.slug !== "flock-accessibility-system" && [resultInsights, resultOpportunities, projectedImprovements, successMetrics].some((items) => items.length) ? (
           <div className={`mx-auto mt-10 ${usesNayyaVisualStyle ? "grid max-w-full gap-6 lg:grid-cols-2 lg:items-stretch" : "max-w-[820px]"}`}>
             {primaryResultInsights.length ? (
               <Card className={usesNayyaVisualStyle ? "border-0 bg-transparent p-0 py-0 shadow-none" : "border-0 bg-transparent p-0 py-0 shadow-none"}>
@@ -7667,18 +7204,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   className="h-full min-h-[420px] w-full object-cover"
                 />
               </figure>
-            ) : null}
-            {protectaMomentumInsights.length ? (
-              <Card className="border-0 bg-transparent p-0 py-0 shadow-none">
-                <CardContent className="p-8">
-                  <h3 className="font-inter text-[20px] font-semibold leading-snug text-[#0e2951]">{translate("caseStudy.campaignMomentum")}</h3>
-                  <ul className="mt-5 list-disc space-y-3 pl-5">
-                    {protectaMomentumInsights.map((item) => (
-                      <li key={item} className="font-inter text-[15px] leading-[1.7] text-[#5c7792]">{stripLeadingBullet(item)}</li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
             ) : null}
             {resultOpportunities.length ? (
               <Card className={usesNayyaVisualStyle ? "border-0 bg-transparent p-0 py-0 shadow-none lg:col-span-2" : "border-0 bg-transparent p-0 py-0 shadow-none"}>

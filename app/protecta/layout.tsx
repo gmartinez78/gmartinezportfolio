@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Brand, Website & Campaign Launch",
+  title: "Brand & Bilingual Website",
   description:
-    "Case study: building a bilingual insurance brand, launch-ready website, and educational social campaign for Protecta Advisory.",
+    "Case study: researching, designing, and building Protecta Advisory’s brand and bilingual insurance website.",
   path: "/protecta",
   image: "/images/projects/protecta/hero-banner.png",
   type: "article",
