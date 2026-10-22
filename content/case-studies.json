@@ -940,7 +940,7 @@
     "year": 2026,
     "duration": "Five days from research to initial launch, including brand creation and a one-day client review. Remaining pages followed in later releases.",
     "industry": "Insurance / Advisory",
-    "tagline": "I independently designed and built Protecta’s brand and bilingual website, using AI to support research, exploration, and implementation. The initial release went live in five days, giving the business a digital presence and a way for prospective clients to get in touch.",
+    "tagline": "Designed and built Protecta’s brand and bilingual website with AI-assisted research, exploration, and implementation. The initial release launched in five days with a clear digital presence and contact path.",
     "tags": [
       "AI Product",
       "Product Design",
@@ -980,7 +980,7 @@
         "context": "Views from non-followers in the first 28 days of the campaign."
       },
       {
-        "value": "VoiceOver tested",
+        "value": "VoiceOver",
         "label": "Accessibility review and correction",
         "context": "Identified skipped content, revised the implementation, and verified the fix."
       }
@@ -1020,36 +1020,21 @@
       "steps": [
         {
           "step": 1,
-          "label": "Capture",
-          "description": "Ran a structured client call and questionnaire to capture audience needs, sales flow, objections, referral mechanics, and tone as the source of truth."
+          "label": "Capture + Research",
+          "description": "Captured audience needs, sales flow, objections, referral mechanics, and tone through a structured client call and questionnaire, then used NotebookLM to synthesize industry patterns, competitive positioning, bilingual insurance norms, and structural opportunities."
         },
         {
           "step": 2,
-          "label": "Research",
-          "description": "Used NotebookLM to synthesize industry patterns, competitive positioning, bilingual insurance norms, and structural opportunities quickly."
+          "label": "Brand + Content",
+          "description": "Connected the visual direction and content system from the start, using Claude Design and Claude to explore tone, hierarchy, and copy. I then refined the strongest direction and adapted the messaging for both English and Spanish."
         },
         {
           "step": 3,
-          "label": "Brand",
-          "description": "Used Claude Design for the first visual draft, then selected and iterated the strongest directions based on research, structure, and design judgment."
+          "label": "Design + Build",
+          "description": "Turned the selected direction into a reusable Figma component library, then carried those patterns into implementation with Codex and Claude Code. I iterated the pages, variants, and bilingual states together until the experience was ready for review."
         },
         {
           "step": 4,
-          "label": "Write",
-          "description": "Used Claude for first-pass copy drafts, then rewrote the messaging hierarchy and adapted the Spanish content natively."
-        },
-        {
-          "step": 5,
-          "label": "Design",
-          "description": "Used Figma AI to turn the selected direction into a reusable component library, then iterated the homepage and internal pages with those components, variants, and bilingual states."
-        },
-        {
-          "step": 6,
-          "label": "Build",
-          "description": "Used the Figma component library as the implementation reference. Generated scaffolding with Codex, finished implementation details with Claude Code, and hand-tuned the result into production-quality output."
-        },
-        {
-          "step": 7,
           "label": "Validate",
           "description": "Kept the Figma library and coded components aligned, documented implementation states in Storybook, checked accessibility against WCAG 2.1 AA, and deployed the working product to Vercel for client review."
         }
