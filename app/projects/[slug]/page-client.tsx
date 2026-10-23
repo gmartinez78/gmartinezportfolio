@@ -3501,6 +3501,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       ) : null}
                     </>
                     )
+                  ) : caseStudy.slug === "reversetech" && language === "en" ? (
+                    <>
+                      Health Funnel
+                      <span className="block">Optimization</span>
+                    </>
                   ) : caseStudy.title}
                 </h1>
                 <p className={`break-words leading-[1.55] ${usesNayyaVisualStyle ? "mt-7 max-w-full text-[clamp(1rem,1.5vw,1.25rem)] text-[#5c5960] lg:w-3/5" : "text-[16px] text-[#5c7792]"}`}>{caseStudy.tagline}</p>
@@ -3617,7 +3622,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {overviewBlock.body}
           </p>
         ) : null}
-        {isNayyaCaseStudy || caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "protecta" ? (
+        {isNayyaCaseStudy || caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "protecta" || caseStudy.slug === "reversetech" ? (
           <>
             <p className="mt-6 font-inter text-[17px] leading-[1.7] text-[#3c3e3f]">
               {caseStudy.slug === "protecta"
@@ -4429,16 +4434,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {visibleStoryBlocks.length ? (
-        <section id="rt-problem" className={`scroll-mt-24 py-10 ${usesNayyaVisualStyle ? `w-full ${caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "protecta" ? "bg-white" : "bg-[#faf8f7]"}` : "mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20"}`}>
+        <section id="rt-problem" className={`scroll-mt-24 bg-transparent py-10 ${usesNayyaVisualStyle ? `w-full ${caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "protecta" ? "bg-white" : "bg-[#faf8f7]"}` : "mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20"}`}>
           <div className={usesNayyaVisualStyle ? "mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20" : ""}>
-          <div className={caseStudy.slug === "reversetech" ? "mx-auto max-w-[860px]" : caseStudy.slug === "protecta" ? "max-w-[900px]" : "grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start"}>
-            <div className={caseStudy.slug === "reversetech" ? "text-center" : ""}>
+          <div className={caseStudy.slug === "reversetech" ? "max-w-[860px]" : caseStudy.slug === "protecta" ? "max-w-[900px]" : "grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start"}>
+            <div>
               {usesNayyaVisualStyle ? (
                 <div className="mb-10">
                   <h2 className="font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">{renderNayyaEditorialTitle(translate("caseStudy.problem"))}</h2>
                 </div>
               ) : (
-                <SectionHeading eyebrow={translate("caseStudy.caseStudyLabel")} title={translate("caseStudy.problem")} centered={caseStudy.slug === "reversetech"} className="mb-12" />
+                <SectionHeading eyebrow={translate("caseStudy.caseStudyLabel")} title={translate("caseStudy.problem")} className="mb-12" />
               )}
               <div className="space-y-10">
                 {visibleStoryBlocks.map((block) => {
@@ -4455,7 +4460,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           <p
                             key={idx}
                             className={`font-inter text-[16px] leading-[1.7] ${usesNayyaVisualStyle ? "text-[#5c5960]" : "text-[#5c7792]"} mb-4 last:mb-0 ${
-                              caseStudy.slug === "reversetech" ? "mx-auto max-w-[760px]" : "max-w-[720px]"
+                              caseStudy.slug === "reversetech" ? "max-w-[760px]" : "max-w-[720px]"
                             }`}
                           >
                             {paragraph.trim()}
@@ -4478,7 +4483,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                             <p
                               key={item}
                               className={`font-inter text-[16px] leading-[1.7] ${usesNayyaVisualStyle ? "text-[#5c5960]" : "text-[#5c7792]"} ${
-                                caseStudy.slug === "reversetech" ? "mx-auto max-w-[760px]" : "max-w-[720px]"
+                                caseStudy.slug === "reversetech" ? "max-w-[760px]" : "max-w-[720px]"
                               }`}
                             >
                               {item}
@@ -5165,50 +5170,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
           </div>
         </section>
-      ) : null}
-
-      {caseStudy.slug === "reversetech" ? (
-        <div className="border-b border-[#d7e8f7] bg-[#f8fbff] px-6 py-10 md:px-10 xl:px-20">
-          <div className="mx-auto max-w-[1200px]">
-            <div className="grid gap-8 md:grid-cols-2">
-              <div className="mx-auto max-w-[540px]">
-                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#0E6FB4]">{translate("caseStudy.task1")}</p>
-                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">{translate("caseStudy.funnelDiagnosisFull")}</h3>
-                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                  {translate("caseStudy.task1Description")}
-                </p>
-              </div>
-              <div className="mx-auto max-w-[540px]">
-                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#0E6FB4]">{translate("caseStudy.task2")}</p>
-                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">{translate("caseStudy.paywallExperimentDesign")}</h3>
-                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                  {translate("caseStudy.task2Description")}
-                </p>
-              </div>
-              <div className="mx-auto max-w-[540px]">
-                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#0E6FB4]">{translate("caseStudy.task3")}</p>
-                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">{translate("caseStudy.competitorPatternExtraction")}</h3>
-                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                  {translate("caseStudy.task3Description")}
-                </p>
-              </div>
-              <div className="mx-auto max-w-[540px]">
-                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#0E6FB4]">{translate("caseStudy.task4")}</p>
-                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">{translate("caseStudy.impactMetrics")}</h3>
-                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                  {translate("caseStudy.task4ImpactDescription")}
-                </p>
-              </div>
-              <div className="mx-auto max-w-[540px]">
-                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#0E6FB4]">{translate("caseStudy.task5Short")}</p>
-                <h3 className="font-inter text-[20px] font-semibold leading-[1.3] text-[#0e2951]">{translate("caseStudy.howIUsedTools")}</h3>
-                <p className="mt-3 font-inter text-[14px] leading-[1.7] text-[#5c7792]">
-                  {translate("caseStudy.task4Description")}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       ) : null}
 
       {caseStudy.slug === "reversetech" ? (
