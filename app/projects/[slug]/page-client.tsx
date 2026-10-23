@@ -3,7 +3,7 @@
 import { FormEvent, Fragment, useEffect, useRef, useState } from "react";
 import { ArrowUp, ArrowUpRight, BadgeDollarSign, ChevronDown, ChevronLeft, ChevronRight, CircleAlert, Component, Contact, CreditCard, LayoutTemplate, Menu, Minus, MousePointerClick, PanelTop, Pill, Plus, RotateCcw, Tag, TextCursorInput, TriangleAlert, X } from "lucide-react";
 import Image from "next/image";
-import { Kalam } from "next/font/google";
+import { Kalam, Newsreader } from "next/font/google";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -40,6 +40,11 @@ import { translate } from "@/lib/i18n/dictionary";
 const kalam = Kalam({
   subsets: ["latin"],
   weight: ["300", "400", "700"],
+});
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 type PayloadRow = {
@@ -1106,32 +1111,65 @@ const PROTECTA_RECORDED_RESULTS: Record<Language, { metrics: Array<{ value: stri
   en: {
     metrics: [
       { value: "1,000", label: "Website visits" },
-      { value: "120", label: "WhatsApp inquiries" },
+      { value: "120", label: "WhatsApp inquiries", rate: "12% same-period contact ratio" },
       { value: "40", label: "Qualified leads", rate: "33% of inquiries" },
       { value: "10", label: "Consultations booked", rate: "25% of qualified leads" },
-      { value: "3", label: "New customers", rate: "30% of consultations" },
+      { value: "3", label: "New customers", rate: "30% of consultations · 2.5% of inquiries" },
     ],
-    note: "Recorded in the same 28-day period. Downstream percentages compare the reported business counts; they are not website-attributed conversion rates.",
+    note: "Recorded in the same 28-day period. The 12% contact ratio and downstream percentages are calculations from the reported counts, not website-attributed conversion rates.",
   },
   es: {
     metrics: [
       { value: "1.000", label: "Visitas al sitio web" },
-      { value: "120", label: "Consultas por WhatsApp" },
+      { value: "120", label: "Consultas por WhatsApp", rate: "12 % de contacto en el mismo periodo" },
       { value: "40", label: "Leads cualificados", rate: "33 % de las consultas" },
       { value: "10", label: "Consultas agendadas", rate: "25 % de los leads cualificados" },
-      { value: "3", label: "Nuevos clientes", rate: "30 % de las consultas agendadas" },
+      { value: "3", label: "Nuevos clientes", rate: "30 % de las consultas agendadas · 2,5 % de las consultas" },
     ],
-    note: "Datos del mismo periodo de 28 días. Los porcentajes posteriores comparan los resultados registrados del negocio; no son tasas de conversión atribuibles al sitio web.",
+    note: "Datos del mismo periodo de 28 días. El 12 % de contacto y los porcentajes posteriores son cálculos a partir de los resultados registrados; no son tasas de conversión atribuibles al sitio web.",
   },
   de: {
     metrics: [
       { value: "1.000", label: "Website-Besuche" },
-      { value: "120", label: "WhatsApp-Anfragen" },
+      { value: "120", label: "WhatsApp-Anfragen", rate: "12 % Kontaktquote im selben Zeitraum" },
       { value: "40", label: "Qualifizierte Leads", rate: "33 % der Anfragen" },
       { value: "10", label: "Gebuchte Beratungstermine", rate: "25 % der qualifizierten Leads" },
-      { value: "3", label: "Neue Kunden", rate: "30 % der Beratungen" },
+      { value: "3", label: "Neue Kunden", rate: "30 % der Beratungen · 2,5 % der Anfragen" },
     ],
-    note: "Werte aus demselben 28-Tage-Zeitraum. Die nachgelagerten Prozentsätze vergleichen erfasste Geschäftszahlen; sie sind keine der Website zugeordneten Konversionsraten.",
+    note: "Werte aus demselben 28-Tage-Zeitraum. Die 12-%-Kontaktquote und die nachgelagerten Prozentsätze sind Berechnungen aus den erfassten Werten, keine der Website zugeordneten Konversionsraten.",
+  },
+};
+
+const PROTECTA_VALIDATE_COPY: Record<Language, { eyebrow: string; summary: string; outcomes: Array<{ title: string; body: string }>; next: string }> = {
+  en: {
+    eyebrow: "28-day post-launch record",
+    summary: "The first release created a live, bilingual route from information to advisor contact. In 28 days, the recorded flow moved from 1,000 website visits to 120 WhatsApp inquiries, 40 qualified leads, 10 booked consultations, and 3 new customers.",
+    outcomes: [
+      { title: "Demand captured", body: "The recorded volume works out to roughly 30 WhatsApp inquiries and 10 qualified leads per week. The contact path turned website attention into a repeatable advisor workload instead of an unstructured inquiry channel." },
+      { title: "Sales progression", body: "One in three inquiries became qualified, one in four qualified leads booked, and three of 10 consultations closed. That makes the clearest confirmed outcome three new customers and a 2.5% inquiry-to-customer progression." },
+      { title: "Planning scenario", body: "At the same observed pace, the flow would produce about 39 new customers in a 364-day year. This is a linear operating scenario, not a forecast: policy value, retention, acquisition source, and seasonality were not recorded." },
+    ],
+    next: "Add page, language, and campaign tags to every WhatsApp CTA, then carry the source into the CRM. That will show which content creates qualified demand and allow customer value to be reported without guessing. With only 10 consultations, one additional customer changes the close rate by 10 percentage points, so the next 2–3 reporting cycles should confirm the trend before major investment.",
+  },
+  es: {
+    eyebrow: "Registro de los primeros 28 días",
+    summary: "La primera versión creó una vía bilingüe y activa entre la información y el contacto con los asesores. En 28 días, el flujo registrado pasó de 1.000 visitas al sitio a 120 consultas por WhatsApp, 40 leads cualificados, 10 consultas agendadas y 3 nuevos clientes.",
+    outcomes: [
+      { title: "Demanda capturada", body: "El volumen registrado equivale a unas 30 consultas por WhatsApp y 10 leads cualificados por semana. La vía de contacto transformó la atención al sitio en una carga de trabajo repetible para los asesores, no en un canal de consultas sin estructura." },
+      { title: "Progresión comercial", body: "Una de cada tres consultas se cualificó, uno de cada cuatro leads cualificados agendó una cita y tres de 10 consultas cerraron. El resultado confirmado más claro son 3 nuevos clientes y una progresión de 2,5 % desde consulta hasta cliente." },
+      { title: "Escenario de planificación", body: "Si se mantuviera el ritmo observado, el flujo produciría aproximadamente 39 nuevos clientes en un año de 364 días. Es un escenario operativo lineal, no una previsión: no se registraron valor de póliza, retención, origen de adquisición ni estacionalidad." },
+    ],
+    next: "Añadir etiquetas de página, idioma y campaña a cada CTA de WhatsApp y conservar el origen en el CRM. Así será posible saber qué contenido genera demanda cualificada y reportar valor por cliente sin adivinar. Con solo 10 consultas, un cliente adicional cambia la tasa de cierre 10 puntos porcentuales; los próximos 2–3 ciclos deben confirmar la tendencia antes de una inversión importante.",
+  },
+  de: {
+    eyebrow: "Erfassung der ersten 28 Tage",
+    summary: "Die erste Version schuf einen zweisprachigen, aktiven Weg von Informationen zum Kontakt mit Beratern. In 28 Tagen führte der erfasste Ablauf von 1.000 Website-Besuchen zu 120 WhatsApp-Anfragen, 40 qualifizierten Leads, 10 gebuchten Beratungen und 3 neuen Kunden.",
+    outcomes: [
+      { title: "Erfasste Nachfrage", body: "Das erfasste Volumen entspricht etwa 30 WhatsApp-Anfragen und 10 qualifizierten Leads pro Woche. Der Kontaktweg machte Website-Aufmerksamkeit zu einer wiederholbaren Arbeitslast für die Berater." },
+      { title: "Vertriebsfortschritt", body: "Jede dritte Anfrage wurde qualifiziert, jeder vierte qualifizierte Lead buchte einen Termin und drei von 10 Beratungen wurden abgeschlossen. Das klarste bestätigte Ergebnis sind drei neue Kunden und eine Entwicklung von 2,5 % von Anfrage zu Kunde." },
+      { title: "Planungsszenario", body: "Bei unverändertem Tempo würde der Ablauf in einem Jahr mit 364 Tagen etwa 39 neue Kunden liefern. Das ist ein lineares Betriebsszenario, keine Prognose: Policenwert, Bindung, Akquisitionsquelle und Saisonabhängigkeit wurden nicht erfasst." },
+    ],
+    next: "Jede WhatsApp-CTA nach Seite, Sprache und Kampagne taggen und die Quelle im CRM weiterführen. So wird sichtbar, welche Inhalte qualifizierte Nachfrage schaffen, und Kundenwert kann ohne Schätzung ausgewertet werden. Bei nur 10 Beratungen verändert ein zusätzlicher Kunde die Abschlussrate um 10 Prozentpunkte; die nächsten 2–3 Zyklen sollten den Trend vor einer größeren Investition bestätigen.",
   },
 };
 
@@ -4499,8 +4537,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         block.body.split(/\n+/).map((paragraph, idx) => (
                           <p
                             key={idx}
-                            className={`font-inter text-[16px] leading-[1.7] ${usesNayyaVisualStyle ? "text-[#5c5960]" : "text-[#5c7792]"} mb-4 last:mb-0 ${
-                              caseStudy.slug === "reversetech" ? "max-w-[760px]" : "max-w-[720px]"
+                            className={`font-inter ${caseStudy.slug === "protecta" ? "text-[17px]" : "text-[16px]"} leading-[1.7] ${usesNayyaVisualStyle ? "text-[#5c5960]" : "text-[#5c7792]"} mb-4 last:mb-0 ${
+                              caseStudy.slug === "reversetech" ? "max-w-[760px]" : caseStudy.slug === "protecta" ? "max-w-[820px]" : "max-w-[720px]"
                             }`}
                           >
                             {paragraph.trim()}
@@ -4522,8 +4560,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           {items.map((item) => (
                             <p
                               key={item}
-                              className={`font-inter text-[16px] leading-[1.7] ${usesNayyaVisualStyle ? "text-[#5c5960]" : "text-[#5c7792]"} ${
-                                caseStudy.slug === "reversetech" ? "max-w-[760px]" : "max-w-[720px]"
+                              className={`font-inter ${caseStudy.slug === "protecta" ? "text-[17px]" : "text-[16px]"} leading-[1.7] ${usesNayyaVisualStyle ? "text-[#5c5960]" : "text-[#5c7792]"} ${
+                                caseStudy.slug === "reversetech" ? "max-w-[760px]" : caseStudy.slug === "protecta" ? "max-w-[820px]" : "max-w-[720px]"
                               }`}
                             >
                               {item}
@@ -5143,6 +5181,37 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                 </article>
               ))}
+            <div className="hidden mt-5 grid gap-5 md:col-span-3 lg:grid-cols-3">
+              <article className="overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
+                <div className="min-h-[224px] bg-[#17302d] p-4">
+                  <div className="flex items-center justify-between text-[9px] font-semibold uppercase tracking-[0.14em] text-white/60"><span>Claude Design</span><span>Exploration</span></div>
+                  <div className="mt-4 rounded-[14px] bg-[#f8f5ed] p-4 shadow-[0_12px_28px_rgba(0,0,0,0.16)]">
+                    <div className="flex items-center justify-between"><span className="font-inter text-[15px] text-[#154f4d]">Protecta</span><span className="rounded-full border border-[#c9dacb] px-2 py-1 text-[7px] font-semibold text-[#47675f]">EN&nbsp; / &nbsp;ES</span></div>
+                    <p className="mt-5 max-w-[180px] font-inter text-[22px] leading-[1.05] text-[#154f4d]">Coverage that shows up for you.</p>
+                    <div className="mt-4 h-2 w-full rounded-full bg-[#d8e1d2]" /><div className="mt-2 h-2 w-4/5 rounded-full bg-[#d8e1d2]" />
+                    <span className="mt-5 inline-flex rounded-full bg-[#d96c4b] px-3 py-2 text-[8px] font-semibold text-white">Get a free quote</span>
+                  </div>
+                </div>
+                <div className="p-4"><h4 className="font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[0].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[0].body}</p></div>
+              </article>
+              <article className="overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
+                <div className="min-h-[224px] bg-[#f1f4f8] p-4">
+                  <div className="flex items-center justify-between text-[9px] font-semibold uppercase tracking-[0.14em] text-[#5c7792]"><span>Figma AI</span><span>Components</span></div>
+                  <div className="mt-4 grid grid-cols-[1.15fr_.85fr] gap-3">
+                    <div className="rounded-[12px] border border-[#b6d7f1] bg-white p-3 shadow-sm"><p className="text-[8px] font-semibold text-[#0e2951]">Hero / Default</p><p className="mt-3 font-inter text-[17px] leading-[1.05] text-[#154f4d]">Care that stays with you.</p><span className="mt-4 inline-flex rounded-full bg-[#d96c4b] px-2.5 py-1.5 text-[7px] font-semibold text-white">Quote</span></div>
+                    <div className="space-y-2"><div className="rounded-[10px] border border-dashed border-[#1183D0] bg-[#e8f4fd] p-2"><p className="text-[7px] font-semibold text-[#0E6FB4]">Button</p><div className="mt-2 rounded-full bg-[#154f4d] px-2 py-1.5 text-center text-[7px] font-semibold text-white">Primary</div></div><div className="rounded-[10px] border border-dashed border-[#1183D0] bg-[#e8f4fd] p-2"><p className="text-[7px] font-semibold text-[#0E6FB4]">Language</p><div className="mt-2 flex rounded-full bg-white p-0.5 text-[7px]"><span className="rounded-full bg-[#154f4d] px-1.5 py-1 text-white">EN</span><span className="px-1.5 py-1 text-[#47675f]">ES</span></div></div></div>
+                  </div>
+                </div>
+                <div className="p-4"><h4 className="font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[1].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[1].body}</p></div>
+              </article>
+              <article className="overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
+                <div className="min-h-[224px] bg-[#0e2951] p-4">
+                  <div className="flex items-center justify-between text-[9px] font-semibold uppercase tracking-[0.14em] text-[#b8dfff]"><span>Storybook</span><span>Button / Docs</span></div>
+                  <div className="mt-4 rounded-[12px] bg-white p-3 shadow-[0_10px_24px_rgba(0,0,0,.18)]"><div className="flex gap-1.5 border-b border-[#e6eef5] pb-2"><span className="h-1.5 w-1.5 rounded-full bg-[#1183D0]" /><span className="h-1.5 w-1.5 rounded-full bg-[#83cef8]" /><span className="ml-1 text-[7px] font-semibold text-[#5c7792]">Components / Button</span></div><div className="mt-4 rounded-[10px] bg-[#f6f9fb] p-3"><button type="button" className="rounded-full bg-[#d96c4b] px-3 py-2 text-[8px] font-semibold text-white">Get a free quote</button><p className="mt-3 text-[7px] text-[#5c7792]">Default · hover · focus · disabled</p></div></div>
+                </div>
+                <div className="p-4"><h4 className="font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[2].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[2].body}</p></div>
+              </article>
+            </div>
             </div>
           </div>
         </section>
@@ -5175,37 +5244,57 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <span className="font-playfair font-normal italic">{PROTECTA_BRAND_CONTENT_COPY[localizedLanguage].titleAccent}</span>
             </h2>
             <p className="mt-5 max-w-[820px] font-inter text-[17px] leading-[1.7] text-[#5c5960]">{PROTECTA_BRAND_CONTENT_COPY[localizedLanguage].body}</p>
-          </div>
-          <div className="mx-auto max-w-[1040px]">
             <div className="mt-10 grid gap-5 lg:grid-cols-3">
-              <article className="overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
-                <div className="min-h-[224px] bg-[#17302d] p-4">
-                  <div className="flex items-center justify-between text-[9px] font-semibold uppercase tracking-[0.14em] text-white/60"><span>Claude Design</span><span>Exploration</span></div>
-                  <div className="mt-4 rounded-[14px] bg-[#f8f5ed] p-4 shadow-[0_12px_28px_rgba(0,0,0,0.16)]">
-                    <div className="flex items-center justify-between"><span className="font-inter text-[15px] text-[#154f4d]">Protecta</span><span className="rounded-full border border-[#c9dacb] px-2 py-1 text-[7px] font-semibold text-[#47675f]">EN&nbsp; / &nbsp;ES</span></div>
-                    <p className="mt-5 max-w-[180px] font-inter text-[22px] leading-[1.05] text-[#154f4d]">Coverage that shows up for you.</p>
-                    <div className="mt-4 h-2 w-full rounded-full bg-[#d8e1d2]" /><div className="mt-2 h-2 w-4/5 rounded-full bg-[#d8e1d2]" />
-                    <span className="mt-5 inline-flex rounded-full bg-[#d96c4b] px-3 py-2 text-[8px] font-semibold text-white">Get a free quote</span>
+              <article className="overflow-hidden rounded-[20px] border border-[#d7d2d3] bg-white">
+                <div className="bg-[#154f4d] p-5 text-[#fdfcfe]">
+                  <p className="font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-[#cfe3ad]">Visual direction</p>
+                  <p className={`mt-8 max-w-[250px] text-[30px] leading-[1.02] ${newsreader.className}`}>Coverage that actually shows up.</p>
+                  <div className="mt-8 flex gap-2">
+                    <span className="h-6 w-6 rounded-full bg-[#cfe3ad]" />
+                    <span className="h-6 w-6 rounded-full bg-[#fdfcfe]" />
+                    <span className="h-6 w-6 rounded-full bg-[#d96c4b]" />
                   </div>
                 </div>
-                <div className="p-4"><h4 className="font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[0].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[0].body}</p></div>
+                <div className="p-5">
+                  <h3 className="font-inter text-[18px] font-semibold text-[#141114]">Warm, premium, human</h3>
+                  <p className="mt-2 font-inter text-[14px] leading-[1.65] text-[#5c5960]">Deep pine grounds the system; cream and warm accents keep insurance guidance calm and approachable.</p>
+                </div>
               </article>
-              <article className="overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
-                <div className="min-h-[224px] bg-[#f1f4f8] p-4">
-                  <div className="flex items-center justify-between text-[9px] font-semibold uppercase tracking-[0.14em] text-[#5c7792]"><span>Figma AI</span><span>Components</span></div>
-                  <div className="mt-4 grid grid-cols-[1.15fr_.85fr] gap-3">
-                    <div className="rounded-[12px] border border-[#b6d7f1] bg-white p-3 shadow-sm"><p className="text-[8px] font-semibold text-[#0e2951]">Hero / Default</p><p className="mt-3 font-inter text-[17px] leading-[1.05] text-[#154f4d]">Care that stays with you.</p><span className="mt-4 inline-flex rounded-full bg-[#d96c4b] px-2.5 py-1.5 text-[7px] font-semibold text-white">Quote</span></div>
-                    <div className="space-y-2"><div className="rounded-[10px] border border-dashed border-[#1183D0] bg-[#e8f4fd] p-2"><p className="text-[7px] font-semibold text-[#0E6FB4]">Button</p><div className="mt-2 rounded-full bg-[#154f4d] px-2 py-1.5 text-center text-[7px] font-semibold text-white">Primary</div></div><div className="rounded-[10px] border border-dashed border-[#1183D0] bg-[#e8f4fd] p-2"><p className="text-[7px] font-semibold text-[#0E6FB4]">Language</p><div className="mt-2 flex rounded-full bg-white p-0.5 text-[7px]"><span className="rounded-full bg-[#154f4d] px-1.5 py-1 text-white">EN</span><span className="px-1.5 py-1 text-[#47675f]">ES</span></div></div></div>
+
+              <article className="overflow-hidden rounded-[20px] border border-[#d7d2d3] bg-white">
+                <div className="bg-[#fdfcfe] p-5">
+                  <p className="font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-[#5c5960]">Message hierarchy</p>
+                  <div className="mt-6 space-y-4">
+                    <div>
+                      <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#d96c4b]">Complete family protection</p>
+                      <p className={`mt-1 text-[23px] leading-[1.05] text-[#154f4d] ${newsreader.className}`}>Coverage that shows up for you.</p>
+                    </div>
+                    <div className="border-t border-[#d7d2d3] pt-4">
+                      <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#d96c4b]">Protección familiar completa</p>
+                      <p className={`mt-1 text-[23px] leading-[1.05] text-[#154f4d] ${newsreader.className}`}>Cobertura que está contigo.</p>
+                    </div>
                   </div>
                 </div>
-                <div className="p-4"><h4 className="font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[1].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[1].body}</p></div>
-              </article>
-              <article className="overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
-                <div className="min-h-[224px] bg-[#0e2951] p-4">
-                  <div className="flex items-center justify-between text-[9px] font-semibold uppercase tracking-[0.14em] text-[#b8dfff]"><span>Storybook</span><span>Button / Docs</span></div>
-                  <div className="mt-4 rounded-[12px] bg-white p-3 shadow-[0_10px_24px_rgba(0,0,0,.18)]"><div className="flex gap-1.5 border-b border-[#e6eef5] pb-2"><span className="h-1.5 w-1.5 rounded-full bg-[#1183D0]" /><span className="h-1.5 w-1.5 rounded-full bg-[#83cef8]" /><span className="ml-1 text-[7px] font-semibold text-[#5c7792]">Components / Button</span></div><div className="mt-4 rounded-[10px] bg-[#f6f9fb] p-3"><button type="button" className="rounded-full bg-[#d96c4b] px-3 py-2 text-[8px] font-semibold text-white">Get a free quote</button><p className="mt-3 text-[7px] text-[#5c7792]">Default · hover · focus · disabled</p></div></div>
+                <div className="p-5">
+                  <h3 className="font-inter text-[18px] font-semibold text-[#141114]">English and Spanish, equally considered</h3>
+                  <p className="mt-2 font-inter text-[14px] leading-[1.65] text-[#5c5960]">Each language gets its own clear hierarchy and natural phrasing, not a translated afterthought.</p>
                 </div>
-                <div className="p-4"><h4 className="font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[2].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[2].body}</p></div>
+              </article>
+
+              <article className="overflow-hidden rounded-[20px] border border-[#d7d2d3] bg-white">
+                <div className="bg-[#f8f5ed] p-5">
+                  <p className="font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-[#5c5960]">Voice + content system</p>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {['Warm', 'Clear', 'Supportive'].map((tone) => (
+                      <span key={tone} className="rounded-full bg-white px-3 py-1.5 font-inter text-[11px] font-semibold text-[#154f4d]">{tone}</span>
+                    ))}
+                  </div>
+                  <p className="mt-7 font-inter text-[15px] leading-[1.6] text-[#154f4d]">Problem <span className="px-1 text-[#d96c4b]">→</span> Explanation <span className="px-1 text-[#d96c4b]">→</span> Solution <span className="px-1 text-[#d96c4b]">→</span> Next step</p>
+                </div>
+                <div className="p-5">
+                  <h3 className="font-inter text-[18px] font-semibold text-[#141114]">Guide before selling</h3>
+                  <p className="mt-2 font-inter text-[14px] leading-[1.65] text-[#5c5960]">Short, plain-spoken content builds confidence first, then invites a conversation when the family is ready.</p>
+                </div>
               </article>
             </div>
           </div>
@@ -5834,10 +5923,63 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             ) : (
               caseStudy.slug === "protecta" ? (
                 <>
-                  <div className="mx-auto mt-12 max-w-[1040px]">
+                  <div className="flex flex-col">
+                  <div className="order-2 mx-auto mt-12 max-w-[1040px]">
                     <div className="max-w-[900px] text-left">
                       <h2 className="font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">{PROTECTA_COMPONENT_COPY[localizedLanguage].title}</h2>
                       <p className="mt-5 max-w-[820px] font-inter text-[17px] leading-[1.7] text-[#5c5960]">{PROTECTA_COMPONENT_COPY[localizedLanguage].body}</p>
+                    </div>
+                    <div className="mt-10 grid gap-5 lg:grid-cols-3">
+                      <article className="overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
+                        <div className="min-h-[224px] bg-[#17302d] p-4">
+                          <div className="flex items-center justify-between text-[9px] font-semibold uppercase tracking-[0.14em] text-white/60"><span>Claude Design</span><span>Exploration</span></div>
+                          <div className="mt-4 rounded-[14px] bg-[#f8f5ed] p-4 shadow-[0_12px_28px_rgba(0,0,0,0.16)]">
+                            <div className="flex items-center justify-between"><span className="font-inter text-[15px] text-[#154f4d]">Protecta</span><span className="rounded-full border border-[#c9dacb] px-2 py-1 text-[7px] font-semibold text-[#47675f]">EN&nbsp; / &nbsp;ES</span></div>
+                            <p className="mt-5 max-w-[180px] font-inter text-[22px] leading-[1.05] text-[#154f4d]">Coverage that shows up for you.</p>
+                            <div className="mt-4 h-2 w-full rounded-full bg-[#d8e1d2]" /><div className="mt-2 h-2 w-4/5 rounded-full bg-[#d8e1d2]" />
+                            <span className="mt-5 inline-flex rounded-full bg-[#d96c4b] px-3 py-2 text-[8px] font-semibold text-white">Get a free quote</span>
+                          </div>
+                        </div>
+                        <div className="p-4"><h4 className="font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[0].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[0].body}</p></div>
+                      </article>
+                      <article className="overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
+                        <div className="min-h-[224px] bg-[#f1f4f8] p-4">
+                          <div className="flex items-center justify-between text-[9px] font-semibold uppercase tracking-[0.14em] text-[#5c7792]"><span>Figma AI</span><span>Components</span></div>
+                          <div className="mt-4 grid grid-cols-[1.15fr_.85fr] gap-3">
+                            <div className="rounded-[12px] border border-[#b6d7f1] bg-white p-3 shadow-sm"><p className="text-[8px] font-semibold text-[#0e2951]">Hero / Default</p><p className="mt-3 font-inter text-[17px] leading-[1.05] text-[#154f4d]">Care that stays with you.</p><span className="mt-4 inline-flex rounded-full bg-[#d96c4b] px-2.5 py-1.5 text-[7px] font-semibold text-white">Quote</span></div>
+                            <div className="space-y-2"><div className="rounded-[10px] border border-dashed border-[#1183D0] bg-[#e8f4fd] p-2"><p className="text-[7px] font-semibold text-[#0E6FB4]">Button</p><div className="mt-2 rounded-full bg-[#154f4d] px-2 py-1.5 text-center text-[7px] font-semibold text-white">Primary</div></div><div className="rounded-[10px] border border-dashed border-[#1183D0] bg-[#e8f4fd] p-2"><p className="text-[7px] font-semibold text-[#0E6FB4]">Language</p><div className="mt-2 flex rounded-full bg-white p-0.5 text-[7px]"><span className="rounded-full bg-[#154f4d] px-1.5 py-1 text-white">EN</span><span className="px-1.5 py-1 text-[#47675f]">ES</span></div></div></div>
+                          </div>
+                        </div>
+                        <div className="p-4"><h4 className="font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[1].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[1].body}</p></div>
+                      </article>
+                      <article className="overflow-hidden rounded-[18px] border border-[#d7e8f7] bg-white">
+                        <div className="min-h-[224px] bg-[#0e2951] p-4">
+                          <div className="flex items-center justify-between text-[9px] font-semibold uppercase tracking-[0.14em] text-[#b8dfff]"><span>Storybook</span><span>Button / Docs</span></div>
+                          <div className="mt-4 rounded-[12px] bg-white p-3 shadow-[0_10px_24px_rgba(0,0,0,.18)]"><div className="flex gap-1.5 border-b border-[#e6eef5] pb-2"><span className="h-1.5 w-1.5 rounded-full bg-[#1183D0]" /><span className="h-1.5 w-1.5 rounded-full bg-[#83cef8]" /><span className="ml-1 text-[7px] font-semibold text-[#5c7792]">Components / Button</span></div><div className="mt-4 rounded-[10px] bg-[#f6f9fb] p-3"><button type="button" className="rounded-full bg-[#d96c4b] px-3 py-2 text-[8px] font-semibold text-white">Get a free quote</button><p className="mt-3 text-[7px] text-[#5c7792]">Default · hover · focus · disabled</p></div></div>
+                        </div>
+                        <div className="p-4"><h4 className="font-inter text-[16px] font-semibold text-[#0e2951]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[2].title}</h4><p className="mt-2 font-inter text-[12px] leading-[1.55] text-[#5c7792]">{PROTECTA_HANDOFF_COPY[localizedLanguage].stages[2].body}</p></div>
+                      </article>
+                    </div>
+                    <div className="mt-12">
+                      <div className="overflow-hidden rounded-[20px] border border-[#d7e8f7] bg-white shadow-[0_14px_34px_rgba(17,131,208,0.10)]">
+                        <div className="border-b border-[#d7e8f7] bg-[#f8fbff] p-2">
+                          <div role="tablist" aria-label={language === "es" ? "Componentes de Protecta" : "Protecta components"} className="flex gap-1 overflow-x-auto">
+                            {PROTECTA_STORYBOOK[localizedLanguage].components.map((component) => {
+                              const iconKey = component.url.split("/docs/")[1]?.split("--")[0] ?? "";
+                              const Icon = PROTECTA_STORYBOOK_ICONS[iconKey] ?? Component;
+                              const isActive = component.url === activeProtectaStorybookUrl;
+                              return (
+                                <button key={component.title} type="button" role="tab" aria-selected={isActive} onClick={() => setActiveProtectaStorybookUrl(component.url)} className={`inline-flex shrink-0 items-center gap-2 rounded-[12px] px-3 py-2 font-inter text-[12px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0] focus-visible:ring-offset-2 ${isActive ? "bg-white text-[#0E6FB4] shadow-[0_4px_12px_rgba(17,131,208,0.12)]" : "text-[#5c7792] hover:bg-white/70 hover:text-[#0e2951]"}`}>
+                                  <Icon className="h-4 w-4" aria-hidden="true" /><span>{component.title}</span>
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2 border-b border-[#d7e8f7] bg-white px-4 py-3"><span className="h-2 w-2 rounded-full bg-[#1183D0]" /><span className="h-2 w-2 rounded-full bg-[#83cef8]" /><span className="h-2 w-2 rounded-full bg-[#cfe5f8]" /><span className="ml-2 font-inter text-[10px] font-semibold uppercase tracking-[0.12em] text-[#5c7792]">Protecta Storybook · {activeProtectaStorybookComponent.title}</span></div>
+                        <iframe title={language === "es" ? `Documentación de Protecta Storybook: ${activeProtectaStorybookComponent.title}` : `Protecta Storybook ${activeProtectaStorybookComponent.title} documentation`} src={activeProtectaStorybookUrl} className="h-[520px] w-full bg-white" loading="lazy" />
+                      </div>
+                      <div className="mt-5 flex justify-center"><a href={PROTECTA_STORYBOOK_URL} target="_blank" rel="noreferrer" className="inline-flex items-center font-inter text-[14px] font-semibold text-[#0E6FB4] underline decoration-[#1183D0]/35 underline-offset-4 transition-colors hover:text-[#0e5a8a] hover:decoration-[#0e5a8a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0] focus-visible:ring-offset-4">{PROTECTA_STORYBOOK[localizedLanguage].link}</a></div>
                     </div>
                     <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr]">
                       <div className="space-y-4">
@@ -5893,43 +6035,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </div>
                     </div>
                   </div>
-                  <div className="mx-auto mt-12 max-w-[1040px]">
-                    <div className="overflow-hidden rounded-[20px] border border-[#d7e8f7] bg-white shadow-[0_14px_34px_rgba(17,131,208,0.10)]">
-                      <div className="border-b border-[#d7e8f7] bg-[#f8fbff] p-2">
-                        <div role="tablist" aria-label={language === "es" ? "Componentes de Protecta" : "Protecta components"} className="flex gap-1 overflow-x-auto">
-                          {PROTECTA_STORYBOOK[localizedLanguage].components.map((component) => {
-                            const iconKey = component.url.split("/docs/")[1]?.split("--")[0] ?? "";
-                            const Icon = PROTECTA_STORYBOOK_ICONS[iconKey] ?? Component;
-                            const isActive = component.url === activeProtectaStorybookUrl;
-                            return (
-                              <button
-                                key={component.title}
-                                type="button"
-                                role="tab"
-                                aria-selected={isActive}
-                                onClick={() => setActiveProtectaStorybookUrl(component.url)}
-                                className={`inline-flex shrink-0 items-center gap-2 rounded-[12px] px-3 py-2 font-inter text-[12px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0] focus-visible:ring-offset-2 ${
-                                  isActive
-                                    ? "bg-white text-[#0E6FB4] shadow-[0_4px_12px_rgba(17,131,208,0.12)]"
-                                    : "text-[#5c7792] hover:bg-white/70 hover:text-[#0e2951]"
-                                }`}
-                              >
-                                <Icon className="h-4 w-4" aria-hidden="true" />
-                                <span>{component.title}</span>
-                              </button>
-                            );
-                          })}
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2 border-b border-[#d7e8f7] bg-white px-4 py-3">
-                        <span className="h-2 w-2 rounded-full bg-[#1183D0]" /><span className="h-2 w-2 rounded-full bg-[#83cef8]" /><span className="h-2 w-2 rounded-full bg-[#cfe5f8]" />
-                        <span className="ml-2 font-inter text-[10px] font-semibold uppercase tracking-[0.12em] text-[#5c7792]">Protecta Storybook · {activeProtectaStorybookComponent.title}</span>
-                      </div>
-                      <iframe title={language === "es" ? `Documentación de Protecta Storybook: ${activeProtectaStorybookComponent.title}` : `Protecta Storybook ${activeProtectaStorybookComponent.title} documentation`} src={activeProtectaStorybookUrl} className="h-[520px] w-full bg-white" loading="lazy" />
-                    </div>
-                    <div className="mt-5 flex justify-center">
-                      <a href={PROTECTA_STORYBOOK_URL} target="_blank" rel="noreferrer" className="inline-flex items-center font-inter text-[14px] font-semibold text-[#0E6FB4] underline decoration-[#1183D0]/35 underline-offset-4 transition-colors hover:text-[#0e5a8a] hover:decoration-[#0e5a8a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1183D0] focus-visible:ring-offset-4">{PROTECTA_STORYBOOK[localizedLanguage].link}</a>
-                    </div>
                   </div>
                 </>
               ) : (
@@ -7089,10 +7194,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-14">
                 <div className="max-w-[620px] space-y-5 font-inter text-[17px] leading-[1.7] text-[#5c5960]">
                   <h2 className="font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
-                    {localizedLanguage === "es" ? "Resultados del proyecto" : "Project outcomes"}
+                    {localizedLanguage === "es" ? "Validar" : "Validate"}
                   </h2>
-                  <p>{PROTECTA_WEBSITE_OUTCOME[language]}</p>
-                  <p>{PROTECTA_WHATSAPP_RATIONALE[language]}</p>
+                  <p>{PROTECTA_VALIDATE_COPY[language].summary}</p>
                 </div>
                 <figure className="overflow-hidden rounded-[24px] bg-[#e8eefc] shadow-[0_18px_40px_rgba(69,16,68,0.12)]">
                   <img src={homeCoverImage} alt="Protecta project cover" className="h-full w-full object-cover" />
@@ -7108,6 +7212,18 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 ))}
               </div>
               <p className="mt-5 max-w-[900px] font-inter text-[13px] leading-[1.65] text-[#5c5960]">{PROTECTA_RECORDED_RESULTS[language].note}</p>
+              <div className="mt-10 grid gap-4 lg:grid-cols-3">
+                {PROTECTA_VALIDATE_COPY[language].outcomes.map((outcome) => (
+                  <article key={outcome.title} className="rounded-[20px] border border-[#e6dfe6] bg-white p-6">
+                    <h3 className="font-inter text-[18px] font-semibold leading-[1.2] tracking-[-0.02em] text-[#141114]">{outcome.title}</h3>
+                    <p className="mt-3 font-inter text-[15px] leading-[1.65] text-[#5c5960]">{outcome.body}</p>
+                  </article>
+                ))}
+              </div>
+              <div className="mt-4 max-w-[980px] border-l-2 border-[#141114] pl-5 font-inter text-[15px] leading-[1.65] text-[#5c5960]">
+                <span className="font-semibold text-[#141114]">{localizedLanguage === "es" ? "Qué medir después: " : language === "de" ? "Nächster Messschritt: " : "What to measure next: "}</span>
+                {PROTECTA_VALIDATE_COPY[language].next}
+              </div>
             </div>
           ) : null}
           {caseStudy.slug === "flock-accessibility-system" ? (
