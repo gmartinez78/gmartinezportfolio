@@ -7196,7 +7196,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <h2 className="font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
                     {localizedLanguage === "es" ? "Validar" : "Validate"}
                   </h2>
-                  <p>{PROTECTA_VALIDATE_COPY[language].summary}</p>
+                  {PROTECTA_VALIDATE_COPY[language].outcomes.slice(0, 2).map((outcome) => (
+                    <div key={outcome.title}>
+                      <h3 className="font-inter text-[18px] font-semibold leading-[1.2] tracking-[-0.02em] text-[#141114]">{outcome.title}</h3>
+                      <p className="mt-2">{outcome.body}</p>
+                    </div>
+                  ))}
                 </div>
                 <figure className="overflow-hidden rounded-[24px] bg-[#e8eefc] shadow-[0_18px_40px_rgba(69,16,68,0.12)]">
                   <img src={homeCoverImage} alt="Protecta project cover" className="h-full w-full object-cover" />
@@ -7212,15 +7217,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 ))}
               </div>
               <p className="mt-5 max-w-[900px] font-inter text-[13px] leading-[1.65] text-[#5c5960]">{PROTECTA_RECORDED_RESULTS[language].note}</p>
-              <div className="mt-10 grid gap-4 lg:grid-cols-3">
-                {PROTECTA_VALIDATE_COPY[language].outcomes.map((outcome) => (
-                  <article key={outcome.title} className="rounded-[20px] border border-[#e6dfe6] bg-white p-6">
-                    <h3 className="font-inter text-[18px] font-semibold leading-[1.2] tracking-[-0.02em] text-[#141114]">{outcome.title}</h3>
-                    <p className="mt-3 font-inter text-[15px] leading-[1.65] text-[#5c5960]">{outcome.body}</p>
-                  </article>
-                ))}
-              </div>
-              <div className="mt-4 max-w-[980px] border-l-2 border-[#141114] pl-5 font-inter text-[15px] leading-[1.65] text-[#5c5960]">
+              <div className="my-10 max-w-[980px] border-l-2 border-[#141114] pl-5 font-inter text-[15px] leading-[1.65] text-[#5c5960]">
                 <span className="font-semibold text-[#141114]">{localizedLanguage === "es" ? "Qué medir después: " : language === "de" ? "Nächster Messschritt: " : "What to measure next: "}</span>
                 {PROTECTA_VALIDATE_COPY[language].next}
               </div>
