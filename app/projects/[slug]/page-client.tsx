@@ -3187,6 +3187,46 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     caseStudy.slug === "reversetech"
       ? [...sourceEntries, ...getReverseTechExtraSources(language).map((item) => ({ ...item }))]
       : sourceEntries;
+  const sourceList = (
+    <>
+      {sourceEntriesWithOverrides.length
+        ? sourceEntriesWithOverrides.map((item, index) => (
+          <div key={`${item.title}-${index}`} className="space-y-1">
+            <p className="font-inter text-[14px] leading-[1.6] text-[#0e2951]">
+              <span className="font-semibold text-[#0E6FB4]">{index + 1}.</span>{" "}
+              <a
+                href={typeof item.url === "string" ? item.url : "#"}
+                target="_blank"
+                rel="noreferrer"
+                className="font-semibold underline decoration-[#1183D0]/40 underline-offset-3 transition-colors hover:text-[#0E6FB4]"
+              >
+                {typeof item.title === "string" ? item.title : ""}
+              </a>
+            </p>
+            <p className="font-inter text-[13px] leading-[1.6] text-[#5c7792]">
+              {typeof item.description === "string" ? item.description : ""}
+            </p>
+            {typeof item.secondaryUrl === "string" && typeof item.secondaryTitle === "string" ? (
+              <p className="font-inter text-[12px] leading-[1.5] text-[#5c7792]">
+                <a
+                  href={item.secondaryUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-medium underline decoration-[#1183D0]/40 underline-offset-2 transition-colors hover:text-[#0E6FB4]"
+                >
+                  {item.secondaryTitle}
+                </a>
+              </p>
+            ) : null}
+          </div>
+        ))
+        : sourceItems.map((item, index) => (
+          <p key={item} className="font-inter text-[13px] leading-[1.6] text-[#5c7792]">
+            <span className="font-semibold text-[#0E6FB4]">{index + 1}.</span> {item}
+          </p>
+        ))}
+    </>
+  );
   const ctaVariants =
     ctaVariantsBlock?.payload &&
     typeof ctaVariantsBlock.payload === "object" &&
@@ -3484,7 +3524,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </p>
                 <h1 className={`mb-5 font-inter font-bold leading-[0.98] ${usesNayyaVisualStyle ? "max-w-[1000px] text-[clamp(2.5rem,5.5vw,4.5rem)] tracking-[-0.055em] text-[#141114]" : "text-[36px] leading-[1.15] text-[#0e2951] md:text-[44px]"}`}>
                   {usesNayyaVisualStyle ? (
-                    caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "protecta" ? (
+                    caseStudy.slug === "reversetech" && language === "en" ? (
+                      <>
+                        Health Funnel
+                        <span className="block font-playfair font-normal italic tracking-[-0.045em]">Optimization</span>
+                      </>
+                    ) : caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "protecta" ? (
                       <>
                         {editorialTitle.lead}{" "}
                         <span className="block font-playfair font-normal italic tracking-[-0.045em]">
@@ -3501,11 +3546,6 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       ) : null}
                     </>
                     )
-                  ) : caseStudy.slug === "reversetech" && language === "en" ? (
-                    <>
-                      Health Funnel
-                      <span className="block">Optimization</span>
-                    </>
                   ) : caseStudy.title}
                 </h1>
                 <p className={`break-words leading-[1.55] ${usesNayyaVisualStyle ? "mt-7 max-w-full text-[clamp(1rem,1.5vw,1.25rem)] text-[#5c5960] lg:w-3/5" : "text-[16px] text-[#5c7792]"}`}>{caseStudy.tagline}</p>
@@ -5292,12 +5332,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           <SectionHeading
             eyebrow={caseStudy.slug === "reversetech" ? undefined : taskDetailBlock.title}
             title={reverseTechTaskDetailHeading ?? taskDetailBlock.title}
-            centered
+            centered={caseStudy.slug !== "reversetech"}
             className="mb-12"
           />
           <div className="mx-auto max-w-[1040px]">
             {taskDetailBlock.body ? (
-              <div className="mx-auto mb-8 max-w-[820px] space-y-4 text-center">
+              <div className="mb-8 max-w-[820px] space-y-4">
                 {taskDetailBlock.body.split(/\n+/).map((paragraph, idx) => (
                   <p key={idx} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
                     {paragraph.trim()}
@@ -5457,51 +5497,51 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     }
                     className="mx-auto max-w-[860px] scroll-mt-24"
                   >
-                    <div className="mx-auto max-w-[760px] text-center">
-                      <div className="space-y-3">
-                        <h3 className="text-[22px] font-semibold leading-[1.3] text-[#1c1e21]">
-                          {formatReverseTechStepTitle(item.title, language)}
-                        </h3>
-                        {(() => {
-                          const performance = getReverseTechStepTag(item.title, language);
-                          return performance ? (
-                            <div>
-                              <span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] ${performance.className}`}>
-                                {performance.label}
-                              </span>
-                            </div>
-                          ) : null;
-                        })()}
+                    <div className={`grid items-start gap-8 ${typeof item.image === "string" ? "lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]" : ""}`}>
+                      <div>
+                        <div className="space-y-3">
+                          <h3 className="text-[22px] font-semibold leading-[1.3] text-[#1c1e21]">
+                            {formatReverseTechStepTitle(item.title, language)}
+                          </h3>
+                          {(() => {
+                            const performance = getReverseTechStepTag(item.title, language);
+                            return performance ? (
+                              <div>
+                                <span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] ${performance.className}`}>
+                                  {performance.label}
+                                </span>
+                              </div>
+                            ) : null;
+                          })()}
+                        </div>
+                        <div className="mt-4 space-y-4">
+                          {typeof item.body === "string"
+                            ? item.body.split(/\n{2,}/).map((paragraph, paragraphIndex) => (
+                              <p key={paragraphIndex} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                                {paragraph}
+                              </p>
+                            ))
+                            : null}
+                        </div>
                       </div>
-                      <p className="mt-4 font-inter text-[16px] leading-[1.7] text-[#5c7792]">
-                        {typeof item.body === "string" ? item.body : ""}
-                      </p>
+                      {typeof item.image === "string" ? (
+                        <div className="w-full max-w-[260px] overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
+                          <img
+                            src={withBasePath(item.image)}
+                            alt={formatReverseTechStepTitle(item.title, language) || translate("caseStudy.analysisReference")}
+                            className="h-auto w-full"
+                          />
+                        </div>
+                      ) : null}
                     </div>
-                    {(typeof item.image === "string" || typeof item.consideration === "string") ? (
-                      <div className="mx-auto mt-8 flex max-w-[760px] flex-col items-center gap-6">
-                        {typeof item.image === "string" ? (
-                          <div className="mx-auto w-full max-w-[192px] overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)]">
-                            <img
-                              src={withBasePath(item.image)}
-                              alt={formatReverseTechStepTitle(item.title, language) || translate("caseStudy.analysisReference")}
-                              className="h-auto w-full"
-                            />
-                          </div>
-                        ) : (
-                          <div />
-                        )}
-                        {typeof item.consideration === "string" ? (
-                          <div className="w-full rounded-[16px] bg-[#f5f6f7] px-5 py-4 text-left">
-                            <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0E6FB4]">
-                              Consideration
-                            </p>
-                            <p className="mt-2 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
-                              {item.consideration}
-                            </p>
-                          </div>
-                        ) : (
-                          <div />
-                        )}
+                    {typeof item.consideration === "string" ? (
+                      <div className="mt-6 w-full rounded-[16px] bg-[#f5f6f7] px-5 py-4 text-left">
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0E6FB4]">
+                          Consideration
+                        </p>
+                        <p className="mt-2 font-inter text-[15px] leading-[1.7] text-[#5c7792]">
+                          {item.consideration}
+                        </p>
                       </div>
                     ) : null}
                   </div>
@@ -5735,14 +5775,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {caseStudy.slug !== "protecta" ? (
               <SectionHeading
                 title={designProposalTitle}
-                centered
+                centered={caseStudy.slug !== "reversetech"}
                 className={caseStudy.slug === "reversetech" ? "mb-5" : "mb-12"}
               />
             ) : null}
             {caseStudy.slug === "reversetech" ? (
-              <div className="mx-auto max-w-[820px] space-y-8 text-center">
+              <div className="max-w-[820px] space-y-8">
                 {designProposalLinks.length ? (
-                  <div className="flex justify-center">
+                  <div className="flex justify-start">
                     {designProposalLinks.map((link) => (
                       <a
                         key={link.url}
@@ -5912,7 +5952,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           aria-pressed={reversetechComparisonTab === "before"}
                           className={`min-w-[96px] rounded-full px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.08em] transition-all ${
                             reversetechComparisonTab === "before"
-                              ? "bg-[#0e2951] text-white shadow-[0_6px_16px_rgba(14,41,81,0.22)]"
+                              ? "reverse-tech-switch-active text-white shadow-[0_6px_16px_rgba(14,41,81,0.22)]"
                               : "text-[#5c7792]"
                           }`}
                         >
@@ -5924,7 +5964,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           aria-pressed={reversetechComparisonTab === "after"}
                           className={`min-w-[96px] rounded-full px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.08em] transition-all ${
                             reversetechComparisonTab === "after"
-                              ? "bg-[#1183D0] text-white shadow-[0_6px_16px_rgba(17,131,208,0.22)]"
+                              ? "reverse-tech-switch-active text-white shadow-[0_6px_16px_rgba(17,131,208,0.22)]"
                               : "text-[#5c7792]"
                           }`}
                         >
@@ -6056,14 +6096,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task3" ? (
         <section id="rt-task-3" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title={translate("caseStudy.competitorPatternExtraction")} centered className="mb-8" />
-          <div className="mx-auto mb-8 max-w-[860px] text-center">
+          <SectionHeading title={translate("caseStudy.competitorPatternExtraction")} className="mb-8" />
+          <div className="mb-8 max-w-[860px]">
             <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               {translate("caseStudy.task3Description")}
             </p>
           </div>
-          <div className="mx-auto max-w-[980px] space-y-6">
-            <h3 className="text-center font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
+          <div className="w-full space-y-6">
+            <h3 className="font-inter text-[22px] font-semibold leading-[1.3] text-[#0e2951]">
               {translate("caseStudy.discovery")}
             </h3>
             <ContentPanel>
@@ -6365,16 +6405,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task4" ? (
         <section id="rt-impact-metrics" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-10 md:px-10 xl:px-20">
-          <SectionHeading eyebrow="Task 4" title={translate("caseStudy.impactMetrics")} centered className="mb-8" />
-          <div className="mx-auto mb-8 max-w-[860px] text-center">
+          <SectionHeading title={translate("caseStudy.impactMetrics")} className="mb-8" />
+          <div className="mb-8 max-w-[860px]">
             <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               The existing paid-acquisition funnel converted <strong className="font-semibold text-[#0e2951]">0.63% of visitors</strong> into customers. Rather than assuming the 37-step quiz middle was the issue, I used funnel data to identify the highest-friction moments and tested a paywall that led with outcome-based value, clearer offer framing, and simpler pricing.
             </p>
           </div>
-          <div className="mx-auto max-w-[1040px] rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] p-6 text-center md:p-8">
+          <div className="max-w-[1040px] rounded-[20px] border border-[#d7e8f7] bg-[#f8fbff] p-6 md:p-8">
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0E6FB4]">Live A/B test result</p>
             <p className="mt-3 font-inter text-[25px] font-semibold leading-[1.25] text-[#0e2951] md:text-[30px]">The winning paywall increased conversion from 0.63% to 0.77%.</p>
-            <p className="mx-auto mt-4 max-w-[760px] text-[14px] leading-[1.7] text-[#5c7792]">Across 50,000 paid-search sessions per variant, this was a 0.14 percentage-point increase, or a 22% relative lift, 70 additional purchases at the tested volume, without increasing media spend.</p>
+            <p className="mt-4 max-w-[760px] text-[14px] leading-[1.7] text-[#5c7792]">Across 50,000 paid-search sessions per variant, this was a 0.14 percentage-point increase, or a 22% relative lift, 70 additional purchases at the tested volume, without increasing media spend.</p>
           </div>
           <div className="mx-auto mt-6 max-w-[1040px] rounded-[20px] border border-[#d7e8f7] bg-white p-6 md:p-7">
             <div className="overflow-x-auto">
@@ -6417,14 +6457,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <p className="mt-4 text-[14px] leading-[1.7] text-[#5c7792]">A variant needed sustained conversion improvement against the control with adequate traffic before it could be selected.</p>
             </div>
           </div>
-          <p className="mx-auto mt-6 max-w-[920px] text-center font-inter text-[15px] font-medium leading-[1.7] text-[#385b7a]">I translated funnel evidence into prioritised, testable designs for the paywall conversion gap. The launched winning variant delivered a 0.14 percentage-point lift in end-to-end conversion, equivalent to 14 additional purchases per 10,000 qualified visits.</p>
+          <p className="mt-6 max-w-[920px] font-inter text-[15px] font-medium leading-[1.7] text-[#385b7a]">I translated funnel evidence into prioritised, testable designs for the paywall conversion gap. The launched winning variant delivered a 0.14 percentage-point lift in end-to-end conversion, equivalent to 14 additional purchases per 10,000 qualified visits.</p>
         </section>
       ) : null}
 
       {caseStudy.slug === "reversetech" && reversetechTaskTab === "task5" ? (
         <section id="rt-ai-implementation" className="mx-auto max-w-[1200px] scroll-mt-24 px-6 pb-6 pt-10 md:px-10 xl:px-20">
-          <SectionHeading eyebrow="Task 5" title={translate("caseStudy.howIUsedTools")} centered className="mb-8" />
-          <div className="mx-auto mb-8 max-w-[860px] text-center">
+          <SectionHeading title={translate("caseStudy.howIUsedTools")} className="mb-8" />
+          <div className="mb-8 max-w-[860px]">
             <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
               {translate("caseStudy.task4Description")}
             </p>
@@ -7521,7 +7561,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="mx-auto mb-12 max-w-[980px] px-6 py-2 text-center">
               <h3 className="text-center font-inter text-[24px] leading-tight text-[#0e2951]">{translate("caseStudy.tensionHeading")}</h3>
               <div className="mt-6 grid gap-5 text-left md:grid-cols-2">
-                <div className="rounded-[24px] border border-[#f0d3cd] bg-[#fff8f6] p-6 shadow-[0_16px_32px_rgba(200,65,42,0.08)]">
+                <div className="rounded-[24px] border border-[#f0d3cd] bg-white p-6 shadow-[0_16px_32px_rgba(200,65,42,0.08)]">
                   <div className="mb-4 flex items-center gap-3">
                     <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#c8412a] text-[14px] font-semibold text-white">A</span>
                     <p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-[#c8412a]">{translate("caseStudy.experimentA")}</p>
@@ -7542,7 +7582,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                 </div>
 
-                <div className="rounded-[24px] border border-[#d7e8f7] bg-[#f8fbff] p-6 shadow-[0_16px_32px_rgba(17,131,208,0.08)]">
+                <div className="rounded-[24px] border border-[#d7e8f7] bg-white p-6 shadow-[0_16px_32px_rgba(17,131,208,0.08)]">
                   <div className="mb-4 flex items-center gap-3">
                     <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#2a5cb8] text-[14px] font-semibold text-white">B</span>
                     <p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-[#2a5cb8]">{translate("caseStudy.experimentB")}</p>
@@ -7570,45 +7610,24 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {sourceItems.length || sourceEntriesWithOverrides.length ? (
         <section id={caseStudy.slug === "reversetech" ? "rt-sources" : undefined} className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <SectionHeading title={sourcesBlock?.title ?? translate("caseStudy.sources")} centered className="mb-8" />
-          <div className="mx-auto max-w-[900px] space-y-3">
-            {sourceEntriesWithOverrides.length
-              ? sourceEntriesWithOverrides.map((item, index) => (
-                <div key={`${item.title}-${index}`} className="space-y-1">
-                  <p className="font-inter text-[14px] leading-[1.6] text-[#0e2951]">
-                    <span className="font-semibold text-[#0E6FB4]">{index + 1}.</span>{" "}
-                    <a
-                      href={typeof item.url === "string" ? item.url : "#"}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-semibold underline decoration-[#1183D0]/40 underline-offset-3 transition-colors hover:text-[#0E6FB4]"
-                      >
-                        {typeof item.title === "string" ? item.title : ""}
-                      </a>
-                  </p>
-                  <p className="font-inter text-[13px] leading-[1.6] text-[#5c7792]">
-                    {typeof item.description === "string" ? item.description : ""}
-                  </p>
-                  {typeof item.secondaryUrl === "string" && typeof item.secondaryTitle === "string" ? (
-                    <p className="font-inter text-[12px] leading-[1.5] text-[#5c7792]">
-                      <a
-                        href={item.secondaryUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-medium underline decoration-[#1183D0]/40 underline-offset-2 transition-colors hover:text-[#0E6FB4]"
-                      >
-                        {item.secondaryTitle}
-                      </a>
-                    </p>
-                  ) : null}
-                </div>
-              ))
-              : sourceItems.map((item, index) => (
-                  <p key={item} className="font-inter text-[13px] leading-[1.6] text-[#5c7792]">
-                    <span className="font-semibold text-[#0E6FB4]">{index + 1}.</span> {item}
-                  </p>
-                ))}
-          </div>
+          {caseStudy.slug === "reversetech" ? (
+            <details className="group w-full rounded-[20px] border border-[#d7d2d3] bg-white">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-6 py-5 font-inter text-[20px] font-semibold text-[#141114] marker:content-none">
+                {sourcesBlock?.title ?? translate("caseStudy.sources")}
+                <ChevronDown className="size-5 shrink-0 transition-transform group-open:rotate-180" aria-hidden="true" />
+              </summary>
+              <div className="space-y-3 border-t border-[#d7d2d3] px-6 py-5">
+                {sourceList}
+              </div>
+            </details>
+          ) : (
+            <>
+              <SectionHeading title={sourcesBlock?.title ?? translate("caseStudy.sources")} centered className="mb-8" />
+              <div className="mx-auto max-w-[900px] space-y-3">
+                {sourceList}
+              </div>
+            </>
+          )}
         </section>
       ) : null}
 

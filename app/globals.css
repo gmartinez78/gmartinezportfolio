@@ -9,6 +9,47 @@
   mask-image: radial-gradient(ellipse at center, #000 34%, rgb(0 0 0 / 0.72) 62%, transparent 92%);
 }
 
+/* Reverse Tech follows the same editorial palette as the Nayya case study. */
+@layer utilities {
+  [data-case-study="reversetech"] {
+    --ui-color-text-strong: #141114;
+    --ui-color-brand-ink: #141114;
+    --ui-color-text-muted: #5c5960;
+    --ui-color-border-strong: #d7d2d3;
+  }
+
+  [data-case-study="reversetech"] .text-\[\#0e2951\],
+  [data-case-study="reversetech"] .text-\[\#0E6FB4\],
+  [data-case-study="reversetech"] .text-\[\#385b7a\] {
+    color: #141114 !important;
+  }
+
+  [data-case-study="reversetech"] .text-\[\#5c7792\],
+  [data-case-study="reversetech"] .text-\[\#7b93ab\] {
+    color: #5c5960 !important;
+  }
+
+  [data-case-study="reversetech"] .border-\[\#d7e8f7\],
+  [data-case-study="reversetech"] .border-\[\#b8d7ee\],
+  [data-case-study="reversetech"] .border-\[\#edf4fa\],
+  [data-case-study="reversetech"] .border-\[\#e7eef6\] {
+    border-color: #d7d2d3 !important;
+  }
+
+  [data-case-study="reversetech"] .bg-\[\#f8fbff\],
+  [data-case-study="reversetech"] .bg-\[\#eef8ff\] {
+    background-color: #faf8f7 !important;
+  }
+
+  [data-case-study="reversetech"] .bg-\[\#1183D0\] {
+    background-color: #f8df36 !important;
+  }
+
+  [data-case-study="reversetech"] .reverse-tech-switch-active {
+    background-color: #1183d0 !important;
+  }
+}
+
 @keyframes logo-marquee {
   from {
     transform: translateX(0);
