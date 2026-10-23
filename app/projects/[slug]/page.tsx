@@ -67,6 +67,17 @@ export async function generateMetadata({
   const { slug } = await params;
   const caseStudy = (caseStudies as CaseStudyRecord[]).find((study) => study.slug === slug);
 
+  if (slug === LOCKED_NAYYA_PLACEHOLDER_SLUG) {
+    return buildMetadata({
+      title: "Zapiano Paid Traffic Funnel Redesign Case Study",
+      description: "A paid traffic funnel redesign for Zapiano, focused on simplifying the entry offer and improving conversion.",
+      path: `/projects/${slug}`,
+      image: "/images/projects/zapiano/thumbnails/zapiano-thumbnail.png",
+      keywords: ["Zapiano", "paid traffic", "funnel redesign", "conversion design", "case study"],
+      type: "article",
+    });
+  }
+
   if (!caseStudy) {
     return buildMetadata({
       title: "Project Not Found",

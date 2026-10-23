@@ -2060,7 +2060,7 @@ function LocalizedCaseStudyOverview({ caseStudy }: { caseStudy: CaseStudyRecord 
                 {metric.context ? (
                   <p className="mt-6 max-w-[30ch] font-inter text-[18px] leading-[1.45] text-[#5c5960]">{metric.context}</p>
                 ) : null}
-                <div className="relative mt-auto mb-8 flex items-end justify-between gap-2 pt-5">
+                <div className="relative mt-8 mb-8 flex items-end justify-between gap-2 pt-5">
                   <p className="font-inter text-[clamp(2.1rem,3.3vw,4rem)] font-bold leading-[0.88] tracking-[-0.065em] text-[#090909]">
                     {metric.value}
                   </p>
@@ -3734,7 +3734,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             {overviewBlock.body}
           </p>
         ) : null}
-        {isNayyaCaseStudy || caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "protecta" || caseStudy.slug === "reversetech" ? (
+        {isNayyaCaseStudy || caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG || caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "protecta" || caseStudy.slug === "reversetech" ? (
           <>
             <p className="mt-6 font-inter text-[17px] leading-[1.7] text-[#3c3e3f]">
               {caseStudy.slug === "protecta"
@@ -3834,6 +3834,48 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           )}
         </div>
       </section>
+      ) : null}
+
+      {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG ? (
+        <section className="mx-auto max-w-[1200px] bg-[#faf8f7] px-6 py-10 md:px-10 xl:px-20">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+            <div>
+              <div className="mb-10">
+                <h2 className="font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">The <span className="font-playfair font-normal italic">problem</span></h2>
+              </div>
+              <div className="space-y-6 font-inter text-[16px] leading-[1.7] text-[#5c5960]">
+                <p>Zapiano is a Swiss online piano course platform for adults, founded by piano teacher Sven Haefliger. Meta campaigns were driving healthy reach (1.04M reach, 2.85M impressions), but paid landing conversion was stuck at 6% and most visitors bounced before any conversion event.</p>
+                <p>The existing page led with three Club subscription tiers side-by-side, dense feature blocks, and three competing CTAs. Cold traffic hit the highest-priced tier within the first scroll and left.</p>
+                <div className="pt-2">
+                  <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0E6FB4]">Context</p>
+                  <p>Lift paid landing conversion and reduce CAC while working within two real constraints.</p>
+                  <p className="mt-4">The site runs on Kajabi, so any redesign had to be modular and assemblable from existing content blocks. No custom engineering per variant.</p>
+                  <p className="mt-4">The page had to serve two distinct user types Marketing identified in the ad funnel: complete beginners and adults returning to piano after years away. Same product, different motivations, same landing page.</p>
+                  <p className="mt-4">The goal Marketing handed me was simple: more conversions, lower cost per acquisition, same ad spend.</p>
+                </div>
+                <div className="pt-2">
+                  <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0E6FB4]">Success Metrics</p>
+                  <ul className="list-disc space-y-2 pl-5">
+                    <li>Increase paid landing conversion without increasing ad spend.</li>
+                    <li>Reduce CAC enough to make scale more efficient.</li>
+                    <li>Create a modular Kajabi page structure Marketing can keep testing post-launch.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="grid gap-4">
+              {problemMetrics.map((metric, index) => (
+                <Card key={`zapiano-problem-${metric.label}-${metric.value}`} className="relative min-h-[190px] overflow-hidden rounded-[20px] border-0 bg-white shadow-[0_14px_30px_rgba(29,22,36,0.10)]">
+                  <span aria-hidden="true" className={`absolute right-0 top-0 size-[74px] rounded-bl-full ${["bg-[#f8df36]", "bg-[#c7e8f7]", "bg-[#f3b4ed]"][index % 3]}`} />
+                  <CardContent className="px-7 py-7">
+                    <p className="relative text-[30px] font-bold leading-none text-[#141114]">{metric.value}</p>
+                    <p className="relative mt-4 text-[16px] leading-[1.625em] text-[#5c5960]">{metric.label}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
       ) : null}
 
       {caseStudy.slug === "protecta" && false ? (
@@ -4570,7 +4612,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {visibleStoryBlocks.length ? (
+      {visibleStoryBlocks.length && caseStudy.slug !== CONFIDENTIAL_PLACEHOLDER_SLUG ? (
         <section id="rt-problem" className={`scroll-mt-24 bg-transparent py-10 ${usesNayyaVisualStyle ? `w-full ${caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "protecta" ? "bg-white" : "bg-[#faf8f7]"}` : "mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20"}`}>
           <div className={usesNayyaVisualStyle ? "mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20" : ""}>
           <div className={caseStudy.slug === "reversetech" ? "max-w-[860px]" : caseStudy.slug === "protecta" ? "max-w-[900px]" : "grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start"}>
