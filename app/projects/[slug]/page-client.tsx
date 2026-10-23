@@ -2397,6 +2397,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [experimentModalZoom, setExperimentModalZoom] = useState(1);
   const [experimentModalBaseHeight, setExperimentModalBaseHeight] = useState(0);
   const [prototypeIndex, setPrototypeIndex] = useState(0);
+  const [calendarKeeperPhase, setCalendarKeeperPhase] = useState<"empathize" | "define" | "ideate" | "prototype">("empathize");
+  const [showStickyCalendarTabs, setShowStickyCalendarTabs] = useState(false);
   const [reversetechTaskTab, setReversetechTaskTab] = useState<"task1" | "task2" | "task3" | "task4" | "task5">("task1");
   const [reversetechComparisonTab, setReversetechComparisonTab] = useState<"before" | "after">("after");
   const [showStickyTaskTabs, setShowStickyTaskTabs] = useState(false);
@@ -2408,6 +2410,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [expandedUserNeed, setExpandedUserNeed] = useState<string | null>(null);
   const [expandedHmwIndex, setExpandedHmwIndex] = useState<number | null>(0);
   const reversetechTaskTabsRef = useRef<HTMLElement | null>(null);
+  const calendarKeeperTabsRef = useRef<HTMLDivElement | null>(null);
   const experimentModalMockupRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -2421,7 +2424,18 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
     setActiveExperimentModal(null);
     setExperimentModalZoom(1);
     setIsReverseTechTaskMenuOpen(false);
+    setCalendarKeeperPhase("empathize");
+    setShowStickyCalendarTabs(false);
   }, [caseStudy?.slug]);
+
+  const handleCalendarKeeperPhaseChange = (phase: "empathize" | "define" | "ideate" | "prototype") => {
+    setCalendarKeeperPhase(phase);
+    window.setTimeout(() => {
+      document.getElementById(`calendar-${phase}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  };
+
+  const calendarKeeperPhases = ["empathize", "define", "ideate", "prototype"] as const;
 
   const toggleHypothesis = (hypothesisId: "content-variants" | "cta-variants" | "rt-hypothesis-2" | "rt-hypothesis-4") => {
     setOpenHypothesisIds((current) =>
@@ -3011,6 +3025,26 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       window.removeEventListener("resize", updateDimensions);
     };
   }, [activeExperimentModal]);
+
+  useEffect(() => {
+    if (caseStudy?.slug !== "calendar-keeper") {
+      setShowStickyCalendarTabs(false);
+      return;
+    }
+
+    const updateStickyCalendarTabs = () => {
+      const tabsElement = calendarKeeperTabsRef.current;
+      setShowStickyCalendarTabs(Boolean(tabsElement && tabsElement.getBoundingClientRect().top <= REVERSETECH_STICKY_HEADER_OFFSET));
+    };
+
+    updateStickyCalendarTabs();
+    window.addEventListener("scroll", updateStickyCalendarTabs, { passive: true });
+    window.addEventListener("resize", updateStickyCalendarTabs);
+    return () => {
+      window.removeEventListener("scroll", updateStickyCalendarTabs);
+      window.removeEventListener("resize", updateStickyCalendarTabs);
+    };
+  }, [caseStudy?.slug]);
 
   useEffect(() => {
     if (caseStudy?.slug !== "reversetech") {
@@ -3915,8 +3949,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
 
       {caseStudy.slug === "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
-          <div className="mx-auto max-w-[860px] text-center space-y-6">
-            <h2 className="mx-auto max-w-[720px] font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+          <div className="mx-auto max-w-[860px] space-y-6 text-left">
+            <h2 className="max-w-[720px] font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
               {renderNayyaEditorialTitle("The problem")}
             </h2>
             <p className="text-[17px] leading-[1.7] text-[#5c5960]">For this case, I was tasked to design a new appointment scheduling system for clinics and medical practices in France and Germany. My role was to understand the market, identify the biggest opportunities and pain points, and define an initial product direction that could compete with existing solutions.</p>
@@ -3951,6 +3985,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
+      {caseStudy.slug === "calendar-keeper" && showStickyCalendarTabs ? (
+        <div className="fixed inset-x-0 top-[88px] z-40 border-b border-[#d7d2d3] bg-white/95 backdrop-blur lg:top-0">
+          <div className="mx-auto flex max-w-[900px] flex-wrap items-end justify-center px-6 md:px-10">
+            {calendarKeeperPhases.map((phase) => (
+              <button key={`sticky-${phase}`} type="button" onClick={() => handleCalendarKeeperPhaseChange(phase)} className={`relative px-3 py-3 text-center transition-colors sm:px-4 ${calendarKeeperPhase === phase ? "text-[#0E6FB4]" : "text-[#5c5960] hover:text-[#0E6FB4]"}`}>
+                <span className="font-inter text-[12px] font-semibold uppercase tracking-[0.16em]">{phase}</span>
+                {calendarKeeperPhase === phase ? <span className="absolute inset-x-0 bottom-0 h-1 bg-[#0E6FB4]" /> : null}
+              </button>
+            ))}
+          </div>
+        </div>
+      ) : null}
+
       {caseStudy.slug !== "flock-accessibility-system" && caseStudy.slug !== "reversetech" && caseStudy.slug !== "protecta" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           {isNayyaCaseStudy ? (
@@ -3980,7 +4027,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           ) : (
           <>
           {caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "calendar-keeper" ? (
-            <h2 className="mb-12 text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
+            <h2 className={`text-center font-inter font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114] ${caseStudy.slug === "calendar-keeper" ? "mb-8 text-[clamp(1.5rem,2.2vw,2rem)]" : "mb-12 text-[clamp(1.75rem,2.6vw,2.5rem)]"}`}>
               {methodologyName}{" "}
               <span className="block font-playfair font-normal italic">Methodology</span>
             </h2>
@@ -4042,7 +4089,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             </>
           ) : (
-          <div className={caseStudy.slug === "calendar-keeper" ? "mx-auto grid max-w-[1000px] gap-4 md:grid-cols-4" : "grid gap-4 md:grid-cols-5"}>
+          <div ref={caseStudy.slug === "calendar-keeper" ? calendarKeeperTabsRef : undefined} className={caseStudy.slug === "calendar-keeper" ? "mx-auto flex max-w-[900px] flex-wrap items-end justify-center border-b border-[#d7d2d3]" : "grid gap-4 md:grid-cols-5"}>
             {caseStudy.methodology.steps.map((step, index) => (
               ["nayya-ai-benefits", "i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG].includes(caseStudy.slug) ? (
                 <div key={step.step} className="flex flex-col gap-4">
@@ -4074,16 +4121,28 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                 </div>
               ) : (
-                <div
-                  key={step.step}
-                  className={`flex flex-col rounded-[20px] border border-[#d7d2d3] bg-white p-6 ${caseStudy.slug === "calendar-keeper" ? "text-center" : ""}`}
-                >
-                  <span className="font-inter text-[13px] font-semibold tracking-[0.18em] text-[#0E6FB4]">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <p className="mt-3 font-inter text-[16px] font-semibold text-[#141114]">{step.label}</p>
-                  <p className="mt-2 font-inter text-[14px] leading-[1.6] text-[#5c5960]">{step.description}</p>
-                </div>
+                caseStudy.slug === "calendar-keeper" ? (
+                  <button
+                    key={step.step}
+                    type="button"
+                    onClick={() => handleCalendarKeeperPhaseChange((['empathize', 'define', 'ideate', 'prototype'] as const)[index])}
+                    aria-current={calendarKeeperPhase === (['empathize', 'define', 'ideate', 'prototype'] as const)[index] ? "step" : undefined}
+                    className={`relative px-3 py-3 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0E6FB4] focus-visible:ring-offset-4 sm:px-4 ${
+                      calendarKeeperPhase === (['empathize', 'define', 'ideate', 'prototype'] as const)[index]
+                        ? "text-[#0E6FB4]"
+                        : "text-[#5c5960] hover:text-[#0E6FB4]"
+                    }`}
+                  >
+                    <span className="font-inter text-[12px] font-semibold uppercase tracking-[0.16em]">{step.label}</span>
+                    {calendarKeeperPhase === (['empathize', 'define', 'ideate', 'prototype'] as const)[index] ? <span className="absolute inset-x-0 -bottom-px h-1 bg-[#0E6FB4]" /> : null}
+                  </button>
+                ) : (
+                  <div key={step.step} className="flex flex-col rounded-[20px] border border-[#d7d2d3] bg-white p-6">
+                    <span className="font-inter text-[13px] font-semibold tracking-[0.18em] text-[#0E6FB4]">{String(index + 1).padStart(2, "0")}</span>
+                    <p className="mt-3 font-inter text-[16px] font-semibold text-[#141114]">{step.label}</p>
+                    <p className="mt-2 font-inter text-[14px] leading-[1.6] text-[#5c5960]">{step.description}</p>
+                  </div>
+                )
               )
             ))}
           </div>
@@ -4625,17 +4684,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : (
         <>
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        <section id="calendar-empathize" className={`mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20 ${calendarKeeperPhase === "empathize" ? "" : "hidden"}`}>
           <div className="mx-auto max-w-[860px]">
             <div className="mb-12">
               <p className="text-center text-[12px] font-semibold uppercase tracking-[0.22em] text-[#0E6FB4]">Research</p>
               <h2 className="mx-auto mt-3 max-w-[760px] text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
                 {renderNayyaEditorialTitle("Behind the schedule")}
               </h2>
-              <div className="mx-auto mb-6 mt-5 max-w-[760px] space-y-5 text-center text-[17px] leading-[1.7] text-[#5c5960]">
-                <p>I started by conducting a strategic research phase to understand the healthcare ecosystem in France and Germany. I analyzed the market, competitors, regulations, and care delivery models to identify the biggest opportunities and constraints. I also synthesized stakeholder and user insights to understand the needs of patients, medical assistants, doctors, and clinic managers.</p>
-                <p>Based on this research, I prioritized the primary users, defined personas, problem statements, and user journeys, and identified the highest-impact product direction. This process allowed me to move from a broad market opportunity to a focused product strategy and user experience grounded in both business goals and user needs.</p>
-              </div>
+              <p className="mx-auto mb-6 mt-5 max-w-[760px] text-center text-[17px] leading-[1.7] text-[#5c5960]">Research across France and Germany narrowed a broad scheduling opportunity to one priority: help clinical staff keep a trustworthy schedule while giving returning patients a reliable self-service path.</p>
               <p className="text-center text-[15px] leading-[1.6] text-[#5c5960]">
                 <a href="https://docs.google.com/document/d/1f8IdPBMvMJf_yqPTCc1hNMkU1EpcaO1OIUKFSGaVCLk/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-[#0E6FB4] hover:text-[#0e5a8a] underline">
                   View detailed research insights →
@@ -4646,13 +4702,11 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             <div className="mb-12">
               <div className="flex flex-col gap-8">
                 <div className="order-2">
-                  <h3 className="mb-8 text-center font-inter text-[clamp(1.5rem,2.2vw,2rem)] font-semibold leading-[1.15] tracking-[-0.03em] text-[#141114]">Market Opportunity & Key Insights</h3>
+                  <h3 className="mb-8 text-center font-inter text-[clamp(1.5rem,2.2vw,2rem)] font-semibold leading-[1.15] tracking-[-0.03em] text-[#141114]">What shaped the direction</h3>
                   <ul className="space-y-4 text-[17px] leading-[1.7] text-[#5c5960]">
-                    <li><strong>Germany presents the strongest market opportunity.</strong> While Doctolib has already become the market leader in France by combining appointment booking with practice management, its German practice management solution is still in its early stages, creating an opportunity to enter the market before adoption accelerates.</li>
-                    <li><strong>User reviews revealed that the biggest barrier to switching is trust, not functionality.</strong> The most common concern was data migration, with practices fearing they would lose or corrupt patient data when changing systems. This made seamless migration a higher priority than introducing additional scheduling features.</li>
-                    <li><strong>User feedback consistently highlighted usability as a pain point.</strong> Healthcare professionals frequently mentioned complex workflows, poor onboarding, and difficult day-to-day interactions as reasons for considering alternative solutions, making usability a key opportunity for differentiation.</li>
-                    <li><strong>Samedi is a stronger competitor than initially expected.</strong> It already offers advanced scheduling capabilities, integrations, and compliance features, so differentiation should focus on usability, self-service onboarding, and seamless migration rather than feature parity.</li>
-                    <li><strong>Regulatory compliance is a product requirement, not a feature.</strong> Both Germany and France have strict healthcare regulations, making security, data protection, and certification essential from day one rather than future roadmap items.</li>
+                    <li><strong>Germany was the entry opportunity.</strong> France was already more established; Germany left a narrower opening for a practice-management offer.</li>
+                    <li><strong>Migration trust mattered more than feature parity.</strong> Practices feared losing patient data, so a credible migration path had to precede additional scheduling features.</li>
+                    <li><strong>The product needed to earn its place in daily operations.</strong> Compliance was table stakes; clearer workflows, reliable availability, and recovery from failures were the meaningful design opportunities.</li>
                   </ul>
                 </div>
 
@@ -4732,17 +4786,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   <div className="mt-4 p-4 bg-[#f0fdf4] border-l-4 border-[#16a34a] rounded">
                     <p className="text-[15px] leading-[1.7] text-[#5c5960]"><strong>Key Finding:</strong> Data migration is the real differentiator, 44.8% of German practices fear data won't migrate cleanly. This is the #1 blocker to switching, making it a higher initial priority than additional compliance certifications or payment integrations.</p>
                   </div>
-                  <p className="mt-5 text-[14px] leading-[1.7] text-[#5c5960]">Starting with this comparison of the selected competitors, I used their product information, help centers, app listings, and recurring themes in Google Play and Apple App Store reviews to identify the gaps and friction points outlined in the Market Opportunity & Key Insights below.</p>
                 </div>
               </div>
             </div>
 
             <div className="mb-12">
               <h3 className="mb-8 text-center font-inter text-[clamp(1.5rem,2.2vw,2rem)] font-semibold leading-[1.15] tracking-[-0.03em] text-[#141114]">User Needs</h3>
-              <div className="mb-8 space-y-5 text-center text-[17px] leading-[1.7] text-[#5c5960]">
-                <p>Through the research, I identified five key user groups. I prioritized clinical staff (medical assistants) and returning patients because they represented the highest business impact and had the strongest research evidence.</p>
-                <p>Focusing on these two personas allowed me to address the core scheduling challenges in both Germany and France while keeping the initial scope focused on the users who interact with the system most frequently.</p>
-              </div>
+              <p className="mx-auto mb-8 max-w-[700px] text-center text-[17px] leading-[1.7] text-[#5c5960]">Two groups determined the first release: the people managing the schedule and the returning patients who need to act without adding to their workload.</p>
 
               <div className="space-y-3">
                 <div className="mb-6 p-4 bg-[#faf8f7] border-l-4 border-[#1183D0] rounded">
@@ -4752,16 +4802,16 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 {([
                   {
                     id: "receptionists",
-                    title: "1. 🔵 Clinical Staff / Medical Assistants",
+                    title: "1. Clinical staff / medical assistants",
                     needs: [
-                      "Research revealed that clinical workflows differ significantly between Germany and France. In Germany, medical assistants are highly trained power users who manage both clinical and administrative tasks, requiring a collaborative, delegation-friendly scheduling experience. In contrast, French practices are more doctor-centered, with limited assistant support. Across both markets, staff also reported high call volumes, manual scheduling work, and inefficient workflows, highlighting the need for a more reliable and efficient scheduling system."
+                      "They balance calls, changes, and clinical work. The scheduling experience needed to make availability, constraints, and recovery clear without adding another coordination layer."
                     ]
                   },
                   {
                     id: "patients",
-                    title: "2. 🔵 Returning Patients",
+                    title: "2. Returning patients",
                     needs: [
-                      "Research showed that returning patients want a fast, low-effort booking experience with minimal personal data requirements. Common frustrations included lengthy registration forms, technical errors, unavailable appointment slots, and inconsistent practitioner information, all of which reduced trust and increased abandonment. These insights highlighted the importance of providing a simple, transparent, and reliable booking experience that gives patients confidence their appointment is successfully confirmed."
+                      "They need to find, confirm, or change a familiar appointment quickly. Clear availability and durable confirmation reduce avoidable calls back to the practice."
                     ]
                   },
                 ] as CalendarKeeperUserNeed[]).map((userType) => (
@@ -4801,7 +4851,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </div>
                 ))}
 
-                <div className="mt-8 pt-6 border-t border-[#d7d2d3]">
+                <div className="mt-8 border-t border-[#d7d2d3] pt-6">
                   <p className="text-[14px] font-semibold text-[#141114] mb-4">Secondary Users</p>
                   {([
                     {
@@ -4867,22 +4917,20 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        <section className={`mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20 ${caseStudy.slug === "calendar-keeper" && calendarKeeperPhase !== "empathize" ? "hidden" : ""}`}>
           <div className="mx-auto max-w-[860px]">
-            <h3 className="mb-8 text-center font-inter text-[clamp(1.5rem,2.2vw,2rem)] font-semibold leading-[1.15] tracking-[-0.03em] text-[#141114]">Research Takeaway</h3>
-            <p className="text-center text-[17px] leading-[1.7] text-[#5c5960]">The research gave me a clear understanding of users' needs, business opportunities, and market constraints. I found that the priority was creating a scheduling experience that was efficient, reliable, and easy to use for healthcare staff. These insights helped me prioritize the target users, define the product strategy, and build proto-personas that guided the rest of the design process.</p>
+            <h3 className="mb-4 text-center font-inter text-[clamp(1.5rem,2.2vw,2rem)] font-semibold leading-[1.15] tracking-[-0.03em] text-[#141114]">Research takeaway</h3>
+            <p className="text-center text-[17px] leading-[1.7] text-[#5c5960]">The first release should make scheduling dependable for staff before expanding the feature set.</p>
           </div>
         </section>
 
         {caseStudy.slug === "calendar-keeper" ? (
-          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <section id="calendar-define" className={`mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20 ${calendarKeeperPhase === "define" ? "" : "hidden"}`}>
             <div className="mx-auto max-w-[1080px]">
               <h2 className="mx-auto mt-3 max-w-[720px] text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
                 {renderNayyaEditorialTitle("A day for the Calendar Keeper")}
               </h2>
-              <p className="mx-auto mb-8 mt-5 max-w-[720px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">
-                The journey shows how routine requests compound into operational pressure for a medical assistant managing a clinic schedule. Each break in the flow creates rework, interrupts care, or puts the day&apos;s capacity at risk.
-              </p>
+              <p className="mx-auto mb-8 mt-5 max-w-[720px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">Five moments show where unreliable availability turns routine scheduling into rework and lost clinical capacity.</p>
 
               <div className="overflow-x-auto rounded-[24px] border border-[#d7d2d3] bg-[#faf8f7] shadow-[0_12px_32px_rgba(20,17,20,0.06)]">
                 <div className="min-w-[920px] p-5 md:p-7">
@@ -4958,14 +5006,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         ) : null}
 
         {caseStudy.slug === "calendar-keeper" ? (
-          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <section className={`mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20 ${calendarKeeperPhase === "define" ? "" : "hidden"}`}>
             <div className="mx-auto max-w-[1080px]">
               <h2 className="mx-auto mt-3 max-w-[720px] text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
                 {renderNayyaEditorialTitle("A return visit, from search to confirmation")}
               </h2>
-              <p className="mx-auto mb-8 mt-5 max-w-[720px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">
-                For returning patients, an appointment should be a quick, familiar task. Today, uncertainty at each step often sends a routine rebooking back to the phone line, adding pressure to the clinic team it was meant to help.
-              </p>
+              <p className="mx-auto mb-8 mt-5 max-w-[720px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">A returning patient needs a fast, familiar path. Uncertainty at any step turns a routine change into another call to the practice.</p>
 
               <div className="overflow-x-auto rounded-[24px] border border-[#d7d2d3] bg-[#faf8f7] shadow-[0_12px_32px_rgba(20,17,20,0.06)]">
                 <div className="min-w-[920px] p-5 md:p-7">
@@ -5041,14 +5087,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         ) : null}
 
         {caseStudy.slug === "calendar-keeper" ? (
-          <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+          <section id="calendar-ideate" className={`mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20 ${calendarKeeperPhase === "ideate" ? "" : "hidden"}`}>
             <div className="mx-auto max-w-[1080px]">
               <h2 className="mx-auto mt-3 max-w-[760px] text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
                 {renderNayyaEditorialTitle("How might we make the schedule trustworthy?")}
               </h2>
-              <p className="mx-auto mb-8 mt-5 max-w-[760px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">
-                The opportunity is not another booking interface. It is a resource-aware schedule that stays understandable and usable when the underlying infrastructure does not.
-              </p>
+              <p className="mx-auto mb-8 mt-5 max-w-[760px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">The direction was a resource-aware schedule that remains understandable when the underlying infrastructure does not.</p>
 
               <div className="mx-auto max-w-[880px] space-y-3">
                 {[
@@ -5086,7 +5130,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     >
                       <span className="shrink-0 text-[11px] font-semibold tracking-[0.18em] text-[#0E6FB4]">HMW {String(index + 1).padStart(2, "0")}</span>
                       <h3 className="flex-1 font-inter text-[17px] font-semibold leading-[1.35] text-[#141114]">{item.question}</h3>
-                      <ChevronRight className={`h-5 w-5 shrink-0 text-[#0E6FB4] transition-transform ${expandedHmwIndex === index ? "rotate-90" : ""}`} />
+                      <ChevronRight className={`h-5 w-5 shrink-0 text-[#0E6FB4] transition-transform ${expandedHmwIndex === index ? "rotate-90" : "-rotate-90"}`} />
                     </button>
                     {expandedHmwIndex === index ? <div className="border-t border-[#d7d2d3] bg-white px-5 py-4"><p className="text-[14px] leading-[1.65] text-[#5c5960]">{item.answer}</p></div> : null}
                   </article>
@@ -5144,14 +5188,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   </article>
                 </div>
               </div>
-              <div className="mx-auto mt-8 max-w-[820px] space-y-4 text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">
-                <p>
-                  The design direction is a scheduling experience that feels clear, dependable, and useful for both staff and returning patients. The interface simplifies each decision by keeping availability, visit requirements, and the next best action visible at the moment they matter.
-                </p>
-                <p>
-                  The low-fi flows establish a calendar-led experience with clear status signals and contextual action panels. Staff can see whether the schedule is healthy, resolve exceptions without losing their place, and keep appointments moving; patients can book, confirm, and manage a familiar visit without breaking the flow or returning to the phone.
-                </p>
-              </div>
+              <p className="mx-auto mt-8 max-w-[820px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">The low-fi flows keep availability, constraints, and the next action visible: staff can resolve exceptions without losing context, while patients can complete routine changes without returning to the phone.</p>
             </div>
           </section>
         ) : null}
@@ -7881,7 +7918,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {caseStudy.slug === "calendar-keeper" ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        <section className={`mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20 ${calendarKeeperPhase === "ideate" ? "" : "hidden"}`}>
           <h2 className="mx-auto mt-3 max-w-[760px] text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
             {renderNayyaEditorialTitle("How the scheduling service works together")}
           </h2>
@@ -7893,26 +7930,22 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {caseStudy.slug === "calendar-keeper" ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 xl:px-20">
+        <section id="calendar-prototype" className={`mx-auto max-w-[1200px] scroll-mt-24 px-6 py-16 md:px-10 xl:px-20 ${calendarKeeperPhase === "prototype" ? "" : "hidden"}`}>
           <h2 className="mx-auto mt-3 max-w-[720px] text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
             {renderNayyaEditorialTitle("Resource-aware scheduling")}
           </h2>
-          <p className="mx-auto mb-10 mt-5 max-w-[720px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">
-            One product with three connected layers: a shared resource-aware scheduling core, a Calendar Keeper console, and a deliberately thin returning-patient surface. Two entrances adapt the experience to the practice shape, not the country.
-          </p>
+          <p className="mx-auto mb-10 mt-5 max-w-[720px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">A shared scheduling core supports a staff console and a light returning-patient path, adapting to practice shape rather than country.</p>
           <CalendarKeeperPrototypeViews />
         </section>
       ) : null}
 
       {caseStudy.slug === "calendar-keeper" ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        <section className={`mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20 ${calendarKeeperPhase === "prototype" ? "" : "hidden"}`}>
           <div className="mx-auto max-w-[1080px]">
             <h2 className="mx-auto mt-3 max-w-[780px] text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
               {renderNayyaEditorialTitle("How we would know it is working")}
             </h2>
-            <p className="mx-auto mt-5 max-w-[780px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">
-              This is a proposed direction, not a claimed outcome. A pilot would establish a baseline first, then measure whether the new scheduling service reduces coordination work while protecting patient confidence and clinical capacity.
-            </p>
+            <p className="mx-auto mt-5 max-w-[780px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">A pilot would establish a baseline, then test whether the service reduces coordination work while protecting patient confidence and clinical capacity.</p>
 
             <div className="mt-10 grid gap-4 md:grid-cols-2">
               {[
@@ -7954,14 +7987,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {caseStudy.slug === "calendar-keeper" ? (
-        <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
+        <section className={`mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20 ${calendarKeeperPhase === "prototype" ? "" : "hidden"}`}>
           <div className="mx-auto max-w-[1080px]">
             <h2 className="mx-auto mt-3 max-w-[780px] text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
               {renderNayyaEditorialTitle("A schedule the clinic can keep trusting")}
             </h2>
-            <p className="mx-auto mt-5 max-w-[780px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">
-              The proposed experience treats scheduling as a coordination system: it protects clinical capacity by reserving the right resources together, keeps work moving during outages, and gives patients a dependable self-service path. The prototype establishes the core service; the next steps extend that reliability around the clinic.
-            </p>
+            <p className="mx-auto mt-5 max-w-[780px] text-center font-inter text-[17px] leading-[1.7] text-[#5c5960]">The prototype establishes reliable core scheduling; these next steps extend that reliability across different practice models.</p>
 
             <div className="mt-10 grid gap-4 md:grid-cols-2">
               {[

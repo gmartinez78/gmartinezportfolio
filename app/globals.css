@@ -48,6 +48,42 @@
   [data-case-study="reversetech"] .reverse-tech-switch-active {
     background-color: #1183d0 !important;
   }
+
+  /* Calendar Keeper uses the same warm editorial foundations as Nayya. */
+  [data-case-study="calendar-keeper"] {
+    --ui-color-text-strong: #141114;
+    --ui-color-text-muted: #5c5960;
+    --ui-color-border-strong: #d7d2d3;
+  }
+
+  [data-case-study="calendar-keeper"] .text-\[\#0e2951\],
+  [data-case-study="calendar-keeper"] .text-\[\#0E6FB4\],
+  [data-case-study="calendar-keeper"] .text-\[\#385b7a\] {
+    color: #141114 !important;
+  }
+
+  [data-case-study="calendar-keeper"] .text-\[\#5c7792\],
+  [data-case-study="calendar-keeper"] .text-\[\#7b93ab\] {
+    color: #5c5960 !important;
+  }
+
+  [data-case-study="calendar-keeper"] .border-\[\#d7e8f7\],
+  [data-case-study="calendar-keeper"] .border-\[\#b8d7ee\],
+  [data-case-study="calendar-keeper"] .border-\[\#edf4fa\] {
+    border-color: #d7d2d3 !important;
+  }
+
+  [data-case-study="calendar-keeper"] .bg-\[\#f8fbff\],
+  [data-case-study="calendar-keeper"] .bg-\[\#eef8ff\],
+  [data-case-study="calendar-keeper"] .bg-\[\#f5faff\] {
+    background-color: #faf8f7 !important;
+  }
+
+  [data-case-study="calendar-keeper"] .bg-\[\#1183D0\],
+  [data-case-study="calendar-keeper"] .bg-\[\#0E6FB4\],
+  [data-case-study="calendar-keeper"] .bg-\[\#f8df36\] {
+    background-color: #1183d0 !important;
+  }
 }
 
 @keyframes logo-marquee {
