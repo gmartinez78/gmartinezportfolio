@@ -50,12 +50,12 @@ function createLockedPlaceholderEn(order: number): CaseStudyRecord {
     my_role: ["Sr. Product Designer", "Design", "Research", "Strategy"],
     problem: {
       admin_pain_points: [
-        "Zapiano is a Swiss online piano course platform for adults, founded by piano teacher Sven Haefliger. Meta campaigns were driving healthy reach (1.04M reach, 2.85M impressions), but paid landing conversion was stuck at 6% and most visitors bounced before any conversion event.",
-        "The existing page led with three Club subscription tiers side-by-side, dense feature blocks, and three competing CTAs. Cold traffic hit the highest-priced tier within the first scroll and left.",
+        "Zapiano reached 1.04M people and generated 2.85M impressions, but paid landing conversion was stuck at 6% and most visitors left before converting.",
+        "The landing page led with three Club tiers, dense feature blocks, and competing CTAs. Cold traffic met the highest-priced commitment before it understood the product.",
       ],
       user_pain_points: [
-        "Cold paid visitors hit the highest-priced tier within the first scroll, creating friction before trust or relevance had been established.",
-        "Beginners and adult returners were treated as the same audience, even though they arrived with different motivations and needed different cues.",
+        "Cold visitors faced a high-cost decision before trust, relevance, or product value was clear.",
+        "Beginners and returning adults had different motivations but were given the same path and message.",
       ],
     },
     constraints: [],
@@ -64,28 +64,33 @@ function createLockedPlaceholderEn(order: number): CaseStudyRecord {
       steps: [
         {
           step: 1,
-          label: "Audit the funnel",
-          description: "Mapped Meta campaign data against Google Analytics flow reports to locate the drop-off. The pattern was clear: visitors scrolled past the hero, hit the EUR5220 Gold tier within seconds, and exited. The page was answering the wrong question first: is this about years of cost, or whether this is for me and how I start?",
+          label: "Audit",
+          description: "Mapped Meta and Google Analytics data to locate the drop-off. Visitors reached the EUR5,220 Gold tier within seconds and exited. The page answered the wrong question first: long-term cost instead of how to start.",
         },
         {
           step: 2,
-          label: "Benchmark the category",
+          label: "Benchmark",
           description: "",
         },
         {
           step: 3,
-          label: "Reframe the landing",
-          description: "The Club tiers were the real conversion blocker, so I recommended killing them as the cold-traffic entry, leading with the €9 Introduction Course, and upselling to PianoStarter at €29/month after the intro.\n\nUsers did not need three options to compare, they needed one clear next thing to do. The team approved the change, and I redesigned the landing around the new entry:\n\n- beginner vs returner segmentation\n- one primary CTA for the €9 intro\n- email gate below social proof\n- community credibility in the fold instead of three competing pricing blocks",
+          label: "Reframe & Build",
+          description: "The Club tiers were the conversion blocker. I replaced them as the cold-traffic entry with a €9 Introduction Course and a later PianoStarter upsell at €29/month.\n\nThe new landing focused on:\n\n- beginner and returner paths\n- one primary CTA\n- an email gate below social proof\n- visible community credibility",
         },
         {
           step: 4,
-          label: "Build modular components",
-          description: "The redesign combined a funnel audit, competitor benchmark, offer reframe, modular landing-page redesign, and post-launch testing. Reduce the cognitive cost of the first yes by leading with a single low-friction paid entry instead of multiple long-term commitments.\n\nMake founder credibility, beginner-vs-returner relevance, and community proof visible early enough to help cold traffic orient before price friction hits. Design the page as a modular no-code system Marketing could keep testing inside Kajabi without needing engineering for every iteration.",
+          label: "Build",
+          description: "Built a modular Kajabi system around one low-friction paid entry. The structure made founder credibility, audience relevance, and community proof visible before price friction, while allowing Marketing to keep testing without engineering support.",
         },
         {
           step: 5,
-          label: "A/B test social proof",
-          description: "Variant A used physical community proof through annual Zapiano member meetup photos in Switzerland and Germany. Variant B used digital community proof through mobile app screenshots, member feed views, and in-product social proof.",
+          label: "Test",
+          description: "Tested physical meetup photography against digital product proof. The digital variant gave cold visitors a clearer preview of what they were buying.",
+        },
+        {
+          step: 6,
+          label: "Impact",
+          description: "The redesigned funnel replaced a long-term Club decision with a €9 first step. The campaign snapshot recorded 1.04M reach, 2.85M impressions, 14,885 purchases, and a blended $1.79 cost per result, while preserving a modular Kajabi system for continued testing.",
         },
       ],
     },
@@ -242,24 +247,30 @@ function createLockedPlaceholderEs(order: number): CaseStudyRecord {
           description:
             "Crucé los datos de las campañas de Meta con los informes de flujo de Google Analytics para localizar el abandono. El patrón era claro: los visitantes pasaban el hero, llegaban al nivel Gold de 5.220 € en segundos y se marchaban. La página respondía primero a la pregunta equivocada: ¿esto va del coste durante años, o de si esto es para mí y cómo empiezo?",
         },
-        { step: 2, label: "Analizar la categoría", description: "" },
+        { step: 2, label: "Benchmark", description: "" },
         {
           step: 3,
-          label: "Replantear la landing",
+          label: "Replantear y construir",
           description:
             "Los niveles del Club eran el verdadero bloqueo de conversión, así que recomendé eliminarlos como puerta de entrada para tráfico frío, liderar con el Curso de Introducción de 9 €, y hacer upsell a PianoStarter a 29 €/mes tras la introducción.\n\nLos usuarios no necesitaban tres opciones para comparar, necesitaban una única acción clara. El equipo aprobó el cambio y rediseñé la landing en torno a la nueva entrada:\n\n- segmentación entre principiante y quien retoma el piano\n- un único CTA principal para la introducción de 9 €\n- captura de email tras la prueba social\n- credibilidad de comunidad visible desde el inicio en lugar de tres bloques de precios compitiendo",
         },
         {
           step: 4,
-          label: "Construir componentes modulares",
+          label: "Construir",
           description:
             "El rediseño combinó una auditoría de embudo, un benchmark de competidores, un replanteamiento de la oferta, un rediseño modular de la landing page y pruebas post-lanzamiento. Reducir el coste cognitivo del primer sí liderando con una única entrada de pago de baja fricción en lugar de varios compromisos a largo plazo.\n\nHacer visibles pronto la credibilidad del fundador, la relevancia principiante-vs-quien retoma, y la prueba de comunidad para ayudar al tráfico frío a orientarse antes de que llegue la fricción del precio. Diseñar la página como un sistema modular sin código que Marketing pudiera seguir testando dentro de Kajabi sin necesitar ingeniería en cada iteración.",
         },
         {
           step: 5,
-          label: "Test A/B de prueba social",
+          label: "Test",
           description:
             "La variante A usaba prueba social física mediante fotos del encuentro anual de miembros de Zapiano en Suiza y Alemania. La variante B usaba prueba social digital mediante capturas de la app móvil, vistas del feed de miembros y prueba social dentro del producto.",
+        },
+        {
+          step: 6,
+          label: "Impacto",
+          description:
+            "El embudo rediseñado cambió la primera decisión de un compromiso Club a largo plazo por un Curso de Introducción de 9 €, dando al tráfico frío un siguiente paso claro. En el snapshot de campaña, el trabajo generó 1,04M de alcance, 2,85M de impresiones, 14.885 compras y un coste por resultado combinado de 1,79 $, manteniendo una estructura modular en Kajabi para seguir probando.",
         },
       ],
     },

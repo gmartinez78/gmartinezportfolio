@@ -1859,6 +1859,7 @@ function hasLocalizedCaseStudyPayload(language: Language) {
 const EDITORIAL_TITLE_ACCENT_WORDS: Record<string, Partial<Record<Language, number>>> = {
   "flock-accessibility-system": { en: 3, es: 4, de: 2 },
   "i9-everify-integration": { en: 1, es: 2, de: 1 },
+  "zapiano-marketing": { en: 2 },
 };
 
 function splitNayyaHeroTitle(title: string, language: Language, accentWordCount?: number) {
@@ -2401,6 +2402,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
   const [showStickyCalendarTabs, setShowStickyCalendarTabs] = useState(false);
   const [reversetechTaskTab, setReversetechTaskTab] = useState<"task1" | "task2" | "task3" | "task4" | "task5">("task1");
   const [reversetechComparisonTab, setReversetechComparisonTab] = useState<"before" | "after">("after");
+  const [zapianoMethodologyTab, setZapianoMethodologyTab] = useState(0);
   const [showStickyTaskTabs, setShowStickyTaskTabs] = useState(false);
   const [isReverseTechTaskMenuOpen, setIsReverseTechTaskMenuOpen] = useState(false);
   const [activeProtectaStorybookUrl, setActiveProtectaStorybookUrl] = useState(PROTECTA_STORYBOOK_URL);
@@ -3844,14 +3846,14 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <h2 className="font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">The <span className="font-playfair font-normal italic">problem</span></h2>
               </div>
               <div className="space-y-6 font-inter text-[16px] leading-[1.7] text-[#5c5960]">
-                <p>Zapiano is a Swiss online piano course platform for adults, founded by piano teacher Sven Haefliger. Meta campaigns were driving healthy reach (1.04M reach, 2.85M impressions), but paid landing conversion was stuck at 6% and most visitors bounced before any conversion event.</p>
-                <p>The existing page led with three Club subscription tiers side-by-side, dense feature blocks, and three competing CTAs. Cold traffic hit the highest-priced tier within the first scroll and left.</p>
+                <p>Zapiano reached 1.04M people and generated 2.85M impressions, but paid landing conversion was stuck at 6% and most visitors left before converting.</p>
+                <p>The page led with three Club tiers, dense feature blocks, and competing CTAs. Cold traffic met the highest-priced commitment before it understood the product.</p>
                 <div className="pt-2">
                   <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0E6FB4]">Context</p>
-                  <p>Lift paid landing conversion and reduce CAC while working within two real constraints.</p>
-                  <p className="mt-4">The site runs on Kajabi, so any redesign had to be modular and assemblable from existing content blocks. No custom engineering per variant.</p>
-                  <p className="mt-4">The page had to serve two distinct user types Marketing identified in the ad funnel: complete beginners and adults returning to piano after years away. Same product, different motivations, same landing page.</p>
-                  <p className="mt-4">The goal Marketing handed me was simple: more conversions, lower cost per acquisition, same ad spend.</p>
+                  <p>Increase paid landing conversion and reduce CAC within two constraints.</p>
+                  <p className="mt-4">The site runs on Kajabi, so the redesign had to use modular blocks without custom engineering.</p>
+                  <p className="mt-4">The same landing page had to serve complete beginners and adults returning to piano, who arrived with different motivations.</p>
+                  <p className="mt-4">The business goal: more conversions and lower acquisition cost at the same ad spend.</p>
                 </div>
                 <div className="pt-2">
                   <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0E6FB4]">Success Metrics</p>
@@ -4035,7 +4037,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 <span className="font-inter text-[12px] font-semibold uppercase tracking-[0.16em]">{phase}</span>
                 {calendarKeeperPhase === phase ? <span className="absolute inset-x-0 bottom-0 h-1 bg-[#0E6FB4]" /> : null}
               </button>
-            ))}
+              ))}
           </div>
         </div>
       ) : null}
@@ -4068,7 +4070,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
           ) : (
           <>
-          {caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "calendar-keeper" ? (
+          {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG ? (
+            <div className="mx-auto mb-12 max-w-[760px] text-center">
+              <p className="mb-4 font-inter text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0E6FB4]">Methodology</p>
+              <h2 className="font-inter text-[clamp(2rem,4vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.045em] text-[#141114]">{methodologyName}</h2>
+            </div>
+          ) : caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "calendar-keeper" ? (
             <h2 className={`text-center font-inter font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114] ${caseStudy.slug === "calendar-keeper" ? "mb-8 text-[clamp(1.5rem,2.2vw,2rem)]" : "mb-12 text-[clamp(1.75rem,2.6vw,2.5rem)]"}`}>
               {methodologyName}{" "}
               <span className="block font-playfair font-normal italic">Methodology</span>
@@ -4131,9 +4138,20 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               </div>
             </>
           ) : (
-          <div ref={caseStudy.slug === "calendar-keeper" ? calendarKeeperTabsRef : undefined} className={caseStudy.slug === "calendar-keeper" ? "mx-auto flex max-w-[900px] flex-wrap items-end justify-center border-b border-[#d7d2d3]" : "grid gap-4 md:grid-cols-5"}>
+          <div ref={caseStudy.slug === "calendar-keeper" ? calendarKeeperTabsRef : undefined} className={caseStudy.slug === "calendar-keeper" ? "mx-auto flex max-w-[900px] flex-wrap items-end justify-center border-b border-[#d7d2d3]" : caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG ? "sticky top-0 z-30 mx-auto flex max-w-[900px] flex-wrap items-end justify-center border-b border-[#d7d2d3] bg-white/95 backdrop-blur" : "grid gap-4 md:grid-cols-5"}>
             {caseStudy.methodology.steps.map((step, index) => (
-              ["nayya-ai-benefits", "i9-everify-integration", CONFIDENTIAL_PLACEHOLDER_SLUG].includes(caseStudy.slug) ? (
+              caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG ? (
+                <button
+                  key={step.step}
+                  type="button"
+                  onClick={() => setZapianoMethodologyTab(index)}
+                  aria-current={zapianoMethodologyTab === index ? "step" : undefined}
+                  className={`relative flex-1 px-3 py-3 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0E6FB4] focus-visible:ring-offset-2 sm:px-4 ${index === 3 ? "hidden" : ""} ${zapianoMethodologyTab === index ? "text-[#0E6FB4]" : "text-[#5c5960] hover:text-[#0E6FB4]"}`}
+                >
+                  <span className="font-inter text-[11px] font-semibold uppercase tracking-[0.12em]">{(index > 3 ? index : index + 1)}. {step.label}</span>
+                  {zapianoMethodologyTab === index ? <span className="absolute inset-x-0 bottom-0 h-1 bg-[#0E6FB4]" /> : null}
+                </button>
+              ) : ["nayya-ai-benefits", "i9-everify-integration"].includes(caseStudy.slug) ? (
                 <div key={step.step} className="flex flex-col gap-4">
                   <div
                     className="flex flex-1 flex-col gap-2 rounded-2xl p-5"
@@ -4191,19 +4209,20 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           )}
           {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG ? (
             <div className="mx-auto mt-10 max-w-[860px] space-y-8">
-              {caseStudy.methodology.steps.map((step, index) => (
+              {caseStudy.methodology.steps.map((step, index) => index === zapianoMethodologyTab ? (
                 <div key={`${step.step}-detail`} className="text-center">
-                  <h2 className="mb-5 text-center font-inter text-[36px] leading-tight text-[#0e2951]">
+                  <h2 className="mb-5 text-center font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
                     {step.label}
                   </h2>
                   {index === 2 ? (
                     <div className="mt-3 grid items-start gap-8 text-left lg:grid-cols-[minmax(0,1fr)_420px]">
+                      <p className="mb-0 lg:col-span-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0E6FB4]">Reframe</p>
                       <div className="space-y-3">
                         {step.description.split("\n").map((line, lineIndex) => {
                           const trimmed = line.trim();
                           if (!trimmed) return null;
                           return (
-                            <p key={`${step.step}-line-${lineIndex}`} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                            <p key={`${step.step}-line-${lineIndex}`} className="font-inter text-[16px] leading-[1.7] text-[#5c5960]">
                               {trimmed}
                             </p>
                           );
@@ -4243,7 +4262,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           const trimmed = line.trim();
                           if (!trimmed) return null;
                           return (
-                            <p key={`${step.step}-line-${lineIndex}`} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                            <p key={`${step.step}-line-${lineIndex}`} className="font-inter text-[16px] leading-[1.7] text-[#5c5960]">
                               {trimmed}
                             </p>
                           );
@@ -4263,18 +4282,38 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           );
                         }
                         return (
-                          <p key={`${step.step}-line-${lineIndex}`} className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                          <p key={`${step.step}-line-${lineIndex}`} className="font-inter text-[16px] leading-[1.7] text-[#5c5960]">
                             {trimmed}
                           </p>
                         );
                       })}
                     </div>
                   )}
+                  {index === 2 ? (
+                    <div className="mt-8 border-t border-[#d7d2d3] pt-8 text-left">
+                      <p className="mb-4 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0E6FB4]">Build</p>
+                      <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_420px]">
+                        <div className="order-2 space-y-3 font-inter text-[16px] leading-[1.7] text-[#5c5960] lg:order-2">
+                          {caseStudy.methodology.steps[3].description.split("\n").map((line, lineIndex) => {
+                            const trimmed = line.trim();
+                            return trimmed ? <p key={`build-in-reframe-${lineIndex}`}>{trimmed}</p> : null;
+                          })}
+                        </div>
+                        <div className="order-1 rounded-[24px] border border-[#d7d2d3] bg-white p-3 shadow-[0_14px_30px_rgba(29,22,36,0.10)] lg:order-1">
+                          <div className="relative max-h-[520px] overflow-hidden rounded-[18px]">
+                            <span className="absolute left-4 top-4 z-10 inline-flex rounded-[4px] bg-[#1183D0] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.04em] text-white">After</span>
+                            <img src={withBasePath("/images/projects/zapiano/banners/page-3.svg")} alt="Zapiano landing redesign after applying benchmark and funnel improvements" className="h-auto w-full" />
+                            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/92 to-white/0" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
                   {index === 0 ? (
-                    <div className="mt-10 overflow-hidden rounded-[24px] border border-[#dadde1] bg-white shadow-[0_20px_64px_rgba(14,41,81,0.08)] text-left">
-                      <div className="border-b border-[#dadde1] px-6 py-5">
-                        <h3 className="text-[20px] font-semibold text-[#1c1e21]">{CONFIDENTIAL_FUNNEL_ARCHITECTURE.title}</h3>
-                        <p className="mt-1 text-[13px] text-[#65676b]">{CONFIDENTIAL_FUNNEL_ARCHITECTURE.subtitle}</p>
+                    <div className="mt-10 overflow-hidden rounded-[24px] border border-[#d7d2d3] bg-white shadow-[0_14px_30px_rgba(29,22,36,0.10)] text-left">
+                      <div className="border-b border-[#d7d2d3] px-6 py-5">
+                        <h3 className="font-inter text-[20px] font-semibold text-[#141114]">{CONFIDENTIAL_FUNNEL_ARCHITECTURE.title}</h3>
+                        <p className="mt-1 font-inter text-[13px] text-[#5c5960]">{CONFIDENTIAL_FUNNEL_ARCHITECTURE.subtitle}</p>
                       </div>
                       <div className="grid lg:grid-cols-2">
                         {[CONFIDENTIAL_FUNNEL_ARCHITECTURE.before, CONFIDENTIAL_FUNNEL_ARCHITECTURE.after].map((column) => {
@@ -4282,19 +4321,19 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           return (
                             <div
                               key={column.badge}
-                              className={`px-6 py-8 md:px-8 ${isBefore ? "border-b border-[#dadde1] bg-[#fef5f5] lg:border-b-0 lg:border-r" : "bg-[#f0fdf4]"}`}
+                              className={`px-6 py-8 md:px-8 ${isBefore ? "border-b border-[#d7d2d3] lg:border-b-0 lg:border-r" : ""}`}
                             >
                               <div className="mb-6 flex items-center gap-3">
                                 <span
                                   className={`inline-flex rounded-[4px] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.05em] ${
-                                    isBefore ? "bg-[#fca5a5] text-[#7f1d1d]" : "bg-[#16a34a] text-white"
+                                    isBefore ? "bg-[#f8df36] text-[#141114]" : "bg-[#1183D0] text-white"
                                   }`}
                                 >
                                   {column.badge}
                                 </span>
-                                <span className="text-[16px] font-semibold text-[#1c1e21]">{column.title}</span>
+                                <span className="font-inter text-[16px] font-semibold text-[#141114]">{column.title}</span>
                               </div>
-                              <p className="mb-6 text-[12px] leading-[1.6] text-[#65676b]">{column.subtitle}</p>
+                              <p className="mb-6 font-inter text-[12px] leading-[1.6] text-[#5c5960]">{column.subtitle}</p>
                               <div className="space-y-2">
                                 {column.stages.map((stage, stageIndex) => (
                                   <Fragment key={`${column.badge}-${stage.name}`}>
@@ -4359,7 +4398,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   ) : null}
                   {index === 1 ? (
                     <div className="mt-10 text-left">
-                      <div className="mx-auto mb-10 max-w-[860px] space-y-5 text-center font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                      <div className="mx-auto mb-10 max-w-[860px] space-y-5 text-center font-inter text-[16px] leading-[1.7] text-[#5c5960]">
                         <p>
                           Before sketching anything, I audited five direct competitors against seven conversion heuristics that matter for cold paid traffic. The pattern was clear: Zapiano was the weakest landing in the category on every dimension that drives entry conversion.
                         </p>
@@ -4517,9 +4556,22 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </div>
                       </div>
                       <div className="mx-auto mt-8 max-w-[820px] text-center">
-                        <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                        <p className="font-inter text-[16px] leading-[1.7] text-[#5c5960]">
                           The redesign brief wrote itself: close the four critical gaps of entry friction, segmentation, founder visibility, and community proof while keeping what was already working, including risk reversal and content depth.
                         </p>
+                      </div>
+                      <div className="mx-auto mt-10 max-w-[860px] text-left">
+                        <h3 className="mb-6 text-center font-inter text-[clamp(1.5rem,2.2vw,2rem)] font-semibold leading-[1.15] tracking-[-0.03em] text-[#141114]">User Needs</h3>
+                        <div className="grid gap-4 md:grid-cols-2">
+                          <div className="rounded-[20px] border border-[#d7d2d3] bg-[#faf8f7] p-6">
+                            <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[#0E6FB4]">Complete beginners</p>
+                            <p className="mt-4 text-[16px] leading-[1.7] text-[#5c5960]">They needed reassurance that the first step was approachable, a clear introduction to the learning experience, and one low-friction action instead of a long-term commitment.</p>
+                          </div>
+                          <div className="rounded-[20px] border border-[#d7d2d3] bg-[#faf8f7] p-6">
+                            <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[#0E6FB4]">Adults returning to piano</p>
+                            <p className="mt-4 text-[16px] leading-[1.7] text-[#5c5960]">They needed to reconnect with an existing identity and see enough product and community proof to believe they could return without starting from zero.</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   ) : null}
@@ -4597,14 +4649,74 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         </div>
                       </div>
                       <div className="mx-auto mt-8 max-w-[820px] text-center">
-                        <p className="font-inter text-[16px] leading-[1.7] text-[#5c7792]">
+                        <p className="font-inter text-[16px] leading-[1.7] text-[#5c5960]">
                           Once both variants had statistically meaningful data, I used Copilot to compare scroll depth, time-to-CTA, and segment behavior across variants. It compressed the slowest part of the testing cycle, synthesis, without replacing the design judgment that came before it.
                         </p>
                       </div>
                     </div>
                   ) : null}
+                  {index === 5 ? (
+                    <div className="mx-auto mt-10 max-w-[1040px] text-left">
+                      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                        {resultRows.map((row) => (
+                          <article key={`zapiano-result-metric-${row.metric}-${row.value}`} className="rounded-[20px] border border-[#d7d2d3] bg-white p-6">
+                            <p className="font-inter text-[36px] font-bold leading-none tracking-[-0.04em] text-[#141114]">{row.value}</p>
+                            <p className="mt-3 font-inter text-[15px] leading-[1.5] text-[#5c5960]">{row.metric}</p>
+                          </article>
+                        ))}
+                      </div>
+                      {primaryResultInsights.length ? (
+                        <div className="mt-10">
+                          <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0E6FB4]">Enrollment Behavior Insights</p>
+                          <ul className="space-y-0">
+                            {visiblePrimaryResultInsights.map((item) => (
+                              <li key={`zapiano-insight-${item}`} className="flex gap-4 border-b border-[#ded8de] py-4 font-inter text-[15px] leading-[1.7] text-[#141114]"><span className="shrink-0 text-[18px] font-bold leading-none text-[#0E6FB4]">✓</span><span>{stripLeadingBullet(item)}</span></li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : null}
+                      {resultOpportunities.length ? (
+                        <div className="mt-10">
+                          <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0E6FB4]">Opportunities and Next Steps</p>
+                          <ul className="space-y-0">
+                            {resultOpportunities.map((item) => (
+                              <li key={`zapiano-opportunity-${item}`} className="flex gap-4 border-b border-[#ded8de] py-4 font-inter text-[15px] leading-[1.7] text-[#141114]"><span className="shrink-0 text-[18px] font-bold leading-none text-[#0E6FB4]">✓</span><span>{stripLeadingBullet(item)}</span></li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : null}
+                      {projectedImprovements.length ? (
+                        <div className="mt-10">
+                          <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0E6FB4]">Projected Improvements</p>
+                          <ul className="space-y-3 font-inter text-[15px] leading-[1.7] text-[#5c5960]">
+                            {projectedImprovements.map((item) => <li key={`zapiano-projection-${item}`}>{stripLeadingBullet(item)}</li>)}
+                          </ul>
+                          <div className="mt-8 overflow-hidden rounded-[20px] border border-[#d7e8f7] bg-white">
+                            <div className="border-b border-[#d7e8f7] bg-[#f7f9fb] px-5 py-4"><p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#0E6FB4]">Conservative 1-Month Scenario</p></div>
+                            <DataTablePanel
+                              wrapperClassName="hidden md:block"
+                              columnsClassName="grid grid-cols-4 px-5"
+                              headerClassName="py-4 text-[12px] font-semibold"
+                              rowClassName="py-4"
+                              headers={[<div key="budget">Budget</div>, <div key="reach">Reach</div>, <div key="purchases">Purchases</div>, <div key="revenue">Revenue</div>]}
+                              rows={CONFIDENTIAL_CONSERVATIVE_SCENARIO_ROWS.map((row) => [<div key="budget" className="font-semibold">{row.budget}</div>, <div key="reach">{row.reach}</div>, <div key="purchases">{row.purchases}</div>, <div key="revenue">{row.revenue}</div>])}
+                            />
+                          </div>
+                        </div>
+                      ) : null}
+                      <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0E6FB4]">Learnings</p>
+                      <div className="space-y-5 font-inter text-[16px] leading-[1.7] text-[#5c5960]">
+                        {reflections.map((reflection) => (
+                          <p key={`zapiano-result-${reflection.title}`}>
+                            <strong className="text-[#141114]">{reflection.title} </strong>
+                            {reflection.body}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
                 </div>
-              ))}
+              ) : null)}
             </div>
           ) : null}
           </>
@@ -4724,7 +4836,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
           </div>
           </div>
         </section>
-      ) : (
+      ) : caseStudy.slug === "calendar-keeper" ? (
         <>
         <section id="calendar-empathize" className={`mx-auto max-w-[1200px] scroll-mt-24 px-6 py-10 md:px-10 xl:px-20 ${calendarKeeperPhase === "empathize" ? "" : "hidden"}`}>
           <div className="mx-auto max-w-[860px]">
@@ -5236,7 +5348,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         ) : null}
 
         </>
-      )}
+      ) : null}
 
       {caseStudy.slug === "protecta" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
@@ -7256,7 +7368,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" && caseStudy.slug !== "i9-everify-integration" ? (
+      {caseStudy.slug !== CONFIDENTIAL_PLACEHOLDER_SLUG && caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" && caseStudy.slug !== "i9-everify-integration" ? (
         <section className={`py-10 ${usesNayyaVisualStyle ? (caseStudy.slug === "flock-accessibility-system" ? "bg-white" : "bg-[#faf8f7]") : ""}`}>
           <div className="mx-auto max-w-[1200px] px-6 md:px-10 xl:px-20">
           {usesNayyaVisualStyle ? (
@@ -7565,7 +7677,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" ? (
+      {caseStudy.slug !== CONFIDENTIAL_PLACEHOLDER_SLUG && caseStudy.slug !== "reversetech" && caseStudy.slug !== "calendar-keeper" ? (
         <section className="mx-auto max-w-[1200px] px-6 py-10 md:px-10 xl:px-20">
           {usesNayyaVisualStyle ? (
             <h2 className="mb-8 font-inter text-[clamp(1.75rem,2.6vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.035em] text-[#141114]">
