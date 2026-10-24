@@ -1877,6 +1877,11 @@ function splitNayyaHeroTitle(title: string, language: Language, accentWordCount?
   };
 }
 
+function splitZapianoMetricLabel(label: string) {
+  const match = label.match(/^(.*?)(\s+(?:across|per)\s+.*)$/i);
+  return match ? { title: match[1], detail: match[2].trim() } : { title: label, detail: "" };
+}
+
 function renderNayyaEditorialTitle(title: string) {
   const words = title.trim().split(/\s+/);
   const accent = words.pop();
@@ -3691,11 +3696,13 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     key={`${metric.label}-${metric.value}`}
                     className={`flex min-h-[190px] flex-col md:min-h-[300px] md:px-10 ${index > 0 ? "md:border-l md:border-[#d7d2d3]" : "md:pl-0"} ${index === highlightMetrics.length - 1 ? "md:pr-0" : ""}`}
                   >
-                    <p className="text-[15px] font-semibold tracking-[0.04em] text-[#0E6FB4]">{metric.label}</p>
+                    <p className="text-[15px] font-semibold tracking-[0.04em] text-[#0E6FB4]">{caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG ? splitZapianoMetricLabel(metric.label).title : metric.label}</p>
                     {metric.context ? (
                       <p className="mt-6 max-w-[30ch] text-[18px] leading-[1.45] text-[#5c5960]">
                         {metric.context}
                       </p>
+                    ) : caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG && splitZapianoMetricLabel(metric.label).detail ? (
+                      <p className="mt-4 max-w-[30ch] text-[18px] leading-[1.45] text-[#5c5960]">{splitZapianoMetricLabel(metric.label).detail}</p>
                     ) : null}
                     <div className="relative mt-auto mb-8 flex items-end justify-between gap-2 pt-5">
                       <p className="text-[clamp(2.1rem,3.3vw,4rem)] font-bold leading-[0.88] tracking-[-0.065em] text-[#090909]">
@@ -4293,9 +4300,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                   )}
                   {index === 2 ? (
                     <div className="mt-8 border-t border-[#d7d2d3] pt-8 text-left">
-                      <p className="mb-4 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0E6FB4]">Build</p>
                       <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_420px]">
                         <div className="order-2 space-y-3 font-inter text-[16px] leading-[1.7] text-[#5c5960] lg:order-2">
+                          <p className="mb-4 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0E6FB4]">Build</p>
                           {caseStudy.methodology.steps[3].description.split("\n").map((line, lineIndex) => {
                             const trimmed = line.trim();
                             return trimmed ? <p key={`build-in-reframe-${lineIndex}`}>{trimmed}</p> : null;
@@ -4669,7 +4676,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         {resultRows.map((row) => (
                           <article key={`zapiano-result-metric-${row.metric}-${row.value}`} className="rounded-[20px] border-0 bg-white p-7 shadow-[0_14px_30px_rgba(29,22,36,0.10)]">
                             <p className="font-inter text-[32px] font-bold leading-[0.95] tracking-[-0.055em] text-[#141114]">{row.value}</p>
-                            <p className="mt-4 font-inter text-[15px] leading-[1.5] text-[#5c5960]">{row.metric}</p>
+                            <p className="mt-4 font-inter text-[15px] font-semibold leading-[1.5] text-[#0E6FB4]">{row.metric}</p>
+                            {row.context ? <p className="mt-2 font-inter text-[13px] leading-[1.6] text-[#5c5960]">{row.context}</p> : null}
                           </article>
                         ))}
                       </div>
