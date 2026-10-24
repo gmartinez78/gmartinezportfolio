@@ -180,9 +180,10 @@ function createLockedPlaceholderEn(order: number): CaseStudyRecord {
             },
           ],
           insights: [
+            "The original landing converted at 6%; the improved variant reached 25% after the offer and entry path were redesigned.",
             "Variant B won decisively because mobile app screenshots gave cold visitors a tangible preview of what they were buying.",
             "The meetup photos in Variant A were warmer and more authentic, but they implicitly required showing up in person, a commitment cold visitors were not ready to make.",
-            "The lift did not come from visual polish alone. It came from reordering the decision the page asked users to make.",
+            "The lift did not come from visual polish alone. It came from reordering the decision the page asked users to make. Campaign totals are recorded snapshots; ROAS, CPC, and projections are modeled estimates.",
           ],
           opportunities: [
             "Personalized hero copy based on ad creative so beginner ads route to a beginner hero and returner ads route to a returner hero.",

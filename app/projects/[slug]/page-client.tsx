@@ -1923,7 +1923,7 @@ function LocalizedCaseStudyOverview({ caseStudy }: { caseStudy: CaseStudyRecord 
   const accentWordCount = EDITORIAL_TITLE_ACCENT_WORDS[caseStudy.slug]?.[language];
   const editorialTitle = splitNayyaHeroTitle(caseStudy.title, language, accentWordCount);
   const accentIsBlock =
-    caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "protecta";
+    caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "protecta" || caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG;
 
   const otherProjects = caseStudies
     .filter(
@@ -3603,7 +3603,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                         Health Funnel
                         <span className="block font-playfair font-normal italic tracking-[-0.045em]">Optimization</span>
                       </>
-                    ) : caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "protecta" ? (
+                    ) : caseStudy.slug === "flock-accessibility-system" || caseStudy.slug === "i9-everify-integration" || caseStudy.slug === "protecta" || caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG ? (
                       <>
                         {editorialTitle.lead}{" "}
                         <span className="block font-playfair font-normal italic tracking-[-0.045em]">
@@ -3839,7 +3839,8 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
       ) : null}
 
       {caseStudy.slug === CONFIDENTIAL_PLACEHOLDER_SLUG ? (
-        <section className="mx-auto max-w-[1200px] bg-[#faf8f7] px-6 py-10 md:px-10 xl:px-20">
+        <section className="w-full bg-[#faf8f7] px-6 py-10 md:px-10 xl:px-20">
+          <div className="mx-auto max-w-[1200px]">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
             <div>
               <div className="mb-10">
@@ -3876,6 +3877,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                 </Card>
               ))}
             </div>
+          </div>
           </div>
         </section>
       ) : null}
@@ -4396,6 +4398,12 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                       </div>
                     </div>
                   ) : null}
+                  {index === 0 ? (
+                    <div className="mt-8 text-left">
+                      <p className="mb-2 font-inter text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0E6FB4]">Audit takeaway</p>
+                      <p className="font-inter text-[16px] leading-[1.7] text-[#5c5960]">The funnel was not losing people because reach was weak. It was asking cold visitors to evaluate a long-term commitment before they understood the offer or saw a clear first step.</p>
+                    </div>
+                  ) : null}
                   {index === 1 ? (
                     <div className="mt-10 text-left">
                       <div className="mx-auto mb-10 max-w-[860px] space-y-5 text-center font-inter text-[16px] leading-[1.7] text-[#5c5960]">
@@ -4659,9 +4667,9 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                     <div className="mx-auto mt-10 max-w-[1040px] text-left">
                       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                         {resultRows.map((row) => (
-                          <article key={`zapiano-result-metric-${row.metric}-${row.value}`} className="rounded-[20px] border border-[#d7d2d3] bg-white p-6">
-                            <p className="font-inter text-[36px] font-bold leading-none tracking-[-0.04em] text-[#141114]">{row.value}</p>
-                            <p className="mt-3 font-inter text-[15px] leading-[1.5] text-[#5c5960]">{row.metric}</p>
+                          <article key={`zapiano-result-metric-${row.metric}-${row.value}`} className="rounded-[20px] border-0 bg-white p-7 shadow-[0_14px_30px_rgba(29,22,36,0.10)]">
+                            <p className="font-inter text-[32px] font-bold leading-[0.95] tracking-[-0.055em] text-[#141114]">{row.value}</p>
+                            <p className="mt-4 font-inter text-[15px] leading-[1.5] text-[#5c5960]">{row.metric}</p>
                           </article>
                         ))}
                       </div>
@@ -4704,7 +4712,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
                           </div>
                         </div>
                       ) : null}
-                      <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0E6FB4]">Learnings</p>
+                      <p className="mt-14 mb-5 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0E6FB4]">Learnings</p>
                       <div className="space-y-5 font-inter text-[16px] leading-[1.7] text-[#5c5960]">
                         {reflections.map((reflection) => (
                           <p key={`zapiano-result-${reflection.title}`}>
