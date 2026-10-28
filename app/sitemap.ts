@@ -14,6 +14,7 @@ const staticRoutes = [
   { path: "/social-media-diagnostic", priority: 0.4, changeFrequency: "monthly" as const },
   { path: "/social-growth-agent", priority: 0.4, changeFrequency: "monthly" as const },
   { path: "/blog", priority: 0.7, changeFrequency: "weekly" as const },
+  { path: "/blog/ai-fail-design-problem", priority: 0.6, changeFrequency: "monthly" as const },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
