@@ -1527,7 +1527,7 @@ export default function PortfolioPage() {
         <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           <Link href={withBasePath("/blog/ai-fail-design-problem")} className="relative group flex min-h-[330px] flex-col justify-between rounded-[22px] bg-[#0e2951] p-7 text-white transition-shadow hover:shadow-[0_10px_34px_rgba(14,41,81,0.18)] md:col-span-2 lg:min-h-[365px]"><span className="absolute right-6 top-6 rounded-full bg-[#1183D0] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white">New</span>
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#c9e3f4]">Article · 5 min</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#c9e3f4]">Article · 3 min</p>
               <h3 className="mt-8 max-w-[560px] text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[0.98] tracking-[-0.045em]">The Funniest AI Fail on LinkedIn Is Actually a Design Problem</h3>
               <p className="mt-5 max-w-[500px] text-sm leading-6 text-[#c9e3f4]">An AI agent posted its own error message under a real person&apos;s name. Here is why that is a design problem, and the patterns that prevent it.</p>
             </div>

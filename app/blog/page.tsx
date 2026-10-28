@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { withBasePath } from "@/lib/site";
 import { BLOG_POSTS_BY_RECENCY } from "@/lib/blog-posts";
 
-const featured = { slug: "ai-fail-design-problem", type: "Article", time: "5 min", title: "The Funniest AI Fail on LinkedIn Is Actually a Design Problem", description: "An AI agent posted its own error message as a LinkedIn comment. We call it an AI problem. It is a design problem: unhappy paths, guardrails, and accessible failure states." };
+const featured = { slug: "ai-fail-design-problem", type: "Article", time: "3 min", title: "The Funniest AI Fail on LinkedIn Is Actually a Design Problem", description: "An AI agent posted its own error message as a LinkedIn comment. We call it an AI problem. It is a design problem: unhappy paths, guardrails, and accessible failure states." };
 
 const posts = BLOG_POSTS_BY_RECENCY;
 
