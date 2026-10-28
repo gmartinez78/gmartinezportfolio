@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FileText, FolderKanban, Home, Mail } from "lucide-react";
+import { FileText, FolderKanban, Home, Mail, Newspaper } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { withBasePath } from "../lib/site";
 import { useTranslate } from "../lib/i18n/use-translate";
@@ -100,13 +100,12 @@ export function SiteRail() {
           const Icon = linkIcons[link.href.replace(/\/$/, "")] ?? FolderKanban;
 
           return (
-            <RailLink
-              key={link.href}
-              href={link.href}
-              label={link.label}
-              icon={Icon}
-              active={isCurrentPath(pathname, link.href)}
-            />
+            <div key={link.href} className="contents">
+              {link.href.replace(/\/$/, "") === "/contact" ? (
+                <RailLink href="/blog" label="Blog" icon={Newspaper} active={isCurrentPath(pathname, "/blog")} />
+              ) : null}
+              <RailLink href={link.href} label={link.label} icon={Icon} active={isCurrentPath(pathname, link.href)} />
+            </div>
           );
         })}
       </nav>

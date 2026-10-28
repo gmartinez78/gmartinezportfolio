@@ -22,6 +22,7 @@ import {
 import { useLanguage } from "../../lib/i18n/language-context";
 import { useTranslate, useTranslateTag } from "../../lib/i18n/use-translate";
 import { getVisibleProjectTags } from "../../lib/project-tags";
+import { withBasePath } from "../../lib/site";
 import type { DictionaryKey } from "../../lib/i18n/dictionary";
 
 const FILTER_PILLS = ["All", "UX Research", "Product Design", "Design Systems", "AI Product", "Compliance", "Accessibility"];
@@ -203,16 +204,25 @@ function ProjectsPage() {
   const mutedRingColor = "#a1a1a1";
 
   return (
-    <main className="bg-white text-[#3c3e3f] overflow-x-hidden min-h-screen">
+    <main className="bg-white text-[#3c3e3f] overflow-x-hidden min-h-screen lg:my-2 lg:mr-2 lg:overflow-clip lg:rounded-[28px] lg:border lg:border-[#e5eef7] lg:shadow-[0_10px_34px_rgba(14,41,81,0.06)]">
       <SiteHeader active="Projects" />
+      <div className="bg-[#fcfafc]">
+        <Container size="wide" className="px-6 pt-6">
+          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-3 text-sm text-[#5c5960]">
+            <a href={withBasePath("/")} className="text-[#0e2951] transition-colors hover:text-[#1183D0]">Home</a>
+            <span aria-hidden="true" className="text-[#aaa5aa]">/</span>
+            <span className="font-semibold text-[#141114]">Work</span>
+          </nav>
+        </Container>
+      </div>
 
       <section className="bg-[#fcfafc]">
         <Container as="div" size="wide" className="px-6 pb-9 pt-12 sm:pb-12 sm:pt-16">
           <div className="max-w-[980px]">
-            <p className="inline-flex items-center rounded-full bg-[#f8df36] px-5 py-2.5 text-sm font-medium text-[#141114]">
+            <p className="inline-flex rounded-full bg-[#f8df36] px-4 py-2 text-xs font-bold lowercase tracking-[0.12em] text-[#141114]">
               {translate("projectsPage.workEyebrow")}
             </p>
-            <h1 className="mt-8 font-inter text-[clamp(2.5rem,5.5vw,4.5rem)] font-bold leading-[0.88] tracking-[-0.075em] text-[#141114]">
+            <h1 className="mt-8 font-inter text-[clamp(2.5rem,5.5vw,4.5rem)] font-medium leading-[0.88] tracking-[-0.075em] text-[#141114]">
               {translate("projectsPage.heroTitle")}
               <span className="mt-1 block font-playfair font-normal italic tracking-[-0.055em] text-[#0E6FB4]">
                 {translate("projectsPage.heroAccent")}

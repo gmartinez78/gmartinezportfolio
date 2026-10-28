@@ -136,6 +136,7 @@ export default function SocialGrowthAgentPage() {
   const [notification, setNotification] = useState("Agent is ready for your review.");
   const [briefingOpen, setBriefingOpen] = useState(false);
   const [activeChannel, setActiveChannel] = useState<Channel | "All">("All");
+  const [publishState, setPublishState] = useState<"idle" | "sending" | "done">("idle");
 
   const pendingCount = drafts.filter((draft) => draft.status === "Needs approval").length;
   const selectedDraft = drafts.find((draft) => draft.id === selectedDraftId) ?? drafts[0];
@@ -169,6 +170,24 @@ export default function SocialGrowthAgentPage() {
     setSelectedDraftId(nextId);
     setActiveChannel("All");
     setNotification("New TikTok draft created for review.");
+  }
+
+  async function publishApprovedDraft() {
+    if (!selectedDraft || selectedDraft.status !== "Scheduled") return;
+    setPublishState("sending");
+    try {
+      const response = await fetch("/api/social/publish", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ draftId: selectedDraft.id, destinations: [selectedDraft.channel, "LinkedIn"] }),
+      });
+      if (!response.ok) throw new Error("Publishing is not configured yet.");
+      setPublishState("done");
+      setNotification("Approved post sent to the publishing service.");
+    } catch {
+      setPublishState("idle");
+      setNotification("Publishing is not connected yet. Add the LinkedIn OAuth credentials and Grok webhook before going live.");
+    }
   }
 
   return (
@@ -358,11 +377,32 @@ export default function SocialGrowthAgentPage() {
                   <Button variant="outline" size="xs" onClick={() => updateDraftStatus(selectedDraft.id, "Published")} className="gap-2"><X className="h-4 w-4" /> Send back</Button>
                   <Button size="xs" onClick={() => updateDraftStatus(selectedDraft.id, "Scheduled")} className="gap-2"><Check className="h-4 w-4" /> Approve & schedule</Button>
                 </div>
+              ) : selectedDraft?.status === "Scheduled" ? (
+                <div className="mt-6 space-y-3">
+                  <p className="flex items-center gap-2 rounded-xl bg-[#E7F8EF] px-3 py-2.5 text-sm font-medium text-[#198754]"><Check className="h-4 w-4" /> Approved and ready to publish.</p>
+                  <Button size="xs" onClick={publishApprovedDraft} disabled={publishState === "sending"} className="w-full gap-2"><ArrowUpRight className="h-4 w-4" /> {publishState === "sending" ? "Sending…" : publishState === "done" ? "Sent to publisher" : "Publish approved post"}</Button>
+                  <p className="text-xs leading-5 text-[#7890A7]">The publisher will verify the approval again before sending to LinkedIn or another connected destination.</p>
+                </div>
               ) : (
-                <p className="mt-6 flex items-center gap-2 rounded-xl bg-[#E7F8EF] px-3 py-2.5 text-sm font-medium text-[#198754]"><Check className="h-4 w-4" /> This post is {selectedDraft?.status.toLowerCase()}.</p>
+                <p className="mt-6 flex items-center gap-2 rounded-xl bg-[#F2F7FB] px-3 py-2.5 text-sm font-medium text-[#5C7792]"><X className="h-4 w-4" /> This post was sent back for editing.</p>
               )}
             </CardContent>
           </Card>
+        </section>
+
+        <section className="mt-7 rounded-[26px] border border-[#B8D6EC] bg-white p-6 shadow-[0_10px_30px_rgba(14,41,81,0.05)] sm:p-7">
+          <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-center">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#1183D0]">LinkedIn Post Studio</p>
+              <h2 className="mt-2 text-xl font-semibold tracking-[-0.03em] text-[#0E2951]">Write once, review once, publish to both destinations.</h2>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-[#5C7792]">Grok can generate and adapt the draft, while this workspace keeps the approval record and sends the approved version through official APIs. Personal LinkedIn posts may require a different app permission than organization posts.</p>
+            </div>
+            <div className="flex shrink-0 flex-wrap gap-2 text-xs font-semibold">
+              <span className="rounded-full bg-[#E0EEFB] px-3 py-2 text-[#0A66C2]">LinkedIn · OAuth</span>
+              <span className="rounded-full bg-[#F2F7FB] px-3 py-2 text-[#5C7792]">Grok · webhook</span>
+              <span className="rounded-full bg-[#FFF4D9] px-3 py-2 text-[#A56600]">Approval required</span>
+            </div>
+          </div>
         </section>
 
         <section className="mt-7 grid gap-6 lg:grid-cols-2">

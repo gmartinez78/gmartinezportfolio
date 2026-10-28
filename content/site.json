@@ -2,7 +2,7 @@
   "nav": {
     "logo_text": "Greddys Martinez",
     "links": [
-      { "label": "Projects", "href": "/projects" },
+      { "label": "Work", "href": "/projects" },
       { "label": "Resume", "href": "/resume" },
       { "label": "Contact", "href": "/contact" }
     ],

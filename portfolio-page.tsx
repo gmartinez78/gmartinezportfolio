@@ -1510,6 +1510,50 @@ export default function PortfolioPage() {
     </section>
   );
 
+  const blogPreviewSection = (
+    <section key="blog-preview" className="bg-[#f8fbff] px-6 py-20 md:px-16 xl:px-30">
+      <div className="mx-auto max-w-[1180px]">
+        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div className="max-w-[620px]">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Notes from the practice</p>
+            <Heading as="h2" variant="section" className="mt-3 text-[clamp(2rem,3.4vw,3.1rem)] leading-[1.02] text-[#141114]">
+              Practical guidance for the AI era.
+            </Heading>
+          </div>
+          <Link href={withBasePath("/blog")} className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-[#0e2951] transition-colors hover:text-[#1183D0]">
+            Visit the blog <ArrowRight aria-hidden="true" className="size-4" />
+          </Link>
+        </div>
+        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="relative group flex min-h-[330px] flex-col justify-between rounded-[22px] bg-[#e5e7eb] p-7 text-[#4b5563] md:col-span-2 lg:min-h-[365px]"><span className="absolute right-6 top-6 rounded-full bg-[#cbd5e1] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[#64748b]">Coming soon</span>
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#64748b]">Featured guide · 12 min</p>
+              <h3 className="mt-8 max-w-[560px] text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[0.98] tracking-[-0.045em]">Designing AI products people can actually trust.</h3>
+              <p className="mt-5 max-w-[500px] text-sm leading-6 text-[#6b7280]">A practical field guide to turning uncertainty, explainability, and human judgment into useful product experiences.</p>
+            </div>
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#6b7280]">Publishing soon <ArrowRight className="size-4" /></span>
+          </div>
+          <div className="relative group flex min-h-[230px] flex-col justify-between rounded-[22px] bg-[#e5e7eb] p-7 text-[#4b5563]"><span className="absolute right-5 top-5 rounded-full bg-[#cbd5e1] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#64748b]">Coming soon</span>
+            <div><p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0e6fb4]">Article · 8 min</p><h3 className="mt-5 text-2xl font-semibold leading-[1.03] tracking-[-0.035em]">AI discoverability for portfolio websites</h3></div>
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#6b7280]">Publishing soon <ArrowRight className="size-4" /></span>
+          </div>
+          <div className="relative group flex min-h-[230px] flex-col justify-between rounded-[22px] border border-[#d1d5db] bg-[#f3f4f6] p-7 text-[#4b5563]"><span className="absolute right-5 top-5 rounded-full bg-[#d1d5db] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#64748b]">Coming soon</span>
+            <div><p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Checklist · 10 min</p><h3 className="mt-5 text-2xl font-semibold leading-[1.03] tracking-[-0.035em]">Accessibility checks I run before handoff</h3></div>
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#6b7280]">Publishing soon <ArrowRight className="size-4" /></span>
+          </div>
+          <div className="relative group flex min-h-[230px] flex-col justify-between rounded-[22px] bg-[#e5e7eb] p-7 text-[#4b5563]"><span className="absolute right-5 top-5 rounded-full bg-[#cbd5e1] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#64748b]">Coming soon</span>
+            <div><p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0e6fb4]">Guide · 10 min</p><h3 className="mt-5 text-2xl font-semibold leading-[1.03] tracking-[-0.035em]">Product strategy that survives contact with reality</h3></div>
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#6b7280]">Publishing soon <ArrowRight className="size-4" /></span>
+          </div>
+          <div className="relative group flex min-h-[230px] flex-col justify-between rounded-[22px] bg-[#e5e7eb] p-7 text-[#4b5563]"><span className="absolute right-5 top-5 rounded-full bg-[#cbd5e1] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#64748b]">Coming soon</span>
+            <div><p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7250a8]">Essay · 9 min</p><h3 className="mt-5 text-2xl font-semibold leading-[1.03] tracking-[-0.035em]">Design systems are a product, not a paint kit</h3></div>
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#6b7280]">Publishing soon <ArrowRight className="size-4" /></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+
   const ctaSection = (
     <section key="cta" className="bg-white px-6 pb-12 pt-4 text-center md:px-10 md:pb-16 md:pt-6 lg:px-20">
       <div
@@ -1526,12 +1570,11 @@ export default function PortfolioPage() {
     </section>
   );
 
-  const contentSections = [collaboratorsSection, githubProofSection, ctaSection];
+  const contentSections = [collaboratorsSection, githubProofSection, blogPreviewSection, ctaSection];
 
   return (
     <main className="bg-white text-[#3c3e3f] overflow-x-hidden lg:my-2 lg:mr-2 lg:overflow-clip lg:rounded-[28px] lg:border lg:border-[#e5eef7] lg:shadow-[0_10px_34px_rgba(14,41,81,0.06)]">
       <SiteHeader variant="transparent" />
-
       {/* ── Hero ── */}
       <section className="bg-white">
         <div>

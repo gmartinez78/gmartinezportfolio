@@ -67,7 +67,7 @@ export const dictionary = {
 
   // Projects listing page
   "projectsPage.title": { en: "Projects", es: "Proyectos" },
-  "projectsPage.workEyebrow": { en: "My work", es: "Mi trabajo", de: "Meine Arbeit" },
+  "projectsPage.workEyebrow": { en: "Work", es: "Work", de: "Work" },
   "projectsPage.heroTitle": { en: "Product design", es: "Diseño de producto", de: "Produktdesign" },
   "projectsPage.heroAccent": { en: "portfolio", es: "portafolio", de: "Portfolio" },
   "projectsPage.showingProjects": { en: "Showing {count} projects", es: "Mostrando {count} proyectos", de: "{count} Projekte" },

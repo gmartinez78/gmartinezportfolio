@@ -55,7 +55,7 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-white text-[#3c3e3f]">
+    <main className="min-h-screen overflow-x-hidden bg-white text-[#3c3e3f] lg:my-2 lg:mr-2 lg:overflow-clip lg:rounded-[28px] lg:border lg:border-[#e5eef7] lg:shadow-[0_10px_34px_rgba(14,41,81,0.06)]">
       <SiteHeader active="Contact" />
 
       <section className="relative overflow-hidden bg-[#1183D0] text-white">

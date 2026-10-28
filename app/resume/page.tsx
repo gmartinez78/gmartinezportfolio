@@ -472,7 +472,7 @@ export default function ResumePage() {
   }
 
   return (
-    <main className="bg-white text-[#3c3e3f] overflow-x-clip min-h-screen">
+    <main className="bg-white text-[#3c3e3f] overflow-x-clip min-h-screen lg:my-2 lg:mr-2 lg:rounded-[28px] lg:border lg:border-[#e5eef7] lg:shadow-[0_10px_34px_rgba(14,41,81,0.06)]">
       <SiteHeader
         active="Resume"
         mobileMenuActions={

@@ -48,7 +48,7 @@ export const germanDictionary = {
   "resume.expandCertifications": "Zertifizierungen einblenden",
   "resume.collapseCertifications": "Zertifizierungen ausblenden",
   "projectsPage.title": "Projekte",
-  "projectsPage.workEyebrow": "Meine Arbeit",
+  "projectsPage.workEyebrow": "Work",
   "projectsPage.heroTitle": "Produktdesign",
   "projectsPage.heroAccent": "Portfolio",
   "projectsPage.showingProjects": "{count} Projekte",
