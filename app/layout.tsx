@@ -10,7 +10,11 @@ export const metadata: Metadata = {
   title: defaultTitle,
   description: defaultDescription,
   icons: {
-    icon: "/images/logo-gj.svg",
+    icon: [
+      { url: "/images/logo-gj.svg", type: "image/svg+xml" },
+    ],
+    shortcut: ["/images/logo-gj.svg"],
+    apple: ["/images/logo-gj.svg"],
   },
   openGraph: {
     title: defaultTitle,
