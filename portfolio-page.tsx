@@ -1529,7 +1529,7 @@ export default function PortfolioPage() {
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#c9e3f4]">Article · 3 min</p>
               <h3 className="mt-8 max-w-[560px] text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[0.98] tracking-[-0.045em]">Revolut&apos;s Designers Got 3x Faster. Faster at What?</h3>
-              <p className="mt-5 max-w-[500px] text-sm leading-6 text-[#c9e3f4]">A CEO says LLMs make his designers 3-4x faster. Rasmus Andersson says designing fast isn&apos;t a thing. Both are right.</p>
+              <p className="mt-5 max-w-[500px] text-sm leading-6 text-[#c9e3f4]">AI made building screens 3x faster. But deciding was always the slow part, and that&apos;s where speed should count.</p>
             </div>
             <span className="inline-flex items-center gap-2 text-sm font-semibold text-white">Read article <ArrowRight className="size-4" /></span>
           </Link>
