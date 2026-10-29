@@ -5,9 +5,16 @@ export type BlogPostSummary = {
   publishedAt: string;
   title: string;
   description: string;
+  /** Display date for published posts. */
+  date?: string;
+  /** Card cover image (shown on listing cards only, not on the post page). */
+  cover?: { src: string; alt: string };
+  published?: boolean;
 };
 
 export const BLOG_POSTS: BlogPostSummary[] = [
+  { slug: "design-speed-faster-at-what", type: "Article", time: "3 min", publishedAt: "2026-10-29", date: "October 29, 2026", published: true, cover: { src: "/blog/design-speed-faster-at-what.jpg", alt: "Hands holding a phone showing a payment flow assembled from design-system components, with a checklist of design decisions." }, title: "Revolut's Designers Got 3x Faster. Faster at What?", description: "A CEO says LLMs make his designers 3-4x faster. Rasmus Andersson says designing fast isn't a thing. Both are right, and the design system is now the designer." },
+  { slug: "ai-fail-design-problem", type: "Article", time: "3 min", publishedAt: "2026-10-28", date: "October 28, 2026", published: true, cover: { src: "/blog/ai-fail-design-problem.jpg", alt: "Hands holding a phone showing an AI-written comment with an Output error message." }, title: "The Funniest AI Fail on LinkedIn Is Actually a Design Problem", description: "An AI agent posted its own error message as a LinkedIn comment. We call it an AI problem. It is a design problem: unhappy paths, guardrails, and accessible failure states." },
   { slug: "designing-ai-products", type: "Featured guide", time: "12 min", publishedAt: "2026-10-28", title: "Designing AI products people can actually trust.", description: "A practical field guide to turning uncertainty, explainability, and human judgment into useful product experiences." },
   { slug: "ai-discoverability", type: "Article", time: "8 min", publishedAt: "2026-10-21", title: "AI discoverability for portfolio websites", description: "How to make your work easier for people and AI systems to understand, cite, and remember." },
   { slug: "accessibility-checklist", type: "Checklist", time: "10 min", publishedAt: "2026-10-14", title: "Accessibility checks I run before handoff", description: "A repeatable review for keyboard access, content hierarchy, states, and assistive technology." },

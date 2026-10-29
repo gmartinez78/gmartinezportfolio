@@ -1525,13 +1525,17 @@ export default function PortfolioPage() {
           </Link>
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <Link href={withBasePath("/blog/ai-fail-design-problem")} className="relative group flex min-h-[330px] flex-col justify-between rounded-[22px] bg-[#0e2951] p-7 text-white transition-shadow hover:shadow-[0_10px_34px_rgba(14,41,81,0.18)] md:col-span-2 lg:min-h-[365px]"><span className="absolute right-6 top-6 rounded-full bg-[#1183D0] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white">New</span>
+          <Link href={withBasePath("/blog/design-speed-faster-at-what")} className="relative group flex min-h-[330px] flex-col justify-between rounded-[22px] bg-[#0e2951] p-7 text-white transition-shadow hover:shadow-[0_10px_34px_rgba(14,41,81,0.18)] md:col-span-2 lg:min-h-[365px]"><span className="absolute right-6 top-6 rounded-full bg-[#1183D0] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white">New</span>
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#c9e3f4]">Article · 3 min</p>
-              <h3 className="mt-8 max-w-[560px] text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[0.98] tracking-[-0.045em]">The Funniest AI Fail on LinkedIn Is Actually a Design Problem</h3>
-              <p className="mt-5 max-w-[500px] text-sm leading-6 text-[#c9e3f4]">An AI agent posted its own error message under a real person&apos;s name. Here is why that is a design problem, and the patterns that prevent it.</p>
+              <h3 className="mt-8 max-w-[560px] text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[0.98] tracking-[-0.045em]">Revolut&apos;s Designers Got 3x Faster. Faster at What?</h3>
+              <p className="mt-5 max-w-[500px] text-sm leading-6 text-[#c9e3f4]">A CEO says LLMs make his designers 3-4x faster. Rasmus Andersson says designing fast isn&apos;t a thing. Both are right.</p>
             </div>
             <span className="inline-flex items-center gap-2 text-sm font-semibold text-white">Read article <ArrowRight className="size-4" /></span>
+          </Link>
+          <Link href={withBasePath("/blog/ai-fail-design-problem")} className="relative group flex min-h-[230px] flex-col justify-between rounded-[22px] border border-[#d7e8f7] bg-white p-7 text-[#0e2951] transition-shadow hover:shadow-[0_10px_34px_rgba(14,41,81,0.12)]">
+            <div><p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Article · 3 min</p><h3 className="mt-5 text-2xl font-semibold leading-[1.03] tracking-[-0.035em]">The Funniest AI Fail on LinkedIn Is Actually a Design Problem</h3></div>
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#0e2951] group-hover:text-[#1183D0]">Read article <ArrowRight className="size-4" /></span>
           </Link>
           <div className="relative group flex min-h-[230px] flex-col justify-between rounded-[22px] bg-[#e5e7eb] p-7 text-[#4b5563]"><span className="absolute right-5 top-5 rounded-full bg-[#cbd5e1] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#64748b]">Coming soon</span>
             <div><p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0e6fb4]">Article · 8 min</p><h3 className="mt-5 text-2xl font-semibold leading-[1.03] tracking-[-0.035em]">AI discoverability for portfolio websites</h3></div>
@@ -1543,10 +1547,6 @@ export default function PortfolioPage() {
           </div>
           <div className="relative group flex min-h-[230px] flex-col justify-between rounded-[22px] bg-[#e5e7eb] p-7 text-[#4b5563]"><span className="absolute right-5 top-5 rounded-full bg-[#cbd5e1] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#64748b]">Coming soon</span>
             <div><p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0e6fb4]">Guide · 10 min</p><h3 className="mt-5 text-2xl font-semibold leading-[1.03] tracking-[-0.035em]">Product strategy that survives contact with reality</h3></div>
-            <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#6b7280]">Publishing soon <ArrowRight className="size-4" /></span>
-          </div>
-          <div className="relative group flex min-h-[230px] flex-col justify-between rounded-[22px] bg-[#e5e7eb] p-7 text-[#4b5563]"><span className="absolute right-5 top-5 rounded-full bg-[#cbd5e1] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#64748b]">Coming soon</span>
-            <div><p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7250a8]">Essay · 9 min</p><h3 className="mt-5 text-2xl font-semibold leading-[1.03] tracking-[-0.035em]">Design systems are a product, not a paint kit</h3></div>
             <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#6b7280]">Publishing soon <ArrowRight className="size-4" /></span>
           </div>
         </div>
