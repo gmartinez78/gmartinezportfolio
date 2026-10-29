@@ -11,10 +11,13 @@ export const metadata: Metadata = {
   description: defaultDescription,
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/images/icon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/images/icon-192.png", sizes: "192x192", type: "image/png" },
       { url: "/images/logo-gj.svg", type: "image/svg+xml" },
     ],
-    shortcut: ["/images/logo-gj.svg"],
-    apple: ["/images/logo-gj.svg"],
+    shortcut: ["/favicon.ico"],
+    apple: [{ url: "/images/icon-180.png", sizes: "180x180" }],
   },
   openGraph: {
     title: defaultTitle,
@@ -22,18 +25,18 @@ export const metadata: Metadata = {
     siteName: "Greddys Martinez",
     images: [
       {
-        url: "/images/og-home.png",
-        width: 1440,
-        height: 1100,
-        alt: "Greddys Martinez homepage hero preview",
+        url: "/images/og-logo.png",
+        width: 1200,
+        height: 1200,
+        alt: "Greddys Martinez logo",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: defaultTitle,
     description: defaultDescription,
-    images: ["/images/og-home.png"],
+    images: ["/images/og-logo.png"],
   },
   robots: {
     index: true,

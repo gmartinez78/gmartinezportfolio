@@ -7,14 +7,14 @@ const rawSiteUrl =
   (process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : undefined) ??
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://greddys.com");
 
 export const siteUrl = rawSiteUrl.endsWith("/") ? rawSiteUrl.slice(0, -1) : rawSiteUrl;
 export const siteName = "Greddys Martinez";
 export const defaultTitle = "Greddys Martinez | Senior Product Designer Portfolio";
 export const defaultDescription =
   "Senior Product Designer focused on AI, enterprise SaaS, UX strategy, and high-impact digital product experiences.";
-export const defaultOgImage = "/images/og-home.png";
+export const defaultOgImage = "/images/og-logo.png";
 export const defaultKeywords = [
   "Greddys Martinez",
   "Senior Product Designer",

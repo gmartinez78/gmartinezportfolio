@@ -5,7 +5,7 @@ export const metadata = buildMetadata({
   title: "Greddys Martinez | Senior Product Designer Portfolio",
   description:
     "Portfolio of Greddys Martinez, a Senior Product Designer specializing in AI product design, enterprise SaaS, UX research, and design systems.",
-  image: "/images/og-home-preview.png",
+  image: "/images/og-logo.png",
   path: "/",
   keywords: [
     "Greddys Martinez",
