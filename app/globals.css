@@ -470,4 +470,10 @@
   html {
     font-family: var(--font-inter), sans-serif;
   }
+  main > div > div:nth-child(2) > h1 {
+    max-width: 460px;
+  }
+  main > div > div:nth-child(2) > h1 > span {
+    display: block;
+  }
 }
