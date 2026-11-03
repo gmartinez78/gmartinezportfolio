@@ -1517,7 +1517,7 @@ export default function PortfolioPage() {
           <div className="max-w-[620px]">
             <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Notes from the practice</p>
             <Heading as="h2" variant="section" className="mt-3 text-[clamp(2rem,3.4vw,3.1rem)] leading-[1.02] text-[#141114]">
-              Practical guidance for the AI era.
+              Practical guidance<br />for<br /><span className="font-playfair font-normal italic text-[#1183D0]">the AI era.</span>
             </Heading>
           </div>
           <Link href={withBasePath("/blog")} className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-[#0e2951] transition-colors hover:text-[#1183D0]">
@@ -1525,16 +1525,16 @@ export default function PortfolioPage() {
           </Link>
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <Link href={withBasePath("/blog/ai-feature-changes-less")} className="relative group flex min-h-[330px] flex-col justify-between rounded-[22px] bg-[#0e2951] p-7 text-white transition-shadow hover:shadow-[0_10px_34px_rgba(14,41,81,0.18)] md:col-span-2 lg:min-h-[365px]"><span className="absolute right-6 top-6 rounded-full bg-[#1183D0] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white">New</span>
+          <Link href={withBasePath("/blog/ai-job-search-advantage")} className="relative group flex min-h-[330px] flex-col justify-between rounded-[22px] bg-[#0e2951] p-7 text-white transition-shadow hover:shadow-[0_10px_34px_rgba(14,41,81,0.18)] md:col-span-2 lg:min-h-[365px]"><span className="absolute right-6 top-6 rounded-full bg-[#1183D0] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white">New</span>
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#c9e3f4]">Article · 4 min</p>
-              <h3 className="mt-8 max-w-[560px] text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[0.98] tracking-[-0.045em]">The best AI feature is the one that changes less</h3>
-              <p className="mt-5 max-w-[500px] text-sm leading-6 text-[#c9e3f4]">Asking AI for one small edit shouldn&apos;t mean reviewing the whole design. The best AI features respect the scope of a request.</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#c9e3f4]">Article · 8 min</p>
+              <h3 className="mt-8 max-w-[560px] text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[0.98] tracking-[-0.045em]">How to Use AI to Gain an Advantage in Your Job Search</h3>
+              <p className="mt-5 max-w-[500px] text-sm leading-6 text-[#c9e3f4]">Use AI to understand the market, adapt your CV, prepare for assessments, and focus on the opportunities that matter most.</p>
             </div>
             <span className="inline-flex items-center gap-2 text-sm font-semibold text-white">Read article <ArrowRight className="size-4" /></span>
           </Link>
-          <Link href={withBasePath("/blog/design-speed-faster-at-what")} className="relative group flex min-h-[230px] flex-col justify-between rounded-[22px] border border-[#d7e8f7] bg-white p-7 text-[#0e2951] transition-shadow hover:shadow-[0_10px_34px_rgba(14,41,81,0.12)]">
-            <div><p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Article · 3 min</p><h3 className="mt-5 text-2xl font-semibold leading-[1.03] tracking-[-0.035em]">Revolut&apos;s Designers Got 3x Faster. Faster at What?</h3></div>
+          <Link href={withBasePath("/blog/ai-fatigue-cognitive-load")} className="relative group flex min-h-[230px] flex-col justify-between rounded-[22px] border border-[#d7e8f7] bg-white p-7 text-[#0e2951] transition-shadow hover:shadow-[0_10px_34px_rgba(14,41,81,0.12)]">
+            <div><p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Article · 7 min</p><h3 className="mt-5 text-2xl font-semibold leading-[1.03] tracking-[-0.035em]">AI Fatigue: When Easier Thinking Creates More Mental Work</h3></div>
             <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#0e2951] group-hover:text-[#1183D0]">Read article <ArrowRight className="size-4" /></span>
           </Link>
           <Link href={withBasePath("/blog/ai-fail-design-problem")} className="relative group flex min-h-[230px] flex-col justify-between rounded-[22px] border border-[#d7e8f7] bg-white p-7 text-[#0e2951] transition-shadow hover:shadow-[0_10px_34px_rgba(14,41,81,0.12)]">
