@@ -1517,7 +1517,7 @@ export default function PortfolioPage() {
           <div className="max-w-[620px]">
             <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Notes from the practice</p>
             <Heading as="h2" variant="section" className="mt-3 text-[clamp(2rem,3.4vw,3.1rem)] leading-[1.02] text-[#141114]">
-              Practical guidance<br />for<br /><span className="font-playfair font-normal italic text-[#1183D0]">the AI era.</span>
+              Practical guidance for<br /><span className="font-playfair font-normal italic text-[#1183D0]">the AI era.</span>
             </Heading>
           </div>
           <Link href={withBasePath("/blog")} className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-[#0e2951] transition-colors hover:text-[#1183D0]">
