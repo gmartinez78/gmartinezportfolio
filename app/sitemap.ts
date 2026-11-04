@@ -18,6 +18,7 @@ const staticRoutes = [
   { path: "/blog/design-speed-faster-at-what", priority: 0.6, changeFrequency: "monthly" as const },
   { path: "/blog/ai-fail-design-problem", priority: 0.6, changeFrequency: "monthly" as const },
   { path: "/blog/ai-job-search-advantage", priority: 0.6, changeFrequency: "monthly" as const },
+  { path: "/blog/when-your-job-stops-being-your-whole-identity", priority: 0.6, changeFrequency: "monthly" as const },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
