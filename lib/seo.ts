@@ -37,9 +37,11 @@ type BuildMetadataInput = {
   description: string;
   path?: string;
   image?: string;
+  imageAlt?: string;
   keywords?: string[];
   noIndex?: boolean;
   type?: "website" | "article";
+  publishedTime?: string;
 };
 
 export function buildKeywordSet(...keywordGroups: Array<Array<string | undefined | null>>) {
@@ -85,13 +87,16 @@ export function buildMetadata({
   description,
   path = "/",
   image = defaultOgImage,
+  imageAlt,
   keywords,
   noIndex = false,
   type = "website",
+  publishedTime,
 }: BuildMetadataInput): Metadata {
-  const canonical = getAbsoluteUrl(path);
+  const canonical = getAbsoluteUrl(path.endsWith("/") || path === "/" ? path : `${path}/`);
   const absoluteImage = getAbsoluteUrl(image);
   const resolvedKeywords = buildKeywordSet(defaultKeywords, keywords ?? []);
+  const ogImageAlt = imageAlt ?? title;
 
   return {
     title,
@@ -106,10 +111,13 @@ export function buildMetadata({
       title,
       description,
       siteName,
+      ...(publishedTime ? { publishedTime } : {}),
       images: [
         {
           url: absoluteImage,
-          alt: title,
+          alt: ogImageAlt,
+          width: 1200,
+          height: 630,
         },
       ],
     },
@@ -266,5 +274,43 @@ export function getCaseStudySchema(caseStudy: CaseStudyRecord, path: string, ima
     ].filter(Boolean),
     datePublished: caseStudy.created_at ?? undefined,
     dateModified: caseStudy.updated_at ?? undefined,
+  };
+}
+
+
+export function getArticleSchema(input: {
+  title: string;
+  description: string;
+  path: string;
+  image?: string;
+  datePublished: string;
+  dateModified?: string;
+  keywords?: string[];
+}) {
+  const path = input.path.endsWith("/") ? input.path : `${input.path}/`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: input.title,
+    description: input.description,
+    url: getAbsoluteUrl(path),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": getAbsoluteUrl(path),
+    },
+    image: [getAbsoluteUrl(input.image || defaultOgImage)],
+    datePublished: input.datePublished,
+    dateModified: input.dateModified ?? input.datePublished,
+    author: {
+      "@type": "Person",
+      name: siteContent.resume.name,
+      url: getAbsoluteUrl("/"),
+    },
+    publisher: {
+      "@type": "Person",
+      name: siteContent.resume.name,
+      url: getAbsoluteUrl("/"),
+    },
+    keywords: buildKeywordSet(defaultKeywords, input.keywords ?? []),
   };
 }

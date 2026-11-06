@@ -1,24 +1,20 @@
 import type { MetadataRoute } from "next";
 import caseStudies from "@/content/case-studies.json";
 import type { CaseStudyRecord } from "@/lib/cms/types";
+import { BLOG_POSTS } from "@/lib/blog-posts";
 import { getAbsoluteUrl, getCaseStudyPath, shouldIndexCaseStudy } from "@/lib/seo";
 
 export const dynamic = "force-static";
 
 const staticRoutes = [
   { path: "/", priority: 1, changeFrequency: "monthly" as const },
-  { path: "/projects", priority: 0.9, changeFrequency: "weekly" as const },
-  { path: "/resume", priority: 0.8, changeFrequency: "monthly" as const },
-  { path: "/contact", priority: 0.7, changeFrequency: "monthly" as const },
-  { path: "/classical-word", priority: 0.7, changeFrequency: "monthly" as const },
-  { path: "/social-media-diagnostic", priority: 0.4, changeFrequency: "monthly" as const },
-  { path: "/social-growth-agent", priority: 0.4, changeFrequency: "monthly" as const },
-  { path: "/blog", priority: 0.7, changeFrequency: "weekly" as const },
-  { path: "/blog/ai-feature-changes-less", priority: 0.6, changeFrequency: "monthly" as const },
-  { path: "/blog/design-speed-faster-at-what", priority: 0.6, changeFrequency: "monthly" as const },
-  { path: "/blog/ai-fail-design-problem", priority: 0.6, changeFrequency: "monthly" as const },
-  { path: "/blog/ai-job-search-advantage", priority: 0.6, changeFrequency: "monthly" as const },
-  { path: "/blog/when-your-job-stops-being-your-whole-identity", priority: 0.6, changeFrequency: "monthly" as const },
+  { path: "/projects/", priority: 0.9, changeFrequency: "weekly" as const },
+  { path: "/resume/", priority: 0.8, changeFrequency: "monthly" as const },
+  { path: "/contact/", priority: 0.7, changeFrequency: "monthly" as const },
+  { path: "/classical-word/", priority: 0.7, changeFrequency: "monthly" as const },
+  { path: "/social-media-diagnostic/", priority: 0.4, changeFrequency: "monthly" as const },
+  { path: "/social-growth-agent/", priority: 0.4, changeFrequency: "monthly" as const },
+  { path: "/blog/", priority: 0.7, changeFrequency: "weekly" as const },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -31,6 +27,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     }));
 
+  const blogRoutes = BLOG_POSTS.filter((post) => post.published).map((post) => ({
+    url: getAbsoluteUrl(`/blog/${post.slug}/`),
+    lastModified: new Date(`${post.publishedAt}T12:00:00.000Z`),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
   const staticEntries = staticRoutes.map((route) => ({
     url: getAbsoluteUrl(route.path),
     lastModified: new Date(),
@@ -38,5 +41,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route.priority,
   }));
 
-  return [...staticEntries, ...caseStudyRoutes];
+  return [...staticEntries, ...blogRoutes, ...caseStudyRoutes];
 }
