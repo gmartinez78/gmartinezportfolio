@@ -27,6 +27,42 @@ function renderBody(body: string | Block[]) {
 }
 
 const posts: Record<string, Post> = {
+  "prototype-connections-code": {
+    hideCover: true,
+    date: "November 9, 2026",
+    cover: { src: "/blog/prototype-connections-code.jpg", alt: "Warm peach background with prototype connection lines flowing into a code panel on a design canvas." },
+    type: "Article",
+    time: "3 min",
+    title: "What Have We Decided, and What Is the Agent Guessing?",
+    intro: "A prototype can look convincing while leaving most of the experience undecided.",
+    sections: [
+      ["", [
+        "The main action works. The confirmation screen appears. Everyone understands the idea.",
+        "But what happens when the request fails? When someone goes back to change an answer? When there is nothing to display?",
+        "Those questions become more important when AI uses the prototype to generate working behavior.",
+        "On November 3, Figma announced that its agent can read prototype connections and interactions when creating code layers from design frames. Those connections now provide context for generation. Code layers remain in open beta. ([figma.com](https://www.figma.com/release-notes/))",
+        "That is a useful change. It also gives prototype decisions more weight.",
+        "A connection between two screens communicates an expectation: this action should lead here. A missing connection leaves that expectation unstated. The agent might fill the gap, but the result is an assumption someone still needs to examine.",
+        "My interpretation is that this makes prototypes more valuable as reviewable descriptions of behavior. It does not turn them into complete specifications automatically.",
+        "Consider a simple appointment flow.",
+        "Someone chooses a time, enters their details, and confirms. The happy path takes three screens. But the appointment might become unavailable before confirmation. A slow connection might leave the person unsure whether the booking succeeded. Going back might erase information they have already entered.",
+        "These situations determine whether the experience feels dependable. They deserve the same attention as the confirmation screen.",
+        "Before generating code, I would review the flow through a few practical questions:",
+        { list: [
+          "What happens while the system is working?",
+          "What can fail, and how does someone recover?",
+          "Can someone go back without losing their progress?",
+          "What appears when there is no data?",
+          "Which decisions are still unresolved?",
+        ]},
+        "Accessibility needs additional attention. A visual connection does not, by itself, specify keyboard behavior, semantic structure, screen reader announcements, or where focus moves after a dialog closes. Those expectations need explicit definition and testing in the working interface.",
+        "Figma’s workflow example also describes code layers as a shared space for comparing interactive alternatives and refining ideas together. That creates an opportunity to review actual behavior earlier, while decisions are still easy to change. ([figma.com](https://www.figma.com/blog/workflow-lab-build-with-code-on-the-canvas-using-the-figma-agent-and-code-layers/))",
+        "I would use that opportunity to make uncertainty visible. Mark a flow as exploratory. Record which states it covers. Identify the assumptions that require validation.",
+        "There is no need to prototype every possible situation before learning anything. There is a need to distinguish an intentionally narrow experiment from an experience that is ready to implement.",
+        "When prototype connections become input for code, a useful review question is: What behavior have we actually decided, and what are we leaving the agent to guess?",
+      ]],
+    ],
+  },
   "everyone-can-design": {
     hideCover: true,
     date: "November 6, 2026",
