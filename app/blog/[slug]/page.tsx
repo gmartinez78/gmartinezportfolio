@@ -7,7 +7,7 @@ import { BLOG_POSTS } from "@/lib/blog-posts";
 import { buildMetadata, getArticleSchema, getBreadcrumbSchema } from "@/lib/seo";
 
 type Block = string | { list: string[] };
-type Post = { type: string; time: string; title: string; intro: string; sections: Array<[string, string | Block[]]>; cover?: { src: string; alt: string }; hideCover?: boolean; date?: string };
+type Post = { type: string; time: string; title: string; intro: string; sections: Array<[string, string | Block[]]>; cover?: { src: string; alt: string }; hideCover?: boolean; date?: string; keywords?: string[] };
 
 function renderInline(text: string) {
   return text.split(/(\[[^\]]+\]\([^)\s]+\)|\*\*[^*]+\*\*|\*[^*]+\*)/g).filter(Boolean).map((part, i) => {
@@ -27,6 +27,38 @@ function renderBody(body: string | Block[]) {
 }
 
 const posts: Record<string, Post> = {
+  "design-the-way-out": {
+    hideCover: true,
+    date: "November 10, 2026",
+    cover: { src: "/blog/design-the-way-out.jpg", alt: "A laptop on a desk against a sage green wall showing a support chat with a focused 'Talk to a person' button." },
+    type: "Article",
+    time: "3 min",
+    title: "Design the way out before the chatbot's personality",
+    intro: "Imagine asking a support chatbot to fix a problem and receiving the same answer three times.",
+    keywords: ["chatbot accessibility", "European Accessibility Act", "WCAG", "conversational design", "human handoff", "AI UX"],
+    sections: [
+      ["", [
+        "You explain it differently. It offers the same help article. You ask for a person, but the conversation keeps going.",
+        "Now imagine the alternative contact option cannot be reached with a keyboard. Or the transfer happens visually, without a screen reader announcing it. Or the chat expires while you are still writing.",
+        "The problem has moved beyond answer quality. The service has made it difficult to get help.",
+        "That is why I would design the way out before polishing the chatbot’s personality.",
+        "The legal context needs precision. The European Accessibility Act applies to specified products and services, with exemptions and qualifications. It does not mean every chatbot is automatically covered, or that every business must provide a live human agent. For covered services, however, its requirements include accessible websites and related online applications. It also addresses accessible communication about service accessibility through support services where available. ([eur-lex.europa.eu](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32019L0882))",
+        "An accessible alternative to the bot is therefore a design decision that must be considered within the whole service, rather than treated as a decorative link.",
+        "Start with discoverability.",
+        "People should be able to understand their options without guessing a phrase that unlocks escalation. If human support is available, make that route clear. If it is unavailable, explain when it returns and offer an alternative that actually works.",
+        "Then test the interaction.",
+        "Can someone reach and activate the contact option using a keyboard? Can they leave the chat widget and continue using the page? W3C’s keyboard accessibility guidance addresses both operating functionality and avoiding keyboard traps. ([w3.org](https://www.w3.org/WAI/WCAG21/Understanding/keyboard), [w3.org](https://www.w3.org/WAI/WCAG21/Understanding/no-keyboard-trap))",
+        "Next, make the transition understandable.",
+        "“Connecting you” and “Your request has been submitted” communicate different outcomes. A person needs to know whether they are waiting, finished, or expected to do something else. Relevant status messages should be available to assistive technologies without unnecessarily moving focus or interrupting the task. ([w3.org](https://www.w3.org/WAI/WCAG21/Understanding/status-messages))",
+        "Time deserves equal attention. A person may need longer to read a response, use an alternative input device, or explain a complicated problem. WCAG’s Timing Adjustable criterion addresses content-imposed time limits through options to disable, adjust, or extend them, subject to defined exceptions. ([w3.org](https://www.w3.org/WAI/WCAG21/Understanding/timing-adjustable.html))",
+        "Finally, consider what crosses the handoff.",
+        "My recommendation is to let people review a short summary before sharing it with another support channel. Explain what will be transferred. Avoid making them repeat the whole conversation when the service can responsibly preserve that context.",
+        "These details also change how a team should evaluate success. A low escalation rate is ambiguous: the bot may have solved the problem, or people may have given up.",
+        "I would examine successful resolution, failed handoffs, repeated attempts to reach support, and whether people can complete the journey with assistive technology.",
+        "A chatbot can be helpful and still reach its limits. The experience should remain usable when that happens.",
+      ]],
+    ],
+  },
   "prototype-connections-code": {
     hideCover: true,
     date: "November 9, 2026",
@@ -170,7 +202,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     type: published ? "article" : "website",
     publishedTime: published && publishedAt ? `${publishedAt}T12:00:00.000Z` : undefined,
     noIndex: !published,
-    keywords: [post.title, post.type, "AI product design", "UX design", "accessibility"],
+    keywords: post.keywords ?? [post.title, post.type, "AI product design", "UX design", "accessibility"],
   });
 }
 
@@ -190,7 +222,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         path: `/blog/${slug}/`,
         image: cover?.src,
         datePublished: `${publishedAt}T12:00:00.000Z`,
-        keywords: [post.title, post.type, "AI product design", "UX design", "accessibility"],
+        keywords: post.keywords ?? [post.title, post.type, "AI product design", "UX design", "accessibility"],
       })
     : null;
   const breadcrumbSchema = getBreadcrumbSchema([
