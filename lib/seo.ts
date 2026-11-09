@@ -305,11 +305,13 @@ export function getArticleSchema(input: {
       "@type": "Person",
       name: siteContent.resume.name,
       url: getAbsoluteUrl("/"),
+      sameAs: ["https://www.linkedin.com/in/greddysmartinez"],
     },
     publisher: {
       "@type": "Person",
       name: siteContent.resume.name,
       url: getAbsoluteUrl("/"),
+      sameAs: ["https://www.linkedin.com/in/greddysmartinez"],
     },
     keywords: buildKeywordSet(defaultKeywords, input.keywords ?? []),
   };

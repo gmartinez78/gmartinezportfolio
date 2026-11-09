@@ -1528,7 +1528,7 @@ export default function PortfolioPage() {
           <Link href={withBasePath("/blog/prototype-connections-code")} className="relative group flex min-h-[330px] flex-col justify-between rounded-[22px] bg-[#0e2951] p-7 text-white transition-shadow hover:shadow-[0_10px_34px_rgba(14,41,81,0.18)] md:col-span-2 lg:min-h-[365px]"><span className="absolute right-6 top-6 rounded-full bg-[#1183D0] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white">New</span>
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#c9e3f4]">Article · 3 min</p>
-              <h3 className="mt-8 max-w-[560px] text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[0.98] tracking-[-0.045em]">What Have We Decided, and What Is the Agent Guessing?</h3>
+              <h3 className="mt-8 max-w-[560px] text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[0.98] tracking-[-0.045em]">What have we decided, and what is the agent guessing?</h3>
               <p className="mt-5 max-w-[500px] text-sm leading-6 text-[#c9e3f4]">When Figma&apos;s agent reads prototype connections to build code layers, undecided states matter more.</p>
             </div>
             <span className="inline-flex items-center gap-2 text-sm font-semibold text-white">Read article <ArrowRight className="size-4" /></span>

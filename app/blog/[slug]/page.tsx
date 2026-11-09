@@ -33,7 +33,7 @@ const posts: Record<string, Post> = {
     cover: { src: "/blog/prototype-connections-code.jpg", alt: "Warm peach background with prototype connection lines flowing into a code panel on a design canvas." },
     type: "Article",
     time: "3 min",
-    title: "What Have We Decided, and What Is the Agent Guessing?",
+    title: "What have we decided, and what is the agent guessing?",
     intro: "A prototype can look convincing while leaving most of the experience undecided.",
     sections: [
       ["", [
@@ -198,6 +198,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     { name: "Blog", path: "/blog/" },
     { name: post.title, path: `/blog/${slug}/` },
   ]);
+  const related = BLOG_POSTS.filter((item) => item.published && item.slug !== slug).slice(0, 2);
   return (
     <main className="min-h-screen bg-white text-[var(--ui-color-text-body)] lg:my-2 lg:mr-2 lg:overflow-clip lg:rounded-[28px] lg:border lg:border-[#e5eef7] lg:shadow-[0_10px_34px_rgba(14,41,81,0.06)]">
       {articleSchema ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} /> : null}
@@ -233,6 +234,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 {renderBody(body)}
               </section>
             ))}
+            {related.length > 0 ? (
+              <section className="border-t border-[#e5eef7] pt-12" aria-labelledby="related-articles-heading">
+                <h2 id="related-articles-heading" className="text-3xl font-semibold tracking-[var(--ui-tracking-heading)] text-[#141114]">Related articles</h2>
+                <ul className="mt-6 space-y-4">
+                  {related.map((item) => (
+                    <li key={item.slug}>
+                      <Link href={withBasePath(`/blog/${item.slug}`)} className="text-lg font-semibold text-[#0e2951] underline decoration-[#1183D0]/40 underline-offset-4 transition-colors hover:text-[#0E6FB4]">
+                        {item.title}
+                      </Link>
+                      <p className="mt-1 text-base leading-7 text-[var(--ui-color-text-body)]">{item.description}</p>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
           </div>
         </article>
       </div>
