@@ -27,6 +27,44 @@ function renderBody(body: string | Block[]) {
 }
 
 const posts: Record<string, Post> = {
+  "where-senior-designers-come-from": {
+    hideCover: true,
+    date: "November 11, 2026",
+    cover: { src: "/blog/where-senior-designers-come-from.jpg", alt: "Hands in a yellow sweater hold a laptop against a bright blue sky, showing a bank account screen with floating cards asking 'Why this component?' and 'Where would this fail?'" },
+    type: "Article",
+    time: "3 min",
+    title: "If AI does the junior work, where do senior designers come from?",
+    intro: "A senior designer notices that a familiar component is wrong for the situation.",
+    keywords: ["junior designers", "design judgment", "AI UX", "design education", "mentorship", "design process"],
+    sections: [
+      ["", [
+        "They ask what happens when permissions change. They challenge a requirement because it conflicts with something users consistently misunderstand. They recognize when a polished screen hides an unresolved decision.",
+        "That judgment has a history.",
+        "It develops through making decisions, seeing consequences, receiving feedback, and trying again. Some of those learning opportunities are hidden inside work that looks repetitive from the outside.",
+        "Assembling screens from a design system can teach someone how components behave, where patterns break, and which exceptions are justified. If AI takes over the assembly, teams need to decide how that learning will happen.",
+        "This is a concern worth examining, but the evidence does not justify saying AI inevitably prevents designers from developing expertise.",
+        "A 2026 study published in Design Science examined ideation with 35 UX design students. It reported convenience and speed alongside signs of reduced cognitive engagement and potential risks to creative confidence. The study used ChatGPT 3.5 in a specific educational setting. It does not establish the long-term effects of current AI tools on professional designers. ([cambridge.org](https://doi.org/10.1017/dsj.2026.10060))",
+        "NN/g makes a related argument in its article on compressed design processes: experienced practitioners can draw on accumulated knowledge when moving quickly. Less experienced designers have had fewer opportunities to build that knowledge. This is professional guidance, not proof that AI causes skill loss. ([nngroup.com](https://www.nngroup.com/articles/design-process-isnt-dead/))",
+        "For me, the practical implication is to redesign learning alongside the workflow.",
+        "Suppose a junior designer uses AI to generate an account settings flow. Reviewing whether the screens look consistent is only part of the assignment.",
+        "Ask them to explain why a particular component fits. Have them identify a situation where it would fail. Let them observe someone attempting the task. Then discuss what they would change and why.",
+        "The generated output becomes material for investigation.",
+        "I would build junior assignments around a complete feedback cycle:",
+        { list: [
+          "Frame a small problem using real evidence.",
+          "Propose an approach and explain the assumptions.",
+          "Use AI where it helps explore or produce the work.",
+          "Test the result with users, colleagues, or assistive technology.",
+          "Revise it and explain what changed their thinking.",
+        ]},
+        "Pairing matters here. “Review the AI output” is a weak instruction if someone has not yet learned what to look for. A more useful session makes an experienced designer’s reasoning visible: why a state is missing, why a pattern is inappropriate, or why an apparently minor interaction creates a larger problem.",
+        "Junior designers should also retain ownership of meaningful decisions. Giving them only cleanup work after the interesting choices have been made limits what they can learn, regardless of which tools the team uses.",
+        "Teams can evaluate development by looking beyond output volume. Can the designer explain trade-offs? Recognize unsupported assumptions? Change direction when evidence contradicts the original idea? Apply feedback to a different problem?",
+        "Those are opportunities to practice judgment.",
+        "If AI reduces the time spent producing screens, teams have a choice about where that time goes. Some of it should go toward helping less experienced designers understand the decisions behind what they produce.",
+      ]],
+    ],
+  },
   "design-the-way-out": {
     hideCover: true,
     date: "November 10, 2026",
