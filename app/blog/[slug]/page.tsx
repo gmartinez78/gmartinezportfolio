@@ -27,6 +27,30 @@ function renderBody(body: string | Block[]) {
 }
 
 const posts: Record<string, Post> = {
+  "toothbrush-knows-what-to-sell-you": {
+    hideCover: true,
+    date: "November 13, 2026",
+    cover: { src: "/blog/toothbrush-knows-what-to-sell-you.jpg", alt: "A yellow laundry room with a monitor showing an online store that says the brush head is almost worn out, beside a white washing machine with a toothbrush on top." },
+    type: "Article",
+    time: "3 min",
+    title: "When Your Toothbrush Knows What to Sell You",
+    intro: "You buy a toothbrush. A few months later, it knows when the head is wearing out and can help order a new one.",
+    keywords: ["smart devices", "surveillance pricing", "privacy", "product design", "personalized marketing", "AI UX"],
+    sections: [
+      ["", [
+        "That can save you a trip to the store. It also means that something you do half-asleep before breakfast can become a signal to sell you something.",
+        "Philips says its Sonicare app can track brush-head wear and alert you when it’s time to replace it. If you opt into Smart Reorder, Philips shares limited device and wear data with Amazon so it can fulfill the reorder. ([philips.com](https://www.philips.com/a-w/sonicare-app.html)) I can see why someone would turn that on. I’m also interested in what happens when the same idea spreads to the other things we use every day.",
+        "Samsung says its AI OptiWash cycle can detect the type, weight, and soil level of a load to choose a wash cycle. ([samsung.com](https://www.samsung.com/us/support/answer/ANS10001016/)) That gives the machine a reason to sense what’s in the drum. Now imagine a washer that also uses your laundry habits to decide when to offer you more detergent. That’s a hypothetical example, but it’s worth asking where you’d draw the line. Would you want the reminder? Would you want the machine to choose which brand to recommend?",
+      ]],
+      ["What to sell you, and when", [
+        "Marketing software already makes decisions like this about timing. Klaviyo says it uses past opens, clicks, and orders to predict the hour each recipient is most likely to open a message, click, or buy. ([klaviyo.com](https://help.klaviyo.com/hc/en-us/articles/45231714007323)) The U.S. Federal Trade Commission also found that companies can use signals such as browsing history and location to tailor prices and promotions. ([ftc.gov](https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-surveillance-pricing-study-indicates-wide-range-personal-data-used-set-individualized-consumer)) A business can use what it knows about you to decide what to offer, when to send it, and which deal you see.",
+        "There’s also a precedent for selling data from a device in your home. In 2017, Vizio settled charges that it collected viewing histories from 11 million smart TVs without informed consent. The FTC alleged that Vizio sold this information to third parties, who used it in part to target ads across devices. ([ftc.gov](https://www.ftc.gov/news-events/news/press-releases/2017/02/vizio-pay-22-million-ftc-state-new-jersey-settle-charges-it-collected-viewing-histories-11-million)) Think about what that means from the couch. You bought a TV to watch a show. What you watched could help determine which ad followed you to another screen.",
+        "As a designer, I’d want to make the commercial choice visible when someone sets up the device. Let me turn on brushing feedback and decide separately whether I want product offers, automatic reorders, or data sharing with another company. Each of those choices changes what I’m agreeing to. I’d want those settings to be as easy to find later as they were during setup.",
+        "A timely reminder can be useful. I also know how easy it is to think I need something once it shows up at the right moment. As more everyday objects learn our habits, brands get more chances to pick that moment for us.",
+        "**If the things you already own can learn when you’re most likely to buy, how much of what you buy next will come from a need you noticed yourself?**",
+      ]],
+    ],
+  },
   "where-senior-designers-come-from": {
     hideCover: true,
     date: "November 11, 2026",
