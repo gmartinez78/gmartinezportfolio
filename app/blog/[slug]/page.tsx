@@ -27,6 +27,40 @@ function renderBody(body: string | Block[]) {
 }
 
 const posts: Record<string, Post> = {
+  "technology-shaping-our-mondays": {
+    hideCover: true,
+    date: "November 16, 2026",
+    cover: { src: "/blog/technology-shaping-our-mondays.jpg", alt: "A smartphone on a white dock against a bright coral-red wall, its Monday 7:58 lock screen stacked with weekend notifications from Slack, Outlook, Calendar, Jira, Teams and a reminder." },
+    type: "Article",
+    time: "2 min",
+    title: "The Technology We Notice Least May Be Shaping Our Mondays",
+    intro: "As technology changes the way we work, it also changes the way we begin, end, and recover from work – often without us noticing.",
+    keywords: ["notifications", "burnout", "digital wellbeing", "work-life boundaries", "technostress", "future of work"],
+    sections: [
+      ["Monday starts before Monday", [
+        "For many people, Monday does not begin when they open their laptop.",
+        "It begins with the messages that arrived over the weekend, the reminders that appeared overnight, the unfinished tasks that remained visible, and the quiet pressure to respond before the week has properly started.",
+        "Technology has made work more accessible. It has also made it harder to tell when work is finished.",
+      ]],
+      ["The hidden cost of constant access", [
+        "The problem is not that every notification is important. The problem is that each one asks for a small decision: should I read this, answer this, remember this, or return to what I was doing?",
+        "Research on workplace technology suggests that frequent techno-induced interruptions are associated with stronger burnout symptoms. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/37948193/)) Research on notifications also points to effects on strain and performance, although those effects vary between people and situations. ([academic.oup.com](https://academic.oup.com/joh/article/65/1/e12408/7479297))",
+        "The wider lesson is not that technology is harmful. It is that convenience does not remove the need for boundaries.",
+      ]],
+      ["Faster work can still feel heavier", [
+        "A person can complete more tasks and still feel less in control of their attention.",
+        "This is why a high-energy Monday can become a heavy one. The energy is spent reacting before there has been time to decide what deserves it.",
+      ]],
+      ["Questions worth asking", [
+        { list: ["Which messages require action, and which only create awareness?", "What would happen if the first hour of Monday belonged to one meaningful outcome?", "Which tools are supporting my priorities, and which tools are setting them?"] },
+      ]],
+      ["A more sustainable start", [
+        "The answer may be simple, even if it is not always easy: begin with one priority, delay non-urgent notifications, create response windows, and write down unfinished work before the weekend begins.",
+        "Recovery is not separate from performance. It is one of the conditions that makes performance possible.",
+        "The aim is not to use less technology at all costs. It is to make sure technology supports the rhythm of our work instead of quietly becoming the rhythm of our lives.",
+      ]],
+    ],
+  },
   "toothbrush-knows-what-to-sell-you": {
     hideCover: true,
     date: "November 13, 2026",
