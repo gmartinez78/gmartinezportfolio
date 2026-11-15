@@ -27,6 +27,36 @@ function renderBody(body: string | Block[]) {
 }
 
 const posts: Record<string, Post> = {
+  "ai-thinking-at-work": {
+    hideCover: true,
+    date: "November 18, 2026",
+    cover: { src: "/blog/ai-thinking-at-work.jpg", alt: "A laptop on an orange desk against a magenta wall showing a document titled Q1 research plan beside an AI assistant panel that challenges the user's hypothesis." },
+    type: "Article",
+    time: "2 min",
+    title: "AI May Change What It Means to Think at Work",
+    intro: "The most important question about AI may not be what it can produce, but what parts of thinking we continue to practise ourselves.",
+    keywords: ["generative AI", "critical thinking", "AI literacy", "future of work", "knowledge work", "human judgment"],
+    sections: [
+      ["AI is changing more than the task", [
+        "Generative AI can help with drafts, summaries, research, analysis, and repetitive work. ([microsoft.com](https://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization))",
+        "That is the visible change. The less visible change is what happens before and after the output: how we define a problem, decide what matters, notice a weak assumption, and take responsibility for a conclusion.",
+      ]],
+      ["What the research suggests", [
+        "A Microsoft Research and Carnegie Mellon study of 319 knowledge workers found that greater confidence in AI was associated with less self-reported critical-thinking effort. ([microsoft.com](https://www.microsoft.com/en-us/research/publication/the-impact-of-generative-ai-on-critical-thinking-self-reported-reductions-in-cognitive-effort-and-confidence-effects-from-a-survey-of-knowledge-workers/))",
+        "This does not prove that AI inevitably weakens thinking. It does suggest that the way we use the tool matters. If AI becomes the first place we go before forming our own view, we may become faster at accepting answers without becoming better at evaluating them.",
+      ]],
+      ["AI literacy may be a form of judgment", [
+        "LinkedIn's 2026 labor-market data shows that AI literacy is spreading beyond technical roles. ([pulse.linkedin.com](https://pulse.linkedin.com/research-and-trends/publications/labor-market-report-2026)) The skill is not only learning how to write a better prompt.",
+        "It may also include:",
+        { list: ["knowing when a task needs human reasoning;", "checking whether an answer is supported;", "recognising when the context is incomplete;", "explaining what was changed and why; and", "keeping responsibility for the final decision."] },
+      ]],
+      ["A better relationship with the tool", [
+        "One useful practice is to think first. Write a rough hypothesis before asking AI to respond. Then use it to challenge, compare, or expand your thinking rather than simply replace it.",
+        "The strongest professionals may not be the ones who automate every sentence. They may be the ones who understand which work benefits from speed and which work benefits from attention.",
+        "AI can give us more output. The responsibility is to make sure it also helps us produce better judgment.",
+      ]],
+    ],
+  },
   "productivity-has-a-season": {
     hideCover: true,
     date: "November 17, 2026",
