@@ -46,7 +46,7 @@ const posts: Record<string, Post> = {
         "This does not prove that AI inevitably weakens thinking. It does suggest that the way we use the tool matters. If AI becomes the first place we go before forming our own view, we may become faster at accepting answers without becoming better at evaluating them.",
       ]],
       ["AI literacy may be a form of judgment", [
-        "LinkedIn's 2026 labor-market data shows that AI literacy is spreading beyond technical roles. ([pulse.linkedin.com](https://pulse.linkedin.com/research-and-trends/publications/labor-market-report-2026)) The skill is not only learning how to write a better prompt.",
+        "LinkedIn's 2026 labor-market data shows that jobs requiring AI literacy grew 70% in a year in the U.S., as digital skills became a baseline in technical and non-technical roles. ([pulse.linkedin.com](https://pulse.linkedin.com/research-and-trends/publications/labor-market-report-2026)) The skill is not only learning how to write a better prompt.",
         "It may also include:",
         { list: ["knowing when a task needs human reasoning;", "checking whether an answer is supported;", "recognising when the context is incomplete;", "explaining what was changed and why; and", "keeping responsibility for the final decision."] },
       ]],
