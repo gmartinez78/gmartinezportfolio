@@ -27,6 +27,39 @@ function renderBody(body: string | Block[]) {
 }
 
 const posts: Record<string, Post> = {
+  "productivity-has-a-season": {
+    hideCover: true,
+    date: "November 17, 2026",
+    cover: { src: "/blog/productivity-has-a-season.jpg", alt: "A tablet on a windowsill against a violet wall in low winter sunlight, showing a November calendar week with Deep work, Walk outside, Buffer and Team check-in blocks and a 17:58 sunset." },
+    type: "Article",
+    time: "2 min",
+    title: "When Productivity Has a Season",
+    intro: "Weather and daylight do not determine our abilities, but they can influence the conditions in which our abilities are available.",
+    keywords: ["productivity", "seasonal affective disorder", "daylight", "sleep", "work engagement", "wellbeing at work"],
+    sections: [
+      ["The calendar is not neutral", [
+        "There are periods of the year when the same workload feels different.",
+        "The days become shorter. Morning light changes. Sleep may shift. Motivation can feel less reliable, and tasks that seemed manageable a few months earlier begin to require more effort.",
+        "It is easy to interpret this as a personal failure. It may be more accurate to recognise that human energy is not constant across every season.",
+      ]],
+      ["What the research tells us", [
+        "Seasonal affective disorder is a real, recurring form of depression, and persistent changes in mood, sleep, appetite, or interest deserve professional support. But not every seasonal change is a diagnosis. ([nimh.nih.gov](https://www.nimh.nih.gov/health/publications/seasonal-affective-disorder))",
+        "Research has connected reduced daylight with changes in sleep timing and alertness. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/33089157/)) A study of employees also found that the transition to daylight saving time reduced work engagement for a period afterwards, partly through sleep quality. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/37453904/))",
+        "The evidence does not mean that weather excuses every difficult day. It does suggest that context matters.",
+      ]],
+      ["When 20% is your 100%", [
+        "Some days, doing 20% of your usual output is 100% of the capacity available to you.",
+        "That is not a permanent identity. It is information.",
+      ]],
+      ["What adjustment can look like", [
+        { list: ["Put demanding work where your energy is usually strongest.", "Get outside in daylight when possible, especially earlier in the day.", "Define the minimum viable version of an important task.", "Leave space between demanding activities instead of filling every minute.", "Ask for support when low mood or exhaustion persists."] },
+      ]],
+      ["A more humane definition of performance", [
+        "Good performance is not proving that every season feels the same.",
+        "It is learning how to work with the season, health, and capacity that are actually present. We do not need to become less ambitious. We may need to become more precise about what ambition requires from us on a particular day.",
+      ]],
+    ],
+  },
   "technology-shaping-our-mondays": {
     hideCover: true,
     date: "November 16, 2026",
