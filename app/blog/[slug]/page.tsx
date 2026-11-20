@@ -7,7 +7,7 @@ import { BLOG_POSTS } from "@/lib/blog-posts";
 import { buildMetadata, getArticleSchema, getBreadcrumbSchema } from "@/lib/seo";
 
 type Block = string | { list: string[] };
-type Post = { type: string; time: string; title: string; intro: string; sections: Array<[string, string | Block[]]>; cover?: { src: string; alt: string }; hideCover?: boolean; date?: string; keywords?: string[] };
+type Post = { type: string; time: string; title: string; intro: string; sections: Array<[string, string | Block[]]>; cover?: { src: string; alt: string }; hideCover?: boolean; date?: string; keywords?: string[]; seoTitle?: string };
 
 function renderInline(text: string) {
   return text.split(/(\[[^\]]+\]\([^)\s]+\)|\*\*[^*]+\*\*|\*[^*]+\*)/g).filter(Boolean).map((part, i) => {
@@ -27,6 +27,26 @@ function renderBody(body: string | Block[]) {
 }
 
 const posts: Record<string, Post> = {
+  "job-hunting-different-kind-of-hard": {
+    hideCover: true,
+    date: "November 20, 2026",
+    cover: { src: "/blog/job-hunting-different-kind-of-hard.gif", alt: "A LinkedIn-style celebration card on a teal-blue background that starts with 'You applied' for a Product Designer and moves through Applied, Interview and Offer, ending on 'Starting a new position' with confetti." },
+    type: "Article",
+    time: "2 min",
+    title: "Job Hunting Used to Be Hard. Now It's a Different Kind of Hard.",
+    seoTitle: "Job Hunting Is Now a Different Kind of Hard",
+    intro: "Looking for work has always been tiring. But it used to have a shape you could understand. You found a role, sent a résumé, maybe had two interviews, and you knew roughly where you stood. The rules weren't easy, but they were readable.",
+    keywords: ["job search", "job hunting", "hiring 2026", "career change", "future of work", "human skills"],
+    sections: [
+      ["", [
+        "Today the process feels different. It takes longer: in the U.S., the median time to hire went from 20 days in 2023 to 32 days in 2026. ([indeed.com](https://www.indeed.com/career-advice/news/how-to-stand-out-job-application)) The steps repeat, the requirements are often unclear, and a single posting can ask for what used to be three roles. AI raised the bar too. When a tool can handle the simple tasks, companies expect people to bring judgment, strategy and the ability to manage the whole process. The same pressure shows up in hiring: senior postings are growing while entry- and mid-level ones shrink. ([hiringlab.indeed.com](https://hiringlab.indeed.com/2026/11/18/experience-wanted-but-where-do-you-get-it/))",
+        "So if you feel tired, it's not a personal failure. More than half of professionals are looking for a new job, and nearly 80% feel unprepared. ([linkedin.com](https://news.linkedin.com/2026/2026-Davos-Press-Release)) You're not behind. The process changed under everyone's feet.",
+        "Here's the part I want to hold on to: the same shift that makes the search harder also makes some of us more valuable. If companies now want people who can think across roles, connect the dots and make good decisions, those are human skills. AI can draft, sort and summarize, but someone still has to understand the problem, choose a direction and take responsibility for it. That person is still you.",
+        "What helps is to stop competing with AI on speed and start showing what it can't do. Talk about how you think, not only what you deliver. Show the decisions behind your work. And protect your energy, because a long search is a marathon, not a sprint.",
+        "The search is harder than before. But the work that matters most is still human work, and there are companies looking for exactly that.",
+      ]],
+    ],
+  },
   "ai-thinking-at-work": {
     hideCover: true,
     date: "November 18, 2026",
@@ -343,6 +363,10 @@ const posts: Record<string, Post> = {
 
 export function generateStaticParams() { return Object.keys(posts).map((slug) => ({ slug })); }
 
+function socialImageSrc(src?: string) {
+  return src?.endsWith(".gif") ? src.replace(/\.gif$/, ".jpg") : src;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = posts[slug];
@@ -353,10 +377,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const cover = summary?.cover ?? post.cover;
   const publishedAt = summary?.publishedAt;
   return buildMetadata({
-    title: `${post.title} | Greddys Martinez`,
+    title: `${post.seoTitle ?? post.title} | Greddys Martinez`,
     description,
     path: `/blog/${slug}/`,
-    image: cover?.src,
+    image: socialImageSrc(cover?.src),
     imageAlt: cover?.alt ?? post.title,
     type: published ? "article" : "website",
     publishedTime: published && publishedAt ? `${publishedAt}T12:00:00.000Z` : undefined,
@@ -379,7 +403,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         title: post.title,
         description,
         path: `/blog/${slug}/`,
-        image: cover?.src,
+        image: socialImageSrc(cover?.src),
         datePublished: `${publishedAt}T12:00:00.000Z`,
         keywords: post.keywords ?? [post.title, post.type, "AI product design", "UX design", "accessibility"],
       })
