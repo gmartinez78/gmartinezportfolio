@@ -4,6 +4,7 @@ import Link from "next/link";
 import { isExternalHref, normalizeNavigableHref, withBasePath } from "../lib/site";
 import { usePublicSiteContent } from "../lib/cms/public";
 import { useTranslate } from "../lib/i18n/use-translate";
+import { BookACallLink } from "./book-a-call-link";
 import { LogoMark } from "./site-header";
 
 export function SiteFooter() {
@@ -73,6 +74,9 @@ export function SiteFooter() {
           >
             {siteContent.footer.cta_label}
           </Link>
+          <BookACallLink className="text-[14px] font-medium text-[#e9608a] transition-colors hover:text-[#c94c75] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e9608a] focus-visible:ring-offset-2">
+            {translate("booking.cta")} →
+          </BookACallLink>
         </div>
       </div>
 

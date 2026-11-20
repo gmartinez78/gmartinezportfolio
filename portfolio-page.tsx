@@ -25,6 +25,7 @@ import {
   usePublicCaseStudies,
   usePublicSiteContent,
 } from "./lib/cms/public";
+import { BookACallLink } from "./components/book-a-call-link";
 import { withBasePath } from "./lib/site";
 
 const PROJECT_BACKGROUNDS: Record<string, string> = {
@@ -1563,9 +1564,14 @@ export default function PortfolioPage() {
         <Heading as="h2" variant="display" tone="inverse" className="max-w-3xl">
           {translate("home.contactCta")}
         </Heading>
-        <Button asChild variant="editorial-outline" size="sm" className="mt-7 border-white/50 bg-white text-[var(--ui-color-text-editorial)] hover:bg-white">
-          <Link href={withBasePath("/contact")}>{siteContent.nav.cta_label}</Link>
-        </Button>
+        <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+          <Button asChild size="sm" className="border-transparent bg-[#f8df36] text-[#141114] hover:bg-[#f0d42e] focus-visible:ring-offset-2">
+            <BookACallLink />
+          </Button>
+          <Button asChild variant="editorial-outline" size="sm" className="border-white/50 bg-white text-[var(--ui-color-text-editorial)] hover:bg-white">
+            <Link href={withBasePath("/contact")}>{siteContent.nav.cta_label}</Link>
+          </Button>
+        </div>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { BookACallLink } from "../../components/book-a-call-link";
 import { ResumeExperienceCard } from "../../components/resume-experience-card";
 import { SiteFooter } from "../../components/site-footer";
 import { SiteHeader } from "../../components/site-header";
@@ -998,16 +999,21 @@ export default function ResumePage() {
           <p className="relative mt-5 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
             {translate("resume.contactCtaDescription")}
           </p>
-          <Button
-            asChild
-            variant="editorial-outline"
-            size="sm"
-            className="relative mt-8 border-transparent bg-white text-[#141114] hover:bg-white/90"
-          >
-            <a href={withBasePath("/contact")}>
-              {translate("resume.getInTouch")}
-            </a>
-          </Button>
+          <div className="relative mt-8 flex flex-wrap items-center justify-center gap-3">
+            <Button asChild size="sm" className="border-transparent bg-[#f8df36] text-[#141114] hover:bg-[#f0d42e] focus-visible:ring-offset-2">
+              <BookACallLink />
+            </Button>
+            <Button
+              asChild
+              variant="editorial-outline"
+              size="sm"
+              className="border-transparent bg-white text-[#141114] hover:bg-white/90"
+            >
+              <a href={withBasePath("/contact")}>
+                {translate("resume.getInTouch")}
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
 

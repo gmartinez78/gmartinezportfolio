@@ -56,6 +56,8 @@ export const dictionary = {
   "contactPage.messagePlaceholder": { en: "What are you hoping to achieve? What's working, and what isn't?", es: "¿Qué quieres conseguir? ¿Qué funciona y qué no?", de: "Was möchtest du erreichen? Was funktioniert und was nicht?" },
   "contactPage.emailAppNote": { en: "Send message opens your email app with your details ready to send.", es: "Enviar mensaje abrirá tu aplicación de correo con los datos listos.", de: "Über „Nachricht senden“ öffnest du deine E-Mail-App mit vorbereiteten Angaben." },
   "contactPage.preferEmail": { en: "Prefer email?", es: "¿Prefieres escribir por correo?", de: "Lieber per E-Mail?" },
+  "booking.cta": { en: "Book a 20-min call", es: "Reservar una llamada de 20 min", de: "20-Minuten-Gespräch buchen" },
+  "booking.opensInNewTab": { en: "opens in a new tab", es: "se abre en una pestaña nueva", de: "öffnet sich in einem neuen Tab" },
   "resume.getInTouch": { en: "Get in touch", es: "Hablemos" },
   "resume.contactCtaDescription": {
     en: "Have a project in mind? Let's talk about your goals and how I can help.",

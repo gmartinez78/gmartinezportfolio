@@ -59,3 +59,5 @@ export function normalizeNavigableHref(href: string) {
     return href;
   }
 }
+
+export const BOOKING_URL = "https://calendar.app.google/mKxiZuizyCrBeyoZ6";

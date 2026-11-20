@@ -43,6 +43,8 @@ export const germanDictionary = {
   "contactPage.messagePlaceholder": "Was möchtest du erreichen? Was funktioniert und was nicht?",
   "contactPage.emailAppNote": "Über „Nachricht senden“ öffnest du deine E-Mail-App mit vorbereiteten Angaben.",
   "contactPage.preferEmail": "Lieber per E-Mail?",
+  "booking.cta": "20-Minuten-Gespräch buchen",
+  "booking.opensInNewTab": "öffnet sich in einem neuen Tab",
   "resume.getInTouch": "Kontakt aufnehmen",
   "resume.contactCtaDescription": "Haben Sie ein Projekt im Sinn? Sprechen wir über Ihre Ziele und darüber, wie ich helfen kann.",
   "resume.expandCertifications": "Zertifizierungen einblenden",

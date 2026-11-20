@@ -3,8 +3,10 @@
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { X } from "lucide-react";
+import { BookACallLink } from "../../components/book-a-call-link";
 import { ContactFormCard } from "../../components/contact-form-card";
 import { SiteHeader } from "../../components/site-header";
+import { Button } from "../../components/ui/button";
 import { Container } from "../../components/ui/container";
 import { usePublicSiteContent } from "../../lib/cms/public";
 import type { DictionaryKey } from "../../lib/i18n/dictionary";
@@ -108,7 +110,10 @@ export default function ContactPage() {
 
             <div className="mx-auto mt-8 flex max-w-[880px] flex-col gap-5 border-t border-white/20 pt-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
               <div>
-                <p className="text-sm text-white/75">{translate("contactPage.preferEmail")}</p>
+                <Button asChild size="sm" className="border-transparent bg-[#f8df36] text-[#141114] hover:bg-[#f0d42e] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1183D0]">
+                  <BookACallLink />
+                </Button>
+                <p className="mt-5 text-sm text-white/75">{translate("contactPage.preferEmail")}</p>
                 <a
                   href={emailHref}
                   className="mt-1 inline-block font-medium text-white underline decoration-white/50 underline-offset-4 transition-colors hover:text-[#f8df36]"
