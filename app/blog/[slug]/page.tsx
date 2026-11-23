@@ -29,7 +29,7 @@ function renderBody(body: string | Block[]) {
 const posts: Record<string, Post> = {
   "ai-reads-feedback-designers-decide": {
     hideCover: true,
-    date: "November 24, 2026",
+    date: "November 23, 2026",
     cover: { src: "/blog/ai-reads-feedback-designers-decide.jpg", alt: "A desktop monitor on a light oak desk against a warm sand wall, beside a lilac vase and notebook, showing a whiteboard titled Synthesis that maps raw user comments through a Does it matter? decision into themes, findings, a recommendation and an AI-generated design." },
     type: "Article",
     time: "3 min",
