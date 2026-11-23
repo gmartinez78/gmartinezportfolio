@@ -27,6 +27,38 @@ function renderBody(body: string | Block[]) {
 }
 
 const posts: Record<string, Post> = {
+  "tell-clients-how-you-use-ai": {
+    hideCover: true,
+    date: "November 26, 2026",
+    cover: { src: "/blog/tell-clients-how-you-use-ai.jpg", alt: "A silver laptop seen from above on a cherry-red table beside a coffee cup and a pen, showing a freelance proposal page titled How I use AI on your project with three checked items and an Accept proposal button." },
+    type: "Article",
+    time: "3 min",
+    title: "Tell Clients How You Use AI Before They Ask",
+    intro: "Most freelancers use AI now. Far fewer talk about it with clients unless someone asks. I've come to believe that silence is a mistake, not because AI is something to confess, but because how we use it is part of what clients are buying.",
+    keywords: ["AI disclosure", "freelance design", "AI in creative work", "client trust", "freelancing", "AI product designer"],
+    sections: [
+      ["The quiet habit", [
+        "Envato surveyed 1,033 creative professionals, more than half of them freelancers or one-person businesses. Among those who use AI, 53% said they had used it on key client work without telling the client. Most saw no problem with that: 46% had done it and didn't think it needed disclosing, and only 7% felt uncomfortable. ([globenewswire.com](https://www.globenewswire.com/news-release/2026/11/10/3400033/0/en/beyond-the-hype-the-state-of-ai-in-creative-work-envato-s-second-annual-report-finds-ai-adoption-has-outrun-the-rules.html))",
+        "A study of freelancers and clients presented at CHI found the same gap from both sides. 78.83% of the freelancers in the study reported using AI in their work. A quarter of clients (25.9%) expected workers to disclose AI use proactively, while fewer than one in ten workers (8.6%) said they would. ([arxiv.org](https://arxiv.org/abs/2603.07459))",
+      ]],
+      ["Two arguments", [
+        "The case for staying quiet sounds reasonable: clients pay for results, not process. Nobody announces which software they used for a layout. If the work is good and on time, why does the method matter?",
+        "The case for telling is about trust. Clients hand us their brand, their data and their users. The CHI researchers found that clients are far less confident than workers assume in recognizing AI-assisted work, and that they prefer proactive disclosure. ([arxiv.org](https://arxiv.org/abs/2603.07459))",
+        "I take the second side, and for a practical reason more than a moral one. AI is not like a font choice. It affects where client information goes, what can be reused and how much of the work a person checked. Those are things a client would rather decide with you than discover later.",
+      ]],
+      ["Clients are not against AI", [
+        "Here is what the silence misses: most clients aren't asking freelancers to avoid AI. In the same study, 81.25% of clients encouraged AI use in some form. The researchers also found that unclear or absent client AI policies left workers misreading what clients expected. ([arxiv.org](https://arxiv.org/abs/2603.07459))",
+        "So the real risk isn't that disclosure costs you the project. The risk is that both sides guess, and guess differently.",
+      ]],
+      ["Disclosure as part of the offer", [
+        "When I talk to a potential client, I'd rather explain my process up front: where I use AI to move faster, where I don't, and what I always check myself. In enterprise products, where accessibility, privacy and compliance matter, that conversation builds confidence early.",
+        "It also helps clients see the right value. In the Envato survey, 49% of creatives said AI makes them faster, but only 7% said it has increased their earnings, and 18% said clients expect AI work to cost less. ([globenewswire.com](https://www.globenewswire.com/news-release/2026/11/10/3400033/0/en/beyond-the-hype-the-state-of-ai-in-creative-work-envato-s-second-annual-report-finds-ai-adoption-has-outrun-the-rules.html)) If clients only see speed, they'll price speed. If they see the judgment behind the work, they can value the judgment.",
+        "A simple version is a short section in every proposal:",
+        { list: ["what I use AI for, such as research summaries, first drafts or prototype variations;", "what I always do myself, such as final decisions, reviews and accessibility checks;", "how I handle your files and data; and", "an open invitation to set different rules for your project."] },
+        "Telling clients how you use AI is not admitting a shortcut. It's showing them how you think, and that is the part of the work they can't get from a tool.",
+      ]],
+    ],
+  },
   "missing-label-screen-reader-ai-agent": {
     hideCover: true,
     date: "November 24, 2026",
