@@ -27,6 +27,40 @@ function renderBody(body: string | Block[]) {
 }
 
 const posts: Record<string, Post> = {
+  "missing-label-screen-reader-ai-agent": {
+    hideCover: true,
+    date: "November 25, 2026",
+    cover: { src: "/blog/missing-label-screen-reader-ai-agent.jpg", alt: "A hand in a white knit sleeve holding a phone against a soft sky-blue background, showing a Lab report card where a focus ring outlines the dark Save report button, with a screen-reader label reading Button, Save report and a Delete report button below." },
+    type: "Article",
+    time: "3 min",
+    title: "Are We Designing for AI Agents Most of the Time?",
+    intro: "For years, accessibility has been framed as something we do for a specific group of users, often at the end of a project and often because of compliance. AI agents are changing that conversation, and I hope they change it in the right direction. More of what we build will be used by agents, but I don't think the answer is to design for them first. Design well for the people using a screen reader, and agents get a clear path too.",
+    keywords: ["accessibility", "AI agents", "screen readers", "accessible design", "WCAG", "enterprise UX"],
+    sections: [
+      ["Agents read what screen readers read", [
+        "Web agents often read a page through its accessibility tree: the list of roles and names that screen readers also use. A recent preprint puts it plainly: when a control has an accessibility defect, the agent sees the same gap a screen-reader user does. ([zenodo.org](https://doi.org/10.5281/zenodo.24045500))",
+        "The study tested five small, local language models on fictional clinic pages. On pages without defects, the models chose the right button in 97% of runs. When a button had no accessible name, such as an icon without a label, they chose it in only 3–4% of runs, and in 9–12% of runs they picked a risky look-alike instead, like \"Delete report\" next to \"Save report\". ([zenodo.org](https://doi.org/10.5281/zenodo.24045500))",
+        "It's one preprint with small models, so I don't read it as the final word. But the mechanism is easy to understand, and it matches what blind users have lived with for years.",
+      ]],
+      ["This is not a new problem", [
+        "Missing names are not rare. The 2026 WebAIM Million report found empty buttons on 30.6% of the top one million home pages, empty links on 46.3%, and detected WCAG failures on 95.9%. ([webaim.org](https://webaim.org/projects/million/))",
+        "And agents are not yet a reliable way around those barriers. In a three-week diary study with eight blind users, a screen-reader-accessible agent prototype reached a 52.5% success rate with the best model tested. ([aclanthology.org](https://aclanthology.org/2026.emnlp-main.1763.pdf))",
+      ]],
+      ["Two ways to respond", [
+        "I see two responses forming. One says agents are the new users, so we should build a separate layer for them: special endpoints, or agent-friendly versions of the page. The other says we should fix the structure that is already there, because the accessibility tree is the interface both people and agents depend on.",
+        "I'm with the second. A separate layer for machines would repeat the old mistake of treating accessibility as an add-on, a parallel version that drifts out of sync. A clear name on a button costs almost nothing, and it helps everyone who can't rely on the visual layout: a screen-reader user, a keyboard user, a voice-control user, and now an agent acting on someone's behalf.",
+      ]],
+      ["What this means for designers", [
+        "Working on enterprise products has taught me that accessibility decisions are design decisions. They happen when we name a control, choose an icon, decide the order of a form or write an error message. They are not a final audit.",
+        "That gives designers a clear place to start:",
+        { list: ["name every control in the design spec, not only in the code;", "treat an icon-only button as a decision that needs a label, not a style;", "keep destructive actions where they can't be confused with safe ones; and", "test with a screen reader, because you are also testing what an agent will see."] },
+      ]],
+      ["The hopeful part", [
+        "For a long time, accessibility advocates had to argue that people using assistive technology deserved better. They were right then, and they're right now. What's changing is that more people will feel the cost of a missing label, because the agents they rely on will fail on it too.",
+        "Design for the person using a screen reader, and you've built the clearest map an agent can follow.",
+      ]],
+    ],
+  },
   "ai-reads-feedback-designers-decide": {
     hideCover: true,
     date: "November 23, 2026",

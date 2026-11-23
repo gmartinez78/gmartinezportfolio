@@ -1526,13 +1526,17 @@ export default function PortfolioPage() {
           </Link>
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <Link href={withBasePath("/blog/ai-reads-feedback-designers-decide")} className="relative group flex min-h-[330px] flex-col justify-between rounded-[22px] bg-[#0e2951] p-7 text-white transition-shadow hover:shadow-[0_10px_34px_rgba(14,41,81,0.18)] md:col-span-2 lg:min-h-[365px]"><span className="absolute right-6 top-6 rounded-full bg-[#1183D0] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white">New</span>
+          <Link href={withBasePath("/blog/missing-label-screen-reader-ai-agent")} className="relative group flex min-h-[330px] flex-col justify-between rounded-[22px] bg-[#0e2951] p-7 text-white transition-shadow hover:shadow-[0_10px_34px_rgba(14,41,81,0.18)] md:col-span-2 lg:min-h-[365px]"><span className="absolute right-6 top-6 rounded-full bg-[#1183D0] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white">New</span>
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#c9e3f4]">Article · 3 min</p>
-              <h3 className="mt-8 max-w-[560px] text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[0.98] tracking-[-0.045em]">AI Can Read Every Comment. Someone Still Has to Decide What Matters.</h3>
-              <p className="mt-5 max-w-[500px] text-sm leading-6 text-[#c9e3f4]">AI can read every comment. Our job is to decide which ones change the product.</p>
+              <h3 className="mt-8 max-w-[560px] text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[0.98] tracking-[-0.045em]">Are We Designing for AI Agents Most of the Time?</h3>
+              <p className="mt-5 max-w-[500px] text-sm leading-6 text-[#c9e3f4]">Design for the person using a screen reader, and you&apos;ve built the clearest map an agent can follow.</p>
             </div>
             <span className="inline-flex items-center gap-2 text-sm font-semibold text-white">Read article <ArrowRight className="size-4" /></span>
+          </Link>
+          <Link href={withBasePath("/blog/ai-reads-feedback-designers-decide")} className="relative group flex min-h-[230px] flex-col justify-between rounded-[22px] border border-[#d7e8f7] bg-white p-7 text-[#0e2951] transition-shadow hover:shadow-[0_10px_34px_rgba(14,41,81,0.12)]">
+            <div><p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Article · 3 min</p><h3 className="mt-5 text-2xl font-semibold leading-[1.03] tracking-[-0.035em]">AI Can Read Every Comment. Someone Still Has to Decide What Matters.</h3></div>
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#0e2951] group-hover:text-[#1183D0]">Read article <ArrowRight className="size-4" /></span>
           </Link>
           <Link href={withBasePath("/blog/job-hunting-different-kind-of-hard")} className="relative group flex min-h-[230px] flex-col justify-between rounded-[22px] border border-[#d7e8f7] bg-white p-7 text-[#0e2951] transition-shadow hover:shadow-[0_10px_34px_rgba(14,41,81,0.12)]">
             <div><p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Article · 2 min</p><h3 className="mt-5 text-2xl font-semibold leading-[1.03] tracking-[-0.035em]">Job Hunting Used to Be Hard. Now It&apos;s a Different Kind of Hard.</h3></div>
@@ -1544,10 +1548,6 @@ export default function PortfolioPage() {
           </Link>
           <Link href={withBasePath("/blog/productivity-has-a-season")} className="relative group flex min-h-[230px] flex-col justify-between rounded-[22px] border border-[#d7e8f7] bg-white p-7 text-[#0e2951] transition-shadow hover:shadow-[0_10px_34px_rgba(14,41,81,0.12)]">
             <div><p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Article · 2 min</p><h3 className="mt-5 text-2xl font-semibold leading-[1.03] tracking-[-0.035em]">When Productivity Has a Season</h3></div>
-            <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#0e2951] group-hover:text-[#1183D0]">Read article <ArrowRight className="size-4" /></span>
-          </Link>
-          <Link href={withBasePath("/blog/technology-shaping-our-mondays")} className="relative group flex min-h-[230px] flex-col justify-between rounded-[22px] border border-[#d7e8f7] bg-white p-7 text-[#0e2951] transition-shadow hover:shadow-[0_10px_34px_rgba(14,41,81,0.12)]">
-            <div><p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1183D0]">Article · 2 min</p><h3 className="mt-5 text-2xl font-semibold leading-[1.03] tracking-[-0.035em]">The Technology We Notice Least May Be Shaping Our Mondays</h3></div>
             <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#0e2951] group-hover:text-[#1183D0]">Read article <ArrowRight className="size-4" /></span>
           </Link>
         </div>
