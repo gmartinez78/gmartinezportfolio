@@ -27,6 +27,39 @@ function renderBody(body: string | Block[]) {
 }
 
 const posts: Record<string, Post> = {
+  "ai-reads-feedback-designers-decide": {
+    hideCover: true,
+    date: "November 24, 2026",
+    cover: { src: "/blog/ai-reads-feedback-designers-decide.jpg", alt: "A desktop monitor on a light oak desk against a warm sand wall, beside a lilac vase and notebook, showing a whiteboard titled Synthesis that maps raw user comments through a Does it matter? decision into themes, findings, a recommendation and an AI-generated design." },
+    type: "Article",
+    time: "3 min",
+    title: "AI Can Read Every Comment. Someone Still Has to Decide What Matters.",
+    seoTitle: "AI Can Read the Feedback. Designers Decide What Matters",
+    intro: "Many new AI design tools carry the same promise: give the model all your user data, and it will figure out what to build. I understand why that sounds appealing. I don't think it's true, and the part it skips is the most valuable part of our work.",
+    keywords: ["AI design", "UX research", "research synthesis", "AI product design", "product agents", "UX context"],
+    sections: [
+      ["The promise of skipping the middle", [
+        "Product agents can now connect to a codebase and live metrics, suggest changes, build them, open a pull request for review, and keep working around the clock. ([blog.google](https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-loop/)) The pitch is speed: less time between a signal and a shipped change.",
+        "What disappears in that picture is the middle: reading the feedback, deciding which problems matter, and turning them into a clear recommendation. Some people see that step as overhead that AI can now absorb. Others see it as the actual design work. I'm firmly in the second group.",
+      ]],
+      ["What the research shows", [
+        "Nielsen Norman Group tested this directly. They asked an AI model to design a flight-rebooking form and a checkout flow, once from about 100 raw user comments and once from synthesized findings and recommendations based on the same comments. The designs built from the synthesis met 77.9% of the scorecard criteria on average, compared with 69.5% for the raw comments. ([nngroup.com](https://www.nngroup.com/articles/raw-data-vs-synthesized-data/))",
+        "One detail stayed with me. A few comments complained about loyalty miles. None of the designs generated from raw comments said whether the cancellation would affect passengers' miles. Every design generated from the synthesized research did. ([nngroup.com](https://www.nngroup.com/articles/raw-data-vs-synthesized-data/)) The data was there. What was missing was someone deciding it mattered.",
+      ]],
+      ["Why this is still the designer's job", [
+        "Raw feedback describes problems. It rarely says what to build, and it doesn't tell you how a problem weighs against business needs, technical constraints or what the team has already tried. NN/g makes the same point: AI tools struggle with those tradeoffs without human guidance. ([nngroup.com](https://www.nngroup.com/articles/raw-data-vs-synthesized-data/))",
+        "In enterprise products, I see this all the time. A single complaint can be the edge case that blocks hundreds of people, or noise from one unusual setup. Knowing the difference takes context that lives in conversations, history and judgment, not in a spreadsheet of comments.",
+        "So I don't think AI makes synthesis obsolete. I think it makes synthesis more visible. When a design can be generated in seconds, the quality of what you feed the tool becomes the difference between a good design and a merely plausible one.",
+      ]],
+      ["Research now has two audiences", [
+        "NN/g describes research artifacts as having two audiences now: your teammates and the AI tools used in the design process. ([nngroup.com](https://www.nngroup.com/articles/raw-data-vs-synthesized-data/)) That changes how I think about my own deliverables. A findings document is no longer something people read once in a meeting. It becomes the context that shapes what gets built.",
+        "That is a hopeful shift for designers. The skill that is easiest to undervalue, deciding what matters and why, is the skill that improves everything AI produces.",
+        "If you want to start this week:",
+        { list: ["synthesize before you generate: a short, prioritized list of findings beats a folder of raw feedback;", "write recommendations, not only observations;", "keep the reasoning next to the decision, so the next person, or the next tool, understands it; and", "review agent suggestions against your findings, not only against the metric."] },
+        "AI can read every comment. Our job is to decide which ones change the product.",
+      ]],
+    ],
+  },
   "job-hunting-different-kind-of-hard": {
     hideCover: true,
     date: "November 20, 2026",
