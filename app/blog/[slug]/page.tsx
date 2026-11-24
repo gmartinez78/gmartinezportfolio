@@ -29,7 +29,7 @@ function renderBody(body: string | Block[]) {
 const posts: Record<string, Post> = {
   "missing-label-screen-reader-ai-agent": {
     hideCover: true,
-    date: "November 25, 2026",
+    date: "November 24, 2026",
     cover: { src: "/blog/missing-label-screen-reader-ai-agent.jpg", alt: "A hand in a white knit sleeve holding a phone against a soft sky-blue background, showing a Lab report card where a focus ring outlines the dark Save report button, with a screen-reader label reading Button, Save report and a Delete report button below." },
     type: "Article",
     time: "3 min",
