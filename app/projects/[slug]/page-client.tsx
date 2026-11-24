@@ -7622,7 +7622,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <div>Impact</div>
             </div>
               {[
-                  ["I-9 and E-Verify flow completion (design validation)", "69%", "35%", "−34 percentage points"],
+                  ["I-9 and E-Verify flow completion (design validation)", "35%", "69%", "+34 percentage points"],
                   ["Average time to complete the flow", "4 min 12 sec", "3 min 6 sec", "26% faster"],
                   ["Hesitation at the E-Verify redirect", "46%", "33%", "13 percentage-point reduction"],
                   ["Status interpretation errors", "31%", "22%", "9 percentage-point reduction"],
@@ -7640,7 +7640,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
             <div className="mt-8 grid gap-4 md:hidden">
               {[
-                  ["I-9 and E-Verify flow completion (design validation)", "69%", "35%", "−34 percentage points"],
+                  ["I-9 and E-Verify flow completion (design validation)", "35%", "69%", "+34 percentage points"],
                   ["Average time to complete the flow", "4 min 12 sec", "3 min 6 sec", "26% faster"],
                   ["Hesitation at the E-Verify redirect", "46%", "33%", "13 percentage-point reduction"],
                   ["Status interpretation errors", "31%", "22%", "9 percentage-point reduction"],

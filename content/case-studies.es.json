@@ -714,7 +714,7 @@
     "year": 2024,
     "duration": "Alrededor de 3 años",
     "industry": "Cumplimiento de RRHH / SaaS de Onboarding",
-    "tagline": "Rediseñé la integración de I-9 y E-Verify para Flex, con una finalización de tareas del 35% en el concepto refinado y una reducción del tiempo medio de finalización del 26%.",
+    "tagline": "Rediseñé la integración de I-9 y E-Verify para Flex, aumentando la finalización de tareas del 35% al 69% y reduciendo el tiempo medio de finalización en un 26%.",
     "tags": [
       "UX Research",
       "Product Design",
@@ -910,7 +910,7 @@
           "rows": [
             {
               "metric": "Tasa de finalización de tareas del empleado",
-              "value": "35%"
+              "value": "69%"
             },
             {
               "metric": "Tiempo medio en la tarea",
@@ -930,7 +930,7 @@
             }
           ],
           "insights": [
-            "Tasa de finalización de tareas: del 69% (concepto inicial) al 35% (concepto refinado).",
+            "Tasa de finalización de tareas: del 35% (concepto inicial) al 69% (concepto refinado).",
             "Tiempo medio en la tarea: de 4m 12s a 3m 06s.",
             "El titubeo ante la redirección se redujo del 46% al 33%.",
             "Los errores de interpretación del estado bajaron del 31% al 22%.",
