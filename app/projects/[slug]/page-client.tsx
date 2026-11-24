@@ -984,9 +984,9 @@ const I9_TESTING_RESULTS = [
   },
   {
     metric: "7/7",
-    label: "Hiring navigation",
-    finding: "Users naturally went to Hiring to set up the I-9 form; a usability test confirmed that 7 out of 7 users navigated there naturally.",
-    insight: "The result validated Hiring as the natural place to begin I-9 setup.",
+    label: "Settings navigation",
+    finding: "Pushed back on product's decision to place I-9 settings in the hiring dashboard, ran a usability test where 7 out of 7 users navigated to Settings naturally.",
+    insight: "Used that data to realign the team and correct the navigation placement.",
   },
 ];
 
