@@ -983,12 +983,6 @@ const I9_TESTING_RESULTS = [
     insight: "The biggest clarity gap was at the HIREtech handoff, users hesitated without stronger ownership cues and redirect context.",
   },
   {
-    metric: "2,548",
-    label: "positive survey responses post release",
-    finding: "A post-release survey validated the integrated direction was working.",
-    insight: "Surfaced specific areas needing refinement after launch.",
-  },
-  {
     metric: "7/7",
     label: "Settings navigation",
     finding: "Pushed back on product's decision to place I-9 settings in the hiring dashboard, ran a usability test where 7 out of 7 users navigated to Settings naturally.",
@@ -7628,7 +7622,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
               <div>Impact</div>
             </div>
               {[
-                  ["I-9 and E-Verify flow completion (design validation)", "69%", "81%", "+12 percentage points"],
+                  ["I-9 and E-Verify flow completion (design validation)", "69%", "35%", "−34 percentage points"],
                   ["Average time to complete the flow", "4 min 12 sec", "3 min 6 sec", "26% faster"],
                   ["Hesitation at the E-Verify redirect", "46%", "33%", "13 percentage-point reduction"],
                   ["Status interpretation errors", "31%", "22%", "9 percentage-point reduction"],
@@ -7646,7 +7640,7 @@ export function ProjectCaseStudyPageClient({ slug }: { slug: string }) {
             </div>
             <div className="mt-8 grid gap-4 md:hidden">
               {[
-                  ["I-9 and E-Verify flow completion (design validation)", "69%", "81%", "+12 percentage points"],
+                  ["I-9 and E-Verify flow completion (design validation)", "69%", "35%", "−34 percentage points"],
                   ["Average time to complete the flow", "4 min 12 sec", "3 min 6 sec", "26% faster"],
                   ["Hesitation at the E-Verify redirect", "46%", "33%", "13 percentage-point reduction"],
                   ["Status interpretation errors", "31%", "22%", "9 percentage-point reduction"],

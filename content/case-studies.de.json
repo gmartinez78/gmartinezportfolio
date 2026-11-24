@@ -714,7 +714,7 @@
     "year": 2024,
     "duration": "Ungefähr 3 Jahre",
     "industry": "HR-Compliance / Onboarding-SaaS",
-    "tagline": "Die I-9- und E-Verify-Integration für Flex wurde neu gestaltet, wodurch die Aufgabenerledigungsrate vom frühen Konzept (69 %) zum verfeinerten Konzept (81 %) gesteigert und die durchschnittliche Bearbeitungszeit um 26 % verkürzt wurde.",
+    "tagline": "Die I-9- und E-Verify-Integration für Flex wurde neu gestaltet, wobei im verfeinerten Konzept eine Aufgabenerledigungsrate von 35 % und eine um 26 % verkürzte durchschnittliche Bearbeitungszeit gemessen wurden.",
     "tags": [
       "UX-Forschung",
       "Produktdesign",
@@ -910,7 +910,7 @@
           "rows": [
             {
               "metric": "Aufgabenerledigungsrate des Mitarbeiters",
-              "value": "12 %"
+              "value": "35 %"
             },
             {
               "metric": "Durchschnittliche Zeit für die Aufgabe",
@@ -930,7 +930,7 @@
             }
           ],
           "insights": [
-            "Aufgabenabschlussrate: 69 % (frühes Konzept) bis 81 % (verfeinertes Konzept).",
+            "Aufgabenabschlussrate: 69 % (frühes Konzept) bis 35 % (verfeinertes Konzept).",
             "Durchschnittliche Zeit für die Aufgabe: 4 Min. 12 Sek. bis 3 Min. 06 Sek.",
             "Das Weiterleitungszögern wurde von 46 % auf 33 % verringert.",
             "Statusinterpretationsfehler von 31 % auf 22 % gesunken.",

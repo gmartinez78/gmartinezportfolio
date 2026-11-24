@@ -714,7 +714,7 @@
     "year": 2024,
     "duration": "Around 3 years",
     "industry": "HR Compliance / Onboarding SaaS",
-    "tagline": "Redesigned the I-9 and E-Verify integration for Flex, increasing task completion from 69% in the early concept to 81% in the refined concept and reducing average completion time by 26%.",
+    "tagline": "Redesigned the I-9 and E-Verify integration for Flex, with task completion measured at 35% in the refined concept and average completion time reduced by 26%.",
     "tags": [
       "UX Research",
       "Product Design",
@@ -910,7 +910,7 @@
           "rows": [
             {
               "metric": "Task completion rate from employee",
-              "value": "12%"
+              "value": "35%"
             },
             {
               "metric": "Avg time on task",
@@ -930,7 +930,7 @@
             }
           ],
           "insights": [
-            "Task completion rate,69% (early concept) to 81% (refined concept).",
+            "Task completion rate,69% (early concept) to 35% (refined concept).",
             "Average time on task,4m 12s to 3m 06s.",
             "Redirect hesitation reduced from 46% to 33%.",
             "Status interpretation errors down from 31% to 22%.",
