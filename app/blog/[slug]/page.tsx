@@ -27,6 +27,31 @@ function renderBody(body: string | Block[]) {
 }
 
 const posts: Record<string, Post> = {
+  "more-valued-than-our-jobs": {
+    hideCover: true,
+    date: "November 27, 2026",
+    cover: { src: "/blog/more-valued-than-our-jobs.jpg", alt: "Two hands in a camel knit sweater hold a phone against a soft terracotta background, showing a gratitude journal app titled I'm grateful for, with notes on learning and change, the people around me, and room to try." },
+    type: "Article",
+    time: "2 min",
+    title: "This Year Taught Me We Are More Valued Than Our Jobs",
+    intro: "Yesterday was Thanksgiving, and I took the moment to appreciate something this year has been teaching me: we are more valued than our jobs.",
+    keywords: ["future of work", "career change", "gratitude", "work identity", "design careers", "AI and work"],
+    sections: [
+      ["The connection is being rewritten", [
+        "A lot of people my age are redefining the connection they used to have with their work, and the values they grew up with. The industry is changing so abruptly that we have to readapt. When work keeps shifting that fast, it is easy to forget the smaller things that still hold.",
+      ]],
+      ["The small things we forget", [
+        "Days like this are a good reminder of what I do not want to lose sight of.",
+        "No matter your age, you are able to learn and change.",
+        "Wherever you are, you are surrounded by people who support you. I have been more grateful for the people who are constantly around me, especially in the moments when it is harder to know what life, or the job industry, will expect from us tomorrow.",
+        "And we rarely give ourselves a moment to make mistakes and learn, once we understand that we need to make a change. That room matters.",
+      ]],
+      ["What AI taught me, without meaning to", [
+        "This is not really an article about AI. But AI has been teaching me these things anyway, in an indirect way, and I have been more grateful for the people who are constantly around me, especially when it is harder to know what the job industry will expect from us tomorrow.",
+        "I hope you also get a moment like that: to remember that you are more valued than your job, that you can still learn and change, and that you are not doing it alone.",
+      ]],
+    ],
+  },
   "tell-clients-how-you-use-ai": {
     hideCover: true,
     date: "November 26, 2026",
