@@ -30,7 +30,7 @@ const posts: Record<string, Post> = {
   "more-valued-than-our-jobs": {
     hideCover: true,
     date: "November 27, 2026",
-    cover: { src: "/blog/more-valued-than-our-jobs.gif", alt: "An illustrated scene of a girl with long dark hair sitting on a green hill, eyes closed and hands on her heart, under a smiling sun, with flowers, floating hearts and butterflies, and hand-lettered “be grateful.” In the animation the sun’s rays pulse, hearts and butterflies drift, and sparkles twinkle." },
+    cover: { src: "/blog/more-valued-than-our-jobs.gif", alt: "An illustrated scene of a girl with warm brown skin and a high puff of dark hair, sitting on a green hill in a coral-red dress and yellow cardigan, hands on her heart, under a smiling sun, with flowers, floating hearts and butterflies, and hand-lettered “be grateful.” In the animation the sun’s rays pulse, hearts and butterflies drift, and sparkles twinkle." },
     type: "Article",
     time: "2 min",
     title: "This Year Taught Me We Are More Valued Than Our Jobs",
