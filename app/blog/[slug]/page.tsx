@@ -30,7 +30,7 @@ const posts: Record<string, Post> = {
   "more-valued-than-our-jobs": {
     hideCover: true,
     date: "November 27, 2026",
-    cover: { src: "/blog/more-valued-than-our-jobs.jpg", alt: "Two hands in a camel knit sweater hold a phone against a soft terracotta background, showing a gratitude journal app titled I'm grateful for, with notes on learning and change, the people around me, and room to try." },
+    cover: { src: "/blog/more-valued-than-our-jobs.gif", alt: "A woman in a camel sweater stands against a soft terracotta background with her hand on her heart. In the animation her smile grows warmer and the word grateful appears in script." },
     type: "Article",
     time: "2 min",
     title: "This Year Taught Me We Are More Valued Than Our Jobs",
