@@ -43,11 +43,11 @@ const posts: Record<string, Post> = {
       ["The small things we forget", [
         "Days like this are a good reminder of what I do not want to lose sight of.",
         "No matter your age, you are able to learn and change.",
-        "Wherever you are, you are surrounded by people who support you. I have been more grateful for the people who are constantly around me, especially in the moments when it is harder to know what life, or the job industry, will expect from us tomorrow.",
+        "Wherever you are, you are surrounded by people who support you.",
         "And we rarely give ourselves a moment to make mistakes and learn, once we understand that we need to make a change. That room matters.",
       ]],
       ["What AI taught me, without meaning to", [
-        "This is not really an article about AI. But AI has been teaching me these things anyway, in an indirect way, and I have been more grateful for the people who are constantly around me, especially when it is harder to know what the job industry will expect from us tomorrow.",
+        "This is not really an article about AI. But AI has been teaching me these things anyway, in an indirect way, and I have been more grateful for the people who are constantly around me, especially when it is harder to know what life, or the job industry, will expect from us tomorrow.",
         "I hope you also get a moment like that: to remember that you are more valued than your job, that you can still learn and change, and that you are not doing it alone.",
       ]],
     ],
